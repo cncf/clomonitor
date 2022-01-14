@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "remonitor-apiserver",
+    "remonitor-linter",
+    "remonitor-scheduler"
+]

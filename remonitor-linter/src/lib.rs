@@ -113,7 +113,14 @@ pub fn lint(root: &Path) -> Result<Report, Box<dyn Error>> {
                 root,
                 patterns: vec![".github/workflows/fossa.y*ml"],
                 case_sensitive: false,
-            })?,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: vec!["README*"],
+                    case_sensitive: true,
+                },
+                vec![r"https://app.fossa.*/api/projects/.*"],
+            )?,
             openssf_badge: check::content_matches(
                 Globs {
                     root,

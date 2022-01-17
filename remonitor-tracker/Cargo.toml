@@ -1,5 +1,5 @@
 [package]
-name = "remonitor-scheduler"
+name = "remonitor-tracker"
 version = "0.1.0"
 edition = "2021"
 

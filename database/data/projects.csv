@@ -1,0 +1,2 @@
+project_id,maturity_id,name,description,organization_id
+00000000-0000-0000-0000-000000000001,2,artifact-hub,"Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",00000000-0000-0000-0000-000000000001

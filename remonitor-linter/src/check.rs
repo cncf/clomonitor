@@ -6,7 +6,23 @@ use std::error::Error;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+/// SPDX license list. Used to detect license used by repositories.
 const LICENSES: &[u8] = include_bytes!("data/licenses.bin.zstd");
+
+/// CNCF approved licenses.
+/// https://github.com/cncf/foundation/blob/master/allowed-third-party-license-policy.md
+static APPROVED_LICENSES: [&str; 10] = [
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-2-Clause-FreeBSD",
+    "BSD-3-Clause",
+    "ISC",
+    "MIT",
+    "PostgreSQL",
+    "Python-2.0",
+    "X11",
+    "Zlib",
+];
 
 /// Glob matching configuration.
 #[derive(Debug)]
@@ -28,21 +44,23 @@ pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, 
     }))
 }
 
-/// Checks if a valid license can be found.
+/// Checks repository's license.
 pub(crate) fn license(globs: Globs) -> Result<License, Box<dyn Error>> {
     let store = Store::from_cache(LICENSES)?;
+    let mut approved: Option<bool> = None;
     let mut spdx_id: Option<String> = None;
     matching_paths(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
             let m = store.analyze(&TextData::from(content));
-            if m.score == 1.0 {
+            if m.score > 0.9 {
+                approved = Some(APPROVED_LICENSES.contains(&m.name));
                 spdx_id = Some(m.name.to_string());
                 return true;
             }
         }
         false
     });
-    Ok(License { spdx_id })
+    Ok(License { approved, spdx_id })
 }
 
 /// Checks if exists at least a path that matches the globs provided.

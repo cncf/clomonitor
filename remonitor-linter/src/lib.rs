@@ -27,6 +27,7 @@ pub struct Documentation {
 /// License section of a linter report.
 #[derive(Debug, Serialize)]
 pub struct License {
+    pub approved: Option<bool>,
     pub spdx_id: Option<String>,
 }
 

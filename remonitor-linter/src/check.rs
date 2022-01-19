@@ -1,8 +1,8 @@
 use crate::License;
+use anyhow::Error;
 use askalono::*;
 use glob::{glob_with, MatchOptions, PatternError};
 use regex::RegexSet;
-use std::error::Error;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -34,7 +34,7 @@ pub(crate) struct Globs<'a> {
 
 /// Checks if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given.
-pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, Box<dyn Error>> {
+pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, Error> {
     let re = RegexSet::new(regexps)?;
     Ok(matching_paths(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
@@ -45,7 +45,7 @@ pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, 
 }
 
 /// Checks repository's license.
-pub(crate) fn license(globs: Globs) -> Result<License, Box<dyn Error>> {
+pub(crate) fn license(globs: Globs) -> Result<License, Error> {
     let store = Store::from_cache(LICENSES)?;
     let mut approved: Option<bool> = None;
     let mut spdx_id: Option<String> = None;

@@ -2,5 +2,5 @@
 members = [
     "remonitor-apiserver",
     "remonitor-linter",
-    "remonitor-scheduler"
+    "remonitor-tracker"
 ]

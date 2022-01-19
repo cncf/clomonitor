@@ -1,6 +1,6 @@
 use crate::check::Globs;
+use anyhow::Error;
 use serde::Serialize;
-use std::error::Error;
 use std::path::Path;
 
 mod check;
@@ -49,7 +49,7 @@ pub struct Security {
 }
 
 /// Run the linter in the path provided and return a report.
-pub fn lint(root: &Path) -> Result<Report, Box<dyn Error>> {
+pub fn lint(root: &Path) -> Result<Report, Error> {
     Ok(Report {
         documentation: Documentation {
             adopters: check::path_exists(Globs {

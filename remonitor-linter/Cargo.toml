@@ -5,6 +5,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.52"
 askalono = "0.4.4"
 clap = { version = "3.0.7", features = ["derive"] }
 glob = "0.3.0"

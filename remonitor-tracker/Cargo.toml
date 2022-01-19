@@ -4,3 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.52"
+config = "0.11.0"
+deadpool-postgres = { version = "0.10.1", features = ["serde"] }
+dirs = "4.0.0"
+futures = "0.3.19"
+remonitor-linter = { path = "../remonitor-linter" }
+serde_json = "1.0.74"
+tempdir = "0.3.7"
+tokio = { version = "1", features = ["full"] }
+tokio-postgres = { version = "0.7.5", features = ["with-uuid-0_8", "with-serde_json-1"] }
+tracing = "0.1.29"
+tracing-subscriber = "0.3.6"
+uuid = "0.8.2"

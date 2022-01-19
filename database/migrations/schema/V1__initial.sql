@@ -37,6 +37,7 @@ create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
     url text not null check (url <> ''),
+    digest text,
     created_at timestamptz default current_timestamp not null,
     project_id uuid references project on delete cascade,
     unique (project_id, name)
@@ -52,8 +53,10 @@ insert into linter (linter_id, name, display_name) values (0, 'core', 'Remonitor
 
 create table if not exists report (
     report_id uuid primary key default gen_random_uuid(),
-    data jsonb not null,
+    data jsonb,
+    errors text,
     created_at timestamptz default current_timestamp not null,
+    updated_at timestamptz default current_timestamp not null,
     repository_id uuid references repository on delete cascade,
     linter_id integer references linter on delete restrict,
     unique (repository_id, linter_id)

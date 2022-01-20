@@ -10,6 +10,19 @@ create table if not exists organization (
     created_at timestamptz default current_timestamp not null
 );
 
+create table if not exists category (
+    category_id integer primary key,
+    name text not null check (name <> '') unique
+);
+
+insert into category (category_id, name) values (0, 'app definition');
+insert into category (category_id, name) values (1, 'observability');
+insert into category (category_id, name) values (2, 'orchestration');
+insert into category (category_id, name) values (3, 'platform');
+insert into category (category_id, name) values (4, 'provisioning');
+insert into category (category_id, name) values (5, 'runtime');
+insert into category (category_id, name) values (6, 'serverless');
+
 create table if not exists maturity (
     maturity_id integer primary key,
     name text not null check (name <> '') unique
@@ -30,8 +43,9 @@ create table if not exists project (
     score jsonb,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
-    organization_id uuid references organization on delete cascade,
-    maturity_id integer references maturity on delete restrict,
+    organization_id uuid not null references organization on delete cascade,
+    maturity_id integer not null references maturity on delete restrict,
+    category_id integer not null references category on delete restrict,
     unique (organization_id, name)
 );
 
@@ -41,7 +55,7 @@ create table if not exists repository (
     url text not null check (url <> ''),
     digest text,
     created_at timestamptz default current_timestamp not null,
-    project_id uuid references project on delete cascade,
+    project_id uuid not null references project on delete cascade,
     unique (project_id, name)
 );
 
@@ -59,8 +73,8 @@ create table if not exists report (
     errors text,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
-    repository_id uuid references repository on delete cascade,
-    linter_id integer references linter on delete restrict,
+    repository_id uuid not null references repository on delete cascade,
+    linter_id integer not null references linter on delete restrict,
     unique (repository_id, linter_id)
 );
 
@@ -68,7 +82,7 @@ create table if not exists report (
 copy organization (organization_id, name, home_url, logo_url)
 from '../../projects/remonitor/database/data/organizations.csv'
 with (format csv, header true, delimiter ';');
-copy project (project_id, maturity_id, name, description, organization_id)
+copy project (project_id, maturity_id, category_id, name, description, organization_id)
 from '../../projects/remonitor/database/data/projects.csv'
 with (format csv, header true, delimiter ';');
 copy repository (repository_id, name, url, project_id)

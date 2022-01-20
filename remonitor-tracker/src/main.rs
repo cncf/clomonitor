@@ -116,10 +116,7 @@ async fn get_repositories(db: DbClient) -> Result<Vec<Repository>, DbError> {
     info!("getting repositories");
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
-        .query(
-            "select repository_id, url, digest from repository where name='artifact-hub';",
-            &[],
-        )
+        .query("select repository_id, url, digest from repository;", &[])
         .await?;
     for row in rows {
         repositories.push(Repository {

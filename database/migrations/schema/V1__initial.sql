@@ -82,7 +82,7 @@ create table if not exists report (
 copy organization (organization_id, name, home_url, logo_url)
 from '../../projects/remonitor/database/data/organizations.csv'
 with (format csv, header true, delimiter ';');
-copy project (project_id, maturity_id, category_id, name, description, organization_id)
+copy project (project_id, maturity_id, category_id, name, description, logo_url, home_url, devstats_url, organization_id)
 from '../../projects/remonitor/database/data/projects.csv'
 with (format csv, header true, delimiter ';');
 copy repository (repository_id, name, url, project_id)

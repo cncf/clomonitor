@@ -1001,6 +1001,7 @@ dependencies = [
  "dirs",
  "futures",
  "remonitor-linter",
+ "serde 1.0.133",
  "serde_json",
  "tempdir",
  "tokio",

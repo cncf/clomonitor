@@ -27,6 +27,7 @@ create table if not exists project (
     home_url text check (home_url <> ''),
     logo_url text check (logo_url <> ''),
     devstats_url text check (devstats_url <> ''),
+    score jsonb,
     created_at timestamptz default current_timestamp not null,
     organization_id uuid references organization on delete cascade,
     maturity_id integer references maturity on delete restrict,

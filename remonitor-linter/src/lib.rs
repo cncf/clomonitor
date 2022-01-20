@@ -1,12 +1,12 @@
 use crate::check::Globs;
 use anyhow::Error;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::path::Path;
 
 mod check;
 
 /// A linter report.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
@@ -15,7 +15,7 @@ pub struct Report {
 }
 
 /// Documentation section of a linter report.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Documentation {
     pub adopters: bool,
     pub code_of_conduct: bool,
@@ -29,21 +29,21 @@ pub struct Documentation {
 }
 
 /// License section of a linter report.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct License {
     pub approved: Option<bool>,
     pub spdx_id: Option<String>,
 }
 
 /// Quality section of a linter report.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Quality {
     pub fossa: bool,
     pub openssf_badge: bool,
 }
 
 /// Security section of a linter report.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Security {
     pub security_policy: bool,
 }

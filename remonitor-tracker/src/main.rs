@@ -11,7 +11,7 @@ use tempdir::TempDir;
 use tokio::process::Command;
 use tokio_postgres::types::Json;
 use tokio_postgres::{Error as DbError, NoTls};
-use tracing::{error, info, warn};
+use tracing::{debug, error, info, warn};
 use uuid::Uuid;
 
 /// Supported linters.
@@ -63,6 +63,10 @@ impl Score {
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    // Set RUST_LOG if it hasn't been explicitly defined
+    if std::env::var_os("RUST_LOG").is_none() {
+        std::env::set_var("RUST_LOG", "remonitor_tracker=debug")
+    }
     tracing_subscriber::fmt::init();
     info!("tracker started");
 
@@ -113,7 +117,7 @@ async fn main() -> Result<(), Error> {
 
 /// Get all repositories available in the database.
 async fn get_repositories(db: DbClient) -> Result<Vec<Repository>, DbError> {
-    info!("getting repositories");
+    debug!("getting repositories");
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
         .query("select repository_id, url, digest from repository;", &[])
@@ -141,7 +145,7 @@ async fn process_repository(mut db: DbClient, repo: Repository) -> Result<(), Er
         }
     }
 
-    info!("processing repository [id: {}]", repo.repository_id);
+    debug!("processing repository [id: {}]", repo.repository_id);
 
     // Clone repository
     let tmp_dir = TempDir::new("remonitor")?;
@@ -169,7 +173,7 @@ async fn process_repository(mut db: DbClient, repo: Repository) -> Result<(), Er
     update_project_score(&tx, &repo.repository_id).await?;
     tx.commit().await?;
 
-    info!(
+    debug!(
         "repository processed in {}s [id: {}]",
         start.elapsed().as_secs(),
         repo.repository_id

@@ -116,7 +116,10 @@ async fn get_repositories(db: DbClient) -> Result<Vec<Repository>, DbError> {
     info!("getting repositories");
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
-        .query("select repository_id, url, digest from repository", &[])
+        .query(
+            "select repository_id, url, digest from repository where name='artifact-hub';",
+            &[],
+        )
         .await?;
     for row in rows {
         repositories.push(Repository {
@@ -214,7 +217,7 @@ async fn update_repository_digest(
     digest: &str,
 ) -> Result<(), Error> {
     tx.execute(
-        "update repository set digest = $1::text where repository_id = $2::uuid",
+        "update repository set digest = $1::text where repository_id = $2::uuid;",
         &[&digest, &repository_id],
     )
     .await?;
@@ -257,7 +260,7 @@ async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Res
             select project_id from project
             where project_id in (
                 select project_id from repository where repository_id = $1::uuid
-            ) for update
+            ) for update;
             ",
             &[&repository_id],
         )
@@ -272,7 +275,7 @@ async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Res
             select linter_id, data from report
             where repository_id in (
                 select repository_id from repository where project_id = $1::uuid
-            )
+            );
             ",
             &[&project_id],
         )
@@ -287,7 +290,12 @@ async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Res
 
     // Update project's score
     tx.execute(
-        "update project set score = $1::jsonb where project_id = $2::uuid",
+        "
+        update project set
+            score = $1::jsonb,
+            updated_at = current_timestamp
+        where project_id = $2::uuid;
+        ",
         &[&Json(score), &project_id],
     )
     .await?;

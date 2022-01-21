@@ -4,3 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.52"
+axum = "0.4.4"
+config = "0.11.0"
+deadpool-postgres = { version = "0.10.1", features = ["serde"] }
+dirs = "4.0.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.74"
+tokio = { version = "1", features = ["full"] }
+tokio-postgres = { version = "0.7.5", features = ["with-uuid-0_8", "with-serde_json-1"] }
+tower = "0.4.11"
+tower-http = { version = "0.2.0", features = ["fs", "trace"] }
+tracing = "0.1.29"
+tracing-subscriber = "0.3.6"

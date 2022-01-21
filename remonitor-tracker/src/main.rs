@@ -63,15 +63,15 @@ impl Score {
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    // Set RUST_LOG if it hasn't been explicitly defined
+    // Check if required external tools are available
+    // TODO
+
+    // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
         std::env::set_var("RUST_LOG", "remonitor_tracker=debug")
     }
     tracing_subscriber::fmt::init();
     info!("tracker started");
-
-    // Check if required external tools are available
-    // TODO
 
     // Setup configuration
     let cfg_dir = dirs::config_dir()
@@ -289,15 +289,16 @@ async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Res
     }
     let score = merge_scores(scores);
 
-    // Update project's score
+    // Update project's score and rating
     tx.execute(
         "
         update project set
             score = $1::jsonb,
+            rating = $2::text,
             updated_at = current_timestamp
-        where project_id = $2::uuid;
+        where project_id = $3::uuid;
         ",
-        &[&Json(score), &project_id],
+        &[&Json(&score), &get_rating(&score), &project_id],
     )
     .await?;
 
@@ -387,4 +388,16 @@ fn merge_scores(scores: Vec<Score>) -> Score {
     score.quality /= n;
     score.security /= n;
     score
+}
+
+/// Returns the rating corresponding to the score provided.
+fn get_rating(score: &Score) -> String {
+    match score.global {
+        75..=100 => "a",
+        50..=74 => "b",
+        25..=49 => "c",
+        0..=24 => "d",
+        _ => "?",
+    }
+    .to_string()
 }

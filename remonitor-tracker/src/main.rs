@@ -4,7 +4,7 @@ use deadpool_postgres::{Client as DbClient, Config as DbConfig, Runtime, Transac
 use futures::future;
 use futures::stream::{FuturesUnordered, StreamExt};
 use remonitor_linter::{lint, Report};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::time::Instant;
 use tempdir::TempDir;
@@ -40,7 +40,7 @@ struct Repository {
 }
 
 /// Project's score information.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 struct Score {
     global: usize,
     documentation: usize,
@@ -102,7 +102,7 @@ async fn main() -> Result<(), Error> {
         futs.push(tokio::spawn(async move {
             let repository_id = repo.repository_id.to_string();
             if let Err(err) = process_repository(db, repo).await {
-                error!("error processing repository {}: {}", repository_id, err);
+                error!("error processing repository {repository_id}: {err}");
             }
         }));
         if futs.len() == cfg.get::<usize>("tracker.concurrency").unwrap() {
@@ -151,7 +151,7 @@ async fn process_repository(mut db: DbClient, repo: Repository) -> Result<(), Er
     let tmp_dir = TempDir::new("remonitor")?;
     clone_repository(&repo.url, tmp_dir.path()).await?;
 
-    // Lint repository
+    // Lint repository (only using core linter at the moment)
     let mut errors: Option<String> = None;
     let report = match lint(tmp_dir.path()) {
         Ok(report) => Some(report),
@@ -168,9 +168,10 @@ async fn process_repository(mut db: DbClient, repo: Repository) -> Result<(), Er
 
     // Store processing results in database
     let tx = db.transaction().await?;
-    update_repository_digest(&tx, &repo.repository_id, &remote_digest).await?;
-    store_linter_report(&tx, &repo.repository_id, Linter::Core, report, errors).await?;
+    store_linter_report(&tx, &repo.repository_id, Linter::Core, &report, errors).await?;
+    update_repository_score(&tx, &repo.repository_id).await?;
     update_project_score(&tx, &repo.repository_id).await?;
+    update_repository_digest(&tx, &repo.repository_id, &remote_digest).await?;
     tx.commit().await?;
 
     debug!(
@@ -211,26 +212,12 @@ async fn clone_repository(url: &str, dst: &Path) -> Result<(), Error> {
     Ok(())
 }
 
-/// Update repository's digest.
-async fn update_repository_digest(
-    tx: &Transaction<'_>,
-    repository_id: &Uuid,
-    digest: &str,
-) -> Result<(), Error> {
-    tx.execute(
-        "update repository set digest = $1::text where repository_id = $2::uuid;",
-        &[&digest, &repository_id],
-    )
-    .await?;
-    Ok(())
-}
-
 /// Store the provided linter report.
 async fn store_linter_report(
     tx: &Transaction<'_>,
     repository_id: &Uuid,
     linter: Linter,
-    report: Option<Report>,
+    report: &Option<Report>,
     errors: Option<String>,
 ) -> Result<(), Error> {
     tx.execute(
@@ -251,34 +238,21 @@ async fn store_linter_report(
     Ok(())
 }
 
-/// Update project's score based on the linter reports available for each of
-/// the repositories in the project.
-async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Result<(), Error> {
-    // Get project's id and lock project's row
-    let row = tx
-        .query_one(
-            "
-            select project_id from project
-            where project_id in (
-                select project_id from repository where repository_id = $1::uuid
-            ) for update;
-            ",
-            &[&repository_id],
-        )
-        .await?;
-    let project_id: Uuid = row.get("project_id");
+/// Update repository's score using the provided report to calculate it.
+async fn update_repository_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Result<(), Error> {
+    // Lock repository's row
+    tx.query_one(
+        "select 1 from repository where repository_id = $1::uuid for update;",
+        &[&repository_id],
+    )
+    .await?;
 
-    // Calculate project's score from the project's repositories linters reports
+    // Calculate repository's score from the linters reports available
     let mut scores = Vec::<Score>::new();
     let rows = tx
         .query(
-            "
-            select linter_id, data from report
-            where repository_id in (
-                select repository_id from repository where project_id = $1::uuid
-            );
-            ",
-            &[&project_id],
+            "select linter_id, data from report where repository_id = $1::uuid;",
+            &[&repository_id],
         )
         .await?;
     for row in rows {
@@ -287,18 +261,12 @@ async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Res
         let report: Json<Report> = row.get("data");
         scores.push(calculate_score(linter, report.0));
     }
-    let score = merge_scores(scores);
+    let repository_score = merge_scores(scores);
 
-    // Update project's score and rating
+    // Update repository's score
     tx.execute(
-        "
-        update project set
-            score = $1::jsonb,
-            rating = $2::text,
-            updated_at = current_timestamp
-        where project_id = $3::uuid;
-        ",
-        &[&Json(&score), &get_rating(&score), &project_id],
+        "update repository set score = $1::jsonb where repository_id = $2::uuid;",
+        &[&Json(&repository_score), &repository_id],
     )
     .await?;
 
@@ -390,6 +358,63 @@ fn merge_scores(scores: Vec<Score>) -> Score {
     score
 }
 
+/// Update project's score based on the project's repositories scores.
+async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Result<(), Error> {
+    // Get project's id and lock project's row
+    let row = tx
+        .query_one(
+            "
+            select project_id from project
+            where project_id in (
+                select project_id from repository where repository_id = $1::uuid
+            ) for update;
+            ",
+            &[&repository_id],
+        )
+        .await?;
+    let project_id: Uuid = row.get("project_id");
+
+    // Calculate project's score from the repositories' scores
+    let mut repositories_scores = Vec::<Score>::new();
+    let rows = tx
+        .query(
+            "
+            select score from repository
+            where repository_id in (
+                select repository_id from repository where project_id = $1::uuid
+            );
+            ",
+            &[&project_id],
+        )
+        .await?;
+    for row in rows {
+        let score: Option<Json<Score>> = row.get("score");
+        if let Some(Json(score)) = score {
+            repositories_scores.push(score);
+        }
+    }
+    let project_score = merge_scores(repositories_scores);
+
+    // Update project's score and rating
+    tx.execute(
+        "
+        update project set
+            score = $1::jsonb,
+            rating = $2::text,
+            updated_at = current_timestamp
+        where project_id = $3::uuid;
+        ",
+        &[
+            &Json(&project_score),
+            &get_rating(&project_score),
+            &project_id,
+        ],
+    )
+    .await?;
+
+    Ok(())
+}
+
 /// Returns the rating corresponding to the score provided.
 fn get_rating(score: &Score) -> String {
     match score.global {
@@ -400,4 +425,18 @@ fn get_rating(score: &Score) -> String {
         _ => "?",
     }
     .to_string()
+}
+
+/// Update repository's digest.
+async fn update_repository_digest(
+    tx: &Transaction<'_>,
+    repository_id: &Uuid,
+    digest: &str,
+) -> Result<(), Error> {
+    tx.execute(
+        "update repository set digest = $1::text where repository_id = $2::uuid;",
+        &[&digest, &repository_id],
+    )
+    .await?;
+    Ok(())
 }

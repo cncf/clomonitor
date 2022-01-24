@@ -1,0 +1,17 @@
+.link {
+  font-size: 0.9rem;
+}
+
+.icon {
+  min-width: 15px;
+}
+
+.miniIcon {
+  min-width: 15px;
+  top: 1px;
+  font-size: 0.9rem;
+}
+
+.linkName {
+  max-width: 220px;
+}

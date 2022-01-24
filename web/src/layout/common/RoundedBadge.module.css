@@ -1,0 +1,22 @@
+.quality {
+  height: 1rem;
+  width: 1rem;
+  min-width: 1rem;
+  border-color: var(--color-black-25) !important;
+}
+
+.level1 {
+  background-color: var(--rm-green);
+}
+
+.level2 {
+  background-color: var(--rm-yellow);
+}
+
+.level3 {
+  background-color: var(--rm-orange);
+}
+
+.level4 {
+  background-color: var(--rm-red);
+}

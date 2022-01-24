@@ -1,0 +1,8 @@
+.badges {
+  top: -2px;
+}
+
+.badge {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid transparent;
+}

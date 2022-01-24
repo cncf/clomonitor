@@ -1,0 +1,48 @@
+.footer {
+  background-color: var(--rm-secondary-900);
+}
+
+.logo {
+  height: 48px;
+}
+
+.miniIcon {
+  font-size: 0.75rem;
+}
+
+.footerCol {
+  padding-right: 5rem;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .hexagon {
+    font-size: 3rem;
+    width: 100%;
+  }
+
+  .footerCol,
+  .fullMobileSection {
+    padding: 0 1rem;
+  }
+
+  .footerCol {
+    padding-bottom: 1.5rem;
+  }
+
+  .fullMobileSection {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .license {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .fullMobileSection {
+    width: 100%;
+  }
+}

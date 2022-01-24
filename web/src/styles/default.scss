@@ -1,0 +1,158 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1920px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 930px,
+  xl: 1080px,
+  xxl: 1320px,
+  xxxl: 1860px,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import './light.scss';
+@import './dark.scss';
+
+:root {
+  --rm-green: #90be6d;
+  --rm-yellow: #f9c74f;
+  --rm-orange: #f8961e;
+  --rm-red: #f94144;
+}
+
+html,
+body,
+#remonitor {
+  height: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--color-font);
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 0 transparent !important;
+}
+
+main {
+  margin-top: 0rem !important;
+}
+
+// Bootstrap changes
+.form-check-input {
+  margin-top: 0.3rem;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label,
+.form-check-input.is-valid ~ .form-check-label,
+.was-validated .form-check-input:valid ~ .form-check-label,
+.form-check-input.is-valid ~ .form-check-label {
+  color: var(--color-font);
+}
+
+.was-validated .form-check-input:valid:checked ~ .form-check-label::before,
+.form-check-input.is-valid:checked ~ .form-check-label::before {
+  border-color: var(--highlighted) !important;
+  background-color: var(--highlighted);
+}
+
+.form-check-input:checked {
+  background-color: var(--highlighted);
+  border-color: var(--highlighted);
+}
+
+.form-select:focus {
+  border-color: var(--highlighted);
+}
+
+a,
+.btn-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+.dropdown-item {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.page-item.active .page-link {
+  background-color: var(--rm-primary);
+  border-color: var(--rm-primary);
+}
+
+// Overwrite Bootstrap styles
+.text-primary {
+  color: var(--rm-primary) !important;
+}
+
+.text-secondary {
+  color: var(--rm-secondary) !important;
+}
+
+.bg-primary {
+  background-color: var(--rm-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--rm-secondary) !important;
+}
+
+.btn-primary {
+  background-color: var(--rm-primary);
+  border-color: var(--rm-primary);
+
+  &:hover,
+  &:disabled,
+  &.disabled {
+    background-color: var(--rm-primary);
+    border-color: var(--rm-primary);
+  }
+}
+
+.border-primary {
+  border-color: var(--rm-primary) !important;
+}
+
+.btn {
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.noFocus:focus {
+  outline: none !important;
+}
+
+.truncateWrapper {
+  min-width: 0;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .pagination-sm .page-link {
+    font-size: inherit;
+  }
+}

@@ -1,0 +1,18 @@
+.searchBar {
+  height: 38px;
+  width: 300px;
+  box-shadow: 0 0 0 0.3rem var(--color-white-25);
+  margin-right: 0.3rem;
+  margin: 0 0.3rem;
+}
+
+.iconWrapper {
+  color: var(--rm-primary);
+  padding: 0.375rem 0.75rem;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .searchBar {
+    max-width: 85%;
+  }
+}

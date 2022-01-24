@@ -64,31 +64,31 @@ pub fn lint(root: &Path) -> Result<Report, Error> {
             })?,
             contributing: check::path_exists(Globs {
                 root,
-                patterns: vec!["CONTRIBUTING.md", "docs/CONTRIBUTING.md"],
+                patterns: vec!["contributing*", "docs/contributing*"],
                 case_sensitive: false,
             })?,
             changelog: check::path_exists(Globs {
                 root,
-                patterns: vec!["CHANGELOG*"],
+                patterns: vec!["changelog*"],
                 case_sensitive: false,
             })?,
             governance: check::path_exists(Globs {
                 root,
-                patterns: vec!["GOVERNANCE*", "docs/GOVERNANCE*"],
+                patterns: vec!["governance*", "docs/governance*"],
                 case_sensitive: false,
             })?,
             maintainers: check::path_exists(Globs {
                 root,
-                patterns: vec!["maintainers*"],
+                patterns: vec!["maintainers*", "docs/maintainers*"],
                 case_sensitive: false,
             })?,
             owners: check::path_exists(Globs {
                 root,
                 patterns: vec![
-                    "OWNERS",
-                    "CODEOWNERS",
-                    "docs/CODEOWNERS",
-                    ".github/CODEOWNERS",
+                    "owners*",
+                    "codeowners*",
+                    "docs/codeowners*",
+                    ".github/codeowners*",
                 ],
                 case_sensitive: false,
             })?,
@@ -133,8 +133,8 @@ pub fn lint(root: &Path) -> Result<Report, Error> {
         security: Security {
             security_policy: check::path_exists(Globs {
                 root,
-                patterns: vec!["SECURITY.md", "docs/SECURITY.md", ".github/SECURITY.md"],
-                case_sensitive: true,
+                patterns: vec!["security*", "docs/security*", ".github/security*"],
+                case_sensitive: false,
             })?,
         },
     })

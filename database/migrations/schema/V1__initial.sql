@@ -89,12 +89,18 @@ declare
     v_rating text[];
 begin
     -- Prepare filters
-    select array_agg(e::int) into v_category
-    from jsonb_array_elements_text(p_input->'category') e;
-    select array_agg(e::int) into v_maturity
-    from jsonb_array_elements_text(p_input->'maturity') e;
-    select array_agg(e::text) into v_rating
-    from jsonb_array_elements_text(p_input->'rating') e;
+    if p_input ? 'category' and p_input->'category' <> 'null' then
+        select array_agg(e::int) into v_category
+        from jsonb_array_elements_text(p_input->'category') e;
+    end if;
+    if p_input ? 'maturity' and p_input->'maturity' <> 'null' then
+        select array_agg(e::int) into v_maturity
+        from jsonb_array_elements_text(p_input->'maturity') e;
+    end if;
+    if p_input ? 'rating' and p_input->'rating' <> 'null' then
+        select array_agg(e::text) into v_rating
+        from jsonb_array_elements_text(p_input->'rating') e;
+    end if;
 
     return query
     with filtered_projects as (

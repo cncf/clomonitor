@@ -163,6 +163,49 @@ begin
 end
 $$ language plpgsql;
 
+create or replace function get_project(p_project_id uuid)
+returns json as $$
+    select json_strip_nulls(json_build_object(
+        'id', project_id,
+        'name', name,
+        'display_name', display_name,
+        'description', description,
+        'home_url', home_url,
+        'logo_url', logo_url,
+        'devstats_url', devstats_url,
+        'score', score,
+        'rating', rating,
+        'category_id', category_id,
+        'maturity_id', maturity_id,
+        'updated_at', floor(extract(epoch from updated_at)),
+        'repositories', (
+            select json_agg(json_build_object(
+                'repository_id', repository_id,
+                'name', name,
+                'url', url,
+                'digest', digest,
+                'score', 'score',
+                'updated_at', floor(extract(epoch from updated_at)),
+                'reports', (
+                    select json_agg(json_build_object(
+                        'report_id', report_id,
+                        'data', data,
+                        'errors', errors,
+                        'updated_at', floor(extract(epoch from updated_at)),
+                        'linter_id', linter_id
+                    ))
+                    from report
+                    where repository_id = r.repository_id
+                )
+            ))
+            from repository r
+            where project_id = p_project_id
+        )
+    ))
+    from project
+    where project_id = p_project_id;
+$$ language sql;
+
 -- Load sample data
 copy organization (organization_id, name, home_url, logo_url)
 from '../../projects/remonitor/database/data/organizations.csv'

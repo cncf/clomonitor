@@ -7,7 +7,7 @@ use axum::{
         StatusCode,
     },
     response,
-    routing::{get_service, post},
+    routing::{get, get_service, post},
     AddExtensionLayer, Router,
 };
 use config::{Config, File};
@@ -24,6 +24,7 @@ use tower_http::{
     trace::TraceLayer,
 };
 use tracing::info;
+use uuid::Uuid;
 
 /// Header that indicates the number of items available for pagination purposes.
 const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
@@ -78,6 +79,7 @@ fn setup_router(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
     // Setup router
     let router = Router::new()
         .route("/api/projects/search", post(search_projects))
+        .route("/api/projects/:project_id", get(get_project))
         .route(
             "/",
             get_service(ServeFile::new(index_path)).handle_error(error_handler),
@@ -98,14 +100,10 @@ fn setup_router(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
 /// Handler that allows searching for projects.
 async fn search_projects(
     Extension(db_pool): Extension<Pool>,
-    input: extract::Json<SearchProjectInput>,
+    extract::Json(input): extract::Json<SearchProjectInput>,
 ) -> Result<(HeaderMap, response::Json<Value>), (StatusCode, String)> {
-    let extract::Json(input) = input;
-
-    // Get connection from db pool
-    let db = db_pool.get().await.map_err(internal_error)?;
-
     // Search projects in database
+    let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one("select * from search_projects($1::jsonb)", &[&Json(input)])
         .await
@@ -121,6 +119,22 @@ async fn search_projects(
     );
 
     Ok((headers, response::Json(projects)))
+}
+
+/// Handler that returns the requested project.
+async fn get_project(
+    Extension(db_pool): Extension<Pool>,
+    extract::Path(project_id): extract::Path<Uuid>,
+) -> Result<response::Json<Value>, (StatusCode, String)> {
+    // Get project from database
+    let db = db_pool.get().await.map_err(internal_error)?;
+    let row = db
+        .query_one("select get_project($1::uuid)", &[&project_id])
+        .await
+        .map_err(internal_error)?;
+    let Json(project): Json<Value> = row.get(0);
+
+    Ok(response::Json(project))
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.

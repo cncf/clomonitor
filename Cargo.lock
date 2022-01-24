@@ -131,6 +131,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "axum-debug"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9db5dc4828d357f9b15df085afe0271d26d3a831c01361260e73bfbbb327b8f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "base64"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1158,6 +1169,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum",
+ "axum-debug",
  "config",
  "deadpool-postgres",
  "dirs",
@@ -1169,6 +1181,7 @@ dependencies = [
  "tower-http",
  "tracing",
  "tracing-subscriber",
+ "uuid",
 ]
 
 [[package]]
@@ -1699,6 +1712,9 @@ name = "uuid"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc5cf98d8186244414c848017f0e2676b3fcb46807f6668a97dfe67359a3c4b7"
+dependencies = [
+ "serde 1.0.135",
+]
 
 [[package]]
 name = "version_check"

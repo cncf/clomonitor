@@ -33,6 +33,7 @@ pub(crate) async fn search_projects(
     Extension(db_pool): Extension<Pool>,
     extract::Json(input): extract::Json<SearchProjectsInput>,
 ) -> Result<(HeaderMap, response::Json<Value>), StatusCode> {
+    // Search projects in database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one("select * from search_projects($1::jsonb)", &[&Json(input)])
@@ -41,6 +42,7 @@ pub(crate) async fn search_projects(
     let Json(projects): Json<Value> = row.get("projects");
     let total_count: i64 = row.get("total_count");
 
+    // Prepare response headers
     let mut headers = HeaderMap::new();
     headers.insert(
         HeaderName::from_static(PAGINATION_TOTAL_COUNT),
@@ -55,13 +57,14 @@ pub(crate) async fn get_project(
     Extension(db_pool): Extension<Pool>,
     extract::Path(project_id): extract::Path<Uuid>,
 ) -> Result<response::Json<Value>, StatusCode> {
+    // Get project from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one("select get_project($1::uuid)", &[&project_id])
         .await
         .map_err(internal_error)?;
-
     let project: Option<Json<Value>> = row.get(0);
+
     match project {
         Some(Json(project)) => Ok(response::Json(project)),
         None => Err(StatusCode::NOT_FOUND),

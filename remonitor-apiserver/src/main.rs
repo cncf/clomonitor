@@ -5,6 +5,7 @@ use anyhow::Error;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use std::net::SocketAddr;
+use tokio::signal;
 use tokio_postgres::NoTls;
 use tracing::info;
 
@@ -35,8 +36,37 @@ async fn main() -> Result<(), Error> {
     info!("listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(router.into_make_service())
+        .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
 
+    info!("apiserver stopped");
     Ok(())
+}
+
+async fn shutdown_signal() {
+    // Setup signal handlers
+    let ctrl_c = async {
+        signal::ctrl_c()
+            .await
+            .expect("failed to install ctrl+c handler");
+    };
+
+    #[cfg(unix)]
+    let terminate = async {
+        signal::unix::signal(signal::unix::SignalKind::terminate())
+            .expect("failed to install terminate signal handler")
+            .recv()
+            .await;
+    };
+
+    #[cfg(not(unix))]
+    let terminate = std::future::pending::<()>();
+
+    // Wait for any of the signals
+    tokio::select! {
+        _ = ctrl_c => {},
+        _ = terminate => {},
+    }
+    info!("apiserver stopping...");
 }

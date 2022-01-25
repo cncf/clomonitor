@@ -1,9 +1,9 @@
+mod check;
+
 use crate::check::Globs;
 use anyhow::Error;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
-
-mod check;
 
 /// A linter report.
 #[derive(Debug, Serialize, Deserialize)]

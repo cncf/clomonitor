@@ -119,7 +119,8 @@ begin
             p.updated_at
         from project p
         join organization o using (organization_id)
-        where
+        where score is not null
+        and
             case when v_text is not null then p.name ~* v_text else true end
         and
             case when cardinality(v_category) > 0
@@ -211,14 +212,3 @@ returns json as $$
     from project
     where project_id = p_project_id;
 $$ language sql;
-
--- Load sample data
-copy organization (organization_id, name, home_url, logo_url)
-from '../../projects/remonitor/database/data/organizations.csv'
-with (format csv, header true, delimiter ';');
-copy project (project_id, maturity_id, category_id, name, description, logo_url, home_url, devstats_url, organization_id)
-from '../../projects/remonitor/database/data/projects.csv'
-with (format csv, header true, delimiter ';');
-copy repository (repository_id, name, url, project_id)
-from '../../projects/remonitor/database/data/repositories.csv'
-with (format csv, header true, delimiter ';');

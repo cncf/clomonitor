@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# db-migrator
+# dbmigrator
 docker build \
     -f database/migrations/Dockerfile \
-    -t remonitor/db-migrator \
+    -t remonitor/dbmigrator \
 .
 
 # apiserver

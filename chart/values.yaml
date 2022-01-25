@@ -1,0 +1,77 @@
+# ReMonitor chart default configuration values
+
+imagePullSecrets: []
+imageTag: ""
+nameOverride: ""
+pullPolicy: IfNotPresent
+
+# Enable dynamic resource name prefix
+#
+# Enabling the dynamic resource name prefix ensures that the resources are named dynamically based on the Helm
+# installation's name. This allows multiple installations of this chart in a single Kubernetes namespace. The prefix
+# can be defined by using the `fullnameOverride`.
+dynamicResourceNamePrefixEnabled: false
+
+# Overwrites the installation's fullname generation (used for the dynamic resource name prefix)
+fullnameOverride: ""
+
+# Directory path where the configuration files should be mounted
+configDir: "/home/remonitor/.config/remonitor"
+
+# Database configuration
+db:
+  host: ""
+  port: "5432"
+  dbname: remonitor
+  user: postgres
+  password: postgres
+
+# Database migrator configuration
+dbmigrator:
+  job:
+    image:
+      # Database migrator image repository (without the tag)
+      repository: remonitor/dbmigrator
+
+# API server configuration
+apiserver:
+  addr: 0.0.0.0:8000
+  staticPath: /home/remonitor/web/build
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    rules: []
+    tls: []
+  service:
+    type: NodePort
+    port: 80
+  deploy:
+    replicaCount: 1
+    image:
+      # API server image repository (without the tag)
+      repository: remonitor/apiserver
+    resources: {}
+
+# Tracker configuration
+tracker:
+  cronjob:
+    image:
+      # Tracker image repository (without the tag)
+      repository: remonitor/tracker
+    resources: {}
+  # Number of repositories to process concurrently
+  concurrency: 10
+
+# Values for postgresql chart dependency
+postgresql:
+  enabled: true
+  image:
+    repository: artifacthub/postgres
+    tag: latest
+  persistence:
+    mountPath: /data
+  postgresqlUsername: postgres
+  postgresqlPassword: postgres
+  postgresqlDatabase: remonitor
+  postgresqlDataDir: /data/pgdata

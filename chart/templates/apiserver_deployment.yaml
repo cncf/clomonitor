@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.resourceNamePrefix" . }}apiserver
+  labels:
+    app.kubernetes.io/component: apiserver
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.apiserver.deploy.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: apiserver
+      {{- include "chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: apiserver
+        {{- include "chart.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      {{- if .Release.IsInstall }}
+      serviceAccountName: {{ include "chart.resourceNamePrefix" . }}apiserver
+      {{- end }}
+      initContainers:
+      - name: check-db-ready
+        image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
+        imagePullPolicy: {{ .Values.pullPolicy }}
+        env:
+          - name: PGHOST
+            value: {{ default (printf "%s-postgresql.%s" .Release.Name .Release.Namespace) .Values.db.host }}
+          - name: PGPORT
+            value: "{{ .Values.db.port }}"
+        command: ['sh', '-c', 'until pg_isready; do echo waiting for database; sleep 2; done;']
+      {{- if .Release.IsInstall }}
+      - name: check-dbmigrator-run
+        image: "bitnami/kubectl:{{ template "chart.KubernetesVersion" . }}"
+        imagePullPolicy: IfNotPresent
+        command: ['kubectl', 'wait', '--namespace={{ .Release.Namespace }}', '--for=condition=complete', 'job/{{ include "chart.resourceNamePrefix" . }}dbmigrator-install', '--timeout=60s']
+      {{- end }}
+      containers:
+        - name: apiserver
+          image: {{ .Values.apiserver.deploy.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          volumeMounts:
+          - name: apiserver-config
+            mountPath: {{ .Values.configDir | quote }}
+            readOnly: true
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.apiserver.deploy.resources | nindent 12 }}
+          {{- if .Values.apiserver.deploy.livenessProbe }}
+          livenessProbe:
+            {{- toYaml .Values.apiserver.deploy.livenessProbe | nindent 12}}
+          {{- end }}
+          {{- if .Values.apiserver.deploy.readinessProbe }}
+          readinessProbe:
+            {{- toYaml .Values.apiserver.deploy.readinessProbe | nindent 12}}
+          {{- end }}
+      volumes:
+      - name: apiserver-config
+        secret:
+          secretName: {{ include "chart.resourceNamePrefix" . }}apiserver-config

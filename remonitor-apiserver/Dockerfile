@@ -8,8 +8,8 @@ RUN cargo build --release
 
 # Final stage
 FROM alpine:3.15
-RUN apk --no-cache add ca-certificates && addgroup -S apiserver && adduser -S apiserver -G apiserver
-USER apiserver
+RUN apk --no-cache add ca-certificates && addgroup -S remonitor && adduser -S remonitor -G remonitor
+USER remonitor
 WORKDIR /home/remonitor
 COPY --from=builder /remonitor/remonitor-apiserver/target/release/remonitor-apiserver ./apiserver
 CMD ["./apiserver"]

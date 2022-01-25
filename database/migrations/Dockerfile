@@ -1,12 +1,5 @@
-# Build refinery
-FROM rust:1-alpine3.15 as refinery
-RUN apk --no-cache add musl-dev openssl-dev
-RUN cargo install refinery_cli
-
-# Build final image
-FROM alpine:3.15
-RUN addgroup -S db-migrator && adduser -S db-migrator -G db-migrator
-USER db-migrator
+FROM ghcr.io/rust-db/refinery:main
+RUN addgroup --system remonitor && adduser --system remonitor --ingroup remonitor
+USER remonitor
 WORKDIR /home/remonitor
-COPY --from=refinery /usr/local/cargo/bin/refinery /usr/local/bin
-COPY database database
+COPY database/migrations/schema database/migrations/schema

@@ -1,0 +1,46 @@
+{{- if .Capabilities.APIVersions.Has "batch/v1/CronJob" }}
+apiVersion: batch/v1
+{{- else }}
+apiVersion: batch/v1beta1
+{{- end }}
+kind: CronJob
+metadata:
+  name: {{ include "chart.resourceNamePrefix" . }}tracker
+spec:
+  schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+        {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 8 }}
+        {{- end }}
+          restartPolicy: Never
+          initContainers:
+          - name: check-db-ready
+            image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
+            imagePullPolicy: {{ .Values.pullPolicy }}
+            env:
+              - name: PGHOST
+                value: {{ default (printf "%s-postgresql.%s" .Release.Name .Release.Namespace) .Values.db.host }}
+              - name: PGPORT
+                value: "{{ .Values.db.port }}"
+            command: ['sh', '-c', 'until pg_isready; do echo waiting for database; sleep 2; done;']
+          containers:
+          - name: tracker
+            image: {{ .Values.tracker.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
+            imagePullPolicy: {{ .Values.pullPolicy }}
+            resources:
+              {{- toYaml .Values.tracker.cronjob.resources | nindent 14 }}
+            volumeMounts:
+            - name: tracker-config
+              mountPath: {{ .Values.configDir | quote }}
+              readOnly: true
+          volumes:
+          - name: tracker-config
+            secret:
+              secretName: {{ include "chart.resourceNamePrefix" . }}tracker-config

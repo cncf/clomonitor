@@ -1,0 +1,27 @@
+{{- if .Values.apiserver.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "chart.resourceNamePrefix" . }}apiserver
+  labels:
+    app.kubernetes.io/component: apiserver
+    {{- include "chart.labels" . | nindent 4 }}
+  {{- with .Values.apiserver.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  defaultBackend:
+    service:
+      name: {{ include "chart.resourceNamePrefix" . }}apiserver
+      port:
+        number: {{ .Values.apiserver.service.port }}
+  {{- with .Values.apiserver.ingress.rules }}
+  rules:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.apiserver.ingress.tls }}
+  tls:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}

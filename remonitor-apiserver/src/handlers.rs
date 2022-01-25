@@ -11,6 +11,7 @@ use deadpool_postgres::Pool;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use tokio_postgres::types::Json;
+use tracing::error;
 use uuid::Uuid;
 
 /// Header that indicates the number of items available for pagination purposes.
@@ -68,6 +69,7 @@ pub(crate) async fn get_project(
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.
-fn internal_error<E: std::error::Error>(_: E) -> StatusCode {
+fn internal_error<E: std::error::Error>(err: E) -> StatusCode {
+    error!("{err}");
     StatusCode::INTERNAL_SERVER_ERROR
 }

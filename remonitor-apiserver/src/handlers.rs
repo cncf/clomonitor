@@ -31,8 +31,7 @@ pub(crate) struct SearchProjectsInput {
 pub(crate) async fn search_projects(
     Extension(db_pool): Extension<Pool>,
     extract::Json(input): extract::Json<SearchProjectsInput>,
-) -> Result<(HeaderMap, response::Json<Value>), (StatusCode, String)> {
-    // Search projects in database
+) -> Result<(HeaderMap, response::Json<Value>), StatusCode> {
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one("select * from search_projects($1::jsonb)", &[&Json(input)])
@@ -41,7 +40,6 @@ pub(crate) async fn search_projects(
     let Json(projects): Json<Value> = row.get("projects");
     let total_count: i64 = row.get("total_count");
 
-    // Prepare response headers
     let mut headers = HeaderMap::new();
     headers.insert(
         HeaderName::from_static(PAGINATION_TOTAL_COUNT),
@@ -55,22 +53,21 @@ pub(crate) async fn search_projects(
 pub(crate) async fn get_project(
     Extension(db_pool): Extension<Pool>,
     extract::Path(project_id): extract::Path<Uuid>,
-) -> Result<response::Json<Value>, (StatusCode, String)> {
-    // Get project from database
+) -> Result<response::Json<Value>, StatusCode> {
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one("select get_project($1::uuid)", &[&project_id])
         .await
         .map_err(internal_error)?;
-    let Json(project): Json<Value> = row.get(0);
 
-    Ok(response::Json(project))
+    let project: Option<Json<Value>> = row.get(0);
+    match project {
+        Some(Json(project)) => Ok(response::Json(project)),
+        None => Err(StatusCode::NOT_FOUND),
+    }
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.
-fn internal_error<E>(err: E) -> (StatusCode, String)
-where
-    E: std::error::Error,
-{
-    (StatusCode::INTERNAL_SERVER_ERROR, err.to_string())
+fn internal_error<E: std::error::Error>(_: E) -> StatusCode {
+    StatusCode::INTERNAL_SERVER_ERROR
 }

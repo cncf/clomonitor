@@ -34,12 +34,13 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
         .route("/api/projects/:project_id", get(get_project))
         .route(
             "/",
-            get_service(ServeFile::new(index_path)).handle_error(error_handler),
+            get_service(ServeFile::new(&index_path)).handle_error(error_handler),
         )
         .nest(
             "/static",
             get_service(ServeDir::new(static_path)).handle_error(error_handler),
         )
+        .fallback(get_service(ServeFile::new(&index_path)).handle_error(error_handler))
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())

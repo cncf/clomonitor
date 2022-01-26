@@ -104,10 +104,10 @@ fn core_linter_score(report: Report) -> Score {
 
     // Quality
     if report.quality.fossa {
-        score.quality += 25;
+        score.quality += 50;
     }
     if report.quality.openssf_badge {
-        score.quality += 75;
+        score.quality += 50;
     }
 
     // Security

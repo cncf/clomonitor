@@ -166,7 +166,7 @@ async fn store_linter_report(
     Ok(())
 }
 
-/// Update repository's score using the provided report to calculate it.
+/// Update repository's score based on the repository's linters reports.
 async fn update_repository_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Result<(), Error> {
     // Lock repository's row
     tx.query_one(

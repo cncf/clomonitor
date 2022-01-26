@@ -62,6 +62,7 @@ spec:
           readinessProbe:
             {{- toYaml .Values.apiserver.deploy.readinessProbe | nindent 12}}
           {{- end }}
+          command: ['remonitor-apiserver', '-c', '{{ .Values.configDir }}/apiserver.yaml']
       volumes:
       - name: apiserver-config
         secret:

@@ -40,6 +40,7 @@ spec:
             - name: tracker-config
               mountPath: {{ .Values.configDir | quote }}
               readOnly: true
+            command: ['remonitor-tracker', '-c', '{{ .Values.configDir }}/tracker.yaml']
           volumes:
           - name: tracker-config
             secret:

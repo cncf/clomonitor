@@ -1,14 +1,15 @@
 [package]
 name = "remonitor-tracker"
+description = "A tool to run a set of linters on multiple repositories"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.52"
+clap = { version = "3.0.7", features = ["derive"] }
 config = "0.11.0"
 deadpool-postgres = { version = "0.10.1", features = ["serde"] }
-dirs = "4.0.0"
 futures = "0.3.19"
 remonitor-linter = { path = "../remonitor-linter" }
 serde = { version = "1.0", features = ["derive"] }

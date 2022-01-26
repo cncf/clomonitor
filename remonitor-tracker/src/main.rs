@@ -3,16 +3,28 @@ mod tracker;
 
 use crate::tracker::*;
 use anyhow::Error;
+use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use futures::future;
 use futures::stream::{FuturesUnordered, StreamExt};
+use std::path::PathBuf;
 use tokio_postgres::NoTls;
 use tracing::{error, info};
 use which::which;
 
+#[derive(Debug, Parser)]
+#[clap(author, version, about)]
+struct Args {
+    /// Config file path
+    #[clap(short, long, parse(from_os_str))]
+    config: PathBuf,
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    let args = Args::parse();
+
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
         std::env::set_var("RUST_LOG", "remonitor_tracker=debug")
@@ -28,13 +40,10 @@ async fn main() -> Result<(), Error> {
     info!("tracker started");
 
     // Setup configuration
-    let cfg_dir = dirs::config_dir()
-        .expect("config dir not found")
-        .join("remonitor");
     let mut cfg = Config::new();
     cfg.set_default("db.dbname", "remonitor")?;
     cfg.set_default("tracker.concurrency", 10)?;
-    cfg.merge(File::from(cfg_dir.join("tracker")))?;
+    cfg.merge(File::from(args.config))?;
 
     // Setup database
     let db_cfg: DbConfig = cfg.get("db").unwrap();

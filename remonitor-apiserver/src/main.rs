@@ -2,15 +2,27 @@ mod handlers;
 mod router;
 
 use anyhow::Error;
+use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use std::net::SocketAddr;
+use std::path::PathBuf;
 use tokio::signal;
 use tokio_postgres::NoTls;
 use tracing::info;
 
+#[derive(Debug, Parser)]
+#[clap(author, version, about)]
+struct Args {
+    /// Config file path
+    #[clap(short, long, parse(from_os_str))]
+    config: PathBuf,
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    let args = Args::parse();
+
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
         std::env::set_var("RUST_LOG", "remonitor_apiserver=debug,tower_http=debug")
@@ -19,12 +31,10 @@ async fn main() -> Result<(), Error> {
     info!("apiserver started");
 
     // Setup configuration
-    let cfg_dir = dirs::config_dir()
-        .expect("config dir not found")
-        .join("remonitor");
     let mut cfg = Config::new();
     cfg.set_default("db.dbname", "remonitor")?;
-    cfg.merge(File::from(cfg_dir.join("apiserver")))?;
+    cfg.set_default("apiserver.addr", "127.0.0.1:8000")?;
+    cfg.merge(File::from(args.config))?;
 
     // Setup database
     let db_cfg: DbConfig = cfg.get("db").unwrap();

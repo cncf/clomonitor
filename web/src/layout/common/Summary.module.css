@@ -1,0 +1,23 @@
+.summary {
+  background-color: var(--bg-color);
+}
+
+.categories {
+  top: -3px;
+}
+
+.value {
+  height: 3.5rem;
+  width: 3.5rem;
+  min-width: 3.5rem;
+  border: transparent solid 0.25rem;
+  background-color: var(--bs-white);
+}
+
+@media only screen and (min-width: 768px) {
+  .value {
+    height: 5.5rem;
+    width: 5.5rem;
+    min-width: 5.5rem;
+  }
+}

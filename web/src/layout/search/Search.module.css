@@ -1,0 +1,38 @@
+main {
+  margin-top: 0.25rem;
+}
+
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  background-color: var(--bg-color);
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+}
+
+.btnMobileFilters {
+  height: 2rem;
+  width: 2rem;
+}
+
+.searchResults {
+  font-size: 0.9rem;
+}
+
+.list {
+  margin-top: -0.5rem;
+}
+
+@media only screen and (min-width: 1400px) {
+  .sidebar {
+    width: 250px;
+    min-width: 250px;
+    margin-right: 1.3rem;
+    margin-top: 3rem;
+  }
+
+  .list {
+    margin-right: -1.3rem;
+    margin-top: 0.7rem;
+  }
+}

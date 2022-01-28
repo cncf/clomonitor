@@ -1,0 +1,17 @@
+.link {
+  color: var(--color-1-800);
+}
+
+.link:hover {
+  color: inherit;
+}
+
+.icon {
+  font-size: 0.75rem;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--color-1-800);
+  }
+}

@@ -1,0 +1,36 @@
+.title {
+  font-size: 75%;
+}
+
+.icon {
+  top: -2px;
+}
+
+.value {
+  width: 35px;
+  font-size: 0.75rem;
+  background-color: var(--color-black-10);
+}
+
+.arrow {
+  width: 0px;
+  height: 0px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 5px solid transparent;
+  right: -5px;
+}
+
+@media only screen and (min-width: 768px) {
+  .bigSize {
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.15rem;
+    width: 50px;
+  }
+
+  .bigArrow {
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+}

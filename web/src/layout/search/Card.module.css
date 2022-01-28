@@ -1,0 +1,73 @@
+.content {
+  background-color: var(--bg-color);
+}
+
+.card {
+  cursor: pointer;
+}
+
+.imageWrapper {
+  height: 75px;
+  width: 75px;
+  min-width: 75px;
+  font-size: 3rem;
+}
+
+.miniImageWrapper {
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  font-size: 2rem;
+}
+
+.imageWrapper img,
+.miniImageWrapper img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.link {
+  font-size: 0.9rem;
+}
+
+.legend {
+  font-size: 0.75rem;
+}
+
+.statsIcon path {
+  stroke: inherit;
+}
+
+.description {
+  max-height: 43px;
+  font-size: 0.9rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .description {
+    -webkit-line-clamp: 4;
+    max-height: 86px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .cardWrapper {
+    padding: 1.3rem;
+  }
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--rm-primary);
+    box-shadow: 0px 0px 5px 0px var(--rm-primary-50);
+  }
+}

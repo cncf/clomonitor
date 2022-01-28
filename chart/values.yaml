@@ -35,8 +35,17 @@ dbmigrator:
 
 # API server configuration
 apiserver:
+  # Address to listen on
   addr: 0.0.0.0:8000
+  # Path with static assets
   staticPath: /home/remonitor/web/build
+  basicAuth:
+    # Enable basic auth
+    enabled: false
+    # Basic auth username
+    username: remonitor
+    # Basic auth password
+    password: changeme
   ingress:
     enabled: true
     annotations:

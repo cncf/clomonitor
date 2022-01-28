@@ -34,6 +34,7 @@ async fn main() -> Result<(), Error> {
     let mut cfg = Config::new();
     cfg.set_default("db.dbname", "remonitor")?;
     cfg.set_default("apiserver.addr", "127.0.0.1:8000")?;
+    cfg.set_default("apiserver.basicAuth.enabled", false)?;
     cfg.merge(File::from(args.config))?;
 
     // Setup database

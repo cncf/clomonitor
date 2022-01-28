@@ -10,6 +10,7 @@ use deadpool_postgres::Pool;
 use std::path::Path;
 use tower::ServiceBuilder;
 use tower_http::{
+    auth::RequireAuthorizationLayer,
     services::{ServeDir, ServeFile},
     trace::TraceLayer,
 };
@@ -29,7 +30,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
     };
 
     // Setup router
-    let router = Router::new()
+    let mut router = Router::new()
         .route("/api/projects/search", post(search_projects))
         .route("/api/projects/:project_id", get(get_project))
         .route(
@@ -46,6 +47,13 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
                 .layer(TraceLayer::new_for_http())
                 .layer(AddExtensionLayer::new(db_pool)),
         );
+
+    // Setup basic auth
+    if cfg.get_bool("apiserver.basicAuth.enabled")? {
+        let username = cfg.get_str("apiserver.basicAuth.username")?;
+        let password = cfg.get_str("apiserver.basicAuth.password")?;
+        router = router.route_layer(RequireAuthorizationLayer::basic(&username, &password));
+    }
 
     Ok(router)
 }

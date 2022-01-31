@@ -22,6 +22,8 @@ const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 pub(crate) struct SearchProjectsInput {
     limit: Option<usize>,
     offset: Option<usize>,
+    sort_by: Option<String>,
+    sort_direction: Option<String>,
     text: Option<String>,
     category: Option<Vec<usize>>,
     maturity: Option<Vec<usize>>,

@@ -83,6 +83,10 @@ create table if not exists report (
 create or replace function search_projects(p_input jsonb)
 returns table(projects json, total_count bigint) as $$
 declare
+    v_limit int := coalesce((p_input->>'limit')::int, 20);
+    v_offset int := coalesce((p_input->>'offset')::int, 0);
+    v_sort_by text := coalesce(p_input->>'sort_by', 'name');
+    v_sort_direction text := coalesce(p_input->>'sort_direction', 'asc');
     v_text text := (p_input->>'text');
     v_category int[];
     v_maturity int[];
@@ -153,16 +157,20 @@ begin
                         'url', url
                     ))
                     from repository
-                    where project_id = fpp.project_id
+                    where project_id = fp.project_id
         )
             ))), '[]')
             from (
                 select *
                 from filtered_projects
-                order by name asc
-                limit (p_input->>'limit')::int
-                offset (p_input->>'offset')::int
-            ) fpp
+                order by
+                    (case when v_sort_by = 'score' and v_sort_direction = 'asc' then score end) asc,
+                    (case when v_sort_by = 'score' and v_sort_direction = 'desc' then score end) desc,
+                    (case when v_sort_by = 'name' and v_sort_direction = 'asc' then name end) asc,
+                    (case when v_sort_by = 'name' and v_sort_direction = 'desc' then name end) desc
+                limit v_limit
+                offset v_offset
+            ) fp
         ),
         (
             select count(*) from filtered_projects

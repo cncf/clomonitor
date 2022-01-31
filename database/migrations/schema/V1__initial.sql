@@ -173,26 +173,25 @@ $$ language plpgsql;
 create or replace function get_project(p_project_id uuid)
 returns json as $$
     select json_strip_nulls(json_build_object(
-        'id', project_id,
-        'name', name,
-        'display_name', display_name,
-        'description', description,
-        'home_url', home_url,
-        'logo_url', logo_url,
-        'devstats_url', devstats_url,
-        'score', score,
-        'rating', rating,
-        'category_id', category_id,
-        'maturity_id', maturity_id,
-        'updated_at', floor(extract(epoch from updated_at)),
+        'id', p.project_id,
+        'name', p.name,
+        'display_name', p.display_name,
+        'description', p.description,
+        'home_url', p.home_url,
+        'logo_url', coalesce(p.logo_url, o.logo_url),
+        'devstats_url', p.devstats_url,
+        'score', p.score,
+        'rating', p.rating,
+        'category_id', p.category_id,
+        'maturity_id', p.maturity_id,
+        'updated_at', floor(extract(epoch from p.updated_at)),
         'repositories', (
             select json_agg(json_build_object(
-                'repository_id', repository_id,
-                'name', name,
-                'url', url,
-                'digest', digest,
-                'score', 'score',
-                'updated_at', floor(extract(epoch from updated_at)),
+                'repository_id', r.repository_id,
+                'name', r.name,
+                'url', r.url,
+                'digest', r.digest,
+                'score', r.score,
                 'reports', (
                     select json_agg(json_build_object(
                         'report_id', report_id,
@@ -209,6 +208,7 @@ returns json as $$
             where project_id = p_project_id
         )
     ))
-    from project
+    from project p
+    join organization o using (organization_id)
     where project_id = p_project_id;
 $$ language sql;

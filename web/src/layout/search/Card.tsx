@@ -49,7 +49,7 @@ const Card = (props: Props) => {
                     <MaturityBadge maturityLevel={props.project.maturityId} />
                     <CartegoryBadge
                       categoryId={props.project.categoryId}
-                      className="d-none d-md-block d-lg-none d-xl-block ms-2"
+                      className="d-none d-md-block d-lg-none d-xxl-block ms-2"
                     />
                   </div>
 

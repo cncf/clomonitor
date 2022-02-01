@@ -2,7 +2,7 @@ mod score;
 mod tracker;
 
 use crate::tracker::*;
-use anyhow::Error;
+use anyhow::{format_err, Error};
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
@@ -33,8 +33,7 @@ async fn main() -> Result<(), Error> {
 
     // Check if required external tools are available
     if which("git").is_err() {
-        error!("git not found in PATH");
-        return Ok(());
+        return Err(format_err!("git not found in PATH"));
     }
 
     info!("tracker started");

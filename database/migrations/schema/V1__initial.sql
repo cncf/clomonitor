@@ -180,7 +180,7 @@ $$ language plpgsql;
 
 create or replace function get_project(p_project_id uuid)
 returns json as $$
-    select json_strip_nulls(json_build_object(
+    select json_build_object(
         'id', p.project_id,
         'name', p.name,
         'display_name', p.display_name,
@@ -215,7 +215,7 @@ returns json as $$
             from repository r
             where project_id = p_project_id
         )
-    ))
+    )
     from project p
     join organization o using (organization_id)
     where project_id = p_project_id;

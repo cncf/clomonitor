@@ -46,7 +46,11 @@ async fn main() -> Result<(), Error> {
     cfg.merge(File::from(args.config))?;
 
     // Setup database
-    let tls_connector = MakeTlsConnector::new(TlsConnector::builder().build()?);
+    let tls_connector = MakeTlsConnector::new(
+        TlsConnector::builder()
+            .danger_accept_invalid_certs(true)
+            .build()?,
+    );
     let db_cfg: DbConfig = cfg.get("db").unwrap();
     let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), tls_connector)?;
 

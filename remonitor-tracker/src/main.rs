@@ -8,8 +8,9 @@ use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use futures::future;
 use futures::stream::{FuturesUnordered, StreamExt};
+use native_tls::TlsConnector;
+use postgres_native_tls::MakeTlsConnector;
 use std::path::PathBuf;
-use tokio_postgres::NoTls;
 use tracing::{error, info};
 use which::which;
 
@@ -45,8 +46,9 @@ async fn main() -> Result<(), Error> {
     cfg.merge(File::from(args.config))?;
 
     // Setup database
+    let tls_connector = MakeTlsConnector::new(TlsConnector::builder().build()?);
     let db_cfg: DbConfig = cfg.get("db").unwrap();
-    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), NoTls)?;
+    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), tls_connector)?;
 
     // Get repositories to process
     let repositories = get_repositories(db_pool.get().await?).await?;

@@ -12,6 +12,8 @@ axum-debug = "0.3.2"
 clap = { version = "3.0.7", features = ["derive"] }
 config = "0.11.0"
 deadpool-postgres = { version = "0.10.1", features = ["serde"] }
+native-tls = "0.2.8"
+postgres-native-tls = "0.5.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.74"
 tokio = {version = "1", features = ["macros", "rt-multi-thread", "signal"] }

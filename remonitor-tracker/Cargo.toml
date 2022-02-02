@@ -11,6 +11,8 @@ clap = { version = "3.0.7", features = ["derive"] }
 config = "0.11.0"
 deadpool-postgres = { version = "0.10.1", features = ["serde"] }
 futures = "0.3.19"
+native-tls = "0.2.8"
+postgres-native-tls = "0.5.0"
 remonitor-linter = { path = "../remonitor-linter" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.74"

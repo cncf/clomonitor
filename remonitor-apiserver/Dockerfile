@@ -4,7 +4,7 @@ RUN apk --no-cache add musl-dev openssl-dev
 WORKDIR /remonitor
 COPY remonitor-apiserver remonitor-apiserver
 WORKDIR /remonitor/remonitor-apiserver
-RUN cargo build --release
+RUN RUSTFLAGS='-C target-feature=-crt-static' cargo build --release
 
 # Build frontend
 FROM node:14-alpine3.15 AS frontend-builder

@@ -5,7 +5,7 @@ WORKDIR /remonitor
 COPY remonitor-linter remonitor-linter
 COPY remonitor-tracker remonitor-tracker
 WORKDIR /remonitor/remonitor-tracker
-RUN cargo build --release
+RUN RUSTFLAGS='-C target-feature=-crt-static' cargo build --release
 
 # Final stage
 FROM alpine:3.15

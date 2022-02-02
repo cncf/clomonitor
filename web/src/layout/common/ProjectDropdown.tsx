@@ -3,8 +3,8 @@ import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
-import Modal from '../common/Modal';
-import styles from './Dropdown.module.css';
+import Modal from './Modal';
+import styles from './ProjectDropdown.module.css';
 
 interface openModalStatus {
   status: boolean;
@@ -16,7 +16,7 @@ enum Modals {
   Embed = 'embed',
 }
 
-const Dropdown = () => {
+const ProjectDropdown = () => {
   const ref = useRef(null);
   const [visibleDropdown, setVisibleDropdown] = useState<boolean>(false);
   const [openStatus, setOpenStatus] = useState<openModalStatus>({ status: false });
@@ -111,4 +111,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default ProjectDropdown;

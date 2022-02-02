@@ -143,6 +143,14 @@ a,
   }
 }
 
+.table > :not(:first-child) {
+  border-top-color: inherit;
+}
+
+.tooltip {
+  opacity: 0.97;
+}
+
 .noFocus:focus {
   outline: none !important;
 }

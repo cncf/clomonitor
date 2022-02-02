@@ -4,7 +4,7 @@ import isArray from 'lodash/isArray';
 import isObject from 'lodash/isObject';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
-import { Error, ErrorKind, Project, SearchData, SearchQuery } from '../types';
+import { Error, ErrorKind, Project, ProjectDetail, SearchData, SearchQuery } from '../types';
 
 interface FetchOptions {
   method: 'POST' | 'GET' | 'PUT' | 'DELETE' | 'HEAD';
@@ -122,8 +122,8 @@ class API_CLASS {
       .catch((error) => Promise.reject(error));
   }
 
-  public getProjectDetail(pathname: string): Promise<Project> {
-    return this.apiFetch({ url: `${this.API_BASE_URL}${pathname}/summary` });
+  public getProjectDetail(projectId: string): Promise<ProjectDetail> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${projectId}` });
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; paginationTotalCount: string }> {

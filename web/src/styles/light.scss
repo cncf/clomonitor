@@ -8,4 +8,18 @@
   --bg-color: #f9f9f9;
   --body-bg: #fff;
   --color-font: #38383f;
+
+  --rm-gray: #b3b3b4;
+
+  .tooltip {
+    &.bs-tooltip-bottom .tooltip-arrow::before {
+      border-bottom-color: var(--color-font) !important;
+    }
+
+    & .tooltip-inner {
+      background-color: var(--bg-color) !important;
+      border: 1px solid var(--color-font) !important;
+      color: var(--color-font) !important;
+    }
+  }
 }

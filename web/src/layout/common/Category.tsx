@@ -28,12 +28,8 @@ const Category = (props: Props) => {
         </span>
         {!isUndefined(props.shortName) && <span className="d-inline-block d-md-none">{props.shortName}</span>}
       </small>
-      <div className={`d-flex flex-row bg-white position-relative border rounded overflow-hidden ${styles.line}`}>
-        <div
-          className={`text-center fw-bold rounded-start font-monospace ${styles.value} ${
-            props.bigSize ? styles.bigSize : ''
-          }`}
-        >
+      <div className={`d-flex flex-row bg-white position-relative border overflow-hidden ${styles.line}`}>
+        <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
           {props.value}
         </div>
         <div className="flex-grow-1 w-100 position-relative">

@@ -1,23 +1,15 @@
 .summary {
   background-color: var(--bg-color);
+  font-size: 1rem;
+  padding: 1.5rem;
 }
 
 .categories {
   top: -3px;
 }
 
-.value {
-  height: 3.5rem;
-  width: 3.5rem;
-  min-width: 3.5rem;
-  border: transparent solid 0.25rem;
-  background-color: var(--bs-white);
-}
-
 @media only screen and (min-width: 768px) {
-  .value {
-    height: 5.5rem;
-    width: 5.5rem;
-    min-width: 5.5rem;
+  .bigSize {
+    padding: 2rem 1.5rem;
   }
 }

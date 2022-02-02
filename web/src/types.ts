@@ -6,7 +6,8 @@ export interface Organization {
   logoUrl?: string;
 }
 
-export interface Project {
+export interface BaseProject {
+  id: string;
   name: string;
   displayName?: string;
   description?: string;
@@ -16,18 +17,41 @@ export interface Project {
   maturityId: Maturity;
   categoryId: Category;
   score: Score;
-  repositories: Repository[];
   updatedAt: number;
 }
 
-export interface Repository {
+export interface Project extends BaseProject {
+  repositories: BaseRepository[];
+}
+
+export interface ProjectDetail extends BaseProject {
+  repositories: Repository[];
+}
+
+export interface BaseRepository {
   name: string;
   url: string;
 }
 
+export interface Repository extends BaseRepository {
+  digest: string;
+  repositoryId: string;
+  score: Score;
+  reports: Report[];
+}
+
 export interface Report {
-  data: any;
-  errors?: string;
+  data: CoreReport | any;
+  linterId: LinterId;
+  reportId: string;
+  updatedAt: number;
+}
+
+export interface CoreReport {
+  // ScoreType
+  [key: string]: {
+    [key: string]: number | boolean;
+  };
 }
 
 export type Score = {
@@ -59,6 +83,13 @@ export interface Prefs {
   };
 }
 
+export interface ReportOptionData {
+  icon: JSX.Element;
+  name: string;
+  description: JSX.Element;
+  weight: number;
+}
+
 export enum Maturity {
   Graduated = 0,
   Incubating,
@@ -88,6 +119,10 @@ export enum FilterKind {
   Rating = 'rating',
 }
 
+export enum LinterId {
+  core = 0,
+}
+
 export enum ScoreType {
   Documentation = 'documentation',
   License = 'license',
@@ -104,6 +139,22 @@ export enum SortDirection {
 export enum SortBy {
   Name = 'name',
   Score = 'score',
+}
+
+export enum ReportOption {
+  Adopters = 'adopters',
+  Changelog = 'changelog',
+  CodeOfConduct = 'codeOfConduct',
+  Contributing = 'contributing',
+  Governance = 'governance',
+  Maintainers = 'maintainers',
+  Readme = 'readme',
+  Roadmap = 'roadmap',
+  ApprovedLicense = 'approved',
+  SPDX = 'spdxId',
+  FossaBadge = 'fossaBadge',
+  OpenSSFBadge = 'openssfBadge',
+  SecurityPolicy = 'securityPolicy',
 }
 
 export interface SearchFiltersURL extends BasicQuery {
@@ -144,3 +195,7 @@ export enum ErrorKind {
   Other,
   NotFound,
 }
+
+export type ReportOptionInfo = {
+  [key in ReportOption]: ReportOptionData;
+};

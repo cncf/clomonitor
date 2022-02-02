@@ -1,0 +1,45 @@
+.content {
+  background-color: var(--bg-color);
+}
+
+.imageWrapper {
+  height: 90px;
+  width: 90px;
+  min-width: 90px;
+}
+
+.imageWrapper img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.legend {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.link {
+  font-size: 0.9rem;
+}
+
+.statsIcon path {
+  stroke: inherit;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .imageWrapper {
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    font-size: 2rem;
+  }
+}

@@ -5,8 +5,8 @@ use anyhow::Error;
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
-use native_tls::TlsConnector;
-use postgres_native_tls::MakeTlsConnector;
+use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
+use postgres_openssl::MakeTlsConnector;
 use std::net::SocketAddr;
 use std::path::PathBuf;
 use tokio::signal;
@@ -39,13 +39,11 @@ async fn main() -> Result<(), Error> {
     cfg.merge(File::from(args.config))?;
 
     // Setup database
-    let tls_connector = MakeTlsConnector::new(
-        TlsConnector::builder()
-            .danger_accept_invalid_certs(true)
-            .build()?,
-    );
+    let mut builder = SslConnector::builder(SslMethod::tls())?;
+    builder.set_verify(SslVerifyMode::NONE);
+    let connector = MakeTlsConnector::new(builder.build());
     let db_cfg: DbConfig = cfg.get("db").unwrap();
-    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), tls_connector)?;
+    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
 
     // Setup and launch HTTP server
     let router = router::setup(&cfg, db_pool)?;

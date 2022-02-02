@@ -45,7 +45,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - linter-backend
-      - tests-database
+      - tests-backend
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

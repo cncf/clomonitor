@@ -1,14 +1,15 @@
 import moment from 'moment';
 import { GrPieChart } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 
 import { Project } from '../../types';
 import CartegoryBadge from '../common/CategoryBadge';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import MaturityBadge from '../common/MaturityBadge';
+import ProjectDropdown from '../common/ProjectDropdown';
 import Summary from '../common/Summary';
 import styles from './Card.module.css';
-import Dropdown from './Dropdown';
 import RepositorySection from './RepositorySection';
 
 interface Props {
@@ -16,9 +17,14 @@ interface Props {
 }
 
 const Card = (props: Props) => {
+  const navigate = useNavigate();
+
   return (
     <div className={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`} role="listitem">
-      <div className={`card rounded-0 p-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}>
+      <div
+        className={`card rounded-0 p-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
+        onClick={() => navigate(`/projects/${props.project.id}`)}
+      >
         <div className="d-flex flex-column flex-sm-row align-items-center">
           <div
             className={`d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center ${styles.imageWrapper}`}
@@ -40,7 +46,7 @@ const Card = (props: Props) => {
                     </span>
                     <div className="ms-2 d-none d-md-flex">
                       <div className="d-flex flex-column justify-content-start">
-                        <Dropdown />
+                        <ProjectDropdown />
                       </div>
                     </div>
                   </div>
@@ -76,7 +82,7 @@ const Card = (props: Props) => {
         <p className={`text-muted my-4 ${styles.description}`}>{props.project.description}</p>
 
         <div className="mt-auto">
-          <Summary score={props.project.score} />
+          <Summary score={props.project.score} bigSize={false} />
         </div>
         <div className={`text-end text-muted fst-italic mt-2 ${styles.legend}`}>
           Updated {moment.unix(props.project.updatedAt).fromNow()}

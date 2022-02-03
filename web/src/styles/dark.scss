@@ -55,7 +55,8 @@
   .border-bottom,
   .border-top,
   .border-start,
-  .border-end {
+  .border-end,
+  .table {
     border-color: var(--solid-border) !important;
   }
 
@@ -99,12 +100,8 @@
     }
   }
 
-  .lightIcon {
-    color: var(--color-light-font);
-  }
-
-  .searchBar {
-    background-color: var(--body-bg) !important;
+  .progress {
+    background-color: var(--color-font);
   }
 
   // Update switch color
@@ -120,7 +117,31 @@
     background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23ccc%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M2 5l6 6 6-6%27/%3e%3c/svg%3e');
   }
 
+  .tooltip {
+    &.bs-tooltip-bottom .tooltip-arrow::before {
+      border-bottom-color: var(--solid-border) !important;
+    }
+
+    & .tooltip-inner {
+      background-color: var(--rm-secondary) !important;
+      border: 1px solid var(--solid-border) !important;
+      color: var(--color-font) !important;
+    }
+
+    & .tooltip-inner code {
+      color: var(--highlighted);
+    }
+  }
+
   // UI
+  .lightIcon {
+    color: var(--color-light-font);
+  }
+
+  .searchBar {
+    background-color: var(--body-bg) !important;
+  }
+
   .card {
     background-color: var(--body-bg);
     border-color: var(--solid-border);

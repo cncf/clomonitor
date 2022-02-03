@@ -1,0 +1,57 @@
+.headerWrapper {
+  background-color: var(--bg-color) !important;
+}
+
+.global {
+  height: 3rem;
+  width: 3rem;
+  min-width: 3rem;
+  font-size: 1rem;
+}
+
+.headerAnchor {
+  top: -1rem;
+}
+
+.headingLink {
+  width: 35px;
+  opacity: 0;
+  padding-top: 4px;
+}
+
+.headingLink svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (hover: hover) {
+  .titleWrapper:hover .headingLink {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .headingLink {
+    margin-top: -3px;
+  }
+
+  .headingLink svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .global {
+    height: 4rem;
+    width: 4rem;
+    min-width: 4rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .headingLink {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,36 @@
+.cardWrapper {
+  width: 220px;
+}
+
+.card {
+  background-color: var(--bg-color);
+}
+
+.weight {
+  font-size: 0.75rem;
+}
+
+.tooltipMessage {
+  margin-left: -3px;
+}
+
+.tooltipMessage code {
+  color: var(--rm-primary);
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .cardWrapper {
+    width: 160px;
+  }
+
+  .cardWrapper small {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 375.98px) {
+  .cardWrapper {
+    width: 100%;
+  }
+}

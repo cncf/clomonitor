@@ -48,8 +48,6 @@ const Search = () => {
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  console.log(sort);
-
   const onResetFilters = (): void => {
     navigate({
       pathname: '/search',
@@ -238,7 +236,7 @@ const Search = () => {
               visibleTitle
             />
           </aside>
-          <div className="d-flex flex-column flex-grow-1 mt-3">
+          <div className="d-flex flex-column flex-grow-1 mt-3 w-100">
             {projects && (
               <>
                 {isEmpty(projects) ? (

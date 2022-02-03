@@ -1,0 +1,21 @@
+.table thead {
+  font-size: 0.9rem;
+}
+
+.table th {
+  min-width: 145px;
+  color: var(--color-font);
+  background-color: var(--bg-color);
+}
+
+.darkBgCell {
+  background-color: var(--bg-color) !important;
+}
+
+.icon {
+  top: -1px;
+}
+
+.icon svg {
+  width: 15px;
+}

@@ -23,7 +23,6 @@ pub struct Documentation {
     pub changelog: bool,
     pub governance: bool,
     pub maintainers: bool,
-    pub owners: bool,
     pub readme: bool,
     pub roadmap: bool,
 }
@@ -79,13 +78,11 @@ pub fn lint(root: &Path) -> Result<Report, Error> {
             })?,
             maintainers: check::path_exists(Globs {
                 root,
-                patterns: vec!["maintainers*", "docs/maintainers*"],
-                case_sensitive: false,
-            })?,
-            owners: check::path_exists(Globs {
-                root,
                 patterns: vec![
+                    "maintainers*",
+                    "docs/maintainers*",
                     "owners*",
+                    "docs/owners*",
                     "codeowners*",
                     "docs/codeowners*",
                     ".github/codeowners*",

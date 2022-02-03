@@ -82,7 +82,7 @@ fn core_linter_score(report: Report) -> Score {
     if report.documentation.governance {
         score.documentation += 10;
     }
-    if report.documentation.maintainers || report.documentation.owners {
+    if report.documentation.maintainers {
         score.documentation += 5;
     }
     if report.documentation.readme {

@@ -38,7 +38,7 @@ pub struct License {
 /// Quality section of a linter report.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Quality {
-    pub fossa: bool,
+    pub fossa_badge: bool,
     pub openssf_badge: bool,
 }
 
@@ -109,11 +109,7 @@ pub fn lint(root: &Path) -> Result<Report, Error> {
             case_sensitive: true,
         })?,
         quality: Quality {
-            fossa: check::path_exists(Globs {
-                root,
-                patterns: vec![".github/workflows/fossa.y*ml"],
-                case_sensitive: false,
-            })? || check::content_matches(
+            fossa_badge: check::content_matches(
                 Globs {
                     root,
                     patterns: vec!["README*"],

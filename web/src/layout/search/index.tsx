@@ -5,8 +5,8 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
-import { AppContext, updateLimit } from '../../context/AppContextProvider';
-import { Project, SearchFiltersURL } from '../../types';
+import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
+import { Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import { prepareQueryString } from '../../utils/prepareQueryString';
 import Loading from '../common/Loading';
@@ -15,6 +15,7 @@ import Pagination from '../common/Pagination';
 import PaginationLimit from '../common/PaginationLimit';
 import SampleQueries from '../common/SampleQueries';
 import Sidebar from '../common/Sidebar';
+import SortOptions from '../common/SortOptions';
 import SubNavbar from '../common/SubNavbar';
 import Card from './Card';
 import Filters from './filters';
@@ -38,7 +39,7 @@ const prepareFilters = (filters: FiltersProp): FiltersProp => {
 const Search = () => {
   const navigate = useNavigate();
   const { ctx, dispatch } = useContext(AppContext);
-  const { limit } = ctx.prefs.search;
+  const { limit, sort } = ctx.prefs.search;
   const [searchParams] = useSearchParams();
   const [text, setText] = useState<string | undefined>();
   const [filters, setFilters] = useState<FiltersProp>({});
@@ -46,6 +47,8 @@ const Search = () => {
   const [total, setTotal] = useState<number>(0);
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  console.log(sort);
 
   const onResetFilters = (): void => {
     navigate({
@@ -116,6 +119,21 @@ const Search = () => {
     dispatch(updateLimit(newLimit));
   };
 
+  const onSortChange = (by: SortBy, direction: SortDirection): void => {
+    // Load pageNumber is forced before update Sorting criteria
+    navigate(
+      {
+        pathname: '/search',
+        search: prepareQueryString({
+          ...getCurrentFilters(),
+          pageNumber: 1,
+        }),
+      },
+      { replace: true }
+    );
+    dispatch(updateSort(by, direction));
+  };
+
   useEffect(() => {
     const formattedParams = buildSearchParams(searchParams);
     setText(formattedParams.text);
@@ -127,6 +145,8 @@ const Search = () => {
       try {
         const data = {
           text: formattedParams.text,
+          sortBy: sort.by,
+          sortDirection: sort.direction,
           filters: prepareFilters(formattedParams.filters || {}),
           offset: calculateOffset(formattedParams.pageNumber),
           limit: limit,
@@ -142,13 +162,13 @@ const Search = () => {
       }
     }
     searchProjects();
-  }, [searchParams, limit]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [searchParams, limit, sort.by, sort.direction]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
       <SubNavbar>
         <div className="d-flex flex-column w-100">
-          <div className="d-flex align-items-center justify-content-between flex-nowrap">
+          <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between flex-nowrap">
             <div className="d-flex flex-row flex-md-column align-items-center align-items-md-start w-100 text-truncate">
               <Sidebar
                 label="Filters"
@@ -193,7 +213,8 @@ const Search = () => {
                 )}
               </div>
             </div>
-            <div className="d-none d-md-block w-100">
+            <div className="d-flex flex-wrap flex-row justify-content-sm-end mt-3 mt-sm-0 ms-0 ms-md-3 w-100">
+              <SortOptions by={sort.by} direction={sort.direction} onSortChange={onSortChange} />
               <PaginationLimit onPaginationLimitChange={onPaginationLimitChange} />
             </div>
           </div>

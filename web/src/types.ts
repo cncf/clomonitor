@@ -53,7 +53,7 @@ export interface Issue {
 }
 
 export interface Prefs {
-  search: { limit: number };
+  search: { limit: number; sort: { by: SortBy; direction: SortDirection } };
   theme: {
     effective: string;
   };
@@ -96,6 +96,16 @@ export enum ScoreType {
   Global = 'global',
 }
 
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
+export enum SortBy {
+  Name = 'name',
+  Score = 'score',
+}
+
 export interface SearchFiltersURL extends BasicQuery {
   pageNumber: number;
 }
@@ -110,11 +120,15 @@ export interface BasicQuery {
 export interface SearchQuery extends BasicQuery {
   limit: number;
   offset: number;
+  sortBy: SortBy;
+  sortDirection: SortDirection;
 }
 
 export interface SearchData {
   limit: number;
   offset: number;
+  sort_by: string;
+  sort_direction: string;
   text?: string;
   category?: number[];
   maturity?: number[];

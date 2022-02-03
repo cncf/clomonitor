@@ -1,5 +1,8 @@
 import RoundedBadge from './layout/common/RoundedBadge';
-import { Category, FilterKind, FiltersSection, Maturity, Rating } from './types';
+import { Category, FilterKind, FiltersSection, Maturity, Rating, SortBy, SortDirection } from './types';
+
+export const DEFAULT_SORT_BY = SortBy.Name;
+export const DEFAULT_SORT_DIRECTION = SortDirection.ASC;
 
 export const FILTERS: FiltersSection[] = [
   {

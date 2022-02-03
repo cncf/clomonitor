@@ -26,7 +26,7 @@ const PaginationLimit = (props: Props) => {
   };
 
   return (
-    <div className="d-flex flex-nowrap align-items-center justify-content-end ms-3">
+    <div className="d-none d-md-flex flex-nowrap align-items-center lh-1">
       <label className="form-label me-2 mb-0">Show:</label>
       <select
         ref={selectEl}

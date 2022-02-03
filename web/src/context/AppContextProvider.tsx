@@ -1,7 +1,7 @@
 import { isNull } from 'lodash';
 import { createContext, Dispatch, useContext, useEffect, useReducer, useState } from 'react';
 
-import { Prefs } from '../types';
+import { Prefs, SortBy, SortDirection } from '../types';
 import getMetaTag from '../utils/getMetaTag';
 import lsStorage from '../utils/localStoragePreferences';
 import themeBuilder from '../utils/themeBuilder';
@@ -18,7 +18,10 @@ const initialState: AppState = {
   prefs: lsStorage.getPrefs(),
 };
 
-type Action = { type: 'updateTheme'; theme: string } | { type: 'updateLimit'; limit: number };
+type Action =
+  | { type: 'updateTheme'; theme: string }
+  | { type: 'updateLimit'; limit: number }
+  | { type: 'updateSort'; by: SortBy; direction: SortDirection };
 
 export const AppContext = createContext<{
   ctx: AppState;
@@ -34,6 +37,10 @@ export function updateTheme(theme: string) {
 
 export function updateLimit(limit: number) {
   return { type: 'updateLimit', limit };
+}
+
+export function updateSort(by: SortBy, direction: SortDirection) {
+  return { type: 'updateSort', by, direction };
 }
 
 export function updateActiveStyleSheet(current: string) {
@@ -68,6 +75,23 @@ export function appReducer(state: AppState, action: Action) {
         search: {
           ...state.prefs.search,
           limit: action.limit,
+        },
+      };
+      lsStorage.setPrefs(prefs);
+      return {
+        ...state,
+        prefs: prefs,
+      };
+
+    case 'updateSort':
+      prefs = {
+        ...state.prefs,
+        search: {
+          ...state.prefs.search,
+          sort: {
+            by: action.by,
+            direction: action.direction,
+          },
         },
       };
       lsStorage.setPrefs(prefs);

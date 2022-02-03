@@ -3,6 +3,7 @@ import camelCase from 'lodash/camelCase';
 import isArray from 'lodash/isArray';
 import isObject from 'lodash/isObject';
 
+import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
 import { Error, ErrorKind, Project, SearchData, SearchQuery } from '../types';
 
 interface FetchOptions {
@@ -126,7 +127,12 @@ class API_CLASS {
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; paginationTotalCount: string }> {
-    let dataParams: SearchData = { limit: query.limit, offset: query.offset };
+    let dataParams: SearchData = {
+      limit: query.limit,
+      offset: query.offset,
+      sort_by: query.sortBy || DEFAULT_SORT_BY,
+      sort_direction: query.sortDirection || DEFAULT_SORT_DIRECTION,
+    };
     if (query.text) {
       dataParams['text'] = query.text;
     }
@@ -141,8 +147,6 @@ class API_CLASS {
         headers: {
           'Content-Type': 'application/json',
         },
-        // body: JSON.stringify({ limit: 10, offset: 0, category: [], maturity: [], rating: [] }),
-        // body: JSON.stringify({ limit: 10, offset: 0, category: [0], maturity: [0, 1], rating: ['a', 'b'] }),
         body: JSON.stringify(dataParams),
       },
     });

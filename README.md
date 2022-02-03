@@ -5,8 +5,8 @@
 <br/>
 <table>
     <tr>
-        <td width="50%"><img src="https://github.com/tegioz/remonitor/raw/main/docs/screenshots/search-light.png"></td>
-        <td width="50%"><img src="https://github.com/tegioz/remonitor/raw/main/docs/screenshots/search-dark.png"></td>
+        <td width="50%"><img src="docs/screenshots/search-light.png?raw=true"></td>
+        <td width="50%"><img src="docs/screenshots/search-dark.png?raw=true"></td>
     </tr>
 </table>
 

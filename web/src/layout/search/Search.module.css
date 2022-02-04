@@ -23,6 +23,10 @@ main {
   margin-top: -0.5rem;
 }
 
+.contentWrapper {
+  max-width: calc(100% - 200px - 1.5rem);
+}
+
 @media only screen and (min-width: 1400px) {
   .sidebar {
     width: 250px;
@@ -31,8 +35,19 @@ main {
     margin-top: 3rem;
   }
 
+  .contentWrapper {
+    max-width: calc(100% - 250px - 1.3rem);
+  }
+
   .list {
     margin-right: -1.3rem;
     margin-top: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .contentWrapper {
+    width: 100%;
+    max-width: 100%;
   }
 }

@@ -14,5 +14,6 @@
 @media only screen and (max-width: 575.98px) {
   .searchBar {
     max-width: 85%;
+    height: 30px;
   }
 }

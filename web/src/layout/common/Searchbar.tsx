@@ -47,7 +47,7 @@ const Searchbar = (props: Props) => {
 
         <input
           ref={inputEl}
-          className={`flex-grow-1 ps-2 ps-md-0 border-0 shadow-none bg-transparent ${styles.input}`}
+          className={`flex-grow-1 ps-2 ps-md-0 border-0 shadow-none bg-transparent lh-base ${styles.input}`}
           type="text"
           value={value}
           autoComplete="off"

@@ -96,6 +96,7 @@ export const REPORT_OPTIONS_BY_CATEGORY = {
     ReportOption.Adopters,
     ReportOption.Changelog,
     ReportOption.Maintainers,
+    ReportOption.Roadmap,
   ],
   [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense],
   [ScoreType.Quality]: [ReportOption.FossaBadge, ReportOption.OpenSSFBadge],

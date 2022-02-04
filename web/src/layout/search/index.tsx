@@ -236,7 +236,7 @@ const Search = () => {
               visibleTitle
             />
           </aside>
-          <div className="d-flex flex-column flex-grow-1 mt-3 w-100">
+          <div className={`d-flex flex-column flex-grow-1 mt-3 ${styles.contentWrapper}`}>
             {projects && (
               <>
                 {isEmpty(projects) ? (

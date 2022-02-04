@@ -39,7 +39,7 @@ const Card = (props: Props) => {
                 >
                   <Image alt={`${props.project.name}`} url={props.project.logoUrl} />
                 </div>
-                <div className="d-flex flex-column truncateWrapper">
+                <div className="d-flex flex-column w-100 truncateWrapper">
                   <div className="d-flex flex-row justify-content-between align-items-end">
                     <span className={`text-truncate fw-bold mb-0 ${styles.title}`}>
                       {props.project.displayName || props.project.name}

@@ -15,7 +15,7 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      <div className="form-check form-switch ms-4 position-relative d-none d-sm-block">
+      <div className="form-check form-switch ms-4 position-relative d-none d-sm-block cursorPointer">
         <div onClick={updateActiveTheme}>
           {isLightActive ? (
             <CgSun className={`text-light position-absolute ${styles.sunIcon}`} />
@@ -25,7 +25,7 @@ const ThemeSwitch = () => {
         </div>
 
         <input
-          className={`form-check-input ${styles.themeSwitch}`}
+          className={`form-check-input cursorPointer ${styles.themeSwitch}`}
           type="checkbox"
           role="switch"
           id="theme"

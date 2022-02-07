@@ -56,6 +56,7 @@ const DropdownOnHover = (props: Props) => {
         </div>
 
         <div
+          className="cursorDefault"
           onMouseEnter={(e) => {
             e.preventDefault();
             setOnLinkHover(true);

@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-between w-100">
           <div className="me-0 me-md-4 mt-2 mt-md-0">
             <div className="d-flex flex-row align-items-start">
-              <Link to="/">
+              <Link to="/" className="cursorPointer">
                 <img className={styles.logo} alt="Logo" src={logo} />
               </Link>
               <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge}`}>Alpha</div>

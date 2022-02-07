@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "remonitor-apiserver",
-    "remonitor-linter",
-    "remonitor-tracker"
+    "clomonitor-apiserver",
+    "clomonitor-linter",
+    "clomonitor-tracker"
 ]

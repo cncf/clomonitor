@@ -1,6 +1,6 @@
-# Re-Monitor
+# CloMonitor
 
-[**Re-Monitor**](https://demo.re-monitor.io) is a tool that periodically checks CNCF projects' repositories to verify they meet a certain set of standards: documentation, license, etc.
+[**CloMonitor**](https://clomonitor.io) is a tool that periodically checks CNCF projects repositories to verify they meet a certain set of standards: documentation, license, etc.
 
 <br/>
 <table>
@@ -20,4 +20,4 @@ This project follows the [CNCF Code of Conduct](https://github.com/cncf/foundati
 
 ## License
 
-Re-Monitor is an Open Source project licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+CloMonitor is an Open Source project licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

@@ -3,17 +3,17 @@
 # dbmigrator
 docker build \
     -f database/migrations/Dockerfile \
-    -t remonitor/dbmigrator \
+    -t clomonitor/dbmigrator \
 .
 
 # apiserver
 docker build \
-    -f remonitor-apiserver/Dockerfile \
-    -t remonitor/apiserver \
+    -f clomonitor-apiserver/Dockerfile \
+    -t clomonitor/apiserver \
 .
 
 # tracker
 docker build \
-    -f remonitor-tracker/Dockerfile \
-    -t remonitor/tracker \
+    -f clomonitor-tracker/Dockerfile \
+    -t clomonitor/tracker \
 .

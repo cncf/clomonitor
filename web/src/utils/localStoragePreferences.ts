@@ -7,8 +7,8 @@ export interface PreferencesList {
   [key: string]: Prefs;
 }
 
-const LS_ITEM = 'remonitorPrefs';
-const APPLIED_MIGRATION = 'remonitorAppliedMigration';
+const LS_ITEM = 'clomonitorPrefs';
+const APPLIED_MIGRATION = 'clomonitorAppliedMigration';
 export const DEFAULT_SEARCH_LIMIT = 20;
 const DEFAULT_THEME = 'light';
 

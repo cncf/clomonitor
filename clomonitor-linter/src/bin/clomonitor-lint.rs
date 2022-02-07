@@ -1,5 +1,5 @@
 use clap::{ArgEnum, Parser};
-use remonitor_linter::lint;
+use clomonitor_linter::lint;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, ArgEnum)]

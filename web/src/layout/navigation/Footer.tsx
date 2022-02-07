@@ -1,7 +1,7 @@
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 
-import logo from '../../media/remonitor.svg';
+import logo from '../../media/clomonitor.svg';
 import ExternalLink from '../common/ExternalLink';
 import styles from './Footer.module.css';
 
@@ -47,7 +47,7 @@ const Footer = () => {
           <div className={styles.footerCol}>
             <div className="h6 fw-bold text-uppercase">About</div>
             <div className={`opacity-75 ${styles.license}`}>
-              Re-Monitor is an <b className="d-inline-block">Open Source</b> project licensed under the{' '}
+              CloMonitor is an <b className="d-inline-block">Open Source</b> project licensed under the{' '}
               <ExternalLink
                 className="d-inline-block mb-1"
                 href="https://www.apache.org/licenses/LICENSE-2.0"
@@ -62,9 +62,7 @@ const Footer = () => {
           </div>
 
           <div className={`ms-0 ms-lg-auto ${styles.fullMobileSection}`}>
-            <div className="d-flex flex-column align-items-center justify-content-center h-100">
-              <img className={styles.logo} alt="Logo" src={logo} />
-            </div>
+            <img className={styles.logo} alt="Logo" src={logo} />
           </div>
         </div>
       </div>

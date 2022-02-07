@@ -1,5 +1,5 @@
 [package]
-name = "remonitor-tracker"
+name = "clomonitor-tracker"
 description = "A tool to run a set of linters on multiple repositories"
 version = "0.1.0"
 edition = "2021"
@@ -13,7 +13,7 @@ deadpool-postgres = { version = "0.10.1", features = ["serde"] }
 futures = "0.3.19"
 openssl = { version = "0.10", features = ["vendored"] }
 postgres-openssl = "0.5.0"
-remonitor-linter = { path = "../remonitor-linter" }
+clomonitor-linter = { path = "../clomonitor-linter" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.74"
 tempdir = "0.3.7"

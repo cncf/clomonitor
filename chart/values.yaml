@@ -1,4 +1,4 @@
-# ReMonitor chart default configuration values
+# CloMonitor chart default configuration values
 
 imagePullSecrets: []
 imageTag: ""
@@ -16,13 +16,13 @@ dynamicResourceNamePrefixEnabled: false
 fullnameOverride: ""
 
 # Directory path where the configuration files should be mounted
-configDir: "/home/remonitor/.config/remonitor"
+configDir: "/home/clomonitor/.config/clomonitor"
 
 # Database configuration
 db:
   host: ""
   port: "5432"
-  dbname: remonitor
+  dbname: clomonitor
   user: postgres
   password: postgres
 
@@ -31,19 +31,19 @@ dbmigrator:
   job:
     image:
       # Database migrator image repository (without the tag)
-      repository: remonitor/dbmigrator
+      repository: clomonitor/dbmigrator
 
 # API server configuration
 apiserver:
   # Address to listen on
   addr: 0.0.0.0:8000
   # Path with static assets
-  staticPath: /home/remonitor/web/build
+  staticPath: /home/clomonitor/web/build
   basicAuth:
     # Enable basic auth
     enabled: false
     # Basic auth username
-    username: remonitor
+    username: clomonitor
     # Basic auth password
     password: changeme
   ingress:
@@ -59,7 +59,7 @@ apiserver:
     replicaCount: 1
     image:
       # API server image repository (without the tag)
-      repository: remonitor/apiserver
+      repository: clomonitor/apiserver
     resources: {}
 
 # Tracker configuration
@@ -67,7 +67,7 @@ tracker:
   cronjob:
     image:
       # Tracker image repository (without the tag)
-      repository: remonitor/tracker
+      repository: clomonitor/tracker
     resources: {}
   # Number of repositories to process concurrently
   concurrency: 10
@@ -82,5 +82,5 @@ postgresql:
     mountPath: /data
   postgresqlUsername: postgres
   postgresqlPassword: postgres
-  postgresqlDatabase: remonitor
+  postgresqlDatabase: clomonitor
   postgresqlDataDir: /data/pgdata

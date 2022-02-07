@@ -30,7 +30,7 @@ const PaginationLimit = (props: Props) => {
       <label className="form-label me-2 mb-0">Show:</label>
       <select
         ref={selectEl}
-        className={`form-select form-select-sm rounded-0 ${styles.select}`}
+        className={`form-select form-select-sm rounded-0 cursorPointer ${styles.select}`}
         value={limit}
         onChange={handleChange}
       >

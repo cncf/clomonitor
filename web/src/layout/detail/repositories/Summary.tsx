@@ -30,21 +30,21 @@ const Summary = (props: Props) => {
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Global]}</small>
               <span>Global</span>
             </th>
-            <th scope="col" className="text-center text-nowrap">
+            <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>
                 {CATEGORY_ICONS[ScoreType.Documentation]}
               </small>
               <span>Documentation</span>
             </th>
-            <th scope="col" className="text-center text-nowrap">
+            <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.License]}</small>
               <span>License</span>
             </th>
-            <th scope="col" className="text-center text-nowrap">
+            <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Quality]}</small>
               <span>Code quality</span>
             </th>
-            <th scope="col" className="text-center text-nowrap">
+            <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
               <span>Security</span>
             </th>
@@ -54,9 +54,9 @@ const Summary = (props: Props) => {
           {props.repositories.map((repo: Repository) => {
             return (
               <tr key={`summary_${repo.repositoryId}`}>
-                <td className={`align-middle ${styles.darkBgCell}`}>
+                <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
                   <button
-                    className="btn btn-link text-dark text-truncate fw-bold"
+                    className={`btn btn-link text-dark text-truncate fw-bold ${styles.repoBtn}`}
                     onClick={() =>
                       navigate({
                         pathname: location.pathname,
@@ -70,16 +70,16 @@ const Summary = (props: Props) => {
                 <td className="align-middle">
                   <Badge value={repo.score.global} />
                 </td>
-                <td className="align-middle">
+                <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.documentation} />
                 </td>
-                <td className="align-middle">
+                <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.license} />
                 </td>
-                <td className="align-middle">
+                <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.quality} />
                 </td>
-                <td className="align-middle">
+                <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.security} />
                 </td>
               </tr>

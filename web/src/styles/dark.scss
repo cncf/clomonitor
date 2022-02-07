@@ -133,6 +133,10 @@
     }
   }
 
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+
   // UI
   .lightIcon {
     color: var(--color-light-font);

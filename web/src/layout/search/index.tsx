@@ -177,16 +177,18 @@ const Search = () => {
                 closeButton={<>See {total} results</>}
                 leftButton={
                   <>
-                    <div className="d-flex align-items-center">
-                      <IoMdCloseCircleOutline className={`text-dark ${styles.resetBtnDecorator}`} />
-                      <button
-                        className="btn btn-link btn-sm p-0 ps-1 text-dark"
-                        onClick={onResetFilters}
-                        aria-label="Reset filters"
-                      >
-                        Reset
-                      </button>
-                    </div>
+                    {!isEmpty(filters) && (
+                      <div className="d-flex align-items-center">
+                        <IoMdCloseCircleOutline className={`text-dark ${styles.resetBtnDecorator}`} />
+                        <button
+                          className="btn btn-link btn-sm p-0 ps-1 text-dark"
+                          onClick={onResetFilters}
+                          aria-label="Reset filters"
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    )}
                   </>
                 }
                 header={<div className="h6 text-uppercase mb-0 flex-grow-1">Filters</div>}

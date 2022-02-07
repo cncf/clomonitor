@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTERS } from '../../../data';
@@ -20,13 +21,15 @@ const Filters = (props: Props) => {
       {props.visibleTitle && (
         <div className="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom">
           <div className="h6 text-uppercase mb-0 lh-base text-primary fw-bold">Filters</div>
-          <button className="btn btn-link text-primary" onClick={props.onResetFilters} aria-label="Reset filters">
-            <div className="d-flex flex-row align-items-center">
-              <IoMdCloseCircleOutline className="me-2" />
+          {!isEmpty(props.activeFilters) && (
+            <button className="btn btn-link text-primary" onClick={props.onResetFilters} aria-label="Reset filters">
+              <div className="d-flex flex-row align-items-center">
+                <IoMdCloseCircleOutline className="me-2" />
 
-              <small>Reset</small>
-            </div>
-          </button>
+                <small>Reset</small>
+              </div>
+            </button>
+          )}
         </div>
       )}
 

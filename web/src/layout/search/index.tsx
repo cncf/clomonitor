@@ -291,7 +291,11 @@ const Search = () => {
                 ) : (
                   <div className={`row g-4 g-xxl-0 ${styles.list}`} role="list">
                     {projects.map((item: Project) => (
-                      <Card project={item} key={`card_${item.name}`} />
+                      <Card
+                        project={item}
+                        key={`card_${item.name}`}
+                        currentQueryString={prepareQueryString(getCurrentFilters())}
+                      />
                     ))}
                   </div>
                 )}

@@ -22,6 +22,7 @@ import RepositoriesList from './repositories';
 const Detail = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const state = location.state as { currentSearch?: string };
   const { projectId } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
@@ -63,16 +64,20 @@ const Detail = () => {
     scrollIntoView();
   }, [location.hash, detail]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
+  console.log(state);
+
   return (
     <>
-      <SubNavbar>
-        <button onClick={() => navigate(-1)} className="btn btn-link p-0 text-reset">
-          <div className="d-flex flex-row align-items-center">
-            <IoIosArrowBack className="me-2" />
-            <div>Back to results</div>
-          </div>
-        </button>
-      </SubNavbar>
+      {state && state.currentSearch && (
+        <SubNavbar>
+          <button onClick={() => navigate(`/search${state.currentSearch}`)} className="btn btn-link p-0 text-reset">
+            <div className="d-flex flex-row align-items-center">
+              <IoIosArrowBack className="me-2" />
+              <div>Back to results</div>
+            </div>
+          </button>
+        </SubNavbar>
+      )}
 
       <main className="container-lg flex-grow-1 mb-4">
         {isLoadingProject && <Loading />}

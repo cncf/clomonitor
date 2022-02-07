@@ -14,6 +14,7 @@ import RepositorySection from './RepositorySection';
 
 interface Props {
   project: Project;
+  currentQueryString: string;
 }
 
 const Card = (props: Props) => {
@@ -23,7 +24,9 @@ const Card = (props: Props) => {
     <div className={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`} role="listitem">
       <div
         className={`card rounded-0 p-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
-        onClick={() => navigate(`/projects/${props.project.id}`)}
+        onClick={() =>
+          navigate(`/projects/${props.project.id}`, { state: { currentSearch: props.currentQueryString } })
+        }
       >
         <div className="d-flex flex-column flex-sm-row align-items-center">
           <div

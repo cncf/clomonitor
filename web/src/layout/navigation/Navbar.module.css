@@ -3,5 +3,11 @@
 }
 
 .logo {
-  height: 48px;
+  height: 30px;
+}
+
+.badge {
+  background-color: var(--color-white-25);
+  font-size: 0.65rem;
+  padding: 0.25rem 0.4rem;
 }

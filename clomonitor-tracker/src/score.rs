@@ -1,5 +1,5 @@
 use crate::tracker::Linter;
-use remonitor_linter::Report;
+use clomonitor_linter::Report;
 use serde::{Deserialize, Serialize};
 
 /// Project's score information.

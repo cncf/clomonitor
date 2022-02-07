@@ -1,5 +1,5 @@
 [package]
-name = "remonitor-linter"
+name = "clomonitor-linter"
 description = "A linter for CNCF projects repositories"
 version = "0.1.0"
 edition = "2021"

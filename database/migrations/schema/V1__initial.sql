@@ -67,7 +67,7 @@ create table if not exists linter (
     display_name text check (display_name <> '')
 );
 
-insert into linter (linter_id, name, display_name) values (0, 'core', 'Remonitor Core Linter');
+insert into linter (linter_id, name, display_name) values (0, 'core', 'CloMonitor Core Linter');
 
 create table if not exists report (
     report_id uuid primary key default gen_random_uuid(),

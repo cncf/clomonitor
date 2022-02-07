@@ -1,5 +1,5 @@
 FROM ghcr.io/rust-db/refinery:main
-RUN addgroup --system remonitor && adduser --system remonitor --ingroup remonitor
-USER remonitor
-WORKDIR /home/remonitor
+RUN addgroup --system clomonitor && adduser --system clomonitor --ingroup clomonitor
+USER clomonitor
+WORKDIR /home/clomonitor
 COPY database/migrations/schema database/migrations/schema

@@ -3,7 +3,7 @@
 }
 
 .logo {
-  height: 48px;
+  height: 30px;
 }
 
 .miniIcon {
@@ -31,6 +31,7 @@
 
   .fullMobileSection {
     width: 100%;
+    text-align: center;
   }
 }
 
@@ -38,11 +39,5 @@
   .license {
     display: flex;
     flex-direction: column;
-  }
-}
-
-@media only screen and (max-width: 575.98px) {
-  .fullMobileSection {
-    width: 100%;
   }
 }

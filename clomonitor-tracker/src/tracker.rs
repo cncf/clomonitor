@@ -1,8 +1,8 @@
 use crate::score;
 use crate::score::Score;
 use anyhow::{format_err, Error};
+use clomonitor_linter::{lint, Report};
 use deadpool_postgres::{Client as DbClient, Transaction};
-use remonitor_linter::{lint, Report};
 use std::path::Path;
 use std::time::Instant;
 use tempdir::TempDir;
@@ -76,7 +76,7 @@ pub(crate) async fn process_repository(mut db: DbClient, repo: Repository) -> Re
     debug!("processing repository [id: {}]", repo.repository_id);
 
     // Clone repository
-    let tmp_dir = TempDir::new("remonitor")?;
+    let tmp_dir = TempDir::new("clomonitor")?;
     clone_repository(&repo.url, tmp_dir.path()).await?;
 
     // Lint repository (only using core linter at the moment)

@@ -1,9 +1,9 @@
 # Build apiserver
 FROM rust:1-alpine3.15 as builder
 RUN apk --no-cache add musl-dev perl make
-WORKDIR /remonitor
-COPY remonitor-apiserver remonitor-apiserver
-WORKDIR /remonitor/remonitor-apiserver
+WORKDIR /clomonitor
+COPY clomonitor-apiserver clomonitor-apiserver
+WORKDIR /clomonitor/clomonitor-apiserver
 RUN cargo build --release
 
 # Build frontend
@@ -16,9 +16,9 @@ RUN yarn build
 
 # Final stage
 FROM alpine:3.15
-RUN apk --no-cache add ca-certificates && addgroup -S remonitor && adduser -S remonitor -G remonitor
-USER remonitor
-WORKDIR /home/remonitor
-COPY --from=builder /remonitor/remonitor-apiserver/target/release/remonitor-apiserver /usr/local/bin
+RUN apk --no-cache add ca-certificates && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
+USER clomonitor
+WORKDIR /home/clomonitor
+COPY --from=builder /clomonitor/clomonitor-apiserver/target/release/clomonitor-apiserver /usr/local/bin
 COPY --from=frontend-builder /web/build ./web/build
 COPY --from=frontend-builder /web/package.json ./web

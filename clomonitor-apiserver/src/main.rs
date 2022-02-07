@@ -26,14 +26,14 @@ async fn main() -> Result<(), Error> {
 
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "remonitor_apiserver=debug,tower_http=debug")
+        std::env::set_var("RUST_LOG", "clomonitor_apiserver=debug,tower_http=debug")
     }
     tracing_subscriber::fmt::init();
     info!("apiserver started");
 
     // Setup configuration
     let mut cfg = Config::new();
-    cfg.set_default("db.dbname", "remonitor")?;
+    cfg.set_default("db.dbname", "clomonitor")?;
     cfg.set_default("apiserver.addr", "127.0.0.1:8000")?;
     cfg.set_default("apiserver.basicAuth.enabled", false)?;
     cfg.merge(File::from(args.config))?;

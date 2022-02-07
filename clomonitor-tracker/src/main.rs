@@ -28,7 +28,7 @@ async fn main() -> Result<(), Error> {
 
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "remonitor_tracker=debug")
+        std::env::set_var("RUST_LOG", "clomonitor_tracker=debug")
     }
     tracing_subscriber::fmt::init();
 
@@ -41,7 +41,7 @@ async fn main() -> Result<(), Error> {
 
     // Setup configuration
     let mut cfg = Config::new();
-    cfg.set_default("db.dbname", "remonitor")?;
+    cfg.set_default("db.dbname", "clomonitor")?;
     cfg.set_default("tracker.concurrency", 10)?;
     cfg.merge(File::from(args.config))?;
 

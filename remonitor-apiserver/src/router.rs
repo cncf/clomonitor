@@ -52,7 +52,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
     if cfg.get_bool("apiserver.basicAuth.enabled")? {
         let username = cfg.get_str("apiserver.basicAuth.username")?;
         let password = cfg.get_str("apiserver.basicAuth.password")?;
-        router = router.route_layer(RequireAuthorizationLayer::basic(&username, &password));
+        router = router.layer(RequireAuthorizationLayer::basic(&username, &password));
     }
 
     Ok(router)

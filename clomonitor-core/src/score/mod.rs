@@ -1,19 +1,18 @@
-use crate::tracker::Linter;
-use clomonitor_linter::Report;
+use crate::{linter::Report, Linter};
 use serde::{Deserialize, Serialize};
 
-/// Project's score information.
+/// Score information.
 #[derive(Debug, Serialize, Deserialize)]
-pub(crate) struct Score {
-    global: usize,
-    documentation: usize,
-    license: usize,
-    quality: usize,
-    security: usize,
+pub struct Score {
+    pub global: usize,
+    pub documentation: usize,
+    pub license: usize,
+    pub quality: usize,
+    pub security: usize,
 }
 
 impl Score {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Score {
             global: 0,
             documentation: 0,
@@ -24,15 +23,21 @@ impl Score {
     }
 }
 
+impl Default for Score {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 /// Calculate score for the given linter report.
-pub(crate) fn calculate(linter: Linter, report: Report) -> Score {
+pub fn calculate(linter: Linter, report: &Report) -> Score {
     match linter {
-        Linter::Core => core_linter_score(report),
+        Linter::Core => calculate_clomonitor_linter_score(report),
     }
 }
 
 /// Merge the scores provided into a single score.
-pub(crate) fn merge(scores: Vec<Score>) -> Score {
+pub fn merge(scores: Vec<Score>) -> Score {
     let mut score = Score::new();
     for entry in &scores {
         score.global += entry.global;
@@ -51,7 +56,7 @@ pub(crate) fn merge(scores: Vec<Score>) -> Score {
 }
 
 /// Returns the rating corresponding to the score provided.
-pub(crate) fn rating(score: &Score) -> String {
+pub fn rating(score: &Score) -> String {
     match score.global {
         75..=100 => "a",
         50..=74 => "b",
@@ -62,8 +67,8 @@ pub(crate) fn rating(score: &Score) -> String {
     .to_string()
 }
 
-/// Calculate score for the given report produced by the core linter.
-fn core_linter_score(report: Report) -> Score {
+/// Calculate score for the given report produced by the clomonitor linter.
+fn calculate_clomonitor_linter_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation

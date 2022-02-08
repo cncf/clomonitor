@@ -1,7 +1,9 @@
-use crate::score;
-use crate::score::Score;
 use anyhow::{format_err, Error};
-use clomonitor_linter::{lint, Report};
+use clomonitor_core::{
+    linter::{lint, Report},
+    score::{self, Score},
+    Linter,
+};
 use deadpool_postgres::{Client as DbClient, Transaction};
 use std::path::Path;
 use std::time::Instant;
@@ -11,23 +13,6 @@ use tokio_postgres::types::Json;
 use tokio_postgres::Error as DbError;
 use tracing::{debug, warn};
 use uuid::Uuid;
-
-/// Supported linters.
-#[derive(Debug)]
-pub(crate) enum Linter {
-    Core = 0,
-}
-
-impl std::convert::TryFrom<i32> for Linter {
-    type Error = Error;
-
-    fn try_from(linter_id: i32) -> Result<Self, Self::Error> {
-        match linter_id {
-            0 => Ok(Linter::Core),
-            _ => Err(format_err!("invalid linter id")),
-        }
-    }
-}
 
 /// Repository information.
 #[derive(Debug)]
@@ -187,7 +172,7 @@ async fn update_repository_score(tx: &Transaction<'_>, repository_id: &Uuid) -> 
         let linter_id: i32 = row.get("linter_id");
         let linter = Linter::try_from(linter_id)?;
         let report: Json<Report> = row.get("data");
-        scores.push(score::calculate(linter, report.0));
+        scores.push(score::calculate(linter, &report.0));
     }
     let repository_score = score::merge(scores);
 

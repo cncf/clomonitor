@@ -1,0 +1,12 @@
+[package]
+name = "clomonitor-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.52"
+askalono = "0.4.4"
+glob = "0.3.0"
+regex = "1.5.4"
+thiserror = "1.0.30"
+serde = { version = "1.0", features = ["derive"] }

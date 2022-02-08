@@ -31,7 +31,7 @@ const RepositoriesList = (props: Props) => {
             pathname: location.pathname,
             hash: repo.name,
           },
-          { replace: true }
+          { state: location.state, replace: true }
         );
       }}
       className={`btn btn-link text-reset text-center lh-1 ${styles.headingLink}`}

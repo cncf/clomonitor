@@ -58,10 +58,13 @@ const Summary = (props: Props) => {
                   <button
                     className={`btn btn-link text-dark text-truncate fw-bold ${styles.repoBtn}`}
                     onClick={() =>
-                      navigate({
-                        pathname: location.pathname,
-                        hash: repo.name,
-                      })
+                      navigate(
+                        {
+                          pathname: location.pathname,
+                          hash: repo.name,
+                        },
+                        { state: location.state }
+                      )
                     }
                   >
                     {repo.name}

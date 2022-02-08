@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "clomonitor-apiserver",
+    "clomonitor-core",
     "clomonitor-linter",
     "clomonitor-tracker"
 ]

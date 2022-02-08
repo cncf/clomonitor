@@ -1,7 +1,7 @@
 mod check;
 
-use crate::check::Globs;
 use anyhow::Error;
+use check::Globs;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
@@ -47,7 +47,7 @@ pub struct Security {
     pub security_policy: bool,
 }
 
-/// Run the linter in the path provided and return a report.
+/// Lint the path provided and return a report.
 pub fn lint(root: &Path) -> Result<Report, Error> {
     Ok(Report {
         documentation: Documentation {

@@ -7,9 +7,6 @@ rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.52"
-askalono = "0.4.4"
 clap = { version = "3.0.7", features = ["derive"] }
-glob = "0.3.0"
-regex = "1.5.4"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.74"
+comfy-table = "5.0.0"
+clomonitor-core = { path = "../clomonitor-core" }

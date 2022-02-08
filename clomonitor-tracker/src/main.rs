@@ -1,4 +1,3 @@
-mod score;
 mod tracker;
 
 use crate::tracker::*;

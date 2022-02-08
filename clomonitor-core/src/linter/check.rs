@@ -1,4 +1,4 @@
-use crate::License;
+use super::License;
 use anyhow::Error;
 use askalono::*;
 use glob::{glob_with, MatchOptions, PatternError};

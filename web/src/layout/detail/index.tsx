@@ -64,8 +64,6 @@ const Detail = () => {
     scrollIntoView();
   }, [location.hash, detail]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
-  console.log(state);
-
   return (
     <>
       {state && state.currentSearch && (

@@ -31,9 +31,8 @@ const Footer = () => {
             <div className="d-flex flex-column text-start">
               <ExternalLink
                 className="mb-1 opacity-75"
-                href="https://github.com/cncf/hub"
+                href="https://github.com/cncf/clomonitor"
                 label="Open Github"
-                disabled
                 btnType
               >
                 <div className="d-flex align-items-center">

@@ -17,3 +17,9 @@ docker build \
     -f clomonitor-tracker/Dockerfile \
     -t clomonitor/tracker \
 .
+
+# linter
+docker build \
+    -f clomonitor-linter/Dockerfile \
+    -t clomonitor/linter \
+.

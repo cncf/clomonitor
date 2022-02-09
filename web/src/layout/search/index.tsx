@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { isEmpty, isUndefined } from 'lodash';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
@@ -241,8 +242,12 @@ const Search = (props: Props) => {
       </SubNavbar>
 
       <main role="main" className="container-lg flex-grow-1 mb-4">
-        {isLoading && <Loading position="fixed" />}
-        <div className="h-100 position-relative d-flex flex-row align-items-start">
+        {isLoading && <Loading position="fixed" transparentBg />}
+        <div
+          className={classNames('h-100 position-relative d-flex flex-row align-items-start', {
+            'opacity-75': isLoading,
+          })}
+        >
           <aside
             className={`d-none d-md-block position-relative p-3 rounded-0 border mb-3 mb-lg-4 ${styles.sidebar}`}
             aria-label="Filters"

@@ -25,7 +25,9 @@ const Card = (props: Props) => {
       <div
         className={`card rounded-0 p-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
         onClick={() =>
-          navigate(`/projects/${props.project.id}`, { state: { currentSearch: props.currentQueryString } })
+          navigate(`/projects/${props.project.organization.name}/${props.project.name}`, {
+            state: { currentSearch: props.currentQueryString },
+          })
         }
       >
         <div className="d-flex flex-column flex-sm-row align-items-center">

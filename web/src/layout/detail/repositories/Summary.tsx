@@ -42,7 +42,7 @@ const Summary = (props: Props) => {
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Quality]}</small>
-              <span>Code quality</span>
+              <span>Quality</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>

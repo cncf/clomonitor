@@ -66,8 +66,7 @@ const SummaryCard = (props: Props) => {
         </div>
         <div className={classNames('row', { 'mt-1': !props.bigSize }, { 'mt-1 mt-md-3 gx-4 gx-md-5': props.bigSize })}>
           <Category
-            name="Code quality"
-            shortName="Quality"
+            name="Quality"
             value={props.score.quality}
             icon={CATEGORY_ICONS[ScoreType.Quality]}
             bigSize={props.bigSize}

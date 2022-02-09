@@ -12,7 +12,6 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use tokio_postgres::types::Json;
 use tracing::error;
-use uuid::Uuid;
 
 /// Header that indicates the number of items available for pagination purposes.
 const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
@@ -57,12 +56,12 @@ pub(crate) async fn search_projects(
 /// Handler that returns the requested project.
 pub(crate) async fn get_project(
     Extension(db_pool): Extension<Pool>,
-    extract::Path(project_id): extract::Path<Uuid>,
+    extract::Path((org, project)): extract::Path<(String, String)>,
 ) -> Result<response::Json<Value>, StatusCode> {
     // Get project from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
-        .query_one("select get_project($1::uuid)", &[&project_id])
+        .query_one("select get_project($1::text, $2::text)", &[&org, &project])
         .await
         .map_err(internal_error)?;
     let project: Option<Json<Value>> = row.get(0);

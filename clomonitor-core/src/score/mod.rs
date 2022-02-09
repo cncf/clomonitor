@@ -1,4 +1,4 @@
-use crate::{linter::Report, Linter};
+use crate::linter::{Linter, Report};
 use serde::{Deserialize, Serialize};
 
 /// Score information.
@@ -12,6 +12,7 @@ pub struct Score {
 }
 
 impl Score {
+    /// Create a new score with all values set to zero.
     pub fn new() -> Self {
         Score {
             global: 0,
@@ -19,6 +20,17 @@ impl Score {
             license: 0,
             quality: 0,
             security: 0,
+        }
+    }
+
+    /// Return the score's rating (a, b, c or d).
+    pub fn rating(&self) -> char {
+        match self.global {
+            75..=100 => 'a',
+            50..=74 => 'b',
+            25..=49 => 'c',
+            0..=24 => 'd',
+            _ => '?',
         }
     }
 }
@@ -32,43 +44,12 @@ impl Default for Score {
 /// Calculate score for the given linter report.
 pub fn calculate(linter: Linter, report: &Report) -> Score {
     match linter {
-        Linter::Core => calculate_clomonitor_linter_score(report),
+        Linter::Core => calculate_core_linter_score(report),
     }
 }
 
-/// Merge the scores provided into a single score.
-pub fn merge(scores: Vec<Score>) -> Score {
-    let mut score = Score::new();
-    for entry in &scores {
-        score.global += entry.global;
-        score.documentation += entry.documentation;
-        score.license += entry.license;
-        score.quality += entry.quality;
-        score.security += entry.security;
-    }
-    let n = scores.len();
-    score.global /= n;
-    score.documentation /= n;
-    score.license /= n;
-    score.quality /= n;
-    score.security /= n;
-    score
-}
-
-/// Returns the rating corresponding to the score provided.
-pub fn rating(score: &Score) -> String {
-    match score.global {
-        75..=100 => "a",
-        50..=74 => "b",
-        25..=49 => "c",
-        0..=24 => "d",
-        _ => "?",
-    }
-    .to_string()
-}
-
-/// Calculate score for the given report produced by the clomonitor linter.
-fn calculate_clomonitor_linter_score(report: &Report) -> Score {
+/// Calculate score for the given report produced by the core linter.
+fn calculate_core_linter_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation
@@ -123,5 +104,24 @@ fn calculate_clomonitor_linter_score(report: &Report) -> Score {
     // Global
     score.global = (score.documentation + score.license + score.quality + score.security) / 4;
 
+    score
+}
+
+/// Merge the scores provided into a single score.
+pub fn merge(scores: Vec<Score>) -> Score {
+    let mut score = Score::new();
+    for entry in &scores {
+        score.global += entry.global;
+        score.documentation += entry.documentation;
+        score.license += entry.license;
+        score.quality += entry.quality;
+        score.security += entry.security;
+    }
+    let n = scores.len();
+    score.global /= n;
+    score.documentation /= n;
+    score.license /= n;
+    score.quality /= n;
+    score.security /= n;
     score
 }

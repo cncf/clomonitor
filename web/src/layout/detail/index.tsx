@@ -5,6 +5,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import API from '../../api';
+import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
 import CartegoryBadge from '../common/CategoryBadge';
 import ExternalLink from '../common/ExternalLink';
@@ -26,6 +27,8 @@ const Detail = () => {
   const { org, project } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
+
+  useScrollRestorationFix();
 
   useEffect(() => {
     async function fetchProjectDetail() {

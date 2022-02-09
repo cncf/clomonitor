@@ -22,4 +22,3 @@ tower = "0.4.11"
 tower-http = { version = "0.2.0", features = ["auth", "fs", "trace"] }
 tracing = "0.1.29"
 tracing-subscriber = "0.3.6"
-uuid = { version = "0.8.2", features = ["serde"] }

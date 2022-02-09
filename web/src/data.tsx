@@ -220,7 +220,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   },
   [ReportOption.FossaBadge]: {
     icon: <GiStamper />,
-    name: 'FOSSA',
+    name: 'FOSSA badge',
     description: (
       <p className="mb-0">
         We check that the <code>README</code> file contains a <em>FOSSA</em> badge

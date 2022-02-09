@@ -22,6 +22,9 @@ export interface BaseProject {
 
 export interface Project extends BaseProject {
   repositories: BaseRepository[];
+  organization: {
+    name: string;
+  };
 }
 
 export interface ProjectDetail extends BaseProject {

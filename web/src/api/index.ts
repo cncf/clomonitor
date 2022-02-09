@@ -122,8 +122,8 @@ class API_CLASS {
       .catch((error) => Promise.reject(error));
   }
 
-  public getProjectDetail(projectId: string): Promise<ProjectDetail> {
-    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${projectId}` });
+  public getProjectDetail(org: string, project: string): Promise<ProjectDetail> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${org}/${project}` });
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; paginationTotalCount: string }> {

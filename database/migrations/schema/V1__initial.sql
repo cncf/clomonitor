@@ -120,7 +120,8 @@ begin
             p.rating,
             p.category_id,
             p.maturity_id,
-            p.updated_at
+            p.updated_at,
+            o.name as organization_name
         from project p
         join organization o using (organization_id)
         where score is not null
@@ -158,7 +159,10 @@ begin
                     ))
                     from repository
                     where project_id = fp.project_id
-        )
+                ),
+                'organization', json_build_object(
+                    'name', organization_name
+                )
             ))), '[]')
             from (
                 select *
@@ -178,7 +182,7 @@ begin
 end
 $$ language plpgsql;
 
-create or replace function get_project(p_project_id uuid)
+create or replace function get_project(p_org_name text, p_project_name text)
 returns json as $$
     select json_build_object(
         'id', p.project_id,
@@ -213,10 +217,10 @@ returns json as $$
                 )
             ))
             from repository r
-            where project_id = p_project_id
+            where project_id = p.project_id
         )
     )
     from project p
     join organization o using (organization_id)
-    where project_id = p_project_id;
+    where o.name = p_org_name and p.name = p_project_name;
 $$ language sql;

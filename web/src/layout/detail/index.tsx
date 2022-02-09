@@ -23,7 +23,7 @@ const Detail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as { currentSearch?: string };
-  const { projectId } = useParams();
+  const { org, project } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
 
@@ -31,17 +31,17 @@ const Detail = () => {
     async function fetchProjectDetail() {
       setIsLoadingProject(true);
       try {
-        setDetail(await API.getProjectDetail(projectId!));
+        setDetail(await API.getProjectDetail(org!, project!));
         setIsLoadingProject(false);
       } catch (err: any) {
         setDetail(null);
         setIsLoadingProject(false);
       }
     }
-    if (!isUndefined(projectId)) {
+    if (!isUndefined(org) && !isUndefined(project)) {
       fetchProjectDetail();
     }
-  }, [projectId]);
+  }, [org, project]);
 
   const scrollIntoView = useCallback(
     (id?: string) => {

@@ -1,11 +1,12 @@
 import { isEmpty, isUndefined } from 'lodash';
-import { useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
+import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import { prepareQueryString } from '../../utils/prepareQueryString';
@@ -36,7 +37,12 @@ const prepareFilters = (filters: FiltersProp): FiltersProp => {
   return f;
 };
 
-const Search = () => {
+interface Props {
+  scrollPosition?: number;
+  setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
+}
+
+const Search = (props: Props) => {
   const navigate = useNavigate();
   const { ctx, dispatch } = useContext(AppContext);
   const { limit, sort } = ctx.prefs.search;
@@ -48,7 +54,18 @@ const Search = () => {
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  useScrollRestorationFix();
+
+  const saveScrollPosition = () => {
+    props.setScrollPosition(window.scrollY);
+  };
+
+  const updateWindowScrollPosition = (newPosition: number) => {
+    window.scrollTo(0, newPosition);
+  };
+
   const onResetFilters = (): void => {
+    props.setScrollPosition(0);
     navigate({
       pathname: '/search',
       search: prepareQueryString({
@@ -72,6 +89,7 @@ const Search = () => {
   };
 
   const updateCurrentPage = (searchChanges: any) => {
+    props.setScrollPosition(0);
     navigate({
       pathname: '/search',
       search: prepareQueryString({
@@ -86,10 +104,6 @@ const Search = () => {
     updateCurrentPage({
       pageNumber: pageNumber,
     });
-  };
-
-  const updateWindowScrollPosition = (newPosition: number) => {
-    window.scrollTo(0, newPosition);
   };
 
   const onFiltersChange = (name: string, value: string, checked: boolean): void => {
@@ -107,6 +121,7 @@ const Search = () => {
   };
 
   const onPaginationLimitChange = (newLimit: number): void => {
+    props.setScrollPosition(0);
     navigate({
       pathname: '/search',
       search: prepareQueryString({
@@ -118,6 +133,7 @@ const Search = () => {
   };
 
   const onSortChange = (by: SortBy, direction: SortDirection): void => {
+    props.setScrollPosition(0);
     // Load pageNumber is forced before update Sorting criteria
     navigate(
       {
@@ -152,11 +168,12 @@ const Search = () => {
         const newSearchResults = await API.searchProjects(data);
         setTotal(parseInt(newSearchResults.paginationTotalCount));
         setProjects(newSearchResults.items);
-        updateWindowScrollPosition(0);
       } catch {
         // TODO - error
       } finally {
         setIsLoading(false);
+        // Update scroll position
+        updateWindowScrollPosition(props.scrollPosition || 0);
       }
     }
     searchProjects();
@@ -268,6 +285,7 @@ const Search = () => {
                           <button
                             className="btn btn-link text-dark fw-bold py-0 pb-1 px-0"
                             onClick={() => {
+                              props.setScrollPosition(0);
                               navigate({
                                 pathname: '/search',
                                 search: prepareQueryString({
@@ -295,6 +313,7 @@ const Search = () => {
                         project={item}
                         key={`card_${item.name}`}
                         currentQueryString={prepareQueryString(getCurrentFilters())}
+                        saveScrollPosition={saveScrollPosition}
                       />
                     ))}
                   </div>

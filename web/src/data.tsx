@@ -5,7 +5,7 @@ import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
-import { IoMdRibbon } from 'react-icons/io';
+import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { RiRoadMapLine } from 'react-icons/ri';
 
 import RoundedBadge from './layout/common/RoundedBadge';
@@ -99,8 +99,8 @@ export const REPORT_OPTIONS_BY_CATEGORY = {
     ReportOption.Maintainers,
     ReportOption.Roadmap,
   ],
-  [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.FossaBadge],
-  [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge],
+  [ScoreType.License]: [ReportOption.ApprovedLicense, ReportOption.SPDX, ReportOption.FossaBadge],
+  [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge, ReportOption.CommunityMeeting],
   [ScoreType.Security]: [ReportOption.SecurityPolicy],
 };
 
@@ -237,7 +237,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
       </p>
     ),
-    weight: 100,
+    weight: 75,
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,
@@ -249,5 +249,16 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </p>
     ),
     weight: 100,
+  },
+  [ReportOption.CommunityMeeting]: {
+    icon: <IoIosPeople />,
+    name: 'Community meeting',
+    description: (
+      <p className="mb-0">
+        We check that the <code>README</code> file contains patterns like <em>community meeting</em>,{' '}
+        <em>meeting minutes</em>, etc.
+      </p>
+    ),
+    weight: 25,
   },
 };

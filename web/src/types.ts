@@ -158,6 +158,7 @@ export enum ReportOption {
   FossaBadge = 'fossaBadge',
   OpenSSFBadge = 'openssfBadge',
   SecurityPolicy = 'securityPolicy',
+  CommunityMeeting = 'communityMeeting',
 }
 
 export interface SearchFiltersURL extends BasicQuery {

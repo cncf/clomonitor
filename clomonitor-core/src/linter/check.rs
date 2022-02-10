@@ -1,4 +1,3 @@
-use super::License;
 use anyhow::Error;
 use askalono::*;
 use glob::{glob_with, MatchOptions, PatternError};
@@ -32,7 +31,7 @@ pub(crate) struct Globs<'a> {
     pub case_sensitive: bool,
 }
 
-/// Checks if the content of any of the files that match the globs provided
+/// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given.
 pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, Error> {
     let re = RegexSet::new(regexps)?;
@@ -44,31 +43,34 @@ pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, 
     }))
 }
 
-/// Checks repository's license.
-pub(crate) fn license(globs: Globs) -> Result<License, Error> {
+/// Check repository's license and return its SPDX id if possible.
+pub(crate) fn license(globs: Globs) -> Result<Option<String>, Error> {
     let store = Store::from_cache(LICENSES)?;
-    let mut approved: Option<bool> = None;
     let mut spdx_id: Option<String> = None;
     matching_paths(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
             let m = store.analyze(&TextData::from(content));
             if m.score > 0.9 {
-                approved = Some(APPROVED_LICENSES.contains(&m.name));
                 spdx_id = Some(m.name.to_string());
                 return true;
             }
         }
         false
     });
-    Ok(License { approved, spdx_id })
+    Ok(spdx_id)
 }
 
-/// Checks if exists at least a path that matches the globs provided.
+/// Check if the license provided is an approved one.
+pub(crate) fn is_approved_license(spdx_id: &str) -> bool {
+    APPROVED_LICENSES.contains(&spdx_id)
+}
+
+/// Check if exists at least a path that matches the globs provided.
 pub(crate) fn path_exists(globs: Globs) -> Result<bool, PatternError> {
     Ok(!matching_paths(globs)?.is_empty())
 }
 
-/// Returns all paths that match any of the globs provided.
+/// Return all paths that match any of the globs provided.
 fn matching_paths(globs: Globs) -> Result<Vec<PathBuf>, PatternError> {
     let options = MatchOptions {
         case_sensitive: globs.case_sensitive,

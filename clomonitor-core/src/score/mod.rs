@@ -80,20 +80,20 @@ fn calculate_core_linter_score(report: &Report) -> Score {
 
     // License
     if report.license.spdx_id.is_some() {
-        score.license += 25;
+        score.license += 20;
     }
     if let Some(approved) = report.license.approved {
         if approved {
-            score.license += 75;
+            score.license += 60;
         }
+    }
+    if report.license.fossa_badge {
+        score.license += 20;
     }
 
     // Best practices
-    if report.best_practices.fossa_badge {
-        score.best_practices += 50;
-    }
     if report.best_practices.openssf_badge {
-        score.best_practices += 50;
+        score.best_practices += 100;
     }
 
     // Security

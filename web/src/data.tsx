@@ -99,8 +99,8 @@ export const REPORT_OPTIONS_BY_CATEGORY = {
     ReportOption.Maintainers,
     ReportOption.Roadmap,
   ],
-  [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense],
-  [ScoreType.BestPractices]: [ReportOption.FossaBadge, ReportOption.OpenSSFBadge],
+  [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.FossaBadge],
+  [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge],
   [ScoreType.Security]: [ReportOption.SecurityPolicy],
 };
 
@@ -205,7 +205,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         </em>
       </p>
     ),
-    weight: 75,
+    weight: 60,
   },
   [ReportOption.SPDX]: {
     icon: <FaBalanceScale />,
@@ -217,7 +217,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         content
       </p>
     ),
-    weight: 25,
+    weight: 20,
   },
   [ReportOption.FossaBadge]: {
     icon: <GiStamper />,
@@ -227,7 +227,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains a <em>FOSSA</em> badge
       </p>
     ),
-    weight: 50,
+    weight: 20,
   },
   [ReportOption.OpenSSFBadge]: {
     icon: <BiMedal />,
@@ -237,7 +237,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
       </p>
     ),
-    weight: 50,
+    weight: 100,
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,

@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+import { orderBy } from 'lodash';
+import { Fragment, useEffect, useState } from 'react';
 import { GoLink } from 'react-icons/go';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,11 +17,21 @@ interface Props {
   scrollIntoView: (id?: string) => void;
 }
 
+// Sort by score global and alphabetically
+const sortRepos = (repos: Repository[]): Repository[] => {
+  return orderBy(repos, ['score.global', 'name'], ['desc', 'asc']);
+};
+
 const RepositoriesList = (props: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
-  if (props.repositories.length === 0) return null;
+  useEffect(() => {
+    setRepositories(sortRepos(props.repositories));
+  }, [props.repositories]);
+
+  if (repositories.length === 0) return null;
 
   const getAnchorLink = (repo: Repository) => (
     <button
@@ -48,9 +59,9 @@ const RepositoriesList = (props: Props) => {
       </div>
 
       {/* Summary - only for more than 1 repository */}
-      {props.repositories.length > 1 && <Summary repositories={props.repositories} />}
+      {repositories.length > 1 && <Summary repositories={repositories} />}
 
-      {props.repositories.map((repo: Repository) => {
+      {repositories.map((repo: Repository) => {
         return (
           <div key={`repo_${repo.repositoryId}`} className="mb-5 position-relative">
             <div>

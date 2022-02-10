@@ -16,7 +16,7 @@ function App() {
     <AppContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout setScrollPosition={setScrollPosition} />}>
             <Route path="/" element={<Navigate to="/search?page=1" replace />} />
             <Route
               path="search"

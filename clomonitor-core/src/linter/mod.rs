@@ -47,14 +47,15 @@ pub struct Documentation {
 /// License section of a linter report.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct License {
-    pub spdx_id: Option<String>,
     pub approved: Option<bool>,
     pub fossa_badge: bool,
+    pub spdx_id: Option<String>,
 }
 
 /// BestPractices section of a linter report.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BestPractices {
+    pub community_meeting: bool,
     pub openssf_badge: bool,
 }
 
@@ -142,7 +143,6 @@ fn lint_license(root: &Path) -> Result<License, Error> {
     }
 
     Ok(License {
-        spdx_id,
         approved,
         fossa_badge: check::content_matches(
             Globs {
@@ -152,12 +152,26 @@ fn lint_license(root: &Path) -> Result<License, Error> {
             },
             vec![r"https://app.fossa.*/api/projects/.*"],
         )?,
+        spdx_id,
     })
 }
 
 /// Run best practices checks and prepare the report's best practices section.
 fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
     Ok(BestPractices {
+        community_meeting: check::content_matches(
+            Globs {
+                root,
+                patterns: vec!["README*"],
+                case_sensitive: true,
+            },
+            vec![
+                r"(?i)community (call|event|meeting|session)",
+                r"(?i)(developer|development) meeting",
+                r"(?i)meeting minutes",
+                r"(?i)(weekly|biweekly|monthly) meeting",
+            ],
+        )?,
         openssf_badge: check::content_matches(
             Globs {
                 root,

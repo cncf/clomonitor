@@ -79,9 +79,6 @@ fn calculate_core_linter_score(report: &Report) -> Score {
     }
 
     // License
-    if report.license.spdx_id.is_some() {
-        score.license += 20;
-    }
     if let Some(approved) = report.license.approved {
         if approved {
             score.license += 60;
@@ -90,10 +87,16 @@ fn calculate_core_linter_score(report: &Report) -> Score {
     if report.license.fossa_badge {
         score.license += 20;
     }
+    if report.license.spdx_id.is_some() {
+        score.license += 20;
+    }
 
     // Best practices
+    if report.best_practices.community_meeting {
+        score.best_practices += 25;
+    }
     if report.best_practices.openssf_badge {
-        score.best_practices += 100;
+        score.best_practices += 75;
     }
 
     // Security

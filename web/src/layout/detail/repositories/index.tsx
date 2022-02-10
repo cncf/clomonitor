@@ -107,11 +107,11 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.reportId}
-                      name={ScoreType.Quality}
-                      label="Quality"
-                      data={report.data.quality}
-                      icon={CATEGORY_ICONS[ScoreType.Quality]}
-                      score={repo.score.quality}
+                      name={ScoreType.BestPractices}
+                      label="Best Practices"
+                      data={report.data.bestPractices}
+                      icon={CATEGORY_ICONS[ScoreType.BestPractices]}
+                      score={repo.score.bestPractices}
                     />
                     <Row
                       reportId={report.reportId}

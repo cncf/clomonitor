@@ -17,17 +17,19 @@ const Category = (props: Props) => {
   const color = getCategoryColor(props.value);
   return (
     <div className={`col-${props.colNumber || 6} text-truncate`}>
-      <small className={`text-muted fw-bold text-nowrap ${styles.title}`}>
+      <div className={`d-flex flex-row align-items-baseline text-muted fw-bold flex-nowrap ${styles.title}`}>
         {props.icon && <span className={`pe-1 d-inline-block position-relative ${styles.icon}`}>{props.icon}</span>}
         <span
-          className={classNames({
+          className={classNames('text-truncate', {
             'd-none d-md-inline-block': !isUndefined(props.shortName),
           })}
         >
           {props.name}
         </span>
-        {!isUndefined(props.shortName) && <span className="d-inline-block d-md-none">{props.shortName}</span>}
-      </small>
+        {!isUndefined(props.shortName) && (
+          <span className="d-inline-block d-md-none text-truncate">{props.shortName}</span>
+        )}
+      </div>
       <div className={`d-flex flex-row bg-white position-relative border overflow-hidden ${styles.line}`}>
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
           {props.value}

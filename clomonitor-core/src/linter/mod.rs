@@ -27,7 +27,7 @@ impl std::convert::TryFrom<i32> for Linter {
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
-    pub quality: Quality,
+    pub best_practices: BestPractices,
     pub security: Security,
 }
 
@@ -51,9 +51,9 @@ pub struct License {
     pub spdx_id: Option<String>,
 }
 
-/// Quality section of a linter report.
+/// BestPractices section of a linter report.
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Quality {
+pub struct BestPractices {
     pub fossa_badge: bool,
     pub openssf_badge: bool,
 }
@@ -122,7 +122,7 @@ pub fn lint(root: &Path) -> Result<Report, Error> {
             patterns: vec!["LICENSE*", "COPYING*"],
             case_sensitive: true,
         })?,
-        quality: Quality {
+        best_practices: BestPractices {
             fossa_badge: check::content_matches(
                 Globs {
                     root,

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 import { GrPieChart } from 'react-icons/gr';
@@ -81,10 +82,14 @@ const Detail = () => {
       )}
 
       <main className="container-lg flex-grow-1 mb-4">
-        {isLoadingProject && <Loading />}
+        {isLoadingProject && <Loading transparentBg />}
 
         {!isUndefined(detail) && (
-          <>
+          <div
+            className={classNames({
+              'opacity-75': isLoadingProject,
+            })}
+          >
             {isNull(detail) ? (
               <div className="pt-5">
                 <NoData>
@@ -144,7 +149,7 @@ const Detail = () => {
                 <RepositoriesList repositories={detail.repositories} scrollIntoView={scrollIntoView} />
               </>
             )}
-          </>
+          </div>
         )}
       </main>
     </>

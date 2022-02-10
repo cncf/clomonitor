@@ -8,6 +8,7 @@ interface Props {
   spinnerClassName?: string;
   smallSize?: boolean;
   position?: 'fixed' | 'absolute' | 'relative';
+  transparentBg?: boolean;
 }
 
 const Loading = (props: Props) => (
@@ -17,6 +18,7 @@ const Loading = (props: Props) => (
       { 'p-5': isUndefined(props.smallSize) || !props.smallSize },
       `position-${props.position || 'absolute'}`,
       styles.wrapper,
+      { [styles.transparentBg]: !isUndefined(props.transparentBg) && props.transparentBg },
       props.className
     )}
   >

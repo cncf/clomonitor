@@ -82,8 +82,8 @@ pub(crate) fn display(report: &Report, score: &Score) {
             cell_check(report.license.approved.unwrap_or(false)),
         ])
         .add_row(vec![
-            cell_entry("Best practices / Fossa badge"),
-            cell_check(report.best_practices.fossa_badge),
+            cell_entry("License / FOSSA badge"),
+            cell_check(report.license.fossa_badge),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),

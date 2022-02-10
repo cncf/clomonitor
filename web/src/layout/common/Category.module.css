@@ -34,3 +34,9 @@
     border-bottom: 15px solid transparent;
   }
 }
+
+@media only screen and (max-width: 767.98px) {
+  .title {
+    font-size: 65%;
+  }
+}

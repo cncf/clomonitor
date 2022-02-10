@@ -129,7 +129,7 @@ export enum LinterId {
 export enum ScoreType {
   Documentation = 'documentation',
   License = 'license',
-  Quality = 'quality',
+  BestPractices = 'bestPractices',
   Security = 'security',
   Global = 'global',
 }

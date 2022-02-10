@@ -3,8 +3,9 @@ import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import { FaBalanceScale, FaCheckDouble, FaTools } from 'react-icons/fa';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
-import { HiCode, HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
+import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
+import { IoMdRibbon } from 'react-icons/io';
 import { RiRoadMapLine } from 'react-icons/ri';
 
 import RoundedBadge from './layout/common/RoundedBadge';
@@ -83,7 +84,7 @@ export const CATEGORY_ICONS = {
   [ScoreType.Global]: <BiTrophy />,
   [ScoreType.Documentation]: <HiOutlinePencilAlt />,
   [ScoreType.License]: <GoLaw />,
-  [ScoreType.Quality]: <HiCode />,
+  [ScoreType.BestPractices]: <IoMdRibbon />,
   [ScoreType.Security]: <BiLock />,
 };
 
@@ -99,7 +100,7 @@ export const REPORT_OPTIONS_BY_CATEGORY = {
     ReportOption.Roadmap,
   ],
   [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense],
-  [ScoreType.Quality]: [ReportOption.FossaBadge, ReportOption.OpenSSFBadge],
+  [ScoreType.BestPractices]: [ReportOption.FossaBadge, ReportOption.OpenSSFBadge],
   [ScoreType.Security]: [ReportOption.SecurityPolicy],
 };
 

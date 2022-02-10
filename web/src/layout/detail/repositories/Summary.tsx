@@ -41,8 +41,10 @@ const Summary = (props: Props) => {
               <span>License</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Quality]}</small>
-              <span>Quality</span>
+              <small className={`me-2 position-relative ${styles.icon}`}>
+                {CATEGORY_ICONS[ScoreType.BestPractices]}
+              </small>
+              <span>Best Practices</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
@@ -80,7 +82,7 @@ const Summary = (props: Props) => {
                   <Badge value={repo.score.license} />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.quality} />
+                  <Badge value={repo.score.bestPractices} />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.security} />

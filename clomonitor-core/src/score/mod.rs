@@ -7,7 +7,7 @@ pub struct Score {
     pub global: usize,
     pub documentation: usize,
     pub license: usize,
-    pub quality: usize,
+    pub best_practices: usize,
     pub security: usize,
 }
 
@@ -18,7 +18,7 @@ impl Score {
             global: 0,
             documentation: 0,
             license: 0,
-            quality: 0,
+            best_practices: 0,
             security: 0,
         }
     }
@@ -88,12 +88,12 @@ fn calculate_core_linter_score(report: &Report) -> Score {
         }
     }
 
-    // Quality
-    if report.quality.fossa_badge {
-        score.quality += 50;
+    // Best practices
+    if report.best_practices.fossa_badge {
+        score.best_practices += 50;
     }
-    if report.quality.openssf_badge {
-        score.quality += 50;
+    if report.best_practices.openssf_badge {
+        score.best_practices += 50;
     }
 
     // Security
@@ -102,7 +102,8 @@ fn calculate_core_linter_score(report: &Report) -> Score {
     }
 
     // Global
-    score.global = (score.documentation + score.license + score.quality + score.security) / 4;
+    score.global =
+        (score.documentation + score.license + score.best_practices + score.security) / 4;
 
     score
 }
@@ -114,14 +115,14 @@ pub fn merge(scores: Vec<Score>) -> Score {
         score.global += entry.global;
         score.documentation += entry.documentation;
         score.license += entry.license;
-        score.quality += entry.quality;
+        score.best_practices += entry.best_practices;
         score.security += entry.security;
     }
     let n = scores.len();
     score.global /= n;
     score.documentation /= n;
     score.license /= n;
-    score.quality /= n;
+    score.best_practices /= n;
     score.security /= n;
     score
 }

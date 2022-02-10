@@ -21,7 +21,10 @@ pub(crate) fn display(report: &Report, score: &Score) {
             cell_score(score.documentation),
         ])
         .add_row(vec![cell_entry("License"), cell_score(score.license)])
-        .add_row(vec![cell_entry("Quality"), cell_score(score.quality)])
+        .add_row(vec![
+            cell_entry("Best practices"),
+            cell_score(score.best_practices),
+        ])
         .add_row(vec![cell_entry("Security"), cell_score(score.security)]);
     println!("{summary}\n");
 
@@ -79,12 +82,12 @@ pub(crate) fn display(report: &Report, score: &Score) {
             cell_check(report.license.approved.unwrap_or(false)),
         ])
         .add_row(vec![
-            cell_entry("Quality / Fossa badge"),
-            cell_check(report.quality.fossa_badge),
+            cell_entry("Best practices / Fossa badge"),
+            cell_check(report.best_practices.fossa_badge),
         ])
         .add_row(vec![
-            cell_entry("Quality / OpenSSF (CII) badge"),
-            cell_check(report.quality.openssf_badge),
+            cell_entry("Best practices / OpenSSF (CII) badge"),
+            cell_check(report.best_practices.openssf_badge),
         ])
         .add_row(vec![
             cell_entry("Security / Security policy"),

@@ -1,5 +1,5 @@
 import { isNull } from 'lodash';
-import { ChangeEvent, KeyboardEvent, useRef, useState } from 'react';
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction, useRef, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import { prepareQueryString } from '../../utils/prepareQueryString';
 import styles from './Searchbar.module.css';
 
 interface Props {
+  setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
   classNameWrapper?: string;
 }
 
@@ -17,6 +18,7 @@ const Searchbar = (props: Props) => {
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
+      props.setScrollPosition(0);
       navigate({
         pathname: '/search',
         search: prepareQueryString({

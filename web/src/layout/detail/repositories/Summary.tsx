@@ -1,8 +1,10 @@
+import { FaCrown } from 'react-icons/fa';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
-import { Repository, ScoreType } from '../../../types';
+import { Repository, RepositoryKind, ScoreType } from '../../../types';
+import ElementWithTooltip from '../../common/ElementWithTooltip';
 import Badge from './Badge';
 import styles from './Summary.module.css';
 
@@ -57,20 +59,38 @@ const Summary = (props: Props) => {
             return (
               <tr key={`summary_${repo.repositoryId}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
-                  <button
-                    className={`btn btn-link text-dark text-truncate fw-bold ${styles.repoBtn}`}
-                    onClick={() =>
-                      navigate(
-                        {
-                          pathname: location.pathname,
-                          hash: repo.name,
-                        },
-                        { state: location.state }
-                      )
-                    }
-                  >
-                    {repo.name}
-                  </button>
+                  <div className="d-flex flex-row align-items-center">
+                    <button
+                      className={`btn btn-link text-dark text-truncate fw-bold ${styles.repoBtn}`}
+                      onClick={() =>
+                        navigate(
+                          {
+                            pathname: location.pathname,
+                            hash: repo.name,
+                          },
+                          { state: location.state }
+                        )
+                      }
+                    >
+                      {repo.name}
+                    </button>
+                    {repo.kind === RepositoryKind.Primary && (
+                      <>
+                        <FaCrown className="d-block d-md-none text-warning" />
+                        <ElementWithTooltip
+                          className="lh-1"
+                          element={<FaCrown className="text-warning" />}
+                          tooltipWidth={210}
+                          tooltipClassName={styles.tooltipMessage}
+                          tooltipMessage={<div>Primary project's repository</div>}
+                          alignmentTooltip="left"
+                          forceAlignment
+                          visibleTooltip
+                          active
+                        />
+                      </>
+                    )}
+                  </div>
                 </td>
                 <td className="align-middle">
                   <Badge value={repo.score.global} />

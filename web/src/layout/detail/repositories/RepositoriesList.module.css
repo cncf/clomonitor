@@ -29,6 +29,10 @@
   font-size: 1.25rem;
 }
 
+.tooltipMessage {
+  margin-left: -3px;
+}
+
 @media (hover: hover) {
   .titleWrapper:hover .headingLink {
     opacity: 1;

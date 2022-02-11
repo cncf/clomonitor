@@ -2,10 +2,11 @@ import { isBoolean, isNull, isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 
 import { REPORT_OPTIONS } from '../../../data';
-import { ReportOption, ReportOptionData } from '../../../types';
+import { ReportOption, ReportOptionData, RepositoryKind } from '../../../types';
 import styles from './OptionCell.module.css';
 
 interface Props {
+  repoKind: RepositoryKind;
   label: ReportOption;
   value: boolean | string;
 }
@@ -58,7 +59,7 @@ const OptionCell = (props: Props) => {
         </div>
       </td>
       <td className={`fw-bold text-muted text-center ${styles.weight}`}>
-        {opt.weight}
+        {opt.weight[props.repoKind]}
         <small>%</small>
       </td>
     </tr>

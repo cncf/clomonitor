@@ -1,11 +1,13 @@
 import { orderBy } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
+import { FaCrown } from 'react-icons/fa';
 import { GoLink } from 'react-icons/go';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
 import { Report, Repository, ScoreType } from '../../../types';
+import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
 import Row from '../report/Row';
@@ -19,7 +21,7 @@ interface Props {
 
 // Sort by score global and alphabetically
 const sortRepos = (repos: Repository[]): Repository[] => {
-  return orderBy(repos, ['score.global', 'name'], ['desc', 'asc']);
+  return orderBy(repos, ['kind', 'score.global', 'name'], ['asc', 'desc', 'asc']);
 };
 
 const RepositoriesList = (props: Props) => {
@@ -75,6 +77,22 @@ const RepositoriesList = (props: Props) => {
                   <div className="d-none d-md-block">
                     <div className={`d-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
+                      <small>
+                        <FaCrown className="d-block d-md-none text-warning ms-2" />
+                      </small>
+                      <ElementWithTooltip
+                        className="lh-1 ms-2"
+                        element={
+                          <small>
+                            <FaCrown className="text-warning" />
+                          </small>
+                        }
+                        tooltipWidth={210}
+                        tooltipClassName={styles.tooltipMessage}
+                        tooltipMessage={<div>Primary project's repository</div>}
+                        visibleTooltip
+                        active
+                      />
                       {getAnchorLink(repo)}
                     </div>
                     <ExternalLink href={repo.url}>
@@ -104,6 +122,7 @@ const RepositoriesList = (props: Props) => {
                   <Fragment key={report.reportId}>
                     <Row
                       reportId={report.reportId}
+                      repoKind={repo.kind}
                       name={ScoreType.Documentation}
                       label="Documentation"
                       data={report.data.documentation}
@@ -112,6 +131,7 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.reportId}
+                      repoKind={repo.kind}
                       name={ScoreType.License}
                       label="License"
                       data={report.data.license}
@@ -120,6 +140,7 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.reportId}
+                      repoKind={repo.kind}
                       name={ScoreType.BestPractices}
                       label="Best Practices"
                       data={report.data.bestPractices}
@@ -128,6 +149,7 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.reportId}
+                      repoKind={repo.kind}
                       name={ScoreType.Security}
                       label="Security"
                       data={report.data.security}

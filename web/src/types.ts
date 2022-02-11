@@ -34,6 +34,7 @@ export interface ProjectDetail extends BaseProject {
 export interface BaseRepository {
   name: string;
   url: string;
+  kind: RepositoryKind;
 }
 
 export interface Repository extends BaseRepository {
@@ -59,7 +60,7 @@ export interface CoreReport {
 
 export type Score = {
   [key in ScoreType]: number;
-};
+} & { scoreKind: ScoreKind };
 
 export interface FiltersSection {
   name: string;
@@ -90,7 +91,9 @@ export interface ReportOptionData {
   icon: JSX.Element;
   name: string;
   description: JSX.Element;
-  weight: number;
+  weight: {
+    [key in RepositoryKind]?: number;
+  };
 }
 
 export enum Maturity {
@@ -142,6 +145,16 @@ export enum SortDirection {
 export enum SortBy {
   Name = 'name',
   Score = 'score',
+}
+
+export enum RepositoryKind {
+  Primary = 'primary',
+  Secondary = 'secondary',
+}
+
+export enum ScoreKind {
+  Primary = 'primary',
+  Secondary = 'secondary',
 }
 
 export enum ReportOption {
@@ -202,4 +215,9 @@ export enum ErrorKind {
 
 export type ReportOptionInfo = {
   [key in ReportOption]: ReportOptionData;
+};
+export type ReportOptsByCategory = {
+  [key in RepositoryKind]?: {
+    [key in ScoreType]?: ReportOption[];
+  };
 };

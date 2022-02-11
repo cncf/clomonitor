@@ -1,11 +1,12 @@
 use anyhow::{format_err, Error};
 use clomonitor_core::{
-    linter::{lint, Linter, Report},
+    linter::{lint, LintOptions, Report, RepositoryKind},
     score::{self, Score},
+    Linter,
 };
 use deadpool_postgres::{Client as DbClient, Transaction};
-use std::path::Path;
 use std::time::Instant;
+use std::{path::Path, str::FromStr};
 use tempdir::TempDir;
 use tokio::process::Command;
 use tokio_postgres::types::Json;
@@ -18,6 +19,7 @@ use uuid::Uuid;
 pub(crate) struct Repository {
     repository_id: Uuid,
     url: String,
+    kind: RepositoryKind,
     digest: Option<String>,
 }
 
@@ -48,7 +50,11 @@ impl Repository {
 
         // Lint repository (only using core linter at the moment)
         let mut errors: Option<String> = None;
-        let report = match lint(tmp_dir.path()) {
+        let options = LintOptions {
+            root: tmp_dir.path(),
+            kind: &self.kind,
+        };
+        let report = match lint(options) {
             Ok(report) => Some(report),
             Err(err) => {
                 warn!(
@@ -247,12 +253,16 @@ pub(crate) async fn get_all(db: DbClient) -> Result<Vec<Repository>, DbError> {
     debug!("getting repositories");
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
-        .query("select repository_id, url, digest from repository;", &[])
+        .query(
+            "select repository_id, url, digest, kind::text from repository;",
+            &[],
+        )
         .await?;
     for row in rows {
         repositories.push(Repository {
             repository_id: row.get("repository_id"),
             url: row.get("url"),
+            kind: RepositoryKind::from_str(row.get("kind")).unwrap(),
             digest: row.get("digest"),
         });
     }

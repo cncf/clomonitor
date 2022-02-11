@@ -14,6 +14,7 @@ import Image from '../common/Image';
 import Loading from '../common/Loading';
 import MaturityBadge from '../common/MaturityBadge';
 import NoData from '../common/NoData';
+import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
 import SubNavbar from '../common/SubNavbar';
 import Summary from '../common/Summary';
@@ -133,6 +134,11 @@ const Detail = () => {
                                 </ExternalLink>
                               </>
                             )}
+                          </div>
+                        </div>
+                        <div className="d-none d-md-block ms-auto">
+                          <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
+                            <ProjectDropdown />
                           </div>
                         </div>
                         <div className="d-flex d-md-none align-items-center ms-auto">

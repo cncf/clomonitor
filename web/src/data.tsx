@@ -17,6 +17,8 @@ import {
   Rating,
   ReportOption,
   ReportOptionInfo,
+  ReportOptsByCategory,
+  RepositoryKind,
   ScoreType,
   SortBy,
   SortDirection,
@@ -88,20 +90,26 @@ export const CATEGORY_ICONS = {
   [ScoreType.Security]: <BiLock />,
 };
 
-export const REPORT_OPTIONS_BY_CATEGORY = {
-  [ScoreType.Documentation]: [
-    ReportOption.Readme,
-    ReportOption.CodeOfConduct,
-    ReportOption.Contributing,
-    ReportOption.Governance,
-    ReportOption.Adopters,
-    ReportOption.Changelog,
-    ReportOption.Maintainers,
-    ReportOption.Roadmap,
-  ],
-  [ScoreType.License]: [ReportOption.ApprovedLicense, ReportOption.SPDX, ReportOption.FossaBadge],
-  [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge, ReportOption.CommunityMeeting],
-  [ScoreType.Security]: [ReportOption.SecurityPolicy],
+export const REPORT_OPTIONS_BY_CATEGORY: ReportOptsByCategory = {
+  [RepositoryKind.Primary]: {
+    [ScoreType.Documentation]: [
+      ReportOption.Readme,
+      ReportOption.CodeOfConduct,
+      ReportOption.Contributing,
+      ReportOption.Governance,
+      ReportOption.Adopters,
+      ReportOption.Changelog,
+      ReportOption.Maintainers,
+      ReportOption.Roadmap,
+    ],
+    [ScoreType.License]: [ReportOption.ApprovedLicense, ReportOption.SPDX, ReportOption.FossaBadge],
+    [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge, ReportOption.CommunityMeeting],
+    [ScoreType.Security]: [ReportOption.SecurityPolicy],
+  },
+  [RepositoryKind.Secondary]: {
+    [ScoreType.Documentation]: [ReportOption.Readme, ReportOption.Contributing, ReportOption.Maintainers],
+    [ScoreType.License]: [ReportOption.ApprovedLicense, ReportOption.SPDX],
+  },
 };
 
 export const REPORT_OPTIONS: ReportOptionInfo = {
@@ -114,7 +122,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         repository
       </p>
     ),
-    weight: 5,
+    weight: {
+      [RepositoryKind.Primary]: 5,
+    },
   },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
@@ -125,7 +135,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         the repository
       </p>
     ),
-    weight: 5,
+    weight: {
+      [RepositoryKind.Primary]: 5,
+    },
   },
   [ReportOption.CodeOfConduct]: {
     icon: <GiFountainPen />,
@@ -136,7 +148,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         <code>root</code> of the repository or in the <code>docs</code> directory
       </p>
     ),
-    weight: 10,
+    weight: {
+      [RepositoryKind.Primary]: 10,
+    },
   },
   [ReportOption.Contributing]: {
     icon: <HiTerminal />,
@@ -147,7 +161,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         the repository or in the <code>docs</code> directory
       </p>
     ),
-    weight: 10,
+    weight: {
+      [RepositoryKind.Primary]: 10,
+      [RepositoryKind.Secondary]: 20,
+    },
   },
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,
@@ -158,7 +175,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         the repository or in the <code>docs</code> directory
       </p>
     ),
-    weight: 10,
+    weight: {
+      [RepositoryKind.Primary]: 10,
+    },
   },
   [ReportOption.Maintainers]: {
     icon: <FaTools />,
@@ -170,7 +189,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         directory
       </p>
     ),
-    weight: 5,
+    weight: {
+      [RepositoryKind.Primary]: 5,
+      [RepositoryKind.Secondary]: 10,
+    },
   },
   [ReportOption.Readme]: {
     icon: <CgReadme />,
@@ -181,7 +203,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         repository
       </p>
     ),
-    weight: 50,
+    weight: {
+      [RepositoryKind.Primary]: 50,
+      [RepositoryKind.Secondary]: 70,
+    },
   },
   [ReportOption.Roadmap]: {
     icon: <RiRoadMapLine />,
@@ -192,7 +217,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         repository
       </p>
     ),
-    weight: 5,
+    weight: {
+      [RepositoryKind.Primary]: 5,
+    },
   },
   [ReportOption.ApprovedLicense]: {
     icon: <FaCheckDouble />,
@@ -205,7 +232,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         </em>
       </p>
     ),
-    weight: 60,
+    weight: {
+      [RepositoryKind.Primary]: 60,
+      [RepositoryKind.Secondary]: 75,
+    },
   },
   [ReportOption.SPDX]: {
     icon: <FaBalanceScale />,
@@ -217,7 +247,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         content
       </p>
     ),
-    weight: 20,
+    weight: {
+      [RepositoryKind.Primary]: 20,
+      [RepositoryKind.Secondary]: 25,
+    },
   },
   [ReportOption.FossaBadge]: {
     icon: <GiStamper />,
@@ -227,7 +260,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains a <em>FOSSA</em> badge
       </p>
     ),
-    weight: 20,
+    weight: {
+      [RepositoryKind.Primary]: 20,
+    },
   },
   [ReportOption.OpenSSFBadge]: {
     icon: <BiMedal />,
@@ -237,7 +272,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
       </p>
     ),
-    weight: 75,
+    weight: {
+      [RepositoryKind.Primary]: 75,
+    },
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,
@@ -248,7 +285,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         repository or in the <code>docs</code> or <code>.github</code> directories
       </p>
     ),
-    weight: 100,
+    weight: {
+      [RepositoryKind.Primary]: 100,
+    },
   },
   [ReportOption.CommunityMeeting]: {
     icon: <IoIosPeople />,
@@ -259,6 +298,8 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         <em>meeting minutes</em>, etc.
       </p>
     ),
-    weight: 25,
+    weight: {
+      [RepositoryKind.Primary]: 25,
+    },
   },
 };

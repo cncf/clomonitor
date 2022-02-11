@@ -2,11 +2,12 @@ import { isBoolean, isNull, isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegQuestionCircle, FaRegTimesCircle } from 'react-icons/fa';
 
 import { REPORT_OPTIONS } from '../../../data';
-import { ReportOption, ReportOptionData } from '../../../types';
+import { ReportOption, ReportOptionData, RepositoryKind } from '../../../types';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
 import styles from './OptionBox.module.css';
 
 interface Props {
+  repoKind: RepositoryKind;
   label: ReportOption;
   value: boolean | string;
 }
@@ -48,7 +49,7 @@ const OptionBox = (props: Props) => {
 
             <div>
               <div className={`fw-bold text-muted ${styles.weight}`}>
-                {opt.weight}
+                {opt.weight[props.repoKind]}
                 <small>%</small>
               </div>
             </div>

@@ -166,10 +166,9 @@ fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
                 case_sensitive: true,
             },
             vec![
-                r"(?i)community (call|event|meeting|session)",
-                r"(?i)(developer|development) meeting",
-                r"(?i)meeting minutes",
+                r"(?i)(community|developer|development) (call|event|meeting|session)",
                 r"(?i)(weekly|biweekly|monthly) meeting",
+                r"(?i)meeting minutes",
             ],
         )?,
         openssf_badge: check::content_matches(

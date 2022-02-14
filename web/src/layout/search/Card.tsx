@@ -8,6 +8,7 @@ import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import MaturityBadge from '../common/MaturityBadge';
 import ProjectDropdown from '../common/ProjectDropdown';
+import RoundScore from '../common/RoundScore';
 import Summary from '../common/Summary';
 import styles from './Card.module.css';
 import RepositorySection from './RepositorySection';
@@ -24,7 +25,7 @@ const Card = (props: Props) => {
   return (
     <div className={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`} role="listitem">
       <div
-        className={`card rounded-0 p-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
+        className={`card rounded-0 p-0 p-md-3 p-lg-0 p-xl-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
         onClick={() => {
           props.saveScrollPosition();
           navigate(`/projects/${props.project.organization.name}/${props.project.name}`, {
@@ -42,7 +43,7 @@ const Card = (props: Props) => {
             <div className={`p-2 p-md-3 p-lg-2 p-xl-3 ${styles.content}`}>
               <div className="d-flex flex-row align-items-center">
                 <div
-                  className={`d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-2 me-lg-3 ${styles.miniImageWrapper}`}
+                  className={`d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-3 ${styles.miniImageWrapper}`}
                 >
                   <Image alt={`${props.project.name}`} url={props.project.logoUrl} />
                 </div>
@@ -51,7 +52,7 @@ const Card = (props: Props) => {
                     <span className={`text-truncate fw-bold mb-0 ${styles.title}`}>
                       {props.project.displayName || props.project.name}
                     </span>
-                    <div className="ms-2 d-none d-md-flex">
+                    <div className="ms-2 d-none d-md-flex d-lg-none d-xl-flex">
                       <div className="d-flex flex-column justify-content-start">
                         <ProjectDropdown />
                       </div>
@@ -81,17 +82,21 @@ const Card = (props: Props) => {
                     )}
                   </div>
                 </div>
+
+                <div className="d-flex d-md-none d-lg-flex d-xl-none">
+                  <RoundScore score={props.project.score.global} className={`ms-2 ${styles.global}`} />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <p className={`text-muted my-4 ${styles.description}`}>{props.project.description}</p>
+        <p className={`text-muted mx-3 my-3 my-md-4 ${styles.description}`}>{props.project.description}</p>
 
         <div className="mt-auto">
           <Summary score={props.project.score} bigSize={false} />
         </div>
-        <div className={`text-end text-muted fst-italic mt-2 ${styles.legend}`}>
+        <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
           Updated {moment.unix(props.project.updatedAt).fromNow()}
         </div>
       </div>

@@ -16,7 +16,7 @@ const Summary = (props: Props) => {
 
   if (props.repositories.length === 0) return null;
   return (
-    <div className="pt-2 mb-5 table-responsive">
+    <div className="pt-2 mb-4 mb-md-5 table-responsive">
       <table className={`table table-bordered mb-0 ${styles.table}`}>
         <thead>
           <tr>

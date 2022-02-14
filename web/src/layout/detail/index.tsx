@@ -14,7 +14,7 @@ import Image from '../common/Image';
 import Loading from '../common/Loading';
 import MaturityBadge from '../common/MaturityBadge';
 import NoData from '../common/NoData';
-import ProjectDropdown from '../common/ProjectDropdown';
+import RoundScore from '../common/RoundScore';
 import SubNavbar from '../common/SubNavbar';
 import Summary from '../common/Summary';
 import RepositorySection from '../search/RepositorySection';
@@ -33,6 +33,7 @@ const Detail = () => {
 
   useEffect(() => {
     async function fetchProjectDetail() {
+      window.scrollTo(0, 0); // Go to top when a new project is fetched
       setIsLoadingProject(true);
       try {
         setDetail(await API.getProjectDetail(org!, project!));
@@ -81,7 +82,7 @@ const Detail = () => {
         </SubNavbar>
       )}
 
-      <main className="container-lg flex-grow-1 mb-4">
+      <main className="container-lg flex-grow-1 mb-0 mb-md-4">
         {isLoadingProject && <Loading transparentBg />}
 
         {!isUndefined(detail) && (
@@ -100,14 +101,16 @@ const Detail = () => {
               </div>
             ) : (
               <>
-                <div className="my-5">
+                <div className="my-4 my-md-5">
                   <div className="border">
-                    <div className="px-4 pt-4">
-                      <div className="d-flex flex-row align-items-stretch">
-                        <div className={`d-flex align-items-center justify-content-center ${styles.imageWrapper}`}>
+                    <div className="px-0 px-md-4 pt-0 pt-md-4">
+                      <div className={`d-flex flex-row align-items-stretch p-2 p-md-0 ${styles.titleWrapper}`}>
+                        <div
+                          className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
+                        >
                           <Image alt={`${detail.name}`} url={detail.logoUrl} />
                         </div>
-                        <div className="d-flex flex-column justify-content-between ms-2 ms-sm-4 truncateWrapper">
+                        <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
                           <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>
                             {detail.displayName || detail.name}
                           </div>
@@ -132,13 +135,13 @@ const Detail = () => {
                             )}
                           </div>
                         </div>
-                        <div className="ms-auto">
-                          <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
-                            <ProjectDropdown />
-                          </div>
+                        <div className="d-flex d-md-none align-items-center ms-auto">
+                          <RoundScore score={detail.score.global} className={`ms-2 ${styles.global}`} />
                         </div>
                       </div>
-                      <p className="text-muted my-4">{detail.description}</p>
+                      <p className={`text-muted my-3 my-md-4 mx-3 mx-md-0 ${styles.description}`}>
+                        {detail.description}
+                      </p>
                     </div>
                     <div className="pt-2">
                       <Summary score={detail.score} bigSize />

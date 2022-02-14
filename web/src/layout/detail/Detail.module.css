@@ -31,15 +31,37 @@
   stroke: inherit;
 }
 
+.global {
+  height: 4rem;
+  width: 4rem;
+  min-width: 4rem;
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 575.98px) {
   .title {
     font-size: 1.1rem;
   }
 
   .imageWrapper {
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
     font-size: 2rem;
+  }
+
+  .titleWrapper {
+    background-color: var(--bg-color);
+  }
+
+  .global {
+    height: 2.5rem;
+    width: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
   }
 }

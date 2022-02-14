@@ -32,17 +32,6 @@ const SummaryCard = (props: Props) => {
       >
         <RoundScore score={props.score.global} className="me-0 me-sm-4 mb-2 mb-sm-0" />
       </div>
-      <div className={classNames('d-block d-md-none w-100', { 'd-lg-block d-xl-none': !props.bigSize })}>
-        <div className="mb-3 justify-content-center row">
-          <Category
-            name="Global"
-            value={props.score.license}
-            icon={CATEGORY_ICONS[ScoreType.Global]}
-            bigSize={props.bigSize}
-            colNumber={8}
-          />
-        </div>
-      </div>
 
       <div
         className={classNames('flex-grow-1 w-100 position-relative', styles.categories, {

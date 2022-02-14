@@ -14,9 +14,9 @@
 }
 
 .miniImageWrapper {
-  height: 50px;
-  width: 50px;
-  min-width: 50px;
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
   font-size: 2rem;
 }
 
@@ -52,10 +52,31 @@
   -webkit-box-orient: vertical;
 }
 
+.global {
+  height: 2.5rem;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 1rem;
+}
+
 @media only screen and (max-width: 575.98px) {
   .description {
     -webkit-line-clamp: 4;
     max-height: 86px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .title {
+    font-size: 1.15rem;
   }
 }
 
@@ -69,5 +90,14 @@
   .card:hover {
     border-color: var(--rm-primary);
     box-shadow: 0px 0px 5px 0px var(--rm-primary-50);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .global {
+    height: 3rem;
+    width: 3rem;
+    min-width: 3rem;
+    font-size: 1.25rem;
   }
 }

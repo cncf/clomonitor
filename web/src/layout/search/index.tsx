@@ -260,7 +260,7 @@ const Search = (props: Props) => {
               visibleTitle
             />
           </aside>
-          <div className={`d-flex flex-column flex-grow-1 mt-3 ${styles.contentWrapper}`}>
+          <div className={`d-flex flex-column flex-grow-1 mt-2 mt-md-3 ${styles.contentWrapper}`}>
             {projects && (
               <>
                 {isEmpty(projects) ? (
@@ -332,7 +332,7 @@ const Search = (props: Props) => {
                 offset={0}
                 total={total}
                 active={pageNumber}
-                className="mt-5"
+                className="mt-4 mt-md-5 mb-0 mb-md-2"
                 onChange={onPageNumberChange}
               />
             </div>

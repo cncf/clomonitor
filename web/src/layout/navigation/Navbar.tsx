@@ -23,8 +23,8 @@ const Navbar = (props: Props) => {
               <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge}`}>Alpha</div>
             </div>
           </div>
-          <div className="d-flex flex-row align-items-center">
-            <Searchbar classNameWrapper="my-3" setScrollPosition={props.setScrollPosition} />
+          <div className={`d-flex flex-row align-items-center ${styles.searchWrapper}`}>
+            <Searchbar classNameWrapper="my-3 flex-grow-1" setScrollPosition={props.setScrollPosition} />
             <ThemeSwitch />
           </div>
         </div>

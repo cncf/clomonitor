@@ -3,10 +3,11 @@
 }
 
 .global {
-  height: 3rem;
-  width: 3rem;
-  min-width: 3rem;
-  font-size: 1rem;
+  height: 2rem;
+  width: 2rem;
+  min-width: 2rem;
+  font-size: 0.8rem;
+  border-width: 0.2rem;
 }
 
 .headerAnchor {
@@ -22,6 +23,10 @@
 .headingLink svg {
   width: 15px;
   height: 15px;
+}
+
+.repoName {
+  font-size: 1.25rem;
 }
 
 @media (hover: hover) {
@@ -47,11 +52,16 @@
     width: 4rem;
     min-width: 4rem;
     font-size: 1.5rem;
+    border-width: 0.25rem;
   }
 }
 
 @media only screen and (max-width: 575.98px) {
   .headingLink {
     opacity: 1;
+  }
+
+  .repoName {
+    font-size: 1rem;
   }
 }

@@ -1,7 +1,7 @@
 .summary {
   background-color: var(--bg-color);
   font-size: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .categories {
@@ -11,5 +11,9 @@
 @media only screen and (min-width: 768px) {
   .bigSize {
     padding: 2rem 1.5rem;
+  }
+
+  .summary:not(.bigSize) {
+    padding: 1.5rem;
   }
 }

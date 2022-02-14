@@ -55,7 +55,9 @@ const RepositoriesList = (props: Props) => {
   return (
     <>
       <div className="my-3">
-        <div className="text-uppercase h5 text-secondary fw-bold mb-3 mb-md-4">Repositories</div>
+        <div className="text-center text-md-start text-uppercase h5 text-secondary fw-bold mb-3 mb-md-4">
+          Repositories
+        </div>
       </div>
 
       {/* Summary - only for more than 1 repository */}
@@ -63,16 +65,13 @@ const RepositoriesList = (props: Props) => {
 
       {repositories.map((repo: Repository) => {
         return (
-          <div key={`repo_${repo.repositoryId}`} className="mb-5 position-relative">
+          <div key={`repo_${repo.repositoryId}`} className="mb-4 mb-md-5 position-relative">
             <div>
               <div className={`position-absolute ${styles.headerAnchor}`} id={repo.name} />
             </div>
-            <div className={`border px-4 py-3 py-md-4 ${styles.headerWrapper}`}>
-              <div className="d-flex flex-row align-items-center">
-                <div className="me-3">
-                  <RoundScore score={repo.score.global} className={styles.global} />
-                </div>
-                <div className="mx-1 flex-grow-1 truncateWrapper position-relative">
+            <div className={`border px-3 py-2 px-md-4 py-md-4 ${styles.headerWrapper}`}>
+              <div className="d-flex flex-row flex-md-row-reverse align-items-center">
+                <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
                   <div className="d-none d-md-block">
                     <div className={`d-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
@@ -87,12 +86,15 @@ const RepositoriesList = (props: Props) => {
                   </div>
                   <div className="d-block d-md-none">
                     <div className="d-flex flex-row">
-                      <ExternalLink href={repo.url} className="h5 fw-bold mb-0 text-truncate">
+                      <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
                         <div className="text-truncate">{repo.name}</div>
                       </ExternalLink>
                       {getAnchorLink(repo)}
                     </div>
                   </div>
+                </div>
+                <div className="ms-3 ms-md-0 me-0 me-md-3">
+                  <RoundScore score={repo.score.global} className={styles.global} />
                 </div>
               </div>
             </div>

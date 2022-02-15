@@ -241,7 +241,7 @@ const Search = (props: Props) => {
         </div>
       </SubNavbar>
 
-      <main role="main" className="container-lg flex-grow-1 mb-4">
+      <main role="main" className="container-lg flex-grow-1 mb-4 mb-md-5">
         {isLoading && <Loading position="fixed" transparentBg />}
         <div
           className={classNames('h-100 position-relative d-flex flex-row align-items-start', {

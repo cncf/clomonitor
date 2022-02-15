@@ -173,6 +173,7 @@ export enum ReportOption {
   OpenSSFBadge = 'openssfBadge',
   SecurityPolicy = 'securityPolicy',
   CommunityMeeting = 'communityMeeting',
+  ArtifactHubBadge = 'artifacthubBadge',
 }
 
 export interface SearchFiltersURL extends BasicQuery {

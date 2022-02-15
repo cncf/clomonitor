@@ -1,6 +1,7 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy } from 'react-icons/bi';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import { FaBalanceScale, FaCheckDouble, FaTools } from 'react-icons/fa';
+import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
@@ -8,6 +9,7 @@ import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { RiRoadMapLine } from 'react-icons/ri';
 
+import ExternalLink from './layout/common/ExternalLink';
 import RoundedBadge from './layout/common/RoundedBadge';
 import {
   Category,
@@ -103,7 +105,11 @@ export const REPORT_OPTIONS_BY_CATEGORY: ReportOptsByCategory = {
       ReportOption.Roadmap,
     ],
     [ScoreType.License]: [ReportOption.ApprovedLicense, ReportOption.SPDX, ReportOption.FossaBadge],
-    [ScoreType.BestPractices]: [ReportOption.OpenSSFBadge, ReportOption.CommunityMeeting],
+    [ScoreType.BestPractices]: [
+      ReportOption.OpenSSFBadge,
+      ReportOption.CommunityMeeting,
+      ReportOption.ArtifactHubBadge,
+    ],
     [ScoreType.Security]: [ReportOption.SecurityPolicy],
   },
   [RepositoryKind.Secondary]: {
@@ -333,7 +339,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
     weight: {
-      [RepositoryKind.Primary]: 75,
+      [RepositoryKind.Primary]: 70,
     },
   },
   [ReportOption.SecurityPolicy]: {
@@ -371,6 +377,27 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     ),
     weight: {
       [RepositoryKind.Primary]: 25,
+    },
+  },
+  [ReportOption.ArtifactHubBadge]: {
+    icon: <FiHexagon />,
+    name: 'Artifact Hub badge',
+    legend: (
+      <span>
+        Projects can list their content on{' '}
+        <ExternalLink className="d-inline-block fw-bold" href="https://artifacthub.io">
+          Artifact Hub
+        </ExternalLink>{' '}
+        to improve their discoverability.
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains an Artifact Hub badge
+      </span>
+    ),
+    weight: {
+      [RepositoryKind.Primary]: 5,
     },
   },
 };

@@ -105,6 +105,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.license.fossa_badge),
         ])
         .add_row(vec![
+            cell_entry("Best practices / Artifact Hub badge"),
+            cell_check(report.best_practices.artifacthub_badge),
+        ])
+        .add_row(vec![
             cell_entry("Best practices / Community meeting"),
             cell_check(report.best_practices.community_meeting),
         ])

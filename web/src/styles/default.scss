@@ -156,6 +156,10 @@ a,
   }
 }
 
+.table {
+  color: var(--color-font);
+}
+
 .table > :not(:first-child) {
   border-top-color: inherit;
 }

@@ -125,7 +125,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         The <em>adopters</em> file contains a list of organizations using this project in production or at stages of
-        testing.
+        testing
       </span>
     ),
     description: (
@@ -144,7 +144,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         A <em>changelog</em> is a file which contains a curated, chronologically ordered list of notable changes for
-        each version.
+        each version
       </span>
     ),
     description: (
@@ -163,7 +163,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline
-        procedures for handling abuse.
+        procedures for handling abuse
       </span>
     ),
     description: (
@@ -182,7 +182,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         A <em>contributing</em> file in your repository provides potential project contributors with a short guide to
-        how they can help with your project.
+        how they can help with your project
       </span>
     ),
     description: (
@@ -199,7 +199,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,
     name: 'Governance',
-    legend: <span>File that explains how the governance and committer process works in the repository.</span>,
+    legend: <span>File that explains how the governance and committer process works in the repository</span>,
     description: (
       <span>
         We check that a <code>governance*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
@@ -215,7 +215,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Maintainers',
     legend: (
       <span>
-        The <em>maintainers</em> file contains a list of the current maintainers of the repository.
+        The <em>maintainers</em> file contains a list of the current maintainers of the repository
       </span>
     ),
     description: (
@@ -236,7 +236,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         The <em>readme</em> file introduces and explains a project. It contains information that is commonly required to
-        understand what the project is about.
+        understand what the project is about
       </span>
     ),
     description: (
@@ -256,7 +256,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         The <em>roadmap</em> file defines a high-level overview of the project's goals and deliverables ideally
-        presented on a timeline.
+        presented on a timeline
       </span>
     ),
     description: (
@@ -291,7 +291,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'License',
     legend: (
       <span>
-        The <em>LICENSE</em> file contains the repository's license.
+        The <em>LICENSE</em> file contains the repository's license
       </span>
     ),
     description: (
@@ -312,7 +312,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         <em>FOSSA</em> scans and automatically identifies, manages and addresses open source licensing issues and
-        security vulnerabilities.
+        security vulnerabilities
       </span>
     ),
     description: (
@@ -330,7 +330,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source
-        Software (FLOSS) projects to show that they follow best practices.
+        Software (FLOSS) projects to show that they follow best practices
       </span>
     ),
     description: (
@@ -348,7 +348,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         Clearly documented security processes explaining how to report security issues to the project, and describing
-        how the project provides updated releases or patches to resolve security vulnerabilities.
+        how the project provides updated releases or patches to resolve security vulnerabilities
       </span>
     ),
     description: (
@@ -366,7 +366,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Community meeting',
     legend: (
       <span>
-        Community meetings are often held to engage community members, hear more voices and get more viewpoints.
+        Community meetings are often held to engage community members, hear more voices and get more viewpoints
       </span>
     ),
     description: (
@@ -388,7 +388,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         <ExternalLink className="d-inline-block fw-bold" href="https://artifacthub.io">
           Artifact Hub
         </ExternalLink>{' '}
-        to improve their discoverability.
+        to improve their discoverability
       </span>
     ),
     description: (

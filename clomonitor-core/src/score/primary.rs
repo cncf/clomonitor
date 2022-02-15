@@ -70,11 +70,14 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     }
 
     // Best practices
+    if report.best_practices.artifacthub_badge {
+        score.best_practices += 5;
+    }
     if report.best_practices.community_meeting {
         score.best_practices += 25;
     }
     if report.best_practices.openssf_badge {
-        score.best_practices += 75;
+        score.best_practices += 70;
     }
 
     // Security

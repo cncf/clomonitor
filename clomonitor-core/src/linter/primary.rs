@@ -39,6 +39,7 @@ pub struct License {
 /// BestPractices section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BestPractices {
+    pub artifacthub_badge: bool,
     pub community_meeting: bool,
     pub openssf_badge: bool,
 }
@@ -135,6 +136,14 @@ fn lint_license(root: &Path) -> Result<License, Error> {
 /// Run best practices checks and prepare the report's best practices section.
 fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
     Ok(BestPractices {
+        artifacthub_badge: check::content_matches(
+            Globs {
+                root,
+                patterns: README,
+                case_sensitive: true,
+            },
+            ARTIFACTHUB_BADGE,
+        )?,
         community_meeting: check::content_matches(
             Globs {
                 root,

@@ -21,6 +21,7 @@ pub(crate) static LICENSE: [&str; 2] = ["LICENSE*", "COPYING*"];
 pub(crate) static FOSSA_BADGE: [&str; 1] = [r"https://app.fossa.*/api/projects/.*"];
 
 // Best practices
+pub(crate) static ARTIFACTHUB_BADGE: [&str; 1] = [r"https://artifacthub.io/badge/repository/.*"];
 pub(crate) static COMMUNITY_MEETING: [&str; 3] = [
     r"(?i)(community|developer|development) (call|event|meeting|session)",
     r"(?i)(weekly|biweekly|monthly) meeting",

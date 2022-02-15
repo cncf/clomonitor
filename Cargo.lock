@@ -247,6 +247,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "askalono",
+ "clap",
  "glob",
  "regex",
  "serde 1.0.136",

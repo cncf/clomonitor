@@ -25,15 +25,25 @@ static APPROVED_LICENSES: [&str; 10] = [
 
 /// Glob matching configuration.
 #[derive(Debug)]
-pub(crate) struct Globs<'a> {
+pub(crate) struct Globs<'a, P>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+{
     pub root: &'a Path,
-    pub patterns: Vec<&'a str>,
+    pub patterns: P,
     pub case_sensitive: bool,
 }
 
 /// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given.
-pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, Error> {
+pub(crate) fn content_matches<P, R>(globs: Globs<P>, regexps: R) -> Result<bool, Error>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+    R: IntoIterator,
+    R::Item: AsRef<str>,
+{
     let re = RegexSet::new(regexps)?;
     Ok(matching_paths(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
@@ -44,7 +54,11 @@ pub(crate) fn content_matches(globs: Globs, regexps: Vec<&str>) -> Result<bool, 
 }
 
 /// Check repository's license and return its SPDX id if possible.
-pub(crate) fn license(globs: Globs) -> Result<Option<String>, Error> {
+pub(crate) fn license<P>(globs: Globs<P>) -> Result<Option<String>, Error>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+{
     let store = Store::from_cache(LICENSES)?;
     let mut spdx_id: Option<String> = None;
     matching_paths(globs)?.iter().any(|path| {
@@ -66,20 +80,28 @@ pub(crate) fn is_approved_license(spdx_id: &str) -> bool {
 }
 
 /// Check if exists at least a path that matches the globs provided.
-pub(crate) fn path_exists(globs: Globs) -> Result<bool, PatternError> {
+pub(crate) fn path_exists<P>(globs: Globs<P>) -> Result<bool, PatternError>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+{
     Ok(!matching_paths(globs)?.is_empty())
 }
 
 /// Return all paths that match any of the globs provided.
-fn matching_paths(globs: Globs) -> Result<Vec<PathBuf>, PatternError> {
+fn matching_paths<P>(globs: Globs<P>) -> Result<Vec<PathBuf>, PatternError>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+{
     let options = MatchOptions {
         case_sensitive: globs.case_sensitive,
         ..Default::default()
     };
     globs
         .patterns
-        .iter()
-        .map(|pattern| globs.root.join(pattern))
+        .into_iter()
+        .map(|pattern| globs.root.join(pattern.as_ref()))
         .map(|pattern| pattern.to_string_lossy().into_owned())
         .try_fold(Vec::new(), |mut paths, pattern| {
             match glob_with(&pattern, options) {

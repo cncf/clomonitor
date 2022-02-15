@@ -1,5 +1,7 @@
+import { isUndefined } from 'lodash';
+
 import { REPORT_OPTIONS_BY_CATEGORY } from '../../../data';
-import { ReportOption, ScoreType } from '../../../types';
+import { ReportOption, RepositoryKind, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
 import OptionBox from './OptionBox';
 import OptionCell from './OptionCell';
@@ -8,6 +10,7 @@ import Title from './Title';
 
 interface Props {
   reportId: string;
+  repoKind: RepositoryKind;
   name: ScoreType;
   label: string;
   icon: JSX.Element;
@@ -19,6 +22,9 @@ interface Props {
 
 const Row = (props: Props) => {
   const color = getCategoryColor(props.score);
+  const options: ReportOption[] = (REPORT_OPTIONS_BY_CATEGORY as any)[props.repoKind][props.name];
+
+  if (isUndefined(options) || options.length === 0) return null;
 
   return (
     <div className="p-3 p-md-4 border border-top-0">
@@ -41,10 +47,11 @@ const Row = (props: Props) => {
         <div className="d-flex d-sm-none">
           <table className="table table-responsive align-middle w-100 border">
             <tbody>
-              {(REPORT_OPTIONS_BY_CATEGORY as any)[props.name].map((opt: string) => {
+              {options.map((opt: string) => {
                 return (
                   <OptionCell
                     key={`${props.reportId}_${props.label}_${opt}_cell`}
+                    repoKind={props.repoKind}
                     label={opt as ReportOption}
                     value={props.data[opt]}
                   />
@@ -55,10 +62,11 @@ const Row = (props: Props) => {
         </div>
 
         <div className={`d-none d-sm-flex flex-row align-items-center flex-wrap ${styles.boxWrapper}`}>
-          {(REPORT_OPTIONS_BY_CATEGORY as any)[props.name].map((opt: string) => {
+          {options.map((opt: string) => {
             return (
               <OptionBox
                 key={`${props.reportId}_${props.label}_${opt}`}
+                repoKind={props.repoKind}
                 label={opt as ReportOption}
                 value={props.data[opt]}
               />

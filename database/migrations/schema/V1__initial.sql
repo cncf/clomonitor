@@ -50,10 +50,13 @@ create table if not exists project (
     unique (organization_id, name)
 );
 
+create type repository_kind as enum ('primary', 'secondary');
+
 create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
     url text not null check (url <> ''),
+    kind repository_kind not null,
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,
@@ -155,7 +158,8 @@ begin
                 'repositories', (
                     select json_agg(json_build_object(
                         'name', name,
-                        'url', url
+                        'url', url,
+                        'kind', kind::text
                     ))
                     from repository
                     where project_id = fp.project_id
@@ -202,6 +206,7 @@ returns json as $$
                 'repository_id', r.repository_id,
                 'name', r.name,
                 'url', r.url,
+                'kind', r.kind::text,
                 'digest', r.digest,
                 'score', r.score,
                 'reports', (

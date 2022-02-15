@@ -15,6 +15,7 @@ interface Props {
   tooltipArrowClassName?: string;
   alignmentTooltip?: 'right' | 'left';
   tooltipWidth?: number;
+  forceAlignment?: boolean;
 }
 
 const DEFAULT_TOOLTIP_WIDTH = 150;
@@ -30,20 +31,24 @@ const ElementWithTooltip = (props: Props) => {
 
   useEffect(() => {
     const calculateTooltipPosition = () => {
-      if (wrapper && wrapper.current) {
-        const windowWidth = window.innerWidth;
-        const bounding = wrapper.current.getBoundingClientRect();
-        setElWidth(bounding.width);
-        const overflowTooltip = (tooltipWidth - elWidth) / 2;
-        if (
-          DEFAULT_MARGIN + bounding.right + overflowTooltip < windowWidth &&
-          bounding.left - overflowTooltip - DEFAULT_MARGIN > 0
-        ) {
-          setTooltipAlignment('center');
-        } else if (windowWidth - bounding.right - DEFAULT_MARGIN < tooltipWidth - bounding.width) {
-          setTooltipAlignment('right');
-        } else {
-          setTooltipAlignment('left');
+      if (!isUndefined(props.forceAlignment) && props.forceAlignment && !isUndefined(props.alignmentTooltip)) {
+        setTooltipAlignment(props.alignmentTooltip);
+      } else {
+        if (wrapper && wrapper.current) {
+          const windowWidth = window.innerWidth;
+          const bounding = wrapper.current.getBoundingClientRect();
+          setElWidth(bounding.width);
+          const overflowTooltip = (tooltipWidth - elWidth) / 2;
+          if (
+            DEFAULT_MARGIN + bounding.right + overflowTooltip < windowWidth &&
+            bounding.left - overflowTooltip - DEFAULT_MARGIN > 0
+          ) {
+            setTooltipAlignment('center');
+          } else if (windowWidth - bounding.right - DEFAULT_MARGIN < tooltipWidth - bounding.width) {
+            setTooltipAlignment('right');
+          } else {
+            setTooltipAlignment('left');
+          }
         }
       }
     };
@@ -106,7 +111,7 @@ const ElementWithTooltip = (props: Props) => {
             style={{ width: `${tooltipWidth}px` }}
           >
             <div className={`tooltip-arrow ${styles.tooltipArrow} ${props.tooltipArrowClassName}`} />
-            <div className={`tooltip-inner mw-100 ${styles.tooltipContent}`}>
+            <div className={`tooltip-inner rounded-0 mw-100 ${styles.tooltipContent}`}>
               <>{props.tooltipMessage}</>
             </div>
           </div>

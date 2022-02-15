@@ -1,31 +1,29 @@
-use crate::linter::{Linter, Report};
+pub mod primary;
+pub mod secondary;
+
+use crate::{linter::Report, Linter};
 use serde::{Deserialize, Serialize};
 
-/// Score information.
+/// Score information specific to a repository kind linter report.
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Score {
-    pub global: usize,
-    pub documentation: usize,
-    pub license: usize,
-    pub best_practices: usize,
-    pub security: usize,
+#[serde(tag = "score_kind")]
+pub enum Score {
+    Primary(primary::Score),
+    Secondary(secondary::Score),
 }
 
 impl Score {
-    /// Create a new score with all values set to zero.
-    pub fn new() -> Self {
-        Score {
-            global: 0,
-            documentation: 0,
-            license: 0,
-            best_practices: 0,
-            security: 0,
+    /// Return the score's global value.
+    pub fn global(&self) -> usize {
+        match self {
+            Score::Primary(report) => report.global,
+            Score::Secondary(report) => report.global,
         }
     }
 
     /// Return the score's rating (a, b, c or d).
     pub fn rating(&self) -> char {
-        match self.global {
+        match self.global() {
             75..=100 => 'a',
             50..=74 => 'b',
             25..=49 => 'c',
@@ -35,97 +33,97 @@ impl Score {
     }
 }
 
-impl Default for Score {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 /// Calculate score for the given linter report.
 pub fn calculate(linter: Linter, report: &Report) -> Score {
     match linter {
-        Linter::Core => calculate_core_linter_score(report),
+        Linter::Core => match report {
+            Report::Primary(report) => Score::Primary(primary::calculate_score(report)),
+            Report::Secondary(report) => Score::Secondary(secondary::calculate_score(report)),
+        },
     }
-}
-
-/// Calculate score for the given report produced by the core linter.
-fn calculate_core_linter_score(report: &Report) -> Score {
-    let mut score = Score::new();
-
-    // Documentation
-    if report.documentation.adopters {
-        score.documentation += 5;
-    }
-    if report.documentation.code_of_conduct {
-        score.documentation += 10;
-    }
-    if report.documentation.contributing {
-        score.documentation += 10;
-    }
-    if report.documentation.changelog {
-        score.documentation += 5;
-    }
-    if report.documentation.governance {
-        score.documentation += 10;
-    }
-    if report.documentation.maintainers {
-        score.documentation += 5;
-    }
-    if report.documentation.readme {
-        score.documentation += 50;
-    }
-    if report.documentation.roadmap {
-        score.documentation += 5;
-    }
-
-    // License
-    if let Some(approved) = report.license.approved {
-        if approved {
-            score.license += 60;
-        }
-    }
-    if report.license.fossa_badge {
-        score.license += 20;
-    }
-    if report.license.spdx_id.is_some() {
-        score.license += 20;
-    }
-
-    // Best practices
-    if report.best_practices.community_meeting {
-        score.best_practices += 25;
-    }
-    if report.best_practices.openssf_badge {
-        score.best_practices += 75;
-    }
-
-    // Security
-    if report.security.security_policy {
-        score.security = 100;
-    }
-
-    // Global
-    score.global =
-        (score.documentation + score.license + score.best_practices + score.security) / 4;
-
-    score
 }
 
 /// Merge the scores provided into a single score.
 pub fn merge(scores: Vec<Score>) -> Score {
-    let mut score = Score::new();
+    // Count scores of each kind
+    let mut n_pri: usize = 0;
+    let mut n_sec: usize = 0;
     for entry in &scores {
-        score.global += entry.global;
-        score.documentation += entry.documentation;
-        score.license += entry.license;
-        score.best_practices += entry.best_practices;
-        score.security += entry.security;
+        match entry {
+            Score::Primary(_) => n_pri += 1,
+            Score::Secondary(_) => n_sec += 1,
+        }
     }
-    let n = scores.len();
-    score.global /= n;
-    score.documentation /= n;
-    score.license /= n;
-    score.best_practices /= n;
-    score.security /= n;
+
+    // Call the corresponding merge function based on the scores kind
+    match (n_pri, n_sec) {
+        (_, 0) => {
+            let k = 1.0 / n_pri as f64;
+            Score::Primary(merge_primaries(scores, k))
+        }
+        (0, _) => {
+            let k = 1.0 / n_sec as f64;
+            Score::Secondary(merge_secondaries(scores, k))
+        }
+        (_, _) => {
+            let k_pri_only = 1.0 / n_pri as f64;
+            let k_pri = 0.8 / n_pri as f64;
+            let k_sec = 0.2 / n_sec as f64;
+            Score::Primary(merge_mixed(scores, k_pri_only, k_pri, k_sec))
+        }
+    }
+}
+
+/// Merge the primary scores provided into a single primary score.
+fn merge_primaries(scores: Vec<Score>, k: f64) -> primary::Score {
+    let mut score = primary::Score::new();
+    for entry in &scores {
+        if let Score::Primary(entry) = entry {
+            score.global += (entry.global as f64 * k).round() as usize;
+            score.documentation += (entry.documentation as f64 * k).round() as usize;
+            score.license += (entry.license as f64 * k).round() as usize;
+            score.best_practices += (entry.best_practices as f64 * k).round() as usize;
+            score.security += (entry.security as f64 * k).round() as usize;
+        }
+    }
+    score
+}
+
+/// Merge the secondary scores provided into a single secondary score.
+fn merge_secondaries(scores: Vec<Score>, k: f64) -> secondary::Score {
+    let mut score = secondary::Score::new();
+    for entry in &scores {
+        if let Score::Secondary(entry) = entry {
+            score.global += (entry.global as f64 * k).round() as usize;
+            score.documentation += (entry.documentation as f64 * k).round() as usize;
+            score.license += (entry.license as f64 * k).round() as usize;
+        }
+    }
+    score
+}
+
+/// Merge the scores provided (primaries and secondaries) into a single primary score.
+///
+/// - k_pri_only: used for sections that only exist in primary scores
+/// - k_pri: used for primary scores sections
+/// - k_sec: used for secondary scores sections
+fn merge_mixed(scores: Vec<Score>, k_pri_only: f64, k_pri: f64, k_sec: f64) -> primary::Score {
+    let mut score = primary::Score::new();
+    for entry in &scores {
+        match entry {
+            Score::Primary(entry) => {
+                score.global += (entry.global as f64 * k_pri).round() as usize;
+                score.documentation += (entry.documentation as f64 * k_pri).round() as usize;
+                score.license += (entry.license as f64 * k_pri).round() as usize;
+                score.best_practices += (entry.best_practices as f64 * k_pri_only).round() as usize;
+                score.security += (entry.security as f64 * k_pri_only).round() as usize;
+            }
+            Score::Secondary(entry) => {
+                score.global += (entry.global as f64 * k_sec).round() as usize;
+                score.documentation += (entry.documentation as f64 * k_sec).round() as usize;
+                score.license += (entry.license as f64 * k_sec).round() as usize;
+            }
+        }
+    }
     score
 }

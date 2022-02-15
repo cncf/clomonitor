@@ -6,7 +6,7 @@ import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
-import { Report, Repository, ScoreType } from '../../../types';
+import { Report, Repository, RepositoryKind, ScoreType } from '../../../types';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
@@ -77,19 +77,21 @@ const RepositoriesList = (props: Props) => {
                   <div className="d-none d-md-block">
                     <div className={`d-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
-                      <ElementWithTooltip
-                        className="lh-1 ms-3"
-                        element={
-                          <small>
-                            <FaCrown className="text-warning" />
-                          </small>
-                        }
-                        tooltipWidth={210}
-                        tooltipClassName={styles.tooltipMessage}
-                        tooltipMessage={<div>Project's primary repository.</div>}
-                        visibleTooltip
-                        active
-                      />
+                      {repo.kind === RepositoryKind.Primary && (
+                        <ElementWithTooltip
+                          className="lh-1 ms-3"
+                          element={
+                            <small>
+                              <FaCrown className="text-warning" />
+                            </small>
+                          }
+                          tooltipWidth={210}
+                          tooltipClassName={styles.tooltipMessage}
+                          tooltipMessage={<div>Project's primary repository.</div>}
+                          visibleTooltip
+                          active
+                        />
+                      )}
                       {getAnchorLink(repo)}
                     </div>
                     <ExternalLink href={repo.url}>
@@ -104,9 +106,11 @@ const RepositoriesList = (props: Props) => {
                       <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
                         <div className="text-truncate">{repo.name}</div>
                       </ExternalLink>
-                      <small>
-                        <FaCrown className="d-block d-md-none text-warning ms-2" />
-                      </small>
+                      {repo.kind === RepositoryKind.Primary && (
+                        <small>
+                          <FaCrown className="d-block d-md-none text-warning ms-2" />
+                        </small>
+                      )}
                       {getAnchorLink(repo)}
                     </div>
                   </div>

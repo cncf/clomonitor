@@ -40,7 +40,7 @@ const Row = (props: Props) => {
               />
             </div>
           </div>
-          <div className="ps-3 lh-1">
+          <div className={`ps-3 lh-1 ${styles.scoreWrapper}`}>
             <small className="fw-bold">{props.score}%</small>
           </div>
         </div>

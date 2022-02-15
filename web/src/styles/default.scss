@@ -104,6 +104,19 @@ a,
   border-color: var(--rm-primary);
 }
 
+// Fix select jump
+@supports (-ms-ime-align: auto) {
+  select {
+    width: auto !important;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 767.98px) {
+  select:active {
+    font-size: 14px !important;
+  }
+}
+
 // Overwrite Bootstrap styles
 .text-primary {
   color: var(--rm-primary) !important;

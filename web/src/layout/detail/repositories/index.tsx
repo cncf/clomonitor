@@ -77,11 +77,8 @@ const RepositoriesList = (props: Props) => {
                   <div className="d-none d-md-block">
                     <div className={`d-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
-                      <small>
-                        <FaCrown className="d-block d-md-none text-warning ms-2" />
-                      </small>
                       <ElementWithTooltip
-                        className="lh-1 ms-2"
+                        className="lh-1 ms-3"
                         element={
                           <small>
                             <FaCrown className="text-warning" />
@@ -89,7 +86,7 @@ const RepositoriesList = (props: Props) => {
                         }
                         tooltipWidth={210}
                         tooltipClassName={styles.tooltipMessage}
-                        tooltipMessage={<div>Primary project's repository</div>}
+                        tooltipMessage={<div>Project's primary repository.</div>}
                         visibleTooltip
                         active
                       />
@@ -103,10 +100,13 @@ const RepositoriesList = (props: Props) => {
                     </ExternalLink>
                   </div>
                   <div className="d-block d-md-none">
-                    <div className="d-flex flex-row">
+                    <div className="d-flex flex-row align-items-center">
                       <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
                         <div className="text-truncate">{repo.name}</div>
                       </ExternalLink>
+                      <small>
+                        <FaCrown className="d-block d-md-none text-warning ms-2" />
+                      </small>
                       {getAnchorLink(repo)}
                     </div>
                   </div>

@@ -6,6 +6,10 @@
   height: 0.35rem;
 }
 
+.scoreWrapper {
+  padding-right: 0.85rem;
+}
+
 @media only screen and (min-width: 576px) {
   .progressbarWrapper {
     max-width: 50%;

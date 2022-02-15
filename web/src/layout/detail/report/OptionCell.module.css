@@ -1,6 +1,6 @@
 .weight {
   font-size: 0.7rem;
-  width: 55px;
+  width: 45px;
 }
 
 .name {
@@ -9,4 +9,35 @@
 
 .icon {
   font-size: 1.25rem;
+}
+
+.iconCell {
+  width: 40px;
+}
+
+.legend {
+  font-size: 75%;
+}
+
+.contentCell {
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+.tooltipMessage {
+  margin-left: -3px;
+}
+
+@media only screen and (min-width: 992px) {
+  .name {
+    font-size: 1rem;
+  }
+
+  .iconCell {
+    width: 60px;
+  }
+
+  .weight {
+    width: 55px;
+  }
 }

@@ -82,7 +82,7 @@ const Summary = (props: Props) => {
                           element={<FaCrown className="text-warning" />}
                           tooltipWidth={210}
                           tooltipClassName={styles.tooltipMessage}
-                          tooltipMessage={<div>Project's primary repository.</div>}
+                          tooltipMessage={<div>Project's primary repository</div>}
                           alignmentTooltip="left"
                           forceAlignment
                           visibleTooltip

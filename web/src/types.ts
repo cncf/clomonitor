@@ -90,6 +90,7 @@ export interface Prefs {
 export interface ReportOptionData {
   icon: JSX.Element;
   name: string;
+  legend: JSX.Element;
   description: JSX.Element;
   weight: {
     [key in RepositoryKind]?: number;

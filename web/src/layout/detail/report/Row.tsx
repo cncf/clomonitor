@@ -3,7 +3,6 @@ import { isUndefined } from 'lodash';
 import { REPORT_OPTIONS_BY_CATEGORY } from '../../../data';
 import { ReportOption, RepositoryKind, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
-import OptionBox from './OptionBox';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
 import Title from './Title';
@@ -44,8 +43,8 @@ const Row = (props: Props) => {
             <small className="fw-bold">{props.score}%</small>
           </div>
         </div>
-        <div className="d-flex d-sm-none">
-          <table className="table table-responsive align-middle w-100 border">
+        <div>
+          <table className={`table align-middle w-100 border ${styles.table}`}>
             <tbody>
               {options.map((opt: string) => {
                 return (
@@ -59,19 +58,6 @@ const Row = (props: Props) => {
               })}
             </tbody>
           </table>
-        </div>
-
-        <div className={`d-none d-sm-flex flex-row align-items-center flex-wrap ${styles.boxWrapper}`}>
-          {options.map((opt: string) => {
-            return (
-              <OptionBox
-                key={`${props.reportId}_${props.label}_${opt}`}
-                repoKind={props.repoKind}
-                label={opt as ReportOption}
-                value={props.data[opt]}
-              />
-            );
-          })}
         </div>
       </div>
     </div>

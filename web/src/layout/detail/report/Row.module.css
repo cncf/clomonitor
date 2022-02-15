@@ -10,8 +10,24 @@
   padding-right: 0.85rem;
 }
 
+.table {
+  max-width: 100%;
+}
+
 @media only screen and (min-width: 576px) {
   .progressbarWrapper {
     max-width: 50%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .table {
+    max-width: 75%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .table {
+    max-width: 1300px;
   }
 }

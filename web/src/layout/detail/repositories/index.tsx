@@ -87,7 +87,7 @@ const RepositoriesList = (props: Props) => {
                           }
                           tooltipWidth={210}
                           tooltipClassName={styles.tooltipMessage}
-                          tooltipMessage={<div>Project's primary repository.</div>}
+                          tooltipMessage={<div>Project's primary repository</div>}
                           visibleTooltip
                           active
                         />

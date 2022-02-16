@@ -7,7 +7,6 @@ import CartegoryBadge from '../common/CategoryBadge';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import MaturityBadge from '../common/MaturityBadge';
-import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
 import Summary from '../common/Summary';
 import styles from './Card.module.css';
@@ -26,6 +25,7 @@ const Card = (props: Props) => {
     <div className={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`} role="listitem">
       <div
         className={`card rounded-0 p-0 p-md-3 p-lg-0 p-xl-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
+        role="button"
         onClick={() => {
           props.saveScrollPosition();
           navigate(`/projects/${props.project.organization.name}/${props.project.name}`, {
@@ -52,11 +52,6 @@ const Card = (props: Props) => {
                     <span className={`text-truncate fw-bold mb-0 ${styles.title}`}>
                       {props.project.displayName || props.project.name}
                     </span>
-                    <div className="ms-2 d-none d-md-flex d-lg-none d-xl-flex">
-                      <div className="d-flex flex-column justify-content-start">
-                        <ProjectDropdown />
-                      </div>
-                    </div>
                   </div>
 
                   <div className="d-flex flex-row align-items-center my-2">

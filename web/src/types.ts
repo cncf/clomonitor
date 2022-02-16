@@ -92,9 +92,6 @@ export interface ReportOptionData {
   name: string;
   legend: JSX.Element;
   description: JSX.Element;
-  weight: {
-    [key in RepositoryKind]?: number;
-  };
 }
 
 export enum Maturity {

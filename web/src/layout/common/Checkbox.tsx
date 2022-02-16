@@ -30,7 +30,7 @@ const CheckBox = (props: Props) => {
     <div className={`form-check me-sm-2 mb-2 ${props.className}`}>
       <input
         type="checkbox"
-        className={`form-check-input ${styles.checkbox}`}
+        className={`form-check-input rounded-0 ${styles.checkbox}`}
         name={props.name}
         value={props.value}
         id={id}

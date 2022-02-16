@@ -33,24 +33,20 @@ const Summary = (props: Props) => {
               <span>Global</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>
-                {CATEGORY_ICONS[ScoreType.Documentation]}
-              </small>
-              <span>Documentation</span>
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Documentation]}</small>
+              <span className="d-none d-lg-inline-block ms-2">Documentation</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.License]}</small>
-              <span>License</span>
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.License]}</small>
+              <span className="d-none d-lg-inline-block ms-2">License</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>
-                {CATEGORY_ICONS[ScoreType.BestPractices]}
-              </small>
-              <span>Best Practices</span>
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.BestPractices]}</small>
+              <span className="d-none d-lg-inline-block ms-2">Best Practices</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
-              <span>Security</span>
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
+              <span className="d-none d-lg-inline-block ms-2">Security</span>
             </th>
           </tr>
         </thead>
@@ -59,9 +55,9 @@ const Summary = (props: Props) => {
             return (
               <tr key={`summary_${repo.repositoryId}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
-                  <div className="d-flex flex-row align-items-center">
+                  <div className="d-flex flex-row align-items-center pe-2">
                     <button
-                      className={`btn btn-link text-dark text-truncate fw-bold ${styles.repoBtn}`}
+                      className={`btn btn-link text-dark text-truncate fw-bold px-2 ${styles.repoBtn}`}
                       onClick={() =>
                         navigate(
                           {

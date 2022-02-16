@@ -83,7 +83,8 @@
     }
 
     &.active .page-link {
-      background-color: var(--highlighted);
+      background-color: var(--color-font);
+      color: var(--rm-secondary);
     }
   }
 
@@ -137,6 +138,19 @@
     filter: invert(1) grayscale(100%) brightness(200%);
   }
 
+  .progress-bar-striped {
+    background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.25) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.25) 50%,
+      rgba(0, 0, 0, 0.25) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+
   // UI
   .lightIcon {
     color: var(--color-light-font);
@@ -161,6 +175,10 @@
 
   .global {
     background-color: var(--rm-primary);
+  }
+
+  .alphaBadge {
+    background-color: var(--color-black-25);
   }
 
   @media (hover: hover) {

@@ -53,7 +53,7 @@ const ProjectDropdown = () => {
                 // setOpenStatus({ name: Modals.Embed, status: true });
               }}
             >
-              Embed quality report
+              Embed report summary
             </button>
           </li>
           <li>

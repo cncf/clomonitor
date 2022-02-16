@@ -33,6 +33,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
     let mut router = Router::new()
         .route("/api/projects/search", post(search_projects))
         .route("/api/projects/:org/:project", get(get_project))
+        .route("/api/projects/:org/:project/badge", get(badge))
         .route(
             "/",
             get_service(ServeFile::new(&index_path)).handle_error(error_handler),

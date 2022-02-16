@@ -7,9 +7,10 @@ use axum::{
     },
     response,
 };
+use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
+use serde_json::{json, Value};
 use tokio_postgres::types::Json;
 use tracing::error;
 
@@ -27,6 +28,63 @@ pub(crate) struct SearchProjectsInput {
     category: Option<Vec<usize>>,
     maturity: Option<Vec<usize>>,
     rating: Option<Vec<char>>,
+}
+
+/// Handler that returns the information needed to render the project's badge.
+pub(crate) async fn badge(
+    Extension(db_pool): Extension<Pool>,
+    extract::Path((org, project)): extract::Path<(String, String)>,
+) -> Result<response::Json<Value>, StatusCode> {
+    // Get project rating from database
+    let db = db_pool.get().await.map_err(internal_error)?;
+    let rows = db
+        .query(
+            "
+            select score
+            from project p
+            join organization o using (organization_id)
+            where o.name = $1::text
+            and p.name = $2::text
+            ",
+            &[&org, &project],
+        )
+        .await
+        .map_err(internal_error)?;
+    if rows.len() != 1 {
+        return Err(StatusCode::NOT_FOUND);
+    }
+    let score: Option<Json<Score>> = rows.first().unwrap().get("score");
+
+    // Prepare badge configuration and return it
+    let message: String;
+    let color: &str;
+    match score {
+        Some(Json(score)) => {
+            message = score.global().to_string();
+            color = match score.rating() {
+                'a' => "green",
+                'b' => "yellow",
+                'c' => "orange",
+                'd' => "red",
+                _ => "grey",
+            };
+        }
+        None => {
+            message = "not processed yet".to_owned();
+            color = "grey";
+        }
+    }
+    Ok(response::Json(json!({
+        "labelColor": "250948",
+        "namedLogo": "cncf",
+        "logoColor": "BEB5C8",
+        "logoWidth": 10,
+        "label": "CloMonitor Score",
+        "message": message,
+        "color": color,
+        "schemaVersion": 1,
+        "style": "flat"
+    })))
 }
 
 /// Handler that allows searching for projects.

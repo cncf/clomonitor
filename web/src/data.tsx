@@ -338,7 +338,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         Projects can list their content on{' '}
-        <ExternalLink className="d-inline-block fw-bold" href="https://artifacthub.io">
+        <ExternalLink className="d-inline-block" href="https://artifacthub.io">
           Artifact Hub
         </ExternalLink>{' '}
         to improve their discoverability

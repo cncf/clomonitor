@@ -100,7 +100,7 @@ const Modal = (props: Props) => {
         >
           <div
             className={classnames(
-              'modal-content rounded-0 border border-2 mx-auto',
+              'modal-content rounded-0 border border-3 mx-auto',
               styles.content,
               props.modalClassName,
               {
@@ -110,7 +110,7 @@ const Modal = (props: Props) => {
             )}
           >
             {!isUndefined(props.header) && (
-              <div className={`modal-header d-flex flex-row align-items-center ${styles.header}`}>
+              <div className={`modal-header rounded-0 d-flex flex-row align-items-center ${styles.header}`}>
                 <div className="modal-title h5 m-2 flex-grow-1">{props.header}</div>
 
                 {!unclosable && (
@@ -135,7 +135,7 @@ const Modal = (props: Props) => {
                 {isUndefined(props.closeButton) ? (
                   <button
                     type="button"
-                    className="btn btn-sm btn-outline-secondary text-uppercase"
+                    className="btn btn-sm rounded-0 btn-secondary text-uppercase"
                     onClick={(e: MouseEvent<HTMLButtonElement>) => {
                       e.preventDefault();
                       closeModal();

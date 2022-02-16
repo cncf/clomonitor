@@ -3,10 +3,10 @@ import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
-import Modal from './Modal';
+import BadgeModal from './BadgeModal';
 import styles from './ProjectDropdown.module.css';
 
-interface openModalStatus {
+interface OpenModalStatus {
   status: boolean;
   name?: string;
 }
@@ -16,10 +16,16 @@ enum Modals {
   Embed = 'embed',
 }
 
-const ProjectDropdown = () => {
+interface Props {
+  orgName: string;
+  projectName: string;
+  projectDisplayName?: string;
+}
+
+const ProjectDropdown = (props: Props) => {
   const ref = useRef(null);
   const [visibleDropdown, setVisibleDropdown] = useState<boolean>(false);
-  const [openStatus, setOpenStatus] = useState<openModalStatus>({ status: false });
+  const [openStatus, setOpenStatus] = useState<OpenModalStatus>({ status: false });
   useOutsideClick([ref], visibleDropdown, () => setVisibleDropdown(false));
 
   const onCloseModal = () => {
@@ -50,21 +56,7 @@ const ProjectDropdown = () => {
                 e.preventDefault();
 
                 setVisibleDropdown(false);
-                // setOpenStatus({ name: Modals.Embed, status: true });
-              }}
-            >
-              Embed report summary
-            </button>
-          </li>
-          <li>
-            <button
-              className="dropdown-item"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-
-                setVisibleDropdown(false);
-                // setOpenStatus({ name: Modals.Badge, status: true });
+                setOpenStatus({ name: Modals.Badge, status: true });
               }}
             >
               Get badge
@@ -73,40 +65,12 @@ const ProjectDropdown = () => {
         </ul>
       </div>
 
-      <Modal header="Badge" onClose={onCloseModal} open={openStatus.status && openStatus.name === Modals.Badge}>
-        <div>kjhskdjf</div>
-      </Modal>
-
-      <Modal
-        header="Quality report"
-        onClose={onCloseModal}
-        open={openStatus.status && openStatus.name === Modals.Embed}
-      >
-        <div className="w-100 position-relative">
-          <div className="mt-4 mb-3">
-            <div className="form-check form-switch ps-0">
-              <label htmlFor="header" className={`form-check-label fw-bold ${styles.label}`}>
-                Header
-              </label>{' '}
-              <input
-                id="header"
-                type="checkbox"
-                className="form-check-input position-absolute ms-2"
-                value="true"
-                role="switch"
-                onChange={() => console.log('change')}
-                checked
-              />
-            </div>
-
-            <div className="form-text text-muted mt-2">Lorem ipsum...</div>
-          </div>
-
-          <div className="mt-3 mb-2">
-            <label className={`form-label fw-bold ${styles.label}`}>Code</label>
-          </div>
-        </div>
-      </Modal>
+      <BadgeModal
+        orgName={props.orgName}
+        projectName={props.projectName}
+        openStatus={openStatus}
+        onCloseModal={onCloseModal}
+      />
     </>
   );
 };

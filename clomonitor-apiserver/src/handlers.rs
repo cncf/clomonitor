@@ -75,7 +75,7 @@ pub(crate) async fn badge(
         }
     }
     Ok(response::Json(json!({
-        "labelColor": "250948",
+        "labelColor": "3F1D63",
         "namedLogo": "cncf",
         "logoColor": "BEB5C8",
         "logoWidth": 10,

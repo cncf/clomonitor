@@ -140,9 +140,23 @@ a,
 
   &:hover,
   &:disabled,
-  &.disabled {
+  &.disabled,
+  &.active {
     background-color: var(--rm-primary);
     border-color: var(--rm-primary);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--rm-secondary);
+  border-color: var(--rm-secondary);
+
+  &:hover,
+  &:disabled,
+  &.disabled,
+  &.active {
+    background-color: var(--rm-secondary);
+    border-color: var(--rm-secondary);
   }
 }
 

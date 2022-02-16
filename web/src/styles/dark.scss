@@ -101,6 +101,20 @@
     }
   }
 
+  .modal-content {
+    background-color: var(--bg-color);
+    color: var(--color-font);
+  }
+
+  .modal-header {
+    color: var(--color-font) !important;
+  }
+
+  .modal-header,
+  .modal-footer {
+    border-color: var(--solid-border);
+  }
+
   .progress {
     background-color: var(--color-font);
   }
@@ -152,7 +166,8 @@
   }
 
   // UI
-  .lightIcon {
+  .lightIcon,
+  .lightText {
     color: var(--color-light-font);
   }
 

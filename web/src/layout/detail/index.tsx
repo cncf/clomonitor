@@ -141,7 +141,13 @@ const Detail = () => {
                         </div>
                         <div className="d-none d-md-block ms-auto">
                           <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
-                            <ProjectDropdown />
+                            {org && (
+                              <ProjectDropdown
+                                orgName={org}
+                                projectName={detail.name}
+                                projectDisplayName={detail.displayName}
+                              />
+                            )}
                           </div>
                         </div>
                         <div className="d-flex d-md-none align-items-center ms-auto">

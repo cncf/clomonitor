@@ -227,6 +227,7 @@ dependencies = [
  "axum",
  "axum-debug",
  "clap",
+ "clomonitor-core",
  "config",
  "deadpool-postgres",
  "openssl",

@@ -1,13 +1,13 @@
-mod check;
-mod patterns;
-pub mod primary;
-pub mod secondary;
-
 use anyhow::{format_err, Error};
 use clap::ArgEnum;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::str::FromStr;
+
+mod check;
+mod patterns;
+pub mod primary;
+pub mod secondary;
 
 /// Supported repository kinds.
 #[derive(Debug, Clone, ArgEnum)]

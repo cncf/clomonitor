@@ -1,5 +1,3 @@
-mod display;
-
 use anyhow::{format_err, Error};
 use clap::Parser;
 use clomonitor_core::{
@@ -8,6 +6,8 @@ use clomonitor_core::{
 };
 use display::*;
 use std::path::PathBuf;
+
+mod display;
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]

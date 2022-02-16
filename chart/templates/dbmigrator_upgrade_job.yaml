@@ -1,8 +1,11 @@
-{{- if .Release.IsInstall -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "chart.resourceNamePrefix" . }}dbmigrator-install
+  name: {{ include "chart.resourceNamePrefix" . }}dbmigrator-upgrade
+  annotations:
+    "helm.sh/hook": pre-upgrade
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     spec:
@@ -37,4 +40,3 @@ spec:
       - name: dbmigrator-config
         secret:
           secretName: {{ include "chart.resourceNamePrefix" . }}dbmigrator-config
-{{- end }}

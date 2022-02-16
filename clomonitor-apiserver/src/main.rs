@@ -1,6 +1,3 @@
-mod handlers;
-mod router;
-
 use anyhow::Error;
 use clap::Parser;
 use config::{Config, File};
@@ -11,6 +8,9 @@ use std::net::SocketAddr;
 use std::path::PathBuf;
 use tokio::signal;
 use tracing::info;
+
+mod handlers;
+mod router;
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]

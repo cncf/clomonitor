@@ -1,8 +1,8 @@
-pub mod primary;
-pub mod secondary;
-
 use crate::{linter::Report, Linter};
 use serde::{Deserialize, Serialize};
+
+pub mod primary;
+pub mod secondary;
 
 /// Score information specific to a repository kind linter report.
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,7 +1,7 @@
+use anyhow::{format_err, Error};
+
 pub mod linter;
 pub mod score;
-
-use anyhow::{format_err, Error};
 
 /// Supported linters.
 #[derive(Debug)]

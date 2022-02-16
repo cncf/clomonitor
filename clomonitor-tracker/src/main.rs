@@ -1,6 +1,3 @@
-mod repository;
-mod tracker;
-
 use anyhow::{format_err, Error};
 use clap::Parser;
 use config::{Config, File};
@@ -9,6 +6,9 @@ use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
 use std::path::PathBuf;
 use which::which;
+
+mod repository;
+mod tracker;
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]

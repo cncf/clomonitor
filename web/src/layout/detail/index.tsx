@@ -74,7 +74,10 @@ const Detail = () => {
     <>
       {state && state.currentSearch && (
         <SubNavbar>
-          <button onClick={() => navigate(`/search${state.currentSearch}`)} className="btn btn-link p-0 text-reset">
+          <button
+            onClick={() => navigate(`/search${state.currentSearch}`)}
+            className={`btn btn-link p-0 text-reset ${styles.backBtn}`}
+          >
             <div className="d-flex flex-row align-items-center">
               <IoIosArrowBack className="me-2" />
               <div>Back to results</div>

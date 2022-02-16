@@ -34,8 +34,8 @@ const SelectedFilters = (props: Props) => {
   };
 
   return (
-    <div className="d-none d-md-block mb-2 mt-1">
-      <div className="d-flex flex-row justify-content-start align-items-center">
+    <div className="d-none d-md-block mt-2">
+      <div className="d-flex flex-row justify-content-start align-items-baseline">
         <div className="me-3">Filters:</div>
         <div className={`position-relative ${styles.badges}`}>
           {Object.keys(props.filters).map((category: string) => {
@@ -44,14 +44,16 @@ const SelectedFilters = (props: Props) => {
                 {props.filters[category].map((filter: string | number) => {
                   return (
                     <span
-                      className={`badge bg-secondary rounded-0 text-light me-3 ${styles.badge} lightBorder`}
+                      className={`badge bg-secondary rounded-0 text-light me-3 my-1 ${styles.badge} lightBorder`}
                       key={`filter_${category}_${filter}`}
                     >
                       <div className="d-flex flex-row align-items-baseline">
-                        <small className="text-uppercase fw-normal me-2">{category}:</small>
-                        {getFilterName(category as FilterKind, filter)}
+                        <div className={styles.content}>
+                          <small className="text-uppercase fw-normal me-2">{category}:</small>
+                          {getFilterName(category as FilterKind, filter)}
+                        </div>
                         <button
-                          className="btn btn-link btn-sm p-0 ms-2 lh-1"
+                          className={`btn btn-link btn-sm lh-1 ${styles.btn}`}
                           onClick={() => props.onChange(category, filter as string, false)}
                         >
                           <IoMdCloseCircleOutline />

@@ -1,4 +1,9 @@
 .navbar {
   background-color: var(--rm-secondary-15);
-  padding: 1rem 0;
+}
+
+@media only screen and (min-width: 992px) {
+  .navbar {
+    padding: 1rem 0;
+  }
 }

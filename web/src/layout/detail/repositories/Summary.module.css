@@ -3,7 +3,6 @@
 }
 
 .table th {
-  min-width: 145px;
   color: var(--color-font);
   background-color: var(--bg-color);
 }
@@ -37,5 +36,11 @@
     width: 100%;
     table-layout: fixed;
     overflow-wrap: break-word;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .table th {
+    min-width: 145px;
   }
 }

@@ -31,7 +31,11 @@ impl Repository {
 
     /// Track repository if it has changed since the last time it was tracked.
     /// This involves cloning the repository, linting it and storing the results.
-    pub(crate) async fn track(&self, mut db: DbClient) -> Result<(), Error> {
+    pub(crate) async fn track(
+        &self,
+        mut db: DbClient,
+        github_token: Option<&str>,
+    ) -> Result<(), Error> {
         let start = Instant::now();
 
         // Skip if repository hasn't changed since the last time it was tracked
@@ -53,8 +57,10 @@ impl Repository {
         let options = LintOptions {
             root: tmp_dir.path(),
             kind: &self.kind,
+            url: &self.url,
+            github_token,
         };
-        let report = match lint(options) {
+        let report = match lint(options).await {
             Ok(report) => Some(report),
             Err(err) => {
                 warn!(

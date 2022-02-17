@@ -1,4 +1,4 @@
-import { BiLock, BiMedal, BiShieldQuarter, BiTrophy } from 'react-icons/bi';
+import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import { FaBalanceScale, FaCheckDouble, FaTools } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
@@ -321,5 +321,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that the <code>README</code> file contains an Artifact Hub badge
       </span>
     ),
+  },
+  [ReportOption.Website]: {
+    icon: <BiWorld />,
+    name: 'Website',
+    legend: <span>A url that users can visit to learn more about your project</span>,
+    description: <span>We check that the repository has a website set in Github</span>,
   },
 };

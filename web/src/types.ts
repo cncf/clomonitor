@@ -171,6 +171,7 @@ export enum ReportOption {
   SecurityPolicy = 'securityPolicy',
   CommunityMeeting = 'communityMeeting',
   ArtifactHubBadge = 'artifacthubBadge',
+  Website = 'website',
 }
 
 export interface SearchFiltersURL extends BasicQuery {

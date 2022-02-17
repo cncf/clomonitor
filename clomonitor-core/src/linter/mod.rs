@@ -40,12 +40,22 @@ pub enum Report {
 pub struct LintOptions<'a> {
     pub root: &'a Path,
     pub kind: &'a RepositoryKind,
+    pub url: &'a str,
+    pub github_token: Option<&'a str>,
 }
 
 /// Lint the path provided and return a report.
-pub fn lint(options: LintOptions) -> Result<Report, Error> {
-    Ok(match options.kind {
-        RepositoryKind::Primary => Report::Primary(primary::lint(options.root)?),
-        RepositoryKind::Secondary => Report::Secondary(secondary::lint(options.root)?),
+pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
+    // Initialize Github API client
+    let mut builder = octocrab::Octocrab::builder();
+    if let Some(token) = &options.github_token {
+        builder = builder.personal_token(token.to_string());
+    }
+    octocrab::initialise(builder)?;
+
+    // Run the linter corresponding to the repository kind provided
+    Ok(match &options.kind {
+        RepositoryKind::Primary => Report::Primary(primary::lint(options).await?),
+        RepositoryKind::Secondary => Report::Secondary(secondary::lint(options)?),
     })
 }

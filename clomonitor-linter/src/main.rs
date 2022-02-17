@@ -23,17 +23,25 @@ struct Args {
     /// Linter pass score
     #[clap(long, default_value = "80")]
     pass_score: usize,
+
+    /// Repository url [https://github.com/org/repo] (required for some remote checks in Github)
+    #[clap(long)]
+    url: String,
 }
 
-fn main() -> Result<(), Error> {
+#[tokio::main]
+async fn main() -> Result<(), Error> {
     let args = Args::parse();
 
     // Lint repository provided and display results
+    println!("\nRunning CloMonitor linter...\n");
     let options = LintOptions {
         root: &args.path,
         kind: &args.kind,
+        url: &args.url,
+        github_token: None,
     };
-    let report = lint(options)?;
+    let report = lint(options).await?;
     let score = score::calculate(Linter::Core, &report);
     display(&report, &score);
 

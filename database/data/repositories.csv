@@ -67,7 +67,7 @@ repository_id;name;url;kind;project_id
 00000000-0000-0073-0000-000000000000;notation;https://github.com/notaryproject/notation;secondary;00000000-0038-0000-0000-000000000000
 00000000-0000-0074-0000-000000000000;opentelemetry-specification;https://github.com/open-telemetry/opentelemetry-specification;secondary;00000000-0039-0000-0000-000000000000
 00000000-0000-0075-0000-000000000000;operator-sdk;https://github.com/operator-framework/operator-sdk;primary;00000000-0040-0000-0000-000000000000
-00000000-0000-0076-0000-000000000000;operator-lifecycle-manager;https://github.com/operator-framework/operator-lifecycle-manager;primary;00000000-0040-0000-0000-000000000000
+00000000-0000-0076-0000-000000000000;operator-lifecycle-manager;https://github.com/operator-framework/operator-lifecycle-manager;secondary;00000000-0040-0000-0000-000000000000
 00000000-0000-0077-0000-000000000000;spiffe;https://github.com/spiffe/spiffe;primary;00000000-0041-0000-0000-000000000000
 00000000-0000-0078-0000-000000000000;spire;https://github.com/spiffe/spire;secondary;00000000-0041-0000-0000-000000000000
 00000000-0000-0079-0000-000000000000;thanos;https://github.com/thanos-io/thanos;primary;00000000-0042-0000-0000-000000000000

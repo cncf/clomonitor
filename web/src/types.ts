@@ -215,8 +215,3 @@ export enum ErrorKind {
 export type ReportOptionInfo = {
   [key in ReportOption]: ReportOptionData;
 };
-export type ReportOptsByCategory = {
-  [key in RepositoryKind]?: {
-    [key in ScoreType]?: ReportOption[];
-  };
-};

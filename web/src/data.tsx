@@ -19,8 +19,6 @@ import {
   Rating,
   ReportOption,
   ReportOptionInfo,
-  ReportOptsByCategory,
-  RepositoryKind,
   ScoreType,
   SortBy,
   SortDirection,
@@ -41,7 +39,7 @@ export const FILTERS: FiltersSection[] = [
   },
   {
     name: FilterKind.Rating,
-    title: 'Quality rating',
+    title: 'Rating',
     filters: [
       {
         name: Rating.A,
@@ -90,32 +88,6 @@ export const CATEGORY_ICONS = {
   [ScoreType.License]: <GoLaw />,
   [ScoreType.BestPractices]: <IoMdRibbon />,
   [ScoreType.Security]: <BiLock />,
-};
-
-export const REPORT_OPTIONS_BY_CATEGORY: ReportOptsByCategory = {
-  [RepositoryKind.Primary]: {
-    [ScoreType.Documentation]: [
-      ReportOption.Adopters,
-      ReportOption.Changelog,
-      ReportOption.CodeOfConduct,
-      ReportOption.Contributing,
-      ReportOption.Governance,
-      ReportOption.Maintainers,
-      ReportOption.Readme,
-      ReportOption.Roadmap,
-    ],
-    [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.FossaBadge],
-    [ScoreType.BestPractices]: [
-      ReportOption.ArtifactHubBadge,
-      ReportOption.CommunityMeeting,
-      ReportOption.OpenSSFBadge,
-    ],
-    [ScoreType.Security]: [ReportOption.SecurityPolicy],
-  },
-  [RepositoryKind.Secondary]: {
-    [ScoreType.Documentation]: [ReportOption.Contributing, ReportOption.Maintainers, ReportOption.Readme],
-    [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense],
-  },
 };
 
 export const REPORT_OPTIONS: ReportOptionInfo = {

@@ -1,11 +1,15 @@
 import { isUndefined } from 'lodash';
+import { useEffect, useState } from 'react';
 
-import { REPORT_OPTIONS_BY_CATEGORY } from '../../../data';
 import { ReportOption, RepositoryKind, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
 import Title from './Title';
+
+interface OptData {
+  [key: string]: string | boolean;
+}
 
 interface Props {
   reportId: string;
@@ -13,17 +17,42 @@ interface Props {
   name: ScoreType;
   label: string;
   icon: JSX.Element;
-  data: {
-    [key: string]: string | boolean;
-  };
+  data: OptData;
   score: number;
 }
 
+const sortOptions = (opts?: OptData): ReportOption[] => {
+  if (isUndefined(opts)) return [];
+  let optNames: ReportOption[] = [];
+  Object.keys(opts).forEach((opt: string) => {
+    // we check that opt belongs to ReportOption enum
+    if (Object.values(ReportOption).includes(opt as ReportOption)) {
+      optNames.push(opt as ReportOption);
+    }
+  });
+
+  const sortedNames = optNames.sort((a, b) => {
+    // spdxId is always first item in its category
+    if (a === ReportOption.SPDX || b === ReportOption.SPDX) return -1;
+    const nameA = a.toLowerCase();
+    const nameB = b.toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+  });
+
+  return sortedNames;
+};
+
 const Row = (props: Props) => {
   const color = getCategoryColor(props.score);
-  const options: ReportOption[] = (REPORT_OPTIONS_BY_CATEGORY as any)[props.repoKind][props.name];
+  const [options, setOptions] = useState<ReportOption[]>([]);
 
-  if (isUndefined(options) || options.length === 0) return null;
+  useEffect(() => {
+    setOptions(sortOptions(props.data));
+  }, [props.data]);
+
+  if (options.length === 0) return null;
 
   return (
     <div className="p-3 p-md-4 border border-top-0">

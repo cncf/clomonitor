@@ -7,7 +7,6 @@ use axum::{
     },
     response,
 };
-use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
@@ -40,7 +39,7 @@ pub(crate) async fn badge(
     let rows = db
         .query(
             "
-            select score
+            select rating
             from project p
             join organization o using (organization_id)
             where o.name = $1::text
@@ -53,19 +52,19 @@ pub(crate) async fn badge(
     if rows.len() != 1 {
         return Err(StatusCode::NOT_FOUND);
     }
-    let score: Option<Json<Score>> = rows.first().unwrap().get("score");
+    let rating: Option<String> = rows.first().unwrap().get("rating");
 
     // Prepare badge configuration and return it
     let message: String;
     let color: &str;
-    match score {
-        Some(Json(score)) => {
-            message = score.global().to_string();
-            color = match score.rating() {
-                'a' => "green",
-                'b' => "yellow",
-                'c' => "orange",
-                'd' => "red",
+    match rating {
+        Some(rating) => {
+            message = rating.to_uppercase();
+            color = match rating.as_ref() {
+                "a" => "green",
+                "b" => "yellow",
+                "c" => "orange",
+                "d" => "red",
                 _ => "grey",
             };
         }

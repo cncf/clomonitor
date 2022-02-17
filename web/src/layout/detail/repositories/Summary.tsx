@@ -17,9 +17,10 @@ const Summary = (props: Props) => {
   const location = useLocation();
 
   if (props.repositories.length === 0) return null;
+
   return (
-    <div className="pt-2 mb-4 mb-md-5 table-responsive">
-      <table className={`table table-bordered mb-0 ${styles.table}`}>
+    <div className="pt-2 mb-4 mb-md-5">
+      <table className={`table table-bordered mb-0 w-100 ${styles.table}`}>
         <thead>
           <tr>
             <th scope="col" className="text-center text-nowrap">

@@ -1,6 +1,7 @@
 use super::{
     check::{self, Globs},
     patterns::*,
+    LintOptions,
 };
 use anyhow::Error;
 use serde::{Deserialize, Serialize};
@@ -8,6 +9,7 @@ use std::path::Path;
 
 /// A linter report for a repository of kind secondary.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
@@ -15,6 +17,7 @@ pub struct Report {
 
 /// Documentation section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Documentation {
     pub contributing: bool,
     pub maintainers: bool,
@@ -23,16 +26,17 @@ pub struct Documentation {
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct License {
     pub approved: Option<bool>,
     pub spdx_id: Option<String>,
 }
 
 /// Lint the path provided and return a report.
-pub fn lint(root: &Path) -> Result<Report, Error> {
+pub fn lint(options: LintOptions) -> Result<Report, Error> {
     Ok(Report {
-        documentation: lint_documentation(root)?,
-        license: lint_license(root)?,
+        documentation: lint_documentation(options.root)?,
+        license: lint_license(options.root)?,
     })
 }
 

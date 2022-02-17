@@ -1,6 +1,7 @@
 use super::{
     check::{self, Globs},
     patterns::*,
+    LintOptions,
 };
 use anyhow::Error;
 use serde::{Deserialize, Serialize};
@@ -8,6 +9,7 @@ use std::path::Path;
 
 /// A linter report for a repository of kind primary.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
@@ -17,6 +19,7 @@ pub struct Report {
 
 /// Documentation section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Documentation {
     pub adopters: bool,
     pub code_of_conduct: bool,
@@ -26,10 +29,12 @@ pub struct Documentation {
     pub maintainers: bool,
     pub readme: bool,
     pub roadmap: bool,
+    pub website: bool,
 }
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct License {
     pub approved: Option<bool>,
     pub fossa_badge: bool,
@@ -38,6 +43,7 @@ pub struct License {
 
 /// BestPractices section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct BestPractices {
     pub artifacthub_badge: bool,
     pub community_meeting: bool,
@@ -46,22 +52,23 @@ pub struct BestPractices {
 
 /// Security section of the report.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Security {
     pub security_policy: bool,
 }
 
 /// Lint the path provided and return a report.
-pub fn lint(root: &Path) -> Result<Report, Error> {
+pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     Ok(Report {
-        documentation: lint_documentation(root)?,
-        license: lint_license(root)?,
-        best_practices: lint_best_practices(root)?,
-        security: lint_security(root)?,
+        documentation: lint_documentation(options.root, options.url).await?,
+        license: lint_license(options.root)?,
+        best_practices: lint_best_practices(options.root)?,
+        security: lint_security(options.root)?,
     })
 }
 
 /// Run documentation checks and prepare the report's documentation section.
-fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
+async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation, Error> {
     Ok(Documentation {
         adopters: check::path_exists(Globs {
             root,
@@ -103,6 +110,7 @@ fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
             patterns: ROADMAP,
             case_sensitive: false,
         })?,
+        website: check::has_website(repo_url).await,
     })
 }
 

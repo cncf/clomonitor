@@ -25,8 +25,9 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<(), Error> {
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
         let db = db_pool.get().await?;
+        let github_token = cfg.get_str("creds.githubToken").ok();
         futs.push(tokio::spawn(async move {
-            if let Err(err) = repository.track(db).await {
+            if let Err(err) = repository.track(db, github_token.as_deref()).await {
                 error!("error tracking repository {}: {err}", repository.id());
             }
         }));

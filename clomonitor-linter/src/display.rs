@@ -9,7 +9,7 @@ pub(crate) const FAILURE_SYMBOL: char = '✗';
 
 /// Print the linter results provided.
 pub(crate) fn display(report: &Report, score: &Score) {
-    println!("\nCloMonitor linter results\n");
+    println!("CloMonitor linter results\n");
 
     match report {
         Report::Primary(report) => {
@@ -85,6 +85,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         .add_row(vec![
             cell_entry("Documentation / Roadmap"),
             cell_check(report.documentation.roadmap),
+        ])
+        .add_row(vec![
+            cell_entry("Documentation / Website"),
+            cell_check(report.documentation.website),
         ])
         .add_row(vec![
             cell_entry("License"),

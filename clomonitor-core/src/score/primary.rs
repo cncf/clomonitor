@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 
 /// Score information for a repository of kind primary.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Score {
     pub global: usize,
     pub documentation: usize,
@@ -35,7 +36,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.documentation += 5;
     }
     if report.documentation.code_of_conduct {
-        score.documentation += 10;
+        score.documentation += 5;
     }
     if report.documentation.contributing {
         score.documentation += 10;
@@ -53,6 +54,9 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.documentation += 50;
     }
     if report.documentation.roadmap {
+        score.documentation += 5;
+    }
+    if report.documentation.website {
         score.documentation += 5;
     }
 

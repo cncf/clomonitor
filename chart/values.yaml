@@ -26,6 +26,10 @@ db:
   user: postgres
   password: postgres
 
+# Credentials
+creds:
+  githubToken: null
+
 # Database migrator configuration
 dbmigrator:
   job:

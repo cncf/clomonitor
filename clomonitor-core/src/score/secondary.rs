@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 
 /// Score information for a repository of kind secondary.
 #[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct Score {
     pub global: usize,
     pub documentation: usize,

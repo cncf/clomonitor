@@ -320,6 +320,7 @@ dependencies = [
  "clap",
  "clomonitor-core",
  "comfy-table",
+ "openssl",
  "tokio",
 ]
 

@@ -10,4 +10,5 @@ anyhow = "1.0.52"
 clap = { version = "3.0.7", features = ["derive"] }
 comfy-table = "5.0.0"
 clomonitor-core = { path = "../clomonitor-core" }
+openssl = { version = "0.10", features = ["vendored"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }

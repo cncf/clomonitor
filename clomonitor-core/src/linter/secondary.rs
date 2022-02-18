@@ -45,17 +45,17 @@ fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
     Ok(Documentation {
         contributing: check::path_exists(Globs {
             root,
-            patterns: CONTRIBUTING,
+            patterns: CONTRIBUTING_FILE,
             case_sensitive: false,
         })?,
         maintainers: check::path_exists(Globs {
             root,
-            patterns: MAINTAINERS,
+            patterns: MAINTAINERS_FILE,
             case_sensitive: false,
         })?,
         readme: check::path_exists(Globs {
             root,
-            patterns: README,
+            patterns: README_FILE,
             case_sensitive: true,
         })?,
     })
@@ -65,7 +65,7 @@ fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
 fn lint_license(root: &Path) -> Result<License, Error> {
     let spdx_id = check::license(Globs {
         root,
-        patterns: LICENSE,
+        patterns: LICENSE_FILE,
         case_sensitive: true,
     })?;
 

@@ -72,44 +72,72 @@ async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation
     Ok(Documentation {
         adopters: check::path_exists(Globs {
             root,
-            patterns: ADOPTERS,
+            patterns: ADOPTERS_FILE,
             case_sensitive: false,
-        })?,
+        })? || check::content_matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            ADOPTERS_HEADER,
+        )?,
         code_of_conduct: check::path_exists(Globs {
             root,
-            patterns: CODE_OF_CONDUCT,
+            patterns: CODE_OF_CONDUCT_FILE,
             case_sensitive: false,
-        })?,
+        })? || check::content_matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            CODE_OF_CONDUCT_HEADER,
+        )?,
         contributing: check::path_exists(Globs {
             root,
-            patterns: CONTRIBUTING,
+            patterns: CONTRIBUTING_FILE,
             case_sensitive: false,
         })?,
         changelog: check::path_exists(Globs {
             root,
-            patterns: CHANGELOG,
+            patterns: CHANGELOG_FILE,
             case_sensitive: false,
         })?,
         governance: check::path_exists(Globs {
             root,
-            patterns: GOVERNANCE,
+            patterns: GOVERNANCE_FILE,
             case_sensitive: false,
-        })?,
+        })? || check::content_matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            GOVERNANCE_HEADER,
+        )?,
         maintainers: check::path_exists(Globs {
             root,
-            patterns: MAINTAINERS,
+            patterns: MAINTAINERS_FILE,
             case_sensitive: false,
         })?,
         readme: check::path_exists(Globs {
             root,
-            patterns: README,
+            patterns: README_FILE,
             case_sensitive: true,
         })?,
         roadmap: check::path_exists(Globs {
             root,
-            patterns: ROADMAP,
+            patterns: ROADMAP_FILE,
             case_sensitive: false,
-        })?,
+        })? || check::content_matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            ROADMAP_HEADER,
+        )?,
         website: check::has_website(repo_url).await,
     })
 }
@@ -118,7 +146,7 @@ async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation
 fn lint_license(root: &Path) -> Result<License, Error> {
     let spdx_id = check::license(Globs {
         root,
-        patterns: LICENSE,
+        patterns: LICENSE_FILE,
         case_sensitive: true,
     })?;
 
@@ -132,10 +160,10 @@ fn lint_license(root: &Path) -> Result<License, Error> {
         fossa_badge: check::content_matches(
             Globs {
                 root,
-                patterns: README,
+                patterns: README_FILE,
                 case_sensitive: true,
             },
-            FOSSA_BADGE,
+            FOSSA_BADGE_URL,
         )?,
         spdx_id,
     })
@@ -147,26 +175,26 @@ fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
         artifacthub_badge: check::content_matches(
             Globs {
                 root,
-                patterns: README,
+                patterns: README_FILE,
                 case_sensitive: true,
             },
-            ARTIFACTHUB_BADGE,
+            ARTIFACTHUB_BADGE_URL,
         )?,
         community_meeting: check::content_matches(
             Globs {
                 root,
-                patterns: README,
+                patterns: README_FILE,
                 case_sensitive: true,
             },
-            COMMUNITY_MEETING,
+            COMMUNITY_MEETING_TEXT,
         )?,
         openssf_badge: check::content_matches(
             Globs {
                 root,
-                patterns: README,
+                patterns: README_FILE,
                 case_sensitive: true,
             },
-            OPENSSF_BADGE,
+            OPENSSF_BADGE_URL,
         )?,
     })
 }
@@ -176,8 +204,15 @@ fn lint_security(root: &Path) -> Result<Security, Error> {
     Ok(Security {
         security_policy: check::path_exists(Globs {
             root,
-            patterns: SECURITY_POLICY,
+            patterns: SECURITY_POLICY_FILE,
             case_sensitive: false,
-        })?,
+        })? || check::content_matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            SECURITY_POLICY_HEADER,
+        )?,
     })
 }

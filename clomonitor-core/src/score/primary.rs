@@ -81,7 +81,10 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.best_practices += 25;
     }
     if report.best_practices.openssf_badge {
-        score.best_practices += 70;
+        score.best_practices += 60;
+    }
+    if report.best_practices.recent_release {
+        score.best_practices += 10;
     }
 
     // Security

@@ -1,4 +1,5 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import { FaBalanceScale, FaCheckDouble, FaTools } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
@@ -312,5 +313,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Website',
     legend: <span>A url that users can visit to learn more about your project</span>,
     description: <span>We check that the repository has a website set in Github</span>,
+  },
+  [ReportOption.RecentRelease]: {
+    icon: <BsCalendar3 />,
+    name: 'Recent release',
+    legend: <span>The project should have released at least one version in the last year</span>,
+    description: <span>We check that the repository has released a new version in Github in the last year</span>,
   },
 };

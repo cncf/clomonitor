@@ -1,5 +1,6 @@
 use anyhow::Error;
 use askalono::*;
+use chrono::{Duration, Utc};
 use glob::{glob_with, MatchOptions, PatternError};
 use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
@@ -53,6 +54,23 @@ where
         }
         false
     }))
+}
+
+/// Check if the repository has released a new version in the last year.
+pub(crate) async fn has_recent_release(repo_url: &str) -> Option<bool> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+    let github = octocrab::instance();
+    let mut page = github
+        .repos(&owner, &repo)
+        .releases()
+        .list()
+        .per_page(1)
+        .send()
+        .await
+        .ok()?;
+    let releases = page.take_items();
+    let last_release = releases.first()?;
+    Some(last_release.created_at? > Utc::now() - Duration::days(365))
 }
 
 /// Check if the project has added a website to the Github repository.
@@ -140,7 +158,7 @@ async fn get_website(url: &str) -> Option<String> {
     match github.repos(&owner, &repo).get().await {
         Ok(repo) => none_if_empty(repo.homepage),
         Err(err) => {
-            error!("error getting repository {owner}/{repo}:{err}");
+            error!("error getting repository {owner}/{repo}: {err}");
             None
         }
     }

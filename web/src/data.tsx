@@ -94,28 +94,18 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.Adopters]: {
     icon: <ImOffice />,
     name: 'Adopters',
-    legend: (
-      <span>
-        The <em>adopters</em> file contains a list of organizations using this project in production or at stages of
-        testing
-      </span>
-    ),
+    legend: <span>List of organizations using this project in production or at stages of testing</span>,
     description: (
       <span>
         We check that an <code>adopters*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository
+        repository or that the <code>README</code> file contains an <strong>adopters</strong> header
       </span>
     ),
   },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
     name: 'Changelog',
-    legend: (
-      <span>
-        A <em>changelog</em> is a file which contains a curated, chronologically ordered list of notable changes for
-        each version
-      </span>
-    ),
+    legend: <span>A curated, chronologically ordered list of notable changes for each version</span>,
     description: (
       <span>
         We check that an <code>changelog*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
@@ -135,7 +125,8 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     description: (
       <span>
         We check that a <code>code*of*conduct.md*</code> <em>(no case sensitive)</em> file exists at the{' '}
-        <code>root</code> of the repository or in the <code>docs</code> directory
+        <code>root</code> of the repository or in the <code>docs</code> directory or that the <code>README</code> file
+        contains a <strong>code of conduct</strong> header
       </span>
     ),
   },
@@ -158,11 +149,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,
     name: 'Governance',
-    legend: <span>File that explains how the governance and committer process works in the repository</span>,
+    legend: <span>Document that explains how the governance and committer process works in the repository</span>,
     description: (
       <span>
         We check that a <code>governance*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
-        the repository or in the <code>docs</code> directory
+        the repository or in the <code>docs</code> directory or that the <code>README</code> file contains a
+        <strong>governance</strong> header
       </span>
     ),
   },
@@ -202,15 +194,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <RiRoadMapLine />,
     name: 'Roadmap',
     legend: (
-      <span>
-        The <em>roadmap</em> file defines a high-level overview of the project's goals and deliverables ideally
-        presented on a timeline
-      </span>
+      <span>Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline</span>
     ),
     description: (
       <span>
         We check that a <code>roadmap*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository
+        repository or that the <code>README</code> file contains a <strong>roadmap</strong> header
       </span>
     ),
   },
@@ -276,16 +265,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,
     name: 'Security policy',
-    legend: (
-      <span>
-        Clearly documented security processes explaining how to report security issues to the project, and describing
-        how the project provides updated releases or patches to resolve security vulnerabilities
-      </span>
-    ),
+    legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
     description: (
       <span>
         We check that a <code>security*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository or in the <code>docs</code> or <code>.github</code> directories
+        repository, in the <code>docs</code> or <code>.github</code> directories or that the <code>README</code> file
+        contains a <strong>security</strong> header
       </span>
     ),
   },

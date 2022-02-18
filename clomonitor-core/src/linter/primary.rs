@@ -48,6 +48,7 @@ pub struct BestPractices {
     pub artifacthub_badge: bool,
     pub community_meeting: bool,
     pub openssf_badge: bool,
+    pub recent_release: bool,
 }
 
 /// Security section of the report.
@@ -62,7 +63,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     Ok(Report {
         documentation: lint_documentation(options.root, options.url).await?,
         license: lint_license(options.root)?,
-        best_practices: lint_best_practices(options.root)?,
+        best_practices: lint_best_practices(options.root, options.url).await?,
         security: lint_security(options.root)?,
     })
 }
@@ -170,7 +171,7 @@ fn lint_license(root: &Path) -> Result<License, Error> {
 }
 
 /// Run best practices checks and prepare the report's best practices section.
-fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
+async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractices, Error> {
     Ok(BestPractices {
         artifacthub_badge: check::content_matches(
             Globs {
@@ -196,6 +197,7 @@ fn lint_best_practices(root: &Path) -> Result<BestPractices, Error> {
             },
             OPENSSF_BADGE_URL,
         )?,
+        recent_release: check::has_recent_release(repo_url).await.unwrap_or(false),
     })
 }
 

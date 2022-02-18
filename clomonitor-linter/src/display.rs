@@ -121,6 +121,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.best_practices.openssf_badge),
         ])
         .add_row(vec![
+            cell_entry("Best practices / Recent release"),
+            cell_check(report.best_practices.recent_release),
+        ])
+        .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(report.security.security_policy),
         ]);

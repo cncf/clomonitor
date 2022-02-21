@@ -23,13 +23,7 @@ impl Score {
 
     /// Return the score's rating (a, b, c or d).
     pub fn rating(&self) -> char {
-        match self.global() {
-            75..=100 => 'a',
-            50..=74 => 'b',
-            25..=49 => 'c',
-            0..=24 => 'd',
-            _ => '?',
-        }
+        rating(self.global())
     }
 }
 
@@ -126,4 +120,15 @@ fn merge_mixed(scores: Vec<Score>, k_pri_only: f64, k_pri: f64, k_sec: f64) -> p
         }
     }
     score
+}
+
+/// Return the score's rating (a, b, c or d).
+pub fn rating(score: usize) -> char {
+    match score {
+        75..=100 => 'a',
+        50..=74 => 'b',
+        25..=49 => 'c',
+        0..=24 => 'd',
+        _ => '?',
+    }
 }

@@ -1,0 +1,3 @@
+[[escaper]]
+path = "::askama::Html"
+extensions = ["svg"]

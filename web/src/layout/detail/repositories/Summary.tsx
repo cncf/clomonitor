@@ -54,7 +54,7 @@ const Summary = (props: Props) => {
         <tbody>
           {props.repositories.map((repo: Repository) => {
             return (
-              <tr key={`summary_${repo.repositoryId}`}>
+              <tr key={`summary_${repo.repository_id}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
                   <div className="d-flex flex-row align-items-center pe-2">
                     <button
@@ -99,7 +99,7 @@ const Summary = (props: Props) => {
                   <Badge value={repo.score.license} />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.bestPractices} />
+                  <Badge value={repo.score.best_practices} />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.security} />

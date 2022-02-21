@@ -37,7 +37,7 @@ const Card = (props: Props) => {
           <div
             className={`d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center ${styles.imageWrapper}`}
           >
-            <Image alt={`${props.project.name}`} url={props.project.logoUrl} />
+            <Image alt={`${props.project.name}`} url={props.project.logo_url} />
           </div>
           <div className="flex-grow-1 ms-0 ms-md-3 ms-lg-0 ms-xl-3 w-100 truncateWrapper">
             <div className={`p-2 p-md-3 p-lg-2 p-xl-3 ${styles.content}`}>
@@ -45,19 +45,19 @@ const Card = (props: Props) => {
                 <div
                   className={`d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-3 ${styles.miniImageWrapper}`}
                 >
-                  <Image alt={`${props.project.name}`} url={props.project.logoUrl} />
+                  <Image alt={`${props.project.name}`} url={props.project.logo_url} />
                 </div>
                 <div className="d-flex flex-column w-100 truncateWrapper">
                   <div className="d-flex flex-row justify-content-between align-items-end">
                     <span className={`text-truncate fw-bold mb-0 ${styles.title}`}>
-                      {props.project.displayName || props.project.name}
+                      {props.project.display_name || props.project.name}
                     </span>
                   </div>
 
                   <div className="d-flex flex-row align-items-center my-2">
-                    <MaturityBadge maturityLevel={props.project.maturityId} />
+                    <MaturityBadge maturityLevel={props.project.maturity_id} />
                     <CartegoryBadge
-                      categoryId={props.project.categoryId}
+                      categoryId={props.project.category_id}
                       className="d-none d-md-block d-lg-none d-xxl-block ms-2"
                     />
                   </div>
@@ -65,9 +65,9 @@ const Card = (props: Props) => {
                   <div className={`d-none d-md-flex d-lg-none d-xl-flex flex-row align-items-center ${styles.info}`}>
                     <RepositorySection repositories={props.project.repositories} />
 
-                    {props.project.devstatsUrl && (
+                    {props.project.devstats_url && (
                       <>
-                        <ExternalLink href={props.project.devstatsUrl} className="ms-3">
+                        <ExternalLink href={props.project.devstats_url} className="ms-3">
                           <div className={`d-flex flex-row align-items-center ${styles.link}`}>
                             <GrPieChart className={`me-1 ${styles.statsIcon}`} />
                             <div>DevStats</div>
@@ -92,7 +92,7 @@ const Card = (props: Props) => {
           <Summary score={props.project.score} bigSize={false} />
         </div>
         <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
-          Updated {moment.unix(props.project.updatedAt).fromNow()}
+          Updated {moment.unix(props.project.updated_at).fromNow()}
         </div>
       </div>
     </div>

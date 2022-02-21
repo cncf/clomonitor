@@ -7,9 +7,12 @@ rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.52"
+askama = "0.11"
+askama_axum = "0.1"
 axum = "0.4.4"
 axum-debug = "0.3.2"
 clap = { version = "3.0.7", features = ["derive"] }
+clomonitor-core = { path = "../clomonitor-core" }
 config = "0.11.0"
 deadpool-postgres = { version = "0.10.1", features = ["serde"] }
 openssl = { version = "0.10", features = ["vendored"] }

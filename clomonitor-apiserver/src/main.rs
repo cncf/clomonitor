@@ -9,6 +9,7 @@ use std::path::PathBuf;
 use tokio::signal;
 use tracing::info;
 
+mod filters;
 mod handlers;
 mod router;
 

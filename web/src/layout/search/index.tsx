@@ -158,16 +158,16 @@ const Search = (props: Props) => {
     async function searchProjects() {
       setIsLoading(true);
       try {
-        const data = {
+        const newSearchResults = await API.searchProjects({
           text: formattedParams.text,
-          sortBy: sort.by,
-          sortDirection: sort.direction,
+          sort_by: sort.by,
+          sort_direction: sort.direction,
           filters: prepareFilters(formattedParams.filters || {}),
           offset: calculateOffset(formattedParams.pageNumber),
           limit: limit,
-        };
-        const newSearchResults = await API.searchProjects(data);
-        setTotal(parseInt(newSearchResults.paginationTotalCount));
+        });
+        console.log(newSearchResults);
+        setTotal(parseInt(newSearchResults['Pagination-Total-Count']));
         setProjects(newSearchResults.items);
       } catch {
         // TODO - error
@@ -215,7 +215,7 @@ const Search = (props: Props) => {
                   <Filters device="mobile" activeFilters={filters} onChange={onFiltersChange} visibleTitle={false} />
                 </div>
               </Sidebar>
-              <div className={`text-truncate fw-bold ${styles.searchResults}`} role="status">
+              <div className={`text-truncate fw-bold w-100 ${styles.searchResults}`} role="status">
                 {total > 0 && (
                   <span className="pe-1">
                     {calculateOffset(pageNumber) + 1} - {total < limit * pageNumber ? total : limit * pageNumber}{' '}

@@ -1,23 +1,23 @@
 export interface Organization {
   name: string;
-  displayName?: string;
+  display_name?: string;
   description?: string;
-  homeUrl: string;
-  logoUrl?: string;
+  home_url: string;
+  logo_url?: string;
 }
 
 export interface BaseProject {
   id: string;
   name: string;
-  displayName?: string;
+  display_name?: string;
   description?: string;
-  homeUrl: string;
-  logoUrl?: string;
-  devstatsUrl?: string;
-  maturityId: Maturity;
-  categoryId: Category;
+  home_url: string;
+  logo_url?: string;
+  devstats_url?: string;
+  maturity_id: Maturity;
+  category_id: Category;
   score: Score;
-  updatedAt: number;
+  updated_at: number;
 }
 
 export interface Project extends BaseProject {
@@ -39,16 +39,16 @@ export interface BaseRepository {
 
 export interface Repository extends BaseRepository {
   digest: string;
-  repositoryId: string;
+  repository_id: string;
   score: Score;
   reports: Report[];
 }
 
 export interface Report {
   data: CoreReport | any;
-  linterId: LinterId;
-  reportId: string;
-  updatedAt: number;
+  linter_id: LinterId;
+  report_id: string;
+  updated_at: number;
 }
 
 export interface CoreReport {
@@ -130,7 +130,7 @@ export enum LinterId {
 export enum ScoreType {
   Documentation = 'documentation',
   License = 'license',
-  BestPractices = 'bestPractices',
+  BestPractices = 'best_practices',
   Security = 'security',
   Global = 'global',
 }
@@ -158,21 +158,21 @@ export enum ScoreKind {
 export enum ReportOption {
   Adopters = 'adopters',
   Changelog = 'changelog',
-  CodeOfConduct = 'codeOfConduct',
+  CodeOfConduct = 'code_of_conduct',
   Contributing = 'contributing',
   Governance = 'governance',
   Maintainers = 'maintainers',
   Readme = 'readme',
   Roadmap = 'roadmap',
   ApprovedLicense = 'approved',
-  SPDX = 'spdxId',
-  FossaBadge = 'fossaBadge',
-  OpenSSFBadge = 'openssfBadge',
+  SPDX = 'spdx_id',
+  FossaBadge = 'fossa_badge',
+  OpenSSFBadge = 'openssf_badge',
   SecurityPolicy = 'securityPolicy',
-  CommunityMeeting = 'communityMeeting',
-  ArtifactHubBadge = 'artifacthubBadge',
+  CommunityMeeting = 'community_meeting',
+  ArtifactHubBadge = 'artifacthub_badge',
   Website = 'website',
-  RecentRelease = 'recentRelease',
+  RecentRelease = 'recent_release',
 }
 
 export interface SearchFiltersURL extends BasicQuery {
@@ -189,8 +189,8 @@ export interface BasicQuery {
 export interface SearchQuery extends BasicQuery {
   limit: number;
   offset: number;
-  sortBy: SortBy;
-  sortDirection: SortDirection;
+  sort_by: SortBy;
+  sort_direction: SortDirection;
 }
 
 export interface SearchData {

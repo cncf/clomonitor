@@ -1,7 +1,5 @@
 import { isEmpty, isNull, isUndefined } from 'lodash';
-import camelCase from 'lodash/camelCase';
 import isArray from 'lodash/isArray';
-import isObject from 'lodash/isObject';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
 import { Error, ErrorKind, Project, ProjectDetail, SearchData, SearchQuery } from '../types';
@@ -25,21 +23,6 @@ class API_CLASS {
   private HEADERS = {
     pagination: 'Pagination-Total-Count',
   };
-
-  private toCamelCase(r: any): any {
-    if (isArray(r)) {
-      return r.map((v) => this.toCamelCase(v));
-    } else if (isObject(r)) {
-      return Object.keys(r).reduce(
-        (result, key) => ({
-          ...result,
-          [camelCase(key)]: this.toCamelCase((r as any)[key]),
-        }),
-        {}
-      );
-    }
-    return r;
-  }
 
   private getHeadersValue(res: any, params?: string[]): any {
     if (!isUndefined(params) && params.length > 0) {
@@ -107,7 +90,7 @@ class API_CLASS {
           }
           json = { ...json, ...tmpHeaders };
         }
-        return this.toCamelCase(json);
+        return json;
       default:
         return response;
     }
@@ -126,12 +109,12 @@ class API_CLASS {
     return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${org}/${project}` });
   }
 
-  public searchProjects(query: SearchQuery): Promise<{ items: Project[]; paginationTotalCount: string }> {
+  public searchProjects(query: SearchQuery): Promise<{ items: Project[]; 'Pagination-Total-Count': string }> {
     let dataParams: SearchData = {
       limit: query.limit,
       offset: query.offset,
-      sort_by: query.sortBy || DEFAULT_SORT_BY,
-      sort_direction: query.sortDirection || DEFAULT_SORT_DIRECTION,
+      sort_by: query.sort_by || DEFAULT_SORT_BY,
+      sort_direction: query.sort_direction || DEFAULT_SORT_DIRECTION,
     };
     if (query.text) {
       dataParams['text'] = query.text;

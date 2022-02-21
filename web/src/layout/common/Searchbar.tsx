@@ -160,10 +160,10 @@ const Searchbar = (props: Props) => {
         limit: 5,
         offset: 0,
         text: value,
-        sortBy: DEFAULT_SORT_BY,
-        sortDirection: DEFAULT_SORT_DIRECTION,
+        sort_by: DEFAULT_SORT_BY,
+        sort_direction: DEFAULT_SORT_DIRECTION,
       });
-      const total = parseInt(searchResults.paginationTotalCount);
+      const total = parseInt(searchResults['Pagination-Total-Count']);
       if (total > 0) {
         const isInputFocused = inputEl.current === document.activeElement;
         // We have to be sure that input has focus to display results
@@ -274,7 +274,7 @@ const Searchbar = (props: Props) => {
                       onClick={() => {
                         goToProject(project);
                       }}
-                      aria-label={`Open package ${project.displayName || project.name} detail`}
+                      aria-label={`Open package ${project.display_name || project.name} detail`}
                       role="option"
                       aria-selected={index === highlightedItem}
                       id={`sl-opt${index}`}
@@ -283,17 +283,17 @@ const Searchbar = (props: Props) => {
                         <div
                           className={`d-flex align-items-center justify-content-center me-2 ${styles.miniImageWrapper}`}
                         >
-                          <Image alt={`${project.name}`} url={project.logoUrl} />
+                          <Image alt={`${project.name}`} url={project.logo_url} />
                         </div>
                         <div className="flex-grow-1 d-flex flex-column w-100 truncateWrapper">
                           <div className="d-flex flex-row justify-content-between align-items-end">
                             <span className={`text-truncate fw-bold mb-0 ${styles.title}`}>
-                              {project.displayName || project.name}
+                              {project.display_name || project.name}
                             </span>
                           </div>
 
                           <div className="d-flex flex-row align-items-center mt-1">
-                            <MaturityBadge maturityLevel={project.maturityId} />
+                            <MaturityBadge maturityLevel={project.maturity_id} />
                           </div>
                         </div>
 

@@ -112,24 +112,24 @@ const Detail = () => {
                         <div
                           className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
                         >
-                          <Image alt={`${detail.name}`} url={detail.logoUrl} />
+                          <Image alt={`${detail.name}`} url={detail.logo_url} />
                         </div>
                         <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
                           <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>
-                            {detail.displayName || detail.name}
+                            {detail.display_name || detail.name}
                           </div>
 
                           <div className="d-flex flex-row align-items-center my-2">
-                            <MaturityBadge maturityLevel={detail.maturityId} />
-                            <CartegoryBadge categoryId={detail.categoryId} className="d-none d-sm-block ms-2" />
+                            <MaturityBadge maturityLevel={detail.maturity_id} />
+                            <CartegoryBadge categoryId={detail.category_id} className="d-none d-sm-block ms-2" />
                           </div>
 
                           <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>
                             <RepositorySection repositories={detail.repositories} />
 
-                            {detail.devstatsUrl && (
+                            {detail.devstats_url && (
                               <>
-                                <ExternalLink href={detail.devstatsUrl} className="ms-3">
+                                <ExternalLink href={detail.devstats_url} className="ms-3">
                                   <div className={`d-flex flex-row align-items-center ${styles.link}`}>
                                     <GrPieChart className={`me-1 ${styles.statsIcon}`} />
                                     <div>DevStats</div>
@@ -145,7 +145,7 @@ const Detail = () => {
                               <ProjectDropdown
                                 orgName={org}
                                 projectName={detail.name}
-                                projectDisplayName={detail.displayName}
+                                projectDisplayName={detail.display_name}
                               />
                             )}
                           </div>

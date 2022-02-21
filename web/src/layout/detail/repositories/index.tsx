@@ -67,7 +67,7 @@ const RepositoriesList = (props: Props) => {
 
       {repositories.map((repo: Repository) => {
         return (
-          <div key={`repo_${repo.repositoryId}`} className="mb-4 mb-md-5 position-relative">
+          <div key={`repo_${repo.repository_id}`} className="mb-4 mb-md-5 position-relative">
             <div>
               <div className={`position-absolute ${styles.headerAnchor}`} id={repo.name} />
             </div>
@@ -123,9 +123,9 @@ const RepositoriesList = (props: Props) => {
             <div>
               {repo.reports.map((report: Report) => {
                 return (
-                  <Fragment key={report.reportId}>
+                  <Fragment key={report.report_id}>
                     <Row
-                      reportId={report.reportId}
+                      reportId={report.report_id}
                       repoKind={repo.kind}
                       name={ScoreType.Documentation}
                       label="Documentation"
@@ -134,7 +134,7 @@ const RepositoriesList = (props: Props) => {
                       score={repo.score.documentation}
                     />
                     <Row
-                      reportId={report.reportId}
+                      reportId={report.report_id}
                       repoKind={repo.kind}
                       name={ScoreType.License}
                       label="License"
@@ -143,16 +143,16 @@ const RepositoriesList = (props: Props) => {
                       score={repo.score.license}
                     />
                     <Row
-                      reportId={report.reportId}
+                      reportId={report.report_id}
                       repoKind={repo.kind}
                       name={ScoreType.BestPractices}
                       label="Best Practices"
                       data={report.data.bestPractices}
                       icon={CATEGORY_ICONS[ScoreType.BestPractices]}
-                      score={repo.score.bestPractices}
+                      score={repo.score.best_practices}
                     />
                     <Row
-                      reportId={report.reportId}
+                      reportId={report.report_id}
                       repoKind={repo.kind}
                       name={ScoreType.Security}
                       label="Security"

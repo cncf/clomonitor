@@ -34,6 +34,10 @@
     "sass": "^1.45.2",
     "typescript": "^4.4.2"
   },
+  "resolutions": {
+    "react-scripts/**/nth-check": "^2.0.1",
+    "react-scripts/**/postcss": "^8.2.13"
+  },
   "proxy": "http://localhost:8000",
   "scripts": {
     "copy:static": "shx rm -rf src/static && shx mkdir src/static && shx cp -r public/static/* src",

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { MouseEvent as ReactMouseEvent, useEffect, useState } from 'react';
+import { memo, MouseEvent as ReactMouseEvent, useEffect, useState } from 'react';
 
 import NoData from '../common/NoData';
 import styles from './Tabs.module.css';
@@ -8,6 +8,7 @@ interface Props {
   tabs: Tab[];
   active: string;
   noDataContent: string;
+  className?: string;
 }
 
 interface Tab {
@@ -22,15 +23,15 @@ const Tabs = (props: Props) => {
   const [visibleContent, setVisibleContent] = useState<JSX.Element | undefined>();
 
   useEffect(() => {
-    const currentActiveTab = props.tabs.find((tab: Tab) => tab.name === props.active);
+    const currentActiveTab = props.tabs.find((tab: Tab) => tab.name === activeTab);
     if (currentActiveTab) {
       setVisibleContent(currentActiveTab.content);
     }
-  }, [props.active, props.tabs]);
+  }, [props.tabs, activeTab]);
 
   return (
     <>
-      <div>
+      <div className={props.className}>
         <ul className={`nav nav-tabs ${styles.tabs}`}>
           {props.tabs.map((tab: Tab) => (
             <li className="nav-item" key={tab.name}>
@@ -54,7 +55,7 @@ const Tabs = (props: Props) => {
         </ul>
       </div>
 
-      <div className="tab-content mt-3">
+      <div className="tab-content mt-4">
         <div className="tab-pane fade show active">
           {visibleContent ? <>{visibleContent}</> : <NoData>{props.noDataContent}</NoData>}
         </div>
@@ -63,4 +64,4 @@ const Tabs = (props: Props) => {
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

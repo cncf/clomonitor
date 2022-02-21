@@ -60,6 +60,11 @@ main {
   margin-top: 0.3rem;
 }
 
+.form-label {
+  margin-bottom: 0;
+  line-height: 1.65rem;
+}
+
 .was-validated .form-check-input:valid ~ .form-check-label,
 .form-check-input.is-valid ~ .form-check-label,
 .was-validated .form-check-input:valid ~ .form-check-label,
@@ -141,7 +146,9 @@ a,
   &:hover,
   &:disabled,
   &.disabled,
-  &.active {
+  &.active,
+  &:active,
+  &:focus {
     background-color: var(--rm-primary);
     border-color: var(--rm-primary);
   }
@@ -154,7 +161,9 @@ a,
   &:hover,
   &:disabled,
   &.disabled,
-  &.active {
+  &.active,
+  &:active,
+  &:focus {
     background-color: var(--rm-secondary);
     border-color: var(--rm-secondary);
   }
@@ -196,6 +205,36 @@ a,
 
 .cursorDefault:not([disabled]) {
   cursor: default;
+}
+
+// Scroll
+
+.noScroll-sidebar,
+.noScroll-modal {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .noScroll-sidebar.noScroll-lg,
+  .noScroll-modal.noScroll-lg {
+    overflow: auto !important;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .noScroll-sidebar.noScroll-md,
+  .noScroll-modal.noScroll-md {
+    overflow: auto !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .noScroll-sidebar.noScroll-sm,
+  .noScroll-modal.noScroll-sm {
+    overflow: auto !important;
+  }
 }
 
 @media only screen and (max-width: 575.98px) {

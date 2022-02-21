@@ -1,18 +1,10 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-
-import ButtonCopyToClipboard from './ButtonCopyToClipboard';
+import CodeBlock from './CodeBlock';
 import Modal from './Modal';
 import Tabs from './Tabs';
 
 interface OpenModalStatus {
   status: boolean;
   name?: string;
-}
-
-enum Modals {
-  Badge = 'badge',
-  Embed = 'embed',
 }
 
 interface Props {
@@ -32,7 +24,7 @@ const BadgeModal = (props: Props) => {
     <Modal
       header="Project badge"
       onClose={props.onCloseModal}
-      open={props.openStatus.status && props.openStatus.name === Modals.Badge}
+      open={props.openStatus.status && props.openStatus.name === 'badge'}
     >
       <div className="my-3">
         <Tabs
@@ -46,25 +38,7 @@ const BadgeModal = (props: Props) => {
                     <img src={badgeImage} alt="CloMonitor badge" />
                   </div>
 
-                  <div className="d-flex flex-row align-items-center">
-                    <SyntaxHighlighter
-                      language="bash"
-                      style={docco}
-                      customStyle={{
-                        backgroundColor: 'var(--color-black-10)',
-                        color: 'var(--color-font)',
-                        marginBottom: '0',
-                      }}
-                    >
-                      {markdownLink}
-                    </SyntaxHighlighter>
-
-                    <ButtonCopyToClipboard
-                      text={markdownLink}
-                      label="Copy badge markdown link to clipboard"
-                      wrapperClassName="ms-3"
-                    />
-                  </div>
+                  <CodeBlock language="markdown" content={markdownLink} label="Copy badge markdown link to clipboard" />
                 </>
               ),
             },
@@ -77,24 +51,7 @@ const BadgeModal = (props: Props) => {
                     <img src={badgeImage} alt="CloMonitor badge" />
                   </div>
 
-                  <div className="d-flex flex-row align-items-center">
-                    <SyntaxHighlighter
-                      language="bash"
-                      style={docco}
-                      customStyle={{
-                        backgroundColor: 'var(--color-black-10)',
-                        color: 'var(--color-font)',
-                        marginBottom: '0',
-                      }}
-                    >
-                      {asciiLink}
-                    </SyntaxHighlighter>
-                    <ButtonCopyToClipboard
-                      text={asciiLink}
-                      label="Copy badge Ascii link to clipboard"
-                      wrapperClassName="ms-3"
-                    />
-                  </div>
+                  <CodeBlock language="asciidoc" content={asciiLink} label="Copy badge Ascii link to clipboard" />
                 </>
               ),
             },

@@ -74,7 +74,7 @@ const ButtonCopyToClipboard = (props: Props) => {
           role="tooltip"
         >
           <div className={`tooltip-arrow ${styles.tooltipArrow} ${props.arrowClassName}`} />
-          <div className={`tooltip-inner ${styles.tooltipContent}`}>Copied!</div>
+          <div className={`tooltip-inner rounded-0 ${styles.tooltipContent}`}>Copied!</div>
         </div>
       )}
       <button

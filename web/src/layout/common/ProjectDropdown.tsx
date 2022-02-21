@@ -5,6 +5,7 @@ import { GoThreeBars } from 'react-icons/go';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import BadgeModal from './BadgeModal';
 import styles from './ProjectDropdown.module.css';
+import ReportSummaryModal from './ReportSummaryModal';
 
 interface OpenModalStatus {
   status: boolean;
@@ -13,7 +14,7 @@ interface OpenModalStatus {
 
 enum Modals {
   Badge = 'badge',
-  Embed = 'embed',
+  ReportSummary = 'reportSummary',
 }
 
 interface Props {
@@ -62,10 +63,31 @@ const ProjectDropdown = (props: Props) => {
               Get badge
             </button>
           </li>
+          <li>
+            <button
+              className="dropdown-item"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+
+                setVisibleDropdown(false);
+                setOpenStatus({ name: Modals.ReportSummary, status: true });
+              }}
+            >
+              Embed report summary
+            </button>
+          </li>
         </ul>
       </div>
 
       <BadgeModal
+        orgName={props.orgName}
+        projectName={props.projectName}
+        openStatus={openStatus}
+        onCloseModal={onCloseModal}
+      />
+
+      <ReportSummaryModal
         orgName={props.orgName}
         projectName={props.projectName}
         openStatus={openStatus}

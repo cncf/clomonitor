@@ -373,6 +373,7 @@ dependencies = [
  "octocrab",
  "regex",
  "serde 1.0.136",
+ "tokio",
  "tracing",
 ]
 

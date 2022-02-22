@@ -59,3 +59,15 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
         RepositoryKind::Secondary => Report::Secondary(secondary::lint(options)?),
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn repository_kind_from_str() {
+        assert!(matches!("primary".parse(), Ok(RepositoryKind::Primary)));
+        assert!(matches!("secondary".parse(), Ok(RepositoryKind::Secondary)));
+        assert!(matches!("invalid".parse::<RepositoryKind>(), Err(_)));
+    }
+}

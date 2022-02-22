@@ -147,7 +147,7 @@ const RepositoriesList = (props: Props) => {
                       repoKind={repo.kind}
                       name={ScoreType.BestPractices}
                       label="Best Practices"
-                      data={report.data.bestPractices}
+                      data={report.data.best_practices}
                       icon={CATEGORY_ICONS[ScoreType.BestPractices]}
                       score={repo.score.best_practices}
                     />

@@ -168,7 +168,7 @@ export enum ReportOption {
   SPDX = 'spdx_id',
   FossaBadge = 'fossa_badge',
   OpenSSFBadge = 'openssf_badge',
-  SecurityPolicy = 'securityPolicy',
+  SecurityPolicy = 'security_policy',
   CommunityMeeting = 'community_meeting',
   ArtifactHubBadge = 'artifacthub_badge',
   Website = 'website',

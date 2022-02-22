@@ -6,6 +6,7 @@ pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 2] =
 pub(crate) static CODE_OF_CONDUCT_HEADER: [&str; 1] = [r"(?im)^#+.*code of conduct.*$"];
 pub(crate) static CONTRIBUTING_FILE: [&str; 2] = ["contributing*", "docs/contributing*"];
 pub(crate) static CHANGELOG_FILE: [&str; 1] = ["changelog*"];
+pub(crate) static CHANGELOG_HEADER: [&str; 1] = [r"(?im)^#+.*changelog.*$"];
 pub(crate) static GOVERNANCE_FILE: [&str; 2] = ["governance*", "docs/governance*"];
 pub(crate) static GOVERNANCE_HEADER: [&str; 1] = [r"(?im)^#+.*governance.*$"];
 pub(crate) static MAINTAINERS_FILE: [&str; 7] = [

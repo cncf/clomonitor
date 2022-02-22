@@ -113,7 +113,14 @@ async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation
                 root,
                 patterns: CHANGELOG_FILE,
                 case_sensitive: false,
-            })?,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                CHANGELOG_HEADER,
+            )?,
             governance: check::path_exists(Globs {
                 root,
                 patterns: GOVERNANCE_FILE,

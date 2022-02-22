@@ -166,7 +166,6 @@ const Search = (props: Props) => {
           offset: calculateOffset(formattedParams.pageNumber),
           limit: limit,
         });
-        console.log(newSearchResults);
         setTotal(parseInt(newSearchResults['Pagination-Total-Count']));
         setProjects(newSearchResults.items);
       } catch {

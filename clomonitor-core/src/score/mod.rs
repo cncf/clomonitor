@@ -5,7 +5,7 @@ pub mod primary;
 pub mod secondary;
 
 /// Score information specific to a repository kind linter report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "score_kind")]
 pub enum Score {
     Primary(primary::Score),
@@ -16,8 +16,8 @@ impl Score {
     /// Return the score's global value.
     pub fn global(&self) -> usize {
         match self {
-            Score::Primary(report) => report.global,
-            Score::Secondary(report) => report.global,
+            Score::Primary(score) => score.global,
+            Score::Secondary(score) => score.global,
         }
     }
 
@@ -130,5 +130,124 @@ pub fn rating(score: usize) -> char {
         25..=49 => 'c',
         0..=24 => 'd',
         _ => '?',
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn global_score() {
+        assert_eq!(
+            Score::Primary(primary::Score {
+                global: 10,
+                documentation: 20,
+                license: 30,
+                best_practices: 40,
+                security: 50,
+            })
+            .global(),
+            10
+        );
+        assert_eq!(
+            Score::Secondary(secondary::Score {
+                global: 10,
+                documentation: 20,
+                license: 30,
+            })
+            .global(),
+            10
+        );
+    }
+
+    #[test]
+    fn score_rating() {
+        assert_eq!(rating(80), 'a');
+        assert_eq!(rating(75), 'a');
+        assert_eq!(rating(74), 'b');
+        assert_eq!(rating(50), 'b');
+        assert_eq!(rating(49), 'c');
+        assert_eq!(rating(25), 'c');
+        assert_eq!(rating(20), 'd');
+    }
+
+    #[test]
+    fn merge_scores_only_primaries() {
+        assert_eq!(
+            merge(vec![
+                Score::Primary(primary::Score {
+                    global: 80,
+                    documentation: 80,
+                    license: 80,
+                    best_practices: 80,
+                    security: 80,
+                }),
+                Score::Primary(primary::Score {
+                    global: 60,
+                    documentation: 60,
+                    license: 60,
+                    best_practices: 60,
+                    security: 60,
+                }),
+            ]),
+            Score::Primary(primary::Score {
+                global: 70,
+                documentation: 70,
+                license: 70,
+                best_practices: 70,
+                security: 70,
+            })
+        )
+    }
+
+    #[test]
+    fn merge_scores_only_secondaries() {
+        assert_eq!(
+            merge(vec![
+                Score::Secondary(secondary::Score {
+                    global: 80,
+                    documentation: 80,
+                    license: 80,
+                }),
+                Score::Secondary(secondary::Score {
+                    global: 60,
+                    documentation: 60,
+                    license: 60,
+                }),
+            ]),
+            Score::Secondary(secondary::Score {
+                global: 70,
+                documentation: 70,
+                license: 70,
+            })
+        )
+    }
+
+    #[test]
+    fn merge_scores_mixed() {
+        assert_eq!(
+            merge(vec![
+                Score::Primary(primary::Score {
+                    global: 80,
+                    documentation: 80,
+                    license: 80,
+                    best_practices: 80,
+                    security: 80,
+                }),
+                Score::Secondary(secondary::Score {
+                    global: 100,
+                    documentation: 100,
+                    license: 100,
+                }),
+            ]),
+            Score::Primary(primary::Score {
+                global: 84,
+                documentation: 84,
+                license: 84,
+                best_practices: 80,
+                security: 80,
+            })
+        )
     }
 }

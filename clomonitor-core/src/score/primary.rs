@@ -1,8 +1,8 @@
-use crate::linter::primary::Report;
+use crate::linter::primary::*;
 use serde::{Deserialize, Serialize};
 
 /// Score information for a repository of kind primary.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Score {
     pub global: usize,
@@ -101,4 +101,97 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     score.global = global.round() as usize;
 
     score
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn new_returns_all_zeroes_score() {
+        assert_eq!(
+            Score::new(),
+            Score {
+                global: 0,
+                documentation: 0,
+                license: 0,
+                best_practices: 0,
+                security: 0,
+            }
+        );
+    }
+
+    #[test]
+    fn report_with_all_checks_passed_got_max_score() {
+        assert_eq!(
+            calculate_score(&Report {
+                documentation: Documentation {
+                    adopters: true,
+                    code_of_conduct: true,
+                    contributing: true,
+                    changelog: true,
+                    governance: true,
+                    maintainers: true,
+                    readme: true,
+                    roadmap: true,
+                    website: true,
+                },
+                license: License {
+                    approved: Some(true),
+                    fossa_badge: true,
+                    spdx_id: Some("Apache-2.0".to_string()),
+                },
+                best_practices: BestPractices {
+                    artifacthub_badge: true,
+                    community_meeting: true,
+                    openssf_badge: true,
+                    recent_release: true,
+                },
+                security: Security {
+                    security_policy: true,
+                },
+            }),
+            Score {
+                global: 100,
+                documentation: 100,
+                license: 100,
+                best_practices: 100,
+                security: 100,
+            }
+        );
+    }
+
+    #[test]
+    fn report_with_no_checks_passed_got_min_score() {
+        assert_eq!(
+            calculate_score(&Report {
+                documentation: Documentation {
+                    adopters: false,
+                    code_of_conduct: false,
+                    contributing: false,
+                    changelog: false,
+                    governance: false,
+                    maintainers: false,
+                    readme: false,
+                    roadmap: false,
+                    website: false,
+                },
+                license: License {
+                    approved: None,
+                    fossa_badge: false,
+                    spdx_id: None,
+                },
+                best_practices: BestPractices {
+                    artifacthub_badge: false,
+                    community_meeting: false,
+                    openssf_badge: false,
+                    recent_release: false,
+                },
+                security: Security {
+                    security_policy: false,
+                },
+            }),
+            Score::new()
+        );
+    }
 }

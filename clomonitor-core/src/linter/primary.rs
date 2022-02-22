@@ -60,87 +60,98 @@ pub struct Security {
 
 /// Lint the path provided and return a report.
 pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
-    Ok(Report {
-        documentation: lint_documentation(options.root, options.url).await?,
-        license: lint_license(options.root)?,
-        best_practices: lint_best_practices(options.root, options.url).await?,
-        security: lint_security(options.root)?,
-    })
+    let result = tokio::try_join!(
+        lint_documentation(options.root, options.url),
+        lint_best_practices(options.root, options.url),
+    );
+    match result {
+        Ok((documentation, best_practices)) => Ok(Report {
+            documentation,
+            license: lint_license(options.root)?,
+            best_practices,
+            security: lint_security(options.root)?,
+        }),
+        Err(err) => Err(err),
+    }
 }
 
 /// Run documentation checks and prepare the report's documentation section.
 async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation, Error> {
-    Ok(Documentation {
-        adopters: check::path_exists(Globs {
-            root,
-            patterns: ADOPTERS_FILE,
-            case_sensitive: false,
-        })? || check::content_matches(
-            Globs {
+    let result = tokio::try_join!(check::has_website(repo_url));
+    match result {
+        Ok((website,)) => Ok(Documentation {
+            adopters: check::path_exists(Globs {
+                root,
+                patterns: ADOPTERS_FILE,
+                case_sensitive: false,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                ADOPTERS_HEADER,
+            )?,
+            code_of_conduct: check::path_exists(Globs {
+                root,
+                patterns: CODE_OF_CONDUCT_FILE,
+                case_sensitive: false,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                CODE_OF_CONDUCT_HEADER,
+            )?,
+            contributing: check::path_exists(Globs {
+                root,
+                patterns: CONTRIBUTING_FILE,
+                case_sensitive: false,
+            })?,
+            changelog: check::path_exists(Globs {
+                root,
+                patterns: CHANGELOG_FILE,
+                case_sensitive: false,
+            })?,
+            governance: check::path_exists(Globs {
+                root,
+                patterns: GOVERNANCE_FILE,
+                case_sensitive: false,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                GOVERNANCE_HEADER,
+            )?,
+            maintainers: check::path_exists(Globs {
+                root,
+                patterns: MAINTAINERS_FILE,
+                case_sensitive: false,
+            })?,
+            readme: check::path_exists(Globs {
                 root,
                 patterns: README_FILE,
                 case_sensitive: true,
-            },
-            ADOPTERS_HEADER,
-        )?,
-        code_of_conduct: check::path_exists(Globs {
-            root,
-            patterns: CODE_OF_CONDUCT_FILE,
-            case_sensitive: false,
-        })? || check::content_matches(
-            Globs {
+            })?,
+            roadmap: check::path_exists(Globs {
                 root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            CODE_OF_CONDUCT_HEADER,
-        )?,
-        contributing: check::path_exists(Globs {
-            root,
-            patterns: CONTRIBUTING_FILE,
-            case_sensitive: false,
-        })?,
-        changelog: check::path_exists(Globs {
-            root,
-            patterns: CHANGELOG_FILE,
-            case_sensitive: false,
-        })?,
-        governance: check::path_exists(Globs {
-            root,
-            patterns: GOVERNANCE_FILE,
-            case_sensitive: false,
-        })? || check::content_matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            GOVERNANCE_HEADER,
-        )?,
-        maintainers: check::path_exists(Globs {
-            root,
-            patterns: MAINTAINERS_FILE,
-            case_sensitive: false,
-        })?,
-        readme: check::path_exists(Globs {
-            root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        })?,
-        roadmap: check::path_exists(Globs {
-            root,
-            patterns: ROADMAP_FILE,
-            case_sensitive: false,
-        })? || check::content_matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            ROADMAP_HEADER,
-        )?,
-        website: check::has_website(repo_url).await,
-    })
+                patterns: ROADMAP_FILE,
+                case_sensitive: false,
+            })? || check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                ROADMAP_HEADER,
+            )?,
+            website,
+        }),
+        Err(err) => Err(err),
+    }
 }
 
 /// Run license checks and prepare the report's license section.
@@ -172,33 +183,37 @@ fn lint_license(root: &Path) -> Result<License, Error> {
 
 /// Run best practices checks and prepare the report's best practices section.
 async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractices, Error> {
-    Ok(BestPractices {
-        artifacthub_badge: check::content_matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            ARTIFACTHUB_BADGE_URL,
-        )?,
-        community_meeting: check::content_matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            COMMUNITY_MEETING_TEXT,
-        )?,
-        openssf_badge: check::content_matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            OPENSSF_BADGE_URL,
-        )?,
-        recent_release: check::has_recent_release(repo_url).await.unwrap_or(false),
-    })
+    let result = tokio::try_join!(check::has_recent_release(repo_url));
+    match result {
+        Ok((recent_release,)) => Ok(BestPractices {
+            artifacthub_badge: check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                ARTIFACTHUB_BADGE_URL,
+            )?,
+            community_meeting: check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                COMMUNITY_MEETING_TEXT,
+            )?,
+            openssf_badge: check::content_matches(
+                Globs {
+                    root,
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                OPENSSF_BADGE_URL,
+            )?,
+            recent_release,
+        }),
+        Err(err) => Err(err),
+    }
 }
 
 /// Run security checks and prepare the report's security section.

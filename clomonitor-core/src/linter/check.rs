@@ -1,4 +1,4 @@
-use anyhow::Error;
+use anyhow::{format_err, Error};
 use askalono::*;
 use chrono::{Duration, Utc};
 use glob::{glob_with, MatchOptions, PatternError};
@@ -6,7 +6,6 @@ use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
 use std::fs;
 use std::path::{Path, PathBuf};
-use tracing::error;
 
 /// SPDX licenses data. Used to detect license used by repositories.
 const LICENSES_DATA: &[u8] = include_bytes!("data/licenses.bin.zstd");
@@ -57,7 +56,7 @@ where
 }
 
 /// Check if the repository has released a new version in the last year.
-pub(crate) async fn has_recent_release(repo_url: &str) -> Option<bool> {
+pub(crate) async fn has_recent_release(repo_url: &str) -> Result<bool, Error> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
     let mut page = github
@@ -66,16 +65,19 @@ pub(crate) async fn has_recent_release(repo_url: &str) -> Option<bool> {
         .list()
         .per_page(1)
         .send()
-        .await
-        .ok()?;
+        .await?;
     let releases = page.take_items();
-    let last_release = releases.first()?;
-    Some(last_release.created_at? > Utc::now() - Duration::days(365))
+    if let Some(last_release) = releases.first() {
+        if let Some(created_at) = last_release.created_at {
+            return Ok(created_at > Utc::now() - Duration::days(365));
+        }
+    }
+    Ok(false)
 }
 
 /// Check if the project has added a website to the Github repository.
-pub(crate) async fn has_website(repo_url: &str) -> bool {
-    get_website(repo_url).await.is_some()
+pub(crate) async fn has_website(repo_url: &str) -> Result<bool, Error> {
+    Ok(get_website(repo_url).await?.is_some())
 }
 
 /// Check if the license provided is an approved one.
@@ -142,34 +144,30 @@ where
 }
 
 /// Extract the owner and repository from the repository url provided.
-fn get_owner_and_repo(url: &str) -> Option<(String, String)> {
+fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
     lazy_static! {
         static ref GITHUB_RE: Regex =
-            Regex::new("^https://github.com/(?P<org>.+)/(?P<repo>.+)$").unwrap();
+            Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$").unwrap();
     }
-    let c = GITHUB_RE.captures(url)?;
-    Some((c["org"].to_string(), c["repo"].to_string()))
+    let c = GITHUB_RE
+        .captures(repo_url)
+        .ok_or(format_err!("invalid repository url"))?;
+    Ok((c["org"].to_string(), c["repo"].to_string()))
 }
 
 /// Get project's website from Github repository.
-async fn get_website(url: &str) -> Option<String> {
-    let (owner, repo) = get_owner_and_repo(url)?;
+async fn get_website(repo_url: &str) -> Result<Option<String>, Error> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
     match github.repos(&owner, &repo).get().await {
-        Ok(repo) => none_if_empty(repo.homepage),
-        Err(err) => {
-            error!("error getting repository {owner}/{repo}: {err}");
-            None
+        Ok(repo) => {
+            if let Some(url) = repo.homepage {
+                if !url.is_empty() {
+                    return Ok(Some(url));
+                }
+            }
+            Ok(None)
         }
+        Err(err) => Err(err.into()),
     }
-}
-
-/// Helper function that returns None if the provided Option<String> has some
-/// value on it but it's empty.
-fn none_if_empty(o: Option<String>) -> Option<String> {
-    let value = o?;
-    if value.is_empty() {
-        return None;
-    }
-    Some(value)
 }

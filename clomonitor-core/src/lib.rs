@@ -4,7 +4,7 @@ pub mod linter;
 pub mod score;
 
 /// Supported linters.
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Linter {
     Core = 0,
 }
@@ -17,5 +17,16 @@ impl std::convert::TryFrom<i32> for Linter {
             0 => Ok(Linter::Core),
             _ => Err(format_err!("invalid linter id")),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn linter_from_i32() {
+        assert!(matches!(Linter::try_from(0), Ok(Linter::Core)));
+        assert!(matches!(Linter::try_from(1), Err(_)));
     }
 }

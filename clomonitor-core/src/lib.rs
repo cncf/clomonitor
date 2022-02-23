@@ -25,8 +25,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn linter_from_i32() {
+    fn linter_from_i32_valid_id() {
         assert!(matches!(Linter::try_from(0), Ok(Linter::Core)));
+    }
+
+    #[test]
+    fn linter_from_i32_invalid_id() {
         assert!(matches!(Linter::try_from(1), Err(_)));
     }
 }

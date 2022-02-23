@@ -65,9 +65,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn repository_kind_from_str() {
+    fn repository_kind_from_str_valid_kind() {
         assert!(matches!("primary".parse(), Ok(RepositoryKind::Primary)));
         assert!(matches!("secondary".parse(), Ok(RepositoryKind::Secondary)));
+    }
+
+    #[test]
+    fn repository_kind_from_str_invalid_kind() {
         assert!(matches!("invalid".parse::<RepositoryKind>(), Err(_)));
     }
 }

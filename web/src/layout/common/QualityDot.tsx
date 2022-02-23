@@ -1,13 +1,14 @@
-import styles from './RoundedBadge.module.css';
+import styles from './QualityDot.module.css';
 
 interface Props {
   level: number;
   className?: string;
 }
 
-const RoundedBadge = (props: Props) => {
+const QualityDot = (props: Props) => {
   return (
     <div
+      data-testid="quality-dot"
       className={`me-2 border rounded-pill position-relative ${styles.quality} ${styles[`level${props.level}`]} ${
         props.className
       }`}
@@ -15,4 +16,4 @@ const RoundedBadge = (props: Props) => {
   );
 };
 
-export default RoundedBadge;
+export default QualityDot;

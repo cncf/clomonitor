@@ -37,24 +37,27 @@ const SelectedFilters = (props: Props) => {
     <div className="d-none d-md-block mt-2">
       <div className="d-flex flex-row justify-content-start align-items-baseline">
         <div className="me-3">Filters:</div>
-        <div className={`position-relative ${styles.badges}`}>
+        <div role="list" className={`position-relative ${styles.badges}`}>
           {Object.keys(props.filters).map((category: string) => {
             return (
               <Fragment key={`filter_${category}`}>
                 {props.filters[category].map((filter: string | number) => {
+                  const filterName = getFilterName(category as FilterKind, filter);
                   return (
                     <span
+                      role="listitem"
                       className={`badge bg-secondary rounded-0 text-light me-3 my-1 ${styles.badge} lightBorder`}
                       key={`filter_${category}_${filter}`}
                     >
                       <div className="d-flex flex-row align-items-baseline">
                         <div className={styles.content}>
                           <small className="text-uppercase fw-normal me-2">{category}:</small>
-                          {getFilterName(category as FilterKind, filter)}
+                          {filterName}
                         </div>
                         <button
                           className={`btn btn-link btn-sm lh-1 ${styles.btn}`}
                           onClick={() => props.onChange(category, filter as string, false)}
+                          aria-label={`Remove ${filterName} filter`}
                         >
                           <IoMdCloseCircleOutline />
                         </button>

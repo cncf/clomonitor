@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectedFilters creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-none d-md-block mt-2"
+  >
+    <div
+      class="d-flex flex-row justify-content-start align-items-baseline"
+    >
+      <div
+        class="me-3"
+      >
+        Filters:
+      </div>
+      <div
+        class="position-relative badges"
+        role="list"
+      >
+        <span
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          role="listitem"
+        >
+          <div
+            class="d-flex flex-row align-items-baseline"
+          >
+            <div
+              class="content"
+            >
+              <small
+                class="text-uppercase fw-normal me-2"
+              >
+                maturity:
+              </small>
+              Sandbox
+            </div>
+            <button
+              aria-label="Remove Sandbox filter"
+              class="btn btn-link btn-sm lh-1 btn"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
+                />
+                <path
+                  d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"
+                />
+              </svg>
+            </button>
+          </div>
+        </span>
+        <span
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          role="listitem"
+        >
+          <div
+            class="d-flex flex-row align-items-baseline"
+          >
+            <div
+              class="content"
+            >
+              <small
+                class="text-uppercase fw-normal me-2"
+              >
+                rating:
+              </small>
+              A [75-100]
+            </div>
+            <button
+              aria-label="Remove A [75-100] filter"
+              class="btn btn-link btn-sm lh-1 btn"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
+                />
+                <path
+                  d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"
+                />
+              </svg>
+            </button>
+          </div>
+        </span>
+        <span
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          role="listitem"
+        >
+          <div
+            class="d-flex flex-row align-items-baseline"
+          >
+            <div
+              class="content"
+            >
+              <small
+                class="text-uppercase fw-normal me-2"
+              >
+                rating:
+              </small>
+              B [50-74]
+            </div>
+            <button
+              aria-label="Remove B [50-74] filter"
+              class="btn btn-link btn-sm lh-1 btn"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
+                />
+                <path
+                  d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"
+                />
+              </svg>
+            </button>
+          </div>
+        </span>
+        <span
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          role="listitem"
+        >
+          <div
+            class="d-flex flex-row align-items-baseline"
+          >
+            <div
+              class="content"
+            >
+              <small
+                class="text-uppercase fw-normal me-2"
+              >
+                category:
+              </small>
+              App definition
+            </div>
+            <button
+              aria-label="Remove App definition filter"
+              class="btn btn-link btn-sm lh-1 btn"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
+                />
+                <path
+                  d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"
+                />
+              </svg>
+            </button>
+          </div>
+        </span>
+        <span
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          role="listitem"
+        >
+          <div
+            class="d-flex flex-row align-items-baseline"
+          >
+            <div
+              class="content"
+            >
+              <small
+                class="text-uppercase fw-normal me-2"
+              >
+                category:
+              </small>
+              Observability
+            </div>
+            <button
+              aria-label="Remove Observability filter"
+              class="btn btn-link btn-sm lh-1 btn"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
+                />
+                <path
+                  d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"
+                />
+              </svg>
+            </button>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

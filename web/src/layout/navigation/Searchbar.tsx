@@ -10,11 +10,11 @@ import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../../data';
 import useBreakpointDetect from '../../hooks/useBreakpointDetect';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { Project } from '../../types';
-import { prepareQueryString } from '../../utils/prepareQueryString';
+import prepareQueryString from '../../utils/prepareQueryString';
+import MaturityBadge from '../common/badges/MaturityBadge';
+import HoverableItem from '../common/HoverableItem';
 import Image from '../common/Image';
-import HoverableItem from './HoverableItem';
-import MaturityBadge from './MaturityBadge';
-import RoundScore from './RoundScore';
+import RoundScore from '../common/RoundScore';
 import styles from './Searchbar.module.css';
 
 interface Props {
@@ -218,6 +218,7 @@ const Searchbar = (props: Props) => {
         className={`d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto ${styles.searchBar} search`}
       >
         <input
+          data-testid="search-bar"
           ref={inputEl}
           className={`flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base ${styles.input}`}
           type="text"
@@ -233,7 +234,11 @@ const Searchbar = (props: Props) => {
 
         {value !== '' && (
           <>
-            <button className={`btn btn-link lh-1 px-2 ${styles.btnIcon}`} onClick={cleanSearchValue}>
+            <button
+              aria-label="Clear search"
+              className={`btn btn-link lh-1 px-2 ${styles.btnIcon}`}
+              onClick={cleanSearchValue}
+            >
               <div className="text-muted lightIcon">
                 <IoCloseSharp />
               </div>
@@ -242,7 +247,7 @@ const Searchbar = (props: Props) => {
           </>
         )}
 
-        <button className={`btn btn-link lh-1 px-2 ${styles.btnIcon}`} onClick={search}>
+        <button aria-label="Search text" className={`btn btn-link lh-1 px-2 ${styles.btnIcon}`} onClick={search}>
           <div className={`${styles.iconWrapper} lightIcon`}>
             <FiSearch />
           </div>

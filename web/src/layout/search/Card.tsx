@@ -3,12 +3,12 @@ import { GrPieChart } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
 import { Project } from '../../types';
-import CartegoryBadge from '../common/CategoryBadge';
+import CartegoryBadge from '../common/badges/CategoryBadge';
+import MaturityBadge from '../common/badges/MaturityBadge';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
-import MaturityBadge from '../common/MaturityBadge';
 import RoundScore from '../common/RoundScore';
-import Summary from '../common/Summary';
+import ScoreSummary from '../common/ScoreSummary';
 import styles from './Card.module.css';
 import RepositorySection from './RepositorySection';
 
@@ -37,7 +37,7 @@ const Card = (props: Props) => {
           <div
             className={`d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center ${styles.imageWrapper}`}
           >
-            <Image alt={`${props.project.name}`} url={props.project.logo_url} />
+            <Image alt={`${props.project.display_name || props.project.name} logo`} url={props.project.logo_url} />
           </div>
           <div className="flex-grow-1 ms-0 ms-md-3 ms-lg-0 ms-xl-3 w-100 truncateWrapper">
             <div className={`p-2 p-md-3 p-lg-2 p-xl-3 ${styles.content}`}>
@@ -45,7 +45,10 @@ const Card = (props: Props) => {
                 <div
                   className={`d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-3 ${styles.miniImageWrapper}`}
                 >
-                  <Image alt={`${props.project.name}`} url={props.project.logo_url} />
+                  <Image
+                    alt={`${props.project.display_name || props.project.name} logo`}
+                    url={props.project.logo_url}
+                  />
                 </div>
                 <div className="d-flex flex-column w-100 truncateWrapper">
                   <div className="d-flex flex-row justify-content-between align-items-end">
@@ -67,7 +70,7 @@ const Card = (props: Props) => {
 
                     {props.project.devstats_url && (
                       <>
-                        <ExternalLink href={props.project.devstats_url} className="ms-3">
+                        <ExternalLink label="Dev stats link" href={props.project.devstats_url} className="ms-3">
                           <div className={`d-flex flex-row align-items-center ${styles.link}`}>
                             <GrPieChart className={`me-1 ${styles.statsIcon}`} />
                             <div>DevStats</div>
@@ -89,7 +92,7 @@ const Card = (props: Props) => {
         <p className={`text-muted mx-3 my-3 my-md-4 ${styles.description}`}>{props.project.description}</p>
 
         <div className="mt-auto">
-          <Summary score={props.project.score} bigSize={false} />
+          <ScoreSummary score={props.project.score} bigSize={false} />
         </div>
         <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
           Updated {moment.unix(props.project.updated_at).fromNow()}

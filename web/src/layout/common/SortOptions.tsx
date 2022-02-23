@@ -62,6 +62,7 @@ const SortOptions = (props: Props) => {
         className={`form-select form-select-sm rounded-0 cursorPointer ${styles.select}`}
         value={`${props.by}_${props.direction}`}
         onChange={handleChange}
+        aria-label="Sort options select"
       >
         {SORT_OPTS.map((opt: Option) => (
           <option key={`sort_${opt.label}`} value={`${opt.by}_${opt.direction}`}>

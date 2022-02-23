@@ -1,0 +1,74 @@
+{
+  "category_id": 0,
+  "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
+  "devstats_url": "https://artifacthub.devstats.cncf.io/",
+  "display_name": "Artifact Hub",
+  "home_url": null,
+  "id": "00000000-0001-0000-0000-000000000000",
+  "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
+  "maturity_id": 2,
+  "name": "artifact-hub",
+  "rating": "a",
+  "repositories": [
+    {
+      "digest": "653b5219d16a2e5be274a7fb765916789ae68fbb",
+      "kind": "primary",
+      "name": "artifact-hub",
+      "reports": [
+        {
+          "data": {
+            "best_practices": {
+              "artifacthub_badge": true,
+              "community_meeting": true,
+              "openssf_badge": true,
+              "recent_release": true
+            },
+            "documentation": {
+              "adopters": false,
+              "changelog": true,
+              "code_of_conduct": true,
+              "contributing": true,
+              "governance": false,
+              "maintainers": true,
+              "readme": true,
+              "roadmap": false,
+              "website": true
+            },
+            "license": {
+              "approved": true,
+              "fossa_badge": true,
+              "spdx_id": "Apache-2.0"
+            },
+            "report_kind": "Primary",
+            "security": {
+              "security_policy": true
+            }
+          },
+          "errors": null,
+          "linter_id": 0,
+          "report_id": "73c7f8bc-a292-48a3-bd3f-b3a5afea829e",
+          "updated_at": 1645534816
+        }
+      ],
+      "repository_id": "00000000-0000-0001-0000-000000000000",
+      "score": {
+        "best_practices": 100,
+        "documentation": 80,
+        "global": 95,
+        "license": 100,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "url": "https://github.com/artifacthub/hub"
+    }
+  ],
+  "score": {
+    "best_practices": 100,
+    "documentation": 80,
+    "global": 95,
+    "license": 100,
+    "score_kind": "Primary",
+    "security": 100
+  },
+  "updated_at": 1645534816
+}

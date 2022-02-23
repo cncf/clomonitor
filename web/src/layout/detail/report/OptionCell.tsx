@@ -2,12 +2,11 @@ import { isBoolean, isNull, isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegQuestionCircle, FaRegTimesCircle } from 'react-icons/fa';
 
 import { REPORT_OPTIONS } from '../../../data';
-import { ReportOption, ReportOptionData, RepositoryKind } from '../../../types';
+import { ReportOption, ReportOptionData } from '../../../types';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
 import styles from './OptionCell.module.css';
 
 interface Props {
-  repoKind: RepositoryKind;
   label: ReportOption;
   value: boolean | string;
 }
@@ -17,8 +16,8 @@ function getOptionInfo(key: ReportOption) {
 }
 
 const OptionCell = (props: Props) => {
-  const errorIcon = <FaRegTimesCircle className={`text-danger ${styles.icon}`} />;
-  const successIcon = <FaRegCheckCircle className={`text-success ${styles.icon}`} />;
+  const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
+  const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
@@ -48,7 +47,7 @@ const OptionCell = (props: Props) => {
           <div className="d-flex flex-row align-items-baseline align-items-lg-center">
             <div className="text-muted me-2">{opt.icon}</div>
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
-              <div className={`d-flex flex-row align-items-center mt-1 ${styles.name}`}>
+              <div data-testid="opt-name" className={`d-flex flex-row align-items-center mt-1 ${styles.name}`}>
                 {(() => {
                   switch (props.label) {
                     case ReportOption.SPDX:

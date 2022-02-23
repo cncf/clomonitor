@@ -37,6 +37,7 @@ const ProjectDropdown = (props: Props) => {
     <>
       <div ref={ref} className="ms-auto position-relative">
         <button
+          data-testid="dropdown-btn"
           type="button"
           className={`btn btn-sm btn-primary text-white rounded-0 lh-1 ${styles.btn}`}
           onClick={(e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -48,7 +49,10 @@ const ProjectDropdown = (props: Props) => {
           <GoThreeBars />
         </button>
 
-        <ul className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>
+        <ul
+          role="complementary"
+          className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}
+        >
           <li>
             <button
               className="dropdown-item"

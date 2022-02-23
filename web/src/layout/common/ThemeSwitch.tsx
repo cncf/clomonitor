@@ -18,9 +18,9 @@ const ThemeSwitch = () => {
       <div className="form-check form-switch ms-4 position-relative d-none d-sm-block cursorPointer">
         <div onClick={updateActiveTheme}>
           {isLightActive ? (
-            <CgSun className={`text-light position-absolute ${styles.sunIcon}`} />
+            <CgSun data-testid="sun-icon" className={`text-light position-absolute ${styles.sunIcon}`} />
           ) : (
-            <CgMoon className={`text-light position-absolute ${styles.moonIcon}`} />
+            <CgMoon data-testid="moon-icon" className={`text-light position-absolute ${styles.moonIcon}`} />
           )}
         </div>
 

@@ -11,7 +11,6 @@ interface Props {
   language: string;
   content: string;
   label: string;
-  styles?: { [key: string]: string };
 }
 
 const CodeBlock = (props: Props) => {
@@ -20,7 +19,7 @@ const CodeBlock = (props: Props) => {
   const isDarkActive = effective === 'dark';
 
   return (
-    <div className={`d-flex flex-row align-items-center pb-2 ${styles.codeBlock}`}>
+    <div data-testid="code" className={`d-flex flex-row align-items-center pb-2 ${styles.codeBlock}`}>
       <SyntaxHighlighter
         language={props.language}
         style={isDarkActive ? tomorrowNight : docco}
@@ -29,7 +28,6 @@ const CodeBlock = (props: Props) => {
           color: 'var(--color-font)',
           padding: '1rem 0.5rem',
           marginBottom: 0,
-          ...props.styles,
         }}
       >
         {props.content}

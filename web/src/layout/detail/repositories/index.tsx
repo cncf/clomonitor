@@ -19,7 +19,9 @@ interface Props {
   scrollIntoView: (id?: string) => void;
 }
 
-// Sort by score global and alphabetically
+// Sort by repo kind, score global and alphabetically
+// IMPORTANT: primary repo is sorted first due to repo kind is sorted alphabetically,
+// if we add a new kind we need to revisit this
 const sortRepos = (repos: Repository[]): Repository[] => {
   return orderBy(repos, ['kind', 'score.global', 'name'], ['asc', 'desc', 'asc']);
 };
@@ -48,7 +50,7 @@ const RepositoriesList = (props: Props) => {
         );
       }}
       className={`btn btn-link text-reset text-center lh-1 ${styles.headingLink}`}
-      aria-label={`Go to ${repo.name}`}
+      aria-label={`Anchor to ${repo.name}`}
     >
       <GoLink />
     </button>
@@ -67,7 +69,11 @@ const RepositoriesList = (props: Props) => {
 
       {repositories.map((repo: Repository) => {
         return (
-          <div key={`repo_${repo.repository_id}`} className="mb-4 mb-md-5 position-relative">
+          <div
+            data-testid="repository-info"
+            key={`repo_${repo.repository_id}`}
+            className="mb-4 mb-md-5 position-relative"
+          >
             <div>
               <div className={`position-absolute ${styles.headerAnchor}`} id={repo.name} />
             </div>
@@ -108,7 +114,7 @@ const RepositoriesList = (props: Props) => {
                       </ExternalLink>
                       {repo.kind === RepositoryKind.Primary && (
                         <small>
-                          <FaCrown className="d-block d-md-none text-warning ms-2" />
+                          <FaCrown data-testid="primary-icon" className="d-block d-md-none text-warning ms-2" />
                         </small>
                       )}
                       {getAnchorLink(repo)}
@@ -126,7 +132,6 @@ const RepositoriesList = (props: Props) => {
                   <Fragment key={report.report_id}>
                     <Row
                       reportId={report.report_id}
-                      repoKind={repo.kind}
                       name={ScoreType.Documentation}
                       label="Documentation"
                       data={report.data.documentation}
@@ -135,7 +140,6 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.report_id}
-                      repoKind={repo.kind}
                       name={ScoreType.License}
                       label="License"
                       data={report.data.license}
@@ -144,7 +148,6 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.report_id}
-                      repoKind={repo.kind}
                       name={ScoreType.BestPractices}
                       label="Best Practices"
                       data={report.data.best_practices}
@@ -153,7 +156,6 @@ const RepositoriesList = (props: Props) => {
                     />
                     <Row
                       reportId={report.report_id}
-                      repoKind={repo.kind}
                       name={ScoreType.Security}
                       label="Security"
                       data={report.data.security}

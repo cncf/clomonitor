@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SampleQueries creates snapshot 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Filter by Only graduated projects"
+    class="badge rounded-0 border fw-normal mx-2 mt-3 text-decoration-none undefined"
+    href="/search?maturity=0&page=1"
+  >
+    Only graduated projects
+  </a>
+  <a
+    aria-label="Filter by Only incubating projects"
+    class="badge rounded-0 border fw-normal mx-2 mt-3 text-decoration-none undefined"
+    href="/search?maturity=1&page=1"
+  >
+    Only incubating projects
+  </a>
+  <a
+    aria-label="Filter by Only sandbox projects"
+    class="badge rounded-0 border fw-normal mx-2 mt-3 text-decoration-none undefined"
+    href="/search?maturity=2&page=1"
+  >
+    Only sandbox projects
+  </a>
+</DocumentFragment>
+`;

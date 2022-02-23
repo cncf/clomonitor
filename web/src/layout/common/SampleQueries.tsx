@@ -2,7 +2,7 @@ import { isUndefined, sampleSize } from 'lodash';
 import { Fragment, memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { prepareQueryString } from '../../utils/prepareQueryString';
+import prepareQueryString from '../../utils/prepareQueryString';
 
 interface Props {
   className?: string;

@@ -33,6 +33,7 @@ const PaginationLimit = (props: Props) => {
         className={`form-select form-select-sm rounded-0 cursorPointer ${styles.select}`}
         value={limit}
         onChange={handleChange}
+        aria-label="Pagination limit select"
       >
         {AVAILABLE_LIMITS.map((opt: number) => {
           return (

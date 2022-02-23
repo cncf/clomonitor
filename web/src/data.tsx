@@ -11,7 +11,7 @@ import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { RiRoadMapLine } from 'react-icons/ri';
 
 import ExternalLink from './layout/common/ExternalLink';
-import RoundedBadge from './layout/common/RoundedBadge';
+import QualityDot from './layout/common/QualityDot';
 import {
   Category,
   FilterKind,
@@ -46,25 +46,25 @@ export const FILTERS: FiltersSection[] = [
         name: Rating.A,
         label: 'A',
         legend: '[75-100]',
-        decorator: <RoundedBadge level={1} />,
+        decorator: <QualityDot level={1} />,
       },
       {
         name: Rating.B,
         label: 'B',
         legend: '[50-74]',
-        decorator: <RoundedBadge level={2} />,
+        decorator: <QualityDot level={2} />,
       },
       {
         name: Rating.C,
         label: 'C',
         legend: '[25-49]',
-        decorator: <RoundedBadge level={3} />,
+        decorator: <QualityDot level={3} />,
       },
       {
         name: Rating.D,
         label: 'D',
         legend: '[0-24]',
-        decorator: <RoundedBadge level={4} />,
+        decorator: <QualityDot level={4} />,
       },
     ],
   },
@@ -103,6 +103,37 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.ApprovedLicense]: {
+    icon: <FaCheckDouble />,
+    name: 'Approved license',
+    legend: <span>Whether the repository uses an approved license or not</span>,
+    description: (
+      <span>
+        If the repository&#39;s license has been identified, this check verifies that it is one of the approved licenses{' '}
+        <em>
+          (Apache-2.0, BSD-2-Clause, BSD-2-Clause-FreeBSD, BSD-3-Clause, ISC, MIT, PostgreSQL, Python-2.0, X11, Zlib)
+        </em>
+      </span>
+    ),
+  },
+  [ReportOption.ArtifactHubBadge]: {
+    icon: <FiHexagon />,
+    name: 'Artifact Hub badge',
+    legend: (
+      <span>
+        Projects can list their content on{' '}
+        <ExternalLink className="d-inline-block" href="https://artifacthub.io">
+          Artifact Hub
+        </ExternalLink>{' '}
+        to improve their discoverability
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains an Artifact Hub badge
+      </span>
+    ),
+  },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
     name: 'Changelog',
@@ -131,6 +162,21 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.CommunityMeeting]: {
+    icon: <IoIosPeople />,
+    name: 'Community meeting',
+    legend: (
+      <span>
+        Community meetings are often held to engage community members, hear more voices and get more viewpoints
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains patterns like <em>community meeting</em>,{' '}
+        <em>meeting minutes</em>, etc.
+      </span>
+    ),
+  },
   [ReportOption.Contributing]: {
     icon: <HiTerminal />,
     name: 'Contributing',
@@ -144,6 +190,21 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       <span>
         We check that a <code>contributing*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
         the repository or in the <code>docs</code> directory
+      </span>
+    ),
+  },
+  [ReportOption.FossaBadge]: {
+    icon: <GiStamper />,
+    name: 'FOSSA badge',
+    legend: (
+      <span>
+        <em>FOSSA</em> scans and automatically identifies, manages and addresses open source licensing issues and
+        security vulnerabilities
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains a <em>FOSSA</em> badge
       </span>
     ),
   },
@@ -175,6 +236,21 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.OpenSSFBadge]: {
+    icon: <BiMedal />,
+    name: 'OpenSSF badge',
+    legend: (
+      <span>
+        The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source
+        Software (FLOSS) projects to show that they follow best practices
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
+      </span>
+    ),
+  },
   [ReportOption.Readme]: {
     icon: <CgReadme />,
     name: 'Readme',
@@ -191,6 +267,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.RecentRelease]: {
+    icon: <BsCalendar3 />,
+    name: 'Recent release',
+    legend: <span>The project should have released at least one version in the last year</span>,
+    description: <span>We check that the repository has released a new version in Github in the last year</span>,
+  },
   [ReportOption.Roadmap]: {
     icon: <RiRoadMapLine />,
     name: 'Roadmap',
@@ -204,16 +286,15 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
-  [ReportOption.ApprovedLicense]: {
-    icon: <FaCheckDouble />,
-    name: 'Approved license',
-    legend: <span>Whether the repository uses an approved license or not.</span>,
+  [ReportOption.SecurityPolicy]: {
+    icon: <BiShieldQuarter />,
+    name: 'Security policy',
+    legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
     description: (
       <span>
-        If the repository&#39;s license has been identified, this check verifies that it is one of the approved licenses{' '}
-        <em>
-          (Apache-2.0, BSD-2-Clause, BSD-2-Clause-FreeBSD, BSD-3-Clause, ISC, MIT, PostgreSQL, Python-2.0, X11, Zlib)
-        </em>
+        We check that a <code>security*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
+        repository, in the <code>docs</code> or <code>.github</code> directories or that the <code>README</code> file
+        contains a <strong>security</strong> header
       </span>
     ),
   },
@@ -233,91 +314,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
-  [ReportOption.FossaBadge]: {
-    icon: <GiStamper />,
-    name: 'FOSSA badge',
-    legend: (
-      <span>
-        <em>FOSSA</em> scans and automatically identifies, manages and addresses open source licensing issues and
-        security vulnerabilities
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains a <em>FOSSA</em> badge
-      </span>
-    ),
-  },
-  [ReportOption.OpenSSFBadge]: {
-    icon: <BiMedal />,
-    name: 'OpenSSF badge',
-    legend: (
-      <span>
-        The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source
-        Software (FLOSS) projects to show that they follow best practices
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
-      </span>
-    ),
-  },
-  [ReportOption.SecurityPolicy]: {
-    icon: <BiShieldQuarter />,
-    name: 'Security policy',
-    legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
-    description: (
-      <span>
-        We check that a <code>security*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository, in the <code>docs</code> or <code>.github</code> directories or that the <code>README</code> file
-        contains a <strong>security</strong> header
-      </span>
-    ),
-  },
-  [ReportOption.CommunityMeeting]: {
-    icon: <IoIosPeople />,
-    name: 'Community meeting',
-    legend: (
-      <span>
-        Community meetings are often held to engage community members, hear more voices and get more viewpoints
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains patterns like <em>community meeting</em>,{' '}
-        <em>meeting minutes</em>, etc.
-      </span>
-    ),
-  },
-  [ReportOption.ArtifactHubBadge]: {
-    icon: <FiHexagon />,
-    name: 'Artifact Hub badge',
-    legend: (
-      <span>
-        Projects can list their content on{' '}
-        <ExternalLink className="d-inline-block" href="https://artifacthub.io">
-          Artifact Hub
-        </ExternalLink>{' '}
-        to improve their discoverability
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains an Artifact Hub badge
-      </span>
-    ),
-  },
   [ReportOption.Website]: {
     icon: <BiWorld />,
     name: 'Website',
     legend: <span>A url that users can visit to learn more about your project</span>,
     description: <span>We check that the repository has a website set in Github</span>,
-  },
-  [ReportOption.RecentRelease]: {
-    icon: <BsCalendar3 />,
-    name: 'Recent release',
-    legend: <span>The project should have released at least one version in the last year</span>,
-    description: <span>We check that the repository has released a new version in Github in the last year</span>,
   },
 };

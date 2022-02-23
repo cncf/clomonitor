@@ -11,6 +11,7 @@ const RoundScore = (props: Props) => {
 
   return (
     <div
+      data-testid="global-score"
       style={{ borderColor: `var(--rm-${color})` }}
       className={`d-flex align-items-center justify-content-center rounded-pill ${styles.value} global ${props.className}`}
     >

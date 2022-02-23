@@ -60,7 +60,7 @@ export interface CoreReport {
 
 export type Score = {
   [key in ScoreType]: number;
-} & { scoreKind: ScoreKind };
+} & { score_kind: ScoreKind };
 
 export interface FiltersSection {
   name: string;
@@ -157,22 +157,22 @@ export enum ScoreKind {
 
 export enum ReportOption {
   Adopters = 'adopters',
+  ApprovedLicense = 'approved',
+  ArtifactHubBadge = 'artifacthub_badge',
   Changelog = 'changelog',
   CodeOfConduct = 'code_of_conduct',
+  CommunityMeeting = 'community_meeting',
   Contributing = 'contributing',
+  FossaBadge = 'fossa_badge',
   Governance = 'governance',
   Maintainers = 'maintainers',
-  Readme = 'readme',
-  Roadmap = 'roadmap',
-  ApprovedLicense = 'approved',
-  SPDX = 'spdx_id',
-  FossaBadge = 'fossa_badge',
   OpenSSFBadge = 'openssf_badge',
-  SecurityPolicy = 'security_policy',
-  CommunityMeeting = 'community_meeting',
-  ArtifactHubBadge = 'artifacthub_badge',
-  Website = 'website',
+  Readme = 'readme',
   RecentRelease = 'recent_release',
+  Roadmap = 'roadmap',
+  SecurityPolicy = 'security_policy',
+  SPDX = 'spdx_id',
+  Website = 'website',
 }
 
 export interface SearchFiltersURL extends BasicQuery {

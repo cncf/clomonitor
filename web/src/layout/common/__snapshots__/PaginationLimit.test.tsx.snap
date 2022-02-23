@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationLimit creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-none d-md-flex flex-nowrap align-items-center lh-1"
+  >
+    <label
+      class="form-label me-2 mb-0"
+    >
+      Show:
+    </label>
+    <select
+      aria-label="Pagination limit select"
+      class="form-select form-select-sm rounded-0 cursorPointer select"
+    >
+      <option
+        value="20"
+      >
+        20
+      </option>
+      <option
+        value="40"
+      >
+        40
+      </option>
+      <option
+        value="60"
+      >
+        60
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;

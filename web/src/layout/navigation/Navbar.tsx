@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../media/clomonitor.svg';
-import Searchbar from '../common/Searchbar';
 import ThemeSwitch from '../common/ThemeSwitch';
+import Searchbar from '../navigation/Searchbar';
 import styles from './Navbar.module.css';
 
 interface Props {
@@ -18,7 +18,7 @@ const Navbar = (props: Props) => {
           <div className="me-0 me-md-4 mt-2 mt-md-0">
             <div className="d-flex flex-row align-items-start">
               <Link to="/" onClick={() => props.setScrollPosition(0)} className="cursorPointer">
-                <img className={styles.logo} alt="Logo" src={logo} />
+                <img className={styles.logo} alt="CloMonitor logo" src={logo} />
               </Link>
               <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge} alphaBadge`}>Alpha</div>
             </div>

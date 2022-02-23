@@ -8,16 +8,16 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import API from '../../api';
 import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
-import CartegoryBadge from '../common/CategoryBadge';
+import CartegoryBadge from '../common/badges/CategoryBadge';
+import MaturityBadge from '../common/badges/MaturityBadge';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import Loading from '../common/Loading';
-import MaturityBadge from '../common/MaturityBadge';
 import NoData from '../common/NoData';
 import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
-import SubNavbar from '../common/SubNavbar';
-import Summary from '../common/Summary';
+import ScoreSummary from '../common/ScoreSummary';
+import SubNavbar from '../navigation/SubNavbar';
 import RepositorySection from '../search/RepositorySection';
 import styles from './Detail.module.css';
 import RepositoriesList from './repositories';
@@ -77,6 +77,7 @@ const Detail = () => {
           <button
             onClick={() => navigate(`/search${state.currentSearch}`)}
             className={`btn btn-link p-0 text-reset ${styles.backBtn}`}
+            aria-label="Back to results"
           >
             <div className="d-flex flex-row align-items-center">
               <IoIosArrowBack className="me-2" />
@@ -100,7 +101,7 @@ const Detail = () => {
                 <NoData>
                   <div className="mb-4 mb-lg-5 h2">Sorry, the project you requested was not found.</div>
 
-                  <p className="h5 mb-0">The project you are looking for may have been deleted...</p>
+                  <p className="h5 mb-0">The project you are looking for may have been deleted.</p>
                 </NoData>
               </div>
             ) : (
@@ -112,7 +113,7 @@ const Detail = () => {
                         <div
                           className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
                         >
-                          <Image alt={`${detail.name}`} url={detail.logo_url} />
+                          <Image alt={`${detail.display_name || detail.name} logo`} url={detail.logo_url} />
                         </div>
                         <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
                           <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>
@@ -159,7 +160,7 @@ const Detail = () => {
                       </p>
                     </div>
                     <div className="pt-2">
-                      <Summary score={detail.score} bigSize />
+                      <ScoreSummary score={detail.score} bigSize />
                     </div>
                   </div>
                 </div>

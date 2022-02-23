@@ -26,7 +26,7 @@ const RepositorySection = (props: Props) => {
   return (
     <>
       {repositories.length === 1 ? (
-        <ExternalLink href={repositories[0].url}>
+        <ExternalLink label="Repository link" href={repositories[0].url}>
           <div className={`d-flex flex-row align-items-center ${styles.link}`}>
             <VscGithub className={`me-1 ${styles.icon}`} />
             <div>Repository</div>
@@ -44,7 +44,13 @@ const RepositorySection = (props: Props) => {
           <>
             {repositories.map((repo: Repository | BaseRepository, index: number) => {
               return (
-                <ExternalLink href={repo.url} key={`repo_${index}`} className="text-dark" visibleExternalIcon>
+                <ExternalLink
+                  label="Repository link"
+                  href={repo.url}
+                  key={`repo_${index}`}
+                  className="text-dark"
+                  visibleExternalIcon
+                >
                   <div className={`d-flex flex-row align-items-center ${styles.link}`}>
                     <VscGithub className={`me-2 position-relative ${styles.miniIcon}`} />
                     <div className={`text-nowrap text-truncate ${styles.linkName}`}>{repo.name}</div>

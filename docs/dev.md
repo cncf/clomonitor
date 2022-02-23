@@ -2,6 +2,8 @@
 
 This document will help you setup your development environment so that you can build, test and run CloMonitor locally from source.
 
+For more information about the CloMonitor's architecture, please see [this document](https://github.com/cncf/clomonitor/blob/main/docs/architecture.md).
+
 The instructions provided in this document rely on a set of [aliases](#aliases) available at the end. These aliases are used by some of the maintainers and are provided only as examples. Please feel free to adapt them to suit your needs. You may want to add them to your shell's configuration file so that they are loaded automatically.
 
 To start, please clone the [CloMonitor repository](https://github.com/cncf/clomonitor). If you plan to use the aliases mentioned above, you should set the `CLOMONITOR_SOURCE` variable to the path where you cloned the repository.

@@ -14,6 +14,12 @@
     </tr>
 </table>
 
+## Contributing
+
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
+
+You can find some general information about how to work on this repo in the [architecture](./docs/architecture.md) and the [development environment setup](./docs/dev.md) documents.
+
 ## Code of Conduct
 
 This project follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).

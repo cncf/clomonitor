@@ -122,7 +122,7 @@ mod tests {
     }
 
     #[test]
-    fn report_with_all_checks_passed_got_max_score() {
+    fn calculate_score_report_with_all_checks_passed_got_max_score() {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {
@@ -162,7 +162,7 @@ mod tests {
     }
 
     #[test]
-    fn report_with_no_checks_passed_got_min_score() {
+    fn calculate_score_report_with_no_checks_passed_got_min_score() {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {

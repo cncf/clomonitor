@@ -117,32 +117,6 @@ where
     Ok(!matching_paths(globs)?.is_empty())
 }
 
-/// Return all paths that match any of the globs provided.
-fn matching_paths<P>(globs: Globs<P>) -> Result<Vec<PathBuf>, PatternError>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
-    let options = MatchOptions {
-        case_sensitive: globs.case_sensitive,
-        ..Default::default()
-    };
-    globs
-        .patterns
-        .into_iter()
-        .map(|pattern| globs.root.join(pattern.as_ref()))
-        .map(|pattern| pattern.to_string_lossy().into_owned())
-        .try_fold(Vec::new(), |mut paths, pattern| {
-            match glob_with(&pattern, options) {
-                Ok(pattern_paths) => {
-                    paths.extend(pattern_paths.filter_map(Result::ok));
-                    Ok(paths)
-                }
-                Err(err) => Err(err),
-            }
-        })
-}
-
 /// Extract the owner and repository from the repository url provided.
 fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
     lazy_static! {
@@ -169,5 +143,282 @@ async fn get_website(repo_url: &str) -> Result<Option<String>, Error> {
             Ok(None)
         }
         Err(err) => Err(err.into()),
+    }
+}
+
+/// Return all paths that match any of the globs provided.
+fn matching_paths<P>(globs: Globs<P>) -> Result<Vec<PathBuf>, PatternError>
+where
+    P: IntoIterator,
+    P::Item: AsRef<str>,
+{
+    let options = MatchOptions {
+        case_sensitive: globs.case_sensitive,
+        ..Default::default()
+    };
+    globs
+        .patterns
+        .into_iter()
+        .map(|pattern| globs.root.join(pattern.as_ref()))
+        .map(|pattern| pattern.to_string_lossy().into_owned())
+        .try_fold(Vec::new(), |mut paths, pattern| {
+            match glob_with(&pattern, options) {
+                Ok(pattern_paths) => {
+                    paths.extend(pattern_paths.filter_map(Result::ok));
+                    Ok(paths)
+                }
+                Err(err) => Err(err),
+            }
+        })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::linter::patterns::*;
+
+    const TESTDATA_PATH: &str = "src/linter/testdata";
+
+    #[test]
+    fn content_matches_match() {
+        assert!(content_matches(
+            Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            ADOPTERS_HEADER
+        )
+        .unwrap());
+    }
+
+    #[test]
+    fn content_matches_no_match() {
+        assert!(!content_matches(
+            Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            [r"non-existing pattern"]
+        )
+        .unwrap());
+    }
+
+    #[test]
+    fn content_matches_file_not_found() {
+        assert!(!content_matches(
+            Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["nonexisting"],
+                case_sensitive: true,
+            },
+            [r"pattern"]
+        )
+        .unwrap());
+    }
+
+    #[test]
+    fn content_matches_invalid_glob_pattern() {
+        assert!(matches!(
+            content_matches(
+                Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: vec!["invalid***"],
+                    case_sensitive: true,
+                },
+                [r"pattern"]
+            ),
+            Err(_)
+        ));
+    }
+
+    #[test]
+    fn content_matches_invalid_regexp() {
+        assert!(matches!(
+            content_matches(
+                Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: README_FILE,
+                    case_sensitive: true,
+                },
+                [r"***"]
+            ),
+            Err(_)
+        ));
+    }
+
+    #[test]
+    fn get_owner_and_repo_valid_url() {
+        assert_eq!(
+            get_owner_and_repo("https://github.com/org/repo").unwrap(),
+            ("org".to_string(), "repo".to_string())
+        );
+    }
+
+    #[test]
+    fn get_owner_and_repo_valid_url_trailing_slash() {
+        assert_eq!(
+            get_owner_and_repo("https://github.com/org/repo/").unwrap(),
+            ("org".to_string(), "repo".to_string())
+        );
+    }
+
+    #[test]
+    fn get_owner_and_repo_invalid_url() {
+        assert!(matches!(
+            get_owner_and_repo("https://github.com/org"),
+            Err(_)
+        ));
+    }
+
+    #[test]
+    fn approved_license() {
+        assert!(is_approved_license("Apache-2.0"));
+        assert!(is_approved_license("MIT"));
+    }
+
+    #[test]
+    fn non_approved_license() {
+        assert!(!is_approved_license("AGPL-1.0-only"));
+    }
+
+    #[test]
+    fn license_identified() {
+        assert_eq!(
+            license(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: LICENSE_FILE,
+                case_sensitive: true,
+            })
+            .unwrap()
+            .unwrap(),
+            "Apache-2.0".to_string()
+        );
+    }
+
+    #[test]
+    fn license_not_identified() {
+        assert!(matches!(
+            license(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["OWNERS"],
+                case_sensitive: true,
+            })
+            .unwrap(),
+            None
+        ));
+    }
+
+    #[test]
+    fn license_file_not_located() {
+        assert!(matches!(
+            license(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["nonexisting"],
+                case_sensitive: true,
+            })
+            .unwrap(),
+            None
+        ));
+    }
+
+    #[test]
+    fn license_invalid_glob_pattern() {
+        assert!(matches!(
+            license(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["invalid***"],
+                case_sensitive: true,
+            }),
+            Err(_)
+        ));
+    }
+
+    #[test]
+    fn matching_paths_case_insensitive_found() {
+        let testdata = Path::new(TESTDATA_PATH);
+
+        assert_eq!(
+            matching_paths(Globs {
+                root: testdata,
+                patterns: MAINTAINERS_FILE,
+                case_sensitive: false,
+            })
+            .unwrap(),
+            vec![testdata.join("MAINTAINERS"), testdata.join("OWNERS"),]
+        );
+    }
+
+    #[test]
+    fn matching_paths_case_sensitive_found() {
+        let testdata = Path::new(TESTDATA_PATH);
+
+        assert_eq!(
+            matching_paths(Globs {
+                root: testdata,
+                patterns: ["OWNERS*"],
+                case_sensitive: true,
+            })
+            .unwrap(),
+            vec![testdata.join("OWNERS")]
+        );
+    }
+
+    #[test]
+    fn matching_paths_not_found() {
+        assert_eq!(
+            matching_paths(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["nonexisting"],
+                case_sensitive: false,
+            })
+            .unwrap(),
+            Vec::<PathBuf>::new()
+        );
+    }
+
+    #[test]
+    fn matching_paths_invalid_glob_pattern() {
+        assert!(matches!(
+            matching_paths(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["invalid***"],
+                case_sensitive: true,
+            }),
+            Err(_)
+        ));
+    }
+
+    #[test]
+    fn path_exists_existing_path() {
+        assert!(path_exists(Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: MAINTAINERS_FILE,
+            case_sensitive: false,
+        })
+        .unwrap());
+    }
+
+    #[test]
+    fn path_exists_non_existing_path() {
+        assert!(!path_exists(Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: vec!["nonexisting"],
+            case_sensitive: false,
+        })
+        .unwrap());
+    }
+
+    #[test]
+    fn path_exists_invalid_glob_pattern() {
+        assert!(matches!(
+            path_exists(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["invalid***"],
+                case_sensitive: false,
+            }),
+            Err(_)
+        ));
     }
 }

@@ -138,7 +138,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn global_score() {
+    fn score_global_primary() {
         assert_eq!(
             Score::Primary(primary::Score {
                 global: 10,
@@ -150,6 +150,10 @@ mod tests {
             .global(),
             10
         );
+    }
+
+    #[test]
+    fn score_global_secondary() {
         assert_eq!(
             Score::Secondary(secondary::Score {
                 global: 10,
@@ -162,14 +166,31 @@ mod tests {
     }
 
     #[test]
-    fn score_rating() {
-        assert_eq!(rating(80), 'a');
-        assert_eq!(rating(75), 'a');
-        assert_eq!(rating(74), 'b');
-        assert_eq!(rating(50), 'b');
-        assert_eq!(rating(49), 'c');
-        assert_eq!(rating(25), 'c');
-        assert_eq!(rating(20), 'd');
+    fn score_rating_primary() {
+        assert_eq!(
+            Score::Primary(primary::Score {
+                global: 80,
+                documentation: 0,
+                license: 0,
+                best_practices: 0,
+                security: 0,
+            })
+            .rating(),
+            'a'
+        );
+    }
+
+    #[test]
+    fn score_rating_secondary() {
+        assert_eq!(
+            Score::Secondary(secondary::Score {
+                global: 40,
+                documentation: 0,
+                license: 0,
+            })
+            .rating(),
+            'c'
+        );
     }
 
     #[test]
@@ -249,5 +270,16 @@ mod tests {
                 security: 80,
             })
         )
+    }
+
+    #[test]
+    fn rating_returns_correct_level() {
+        assert_eq!(rating(80), 'a');
+        assert_eq!(rating(75), 'a');
+        assert_eq!(rating(74), 'b');
+        assert_eq!(rating(50), 'b');
+        assert_eq!(rating(49), 'c');
+        assert_eq!(rating(25), 'c');
+        assert_eq!(rating(20), 'd');
     }
 }

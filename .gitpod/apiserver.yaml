@@ -1,0 +1,8 @@
+db:
+  host: localhost
+  port: "5432"
+  dbname: clomonitor
+  user: gitpod
+apiserver:
+  addr: 127.0.0.1:8000
+  staticPath: /workspace/clomonitor/web/build

@@ -1,0 +1,44 @@
+image:
+  file: .gitpod/Dockerfile
+tasks:
+  - name: Frontend
+    init: |
+      touch /tmp/.frontend-ready-lock
+      echo -e "\n- Building frontend..\n"
+      cd web && yarn install
+      yarn build
+      rm /tmp/.frontend-ready-lock
+  - name: Backend
+    init: |
+      echo -e "\n- Setting up database..\n"
+      cd && go get -u github.com/jackc/tern
+      psql -c 'create database clomonitor'
+      cd /workspace/clomonitor/database/migrations && TERN_CONF=/workspace/clomonitor/.gitpod/tern.conf ./migrate.sh
+      psql clomonitor < /workspace/clomonitor/.gitpod/sample_data.sql
+      echo -e "\n- Building backend..\n"
+      sed -i 's/^default_toolchain.*/default_toolchain = "stable-x86_64-unknown-linux-gnu"/g' /home/gitpod/.rustup/settings.toml
+      cargo build
+      echo -e "\n- Running tracker..\n"
+      mkdir -p ~/.config/clomonitor && cp /workspace/clomonitor/.gitpod/*.yaml ~/.config/clomonitor
+      /workspace/clomonitor/target/debug/clomonitor-tracker -c ~/.config/clomonitor/tracker.yaml
+      echo -e "\n- Waiting for frontend build to complete..\n"
+      sleep 1 && while [ -f /tmp/.frontend-ready-lock ]; do sleep 1; done
+    command: |
+      echo -e "\n- Running apiserver..\n"
+      mkdir -p ~/.config/clomonitor && cp /workspace/clomonitor/.gitpod/*.yaml ~/.config/clomonitor
+      /workspace/clomonitor/target/debug/clomonitor-apiserver -c ~/.config/clomonitor/apiserver.yaml
+ports:
+  - port: 3000
+    onOpen: ignore
+  - port: 5432
+    onOpen: ignore
+  - port: 8000
+    onOpen: notify
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: false
+    pullRequestsFromForks: true
+    addCheck: false
+    addComment: false

@@ -1,0 +1,7 @@
+db:
+  host: localhost
+  port: "5432"
+  dbname: clomonitor
+  user: gitpod
+tracker:
+  concurrency: 10

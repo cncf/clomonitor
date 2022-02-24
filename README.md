@@ -1,5 +1,8 @@
 # CloMonitor
 
+[![CI](https://github.com/cncf/clomonitor/workflows/CI/badge.svg)](https://github.com/cncf/clomonitor/actions?query=workflow%3ACI)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cncf/clomonitor)
+
 [**CloMonitor**](https://clomonitor.io) is a tool that periodically checks CNCF projects repositories to verify they meet a certain project health best practices.
 
 <br/>

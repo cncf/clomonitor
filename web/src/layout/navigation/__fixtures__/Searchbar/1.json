@@ -1,0 +1,221 @@
+{
+  "items": [
+    {
+      "category_id": 0,
+      "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
+      "devstats_url": "https://artifacthub.devstats.cncf.io/",
+      "display_name": "Artifact Hub",
+      "id": "00000000-0001-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
+      "maturity_id": 2,
+      "name": "artifact-hub",
+      "organization": {
+        "name": "artifact-hub"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "artifact-hub",
+          "url": "https://github.com/artifacthub/hub"
+        }
+      ],
+      "score": {
+        "best_practices": 100,
+        "documentation": 80,
+        "global": 95,
+        "license": 100,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645534816
+    },
+    {
+      "category_id": 0,
+      "description": "Backstage is an open platform for building developer portals.",
+      "devstats_url": "https://backstage.devstats.cncf.io/",
+      "display_name": "Backstage",
+      "id": "00000000-0046-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/backstage/icon/color/backstage-icon-color.svg",
+      "maturity_id": 2,
+      "name": "backstage",
+      "organization": {
+        "name": "backstage"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "backstage",
+          "url": "https://github.com/backstage/backstage"
+        }
+      ],
+      "score": {
+        "best_practices": 35,
+        "documentation": 95,
+        "global": 78,
+        "license": 80,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645606822
+    },
+    {
+      "category_id": 0,
+      "description": "Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.",
+      "devstats_url": "https://keptn.devstats.cncf.io/",
+      "display_name": "Keptn",
+      "id": "00000000-0067-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/keptn/icon/color/keptn-icon-color.svg",
+      "maturity_id": 2,
+      "name": "keptn",
+      "organization": {
+        "name": "keptn"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "keptn",
+          "url": "https://github.com/keptn/keptn"
+        }
+      ],
+      "score": {
+        "best_practices": 95,
+        "documentation": 95,
+        "global": 93,
+        "license": 80,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645606817
+    },
+    {
+      "category_id": 0,
+      "description": "Make shipping applications more enjoyable.",
+      "devstats_url": "https://kubevela.devstats.cncf.io/",
+      "display_name": "KubeVela",
+      "home_url": "https://kubevela.io/",
+      "id": "00000000-0072-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/color/kubevela-icon-color.svg",
+      "maturity_id": 2,
+      "name": "kubevela",
+      "organization": {
+        "name": "oam-dev"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "secondary",
+          "name": "spec",
+          "url": "https://github.com/oam-dev/spec"
+        },
+        {
+          "kind": "primary",
+          "name": "kubevela",
+          "url": "https://github.com/oam-dev/kubevela"
+        }
+      ],
+      "score": {
+        "best_practices": 100,
+        "documentation": 84,
+        "global": 82,
+        "license": 64,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645599620
+    },
+    {
+      "category_id": 0,
+      "description": "Kubernetes Virtualization API and runtime in order to define and manage virtual machines.",
+      "devstats_url": "https://kubevirt.devstats.cncf.io/",
+      "display_name": "KubeVirt",
+      "id": "00000000-0073-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevirt/icon/color/kubevirt-icon-color.svg",
+      "maturity_id": 2,
+      "name": "kubevirt",
+      "organization": {
+        "name": "kubevirt"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "kubevirt",
+          "url": "https://github.com/kubevirt/kubevirt"
+        }
+      ],
+      "score": {
+        "best_practices": 70,
+        "documentation": 80,
+        "global": 88,
+        "license": 100,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645599617
+    },
+    {
+      "category_id": 0,
+      "description": "Automate application management on Kubernetes.",
+      "devstats_url": "https://openkruise.devstats.cncf.io/",
+      "display_name": "OpenKruise",
+      "id": "00000000-0085-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/openkruise/icon/color/openkruise-icon-color.svg",
+      "maturity_id": 2,
+      "name": "open-kruise",
+      "organization": {
+        "name": "open-kruise"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "kruise",
+          "url": "https://github.com/openkruise/kruise"
+        }
+      ],
+      "score": {
+        "best_practices": 95,
+        "documentation": 90,
+        "global": 91,
+        "license": 80,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645524719
+    },
+    {
+      "category_id": 0,
+      "description": "An early-stage event processing system for unstructured data with rich support for structural pattern-matching, filtering and transformation.",
+      "devstats_url": "https://tremor.devstats.cncf.io/",
+      "display_name": "Tremor",
+      "id": "00000000-0104-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/tremor/icon/color/tremor-icon-color.svg",
+      "maturity_id": 2,
+      "name": "tremor",
+      "organization": {
+        "name": "tremor"
+      },
+      "rating": "a",
+      "repositories": [
+        {
+          "kind": "primary",
+          "name": "tremor-runtime",
+          "url": "https://github.com/tremor-rs/tremor-runtime"
+        }
+      ],
+      "score": {
+        "best_practices": 70,
+        "documentation": 80,
+        "global": 83,
+        "license": 80,
+        "score_kind": "Primary",
+        "security": 100
+      },
+      "updated_at": 1645603208
+    }
+  ],
+  "Pagination-Total-Count": "7"
+}

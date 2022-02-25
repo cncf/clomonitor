@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeBlock creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-row align-items-center pb-2 codeBlock"
+    data-testid="code"
+  >
+    <pre
+      style="display: block; overflow-x: auto; padding: 1rem 0.5rem; background: rgb(248, 248, 255); margin-bottom: 0px;"
+    >
+      <code
+        class="language-markdown"
+        style="white-space: pre;"
+      >
+        <span
+          style="color: rgb(25, 70, 157);"
+        >
+          ##Sample
+        </span>
+      </code>
+    </pre>
+    <div
+      class="position-relative ms-3"
+    >
+      <button
+        aria-label="Copy btn"
+        class="btn btn-sm btn-primary rounded-circle btn"
+        type="button"
+      >
+        <div
+          aria-hidden="true"
+          class="d-flex flex-row align-items-center"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="13"
+              rx="2"
+              ry="2"
+              width="13"
+              x="9"
+              y="9"
+            />
+            <path
+              d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

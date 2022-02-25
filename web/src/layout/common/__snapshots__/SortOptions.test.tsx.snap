@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortOptions creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-nowrap align-items-center me-2 me-md-4"
+  >
+    <label
+      class="form-label me-2 mb-0"
+    >
+      Sort:
+    </label>
+    <select
+      aria-label="Sort options select"
+      class="form-select form-select-sm rounded-0 cursorPointer select"
+    >
+      <option
+        value="name_asc"
+      >
+        Alphabetically (A-Z)
+      </option>
+      <option
+        value="name_desc"
+      >
+        Alphabetically (Z-A)
+      </option>
+      <option
+        value="score_desc"
+      >
+        Score (highest first)
+      </option>
+      <option
+        value="score_asc"
+      >
+        Score (lowest first)
+      </option>
+      ;
+    </select>
+  </div>
+</DocumentFragment>
+`;

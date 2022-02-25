@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="mx-auto px-2 text-center badge"
+  >
+    <span
+      class="text-dark fw-bold"
+    >
+      80
+    </span>
+  </div>
+</DocumentFragment>
+`;

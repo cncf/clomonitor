@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportSummaryModal creates snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="modal-backdrop activeBackdrop"
+      data-testid="modalBackdrop"
+    />
+    <div
+      aria-modal="true"
+      class="modal modal active d-block"
+      role="dialog"
+    >
+      <div
+        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div
+          class="modal-content rounded-0 border border-3 mx-auto content"
+        >
+          <div
+            class="modal-header rounded-0 d-flex flex-row align-items-center header"
+          >
+            <div
+              class="modal-title h5 m-2 flex-grow-1"
+            >
+              Embed report summary
+            </div>
+            <button
+              aria-label="Close"
+              class="btn-close"
+              type="button"
+            />
+          </div>
+          <div
+            class="modal-body p-4 h-100 d-flex flex-column"
+          >
+            <div
+              class="w-100 position-relative"
+            >
+              <label
+                class="w-100 text-primary text-uppercase fw-bold border-bottom mb-3 label"
+                for="theme"
+              >
+                Theme
+              </label>
+              <div
+                class="d-flex flex-row mb-3"
+              >
+                <div
+                  class="form-check me-4"
+                >
+                  <input
+                    checked=""
+                    class="form-check-input"
+                    id="light"
+                    name="theme"
+                    readonly=""
+                    required=""
+                    type="radio"
+                    value="light"
+                  />
+                  <label
+                    class="form-label text-capitalize form-check-label"
+                    for="light"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <svg
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="5"
+                        />
+                        <line
+                          x1="12"
+                          x2="12"
+                          y1="1"
+                          y2="3"
+                        />
+                        <line
+                          x1="12"
+                          x2="12"
+                          y1="21"
+                          y2="23"
+                        />
+                        <line
+                          x1="4.22"
+                          x2="5.64"
+                          y1="4.22"
+                          y2="5.64"
+                        />
+                        <line
+                          x1="18.36"
+                          x2="19.78"
+                          y1="18.36"
+                          y2="19.78"
+                        />
+                        <line
+                          x1="1"
+                          x2="3"
+                          y1="12"
+                          y2="12"
+                        />
+                        <line
+                          x1="21"
+                          x2="23"
+                          y1="12"
+                          y2="12"
+                        />
+                        <line
+                          x1="4.22"
+                          x2="5.64"
+                          y1="19.78"
+                          y2="18.36"
+                        />
+                        <line
+                          x1="18.36"
+                          x2="19.78"
+                          y1="5.64"
+                          y2="4.22"
+                        />
+                      </svg>
+                      <span
+                        class="ms-1"
+                      >
+                        light
+                      </span>
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="form-check me-4"
+                >
+                  <input
+                    class="form-check-input"
+                    id="dark"
+                    name="theme"
+                    readonly=""
+                    required=""
+                    type="radio"
+                    value="dark"
+                  />
+                  <label
+                    class="form-label text-capitalize form-check-label"
+                    for="dark"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <svg
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        />
+                      </svg>
+                      <span
+                        class="ms-1"
+                      >
+                        dark
+                      </span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div
+                class="mt-4"
+              >
+                <label
+                  class="w-100 text-primary text-uppercase fw-bold border-bottom mb-3 label"
+                >
+                  Code
+                </label>
+                <div
+                  class="pt-2"
+                >
+                  <ul
+                    class="nav nav-tabs tabs"
+                  >
+                    <li
+                      class="nav-item"
+                    >
+                      <button
+                        aria-label="Open tab markdown"
+                        class="btn nav-item rounded-0 lightText btn active btn-secondary active"
+                      >
+                        <span
+                          class="d-none d-sm-block"
+                        >
+                          Markdown
+                        </span>
+                        <span
+                          class="d-block d-sm-none"
+                        >
+                          Markdown
+                        </span>
+                      </button>
+                    </li>
+                    <li
+                      class="nav-item"
+                    >
+                      <button
+                        aria-label="Open tab ascii"
+                        class="btn nav-item rounded-0 lightText btn"
+                      >
+                        <span
+                          class="d-none d-sm-block"
+                        >
+                          AsciiDoc
+                        </span>
+                        <span
+                          class="d-block d-sm-none"
+                        >
+                          AsciiDoc
+                        </span>
+                      </button>
+                    </li>
+                    <li
+                      class="nav-item"
+                    >
+                      <button
+                        aria-label="Open tab html"
+                        class="btn nav-item rounded-0 lightText btn"
+                      >
+                        <span
+                          class="d-none d-sm-block"
+                        >
+                          HTML
+                        </span>
+                        <span
+                          class="d-block d-sm-none"
+                        >
+                          HTML
+                        </span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="tab-content mt-4"
+                >
+                  <div
+                    class="tab-pane fade show active"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center pb-2 codeBlock"
+                      data-testid="code"
+                    >
+                      <pre
+                        style="display: block; overflow-x: auto; padding: 1rem 0.5rem; background: rgb(248, 248, 255); margin-bottom: 0px;"
+                      >
+                        <code
+                          class="language-markdown"
+                          style="white-space: pre;"
+                        >
+                          <span>
+                            [
+                          </span>
+                          <span
+                            style="color: rgb(33, 145, 97);"
+                          >
+                            ![CloMonitor report summary
+                          </span>
+                          <span>
+                            ](
+                          </span>
+                          <span
+                            style="color: rgb(187, 102, 136);"
+                          >
+                            http://localhost/api/projects/org/proj/report-summary?theme=light
+                          </span>
+                          <span>
+                            )](
+                          </span>
+                          <span
+                            style="color: rgb(187, 102, 136);"
+                          >
+                            http://localhost/projects/org/proj
+                          </span>
+                          <span>
+                            )
+                          </span>
+                        </code>
+                      </pre>
+                      <div
+                        class="position-relative ms-3"
+                      >
+                        <button
+                          aria-label="Copy report summary markdown link to clipboard"
+                          class="btn btn-sm btn-primary rounded-circle btn"
+                          type="button"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class="d-flex flex-row align-items-center"
+                          >
+                            <svg
+                              fill="none"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                height="13"
+                                rx="2"
+                                ry="2"
+                                width="13"
+                                x="9"
+                                y="9"
+                              />
+                              <path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-4 d-flex flex-column"
+              >
+                <label
+                  class="text-primary text-uppercase fw-bold border-bottom mb-4 label"
+                >
+                  Preview
+                </label>
+                <div
+                  class="mx-auto my-3 imgWrapper"
+                >
+                  <img
+                    alt="CloMonitor report summary"
+                    src="http://localhost/api/projects/org/proj/report-summary?theme=light"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-footer p-3"
+          >
+            <button
+              aria-label="Close modal"
+              class="btn btn-sm rounded-0 btn-secondary text-uppercase"
+              type="button"
+            >
+              <div
+                class="d-flex flex-row align-items-center"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+                <div>
+                  Close
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

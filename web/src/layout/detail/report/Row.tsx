@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
 
-import { ReportOption, RepositoryKind, ScoreType } from '../../../types';
+import { ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
@@ -13,7 +13,6 @@ interface OptData {
 
 interface Props {
   reportId: string;
-  repoKind: RepositoryKind;
   name: ScoreType;
   label: string;
   icon: JSX.Element;
@@ -79,7 +78,6 @@ const Row = (props: Props) => {
                 return (
                   <OptionCell
                     key={`${props.reportId}_${props.label}_${opt}_cell`}
-                    repoKind={props.repoKind}
                     label={opt as ReportOption}
                     value={props.data[opt]}
                   />

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`External link creates snapshot 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Open external link"
+    class="link undefined"
+    href="http://test.com"
+    rel="noopener noreferrer"
+    tabindex="-1"
+    target="_blank"
+  >
+    <div
+      class="d-flex flex-row align-items-baseline"
+    >
+      <span>
+        external
+      </span>
+    </div>
+  </a>
+</DocumentFragment>
+`;

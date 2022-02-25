@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Project detail index creates snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="navbar navbar-expand-sm navbar"
+    role="navigation"
+  >
+    <div
+      class="container-lg"
+    >
+      <button
+        aria-label="Back to results"
+        class="btn btn-link p-0 text-reset backBtn"
+      >
+        <div
+          class="d-flex flex-row align-items-center"
+        >
+          <svg
+            class="me-2"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"
+            />
+          </svg>
+          <div>
+            Back to results
+          </div>
+        </div>
+      </button>
+    </div>
+  </nav>
+  <main
+    class="container-lg flex-grow-1 mb-0 mb-md-4"
+  >
+    <div
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute wrapper transparentBg"
+    >
+      <div
+        class="d-flex flex-row align-items-center justify-content-center w-100 h-100"
+      >
+        <div
+          class="spinner-border text-primary spinner"
+          role="status"
+        >
+          <span
+            class="visually-hidden"
+          >
+            Loading...
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
+</DocumentFragment>
+`;

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParamInfo creates snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="position-absolute"
+    >
+      <div
+        class="dropdown-menu rounded-0 text-wrap dropdown"
+        role="complementary"
+      >
+        <div
+          class="px-3 py-1"
+        >
+          children
+        </div>
+      </div>
+    </div>
+    <div
+      aria-expanded="false"
+      class="cursorDefault"
+    >
+      content
+    </div>
+  </div>
+</DocumentFragment>
+`;

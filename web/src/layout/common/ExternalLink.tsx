@@ -49,7 +49,6 @@ const ExternalLink = (props: Props) => {
         <a
           className={`${styles.link} ${props.className}`}
           href={props.href}
-          role="button"
           target={props.target || '_blank'}
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}

@@ -10,13 +10,12 @@ interface Props {
   name: string;
   shortName?: string;
   bigSize?: boolean;
-  colNumber?: number;
 }
 
 const Category = (props: Props) => {
   const color = getCategoryColor(props.value);
   return (
-    <div className={`col-${props.colNumber || 6} text-truncate`}>
+    <div className="col-6 text-truncate">
       <div className={`d-flex flex-row align-items-baseline text-muted fw-bold flex-nowrap ${styles.title}`}>
         {props.icon && <span className={`pe-1 d-inline-block position-relative ${styles.icon}`}>{props.icon}</span>}
         <span
@@ -36,6 +35,7 @@ const Category = (props: Props) => {
         </div>
         <div className="flex-grow-1 w-100 position-relative">
           <div
+            data-testid="line"
             className="position-absolute top-0 start-0 bottom-0"
             style={{
               width: props.value === 100 ? '100%' : `calc(${props.value}% - 5px)`,
@@ -44,6 +44,7 @@ const Category = (props: Props) => {
           >
             {props.value !== 100 && (
               <div
+                data-testid="peak"
                 style={{ borderLeftColor: `var(--rm-${color})` }}
                 className={`position-absolute ${styles.arrow} ${props.bigSize ? styles.bigArrow : ''}`}
               />

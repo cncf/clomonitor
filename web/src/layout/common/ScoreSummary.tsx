@@ -4,14 +4,14 @@ import { CATEGORY_ICONS } from '../../data';
 import { Score, ScoreType } from '../../types';
 import Category from './Category';
 import RoundScore from './RoundScore';
-import styles from './Summary.module.css';
+import styles from './ScoreSummary.module.css';
 
 interface Props {
   score: Score;
   bigSize: boolean;
 }
 
-const SummaryCard = (props: Props) => {
+const ScoreSummaryCard = (props: Props) => {
   return (
     <div
       className={classNames(
@@ -72,4 +72,4 @@ const SummaryCard = (props: Props) => {
   );
 };
 
-export default SummaryCard;
+export default ScoreSummaryCard;

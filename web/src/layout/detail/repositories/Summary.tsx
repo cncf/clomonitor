@@ -20,7 +20,7 @@ const Summary = (props: Props) => {
 
   return (
     <div className="pt-2 mb-4 mb-md-5">
-      <table className={`table table-bordered mb-0 w-100 ${styles.table}`}>
+      <table data-testid="repositories-summary" className={`table table-bordered mb-0 w-100 ${styles.table}`}>
         <thead>
           <tr>
             <th scope="col" className="text-center text-nowrap">
@@ -68,6 +68,7 @@ const Summary = (props: Props) => {
                           { state: location.state }
                         )
                       }
+                      aria-label={`Go from summary to section: ${repo.name}`}
                     >
                       {repo.name}
                     </button>

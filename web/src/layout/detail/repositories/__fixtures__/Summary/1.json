@@ -1,0 +1,218 @@
+[
+  {
+    "digest": "9f80fd3a004fcabea03987db1fdfcb324deef14e",
+    "kind": "secondary",
+    "name": "sdk-go",
+    "reports": [
+      {
+        "data": {
+          "documentation": {
+            "contributing": true,
+            "maintainers": false,
+            "readme": true
+          },
+          "license": {
+            "approved": true,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Secondary"
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "15530fe4-d9ad-4792-99b4-da6c7d69736f",
+        "updated_at": 1645524690
+      }
+    ],
+    "repository_id": "00000000-0000-0178-0000-000000000000",
+    "score": {
+      "documentation": 90,
+      "global": 95,
+      "license": 100,
+      "score_kind": "Secondary"
+    },
+    "url": "https://github.com/cloudevents/sdk-go"
+  },
+  {
+    "digest": "c420da479343bc71a5ba4d5ed41841280f4c989a",
+    "kind": "secondary",
+    "name": "sdk-javascript",
+    "reports": [
+      {
+        "data": {
+          "documentation": {
+            "contributing": true,
+            "maintainers": false,
+            "readme": true
+          },
+          "license": {
+            "approved": true,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Secondary"
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "86664904-19ab-4728-b4c2-201777622c3b",
+        "updated_at": 1645524698
+      }
+    ],
+    "repository_id": "00000000-0000-0180-0000-000000000000",
+    "score": {
+      "documentation": 90,
+      "global": 95,
+      "license": 100,
+      "score_kind": "Secondary"
+    },
+    "url": "https://github.com/cloudevents/sdk-javascript"
+  },
+  {
+    "digest": "8d3da7d1e891bc6c13e93257d088229c00f81f6d",
+    "kind": "secondary",
+    "name": "sdk-csharp",
+    "reports": [
+      {
+        "data": {
+          "documentation": {
+            "contributing": false,
+            "maintainers": false,
+            "readme": true
+          },
+          "license": {
+            "approved": true,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Secondary"
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "0eab4b10-b672-481c-819e-2620619be80a",
+        "updated_at": 1645635614
+      }
+    ],
+    "repository_id": "00000000-0000-0181-0000-000000000000",
+    "score": {
+      "documentation": 70,
+      "global": 85,
+      "license": 100,
+      "score_kind": "Secondary"
+    },
+    "url": "https://github.com/cloudevents/sdk-csharp"
+  },
+  {
+    "digest": "705e8b41004dba4f9a2dda0993205f9d610c7161",
+    "kind": "secondary",
+    "name": "sdk-python",
+    "reports": [
+      {
+        "data": {
+          "documentation": {
+            "contributing": false,
+            "maintainers": false,
+            "readme": true
+          },
+          "license": {
+            "approved": true,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Secondary"
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "7d98e2a9-c7f4-4c3a-95e1-df46a559e7b7",
+        "updated_at": 1645524724
+      }
+    ],
+    "repository_id": "00000000-0000-0182-0000-000000000000",
+    "score": {
+      "documentation": 70,
+      "global": 85,
+      "license": 100,
+      "score_kind": "Secondary"
+    },
+    "url": "https://github.com/cloudevents/sdk-python"
+  },
+  {
+    "digest": "0b058d07a816205061232a3521fd6ad6f372e28e",
+    "kind": "primary",
+    "name": "spec",
+    "reports": [
+      {
+        "data": {
+          "best_practices": {
+            "artifacthub_badge": false,
+            "community_meeting": true,
+            "openssf_badge": false,
+            "recent_release": true
+          },
+          "documentation": {
+            "adopters": false,
+            "changelog": false,
+            "code_of_conduct": false,
+            "contributing": false,
+            "governance": false,
+            "maintainers": true,
+            "readme": true,
+            "roadmap": false,
+            "website": true
+          },
+          "license": {
+            "approved": true,
+            "fossa_badge": false,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Primary",
+          "security": {
+            "security_policy": false
+          }
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "5af4feda-4776-4bd5-8fd0-6221eb650c13",
+        "updated_at": 1645524734
+      }
+    ],
+    "repository_id": "00000000-0000-0041-0000-000000000000",
+    "score": {
+      "best_practices": 35,
+      "documentation": 60,
+      "global": 44,
+      "license": 80,
+      "score_kind": "Primary",
+      "security": 0
+    },
+    "url": "https://github.com/cloudevents/spec"
+  },
+  {
+    "digest": "a4bc7a836890b69fb7eff81ccfa91d50d1010e6d",
+    "kind": "secondary",
+    "name": "sdk-java",
+    "reports": [
+      {
+        "data": {
+          "documentation": {
+            "contributing": false,
+            "maintainers": false,
+            "readme": true
+          },
+          "license": {
+            "approved": true,
+            "spdx_id": "Apache-2.0"
+          },
+          "report_kind": "Secondary"
+        },
+        "errors": null,
+        "linter_id": 0,
+        "report_id": "316b42fa-26c9-4f8d-b2d4-2d8fb53b8d78",
+        "updated_at": 1645524755
+      }
+    ],
+    "repository_id": "00000000-0000-0179-0000-000000000000",
+    "score": {
+      "documentation": 70,
+      "global": 85,
+      "license": 100,
+      "score_kind": "Secondary"
+    },
+    "url": "https://github.com/cloudevents/sdk-java"
+  }
+]

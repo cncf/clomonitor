@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 import isNull from 'lodash/isNull';
 import { useRef, useState } from 'react';
-import { MdWork } from 'react-icons/md';
+import { MdOutlineImageNotSupported } from 'react-icons/md';
 
 interface Props {
   url?: string | null;
@@ -16,7 +16,7 @@ const Image = (props: Props) => {
   return (
     <>
       {error || isNull(props.url) || isUndefined(props.url) ? (
-        <MdWork />
+        <MdOutlineImageNotSupported data-testid="img-placeholder" />
       ) : (
         <img
           ref={image}

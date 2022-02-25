@@ -1,0 +1,952 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="p-3 p-md-4 border border-top-0"
+  >
+    <div
+      class="mx-0 mx-md-1"
+    >
+      <div
+        class="d-flex flex-row align-items-center"
+      >
+        icon
+        <div
+          class="ms-2 fw-bold"
+        >
+          label
+        </div>
+      </div>
+      <div
+        class="d-flex flex-row mt-2 mb-4 align-items-center"
+      >
+        <div
+          class="flex-grow-1 progressbarWrapper"
+        >
+          <div
+            class="progress rounded-0 progress"
+          >
+            <div
+              class="progress-bar progress-bar-striped"
+              role="progressbar"
+              style="width: 90%;"
+            />
+          </div>
+        </div>
+        <div
+          class="ps-3 lh-1 scoreWrapper"
+        >
+          <small
+            class="fw-bold"
+          >
+            90%
+          </small>
+        </div>
+      </div>
+      <div>
+        <table
+          class="table align-middle w-100 border table"
+        >
+          <tbody>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-danger icon"
+                  data-testid="error-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        version="1.1"
+                        viewBox="0 0 16 16"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0 16h8v-16h-8v16zM5 2h2v2h-2v-2zM5 6h2v2h-2v-2zM5 10h2v2h-2v-2zM1 2h2v2h-2v-2zM1 6h2v2h-2v-2zM1 10h2v2h-2v-2zM9 5h7v1h-7zM9 16h2v-4h3v4h2v-9h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Adopters
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          List of organizations using this project in production or at stages of testing
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7 18H17V16H7V18Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M17 14H7V12H17V14Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M7 10H11V8H7V10Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          clip-rule="evenodd"
+                          d="M6 2C4.34315 2 3 3.34315 3 5V19C3 20.6569 4.34315 22 6 22H18C19.6569 22 21 20.6569 21 19V9C21 5.13401 17.866 2 14 2H6ZM6 4H13V9H19V19C19 19.5523 18.5523 20 18 20H6C5.44772 20 5 19.5523 5 19V5C5 4.44772 5.44772 4 6 4ZM15 4.10002C16.6113 4.4271 17.9413 5.52906 18.584 7H15V4.10002Z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Changelog
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          A curated, chronologically ordered list of notable changes for each version
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 20.813v124.062c29.144 25.523 57.37 49.464 84.375 71.563 5.023-1.894 14.962-7.8 25.688-16.188 11.8-9.23 25.18-21.31 37.875-34.03 12.693-12.724 24.73-26.115 33.906-37.876 8.405-10.775 14.297-20.736 16.094-25.563-21.434-26.277-44.613-53.706-69.313-81.968H18zm211.03 98.156c-3.632 6.475-8.583 13.33-14.468 20.874-9.812 12.578-22.258 26.385-35.406 39.562-13.147 13.178-26.967 25.687-39.594 35.563-7.574 5.923-14.48 10.928-21.03 14.593 8.046 6.48 16.013 12.785 23.812 18.906l-.47-1.75c3.795-1.018 13.79-6.738 24.595-15.19 10.804-8.45 23.076-19.55 34.718-31.218 11.64-11.668 22.69-23.948 31.093-34.718 8.055-10.325 13.58-19.86 14.876-23.813-5.867-7.486-11.93-15.095-18.125-22.81zm31 39.436c-3.33 5.84-7.777 11.954-13.03 18.688-9.04 11.587-20.498 24.314-32.594 36.437-12.095 12.125-24.805 23.622-36.437 32.72-7.382 5.773-14.058 10.626-20.44 14.063 7.35 5.662 14.597 11.165 21.69 16.468 4.76-2.366 12.16-6.993 20-13.124 10.512-8.222 22.447-19.016 33.78-30.375 11.333-11.357 22.075-23.3 30.25-33.78 6.05-7.755 10.62-15.072 12.97-19.75-5.22-6.982-10.627-14.106-16.19-21.344zm26.658 40.813c-2.536 3.743-5.462 7.644-8.688 11.78-8.812 11.296-19.964 23.687-31.75 35.5-11.786 11.813-24.192 23.006-35.53 31.875-4.06 3.174-7.9 6.046-11.595 8.563l94.28 141.28c43.757-7.75 105.398 16.894 158.595 66.063l14.438-14.436L347.094 360.5c-11.034 5.484-24.775 3.663-33.97-5.53-11.517-11.52-11.517-30.202 0-41.72 11.52-11.518 30.202-11.518 41.72 0 9.218 9.218 11.038 23.014 5.5 34.063l119.312 119.312 14.47-14.47c-49.17-53.196-73.847-114.806-66.095-158.56L286.69 199.218z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Code of conduct
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 20 20"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Contributing
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          A 
+                          <em>
+                            contributing
+                          </em>
+                           file in your repository provides potential project contributors with a short guide to how they can help with your project
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-danger icon"
+                  data-testid="error-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M373.563 18.406c-15.616-.167-27.91 4.622-32.563 14.75-22.778 49.605-48.743 87.14-79.094 117.28 3.047 1.015 6.046 2.29 8.938 3.783 12.987 6.708 25.268 17.78 35.312 30.843 10.044 13.062 17.85 28.114 20.78 43.5.746 3.908 1.16 7.885 1.158 11.843 38.97-24.36 85.058-41.223 140.875-51.312 14.91-2.697 23.652-28.632 21.405-58.656l-35.156-1 30.56-24.813c-4.148-14.507-11.013-28.754-21.155-40.72-15.528-18.314-36.43-31.376-56.72-38.686L381.94 40.812l2.812-21.5c-3.875-.55-7.61-.87-11.188-.907zM246.938 166.562c-1.063.052-2.06.226-3 .47-11.976 10.254-24.61 19.597-37.938 28.28.842.33 1.67.667 2.5 1.032 14.123 6.192 27.438 17.145 38.47 30.625 13.356 16.322 23.62 36.94 25.624 57.75 10.334-10.367 21.24-19.943 32.844-28.72 4.096-6.555 4.93-14.468 3.125-23.938-2.184-11.46-8.642-24.43-17.25-35.625-8.61-11.194-19.38-20.622-29.063-25.625-6.052-3.126-11.154-4.45-15.313-4.25zm-61.907 43.282c-1.385.053-2.69.27-3.968.562-37 20.762-79.088 37.985-127.312 56 .574.042 1.14.093 1.72.156 10.627 1.156 21.076 5.008 31.155 10.875L124.313 261 108.5 293.72c5.995 5.432 11.803 11.477 17.344 18 20.76 24.434 37.964 55.865 47.094 88.092.002.01-.003.022 0 .032 2.98 10.508 5.11 20.916 6.312 31 20.99-48.438 44.38-89.26 72.344-123 7.3-21.48-2.186-48.408-19.063-69.03-9.44-11.538-20.976-20.718-31.53-25.345-5.936-2.604-11.27-3.808-15.97-3.626zm141.626 54.844c-7.31 5.05-14.462 10.51-21.437 16.312 39.16 9.26 60.953 35.722 80.655 62.156 10.464 14.04 20.598 28.11 33.125 40.688 24.19 9.147 43.17 6.38 63.906-14.938-92.165-27.78-96.11-92.61-156.25-104.22zM48.594 284.906c-10.873.225-18.26 5.755-23.344 16.594-5.81 12.387-7.114 32.47.438 57.063 5.75 18.73 16.52 37.718 28.75 51.625 12.23 13.906 25.9 22.076 35.374 22.406h.032c3.717.13 6.553-.682 8.812-2.75l-.187-.188 2.093-2.094c.793-1.168 1.52-2.548 2.187-4.187 2.81-6.9 3.28-18.552-1.844-33-6.885-19.417-19.12-31.932-33.375-34.78l-22.968-4.564 19.813-12.5 38.47-24.186c-16.65-16.822-34.55-27.607-49.376-29.22-1.7-.184-3.323-.25-4.876-.218zm236.25 5.406l-24.53 25.375c100.442 17.878 55.45 141.005 159.31 176.188l-24.78-57.28c32.766 16.15 67.39 22.623 97.72 12.03-135.77-41.948-96.32-126.983-207.72-156.313zm-169.47 38.22l-25.968 16.343c13.18 8.5 23.21 22.565 29.125 39.25 2.57 7.244 4.133 14.205 4.75 20.78l23.44-23.374c-8.08-19.19-19.035-37.566-31.345-53zm38.376 72.374l-42.063 42-.156-.156c-4.255 3.942-9.456 6.765-15.186 7.938 23.268 14.873 44.644 19.346 56.812 9.562 4.26-3.426 7.043-8.36 8.47-14.406-.41-12.684-2.602-26.615-6.657-40.906-.382-1.346-.806-2.686-1.22-4.032z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Governance
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          Document that explains how the governance and committer process works in the repository
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Maintainers
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          The 
+                          <em>
+                            maintainers
+                          </em>
+                           file contains a list of the current maintainers of the repository
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M4 5.5H9C10.1046 5.5 11 6.39543 11 7.5V16.5C11 17.0523 10.5523 17.5 10 17.5H4C3.44772 17.5 3 17.0523 3 16.5V6.5C3 5.94772 3.44772 5.5 4 5.5ZM14 19.5C13.6494 19.5 13.3128 19.4398 13 19.3293V19.5C13 20.0523 12.5523 20.5 12 20.5C11.4477 20.5 11 20.0523 11 19.5V19.3293C10.6872 19.4398 10.3506 19.5 10 19.5H4C2.34315 19.5 1 18.1569 1 16.5V6.5C1 4.84315 2.34315 3.5 4 3.5H9C10.1947 3.5 11.2671 4.02376 12 4.85418C12.7329 4.02376 13.8053 3.5 15 3.5H20C21.6569 3.5 23 4.84315 23 6.5V16.5C23 18.1569 21.6569 19.5 20 19.5H14ZM13 7.5V16.5C13 17.0523 13.4477 17.5 14 17.5H20C20.5523 17.5 21 17.0523 21 16.5V6.5C21 5.94772 20.5523 5.5 20 5.5H15C13.8954 5.5 13 6.39543 13 7.5ZM5 7.5H9V9.5H5V7.5ZM15 7.5H19V9.5H15V7.5ZM19 10.5H15V12.5H19V10.5ZM5 10.5H9V12.5H5V10.5ZM19 13.5H15V15.5H19V13.5ZM5 13.5H9V15.5H5V13.5Z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Readme
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          The 
+                          <em>
+                            readme
+                          </em>
+                           file introduces and explains a project. It contains information that is commonly required to understand what the project is about
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-danger icon"
+                  data-testid="error-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g>
+                          <path
+                            d="M0 0h24v24H0z"
+                            fill="none"
+                          />
+                          <path
+                            d="M4 6.143v12.824l5.065-2.17 6 3L20 17.68V4.857l1.303-.558a.5.5 0 0 1 .697.46V19l-7 3-6-3-6.303 2.701a.5.5 0 0 1-.697-.46V7l2-.857zm12.243 5.1L12 15.485l-4.243-4.242a6 6 0 1 1 8.486 0zM12 12.657l2.828-2.829a4 4 0 1 0-5.656 0L12 12.657z"
+                          />
+                        </g>
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Roadmap
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                <svg
+                  class="text-success icon"
+                  data-testid="success-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                  />
+                </svg>
+              </td>
+              <td>
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zM4 12c0-.899.156-1.762.431-2.569L6 11l2 2v2l2 2 1 1v1.931C7.061 19.436 4 16.072 4 12zm14.33 4.873C17.677 16.347 16.687 16 16 16v-1a2 2 0 0 0-2-2h-4v-3a2 2 0 0 0 2-2V7h1a2 2 0 0 0 2-2v-.411C17.928 5.778 20 8.65 20 12a7.947 7.947 0 0 1-1.67 4.873z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mt-1 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold"
+                        >
+                          Website
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                      >
+                        <span>
+                          A url that users can visit to learn more about your project
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                class="text-center text-muted iconCell"
+              >
+                <div
+                  class="d-none d-md-block position-relative ms-2 lh-1"
+                >
+                  <div
+                    data-testid="elementWithTooltip"
+                  >
+                    <svg
+                      class="icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoundScore creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex align-items-center justify-content-center rounded-pill value global undefined"
+    data-testid="global-score"
+  >
+    80
+  </div>
+</DocumentFragment>
+`;

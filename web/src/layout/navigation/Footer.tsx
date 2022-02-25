@@ -15,11 +15,8 @@ const Footer = () => {
             <div className="d-flex flex-column text-start">
               <ExternalLink
                 className="mb-1 opacity-75"
-                href="/"
+                href="https://github.com/cncf/clomonitor/tree/main/docs"
                 label="Open documentation"
-                target="_self"
-                disabled
-                btnType
               >
                 Documentation
               </ExternalLink>
@@ -29,12 +26,7 @@ const Footer = () => {
           <div className={styles.footerCol}>
             <div className="h6 fw-bold text-uppercase">Community</div>
             <div className="d-flex flex-column text-start">
-              <ExternalLink
-                className="mb-1 opacity-75"
-                href="https://github.com/cncf/clomonitor"
-                label="Open Github"
-                btnType
-              >
+              <ExternalLink className="mb-1 opacity-75" href="https://github.com/cncf/clomonitor" label="Open Github">
                 <div className="d-flex align-items-center">
                   <FaGithub className="me-2" />
                   GitHub

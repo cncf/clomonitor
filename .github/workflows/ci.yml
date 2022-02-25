@@ -25,6 +25,32 @@ jobs:
           command: fmt
           args: --all -- --check
 
+  tests-database:
+    runs-on: ubuntu-latest
+    container:
+      image: artifacthub/db-tests
+    services:
+      postgres:
+        image: artifacthub/postgres
+        env:
+          POSTGRES_USER: tests
+          POSTGRES_PASSWORD: tests
+          POSTGRES_DB: tests
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Apply database migrations
+        working-directory: ./database/migrations
+        run: TERN_CONF=../../../.github/workflows/tern.conf PGPORT=${{ job.services.postgres.ports[5432] }} ./migrate.sh
+      - name: Install pgtap database extension
+        run: PGPASSWORD=tests psql -h postgres -p ${{ job.services.postgres.ports[5432] }} -U tests tests -c 'create extension pgtap;'
+      - name: Run database tests
+        working-directory: ./database/tests
+        run: PGPASSWORD=tests pg_prove --host postgres --dbname tests --username tests --verbose schema/*.sql functions/*/*.sql
+
   tests-backend:
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +71,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - linter-backend
+      - tests-database
       - tests-backend
     runs-on: ubuntu-latest
     steps:
@@ -70,6 +97,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - linter-backend
+      - tests-database
       - tests-backend
     runs-on: ubuntu-latest
     steps:
@@ -95,6 +123,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - linter-backend
+      - tests-database
       - tests-backend
     runs-on: ubuntu-latest
     steps:
@@ -120,6 +149,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - linter-backend
+      - tests-database
       - tests-backend
     runs-on: ubuntu-latest
     steps:

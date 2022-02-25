@@ -45,6 +45,26 @@ Now that the `clomonitor` database server is up and ready, we just need to apply
 clomonitor_db_migrate
 ```
 
+### Database tests
+
+If you plan to do some work on the database layer, some extra setup is needed to be able to run the database tests. [Schema and database functions are tested](https://github.com/cncf/clomonitor/tree/main/database/tests) using the unit testing framework [pgTap](https://pgtap.org), so you need to [install](https://pgtap.org/documentation.html#installation) the pgTap PostgreSQL extension on your machine. To run the tests you will also need to install a perl tool called [pg_prove](https://pgtap.org/pg_prove.html) from CPAN (`cpan TAP::Parser::SourceHandler::pgTAP`).
+
+Similarly to what we did during our initial database setup, we'll create a configuration file for Tern for the tests database in the same folder (`~/.config/clomonitor`), called `tern-tests.conf` with the following content (please adjust if needed):
+
+```ini
+[database]
+host = localhost
+port = 5432
+database = clomonitor_tests
+user = postgres
+```
+
+Once you have all the tooling required installed and the tests database set up, you can run all database tests as often as you need this way:
+
+```sh
+clomonitor_db_recreate_tests && clomonitor_db_tests
+```
+
 ### Loading sample data
 
 You can load some sample data by using the `psql` PostgreSQL client this way:
@@ -201,11 +221,16 @@ export CLOMONITOR_DATA=~/tmp/data_clomonitor
 
 alias clomonitor_db_init="mkdir -p $CLOMONITOR_DATA && initdb -U postgres $CLOMONITOR_DATA"
 alias clomonitor_db_create="psql -U postgres -c 'create database clomonitor'"
+alias clomonitor_db_create_tests="psql -U postgres -c 'create database clomonitor_tests' && psql -U postgres clomonitor_tests -c 'create extension if not exists pgtap'"
 alias clomonitor_db_drop="psql -U postgres -c 'drop database clomonitor with (force)'"
+alias clomonitor_db_drop_tests="psql -U postgres -c 'drop database if exists clomonitor_tests'"
 alias clomonitor_db_recreate="clomonitor_db_drop && clomonitor_db_create && clomonitor_db_migrate"
+alias clomonitor_db_recreate_tests="clomonitor_db_drop_tests && clomonitor_db_create_tests && clomonitor_db_migrate_tests"
 alias clomonitor_db_server="postgres -D $CLOMONITOR_DATA"
 alias clomonitor_db_client="psql -h localhost -U postgres clomonitor"
 alias clomonitor_db_migrate="pushd $CLOMONITOR_SOURCE/database/migrations; TERN_CONF=~/.config/clomonitor/tern.conf ./migrate.sh; popd"
+alias clomonitor_db_migrate_tests="pushd $CLOMONITOR_SOURCE/database/migrations; TERN_CONF=~/.config/clomonitor/tern-tests.conf ./migrate.sh; popd"
+alias clomonitor_db_tests="pushd $CLOMONITOR_SOURCE/database/tests; pg_prove --host localhost --dbname clomonitor_tests --username postgres --verbose **/*.sql; popd"
 alias clomonitor_apiserver="$CLOMONITOR_SOURCE/target/debug/clomonitor-apiserver -c ~/.config/clomonitor/apiserver.yaml"
 alias clomonitor_tracker="$CLOMONITOR_SOURCE/target/debug/clomonitor-tracker -c ~/.config/clomonitor/tracker.yaml"
 alias clomonitor_linter="$CLOMONITOR_SOURCE/target/debug/clomonitor-linter"

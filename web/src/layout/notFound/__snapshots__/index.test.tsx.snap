@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotFount creates snapshot 1`] = `
+exports[`NotFound creates snapshot 1`] = `
 <DocumentFragment>
   <main
     class="container-lg flex-grow-1 p-5 d-flex flex-column align-items-center justify-content-center"

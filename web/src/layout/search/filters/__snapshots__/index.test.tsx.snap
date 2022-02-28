@@ -1,0 +1,522 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filters creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom"
+  >
+    <div
+      class="h6 text-uppercase mb-0 lh-base text-primary fw-bold"
+    >
+      Filters
+    </div>
+  </div>
+  <div
+    class="fw-bold text-uppercase text-primary categoryTitle"
+  >
+    <small>
+      Maturity level
+    </small>
+  </div>
+  <div
+    class="mt-2"
+  >
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-0"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="0"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-0"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Graduated
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-1"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="1"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-1"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Incubating
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-2"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="2"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-2"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Sandbox
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div
+    class="fw-bold text-uppercase text-primary categoryTitle"
+  >
+    <small>
+      Rating
+    </small>
+  </div>
+  <div
+    class="mt-2"
+  >
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-rating-a"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="a"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-a"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          >
+            <div
+              class="me-2 border rounded-pill position-relative quality level1 undefined"
+              data-testid="quality-dot"
+            />
+          </span>
+          <span
+            class="text-truncate"
+          >
+            A
+          </span>
+          <small
+            class="ps-1"
+          >
+            [75-100]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-rating-b"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="b"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-b"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          >
+            <div
+              class="me-2 border rounded-pill position-relative quality level2 undefined"
+              data-testid="quality-dot"
+            />
+          </span>
+          <span
+            class="text-truncate"
+          >
+            B
+          </span>
+          <small
+            class="ps-1"
+          >
+            [50-74]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-rating-c"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="c"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-c"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          >
+            <div
+              class="me-2 border rounded-pill position-relative quality level3 undefined"
+              data-testid="quality-dot"
+            />
+          </span>
+          <span
+            class="text-truncate"
+          >
+            C
+          </span>
+          <small
+            class="ps-1"
+          >
+            [25-49]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-rating-d"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="d"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-d"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          >
+            <div
+              class="me-2 border rounded-pill position-relative quality level4 undefined"
+              data-testid="quality-dot"
+            />
+          </span>
+          <span
+            class="text-truncate"
+          >
+            D
+          </span>
+          <small
+            class="ps-1"
+          >
+            [0-24]
+          </small>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div
+    class="fw-bold text-uppercase text-primary categoryTitle"
+  >
+    <small>
+      Category
+    </small>
+  </div>
+  <div
+    class="mt-2"
+  >
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-0"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="0"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-0"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            App definition
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-1"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="1"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-1"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Observability
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-2"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="2"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-2"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Orchestration
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-3"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="3"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-3"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Platform
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-4"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="4"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-4"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Provisioning
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-5"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="5"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-5"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Runtime
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-category-6"
+        name="category"
+        tabindex="0"
+        type="checkbox"
+        value="6"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-category-6"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Serverless
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;

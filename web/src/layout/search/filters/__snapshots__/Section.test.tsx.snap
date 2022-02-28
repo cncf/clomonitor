@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="fw-bold text-uppercase text-primary categoryTitle"
+  >
+    <small>
+      Maturity level
+    </small>
+  </div>
+  <div
+    class="mt-2"
+  >
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-0"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="0"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-0"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Graduated
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-1"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="1"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-1"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Incubating
+          </span>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 checkbox"
+        id="test-maturity-2"
+        name="maturity"
+        tabindex="0"
+        type="checkbox"
+        value="2"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-maturity-2"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Sandbox
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;

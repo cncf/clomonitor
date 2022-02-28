@@ -1,5 +1,6 @@
 use super::{
     check::{self, Globs},
+    metadata::*,
     patterns::*,
     LintOptions,
 };
@@ -37,7 +38,7 @@ pub struct Documentation {
 #[non_exhaustive]
 pub struct License {
     pub approved: Option<bool>,
-    pub fossa_badge: bool,
+    pub scanning: Option<String>,
     pub spdx_id: Option<String>,
 }
 
@@ -60,6 +61,9 @@ pub struct Security {
 
 /// Lint the path provided and return a report.
 pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
+    // Read and parse metadata
+    let md = Metadata::from(options.root.join(METADATA_FILE))?;
+
     // Async checks: documentation, best_practices
     let (documentation, best_practices) = tokio::try_join!(
         lint_documentation(options.root, options.url),
@@ -68,7 +72,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
 
     Ok(Report {
         documentation,
-        license: lint_license(options.root)?,
+        license: lint_license(options.root, &md)?,
         best_practices,
         security: lint_security(options.root)?,
     })
@@ -184,7 +188,7 @@ async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation
 }
 
 /// Run license checks and prepare the report's license section.
-fn lint_license(root: &Path) -> Result<License, Error> {
+fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
     // SPDX id
     let spdx_id = check::license(Globs {
         root,
@@ -198,19 +202,29 @@ fn lint_license(root: &Path) -> Result<License, Error> {
         approved = Some(check::is_approved_license(spdx_id))
     }
 
-    // FOSSA badge
-    let fossa_badge = check::content_matches(
-        Globs {
-            root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        FOSSA_BADGE_URL,
-    )?;
+    // Scanning url
+    let mut scanning_url: Option<String> = None;
+    if let Some(md) = md {
+        if let Some(license_scanning) = &md.license_scanning {
+            if let Some(url) = &license_scanning.url {
+                scanning_url = Some(url.to_owned())
+            }
+        }
+    }
+    if scanning_url.is_none() {
+        scanning_url = check::content_find(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            LICENSE_SCANNING_URL,
+        )?;
+    }
 
     Ok(License {
         approved,
-        fossa_badge,
+        scanning: scanning_url,
         spdx_id,
     })
 }

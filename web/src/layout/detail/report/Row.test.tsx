@@ -62,13 +62,13 @@ describe('Row', () => {
     });
 
     it('renders options in correct order', () => {
-      render(<Row {...defaultProps} data={{ approved: true, fossa_badge: true, spdx_id: 'Apache-2.0' }} />);
+      render(<Row {...defaultProps} data={{ approved: true, scanning: 'http://url.com', spdx_id: 'Apache-2.0' }} />);
 
       const opts = screen.getAllByTestId('opt-name');
       expect(opts).toHaveLength(3);
       expect(opts[0]).toHaveTextContent('Apache-2.0');
       expect(opts[1]).toHaveTextContent('Approved license');
-      expect(opts[2]).toHaveTextContent('FOSSA badge');
+      expect(opts[2]).toHaveTextContent('License scanning');
     });
   });
 });

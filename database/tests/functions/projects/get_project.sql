@@ -75,7 +75,7 @@ insert into report (
         "license": {
             "spdx_id": "Apache-2.0",
             "approved": true,
-            "fossa_badge": true
+            "scanning": "https://license-scanning.url"
         },
         "security": {
             "security_policy": true
@@ -145,7 +145,7 @@ select is(
                             },
                             "license": {
                                 "approved": true,
-                                "fossa_badge": true,
+                                "scanning": "https://license-scanning.url",
                                 "spdx_id": "Apache-2.0"
                             },
                             "report_kind": "Primary",

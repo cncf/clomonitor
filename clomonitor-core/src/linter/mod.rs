@@ -5,6 +5,7 @@ use std::path::Path;
 use std::str::FromStr;
 
 mod check;
+mod metadata;
 mod patterns;
 pub mod primary;
 pub mod secondary;

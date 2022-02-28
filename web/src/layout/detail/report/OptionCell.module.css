@@ -23,6 +23,10 @@
   margin-left: -3px;
 }
 
+.miniIcon {
+  font-size: 0.75rem;
+}
+
 @media only screen and (min-width: 576px) {
   .name {
     font-size: 1rem;

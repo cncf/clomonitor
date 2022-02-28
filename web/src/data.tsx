@@ -193,21 +193,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
-  [ReportOption.FossaBadge]: {
-    icon: <GiStamper />,
-    name: 'FOSSA badge',
-    legend: (
-      <span>
-        <em>FOSSA</em> scans and automatically identifies, manages and addresses open source licensing issues and
-        security vulnerabilities
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains a <em>FOSSA</em> badge
-      </span>
-    ),
-  },
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,
     name: 'Governance',
@@ -217,6 +202,21 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         We check that a <code>governance*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
         the repository or in the <code>docs</code> directory or that the <code>README</code> file contains a
         <strong>governance</strong> header
+      </span>
+    ),
+  },
+  [ReportOption.LicenseScanning]: {
+    icon: <GiStamper />,
+    name: 'License scanning',
+    legend: (
+      <span>
+        License scanning software scans and automatically identifies, manages and addresses open source licensing issues
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the <code>README</code> file contains a FOSSA or Snyk badge. It’s also possible to provide a
+        scanning url in the <code>.clomonitor.yml</code> metadata file
       </span>
     ),
   },

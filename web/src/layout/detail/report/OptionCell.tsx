@@ -1,9 +1,11 @@
 import { isBoolean, isNull, isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegQuestionCircle, FaRegTimesCircle } from 'react-icons/fa';
+import { FiExternalLink } from 'react-icons/fi';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportOption, ReportOptionData } from '../../../types';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
+import ExternalLink from '../../common/ExternalLink';
 import styles from './OptionCell.module.css';
 
 interface Props {
@@ -52,6 +54,22 @@ const OptionCell = (props: Props) => {
                   switch (props.label) {
                     case ReportOption.SPDX:
                       return <small className="fw-bold">{props.value || 'Not detected'}</small>;
+
+                    case ReportOption.LicenseScanning:
+                      return (
+                        <>
+                          {isNull(props.value) ? (
+                            <small className="fw-bold">{opt.name}</small>
+                          ) : (
+                            <ExternalLink href={props.value as string} className="d-inline">
+                              <div className="d-flex flex-row align-items-center">
+                                <small className="fw-bold">{opt.name}</small>
+                                <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
+                              </div>
+                            </ExternalLink>
+                          )}
+                        </>
+                      );
 
                     default:
                       return <small className="fw-bold">{opt.name}</small>;

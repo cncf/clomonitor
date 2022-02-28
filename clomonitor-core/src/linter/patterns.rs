@@ -24,7 +24,10 @@ pub(crate) static ROADMAP_HEADER: [&str; 1] = [r"(?im)^#+.*roadmap.*$"];
 
 // License
 pub(crate) static LICENSE_FILE: [&str; 2] = ["LICENSE*", "COPYING*"];
-pub(crate) static FOSSA_BADGE_URL: [&str; 1] = [r"https://app.fossa.*/api/projects/.*"];
+pub(crate) static LICENSE_SCANNING_URL: [&str; 2] = [
+    r"\[!\[.*\]\(https://app.fossa.*/api/projects/.*\)\]\((.*)\)",
+    r"\[!\[.*\]\(https://snyk.io/test/github/[^/]+/[^/]+/badge.svg\)\]\((.*)\)",
+];
 
 // Best practices
 pub(crate) static ARTIFACTHUB_BADGE_URL: [&str; 1] =

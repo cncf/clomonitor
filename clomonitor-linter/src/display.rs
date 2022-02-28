@@ -105,8 +105,8 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.license.approved.unwrap_or(false)),
         ])
         .add_row(vec![
-            cell_entry("License / FOSSA badge"),
-            cell_check(report.license.fossa_badge),
+            cell_entry("License / Scanning"),
+            cell_check(report.license.scanning.is_some()),
         ])
         .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),

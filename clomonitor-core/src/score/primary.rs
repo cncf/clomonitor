@@ -66,7 +66,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
             score.license += 60;
         }
     }
-    if report.license.fossa_badge {
+    if report.license.scanning.is_some() {
         score.license += 20;
     }
     if report.license.spdx_id.is_some() {
@@ -138,7 +138,7 @@ mod tests {
                 },
                 license: License {
                     approved: Some(true),
-                    fossa_badge: true,
+                    scanning: Some("https://license-scanning.url".to_string()),
                     spdx_id: Some("Apache-2.0".to_string()),
                 },
                 best_practices: BestPractices {
@@ -178,7 +178,7 @@ mod tests {
                 },
                 license: License {
                     approved: None,
-                    fossa_badge: false,
+                    scanning: None,
                     spdx_id: None,
                 },
                 best_practices: BestPractices {

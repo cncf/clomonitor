@@ -373,6 +373,7 @@ dependencies = [
  "octocrab",
  "regex",
  "serde 1.0.136",
+ "serde_yaml",
  "tokio",
  "tracing",
 ]
@@ -1900,6 +1901,18 @@ dependencies = [
  "itoa 1.0.1",
  "ryu",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "serde_yaml"
+version = "0.8.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4a521f2940385c165a24ee286aa8599633d162077a54bdcae2a6fd5a7bfa7a0"
+dependencies = [
+ "indexmap",
+ "ryu",
+ "serde 1.0.136",
+ "yaml-rust",
 ]
 
 [[package]]

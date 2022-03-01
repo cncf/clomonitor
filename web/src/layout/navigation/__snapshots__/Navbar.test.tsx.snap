@@ -22,7 +22,7 @@ exports[`Navbar creates snapshot 1`] = `
               href="/"
             >
               <img
-                alt="CloMonitor logo"
+                alt="CLOMonitor logo"
                 class="logo"
                 src=""
               />

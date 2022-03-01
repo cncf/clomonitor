@@ -30,7 +30,7 @@ describe('BadgeModal', () => {
       expect(screen.getAllByText('Markdown')).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: /Open tab/ })).toHaveLength(2);
 
-      const badge = screen.getByAltText('CloMonitor badge');
+      const badge = screen.getByAltText('CLOMonitor badge');
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
@@ -39,7 +39,7 @@ describe('BadgeModal', () => {
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        '[![CloMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge)](http://localhost/projects/org/proj)'
+        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge)](http://localhost/projects/org/proj)'
       );
     });
 
@@ -51,7 +51,7 @@ describe('BadgeModal', () => {
       expect(btns[1]).toHaveTextContent('AsciiDoc');
       userEvent.click(btns[1]);
 
-      const badge = screen.getByAltText('CloMonitor badge');
+      const badge = screen.getByAltText('CLOMonitor badge');
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
@@ -60,7 +60,7 @@ describe('BadgeModal', () => {
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        'http://localhost/projects/org/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge[CloMonitor]]'
+        'http://localhost/projects/org/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge[CLOMonitor]]'
       );
     });
   });

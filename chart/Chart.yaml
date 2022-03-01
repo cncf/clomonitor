@@ -1,6 +1,6 @@
 apiVersion: v2
 name: clomonitor
-description: CloMonitor is a tool that periodically checks CNCF projects' repositories to verify they meet a certain set of standards.
+description: CLOMonitor is a tool that periodically checks CNCF projects' repositories to verify they meet a certain set of standards.
 type: application
 version: 0.1.0
 appVersion: 0.1.0

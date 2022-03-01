@@ -9,7 +9,7 @@ pub(crate) const FAILURE_SYMBOL: char = '✗';
 
 /// Print the linter results provided.
 pub(crate) fn display(report: &Report, score: &Score) {
-    println!("CloMonitor linter results\n");
+    println!("CLOMonitor linter results\n");
 
     match report {
         Report::Primary(report) => {

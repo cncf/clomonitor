@@ -1,16 +1,16 @@
 # Development environment setup
 
-This document will help you setup your development environment so that you can build, test and run CloMonitor locally from source.
+This document will help you setup your development environment so that you can build, test and run CLOMonitor locally from source.
 
-For more information about the CloMonitor's architecture, please see [this document](https://github.com/cncf/clomonitor/blob/main/docs/architecture.md).
+For more information about the CLOMonitor's architecture, please see [this document](https://github.com/cncf/clomonitor/blob/main/docs/architecture.md).
 
 The instructions provided in this document rely on a set of [aliases](#aliases) available at the end. These aliases are used by some of the maintainers and are provided only as examples. Please feel free to adapt them to suit your needs. You may want to add them to your shell's configuration file so that they are loaded automatically.
 
-To start, please clone the [CloMonitor repository](https://github.com/cncf/clomonitor). If you plan to use the aliases mentioned above, you should set the `CLOMONITOR_SOURCE` variable to the path where you cloned the repository.
+To start, please clone the [CLOMonitor repository](https://github.com/cncf/clomonitor). If you plan to use the aliases mentioned above, you should set the `CLOMONITOR_SOURCE` variable to the path where you cloned the repository.
 
 ## Database
 
-The datastore used by CloMonitor is PostgreSQL. You can install it locally using your favorite OS package manager.
+The datastore used by CLOMonitor is PostgreSQL. You can install it locally using your favorite OS package manager.
 
 Once PostgreSQL is installed and its binaries are available in your `PATH`, we can initialize the database cluster and launch the database server:
 
@@ -89,7 +89,7 @@ from '~/projects/clomonitor/database/data/repositories.csv'
 with (format csv, header true, delimiter ';');
 ```
 
-At this point our database is ready to launch our local instance of CloMonitor and start doing some work on it.
+At this point our database is ready to launch our local instance of CLOMonitor and start doing some work on it.
 
 ## Backend
 
@@ -101,7 +101,7 @@ To build the backend components, please run the command below:
 cargo build
 ```
 
-Even if you don't plan to do any work on the frontend, you will need to build it once if you want to interact with the CloMonitor backend from the browser. To do this, you will have to install [yarn](https://yarnpkg.com/getting-started/install). Once you have it installed, you can build the frontend application this way:
+Even if you don't plan to do any work on the frontend, you will need to build it once if you want to interact with the CLOMonitor backend from the browser. To do this, you will have to install [yarn](https://yarnpkg.com/getting-started/install). Once you have it installed, you can build the frontend application this way:
 
 ```sh
 cd web && yarn install
@@ -130,7 +130,7 @@ Now you can run the `apiserver`:
 clomonitor_apiserver
 ```
 
-The `apiserver` process launches an http server that serves the web application and the API that powers it. Once it is up and running, you can point your browser to [http://localhost:8000](http://localhost:8000) and you should see the CloMonitor web application. Initially there won't be any projects listed on it, but we'll take care of that in the next section.
+The `apiserver` process launches an http server that serves the web application and the API that powers it. Once it is up and running, you can point your browser to [http://localhost:8000](http://localhost:8000) and you should see the CLOMonitor web application. Initially there won't be any projects listed on it, but we'll take care of that in the next section.
 
 ### Tracker
 
@@ -183,7 +183,7 @@ cargo test
 
 ## Frontend
 
-The CloMonitor frontend is a single page application written in [TypeScript](https://www.typescriptlang.org) using [React](https://reactjs.org).
+The CLOMonitor frontend is a single page application written in [TypeScript](https://www.typescriptlang.org) using [React](https://reactjs.org).
 
 In the backend section we mentioned how to install the frontend dependencies and build it. That should be enough if you are only going to work on the backend. However, if you are planning to do some work on the frontend, it's better to launch an additional server which will rebuild the web application as needed whenever a file is modified.
 
@@ -193,7 +193,7 @@ The frontend development server can be launched using the following command:
 clomonitor_frontend_dev
 ```
 
-That alias will launch an http server that will listen on the port `3000`. Once it's running, you can point your browser to [http://localhost:3000](http://localhost:3000) and you should see the CloMonitor web application. The page will be automatically reloaded everytime you make a change in the frontend code. Build errors and build warnings will be visible in the console.
+That alias will launch an http server that will listen on the port `3000`. Once it's running, you can point your browser to [http://localhost:3000](http://localhost:3000) and you should see the CLOMonitor web application. The page will be automatically reloaded everytime you make a change in the frontend code. Build errors and build warnings will be visible in the console.
 
 API calls will go to [http://localhost:8000](http://localhost:8000), so the [apiserver](#api-server) is expected to be up and running.
 

@@ -1,6 +1,6 @@
 # Contributing Guide
 
-The CloMonitor project accepts contributions via [GitHub pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). This document outlines the process to help get your contribution accepted.
+The CLOMonitor project accepts contributions via [GitHub pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). This document outlines the process to help get your contribution accepted.
 
 ## Issues and discussions
 
@@ -23,7 +23,7 @@ You can get some information about the project's **architecture** and how to set
 
 ## Developer Certificate of Origin
 
-The CloMonitor project uses a [Developers Certificate of Origin (DCO)](https://developercertificate.org/) to sign-off that you have the right to contribute the code being contributed. The full text of the DCO reads:
+The CLOMonitor project uses a [Developers Certificate of Origin (DCO)](https://developercertificate.org/) to sign-off that you have the right to contribute the code being contributed. The full text of the DCO reads:
 
 ```text
 Developer Certificate of Origin

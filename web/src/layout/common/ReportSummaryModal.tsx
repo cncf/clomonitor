@@ -37,9 +37,9 @@ const ReportSummaryModal = (props: Props) => {
   const [theme, setTheme] = useState<string>(DEFAULT_THEME);
   const image = `${origin}/api/projects/${props.orgName}/${props.projectName}/report-summary?theme=${theme}`;
   const projectLink = `${origin}/projects/${props.orgName}/${props.projectName}`;
-  const markdownLink = `[![CloMonitor report summary](${image})](${projectLink})`;
-  const asciiLink = `${projectLink}[image:${image}[CloMonitor report summary]]`;
-  const htmlLink = `<a href="${projectLink}" rel="noopener noreferrer" target="_blank"><img src="${image}" alt="CloMonitor report summary" /></a>`;
+  const markdownLink = `[![CLOMonitor report summary](${image})](${projectLink})`;
+  const asciiLink = `${projectLink}[image:${image}[CLOMonitor report summary]]`;
+  const htmlLink = `<a href="${projectLink}" rel="noopener noreferrer" target="_blank"><img src="${image}" alt="CLOMonitor report summary" /></a>`;
 
   return (
     <Modal
@@ -125,7 +125,7 @@ const ReportSummaryModal = (props: Props) => {
           <label className={`text-primary text-uppercase fw-bold border-bottom mb-4 ${styles.label}`}>Preview</label>
 
           <div className={`mx-auto my-3 ${styles.imgWrapper}`}>
-            <img src={image} alt="CloMonitor report summary" />
+            <img src={image} alt="CLOMonitor report summary" />
           </div>
         </div>
       </div>

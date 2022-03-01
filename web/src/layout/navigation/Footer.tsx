@@ -38,7 +38,7 @@ const Footer = () => {
           <div className={styles.footerCol}>
             <div className="h6 fw-bold text-uppercase">About</div>
             <div className={`opacity-75 ${styles.license}`}>
-              CloMonitor is an <b className="d-inline-block">Open Source</b> project licensed under the{' '}
+              CLOMonitor is an <b className="d-inline-block">Open Source</b> project licensed under the{' '}
               <ExternalLink
                 className="d-inline-block mb-1"
                 href="https://www.apache.org/licenses/LICENSE-2.0"

@@ -17,8 +17,8 @@ interface Props {
 const BadgeModal = (props: Props) => {
   const origin = window.location.origin;
   const badgeImage = `https://img.shields.io/endpoint?url=${origin}/api/projects/${props.orgName}/${props.projectName}/badge`;
-  const markdownLink = `[![CloMonitor](${badgeImage})](${origin}/projects/${props.orgName}/${props.projectName})`;
-  const asciiLink = `${origin}/projects/${props.orgName}/${props.projectName}[image:${badgeImage}[CloMonitor]]`;
+  const markdownLink = `[![CLOMonitor](${badgeImage})](${origin}/projects/${props.orgName}/${props.projectName})`;
+  const asciiLink = `${origin}/projects/${props.orgName}/${props.projectName}[image:${badgeImage}[CLOMonitor]]`;
 
   return (
     <Modal
@@ -35,7 +35,7 @@ const BadgeModal = (props: Props) => {
               content: (
                 <>
                   <div className="mt-2 mb-4">
-                    <img src={badgeImage} alt="CloMonitor badge" />
+                    <img src={badgeImage} alt="CLOMonitor badge" />
                   </div>
 
                   <CodeBlock language="markdown" content={markdownLink} label="Copy badge markdown link to clipboard" />
@@ -48,7 +48,7 @@ const BadgeModal = (props: Props) => {
               content: (
                 <>
                   <div className="mt-2 mb-4">
-                    <img src={badgeImage} alt="CloMonitor badge" />
+                    <img src={badgeImage} alt="CLOMonitor badge" />
                   </div>
 
                   <CodeBlock language="asciidoc" content={asciiLink} label="Copy badge Ascii link to clipboard" />

@@ -82,7 +82,7 @@ pub(crate) async fn badge(
         "namedLogo": "cncf",
         "logoColor": "BEB5C8",
         "logoWidth": 10,
-        "label": "CloMonitor Report",
+        "label": "CLOMonitor Report",
         "message": message,
         "color": color,
         "schemaVersion": 1,

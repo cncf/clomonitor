@@ -34,7 +34,7 @@ async fn main() -> Result<(), Error> {
     let args = Args::parse();
 
     // Lint repository provided and display results
-    println!("\nRunning CloMonitor linter...\n");
+    println!("\nRunning CLOMonitor linter...\n");
     let options = LintOptions {
         root: &args.path,
         kind: &args.kind,

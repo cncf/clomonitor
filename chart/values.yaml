@@ -1,4 +1,4 @@
-# CloMonitor chart default configuration values
+# CLOMonitor chart default configuration values
 
 imagePullSecrets: []
 imageTag: ""

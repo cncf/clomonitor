@@ -126,7 +126,7 @@ select results_eq(
 select results_eq(
     'select * from linter',
     $$ values
-        (0, 'core', 'CloMonitor Core Linter')
+        (0, 'core', 'CLOMonitor Core Linter')
     $$,
     'Linters should exist'
 );

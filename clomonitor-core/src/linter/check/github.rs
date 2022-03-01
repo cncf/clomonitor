@@ -43,10 +43,10 @@ where
 /// Extract the owner and repository from the repository url provided.
 fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
     lazy_static! {
-        static ref GITHUB_RE: Regex =
+        static ref GITHUB_REPO_URL_RE: Regex =
             Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$").unwrap();
     }
-    let c = GITHUB_RE
+    let c = GITHUB_REPO_URL_RE
         .captures(repo_url)
         .ok_or(format_err!("invalid repository url"))?;
     Ok((c["org"].to_string(), c["repo"].to_string()))

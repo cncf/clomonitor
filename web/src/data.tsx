@@ -317,8 +317,8 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.TrademarkFooter]: {
     icon: <FaTrademark />,
     name: 'Trademark footer',
-    legend: <span>Projects sites should have Linux Foundation trademark footer</span>,
-    description: <span>We check that the website defined in Github has the trademark footer</span>,
+    legend: <span>Projects sites should have the Linux Foundation trademark footer</span>,
+    description: <span>We check that the website defined in Github has the Linux Foundation trademark footer</span>,
   },
   [ReportOption.Website]: {
     icon: <BiWorld />,

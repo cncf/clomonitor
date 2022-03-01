@@ -70,12 +70,14 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     // Get Github metadata
     let gh_md = github::get_metadata(options.url).await?;
 
-    // Async checks: best_practices
-    let (best_practices,) =
-        tokio::try_join!(lint_best_practices(options.root, options.url, &gh_md))?;
+    // Async checks: documentation, best_practices
+    let (documentation, best_practices) = tokio::try_join!(
+        lint_documentation(options.root, options.url, &gh_md),
+        lint_best_practices(options.root, options.url, &gh_md),
+    )?;
 
     Ok(Report {
-        documentation: lint_documentation(options.root, &gh_md)?,
+        documentation,
         license: lint_license(options.root, &md)?,
         best_practices,
         security: lint_security(options.root)?,
@@ -83,7 +85,11 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
 }
 
 /// Run documentation checks and prepare the report's documentation section.
-fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documentation, Error> {
+async fn lint_documentation(
+    root: &Path,
+    repo_url: &str,
+    gh_md: &Repository,
+) -> Result<Documentation, Error> {
     // Adopters
     let adopters = check::path_exists(Globs {
         root,
@@ -131,7 +137,7 @@ fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documentation, 
             case_sensitive: true,
         },
         CHANGELOG_HEADER,
-    )?;
+    )? || github::last_release_body_matches(repo_url, CHANGELOG_RELEASE).await?;
 
     // Governance
     let governance = check::path_exists(Globs {

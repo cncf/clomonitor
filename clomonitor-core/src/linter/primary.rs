@@ -1,10 +1,12 @@
 use super::{
     check::{self, Globs},
+    github,
     metadata::*,
     patterns::*,
     LintOptions,
 };
 use anyhow::Error;
+use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
@@ -61,17 +63,17 @@ pub struct Security {
 
 /// Lint the path provided and return a report.
 pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
-    // Read and parse metadata
+    // Get CLOMonitor metadata
     let md = Metadata::from(options.root.join(METADATA_FILE))?;
 
-    // Async checks: documentation, best_practices
-    let (documentation, best_practices) = tokio::try_join!(
-        lint_documentation(options.root, options.url),
-        lint_best_practices(options.root, options.url),
+    // Run some async expressions and wait for them to complete
+    let (gh_md, best_practices) = tokio::try_join!(
+        github::get_metadata(options.url),
+        lint_best_practices(options.root, options.url)
     )?;
 
     Ok(Report {
-        documentation,
+        documentation: lint_documentation(options.root, &gh_md)?,
         license: lint_license(options.root, &md)?,
         best_practices,
         security: lint_security(options.root)?,
@@ -79,7 +81,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
 }
 
 /// Run documentation checks and prepare the report's documentation section.
-async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation, Error> {
+fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documentation, Error> {
     // Adopters
     let adopters = check::path_exists(Globs {
         root,
@@ -171,8 +173,11 @@ async fn lint_documentation(root: &Path, repo_url: &str) -> Result<Documentation
         ROADMAP_HEADER,
     )?;
 
-    // Async checks: website
-    let (website,) = tokio::try_join!(check::has_website(repo_url))?;
+    // Website
+    let website = match &gh_md.homepage {
+        Some(url) => !url.is_empty(),
+        None => false,
+    };
 
     Ok(Documentation {
         adopters,
@@ -262,7 +267,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
     )?;
 
     // Async checks: recent_release
-    let (recent_release,) = tokio::try_join!(check::has_recent_release(repo_url))?;
+    let (recent_release,) = tokio::try_join!(github::has_recent_release(repo_url))?;
 
     Ok(BestPractices {
         artifacthub_badge,

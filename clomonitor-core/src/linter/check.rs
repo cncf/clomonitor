@@ -1,6 +1,5 @@
-use anyhow::{format_err, Error};
+use anyhow::Error;
 use askalono::*;
-use chrono::{Duration, Utc};
 use glob::{glob_with, MatchOptions, PatternError};
 use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
@@ -82,31 +81,6 @@ where
     }))
 }
 
-/// Check if the repository has released a new version in the last year.
-pub(crate) async fn has_recent_release(repo_url: &str) -> Result<bool, Error> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-    let github = octocrab::instance();
-    let mut page = github
-        .repos(&owner, &repo)
-        .releases()
-        .list()
-        .per_page(1)
-        .send()
-        .await?;
-    let releases = page.take_items();
-    if let Some(last_release) = releases.first() {
-        if let Some(created_at) = last_release.created_at {
-            return Ok(created_at > Utc::now() - Duration::days(365));
-        }
-    }
-    Ok(false)
-}
-
-/// Check if the project has added a website to the Github repository.
-pub(crate) async fn has_website(repo_url: &str) -> Result<bool, Error> {
-    Ok(get_website(repo_url).await?.is_some())
-}
-
 /// Check if the license provided is an approved one.
 pub(crate) fn is_approved_license(spdx_id: &str) -> bool {
     APPROVED_LICENSES.contains(&spdx_id)
@@ -142,35 +116,6 @@ where
     P::Item: AsRef<str>,
 {
     Ok(!matching_paths(globs)?.is_empty())
-}
-
-/// Extract the owner and repository from the repository url provided.
-fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
-    lazy_static! {
-        static ref GITHUB_RE: Regex =
-            Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$").unwrap();
-    }
-    let c = GITHUB_RE
-        .captures(repo_url)
-        .ok_or(format_err!("invalid repository url"))?;
-    Ok((c["org"].to_string(), c["repo"].to_string()))
-}
-
-/// Get project's website from Github repository.
-async fn get_website(repo_url: &str) -> Result<Option<String>, Error> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-    let github = octocrab::instance();
-    match github.repos(&owner, &repo).get().await {
-        Ok(repo) => {
-            if let Some(url) = repo.homepage {
-                if !url.is_empty() {
-                    return Ok(Some(url));
-                }
-            }
-            Ok(None)
-        }
-        Err(err) => Err(err.into()),
-    }
 }
 
 /// Return all paths that match any of the globs provided.
@@ -350,30 +295,6 @@ mod tests {
                 },
                 [r"***"]
             ),
-            Err(_)
-        ));
-    }
-
-    #[test]
-    fn get_owner_and_repo_valid_url() {
-        assert_eq!(
-            get_owner_and_repo("https://github.com/org/repo").unwrap(),
-            ("org".to_string(), "repo".to_string())
-        );
-    }
-
-    #[test]
-    fn get_owner_and_repo_valid_url_trailing_slash() {
-        assert_eq!(
-            get_owner_and_repo("https://github.com/org/repo/").unwrap(),
-            ("org".to_string(), "repo".to_string())
-        );
-    }
-
-    #[test]
-    fn get_owner_and_repo_invalid_url() {
-        assert!(matches!(
-            get_owner_and_repo("https://github.com/org"),
             Err(_)
         ));
     }

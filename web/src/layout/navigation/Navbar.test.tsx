@@ -32,7 +32,7 @@ describe('Navbar', () => {
     );
 
     expect(screen.getByText('Alpha')).toBeInTheDocument();
-    expect(screen.getByAltText('CloMonitor logo')).toBeInTheDocument();
+    expect(screen.getByAltText('CLOMonitor logo')).toBeInTheDocument();
 
     const link = screen.getByRole('link');
     expect(link).toBeInTheDocument();

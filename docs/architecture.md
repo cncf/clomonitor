@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes the architecture of **CloMonitor**, detailing each of the components, what they do and where they are located in the source repository.
+This document describes the architecture of **CLOMonitor**, detailing each of the components, what they do and where they are located in the source repository.
 
 ## Repository layout
 
@@ -21,7 +21,7 @@ clomonitor
 
 - **.github:** contains the Github Actions workflows.
 
-- **chart:** contains the CloMonitor Helm chart, which is the recommended installation method.
+- **chart:** contains the CLOMonitor Helm chart, which is the recommended installation method.
 
 - **clomonitor-apiserver** contains the source code of the `apiserver` backend component.
 
@@ -39,17 +39,17 @@ clomonitor
 
 ## Layers
 
-CloMonitor is structured in multiple layers, each of them providing a set of services to adjacent layers.
+CLOMonitor is structured in multiple layers, each of them providing a set of services to adjacent layers.
 
-- **Database:** this layer provides data services, controlling the database [schema and its migrations](https://github.com/cncf/clomonitor/tree/main/database/migrations/schema) and providing a set of [functions](https://github.com/cncf/clomonitor/tree/main/database/migrations/functions) that will act as an API for outer layers, abstracting them in many cases from the internal database structure. CloMonitor uses PostgreSQL as datastore. Please see the [database](#database) section for more details.
+- **Database:** this layer provides data services, controlling the database [schema and its migrations](https://github.com/cncf/clomonitor/tree/main/database/migrations/schema) and providing a set of [functions](https://github.com/cncf/clomonitor/tree/main/database/migrations/functions) that will act as an API for outer layers, abstracting them in many cases from the internal database structure. CLOMonitor uses PostgreSQL as datastore. Please see the [database](#database) section for more details.
 
-- **Core library:** this layer represents a set of Rust APIs that allow performing core operations supported by CloMonitor, such as linting a repository or calculating scores. Please see the [core library](#core-library) section for more details.
+- **Core library:** this layer represents a set of Rust APIs that allow performing core operations supported by CLOMonitor, such as linting a repository or calculating scores. Please see the [core library](#core-library) section for more details.
 
 - **Backend applications:** this layer represents the applications that form the backend: `apiserver` and `tracker`. These applications rely on the `database` and `core library` layers to perform their tasks. Please see the [backend applications](#backend-applications) section for more details.
 
 - **Linter CLI:** this layer represents a CLI tool that allows projects to lint their repositories locally or from their CI workflows. Please see the [linter CLI](#linter-cli) section for more details.
 
-- **Web application:** this layer represents the CloMonitor's web user interface. It uses the HTTP API exposed from the `apiserver` to interact with the backend. Please see the [web application](#web-application) section for more details.
+- **Web application:** this layer represents the CLOMonitor's web user interface. It uses the HTTP API exposed from the `apiserver` to interact with the backend. Please see the [web application](#web-application) section for more details.
 
 ## Database
 
@@ -75,7 +75,7 @@ This layer represents a set of **Rust APIs** that provide some core functionalit
 
 It's composed of two modules:
 
-- **linter:** this module implements the core linting functionality of CloMonitor. All checks currently done by CloMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to handle multiple kinds of repositories, as each may require a different set of checks. At the moment two are supported: `primary` and `secondary`. The primary kind is used for a project's main repository, and it performs a more in depth checking. The secondary kind is used for other repositories in the project and only performs a small subset of the checks.
+- **linter:** this module implements the core linting functionality of CLOMonitor. All checks currently done by CLOMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to handle multiple kinds of repositories, as each may require a different set of checks. At the moment two are supported: `primary` and `secondary`. The primary kind is used for a project's main repository, and it performs a more in depth checking. The secondary kind is used for other repositories in the project and only performs a small subset of the checks.
 
 - **score:** this module is in charge of scoring reports produced by the linter. The linter will produce different reports for each of the kinds supported, and each of the reports will be scored differently as well. In addition to the reports' scoring functionality, this module provides some score related features as well, like rating a given score or merging multiple scores.
 
@@ -126,7 +126,7 @@ Please see this [discussion](https://github.com/cncf/clomonitor/discussions/20) 
 
 ## Web application
 
-The CloMonitor's user interface is a single page application written in TypeScript using React. Its source code can be found in the `web` directory.
+The CLOMonitor's user interface is a single page application written in TypeScript using React. Its source code can be found in the `web` directory.
 
 ```sh
 web

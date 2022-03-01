@@ -279,7 +279,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                           <span
                             style="color: rgb(33, 145, 97);"
                           >
-                            ![CloMonitor report summary
+                            ![CLOMonitor report summary
                           </span>
                           <span>
                             ](
@@ -356,7 +356,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                   class="mx-auto my-3 imgWrapper"
                 >
                   <img
-                    alt="CloMonitor report summary"
+                    alt="CLOMonitor report summary"
                     src="http://localhost/api/projects/org/proj/report-summary?theme=light"
                   />
                 </div>

@@ -92,7 +92,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                     class="mt-2 mb-4"
                   >
                     <img
-                      alt="CloMonitor badge"
+                      alt="CLOMonitor badge"
                       src="https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge"
                     />
                   </div>
@@ -113,7 +113,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                         <span
                           style="color: rgb(33, 145, 97);"
                         >
-                          ![CloMonitor
+                          ![CLOMonitor
                         </span>
                         <span>
                           ](

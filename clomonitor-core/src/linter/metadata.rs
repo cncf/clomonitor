@@ -7,7 +7,7 @@ use std::path::Path;
 /// Metadata file name.
 pub const METADATA_FILE: &str = ".clomonitor.yml";
 
-/// CloMonitor metadata.
+/// CLOMonitor metadata.
 #[derive(Debug, Deserialize)]
 pub struct Metadata {
     pub license_scanning: Option<LicenseScanning>,

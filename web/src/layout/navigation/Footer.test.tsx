@@ -18,7 +18,7 @@ describe('Footer', () => {
     expect(screen.getByText('Project')).toBeInTheDocument();
     expect(screen.getByText('Community')).toBeInTheDocument();
     expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText(/CloMonitor is an/)).toBeInTheDocument();
+    expect(screen.getByText(/CLOMonitor is an/)).toBeInTheDocument();
     expect(screen.getByText('Open Source')).toBeInTheDocument();
 
     const links = screen.getAllByRole('link');

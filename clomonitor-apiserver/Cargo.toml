@@ -1,6 +1,6 @@
 [package]
 name = "clomonitor-apiserver"
-description = "Server that exposes the CloMonitor HTTP API and serves static assets"
+description = "Server that exposes the CLOMonitor HTTP API and serves static assets"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.58"

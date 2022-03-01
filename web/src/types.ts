@@ -172,6 +172,7 @@ export enum ReportOption {
   Roadmap = 'roadmap',
   SecurityPolicy = 'security_policy',
   SPDX = 'spdx_id',
+  TrademarkFooter = 'trademark_footer',
   Website = 'website',
 }
 

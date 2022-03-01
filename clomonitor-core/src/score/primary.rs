@@ -81,9 +81,12 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.best_practices += 25;
     }
     if report.best_practices.openssf_badge {
-        score.best_practices += 60;
+        score.best_practices += 50;
     }
     if report.best_practices.recent_release {
+        score.best_practices += 10;
+    }
+    if report.best_practices.trademark_footer {
         score.best_practices += 10;
     }
 
@@ -146,6 +149,7 @@ mod tests {
                     community_meeting: true,
                     openssf_badge: true,
                     recent_release: true,
+                    trademark_footer: true,
                 },
                 security: Security {
                     security_policy: true,
@@ -186,6 +190,7 @@ mod tests {
                     community_meeting: false,
                     openssf_badge: false,
                     recent_release: false,
+                    trademark_footer: false,
                 },
                 security: Security {
                     security_policy: false,

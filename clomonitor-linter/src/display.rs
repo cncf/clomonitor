@@ -125,6 +125,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.best_practices.recent_release),
         ])
         .add_row(vec![
+            cell_entry("Best practices / Trademark footer"),
+            cell_check(report.best_practices.trademark_footer),
+        ])
+        .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(report.security.security_policy),
         ]);

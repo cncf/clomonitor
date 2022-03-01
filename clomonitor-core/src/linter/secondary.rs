@@ -1,8 +1,4 @@
-use super::{
-    check::{self, Globs},
-    patterns::*,
-    LintOptions,
-};
+use super::{check, check::path::Globs, patterns::*, LintOptions};
 use anyhow::Error;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
@@ -43,21 +39,21 @@ pub fn lint(options: LintOptions) -> Result<Report, Error> {
 /// Run documentation checks and prepare the report's documentation section.
 fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
     // Contributing
-    let contributing = check::path_exists(Globs {
+    let contributing = check::path::exists(Globs {
         root,
         patterns: CONTRIBUTING_FILE,
         case_sensitive: false,
     })?;
 
     // Maintainers
-    let maintainers = check::path_exists(Globs {
+    let maintainers = check::path::exists(Globs {
         root,
         patterns: MAINTAINERS_FILE,
         case_sensitive: false,
     })?;
 
     // Readme
-    let readme = check::path_exists(Globs {
+    let readme = check::path::exists(Globs {
         root,
         patterns: README_FILE,
         case_sensitive: true,
@@ -73,7 +69,7 @@ fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
 /// Run license checks and prepare the report's license section.
 fn lint_license(root: &Path) -> Result<License, Error> {
     // SPDX id
-    let spdx_id = check::license(Globs {
+    let spdx_id = check::license::detect(Globs {
         root,
         patterns: LICENSE_FILE,
         case_sensitive: true,
@@ -82,7 +78,7 @@ fn lint_license(root: &Path) -> Result<License, Error> {
     // Approved
     let mut approved: Option<bool> = None;
     if let Some(spdx_id) = &spdx_id {
-        approved = Some(check::is_approved_license(spdx_id))
+        approved = Some(check::license::is_approved(spdx_id))
     }
 
     Ok(License { approved, spdx_id })

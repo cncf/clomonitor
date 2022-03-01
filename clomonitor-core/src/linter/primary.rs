@@ -1,10 +1,4 @@
-use super::{
-    check::{self, Globs},
-    github,
-    metadata::*,
-    patterns::*,
-    LintOptions,
-};
+use super::{check, check::github, check::path::Globs, metadata::*, patterns::*, LintOptions};
 use anyhow::Error;
 use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
@@ -91,11 +85,11 @@ async fn lint_documentation(
     gh_md: &Repository,
 ) -> Result<Documentation, Error> {
     // Adopters
-    let adopters = check::path_exists(Globs {
+    let adopters = check::path::exists(Globs {
         root,
         patterns: ADOPTERS_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -105,11 +99,11 @@ async fn lint_documentation(
     )?;
 
     // Code of conduct
-    let code_of_conduct = check::path_exists(Globs {
+    let code_of_conduct = check::path::exists(Globs {
         root,
         patterns: CODE_OF_CONDUCT_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -119,32 +113,33 @@ async fn lint_documentation(
     )?;
 
     // Contributing
-    let contributing = check::path_exists(Globs {
+    let contributing = check::path::exists(Globs {
         root,
         patterns: CONTRIBUTING_FILE,
         case_sensitive: false,
     })?;
 
     // Changelog
-    let changelog = check::path_exists(Globs {
+    let changelog = check::path::exists(Globs {
         root,
         patterns: CHANGELOG_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
             case_sensitive: true,
         },
         CHANGELOG_HEADER,
-    )? || github::last_release_body_matches(repo_url, CHANGELOG_RELEASE).await?;
+    )? || check::github::last_release_body_matches(repo_url, CHANGELOG_RELEASE)
+        .await?;
 
     // Governance
-    let governance = check::path_exists(Globs {
+    let governance = check::path::exists(Globs {
         root,
         patterns: GOVERNANCE_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -154,25 +149,25 @@ async fn lint_documentation(
     )?;
 
     // Maintainers
-    let maintainers = check::path_exists(Globs {
+    let maintainers = check::path::exists(Globs {
         root,
         patterns: MAINTAINERS_FILE,
         case_sensitive: false,
     })?;
 
     // Readme
-    let readme = check::path_exists(Globs {
+    let readme = check::path::exists(Globs {
         root,
         patterns: README_FILE,
         case_sensitive: true,
     })?;
 
     // Roadmap
-    let roadmap = check::path_exists(Globs {
+    let roadmap = check::path::exists(Globs {
         root,
         patterns: ROADMAP_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -203,7 +198,7 @@ async fn lint_documentation(
 /// Run license checks and prepare the report's license section.
 fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
     // SPDX id
-    let spdx_id = check::license(Globs {
+    let spdx_id = check::license::detect(Globs {
         root,
         patterns: LICENSE_FILE,
         case_sensitive: true,
@@ -212,7 +207,7 @@ fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
     // Approved
     let mut approved: Option<bool> = None;
     if let Some(spdx_id) = &spdx_id {
-        approved = Some(check::is_approved_license(spdx_id))
+        approved = Some(check::license::is_approved(spdx_id))
     }
 
     // Scanning url
@@ -225,7 +220,7 @@ fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
         }
     }
     if scanning_url.is_none() {
-        scanning_url = check::content_find(
+        scanning_url = check::content::find(
             Globs {
                 root,
                 patterns: README_FILE,
@@ -249,7 +244,7 @@ async fn lint_best_practices(
     gh_md: &Repository,
 ) -> Result<BestPractices, Error> {
     // Artifact Hub badge
-    let artifacthub_badge = check::content_matches(
+    let artifacthub_badge = check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -259,7 +254,7 @@ async fn lint_best_practices(
     )?;
 
     // Community meeting
-    let community_meeting = check::content_matches(
+    let community_meeting = check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -269,7 +264,7 @@ async fn lint_best_practices(
     )?;
 
     // OpenSSF badge
-    let openssf_badge = check::content_matches(
+    let openssf_badge = check::content::matches(
         Globs {
             root,
             patterns: README_FILE,
@@ -279,13 +274,13 @@ async fn lint_best_practices(
     )?;
 
     // Recent release
-    let recent_release = github::has_recent_release(repo_url).await?;
+    let recent_release = check::github::has_recent_release(repo_url).await?;
 
     // Trademark footer
     let mut trademark_footer: bool = false;
     if let Some(url) = &gh_md.homepage {
         if !url.is_empty() {
-            trademark_footer = check::content_url_matches(url, TRADEMARK_FOOTER).await?;
+            trademark_footer = check::content::remote_matches(url, TRADEMARK_FOOTER).await?;
         }
     }
 
@@ -301,11 +296,11 @@ async fn lint_best_practices(
 /// Run security checks and prepare the report's security section.
 fn lint_security(root: &Path) -> Result<Security, Error> {
     // Security policy
-    let security_policy = check::path_exists(Globs {
+    let security_policy = check::path::exists(Globs {
         root,
         patterns: SECURITY_POLICY_FILE,
         case_sensitive: false,
-    })? || check::content_matches(
+    })? || check::content::matches(
         Globs {
             root,
             patterns: README_FILE,

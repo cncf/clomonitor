@@ -52,6 +52,7 @@ pub struct BestPractices {
     pub community_meeting: bool,
     pub openssf_badge: bool,
     pub recent_release: bool,
+    pub trademark_footer: bool,
 }
 
 /// Security section of the report.
@@ -66,11 +67,12 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     // Get CLOMonitor metadata
     let md = Metadata::from(options.root.join(METADATA_FILE))?;
 
-    // Run some async expressions and wait for them to complete
-    let (gh_md, best_practices) = tokio::try_join!(
-        github::get_metadata(options.url),
-        lint_best_practices(options.root, options.url)
-    )?;
+    // Get Github metadata
+    let gh_md = github::get_metadata(options.url).await?;
+
+    // Async checks: best_practices
+    let (best_practices,) =
+        tokio::try_join!(lint_best_practices(options.root, options.url, &gh_md))?;
 
     Ok(Report {
         documentation: lint_documentation(options.root, &gh_md)?,
@@ -235,7 +237,11 @@ fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
 }
 
 /// Run best practices checks and prepare the report's best practices section.
-async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractices, Error> {
+async fn lint_best_practices(
+    root: &Path,
+    repo_url: &str,
+    gh_md: &Repository,
+) -> Result<BestPractices, Error> {
     // Artifact Hub badge
     let artifacthub_badge = check::content_matches(
         Globs {
@@ -266,14 +272,23 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
         OPENSSF_BADGE_URL,
     )?;
 
-    // Async checks: recent_release
-    let (recent_release,) = tokio::try_join!(github::has_recent_release(repo_url))?;
+    // Recent release
+    let recent_release = github::has_recent_release(repo_url).await?;
+
+    // Trademark footer
+    let mut trademark_footer: bool = false;
+    if let Some(url) = &gh_md.homepage {
+        if !url.is_empty() {
+            trademark_footer = check::content_url_matches(url, TRADEMARK_FOOTER).await?;
+        }
+    }
 
     Ok(BestPractices {
         artifacthub_badge,
         community_meeting,
         openssf_badge,
         recent_release,
+        trademark_footer,
     })
 }
 

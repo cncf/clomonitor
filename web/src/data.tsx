@@ -1,7 +1,7 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
-import { FaBalanceScale, FaCheckDouble, FaTools } from 'react-icons/fa';
+import { FaBalanceScale, FaCheckDouble, FaTools, FaTrademark } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
@@ -313,6 +313,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         content
       </span>
     ),
+  },
+  [ReportOption.TrademarkFooter]: {
+    icon: <FaTrademark />,
+    name: 'Trademark footer',
+    legend: <span>Projects sites should have Linux Foundation trademark footer</span>,
+    description: <span>We check that the website defined in Github has the trademark footer</span>,
   },
   [ReportOption.Website]: {
     icon: <BiWorld />,

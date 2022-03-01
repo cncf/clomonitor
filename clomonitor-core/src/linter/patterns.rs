@@ -39,6 +39,8 @@ pub(crate) static COMMUNITY_MEETING_TEXT: [&str; 3] = [
 ];
 pub(crate) static OPENSSF_BADGE_URL: [&str; 1] =
     [r"https://bestpractices.coreinfrastructure.org/projects/\d+"];
+pub(crate) static TRADEMARK_FOOTER: [&str; 1] =
+    [r"https://www.linuxfoundation.org/trademark-usage"];
 
 // Security
 pub(crate) static SECURITY_POLICY_FILE: [&str; 3] =

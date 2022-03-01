@@ -3,6 +3,7 @@ use askalono::*;
 use glob::{glob_with, MatchOptions, PatternError};
 use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
+use reqwest;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -79,6 +80,18 @@ where
         }
         false
     }))
+}
+
+/// Check if the content of the url provided matches any of the regular
+/// expressions given.
+pub(crate) async fn content_url_matches<R>(url: &str, regexps: R) -> Result<bool, Error>
+where
+    R: IntoIterator,
+    R::Item: AsRef<str>,
+{
+    let content = reqwest::get(url).await?.text().await?;
+    let re = RegexSet::new(regexps)?;
+    Ok(re.is_match(&content))
 }
 
 /// Check if the license provided is an approved one.

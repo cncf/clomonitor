@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { Project } from '../../types';
 import CartegoryBadge from '../common/badges/CategoryBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
+import CategoriesSummary from '../common/CategoriesSummary';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import RoundScore from '../common/RoundScore';
-import ScoreSummary from '../common/ScoreSummary';
 import styles from './Card.module.css';
 import RepositorySection from './RepositorySection';
 
@@ -92,7 +92,7 @@ const Card = (props: Props) => {
         <p className={`text-muted mx-3 my-3 my-md-4 ${styles.description}`}>{props.project.description}</p>
 
         <div className="mt-auto">
-          <ScoreSummary score={props.project.score} bigSize={false} />
+          <CategoriesSummary score={props.project.score} bigSize={false} />
         </div>
         <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
           Updated {moment.unix(props.project.updated_at).fromNow()}

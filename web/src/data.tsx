@@ -8,7 +8,7 @@ import { GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
-import { RiRoadMapLine } from 'react-icons/ri';
+import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 
 import ExternalLink from './layout/common/ExternalLink';
 import QualityDot from './layout/common/QualityDot';
@@ -84,10 +84,11 @@ export const FILTERS: FiltersSection[] = [
 ];
 
 export const CATEGORY_ICONS = {
-  [ScoreType.Global]: <BiTrophy />,
+  [ScoreType.BestPractices]: <RiShieldStarLine />,
   [ScoreType.Documentation]: <HiOutlinePencilAlt />,
-  [ScoreType.License]: <GoLaw />,
-  [ScoreType.BestPractices]: <IoMdRibbon />,
+  [ScoreType.Global]: <BiTrophy />,
+  [ScoreType.Legal]: <GoLaw />,
+  [ScoreType.License]: <IoMdRibbon />,
   [ScoreType.Security]: <BiLock />,
 };
 

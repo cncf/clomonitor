@@ -163,6 +163,9 @@
           "report_kind": "Primary",
           "security": {
             "security_policy": false
+          },
+          "legal": {
+            "trademark_footer": true
           }
         },
         "errors": null,

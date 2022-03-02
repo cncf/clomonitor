@@ -1,29 +1,25 @@
 import { render, screen } from '@testing-library/react';
 
-import Category from './Category';
+import CategoryProgressbar from './CategoryProgressbar';
 
 const defaultProps = {
   value: 80,
   name: 'Documentation',
-  shortName: 'Docs',
 };
 
-describe('Category', () => {
+describe('CategoryProgressbar', () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it('creates snapshot', () => {
-    const { asFragment } = render(<Category {...defaultProps} />);
+    const { asFragment } = render(<CategoryProgressbar {...defaultProps} />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders proper content', () => {
-    render(<Category {...defaultProps} />);
+    render(<CategoryProgressbar {...defaultProps} />);
     expect(screen.getByText('Documentation')).toBeInTheDocument();
-    expect(screen.getByText('Documentation')).toHaveClass('d-none d-md-inline-block');
-    expect(screen.getByText('Docs')).toBeInTheDocument();
-    expect(screen.getByText('Docs')).toHaveClass('d-inline-block d-md-none');
     expect(screen.getByText('80')).toBeInTheDocument();
 
     const line = screen.getByTestId('line');
@@ -31,10 +27,5 @@ describe('Category', () => {
     expect(line).toHaveStyle('width: calc(80% - 5px)');
 
     expect(screen.getByTestId('peak')).toBeInTheDocument();
-  });
-
-  it('does not render peak when value is 100', () => {
-    render(<Category {...defaultProps} value={100} />);
-    expect(screen.queryByTestId('peak')).toBeNull();
   });
 });

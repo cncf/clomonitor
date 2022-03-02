@@ -30,24 +30,28 @@ const Summary = (props: Props) => {
               <span>Repository</span>
             </th>
             <th scope="col" className="text-center text-nowrap">
-              <small className={`me-2 position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Global]}</small>
-              <span>Global</span>
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Global]}</small>
+              <span className="d-inline-block d-md-none d-lg-inline-block ms-1 ms-xl-2">Global</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Documentation]}</small>
-              <span className="d-none d-lg-inline-block ms-2">Documentation</span>
+              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Documentation</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.License]}</small>
-              <span className="d-none d-lg-inline-block ms-2">License</span>
+              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">License</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.BestPractices]}</small>
-              <span className="d-none d-lg-inline-block ms-2">Best Practices</span>
+              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Best Practices</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
-              <span className="d-none d-lg-inline-block ms-2">Security</span>
+              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Security</span>
+            </th>
+            <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
+              <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Legal]}</small>
+              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Legal</span>
             </th>
           </tr>
         </thead>
@@ -104,6 +108,9 @@ const Summary = (props: Props) => {
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
                   <Badge value={repo.score.security} />
+                </td>
+                <td className="d-none d-md-table-cell align-middle">
+                  <Badge value={repo.score.legal} />
                 </td>
               </tr>
             );

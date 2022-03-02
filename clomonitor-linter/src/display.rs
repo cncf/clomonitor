@@ -44,7 +44,8 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_entry("Best practices"),
             cell_score(score.best_practices),
         ])
-        .add_row(vec![cell_entry("Security"), cell_score(score.security)]);
+        .add_row(vec![cell_entry("Security"), cell_score(score.security)])
+        .add_row(vec![cell_entry("Legal"), cell_score(score.legal)]);
     println!("{summary}\n");
 
     // Checks table
@@ -125,12 +126,12 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.best_practices.recent_release),
         ])
         .add_row(vec![
-            cell_entry("Best practices / Trademark footer"),
-            cell_check(report.best_practices.trademark_footer),
-        ])
-        .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(report.security.security_policy),
+        ])
+        .add_row(vec![
+            cell_entry("Legal / Trademark footer"),
+            cell_check(report.legal.trademark_footer),
         ]);
     println!("{checks}\n");
 }

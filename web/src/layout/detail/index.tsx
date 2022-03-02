@@ -10,13 +10,13 @@ import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
 import CartegoryBadge from '../common/badges/CategoryBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
+import CategoriesSummary from '../common/CategoriesSummary';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
-import ScoreSummary from '../common/ScoreSummary';
 import SubNavbar from '../navigation/SubNavbar';
 import RepositorySection from '../search/RepositorySection';
 import styles from './Detail.module.css';
@@ -160,7 +160,7 @@ const Detail = () => {
                       </p>
                     </div>
                     <div className="pt-2">
-                      <ScoreSummary score={detail.score} bigSize />
+                      <CategoriesSummary score={detail.score} bigSize />
                     </div>
                   </div>
                 </div>

@@ -4,8 +4,9 @@
   padding: 1rem;
 }
 
-.categories {
-  top: -3px;
+.badge {
+  width: 3.5rem;
+  border: 2px solid transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -15,5 +16,9 @@
 
   .summary:not(.bigSize) {
     padding: 1.5rem;
+  }
+
+  .badge {
+    width: 5.5rem;
   }
 }

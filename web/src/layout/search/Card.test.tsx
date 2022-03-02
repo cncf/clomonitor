@@ -42,6 +42,7 @@ const defaultProps = {
       documentation: 75,
       global: 89,
       license: 80,
+      legal: 75,
       score_kind: ScoreKind.Primary,
       security: 100,
     },

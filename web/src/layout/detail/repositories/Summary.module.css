@@ -39,8 +39,18 @@
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .table th {
+    min-width: 90px;
+  }
+
+  .table th:first-child {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .table th {
-    min-width: 145px;
+    min-width: 150px;
   }
 }

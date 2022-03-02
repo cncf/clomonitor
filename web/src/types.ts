@@ -164,6 +164,7 @@ export enum ReportOption {
   CodeOfConduct = 'code_of_conduct',
   CommunityMeeting = 'community_meeting',
   Contributing = 'contributing',
+  DCO = 'dco',
   Governance = 'governance',
   LicenseScanning = 'scanning',
   Maintainers = 'maintainers',

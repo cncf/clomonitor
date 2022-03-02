@@ -1,7 +1,11 @@
+use super::content;
 use anyhow::{format_err, Error};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
-use octocrab::models::{repos::Release, Repository};
+use octocrab::{
+    models::{repos::Release, Repository},
+    params::State,
+};
 use regex::{Regex, RegexSet};
 
 /// Get repository's metadata from the Github API.
@@ -22,6 +26,29 @@ pub(crate) async fn has_recent_release(repo_url: &str) -> Result<bool, Error> {
         }
     }
     Ok(false)
+}
+
+/// Check if the last PR in the repository has the DCO check.
+pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+    let github = octocrab::instance();
+    let mut page = github
+        .pulls(&owner, &repo)
+        .list()
+        .state(State::Closed)
+        .per_page(1)
+        .send()
+        .await?;
+    Ok(match page.take_items().first() {
+        Some(pr) => {
+            let checks_url = format!(
+                "https://github.com/{}/{}/pull/{}/checks",
+                &owner, &repo, pr.number
+            );
+            content::remote_matches(&checks_url, vec!["DCO", "All commits are signed off"]).await?
+        }
+        None => false,
+    })
 }
 
 /// Check if the last release body matches any of the regular expressions

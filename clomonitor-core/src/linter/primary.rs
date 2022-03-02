@@ -45,6 +45,7 @@ pub struct License {
 pub struct BestPractices {
     pub artifacthub_badge: bool,
     pub community_meeting: bool,
+    pub dco: bool,
     pub openssf_badge: bool,
     pub recent_release: bool,
 }
@@ -268,6 +269,10 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
         COMMUNITY_MEETING_TEXT,
     )?;
 
+    // DCO
+    let dco = check::git::commits_have_dco_signature(root)?
+        || check::github::last_pr_has_dco_check(repo_url).await?;
+
     // OpenSSF badge
     let openssf_badge = check::content::matches(
         Globs {
@@ -284,6 +289,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
     Ok(BestPractices {
         artifacthub_badge,
         community_meeting,
+        dco,
         openssf_badge,
         recent_release,
     })

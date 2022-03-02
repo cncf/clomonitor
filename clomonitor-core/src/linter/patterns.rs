@@ -26,8 +26,8 @@ pub(crate) static ROADMAP_HEADER: [&str; 1] = [r"(?im)^#+.*roadmap.*$"];
 // License
 pub(crate) static LICENSE_FILE: [&str; 2] = ["LICENSE*", "COPYING*"];
 pub(crate) static LICENSE_SCANNING_URL: [&str; 2] = [
-    r"\[!\[.*\]\(https://app.fossa.*/api/projects/.*\)\]\((.*)\)",
-    r"\[!\[.*\]\(https://snyk.io/test/github/[^/]+/[^/]+/badge.svg\)\]\((.*)\)",
+    r#"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"#,
+    r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#,
 ];
 
 // Best practices
@@ -41,7 +41,7 @@ pub(crate) static COMMUNITY_MEETING_TEXT: [&str; 3] = [
 pub(crate) static OPENSSF_BADGE_URL: [&str; 1] =
     [r"https://bestpractices.coreinfrastructure.org/projects/\d+"];
 pub(crate) static TRADEMARK_FOOTER: [&str; 1] =
-    [r"https://www.linuxfoundation.org/trademark-usage"];
+    [r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage"];
 
 // Security
 pub(crate) static SECURITY_POLICY_FILE: [&str; 3] =

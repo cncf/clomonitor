@@ -68,7 +68,7 @@ describe('Summary', () => {
       expect(screen.getAllByText('100')).toHaveLength(5);
       expect(screen.getAllByText('85')).toHaveLength(3);
       expect(screen.getAllByText('70')).toHaveLength(3);
-      expect(screen.getAllByText('n/a')).toHaveLength(10);
+      expect(screen.getAllByText('n/a')).toHaveLength(16);
     });
   });
 

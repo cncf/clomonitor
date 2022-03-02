@@ -78,6 +78,7 @@ fn merge_primaries(scores: Vec<Score>, k: f64) -> primary::Score {
             score.license += (entry.license as f64 * k).round() as usize;
             score.best_practices += (entry.best_practices as f64 * k).round() as usize;
             score.security += (entry.security as f64 * k).round() as usize;
+            score.legal += (entry.legal as f64 * k).round() as usize;
         }
     }
     score
@@ -111,6 +112,7 @@ fn merge_mixed(scores: Vec<Score>, k_pri_only: f64, k_pri: f64, k_sec: f64) -> p
                 score.license += (entry.license as f64 * k_pri).round() as usize;
                 score.best_practices += (entry.best_practices as f64 * k_pri_only).round() as usize;
                 score.security += (entry.security as f64 * k_pri_only).round() as usize;
+                score.legal += (entry.legal as f64 * k_pri_only).round() as usize;
             }
             Score::Secondary(entry) => {
                 score.global += (entry.global as f64 * k_sec).round() as usize;
@@ -146,6 +148,7 @@ mod tests {
                 license: 30,
                 best_practices: 40,
                 security: 50,
+                legal: 60,
             })
             .global(),
             10
@@ -174,6 +177,7 @@ mod tests {
                 license: 0,
                 best_practices: 0,
                 security: 0,
+                legal: 0,
             })
             .rating(),
             'a'
@@ -203,6 +207,7 @@ mod tests {
                     license: 80,
                     best_practices: 80,
                     security: 80,
+                    legal: 80,
                 }),
                 Score::Primary(primary::Score {
                     global: 60,
@@ -210,6 +215,7 @@ mod tests {
                     license: 60,
                     best_practices: 60,
                     security: 60,
+                    legal: 60,
                 }),
             ]),
             Score::Primary(primary::Score {
@@ -218,6 +224,7 @@ mod tests {
                 license: 70,
                 best_practices: 70,
                 security: 70,
+                legal: 70,
             })
         )
     }
@@ -255,6 +262,7 @@ mod tests {
                     license: 80,
                     best_practices: 80,
                     security: 80,
+                    legal: 80,
                 }),
                 Score::Secondary(secondary::Score {
                     global: 100,
@@ -268,6 +276,7 @@ mod tests {
                 license: 84,
                 best_practices: 80,
                 security: 80,
+                legal: 80,
             })
         )
     }

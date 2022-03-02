@@ -10,6 +10,7 @@ pub struct Score {
     pub license: usize,
     pub best_practices: usize,
     pub security: usize,
+    pub legal: usize,
 }
 
 impl Score {
@@ -22,6 +23,7 @@ impl Score {
             license: 0,
             best_practices: 0,
             security: 0,
+            legal: 0,
         }
     }
 }
@@ -81,12 +83,9 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.best_practices += 25;
     }
     if report.best_practices.openssf_badge {
-        score.best_practices += 50;
+        score.best_practices += 60;
     }
     if report.best_practices.recent_release {
-        score.best_practices += 10;
-    }
-    if report.best_practices.trademark_footer {
         score.best_practices += 10;
     }
 
@@ -95,12 +94,17 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.security = 100;
     }
 
+    // Legal
+    if report.legal.trademark_footer {
+        score.legal = 100;
+    }
+
     // Global
-    let global = (score.documentation as f64
-        + score.license as f64
-        + score.best_practices as f64
-        + score.security as f64)
-        / 4.0;
+    let global = (score.documentation as f64 * 0.3)
+        + (score.license as f64 * 0.2)
+        + (score.best_practices as f64 * 0.2)
+        + (score.security as f64 * 0.2)
+        + (score.legal as f64 * 0.1);
     score.global = global.round() as usize;
 
     score
@@ -120,6 +124,7 @@ mod tests {
                 license: 0,
                 best_practices: 0,
                 security: 0,
+                legal: 0,
             }
         );
     }
@@ -149,10 +154,12 @@ mod tests {
                     community_meeting: true,
                     openssf_badge: true,
                     recent_release: true,
-                    trademark_footer: true,
                 },
                 security: Security {
                     security_policy: true,
+                },
+                legal: Legal {
+                    trademark_footer: true,
                 },
             }),
             Score {
@@ -161,6 +168,7 @@ mod tests {
                 license: 100,
                 best_practices: 100,
                 security: 100,
+                legal: 100,
             }
         );
     }
@@ -190,10 +198,12 @@ mod tests {
                     community_meeting: false,
                     openssf_badge: false,
                     recent_release: false,
-                    trademark_footer: false,
                 },
                 security: Security {
                     security_policy: false,
+                },
+                legal: Legal {
+                    trademark_footer: false,
                 },
             }),
             Score::new()

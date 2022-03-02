@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoriesSummary creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="align-items-center d-flex flex-column flex-md-row summary flex-lg-column flex-xl-row"
+  >
+    <div
+      class="d-none d-md-block d-lg-none d-xl-block d-lg-none d-xl-block"
+    >
+      <div
+        class="d-flex flex-column me-0 me-sm-4 mb-2 mb-sm-0"
+      >
+        <div
+          class="d-flex align-items-center justify-content-center rounded-pill value global undefined"
+          data-testid="global-score"
+        >
+          65
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex-grow-1 w-100 position-relative"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="wrapper col-12"
+        >
+          <div
+            class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+          >
+            <div
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+            >
+              <span
+                class="pe-1 d-inline-block position-relative icon"
+              >
+                <svg
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+              <span
+                class="text-truncate"
+              >
+                Documentation
+              </span>
+            </div>
+            <div
+              class="text-center fw-bold font-monospace value "
+            >
+              85
+            </div>
+            <div
+              class="flex-grow-1 position-relative"
+            >
+              <div
+                class="position-absolute top-0 start-0 bottom-0"
+                data-testid="line"
+                style="width: calc(85% - 5px);"
+              >
+                <div
+                  class="position-absolute arrow "
+                  data-testid="peak"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="wrapper col-12"
+        >
+          <div
+            class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+          >
+            <div
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+            >
+              <span
+                class="pe-1 d-inline-block position-relative icon"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 32c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 32 256 32zm0 208c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80zM193.7 307.4c-19.1-8.1-36.2-19.6-50.8-34.3-1.4-1.4-2.8-2.8-4.1-4.3L64 400h96l48 80 48-105.8 25.5-56.2c-8.4 1.3-16.9 2-25.5 2-21.6 0-42.5-4.2-62.3-12.6zM373.3 268.9c-1.3 1.4-2.7 2.9-4.1 4.3-14.6 14.6-31.7 26.2-50.7 34.2L294 361.2l-21.9 48.4L304 480l48-80h96l-74.7-131.1z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="text-truncate"
+              >
+                License
+              </span>
+            </div>
+            <div
+              class="text-center fw-bold font-monospace value "
+            >
+              80
+            </div>
+            <div
+              class="flex-grow-1 position-relative"
+            >
+              <div
+                class="position-absolute top-0 start-0 bottom-0"
+                data-testid="line"
+                style="width: calc(80% - 5px);"
+              >
+                <div
+                  class="position-absolute arrow "
+                  data-testid="peak"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="wrapper col-12"
+        >
+          <div
+            class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+          >
+            <div
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+            >
+              <span
+                class="pe-1 d-inline-block position-relative icon"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M5 4.604v9.185a4 4 0 0 0 1.781 3.328L12 20.597l5.219-3.48A4 4 0 0 0 19 13.79V4.604L12 3.05 5 4.604zM3.783 2.826L12 1l8.217 1.826a1 1 0 0 1 .783.976v9.987a6 6 0 0 1-2.672 4.992L12 23l-6.328-4.219A6 6 0 0 1 3 13.79V3.802a1 1 0 0 1 .783-.976zM12 13.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L12 6l1.47 2.977 3.285.478-2.377 2.318.56 3.272L12 13.5z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              <span
+                class="text-truncate"
+              >
+                Best Practices
+              </span>
+            </div>
+            <div
+              class="text-center fw-bold font-monospace value "
+            >
+              95
+            </div>
+            <div
+              class="flex-grow-1 position-relative"
+            >
+              <div
+                class="position-absolute top-0 start-0 bottom-0"
+                data-testid="line"
+                style="width: calc(95% - 5px);"
+              >
+                <div
+                  class="position-absolute arrow "
+                  data-testid="peak"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="wrapper col-12"
+        >
+          <div
+            class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+          >
+            <div
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+            >
+              <span
+                class="pe-1 d-inline-block position-relative icon"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C9.243 2 7 4.243 7 7v2H6c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-9c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v2H9V7zm9.002 13H13v-2.278c.595-.347 1-.985 1-1.722 0-1.103-.897-2-2-2s-2 .897-2 2c0 .736.405 1.375 1 1.722V20H6v-9h12l.002 9z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="text-truncate"
+              >
+                Security
+              </span>
+            </div>
+            <div
+              class="text-center fw-bold font-monospace value "
+            >
+              0
+            </div>
+            <div
+              class="flex-grow-1 position-relative"
+            >
+              <div
+                class="position-absolute top-0 start-0 bottom-0"
+                data-testid="line"
+                style="width: calc(0% - 5px);"
+              >
+                <div
+                  class="position-absolute arrow "
+                  data-testid="peak"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="wrapper col-12"
+        >
+          <div
+            class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+          >
+            <div
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+            >
+              <span
+                class="pe-1 d-inline-block position-relative icon"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 14 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span
+                class="text-truncate"
+              >
+                Legal
+              </span>
+            </div>
+            <div
+              class="text-center fw-bold font-monospace value "
+            >
+              75
+            </div>
+            <div
+              class="flex-grow-1 position-relative"
+            >
+              <div
+                class="position-absolute top-0 start-0 bottom-0"
+                data-testid="line"
+                style="width: calc(75% - 5px);"
+              >
+                <div
+                  class="position-absolute arrow "
+                  data-testid="peak"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

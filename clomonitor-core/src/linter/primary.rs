@@ -12,6 +12,7 @@ pub struct Report {
     pub license: License,
     pub best_practices: BestPractices,
     pub security: Security,
+    pub legal: Legal,
 }
 
 /// Documentation section of the report.
@@ -46,7 +47,6 @@ pub struct BestPractices {
     pub community_meeting: bool,
     pub openssf_badge: bool,
     pub recent_release: bool,
-    pub trademark_footer: bool,
 }
 
 /// Security section of the report.
@@ -54,6 +54,13 @@ pub struct BestPractices {
 #[non_exhaustive]
 pub struct Security {
     pub security_policy: bool,
+}
+
+/// Legal section of the report.
+#[derive(Debug, Serialize, Deserialize)]
+#[non_exhaustive]
+pub struct Legal {
+    pub trademark_footer: bool,
 }
 
 /// Lint the path provided and return a report.
@@ -65,9 +72,10 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     let gh_md = github::get_metadata(options.url).await?;
 
     // Async checks: documentation, best_practices
-    let (documentation, best_practices) = tokio::try_join!(
+    let (documentation, best_practices, legal) = tokio::try_join!(
         lint_documentation(options.root, options.url, &gh_md),
-        lint_best_practices(options.root, options.url, &gh_md),
+        lint_best_practices(options.root, options.url),
+        lint_legal(&gh_md),
     )?;
 
     Ok(Report {
@@ -75,6 +83,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
         license: lint_license(options.root, &md)?,
         best_practices,
         security: lint_security(options.root)?,
+        legal,
     })
 }
 
@@ -238,11 +247,7 @@ fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
 }
 
 /// Run best practices checks and prepare the report's best practices section.
-async fn lint_best_practices(
-    root: &Path,
-    repo_url: &str,
-    gh_md: &Repository,
-) -> Result<BestPractices, Error> {
+async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractices, Error> {
     // Artifact Hub badge
     let artifacthub_badge = check::content::matches(
         Globs {
@@ -276,20 +281,11 @@ async fn lint_best_practices(
     // Recent release
     let recent_release = check::github::has_recent_release(repo_url).await?;
 
-    // Trademark footer
-    let mut trademark_footer: bool = false;
-    if let Some(url) = &gh_md.homepage {
-        if !url.is_empty() {
-            trademark_footer = check::content::remote_matches(url, TRADEMARK_FOOTER).await?;
-        }
-    }
-
     Ok(BestPractices {
         artifacthub_badge,
         community_meeting,
         openssf_badge,
         recent_release,
-        trademark_footer,
     })
 }
 
@@ -310,4 +306,17 @@ fn lint_security(root: &Path) -> Result<Security, Error> {
     )?;
 
     Ok(Security { security_policy })
+}
+
+/// Run legal checks and prepare the report's legal section.
+async fn lint_legal(gh_md: &Repository) -> Result<Legal, Error> {
+    // Trademark footer
+    let mut trademark_footer: bool = false;
+    if let Some(url) = &gh_md.homepage {
+        if !url.is_empty() {
+            trademark_footer = check::content::remote_matches(url, TRADEMARK_FOOTER).await?;
+        }
+    }
+
+    Ok(Legal { trademark_footer })
 }

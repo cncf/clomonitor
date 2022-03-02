@@ -41,7 +41,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="me-2 position-relative icon"
+              class="position-relative icon"
             >
               <svg
                 fill="currentColor"
@@ -57,7 +57,9 @@ exports[`Summary creates snapshot 1`] = `
                 />
               </svg>
             </small>
-            <span>
+            <span
+              class="d-inline-block d-md-none d-lg-inline-block ms-1 ms-xl-2"
+            >
               Global
             </span>
           </th>
@@ -86,37 +88,9 @@ exports[`Summary creates snapshot 1`] = `
               </svg>
             </small>
             <span
-              class="d-none d-lg-inline-block ms-2"
+              class="d-none d-lg-inline-block ms-1 ms-xl-2"
             >
               Documentation
-            </span>
-          </th>
-          <th
-            class="d-none d-md-table-cell text-center text-nowrap"
-            scope="col"
-          >
-            <small
-              class="position-relative icon"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 14 16"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </small>
-            <span
-              class="d-none d-lg-inline-block ms-2"
-            >
-              License
             </span>
           </th>
           <th
@@ -141,7 +115,40 @@ exports[`Summary creates snapshot 1`] = `
               </svg>
             </small>
             <span
-              class="d-none d-lg-inline-block ms-2"
+              class="d-none d-lg-inline-block ms-1 ms-xl-2"
+            >
+              License
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative icon"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M5 4.604v9.185a4 4 0 0 0 1.781 3.328L12 20.597l5.219-3.48A4 4 0 0 0 19 13.79V4.604L12 3.05 5 4.604zM3.783 2.826L12 1l8.217 1.826a1 1 0 0 1 .783.976v9.987a6 6 0 0 1-2.672 4.992L12 23l-6.328-4.219A6 6 0 0 1 3 13.79V3.802a1 1 0 0 1 .783-.976zM12 13.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L12 6l1.47 2.977 3.285.478-2.377 2.318.56 3.272L12 13.5z"
+                  />
+                </g>
+              </svg>
+            </small>
+            <span
+              class="d-none d-lg-inline-block ms-1 ms-xl-2"
             >
               Best Practices
             </span>
@@ -168,9 +175,37 @@ exports[`Summary creates snapshot 1`] = `
               </svg>
             </small>
             <span
-              class="d-none d-lg-inline-block ms-2"
+              class="d-none d-lg-inline-block ms-1 ms-xl-2"
             >
               Security
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative icon"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 14 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-lg-inline-block ms-1 ms-xl-2"
+            >
+              Legal
             </span>
           </th>
         </tr>
@@ -227,6 +262,19 @@ exports[`Summary creates snapshot 1`] = `
                 class="text-dark fw-bold"
               >
                 100
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
               </span>
             </div>
           </td>
@@ -337,6 +385,19 @@ exports[`Summary creates snapshot 1`] = `
               </span>
             </div>
           </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
         </tr>
         <tr>
           <td
@@ -418,6 +479,19 @@ exports[`Summary creates snapshot 1`] = `
               </span>
             </div>
           </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
         </tr>
         <tr>
           <td
@@ -470,6 +544,19 @@ exports[`Summary creates snapshot 1`] = `
                 class="text-dark fw-bold"
               >
                 100
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
               </span>
             </div>
           </td>
@@ -616,6 +703,19 @@ exports[`Summary creates snapshot 1`] = `
               </span>
             </div>
           </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
         </tr>
         <tr>
           <td
@@ -668,6 +768,19 @@ exports[`Summary creates snapshot 1`] = `
                 class="text-dark fw-bold"
               >
                 100
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
               </span>
             </div>
           </td>

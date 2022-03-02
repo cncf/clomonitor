@@ -128,11 +128,12 @@ export enum LinterId {
 }
 
 export enum ScoreType {
-  Documentation = 'documentation',
-  License = 'license',
   BestPractices = 'best_practices',
-  Security = 'security',
+  Documentation = 'documentation',
   Global = 'global',
+  Legal = 'legal',
+  License = 'license',
+  Security = 'security',
 }
 
 export enum SortDirection {

@@ -162,6 +162,14 @@ const RepositoriesList = (props: Props) => {
                       icon={CATEGORY_ICONS[ScoreType.Security]}
                       score={repo.score.security}
                     />
+                    <Row
+                      reportId={report.report_id}
+                      name={ScoreType.Legal}
+                      label="Legal"
+                      data={report.data.legal}
+                      icon={CATEGORY_ICONS[ScoreType.Legal]}
+                      score={repo.score.legal}
+                    />
                   </Fragment>
                 );
               })}

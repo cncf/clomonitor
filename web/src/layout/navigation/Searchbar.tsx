@@ -186,7 +186,7 @@ const Searchbar = (props: Props) => {
     const text = searchParams.get('text');
     setValue(text || '');
     setCurrentSearch(text);
-  }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [searchParams]);
 
   useEffect(() => {
     // Don't display search options for mobile devices

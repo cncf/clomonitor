@@ -78,31 +78,15 @@ describe('Searchbar', () => {
   });
 
   describe('clear btn', () => {
-    it('clear input when text has changed but not search click', () => {
-      jest
-        .spyOn(ReactRouter, 'useSearchParams')
-        .mockImplementation(() => [new URLSearchParams('?text=test'), jest.fn()]);
-
-      render(
-        <Router>
-          <Searchbar {...defaultProps} />
-        </Router>
-      );
-
-      const clearBtn = screen.getByRole('button', { name: 'Clear search' });
-      const input = screen.getByRole('textbox');
-
-      expect(input).toBeInTheDocument();
-      expect(input).toHaveValue('test');
-      userEvent.type(input, 'ing');
-      userEvent.click(clearBtn);
-      expect(input).toHaveValue('');
-    });
-
     it('clear input', () => {
       jest
         .spyOn(ReactRouter, 'useSearchParams')
-        .mockImplementation(() => [new URLSearchParams('?text=test'), jest.fn()]);
+        .mockImplementation(() => [new URLSearchParams(''), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams('?text=test'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams('?text=test'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams('?text=test'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams('?text=testing'), jest.fn()]);
 
       render(
         <Router>
@@ -122,6 +106,11 @@ describe('Searchbar', () => {
   });
 
   it('updates value on change input', async () => {
+    jest
+      .spyOn(ReactRouter, 'useSearchParams')
+      .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+      .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
     const mockSearch = getMockSearch('1');
     mocked(API).searchProjects.mockResolvedValue(mockSearch);
 
@@ -144,6 +133,11 @@ describe('Searchbar', () => {
 
   describe('search projects', () => {
     it('display search results', async () => {
+      jest
+        .spyOn(ReactRouter, 'useSearchParams')
+        .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
       const mockSearch = getMockSearch('1');
       mocked(API).searchProjects.mockResolvedValue(mockSearch);
 
@@ -203,6 +197,11 @@ describe('Searchbar', () => {
     });
 
     it('loads project detail from search dropdown', async () => {
+      jest
+        .spyOn(ReactRouter, 'useSearchParams')
+        .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
       const mockSearch = getMockSearch('1');
       mocked(API).searchProjects.mockResolvedValue(mockSearch);
 
@@ -239,6 +238,11 @@ describe('Searchbar', () => {
     });
 
     it('loads new search from search dropdown', async () => {
+      jest
+        .spyOn(ReactRouter, 'useSearchParams')
+        .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
       const mockSearch = getMockSearch('1');
       mocked(API).searchProjects.mockResolvedValue(mockSearch);
 
@@ -275,6 +279,11 @@ describe('Searchbar', () => {
     });
 
     it('uses arrow for seleting one item and loads detail to click enter', async () => {
+      jest
+        .spyOn(ReactRouter, 'useSearchParams')
+        .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
       const mockSearch = getMockSearch('1');
       mocked(API).searchProjects.mockResolvedValue(mockSearch);
 
@@ -326,6 +335,11 @@ describe('Searchbar', () => {
 
   describe('Navigate', () => {
     it('calls on Enter key press', () => {
+      jest
+        .spyOn(ReactRouter, 'useSearchParams')
+        .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
+        .mockImplementationOnce(() => [new URLSearchParams(''), jest.fn()]);
+
       render(
         <Router>
           <Searchbar {...defaultProps} />

@@ -7,6 +7,7 @@ use octocrab::{
     params::State,
 };
 use regex::{Regex, RegexSet};
+use reqwest;
 
 /// Get repository's metadata from the Github API.
 pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
@@ -15,6 +16,27 @@ pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
     match github.repos(&owner, &repo).get().await {
         Ok(repo) => Ok(repo),
         Err(err) => Err(err.into()),
+    }
+}
+
+/// Check if the given default community health file is available in the
+/// .github repository.
+pub(crate) async fn has_default_community_health_file(
+    gh_md: &Repository,
+    file: &str,
+) -> Result<bool, Error> {
+    lazy_static! {
+        static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
+    }
+    let url = format!(
+        "https://raw.githubusercontent.com/{}/.github/{}/{}",
+        gh_md.owner.as_ref().unwrap().login,
+        gh_md.default_branch.as_ref().unwrap(),
+        file
+    );
+    match HTTP_CLIENT.head(url).send().await?.status() {
+        http::StatusCode::OK => Ok(true),
+        _ => Ok(false),
     }
 }
 

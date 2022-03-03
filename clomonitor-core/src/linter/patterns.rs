@@ -1,5 +1,5 @@
 // Documentation
-pub(crate) static ADOPTERS_FILE: [&str; 1] = ["adopters*"];
+pub(crate) static ADOPTERS_FILE: [&str; 2] = ["adopters*", "USERS.md"];
 pub(crate) static ADOPTERS_HEADER: [&str; 1] = [r"(?im)^#+.*adopters.*$"];
 pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 2] =
     ["code*of*conduct.md", "docs/code*of*conduct.md"];

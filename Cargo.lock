@@ -348,6 +348,7 @@ dependencies = [
  "clomonitor-core",
  "config",
  "deadpool-postgres",
+ "http",
  "openssl",
  "postgres-openssl",
  "serde 1.0.136",

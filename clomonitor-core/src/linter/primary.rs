@@ -218,7 +218,9 @@ fn lint_license(root: &Path, md: &Option<Metadata>, gh_md: &Repository) -> Resul
     })?;
     if spdx_id.is_none() {
         if let Some(license) = &gh_md.license {
-            spdx_id = Some(license.spdx_id.to_owned());
+            if license.spdx_id != "NOASSERTION" {
+                spdx_id = Some(license.spdx_id.to_owned());
+            }
         }
     }
 

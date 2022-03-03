@@ -82,8 +82,11 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     if report.best_practices.community_meeting {
         score.best_practices += 25;
     }
+    if report.best_practices.dco {
+        score.best_practices += 10;
+    }
     if report.best_practices.openssf_badge {
-        score.best_practices += 60;
+        score.best_practices += 50;
     }
     if report.best_practices.recent_release {
         score.best_practices += 10;
@@ -152,6 +155,7 @@ mod tests {
                 best_practices: BestPractices {
                     artifacthub_badge: true,
                     community_meeting: true,
+                    dco: true,
                     openssf_badge: true,
                     recent_release: true,
                 },
@@ -196,6 +200,7 @@ mod tests {
                 best_practices: BestPractices {
                     artifacthub_badge: false,
                     community_meeting: false,
+                    dco: false,
                     openssf_badge: false,
                     recent_release: false,
                 },

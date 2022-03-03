@@ -8,6 +8,7 @@ anyhow = "1.0.52"
 askalono = "0.4.4"
 clap = { version = "3.0.7", features = ["derive"] }
 chrono = "0.4.19"
+git2 = "0.14.1"
 glob = "0.3.0"
 lazy_static = "1.4.0"
 octocrab = "0.15.4"

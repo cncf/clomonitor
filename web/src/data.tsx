@@ -1,7 +1,7 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
-import { FaBalanceScale, FaCheckDouble, FaTools, FaTrademark } from 'react-icons/fa';
+import { FaBalanceScale, FaCheckDouble, FaFileSignature, FaTools, FaTrademark } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
@@ -191,6 +191,21 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       <span>
         We check that a <code>contributing*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
         the repository or in the <code>docs</code> directory
+      </span>
+    ),
+  },
+  [ReportOption.DCO]: {
+    icon: <FaFileSignature />,
+    name: 'Developer Certificate of Origin',
+    legend: (
+      <span>
+        Mechanism for contributors to certify that they wrote or have the right to submit the code they are contributing
+      </span>
+    ),
+    description: (
+      <span>
+        We check that the last commits in the repository have the DCO signature or the last PR in the repo has the DCO
+        check
       </span>
     ),
   },

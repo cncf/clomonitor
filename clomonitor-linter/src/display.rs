@@ -118,6 +118,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.best_practices.community_meeting),
         ])
         .add_row(vec![
+            cell_entry("Best practices / DCO"),
+            cell_check(report.best_practices.dco),
+        ])
+        .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),
             cell_check(report.best_practices.openssf_badge),
         ])

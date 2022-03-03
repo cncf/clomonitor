@@ -49,21 +49,21 @@ const OptionCell = (props: Props) => {
           <div className="d-flex flex-row align-items-baseline align-items-lg-center">
             <div className="text-muted me-2">{opt.icon}</div>
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
-              <div data-testid="opt-name" className={`d-flex flex-row align-items-center mt-1 ${styles.name}`}>
+              <div data-testid="opt-name" className={`d-flex flex-row align-items-center mt-1 w-100 ${styles.name}`}>
                 {(() => {
                   switch (props.label) {
                     case ReportOption.SPDX:
-                      return <small className="fw-bold">{props.value || 'Not detected'}</small>;
+                      return <small className="fw-bold text-truncate">{props.value || 'Not detected'}</small>;
 
                     case ReportOption.LicenseScanning:
                       return (
                         <>
                           {isNull(props.value) ? (
-                            <small className="fw-bold">{opt.name}</small>
+                            <small className="fw-bold text-truncate">{opt.name}</small>
                           ) : (
-                            <ExternalLink href={props.value as string} className="d-inline">
-                              <div className="d-flex flex-row align-items-center">
-                                <small className="fw-bold">{opt.name}</small>
+                            <ExternalLink href={props.value as string} className="d-inline w-100">
+                              <div className="d-flex flex-row align-items-center w-100">
+                                <small className="fw-bold text-truncate">{opt.name}</small>
                                 <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
                               </div>
                             </ExternalLink>
@@ -72,7 +72,7 @@ const OptionCell = (props: Props) => {
                       );
 
                     default:
-                      return <small className="fw-bold">{opt.name}</small>;
+                      return <small className="fw-bold text-truncate">{opt.name}</small>;
                   }
                 })()}
               </div>
@@ -83,7 +83,7 @@ const OptionCell = (props: Props) => {
           </div>
         </div>
       </td>
-      <td className={`text-center text-muted ${styles.iconCell}`}>
+      <td className={`d-none d-md-table-cell text-center text-muted ${styles.iconCell}`}>
         <ElementWithTooltip
           className="ms-2 lh-1"
           element={<FaRegQuestionCircle className={styles.icon} />}

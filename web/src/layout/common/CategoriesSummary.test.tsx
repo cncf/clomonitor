@@ -48,7 +48,6 @@ describe('CategoriesSummary', () => {
 
       expect(screen.getByTestId('global-score')).toBeInTheDocument();
       expect(screen.getAllByTestId('line')).toHaveLength(5);
-      expect(screen.getAllByTestId('peak')).toHaveLength(5);
     });
 
     it('renders correct classes when bigSize is true', () => {

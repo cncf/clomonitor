@@ -98,11 +98,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Adopters
                         </small>
@@ -119,7 +119,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -208,11 +208,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Changelog
                         </small>
@@ -229,7 +229,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -303,11 +303,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Code of conduct
                         </small>
@@ -324,7 +324,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -400,11 +400,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Contributing
                         </small>
@@ -425,7 +425,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -499,11 +499,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Governance
                         </small>
@@ -520,7 +520,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -594,11 +594,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Maintainers
                         </small>
@@ -619,7 +619,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -696,11 +696,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Readme
                         </small>
@@ -721,7 +721,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -801,11 +801,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Roadmap
                         </small>
@@ -822,7 +822,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"
@@ -896,11 +896,11 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 name"
+                        class="d-flex flex-row align-items-center mt-1 w-100 name"
                         data-testid="opt-name"
                       >
                         <small
-                          class="fw-bold"
+                          class="fw-bold text-truncate"
                         >
                           Website
                         </small>
@@ -917,7 +917,7 @@ exports[`Row creates snapshot 1`] = `
                 </div>
               </td>
               <td
-                class="text-center text-muted iconCell"
+                class="d-none d-md-table-cell text-center text-muted iconCell"
               >
                 <div
                   class="d-none d-md-block position-relative ms-2 lh-1"

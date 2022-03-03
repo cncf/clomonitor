@@ -241,7 +241,7 @@ exports[`Card creates snapshot 1`] = `
                 class="wrapper col-12"
               >
                 <div
-                  class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+                  class="d-flex flex-row bg-white position-relative border overflow-hidden"
                 >
                   <div
                     class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
@@ -278,18 +278,13 @@ exports[`Card creates snapshot 1`] = `
                     75
                   </div>
                   <div
-                    class="flex-grow-1 position-relative"
+                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
                   >
                     <div
-                      class="position-absolute top-0 start-0 bottom-0"
+                      class="position-absolute start-0 top-0 bottom-0"
                       data-testid="line"
-                      style="width: calc(75% - 5px);"
-                    >
-                      <div
-                        class="position-absolute arrow "
-                        data-testid="peak"
-                      />
-                    </div>
+                      style="width: 75%;"
+                    />
                   </div>
                 </div>
               </div>
@@ -297,7 +292,7 @@ exports[`Card creates snapshot 1`] = `
                 class="wrapper col-12"
               >
                 <div
-                  class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+                  class="d-flex flex-row bg-white position-relative border overflow-hidden"
                 >
                   <div
                     class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
@@ -331,18 +326,13 @@ exports[`Card creates snapshot 1`] = `
                     80
                   </div>
                   <div
-                    class="flex-grow-1 position-relative"
+                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
                   >
                     <div
-                      class="position-absolute top-0 start-0 bottom-0"
+                      class="position-absolute start-0 top-0 bottom-0"
                       data-testid="line"
-                      style="width: calc(80% - 5px);"
-                    >
-                      <div
-                        class="position-absolute arrow "
-                        data-testid="peak"
-                      />
-                    </div>
+                      style="width: 80%;"
+                    />
                   </div>
                 </div>
               </div>
@@ -350,7 +340,7 @@ exports[`Card creates snapshot 1`] = `
                 class="wrapper col-12"
               >
                 <div
-                  class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+                  class="d-flex flex-row bg-white position-relative border overflow-hidden"
                 >
                   <div
                     class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
@@ -390,18 +380,13 @@ exports[`Card creates snapshot 1`] = `
                     100
                   </div>
                   <div
-                    class="flex-grow-1 position-relative"
+                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
                   >
                     <div
-                      class="position-absolute top-0 start-0 bottom-0"
+                      class="position-absolute start-0 top-0 bottom-0"
                       data-testid="line"
-                      style="width: calc(100% - 5px);"
-                    >
-                      <div
-                        class="position-absolute arrow "
-                        data-testid="peak"
-                      />
-                    </div>
+                      style="width: 100%;"
+                    />
                   </div>
                 </div>
               </div>
@@ -409,7 +394,7 @@ exports[`Card creates snapshot 1`] = `
                 class="wrapper col-12"
               >
                 <div
-                  class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+                  class="d-flex flex-row bg-white position-relative border overflow-hidden"
                 >
                   <div
                     class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
@@ -443,18 +428,13 @@ exports[`Card creates snapshot 1`] = `
                     100
                   </div>
                   <div
-                    class="flex-grow-1 position-relative"
+                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
                   >
                     <div
-                      class="position-absolute top-0 start-0 bottom-0"
+                      class="position-absolute start-0 top-0 bottom-0"
                       data-testid="line"
-                      style="width: calc(100% - 5px);"
-                    >
-                      <div
-                        class="position-absolute arrow "
-                        data-testid="peak"
-                      />
-                    </div>
+                      style="width: 100%;"
+                    />
                   </div>
                 </div>
               </div>
@@ -462,7 +442,7 @@ exports[`Card creates snapshot 1`] = `
                 class="wrapper col-12"
               >
                 <div
-                  class="d-flex flex-row bg-white position-relative border overflow-hidden line"
+                  class="d-flex flex-row bg-white position-relative border overflow-hidden"
                 >
                   <div
                     class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
@@ -497,18 +477,13 @@ exports[`Card creates snapshot 1`] = `
                     75
                   </div>
                   <div
-                    class="flex-grow-1 position-relative"
+                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
                   >
                     <div
-                      class="position-absolute top-0 start-0 bottom-0"
+                      class="position-absolute start-0 top-0 bottom-0"
                       data-testid="line"
-                      style="width: calc(75% - 5px);"
-                    >
-                      <div
-                        class="position-absolute arrow "
-                        data-testid="peak"
-                      />
-                    </div>
+                      style="width: 75%;"
+                    />
                   </div>
                 </div>
               </div>

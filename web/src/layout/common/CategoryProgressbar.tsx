@@ -12,7 +12,7 @@ const CategoryProgressbar = (props: Props) => {
   const color = getCategoryColor(props.value);
   return (
     <div className={`${styles.wrapper} ${props.bigSize ? 'col-12 col-lg-9 col-xxxl-8' : 'col-12'}`}>
-      <div className={`d-flex flex-row bg-white position-relative border overflow-hidden ${styles.line}`}>
+      <div className="d-flex flex-row bg-white position-relative border overflow-hidden">
         <div
           className={`d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto ${styles.title}`}
         >
@@ -22,21 +22,19 @@ const CategoryProgressbar = (props: Props) => {
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
           {props.value}
         </div>
-        <div className="flex-grow-1 position-relative">
+        <div
+          className={`flex-grow-1 position-relative mx-2 ${styles.progressWrapper}  ${
+            props.bigSize ? styles.progressBigWrapper : ''
+          }`}
+        >
           <div
             data-testid="line"
-            className="position-absolute top-0 start-0 bottom-0"
+            className="position-absolute start-0 top-0 bottom-0"
             style={{
-              width: `calc(${props.value}% - 5px)`,
+              width: `${props.value || 1}%`,
               backgroundColor: `var(--rm-${color})`,
             }}
-          >
-            <div
-              data-testid="peak"
-              style={{ borderLeftColor: `var(--rm-${color})` }}
-              className={`position-absolute ${styles.arrow} ${props.bigSize ? styles.bigArrow : ''}`}
-            />
-          </div>
+          />
         </div>
       </div>
     </div>

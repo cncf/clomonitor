@@ -22,15 +22,21 @@
     }
 
     .clo {
-      font: 600 18px "Arial Bold", Gadget, sans-serif;
+      font-family: "Arial", Gadget, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .monitor {
-      font: 300 18px "Arial", "Helvetica Neue", Helvetica, sans-serif;
+      font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 300;
     }
 
     .alpha {
-      font: 400 9px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 9px;
+      font-weight: 400;
       fill: #fff;
     }
 
@@ -45,16 +51,15 @@
     }
 
     .title {
-      font: 600 12px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .3px;
       fill: #6c757d;
     }
 
     .dark .title {
       fill: #a0a0a0;
-    }
-
-    .bold {
-      font-weight: 700;
     }
 
     .barBg {
@@ -78,12 +83,22 @@
     }
 
     .value {
-      font: 600 12px SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size: 12px;
+      font-weight: 600;
       fill: #38383f;
     }
 
     .dark .value {
       fill: #a3a3a6;
+    }
+
+    .barWrapper {
+      fill: #dee2e6;
+    }
+
+    .dark .barWrapper {
+      fill: #2b2a2e;
     }
 
     .bar-a {
@@ -100,11 +115,6 @@
 
     .bar-d {
       fill: #f94144;
-    }
-
-    .peak {
-      transform-box: fill-box;
-      transform-origin: center;
     }
 
     .empty-icon {
@@ -155,7 +165,9 @@
     }
 
     .global {
-      font: 400 34px SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 34px;
+      font-weight: 400;
       fill: #38383f;
     }
 
@@ -232,10 +244,10 @@
   <!-- Global -->
 
   <g transform="translate(75, 119)">
-    <circle class="circle circle-{{ score.global|rating }}" cx="-10" cy="8" r="40" fill="#fff" stroke-width="6" />
+    <circle class="circle circle-{{ score.global|rating }}" cx="-10" cy="8" r="40" fill="#fff" stroke-width="5" />
 
-    <g class="global bold">
-      <text x="-10" y="10" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">{{ score.global }}</text>
+    <g class="global">
+      <text x="-10" y="8" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">{{ score.global }}</text>
     </g>
   </g>
 
@@ -252,7 +264,7 @@
         stroke-opacity="1"
       />
 
-      <g class="title bold" transform="translate(5, 0)">
+      <g class="title" transform="translate(5, 0)">
         <svg y="3" class="empty-icon" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
@@ -269,23 +281,25 @@
         stroke-opacity="1"
       />
 
-      <g class="value bold">
+      <g class="value">
         <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.documentation }}</text>
       </g>
 
-      <rect
-        x="165"
-        y="0"
-        height="18"
-        width="{{ score.documentation|rs_section_score_width }}"
-        class="bar-{{ score.documentation|rating }}"
-      />
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
 
-      <g>
-        <polygon
-          points="9 22, 18 18, 0 18"
-          class="peak bar-{{ score.documentation|rating }}"
-          style="transform: translate({{ score.documentation|rs_section_score_arrow_t_x }}px, -11px) rotate(-90deg);"
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="{{ score.documentation|rs_section_score_width }}"
+          class="bar-{{ score.documentation|rating }}"
         />
       </g>
     </g>
@@ -304,7 +318,7 @@
         stroke-opacity="1"
       />
 
-      <g class="title bold" transform="translate(5, 0)">
+      <g class="title" transform="translate(5, 0)">
         <svg y="3" class="icon" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
           <path d="M256 32c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 32 256 32zm0 208c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80zM193.7 307.4c-19.1-8.1-36.2-19.6-50.8-34.3-1.4-1.4-2.8-2.8-4.1-4.3L64 400h96l48 80 48-105.8 25.5-56.2c-8.4 1.3-16.9 2-25.5 2-21.6 0-42.5-4.2-62.3-12.6zM373.3 268.9c-1.3 1.4-2.7 2.9-4.1 4.3-14.6 14.6-31.7 26.2-50.7 34.2L294 361.2l-21.9 48.4L304 480l48-80h96l-74.7-131.1z" />
         </svg>
@@ -321,23 +335,25 @@
         stroke-opacity="1"
       />
 
-      <g class="value bold">
+      <g class="value">
         <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.license }}</text>
       </g>
 
-      <rect
-        x="165"
-        y="0"
-        height="18"
-        width="{{ score.license|rs_section_score_width }}"
-        class="bar-{{ score.license|rating }}"
-      />
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
 
-      <g>
-        <polygon
-          points="9 22, 18 18, 0 18"
-          class="peak bar-{{ score.license|rating }}"
-          style="transform: translate({{ score.license|rs_section_score_arrow_t_x }}px, -11px) rotate(-90deg);"
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="{{ score.license|rs_section_score_width }}"
+          class="bar-{{ score.license|rating }}"
         />
       </g>
     </g>
@@ -356,7 +372,7 @@
         stroke-opacity="1"
       />
 
-      <g class="title bold" transform="translate(5, 0)">
+      <g class="title" transform="translate(5, 0)">
         <svg y="3" class="icon" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
           <g>
             <path fill="none" d="M0 0h24v24H0z"></path>
@@ -376,23 +392,25 @@
         stroke-opacity="1"
       />
 
-      <g class="value bold">
+      <g class="value">
         <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.best_practices }}</text>
       </g>
 
-      <rect
-        x="165"
-        y="0"
-        height="18"
-        width="{{ score.best_practices|rs_section_score_width }}"
-        class="bar-{{ score.best_practices|rating }}"
-      />
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
 
-      <g>
-        <polygon
-          points="9 22, 18 18, 0 18"
-          class="peak bar-{{ score.best_practices|rating }}"
-          style="transform: translate({{ score.best_practices|rs_section_score_arrow_t_x }}px, -11px) rotate(-90deg);"
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="{{ score.best_practices|rs_section_score_width }}"
+          class="bar-{{ score.best_practices|rating }}"
         />
       </g>
     </g>
@@ -411,7 +429,7 @@
         stroke-opacity="1"
       />
 
-      <g class="title bold" transform="translate(5, 0)">
+      <g class="title" transform="translate(5, 0)">
         <svg y="3" class="icon" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C9.243 2 7 4.243 7 7v2H6c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-9c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v2H9V7zm9.002 13H13v-2.278c.595-.347 1-.985 1-1.722 0-1.103-.897-2-2-2s-2 .897-2 2c0 .736.405 1.375 1 1.722V20H6v-9h12l.002 9z" />
         </svg>
@@ -428,23 +446,25 @@
         stroke-opacity="1"
       />
 
-      <g class="value bold">
+      <g class="value">
         <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.security }}</text>
       </g>
 
-      <rect
-        x="165"
-        y="0"
-        height="18"
-        width="{{ score.security|rs_section_score_width }}"
-        class="bar-{{ score.security|rating }}"
-      />
+     <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
 
-      <g>
-        <polygon
-          points="9 22, 18 18, 0 18"
-          class="peak bar-{{ score.security|rating }}"
-          style="transform: translate({{ score.security|rs_section_score_arrow_t_x }}px, -11px) rotate(-90deg);"
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="{{ score.security|rs_section_score_width }}"
+          class="bar-{{ score.security|rating }}"
         />
       </g>
     </g>
@@ -463,7 +483,7 @@
         stroke-opacity="1"
       />
 
-      <g class="title bold" transform="translate(5, 0)">
+      <g class="title" transform="translate(5, 0)">
         <svg y="3" class="icon" stroke-width="0" viewBox="0 0 14 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z" />
         </svg>
@@ -480,23 +500,25 @@
         stroke-opacity="1"
       />
 
-      <g class="value bold">
+      <g class="value">
         <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.legal }}</text>
       </g>
 
-      <rect
-        x="165"
-        y="0"
-        height="18"
-        width="{{ score.legal|rs_section_score_width }}"
-        class="bar-{{ score.legal|rating }}"
-      />
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
 
-      <g>
-        <polygon
-          points="9 22, 18 18, 0 18"
-          class="peak bar-{{ score.legal|rating }}"
-          style="transform: translate({{ score.legal|rs_section_score_arrow_t_x }}px, -11px) rotate(-90deg);"
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="{{ score.legal|rs_section_score_width }}"
+          class="bar-{{ score.legal|rating }}"
         />
       </g>
     </g>

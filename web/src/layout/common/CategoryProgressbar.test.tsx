@@ -24,8 +24,6 @@ describe('CategoryProgressbar', () => {
 
     const line = screen.getByTestId('line');
     expect(line).toBeInTheDocument();
-    expect(line).toHaveStyle('width: calc(80% - 5px)');
-
-    expect(screen.getByTestId('peak')).toBeInTheDocument();
+    expect(line).toHaveStyle('width: 80%');
   });
 });

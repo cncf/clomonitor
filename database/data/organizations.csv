@@ -108,3 +108,9 @@ organization_id;name;home_url;logo_url
 00000107-0000-0000-0000-000000000000;volcano;https://volcano.sh/en/;https://raw.githubusercontent.com/cncf/artwork/master/projects/volcano/icon/color/volcano-icon-color.svg
 00000108-0000-0000-0000-000000000000;wasm-cloud;https://wasmcloud.com;https://raw.githubusercontent.com/cncf/artwork/master/projects/wasmcloud/icon/color/wasmcloud.icon_green.svg
 00000109-0000-0000-0000-000000000000;wasm-edge;https://wasmedge.org;https://raw.githubusercontent.com/cncf/artwork/master/projects/wasm-edge-runtime/icon/color/wasm-edge-runtime-icon-color.svg
+00000110-0000-0000-0000-000000000000;knative;https://knative.dev;https://cdn-images-1.medium.com/max/1200/1*obfgJOC6Y7S2lSX6eHklIA.png
+00000111-0000-0000-0000-000000000000;krator-rs;https://github.com/krator-rs;https://raw.githubusercontent.com/cncf/artwork/master/projects/krator/icon/color/krator-icon-color.svg
+00000112-0000-0000-0000-000000000000;devfile;https://devfile.io;https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/color/devfile-icon-color.svg
+00000113-0000-0000-0000-000000000000;kube-rs;https://kube.rs;https://raw.githubusercontent.com/cncf/artwork/master/projects/kube-rs/icon/black/kube-rs-icon-black.svg
+00000114-0000-0000-0000-000000000000;kubedl;https://kubedl.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/kubedl/icon/color/kubedl-icon-color.svg
+00000115-0000-0000-0000-000000000000;openelb;https://openelb.github.io/;https://landscape.cncf.io/logos/open-elb.svg

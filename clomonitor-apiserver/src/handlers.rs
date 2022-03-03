@@ -3,11 +3,8 @@ use askama_axum::Template;
 use axum::{
     extract,
     extract::{Extension, Query},
-    http::{
-        header::{HeaderMap, HeaderName, HeaderValue},
-        StatusCode,
-    },
-    response,
+    http::StatusCode,
+    response::{self, Headers, IntoResponse},
 };
 use clomonitor_core::score::{primary, Score};
 use deadpool_postgres::Pool;
@@ -122,7 +119,7 @@ pub(crate) async fn report_summary_svg(
     Extension(db_pool): Extension<Pool>,
     extract::Path((org, project)): extract::Path<(String, String)>,
     Query(params): Query<HashMap<String, String>>,
-) -> Result<ReportSummaryTemplate, StatusCode> {
+) -> Result<impl IntoResponse, StatusCode> {
     // Get project score from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let rows = db
@@ -143,6 +140,9 @@ pub(crate) async fn report_summary_svg(
     }
     let score: Option<Json<Score>> = rows.first().unwrap().get("score");
 
+    // Prepare response headers
+    let headers = Headers(vec![(http::header::CACHE_CONTROL, "max-age=3600")]);
+
     // Render report summary SVG and return it
     match score {
         Some(Json(Score::Primary(score))) => {
@@ -150,7 +150,7 @@ pub(crate) async fn report_summary_svg(
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),
             };
-            Ok(ReportSummaryTemplate { score, theme })
+            Ok((headers, ReportSummaryTemplate { score, theme }))
         }
         _ => Err(StatusCode::NOT_FOUND),
     }
@@ -160,7 +160,7 @@ pub(crate) async fn report_summary_svg(
 pub(crate) async fn search_projects(
     Extension(db_pool): Extension<Pool>,
     extract::Json(input): extract::Json<SearchProjectsInput>,
-) -> Result<(HeaderMap, response::Json<Value>), StatusCode> {
+) -> Result<impl IntoResponse, StatusCode> {
     // Search projects in database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
@@ -171,11 +171,7 @@ pub(crate) async fn search_projects(
     let total_count: i64 = row.get("total_count");
 
     // Prepare response headers
-    let mut headers = HeaderMap::new();
-    headers.insert(
-        HeaderName::from_static(PAGINATION_TOTAL_COUNT),
-        HeaderValue::from_str(&total_count.to_string()).unwrap(),
-    );
+    let headers = Headers(vec![(PAGINATION_TOTAL_COUNT, total_count.to_string())]);
 
     Ok((headers, response::Json(projects)))
 }

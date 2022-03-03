@@ -1,6 +1,10 @@
 /// Template filter that returns the width of the section score bar.
 pub fn rs_section_score_width(score: &usize) -> ::askama::Result<f64> {
-    Ok((*score as f64 * 1.06).round())
+    let v = (*score as f64 * 1.06).round();
+    if v < 2.0 {
+        return Ok(2.0);
+    }
+    Ok(v)
 }
 
 /// Template filter that returns the rating letter corresponding to the score

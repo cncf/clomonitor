@@ -1,5 +1,6 @@
 use super::path::{self, Globs};
 use anyhow::Error;
+use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
 use reqwest;
 use std::fs;
@@ -56,7 +57,10 @@ where
     R: IntoIterator,
     R::Item: AsRef<str>,
 {
-    let content = reqwest::get(url).await?.text().await?;
+    lazy_static! {
+        static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
+    }
+    let content = HTTP_CLIENT.get(url).send().await?.text().await?;
     let re = RegexSet::new(regexps)?;
     Ok(re.is_match(&content))
 }

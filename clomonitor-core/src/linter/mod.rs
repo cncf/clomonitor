@@ -57,7 +57,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     // Run the linter corresponding to the repository kind provided
     Ok(match &options.kind {
         RepositoryKind::Primary => Report::Primary(primary::lint(options).await?),
-        RepositoryKind::Secondary => Report::Secondary(secondary::lint(options)?),
+        RepositoryKind::Secondary => Report::Secondary(secondary::lint(options).await?),
     })
 }
 

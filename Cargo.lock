@@ -370,6 +370,7 @@ dependencies = [
  "clap",
  "git2",
  "glob",
+ "http",
  "lazy_static",
  "octocrab",
  "regex",

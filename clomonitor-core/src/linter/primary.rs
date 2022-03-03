@@ -72,10 +72,11 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
     // Get Github metadata
     let gh_md = github::get_metadata(options.url).await?;
 
-    // Async checks: documentation, best_practices
-    let (documentation, best_practices, legal) = tokio::try_join!(
+    // Async checks: documentation, best_practices, security, legal
+    let (documentation, best_practices, security, legal) = tokio::try_join!(
         lint_documentation(options.root, options.url, &gh_md),
         lint_best_practices(options.root, options.url),
+        lint_security(options.root, &gh_md),
         lint_legal(&gh_md),
     )?;
 
@@ -83,7 +84,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
         documentation,
         license: lint_license(options.root, &md)?,
         best_practices,
-        security: lint_security(options.root)?,
+        security,
         legal,
     })
 }
@@ -109,25 +110,27 @@ async fn lint_documentation(
     )?;
 
     // Code of conduct
-    let code_of_conduct = check::path::exists(Globs {
-        root,
-        patterns: CODE_OF_CONDUCT_FILE,
-        case_sensitive: false,
-    })? || check::content::matches(
-        Globs {
+    let code_of_conduct =
+        check::path::exists(Globs {
             root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        CODE_OF_CONDUCT_HEADER,
-    )?;
+            patterns: CODE_OF_CONDUCT_FILE,
+            case_sensitive: false,
+        })? || check::content::matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            CODE_OF_CONDUCT_HEADER,
+        )? || check::github::has_default_community_health_file(gh_md, "CODE_OF_CONDUCT.md").await?;
 
     // Contributing
-    let contributing = check::path::exists(Globs {
-        root,
-        patterns: CONTRIBUTING_FILE,
-        case_sensitive: false,
-    })?;
+    let contributing =
+        check::path::exists(Globs {
+            root,
+            patterns: CONTRIBUTING_FILE,
+            case_sensitive: false,
+        })? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
 
     // Changelog
     let changelog = check::path::exists(Globs {
@@ -296,20 +299,21 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
 }
 
 /// Run security checks and prepare the report's security section.
-fn lint_security(root: &Path) -> Result<Security, Error> {
+async fn lint_security(root: &Path, gh_md: &Repository) -> Result<Security, Error> {
     // Security policy
-    let security_policy = check::path::exists(Globs {
-        root,
-        patterns: SECURITY_POLICY_FILE,
-        case_sensitive: false,
-    })? || check::content::matches(
-        Globs {
+    let security_policy =
+        check::path::exists(Globs {
             root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        SECURITY_POLICY_HEADER,
-    )?;
+            patterns: SECURITY_POLICY_FILE,
+            case_sensitive: false,
+        })? || check::content::matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            SECURITY_POLICY_HEADER,
+        )? || check::github::has_default_community_health_file(gh_md, "SECURITY.md").await?;
 
     Ok(Security { security_policy })
 }

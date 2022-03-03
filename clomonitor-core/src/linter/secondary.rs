@@ -1,5 +1,6 @@
-use super::{check, check::path::Globs, patterns::*, LintOptions};
+use super::{check, check::github, check::path::Globs, patterns::*, LintOptions};
 use anyhow::Error;
+use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
@@ -29,21 +30,28 @@ pub struct License {
 }
 
 /// Lint the path provided and return a report.
-pub fn lint(options: LintOptions) -> Result<Report, Error> {
+pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
+    // Get Github metadata
+    let gh_md = github::get_metadata(options.url).await?;
+
+    // Async checks: documentation
+    let (documentation,) = tokio::try_join!(lint_documentation(options.root, &gh_md),)?;
+
     Ok(Report {
-        documentation: lint_documentation(options.root)?,
+        documentation,
         license: lint_license(options.root)?,
     })
 }
 
 /// Run documentation checks and prepare the report's documentation section.
-fn lint_documentation(root: &Path) -> Result<Documentation, Error> {
+async fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documentation, Error> {
     // Contributing
-    let contributing = check::path::exists(Globs {
-        root,
-        patterns: CONTRIBUTING_FILE,
-        case_sensitive: false,
-    })?;
+    let contributing =
+        check::path::exists(Globs {
+            root,
+            patterns: CONTRIBUTING_FILE,
+            case_sensitive: false,
+        })? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
 
     // Maintainers
     let maintainers = check::path::exists(Globs {

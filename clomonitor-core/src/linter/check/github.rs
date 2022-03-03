@@ -67,7 +67,7 @@ pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error>
                 "https://github.com/{}/{}/pull/{}/checks",
                 &owner, &repo, pr.number
             );
-            content::remote_matches(&checks_url, vec!["DCO", "All commits are signed off"]).await?
+            content::remote_matches(&checks_url, vec!["DCO"]).await?
         }
         None => false,
     })

@@ -82,7 +82,7 @@ pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
 
     Ok(Report {
         documentation,
-        license: lint_license(options.root, &md)?,
+        license: lint_license(options.root, &md, &gh_md)?,
         best_practices,
         security,
         legal,
@@ -209,13 +209,18 @@ async fn lint_documentation(
 }
 
 /// Run license checks and prepare the report's license section.
-fn lint_license(root: &Path, md: &Option<Metadata>) -> Result<License, Error> {
+fn lint_license(root: &Path, md: &Option<Metadata>, gh_md: &Repository) -> Result<License, Error> {
     // SPDX id
-    let spdx_id = check::license::detect(Globs {
+    let mut spdx_id = check::license::detect(Globs {
         root,
         patterns: LICENSE_FILE,
         case_sensitive: true,
     })?;
+    if spdx_id.is_none() {
+        if let Some(license) = &gh_md.license {
+            spdx_id = Some(license.spdx_id.to_owned());
+        }
+    }
 
     // Approved
     let mut approved: Option<bool> = None;

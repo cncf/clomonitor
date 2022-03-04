@@ -1,4 +1,5 @@
 use super::content;
+use crate::linter::patterns::DCO;
 use anyhow::{format_err, Error};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
@@ -67,7 +68,7 @@ pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error>
                 "https://github.com/{}/{}/pull/{}/checks",
                 &owner, &repo, pr.number
             );
-            content::remote_matches(&checks_url, vec!["DCO"]).await?
+            content::remote_matches(&checks_url, &*DCO).await?
         }
         None => false,
     })
@@ -75,14 +76,12 @@ pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error>
 
 /// Check if the last release body matches any of the regular expressions
 /// provided.
-pub(crate) async fn last_release_body_matches<R>(repo_url: &str, regexps: R) -> Result<bool, Error>
-where
-    R: IntoIterator,
-    R::Item: AsRef<str>,
-{
+pub(crate) async fn last_release_body_matches(
+    repo_url: &str,
+    re: &RegexSet,
+) -> Result<bool, Error> {
     if let Some(last_release) = last_release(repo_url).await? {
         if let Some(body) = last_release.body {
-            let re = RegexSet::new(regexps)?;
             return Ok(re.is_match(&body));
         }
     }

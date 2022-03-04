@@ -9,6 +9,7 @@ pub const METADATA_FILE: &str = ".clomonitor.yml";
 
 /// CLOMonitor metadata.
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Metadata {
     pub license_scanning: Option<LicenseScanning>,
 }

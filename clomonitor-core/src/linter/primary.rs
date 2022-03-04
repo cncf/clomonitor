@@ -106,7 +106,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        ADOPTERS_HEADER,
+        &*ADOPTERS_HEADER,
     )?;
 
     // Code of conduct
@@ -121,7 +121,7 @@ async fn lint_documentation(
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            CODE_OF_CONDUCT_HEADER,
+            &*CODE_OF_CONDUCT_HEADER,
         )? || check::github::has_default_community_health_file(gh_md, "CODE_OF_CONDUCT.md").await?;
 
     // Contributing
@@ -143,8 +143,8 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        CHANGELOG_HEADER,
-    )? || check::github::last_release_body_matches(repo_url, CHANGELOG_RELEASE)
+        &*CHANGELOG_HEADER,
+    )? || check::github::last_release_body_matches(repo_url, &*CHANGELOG_RELEASE)
         .await?;
 
     // Governance
@@ -158,7 +158,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        GOVERNANCE_HEADER,
+        &*GOVERNANCE_HEADER,
     )?;
 
     // Maintainers
@@ -186,7 +186,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        ROADMAP_HEADER,
+        &*ROADMAP_HEADER,
     )?;
 
     // Website
@@ -246,7 +246,7 @@ fn lint_license(root: &Path, md: &Option<Metadata>, gh_md: &Repository) -> Resul
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            LICENSE_SCANNING_URL,
+            vec![&*FOSSA_URL, &*SNYK_URL],
         )?;
     }
 
@@ -266,7 +266,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
             patterns: README_FILE,
             case_sensitive: true,
         },
-        ARTIFACTHUB_BADGE_URL,
+        &*ARTIFACTHUB_BADGE_URL,
     )?;
 
     // Community meeting
@@ -276,7 +276,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
             patterns: README_FILE,
             case_sensitive: true,
         },
-        COMMUNITY_MEETING_TEXT,
+        &*COMMUNITY_MEETING_TEXT,
     )?;
 
     // DCO
@@ -290,7 +290,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
             patterns: README_FILE,
             case_sensitive: true,
         },
-        OPENSSF_BADGE_URL,
+        &*OPENSSF_BADGE_URL,
     )?;
 
     // Recent release
@@ -319,7 +319,7 @@ async fn lint_security(root: &Path, gh_md: &Repository) -> Result<Security, Erro
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            SECURITY_POLICY_HEADER,
+            &*SECURITY_POLICY_HEADER,
         )? || check::github::has_default_community_health_file(gh_md, "SECURITY.md").await?;
 
     Ok(Security { security_policy })
@@ -331,7 +331,7 @@ async fn lint_legal(gh_md: &Repository) -> Result<Legal, Error> {
     let mut trademark_footer: bool = false;
     if let Some(url) = &gh_md.homepage {
         if !url.is_empty() {
-            trademark_footer = check::content::remote_matches(url, TRADEMARK_FOOTER).await?;
+            trademark_footer = check::content::remote_matches(url, &*TRADEMARK_FOOTER).await?;
         }
     }
 

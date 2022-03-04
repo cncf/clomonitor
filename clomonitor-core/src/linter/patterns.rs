@@ -71,6 +71,7 @@ lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref ADOPTERS_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*adopters.*$",
+        r"(?im)^adopters$",
     ]).expect("invalid exprs in ADOPTERS_HEADER");
 
     #[rustfmt::skip]
@@ -81,6 +82,7 @@ lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref CHANGELOG_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*changelog.*$",
+        r"(?im)^changelog$",
     ]).expect("invalid exprs in CHANGELOG_HEADER");
 
     #[rustfmt::skip]
@@ -91,6 +93,7 @@ lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref CODE_OF_CONDUCT_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*code of conduct.*$",
+        r"(?im)^code of conduct$",
     ]).expect("invalid exprs in CODE_OF_CONDUCT_HEADER");
 
     #[rustfmt::skip]
@@ -113,6 +116,7 @@ lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref GOVERNANCE_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*governance.*$",
+        r"(?im)^governance$",
     ]).expect("invalid exprs in GOVERNANCE_HEADER");
 
     #[rustfmt::skip]
@@ -123,11 +127,13 @@ lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref ROADMAP_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*roadmap.*$",
+        r"(?im)^roadmap$",
     ]).expect("invalid exprs in ROADMAP_HEADER");
 
     #[rustfmt::skip]
     pub(crate) static ref SECURITY_POLICY_HEADER: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*security.*$",
+        r"(?im)^security$",
     ]).expect("invalid exprs in SECURITY_POLICY_HEADER");
 
     #[rustfmt::skip]
@@ -151,6 +157,14 @@ mod tests {
     fn adopters_header_match() {
         assert!(ADOPTERS_HEADER.is_match("# Adopters"));
         assert!(ADOPTERS_HEADER.is_match("## Project adopters and others"));
+        assert!(ADOPTERS_HEADER.is_match(
+            r"
+...
+Adopters
+--------
+...
+            "
+        ));
     }
 
     #[test]
@@ -162,6 +176,14 @@ mod tests {
     fn changelog_header_match() {
         assert!(CHANGELOG_HEADER.is_match("# Changelog"));
         assert!(CHANGELOG_HEADER.is_match("## Project changelog and others"));
+        assert!(CHANGELOG_HEADER.is_match(
+            r"
+...
+Changelog
+=========
+...
+            "
+        ));
     }
 
     #[test]
@@ -174,6 +196,14 @@ mod tests {
     fn code_of_conduct_header_match() {
         assert!(CODE_OF_CONDUCT_HEADER.is_match("# Code of conduct"));
         assert!(CODE_OF_CONDUCT_HEADER.is_match("## Project code of conduct and others"));
+        assert!(CODE_OF_CONDUCT_HEADER.is_match(
+            r"
+...
+Code of Conduct
+---------------
+...
+            "
+        ));
     }
 
     #[test]
@@ -190,6 +220,14 @@ mod tests {
     fn governance_header_match() {
         assert!(GOVERNANCE_HEADER.is_match("# Governance"));
         assert!(GOVERNANCE_HEADER.is_match("## Project governance and others"));
+        assert!(GOVERNANCE_HEADER.is_match(
+            r"
+...
+Governance
+----------
+...
+            "
+        ));
     }
 
     #[test]
@@ -228,12 +266,28 @@ mod tests {
     fn roadmap_header_match() {
         assert!(ROADMAP_HEADER.is_match("# Roadmap"));
         assert!(ROADMAP_HEADER.is_match("## Project roadmap and others"));
+        assert!(ROADMAP_HEADER.is_match(
+            r"
+...
+Roadmap
+-------
+...
+            "
+        ));
     }
 
     #[test]
     fn security_polity_header_match() {
         assert!(SECURITY_POLICY_HEADER.is_match("# Security"));
         assert!(SECURITY_POLICY_HEADER.is_match("## Project security and others"));
+        assert!(SECURITY_POLICY_HEADER.is_match(
+            r"
+...
+Security
+--------
+...
+            "
+        ));
     }
 
     #[test]

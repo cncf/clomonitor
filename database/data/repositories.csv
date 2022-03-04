@@ -1,4 +1,4 @@
-repository_id;name;url;Kind;project_id
+repository_id;name;url;kind;project_id
 00000000-0000-0001-0000-000000000000;artifact-hub;https://github.com/artifacthub/hub;primary;00000000-0001-0000-0000-000000000000
 00000000-0000-0002-0000-000000000000;containerd;https://github.com/containerd/containerd;primary;00000000-0002-0000-0000-000000000000
 00000000-0000-0003-0000-000000000000;coredns;https://github.com/coredns/coredns;primary;00000000-0003-0000-0000-000000000000
@@ -69,7 +69,7 @@ repository_id;name;url;Kind;project_id
 00000000-0000-0075-0000-000000000000;operator-sdk;https://github.com/operator-framework/operator-sdk;primary;00000000-0040-0000-0000-000000000000
 00000000-0000-0076-0000-000000000000;operator-lifecycle-manager;https://github.com/operator-framework/operator-lifecycle-manager;secondary;00000000-0040-0000-0000-000000000000
 00000000-0000-0077-0000-000000000000;spiffe;https://github.com/spiffe/spiffe;primary;00000000-0041-0000-0000-000000000000
-00000000-0000-0078-0000-000000000000;spire;https://github.com/spiffe/spire;primary;00000000-0041-0000-0000-000000000000
+00000000-0000-0078-0000-000000000000;spire;https://github.com/spiffe/spire;secondary;00000000-0041-0000-0000-000000000000
 00000000-0000-0079-0000-000000000000;thanos;https://github.com/thanos-io/thanos;primary;00000000-0042-0000-0000-000000000000
 00000000-0000-0080-0000-000000000000;akri;https://github.com/project-akri/akri;primary;00000000-0043-0000-0000-000000000000
 00000000-0000-0081-0000-000000000000;antrea;https://github.com/antrea-io/antrea;primary;00000000-0044-0000-0000-000000000000

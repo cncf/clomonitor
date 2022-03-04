@@ -1,9 +1,10 @@
 use crate::handlers::*;
 use anyhow::Error;
 use axum::{
+    extract::Extension,
     http::StatusCode,
     routing::{get, get_service, post},
-    AddExtensionLayer, Router,
+    Router,
 };
 use config::Config;
 use deadpool_postgres::Pool;
@@ -50,7 +51,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
-                .layer(AddExtensionLayer::new(db_pool)),
+                .layer(Extension(db_pool)),
         );
 
     // Setup basic auth

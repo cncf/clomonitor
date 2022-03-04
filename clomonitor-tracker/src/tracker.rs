@@ -6,7 +6,12 @@ use futures::{
     future,
     stream::{FuturesUnordered, StreamExt},
 };
+use std::time::Duration;
+use tokio::time::timeout;
 use tracing::{error, info};
+
+/// Maximum time that can take tracking a single repository.
+const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
 
 /// Track all repositories registered in the database.
 pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<(), Error> {
@@ -27,7 +32,12 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<(), Error> {
         let db = db_pool.get().await?;
         let github_token = cfg.get_str("creds.githubToken").ok();
         futs.push(tokio::spawn(async move {
-            if let Err(err) = repository.track(db, github_token.as_deref()).await {
+            if let Err(err) = timeout(
+                Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
+                repository.track(db, github_token.as_deref()),
+            )
+            .await
+            {
                 error!("error tracking repository {}: {err}", repository.id());
             }
         }));

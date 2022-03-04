@@ -75,8 +75,7 @@ impl Repository {
 
         // Store tracking results in database
         let tx = db.transaction().await?;
-        self.store_report(&tx, Linter::Core, &report, errors)
-            .await?;
+        self.store_report(&tx, Linter::Core, report, errors).await?;
         self.update_score(&tx).await?;
         self.update_project_score(&tx).await?;
         self.update_digest(&tx, &remote_digest).await?;
@@ -125,7 +124,7 @@ impl Repository {
         &self,
         tx: &Transaction<'_>,
         linter: Linter,
-        report: &Option<Report>,
+        report: Option<Report>,
         errors: Option<String>,
     ) -> Result<(), Error> {
         tx.execute(
@@ -141,7 +140,7 @@ impl Repository {
                 updated_at = current_timestamp;
             ",
             &[
-                &Json(report),
+                &report.map(Json),
                 &errors,
                 &self.repository_id,
                 &(linter as i32),
@@ -171,8 +170,10 @@ impl Repository {
         for row in rows {
             let linter_id: i32 = row.get("linter_id");
             let linter = Linter::try_from(linter_id)?;
-            let report: Json<Report> = row.get("data");
-            scores.push(score::calculate(linter, &report.0));
+            let report: Option<Json<Report>> = row.get("data");
+            if let Some(Json(report)) = report {
+                scores.push(score::calculate(linter, &report));
+            }
         }
         let repository_score = score::merge(scores);
 

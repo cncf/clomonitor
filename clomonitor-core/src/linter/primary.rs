@@ -287,7 +287,7 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
     )?;
 
     // DCO
-    let dco = check::git::commits_have_dco_signature(root)?
+    let dco = check::git::commits_have_dco_signature(root).unwrap_or(false)
         || check::github::last_pr_has_dco_check(repo_url).await?;
 
     // OpenSSF badge

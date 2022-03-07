@@ -130,7 +130,14 @@ async fn lint_documentation(
             root,
             patterns: CONTRIBUTING_FILE,
             case_sensitive: false,
-        })? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
+        })? || check::content::matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            &*CONTRIBUTING_HEADER,
+        )? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
 
     // Changelog
     let changelog = check::path::exists(Globs {

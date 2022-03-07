@@ -49,7 +49,7 @@ const OptionCell = (props: Props) => {
           <div className="d-flex flex-row align-items-baseline align-items-lg-center">
             <div className="text-muted me-2">{opt.icon}</div>
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
-              <div data-testid="opt-name" className={`d-flex flex-row align-items-center mt-1 w-100 ${styles.name}`}>
+              <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
                 {(() => {
                   switch (props.label) {
                     case ReportOption.SPDX:
@@ -76,9 +76,7 @@ const OptionCell = (props: Props) => {
                   }
                 })()}
               </div>
-              <div className={`d-none d-lg-block text-muted text-truncate mt-1 w-100 ${styles.legend}`}>
-                {opt.legend}
-              </div>
+              <div className={`d-none d-lg-block text-muted text-truncate w-100 ${styles.legend}`}>{opt.legend}</div>
             </div>
           </div>
         </div>

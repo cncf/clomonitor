@@ -98,7 +98,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -108,7 +108,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           List of organizations using this project in production or at stages of testing
@@ -208,7 +208,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -218,7 +218,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           A curated, chronologically ordered list of notable changes for each version
@@ -303,7 +303,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -313,7 +313,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse
@@ -400,7 +400,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -410,7 +410,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           A 
@@ -499,7 +499,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -509,7 +509,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           Document that explains how the governance and committer process works in the repository
@@ -594,7 +594,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -604,7 +604,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           The 
@@ -696,7 +696,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -706,7 +706,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           The 
@@ -801,7 +801,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -811,7 +811,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline
@@ -896,7 +896,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mt-1 w-100 name"
+                        class="d-flex flex-row align-items-center w-100 name"
                         data-testid="opt-name"
                       >
                         <small
@@ -906,7 +906,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate mt-1 w-100 legend"
+                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
                       >
                         <span>
                           A url that users can visit to learn more about your project

@@ -1967,6 +1967,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </tbody>
             </table>
           </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -2762,6 +2883,79 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </tbody>
             </table>
           </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        SECURITY.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3276,6 +3470,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -4050,6 +4365,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </tbody>
             </table>
           </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -4822,6 +5258,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -5596,6 +6153,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </tbody>
             </table>
           </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -6368,6 +7046,127 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div
+            data-testid="recommended-templates"
+          >
+            <div
+              class="d-flex flex-row align-items-center pt-2"
+            >
+              <svg
+                class="me-2"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
+                />
+              </svg>
+              <div>
+                CNCF recommended templates: 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        CONTRIBUTING.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                 and 
+                <a
+                  aria-label="Open external link"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <code
+                        class="text-muted fw-bold"
+                      >
+                        GOVERNANCE.md
+                      </code>
+                      <svg
+                        class="ms-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                .
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import { isUndefined } from 'lodash';
-import { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { FiExternalLink } from 'react-icons/fi';
+import { IoHelpBuoySharp } from 'react-icons/io5';
 
-import { ReportOption, ScoreType } from '../../../types';
+import { RecommendedTemplate, ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
+import ExternalLink from '../../common/ExternalLink';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
 import Title from './Title';
@@ -18,6 +21,7 @@ interface Props {
   icon: JSX.Element;
   data: OptData;
   score: number;
+  recommendedTemplates?: RecommendedTemplate[];
 }
 
 const sortOptions = (opts?: OptData): ReportOption[] => {
@@ -46,6 +50,7 @@ const sortOptions = (opts?: OptData): ReportOption[] => {
 const Row = (props: Props) => {
   const color = getCategoryColor(props.score);
   const [options, setOptions] = useState<ReportOption[]>([]);
+  const tmplsNumber = props.recommendedTemplates ? props.recommendedTemplates.length : 0;
 
   useEffect(() => {
     setOptions(sortOptions(props.data));
@@ -86,6 +91,41 @@ const Row = (props: Props) => {
             </tbody>
           </table>
         </div>
+
+        {!isUndefined(props.recommendedTemplates) && props.recommendedTemplates.length > 0 && (
+          <div data-testid="recommended-templates">
+            <div className="d-flex flex-row align-items-center pt-2">
+              <IoHelpBuoySharp className="me-2" />
+              <div>
+                CNCF recommended templates:{' '}
+                {props.recommendedTemplates.map((tmpl: RecommendedTemplate, index: number) => {
+                  return (
+                    <Fragment key={`${props.label}_tmpl_${index}`}>
+                      <ExternalLink href={tmpl.url} className="d-inline-block">
+                        <div className="d-flex flex-row align-items-center">
+                          <code className="text-muted fw-bold">{tmpl.name}</code>
+                          <FiExternalLink className={`ms-2 position-relative ${styles.extIcon}`} />
+                        </div>
+                      </ExternalLink>
+                      {(() => {
+                        switch (index) {
+                          case tmplsNumber - 1:
+                            return <>.</>;
+
+                          case tmplsNumber - 2:
+                            return <> and </>;
+
+                          default:
+                            return <>, </>;
+                        }
+                      })()}
+                    </Fragment>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

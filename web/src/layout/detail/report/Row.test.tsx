@@ -70,5 +70,26 @@ describe('Row', () => {
       expect(opts[1]).toHaveTextContent('Approved license');
       expect(opts[2]).toHaveTextContent('License scanning');
     });
+
+    it('renders component with recommended templates', () => {
+      render(
+        <Row
+          {...defaultProps}
+          recommendedTemplates={[
+            { name: 'template1.md', url: 'http://template1.com' },
+            { name: 'template2.md', url: 'http://template2.com' },
+          ]}
+        />
+      );
+
+      expect(screen.getByTestId('recommended-templates')).toBeInTheDocument();
+      expect(screen.getByTestId('recommended-templates')).toHaveTextContent(
+        'CNCF recommended templates: template1.md and template2.md.'
+      );
+      const links = screen.getAllByRole('link');
+      expect(links).toHaveLength(2);
+      expect(links[0]).toHaveProperty('href', 'http://template1.com/');
+      expect(links[1]).toHaveProperty('href', 'http://template2.com/');
+    });
   });
 });

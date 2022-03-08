@@ -137,6 +137,16 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.documentation}
                       icon={CATEGORY_ICONS[ScoreType.Documentation]}
                       score={repo.score.documentation}
+                      recommendedTemplates={[
+                        {
+                          name: 'CONTRIBUTING.md',
+                          url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
+                        },
+                        {
+                          name: 'GOVERNANCE.md',
+                          url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
+                        },
+                      ]}
                     />
                     <Row
                       reportId={report.report_id}
@@ -161,6 +171,12 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.security}
                       icon={CATEGORY_ICONS[ScoreType.Security]}
                       score={repo.score.security}
+                      recommendedTemplates={[
+                        {
+                          name: 'SECURITY.md',
+                          url: 'https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md',
+                        },
+                      ]}
                     />
                     <Row
                       reportId={report.report_id}

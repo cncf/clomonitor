@@ -102,6 +102,7 @@ describe('Searchbar', () => {
       userEvent.type(input, 'ing');
       userEvent.click(clearBtn);
       expect(input).toHaveValue('');
+      expect(input).toHaveFocus();
     });
   });
 

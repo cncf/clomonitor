@@ -87,6 +87,12 @@ const Searchbar = (props: Props) => {
     }
   };
 
+  const forceFocus = (): void => {
+    if (!isNull(inputEl) && !isNull(inputEl.current)) {
+      inputEl.current.focus();
+    }
+  };
+
   const search = () => {
     props.setScrollPosition(0);
     cleanTimeout();
@@ -121,10 +127,10 @@ const Searchbar = (props: Props) => {
           filters: {},
         }),
       });
-      forceBlur();
     } else {
       setValue('');
     }
+    forceFocus();
   };
 
   const cleanProjectsSearch = () => {

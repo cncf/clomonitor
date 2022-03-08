@@ -220,3 +220,8 @@ export enum ErrorKind {
 export type ReportOptionInfo = {
   [key in ReportOption]: ReportOptionData;
 };
+
+export interface RecommendedTemplate {
+  name: string;
+  url: string;
+}

@@ -137,16 +137,25 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.documentation}
                       icon={CATEGORY_ICONS[ScoreType.Documentation]}
                       score={repo.score.documentation}
-                      recommendedTemplates={[
-                        {
-                          name: 'CONTRIBUTING.md',
-                          url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
-                        },
-                        {
-                          name: 'GOVERNANCE.md',
-                          url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
-                        },
-                      ]}
+                      recommendedTemplates={
+                        repo.kind === RepositoryKind.Primary
+                          ? [
+                              {
+                                name: 'CONTRIBUTING.md',
+                                url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
+                              },
+                              {
+                                name: 'GOVERNANCE.md',
+                                url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
+                              },
+                            ]
+                          : [
+                              {
+                                name: 'CONTRIBUTING.md',
+                                url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
+                              },
+                            ]
+                      }
                     />
                     <Row
                       reportId={report.report_id}

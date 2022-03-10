@@ -3,7 +3,7 @@
 exports[`Title creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex flex-row align-items-center"
+    class="d-flex flex-row align-items-center undefined"
   >
     icon
     <div

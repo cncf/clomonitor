@@ -50,16 +50,16 @@ describe('RepositoriesList', () => {
       expect(screen.getByTestId('repositories-summary')).toBeInTheDocument();
       expect(screen.getByTestId('primary-icon')).toBeInTheDocument();
       expect(screen.getAllByTestId('repository-info')).toHaveLength(6);
-      const anchorBtns = screen.getAllByRole('button', { name: /Anchor to/i });
-      expect(anchorBtns).toHaveLength(6 * 2);
+      const anchorBtns = screen.getAllByRole('button', { name: /Link to anchor/i });
+      expect(anchorBtns).toHaveLength(26);
 
       // Sorted repos
-      expect(anchorBtns[0]).toHaveAttribute('aria-label', 'Anchor to spec');
-      expect(anchorBtns[2]).toHaveAttribute('aria-label', 'Anchor to sdk-go');
-      expect(anchorBtns[4]).toHaveAttribute('aria-label', 'Anchor to sdk-javascript');
-      expect(anchorBtns[6]).toHaveAttribute('aria-label', 'Anchor to sdk-csharp');
-      expect(anchorBtns[8]).toHaveAttribute('aria-label', 'Anchor to sdk-java');
-      expect(anchorBtns[10]).toHaveAttribute('aria-label', 'Anchor to sdk-python');
+      expect(anchorBtns[0]).toHaveAttribute('aria-label', 'Link to anchor spec');
+      expect(anchorBtns[6]).toHaveAttribute('aria-label', 'Link to anchor sdk-go');
+      expect(anchorBtns[10]).toHaveAttribute('aria-label', 'Link to anchor sdk-javascript');
+      expect(anchorBtns[14]).toHaveAttribute('aria-label', 'Link to anchor sdk-csharp');
+      expect(anchorBtns[18]).toHaveAttribute('aria-label', 'Link to anchor sdk-java');
+      expect(anchorBtns[22]).toHaveAttribute('aria-label', 'Link to anchor sdk-python');
     });
 
     it('clicks anchor link', () => {
@@ -70,7 +70,7 @@ describe('RepositoriesList', () => {
         </Router>
       );
 
-      const anchors = screen.getAllByRole('button', { name: 'Anchor to sdk-go' });
+      const anchors = screen.getAllByRole('button', { name: 'Link to anchor sdk-go' });
       userEvent.click(anchors[0]);
 
       expect(mockScrollIntoView).toHaveBeenCalledTimes(1);
@@ -81,7 +81,7 @@ describe('RepositoriesList', () => {
           hash: 'sdk-go',
           pathname: '/',
         },
-        { replace: true, state: null }
+        { state: null }
       );
     });
   });

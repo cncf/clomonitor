@@ -5,11 +5,12 @@ exports[`Badge creates snapshot 1`] = `
   <div
     class="mx-auto px-2 text-center badge"
   >
-    <span
-      class="text-dark fw-bold"
+    <button
+      aria-label="Go from summary to section: repo"
+      class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
     >
       80
-    </span>
+    </button>
   </div>
 </DocumentFragment>
 `;

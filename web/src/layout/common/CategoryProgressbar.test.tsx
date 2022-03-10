@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import CategoryProgressbar from './CategoryProgressbar';
 
@@ -13,12 +14,20 @@ describe('CategoryProgressbar', () => {
   });
 
   it('creates snapshot', () => {
-    const { asFragment } = render(<CategoryProgressbar {...defaultProps} />);
+    const { asFragment } = render(
+      <Router>
+        <CategoryProgressbar {...defaultProps} />
+      </Router>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders proper content', () => {
-    render(<CategoryProgressbar {...defaultProps} />);
+    render(
+      <Router>
+        <CategoryProgressbar {...defaultProps} />
+      </Router>
+    );
     expect(screen.getByText('Documentation')).toBeInTheDocument();
     expect(screen.getByText('80')).toBeInTheDocument();
 

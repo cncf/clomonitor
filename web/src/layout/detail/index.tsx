@@ -24,13 +24,29 @@ import RepositoriesList from './repositories';
 
 const Detail = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state as { currentSearch?: string };
+  const { state, hash } = useLocation();
+  const currentState = state as { currentSearch?: string };
   const { org, project } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
 
   useScrollRestorationFix();
+
+  const scrollIntoView = useCallback(
+    (id?: string) => {
+      const elId = id || hash;
+      if (isUndefined(elId) || elId === '') return;
+      try {
+        const element = document.querySelector(elId);
+        if (element) {
+          element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
+        }
+      } finally {
+        return;
+      }
+    },
+    [hash]
+  );
 
   useEffect(() => {
     async function fetchProjectDetail() {
@@ -49,33 +65,12 @@ const Detail = () => {
     }
   }, [org, project]);
 
-  const scrollIntoView = useCallback(
-    (id?: string) => {
-      const elId = id || location.hash;
-      if (isUndefined(elId) || elId === '') return;
-
-      try {
-        const element = document.querySelector(elId);
-        if (element) {
-          element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
-        }
-      } finally {
-        return;
-      }
-    },
-    [location.hash]
-  );
-
-  useEffect(() => {
-    scrollIntoView();
-  }, [location.hash, detail]); /* eslint-disable-line react-hooks/exhaustive-deps */
-
   return (
     <>
-      {state && state.currentSearch && (
+      {currentState && currentState.currentSearch && (
         <SubNavbar>
           <button
-            onClick={() => navigate(`/search${state.currentSearch}`)}
+            onClick={() => navigate(`/search${currentState.currentSearch}`)}
             className={`btn btn-link p-0 text-reset ${styles.backBtn}`}
             aria-label="Back to results"
           >
@@ -160,7 +155,13 @@ const Detail = () => {
                       </p>
                     </div>
                     <div className="pt-2">
-                      <CategoriesSummary score={detail.score} bigSize />
+                      <CategoriesSummary
+                        score={detail.score}
+                        repoName={detail.repositories.length === 1 ? detail.repositories[0].name : undefined}
+                        scrollIntoView={scrollIntoView}
+                        bigSize
+                        withLinks
+                      />
                     </div>
                   </div>
                 </div>

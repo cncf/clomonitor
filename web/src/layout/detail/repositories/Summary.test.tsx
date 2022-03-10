@@ -16,6 +16,12 @@ const getRepositories = (fixtureId: string): Repository[] => {
   return require(`./__fixtures__/Summary/${fixtureId}.json`) as Repository[];
 };
 
+const mockScrollIntoView = jest.fn();
+
+const defaultProps = {
+  scrollIntoView: mockScrollIntoView,
+};
+
 describe('Summary', () => {
   afterEach(() => {
     jest.resetAllMocks();
@@ -25,7 +31,7 @@ describe('Summary', () => {
     const repositories = getRepositories('1');
     const { asFragment } = render(
       <Router>
-        <Summary repositories={repositories} />
+        <Summary {...defaultProps} repositories={repositories} />
       </Router>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -36,7 +42,7 @@ describe('Summary', () => {
       const repositories = getRepositories('1');
       render(
         <Router>
-          <Summary repositories={repositories} />
+          <Summary {...defaultProps} repositories={repositories} />
         </Router>
       );
 
@@ -55,7 +61,7 @@ describe('Summary', () => {
       expect(screen.getByText('sdk-python')).toBeInTheDocument();
 
       const btns = screen.getAllByRole('button', { name: /Go from summary to section:/i });
-      expect(btns).toHaveLength(6);
+      expect(btns).toHaveLength(26);
 
       expect(screen.getByText('44')).toBeInTheDocument();
       expect(screen.getByText('60')).toBeInTheDocument();
@@ -76,12 +82,12 @@ describe('Summary', () => {
     const repositories = getRepositories('1');
     render(
       <Router>
-        <Summary repositories={repositories} />
+        <Summary {...defaultProps} repositories={repositories} />
       </Router>
     );
 
-    const btn = screen.getByRole('button', { name: 'Go from summary to section: spec' });
-    userEvent.click(btn);
+    const btn = screen.getAllByRole('button', { name: 'Go from summary to section: spec' });
+    userEvent.click(btn[0]);
 
     expect(mockUseNavigate).toHaveBeenCalledTimes(1);
     expect(mockUseNavigate).toHaveBeenCalledWith(
@@ -97,7 +103,7 @@ describe('Summary', () => {
     it('when repositories is empty', () => {
       const { container } = render(
         <Router>
-          <Summary repositories={[]} />
+          <Summary {...defaultProps} repositories={[]} />
         </Router>
       );
       expect(container).toBeEmptyDOMElement();

@@ -1,5 +1,5 @@
 import { isUndefined } from 'lodash';
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { IoHelpBuoySharp } from 'react-icons/io5';
 
@@ -15,6 +15,7 @@ interface OptData {
 }
 
 interface Props {
+  repoName: string;
   reportId: string;
   name: ScoreType;
   label: string;
@@ -22,6 +23,7 @@ interface Props {
   data: OptData;
   score: number;
   recommendedTemplates?: RecommendedTemplate[];
+  getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
 }
 
 const sortOptions = (opts?: OptData): ReportOption[] => {
@@ -61,7 +63,15 @@ const Row = (props: Props) => {
   return (
     <div className="p-3 p-md-4 border border-top-0">
       <div className="mx-0 mx-md-1">
-        <Title title={props.label} icon={props.icon} />
+        <div className="d-flex flex-row position-relative">
+          <div id={`${props.repoName}_${props.name}`} className={`position-absolute ${styles.headerAnchor}`} />
+          <Title
+            title={props.label}
+            icon={props.icon}
+            className={styles.titleWrapper}
+            anchor={props.getAnchorLink(`${props.repoName}_${props.name}`, styles.headingLink)}
+          />
+        </div>
         <div className="d-flex flex-row mt-2 mb-4 align-items-center">
           <div className={`flex-grow-1 ${styles.progressbarWrapper}`}>
             <div className={`progress rounded-0 ${styles.progress}`}>

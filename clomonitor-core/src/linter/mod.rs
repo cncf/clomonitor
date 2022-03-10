@@ -5,6 +5,7 @@ use std::path::Path;
 use std::str::FromStr;
 
 mod check;
+pub mod check_result;
 mod metadata;
 mod patterns;
 pub mod primary;
@@ -32,6 +33,7 @@ impl FromStr for RepositoryKind {
 /// A core linter report specific to a repository kind.
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(tag = "report_kind")]
+#[allow(clippy::large_enum_variant)]
 pub enum Report {
     Primary(primary::Report),
     Secondary(secondary::Report),

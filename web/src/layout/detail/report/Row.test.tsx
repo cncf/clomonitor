@@ -10,15 +10,15 @@ const defaultProps = {
   label: 'label',
   icon: <>icon</>,
   data: {
-    roadmap: false,
-    code_of_conduct: true,
-    adopters: false,
-    changelog: true,
-    maintainers: true,
-    website: true,
-    contributing: true,
-    governance: false,
-    readme: true,
+    roadmap: { passed: false },
+    code_of_conduct: { passed: true },
+    adopters: { passed: false },
+    changelog: { passed: true },
+    maintainers: { passed: true },
+    website: { passed: true },
+    contributing: { passed: true },
+    governance: { passed: false },
+    readme: { passed: true },
   },
   score: 90,
   getAnchorLink: jest.fn(),
@@ -64,7 +64,16 @@ describe('Row', () => {
     });
 
     it('renders options in correct order', () => {
-      render(<Row {...defaultProps} data={{ approved: true, scanning: 'http://url.com', spdx_id: 'Apache-2.0' }} />);
+      render(
+        <Row
+          {...defaultProps}
+          data={{
+            approved: { passed: true },
+            scanning: { passed: true, url: 'http://url.com' },
+            spdx_id: { passed: true, value: 'Apache-2.0' },
+          }}
+        />
+      );
 
       const opts = screen.getAllByTestId('opt-name');
       expect(opts).toHaveLength(3);

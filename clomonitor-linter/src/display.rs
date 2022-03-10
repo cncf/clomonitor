@@ -57,39 +57,39 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Adopters"),
-            cell_check(report.documentation.adopters),
-        ])
-        .add_row(vec![
-            cell_entry("Documentation / Code of conduct"),
-            cell_check(report.documentation.code_of_conduct),
-        ])
-        .add_row(vec![
-            cell_entry("Documentation / Contributing"),
-            cell_check(report.documentation.contributing),
+            cell_check(report.documentation.adopters.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Changelog"),
-            cell_check(report.documentation.changelog),
+            cell_check(report.documentation.changelog.passed),
+        ])
+        .add_row(vec![
+            cell_entry("Documentation / Code of conduct"),
+            cell_check(report.documentation.code_of_conduct.passed),
+        ])
+        .add_row(vec![
+            cell_entry("Documentation / Contributing"),
+            cell_check(report.documentation.contributing.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Governance"),
-            cell_check(report.documentation.governance),
+            cell_check(report.documentation.governance.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Maintainers"),
-            cell_check(report.documentation.maintainers),
+            cell_check(report.documentation.maintainers.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Readme"),
-            cell_check(report.documentation.readme),
+            cell_check(report.documentation.readme.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Roadmap"),
-            cell_check(report.documentation.roadmap),
+            cell_check(report.documentation.roadmap.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Website"),
-            cell_check(report.documentation.website),
+            cell_check(report.documentation.website.passed),
         ])
         .add_row(vec![
             cell_entry("License"),
@@ -97,45 +97,46 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
                 report
                     .license
                     .spdx_id
+                    .value
                     .clone()
                     .unwrap_or_else(|| "Not detected".to_string()),
             ),
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(report.license.approved.unwrap_or(false)),
+            cell_check(report.license.approved.passed),
         ])
         .add_row(vec![
             cell_entry("License / Scanning"),
-            cell_check(report.license.scanning.is_some()),
+            cell_check(report.license.scanning.passed),
         ])
         .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
-            cell_check(report.best_practices.artifacthub_badge),
+            cell_check(report.best_practices.artifacthub_badge.passed),
         ])
         .add_row(vec![
             cell_entry("Best practices / Community meeting"),
-            cell_check(report.best_practices.community_meeting),
+            cell_check(report.best_practices.community_meeting.passed),
         ])
         .add_row(vec![
             cell_entry("Best practices / DCO"),
-            cell_check(report.best_practices.dco),
+            cell_check(report.best_practices.dco.passed),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),
-            cell_check(report.best_practices.openssf_badge),
+            cell_check(report.best_practices.openssf_badge.passed),
         ])
         .add_row(vec![
             cell_entry("Best practices / Recent release"),
-            cell_check(report.best_practices.recent_release),
+            cell_check(report.best_practices.recent_release.passed),
         ])
         .add_row(vec![
             cell_entry("Security / Security policy"),
-            cell_check(report.security.security_policy),
+            cell_check(report.security.security_policy.passed),
         ])
         .add_row(vec![
             cell_entry("Legal / Trademark footer"),
-            cell_check(report.legal.trademark_footer),
+            cell_check(report.legal.trademark_footer.passed),
         ]);
     println!("{checks}\n");
 }
@@ -169,15 +170,15 @@ pub(crate) fn display_secondary(
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Contributing"),
-            cell_check(report.documentation.contributing),
+            cell_check(report.documentation.contributing.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Maintainers"),
-            cell_check(report.documentation.maintainers),
+            cell_check(report.documentation.maintainers.passed),
         ])
         .add_row(vec![
             cell_entry("Documentation / Readme"),
-            cell_check(report.documentation.readme),
+            cell_check(report.documentation.readme.passed),
         ])
         .add_row(vec![
             cell_entry("License"),
@@ -185,13 +186,14 @@ pub(crate) fn display_secondary(
                 report
                     .license
                     .spdx_id
+                    .value
                     .clone()
                     .unwrap_or_else(|| "Not detected".to_string()),
             ),
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(report.license.approved.unwrap_or(false)),
+            cell_check(report.license.approved.passed),
         ]);
     println!("{checks}\n");
 }

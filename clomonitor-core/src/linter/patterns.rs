@@ -112,7 +112,7 @@ lazy_static! {
 
     #[rustfmt::skip]
     pub(crate) static ref DCO: RegexSet = RegexSet::new(vec![
-        r"DCO",
+        r#"[">]DCO[<"]"#,
     ]).expect("invalid exprs in DCO");
 
     #[rustfmt::skip]
@@ -259,6 +259,12 @@ Contributing
 ...
             "
         ));
+    }
+
+    #[test]
+    fn dco_match() {
+        assert!(DCO.is_match(r#"title="DCO""#));
+        assert!(DCO.is_match("<span>DCO</span>"));
     }
 
     #[test]

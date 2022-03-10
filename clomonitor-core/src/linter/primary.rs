@@ -1,4 +1,7 @@
-use super::{check, check::github, check::path::Globs, metadata::*, patterns::*, LintOptions};
+use super::{
+    check, check::github, check::path::Globs, check_result::CheckResult, metadata::*, patterns::*,
+    LintOptions,
+};
 use anyhow::Error;
 use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
@@ -19,49 +22,49 @@ pub struct Report {
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Documentation {
-    pub adopters: bool,
-    pub code_of_conduct: bool,
-    pub contributing: bool,
-    pub changelog: bool,
-    pub governance: bool,
-    pub maintainers: bool,
-    pub readme: bool,
-    pub roadmap: bool,
-    pub website: bool,
+    pub adopters: CheckResult,
+    pub code_of_conduct: CheckResult,
+    pub contributing: CheckResult,
+    pub changelog: CheckResult,
+    pub governance: CheckResult,
+    pub maintainers: CheckResult,
+    pub readme: CheckResult,
+    pub roadmap: CheckResult,
+    pub website: CheckResult,
 }
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct License {
-    pub approved: Option<bool>,
-    pub scanning: Option<String>,
-    pub spdx_id: Option<String>,
+    pub approved: CheckResult<bool>,
+    pub scanning: CheckResult,
+    pub spdx_id: CheckResult<String>,
 }
 
 /// BestPractices section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct BestPractices {
-    pub artifacthub_badge: bool,
-    pub community_meeting: bool,
-    pub dco: bool,
-    pub openssf_badge: bool,
-    pub recent_release: bool,
+    pub artifacthub_badge: CheckResult,
+    pub community_meeting: CheckResult,
+    pub dco: CheckResult,
+    pub openssf_badge: CheckResult,
+    pub recent_release: CheckResult,
 }
 
 /// Security section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Security {
-    pub security_policy: bool,
+    pub security_policy: CheckResult,
 }
 
 /// Legal section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Legal {
-    pub trademark_footer: bool,
+    pub trademark_footer: CheckResult,
 }
 
 /// Lint the path provided and return a report.
@@ -203,15 +206,15 @@ async fn lint_documentation(
     };
 
     Ok(Documentation {
-        adopters,
-        code_of_conduct,
-        contributing,
-        changelog,
-        governance,
-        maintainers,
-        readme,
-        roadmap,
-        website,
+        adopters: adopters.into(),
+        code_of_conduct: code_of_conduct.into(),
+        contributing: contributing.into(),
+        changelog: changelog.into(),
+        governance: governance.into(),
+        maintainers: maintainers.into(),
+        readme: readme.into(),
+        roadmap: roadmap.into(),
+        website: website.into(),
     })
 }
 
@@ -258,9 +261,9 @@ fn lint_license(root: &Path, md: &Option<Metadata>, gh_md: &Repository) -> Resul
     }
 
     Ok(License {
-        approved,
-        scanning: scanning_url,
-        spdx_id,
+        approved: (approved.unwrap_or(false), approved).into(),
+        scanning: CheckResult::from_url(scanning_url),
+        spdx_id: spdx_id.into(),
     })
 }
 
@@ -304,11 +307,11 @@ async fn lint_best_practices(root: &Path, repo_url: &str) -> Result<BestPractice
     let recent_release = check::github::has_recent_release(repo_url).await?;
 
     Ok(BestPractices {
-        artifacthub_badge,
-        community_meeting,
-        dco,
-        openssf_badge,
-        recent_release,
+        artifacthub_badge: artifacthub_badge.into(),
+        community_meeting: community_meeting.into(),
+        dco: dco.into(),
+        openssf_badge: openssf_badge.into(),
+        recent_release: recent_release.into(),
     })
 }
 
@@ -329,7 +332,9 @@ async fn lint_security(root: &Path, gh_md: &Repository) -> Result<Security, Erro
             &*SECURITY_POLICY_HEADER,
         )? || check::github::has_default_community_health_file(gh_md, "SECURITY.md").await?;
 
-    Ok(Security { security_policy })
+    Ok(Security {
+        security_policy: security_policy.into(),
+    })
 }
 
 /// Run legal checks and prepare the report's legal section.
@@ -342,5 +347,7 @@ async fn lint_legal(gh_md: &Repository) -> Result<Legal, Error> {
         }
     }
 
-    Ok(Legal { trademark_footer })
+    Ok(Legal {
+        trademark_footer: trademark_footer.into(),
+    })
 }

@@ -54,8 +54,14 @@ export interface Report {
 export interface CoreReport {
   // ScoreType
   [key: string]: {
-    [key: string]: number | boolean;
+    [key: string]: ReportCheck;
   };
+}
+
+export interface ReportCheck {
+  passed: boolean;
+  value?: string;
+  url?: string;
 }
 
 export type Score = {

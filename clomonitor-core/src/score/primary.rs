@@ -34,72 +34,70 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation
-    if report.documentation.adopters {
+    if report.documentation.adopters.passed {
         score.documentation += 5;
     }
-    if report.documentation.code_of_conduct {
+    if report.documentation.code_of_conduct.passed {
         score.documentation += 5;
     }
-    if report.documentation.contributing {
+    if report.documentation.contributing.passed {
         score.documentation += 10;
     }
-    if report.documentation.changelog {
+    if report.documentation.changelog.passed {
         score.documentation += 5;
     }
-    if report.documentation.governance {
+    if report.documentation.governance.passed {
         score.documentation += 10;
     }
-    if report.documentation.maintainers {
+    if report.documentation.maintainers.passed {
         score.documentation += 5;
     }
-    if report.documentation.readme {
+    if report.documentation.readme.passed {
         score.documentation += 50;
     }
-    if report.documentation.roadmap {
+    if report.documentation.roadmap.passed {
         score.documentation += 5;
     }
-    if report.documentation.website {
+    if report.documentation.website.passed {
         score.documentation += 5;
     }
 
     // License
-    if let Some(approved) = report.license.approved {
-        if approved {
-            score.license += 60;
-        }
+    if report.license.approved.passed {
+        score.license += 60;
     }
-    if report.license.scanning.is_some() {
+    if report.license.scanning.passed {
         score.license += 20;
     }
-    if report.license.spdx_id.is_some() {
+    if report.license.spdx_id.passed {
         score.license += 20;
     }
 
     // Best practices
-    if report.best_practices.artifacthub_badge {
+    if report.best_practices.artifacthub_badge.passed {
         score.best_practices += 5;
     }
-    if report.best_practices.community_meeting {
+    if report.best_practices.community_meeting.passed {
         score.best_practices += 25;
     }
-    if report.best_practices.dco {
+    if report.best_practices.dco.passed {
         score.best_practices += 10;
     }
-    if report.best_practices.openssf_badge {
+    if report.best_practices.openssf_badge.passed {
         score.best_practices += 50;
     }
-    if report.best_practices.recent_release {
+    if report.best_practices.recent_release.passed {
         score.best_practices += 10;
     }
 
     // Security
-    if report.security.security_policy {
-        score.security = 100;
+    if report.security.security_policy.passed {
+        score.security += 100;
     }
 
     // Legal
-    if report.legal.trademark_footer {
-        score.legal = 100;
+    if report.legal.trademark_footer.passed {
+        score.legal += 100;
     }
 
     // Global
@@ -116,6 +114,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::linter::check_result::CheckResult;
 
     #[test]
     fn new_returns_all_zeroes_score() {
@@ -137,33 +136,35 @@ mod tests {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {
-                    adopters: true,
-                    code_of_conduct: true,
-                    contributing: true,
-                    changelog: true,
-                    governance: true,
-                    maintainers: true,
-                    readme: true,
-                    roadmap: true,
-                    website: true,
+                    adopters: true.into(),
+                    code_of_conduct: true.into(),
+                    contributing: true.into(),
+                    changelog: true.into(),
+                    governance: true.into(),
+                    maintainers: true.into(),
+                    readme: true.into(),
+                    roadmap: true.into(),
+                    website: true.into(),
                 },
                 license: License {
-                    approved: Some(true),
-                    scanning: Some("https://license-scanning.url".to_string()),
-                    spdx_id: Some("Apache-2.0".to_string()),
+                    approved: (true, Some(true)).into(),
+                    scanning: CheckResult::from_url(Some(
+                        "https://license-scanning.url".to_string()
+                    )),
+                    spdx_id: Some("Apache-2.0".to_string()).into(),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: true,
-                    community_meeting: true,
-                    dco: true,
-                    openssf_badge: true,
-                    recent_release: true,
+                    artifacthub_badge: true.into(),
+                    community_meeting: true.into(),
+                    dco: true.into(),
+                    openssf_badge: true.into(),
+                    recent_release: true.into(),
                 },
                 security: Security {
-                    security_policy: true,
+                    security_policy: true.into(),
                 },
                 legal: Legal {
-                    trademark_footer: true,
+                    trademark_footer: true.into(),
                 },
             }),
             Score {
@@ -182,33 +183,33 @@ mod tests {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {
-                    adopters: false,
-                    code_of_conduct: false,
-                    contributing: false,
-                    changelog: false,
-                    governance: false,
-                    maintainers: false,
-                    readme: false,
-                    roadmap: false,
-                    website: false,
+                    adopters: false.into(),
+                    code_of_conduct: false.into(),
+                    contributing: false.into(),
+                    changelog: false.into(),
+                    governance: false.into(),
+                    maintainers: false.into(),
+                    readme: false.into(),
+                    roadmap: false.into(),
+                    website: false.into(),
                 },
                 license: License {
-                    approved: None,
-                    scanning: None,
-                    spdx_id: None,
+                    approved: (false, None).into(),
+                    scanning: CheckResult::from_url(None),
+                    spdx_id: None.into(),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: false,
-                    community_meeting: false,
-                    dco: false,
-                    openssf_badge: false,
-                    recent_release: false,
+                    artifacthub_badge: false.into(),
+                    community_meeting: false.into(),
+                    dco: false.into(),
+                    openssf_badge: false.into(),
+                    recent_release: false.into(),
                 },
                 security: Security {
-                    security_policy: false,
+                    security_policy: false.into(),
                 },
                 legal: Legal {
-                    trademark_footer: false,
+                    trademark_footer: false.into(),
                 },
             }),
             Score::new()

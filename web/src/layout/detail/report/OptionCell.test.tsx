@@ -5,7 +5,9 @@ import OptionCell from './OptionCell';
 
 const defaultProps = {
   label: ReportOption.Adopters,
-  value: true,
+  check: {
+    passed: true,
+  },
 };
 
 describe('OptionCell', () => {
@@ -47,7 +49,13 @@ describe('OptionCell', () => {
       render(
         <table>
           <tbody>
-            <OptionCell label={ReportOption.SPDX} value="Apache-2.0" />
+            <OptionCell
+              label={ReportOption.SPDX}
+              check={{
+                passed: true,
+                value: 'Apache-2.0',
+              }}
+            />
           </tbody>
         </table>
       );
@@ -58,8 +66,8 @@ describe('OptionCell', () => {
       expect(screen.getByText('LICENSE')).toBeInTheDocument();
     });
 
-    describe('when value is boolean', () => {
-      it('renders option with success icon', () => {
+    describe('passed', () => {
+      it('when true: renders option with success icon', () => {
         render(
           <table>
             <tbody>
@@ -72,39 +80,16 @@ describe('OptionCell', () => {
         expect(screen.queryByTestId('error-icon')).toBeNull();
       });
 
-      it('renders option with error icon', () => {
+      it('when false: renders option with error icon', () => {
         render(
           <table>
             <tbody>
-              <OptionCell {...defaultProps} value={false} />
-            </tbody>
-          </table>
-        );
-
-        expect(screen.getByTestId('error-icon')).toBeInTheDocument();
-        expect(screen.queryByTestId('success-icon')).toBeNull();
-      });
-    });
-
-    describe('when value is string', () => {
-      it('renders option with success icon', () => {
-        render(
-          <table>
-            <tbody>
-              <OptionCell {...defaultProps} value="test" />
-            </tbody>
-          </table>
-        );
-
-        expect(screen.getByTestId('success-icon')).toBeInTheDocument();
-        expect(screen.queryByTestId('error-icon')).toBeNull();
-      });
-
-      it('renders option with error icon', () => {
-        render(
-          <table>
-            <tbody>
-              <OptionCell {...defaultProps} value="" />
+              <OptionCell
+                {...defaultProps}
+                check={{
+                  passed: false,
+                }}
+              />
             </tbody>
           </table>
         );

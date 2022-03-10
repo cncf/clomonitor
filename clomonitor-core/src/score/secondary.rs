@@ -28,23 +28,21 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation
-    if report.documentation.contributing {
+    if report.documentation.contributing.passed {
         score.documentation += 20;
     }
-    if report.documentation.maintainers {
+    if report.documentation.maintainers.passed {
         score.documentation += 10;
     }
-    if report.documentation.readme {
+    if report.documentation.readme.passed {
         score.documentation += 70;
     }
 
     // License
-    if let Some(approved) = report.license.approved {
-        if approved {
-            score.license += 75;
-        }
+    if report.license.approved.passed {
+        score.license += 75;
     }
-    if report.license.spdx_id.is_some() {
+    if report.license.spdx_id.passed {
         score.license += 25;
     }
 
@@ -76,13 +74,13 @@ mod tests {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {
-                    contributing: true,
-                    maintainers: true,
-                    readme: true,
+                    contributing: true.into(),
+                    maintainers: true.into(),
+                    readme: true.into(),
                 },
                 license: License {
-                    approved: Some(true),
-                    spdx_id: Some("Apache-2.0".to_string()),
+                    approved: (true, Some(true)).into(),
+                    spdx_id: Some("Apache-2.0".to_string()).into(),
                 },
             }),
             Score {
@@ -98,13 +96,13 @@ mod tests {
         assert_eq!(
             calculate_score(&Report {
                 documentation: Documentation {
-                    contributing: false,
-                    maintainers: false,
-                    readme: false,
+                    contributing: false.into(),
+                    maintainers: false.into(),
+                    readme: false.into(),
                 },
                 license: License {
-                    approved: None,
-                    spdx_id: None,
+                    approved: (false, None).into(),
+                    spdx_id: None.into(),
                 },
             }),
             Score::new()

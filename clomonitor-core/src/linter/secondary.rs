@@ -1,4 +1,6 @@
-use super::{check, check::github, check::path::Globs, patterns::*, LintOptions};
+use super::{
+    check, check::github, check::path::Globs, check_result::CheckResult, patterns::*, LintOptions,
+};
 use anyhow::Error;
 use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
@@ -16,17 +18,17 @@ pub struct Report {
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Documentation {
-    pub contributing: bool,
-    pub maintainers: bool,
-    pub readme: bool,
+    pub contributing: CheckResult,
+    pub maintainers: CheckResult,
+    pub readme: CheckResult,
 }
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct License {
-    pub approved: Option<bool>,
-    pub spdx_id: Option<String>,
+    pub approved: CheckResult<bool>,
+    pub spdx_id: CheckResult<String>,
 }
 
 /// Lint the path provided and return a report.
@@ -68,9 +70,9 @@ async fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documenta
     })?;
 
     Ok(Documentation {
-        contributing,
-        maintainers,
-        readme,
+        contributing: contributing.into(),
+        maintainers: maintainers.into(),
+        readme: readme.into(),
     })
 }
 
@@ -89,5 +91,8 @@ fn lint_license(root: &Path) -> Result<License, Error> {
         approved = Some(check::license::is_approved(spdx_id))
     }
 
-    Ok(License { approved, spdx_id })
+    Ok(License {
+        approved: (approved.unwrap_or(false), approved).into(),
+        spdx_id: spdx_id.into(),
+    })
 }

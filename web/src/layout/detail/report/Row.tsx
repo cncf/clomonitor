@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { IoHelpBuoySharp } from 'react-icons/io5';
 
-import { RecommendedTemplate, ReportOption, ScoreType } from '../../../types';
+import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
 import ExternalLink from '../../common/ExternalLink';
 import OptionCell from './OptionCell';
@@ -11,7 +11,7 @@ import styles from './Row.module.css';
 import Title from './Title';
 
 interface OptData {
-  [key: string]: string | boolean;
+  [key: string]: ReportCheck;
 }
 
 interface Props {
@@ -94,7 +94,7 @@ const Row = (props: Props) => {
                   <OptionCell
                     key={`${props.reportId}_${props.label}_${opt}_cell`}
                     label={opt as ReportOption}
-                    value={props.data[opt]}
+                    check={props.data[opt]}
                   />
                 );
               })}

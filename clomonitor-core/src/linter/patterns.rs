@@ -6,13 +6,13 @@ use regex::{Regex, RegexSet};
 #[rustfmt::skip]
 pub(crate) static ADOPTERS_FILE: [&str; 2] = [
     "adopters*",
-    "users.md",
+    "users*",
 ];
 
 #[rustfmt::skip]
 pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 2] = [
-    "code*of*conduct.md",
-    "docs/code*of*conduct.md",
+    "code*of*conduct*",
+    "docs/code*of*conduct*",
 ];
 
 #[rustfmt::skip]
@@ -62,7 +62,8 @@ pub(crate) static ROADMAP_FILE: [&str; 1] = [
 #[rustfmt::skip]
 pub(crate) static SECURITY_POLICY_FILE: [&str; 3] = [
     "security*",
-    "docs/security*",".github/security*",
+    "docs/security*",
+    ".github/security*",
 ];
 
 // Regular expressions

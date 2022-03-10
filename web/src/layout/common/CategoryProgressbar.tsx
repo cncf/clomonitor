@@ -1,3 +1,6 @@
+import { isUndefined } from 'lodash';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import getCategoryColor from '../../utils/getCategoryColor';
 import styles from './CategoryProgressbar.module.css';
 
@@ -6,10 +9,15 @@ interface Props {
   value: number;
   name: string;
   bigSize?: boolean;
+  linkTo?: string;
+  scrollIntoView?: (id?: string) => void;
 }
 
 const CategoryProgressbar = (props: Props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const color = getCategoryColor(props.value);
+
   return (
     <div className={`${styles.wrapper} ${props.bigSize ? 'col-12 col-lg-9 col-xxxl-8' : 'col-12'}`}>
       <div className="d-flex flex-row bg-white position-relative border overflow-hidden">
@@ -17,7 +25,28 @@ const CategoryProgressbar = (props: Props) => {
           className={`d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto ${styles.title}`}
         >
           {props.icon && <span className={`pe-1 d-inline-block position-relative ${styles.icon}`}>{props.icon}</span>}
-          <span className="text-truncate">{props.name}</span>
+          {!isUndefined(props.linkTo) ? (
+            <button
+              className={`btn btn-link text-truncate text-muted fw-bold p-0 text-decoration-none ${styles.btn}`}
+              onClick={() => {
+                if (props.scrollIntoView) {
+                  props.scrollIntoView(`#${props.linkTo}`);
+                }
+                navigate(
+                  {
+                    pathname: location.pathname,
+                    hash: props.linkTo,
+                  },
+                  { state: location.state }
+                );
+              }}
+              aria-label={`Go from summary to section: ${props.linkTo}`}
+            >
+              {props.name}
+            </button>
+          ) : (
+            <span className="text-truncate">{props.name}</span>
+          )}
         </div>
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
           {props.value}

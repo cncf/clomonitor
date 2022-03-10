@@ -10,6 +10,7 @@ import styles from './Summary.module.css';
 
 interface Props {
   repositories: Repository[];
+  scrollIntoView: (id?: string) => void;
 }
 
 const Summary = (props: Props) => {
@@ -63,15 +64,16 @@ const Summary = (props: Props) => {
                   <div className="d-flex flex-row align-items-center pe-2">
                     <button
                       className={`btn btn-link text-dark text-truncate fw-bold px-2 ${styles.repoBtn}`}
-                      onClick={() =>
+                      onClick={() => {
+                        props.scrollIntoView(`#${repo.name}`);
                         navigate(
                           {
                             pathname: location.pathname,
                             hash: repo.name,
                           },
                           { state: location.state }
-                        )
-                      }
+                        );
+                      }}
                       aria-label={`Go from summary to section: ${repo.name}`}
                     >
                       {repo.name}
@@ -95,22 +97,42 @@ const Summary = (props: Props) => {
                   </div>
                 </td>
                 <td className="align-middle">
-                  <Badge value={repo.score.global} />
+                  <Badge value={repo.score.global} linkTo={repo.name} scrollIntoView={props.scrollIntoView} />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.documentation} />
+                  <Badge
+                    value={repo.score.documentation}
+                    linkTo={`${repo.name}_${ScoreType.Documentation}`}
+                    scrollIntoView={props.scrollIntoView}
+                  />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.license} />
+                  <Badge
+                    value={repo.score.license}
+                    linkTo={`${repo.name}_${ScoreType.License}`}
+                    scrollIntoView={props.scrollIntoView}
+                  />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.best_practices} />
+                  <Badge
+                    value={repo.score.best_practices}
+                    linkTo={`${repo.name}_${ScoreType.BestPractices}`}
+                    scrollIntoView={props.scrollIntoView}
+                  />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.security} />
+                  <Badge
+                    value={repo.score.security}
+                    linkTo={`${repo.name}_${ScoreType.Security}`}
+                    scrollIntoView={props.scrollIntoView}
+                  />
                 </td>
                 <td className="d-none d-md-table-cell align-middle">
-                  <Badge value={repo.score.legal} />
+                  <Badge
+                    value={repo.score.legal}
+                    linkTo={`${repo.name}_${ScoreType.Legal}`}
+                    scrollIntoView={props.scrollIntoView}
+                  />
                 </td>
               </tr>
             );

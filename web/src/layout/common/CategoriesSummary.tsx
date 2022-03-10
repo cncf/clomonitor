@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { isUndefined } from 'lodash';
 
 import { CATEGORY_ICONS } from '../../data';
 import { Score, ScoreType } from '../../types';
@@ -9,9 +10,14 @@ import RoundScore from './RoundScore';
 interface Props {
   score: Score;
   bigSize: boolean;
+  repoName?: string;
+  withLinks?: boolean;
+  scrollIntoView?: (id?: string) => void;
 }
 
 const CategoriesSummary = (props: Props) => {
+  const activeLink = !isUndefined(props.withLinks) && props.withLinks && props.repoName;
+
   return (
     <div
       className={classNames(
@@ -46,30 +52,40 @@ const CategoriesSummary = (props: Props) => {
             value={props.score.documentation}
             icon={CATEGORY_ICONS[ScoreType.Documentation]}
             bigSize={props.bigSize}
+            linkTo={activeLink ? `${props.repoName}_${ScoreType.Documentation}` : undefined}
+            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
           />
           <CategoryProgressbar
             name="License"
             value={props.score.license}
             icon={CATEGORY_ICONS[ScoreType.License]}
             bigSize={props.bigSize}
+            linkTo={activeLink ? `${props.repoName}_${ScoreType.License}` : undefined}
+            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
           />
           <CategoryProgressbar
             name="Best Practices"
             value={props.score.best_practices}
             icon={CATEGORY_ICONS[ScoreType.BestPractices]}
             bigSize={props.bigSize}
+            linkTo={activeLink ? `${props.repoName}_${ScoreType.BestPractices}` : undefined}
+            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
           />
           <CategoryProgressbar
             name="Security"
             value={props.score.security}
             icon={CATEGORY_ICONS[ScoreType.Security]}
             bigSize={props.bigSize}
+            linkTo={activeLink ? `${props.repoName}_${ScoreType.Security}` : undefined}
+            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
           />
           <CategoryProgressbar
             name="Legal"
             value={props.score.legal}
             icon={CATEGORY_ICONS[ScoreType.Legal]}
             bigSize={props.bigSize}
+            linkTo={activeLink ? `${props.repoName}_${ScoreType.Legal}` : undefined}
+            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
           />
         </div>
       </div>

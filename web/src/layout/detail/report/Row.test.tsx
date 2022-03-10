@@ -4,6 +4,7 @@ import { ScoreType } from '../../../types';
 import Row from './Row';
 
 const defaultProps = {
+  repoName: 'repo',
   reportId: 'id',
   name: ScoreType.Documentation,
   label: 'label',
@@ -20,6 +21,7 @@ const defaultProps = {
     readme: true,
   },
   score: 90,
+  getAnchorLink: jest.fn(),
 };
 
 describe('Row', () => {

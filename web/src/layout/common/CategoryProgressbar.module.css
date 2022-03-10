@@ -38,6 +38,10 @@
   right: -2px;
 }
 
+.btn {
+  font-size: 0.75rem;
+}
+
 @media only screen and (min-width: 768px) {
   .bigSize {
     height: 24px;

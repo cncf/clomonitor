@@ -18,6 +18,10 @@
   font-size: 0.75rem;
 }
 
+.headerAnchor {
+  top: -1rem;
+}
+
 @media only screen and (min-width: 576px) {
   .progressbarWrapper {
     max-width: 50%;
@@ -33,5 +37,11 @@
 @media only screen and (min-width: 992px) {
   .table {
     max-width: 1300px;
+  }
+}
+
+@media (hover: hover) {
+  .titleWrapper:hover .headingLink {
+    opacity: 1;
   }
 }

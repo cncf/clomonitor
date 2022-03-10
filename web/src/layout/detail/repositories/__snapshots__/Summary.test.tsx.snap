@@ -232,11 +232,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-go"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 95
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -245,11 +246,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-go_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 90
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -258,11 +260,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-go_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 100
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -326,11 +329,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-javascript"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 95
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -339,11 +343,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-javascript_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 90
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -352,11 +357,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-javascript_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 100
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -420,11 +426,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-csharp"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 85
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -433,11 +440,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-csharp_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 70
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -446,11 +454,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-csharp_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 100
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -514,11 +523,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-python"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 85
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -527,11 +537,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-python_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 70
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -540,11 +551,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-python_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 100
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -644,11 +656,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: spec"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 44
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -657,11 +670,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: spec_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 60
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -670,11 +684,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: spec_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 80
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -683,11 +698,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: spec_best_practices"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 35
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -696,11 +712,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: spec_security"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 0
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -738,11 +755,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-java"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 85
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -751,11 +769,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-java_documentation"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 70
-              </span>
+              </button>
             </div>
           </td>
           <td
@@ -764,11 +783,12 @@ exports[`Summary creates snapshot 1`] = `
             <div
               class="mx-auto px-2 text-center badge"
             >
-              <span
-                class="text-dark fw-bold"
+              <button
+                aria-label="Go from summary to section: sdk-java_license"
+                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
               >
                 100
-              </span>
+              </button>
             </div>
           </td>
           <td

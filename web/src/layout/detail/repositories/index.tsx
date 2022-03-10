@@ -1,5 +1,5 @@
-import { orderBy } from 'lodash';
-import { Fragment, useEffect, useState } from 'react';
+import { isUndefined, orderBy } from 'lodash';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { FaCrown } from 'react-icons/fa';
 import { GoLink } from 'react-icons/go';
 import { VscGithub } from 'react-icons/vsc';
@@ -27,45 +27,72 @@ const sortRepos = (repos: Repository[]): Repository[] => {
 };
 
 const RepositoriesList = (props: Props) => {
-  const location = useLocation();
+  const { hash, state, pathname } = useLocation();
   const navigate = useNavigate();
+  const ref = useRef<HTMLDivElement | null>(null);
   const [repositories, setRepositories] = useState<Repository[]>([]);
 
-  useEffect(() => {
-    setRepositories(sortRepos(props.repositories));
-  }, [props.repositories]);
-
-  if (repositories.length === 0) return null;
-
-  const getAnchorLink = (repo: Repository) => (
+  const getAnchorLink = (anchorName: string, className?: string): JSX.Element => (
     <button
       onClick={() => {
-        props.scrollIntoView(`#${repo.name}`);
+        props.scrollIntoView(`#${anchorName}`);
         navigate(
           {
-            pathname: location.pathname,
-            hash: repo.name,
+            pathname: pathname,
+            hash: `${anchorName}`,
           },
-          { state: location.state, replace: true }
+          { state: state }
         );
       }}
-      className={`btn btn-link text-reset text-center lh-1 ${styles.headingLink}`}
-      aria-label={`Anchor to ${repo.name}`}
+      className={`btn btn-link text-reset text-center lh-1 ${styles.headingLink} ${className}`}
+      aria-label={`Link to anchor ${anchorName}`}
     >
       <GoLink />
     </button>
   );
 
+  useEffect(() => {
+    setRepositories(sortRepos(props.repositories));
+  }, [props.repositories]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timer | undefined;
+
+    const cleanInterval = () => {
+      if (!isUndefined(timer)) {
+        clearInterval(timer);
+      }
+    };
+
+    if (hash === '') {
+      window.scrollTo(0, 0);
+    } else {
+      // We need to check if element is in the DOM
+      timer = setInterval(() => {
+        if (ref && ref.current) {
+          props.scrollIntoView();
+          cleanInterval();
+        }
+      }, 50);
+    }
+
+    return () => {
+      cleanInterval();
+    };
+  }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  if (repositories.length === 0) return null;
+
   return (
-    <>
+    <div ref={ref}>
       <div className="my-3">
         <div className="text-center text-md-start text-uppercase h5 text-secondary fw-bold mb-3 mb-md-4">
           Repositories
         </div>
       </div>
 
-      {/* Summary - only for more than 1 repository */}
-      {repositories.length > 1 && <Summary repositories={repositories} />}
+      {/* Summary - only when more than 1 repository */}
+      {repositories.length > 1 && <Summary repositories={repositories} scrollIntoView={props.scrollIntoView} />}
 
       {repositories.map((repo: Repository) => {
         return (
@@ -74,9 +101,8 @@ const RepositoriesList = (props: Props) => {
             key={`repo_${repo.repository_id}`}
             className="mb-4 mb-md-5 position-relative"
           >
-            <div>
-              <div className={`position-absolute ${styles.headerAnchor}`} id={repo.name} />
-            </div>
+            <div id={repo.name} className={`position-absolute ${styles.headerAnchor}`} />
+
             <div className={`border px-3 py-2 px-md-4 py-md-4 ${styles.headerWrapper}`}>
               <div className="d-flex flex-row flex-md-row-reverse align-items-center">
                 <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
@@ -98,7 +124,7 @@ const RepositoriesList = (props: Props) => {
                           active
                         />
                       )}
-                      {getAnchorLink(repo)}
+                      {getAnchorLink(repo.name)}
                     </div>
                     <ExternalLink href={repo.url}>
                       <div className={`d-flex flex-row align-items-center ${styles.link}`}>
@@ -117,7 +143,7 @@ const RepositoriesList = (props: Props) => {
                           <FaCrown data-testid="primary-icon" className="d-block d-md-none text-warning ms-2" />
                         </small>
                       )}
-                      {getAnchorLink(repo)}
+                      {getAnchorLink(repo.name)}
                     </div>
                   </div>
                 </div>
@@ -131,6 +157,7 @@ const RepositoriesList = (props: Props) => {
                 return (
                   <Fragment key={report.report_id}>
                     <Row
+                      repoName={repo.name}
                       reportId={report.report_id}
                       name={ScoreType.Documentation}
                       label="Documentation"
@@ -156,24 +183,30 @@ const RepositoriesList = (props: Props) => {
                               },
                             ]
                       }
+                      getAnchorLink={getAnchorLink}
                     />
                     <Row
+                      repoName={repo.name}
                       reportId={report.report_id}
                       name={ScoreType.License}
                       label="License"
                       data={report.data.license}
                       icon={CATEGORY_ICONS[ScoreType.License]}
                       score={repo.score.license}
+                      getAnchorLink={getAnchorLink}
                     />
                     <Row
+                      repoName={repo.name}
                       reportId={report.report_id}
                       name={ScoreType.BestPractices}
                       label="Best Practices"
                       data={report.data.best_practices}
                       icon={CATEGORY_ICONS[ScoreType.BestPractices]}
                       score={repo.score.best_practices}
+                      getAnchorLink={getAnchorLink}
                     />
                     <Row
+                      repoName={repo.name}
                       reportId={report.report_id}
                       name={ScoreType.Security}
                       label="Security"
@@ -186,14 +219,17 @@ const RepositoriesList = (props: Props) => {
                           url: 'https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md',
                         },
                       ]}
+                      getAnchorLink={getAnchorLink}
                     />
                     <Row
+                      repoName={repo.name}
                       reportId={report.report_id}
                       name={ScoreType.Legal}
                       label="Legal"
                       data={report.data.legal}
                       icon={CATEGORY_ICONS[ScoreType.Legal]}
                       score={repo.score.legal}
+                      getAnchorLink={getAnchorLink}
                     />
                   </Fragment>
                 );
@@ -202,7 +238,7 @@ const RepositoriesList = (props: Props) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

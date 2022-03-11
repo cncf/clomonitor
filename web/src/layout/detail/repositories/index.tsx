@@ -164,6 +164,7 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.documentation}
                       icon={CATEGORY_ICONS[ScoreType.Documentation]}
                       score={repo.score.documentation}
+                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
                       recommendedTemplates={
                         repo.kind === RepositoryKind.Primary
                           ? [
@@ -193,6 +194,7 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.license}
                       icon={CATEGORY_ICONS[ScoreType.License]}
                       score={repo.score.license}
+                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
                       getAnchorLink={getAnchorLink}
                     />
                     <Row
@@ -203,6 +205,7 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.best_practices}
                       icon={CATEGORY_ICONS[ScoreType.BestPractices]}
                       score={repo.score.best_practices}
+                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
                       getAnchorLink={getAnchorLink}
                     />
                     <Row
@@ -213,6 +216,7 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.security}
                       icon={CATEGORY_ICONS[ScoreType.Security]}
                       score={repo.score.security}
+                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
                       recommendedTemplates={[
                         {
                           name: 'SECURITY.md',
@@ -229,6 +233,7 @@ const RepositoriesList = (props: Props) => {
                       data={report.data.legal}
                       icon={CATEGORY_ICONS[ScoreType.Legal]}
                       score={repo.score.legal}
+                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#legal"
                       getAnchorLink={getAnchorLink}
                     />
                   </Fragment>

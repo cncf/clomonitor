@@ -38,7 +38,6 @@ describe('OptionCell', () => {
       );
 
       expect(screen.getByText('Adopters')).toBeInTheDocument();
-      expect(screen.getByTestId('elementWithTooltip')).toBeInTheDocument();
       expect(screen.getByTestId('opt-name')).toBeInTheDocument();
       expect(
         screen.getByText('List of organizations using this project in production or at stages of testing')
@@ -61,7 +60,6 @@ describe('OptionCell', () => {
       );
 
       expect(screen.getByText('Apache-2.0')).toBeInTheDocument();
-      expect(screen.getByTestId('elementWithTooltip')).toBeInTheDocument();
       expect(screen.getByText(/file contains the repository's license/)).toBeInTheDocument();
       expect(screen.getByText('LICENSE')).toBeInTheDocument();
     });

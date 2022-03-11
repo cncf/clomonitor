@@ -1,10 +1,9 @@
 import { isUndefined } from 'lodash';
-import { FaRegCheckCircle, FaRegQuestionCircle, FaRegTimesCircle } from 'react-icons/fa';
+import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
-import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import styles from './OptionCell.module.css';
 
@@ -57,17 +56,6 @@ const OptionCell = (props: Props) => {
             </div>
           </div>
         </div>
-      </td>
-      <td className={`d-none d-md-table-cell text-center text-muted ${styles.iconCell}`}>
-        <ElementWithTooltip
-          className="ms-2 lh-1"
-          element={<FaRegQuestionCircle className={styles.icon} />}
-          tooltipWidth={285}
-          tooltipClassName={styles.tooltipMessage}
-          tooltipMessage={<div className="my-2">{opt.description}</div>}
-          visibleTooltip
-          active
-        />
       </td>
     </tr>
   );

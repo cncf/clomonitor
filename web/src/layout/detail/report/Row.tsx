@@ -1,7 +1,6 @@
 import { isUndefined } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
-import { IoHelpBuoySharp } from 'react-icons/io5';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
@@ -22,6 +21,7 @@ interface Props {
   icon: JSX.Element;
   data: OptData;
   score: number;
+  referenceUrl?: string;
   recommendedTemplates?: RecommendedTemplate[];
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
 }
@@ -102,40 +102,56 @@ const Row = (props: Props) => {
           </table>
         </div>
 
-        {!isUndefined(props.recommendedTemplates) && props.recommendedTemplates.length > 0 && (
-          <div data-testid="recommended-templates">
-            <div className="d-flex flex-row align-items-center pt-2">
-              <IoHelpBuoySharp className="me-2" />
-              <div>
-                CNCF recommended templates:{' '}
-                {props.recommendedTemplates.map((tmpl: RecommendedTemplate, index: number) => {
-                  return (
-                    <Fragment key={`${props.label}_tmpl_${index}`}>
-                      <ExternalLink href={tmpl.url} className="d-inline-block">
-                        <div className="d-flex flex-row align-items-center">
-                          <code className="text-muted fw-bold">{tmpl.name}</code>
-                          <FiExternalLink className={`ms-2 position-relative ${styles.extIcon}`} />
-                        </div>
-                      </ExternalLink>
-                      {(() => {
-                        switch (index) {
-                          case tmplsNumber - 1:
-                            return <>.</>;
+        <ul className={`mb-0 ${styles.linksList}`}>
+          {!isUndefined(props.referenceUrl) && (
+            <li className="pt-2">
+              <ExternalLink
+                href={props.referenceUrl}
+                label={`Checks reference documentation for ${props.label} category`}
+                className="d-inline-block"
+              >
+                <div className="d-flex flex-row align-items-center">
+                  <div>Checks reference documentation</div>
+                  <FiExternalLink className={`ms-1 ms-md-2 position-relative ${styles.extIcon}`} />
+                </div>
+              </ExternalLink>
+            </li>
+          )}
 
-                          case tmplsNumber - 2:
-                            return <> and </>;
+          {!isUndefined(props.recommendedTemplates) && props.recommendedTemplates.length > 0 && (
+            <li data-testid="recommended-templates" className="pt-1">
+              <div className="d-flex flex-row align-items-center">
+                <div>
+                  CNCF recommended templates:{' '}
+                  {props.recommendedTemplates.map((tmpl: RecommendedTemplate, index: number) => {
+                    return (
+                      <Fragment key={`${props.label}_tmpl_${index}`}>
+                        <ExternalLink href={tmpl.url} className="d-inline-block">
+                          <div className="d-flex flex-row align-items-center">
+                            <code className="text-muted fw-bold">{tmpl.name}</code>
+                            <FiExternalLink className={`ms-1 ms-md-2 position-relative ${styles.extIcon}`} />
+                          </div>
+                        </ExternalLink>
+                        {(() => {
+                          switch (index) {
+                            case tmplsNumber - 1:
+                              return <>.</>;
 
-                          default:
-                            return <>, </>;
-                        }
-                      })()}
-                    </Fragment>
-                  );
-                })}
+                            case tmplsNumber - 2:
+                              return <> and </>;
+
+                            default:
+                              return <>, </>;
+                          }
+                        })()}
+                      </Fragment>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );

@@ -97,7 +97,6 @@ export interface ReportOptionData {
   icon: JSX.Element;
   name: string;
   legend: JSX.Element;
-  description: JSX.Element;
 }
 
 export enum Maturity {

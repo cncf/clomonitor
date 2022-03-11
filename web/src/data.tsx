@@ -97,25 +97,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <ImOffice />,
     name: 'Adopters',
     legend: <span>List of organizations using this project in production or at stages of testing</span>,
-    description: (
-      <span>
-        We check that an <code>adopters*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository or that the <code>README</code> file contains an <strong>adopters</strong> header
-      </span>
-    ),
   },
   [ReportOption.ApprovedLicense]: {
     icon: <FaCheckDouble />,
     name: 'Approved license',
     legend: <span>Whether the repository uses an approved license or not</span>,
-    description: (
-      <span>
-        If the repository&#39;s license has been identified, this check verifies that it is one of the approved licenses{' '}
-        <em>
-          (Apache-2.0, BSD-2-Clause, BSD-2-Clause-FreeBSD, BSD-3-Clause, ISC, MIT, PostgreSQL, Python-2.0, X11, Zlib)
-        </em>
-      </span>
-    ),
   },
   [ReportOption.ArtifactHubBadge]: {
     icon: <FiHexagon />,
@@ -129,22 +115,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         to improve their discoverability
       </span>
     ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains an Artifact Hub badge
-      </span>
-    ),
   },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
     name: 'Changelog',
-    legend: <span>A curated, chronologically ordered list of notable changes for each version</span>,
-    description: (
-      <span>
-        We check that an <code>changelog*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
-        the repository
-      </span>
-    ),
+    legend: <span>A curated, chronologically ordered list of notable changes for each version</span>,
   },
   [ReportOption.CodeOfConduct]: {
     icon: <GiFountainPen />,
@@ -155,13 +130,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         procedures for handling abuse
       </span>
     ),
-    description: (
-      <span>
-        We check that a <code>code*of*conduct.md*</code> <em>(no case sensitive)</em> file exists at the{' '}
-        <code>root</code> of the repository or in the <code>docs</code> directory or that the <code>README</code> file
-        contains a <strong>code of conduct</strong> header
-      </span>
-    ),
   },
   [ReportOption.CommunityMeeting]: {
     icon: <IoIosPeople />,
@@ -169,12 +137,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         Community meetings are often held to engage community members, hear more voices and get more viewpoints
-      </span>
-    ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains patterns like <em>community meeting</em>,{' '}
-        <em>meeting minutes</em>, etc.
       </span>
     ),
   },
@@ -187,12 +149,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         how they can help with your project
       </span>
     ),
-    description: (
-      <span>
-        We check that a <code>contributing*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
-        the repository or in the <code>docs</code> directory
-      </span>
-    ),
   },
   [ReportOption.DCO]: {
     icon: <FaFileSignature />,
@@ -202,24 +158,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         Mechanism for contributors to certify that they wrote or have the right to submit the code they are contributing
       </span>
     ),
-    description: (
-      <span>
-        We check that the last commits in the repository have the DCO signature or the last PR in the repo has the DCO
-        check
-      </span>
-    ),
   },
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,
     name: 'Governance',
     legend: <span>Document that explains how the governance and committer process works in the repository</span>,
-    description: (
-      <span>
-        We check that a <code>governance*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of
-        the repository or in the <code>docs</code> directory or that the <code>README</code> file contains a
-        <strong>governance</strong> header
-      </span>
-    ),
   },
   [ReportOption.LicenseScanning]: {
     icon: <GiStamper />,
@@ -229,12 +172,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         License scanning software scans and automatically identifies, manages and addresses open source licensing issues
       </span>
     ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains a FOSSA or Snyk badge. It’s also possible to provide a
-        scanning url in the <code>.clomonitor.yml</code> metadata file
-      </span>
-    ),
   },
   [ReportOption.Maintainers]: {
     icon: <FaTools />,
@@ -242,13 +179,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         The <em>maintainers</em> file contains a list of the current maintainers of the repository
-      </span>
-    ),
-    description: (
-      <span>
-        We check that a <code>maintainers*</code>, <code>owners*</code> or <code>codeowners*</code>{' '}
-        <em>(no case sensitive)</em> file exists at the <code>root</code> of the repository or in the <code>docs</code>{' '}
-        directory
       </span>
     ),
   },
@@ -261,11 +191,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         Software (FLOSS) projects to show that they follow best practices
       </span>
     ),
-    description: (
-      <span>
-        We check that the <code>README</code> file contains a <em>OpenSSF (CII)</em> badge
-      </span>
-    ),
   },
   [ReportOption.Readme]: {
     icon: <CgReadme />,
@@ -276,18 +201,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         understand what the project is about
       </span>
     ),
-    description: (
-      <span>
-        We check that a <code>README*</code> <em>(case sensitive)</em> file exists at the <code>root</code> of the
-        repository
-      </span>
-    ),
   },
   [ReportOption.RecentRelease]: {
     icon: <BsCalendar3 />,
     name: 'Recent release',
     legend: <span>The project should have released at least one version in the last year</span>,
-    description: <span>We check that the repository has released a new version in Github in the last year</span>,
   },
   [ReportOption.Roadmap]: {
     icon: <RiRoadMapLine />,
@@ -295,24 +213,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline</span>
     ),
-    description: (
-      <span>
-        We check that a <code>roadmap*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository or that the <code>README</code> file contains a <strong>roadmap</strong> header
-      </span>
-    ),
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,
     name: 'Security policy',
     legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
-    description: (
-      <span>
-        We check that a <code>security*</code> <em>(no case sensitive)</em> file exists at the <code>root</code> of the
-        repository, in the <code>docs</code> or <code>.github</code> directories or that the <code>README</code> file
-        contains a <strong>security</strong> header
-      </span>
-    ),
   },
   [ReportOption.SPDX]: {
     icon: <FaBalanceScale />,
@@ -322,24 +227,15 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         The <em>LICENSE</em> file contains the repository's license
       </span>
     ),
-    description: (
-      <span>
-        We process the <code>LICENSE*</code> or <code>COPYING*</code> <em>(case sensitive)</em> file at the{' '}
-        <code>root</code> of the repository and try to detect the license <code>SPDX</code> identifier from the file
-        content
-      </span>
-    ),
   },
   [ReportOption.TrademarkFooter]: {
     icon: <FaTrademark />,
     name: 'Trademark footer',
     legend: <span>Projects sites should have the Linux Foundation trademark footer</span>,
-    description: <span>We check that the website defined in Github has the Linux Foundation trademark footer</span>,
   },
   [ReportOption.Website]: {
     icon: <BiWorld />,
     name: 'Website',
     legend: <span>A url that users can visit to learn more about your project</span>,
-    description: <span>We check that the repository has a website set in Github</span>,
   },
 };

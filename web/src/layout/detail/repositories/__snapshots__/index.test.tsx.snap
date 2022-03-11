@@ -1185,32 +1185,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -1288,36 +1262,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               class="d-none d-lg-block text-muted text-truncate w-100 legend"
                             >
                               <span>
-                                A curated, chronologically ordered list of notable changes for each version
+                                A curated, chronologically ordered list of notable changes for each version
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -1387,32 +1335,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -1491,32 +1413,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -1583,32 +1479,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -1682,32 +1552,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -1787,32 +1631,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -1888,32 +1706,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -1983,157 +1775,171 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                   and 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
-                  >
-                    <div
-                      class="d-flex flex-row align-items-baseline"
+                    </a>
+                     and 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/GOVERNANCE.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          GOVERNANCE.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            GOVERNANCE.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -2294,32 +2100,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -2389,36 +2169,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -2598,32 +2405,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -2693,32 +2474,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -2794,36 +2549,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for Best Practices category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -2980,109 +2762,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Security category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          SECURITY.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            SECURITY.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -3392,32 +3188,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -3488,32 +3258,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -3593,109 +3337,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -3856,32 +3614,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -3951,36 +3683,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -4290,32 +4049,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -4386,32 +4119,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -4491,109 +4198,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -4754,32 +4475,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -4849,36 +4544,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -5188,32 +4910,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -5284,32 +4980,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -5389,109 +5059,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -5652,32 +5336,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -5747,36 +5405,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -6086,32 +5771,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -6182,32 +5841,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -6287,109 +5920,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -6550,32 +6197,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -6645,36 +6266,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -6984,32 +6632,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -7080,32 +6702,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
                         </div>
                       </div>
                     </td>
@@ -7185,109 +6781,123 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              data-testid="recommended-templates"
+            <ul
+              class="mb-0 linksList"
             >
-              <div
-                class="d-flex flex-row align-items-center pt-2"
+              <li
+                class="pt-2"
               >
-                <svg
-                  class="me-2"
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <a
+                  aria-label="Checks reference documentation for Documentation category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
                 >
-                  <path
-                    d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zm-64 224a64 64 0 1164 64 64 64 0 01-64-64zm237.24-62.29L342.91 199a104.86 104.86 0 00-29.86-29.86l5.24-86.33a185 185 0 01111 111zm-303.35-67.82a183.44 183.44 0 0167.82-43.13l5.29 86.33A104.86 104.86 0 00169.09 199l-86.33-5.24a183.44 183.44 0 0143.13-67.87zm-43.13 192.4l86.33-5.24A104.86 104.86 0 00199 342.91l-5.24 86.33a185 185 0 01-111-110.95zm303.35 67.82a183.44 183.44 0 01-67.82 43.13l-5.24-86.33a104.86 104.86 0 0029.86-29.86l86.33 5.24a183.44 183.44 0 01-43.13 67.82z"
-                  />
-                </svg>
-                <div>
-                  CNCF recommended templates: 
-                  <a
-                    aria-label="Open external link"
-                    class="link d-inline-block"
-                    href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
-                    rel="noopener noreferrer"
-                    tabindex="-1"
-                    target="_blank"
+                  <div
+                    class="d-flex flex-row align-items-baseline"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li
+                class="pt-1"
+                data-testid="recommended-templates"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <div>
+                    CNCF recommended templates: 
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline-block"
+                      href="https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center"
+                        class="d-flex flex-row align-items-baseline"
                       >
-                        <code
-                          class="text-muted fw-bold"
+                        <div
+                          class="d-flex flex-row align-items-center"
                         >
-                          CONTRIBUTING.md
-                        </code>
-                        <svg
-                          class="ms-2 position-relative extIcon"
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          />
-                          <polyline
-                            points="15 3 21 3 21 9"
-                          />
-                          <line
-                            x1="10"
-                            x2="21"
-                            y1="14"
-                            y2="3"
-                          />
-                        </svg>
+                          <code
+                            class="text-muted fw-bold"
+                          >
+                            CONTRIBUTING.md
+                          </code>
+                          <svg
+                            class="ms-1 ms-md-2 position-relative extIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                  .
+                    </a>
+                    .
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -7448,32 +7058,6 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                   <tr>
                     <td
@@ -7543,36 +7127,63 @@ exports[`RepositoriesList creates snapshot 1`] = `
                         </div>
                       </div>
                     </td>
-                    <td
-                      class="d-none d-md-table-cell text-center text-muted iconCell"
-                    >
-                      <div
-                        class="d-none d-md-block position-relative ms-2 lh-1"
-                      >
-                        <div
-                          data-testid="elementWithTooltip"
-                        >
-                          <svg
-                            class="icon"
-                            fill="currentColor"
-                            height="1em"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 512 512"
-                            width="1em"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ul
+              class="mb-0 linksList"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for License category"
+                  class="link d-inline-block"
+                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center"
+                    >
+                      <div>
+                        Checks reference documentation
+                      </div>
+                      <svg
+                        class="ms-1 ms-md-2 position-relative extIcon"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                        />
+                        <polyline
+                          points="15 3 21 3 21 9"
+                        />
+                        <line
+                          x1="10"
+                          x2="21"
+                          y1="14"
+                          y2="3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

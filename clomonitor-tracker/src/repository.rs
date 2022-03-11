@@ -1,4 +1,5 @@
 use anyhow::{format_err, Error};
+use chrono::{DateTime, Duration, Utc};
 use clomonitor_core::{
     linter::{lint, LintOptions, Report, RepositoryKind},
     score::{self, Score},
@@ -21,6 +22,7 @@ pub(crate) struct Repository {
     url: String,
     kind: RepositoryKind,
     digest: Option<String>,
+    updated_at: DateTime<Utc>,
 }
 
 impl Repository {
@@ -38,10 +40,11 @@ impl Repository {
     ) -> Result<(), Error> {
         let start = Instant::now();
 
-        // Skip if repository hasn't changed since the last time it was tracked
+        // Process only if the repository has changed since the last time it
+        // was tracked or it hasn't been tracked in more than 1 day
         let remote_digest = self.get_remote_digest().await?;
         if let Some(digest) = &self.digest {
-            if &remote_digest == digest {
+            if &remote_digest == digest && self.updated_at > Utc::now() - Duration::days(1) {
                 return Ok(());
             }
         }
@@ -196,7 +199,12 @@ impl Repository {
 
         // Update repository's score
         tx.execute(
-            "update repository set score = $1::jsonb where repository_id = $2::uuid;",
+            "
+            update repository set
+                score = $1::jsonb,
+                updated_at = current_timestamp
+            where repository_id = $2::uuid;
+            ",
             &[&Json(&repository_score), &self.repository_id],
         )
         .await?;
@@ -278,7 +286,7 @@ pub(crate) async fn get_all(db: DbClient) -> Result<Vec<Repository>, DbError> {
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
         .query(
-            "select repository_id, url, digest, kind::text from repository;",
+            "select repository_id, url, digest, kind::text, updated_at from repository",
             &[],
         )
         .await?;
@@ -288,6 +296,7 @@ pub(crate) async fn get_all(db: DbClient) -> Result<Vec<Repository>, DbError> {
             url: row.get("url"),
             kind: RepositoryKind::from_str(row.get("kind")).unwrap(),
             digest: row.get("digest"),
+            updated_at: row.get("updated_at"),
         });
     }
     Ok(repositories)

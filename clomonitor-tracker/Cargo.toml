@@ -10,6 +10,7 @@ anyhow = "1.0.52"
 clap = { version = "3.0.7", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.11.0"
+chrono = "0.4.19"
 deadpool-postgres = { version = "0.10.1", features = ["serde"] }
 futures = "0.3.19"
 openssl = { version = "0.10", features = ["vendored"] }
@@ -18,7 +19,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.74"
 tempdir = "0.3.7"
 tokio = { version = "1", features = ["macros", "process", "rt-multi-thread", "time"] }
-tokio-postgres = { version = "0.7.5", features = ["with-uuid-0_8", "with-serde_json-1"] }
+tokio-postgres = { version = "0.7.5", features = ["with-uuid-0_8", "with-serde_json-1", "with-chrono-0_4"] }
 tracing = "0.1.29"
 tracing-subscriber = "0.3.6"
 uuid = "0.8.2"

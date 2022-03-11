@@ -44,7 +44,9 @@ begin
         join organization o using (organization_id)
         where score is not null
         and
-            case when v_text is not null then p.name ~* v_text else true end
+            case when v_text is not null then
+                (p.name ~* v_text or p.display_name ~* v_text) else true
+            end
         and
             case when cardinality(v_category) > 0
             then p.category_id = any(v_category) else true end

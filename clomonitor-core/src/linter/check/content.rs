@@ -131,7 +131,7 @@ mod tests {
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            &*ADOPTERS_HEADER
+            &*ADOPTERS_IN_README
         )
         .unwrap());
     }

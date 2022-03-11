@@ -21,6 +21,7 @@ const defaultProps = {
     readme: { passed: true },
   },
   score: 90,
+  referenceUrl: 'http://reference.com',
   getAnchorLink: jest.fn(),
 };
 
@@ -45,6 +46,9 @@ describe('Row', () => {
       expect(screen.getByRole('progressbar')).toBeInTheDocument();
       expect(screen.getByRole('progressbar')).toHaveStyle('width: 90%');
       expect(screen.getAllByTestId('opt-name')).toHaveLength(9);
+      expect(
+        screen.getByRole('link', { name: 'Checks reference documentation for label category' })
+      ).toBeInTheDocument();
     });
 
     it('renders options in correct order', () => {
@@ -98,9 +102,9 @@ describe('Row', () => {
         'CNCF recommended templates: template1.md and template2.md.'
       );
       const links = screen.getAllByRole('link');
-      expect(links).toHaveLength(2);
-      expect(links[0]).toHaveProperty('href', 'http://template1.com/');
-      expect(links[1]).toHaveProperty('href', 'http://template2.com/');
+      expect(links).toHaveLength(3);
+      expect(links[1]).toHaveProperty('href', 'http://template1.com/');
+      expect(links[2]).toHaveProperty('href', 'http://template2.com/');
     });
   });
 });

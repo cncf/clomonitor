@@ -109,7 +109,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        &*ADOPTERS_HEADER,
+        &*ADOPTERS_IN_README,
     )?;
 
     // Code of conduct
@@ -124,7 +124,7 @@ async fn lint_documentation(
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            &*CODE_OF_CONDUCT_HEADER,
+            &*CODE_OF_CONDUCT_IN_README,
         )? || check::github::has_default_community_health_file(gh_md, "CODE_OF_CONDUCT.md").await?;
 
     // Contributing
@@ -139,23 +139,23 @@ async fn lint_documentation(
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            &*CONTRIBUTING_HEADER,
+            &*CONTRIBUTING_IN_README,
         )? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
 
     // Changelog
-    let changelog = check::path::exists(Globs {
-        root,
-        patterns: CHANGELOG_FILE,
-        case_sensitive: false,
-    })? || check::content::matches(
-        Globs {
+    let changelog =
+        check::path::exists(Globs {
             root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        &*CHANGELOG_HEADER,
-    )? || check::github::last_release_body_matches(repo_url, &*CHANGELOG_RELEASE)
-        .await?;
+            patterns: CHANGELOG_FILE,
+            case_sensitive: false,
+        })? || check::content::matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            &*CHANGELOG_IN_README,
+        )? || check::github::last_release_body_matches(repo_url, &*CHANGELOG_IN_GH_RELEASE).await?;
 
     // Governance
     let governance = check::path::exists(Globs {
@@ -168,7 +168,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        &*GOVERNANCE_HEADER,
+        &*GOVERNANCE_IN_README,
     )?;
 
     // Maintainers
@@ -176,7 +176,14 @@ async fn lint_documentation(
         root,
         patterns: MAINTAINERS_FILE,
         case_sensitive: false,
-    })?;
+    })? || check::content::matches(
+        Globs {
+            root,
+            patterns: README_FILE,
+            case_sensitive: true,
+        },
+        &*MAINTAINERS_IN_README,
+    )?;
 
     // Readme
     let readme = check::path::exists(Globs {
@@ -196,7 +203,7 @@ async fn lint_documentation(
             patterns: README_FILE,
             case_sensitive: true,
         },
-        &*ROADMAP_HEADER,
+        &*ROADMAP_IN_README,
     )?;
 
     // Website
@@ -329,7 +336,7 @@ async fn lint_security(root: &Path, gh_md: &Repository) -> Result<Security, Erro
                 patterns: README_FILE,
                 case_sensitive: true,
             },
-            &*SECURITY_POLICY_HEADER,
+            &*SECURITY_POLICY_IN_README,
         )? || check::github::has_default_community_health_file(gh_md, "SECURITY.md").await?;
 
     Ok(Security {
@@ -343,7 +350,7 @@ async fn lint_legal(gh_md: &Repository) -> Result<Legal, Error> {
     let mut trademark_footer: bool = false;
     if let Some(url) = &gh_md.homepage {
         if !url.is_empty() {
-            trademark_footer = check::content::remote_matches(url, &*TRADEMARK_FOOTER).await?;
+            trademark_footer = check::content::remote_matches(url, &*TRADEMARK_DISCLAIMER).await?;
         }
     }
 

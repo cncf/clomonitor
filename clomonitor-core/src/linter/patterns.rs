@@ -70,10 +70,11 @@ pub(crate) static SECURITY_POLICY_FILE: [&str; 3] = [
 
 lazy_static! {
     #[rustfmt::skip]
-    pub(crate) static ref ADOPTERS_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref ADOPTERS_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*adopters.*$",
         r"(?im)^adopters$",
-    ]).expect("invalid exprs in ADOPTERS_HEADER");
+        r"(?i)\[.*adopters.*\]\(.*\)",
+    ]).expect("invalid exprs in ADOPTERS_IN_README");
 
     #[rustfmt::skip]
     pub(crate) static ref ARTIFACTHUB_BADGE_URL: RegexSet = RegexSet::new(vec![
@@ -81,21 +82,24 @@ lazy_static! {
     ]).expect("invalid exprs in ARTIFACTHUB_BADGE_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref CHANGELOG_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref CHANGELOG_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*changelog.*$",
         r"(?im)^changelog$",
-    ]).expect("invalid exprs in CHANGELOG_HEADER");
+        r"(?i)\[.*changelog.*\]\(.*\)",
+    ]).expect("invalid exprs in CHANGELOG_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref CHANGELOG_RELEASE: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref CHANGELOG_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
         r"(?i)changelog",
-    ]).expect("invalid exprs in CHANGELOG_RELEASE");
+        r"(?i)changes",
+    ]).expect("invalid exprs in CHANGELOG_IN_GH_RELEASE");
 
     #[rustfmt::skip]
-    pub(crate) static ref CODE_OF_CONDUCT_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref CODE_OF_CONDUCT_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*code of conduct.*$",
         r"(?im)^code of conduct$",
-    ]).expect("invalid exprs in CODE_OF_CONDUCT_HEADER");
+        r"(?i)\[.*code of conduct.*\]\(.*\)",
+    ]).expect("invalid exprs in CODE_OF_CONDUCT_IN_README");
 
     #[rustfmt::skip]
     pub(crate) static ref COMMUNITY_MEETING_TEXT: RegexSet = RegexSet::new(vec![
@@ -105,10 +109,11 @@ lazy_static! {
     ]).expect("invalid exprs in COMMUNITY_MEETING_TEXT");
 
     #[rustfmt::skip]
-    pub(crate) static ref CONTRIBUTING_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref CONTRIBUTING_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*contributing.*$",
         r"(?im)^contributing$",
-    ]).expect("invalid exprs in CONTRIBUTING_HEADER");
+        r"(?i)\[.*contributing.*\]\(.*\)",
+    ]).expect("invalid exprs in CONTRIBUTING_IN_README");
 
     #[rustfmt::skip]
     pub(crate) static ref DCO: RegexSet = RegexSet::new(vec![
@@ -121,10 +126,18 @@ lazy_static! {
     ).expect("invalid exprs in FOSSA_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref GOVERNANCE_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref GOVERNANCE_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*governance.*$",
         r"(?im)^governance$",
-    ]).expect("invalid exprs in GOVERNANCE_HEADER");
+        r"(?i)\[.*governance.*\]\(.*\)",
+    ]).expect("invalid exprs in GOVERNANCE_IN_README");
+
+    #[rustfmt::skip]
+    pub(crate) static ref MAINTAINERS_IN_README: RegexSet = RegexSet::new(vec![
+        r"(?im)^#+.*maintainers.*$",
+        r"(?im)^maintainers$",
+        r"(?i)\[.*maintainers.*\]\(.*\)",
+    ]).expect("invalid exprs in MAINTAINERS_IN_README");
 
     #[rustfmt::skip]
     pub(crate) static ref OPENSSF_BADGE_URL: RegexSet = RegexSet::new(vec![
@@ -132,16 +145,18 @@ lazy_static! {
     ]).expect("invalid exprs in OPENSSF_BADGE_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref ROADMAP_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref ROADMAP_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*roadmap.*$",
         r"(?im)^roadmap$",
-    ]).expect("invalid exprs in ROADMAP_HEADER");
+        r"(?i)\[.*roadmap.*\]\(.*\)",
+    ]).expect("invalid exprs in ROADMAP_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref SECURITY_POLICY_HEADER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref SECURITY_POLICY_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*security.*$",
         r"(?im)^security$",
-    ]).expect("invalid exprs in SECURITY_POLICY_HEADER");
+        r"(?i)\[.*security.*\]\(.*\)",
+    ]).expect("invalid exprs in SECURITY_POLICY_IN_README");
 
     #[rustfmt::skip]
     pub(crate) static ref SNYK_URL: Regex = Regex::new(
@@ -149,8 +164,9 @@ lazy_static! {
     ).expect("invalid exprs in SNYK_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref TRADEMARK_FOOTER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new(vec![
         r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage",
+        r"The Linux Foundation.* has registered trademarks and uses trademarks",
     ]).expect("invalid exprs in TRADEMARK_FOOTER");
 }
 
@@ -161,16 +177,16 @@ mod tests {
     // Regular expressions
 
     #[test]
-    fn adopters_header_match() {
-        assert!(ADOPTERS_HEADER.is_match("# Adopters"));
-        assert!(ADOPTERS_HEADER.is_match(
+    fn adopters_in_readme_match() {
+        assert!(ADOPTERS_IN_README.is_match("# Adopters"));
+        assert!(ADOPTERS_IN_README.is_match(
             r"
 ...
 ## Project adopters and others
 ...
             "
         ));
-        assert!(ADOPTERS_HEADER.is_match(
+        assert!(ADOPTERS_IN_README.is_match(
             r"
 ...
 Adopters
@@ -178,6 +194,7 @@ Adopters
 ...
             "
         ));
+        assert!(ADOPTERS_IN_README.is_match("[Project adopters](...)"));
     }
 
     #[test]
@@ -186,16 +203,16 @@ Adopters
     }
 
     #[test]
-    fn changelog_header_match() {
-        assert!(CHANGELOG_HEADER.is_match("# Changelog"));
-        assert!(CHANGELOG_HEADER.is_match(
+    fn changelog_in_readme_match() {
+        assert!(CHANGELOG_IN_README.is_match("# Changelog"));
+        assert!(CHANGELOG_IN_README.is_match(
             r"
 ...
 ## Project changelog and others
 ...
             "
         ));
-        assert!(CHANGELOG_HEADER.is_match(
+        assert!(CHANGELOG_IN_README.is_match(
             r"
 ...
 Changelog
@@ -203,25 +220,26 @@ Changelog
 ...
             "
         ));
+        assert!(CHANGELOG_IN_README.is_match("[Project changelog](...)"));
     }
 
     #[test]
-    fn changelog_release_match() {
-        assert!(CHANGELOG_RELEASE.is_match("# Changelog"));
-        assert!(CHANGELOG_RELEASE.is_match("Below you can find the changelog"));
+    fn changelog_in_gh_release_match() {
+        assert!(CHANGELOG_IN_GH_RELEASE.is_match("# Changelog"));
+        assert!(CHANGELOG_IN_GH_RELEASE.is_match("Below you can find the changelog"));
     }
 
     #[test]
-    fn code_of_conduct_header_match() {
-        assert!(CODE_OF_CONDUCT_HEADER.is_match("# Code of conduct"));
-        assert!(CODE_OF_CONDUCT_HEADER.is_match(
+    fn code_of_conduct_in_readme_match() {
+        assert!(CODE_OF_CONDUCT_IN_README.is_match("# Code of conduct"));
+        assert!(CODE_OF_CONDUCT_IN_README.is_match(
             r"
 ...
 ## Project code of conduct and others
 ...
             "
         ));
-        assert!(CODE_OF_CONDUCT_HEADER.is_match(
+        assert!(CODE_OF_CONDUCT_IN_README.is_match(
             r"
 ...
 Code of Conduct
@@ -229,6 +247,7 @@ Code of Conduct
 ...
             "
         ));
+        assert!(CODE_OF_CONDUCT_IN_README.is_match("[code of conduct](...)"));
     }
 
     #[test]
@@ -243,16 +262,16 @@ Code of Conduct
     }
 
     #[test]
-    fn contributing_header_match() {
-        assert!(CONTRIBUTING_HEADER.is_match("# Contributing"));
-        assert!(CONTRIBUTING_HEADER.is_match(
+    fn contributing_in_readme_match() {
+        assert!(CONTRIBUTING_IN_README.is_match("# Contributing"));
+        assert!(CONTRIBUTING_IN_README.is_match(
             r"
 ...
 ## Some stuff, contributing and others
 ...
             "
         ));
-        assert!(CONTRIBUTING_HEADER.is_match(
+        assert!(CONTRIBUTING_IN_README.is_match(
             r"
 ...
 Contributing
@@ -260,6 +279,7 @@ Contributing
 ...
             "
         ));
+        assert!(CONTRIBUTING_IN_README.is_match("[Project contributing](...)"));
     }
 
     #[test]
@@ -269,16 +289,16 @@ Contributing
     }
 
     #[test]
-    fn governance_header_match() {
-        assert!(GOVERNANCE_HEADER.is_match("# Governance"));
-        assert!(GOVERNANCE_HEADER.is_match(
+    fn governance_in_readme_match() {
+        assert!(GOVERNANCE_IN_README.is_match("# Governance"));
+        assert!(GOVERNANCE_IN_README.is_match(
             r"
 ...
 ## Project governance and others
 ...
             "
         ));
-        assert!(GOVERNANCE_HEADER.is_match(
+        assert!(GOVERNANCE_IN_README.is_match(
             r"
 ...
 Governance
@@ -286,6 +306,28 @@ Governance
 ...
             "
         ));
+        assert!(GOVERNANCE_IN_README.is_match("[Project governance](...)"));
+    }
+
+    #[test]
+    fn maintainers_in_readme_match() {
+        assert!(MAINTAINERS_IN_README.is_match("# Maintainers"));
+        assert!(MAINTAINERS_IN_README.is_match(
+            r"
+...
+## Project maintainers and others
+...
+            "
+        ));
+        assert!(MAINTAINERS_IN_README.is_match(
+            r"
+...
+Maintainers
+----------
+...
+            "
+        ));
+        assert!(MAINTAINERS_IN_README.is_match("[Project maintainers](...)"));
     }
 
     #[test]
@@ -321,16 +363,16 @@ Governance
     }
 
     #[test]
-    fn roadmap_header_match() {
-        assert!(ROADMAP_HEADER.is_match("# Roadmap"));
-        assert!(ROADMAP_HEADER.is_match(
+    fn roadmap_in_readme_match() {
+        assert!(ROADMAP_IN_README.is_match("# Roadmap"));
+        assert!(ROADMAP_IN_README.is_match(
             r"
 ...
 ## Project roadmap and others
 ...
             "
         ));
-        assert!(ROADMAP_HEADER.is_match(
+        assert!(ROADMAP_IN_README.is_match(
             r"
 ...
 Roadmap
@@ -338,19 +380,20 @@ Roadmap
 ...
             "
         ));
+        assert!(ROADMAP_IN_README.is_match("[Project roadmap](...)"));
     }
 
     #[test]
-    fn security_polity_header_match() {
-        assert!(SECURITY_POLICY_HEADER.is_match("# Security"));
-        assert!(SECURITY_POLICY_HEADER.is_match(
+    fn security_polity_in_readme_match() {
+        assert!(SECURITY_POLICY_IN_README.is_match("# Security"));
+        assert!(SECURITY_POLICY_IN_README.is_match(
             r"
 ...
 ## Project security and others
 ...
             "
         ));
-        assert!(SECURITY_POLICY_HEADER.is_match(
+        assert!(SECURITY_POLICY_IN_README.is_match(
             r"
 ...
 Security
@@ -358,11 +401,15 @@ Security
 ...
             "
         ));
+        assert!(SECURITY_POLICY_IN_README.is_match("[Project security policy](...)"));
     }
 
     #[test]
-    fn trademark_footer_match() {
-        assert!(TRADEMARK_FOOTER.is_match("https://www.linuxfoundation.org/trademark-usage"));
-        assert!(TRADEMARK_FOOTER.is_match("https://linuxfoundation.org/trademark-usage"));
+    fn trademark_disclaimer_match() {
+        assert!(TRADEMARK_DISCLAIMER.is_match("https://www.linuxfoundation.org/trademark-usage"));
+        assert!(TRADEMARK_DISCLAIMER.is_match("https://linuxfoundation.org/trademark-usage"));
+        assert!(TRADEMARK_DISCLAIMER.is_match(
+            "The Linux Foundation® (TLF) has registered trademarks and uses trademarks."
+        ));
     }
 }

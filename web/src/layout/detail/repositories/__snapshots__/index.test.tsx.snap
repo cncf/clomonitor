@@ -68,7 +68,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-inline-block d-md-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-inline-block d-md-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 Global
               </span>
@@ -98,7 +98,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 Documentation
               </span>
@@ -125,7 +125,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 License
               </span>
@@ -158,7 +158,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 Best Practices
               </span>
@@ -185,7 +185,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 Security
               </span>
@@ -213,7 +213,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 </svg>
               </small>
               <span
-                class="d-none d-lg-inline-block ms-1 ms-xl-2"
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
               >
                 Legal
               </span>
@@ -226,7 +226,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: spec"
@@ -361,7 +361,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: sdk-go"
@@ -458,7 +458,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: sdk-javascript"
@@ -555,7 +555,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: sdk-csharp"
@@ -652,7 +652,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: sdk-java"
@@ -749,7 +749,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="align-middle repoCell darkBgCell"
             >
               <div
-                class="d-flex flex-row align-items-center pe-2"
+                class="d-flex flex-row align-items-center"
               >
                 <button
                   aria-label="Go from summary to section: sdk-python"

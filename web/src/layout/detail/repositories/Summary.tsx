@@ -32,27 +32,27 @@ const Summary = (props: Props) => {
             </th>
             <th scope="col" className="text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Global]}</small>
-              <span className="d-inline-block d-md-none d-lg-inline-block ms-1 ms-xl-2">Global</span>
+              <span className="d-inline-block d-md-none d-xl-inline-block ms-1 ms-xl-2">Global</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Documentation]}</small>
-              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Documentation</span>
+              <span className="d-none d-xl-inline-block ms-1 ms-xl-2">Documentation</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.License]}</small>
-              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">License</span>
+              <span className="d-none d-xl-inline-block ms-1 ms-xl-2">License</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.BestPractices]}</small>
-              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Best Practices</span>
+              <span className="d-none d-xl-inline-block ms-1 ms-xl-2">Best Practices</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Security]}</small>
-              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Security</span>
+              <span className="d-none d-xl-inline-block ms-1 ms-xl-2">Security</span>
             </th>
             <th scope="col" className="d-none d-md-table-cell text-center text-nowrap">
               <small className={`position-relative ${styles.icon}`}>{CATEGORY_ICONS[ScoreType.Legal]}</small>
-              <span className="d-none d-lg-inline-block ms-1 ms-xl-2">Legal</span>
+              <span className="d-none d-xl-inline-block ms-1 ms-xl-2">Legal</span>
             </th>
           </tr>
         </thead>
@@ -61,7 +61,7 @@ const Summary = (props: Props) => {
             return (
               <tr key={`summary_${repo.repository_id}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
-                  <div className="d-flex flex-row align-items-center pe-2">
+                  <div className="d-flex flex-row align-items-center">
                     <button
                       className={`btn btn-link text-dark text-truncate fw-bold px-2 ${styles.repoBtn}`}
                       onClick={() => {

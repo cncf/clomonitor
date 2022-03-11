@@ -47,9 +47,31 @@
   .table th:first-child {
     width: 100%;
   }
+
+  .table thead {
+    font-size: 0.8rem;
+  }
+
+  .repoBtn {
+    font-size: 0.9rem;
+  }
+
+  .repoCell {
+    max-width: 185px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
+  .table thead {
+    font-size: 0.9rem;
+  }
+
+  .repoBtn {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
   .table th {
     min-width: 150px;
   }

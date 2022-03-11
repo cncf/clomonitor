@@ -70,6 +70,7 @@ select columns_are('repository', array[
     'digest',
     'score',
     'created_at',
+    'updated_at',
     'project_id'
 ]);
 

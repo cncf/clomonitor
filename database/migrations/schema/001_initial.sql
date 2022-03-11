@@ -60,6 +60,7 @@ create table if not exists repository (
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,
+    updated_at timestamptz default current_timestamp not null,
     project_id uuid not null references project on delete cascade,
     unique (project_id, name)
 );

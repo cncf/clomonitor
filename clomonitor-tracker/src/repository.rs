@@ -127,26 +127,43 @@ impl Repository {
         report: Option<Report>,
         errors: Option<String>,
     ) -> Result<(), Error> {
-        tx.execute(
-            "
-            insert into report
-                (data, errors, repository_id, linter_id)
-            values
-                ($1::jsonb, $2::text, $3::uuid, $4::integer)
-            on conflict (repository_id, linter_id) do update
-            set
-                data = excluded.data,
-                errors = excluded.errors,
-                updated_at = current_timestamp;
-            ",
-            &[
-                &report.map(Json),
-                &errors,
-                &self.repository_id,
-                &(linter as i32),
-            ],
-        )
-        .await?;
+        match report {
+            Some(report) => {
+                tx.execute(
+                    "
+                    insert into report (data, errors, repository_id, linter_id)
+                    values ($1::jsonb, $2::text, $3::uuid, $4::integer)
+                    on conflict (repository_id, linter_id) do update
+                    set
+                        data = excluded.data,
+                        errors = excluded.errors,
+                        updated_at = current_timestamp;
+                    ",
+                    &[
+                        &Json(&report),
+                        &errors,
+                        &self.repository_id,
+                        &(linter as i32),
+                    ],
+                )
+                .await?;
+            }
+            None => {
+                tx.execute(
+                    "
+                    insert into report (errors, repository_id, linter_id)
+                    values ($1::text, $2::uuid, $3::integer)
+                    on conflict (repository_id, linter_id) do update
+                    set
+                        errors = excluded.errors,
+                        updated_at = current_timestamp;
+                    ",
+                    &[&errors, &self.repository_id, &(linter as i32)],
+                )
+                .await?;
+            }
+        }
+
         Ok(())
     }
 

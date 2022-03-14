@@ -52,8 +52,10 @@ pub(crate) static MAINTAINERS_FILE: [&str; 7] = [
 ];
 
 #[rustfmt::skip]
-pub(crate) static README_FILE: [&str; 1] = [
+pub(crate) static README_FILE: [&str; 3] = [
     "README*",
+    ".github/README*",
+    "docs/README*",
 ];
 
 #[rustfmt::skip]

@@ -10,20 +10,22 @@ pub(crate) static ADOPTERS_FILE: [&str; 2] = [
 ];
 
 #[rustfmt::skip]
-pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 2] = [
+pub(crate) static CHANGELOG_FILE: [&str; 1] = [
+    "changelog*",
+];
+
+#[rustfmt::skip]
+pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 3] = [
     "code*of*conduct*",
+    ".github/code*of*conduct*",
     "docs/code*of*conduct*",
 ];
 
 #[rustfmt::skip]
-pub(crate) static CONTRIBUTING_FILE: [&str; 2] = [
+pub(crate) static CONTRIBUTING_FILE: [&str; 3] = [
     "contributing*",
+    ".github/contributing*",
     "docs/contributing*",
-];
-
-#[rustfmt::skip]
-pub(crate) static CHANGELOG_FILE: [&str; 1] = [
-    "changelog*",
 ];
 
 #[rustfmt::skip]
@@ -45,8 +47,8 @@ pub(crate) static MAINTAINERS_FILE: [&str; 7] = [
     "owners*",
     "docs/owners*",
     "codeowners*",
-    "docs/codeowners*",
     ".github/codeowners*",
+    "docs/codeowners*",
 ];
 
 #[rustfmt::skip]
@@ -62,8 +64,8 @@ pub(crate) static ROADMAP_FILE: [&str; 1] = [
 #[rustfmt::skip]
 pub(crate) static SECURITY_POLICY_FILE: [&str; 3] = [
     "security*",
-    "docs/security*",
     ".github/security*",
+    "docs/security*",
 ];
 
 // Regular expressions
@@ -82,17 +84,17 @@ lazy_static! {
     ]).expect("invalid exprs in ARTIFACTHUB_BADGE_URL");
 
     #[rustfmt::skip]
+    pub(crate) static ref CHANGELOG_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
+        r"(?i)changelog",
+        r"(?i)changes",
+    ]).expect("invalid exprs in CHANGELOG_IN_GH_RELEASE");
+
+    #[rustfmt::skip]
     pub(crate) static ref CHANGELOG_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*changelog.*$",
         r"(?im)^changelog$",
         r"(?i)\[.*changelog.*\]\(.*\)",
     ]).expect("invalid exprs in CHANGELOG_IN_README");
-
-    #[rustfmt::skip]
-    pub(crate) static ref CHANGELOG_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
-        r"(?i)changelog",
-        r"(?i)changes",
-    ]).expect("invalid exprs in CHANGELOG_IN_GH_RELEASE");
 
     #[rustfmt::skip]
     pub(crate) static ref CODE_OF_CONDUCT_IN_README: RegexSet = RegexSet::new(vec![
@@ -167,7 +169,7 @@ lazy_static! {
     pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new(vec![
         r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
-    ]).expect("invalid exprs in TRADEMARK_FOOTER");
+    ]).expect("invalid exprs in TRADEMARK_DISCLAIMER");
 }
 
 #[cfg(test)]
@@ -203,6 +205,12 @@ Adopters
     }
 
     #[test]
+    fn changelog_in_gh_release_match() {
+        assert!(CHANGELOG_IN_GH_RELEASE.is_match("# Changelog"));
+        assert!(CHANGELOG_IN_GH_RELEASE.is_match("Below you can find the changelog"));
+    }
+
+    #[test]
     fn changelog_in_readme_match() {
         assert!(CHANGELOG_IN_README.is_match("# Changelog"));
         assert!(CHANGELOG_IN_README.is_match(
@@ -221,12 +229,6 @@ Changelog
             "
         ));
         assert!(CHANGELOG_IN_README.is_match("[Project changelog](...)"));
-    }
-
-    #[test]
-    fn changelog_in_gh_release_match() {
-        assert!(CHANGELOG_IN_GH_RELEASE.is_match("# Changelog"));
-        assert!(CHANGELOG_IN_GH_RELEASE.is_match("Below you can find the changelog"));
     }
 
     #[test]
@@ -310,27 +312,6 @@ Governance
     }
 
     #[test]
-    fn maintainers_in_readme_match() {
-        assert!(MAINTAINERS_IN_README.is_match("# Maintainers"));
-        assert!(MAINTAINERS_IN_README.is_match(
-            r"
-...
-## Project maintainers and others
-...
-            "
-        ));
-        assert!(MAINTAINERS_IN_README.is_match(
-            r"
-...
-Maintainers
-----------
-...
-            "
-        ));
-        assert!(MAINTAINERS_IN_README.is_match("[Project maintainers](...)"));
-    }
-
-    #[test]
     fn license_scanning_url_extract_fossa() {
         assert_eq!(
             FOSSA_URL.captures("[![Licenses](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fartifacthub%2Fhub.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fartifacthub%2Fhub?ref=badge_shield)").unwrap()[1].to_string(),
@@ -355,6 +336,27 @@ Maintainers
                 .to_string(),
             "https://snyk.io/test/github/{username}/{repo}"
         );
+    }
+
+    #[test]
+    fn maintainers_in_readme_match() {
+        assert!(MAINTAINERS_IN_README.is_match("# Maintainers"));
+        assert!(MAINTAINERS_IN_README.is_match(
+            r"
+...
+## Project maintainers and others
+...
+            "
+        ));
+        assert!(MAINTAINERS_IN_README.is_match(
+            r"
+...
+Maintainers
+----------
+...
+            "
+        ));
+        assert!(MAINTAINERS_IN_README.is_match("[Project maintainers](...)"));
     }
 
     #[test]

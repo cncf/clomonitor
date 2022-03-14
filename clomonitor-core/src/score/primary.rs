@@ -37,14 +37,14 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     if report.documentation.adopters.passed {
         score.documentation += 5;
     }
+    if report.documentation.changelog.passed {
+        score.documentation += 5;
+    }
     if report.documentation.code_of_conduct.passed {
         score.documentation += 5;
     }
     if report.documentation.contributing.passed {
         score.documentation += 10;
-    }
-    if report.documentation.changelog.passed {
-        score.documentation += 5;
     }
     if report.documentation.governance.passed {
         score.documentation += 10;
@@ -96,7 +96,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     }
 
     // Legal
-    if report.legal.trademark_footer.passed {
+    if report.legal.trademark_disclaimer.passed {
         score.legal += 100;
     }
 
@@ -164,7 +164,7 @@ mod tests {
                     security_policy: true.into(),
                 },
                 legal: Legal {
-                    trademark_footer: true.into(),
+                    trademark_disclaimer: true.into(),
                 },
             }),
             Score {
@@ -209,7 +209,7 @@ mod tests {
                     security_policy: false.into(),
                 },
                 legal: Legal {
-                    trademark_footer: false.into(),
+                    trademark_disclaimer: false.into(),
                 },
             }),
             Score::new()

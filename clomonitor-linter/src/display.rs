@@ -135,8 +135,8 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(report.security.security_policy.passed),
         ])
         .add_row(vec![
-            cell_entry("Legal / Trademark footer"),
-            cell_check(report.legal.trademark_footer.passed),
+            cell_entry("Legal / Trademark disclaimer"),
+            cell_check(report.legal.trademark_disclaimer.passed),
         ]);
     println!("{checks}\n");
 }

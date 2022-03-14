@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CATEGORY_ICONS } from '../../../data';
 import { Repository, RepositoryKind, ScoreType } from '../../../types';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
-import Badge from './Badge';
+import BadgeCell from './BadgeCell';
 import styles from './Summary.module.css';
 
 interface Props {
@@ -16,6 +16,17 @@ interface Props {
 const Summary = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const goToAnchor = (hash: string) => {
+    props.scrollIntoView(`#${hash}`);
+    navigate(
+      {
+        pathname: location.pathname,
+        hash: hash,
+      },
+      { state: location.state }
+    );
+  };
 
   if (props.repositories.length === 0) return null;
 
@@ -64,16 +75,7 @@ const Summary = (props: Props) => {
                   <div className="d-flex flex-row align-items-center">
                     <button
                       className={`btn btn-link text-dark text-truncate fw-bold px-2 ${styles.repoBtn}`}
-                      onClick={() => {
-                        props.scrollIntoView(`#${repo.name}`);
-                        navigate(
-                          {
-                            pathname: location.pathname,
-                            hash: repo.name,
-                          },
-                          { state: location.state }
-                        );
-                      }}
+                      onClick={() => goToAnchor(repo.name)}
                       aria-label={`Go from summary to section: ${repo.name}`}
                     >
                       {repo.name}
@@ -96,44 +98,31 @@ const Summary = (props: Props) => {
                     )}
                   </div>
                 </td>
-                <td className="align-middle">
-                  <Badge value={repo.score.global} linkTo={repo.name} scrollIntoView={props.scrollIntoView} />
-                </td>
-                <td className="d-none d-md-table-cell align-middle">
-                  <Badge
-                    value={repo.score.documentation}
-                    linkTo={`${repo.name}_${ScoreType.Documentation}`}
-                    scrollIntoView={props.scrollIntoView}
-                  />
-                </td>
-                <td className="d-none d-md-table-cell align-middle">
-                  <Badge
-                    value={repo.score.license}
-                    linkTo={`${repo.name}_${ScoreType.License}`}
-                    scrollIntoView={props.scrollIntoView}
-                  />
-                </td>
-                <td className="d-none d-md-table-cell align-middle">
-                  <Badge
-                    value={repo.score.best_practices}
-                    linkTo={`${repo.name}_${ScoreType.BestPractices}`}
-                    scrollIntoView={props.scrollIntoView}
-                  />
-                </td>
-                <td className="d-none d-md-table-cell align-middle">
-                  <Badge
-                    value={repo.score.security}
-                    linkTo={`${repo.name}_${ScoreType.Security}`}
-                    scrollIntoView={props.scrollIntoView}
-                  />
-                </td>
-                <td className="d-none d-md-table-cell align-middle">
-                  <Badge
-                    value={repo.score.legal}
-                    linkTo={`${repo.name}_${ScoreType.Legal}`}
-                    scrollIntoView={props.scrollIntoView}
-                  />
-                </td>
+
+                <BadgeCell
+                  value={repo.score.global}
+                  cellClassName="align-middle"
+                  onClick={() => goToAnchor(repo.name)}
+                />
+
+                <BadgeCell
+                  value={repo.score.documentation}
+                  onClick={() => goToAnchor(`${repo.name}_${ScoreType.Documentation}`)}
+                />
+
+                <BadgeCell value={repo.score.license} onClick={() => goToAnchor(`${repo.name}_${ScoreType.License}`)} />
+
+                <BadgeCell
+                  value={repo.score.best_practices}
+                  onClick={() => goToAnchor(`${repo.name}_${ScoreType.BestPractices}`)}
+                />
+
+                <BadgeCell
+                  value={repo.score.security}
+                  onClick={() => goToAnchor(`${repo.name}_${ScoreType.Security}`)}
+                />
+
+                <BadgeCell value={repo.score.legal} onClick={() => goToAnchor(`${repo.name}_${ScoreType.Legal}`)} />
               </tr>
             );
           })}

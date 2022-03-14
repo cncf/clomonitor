@@ -1,0 +1,19 @@
+.badge {
+  border-bottom: 3px solid transparent;
+  width: 45px;
+  font-size: 0.9rem;
+}
+
+.btn {
+  font-size: 0.9rem;
+}
+
+.hoverableCell {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hoverableCell:hover {
+    background-color: var(--bg-color);
+  }
+}

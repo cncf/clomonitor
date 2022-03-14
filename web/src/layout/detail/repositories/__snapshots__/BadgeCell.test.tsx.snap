@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge creates snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="hoverableCell d-none d-md-table-cell align-middle"
+          role="button"
+        >
+          <div
+            class="mx-auto px-2 text-center text-dark fw-bold badge"
+          >
+            80
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;

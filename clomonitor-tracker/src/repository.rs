@@ -195,19 +195,21 @@ impl Repository {
                 scores.push(score::calculate(linter, &report));
             }
         }
-        let repository_score = score::merge(scores);
 
         // Update repository's score
-        tx.execute(
-            "
+        if !scores.is_empty() {
+            let repository_score = score::merge(scores);
+            tx.execute(
+                "
             update repository set
                 score = $1::jsonb,
                 updated_at = current_timestamp
             where repository_id = $2::uuid;
             ",
-            &[&Json(&repository_score), &self.repository_id],
-        )
-        .await?;
+                &[&Json(&repository_score), &self.repository_id],
+            )
+            .await?;
+        }
 
         Ok(())
     }
@@ -247,24 +249,26 @@ impl Repository {
                 repositories_scores.push(score);
             }
         }
-        let project_score = score::merge(repositories_scores);
 
         // Update project's score and rating
-        tx.execute(
-            "
+        if !repositories_scores.is_empty() {
+            let project_score = score::merge(repositories_scores);
+            tx.execute(
+                "
             update project set
                 score = $1::jsonb,
                 rating = $2::text,
                 updated_at = current_timestamp
             where project_id = $3::uuid;
             ",
-            &[
-                &Json(&project_score),
-                &project_score.rating().to_string(),
-                &project_id,
-            ],
-        )
-        .await?;
+                &[
+                    &Json(&project_score),
+                    &project_score.rating().to_string(),
+                    &project_id,
+                ],
+            )
+            .await?;
+        }
 
         Ok(())
     }

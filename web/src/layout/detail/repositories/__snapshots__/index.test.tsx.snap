@@ -1780,7 +1780,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -2174,7 +2174,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -2554,7 +2554,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -2767,7 +2767,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -3342,7 +3342,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -3688,7 +3688,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -4203,7 +4203,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -4549,7 +4549,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -5064,7 +5064,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -5410,7 +5410,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -5925,7 +5925,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -6271,7 +6271,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -6786,7 +6786,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"
@@ -7132,7 +7132,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               </table>
             </div>
             <ul
-              class="mb-0 linksList"
+              class="d-none d-md-block mb-0 linksList"
             >
               <li
                 class="pt-2"

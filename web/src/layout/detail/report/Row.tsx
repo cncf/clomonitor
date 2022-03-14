@@ -102,7 +102,7 @@ const Row = (props: Props) => {
           </table>
         </div>
 
-        <ul className={`mb-0 ${styles.linksList}`}>
+        <ul className={`d-none d-md-block mb-0 ${styles.linksList}`}>
           {!isUndefined(props.referenceUrl) && (
             <li className="pt-2">
               <ExternalLink

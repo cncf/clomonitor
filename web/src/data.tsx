@@ -228,10 +228,10 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
-  [ReportOption.TrademarkFooter]: {
+  [ReportOption.TrademarkDisclaimer]: {
     icon: <FaTrademark />,
-    name: 'Trademark footer',
-    legend: <span>Projects sites should have the Linux Foundation trademark footer</span>,
+    name: 'Trademark disclaimer',
+    legend: <span>Projects sites should have the Linux Foundation trademark disclaimer</span>,
   },
   [ReportOption.Website]: {
     icon: <BiWorld />,

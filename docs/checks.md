@@ -72,6 +72,7 @@ This check passes if:
 
 ```sh
 "code*of*conduct*"
+".github/code*of*conduct*"
 "docs/code*of*conduct*"
 
 CASE SENSITIVE: false
@@ -97,6 +98,7 @@ This check passes if:
 
 ```sh
 "contributing*"
+".github/contributing*"
 "docs/contributing*"
 
 CASE SENSITIVE: false
@@ -149,8 +151,8 @@ This check passes if:
 "owners*"
 "docs/owners*"
 "codeowners*"
-"docs/codeowners*"
 ".github/codeowners*"
+"docs/codeowners*"
 
 CASE SENSITIVE: false
 ```
@@ -334,8 +336,8 @@ This check passes if:
 
 ```sh
 "security*"
-"docs/security*"
 ".github/security*"
+"docs/security*"
 
 CASE SENSITIVE: false
 ```
@@ -352,9 +354,9 @@ CASE SENSITIVE: false
 
 ## Legal
 
-### Trademark footer
+### Trademark disclaimer
 
-Projects sites should have the Linux Foundation trademark footer.
+Projects sites should have the Linux Foundation trademark disclaimer.
 
 This check passes if:
 

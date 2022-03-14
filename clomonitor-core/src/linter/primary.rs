@@ -23,9 +23,9 @@ pub struct Report {
 #[non_exhaustive]
 pub struct Documentation {
     pub adopters: CheckResult,
+    pub changelog: CheckResult,
     pub code_of_conduct: CheckResult,
     pub contributing: CheckResult,
-    pub changelog: CheckResult,
     pub governance: CheckResult,
     pub maintainers: CheckResult,
     pub readme: CheckResult,
@@ -64,7 +64,7 @@ pub struct Security {
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Legal {
-    pub trademark_footer: CheckResult,
+    pub trademark_disclaimer: CheckResult,
 }
 
 /// Lint the path provided and return a report.
@@ -112,6 +112,21 @@ async fn lint_documentation(
         &*ADOPTERS_IN_README,
     )?;
 
+    // Changelog
+    let changelog =
+        check::path::exists(Globs {
+            root,
+            patterns: CHANGELOG_FILE,
+            case_sensitive: false,
+        })? || check::content::matches(
+            Globs {
+                root,
+                patterns: README_FILE,
+                case_sensitive: true,
+            },
+            &*CHANGELOG_IN_README,
+        )? || check::github::last_release_body_matches(repo_url, &*CHANGELOG_IN_GH_RELEASE).await?;
+
     // Code of conduct
     let code_of_conduct =
         check::path::exists(Globs {
@@ -141,21 +156,6 @@ async fn lint_documentation(
             },
             &*CONTRIBUTING_IN_README,
         )? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
-
-    // Changelog
-    let changelog =
-        check::path::exists(Globs {
-            root,
-            patterns: CHANGELOG_FILE,
-            case_sensitive: false,
-        })? || check::content::matches(
-            Globs {
-                root,
-                patterns: README_FILE,
-                case_sensitive: true,
-            },
-            &*CHANGELOG_IN_README,
-        )? || check::github::last_release_body_matches(repo_url, &*CHANGELOG_IN_GH_RELEASE).await?;
 
     // Governance
     let governance = check::path::exists(Globs {
@@ -214,9 +214,9 @@ async fn lint_documentation(
 
     Ok(Documentation {
         adopters: adopters.into(),
+        changelog: changelog.into(),
         code_of_conduct: code_of_conduct.into(),
         contributing: contributing.into(),
-        changelog: changelog.into(),
         governance: governance.into(),
         maintainers: maintainers.into(),
         readme: readme.into(),
@@ -346,15 +346,16 @@ async fn lint_security(root: &Path, gh_md: &Repository) -> Result<Security, Erro
 
 /// Run legal checks and prepare the report's legal section.
 async fn lint_legal(gh_md: &Repository) -> Result<Legal, Error> {
-    // Trademark footer
-    let mut trademark_footer: bool = false;
+    // Trademark disclaimer
+    let mut trademark_disclaimer: bool = false;
     if let Some(url) = &gh_md.homepage {
         if !url.is_empty() {
-            trademark_footer = check::content::remote_matches(url, &*TRADEMARK_DISCLAIMER).await?;
+            trademark_disclaimer =
+                check::content::remote_matches(url, &*TRADEMARK_DISCLAIMER).await?;
         }
     }
 
     Ok(Legal {
-        trademark_footer: trademark_footer.into(),
+        trademark_disclaimer: trademark_disclaimer.into(),
     })
 }

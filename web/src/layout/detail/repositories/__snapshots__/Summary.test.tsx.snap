@@ -227,45 +227,33 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-go"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                95
-              </button>
+              95
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-go_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                90
-              </button>
+              90
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-go_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                100
-              </button>
+              100
             </div>
           </td>
           <td
@@ -324,45 +312,33 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-javascript"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                95
-              </button>
+              95
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-javascript_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                90
-              </button>
+              90
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-javascript_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                100
-              </button>
+              100
             </div>
           </td>
           <td
@@ -421,45 +397,33 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-csharp"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                85
-              </button>
+              85
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-csharp_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                70
-              </button>
+              70
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-csharp_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                100
-              </button>
+              100
             </div>
           </td>
           <td
@@ -518,45 +482,33 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-python"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                85
-              </button>
+              85
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-python_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                70
-              </button>
+              70
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-python_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                100
-              </button>
+              100
             </div>
           </td>
           <td
@@ -651,73 +603,53 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: spec"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                44
-              </button>
+              44
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: spec_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                60
-              </button>
+              60
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: spec_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                80
-              </button>
+              80
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: spec_best_practices"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                35
-              </button>
+              35
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: spec_security"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                0
-              </button>
+              0
             </div>
           </td>
           <td
@@ -750,45 +682,33 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="align-middle"
+            class="hoverableCell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-java"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                85
-              </button>
+              85
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-java_documentation"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                70
-              </button>
+              70
             </div>
           </td>
           <td
-            class="d-none d-md-table-cell align-middle"
+            class="hoverableCell d-none d-md-table-cell align-middle"
+            role="button"
           >
             <div
-              class="mx-auto px-2 text-center badge"
+              class="mx-auto px-2 text-center text-dark fw-bold badge"
             >
-              <button
-                aria-label="Go from summary to section: sdk-java_license"
-                class="btn btn-link text-dark fw-bold p-0 text-decoration-none btn"
-              >
-                100
-              </button>
+              100
             </div>
           </td>
           <td

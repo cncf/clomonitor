@@ -61,7 +61,7 @@ describe('Summary', () => {
       expect(screen.getByText('sdk-python')).toBeInTheDocument();
 
       const btns = screen.getAllByRole('button', { name: /Go from summary to section:/i });
-      expect(btns).toHaveLength(26);
+      expect(btns).toHaveLength(6);
 
       expect(screen.getByText('44')).toBeInTheDocument();
       expect(screen.getByText('60')).toBeInTheDocument();

@@ -1,16 +1,44 @@
-.value {
+.score {
   height: 3.5rem;
   width: 3.5rem;
   min-width: 3.5rem;
-  border: transparent solid 0.25rem;
-  background-color: var(--bs-white);
-  font-size: 2rem;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.circleBg {
+  fill: var(--bs-white);
+  stroke: var(--color-light-gray);
+  stroke-width: 3px;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 3px;
+}
+
+.value {
+  fill: var(--color-font);
+  text-anchor: middle;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 768px) {
-  .value {
+  .score {
     height: 5.5rem;
     width: 5.5rem;
     min-width: 5.5rem;
+  }
+
+  .circleBg {
+    stroke-width: 2px;
+  }
+
+  .circle {
+    stroke-width: 2px;
   }
 }

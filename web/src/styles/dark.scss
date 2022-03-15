@@ -17,6 +17,7 @@
 
   --color-white-25: rgba(0, 0, 0, 0.25);
 
+  --color-light-gray: #676869;
   --bg-color: #2c2e31;
   --color-font: #a3a3a6;
   --body-bg: #222529;
@@ -188,10 +189,6 @@
 
   .lightBorder {
     border-color: var(--solid-border);
-  }
-
-  .global {
-    background-color: var(--rm-primary);
   }
 
   .alphaBadge {

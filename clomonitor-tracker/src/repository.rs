@@ -36,7 +36,7 @@ impl Repository {
     pub(crate) async fn track(
         &self,
         mut db: DbClient,
-        github_token: Option<&str>,
+        github_token: Option<String>,
     ) -> Result<(), Error> {
         let start = Instant::now();
 
@@ -58,9 +58,9 @@ impl Repository {
         // Lint repository (only using core linter at the moment)
         let mut errors: Option<String> = None;
         let options = LintOptions {
-            root: tmp_dir.path(),
-            kind: &self.kind,
-            url: &self.url,
+            root: tmp_dir.into_path(),
+            kind: self.kind.clone(),
+            url: self.url.clone(),
             github_token,
         };
         let report = match lint(options).await {

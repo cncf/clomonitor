@@ -34,7 +34,7 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<(), Error> {
         futs.push(tokio::spawn(async move {
             if let Err(err) = timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(db, github_token.as_deref()),
+                repository.track(db, github_token),
             )
             .await
             {

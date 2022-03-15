@@ -56,6 +56,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::linter::CheckResult;
 
     #[test]
     fn new_returns_all_zeroes_score() {
@@ -79,7 +80,11 @@ mod tests {
                     readme: true.into(),
                 },
                 license: License {
-                    approved: (true, Some(true)).into(),
+                    approved: CheckResult {
+                        passed: true,
+                        value: Some(true),
+                        ..Default::default()
+                    },
                     spdx_id: Some("Apache-2.0".to_string()).into(),
                 },
             }),
@@ -101,7 +106,10 @@ mod tests {
                     readme: false.into(),
                 },
                 license: License {
-                    approved: (false, None).into(),
+                    approved: CheckResult {
+                        passed: false,
+                        ..Default::default()
+                    },
                     spdx_id: None.into(),
                 },
             }),

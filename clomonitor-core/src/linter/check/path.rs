@@ -1,3 +1,4 @@
+use anyhow::Error;
 use glob::{glob_with, MatchOptions, PatternError};
 use std::path::{Path, PathBuf};
 
@@ -13,13 +14,17 @@ where
     pub case_sensitive: bool,
 }
 
-/// Check if exists at least a path that matches the globs provided.
-pub(crate) fn exists<P>(globs: Globs<P>) -> Result<bool, PatternError>
+/// Find the first path that matches any of the globs provided.
+pub(crate) fn find<P>(globs: Globs<P>) -> Result<Option<PathBuf>, Error>
 where
     P: IntoIterator,
     P::Item: AsRef<str>,
 {
-    Ok(!matches(globs)?.is_empty())
+    let root = globs.root.to_owned();
+    match matches(globs)?.first() {
+        Some(path) => Ok(Some(path.strip_prefix(root)?.to_owned())),
+        None => Ok(None),
+    }
 }
 
 /// Return all paths that match any of the globs provided.
@@ -51,34 +56,40 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::patterns::*;
+    use crate::linter::check::patterns::*;
 
     const TESTDATA_PATH: &str = "src/linter/check/testdata";
 
     #[test]
-    fn exists_existing_path() {
-        assert!(exists(Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: MAINTAINERS_FILE,
-            case_sensitive: false,
-        })
-        .unwrap());
+    fn find_existing_path() {
+        assert_eq!(
+            find(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: MAINTAINERS_FILE,
+                case_sensitive: false,
+            })
+            .unwrap(),
+            Some(PathBuf::from("MAINTAINERS"))
+        );
     }
 
     #[test]
-    fn exists_non_existing_path() {
-        assert!(!exists(Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: vec!["nonexisting"],
-            case_sensitive: false,
-        })
-        .unwrap());
+    fn find_non_existing_path() {
+        assert_eq!(
+            find(Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: vec!["nonexisting"],
+                case_sensitive: false,
+            })
+            .unwrap(),
+            None
+        );
     }
 
     #[test]
-    fn exists_invalid_glob_pattern() {
+    fn find_invalid_glob_pattern() {
         assert!(matches!(
-            exists(Globs {
+            find(Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: vec!["invalid***"],
                 case_sensitive: false,

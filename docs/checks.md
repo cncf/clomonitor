@@ -175,6 +175,8 @@ This check passes if:
 
 ```sh
 "README*"
+".github/README*"
+"docs/README*"
 
 CASE SENSITIVE: true
 ```

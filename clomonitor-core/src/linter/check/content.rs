@@ -54,7 +54,7 @@ pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool, Err
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::patterns::*;
+    use crate::linter::check::patterns::*;
     use std::path::Path;
 
     const TESTDATA_PATH: &str = "src/linter/check/testdata";

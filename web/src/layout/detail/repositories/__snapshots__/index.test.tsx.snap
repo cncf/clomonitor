@@ -938,10 +938,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              41
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="41, 100"
+                    style="stroke: var(--rm-orange);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    41
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -2936,10 +2961,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              95
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="95, 100"
+                    style="stroke: var(--rm-green);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    95
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -3797,10 +3847,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              95
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="95, 100"
+                    style="stroke: var(--rm-green);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    95
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -4658,10 +4733,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              85
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="85, 100"
+                    style="stroke: var(--rm-green);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    85
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -5519,10 +5619,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              85
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="85, 100"
+                    style="stroke: var(--rm-green);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    85
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -6380,10 +6505,35 @@ exports[`RepositoriesList creates snapshot 1`] = `
             class="ms-3 ms-md-0 me-0 me-md-3"
           >
             <div
-              class="d-flex align-items-center justify-content-center rounded-pill value global global"
+              class="d-flex align-items-center justify-content-center rounded-pill score global"
               data-testid="global-score"
             >
-              85
+              <div
+                class="chart"
+              >
+                <svg
+                  class="d-block"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    class="circleBg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    stroke-dasharray="85, 100"
+                    style="stroke: var(--rm-green);"
+                  />
+                  <text
+                    class="value"
+                    x="18"
+                    y="23"
+                  >
+                    85
+                  </text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>

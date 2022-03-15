@@ -3,10 +3,35 @@
 exports[`RoundScore creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex align-items-center justify-content-center rounded-pill value global undefined"
+    class="d-flex align-items-center justify-content-center rounded-pill score undefined"
     data-testid="global-score"
   >
-    80
+    <div
+      class="chart"
+    >
+      <svg
+        class="d-block"
+        viewBox="0 0 36 36"
+      >
+        <path
+          class="circleBg"
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+        />
+        <path
+          class="circle"
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          stroke-dasharray="80, 100"
+          style="stroke: var(--rm-green);"
+        />
+        <text
+          class="value"
+          x="18"
+          y="23"
+        >
+          80
+        </text>
+      </svg>
+    </div>
   </div>
 </DocumentFragment>
 `;

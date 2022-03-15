@@ -1,10 +1,9 @@
 use super::{
-    check, check::github, check::path::Globs, check_result::CheckResult, patterns::*, LintOptions,
+    check::{self, github, metadata::*, CheckOptions, CheckResult},
+    LintOptions,
 };
 use anyhow::Error;
-use octocrab::models::Repository;
 use serde::{Deserialize, Serialize};
-use std::path::Path;
 
 /// A linter report for a repository of kind secondary.
 #[derive(Debug, Serialize, Deserialize)]
@@ -32,67 +31,37 @@ pub struct License {
 }
 
 /// Lint the path provided and return a report.
-pub async fn lint(options: LintOptions<'_>) -> Result<Report, Error> {
+pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
+    // Get CLOMonitor metadata
+    let md = Metadata::from(&opts.root.join(METADATA_FILE))?;
+
     // Get Github metadata
-    let gh_md = github::get_metadata(options.url).await?;
+    let gh_md = github::get_metadata(&opts.url).await?;
 
-    // Async checks: documentation
-    let (documentation,) = tokio::try_join!(lint_documentation(options.root, &gh_md),)?;
+    // Prepare check options
+    let opts = CheckOptions {
+        root: opts.root,
+        url: opts.url,
+        md,
+        gh_md,
+    };
 
+    // Async checks
+    let (contributing,) = tokio::try_join!(check::contributing(&opts),)?;
+
+    // Sync checks
+    let spdx_id = check::license(&opts)?;
+
+    // Build report and return it
     Ok(Report {
-        documentation,
-        license: lint_license(options.root)?,
-    })
-}
-
-/// Run documentation checks and prepare the report's documentation section.
-async fn lint_documentation(root: &Path, gh_md: &Repository) -> Result<Documentation, Error> {
-    // Contributing
-    let contributing =
-        check::path::exists(Globs {
-            root,
-            patterns: CONTRIBUTING_FILE,
-            case_sensitive: false,
-        })? || check::github::has_default_community_health_file(gh_md, "CONTRIBUTING.md").await?;
-
-    // Maintainers
-    let maintainers = check::path::exists(Globs {
-        root,
-        patterns: MAINTAINERS_FILE,
-        case_sensitive: false,
-    })?;
-
-    // Readme
-    let readme = check::path::exists(Globs {
-        root,
-        patterns: README_FILE,
-        case_sensitive: true,
-    })?;
-
-    Ok(Documentation {
-        contributing: contributing.into(),
-        maintainers: maintainers.into(),
-        readme: readme.into(),
-    })
-}
-
-/// Run license checks and prepare the report's license section.
-fn lint_license(root: &Path) -> Result<License, Error> {
-    // SPDX id
-    let spdx_id = check::license::detect(Globs {
-        root,
-        patterns: LICENSE_FILE,
-        case_sensitive: true,
-    })?;
-
-    // Approved
-    let mut approved: Option<bool> = None;
-    if let Some(spdx_id) = &spdx_id {
-        approved = Some(check::license::is_approved(spdx_id))
-    }
-
-    Ok(License {
-        approved: (approved.unwrap_or(false), approved).into(),
-        spdx_id: spdx_id.into(),
+        documentation: Documentation {
+            contributing,
+            maintainers: check::maintainers(&opts)?,
+            readme: check::readme(&opts)?,
+        },
+        license: License {
+            approved: check::license_approved(&spdx_id.value)?,
+            spdx_id,
+        },
     })
 }

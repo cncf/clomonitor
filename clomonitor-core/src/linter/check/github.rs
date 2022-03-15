@@ -1,5 +1,4 @@
-use super::content;
-use crate::linter::patterns::DCO;
+use super::{content, patterns::*};
 use anyhow::{format_err, Error};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
@@ -8,7 +7,18 @@ use octocrab::{
     params::State,
 };
 use regex::{Regex, RegexSet};
-use reqwest;
+use std::path::Path;
+
+/// Build a url from the path and metadata provided.
+pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> String {
+    format!(
+        "https://github.com/{}/{}/blob/{}/{}",
+        owner,
+        repo,
+        branch,
+        path.to_string_lossy(),
+    )
+}
 
 /// Get repository's metadata from the Github API.
 pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
@@ -21,23 +31,31 @@ pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
 }
 
 /// Check if the given default community health file is available in the
-/// .github repository.
-pub(crate) async fn has_default_community_health_file(
-    gh_md: &Repository,
+/// .github repository, returning the url to the file when found.
+pub(crate) async fn has_community_health_file(
     file: &str,
-) -> Result<bool, Error> {
+    gh_md: &Repository,
+) -> Result<Option<String>, Error> {
     lazy_static! {
         static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
     }
-    let url = format!(
+    let raw_url = format!(
         "https://raw.githubusercontent.com/{}/.github/{}/{}",
         gh_md.owner.as_ref().unwrap().login,
         gh_md.default_branch.as_ref().unwrap(),
         file
     );
-    match HTTP_CLIENT.head(url).send().await?.status() {
-        http::StatusCode::OK => Ok(true),
-        _ => Ok(false),
+    match HTTP_CLIENT.head(raw_url).send().await?.status() {
+        http::StatusCode::OK => {
+            let url = build_url(
+                Path::new(file),
+                &gh_md.owner.as_ref().unwrap().login,
+                ".github",
+                gh_md.default_branch.as_ref().unwrap(),
+            );
+            Ok(Some(url))
+        }
+        _ => Ok(None),
     }
 }
 

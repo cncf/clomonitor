@@ -36,9 +36,9 @@ async fn main() -> Result<(), Error> {
     // Lint repository provided and display results
     println!("\nRunning CLOMonitor linter...\n");
     let options = LintOptions {
-        root: &args.path,
-        kind: &args.kind,
-        url: &args.url,
+        root: args.path,
+        kind: args.kind,
+        url: args.url,
         github_token: None,
     };
     let report = lint(options).await?;

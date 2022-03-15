@@ -114,7 +114,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::check_result::CheckResult;
+    use crate::linter::CheckResult;
 
     #[test]
     fn new_returns_all_zeroes_score() {
@@ -147,7 +147,11 @@ mod tests {
                     website: true.into(),
                 },
                 license: License {
-                    approved: (true, Some(true)).into(),
+                    approved: CheckResult {
+                        passed: true,
+                        value: Some(true),
+                        ..Default::default()
+                    },
                     scanning: CheckResult::from_url(Some(
                         "https://license-scanning.url".to_string()
                     )),
@@ -194,8 +198,13 @@ mod tests {
                     website: false.into(),
                 },
                 license: License {
-                    approved: (false, None).into(),
-                    scanning: CheckResult::from_url(None),
+                    approved: CheckResult {
+                        passed: false,
+                        ..Default::default()
+                    },
+                    scanning: CheckResult {
+                        ..Default::default()
+                    },
                     spdx_id: None.into(),
                 },
                 best_practices: BestPractices {

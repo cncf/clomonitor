@@ -36,7 +36,7 @@ pub struct LicenseScanning {
 mod tests {
     use super::*;
 
-    const TESTDATA_PATH: &str = "src/linter/testdata";
+    const TESTDATA_PATH: &str = "src/linter/check/testdata";
 
     #[test]
     fn metadata_from_path_success() {

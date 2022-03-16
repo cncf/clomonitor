@@ -81,9 +81,9 @@ lazy_static! {
     ]).expect("invalid exprs in ADOPTERS_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref ARTIFACTHUB_BADGE_URL: RegexSet = RegexSet::new(vec![
-        r"https://artifacthub.io/badge/repository/.*"
-    ]).expect("invalid exprs in ARTIFACTHUB_BADGE_URL");
+    pub(crate) static ref ARTIFACTHUB_URL: Regex = Regex::new(
+        r#"(https://artifacthub.io/packages/[^"'\)]+)"#
+    ).expect("invalid exprs in ARTIFACTHUB_URL");
 
     #[rustfmt::skip]
     pub(crate) static ref CHANGELOG_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
@@ -144,9 +144,9 @@ lazy_static! {
     ]).expect("invalid exprs in MAINTAINERS_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref OPENSSF_BADGE_URL: RegexSet = RegexSet::new(vec![
-        r"https://bestpractices.coreinfrastructure.org/projects/\d+",
-    ]).expect("invalid exprs in OPENSSF_BADGE_URL");
+    pub(crate) static ref OPENSSF_URL: Regex = Regex::new(
+        r"(https://bestpractices.coreinfrastructure.org/projects/\d+)",
+    ).expect("invalid exprs in OPENSSF_URL");
 
     #[rustfmt::skip]
     pub(crate) static ref ROADMAP_IN_README: RegexSet = RegexSet::new(vec![
@@ -202,8 +202,11 @@ Adopters
     }
 
     #[test]
-    fn artifacthub_badge_url_match() {
-        assert!(ARTIFACTHUB_BADGE_URL.is_match("[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/artifact-hub)](https://artifacthub.io/packages/helm/artifact-hub/artifact-hub)"));
+    fn artifacthub_url_extract() {
+        assert_eq!(
+            ARTIFACTHUB_URL.captures(r#"[![Artifact HUB]("https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/artifact-hub)](https://artifacthub.io/packages/helm/artifact-hub/artifact-hub)"#).unwrap()[1].to_string(),
+            "https://artifacthub.io/packages/helm/artifact-hub/artifact-hub"
+        );
     }
 
     #[test]
@@ -362,8 +365,11 @@ Maintainers
     }
 
     #[test]
-    fn openssf_badge_url_match() {
-        assert!(OPENSSF_BADGE_URL.is_match("[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4106/badge)](https://bestpractices.coreinfrastructure.org/projects/4106)"));
+    fn openssf_url_extract() {
+        assert_eq!(
+            OPENSSF_URL.captures("[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4106/badge)](https://bestpractices.coreinfrastructure.org/projects/4106)").unwrap()[1].to_string(),
+            "https://bestpractices.coreinfrastructure.org/projects/4106"
+        );
     }
 
     #[test]

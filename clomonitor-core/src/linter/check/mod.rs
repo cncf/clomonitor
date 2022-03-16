@@ -3,7 +3,7 @@ use anyhow::Error;
 use metadata::Metadata;
 use octocrab::models::Repository;
 use patterns::*;
-use regex::RegexSet;
+use regex::{Regex, RegexSet};
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 
@@ -104,7 +104,10 @@ pub(crate) fn adopters(opts: &CheckOptions) -> Result<CheckResult, Error> {
 /// Artifact Hub badge check.
 pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
     // Reference in README file
-    Ok(readme_matches(&opts.root, &*ARTIFACTHUB_BADGE_URL)?.into())
+    Ok(CheckResult::from_url(readme_capture(
+        &opts.root,
+        vec![&*ARTIFACTHUB_URL],
+    )?))
 }
 
 /// Changelog check.
@@ -247,12 +250,17 @@ pub(crate) fn maintainers(opts: &CheckOptions) -> Result<CheckResult, Error> {
 /// OpenSSF badge check.
 pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
     // Reference in README file
-    Ok(readme_matches(&opts.root, &*OPENSSF_BADGE_URL)?.into())
+    Ok(CheckResult::from_url(readme_capture(
+        &opts.root,
+        vec![&*OPENSSF_URL],
+    )?))
 }
 
 /// Recent release check.
 pub(crate) async fn recent_release(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    Ok(check::github::has_recent_release(&opts.url).await?.into())
+    Ok(CheckResult::from_url(
+        check::github::has_recent_release(&opts.url).await?,
+    ))
 }
 
 /// Roadmap check.
@@ -352,6 +360,19 @@ fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool, Error> {
             case_sensitive: true,
         },
         re,
+    )
+}
+
+/// Check if the README file content matches any of the regular expressions
+/// provided, returning the value from the first capture group.
+fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>, Error> {
+    check::content::find(
+        Globs {
+            root,
+            patterns: README_FILE,
+            case_sensitive: true,
+        },
+        regexps,
     )
 }
 

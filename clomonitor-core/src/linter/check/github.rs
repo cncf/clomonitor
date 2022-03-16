@@ -3,7 +3,7 @@ use anyhow::{format_err, Error};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
 use octocrab::{
-    models::{repos::Release, Repository},
+    models::{orgs::Organization, repos::Release, Repository},
     params::State,
 };
 use regex::{Regex, RegexSet};
@@ -20,8 +20,18 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
     )
 }
 
+/// Get organization's metadata from the Github API.
+pub(crate) async fn get_org_metadata(repo_url: &str) -> Result<Organization, Error> {
+    let (owner, _) = get_owner_and_repo(repo_url)?;
+    let github = octocrab::instance();
+    match github.orgs(&owner).get().await {
+        Ok(org) => Ok(org),
+        Err(err) => Err(err.into()),
+    }
+}
+
 /// Get repository's metadata from the Github API.
-pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
+pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository, Error> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
     match github.repos(&owner, &repo).get().await {

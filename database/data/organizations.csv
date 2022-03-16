@@ -51,7 +51,7 @@ organization_id;name;home_url;logo_url
 00000050-0000-0000-0000-000000000000;jet-stack;https://www.jetstack.io/open-source/;https://www.venafi.com/sites/default/files/2020-08/jetstack%20TN%20logo.png
 00000051-0000-0000-0000-000000000000;chaos-mesh;https://github.com/chaos-mesh/chaos-mesh;https://raw.githubusercontent.com/cncf/artwork/master/projects/chaosmesh/icon/color/chaosmesh-icon-color.svg
 00000052-0000-0000-0000-000000000000;chaos-blade;https://github.com/chaosblade-io/chaosblade;https://kubeovn.teststats.cncf.io/public/img/projects/chaosblade.svg
-00000053-0000-0000-0000-000000000000;chubao-fs;https://chubao.io/cgi-sys/suspendedpage.cgi;https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg
+00000053-0000-0000-0000-000000000000;chubao-fs;https://www.chubao.io;https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg
 00000054-0000-0000-0000-000000000000;cloud-custodian;https://cloudcustodian.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudcustodian/icon/color/cloudcustodian-icon-color.svg
 00000055-0000-0000-0000-000000000000;cni-genie;https://github.com/cni-genie/CNI-Genie;https://kubeovn.teststats.cncf.io/public/img/projects/cni.svg
 00000056-0000-0000-0000-000000000000;curiefense;https://www.curiefense.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/curiefense/icon/color/curiefense-icon-color.svg

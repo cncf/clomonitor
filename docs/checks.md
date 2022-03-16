@@ -209,7 +209,9 @@ A url that users can visit to learn more about your project.
 
 This check passes if:
 
-- A website *url* is configured in Github.
+- A website *url* is configured in the Github repository.
+
+- A website *url* is configured in the Github organization that owns the repository.
 
 ## License
 

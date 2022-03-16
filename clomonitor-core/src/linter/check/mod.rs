@@ -317,11 +317,19 @@ pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckRes
 }
 
 /// Website check.
-pub(crate) fn website(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Website in Github
+pub(crate) async fn website(opts: &CheckOptions) -> Result<CheckResult, Error> {
+    // Website in Github repo
     if let Some(url) = &opts.gh_md.homepage {
         if !url.is_empty() {
             return Ok(CheckResult::from_url(Some(url.to_string())));
+        }
+    }
+
+    // Website in Github org
+    let org = github::get_org_metadata(&opts.url).await?;
+    if let Some(url) = org.blog {
+        if !url.is_empty() {
+            return Ok(CheckResult::from_url(Some(url)));
         }
     }
 

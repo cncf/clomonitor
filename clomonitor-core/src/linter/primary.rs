@@ -72,7 +72,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
     let md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
     // Get Github metadata
-    let gh_md = github::get_metadata(&opts.url).await?;
+    let gh_md = github::get_repo_metadata(&opts.url).await?;
 
     // Prepare check options
     let opts = CheckOptions {
@@ -91,6 +91,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
         recent_release,
         security_policy,
         trademark_disclaimer,
+        website,
     ) = tokio::try_join!(
         check::changelog(&opts),
         check::code_of_conduct(&opts),
@@ -99,6 +100,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
         check::recent_release(&opts),
         check::security_policy(&opts),
         check::trademark_disclaimer(&opts),
+        check::website(&opts),
     )?;
 
     // Sync checks
@@ -115,7 +117,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
             maintainers: check::maintainers(&opts)?,
             readme: check::readme(&opts)?,
             roadmap: check::roadmap(&opts)?,
-            website: check::website(&opts)?,
+            website,
         },
         license: License {
             approved: check::license_approved(&spdx_id.value)?,

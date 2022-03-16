@@ -163,6 +163,14 @@ lazy_static! {
     ]).expect("invalid exprs in SECURITY_POLICY_IN_README");
 
     #[rustfmt::skip]
+    pub(crate) static ref SLACK_IN_README: RegexSet = RegexSet::new(vec![
+        r"(?i)https?://cloud-native.slack.com",
+        r"(?i)https?://slack.cncf.io",
+        r"(?i)https?://kubernetes.slack.com",
+        r"(?i)https?://slack.k8s.io",
+    ]).expect("invalid exprs in SLACK_IN_README");
+
+    #[rustfmt::skip]
     pub(crate) static ref SNYK_URL: Regex = Regex::new(
         r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#
     ).expect("invalid exprs in SNYK_URL");
@@ -412,6 +420,14 @@ Security
             "
         ));
         assert!(SECURITY_POLICY_IN_README.is_match("[Project security policy](...)"));
+    }
+
+    #[test]
+    fn slack_match() {
+        assert!(SLACK_IN_README.is_match("Joining [CNCF slack](https://cloud-native.slack.com)"));
+        assert!(SLACK_IN_README.is_match("Visit [http://slack.cncf.io/](http://slack.cncf.io/)"));
+        assert!(SLACK_IN_README.is_match("[KEDA](https://kubernetes.slack.com/messages/CKZJ36A5D)"));
+        assert!(SLACK_IN_README.is_match("[Kubernetes Slack](https://slack.k8s.io/)"));
     }
 
     #[test]

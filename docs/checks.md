@@ -326,6 +326,21 @@ This check passes if:
 
 - A release that is less than one year old is found on Github.
 
+### Slack presence
+
+Projects should have presence in the CNCF Slack or Kubernetes Slack.
+
+This check passes if:
+
+- A *reference* to the CNCF Slack or Kubernetes Slack is found in the repository's `README` file. Regexps used:
+
+```sh
+"(?i)https?://cloud-native.slack.com"
+"(?i)https?://slack.cncf.io"
+"(?i)https?://kubernetes.slack.com"
+"(?i)https?://slack.k8s.io"
+```
+
 ## Security
 
 ### Security policy

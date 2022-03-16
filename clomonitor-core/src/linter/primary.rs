@@ -49,6 +49,7 @@ pub struct BestPractices {
     pub dco: CheckResult,
     pub openssf_badge: CheckResult,
     pub recent_release: CheckResult,
+    pub slack_presence: CheckResult,
 }
 
 /// Security section of the report.
@@ -127,6 +128,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
             dco,
             openssf_badge: check::openssf_badge(&opts)?,
             recent_release,
+            slack_presence: check::slack_presence(&opts)?,
         },
         security: Security { security_policy },
         legal: Legal {

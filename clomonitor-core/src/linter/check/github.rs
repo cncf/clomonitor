@@ -60,13 +60,15 @@ pub(crate) async fn has_community_health_file(
 }
 
 /// Check if the repository has released a new version in the last year.
-pub(crate) async fn has_recent_release(repo_url: &str) -> Result<bool, Error> {
+pub(crate) async fn has_recent_release(repo_url: &str) -> Result<Option<String>, Error> {
     if let Some(last_release) = last_release(repo_url).await? {
         if let Some(created_at) = last_release.created_at {
-            return Ok(created_at > Utc::now() - Duration::days(365));
+            if created_at > Utc::now() - Duration::days(365) {
+                return Ok(Some(last_release.html_url.into()));
+            }
         }
     }
-    Ok(false)
+    Ok(None)
 }
 
 /// Check if the last PR in the repository has the DCO check.
@@ -135,6 +137,14 @@ async fn last_release(repo_url: &str) -> Result<Option<Release>, Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn build_url_works() {
+        assert_eq!(
+            build_url(Path::new("path/test.md"), "owner", "repo", "main"),
+            "https://github.com/owner/repo/blob/main/path/test.md".to_string()
+        );
+    }
 
     #[test]
     fn get_owner_and_repo_valid_url() {

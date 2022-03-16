@@ -18,7 +18,9 @@ where
         if let Ok(content) = fs::read_to_string(path) {
             for re in regexps.iter() {
                 if let Some(c) = re.captures(&content) {
-                    return Ok(Some(c[1].to_string()));
+                    if c.len() > 1 {
+                        return Ok(Some(c[1].to_string()));
+                    }
                 }
             }
         }

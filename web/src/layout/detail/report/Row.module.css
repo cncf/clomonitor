@@ -16,7 +16,7 @@
 
 .extIcon {
   font-size: 0.65rem;
-  margin-top: -2px;
+  margin-top: -1px;
 }
 
 .headerAnchor {
@@ -36,15 +36,6 @@
 @media only screen and (min-width: 768px) {
   .table {
     max-width: 75%;
-  }
-
-  .linksList {
-    font-size: 1rem;
-  }
-
-  .extIcon {
-    font-size: 0.75rem;
-    margin-top: 0px;
   }
 }
 

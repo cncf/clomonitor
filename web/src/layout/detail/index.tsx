@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { isNull, isUndefined } from 'lodash';
+import moment from 'moment';
 import { useCallback, useEffect, useState } from 'react';
 import { GrPieChart } from 'react-icons/gr';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -104,7 +105,7 @@ const Detail = () => {
                 <div className="my-4 my-md-5">
                   <div className="border">
                     <div className="px-0 px-md-4 pt-0 pt-md-4">
-                      <div className={`d-flex flex-row align-items-stretch p-2 p-md-0 ${styles.titleWrapper}`}>
+                      <div className={`d-flex flex-row align-items-stretch px-3 py-2 p-md-0 ${styles.titleWrapper}`}>
                         <div
                           className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
                         >
@@ -150,9 +151,12 @@ const Detail = () => {
                           <RoundScore score={detail.score.global} className={`ms-2 ${styles.global}`} />
                         </div>
                       </div>
-                      <p className={`text-muted my-3 my-md-4 mx-3 mx-md-0 ${styles.description}`}>
+                      <p className={`text-muted mt-3 mb-2 mt-md-4 mb-md-3 mx-3 mx-md-0 ${styles.description}`}>
                         {detail.description}
                       </p>
+                      <div className={`text-muted fst-italic mx-3 mx-md-0 mb-2 mb-md-3 ${styles.updated}`}>
+                        Updated {moment.unix(detail.updated_at).fromNow()}
+                      </div>
                     </div>
                     <div className="pt-2">
                       <CategoriesSummary

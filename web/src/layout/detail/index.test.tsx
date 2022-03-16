@@ -29,6 +29,13 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
+jest.mock('moment', () => ({
+  ...(jest.requireActual('moment') as {}),
+  unix: () => ({
+    fromNow: () => '3 days ago',
+  }),
+}));
+
 describe('Project detail index', () => {
   beforeEach(() => {
     jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ org: 'org', project: 'proj' });

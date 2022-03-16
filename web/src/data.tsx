@@ -1,7 +1,7 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
-import { FaBalanceScale, FaCheckDouble, FaFileSignature, FaTools, FaTrademark } from 'react-icons/fa';
+import { FaBalanceScale, FaCheckDouble, FaFileSignature, FaSlack, FaTools, FaTrademark } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
@@ -218,6 +218,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <BiShieldQuarter />,
     name: 'Security policy',
     legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
+  },
+  [ReportOption.SlackPresence]: {
+    icon: <FaSlack />,
+    name: 'Slack presence',
+    legend: <span>Projects should have presence in the CNCF Slack or Kubernetes Slack</span>,
   },
   [ReportOption.SPDX]: {
     icon: <FaBalanceScale />,

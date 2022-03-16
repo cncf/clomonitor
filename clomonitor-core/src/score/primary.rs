@@ -78,7 +78,7 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
         score.best_practices += 5;
     }
     if report.best_practices.community_meeting.passed {
-        score.best_practices += 25;
+        score.best_practices += 20;
     }
     if report.best_practices.dco.passed {
         score.best_practices += 10;
@@ -88,6 +88,9 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     }
     if report.best_practices.recent_release.passed {
         score.best_practices += 10;
+    }
+    if report.best_practices.slack_presence.passed {
+        score.best_practices += 5;
     }
 
     // Security
@@ -163,6 +166,7 @@ mod tests {
                     dco: true.into(),
                     openssf_badge: true.into(),
                     recent_release: true.into(),
+                    slack_presence: true.into(),
                 },
                 security: Security {
                     security_policy: true.into(),
@@ -213,6 +217,7 @@ mod tests {
                     dco: false.into(),
                     openssf_badge: false.into(),
                     recent_release: false.into(),
+                    slack_presence: false.into(),
                 },
                 security: Security {
                     security_policy: false.into(),

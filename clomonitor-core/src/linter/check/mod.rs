@@ -296,6 +296,12 @@ pub(crate) async fn security_policy(opts: &CheckOptions) -> Result<CheckResult, 
     Ok(CheckResult::from_url(url))
 }
 
+/// Slack presence check.
+pub(crate) fn slack_presence(opts: &CheckOptions) -> Result<CheckResult, Error> {
+    // Reference in README file
+    Ok(readme_matches(&opts.root, &*SLACK_IN_README)?.into())
+}
+
 /// Trademark disclaimer check.
 pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckResult, Error> {
     // Trademark disclaimer in website setup in Github

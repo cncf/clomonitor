@@ -42,12 +42,14 @@ const OptionCell = (props: Props) => {
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
               <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
                 {!isUndefined(props.check.url) ? (
-                  <ExternalLink href={props.check.url} className="d-inline w-100">
-                    <div className="d-flex flex-row align-items-center w-100">
-                      <small className="fw-bold text-truncate">{getCheckValue()}</small>
-                      <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
-                    </div>
-                  </ExternalLink>
+                  <div>
+                    <ExternalLink href={props.check.url} className="d-inline w-100">
+                      <div className="d-flex flex-row align-items-center w-100">
+                        <small className="fw-bold text-truncate">{getCheckValue()}</small>
+                        <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
+                      </div>
+                    </ExternalLink>
+                  </div>
                 ) : (
                   <small className="fw-bold text-truncate">{getCheckValue()}</small>
                 )}

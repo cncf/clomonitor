@@ -25,17 +25,25 @@ import RepositoriesList from './repositories';
 
 const Detail = () => {
   const navigate = useNavigate();
-  const { state, hash } = useLocation();
-  const currentState = state as { currentSearch?: string };
+  const location = useLocation();
+  const currentState = location.state as { currentSearch?: string };
   const { org, project } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
 
   useScrollRestorationFix();
 
+  useEffect(() => {
+    if (location.hash === '') {
+      window.scrollTo(0, 0);
+    } else {
+      scrollIntoView();
+    }
+  }, [location]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
   const scrollIntoView = useCallback(
     (id?: string) => {
-      const elId = id || hash;
+      const elId = id || location.hash;
       if (isUndefined(elId) || elId === '') return;
       try {
         const element = document.querySelector(elId);
@@ -46,7 +54,7 @@ const Detail = () => {
         return;
       }
     },
-    [hash]
+    [location.hash]
   );
 
   useEffect(() => {

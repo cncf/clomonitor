@@ -161,8 +161,10 @@ pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult, Err
 /// Developer Certificate of Origin check.
 pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
     // DCO signature in commits
-    if check::git::commits_have_dco_signature(&opts.root)? {
-        return Ok(true.into());
+    if let Ok(passed) = check::git::commits_have_dco_signature(&opts.root) {
+        if passed {
+            return Ok(true.into());
+        }
     }
 
     // DCO app reference in last closed PR

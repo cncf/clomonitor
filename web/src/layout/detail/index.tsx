@@ -46,7 +46,7 @@ const Detail = () => {
       const elId = id || location.hash;
       if (isUndefined(elId) || elId === '') return;
       try {
-        const element = document.querySelector(elId);
+        const element = document.getElementById(elId.replace('#', ''));
         if (element) {
           element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
         }

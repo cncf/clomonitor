@@ -1,6 +1,9 @@
 use anyhow::Error;
 use glob::{glob_with, MatchOptions, PatternError};
-use std::path::{Path, PathBuf};
+use std::{
+    ffi::OsStr,
+    path::{Path, PathBuf},
+};
 
 /// Glob matching configuration.
 #[derive(Debug)]
@@ -22,7 +25,14 @@ where
 {
     let root = globs.root.to_owned();
     match matches(globs)?.first() {
-        Some(path) => Ok(Some(path.strip_prefix(root)?.to_owned())),
+        Some(path) => Ok(Some(
+            if root.as_os_str() == OsStr::new(".") || root.as_os_str().is_empty() {
+                path
+            } else {
+                path.strip_prefix(root)?
+            }
+            .to_owned(),
+        )),
         None => Ok(None),
     }
 }

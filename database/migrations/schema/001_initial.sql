@@ -42,6 +42,7 @@ create table if not exists project (
     devstats_url text check (devstats_url <> ''),
     score jsonb,
     rating text,
+    accepted_at date,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
     organization_id uuid not null references organization on delete cascade,

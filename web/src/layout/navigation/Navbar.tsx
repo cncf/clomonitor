@@ -23,8 +23,14 @@ const Navbar = (props: Props) => {
               <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge} alphaBadge`}>Alpha</div>
             </div>
           </div>
-          <div className={`d-flex flex-row align-items-center ${styles.searchWrapper}`}>
-            <Searchbar classNameWrapper="my-3 flex-grow-1" setScrollPosition={props.setScrollPosition} />
+          <Searchbar classNameWrapper="my-3" setScrollPosition={props.setScrollPosition} />
+          <div className={`d-none d-md-flex flex-row align-items-center ms-auto ${styles.searchWrapper}`}>
+            <Link
+              to="/stats"
+              className={`position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none ${styles.link} navbarLink`}
+            >
+              Stats
+            </Link>
             <ThemeSwitch />
           </div>
         </div>

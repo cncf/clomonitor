@@ -176,6 +176,21 @@ pub(crate) async fn search_projects(
     Ok((headers, response::Json(projects)))
 }
 
+/// Handler that returns some general stats.
+pub(crate) async fn stats(
+    Extension(db_pool): Extension<Pool>,
+) -> Result<response::Json<Value>, StatusCode> {
+    // Get stats from database
+    let db = db_pool.get().await.map_err(internal_error)?;
+    let row = db
+        .query_one("select get_stats()", &[])
+        .await
+        .map_err(internal_error)?;
+    let Json(stats): Json<Value> = row.get(0);
+
+    Ok(response::Json(stats))
+}
+
 /// Helper for mapping any error into a `500 Internal Server Error` response.
 fn internal_error<E: std::error::Error>(err: E) -> StatusCode {
     error!("{err}");

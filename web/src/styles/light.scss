@@ -12,6 +12,7 @@
   --color-font: #38383f;
   --solid-border: #9b9ea1;
   --bg-code: rgba(0, 0, 0, 0.05);
+  --bg-progressbar-stats: var(--color-black-5);
 
   .tooltip {
     &.bs-tooltip-bottom .tooltip-arrow::before {

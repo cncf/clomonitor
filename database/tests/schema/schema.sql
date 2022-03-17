@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(27);
+select plan(29);
 
 -- Check expected extension exist
 select has_extension('pgcrypto');
@@ -47,6 +47,7 @@ select columns_are('project', array[
     'devstats_url',
     'score',
     'rating',
+    'accepted_at',
     'created_at',
     'updated_at',
     'organization_id',
@@ -107,6 +108,8 @@ select indexes_are('repository', array[
 -- Projects
 select has_function('get_project');
 select has_function('search_projects');
+select has_function('repositories_passing_check');
+select has_function('get_stats');
 
 -- Check categories exist
 select results_eq(

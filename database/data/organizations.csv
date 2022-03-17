@@ -45,7 +45,7 @@ organization_id;name;home_url;logo_url
 00000044-0000-0000-0000-000000000000;antrea;https://antrea.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/antrea/icon/color/antrea-icon-color.svg
 00000045-0000-0000-0000-000000000000;athenz;https://www.athenz.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/athenz/icon/color/athenz-icon-color.svg
 00000046-0000-0000-0000-000000000000;backstage;https://backstage.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/backstage/icon/color/backstage-icon-color.svg
-00000047-0000-0000-0000-000000000000;bfenetworks;https://www.bfe-networks.net/en_us/;https://raw.githubusercontent.com/cncf/artwork/master/projects/bfe/icon/color/bfe-icon-color.svg
+00000047-0000-0000-0000-000000000000;bfenetworks;https://github.com/bfenetworks/bfe;https://raw.githubusercontent.com/cncf/artwork/master/projects/bfe/icon/color/bfe-icon-color.svg
 00000048-0000-0000-0000-000000000000;brigade;https://brigade.sh/;https://raw.githubusercontent.com/cncf/artwork/master/projects/brigade/icon/color/brigade-icon-color.svg
 00000049-0000-0000-0000-000000000000;cdk8s;https://cdk8s.io;https://raw.githubusercontent.com/cncf/artwork/master/projects/cdk8s/icon/color/cdk8s-icon-color.svg
 00000050-0000-0000-0000-000000000000;jet-stack;https://www.jetstack.io/open-source/;https://www.venafi.com/sites/default/files/2020-08/jetstack%20TN%20logo.png
@@ -108,7 +108,7 @@ organization_id;name;home_url;logo_url
 00000107-0000-0000-0000-000000000000;volcano;https://volcano.sh/en/;https://raw.githubusercontent.com/cncf/artwork/master/projects/volcano/icon/color/volcano-icon-color.svg
 00000108-0000-0000-0000-000000000000;wasm-cloud;https://wasmcloud.com;https://raw.githubusercontent.com/cncf/artwork/master/projects/wasmcloud/icon/color/wasmcloud.icon_green.svg
 00000109-0000-0000-0000-000000000000;wasm-edge;https://wasmedge.org;https://raw.githubusercontent.com/cncf/artwork/master/projects/wasm-edge-runtime/icon/color/wasm-edge-runtime-icon-color.svg
-00000110-0000-0000-0000-000000000000;knative;https://knative.dev;https://cdn-images-1.medium.com/max/1200/1*obfgJOC6Y7S2lSX6eHklIA.png
+00000110-0000-0000-0000-000000000000;knative;https://knative.dev;https://raw.githubusercontent.com/knative/docs/main/docs/images/logo/rgb/knative-logo-rgb.png
 00000111-0000-0000-0000-000000000000;krator-rs;https://github.com/krator-rs;https://raw.githubusercontent.com/cncf/artwork/master/projects/krator/icon/color/krator-icon-color.svg
 00000112-0000-0000-0000-000000000000;devfile;https://devfile.io;https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/color/devfile-icon-color.svg
 00000113-0000-0000-0000-000000000000;kube-rs;https://kube.rs;https://raw.githubusercontent.com/cncf/artwork/master/projects/kube-rs/icon/black/kube-rs-icon-black.svg

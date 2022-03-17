@@ -96,6 +96,7 @@ export interface Prefs {
 export interface ReportOptionData {
   icon: JSX.Element;
   name: string;
+  shortName?: string;
   legend: JSX.Element;
 }
 
@@ -213,6 +214,40 @@ export interface SearchData {
   rating?: number[];
 }
 
+export interface Stats {
+  generated_at?: number;
+  projects: {
+    total: number;
+    running_total?: any[];
+    rating_distribution: {
+      all: { [key: string]: number }[];
+      graduated: { [key: string]: number }[];
+      incubating: { [key: string]: number }[];
+      sandbox: { [key: string]: number }[];
+    };
+    sections_average: {
+      all: { [key in ScoreType]: number };
+      graduated: { [key in ScoreType]: number };
+      incubating: { [key in ScoreType]: number };
+      sandbox: { [key in ScoreType]: number };
+    };
+    accepted_distribution: DistributionData[];
+  };
+  repositories: {
+    passing_check: {
+      [key in ScoreType]: {
+        [key in ReportOption]?: number;
+      };
+    };
+  };
+}
+
+export interface DistributionData {
+  month: number;
+  total: number;
+  year: number;
+}
+
 export interface Error {
   kind: ErrorKind;
   message?: string;
@@ -221,6 +256,13 @@ export interface Error {
 export enum ErrorKind {
   Other,
   NotFound,
+}
+
+export enum RatingKind {
+  A = 'a',
+  B = 'b',
+  C = 'c',
+  D = 'd',
 }
 
 export type ReportOptionInfo = {

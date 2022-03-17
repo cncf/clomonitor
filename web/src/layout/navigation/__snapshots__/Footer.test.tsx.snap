@@ -36,6 +36,12 @@ exports[`Footer creates snapshot 1`] = `
                 Documentation
               </div>
             </a>
+            <a
+              class="mb-1 opacity-75"
+              href="/stats"
+            >
+              Statistics
+            </a>
           </div>
         </div>
         <div

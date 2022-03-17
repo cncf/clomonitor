@@ -72,7 +72,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
     let md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
     // Get Github metadata
-    let gh_md = github::get_metadata(&opts.url).await?;
+    let gh_md = github::get_repo_metadata(&opts.url).await?;
 
     // Prepare check options
     let opts = CheckOptions {

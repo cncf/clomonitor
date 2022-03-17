@@ -21,7 +21,7 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
 }
 
 /// Get repository's metadata from the Github API.
-pub(crate) async fn get_metadata(repo_url: &str) -> Result<Repository, Error> {
+pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository, Error> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
     match github.repos(&owner, &repo).get().await {

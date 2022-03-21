@@ -28,21 +28,21 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation
-    if report.documentation.contributing.passed {
+    if report.documentation.contributing.passed_or_exempt() {
         score.documentation += 20;
     }
-    if report.documentation.maintainers.passed {
+    if report.documentation.maintainers.passed_or_exempt() {
         score.documentation += 10;
     }
-    if report.documentation.readme.passed {
+    if report.documentation.readme.passed_or_exempt() {
         score.documentation += 70;
     }
 
     // License
-    if report.license.approved.passed {
+    if report.license.approved.passed_or_exempt() {
         score.license += 75;
     }
-    if report.license.spdx_id.passed {
+    if report.license.spdx_id.passed_or_exempt() {
         score.license += 25;
     }
 

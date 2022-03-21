@@ -118,7 +118,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
             website: check::website(&opts)?,
         },
         license: License {
-            approved: check::license_approved(&spdx_id.value)?,
+            approved: check::license_approved(&spdx_id.value, &opts)?,
             scanning: check::license_scanning(&opts)?,
             spdx_id,
         },

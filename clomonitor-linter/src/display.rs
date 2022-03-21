@@ -1,5 +1,5 @@
 use clomonitor_core::{
-    linter::{self, Report},
+    linter::{self, CheckResult, Report},
     score::{self, Score},
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
@@ -57,39 +57,39 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Adopters"),
-            cell_check(report.documentation.adopters.passed),
+            cell_check(&report.documentation.adopters),
         ])
         .add_row(vec![
             cell_entry("Documentation / Changelog"),
-            cell_check(report.documentation.changelog.passed),
+            cell_check(&report.documentation.changelog),
         ])
         .add_row(vec![
             cell_entry("Documentation / Code of conduct"),
-            cell_check(report.documentation.code_of_conduct.passed),
+            cell_check(&report.documentation.code_of_conduct),
         ])
         .add_row(vec![
             cell_entry("Documentation / Contributing"),
-            cell_check(report.documentation.contributing.passed),
+            cell_check(&report.documentation.contributing),
         ])
         .add_row(vec![
             cell_entry("Documentation / Governance"),
-            cell_check(report.documentation.governance.passed),
+            cell_check(&report.documentation.governance),
         ])
         .add_row(vec![
             cell_entry("Documentation / Maintainers"),
-            cell_check(report.documentation.maintainers.passed),
+            cell_check(&report.documentation.maintainers),
         ])
         .add_row(vec![
             cell_entry("Documentation / Readme"),
-            cell_check(report.documentation.readme.passed),
+            cell_check(&report.documentation.readme),
         ])
         .add_row(vec![
             cell_entry("Documentation / Roadmap"),
-            cell_check(report.documentation.roadmap.passed),
+            cell_check(&report.documentation.roadmap),
         ])
         .add_row(vec![
             cell_entry("Documentation / Website"),
-            cell_check(report.documentation.website.passed),
+            cell_check(&report.documentation.website),
         ])
         .add_row(vec![
             cell_entry("License"),
@@ -104,43 +104,43 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(report.license.approved.passed),
+            cell_check(&report.license.approved),
         ])
         .add_row(vec![
             cell_entry("License / Scanning"),
-            cell_check(report.license.scanning.passed),
+            cell_check(&report.license.scanning),
         ])
         .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
-            cell_check(report.best_practices.artifacthub_badge.passed),
+            cell_check(&report.best_practices.artifacthub_badge),
         ])
         .add_row(vec![
             cell_entry("Best practices / Community meeting"),
-            cell_check(report.best_practices.community_meeting.passed),
+            cell_check(&report.best_practices.community_meeting),
         ])
         .add_row(vec![
             cell_entry("Best practices / DCO"),
-            cell_check(report.best_practices.dco.passed),
+            cell_check(&report.best_practices.dco),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),
-            cell_check(report.best_practices.openssf_badge.passed),
+            cell_check(&report.best_practices.openssf_badge),
         ])
         .add_row(vec![
             cell_entry("Best practices / Recent release"),
-            cell_check(report.best_practices.recent_release.passed),
+            cell_check(&report.best_practices.recent_release),
         ])
         .add_row(vec![
             cell_entry("Best practices / Slack presence"),
-            cell_check(report.best_practices.slack_presence.passed),
+            cell_check(&report.best_practices.slack_presence),
         ])
         .add_row(vec![
             cell_entry("Security / Security policy"),
-            cell_check(report.security.security_policy.passed),
+            cell_check(&report.security.security_policy),
         ])
         .add_row(vec![
             cell_entry("Legal / Trademark disclaimer"),
-            cell_check(report.legal.trademark_disclaimer.passed),
+            cell_check(&report.legal.trademark_disclaimer),
         ]);
     println!("{checks}\n");
 }
@@ -174,15 +174,15 @@ pub(crate) fn display_secondary(
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Contributing"),
-            cell_check(report.documentation.contributing.passed),
+            cell_check(&report.documentation.contributing),
         ])
         .add_row(vec![
             cell_entry("Documentation / Maintainers"),
-            cell_check(report.documentation.maintainers.passed),
+            cell_check(&report.documentation.maintainers),
         ])
         .add_row(vec![
             cell_entry("Documentation / Readme"),
-            cell_check(report.documentation.readme.passed),
+            cell_check(&report.documentation.readme),
         ])
         .add_row(vec![
             cell_entry("License"),
@@ -197,7 +197,7 @@ pub(crate) fn display_secondary(
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(report.license.approved.passed),
+            cell_check(&report.license.approved),
         ]);
     println!("{checks}\n");
 }
@@ -229,21 +229,25 @@ fn cell_score(score: usize) -> Cell {
         .fg(color)
 }
 
-/// Build a cell used for checks symbols.
-fn cell_check(passed: bool) -> Cell {
-    let symbol: char;
+/// Build a cell used for checks results.
+fn cell_check<T>(r: &CheckResult<T>) -> Cell {
+    let content: String;
     let color: Color;
-    match passed {
-        true => {
-            symbol = SUCCESS_SYMBOL;
+    match (r.passed, r.exempt) {
+        (true, _) => {
+            content = SUCCESS_SYMBOL.to_string();
             color = Color::Green;
         }
-        false => {
-            symbol = FAILURE_SYMBOL;
+        (false, true) => {
+            content = "Exempt".to_string();
+            color = Color::Yellow;
+        }
+        (false, _) => {
+            content = FAILURE_SYMBOL.to_string();
             color = Color::Red;
         }
     };
-    Cell::new(symbol)
+    Cell::new(content)
         .set_alignment(CellAlignment::Center)
         .add_attribute(Attribute::Bold)
         .fg(color)

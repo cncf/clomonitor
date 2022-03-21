@@ -34,72 +34,72 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     let mut score = Score::new();
 
     // Documentation
-    if report.documentation.adopters.passed {
+    if report.documentation.adopters.passed_or_exempt() {
         score.documentation += 5;
     }
-    if report.documentation.changelog.passed {
+    if report.documentation.changelog.passed_or_exempt() {
         score.documentation += 5;
     }
-    if report.documentation.code_of_conduct.passed {
+    if report.documentation.code_of_conduct.passed_or_exempt() {
         score.documentation += 5;
     }
-    if report.documentation.contributing.passed {
+    if report.documentation.contributing.passed_or_exempt() {
         score.documentation += 10;
     }
-    if report.documentation.governance.passed {
+    if report.documentation.governance.passed_or_exempt() {
         score.documentation += 10;
     }
-    if report.documentation.maintainers.passed {
+    if report.documentation.maintainers.passed_or_exempt() {
         score.documentation += 5;
     }
-    if report.documentation.readme.passed {
+    if report.documentation.readme.passed_or_exempt() {
         score.documentation += 50;
     }
-    if report.documentation.roadmap.passed {
+    if report.documentation.roadmap.passed_or_exempt() {
         score.documentation += 5;
     }
-    if report.documentation.website.passed {
+    if report.documentation.website.passed_or_exempt() {
         score.documentation += 5;
     }
 
     // License
-    if report.license.approved.passed {
+    if report.license.approved.passed_or_exempt() {
         score.license += 60;
     }
-    if report.license.scanning.passed {
+    if report.license.scanning.passed_or_exempt() {
         score.license += 20;
     }
-    if report.license.spdx_id.passed {
+    if report.license.spdx_id.passed_or_exempt() {
         score.license += 20;
     }
 
     // Best practices
-    if report.best_practices.artifacthub_badge.passed {
+    if report.best_practices.artifacthub_badge.passed_or_exempt() {
         score.best_practices += 5;
     }
-    if report.best_practices.community_meeting.passed {
+    if report.best_practices.community_meeting.passed_or_exempt() {
         score.best_practices += 20;
     }
-    if report.best_practices.dco.passed {
+    if report.best_practices.dco.passed_or_exempt() {
         score.best_practices += 10;
     }
-    if report.best_practices.openssf_badge.passed {
+    if report.best_practices.openssf_badge.passed_or_exempt() {
         score.best_practices += 50;
     }
-    if report.best_practices.recent_release.passed {
+    if report.best_practices.recent_release.passed_or_exempt() {
         score.best_practices += 10;
     }
-    if report.best_practices.slack_presence.passed {
+    if report.best_practices.slack_presence.passed_or_exempt() {
         score.best_practices += 5;
     }
 
     // Security
-    if report.security.security_policy.passed {
+    if report.security.security_policy.passed_or_exempt() {
         score.security += 100;
     }
 
     // Legal
-    if report.legal.trademark_disclaimer.passed {
+    if report.legal.trademark_disclaimer.passed_or_exempt() {
         score.legal += 100;
     }
 
@@ -161,7 +161,10 @@ mod tests {
                     spdx_id: Some("Apache-2.0".to_string()).into(),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: true.into(),
+                    artifacthub_badge: CheckResult {
+                        exempt: true,
+                        ..Default::default()
+                    },
                     community_meeting: true.into(),
                     dco: true.into(),
                     openssf_badge: true.into(),
@@ -212,7 +215,10 @@ mod tests {
                     spdx_id: None.into(),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: false.into(),
+                    artifacthub_badge: CheckResult {
+                        exempt: false,
+                        ..Default::default()
+                    },
                     community_meeting: false.into(),
                     dco: false.into(),
                     openssf_badge: false.into(),

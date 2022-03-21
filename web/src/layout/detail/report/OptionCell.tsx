@@ -1,9 +1,11 @@
 import { isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import { RiErrorWarningLine } from 'react-icons/ri';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
+import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import styles from './OptionCell.module.css';
 
@@ -19,6 +21,7 @@ function getOptionInfo(key: ReportOption) {
 const OptionCell = (props: Props) => {
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
+  const exemptIcon = <RiErrorWarningLine data-testid="exempt-icon" className={`text-warning ${styles.exemptIcon}`} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
@@ -32,9 +35,47 @@ const OptionCell = (props: Props) => {
     }
   };
 
+  const getIconCheck = (): JSX.Element => {
+    if (!isUndefined(props.check.exempt) && props.check.exempt) {
+      return (
+        <>
+          {!isUndefined(props.check.exemption_reason) && props.check.exemption_reason !== '' ? (
+            <>
+              <ElementWithTooltip
+                element={exemptIcon}
+                tooltipWidth={500}
+                className="cursorPointer"
+                tooltipClassName={styles.exemptionTooltipMessage}
+                tooltipMessage={
+                  <div className="text-start p-2">
+                    <div className="border-bottom pb-2 mb-3 fw-bold">
+                      This repository is exempt from passing this check
+                    </div>
+                    <div className={`text-break ${styles.exemptionReason}`}>
+                      <span className="fw-bold">Reason:</span> {props.check.exemption_reason}
+                    </div>
+                  </div>
+                }
+                alignmentTooltip="left"
+                forceAlignment
+                visibleTooltip
+                active
+              />
+              <span className="d-block d-md-none">{exemptIcon}</span>
+            </>
+          ) : (
+            <>{exemptIcon}</>
+          )}
+        </>
+      );
+    } else {
+      return props.check.passed ? successIcon : errorIcon;
+    }
+  };
+
   return (
     <tr>
-      <td className={`text-center ${styles.iconCell}`}>{props.check.passed ? successIcon : errorIcon}</td>
+      <td className={`text-center ${styles.iconCell}`}>{getIconCheck()}</td>
       <td>
         <div className={`d-table w-100 ${styles.contentCell}`}>
           <div className="d-flex flex-row align-items-baseline align-items-lg-center">

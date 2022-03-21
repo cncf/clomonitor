@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { ReportOption } from '../../../types';
 import OptionCell from './OptionCell';
@@ -94,6 +95,58 @@ describe('OptionCell', () => {
 
         expect(screen.getByTestId('error-icon')).toBeInTheDocument();
         expect(screen.queryByTestId('success-icon')).toBeNull();
+      });
+    });
+
+    describe('exempt', () => {
+      it('when true', () => {
+        render(
+          <table>
+            <tbody>
+              <OptionCell
+                label={ReportOption.Adopters}
+                check={{
+                  passed: false,
+                  exempt: true,
+                  exemption_reason: 'this is a sample reason',
+                }}
+              />
+            </tbody>
+          </table>
+        );
+
+        expect(screen.getAllByTestId('exempt-icon')).toHaveLength(2);
+        expect(screen.queryByTestId('success-icon')).toBeNull();
+        expect(screen.queryByTestId('error-icon')).toBeNull();
+      });
+
+      it('displays reason tooltip', async () => {
+        jest.useFakeTimers();
+
+        render(
+          <table>
+            <tbody>
+              <OptionCell
+                label={ReportOption.Adopters}
+                check={{
+                  passed: false,
+                  exempt: true,
+                  exemption_reason: 'this is a sample reason',
+                }}
+              />
+            </tbody>
+          </table>
+        );
+
+        const icon = screen.getByTestId('elementWithTooltip');
+        userEvent.hover(icon);
+
+        expect(await screen.findByRole('tooltip')).toBeInTheDocument();
+        expect(screen.getByText('This repository is exempt from passing this check')).toBeInTheDocument();
+        expect(screen.getByText('Reason:')).toBeInTheDocument();
+        expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
+
+        jest.useRealTimers();
       });
     });
   });

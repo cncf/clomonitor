@@ -8,9 +8,19 @@ Many checks rely on checking that certain files exists on a given path. Even tho
 
 For more details about how each of the checks are performed, please see the reference below. If you find that any of the checks isn't working as expected or you have ideas about how to improve them please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in Github.
 
+## Exemptions
+
+Sometimes some of the checks may not be applicable to a repository (i.e. Artifact Hub badge in the Kubernetes project). In those cases, it's possible to declare an exemption in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
+
+Each of the exemptions declared must include a reason that justifies it. Exempt checks will be specially marked in the UI, and the provided justification will be displayed to let users know why the check was not required in this case.
+
+The checks identifiers (**ID**) required to declare an exemption can be found in the reference below.
+
 ## Documentation
 
 ### Adopters
+
+`**ID**: *adopters*`
 
 List of organizations using this project in production or at stages of testing.
 
@@ -34,6 +44,8 @@ CASE SENSITIVE: false
 ```
 
 ### Changelog
+
+`**ID**: *changelog*`
 
 A curated, chronologically ordered list of notable changes for each version.
 
@@ -64,6 +76,8 @@ CASE SENSITIVE: false
 
 ### Code of conduct
 
+`**ID**: *code_of_conduct*`
+
 Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse.
 
 This check passes if:
@@ -89,6 +103,8 @@ CASE SENSITIVE: false
 - A code of conduct file is found in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
 
 ### Contributing
+
+`**ID**: *contributing*`
 
 A contributing file in your repository provides potential project contributors with a short guide to how they can help with your project.
 
@@ -116,6 +132,8 @@ CASE SENSITIVE: false
 
 ### Governance
 
+`**ID**: *governance*`
+
 Document that explains how the governance and committer process works in the repository.
 
 This check passes if:
@@ -138,6 +156,8 @@ CASE SENSITIVE: false
 ```
 
 ### Maintainers
+
+`**ID**: *maintainers*`
 
 The maintainers file contains a list of the current maintainers of the repository.
 
@@ -167,6 +187,8 @@ CASE SENSITIVE: false
 
 ### Readme
 
+`**ID**: *readme*`
+
 The readme file introduces and explains a project. It contains information that is commonly required to understand what the project is about.
 
 This check passes if:
@@ -182,6 +204,8 @@ CASE SENSITIVE: true
 ```
 
 ### Roadmap
+
+`**ID**: *roadmap*`
 
 Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline.
 
@@ -205,6 +229,8 @@ CASE SENSITIVE: false
 
 ### Website
 
+`**ID**: *website*`
+
 A url that users can visit to learn more about your project.
 
 This check passes if:
@@ -214,6 +240,8 @@ This check passes if:
 ## License
 
 ### SPDX id
+
+`**ID**: *license_spdx_id*`
 
 Identifier detected from the license file provided.
 
@@ -231,6 +259,8 @@ CASE SENSITIVE: true
 - A license SPDX id can be obtained from Github.
 
 ### Approved license
+
+`**ID**: *license_approved*`
 
 Whether the repository uses an approved license or not.
 
@@ -253,6 +283,8 @@ This check passes if:
 
 ### License scanning
 
+`**ID**: *license_scanning*`
+
 License scanning software scans and automatically identifies, manages and addresses open source licensing issues.
 
 This check passes if:
@@ -264,9 +296,13 @@ This check passes if:
 "(https://snyk.io/test/github/[^/]+/[^/"]+)"
 ```
 
+- A *link* pointing to the license scanning results is provided in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
+
 ## Best practices
 
 ### Artifact Hub badge
+
+`**ID**: *artifacthub_badge*`
 
 Projects can list their content on Artifact Hub to improve their discoverability.
 
@@ -279,6 +315,8 @@ This check passes if:
 ```
 
 ### Community meeting
+
+`**ID**: *community_meeting*`
 
 Community meetings are often held to engage community members, hear more voices and get more viewpoints.
 
@@ -294,6 +332,8 @@ This check passes if:
 
 ### Developer Certificate of Origin
 
+`**ID**: *dco*`
+
 Mechanism for contributors to certify that they wrote or have the right to submit the code they are contributing.
 
 This check passes if:
@@ -308,6 +348,8 @@ This check passes if:
 
 ### OpenSSF badge
 
+`**ID**: *openssf_badge*`
+
 The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source Software (FLOSS) projects to show that they follow best practices.
 
 This check passes if:
@@ -320,6 +362,8 @@ This check passes if:
 
 ### Recent release
 
+`**ID**: *recent_release*`
+
 The project should have released at least one version in the last year.
 
 This check passes if:
@@ -327,6 +371,8 @@ This check passes if:
 - A release that is less than one year old is found on Github.
 
 ### Slack presence
+
+`**ID**: *slack_presence*`
 
 Projects should have presence in the CNCF Slack or Kubernetes Slack.
 
@@ -344,6 +390,8 @@ This check passes if:
 ## Security
 
 ### Security policy
+
+`**ID**: *security_policy*`
 
 Clearly documented security processes explaining how to report security issues to the project.
 
@@ -372,6 +420,8 @@ CASE SENSITIVE: false
 ## Legal
 
 ### Trademark disclaimer
+
+`**ID**: *trademark_disclaimer*`
 
 Projects sites should have the Linux Foundation trademark disclaimer.
 

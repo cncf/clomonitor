@@ -1,5 +1,6 @@
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import logo from '../../media/clomonitor.svg';
 import ExternalLink from '../common/ExternalLink';
@@ -20,6 +21,9 @@ const Footer = () => {
               >
                 Documentation
               </ExternalLink>
+              <Link className="mb-1 opacity-75" to="/stats">
+                Statistics
+              </Link>
             </div>
           </div>
 

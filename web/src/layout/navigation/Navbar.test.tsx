@@ -34,9 +34,9 @@ describe('Navbar', () => {
     expect(screen.getByText('Alpha')).toBeInTheDocument();
     expect(screen.getByAltText('CLOMonitor logo')).toBeInTheDocument();
 
-    const link = screen.getByRole('link');
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', '/');
+    const links = screen.getAllByRole('link');
+    expect(links[0]).toBeInTheDocument();
+    expect(links[0]).toHaveAttribute('href', '/');
 
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByRole('switch')).toBeInTheDocument();
@@ -49,8 +49,8 @@ describe('Navbar', () => {
       </Router>
     );
 
-    const link = screen.getByRole('link');
-    userEvent.click(link);
+    const links = screen.getAllByRole('link');
+    userEvent.click(links[0]);
 
     expect(mockSetScrollPosition).toHaveBeenCalledTimes(1);
     expect(mockSetScrollPosition).toHaveBeenCalledWith(0);

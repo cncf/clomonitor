@@ -1,0 +1,24 @@
+.wrapper {
+  margin: 0.75rem 0;
+}
+
+.progressWrapper {
+  font-size: 0.85rem;
+}
+
+.progressTitle {
+  min-width: 150px;
+}
+
+.progress {
+  height: 0.35rem;
+  background-color: var(--bg-progressbar-stats) !important;
+}
+
+.icon {
+  margin-top: -2px;
+}
+
+.scoreWrapper {
+  width: 55px;
+}

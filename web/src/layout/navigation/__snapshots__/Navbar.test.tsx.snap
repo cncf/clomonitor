@@ -35,59 +35,65 @@ exports[`Navbar creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="d-flex flex-row align-items-center searchWrapper"
+          class="position-relative my-3"
         >
           <div
-            class="position-relative my-3 flex-grow-1"
+            class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto searchBar search"
           >
-            <div
-              class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto searchBar search"
+            <input
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
+              class="flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base input"
+              data-testid="search-bar"
+              placeholder="Search projects"
+              spellcheck="false"
+              type="text"
+              value=""
+            />
+            <button
+              aria-label="Search text"
+              class="btn btn-link lh-1 px-2 btnIcon"
             >
-              <input
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                class="flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base input"
-                data-testid="search-bar"
-                placeholder="Search projects"
-                spellcheck="false"
-                type="text"
-                value=""
-              />
-              <button
-                aria-label="Search text"
-                class="btn btn-link lh-1 px-2 btnIcon"
+              <div
+                class="iconWrapper lightIcon"
               >
-                <div
-                  class="iconWrapper lightIcon"
+                <svg
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="none"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="11"
-                      cy="11"
-                      r="8"
-                    />
-                    <line
-                      x1="21"
-                      x2="16.65"
-                      y1="21"
-                      y2="16.65"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="8"
+                  />
+                  <line
+                    x1="21"
+                    x2="16.65"
+                    y1="21"
+                    y2="16.65"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
+        </div>
+        <div
+          class="d-none d-md-flex flex-row align-items-center ms-auto searchWrapper"
+        >
+          <a
+            class="position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
+            href="/stats"
+          >
+            Stats
+          </a>
           <div
             class="form-check form-switch ms-4 position-relative d-none d-sm-block cursorPointer"
           >

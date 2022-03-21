@@ -4,6 +4,7 @@ import { FiExternalLink } from 'react-icons/fi';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
+import sortChecks from '../../../utils/sortChecks';
 import ExternalLink from '../../common/ExternalLink';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
@@ -26,36 +27,13 @@ interface Props {
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
 }
 
-const sortOptions = (opts?: OptData): ReportOption[] => {
-  if (isUndefined(opts)) return [];
-  let optNames: ReportOption[] = [];
-  Object.keys(opts).forEach((opt: string) => {
-    // we check that opt belongs to ReportOption enum
-    if (Object.values(ReportOption).includes(opt as ReportOption)) {
-      optNames.push(opt as ReportOption);
-    }
-  });
-
-  const sortedNames = optNames.sort((a, b) => {
-    // spdxId is always first item in its category
-    if (a === ReportOption.SPDX || b === ReportOption.SPDX) return -1;
-    const nameA = a.toLowerCase();
-    const nameB = b.toLowerCase();
-    if (nameA < nameB) return -1;
-    if (nameA > nameB) return 1;
-    return 0;
-  });
-
-  return sortedNames;
-};
-
 const Row = (props: Props) => {
   const color = getCategoryColor(props.score);
   const [options, setOptions] = useState<ReportOption[]>([]);
   const tmplsNumber = props.recommendedTemplates ? props.recommendedTemplates.length : 0;
 
   useEffect(() => {
-    setOptions(sortOptions(props.data));
+    setOptions(sortChecks(props.data));
   }, [props.data]);
 
   if (options.length === 0) return null;

@@ -1,0 +1,37 @@
+import getCategoryColor from '../../utils/getCategoryColor';
+import styles from './ProgressBar.module.css';
+
+interface Props {
+  title: string;
+  icon: JSX.Element;
+  value: number;
+}
+
+const ProgressBar = (props: Props) => {
+  const color = getCategoryColor(props.value);
+
+  return (
+    <div className="d-flex flex-column">
+      <div className={`d-flex flex-row align-items-center ${styles.progressTitle}`}>
+        <div className={`me-2 position-relative ${styles.icon}`}>{props.icon}</div>
+        <div>{props.title}</div>
+      </div>
+      <div className="d-flex flex-row mb-3 align-items-center">
+        <div className={`flex-grow-1 ${styles.progressbarWrapper}`}>
+          <div className={`progress rounded-0 ${styles.progress}`}>
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: `${props.value || 1}%`, backgroundColor: `var(--rm-${color})` }}
+            />
+          </div>
+        </div>
+        <div className={`ps-3 lh-1 text-end ${styles.scoreWrapper}`}>
+          <small className="fw-bold lightText">{props.value}%</small>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProgressBar;

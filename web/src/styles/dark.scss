@@ -34,6 +34,7 @@
 
   --solid-border: #676869;
   --bg-code: rgba(0, 0, 0, 0.7);
+  --bg-progressbar-stats: var(--color-black-10);
 
   .text-primary,
   .text-light,
@@ -183,6 +184,11 @@
     border-color: var(--solid-border);
   }
 
+  .card-header {
+    border-bottom-color: var(--solid-border);
+    color: var(--color-light-font);
+  }
+
   .search {
     box-shadow: 0 0 0 0.3rem var(--color-black-25) !important;
   }
@@ -196,6 +202,10 @@
   }
 
   @media (hover: hover) {
+    .navbarLink:hover::before {
+      background-color: var(--color-light-font);
+    }
+
     .card:hover {
       border-color: var(--solid-border);
       box-shadow: 0px 0px 5px 0px var(--solid-border);

@@ -2,7 +2,7 @@ import { isEmpty, isNull, isUndefined } from 'lodash';
 import isArray from 'lodash/isArray';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
-import { Error, ErrorKind, Project, ProjectDetail, SearchData, SearchQuery } from '../types';
+import { Error, ErrorKind, Project, ProjectDetail, SearchData, SearchQuery, Stats } from '../types';
 
 interface FetchOptions {
   method: 'POST' | 'GET' | 'PUT' | 'DELETE' | 'HEAD';
@@ -107,6 +107,10 @@ class API_CLASS {
 
   public getProjectDetail(org: string, project: string): Promise<ProjectDetail> {
     return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${org}/${project}` });
+  }
+
+  public getStats(): Promise<Stats> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/stats` });
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; 'Pagination-Total-Count': string }> {

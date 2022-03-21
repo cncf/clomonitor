@@ -153,6 +153,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.DCO]: {
     icon: <FaFileSignature />,
     name: 'Developer Certificate of Origin',
+    shortName: 'DCO',
     legend: (
       <span>
         Mechanism for contributors to certify that they wrote or have the right to submit the code they are contributing

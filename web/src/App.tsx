@@ -8,6 +8,7 @@ import Layout from './layout';
 import Detail from './layout/detail';
 import NotFound from './layout/notFound';
 import Search from './layout/search';
+import StatsView from './layout/stats';
 
 function App() {
   const [scrollPosition, setScrollPosition] = useState<undefined | number>(undefined);
@@ -23,6 +24,7 @@ function App() {
               element={<Search scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
             />
             <Route path="projects/:org/:project" element={<Detail />} />
+            <Route path="stats" element={<StatsView />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

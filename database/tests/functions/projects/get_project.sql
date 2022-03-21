@@ -72,31 +72,89 @@ insert into report (
 ) values (
     '5133b909-a5b3-4c24-87b1-16b02a955ffa',
     '{
+        "legal": {
+            "trademark_disclaimer": {
+                "passed": false
+            }
+        },
         "license": {
-            "spdx_id": "Apache-2.0",
-            "approved": true,
-            "scanning": "https://license-scanning.url"
+            "spdx_id": {
+                "value": "Apache-2.0",
+                "passed": true
+            },
+            "approved": {
+                "value": true,
+                "passed": true
+            },
+            "scanning": {
+                "passed": false
+            }
         },
         "security": {
-            "security_policy": true
+            "security_policy": {
+                "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
+                "passed": true
+            }
         },
         "report_kind": "Primary",
         "documentation": {
-            "readme": true,
-            "roadmap": false,
-            "website": true,
-            "adopters": false,
-            "changelog": true,
-            "governance": false,
-            "maintainers": true,
-            "contributing": true,
-            "code_of_conduct": true
+            "readme": {
+                "url": "https://github.com/fluent/fluentd/blob/master/README.md",
+                "passed": true
+            },
+            "roadmap": {
+                "passed": false
+            },
+            "website": {
+                "url": "https://www.fluentd.org",
+                "passed": true
+            },
+            "adopters": {
+                "url": "https://github.com/fluent/fluentd/blob/master/ADOPTERS.md",
+                "passed": true
+            },
+            "changelog": {
+                "url": "https://github.com/fluent/fluentd/blob/master/CHANGELOG.md",
+                "passed": true
+            },
+            "governance": {
+                "url": "https://github.com/fluent/fluentd/blob/master/GOVERNANCE.md",
+                "passed": true
+            },
+            "maintainers": {
+                "url": "https://github.com/fluent/fluentd/blob/master/MAINTAINERS.md",
+                "passed": true
+            },
+            "contributing": {
+                "url": "https://github.com/fluent/fluentd/blob/master/CONTRIBUTING.md",
+                "passed": true
+            },
+            "code_of_conduct": {
+                "url": "https://github.com/fluent/fluentd/blob/master/code-of-conduct.md",
+                "passed": true
+            }
         },
         "best_practices": {
-            "openssf_badge": true,
-            "recent_release": true,
-            "artifacthub_badge": true,
-            "community_meeting": true
+            "dco": {
+                "passed": true
+            },
+            "openssf_badge": {
+                "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
+                "passed": true
+            },
+            "recent_release": {
+                "url": "https://github.com/fluent/fluentd/releases/tag/v1.14.5",
+                "passed": true
+            },
+            "slack_presence": {
+                "passed": false
+            },
+            "artifacthub_badge": {
+                "passed": false
+            },
+            "community_meeting": {
+                "passed": false
+            }
         }
     }',
     '2022-02-24 09:40:42.695654+01',
@@ -126,31 +184,89 @@ select is(
                 "reports": [
                     {
                         "data": {
-                            "best_practices": {
-                                "artifacthub_badge": true,
-                                "community_meeting": true,
-                                "openssf_badge": true,
-                                "recent_release": true
-                            },
-                            "documentation": {
-                                "adopters": false,
-                                "changelog": true,
-                                "code_of_conduct": true,
-                                "contributing": true,
-                                "governance": false,
-                                "maintainers": true,
-                                "readme": true,
-                                "roadmap": false,
-                                "website": true
+                            "legal": {
+                                "trademark_disclaimer": {
+                                    "passed": false
+                                }
                             },
                             "license": {
-                                "approved": true,
-                                "scanning": "https://license-scanning.url",
-                                "spdx_id": "Apache-2.0"
+                                "spdx_id": {
+                                    "value": "Apache-2.0",
+                                    "passed": true
+                                },
+                                "approved": {
+                                    "value": true,
+                                    "passed": true
+                                },
+                                "scanning": {
+                                    "passed": false
+                                }
+                            },
+                            "security": {
+                                "security_policy": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
+                                    "passed": true
+                                }
                             },
                             "report_kind": "Primary",
-                            "security": {
-                                "security_policy": true
+                            "documentation": {
+                                "readme": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/README.md",
+                                    "passed": true
+                                },
+                                "roadmap": {
+                                    "passed": false
+                                },
+                                "website": {
+                                    "url": "https://www.fluentd.org",
+                                    "passed": true
+                                },
+                                "adopters": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/ADOPTERS.md",
+                                    "passed": true
+                                },
+                                "changelog": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/CHANGELOG.md",
+                                    "passed": true
+                                },
+                                "governance": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/GOVERNANCE.md",
+                                    "passed": true
+                                },
+                                "maintainers": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/MAINTAINERS.md",
+                                    "passed": true
+                                },
+                                "contributing": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/CONTRIBUTING.md",
+                                    "passed": true
+                                },
+                                "code_of_conduct": {
+                                    "url": "https://github.com/fluent/fluentd/blob/master/code-of-conduct.md",
+                                    "passed": true
+                                }
+                            },
+                            "best_practices": {
+                                "dco": {
+                                    "passed": true
+                                },
+                                "openssf_badge": {
+                                    "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
+                                    "passed": true
+                                },
+                                "recent_release": {
+                                    "url": "https://github.com/fluent/fluentd/releases/tag/v1.14.5",
+                                    "passed": true
+                                },
+                                "slack_presence": {
+                                    "passed": false
+                                },
+                                "artifacthub_badge": {
+                                    "passed": false
+                                },
+                                "community_meeting": {
+                                    "passed": false
+                                }
                             }
                         },
                         "errors": null,

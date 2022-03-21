@@ -35,6 +35,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
         .route("/api/projects/search", post(search_projects))
         .route("/api/projects/:org/:project", get(project))
         .route("/api/projects/:org/:project/badge", get(badge))
+        .route("/api/stats", get(stats))
         .route(
             "/api/projects/:org/:project/report-summary",
             get(report_summary_svg),

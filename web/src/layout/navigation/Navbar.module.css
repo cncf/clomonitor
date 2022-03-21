@@ -3,13 +3,30 @@
 }
 
 .logo {
-  height: 30px;
+  height: 25px;
 }
 
 .badge {
   background-color: var(--color-white-25);
   font-size: 0.65rem;
   padding: 0.25rem 0.4rem;
+}
+
+.link {
+  letter-spacing: 2px;
+}
+
+@media (hover: hover) {
+  .link:hover::before {
+    content: '';
+    position: absolute;
+    top: -28px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--bs-white);
+    opacity: 0.5;
+  }
 }
 
 @media only screen and (max-width: 575.98px) {

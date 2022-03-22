@@ -1,4 +1,4 @@
-import { groupBy, isNull, isUndefined } from 'lodash';
+import { groupBy, isNull, isNumber, isUndefined } from 'lodash';
 import moment from 'moment';
 import { useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
@@ -170,6 +170,14 @@ const StatsView = (props: Props) => {
           colors: 'var(--color-font)',
         },
       },
+      states: {
+        hover: {
+          filter: {
+            type: 'darken',
+            value: 0.8,
+          },
+        },
+      },
       tooltip: {
         fillSeriesColor: false,
       },
@@ -184,9 +192,6 @@ const StatsView = (props: Props) => {
         toolbar: {
           show: false,
         },
-      },
-      theme: {
-        mode: isLightActive ? 'light' : 'dark',
       },
       grid: { borderColor: 'var(--color-light-gray)' },
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -210,32 +215,55 @@ const StatsView = (props: Props) => {
           },
         },
       },
+      tooltip: {
+        y: {
+          formatter: (val: number): string => {
+            // Subsctract 10 to display correct value
+            return isNumber(val) ? (val - 10).toString() : val;
+          },
+        },
+      },
+      states: {
+        hover: {
+          filter: {
+            type: 'darken',
+            value: 0.8,
+          },
+        },
+      },
       plotOptions: {
         heatmap: {
           radius: 0,
           shadeIntensity: 0,
           colorScale: {
             inverse: false,
+            min: 0,
+            max: 100,
             ranges: [
               {
                 from: 0,
                 to: 0,
-                color: '#cccccc',
+                color: 'transparent',
               },
               {
                 from: 1,
-                to: 1,
-                color: '#d2e5c4',
+                to: 10,
+                color: isLightActive ? '#efefef' : '#161b22',
               },
               {
-                from: 2,
-                to: 4,
-                color: '#90be6d',
+                from: 11,
+                to: 11,
+                color: isLightActive ? '#d2e5c4' : '#2b4c2e',
               },
               {
-                from: 5,
+                from: 12,
+                to: 14,
+                color: isLightActive ? '#90be6d' : '#4c8550',
+              },
+              {
+                from: 15,
                 to: 100,
-                color: '#567241',
+                color: isLightActive ? '#567241' : '#6dbe73',
               },
             ],
           },
@@ -264,10 +292,12 @@ const StatsView = (props: Props) => {
     const series: HeatMapData[] = [];
     const groupedByYear = groupBy(data, 'year');
 
+    // We use 10 by default and add 10 to the rest of values
+    // due to a bug displaying proper bg color in heatmap
     Object.keys(groupedByYear).forEach((year: string) => {
-      let currentData = new Array(12).fill(0);
+      let currentData = new Array(12).fill(10);
       groupedByYear[year].forEach((i: DistributionData) => {
-        currentData[i.month - 1] = i.total;
+        currentData[i.month - 1] = i.total + 10;
       });
       series.push({ name: year, data: currentData });
     });
@@ -326,7 +356,7 @@ const StatsView = (props: Props) => {
 
               {stats.projects.running_total && stats.projects.accepted_distribution && (
                 <>
-                  <div className={`text-dark fw-bold text-center text-uppercase mb-4 ${styles.title}`}>Projects</div>
+                  <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>Projects</div>
                   <div className="text-dark text-center mb-3 fw-bold">Projects accepted by the CNCF</div>
 
                   <div className="py-4">
@@ -363,7 +393,7 @@ const StatsView = (props: Props) => {
 
               {stats.projects.rating_distribution && (
                 <>
-                  <div className="text-dark fw-bold text-center mt-4 mb-3">Distribution of projects by rating</div>
+                  <div className="text-dark text-center fw-bold mt-4 mb-3">Distribution of projects by rating</div>
 
                   <div className="py-4">
                     <div className="row g-4 g-xxl-5 justify-content-center">
@@ -434,7 +464,7 @@ const StatsView = (props: Props) => {
 
               {stats.projects.sections_average && (
                 <>
-                  <div className="text-dark fw-bold text-center mt-4 mb-3">Projects average score per category</div>
+                  <div className="text-dark text-center fw-bold mt-4 mb-3">Projects average score per category</div>
 
                   <div className="py-4">
                     <div className="row g-4 g-xxl-5 justify-content-center">
@@ -465,10 +495,10 @@ const StatsView = (props: Props) => {
 
               {stats.repositories.passing_check && (
                 <>
-                  <div className={`text-dark fw-bold text-center text-uppercase my-4 ${styles.title}`}>
+                  <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>
                     Repositories
                   </div>
-                  <div className="text-dark fw-bold text-center mb-3">
+                  <div className="text-dark text-center fw-bold mb-3">
                     Percentage of repositories passing each check
                   </div>
                   <div className="py-4">

@@ -22,10 +22,6 @@
   stroke: var(--bg-color);
 }
 
-:global(.apexcharts-theme-dark) > svg {
-  background-color: transparent !important;
-}
-
 :global(.apexcharts-tooltip) {
   background-color: var(--bs-white) !important;
   border-color: var(--rm-secondary-900) !important;

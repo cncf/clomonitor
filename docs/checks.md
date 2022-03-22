@@ -20,7 +20,7 @@ The checks identifiers (**ID**) required to declare an exemption can be found in
 
 ### Adopters
 
-`**ID**: *adopters*`
+**ID**: `adopters`
 
 List of organizations using this project in production or at stages of testing.
 
@@ -45,7 +45,7 @@ CASE SENSITIVE: false
 
 ### Changelog
 
-`**ID**: *changelog*`
+**ID**: `changelog`
 
 A curated, chronologically ordered list of notable changes for each version.
 
@@ -76,7 +76,7 @@ CASE SENSITIVE: false
 
 ### Code of conduct
 
-`**ID**: *code_of_conduct*`
+**ID**: `code_of_conduct`
 
 Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse.
 
@@ -104,7 +104,7 @@ CASE SENSITIVE: false
 
 ### Contributing
 
-`**ID**: *contributing*`
+**ID**: `contributing`
 
 A contributing file in your repository provides potential project contributors with a short guide to how they can help with your project.
 
@@ -132,7 +132,7 @@ CASE SENSITIVE: false
 
 ### Governance
 
-`**ID**: *governance*`
+**ID**: `governance`
 
 Document that explains how the governance and committer process works in the repository.
 
@@ -157,7 +157,7 @@ CASE SENSITIVE: false
 
 ### Maintainers
 
-`**ID**: *maintainers*`
+**ID**: `maintainers`
 
 The maintainers file contains a list of the current maintainers of the repository.
 
@@ -187,7 +187,7 @@ CASE SENSITIVE: false
 
 ### Readme
 
-`**ID**: *readme*`
+**ID**: `readme`
 
 The readme file introduces and explains a project. It contains information that is commonly required to understand what the project is about.
 
@@ -205,7 +205,7 @@ CASE SENSITIVE: true
 
 ### Roadmap
 
-`**ID**: *roadmap*`
+**ID**: `roadmap`
 
 Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline.
 
@@ -229,7 +229,7 @@ CASE SENSITIVE: false
 
 ### Website
 
-`**ID**: *website*`
+**ID**: `website`
 
 A url that users can visit to learn more about your project.
 
@@ -241,7 +241,7 @@ This check passes if:
 
 ### SPDX id
 
-`**ID**: *license_spdx_id*`
+**ID**: `license_spdx_id`
 
 Identifier detected from the license file provided.
 
@@ -260,7 +260,7 @@ CASE SENSITIVE: true
 
 ### Approved license
 
-`**ID**: *license_approved*`
+**ID**: `license_approved`
 
 Whether the repository uses an approved license or not.
 
@@ -283,7 +283,7 @@ This check passes if:
 
 ### License scanning
 
-`**ID**: *license_scanning*`
+**ID**: `license_scanning`
 
 License scanning software scans and automatically identifies, manages and addresses open source licensing issues.
 
@@ -302,7 +302,7 @@ This check passes if:
 
 ### Artifact Hub badge
 
-`**ID**: *artifacthub_badge*`
+**ID**: `artifacthub_badge`
 
 Projects can list their content on Artifact Hub to improve their discoverability.
 
@@ -316,7 +316,7 @@ This check passes if:
 
 ### Community meeting
 
-`**ID**: *community_meeting*`
+**ID**: `community_meeting`
 
 Community meetings are often held to engage community members, hear more voices and get more viewpoints.
 
@@ -332,7 +332,7 @@ This check passes if:
 
 ### Developer Certificate of Origin
 
-`**ID**: *dco*`
+**ID**: `dco`
 
 Mechanism for contributors to certify that they wrote or have the right to submit the code they are contributing.
 
@@ -348,7 +348,7 @@ This check passes if:
 
 ### OpenSSF badge
 
-`**ID**: *openssf_badge*`
+**ID**: `openssf_badge`
 
 The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source Software (FLOSS) projects to show that they follow best practices.
 
@@ -362,7 +362,7 @@ This check passes if:
 
 ### Recent release
 
-`**ID**: *recent_release*`
+**ID**: `recent_release`
 
 The project should have released at least one version in the last year.
 
@@ -372,7 +372,7 @@ This check passes if:
 
 ### Slack presence
 
-`**ID**: *slack_presence*`
+**ID**: `slack_presence`
 
 Projects should have presence in the CNCF Slack or Kubernetes Slack.
 
@@ -391,7 +391,7 @@ This check passes if:
 
 ### Security policy
 
-`**ID**: *security_policy*`
+**ID**: `security_policy`
 
 Clearly documented security processes explaining how to report security issues to the project.
 
@@ -421,7 +421,7 @@ CASE SENSITIVE: false
 
 ### Trademark disclaimer
 
-`**ID**: *trademark_disclaimer*`
+**ID**: `trademark_disclaimer`
 
 Projects sites should have the Linux Foundation trademark disclaimer.
 

@@ -8,16 +8,17 @@ use std::path::Path;
 pub const METADATA_FILE: &str = ".clomonitor.yml";
 
 /// CLOMonitor metadata.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
+    pub exemptions: Option<Vec<Exemption>>,
     pub license_scanning: Option<LicenseScanning>,
 }
 
 impl Metadata {
     /// Create a new metadata instance from the contents of the file located at
     /// the path provided.
-    pub fn from<P: AsRef<OsStr>>(path: P) -> Result<Option<Self>, Error> {
+    pub(crate) fn from<P: AsRef<OsStr>>(path: P) -> Result<Option<Self>, Error> {
         if !Path::new(&path).exists() {
             return Ok(None);
         }
@@ -26,8 +27,15 @@ impl Metadata {
     }
 }
 
+/// Metadata check exemption entry.
+#[derive(Debug, Deserialize, PartialEq, Clone)]
+pub struct Exemption {
+    pub check: String,
+    pub reason: String,
+}
+
 /// License scanning section of the metadata.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, PartialEq)]
 pub struct LicenseScanning {
     pub url: Option<String>,
 }
@@ -43,12 +51,16 @@ mod tests {
         assert_eq!(
             Metadata::from(Path::new(TESTDATA_PATH).join(METADATA_FILE))
                 .unwrap()
-                .unwrap()
-                .license_scanning
-                .unwrap()
-                .url
                 .unwrap(),
-            "https://license-scanning.url"
+            Metadata {
+                license_scanning: Some(LicenseScanning {
+                    url: Some("https://license-scanning-results.url".to_string()),
+                }),
+                exemptions: Some(vec![Exemption {
+                    check: "artifacthub_badge".to_string(),
+                    reason: "this is a sample reason".to_string(),
+                }])
+            },
         );
     }
 

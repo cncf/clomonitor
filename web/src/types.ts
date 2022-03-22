@@ -60,6 +60,8 @@ export interface CoreReport {
 
 export interface ReportCheck {
   passed: boolean;
+  exempt?: boolean;
+  exemption_reason?: string;
   value?: string;
   url?: string;
 }

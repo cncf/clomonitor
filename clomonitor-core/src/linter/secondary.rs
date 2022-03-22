@@ -60,7 +60,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
             readme: check::readme(&opts)?,
         },
         license: License {
-            approved: check::license_approved(&spdx_id.value)?,
+            approved: check::license_approved(&spdx_id.value, &opts)?,
             spdx_id,
         },
     })

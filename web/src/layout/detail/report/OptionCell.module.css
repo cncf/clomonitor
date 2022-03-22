@@ -6,6 +6,14 @@
   font-size: 1.25rem;
 }
 
+.exemptIcon {
+  font-size: 1.5rem;
+}
+
+.exemptionReason {
+  font-size: 0.8rem;
+}
+
 .iconCell {
   width: 40px;
 }
@@ -22,6 +30,10 @@
 
 .tooltipMessage {
   margin-left: -3px;
+}
+
+.exemptionTooltipMessage {
+  margin-left: 5px;
 }
 
 .miniIcon {

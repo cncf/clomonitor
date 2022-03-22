@@ -1,3 +1,11 @@
+# CLOMonitor metadata file
+# This file must be located at the root of the repository
+
+# Checks exemptions
+exemptions:
+  - check: artifacthub_badge # Check identifier (see https://github.com/cncf/clomonitor/blob/main/docs/checks.md#exemptions)
+    reason: "" # Justification of this exemption (mandatory, it will be displayed on the UI)
+
 # License scanning information
 licenseScanning:
   # URL with the repository's license scanning results
@@ -6,4 +14,4 @@ licenseScanning:
   # in the repository README.md file automatically. If your repository uses a
   # different scanning solution, this url can be set to pass the corresponding
   # check.
-  url: https://license-scanning.url
+  url: https://license-scanning-results.url

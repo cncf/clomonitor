@@ -1,2 +1,6 @@
+exemptions:
+  - check: artifacthub_badge
+    reason: this is a sample reason
+
 licenseScanning:
-  url: https://license-scanning.url
+  url: https://license-scanning-results.url

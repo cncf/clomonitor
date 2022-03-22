@@ -6,6 +6,7 @@ returns json as $$
     with ratings as (
         select maturity_id, rating, count(*) as total
         from project
+        where rating is not null
         group by maturity_id, rating
     )
     select json_strip_nulls(json_build_object(

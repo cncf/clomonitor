@@ -55,6 +55,10 @@
     background-color: var(--rm-primary) !important;
   }
 
+  .btn-primary {
+    background-color: var(--highlighted) !important;
+  }
+
   .border,
   .border-bottom,
   .border-top,
@@ -71,6 +75,10 @@
     background-color: var(--body-bg);
     border-color: var(--solid-border) !important;
     color: var(--color-font);
+  }
+
+  hr {
+    background-color: var(--color-black-75);
   }
 
   .page-link {
@@ -172,7 +180,7 @@
   // UI
   .lightIcon,
   .lightText {
-    color: var(--color-light-font);
+    color: var(--color-light-font) !important;
   }
 
   .searchBar {

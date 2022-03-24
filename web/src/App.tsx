@@ -1,7 +1,7 @@
 import './styles/default.scss';
 
 import { useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 import { AppContextProvider } from './context/AppContextProvider';
 import Layout from './layout';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <AppContextProvider>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Layout setScrollPosition={setScrollPosition} />}>
             <Route path="/" element={<Navigate to="/search?page=1" replace />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </AppContextProvider>
   );
 }

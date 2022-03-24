@@ -9,6 +9,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import API from '../../api';
 import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
+import updateMetaIndex from '../../utils/updateMetaIndex';
 import CartegoryBadge from '../common/badges/CategoryBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
@@ -62,7 +63,9 @@ const Detail = () => {
       window.scrollTo(0, 0); // Go to top when a new project is fetched
       setIsLoadingProject(true);
       try {
-        setDetail(await API.getProjectDetail(org!, project!));
+        const projectDetail = await API.getProjectDetail(org!, project!);
+        setDetail(projectDetail);
+        updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
         setIsLoadingProject(false);
       } catch (err: any) {
         setDetail(null);

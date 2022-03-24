@@ -110,7 +110,7 @@ const RepositoriesList = (props: Props) => {
               <div className="d-flex flex-row flex-md-row-reverse align-items-center">
                 <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
                   <div className="d-none d-md-block">
-                    <div className={`d-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
+                    <div className={`d-inline-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
                       {repo.kind === RepositoryKind.Primary && (
                         <ElementWithTooltip

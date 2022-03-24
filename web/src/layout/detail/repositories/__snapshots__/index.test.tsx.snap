@@ -785,7 +785,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"
@@ -2849,7 +2849,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"
@@ -3735,7 +3735,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"
@@ -4621,7 +4621,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"
@@ -5507,7 +5507,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"
@@ -6393,7 +6393,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
               class="d-none d-md-block"
             >
               <div
-                class="d-flex flex-row h4 fw-bold mb-2 titleWrapper"
+                class="d-inline-flex flex-row h4 fw-bold mb-2 titleWrapper"
               >
                 <div
                   class="text-truncate"

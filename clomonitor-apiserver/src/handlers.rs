@@ -28,6 +28,8 @@ pub(crate) struct SearchProjectsInput {
     category: Option<Vec<usize>>,
     maturity: Option<Vec<usize>>,
     rating: Option<Vec<char>>,
+    accepted_from: Option<String>,
+    accepted_to: Option<String>,
 }
 
 /// Handler that returns the information needed to render the project's badge.

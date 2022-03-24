@@ -1,0 +1,30 @@
+.categoryTitle {
+  margin-top: 2rem;
+}
+
+label {
+  font-size: 0.9rem;
+}
+
+.sliderWrapper {
+  max-width: 200px;
+}
+
+/* rc-slider */
+:global(.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging) {
+  box-shadow: 0 0 0 5px var(--rm-secondary);
+}
+
+:global(.rc-slider-handle:focus-visible) {
+  box-shadow: 0 0 0 3px var(--rm-secondary);
+}
+
+:global(.rc-slider-mark-text) {
+  font-size: 10px;
+  color: var(--font-color);
+  opacity: 0.5;
+}
+
+:global(.rc-slider-mark-text-active) {
+  opacity: 1;
+}

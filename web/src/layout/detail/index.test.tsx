@@ -34,6 +34,7 @@ jest.mock('moment', () => ({
   ...(jest.requireActual('moment') as {}),
   unix: () => ({
     fromNow: () => '3 days ago',
+    format: () => '23rd June 2020',
   }),
 }));
 
@@ -90,6 +91,8 @@ describe('Project detail index', () => {
       expect(screen.getByText('App definition')).toBeInTheDocument();
       expect(screen.getAllByText('artifact-hub')).toHaveLength(2);
       expect(screen.getByRole('link', { name: 'Repository link' })).toBeInTheDocument();
+      expect(screen.getByText('Accepted by CNCF:')).toBeInTheDocument();
+      expect(screen.getByText('23rd June 2020')).toBeInTheDocument();
     });
 
     it('renders Back to results', async () => {

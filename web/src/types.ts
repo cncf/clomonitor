@@ -11,6 +11,7 @@ export interface BaseProject {
   name: string;
   display_name?: string;
   description?: string;
+  accepted_at?: number;
   home_url: string;
   logo_url?: string;
   devstats_url?: string;
@@ -194,6 +195,8 @@ export interface SearchFiltersURL extends BasicQuery {
 
 export interface BasicQuery {
   text?: string;
+  accepted_from?: string;
+  accepted_to?: string;
   filters?: {
     [key: string]: (string | number)[];
   };
@@ -212,6 +215,8 @@ export interface SearchData {
   sort_by: string;
   sort_direction: string;
   text?: string;
+  accepted_from?: string;
+  accepted_to?: string;
   category?: number[];
   maturity?: number[];
   rating?: number[];

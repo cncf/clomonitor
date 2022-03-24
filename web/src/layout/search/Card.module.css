@@ -31,8 +31,9 @@
   line-height: 1.2;
 }
 
-.link {
-  font-size: 0.9rem;
+.link,
+.subtitle {
+  font-size: 0.8rem;
 }
 
 .legend {
@@ -59,6 +60,10 @@
   font-size: 1rem;
 }
 
+.tooltipMessage {
+  margin-left: 10px;
+}
+
 @media only screen and (max-width: 575.98px) {
   .description {
     -webkit-line-clamp: 4;
@@ -83,6 +88,11 @@
 @media only screen and (min-width: 1400px) {
   .cardWrapper {
     padding: 1.3rem;
+  }
+
+  .link,
+  .subtitle {
+    font-size: 0.9rem;
   }
 }
 

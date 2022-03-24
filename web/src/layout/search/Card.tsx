@@ -1,4 +1,6 @@
+import { isUndefined } from 'lodash';
 import moment from 'moment';
+import { GoCalendar } from 'react-icons/go';
 import { GrPieChart } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +8,7 @@ import { Project } from '../../types';
 import CartegoryBadge from '../common/badges/CategoryBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
+import ElementWithTooltip from '../common/ElementWithTooltip';
 import ExternalLink from '../common/ExternalLink';
 import Image from '../common/Image';
 import RoundScore from '../common/RoundScore';
@@ -77,6 +80,29 @@ const Card = (props: Props) => {
                           </div>
                         </ExternalLink>
                       </>
+                    )}
+
+                    {!isUndefined(props.project.accepted_at) && (
+                      <ElementWithTooltip
+                        element={
+                          <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
+                            <GoCalendar className={`me-1 ${styles.statsIcon}`} />
+                            <div>{moment.unix(props.project.accepted_at!).format('YYYY')}</div>
+                          </div>
+                        }
+                        tooltipWidth={210}
+                        tooltipClassName={styles.tooltipMessage}
+                        tooltipMessage={
+                          <div className="d-flex flex-column">
+                            <div className="text-muted d-none d-lg-block">Accepted by CNCF:</div>
+                            <div className="lightText">
+                              {moment.unix(props.project.accepted_at!).format('Do MMMM YYYY')}
+                            </div>
+                          </div>
+                        }
+                        visibleTooltip
+                        active
+                      />
                     )}
                   </div>
                 </div>

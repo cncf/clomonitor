@@ -1,6 +1,7 @@
 {
   "items": [
     {
+      "accepted_at": 1458086400,
       "category_id": 5,
       "description": "Kubernetes networking based on Open vSwitch.",
       "devstats_url": "https://antrea.devstats.cncf.io/",
@@ -31,6 +32,7 @@
       "updated_at": 1645801223
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 0,
       "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
       "devstats_url": "https://artifacthub.devstats.cncf.io/",
@@ -61,6 +63,7 @@
       "updated_at": 1645534816
     },
     {
+      "accepted_at": 1611619200,
       "category_id": 4,
       "description": "Open source platform for X.509 certificate based service authentication and fine grained access control in dynamic infrastructures.",
       "devstats_url": "https://athenz.devstats.cncf.io/",
@@ -91,6 +94,7 @@
       "updated_at": 1645740020
     },
     {
+      "accepted_at": 1599523200,
       "category_id": 0,
       "description": "Backstage is an open platform for building developer portals.",
       "devstats_url": "https://backstage.devstats.cncf.io/",
@@ -121,6 +125,7 @@
       "updated_at": 1645801225
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 2,
       "description": "Open-source layer 7 load balancer derived from proprietary Baidu FrontEnd.",
       "devstats_url": "https://bfe.devstats.cncf.io/",
@@ -151,6 +156,7 @@
       "updated_at": 1645524790
     },
     {
+      "accepted_at": 1604966400,
       "category_id": 4,
       "description": "Automatically provision and manage TLS certificates in Kubernetes.",
       "devstats_url": "https://certmanager.devstats.cncf.io/",
@@ -182,6 +188,7 @@
       "updated_at": 1645714823
     },
     {
+      "accepted_at": 1594684800,
       "category_id": 1,
       "description": "A Chaos Engineering Platform for Kubernetes.",
       "devstats_url": "https://chaosmesh.devstats.cncf.io/",
@@ -212,6 +219,7 @@
       "updated_at": 1645776014
     },
     {
+      "accepted_at": 1576540800,
       "category_id": 5,
       "description": "ChubaoFS (abbrev. CBFS) is a cloud native distributed file system and object store.",
       "devstats_url": "https://chubaofs.devstats.cncf.io/",
@@ -242,6 +250,7 @@
       "updated_at": 1645524787
     },
     {
+      "accepted_at": 1611619200,
       "category_id": 4,
       "description": "Curiefense is a unified, open source platform protecting cloud native applications.",
       "devstats_url": "https://curiefense.devstats.cncf.io/",
@@ -272,6 +281,7 @@
       "updated_at": 1645722020
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 2,
       "description": "Fluid is an orchestration platform for elastic data abstraction and acceleration in cloud native environment.",
       "devstats_url": "https://fluid.devstats.cncf.io/",
@@ -302,6 +312,7 @@
       "updated_at": 1645779612
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 5,
       "description": "A novel container runtime, aka confidential container, for cloud-native confidential computing and enclave runtime ecosystem.",
       "devstats_url": "https://inclavarecontainers.devstats.cncf.io/",
@@ -332,6 +343,7 @@
       "updated_at": 1645524708
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 4,
       "description": "in-toto is a framework to protect supply chain integrity.",
       "devstats_url": "https://intoto.devstats.cncf.io/",
@@ -361,6 +373,7 @@
       "updated_at": 1645524788
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 2,
       "description": "A cloud native Kubernetes Global Balancer.",
       "devstats_url": "https://k8gb.devstats.cncf.io/",
@@ -391,6 +404,7 @@
       "updated_at": 1645524738
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 0,
       "description": "Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.",
       "devstats_url": "https://keptn.devstats.cncf.io/",
@@ -421,6 +435,7 @@
       "updated_at": 1645790415
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 1,
       "description": "A Kubernetes operator for running synthetic checks as pods. Works great with Prometheus!",
       "devstats_url": "https://kuberhealthy.devstats.cncf.io/",
@@ -451,6 +466,7 @@
       "updated_at": 1645743623
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 0,
       "description": "Make shipping applications more enjoyable.",
       "devstats_url": "https://kubevela.devstats.cncf.io/",
@@ -487,6 +503,7 @@
       "updated_at": 1645686015
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 0,
       "description": "Kubernetes Virtualization API and runtime in order to define and manage virtual machines.",
       "devstats_url": "https://kubevirt.devstats.cncf.io/",
@@ -517,6 +534,7 @@
       "updated_at": 1645801218
     },
     {
+      "accepted_at": 1592870400,
       "category_id": 2,
       "description": "The universal Envoy service mesh for distributed service connectivity.",
       "devstats_url": "https://kuma.devstats.cncf.io/",
@@ -547,6 +565,7 @@
       "updated_at": 1645801218
     },
     {
+      "accepted_at": 1604966400,
       "category_id": 4,
       "description": "Kubernetes Native Policy Management.",
       "devstats_url": "https://kyverno.devstats.cncf.io/",
@@ -577,6 +596,7 @@
       "updated_at": 1645779624
     },
     {
+      "accepted_at": 1624233600,
       "category_id": 2,
       "description": "The service mesh management plane.",
       "devstats_url": "https://meshery.devstats.cncf.io/",

@@ -25,6 +25,8 @@ const buildSearchParams = (p: URLSearchParams): SearchFiltersURL => {
 
   return {
     text: p.has('text') ? p.get('text')! : undefined,
+    accepted_from: p.has('accepted_from') ? p.get('accepted_from')! : undefined,
+    accepted_to: p.has('accepted_to') ? p.get('accepted_to')! : undefined,
     filters: { ...filters },
     pageNumber: p.has('page') && !isNull(p.get('page')) ? parseInt(p.get('page')!) : 1,
   };

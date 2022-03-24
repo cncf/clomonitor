@@ -18,7 +18,7 @@ const Checks = (props: Props) => {
   return (
     <div className="col-12">
       <div className="fw-bold border-bottom pb-2 mb-3 lightText">{props.title}</div>
-      <div className="mx-5 pt-1">
+      <div className="mx-1 pt-1">
         {sortedChecks.map((check: ReportOption) => {
           const opt: ReportOptionData = getOptionInfo(check);
           return (

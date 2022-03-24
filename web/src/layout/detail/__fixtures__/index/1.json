@@ -1,4 +1,5 @@
 {
+  "accepted_at": 1592870400,
   "category_id": 0,
   "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
   "devstats_url": "https://artifacthub.devstats.cncf.io/",

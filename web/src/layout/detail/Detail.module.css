@@ -23,8 +23,9 @@
   margin-bottom: 0.25rem;
 }
 
-.link {
-  font-size: 0.9rem;
+.link,
+.subtitle {
+  font-size: 0.8rem;
 }
 
 .statsIcon path {
@@ -70,6 +71,13 @@
   }
 
   .backBtn {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .link,
+  .subtitle {
     font-size: 0.9rem;
   }
 }

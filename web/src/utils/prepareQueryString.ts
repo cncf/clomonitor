@@ -14,6 +14,12 @@ const getURLSearchParams = (query: BasicQuery): URLSearchParams => {
   if (!isUndefined(query.text) && query.text !== '') {
     q.set('text', query.text);
   }
+  if (!isUndefined(query.accepted_from)) {
+    q.set('accepted_from', query.accepted_from);
+  }
+  if (!isUndefined(query.accepted_to)) {
+    q.set('accepted_to', query.accepted_to);
+  }
   return q;
 };
 

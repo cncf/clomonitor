@@ -123,6 +123,12 @@ class API_CLASS {
     if (query.text) {
       dataParams['text'] = query.text;
     }
+    if (query.accepted_from) {
+      dataParams['accepted_from'] = query.accepted_from;
+    }
+    if (query.accepted_to) {
+      dataParams['accepted_to'] = query.accepted_to;
+    }
     if (!isEmpty(query.filters)) {
       dataParams = { ...dataParams, ...query.filters };
     }

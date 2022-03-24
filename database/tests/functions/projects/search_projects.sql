@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(3);
+select plan(4);
 
 -- No projects yet
 select results_eq(
@@ -50,6 +50,7 @@ insert into project (
     devstats_url,
     score,
     rating,
+    accepted_at,
     updated_at,
     organization_id,
     category_id,
@@ -63,6 +64,7 @@ insert into project (
     'https://artifacthub.devstats.cncf.io/',
     '{"global": 95, "license": 100, "security": 100, "score_kind": "Primary", "documentation": 80, "best_practices": 100}',
     'a',
+    '2020-01-01',
     '2022-02-25 12:54:17.80674+01',
     '00000001-0000-0000-0000-000000000000',
     0,
@@ -76,6 +78,7 @@ insert into project (
     devstats_url,
     score,
     rating,
+    accepted_at,
     updated_at,
     organization_id,
     category_id,
@@ -88,6 +91,7 @@ insert into project (
     'https://containerd.devstats.cncf.io',
     '{"global": 80, "license": 80, "security": 100, "score_kind": "Primary", "documentation": 70, "best_practices": 70}',
     'a',
+    '2021-01-01',
     '2022-02-25 12:54:25.952208+01',
     '00000002-0000-0000-0000-000000000000',
     5,
@@ -102,6 +106,7 @@ insert into project (
     devstats_url,
     score,
     rating,
+    accepted_at,
     updated_at,
     organization_id,
     category_id,
@@ -115,6 +120,7 @@ insert into project (
     'https://tuf.devstats.cncf.io',
     '{"global": 65, "license": 84, "security": 0, "score_kind": "Primary", "documentation": 84, "best_practices": 70}',
     'b',
+    '2022-01-01',
     '2022-02-25 12:54:23.937134+01',
     '00000015-0000-0000-0000-000000000000',
     4,
@@ -212,6 +218,7 @@ select results_eq(
                         "score_kind": "Primary",
                         "security": 100
                     },
+                    "accepted_at": 1577836800,
                     "updated_at": 1645790057
                 },
                 {
@@ -242,6 +249,7 @@ select results_eq(
                         "score_kind": "Primary",
                         "security": 100
                     },
+                    "accepted_at": 1609459200,
                     "updated_at": 1645790065
                 },
                 {
@@ -278,6 +286,7 @@ select results_eq(
                         "score_kind": "Primary",
                         "security": 0
                     },
+                    "accepted_at": 1640995200,
                     "updated_at": 1645790063
                 }
             ]'::jsonb,
@@ -323,12 +332,59 @@ select results_eq(
                         "score_kind": "Primary",
                         "security": 100
                     },
+                    "accepted_at": 1577836800,
                     "updated_at": 1645790057
                 }
             ]'::jsonb,
             1)
     $$,
     'Search projects with a text filter'
+);
+
+-- Text filter
+select results_eq(
+    $$
+        select projects::jsonb, total_count::integer from search_projects('{"accepted_to": "2020-02-02"}')
+    $$,
+    $$
+        values (
+            '[
+                {
+                    "category_id": 0,
+                    "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
+                    "devstats_url": "https://artifacthub.devstats.cncf.io/",
+                    "display_name": "Artifact Hub",
+                    "id": "00000000-0001-0000-0000-000000000000",
+                    "home_url": "https://artifacthub.io",
+                    "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
+                    "maturity_id": 2,
+                    "name": "artifact-hub",
+                    "organization": {
+                        "name": "artifact-hub"
+                    },
+                    "rating": "a",
+                    "repositories": [
+                        {
+                            "kind": "primary",
+                            "name": "artifact-hub",
+                            "url": "https://github.com/artifacthub/hub"
+                        }
+                    ],
+                    "score": {
+                        "best_practices": 100,
+                        "documentation": 80,
+                        "global": 95,
+                        "license": 100,
+                        "score_kind": "Primary",
+                        "security": 100
+                    },
+                    "accepted_at": 1577836800,
+                    "updated_at": 1645790057
+                }
+            ]'::jsonb,
+            1)
+    $$,
+    'Search projects with an accepted date filter'
 );
 
 -- Finish tests and rollback transaction

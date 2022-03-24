@@ -36,22 +36,36 @@ pub(crate) async fn has_community_health_file(
     file: &str,
     gh_md: &Repository,
 ) -> Result<Option<String>, Error> {
+    // Setup HTTP client lazily
     lazy_static! {
         static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
     }
-    let raw_url = format!(
-        "https://raw.githubusercontent.com/{}/.github/{}/{}",
-        gh_md.owner.as_ref().unwrap().login,
-        gh_md.default_branch.as_ref().unwrap(),
+
+    // Get community health files repository metadata
+    let community_repo_url = format!(
+        "https://github.com/{}/.github",
+        gh_md.owner.as_ref().unwrap().login
+    );
+    let community_repo = match get_repo_metadata(&community_repo_url).await {
+        Ok(repo) => repo,
+        Err(_) => return Ok(None),
+    };
+
+    // Check if the file is in the repo
+    let file_raw_url = format!(
+        "https://raw.githubusercontent.com/{}/{}/{}/{}",
+        &community_repo.owner.as_ref().unwrap().login,
+        &community_repo.name,
+        community_repo.default_branch.as_ref().unwrap(),
         file
     );
-    match HTTP_CLIENT.head(raw_url).send().await?.status() {
+    match HTTP_CLIENT.head(file_raw_url).send().await?.status() {
         http::StatusCode::OK => {
             let url = build_url(
                 Path::new(file),
-                &gh_md.owner.as_ref().unwrap().login,
-                ".github",
-                gh_md.default_branch.as_ref().unwrap(),
+                &community_repo.owner.as_ref().unwrap().login,
+                &community_repo.name,
+                community_repo.default_branch.as_ref().unwrap(),
             );
             Ok(Some(url))
         }

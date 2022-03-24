@@ -401,11 +401,7 @@ pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
     }
 
     // File in repo
-    if let Some(path) = check::path::find(Globs {
-        root: &opts.root,
-        patterns: README_FILE,
-        case_sensitive: true,
-    })? {
+    if let Some(path) = check::path::find(readme_globs(&opts.root))? {
         return Ok(CheckResult::from_path(Some(path), &opts.gh_md));
     }
 
@@ -522,27 +518,22 @@ where
 /// Check if the README file content matches any of the regular expressions
 /// provided.
 fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool, Error> {
-    check::content::matches(
-        Globs {
-            root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        re,
-    )
+    check::content::matches(readme_globs(root), re)
 }
 
 /// Check if the README file content matches any of the regular expressions
 /// provided, returning the value from the first capture group.
 fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>, Error> {
-    check::content::find(
-        Globs {
-            root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        regexps,
-    )
+    check::content::find(readme_globs(root), regexps)
+}
+
+// Returns a Globs instance used to locate the README file.
+fn readme_globs(root: &Path) -> Globs<impl IntoIterator<Item = &str>> {
+    Globs {
+        root,
+        patterns: README_FILE,
+        case_sensitive: true,
+    }
 }
 
 #[cfg(test)]

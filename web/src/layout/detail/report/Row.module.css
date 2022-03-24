@@ -27,6 +27,14 @@
   font-size: 0.8rem;
 }
 
+.table {
+  background-color: var(--body-bg);
+}
+
+.reportContent {
+  background-color: var(--bg-color);
+}
+
 @media only screen and (min-width: 576px) {
   .progressbarWrapper {
     max-width: 50%;

@@ -1,12 +1,15 @@
 import { isUndefined, orderBy } from 'lodash';
+import moment from 'moment';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { FaCrown } from 'react-icons/fa';
 import { GoLink } from 'react-icons/go';
+import { HiExclamation } from 'react-icons/hi';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
 import { Report, Repository, RepositoryKind, ScoreType } from '../../../types';
+import CodeBlock from '../../common/CodeBlock';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
@@ -103,7 +106,7 @@ const RepositoriesList = (props: Props) => {
           >
             <div id={repo.name} className={`position-absolute ${styles.headerAnchor}`} />
 
-            <div className={`border px-3 py-2 px-md-4 py-md-4 ${styles.headerWrapper}`}>
+            <div className={`border px-3 py-2 px-md-4 py-md-4 mb-2 ${styles.headerWrapper}`}>
               <div className="d-flex flex-row flex-md-row-reverse align-items-center">
                 <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
                   <div className="d-none d-md-block">
@@ -156,6 +159,19 @@ const RepositoriesList = (props: Props) => {
               {repo.reports.map((report: Report) => {
                 return (
                   <Fragment key={report.report_id}>
+                    {report.errors && report.errors !== '' && (
+                      <div className="my-2">
+                        <div className={`alert alert-warning mb-0 rounded-0 ${styles.alert}`} role="alert">
+                          <div className="alert-heading mb-3">
+                            <HiExclamation className="me-2" />
+                            <span className="fw-bold">
+                              Something went wrong processing this repository {moment.unix(report.updated_at).fromNow()}
+                            </span>
+                          </div>
+                          <CodeBlock language="bash" content={report.errors} withCopyBtn={false} darkCode />
+                        </div>
+                      </div>
+                    )}
                     <Row
                       repoName={repo.name}
                       reportId={report.report_id}

@@ -6,6 +6,7 @@ const defaultProps = {
   language: 'markdown',
   content: '##Sample',
   label: 'Copy btn',
+  withCopyBtn: true,
 };
 
 describe('CodeBlock', () => {

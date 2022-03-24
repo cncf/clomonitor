@@ -177,6 +177,11 @@
     );
   }
 
+  .alert-warning {
+    background-color: rgba(187, 128, 9, 0.15) !important;
+    border-color: rgba(187, 128, 9, 0.4) !important;
+  }
+
   // UI
   .lightIcon,
   .lightText {

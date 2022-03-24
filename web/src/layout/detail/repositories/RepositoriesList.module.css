@@ -33,6 +33,10 @@
   margin-left: -3px;
 }
 
+.alert {
+  font-size: 0.9rem;
+}
+
 @media (hover: hover) {
   .titleWrapper:hover .headingLink {
     opacity: 1;

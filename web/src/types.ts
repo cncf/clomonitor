@@ -46,6 +46,7 @@ export interface Repository extends BaseRepository {
 
 export interface Report {
   data: CoreReport | any;
+  errors?: string;
   linter_id: LinterId;
   report_id: string;
   updated_at: number;

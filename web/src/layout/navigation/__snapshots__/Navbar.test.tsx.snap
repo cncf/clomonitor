@@ -12,10 +12,10 @@ exports[`Navbar creates snapshot 1`] = `
         class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100"
       >
         <div
-          class="me-0 me-md-4 mt-2 mt-md-0 w-100"
+          class="me-0 me-md-4 mt-2 mt-md-0 line"
         >
           <div
-            class="d-flex flex-row align-items-start w-100"
+            class="d-flex flex-row align-items-start"
           >
             <a
               class="cursorPointer"
@@ -230,7 +230,7 @@ exports[`Navbar creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="position-relative my-3 w-100"
+          class="position-relative my-3 line"
         >
           <div
             class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto searchBar search"

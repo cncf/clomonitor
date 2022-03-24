@@ -773,7 +773,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="spec"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -973,7 +973,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -1888,7 +1888,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -2174,7 +2174,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -2554,7 +2554,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -2837,7 +2837,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="sdk-go"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -2996,7 +2996,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -3427,7 +3427,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -3723,7 +3723,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="sdk-javascript"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -3882,7 +3882,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -4313,7 +4313,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -4609,7 +4609,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="sdk-csharp"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -4768,7 +4768,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -5199,7 +5199,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -5495,7 +5495,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="sdk-java"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -5654,7 +5654,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -6085,7 +6085,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -6381,7 +6381,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
         id="sdk-python"
       />
       <div
-        class="border px-3 py-2 px-md-4 py-md-4 headerWrapper"
+        class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
           class="d-flex flex-row flex-md-row-reverse align-items-center"
@@ -6540,7 +6540,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
       </div>
       <div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"
@@ -6971,7 +6971,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="p-3 p-md-4 border border-top-0"
+          class="p-3 p-md-4 border mb-2 reportContent"
         >
           <div
             class="mx-0 mx-md-1"

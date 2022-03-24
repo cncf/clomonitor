@@ -38,7 +38,12 @@ const BadgeModal = (props: Props) => {
                     <img src={badgeImage} alt="CLOMonitor badge" />
                   </div>
 
-                  <CodeBlock language="markdown" content={markdownLink} label="Copy badge markdown link to clipboard" />
+                  <CodeBlock
+                    language="markdown"
+                    content={markdownLink}
+                    label="Copy badge markdown link to clipboard"
+                    withCopyBtn
+                  />
                 </>
               ),
             },
@@ -51,7 +56,12 @@ const BadgeModal = (props: Props) => {
                     <img src={badgeImage} alt="CLOMonitor badge" />
                   </div>
 
-                  <CodeBlock language="asciidoc" content={asciiLink} label="Copy badge Ascii link to clipboard" />
+                  <CodeBlock
+                    language="asciidoc"
+                    content={asciiLink}
+                    label="Copy badge Ascii link to clipboard"
+                    withCopyBtn
+                  />
                 </>
               ),
             },

@@ -93,6 +93,7 @@ const ReportSummaryModal = (props: Props) => {
                     language="markdown"
                     content={markdownLink}
                     label="Copy report summary markdown link to clipboard"
+                    withCopyBtn
                   />
                 ),
               },
@@ -105,6 +106,7 @@ const ReportSummaryModal = (props: Props) => {
                     language="asciidoc"
                     content={asciiLink}
                     label="Copy report summary Ascii link to clipboard"
+                    withCopyBtn
                   />
                 ),
               },
@@ -112,7 +114,12 @@ const ReportSummaryModal = (props: Props) => {
                 name: 'html',
                 title: 'HTML',
                 content: (
-                  <CodeBlock language="html" content={htmlLink} label="Copy report summary html link to clipboard" />
+                  <CodeBlock
+                    language="html"
+                    content={htmlLink}
+                    label="Copy report summary html link to clipboard"
+                    withCopyBtn
+                  />
                 ),
               },
             ]}

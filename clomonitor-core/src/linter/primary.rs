@@ -56,6 +56,7 @@ pub struct BestPractices {
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Security {
+    pub sbom: CheckResult,
     pub security_policy: CheckResult,
 }
 
@@ -89,6 +90,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
         contributing,
         dco,
         recent_release,
+        sbom,
         security_policy,
         trademark_disclaimer,
     ) = tokio::try_join!(
@@ -97,6 +99,7 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
         check::contributing(&opts),
         check::dco(&opts),
         check::recent_release(&opts),
+        check::sbom(&opts),
         check::security_policy(&opts),
         check::trademark_disclaimer(&opts),
     )?;
@@ -130,7 +133,10 @@ pub async fn lint(opts: LintOptions) -> Result<Report, Error> {
             recent_release,
             slack_presence: check::slack_presence(&opts)?,
         },
-        security: Security { security_policy },
+        security: Security {
+            sbom,
+            security_policy,
+        },
         legal: Legal {
             trademark_disclaimer,
         },

@@ -156,6 +156,19 @@ lazy_static! {
     ]).expect("invalid exprs in ROADMAP_IN_README");
 
     #[rustfmt::skip]
+    pub(crate) static ref SBOM_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
+        r"(?i)sbom",
+    ]).expect("invalid exprs in SBOM_IN_GH_RELEASE");
+
+    #[rustfmt::skip]
+    pub(crate) static ref SBOM_IN_README: RegexSet = RegexSet::new(vec![
+        r"(?im)^#+.*sbom.*$",
+        r"(?im)^#+.*software bill of materials.*$",
+        r"(?im)^sbom$",
+        r"(?im)^software bill of materials$",
+    ]).expect("invalid exprs in SBOM_IN_README");
+
+    #[rustfmt::skip]
     pub(crate) static ref SECURITY_POLICY_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*security.*$",
         r"(?im)^security$",
@@ -399,6 +412,32 @@ Roadmap
             "
         ));
         assert!(ROADMAP_IN_README.is_match("[Project roadmap](...)"));
+    }
+
+    #[test]
+    fn sbom_in_gh_release_match() {
+        assert!(SBOM_IN_GH_RELEASE.is_match("flux_0.28.2_sbom.spdx.json"));
+    }
+
+    #[test]
+    fn sbom_in_readme_match() {
+        assert!(SBOM_IN_README.is_match("# SBOM"));
+        assert!(SBOM_IN_README.is_match("# Software Bill of Materials"));
+        assert!(SBOM_IN_README.is_match(
+            r"
+...
+## Project SBOM
+...
+            "
+        ));
+        assert!(SBOM_IN_README.is_match(
+            r"
+...
+Software Bill of Materials
+--------------------------
+...
+            "
+        ));
     }
 
     #[test]

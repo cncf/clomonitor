@@ -32,6 +32,7 @@ pub const OPENSSF_BADGE_CHECK_ID: &str = "openssf_badge";
 pub const README_CHECK_ID: &str = "readme";
 pub const RECENT_RELEASE_CHECK_ID: &str = "recent_release";
 pub const ROADMAP_CHECK_ID: &str = "roadmap";
+pub const SBOM_CHECK_ID: &str = "sbom";
 pub const SECURITY_POLICY_CHECK_ID: &str = "security_policy";
 pub const SLACK_PRESENCE_CHECK_ID: &str = "slack_presence";
 pub const TRADEMARK_DISCLAIMER_CHECK_ID: &str = "trademark_disclaimer";
@@ -406,6 +407,28 @@ pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
     }
 
     Ok(false.into())
+}
+
+/// Software bill of materials (SBOM).
+pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult, Error> {
+    // Check exemption
+    if let Some(exemption) = find_exemption(SBOM_CHECK_ID, &opts.md) {
+        return Ok(exemption.into());
+    }
+
+    // Asset in last release
+    if let Some(last_release) = github::last_release(&opts.url).await? {
+        if last_release
+            .assets
+            .iter()
+            .any(|asset| SBOM_IN_GH_RELEASE.is_match(&asset.name))
+        {
+            return Ok(true.into());
+        }
+    }
+
+    // Reference in README file
+    Ok(readme_matches(&opts.root, &*SBOM_IN_README)?.into())
 }
 
 /// Security policy check.

@@ -135,6 +135,10 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
             cell_check(&report.best_practices.slack_presence),
         ])
         .add_row(vec![
+            cell_entry("Security / SBOM"),
+            cell_check(&report.security.sbom),
+        ])
+        .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(&report.security.security_policy),
         ])

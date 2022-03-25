@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import moment from 'moment';
 import { useCallback, useEffect, useState } from 'react';
+import { GoCalendar } from 'react-icons/go';
 import { GrPieChart } from 'react-icons/gr';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -144,6 +145,16 @@ const Detail = () => {
                                   </div>
                                 </ExternalLink>
                               </>
+                            )}
+
+                            {!isUndefined(detail.accepted_at) && (
+                              <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
+                                <GoCalendar className={`me-1 ${styles.statsIcon}`} />
+                                <div className="d-flex flex-row">
+                                  <span className="text-muted d-none d-lg-block me-1">Accepted by CNCF:</span>
+                                  {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
+                                </div>
+                              </div>
                             )}
                           </div>
                         </div>

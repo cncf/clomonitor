@@ -12,7 +12,7 @@ const Average = (props: Props) => {
   return (
     <>
       <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>{props.title}</div>
-      <div className="card-body pb-0">
+      <div className="card-body pt-3 px-4 pb-0">
         <ProgressBar
           title="Documentation"
           icon={CATEGORY_ICONS[ScoreType.Documentation]}

@@ -8,6 +8,7 @@ jest.mock('moment', () => ({
   ...(jest.requireActual('moment') as {}),
   unix: () => ({
     fromNow: () => '3 days ago',
+    format: () => '23rd June 2020',
   }),
 }));
 
@@ -15,6 +16,7 @@ const mockSaveScrollPosition = jest.fn();
 
 const defaultProps = {
   project: {
+    accepted_at: 1592870400,
     category_id: 0,
     description:
       'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
@@ -92,6 +94,8 @@ describe('Card', () => {
 
       const statsLink = screen.getByRole('link', { name: 'Dev stats link' });
       expect(statsLink).toHaveProperty('href', 'https://artifacthub.devstats.cncf.io/');
+
+      expect(screen.getByText('23rd June 2020')).toBeInTheDocument();
 
       const globalScores = screen.getAllByTestId('global-score');
       expect(globalScores).toHaveLength(2);

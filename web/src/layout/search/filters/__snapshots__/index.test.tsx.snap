@@ -119,6 +119,126 @@ exports[`Filters creates snapshot 1`] = `
     class="fw-bold text-uppercase text-primary categoryTitle"
   >
     <small>
+      Accepted
+    </small>
+  </div>
+  <div
+    class="mt-3 mb-5 ms-3 ms-md-2 me-4 me-md-2 me-xxl-5 sliderWrapper"
+  >
+    <div
+      class="rc-slider rc-slider-horizontal rc-slider-with-marks"
+    >
+      <div
+        class="rc-slider-rail"
+      />
+      <div
+        class="rc-slider-track rc-slider-track-1"
+        style="left: 0%; width: 100%; background-color: rgb(105, 80, 133);"
+      />
+      <div
+        class="rc-slider-step"
+      >
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 16.666666666666664%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 33.33333333333333%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 50%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 66.66666666666666%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 83.33333333333334%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+        <span
+          class="rc-slider-dot rc-slider-dot-active"
+          style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
+        />
+      </div>
+      <div
+        aria-disabled="false"
+        aria-valuemax="6"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        class="rc-slider-handle rc-slider-handle-1"
+        role="slider"
+        style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
+        tabindex="0"
+      />
+      <div
+        aria-disabled="false"
+        aria-valuemax="6"
+        aria-valuemin="0"
+        aria-valuenow="6"
+        class="rc-slider-handle rc-slider-handle-2"
+        role="slider"
+        style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
+        tabindex="0"
+      />
+      <div
+        class="rc-slider-mark"
+      >
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 0%; transform: translateX(-50%);"
+        >
+          2016
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 16.666666666666664%; transform: translateX(-50%);"
+        >
+          '17
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 33.33333333333333%; transform: translateX(-50%);"
+        >
+          '18
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 50%; transform: translateX(-50%);"
+        >
+          '19
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 66.66666666666666%; transform: translateX(-50%);"
+        >
+          '20
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 83.33333333333334%; transform: translateX(-50%);"
+        >
+          '21
+        </span>
+        <span
+          class="rc-slider-mark-text rc-slider-mark-text-active"
+          style="left: 100%; transform: translateX(-50%);"
+        >
+          2022
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fw-bold text-uppercase text-primary categoryTitle"
+  >
+    <small>
       Rating
     </small>
   </div>

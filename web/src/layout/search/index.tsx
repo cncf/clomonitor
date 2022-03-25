@@ -43,12 +43,19 @@ interface Props {
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
 }
 
+interface AcceptedDate {
+  accepted_from?: string;
+  accepted_to?: string;
+}
+
 const Search = (props: Props) => {
   const navigate = useNavigate();
   const { ctx, dispatch } = useContext(AppContext);
   const { limit, sort } = ctx.prefs.search;
   const [searchParams] = useSearchParams();
   const [text, setText] = useState<string | undefined>();
+  const [acceptedFrom, setAcceptedFrom] = useState<string | undefined>();
+  const [acceptedTo, setAcceptedTo] = useState<string | undefined>();
   const [filters, setFilters] = useState<FiltersProp>({});
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
@@ -85,8 +92,23 @@ const Search = (props: Props) => {
     return {
       pageNumber: pageNumber,
       text: text,
+      accepted_from: acceptedFrom,
+      accepted_to: acceptedTo,
       filters: filters,
     };
+  };
+
+  const onAcceptedDateRangeChange = (dates: AcceptedDate) => {
+    props.setScrollPosition(0);
+    navigate({
+      pathname: '/search',
+      search: prepareQueryString({
+        ...getCurrentFilters(),
+        accepted_from: dates.accepted_from,
+        accepted_to: dates.accepted_to,
+        pageNumber: 1,
+      }),
+    });
   };
 
   const updateCurrentPage = (searchChanges: any) => {
@@ -152,7 +174,10 @@ const Search = (props: Props) => {
   useEffect(() => {
     const formattedParams = buildSearchParams(searchParams);
     setText(formattedParams.text);
+    setAcceptedFrom(formattedParams.accepted_from);
+    setAcceptedTo(formattedParams.accepted_to);
     setFilters(formattedParams.filters || {});
+
     setPageNumber(formattedParams.pageNumber);
 
     async function searchProjects() {
@@ -160,6 +185,8 @@ const Search = (props: Props) => {
       try {
         const newSearchResults = await API.searchProjects({
           text: formattedParams.text,
+          accepted_from: formattedParams.accepted_from,
+          accepted_to: formattedParams.accepted_to,
           sort_by: sort.by,
           sort_direction: sort.direction,
           filters: prepareFilters(formattedParams.filters || {}),
@@ -194,7 +221,7 @@ const Search = (props: Props) => {
                 closeButton={<>See {total} results</>}
                 leftButton={
                   <>
-                    {!isEmpty(filters) && (
+                    {(!isEmpty(filters) || !isUndefined(acceptedFrom) || !isUndefined(acceptedTo)) && (
                       <div className="d-flex align-items-center">
                         <IoMdCloseCircleOutline className={`text-dark ${styles.resetBtnDecorator}`} />
                         <button
@@ -211,7 +238,15 @@ const Search = (props: Props) => {
                 header={<div className="h6 text-uppercase mb-0 flex-grow-1">Filters</div>}
               >
                 <div role="menu">
-                  <Filters device="mobile" activeFilters={filters} onChange={onFiltersChange} visibleTitle={false} />
+                  <Filters
+                    device="mobile"
+                    acceptedFrom={acceptedFrom}
+                    acceptedTo={acceptedTo}
+                    activeFilters={filters}
+                    onChange={onFiltersChange}
+                    onAcceptedDateRangeChange={onAcceptedDateRangeChange}
+                    visibleTitle={false}
+                  />
                 </div>
               </Sidebar>
               <div className={`text-truncate fw-bold w-100 ${styles.searchResults}`} role="status">
@@ -236,7 +271,13 @@ const Search = (props: Props) => {
             </div>
           </div>
 
-          <SelectedFilters filters={filters} onChange={onFiltersChange} />
+          <SelectedFilters
+            acceptedFrom={acceptedFrom}
+            acceptedTo={acceptedTo}
+            filters={filters}
+            onChange={onFiltersChange}
+            onAcceptedDateRangeChange={onAcceptedDateRangeChange}
+          />
         </div>
       </SubNavbar>
 
@@ -253,8 +294,11 @@ const Search = (props: Props) => {
           >
             <Filters
               device="desktop"
+              acceptedFrom={acceptedFrom}
+              acceptedTo={acceptedTo}
               activeFilters={filters}
               onChange={onFiltersChange}
+              onAcceptedDateRangeChange={onAcceptedDateRangeChange}
               onResetFilters={onResetFilters}
               visibleTitle
             />

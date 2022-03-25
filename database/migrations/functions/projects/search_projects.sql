@@ -9,6 +9,8 @@ declare
     v_category int[];
     v_maturity int[];
     v_rating text[];
+    v_accepted_from date := (p_input->>'accepted_from');
+    v_accepted_to date := (p_input->>'accepted_to');
 begin
     -- Prepare filters
     if p_input ? 'category' and p_input->'category' <> 'null' then
@@ -38,6 +40,7 @@ begin
             p.rating,
             p.category_id,
             p.maturity_id,
+            p.accepted_at,
             p.updated_at,
             o.name as organization_name
         from project p
@@ -48,14 +51,20 @@ begin
                 (p.name ~* v_text or p.display_name ~* v_text) else true
             end
         and
-            case when cardinality(v_category) > 0
-            then p.category_id = any(v_category) else true end
+            case when cardinality(v_category) > 0 then
+            p.category_id = any(v_category) else true end
         and
-            case when cardinality(v_maturity) > 0
-            then p.maturity_id = any(v_maturity) else true end
+            case when cardinality(v_maturity) > 0 then
+            p.maturity_id = any(v_maturity) else true end
         and
-            case when cardinality(v_rating) > 0
-            then p.rating = any(v_rating) else true end
+            case when cardinality(v_rating) > 0 then
+            p.rating = any(v_rating) else true end
+        and
+            case when v_accepted_from is not null then
+            p.accepted_at >= v_accepted_from else true end
+        and
+            case when v_accepted_to is not null then
+            p.accepted_at <= v_accepted_to else true end
     )
     select
         (
@@ -71,6 +80,7 @@ begin
                 'rating', rating,
                 'category_id', category_id,
                 'maturity_id', maturity_id,
+                'accepted_at', extract(epoch from accepted_at),
                 'updated_at', floor(extract(epoch from updated_at)),
                 'repositories', (
                     select json_agg(json_build_object(

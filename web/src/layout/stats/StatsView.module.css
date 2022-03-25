@@ -14,6 +14,10 @@
   font-size: 1.5rem;
 }
 
+.checksBody {
+  padding: 1.5rem 2rem;
+}
+
 [data-theme='dark'] :global(.card).chartWrapper {
   background-color: var(--color-black-5) !important;
 }

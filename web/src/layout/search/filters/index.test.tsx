@@ -4,15 +4,27 @@ import userEvent from '@testing-library/user-event';
 import Filters from './index';
 
 const mockOnChange = jest.fn();
+const mockOnAcceptedDateRangeChange = jest.fn();
 
 const defaultProps = {
   visibleTitle: true,
   activeFilters: {},
   onChange: mockOnChange,
+  onAcceptedDateRangeChange: mockOnAcceptedDateRangeChange,
   device: 'test',
 };
 
 describe('Filters', () => {
+  let dateNowSpy: any;
+
+  beforeEach(() => {
+    dateNowSpy = jest.spyOn(Date, 'now').mockImplementation(() => 1648154630000);
+  });
+
+  afterAll(() => {
+    dateNowSpy.mockRestore();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -48,6 +60,16 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'Provisioning' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'Runtime' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'Serverless' })).toBeInTheDocument();
+
+      expect(screen.getByText('Accepted')).toBeInTheDocument();
+      expect(screen.getByText('2016')).toBeInTheDocument();
+      expect(screen.getByText("'17")).toBeInTheDocument();
+      expect(screen.getByText("'18")).toBeInTheDocument();
+      expect(screen.getByText("'19")).toBeInTheDocument();
+      expect(screen.getByText("'20")).toBeInTheDocument();
+      expect(screen.getByText("'21")).toBeInTheDocument();
+      expect(screen.getByText('2022')).toBeInTheDocument();
+      expect(screen.getAllByRole('slider')).toHaveLength(2);
     });
 
     it('renders Filters with selected options', () => {

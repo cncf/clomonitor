@@ -28,6 +28,7 @@ insert into project (
     devstats_url,
     score,
     rating,
+    accepted_at,
     updated_at,
     organization_id,
     category_id,
@@ -41,6 +42,7 @@ insert into project (
     'https://artifacthub.devstats.cncf.io/',
     '{"global": 95, "license": 100, "security": 100, "score_kind": "Primary", "documentation": 80, "best_practices": 100}',
     'a',
+    '2021-01-01',
     '2022-02-24 09:40:42.695654+01',
     '00000001-0000-0000-0000-000000000000',
     0,
@@ -269,7 +271,6 @@ select is(
                                 }
                             }
                         },
-                        "errors": null,
                         "linter_id": 0,
                         "report_id": "5133b909-a5b3-4c24-87b1-16b02a955ffa",
                         "updated_at": 1645692042
@@ -295,6 +296,7 @@ select is(
             "score_kind": "Primary",
             "security": 100
         },
+        "accepted_at": 1609459200,
         "updated_at": 1645692042
     }'::jsonb,
     'Project returned as a json object'

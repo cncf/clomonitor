@@ -18,6 +18,16 @@ const tests: Test[] = [
     input: { pageNumber: 1, text: 'test', filters: { category: ['0', '2'], maturity: ['0'], rating: ['a', 'b'] } },
     output: '?category=0&category=2&maturity=0&rating=a&rating=b&text=test&page=1',
   },
+  {
+    input: {
+      pageNumber: 2,
+      text: 'test',
+      accepted_from: '2020-01-01',
+      accepted_to: '2020-12-31',
+      filters: { category: ['0', '2'] },
+    },
+    output: '?category=0&category=2&text=test&accepted_from=2020-01-01&accepted_to=2020-12-31&page=2',
+  },
 ];
 
 describe('prepareQueryString', () => {

@@ -327,7 +327,7 @@ const StatsView = (props: Props) => {
     <div className="d-flex flex-column flex-grow-1 position-relative">
       <SubNavbar>
         <div className="d-flex flex-column align-items-center justify-content-center w-100 my-2">
-          <div className="h2 text-secondary">CLOMonitor Stats</div>
+          <div className="h2 text-dark">CLOMonitor Stats</div>
           {stats && (
             <small>
               <span className="me-2">Report generated at:</span>
@@ -505,7 +505,7 @@ const StatsView = (props: Props) => {
                     <div className="row no-gutters justify-content-center">
                       <div className="col-12">
                         <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className="card-body p-4">
+                          <div className={`card-body ${styles.checksBody}`}>
                             <div className="row g-4 justify-content-center">
                               <Checks title="Documentation" data={stats.repositories.passing_check.documentation} />
                               <Checks title="License" data={stats.repositories.passing_check.license} />

@@ -99,8 +99,8 @@ begin
                 select *
                 from filtered_projects
                 order by
-                    (case when v_sort_by = 'score' and v_sort_direction = 'asc' then score end) asc,
-                    (case when v_sort_by = 'score' and v_sort_direction = 'desc' then score end) desc,
+                    (case when v_sort_by = 'score' and v_sort_direction = 'asc' then score->>'global' end) asc,
+                    (case when v_sort_by = 'score' and v_sort_direction = 'desc' then score->>'global' end) desc,
                     (case when v_sort_by = 'name' and v_sort_direction = 'asc' then name end) asc,
                     (case when v_sort_by = 'name' and v_sort_direction = 'desc' then name end) desc
                 limit v_limit

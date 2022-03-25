@@ -248,7 +248,7 @@ const StatsView = (props: Props) => {
               {
                 from: 1,
                 to: 10,
-                color: isLightActive ? '#efefef' : '#161b22',
+                color: isLightActive ? '#f2f2f2' : '#424549',
               },
               {
                 from: 11,
@@ -329,8 +329,8 @@ const StatsView = (props: Props) => {
         <div className="d-flex flex-column align-items-center justify-content-center w-100 my-2">
           <div className="h2 text-dark">CLOMonitor Stats</div>
           {stats && (
-            <small>
-              <span className="me-2">Report generated at:</span>
+            <small className="d-flex flex-row">
+              <span className="d-none d-sm-block me-2">Report generated at:</span>
               {!isUndefined(stats.generated_at) ? (
                 <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
               ) : (
@@ -402,7 +402,7 @@ const StatsView = (props: Props) => {
                           <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
                             All
                           </div>
-                          <div className="card-body">
+                          <div className={`card-body ${styles.donutWrapper}`}>
                             <ReactApexChart
                               options={getDonutChartConfig()}
                               series={prepareDonutData(stats.projects.rating_distribution.all)}
@@ -417,7 +417,7 @@ const StatsView = (props: Props) => {
                           <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
                             Graduated
                           </div>
-                          <div className="card-body">
+                          <div className={`card-body ${styles.donutWrapper}`}>
                             <ReactApexChart
                               options={getDonutChartConfig()}
                               series={prepareDonutData(stats.projects.rating_distribution.graduated)}
@@ -432,7 +432,7 @@ const StatsView = (props: Props) => {
                           <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
                             Incubating
                           </div>
-                          <div className="card-body">
+                          <div className={`card-body ${styles.donutWrapper}`}>
                             <ReactApexChart
                               options={getDonutChartConfig()}
                               series={prepareDonutData(stats.projects.rating_distribution.incubating)}
@@ -447,7 +447,7 @@ const StatsView = (props: Props) => {
                           <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
                             Sandbox
                           </div>
-                          <div className="card-body">
+                          <div className={`card-body ${styles.donutWrapper}`}>
                             <ReactApexChart
                               options={getDonutChartConfig()}
                               series={prepareDonutData(stats.projects.rating_distribution.sandbox)}

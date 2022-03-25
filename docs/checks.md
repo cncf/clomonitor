@@ -389,6 +389,29 @@ This check passes if:
 
 ## Security
 
+### Software bill of materials (SBOM)
+
+**ID**: `sbom`
+
+List of components in a piece of software, including licenses, versions, etc.
+
+This check passes if:
+
+- The latest release on Github includes an asset which name contains *sbom*. Regexps used:
+
+```sh
+"(?i)sbom"
+```
+
+- The repository's `README` file contains a *SBOM* section that explains where they are published to, format used, etc. Regexps used to locate the *title header*:
+
+```sh
+"(?im)^#+.*sbom.*$"
+"(?im)^#+.*software bill of materials.*$"
+"(?im)^sbom$"
+"(?im)^software bill of materials$"
+```
+
 ### Security policy
 
 **ID**: `security_policy`

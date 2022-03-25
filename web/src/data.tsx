@@ -8,6 +8,7 @@ import { GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
+import { MdOutlineInventory } from 'react-icons/md';
 import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 
 import ExternalLink from './layout/common/ExternalLink';
@@ -214,6 +215,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline</span>
     ),
+  },
+  [ReportOption.SBOM]: {
+    icon: <MdOutlineInventory />,
+    name: 'Software bill of materials (SBOM)',
+    shortName: 'SBOM',
+    legend: <span>List of components in a piece of software, including licenses, versions, etc.</span>,
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,

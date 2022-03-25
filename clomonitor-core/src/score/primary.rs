@@ -94,8 +94,11 @@ pub(crate) fn calculate_score(report: &Report) -> Score {
     }
 
     // Security
+    if report.security.sbom.passed_or_exempt() {
+        score.security += 10;
+    }
     if report.security.security_policy.passed_or_exempt() {
-        score.security += 100;
+        score.security += 90;
     }
 
     // Legal
@@ -172,6 +175,7 @@ mod tests {
                     slack_presence: true.into(),
                 },
                 security: Security {
+                    sbom: true.into(),
                     security_policy: true.into(),
                 },
                 legal: Legal {
@@ -226,6 +230,7 @@ mod tests {
                     slack_presence: false.into(),
                 },
                 security: Security {
+                    sbom: false.into(),
                     security_policy: false.into(),
                 },
                 legal: Legal {

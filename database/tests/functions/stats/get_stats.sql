@@ -134,6 +134,9 @@ insert into report (
             }
         },
         "security": {
+            "sbom": {
+                "passed": false
+            },
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
@@ -232,6 +235,9 @@ insert into report (
             }
         },
         "security": {
+            "sbom": {
+                "passed": false
+            },
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
@@ -328,6 +334,9 @@ insert into report (
             }
         },
         "security": {
+            "sbom": {
+                "passed": false
+            },
             "security_policy": {
                 "passed": false
             }
@@ -465,6 +474,7 @@ select is(
                     "slack_presence": 0
                 },
                 "security": {
+                    "sbom": 0,
                     "security_policy": 67
                 },
                 "legal": {

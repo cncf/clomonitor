@@ -182,6 +182,7 @@ export enum ReportOption {
   Readme = 'readme',
   RecentRelease = 'recent_release',
   Roadmap = 'roadmap',
+  SBOM = 'sbom',
   SecurityPolicy = 'security_policy',
   SlackPresence = 'slack_presence',
   SPDX = 'spdx_id',

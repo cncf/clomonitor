@@ -108,6 +108,20 @@ pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error>
     })
 }
 
+/// Return the last release of the provided repository when available.
+pub(crate) async fn last_release(repo_url: &str) -> Result<Option<Release>, Error> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+    let github = octocrab::instance();
+    let mut page = github
+        .repos(&owner, &repo)
+        .releases()
+        .list()
+        .per_page(1)
+        .send()
+        .await?;
+    Ok(page.take_items().first().cloned())
+}
+
 /// Check if the last release body matches any of the regular expressions
 /// provided.
 pub(crate) async fn last_release_body_matches(
@@ -132,20 +146,6 @@ fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
         .captures(repo_url)
         .ok_or(format_err!("invalid repository url"))?;
     Ok((c["org"].to_string(), c["repo"].to_string()))
-}
-
-/// Return the last release of the provided repository when available.
-async fn last_release(repo_url: &str) -> Result<Option<Release>, Error> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-    let github = octocrab::instance();
-    let mut page = github
-        .repos(&owner, &repo)
-        .releases()
-        .list()
-        .per_page(1)
-        .send()
-        .await?;
-    Ok(page.take_items().first().cloned())
 }
 
 #[cfg(test)]

@@ -135,6 +135,7 @@ returns json as $$
                     'slack_presence', repositories_passing_check('best_practices', 'slack_presence')
                 ),
                 'security', json_build_object(
+                    'sbom', repositories_passing_check('security', 'sbom'),
                     'security_policy', repositories_passing_check('security', 'security_policy')
                 ),
                 'legal', json_build_object(

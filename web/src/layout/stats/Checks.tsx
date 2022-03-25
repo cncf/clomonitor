@@ -22,7 +22,12 @@ const Checks = (props: Props) => {
         {sortedChecks.map((check: ReportOption) => {
           const opt: ReportOptionData = getOptionInfo(check);
           return (
-            <ProgressBarInLine title={opt.shortName || opt.name} icon={opt.icon} value={props.data[check] as number} />
+            <ProgressBarInLine
+              key={`check_${opt.name}`}
+              title={opt.shortName || opt.name}
+              icon={opt.icon}
+              value={props.data[check] as number}
+            />
           );
         })}
       </div>

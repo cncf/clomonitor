@@ -19,6 +19,10 @@
   margin-top: -2px;
 }
 
+.icon > svg {
+  width: 15px;
+}
+
 .scoreWrapper {
   width: 55px;
 }

@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: var(--color-white-25);
+  background-color: var(--bg-loading);
   z-index: 100;
 }
 

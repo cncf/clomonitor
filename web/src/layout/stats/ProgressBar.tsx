@@ -12,7 +12,7 @@ const ProgressBar = (props: Props) => {
 
   return (
     <div className="d-flex flex-column">
-      <div className={`d-flex flex-row align-items-center ${styles.progressTitle}`}>
+      <div className={`d-flex flex-row align-items-center mb-1 mb-md-0 ${styles.progressTitle}`}>
         <div className={`me-2 position-relative ${styles.icon}`}>{props.icon}</div>
         <div>{props.title}</div>
       </div>
@@ -26,7 +26,7 @@ const ProgressBar = (props: Props) => {
             />
           </div>
         </div>
-        <div className={`ps-3 lh-1 text-end ${styles.scoreWrapper}`}>
+        <div className={`ps-1 ps-md-3 lh-1 text-end ${styles.scoreWrapper}`}>
           <small className="fw-bold lightText">{props.value}%</small>
         </div>
       </div>

@@ -23,6 +23,10 @@
 }
 
 :global(.apexcharts-heatmap-rect) {
+  stroke: var(--bs-white);
+}
+
+[data-theme='dark'] :global(.apexcharts-heatmap-rect) {
   stroke: var(--bg-color);
 }
 
@@ -58,22 +62,16 @@
   border-radius: 0 !important;
 }
 
-/* :global(.apexcharts-selected) svg {
-  fill: var(--highlighted) !important;
-}
+@media only screen and (max-width: 575.98px) {
+  .donutWrapper {
+    padding: 1rem 0.15rem;
+  }
 
-:global(.apexcharts-zoomin-icon:not(.apexcharts-selected)):hover svg,
-:global(.apexcharts-zoomout-icon:not(.apexcharts-selected)):hover svg,
-:global(.apexcharts-zoom-icon:not(.apexcharts-selected)):hover svg,
-:global(.apexcharts-reset-icon:not(.apexcharts-selected)):hover svg {
-  fill: var(--rm-secondary-900) !important;
-}
+  .donutWrapper :global(.apexcharts-legend-series) {
+    margin: 2px 3px;
+  }
 
-.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
-.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
-.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
-.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
-.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
-.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
-  fill: #333;
-} */
+  .checksBody {
+    padding: 1rem;
+  }
+}

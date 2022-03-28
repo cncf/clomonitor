@@ -1,37 +1,6 @@
 {
   "items": [
     {
-      "accepted_at": 1458086400,
-      "category_id": 5,
-      "description": "Kubernetes networking based on Open vSwitch.",
-      "devstats_url": "https://antrea.devstats.cncf.io/",
-      "display_name": "Antrea",
-      "id": "00000000-0044-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/antrea/icon/color/antrea-icon-color.svg",
-      "maturity_id": 2,
-      "name": "antrea",
-      "organization": {
-        "name": "antrea"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "antrea",
-          "url": "https://github.com/antrea-io/antrea"
-        }
-      ],
-      "score": {
-        "best_practices": 95,
-        "documentation": 100,
-        "global": 99,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645801223
-    },
-    {
       "accepted_at": 1592870400,
       "category_id": 0,
       "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
@@ -47,51 +16,21 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "artifact-hub",
           "url": "https://github.com/artifacthub/hub"
         }
       ],
       "score": {
-        "best_practices": 100,
-        "documentation": 80,
-        "global": 95,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 100.0,
+        "documentation": 83.33333333333331,
+        "global": 86.66666666666666,
+        "global_weight": 0,
+        "legal": 0.0,
+        "license": 100.0,
+        "security": 86.66666666666667
       },
-      "updated_at": 1645534816
-    },
-    {
-      "accepted_at": 1611619200,
-      "category_id": 4,
-      "description": "Open source platform for X.509 certificate based service authentication and fine grained access control in dynamic infrastructures.",
-      "devstats_url": "https://athenz.devstats.cncf.io/",
-      "display_name": "Athenz",
-      "id": "00000000-0045-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/athenz/icon/color/athenz-icon-color.svg",
-      "maturity_id": 2,
-      "name": "athenz",
-      "organization": {
-        "name": "athenz"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "athenz",
-          "url": "https://github.com/AthenZ/athenz"
-        }
-      ],
-      "score": {
-        "best_practices": 70,
-        "documentation": 90,
-        "global": 85,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645740020
+      "updated_at": 1648749650
     },
     {
       "accepted_at": 1599523200,
@@ -109,299 +48,21 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "backstage",
           "url": "https://github.com/backstage/backstage"
         }
       ],
       "score": {
-        "best_practices": 35,
-        "documentation": 95,
-        "global": 78,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 40.0,
+        "documentation": 100.0,
+        "global": 78.88888888888889,
+        "global_weight": 0,
+        "legal": 100.0,
+        "license": 75.0,
+        "security": 86.66666666666667
       },
-      "updated_at": 1645801225
-    },
-    {
-      "accepted_at": 1592870400,
-      "category_id": 2,
-      "description": "Open-source layer 7 load balancer derived from proprietary Baidu FrontEnd.",
-      "devstats_url": "https://bfe.devstats.cncf.io/",
-      "display_name": "Beyond Front End",
-      "id": "00000000-0047-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/bfe/icon/color/bfe-icon-color.svg",
-      "maturity_id": 2,
-      "name": "bfe",
-      "organization": {
-        "name": "bfenetworks"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "bfe",
-          "url": "https://github.com/bfenetworks/bfe"
-        }
-      ],
-      "score": {
-        "best_practices": 70,
-        "documentation": 95,
-        "global": 91,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645524790
-    },
-    {
-      "accepted_at": 1604966400,
-      "category_id": 4,
-      "description": "Automatically provision and manage TLS certificates in Kubernetes.",
-      "devstats_url": "https://certmanager.devstats.cncf.io/",
-      "display_name": "Cloud native certificate management",
-      "home_url": "https://cert-manager.io",
-      "id": "00000000-0050-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/cert-manager/icon/color/cert-manager-icon-color.svg",
-      "maturity_id": 2,
-      "name": "cert-manager",
-      "organization": {
-        "name": "jet-stack"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "cert-manager",
-          "url": "https://github.com/jetstack/cert-manager"
-        }
-      ],
-      "score": {
-        "best_practices": 40,
-        "documentation": 85,
-        "global": 76,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645714823
-    },
-    {
-      "accepted_at": 1594684800,
-      "category_id": 1,
-      "description": "A Chaos Engineering Platform for Kubernetes.",
-      "devstats_url": "https://chaosmesh.devstats.cncf.io/",
-      "display_name": "Chaos Mesh",
-      "id": "00000000-0051-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/chaosmesh/icon/color/chaosmesh-icon-color.svg",
-      "maturity_id": 2,
-      "name": "chaos-mesh",
-      "organization": {
-        "name": "chaos-mesh"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "chaos-mesh",
-          "url": "https://github.com/chaos-mesh/chaos-mesh"
-        }
-      ],
-      "score": {
-        "best_practices": 35,
-        "documentation": 100,
-        "global": 84,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645776014
-    },
-    {
-      "accepted_at": 1576540800,
-      "category_id": 5,
-      "description": "ChubaoFS (abbrev. CBFS) is a cloud native distributed file system and object store.",
-      "devstats_url": "https://chubaofs.devstats.cncf.io/",
-      "display_name": "ChubaoFS",
-      "id": "00000000-0053-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg",
-      "maturity_id": 2,
-      "name": "chubao-fs",
-      "organization": {
-        "name": "chubao-fs"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "chubaofs",
-          "url": "https://github.com/chubaofs/chubaofs"
-        }
-      ],
-      "score": {
-        "best_practices": 95,
-        "documentation": 95,
-        "global": 98,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645524787
-    },
-    {
-      "accepted_at": 1611619200,
-      "category_id": 4,
-      "description": "Curiefense is a unified, open source platform protecting cloud native applications.",
-      "devstats_url": "https://curiefense.devstats.cncf.io/",
-      "display_name": "Curiefense",
-      "id": "00000000-0056-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/curiefense/icon/color/curiefense-icon-color.svg",
-      "maturity_id": 2,
-      "name": "curiefense",
-      "organization": {
-        "name": "curiefense"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "curiefense",
-          "url": "https://github.com/curiefense/curiefense"
-        }
-      ],
-      "score": {
-        "best_practices": 70,
-        "documentation": 75,
-        "global": 81,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645722020
-    },
-    {
-      "accepted_at": 1592870400,
-      "category_id": 2,
-      "description": "Fluid is an orchestration platform for elastic data abstraction and acceleration in cloud native environment.",
-      "devstats_url": "https://fluid.devstats.cncf.io/",
-      "display_name": "Fluid",
-      "id": "00000000-0058-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/fluid/icon/color/fluid-icon-color.svg",
-      "maturity_id": 2,
-      "name": "fluid",
-      "organization": {
-        "name": "fluid"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "fluid",
-          "url": "https://github.com/fluid-cloudnative/fluid"
-        }
-      ],
-      "score": {
-        "best_practices": 75,
-        "documentation": 100,
-        "global": 94,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645779612
-    },
-    {
-      "accepted_at": 1592870400,
-      "category_id": 5,
-      "description": "A novel container runtime, aka confidential container, for cloud-native confidential computing and enclave runtime ecosystem.",
-      "devstats_url": "https://inclavarecontainers.devstats.cncf.io/",
-      "display_name": "Inclavare Containers",
-      "id": "00000000-0061-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/inclavare/icon/color/inclavare-icon-color.svg",
-      "maturity_id": 2,
-      "name": "inclavare",
-      "organization": {
-        "name": "alibaba"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "inclavare-containers",
-          "url": "https://github.com/alibaba/inclavare-containers"
-        }
-      ],
-      "score": {
-        "best_practices": 70,
-        "documentation": 95,
-        "global": 91,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645524708
-    },
-    {
-      "accepted_at": 1592870400,
-      "category_id": 4,
-      "description": "in-toto is a framework to protect supply chain integrity.",
-      "devstats_url": "https://intoto.devstats.cncf.io/",
-      "id": "00000000-0060-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/in-toto/icon/color/in-toto-icon-color.svg",
-      "maturity_id": 2,
-      "name": "in-toto",
-      "organization": {
-        "name": "in-toto"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "in-toto",
-          "url": "https://github.com/in-toto/in-toto"
-        }
-      ],
-      "score": {
-        "best_practices": 70,
-        "documentation": 85,
-        "global": 84,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645524788
-    },
-    {
-      "accepted_at": 1592870400,
-      "category_id": 2,
-      "description": "A cloud native Kubernetes Global Balancer.",
-      "devstats_url": "https://k8gb.devstats.cncf.io/",
-      "display_name": "K8GB",
-      "id": "00000000-0064-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/k8gb/icon/color/k8gb-icon-color.svg",
-      "maturity_id": 2,
-      "name": "k8gb",
-      "organization": {
-        "name": "k8gb"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "k8gb",
-          "url": "https://github.com/k8gb-io/k8gb"
-        }
-      ],
-      "score": {
-        "best_practices": 75,
-        "documentation": 90,
-        "global": 91,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645524738
+      "updated_at": 1648749707
     },
     {
       "accepted_at": 1592870400,
@@ -419,54 +80,24 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "keptn",
           "url": "https://github.com/keptn/keptn"
         }
       ],
       "score": {
-        "best_practices": 95,
-        "documentation": 95,
-        "global": 93,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 90.0,
+        "documentation": 96.66666666666666,
+        "global": 88.88888888888889,
+        "global_weight": 0,
+        "legal": 100.0,
+        "license": 75.0,
+        "security": 86.66666666666667
       },
-      "updated_at": 1645790415
+      "updated_at": 1648749705
     },
     {
-      "accepted_at": 1592870400,
-      "category_id": 1,
-      "description": "A Kubernetes operator for running synthetic checks as pods. Works great with Prometheus!",
-      "devstats_url": "https://kuberhealthy.devstats.cncf.io/",
-      "display_name": "Kuberhealthy",
-      "id": "00000000-0071-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kuberhealthy/icon/color/kuberhealthy-icon-color.svg",
-      "maturity_id": 2,
-      "name": "kuberhealthy",
-      "organization": {
-        "name": "kuberhealthy"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "kuberhealthy",
-          "url": "https://github.com/kuberhealthy/kuberhealthy"
-        }
-      ],
-      "score": {
-        "best_practices": 95,
-        "documentation": 70,
-        "global": 86,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645743623
-    },
-    {
-      "accepted_at": 1592870400,
+      "accepted_at": 1617580800,
       "category_id": 0,
       "description": "Make shipping applications more enjoyable.",
       "devstats_url": "https://kubevela.devstats.cncf.io/",
@@ -482,150 +113,133 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "secondary",
-          "name": "spec",
-          "url": "https://github.com/oam-dev/spec"
-        },
-        {
-          "kind": "primary",
+          "check_sets": ["code"],
           "name": "kubevela",
           "url": "https://github.com/oam-dev/kubevela"
+        },
+        {
+          "check_sets": ["community"],
+          "name": "spec",
+          "url": "https://github.com/oam-dev/spec"
         }
       ],
       "score": {
-        "best_practices": 100,
-        "documentation": 84,
-        "global": 82,
-        "license": 64,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 95.0,
+        "documentation": 95.45454545454548,
+        "global": 76.06837606837607,
+        "global_weight": 0,
+        "legal": 0.0,
+        "license": 75.0,
+        "security": 46.42857142857143
       },
-      "updated_at": 1645686015
+      "updated_at": 1648749733
     },
     {
-      "accepted_at": 1592870400,
+      "accepted_at": 1602374400,
       "category_id": 0,
-      "description": "Kubernetes Virtualization API and runtime in order to define and manage virtual machines.",
-      "devstats_url": "https://kubevirt.devstats.cncf.io/",
-      "display_name": "KubeVirt",
-      "id": "00000000-0073-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevirt/icon/color/kubevirt-icon-color.svg",
+      "description": "Automate application management on Kubernetes.",
+      "devstats_url": "https://openkruise.devstats.cncf.io/",
+      "display_name": "OpenKruise",
+      "id": "00000000-0085-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/openkruise/icon/color/openkruise-icon-color.svg",
       "maturity_id": 2,
-      "name": "kubevirt",
+      "name": "open-kruise",
       "organization": {
-        "name": "kubevirt"
+        "name": "open-kruise"
       },
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
-          "name": "kubevirt",
-          "url": "https://github.com/kubevirt/kubevirt"
+          "check_sets": ["community", "code"],
+          "name": "kruise",
+          "url": "https://github.com/openkruise/kruise"
         }
       ],
       "score": {
-        "best_practices": 70,
-        "documentation": 80,
-        "global": 88,
-        "license": 100,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 95.0,
+        "documentation": 93.33333333333331,
+        "global": 88.88888888888889,
+        "global_weight": 0,
+        "legal": 100.0,
+        "license": 75.0,
+        "security": 86.66666666666667
       },
-      "updated_at": 1645801218
+      "updated_at": 1648749718
     },
     {
-      "accepted_at": 1592870400,
-      "category_id": 2,
-      "description": "The universal Envoy service mesh for distributed service connectivity.",
-      "devstats_url": "https://kuma.devstats.cncf.io/",
-      "display_name": "Kuma",
-      "id": "00000000-0075-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kuma/icon/color/kuma-icon-color.svg",
+      "accepted_at": 1566950400,
+      "category_id": 0,
+      "description": "Apache Kafka running on Kubernetes.",
+      "devstats_url": "https://strimzi.devstats.cncf.io/",
+      "display_name": "Strimzi",
+      "id": "00000000-0099-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/strimzi/icon/color/strimzi-icon-color.svg",
       "maturity_id": 2,
-      "name": "kuma",
+      "name": "strimzi",
       "organization": {
-        "name": "kuma"
+        "name": "strimzi"
       },
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
-          "name": "kuma",
-          "url": "https://github.com/kumahq/kuma"
+          "check_sets": ["code-lite"],
+          "name": "strimzi-kafka-bridge",
+          "url": "https://github.com/strimzi/strimzi-kafka-bridge"
+        },
+        {
+          "check_sets": ["code-lite"],
+          "name": "strimzi-kafka-oauth",
+          "url": "https://github.com/strimzi/strimzi-kafka-oauth"
+        },
+        {
+          "check_sets": ["community", "code"],
+          "name": "strimzi-kafka-operator",
+          "url": "https://github.com/strimzi/strimzi-kafka-operator"
         }
       ],
       "score": {
-        "best_practices": 75,
-        "documentation": 90,
-        "global": 86,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 63.33333333333333,
+        "documentation": 98.4375,
+        "global": 89.99999999999999,
+        "global_weight": 0,
+        "legal": 100.0,
+        "license": 90.0,
+        "security": 95.1219512195122
       },
-      "updated_at": 1645801218
+      "updated_at": 1648749723
     },
     {
-      "accepted_at": 1604966400,
-      "category_id": 4,
-      "description": "Kubernetes Native Policy Management.",
-      "devstats_url": "https://kyverno.devstats.cncf.io/",
-      "display_name": "Kyverno",
-      "id": "00000000-0076-0000-0000-000000000000",
-      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kyverno/icon/color/kyverno-icon-color.svg",
+      "accepted_at": 1596931200,
+      "category_id": 0,
+      "description": "An early-stage event processing system for unstructured data with rich support for structural pattern-matching, filtering and transformation.",
+      "devstats_url": "https://tremor.devstats.cncf.io/",
+      "display_name": "Tremor",
+      "id": "00000000-0104-0000-0000-000000000000",
+      "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/tremor/icon/color/tremor-icon-color.svg",
       "maturity_id": 2,
-      "name": "kyverno",
+      "name": "tremor",
       "organization": {
-        "name": "kyverno"
+        "name": "tremor"
       },
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
-          "name": "kyverno",
-          "url": "https://github.com/kyverno/kyverno"
+          "check_sets": ["community", "code"],
+          "name": "tremor-runtime",
+          "url": "https://github.com/tremor-rs/tremor-runtime"
         }
       ],
       "score": {
-        "best_practices": 95,
-        "documentation": 85,
-        "global": 90,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
+        "best_practices": 75.0,
+        "documentation": 83.33333333333331,
+        "global": 81.1111111111111,
+        "global_weight": 0,
+        "legal": 100.0,
+        "license": 75.0,
+        "security": 86.66666666666667
       },
-      "updated_at": 1645779624
-    },
-    {
-      "accepted_at": 1624233600,
-      "category_id": 2,
-      "description": "The service mesh management plane.",
-      "devstats_url": "https://meshery.devstats.cncf.io/",
-      "display_name": "Meshery",
-      "id": "00000000-0077-0000-0000-000000000000",
-      "logo_url": "https://kubeovn.teststats.cncf.io/public/img/projects/meshery.svg",
-      "maturity_id": 2,
-      "name": "meshery",
-      "organization": {
-        "name": "meshery"
-      },
-      "rating": "a",
-      "repositories": [
-        {
-          "kind": "primary",
-          "name": "meshery",
-          "url": "https://github.com/meshery/meshery"
-        }
-      ],
-      "score": {
-        "best_practices": 95,
-        "documentation": 95,
-        "global": 93,
-        "license": 80,
-        "score_kind": "Primary",
-        "security": 100
-      },
-      "updated_at": 1645804819
+      "updated_at": 1648749725
     }
   ],
-  "Pagination-Total-Count": "28"
+  "Pagination-Total-Count": "7"
 }

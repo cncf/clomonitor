@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { RepositoryKind, ScoreKind } from '../../types';
+import { CheckSet } from '../../types';
 import Card from './Card';
 
 jest.mock('moment', () => ({
@@ -34,7 +34,7 @@ const defaultProps = {
     rating: 'a',
     repositories: [
       {
-        kind: RepositoryKind.Primary,
+        check_sets: [CheckSet.Community, CheckSet.Code],
         name: 'artifact-hub',
         url: 'https://github.com/artifacthub/hub',
       },
@@ -45,7 +45,6 @@ const defaultProps = {
       global: 89,
       license: 80,
       legal: 75,
-      score_kind: ScoreKind.Primary,
       security: 100,
     },
     updated_at: 1645138013,

@@ -19,17 +19,16 @@ returns json as $$
                 'repository_id', r.repository_id,
                 'name', r.name,
                 'url', r.url,
-                'kind', r.kind::text,
+                'check_sets', r.check_sets,
                 'digest', r.digest,
                 'score', r.score,
-                'reports', (
-                    select json_agg(json_build_object(
+                'report', (
+                    select json_build_object(
                         'report_id', report_id,
                         'data', data,
                         'errors', errors,
-                        'updated_at', floor(extract(epoch from updated_at)),
-                        'linter_id', linter_id
-                    ))
+                        'updated_at', floor(extract(epoch from updated_at))
+                    )
                     from report
                     where repository_id = r.repository_id
                 )

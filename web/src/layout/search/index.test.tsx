@@ -71,7 +71,7 @@ describe('Project detail index', () => {
         });
       });
 
-      expect(screen.getAllByRole('listitem')).toHaveLength(24);
+      expect(screen.getAllByRole('listitem')).toHaveLength(7);
     });
 
     it('renders placeholder when list is empty', async () => {

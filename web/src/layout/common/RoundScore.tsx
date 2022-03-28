@@ -1,4 +1,5 @@
 import getCategoryColor from '../../utils/getCategoryColor';
+import roundScoreValue from '../../utils/roundScoreValue';
 import styles from './RoundScore.module.css';
 
 interface Props {
@@ -31,7 +32,7 @@ const RoundScore = (props: Props) => {
           a 15.9155 15.9155 0 0 1 0 -31.831"
           />
           <text x="18" y="23" className={styles.value}>
-            {props.score}
+            {roundScoreValue(props.score)}
           </text>
         </svg>
       </div>

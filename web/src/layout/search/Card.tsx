@@ -108,7 +108,7 @@ const Card = (props: Props) => {
                 </div>
 
                 <div className="d-flex d-md-none d-lg-flex d-xl-none">
-                  <RoundScore score={props.project.score.global} className={`ms-2 ${styles.global}`} />
+                  <RoundScore score={props.project.score.global!} className={`ms-2 ${styles.global}`} />
                 </div>
               </div>
             </div>

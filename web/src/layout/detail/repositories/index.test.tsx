@@ -48,7 +48,6 @@ describe('RepositoriesList', () => {
 
       expect(screen.getByText('Repositories')).toBeInTheDocument();
       expect(screen.getByTestId('repositories-summary')).toBeInTheDocument();
-      expect(screen.getByTestId('primary-icon')).toBeInTheDocument();
       expect(screen.getAllByTestId('repository-info')).toHaveLength(6);
       const anchorBtns = screen.getAllByRole('button', { name: /Link to anchor/i });
       expect(anchorBtns).toHaveLength(26);

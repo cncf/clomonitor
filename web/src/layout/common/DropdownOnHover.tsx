@@ -9,6 +9,7 @@ interface Props {
   linkContent: JSX.Element | string;
   children: JSX.Element;
   className?: string;
+  width?: number;
 }
 
 const DropdownOnHover = (props: Props) => {
@@ -48,6 +49,9 @@ const DropdownOnHover = (props: Props) => {
             className={classNames('dropdown-menu rounded-0 text-wrap', styles.dropdown, {
               show: openStatus,
             })}
+            style={{
+              width: props.width ? `${props.width}px` : 'auto',
+            }}
             onMouseEnter={() => setOnDropdownHover(true)}
             onMouseLeave={() => setOnDropdownHover(false)}
           >

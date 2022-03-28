@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { isUndefined } from 'lodash';
 
 import getCategoryColor from '../../../utils/getCategoryColor';
+import roundScoreValue from '../../../utils/roundScoreValue';
 import styles from './BadgeCell.module.css';
 
 interface Props {
@@ -38,7 +39,7 @@ const BadgeCell = (props: Props) => {
           borderBottomColor: `var(--rm-${color})`,
         }}
       >
-        {props.value}
+        {roundScoreValue(props.value)}
       </div>
     </td>
   );

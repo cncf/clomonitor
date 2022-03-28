@@ -1,11 +1,15 @@
-use super::{check, check::path::Globs};
+use self::path::Globs;
+use crate::{config::*, linter::CheckSet};
 use anyhow::Error;
 use metadata::{Exemption, Metadata};
 use octocrab::models::Repository;
 use patterns::*;
 use regex::{Regex, RegexSet};
 use serde::{Deserialize, Serialize};
-use std::path::{Path, PathBuf};
+use std::{
+    future::Future,
+    path::{Path, PathBuf},
+};
 
 pub(crate) mod content;
 pub(crate) mod git;
@@ -15,33 +19,11 @@ pub(crate) mod metadata;
 pub(crate) mod path;
 pub(crate) mod patterns;
 
-/// Checks identifiers.
-pub const ADOPTERS_CHECK_ID: &str = "adopters";
-pub const ARTIFACTHUB_BADGE_CHECK_ID: &str = "artifacthub_badge";
-pub const CHANGELOG_CHECK_ID: &str = "changelog";
-pub const CODE_OF_CONDUCT_CHECK_ID: &str = "code_of_conduct";
-pub const COMMUNITY_MEETING_CHECK_ID: &str = "community_meeting";
-pub const CONTRIBUTING_CHECK_ID: &str = "contributing";
-pub const DCO_CHECK_ID: &str = "dco";
-pub const GOVERNANCE_CHECK_ID: &str = "governance";
-pub const LICENSE_APPROVED_CHECK_ID: &str = "license_approved";
-pub const LICENSE_SCANNING_CHECK_ID: &str = "license_scanning";
-pub const LICENSE_SPDX_CHECK_ID: &str = "license_spdx_id";
-pub const MAINTAINERS_CHECK_ID: &str = "maintainers";
-pub const OPENSSF_BADGE_CHECK_ID: &str = "openssf_badge";
-pub const README_CHECK_ID: &str = "readme";
-pub const RECENT_RELEASE_CHECK_ID: &str = "recent_release";
-pub const ROADMAP_CHECK_ID: &str = "roadmap";
-pub const SBOM_CHECK_ID: &str = "sbom";
-pub const SECURITY_POLICY_CHECK_ID: &str = "security_policy";
-pub const SLACK_PRESENCE_CHECK_ID: &str = "slack_presence";
-pub const TRADEMARK_DISCLAIMER_CHECK_ID: &str = "trademark_disclaimer";
-pub const WEBSITE_CHECK_ID: &str = "website";
-
 /// Information used by checks to perform their operations.
 #[derive(Debug)]
 #[non_exhaustive]
-pub struct CheckOptions {
+pub(crate) struct CheckOptions {
+    pub check_sets: Vec<CheckSet>,
     pub root: PathBuf,
     pub url: String,
     pub md: Option<Metadata>,
@@ -133,31 +115,63 @@ impl<T> CheckResult<T> {
             None => false.into(),
         }
     }
+}
 
-    /// Indicates if the check passed or was exempt.
-    pub fn passed_or_exempt(&self) -> bool {
-        self.passed || self.exempt
+/// Wrapper function that takes care of running some common pre-check
+/// operations and the synchronous check function provided.
+pub(crate) fn run_check<T, F>(
+    check_id: &str,
+    check_fn: F,
+    opts: &CheckOptions,
+) -> Result<Option<CheckResult<T>>, Error>
+where
+    F: Fn(&CheckOptions) -> Result<CheckResult<T>, Error>,
+{
+    if should_skip_check(check_id, &opts.check_sets) {
+        return Ok(None);
     }
+
+    // Check if an exemption has been declared for this check
+    if let Some(exemption) = find_exemption(check_id, &opts.md) {
+        return Ok(Some(exemption.into()));
+    }
+
+    // Call sync check function and wrap returned check result in an option
+    check_fn(opts).map(Some)
+}
+
+/// Wrapper function that takes care of running some common pre-check
+/// operations and the asynchronous check function provided.
+pub(crate) async fn run_async_check<'a, T, F, Fut>(
+    check_id: &str,
+    check_async_fn: F,
+    opts: &'a CheckOptions,
+) -> Result<Option<CheckResult<T>>, Error>
+where
+    F: Fn(&'a CheckOptions) -> Fut,
+    Fut: Future<Output = Result<CheckResult<T>, Error>>,
+{
+    if should_skip_check(check_id, &opts.check_sets) {
+        return Ok(None);
+    }
+
+    // Check if an exemption has been declared for this check
+    if let Some(exemption) = find_exemption(check_id, &opts.md) {
+        return Ok(Some(exemption.into()));
+    }
+
+    // Call async check function and wrap returned check result in an option
+    check_async_fn(opts).await.map(Some)
 }
 
 /// Adopters check.
 pub(crate) fn adopters(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(ADOPTERS_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    find_file_or_reference(opts, ADOPTERS_FILE, &*ADOPTERS_IN_README)
+    find_file_or_reference(opts, &ADOPTERS_FILE, &*ADOPTERS_IN_README)
 }
 
 /// Artifact Hub badge check.
 pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(ARTIFACTHUB_BADGE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Reference in README file
     Ok(CheckResult::from_url(readme_capture(
         &opts.root,
@@ -167,19 +181,14 @@ pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult, Erro
 
 /// Changelog check.
 pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(CHANGELOG_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    let r = find_file_or_reference(opts, CHANGELOG_FILE, &*CHANGELOG_IN_README)?;
+    let r = find_file_or_reference(opts, &CHANGELOG_FILE, &*CHANGELOG_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
     // Reference in last release
-    if check::github::last_release_body_matches(&opts.url, &*CHANGELOG_IN_GH_RELEASE).await? {
+    if github::last_release_body_matches(&opts.url, &*CHANGELOG_IN_GH_RELEASE).await? {
         return Ok(true.into());
     }
 
@@ -188,67 +197,47 @@ pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult, Error>
 
 /// Code of conduct check.
 pub(crate) async fn code_of_conduct(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(CODE_OF_CONDUCT_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    let r = find_file_or_reference(opts, CODE_OF_CONDUCT_FILE, &*CODE_OF_CONDUCT_IN_README)?;
+    let r = find_file_or_reference(opts, &CODE_OF_CONDUCT_FILE, &*CODE_OF_CONDUCT_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
     // File in .github repo
-    let url = check::github::has_community_health_file("CODE_OF_CONDUCT.md", &opts.gh_md).await?;
+    let url = github::has_community_health_file("CODE_OF_CONDUCT.md", &opts.gh_md).await?;
     Ok(CheckResult::from_url(url))
 }
 
 /// Community meeting check.
 pub(crate) fn community_meeting(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(COMMUNITY_MEETING_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Reference in README file
     Ok(readme_matches(&opts.root, &*COMMUNITY_MEETING_TEXT)?.into())
 }
 
 /// Contributing check.
 pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(CONTRIBUTING_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    let r = find_file_or_reference(opts, CONTRIBUTING_FILE, &*CONTRIBUTING_IN_README)?;
+    let r = find_file_or_reference(opts, &CONTRIBUTING_FILE, &*CONTRIBUTING_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
     // File in .github repo
-    let url = check::github::has_community_health_file("CONTRIBUTING.md", &opts.gh_md).await?;
+    let url = github::has_community_health_file("CONTRIBUTING.md", &opts.gh_md).await?;
     Ok(CheckResult::from_url(url))
 }
 
 /// Developer Certificate of Origin check.
 pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(DCO_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // DCO signature in commits
-    if let Ok(passed) = check::git::commits_have_dco_signature(&opts.root) {
+    if let Ok(passed) = git::commits_have_dco_signature(&opts.root) {
         if passed {
             return Ok(true.into());
         }
     }
 
     // DCO app reference in last closed PR
-    if check::github::last_pr_has_dco_check(&opts.url).await? {
+    if github::last_pr_has_dco_check(&opts.url).await? {
         return Ok(true.into());
     }
 
@@ -257,26 +246,16 @@ pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
 
 /// Governance check.
 pub(crate) fn governance(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(GOVERNANCE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    find_file_or_reference(opts, GOVERNANCE_FILE, &*GOVERNANCE_IN_README)
+    find_file_or_reference(opts, &GOVERNANCE_FILE, &*GOVERNANCE_IN_README)
 }
 
 /// License check.
 pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(LICENSE_SPDX_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo
-    if let Some(spdx_id) = check::license::detect(Globs {
+    if let Some(spdx_id) = license::detect(Globs {
         root: &opts.root,
-        patterns: LICENSE_FILE,
+        patterns: &LICENSE_FILE,
         case_sensitive: true,
     })? {
         return Ok(Some(spdx_id).into());
@@ -296,32 +275,31 @@ pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>, Error>
 pub(crate) fn license_approved(
     spdx_id: &Option<String>,
     opts: &CheckOptions,
-) -> Result<CheckResult<bool>, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(LICENSE_APPROVED_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
+) -> Result<Option<CheckResult<bool>>, Error> {
+    if should_skip_check(LICENSE_APPROVED, &opts.check_sets) {
+        return Ok(None);
+    }
+
+    // Check if an exemption has been declared for this check
+    if let Some(exemption) = find_exemption(LICENSE_APPROVED, &opts.md) {
+        return Ok(Some(exemption.into()));
     }
 
     // SPDX id in list of approved licenses
     let mut approved: Option<bool> = None;
     if let Some(spdx_id) = &spdx_id {
-        approved = Some(check::license::is_approved(spdx_id))
+        approved = Some(license::is_approved(spdx_id))
     }
 
-    Ok(CheckResult {
+    Ok(Some(CheckResult {
         passed: approved.unwrap_or(false),
         value: approved,
         ..Default::default()
-    })
+    }))
 }
 
 /// License scanning check.
 pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(LICENSE_SCANNING_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Scanning url in metadata file
     if let Some(md) = &opts.md {
         if let Some(license_scanning) = &md.license_scanning {
@@ -332,14 +310,7 @@ pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult, Error
     }
 
     // Reference in README file
-    if let Some(url) = check::content::find(
-        Globs {
-            root: &opts.root,
-            patterns: README_FILE,
-            case_sensitive: true,
-        },
-        vec![&*FOSSA_URL, &*SNYK_URL],
-    )? {
+    if let Some(url) = content::find(readme_globs(&opts.root), vec![&*FOSSA_URL, &*SNYK_URL])? {
         return Ok(CheckResult::from_url(Some(url)));
     };
 
@@ -348,22 +319,12 @@ pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult, Error
 
 /// Maintainers check.
 pub(crate) fn maintainers(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(MAINTAINERS_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    find_file_or_reference(opts, MAINTAINERS_FILE, &*MAINTAINERS_IN_README)
+    find_file_or_reference(opts, &MAINTAINERS_FILE, &*MAINTAINERS_IN_README)
 }
 
 /// OpenSSF badge check.
 pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(OPENSSF_BADGE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Reference in README file
     Ok(CheckResult::from_url(readme_capture(
         &opts.root,
@@ -373,36 +334,21 @@ pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
 
 /// Recent release check.
 pub(crate) async fn recent_release(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(RECENT_RELEASE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     Ok(CheckResult::from_url(
-        check::github::has_recent_release(&opts.url).await?,
+        github::has_recent_release(&opts.url).await?,
     ))
 }
 
 /// Roadmap check.
 pub(crate) fn roadmap(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(ROADMAP_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README
-    find_file_or_reference(opts, ROADMAP_FILE, &*ROADMAP_IN_README)
+    find_file_or_reference(opts, &ROADMAP_FILE, &*ROADMAP_IN_README)
 }
 
 /// Readme check.
 pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(README_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo
-    if let Some(path) = check::path::find(readme_globs(&opts.root))? {
+    if let Some(path) = path::find(readme_globs(&opts.root))? {
         return Ok(CheckResult::from_path(Some(path), &opts.gh_md));
     }
 
@@ -411,11 +357,6 @@ pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
 
 /// Software bill of materials (SBOM).
 pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(SBOM_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Asset in last release
     if let Some(last_release) = github::last_release(&opts.url).await? {
         if last_release
@@ -433,46 +374,33 @@ pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult, Error> {
 
 /// Security policy check.
 pub(crate) async fn security_policy(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(SECURITY_POLICY_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // File in repo or reference in README file
-    let r = find_file_or_reference(opts, SECURITY_POLICY_FILE, &*SECURITY_POLICY_IN_README)?;
+    let r = find_file_or_reference(opts, &SECURITY_POLICY_FILE, &*SECURITY_POLICY_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
     // File in .github repo
-    let url = check::github::has_community_health_file("SECURITY.md", &opts.gh_md).await?;
+    let url = github::has_community_health_file("SECURITY.md", &opts.gh_md).await?;
     Ok(CheckResult::from_url(url))
 }
 
 /// Slack presence check.
 pub(crate) fn slack_presence(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(SLACK_PRESENCE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Reference in README file
     Ok(readme_matches(&opts.root, &*SLACK_IN_README)?.into())
 }
 
 /// Trademark disclaimer check.
 pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(TRADEMARK_DISCLAIMER_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Trademark disclaimer in website setup in Github
     if let Some(url) = &opts.gh_md.homepage {
         if !url.is_empty() {
-            return Ok(check::content::remote_matches(url, &*TRADEMARK_DISCLAIMER)
-                .await?
-                .into());
+            return Ok(
+                content::remote_matches(url, &*TRADEMARK_DISCLAIMER_IN_WEBSITE)
+                    .await?
+                    .into(),
+            );
         }
     }
 
@@ -481,11 +409,6 @@ pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckRes
 
 /// Website check.
 pub(crate) fn website(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // Check exemption
-    if let Some(exemption) = find_exemption(WEBSITE_CHECK_ID, &opts.md) {
-        return Ok(exemption.into());
-    }
-
     // Website in Github
     if let Some(url) = &opts.gh_md.homepage {
         if !url.is_empty() {
@@ -494,6 +417,16 @@ pub(crate) fn website(opts: &CheckOptions) -> Result<CheckResult, Error> {
     }
 
     Ok(false.into())
+}
+
+/// Check if the check provided should be skipped.
+fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool {
+    // Skip if the check doesn't belong to any of the check sets provided
+    if !check_sets.iter().any(|k| CHECKSET[k].contains(&check_id)) {
+        return true;
+    }
+
+    false
 }
 
 /// Check if the repository is exempt from passing the provided check.
@@ -512,17 +445,13 @@ fn find_exemption(check_id: &str, md: &Option<Metadata>) -> Option<Exemption> {
 
 /// Check if a file matching the patterns provided is found in the repo or if
 /// any of the regular expressions provided matches the README file content.
-fn find_file_or_reference<P>(
+fn find_file_or_reference(
     opts: &CheckOptions,
-    patterns: P,
+    patterns: &[&str],
     re: &RegexSet,
-) -> Result<CheckResult, Error>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
+) -> Result<CheckResult, Error> {
     // File in repo
-    if let Some(path) = check::path::find(Globs {
+    if let Some(path) = path::find(Globs {
         root: &opts.root,
         patterns,
         case_sensitive: false,
@@ -541,20 +470,20 @@ where
 /// Check if the README file content matches any of the regular expressions
 /// provided.
 fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool, Error> {
-    check::content::matches(readme_globs(root), re)
+    content::matches(readme_globs(root), re)
 }
 
 /// Check if the README file content matches any of the regular expressions
 /// provided, returning the value from the first capture group.
 fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>, Error> {
-    check::content::find(readme_globs(root), regexps)
+    content::find(readme_globs(root), regexps)
 }
 
 // Returns a Globs instance used to locate the README file.
-fn readme_globs(root: &Path) -> Globs<impl IntoIterator<Item = &str>> {
+fn readme_globs(root: &Path) -> Globs {
     Globs {
         root,
-        patterns: README_FILE,
+        patterns: &README_FILE,
         case_sensitive: true,
     }
 }

@@ -220,10 +220,38 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: sdk-go"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-go
               </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  code
+                </div>
+              </div>
             </div>
           </td>
           <td
@@ -305,10 +333,38 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: sdk-javascript"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-javascript
               </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  code
+                </div>
+              </div>
             </div>
           </td>
           <td
@@ -390,10 +446,38 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: sdk-csharp"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-csharp
               </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  code
+                </div>
+              </div>
             </div>
           </td>
           <td
@@ -475,10 +559,38 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: sdk-python"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-python
               </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  code
+                </div>
+              </div>
             </div>
           </td>
           <td
@@ -560,44 +672,36 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: spec"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 spec
               </button>
-              <svg
-                class="d-block d-md-none text-warning"
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 640 512"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M528 448H112c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm64-320c-26.5 0-48 21.5-48 48 0 7.1 1.6 13.7 4.4 19.8L476 239.2c-15.4 9.2-35.3 4-44.2-11.6L350.3 85C361 76.2 368 63 368 48c0-26.5-21.5-48-48-48s-48 21.5-48 48c0 15 7 28.2 17.7 37l-81.5 142.6c-8.9 15.6-28.9 20.8-44.2 11.6l-72.3-43.4c2.7-6 4.4-12.7 4.4-19.8 0-26.5-21.5-48-48-48S0 149.5 0 176s21.5 48 48 48c2.6 0 5.2-.4 7.7-.8L128 416h384l72.3-192.8c2.5.4 5.1.8 7.7.8 26.5 0 48-21.5 48-48s-21.5-48-48-48z"
-                />
-              </svg>
               <div
-                class="d-none d-md-block position-relative lh-1"
+                class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  data-testid="elementWithTooltip"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
                 >
-                  <svg
-                    class="text-warning"
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 640 512"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex flex-row align-items-center"
                   >
-                    <path
-                      d="M528 448H112c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm64-320c-26.5 0-48 21.5-48 48 0 7.1 1.6 13.7 4.4 19.8L476 239.2c-15.4 9.2-35.3 4-44.2-11.6L350.3 85C361 76.2 368 63 368 48c0-26.5-21.5-48-48-48s-48 21.5-48 48c0 15 7 28.2 17.7 37l-81.5 142.6c-8.9 15.6-28.9 20.8-44.2 11.6l-72.3-43.4c2.7-6 4.4-12.7 4.4-19.8 0-26.5-21.5-48-48-48S0 149.5 0 176s21.5 48 48 48c2.6 0 5.2-.4 7.7-.8L128 416h384l72.3-192.8c2.5.4 5.1.8 7.7.8 26.5 0 48-21.5 48-48s-21.5-48-48-48z"
-                    />
-                  </svg>
+                    community
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  community
                 </div>
               </div>
             </div>
@@ -675,10 +779,38 @@ exports[`Summary creates snapshot 1`] = `
             >
               <button
                 aria-label="Go from summary to section: sdk-java"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 repoBtn"
+                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-java
               </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  data-testid="repo-kind-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-inline-flex d-inline-flex d-xl-none px-2"
+            >
+              <div
+                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
+                data-testid="repo-kind-badge"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  code
+                </div>
+              </div>
             </div>
           </td>
           <td

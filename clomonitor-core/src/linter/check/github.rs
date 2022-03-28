@@ -102,7 +102,7 @@ pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error>
                 "https://github.com/{}/{}/pull/{}/checks",
                 &owner, &repo, pr.number
             );
-            content::remote_matches(&checks_url, &*DCO).await?
+            content::remote_matches(&checks_url, &*DCO_IN_PR).await?
         }
         None => false,
     })

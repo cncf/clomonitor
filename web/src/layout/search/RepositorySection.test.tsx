@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
-import { RepositoryKind } from '../../types';
+import { CheckSet } from '../../types';
 import RepositorySection from './RepositorySection';
 
 const defaultPropsOneRepo = {
   repositories: [
     {
-      kind: RepositoryKind.Primary,
+      check_sets: [CheckSet.Community, CheckSet.Code],
       name: 'artifact-hub',
       url: 'https://github.com/artifacthub/hub',
     },
@@ -16,32 +16,32 @@ const defaultPropsOneRepo = {
 const defaultPropsRepos = {
   repositories: [
     {
-      kind: RepositoryKind.Secondary,
+      check_sets: [CheckSet.Code],
       name: 'sdk-go',
       url: 'https://github.com/cloudevents/sdk-go',
     },
     {
-      kind: RepositoryKind.Secondary,
+      check_sets: [CheckSet.Code],
       name: 'sdk-javascript',
       url: 'https://github.com/cloudevents/sdk-javascript',
     },
     {
-      kind: RepositoryKind.Secondary,
+      check_sets: [CheckSet.Code],
       name: 'sdk-csharp',
       url: 'https://github.com/cloudevents/sdk-csharp',
     },
     {
-      kind: RepositoryKind.Secondary,
+      check_sets: [CheckSet.Code],
       name: 'sdk-python',
       url: 'https://github.com/cloudevents/sdk-python',
     },
     {
-      kind: RepositoryKind.Primary,
+      check_sets: [CheckSet.Community],
       name: 'spec',
       url: 'https://github.com/cloudevents/spec',
     },
     {
-      kind: RepositoryKind.Secondary,
+      check_sets: [CheckSet.Code],
       name: 'sdk-java',
       url: 'https://github.com/cloudevents/sdk-java',
     },

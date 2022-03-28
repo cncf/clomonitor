@@ -1,9 +1,8 @@
-import { sortBy } from 'lodash';
 import { useEffect, useState } from 'react';
-import { FaCrown } from 'react-icons/fa';
 import { VscGithub } from 'react-icons/vsc';
 
-import { BaseRepository, Repository, RepositoryKind } from '../../types';
+import { BaseRepository, Repository } from '../../types';
+import sortRepos from '../../utils/sortRepos';
 import DropdownOnHover from '../common/DropdownOnHover';
 import ExternalLink from '../common/ExternalLink';
 import styles from './RepositorySection.module.css';
@@ -12,16 +11,12 @@ interface Props {
   repositories: BaseRepository[] | Repository[];
 }
 
-const sortRepos = (repos: BaseRepository[] | Repository[]): BaseRepository[] | Repository[] => {
-  return sortBy(repos, 'kind');
-};
-
 const RepositorySection = (props: Props) => {
   const [repositories, setRepositories] = useState<BaseRepository[] | Repository[]>([]);
 
   useEffect(() => {
-    setRepositories(sortRepos(props.repositories));
-  }, [props.repositories]);
+    setRepositories(sortRepos(props.repositories as Repository[]));
+  }, [props.repositories]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
@@ -34,6 +29,7 @@ const RepositorySection = (props: Props) => {
         </ExternalLink>
       ) : (
         <DropdownOnHover
+          width={250}
           linkContent={
             <div className={`d-flex flex-row align-items-center ${styles.link}`}>
               <VscGithub className={`me-1 ${styles.icon}`} />
@@ -44,19 +40,19 @@ const RepositorySection = (props: Props) => {
           <>
             {repositories.map((repo: Repository | BaseRepository, index: number) => {
               return (
-                <ExternalLink
-                  label="Repository link"
-                  href={repo.url}
-                  key={`repo_${index}`}
-                  className="text-dark"
-                  visibleExternalIcon
-                >
-                  <div className={`d-flex flex-row align-items-center ${styles.link}`}>
-                    <VscGithub className={`me-2 position-relative ${styles.miniIcon}`} />
-                    <div className={`text-nowrap text-truncate ${styles.linkName}`}>{repo.name}</div>
-                    {repo.kind === RepositoryKind.Primary && <FaCrown className="ms-2 text-warning" />}
+                <div key={`repo_${index}`} className={`d-flex flex-row align-items-center my-1 ${styles.link}`}>
+                  <VscGithub className={`me-2 position-relative ${styles.miniIcon}`} />
+                  <div className="truncateWrapper">
+                    <ExternalLink
+                      label="Repository link"
+                      href={repo.url}
+                      className={`d-block text-truncate text-dark ${styles.link}`}
+                      visibleExternalIcon
+                    >
+                      <div className="text-truncate">{repo.name}</div>
+                    </ExternalLink>
                   </div>
-                </ExternalLink>
+                </div>
               );
             })}
           </>

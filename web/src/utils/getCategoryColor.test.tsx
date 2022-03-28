@@ -1,11 +1,12 @@
 import getCategoryColor from './getCategoryColor';
 
 interface Test {
-  input: number;
+  input?: number;
   output: string;
 }
 
 const tests: Test[] = [
+  { input: undefined, output: '' },
   { input: 0, output: 'red' },
   { input: 24, output: 'red' },
   { input: 25, output: 'orange' },

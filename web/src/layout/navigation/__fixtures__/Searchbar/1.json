@@ -15,7 +15,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "artifact-hub",
           "url": "https://github.com/artifacthub/hub"
         }
@@ -25,7 +25,7 @@
         "documentation": 80,
         "global": 95,
         "license": 100,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645534816
@@ -45,7 +45,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "backstage",
           "url": "https://github.com/backstage/backstage"
         }
@@ -55,7 +55,7 @@
         "documentation": 95,
         "global": 78,
         "license": 80,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645606822
@@ -75,7 +75,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "keptn",
           "url": "https://github.com/keptn/keptn"
         }
@@ -85,7 +85,7 @@
         "documentation": 95,
         "global": 93,
         "license": 80,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645606817
@@ -106,12 +106,12 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "secondary",
+          "check_sets": ["community"],
           "name": "spec",
           "url": "https://github.com/oam-dev/spec"
         },
         {
-          "kind": "primary",
+          "check_sets": ["code"],
           "name": "kubevela",
           "url": "https://github.com/oam-dev/kubevela"
         }
@@ -121,7 +121,7 @@
         "documentation": 84,
         "global": 82,
         "license": 64,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645599620
@@ -141,7 +141,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "kubevirt",
           "url": "https://github.com/kubevirt/kubevirt"
         }
@@ -151,7 +151,7 @@
         "documentation": 80,
         "global": 88,
         "license": 100,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645599617
@@ -171,7 +171,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "kruise",
           "url": "https://github.com/openkruise/kruise"
         }
@@ -181,7 +181,7 @@
         "documentation": 90,
         "global": 91,
         "license": 80,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645524719
@@ -201,7 +201,7 @@
       "rating": "a",
       "repositories": [
         {
-          "kind": "primary",
+          "check_sets": ["community", "code"],
           "name": "tremor-runtime",
           "url": "https://github.com/tremor-rs/tremor-runtime"
         }
@@ -211,7 +211,7 @@
         "documentation": 80,
         "global": 83,
         "license": 80,
-        "score_kind": "Primary",
+
         "security": 100
       },
       "updated_at": 1645603208

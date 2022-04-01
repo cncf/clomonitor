@@ -105,7 +105,7 @@ The backend applications are `apiserver` and `tracker`. They are located in the 
 The linter CLI tool allows projects to lint their repositories locally or from their CI workflows. It generates a report by using the linter module available in the core library, it scores it and prints the results nicely.
 
 ```sh
-clomonitor-linter 0.1.0
+clomonitor-linter 0.5.0
 A linter for CNCF projects repositories
 
 USAGE:

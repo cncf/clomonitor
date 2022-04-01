@@ -4,6 +4,7 @@ import { FiExternalLink } from 'react-icons/fi';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import getCategoryColor from '../../../utils/getCategoryColor';
+import roundScoreValue from '../../../utils/roundScoreValue';
 import sortChecks from '../../../utils/sortChecks';
 import ExternalLink from '../../common/ExternalLink';
 import OptionCell from './OptionCell';
@@ -21,7 +22,7 @@ interface Props {
   label: string;
   icon: JSX.Element;
   data: OptData;
-  score: number;
+  score?: number;
   referenceUrl?: string;
   recommendedTemplates?: RecommendedTemplate[];
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
@@ -36,7 +37,7 @@ const Row = (props: Props) => {
     setOptions(sortChecks(props.data));
   }, [props.data]);
 
-  if (options.length === 0) return null;
+  if (options.length === 0 || isUndefined(props.score)) return null;
 
   return (
     <div className={`p-3 p-md-4 border mb-2 ${styles.reportContent}`}>
@@ -61,7 +62,7 @@ const Row = (props: Props) => {
             </div>
           </div>
           <div className={`ps-3 lh-1 ${styles.scoreWrapper}`}>
-            <small className="fw-bold">{props.score}%</small>
+            <small className="fw-bold">{roundScoreValue(props.score)}%</small>
           </div>
         </div>
         <div>

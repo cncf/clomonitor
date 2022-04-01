@@ -309,7 +309,7 @@ const Searchbar = (props: Props) => {
                         </div>
 
                         <div>
-                          <RoundScore score={project.score.global} className={`ms-2 ${styles.global}`} />
+                          <RoundScore score={project.score.global!} className={`ms-2 ${styles.global}`} />
                         </div>
                       </div>
                     </button>

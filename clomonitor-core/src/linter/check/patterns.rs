@@ -120,9 +120,9 @@ lazy_static! {
     ]).expect("invalid exprs in CONTRIBUTING_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref DCO: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref DCO_IN_PR: RegexSet = RegexSet::new(vec![
         r#"[">]DCO[<"]"#,
-    ]).expect("invalid exprs in DCO");
+    ]).expect("invalid exprs in DCO_IN_PR");
 
     #[rustfmt::skip]
     pub(crate) static ref FOSSA_URL: Regex = Regex::new(
@@ -189,7 +189,7 @@ lazy_static! {
     ).expect("invalid exprs in SNYK_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref TRADEMARK_DISCLAIMER_IN_WEBSITE: RegexSet = RegexSet::new(vec![
         r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
     ]).expect("invalid exprs in TRADEMARK_DISCLAIMER");
@@ -312,8 +312,8 @@ Contributing
 
     #[test]
     fn dco_match() {
-        assert!(DCO.is_match(r#"title="DCO""#));
-        assert!(DCO.is_match("<span>DCO</span>"));
+        assert!(DCO_IN_PR.is_match(r#"title="DCO""#));
+        assert!(DCO_IN_PR.is_match("<span>DCO</span>"));
     }
 
     #[test]
@@ -471,9 +471,12 @@ Security
 
     #[test]
     fn trademark_disclaimer_match() {
-        assert!(TRADEMARK_DISCLAIMER.is_match("https://www.linuxfoundation.org/trademark-usage"));
-        assert!(TRADEMARK_DISCLAIMER.is_match("https://linuxfoundation.org/trademark-usage"));
-        assert!(TRADEMARK_DISCLAIMER.is_match(
+        assert!(TRADEMARK_DISCLAIMER_IN_WEBSITE
+            .is_match("https://www.linuxfoundation.org/trademark-usage"));
+        assert!(
+            TRADEMARK_DISCLAIMER_IN_WEBSITE.is_match("https://linuxfoundation.org/trademark-usage")
+        );
+        assert!(TRADEMARK_DISCLAIMER_IN_WEBSITE.is_match(
             "The Linux Foundation® (TLF) has registered trademarks and uses trademarks."
         ));
     }

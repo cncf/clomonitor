@@ -1,32 +1,18 @@
 use clomonitor_core::{
-    linter::{self, CheckResult, Report},
-    score::{self, Score},
+    linter::{CheckResult, Report},
+    score::Score,
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
 
 pub(crate) const SUCCESS_SYMBOL: char = '✓';
 pub(crate) const FAILURE_SYMBOL: char = '✗';
+pub(crate) const NOT_APPLICABLE_MSG: &str = "n/a";
+pub(crate) const EXEMPT_MSG: &str = "Exempt";
 
 /// Print the linter results provided.
 pub(crate) fn display(report: &Report, score: &Score) {
     println!("CLOMonitor linter results\n");
 
-    match report {
-        Report::Primary(report) => {
-            if let Score::Primary(score) = score {
-                display_primary(report, score);
-            }
-        }
-        Report::Secondary(report) => {
-            if let Score::Secondary(score) = score {
-                display_secondary(report, score);
-            }
-        }
-    }
-}
-
-/// Print the linter results provided for a repository of kind primary.
-pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::primary::Score) {
     // Summary table
     println!("Score summary\n");
     let mut summary = Table::new();
@@ -34,7 +20,7 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
         .set_header(vec![cell_header("Section"), cell_header("Score")])
-        .add_row(vec![cell_entry("Global"), cell_score(score.global)])
+        .add_row(vec![cell_entry("Global"), cell_score(Some(score.global))])
         .add_row(vec![
             cell_entry("Documentation"),
             cell_score(score.documentation),
@@ -93,14 +79,15 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
         ])
         .add_row(vec![
             cell_entry("License"),
-            Cell::new(
-                report
-                    .license
-                    .spdx_id
+            Cell::new(match &report.license.spdx_id {
+                None => NOT_APPLICABLE_MSG.to_string(),
+                Some(r) => r
                     .value
                     .clone()
                     .unwrap_or_else(|| "Not detected".to_string()),
-            ),
+            })
+            .set_alignment(CellAlignment::Center)
+            .add_attribute(Attribute::Bold),
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
@@ -149,63 +136,6 @@ pub(crate) fn display_primary(report: &linter::primary::Report, score: &score::p
     println!("{checks}\n");
 }
 
-/// Print the linter results provided for a repository of kind secondary.
-pub(crate) fn display_secondary(
-    report: &linter::secondary::Report,
-    score: &score::secondary::Score,
-) {
-    // Summary table
-    println!("Score summary\n");
-    let mut summary = Table::new();
-    summary
-        .load_preset(UTF8_FULL)
-        .apply_modifier(UTF8_ROUND_CORNERS)
-        .set_header(vec![cell_header("Section"), cell_header("Score")])
-        .add_row(vec![cell_entry("Global"), cell_score(score.global)])
-        .add_row(vec![
-            cell_entry("Documentation"),
-            cell_score(score.documentation),
-        ])
-        .add_row(vec![cell_entry("License"), cell_score(score.license)]);
-    println!("{summary}\n");
-
-    // Checks table
-    println!("Checks summary\n");
-    let mut checks = Table::new();
-    checks
-        .load_preset(UTF8_FULL)
-        .apply_modifier(UTF8_ROUND_CORNERS)
-        .set_header(vec![cell_header("Check"), cell_header("Passed")])
-        .add_row(vec![
-            cell_entry("Documentation / Contributing"),
-            cell_check(&report.documentation.contributing),
-        ])
-        .add_row(vec![
-            cell_entry("Documentation / Maintainers"),
-            cell_check(&report.documentation.maintainers),
-        ])
-        .add_row(vec![
-            cell_entry("Documentation / Readme"),
-            cell_check(&report.documentation.readme),
-        ])
-        .add_row(vec![
-            cell_entry("License"),
-            Cell::new(
-                report
-                    .license
-                    .spdx_id
-                    .value
-                    .clone()
-                    .unwrap_or_else(|| "Not detected".to_string()),
-            ),
-        ])
-        .add_row(vec![
-            cell_entry("License / Approved"),
-            cell_check(&report.license.approved),
-        ]);
-    println!("{checks}\n");
-}
-
 /// Build a cell used for headers text.
 fn cell_header(title: &str) -> Cell {
     Cell::new(title)
@@ -219,37 +149,32 @@ fn cell_entry(title: &str) -> Cell {
 }
 
 /// Build a cell used for scores.
-fn cell_score(score: usize) -> Cell {
-    let color = match score {
-        75..=100 => Color::Green,
-        50..=74 => Color::Yellow,
-        25..=49 => Color::DarkYellow,
-        0..=24 => Color::Red,
-        _ => Color::Grey,
+fn cell_score(score: Option<f64>) -> Cell {
+    let (content, color) = match score {
+        Some(v) => match v as usize {
+            75..=100 => (v.round().to_string(), Color::Green),
+            50..=74 => (v.round().to_string(), Color::Yellow),
+            25..=49 => (v.round().to_string(), Color::DarkYellow),
+            0..=24 => (v.round().to_string(), Color::Red),
+            _ => ("?".to_string(), Color::Grey),
+        },
+        None => (NOT_APPLICABLE_MSG.to_string(), Color::Grey),
     };
-    Cell::new(score.to_string())
+    Cell::new(content)
         .set_alignment(CellAlignment::Center)
         .add_attribute(Attribute::Bold)
         .fg(color)
 }
 
 /// Build a cell used for checks results.
-fn cell_check<T>(r: &CheckResult<T>) -> Cell {
-    let content: String;
-    let color: Color;
-    match (r.passed, r.exempt) {
-        (true, _) => {
-            content = SUCCESS_SYMBOL.to_string();
-            color = Color::Green;
-        }
-        (false, true) => {
-            content = "Exempt".to_string();
-            color = Color::Yellow;
-        }
-        (false, _) => {
-            content = FAILURE_SYMBOL.to_string();
-            color = Color::Red;
-        }
+fn cell_check<T>(r: &Option<CheckResult<T>>) -> Cell {
+    let (content, color) = match r {
+        Some(r) => match (r.passed, r.exempt) {
+            (true, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),
+            (false, true) => (EXEMPT_MSG.to_string(), Color::Yellow),
+            (false, _) => (FAILURE_SYMBOL.to_string(), Color::Red),
+        },
+        None => (NOT_APPLICABLE_MSG.to_string(), Color::Grey),
     };
     Cell::new(content)
         .set_alignment(CellAlignment::Center)

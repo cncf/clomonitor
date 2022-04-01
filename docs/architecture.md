@@ -75,7 +75,7 @@ This layer represents a set of **Rust APIs** that provide some core functionalit
 
 It's composed of two modules:
 
-- **linter:** this module implements the core linting functionality of CLOMonitor. All checks currently done by CLOMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to handle multiple kinds of repositories, as each may require a different set of checks. At the moment two are supported: `primary` and `secondary`. The primary kind is used for a project's main repository, and it performs a more in depth checking. The secondary kind is used for other repositories in the project and only performs a small subset of the checks.
+- **linter:** this module implements the core linting functionality of CLOMonitor. All checks currently run by CLOMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to run multiple `check sets` on each repository. Each `check set` defines a number of checks that will be run on the repository. At the moment the supported check sets are: `code`, `code-lite`, `community` and `docs`. For more details about what checks are run on each `check set` please see the [checks documentation](https://github.com/cncf/clomonitor/blob/main/docs/checks.md).
 
 - **score:** this module is in charge of scoring reports produced by the linter. The linter will produce different reports for each of the kinds supported, and each of the reports will be scored differently as well. In addition to the reports' scoring functionality, this module provides some score related features as well, like rating a given score or merging multiple scores.
 
@@ -112,13 +112,13 @@ USAGE:
     clomonitor-linter [OPTIONS] --url <URL>
 
 OPTIONS:
+        --check-set <CHECK_SET>      Sets of checks to run [default: code community] [possible
+                                     values: code, code-lite, community, docs]
     -h, --help                       Print help information
-        --kind <KIND>                Repository kind [default: primary] [possible values: primary,
-                                     secondary]
         --pass-score <PASS_SCORE>    Linter pass score [default: 80]
         --path <PATH>                Repository root path [default: .]
         --url <URL>                  Repository url [https://github.com/org/repo] (required for some
-                                     remote checks in Github)
+                                     GitHub remote checks)
     -V, --version                    Print version information
 ```
 

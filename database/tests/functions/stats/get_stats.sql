@@ -22,7 +22,7 @@ insert into project (
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'project1',
-    '{"global": 95, "license": 100, "security": 100, "score_kind": "Primary", "documentation": 80, "best_practices": 100}',
+    '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0}',
     'a',
     '2022-02-25',
     '00000001-0000-0000-0000-000000000000',
@@ -41,7 +41,7 @@ insert into project (
 ) values (
     '00000000-0002-0000-0000-000000000000',
     'project2',
-    '{"global": 70, "license": 80, "security": 60, "score_kind": "Primary", "documentation": 70, "best_practices": 70}',
+    '{"global": 70.0, "license": 80.0, "security": 60.0, "documentation": 70.0, "best_practices": 70.0}',
     'b',
     '2021-02-24',
     '00000001-0000-0000-0000-000000000000',
@@ -60,7 +60,7 @@ insert into project (
 ) values (
     '00000000-0003-0000-0000-000000000000',
     'project3',
-    '{"global": 55, "license": 50, "security": 60, "score_kind": "Primary", "documentation": 70, "best_practices": 40}',
+    '{"global": 55.0, "license": 50.0, "security": 60.0, "documentation": 70.0, "best_practices": 40.0}',
     'c',
     '2021-02-25',
     '00000001-0000-0000-0000-000000000000',
@@ -71,47 +71,46 @@ insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0001-0000-000000000000',
     'repository1',
     'https://repo1.url',
-    'primary',
+    '{code,community}',
     '00000000-0001-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0002-0000-000000000000',
     'repository2',
     'https://repo2.url',
-    'primary',
+    '{code,community}',
     '00000000-0002-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0003-0000-000000000000',
     'repository3',
     'https://repo3.url',
-    'primary',
+    '{code,community}',
     '00000000-0003-0000-0000-000000000000'
 );
 insert into report (
     report_id,
     data,
     updated_at,
-    repository_id,
-    linter_id
+    repository_id
 ) values (
     '00000000-0000-0000-0001-000000000000',
     '{
@@ -142,7 +141,6 @@ insert into report (
                 "passed": true
             }
         },
-        "report_kind": "Primary",
         "documentation": {
             "readme": {
                 "url": "https://github.com/fluent/fluentd/blob/master/README.md",
@@ -204,15 +202,13 @@ insert into report (
         }
     }',
     '2022-02-24 09:40:42.695654+01',
-    '00000000-0000-0001-0000-000000000000',
-    0
+    '00000000-0000-0001-0000-000000000000'
 );
 insert into report (
     report_id,
     data,
     updated_at,
-    repository_id,
-    linter_id
+    repository_id
 ) values (
     '00000000-0000-0000-0002-000000000000',
     '{
@@ -243,7 +239,6 @@ insert into report (
                 "passed": true
             }
         },
-        "report_kind": "Primary",
         "documentation": {
             "readme": {
                 "url": "https://github.com/fluent/fluentd/blob/master/README.md",
@@ -305,15 +300,13 @@ insert into report (
         }
     }',
     '2022-02-24 09:40:42.695654+01',
-    '00000000-0000-0002-0000-000000000000',
-    0
+    '00000000-0000-0002-0000-000000000000'
 );
 insert into report (
     report_id,
     data,
     updated_at,
-    repository_id,
-    linter_id
+    repository_id
 ) values (
     '00000000-0000-0000-0003-000000000000',
     '{
@@ -341,7 +334,6 @@ insert into report (
                 "passed": false
             }
         },
-        "report_kind": "Primary",
         "documentation": {
             "readme": {
                 "passed": false
@@ -393,8 +385,7 @@ insert into report (
         }
     }',
     '2022-02-24 09:40:42.695654+01',
-    '00000000-0000-0003-0000-000000000000',
-    0
+    '00000000-0000-0003-0000-000000000000'
 );
 
 -- Run some tests

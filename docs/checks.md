@@ -2,9 +2,55 @@
 
 **CLOMonitor** runs a set of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
 
-The set of checks run depends on the repository kind. At the moment two kinds are supported: `primary` and `secondary`. Repositories of kind `primary` are checked more thoroughly, so it's important to make sure the right one has been marked as primary. If you find that the repository used as primary for your project is not correct, please [file an issue](https://github.com/cncf/clomonitor/issues) and we'll gladly update it. The `secondary` kind can be used for other project's repositories that'd be interesting to check as well.
+Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment three are supported: `code`, `community` and `docs` and the set of checks run for each one are as follows:
 
-Many checks rely on checking that certain files exists on a given path. Even though most of these checks support a number of variants, sometimes this won't work for some projects that may be using a different repository layout or organizing content in multiple repositories. In those cases, the recommended approach is to add a section in the `README` file of the primary repository pointing users to the document location. This will help users discovering this information and will make CLOMonitor happy :) At the moment we support detecting headers as well as links in `README` files that follow some patterns. Please see the reference below for more information on each case. Some projects have already proceeded this way successfully: [Kubernetes clomonitor PR](https://github.com/kubernetes/kubernetes/pull/108110), [KEDA clomonitor PR](https://github.com/kedacore/keda/pull/2704) and [Cilium clomonitor PR](https://github.com/cilium/cilium/pull/19037).
+- **Check set: code** (recommended for project's primary code repository)
+
+  - Documentation / Changelog
+  - Documentation / Contributing
+  - Documentation / Maintainers
+  - Documentation / Readme
+  - License
+  - License / Approved
+  - License / Scanning
+  - Best practices / Artifact Hub badge
+  - Best practices / DCO
+  - Best practices / OpenSSF badge
+  - Best practices / Recent release
+  - Security / SBOM
+  - Security / Policy
+
+- **Check set: code-lite** (subset of *code*, recommended for secondary code repositories)
+
+  - Documentation / Contributing
+  - Documentation / Maintainers
+  - Documentation / Readme
+  - License
+  - License / Approved
+  - Best practices / DCO
+  - Best practices / Recent release
+
+- **Check set: community** (recommended for repositories with community content)
+
+  - Documentation / Adopters
+  - Documentation / Code of conduct
+  - Documentation / Contributing
+  - Documentation / Governance
+  - Documentation / Readme
+  - Documentation / Roadmap
+  - Documentation / Website
+  - Best practices / Community meeting
+  - Best practices / Slack presence
+  - Security / Policy
+  - Legal / Trademark disclaimer
+
+- **Check set: docs** (recommended for other documentation repositories)
+
+  - Documentation / Readme
+  - License
+  - License / Approved
+
+Many checks rely on checking that certain files exists on a given path. Even though most of these checks support a number of variants, sometimes this won't work for some projects that may be using a different repository layout. In those cases, the recommended approach is to add a section to the `README` file of the repository pointing users to the document location. This will help users discovering this information and will make CLOMonitor happy :) At the moment we support detecting headers as well as links in `README` files that follow some patterns. Please see the reference below for more information on each case. Some projects have already proceeded this way successfully: [Kubernetes clomonitor PR](https://github.com/kubernetes/kubernetes/pull/108110), [KEDA clomonitor PR](https://github.com/kedacore/keda/pull/2704) and [Cilium clomonitor PR](https://github.com/cilium/cilium/pull/19037).
 
 For more details about how each of the checks are performed, please see the reference below. If you find that any of the checks isn't working as expected or you have ideas about how to improve them please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in Github.
 

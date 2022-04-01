@@ -28,11 +28,7 @@ pub(crate) fn is_approved(spdx_id: &str) -> bool {
 }
 
 /// Detect repository's license and return its SPDX id if possible.
-pub(crate) fn detect<P>(globs: Globs<P>) -> Result<Option<String>, Error>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
+pub(crate) fn detect(globs: Globs) -> Result<Option<String>, Error> {
     lazy_static! {
         static ref LICENSES: Store = Store::from_cache(LICENSES_DATA).unwrap();
     }
@@ -74,7 +70,7 @@ mod tests {
         assert_eq!(
             detect(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: LICENSE_FILE,
+                patterns: &LICENSE_FILE,
                 case_sensitive: true,
             })
             .unwrap()
@@ -88,7 +84,7 @@ mod tests {
         assert!(matches!(
             detect(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["OWNERS"],
+                patterns: &["OWNERS"],
                 case_sensitive: true,
             })
             .unwrap(),
@@ -101,7 +97,7 @@ mod tests {
         assert!(matches!(
             detect(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["nonexisting"],
+                patterns: &["nonexisting"],
                 case_sensitive: true,
             })
             .unwrap(),
@@ -114,7 +110,7 @@ mod tests {
         assert!(matches!(
             detect(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["invalid***"],
+                patterns: &["invalid***"],
                 case_sensitive: true,
             }),
             Err(_)

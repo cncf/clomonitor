@@ -1,16 +1,16 @@
-import { isUndefined, orderBy } from 'lodash';
+import { isUndefined } from 'lodash';
 import moment from 'moment';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { FaCrown } from 'react-icons/fa';
+import { useEffect, useRef, useState } from 'react';
 import { GoLink } from 'react-icons/go';
 import { HiExclamation } from 'react-icons/hi';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
-import { Report, Repository, RepositoryKind, ScoreType } from '../../../types';
+import { CheckSet, Repository, ScoreType } from '../../../types';
+import sortRepos from '../../../utils/sortRepos';
+import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import CodeBlock from '../../common/CodeBlock';
-import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
 import Row from '../report/Row';
@@ -21,13 +21,6 @@ interface Props {
   repositories: Repository[];
   scrollIntoView: (id?: string) => void;
 }
-
-// Sort by repo kind, score global and alphabetically
-// IMPORTANT: primary repo is sorted first due to repo kind is sorted alphabetically,
-// if we add a new kind we need to revisit this
-const sortRepos = (repos: Repository[]): Repository[] => {
-  return orderBy(repos, ['kind', 'score.global', 'name'], ['asc', 'desc', 'asc']);
-};
 
 const RepositoriesList = (props: Props) => {
   const { hash, state, pathname } = useLocation();
@@ -110,23 +103,9 @@ const RepositoriesList = (props: Props) => {
               <div className="d-flex flex-row flex-md-row-reverse align-items-center">
                 <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
                   <div className="d-none d-md-block">
-                    <div className={`d-inline-flex flex-row h4 fw-bold mb-2 ${styles.titleWrapper}`}>
+                    <div className={`d-inline-flex flex-row align-items-center h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
-                      {repo.kind === RepositoryKind.Primary && (
-                        <ElementWithTooltip
-                          className="lh-1 ms-3"
-                          element={
-                            <small>
-                              <FaCrown className="text-warning" />
-                            </small>
-                          }
-                          tooltipWidth={210}
-                          tooltipClassName={styles.tooltipMessage}
-                          tooltipMessage={<div>Project's primary repository</div>}
-                          visibleTooltip
-                          active
-                        />
-                      )}
+                      <CheckSetBadge checkSets={repo.check_sets} className={`ms-2 ${styles.checkSetBadge}`} />
                       {getAnchorLink(repo.name)}
                     </div>
                     <ExternalLink href={repo.url}>
@@ -141,120 +120,105 @@ const RepositoriesList = (props: Props) => {
                       <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
                         <div className="text-truncate">{repo.name}</div>
                       </ExternalLink>
-                      {repo.kind === RepositoryKind.Primary && (
-                        <small>
-                          <FaCrown data-testid="primary-icon" className="d-block d-md-none text-warning ms-2" />
-                        </small>
-                      )}
                       {getAnchorLink(repo.name)}
                     </div>
+                    <CheckSetBadge checkSets={repo.check_sets} />
                   </div>
                 </div>
                 <div className="ms-3 ms-md-0 me-0 me-md-3">
-                  <RoundScore score={repo.score.global} className={styles.global} />
+                  <RoundScore score={repo.score.global!} className={styles.global} />
                 </div>
               </div>
             </div>
             <div>
-              {repo.reports.map((report: Report) => {
-                return (
-                  <Fragment key={report.report_id}>
-                    {report.errors && report.errors !== '' && (
-                      <div className="my-2">
-                        <div className={`alert alert-warning mb-0 rounded-0 ${styles.alert}`} role="alert">
-                          <div className="alert-heading mb-3">
-                            <HiExclamation className="me-2" />
-                            <span className="fw-bold">
-                              Something went wrong processing this repository {moment.unix(report.updated_at).fromNow()}
-                            </span>
-                          </div>
-                          <CodeBlock language="bash" content={report.errors} withCopyBtn={false} darkCode />
-                        </div>
-                      </div>
-                    )}
-                    <Row
-                      repoName={repo.name}
-                      reportId={report.report_id}
-                      name={ScoreType.Documentation}
-                      label="Documentation"
-                      data={report.data.documentation}
-                      icon={CATEGORY_ICONS[ScoreType.Documentation]}
-                      score={repo.score.documentation}
-                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
-                      recommendedTemplates={
-                        repo.kind === RepositoryKind.Primary
-                          ? [
-                              {
-                                name: 'CONTRIBUTING.md',
-                                url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
-                              },
-                              {
-                                name: 'GOVERNANCE.md',
-                                url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
-                              },
-                            ]
-                          : [
-                              {
-                                name: 'CONTRIBUTING.md',
-                                url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
-                              },
-                            ]
-                      }
-                      getAnchorLink={getAnchorLink}
-                    />
-                    <Row
-                      repoName={repo.name}
-                      reportId={report.report_id}
-                      name={ScoreType.License}
-                      label="License"
-                      data={report.data.license}
-                      icon={CATEGORY_ICONS[ScoreType.License]}
-                      score={repo.score.license}
-                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
-                      getAnchorLink={getAnchorLink}
-                    />
-                    <Row
-                      repoName={repo.name}
-                      reportId={report.report_id}
-                      name={ScoreType.BestPractices}
-                      label="Best Practices"
-                      data={report.data.best_practices}
-                      icon={CATEGORY_ICONS[ScoreType.BestPractices]}
-                      score={repo.score.best_practices}
-                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
-                      getAnchorLink={getAnchorLink}
-                    />
-                    <Row
-                      repoName={repo.name}
-                      reportId={report.report_id}
-                      name={ScoreType.Security}
-                      label="Security"
-                      data={report.data.security}
-                      icon={CATEGORY_ICONS[ScoreType.Security]}
-                      score={repo.score.security}
-                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
-                      recommendedTemplates={[
+              {repo.report.errors && repo.report.errors !== '' && (
+                <div className="my-2">
+                  <div className={`alert alert-warning mb-0 rounded-0 ${styles.alert}`} role="alert">
+                    <div className="alert-heading mb-3">
+                      <HiExclamation className="me-2" />
+                      <span className="fw-bold">
+                        Something went wrong processing this repository {moment.unix(repo.report.updated_at).fromNow()}
+                      </span>
+                    </div>
+                    <CodeBlock language="bash" content={repo.report.errors} withCopyBtn={false} darkCode />
+                  </div>
+                </div>
+              )}
+              <Row
+                repoName={repo.name}
+                reportId={repo.report.report_id}
+                name={ScoreType.Documentation}
+                label="Documentation"
+                data={repo.report.data.documentation}
+                icon={CATEGORY_ICONS[ScoreType.Documentation]}
+                score={repo.score.documentation}
+                referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                recommendedTemplates={
+                  repo.check_sets && repo.check_sets.includes(CheckSet.Community)
+                    ? [
                         {
-                          name: 'SECURITY.md',
-                          url: 'https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md',
+                          name: 'CONTRIBUTING.md',
+                          url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
                         },
-                      ]}
-                      getAnchorLink={getAnchorLink}
-                    />
-                    <Row
-                      repoName={repo.name}
-                      reportId={report.report_id}
-                      name={ScoreType.Legal}
-                      label="Legal"
-                      data={report.data.legal}
-                      icon={CATEGORY_ICONS[ScoreType.Legal]}
-                      score={repo.score.legal}
-                      referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#legal"
-                      getAnchorLink={getAnchorLink}
-                    />
-                  </Fragment>
-                );
-              })}
+                        {
+                          name: 'GOVERNANCE.md',
+                          url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
+                        },
+                      ]
+                    : undefined
+                }
+                getAnchorLink={getAnchorLink}
+              />
+              <Row
+                repoName={repo.name}
+                reportId={repo.report.report_id}
+                name={ScoreType.License}
+                label="License"
+                data={repo.report.data.license}
+                icon={CATEGORY_ICONS[ScoreType.License]}
+                score={repo.score.license}
+                referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                getAnchorLink={getAnchorLink}
+              />
+              <Row
+                repoName={repo.name}
+                reportId={repo.report.report_id}
+                name={ScoreType.BestPractices}
+                label="Best Practices"
+                data={repo.report.data.best_practices}
+                icon={CATEGORY_ICONS[ScoreType.BestPractices]}
+                score={repo.score.best_practices}
+                referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
+                getAnchorLink={getAnchorLink}
+              />
+              <Row
+                repoName={repo.name}
+                reportId={repo.report.report_id}
+                name={ScoreType.Security}
+                label="Security"
+                data={repo.report.data.security}
+                icon={CATEGORY_ICONS[ScoreType.Security]}
+                score={repo.score.security}
+                referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
+                recommendedTemplates={[
+                  {
+                    name: 'SECURITY.md',
+                    url: 'https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md',
+                  },
+                ]}
+                getAnchorLink={getAnchorLink}
+              />
+              <Row
+                repoName={repo.name}
+                reportId={repo.report.report_id}
+                name={ScoreType.Legal}
+                label="Legal"
+                data={repo.report.data.legal}
+                icon={CATEGORY_ICONS[ScoreType.Legal]}
+                score={repo.score.legal}
+                referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#legal"
+                getAnchorLink={getAnchorLink}
+              />
             </div>
           </div>
         );

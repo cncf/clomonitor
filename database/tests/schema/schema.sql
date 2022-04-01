@@ -1,13 +1,12 @@
 -- Start transaction and plan tests
 begin;
-select plan(29);
+select plan(25);
 
 -- Check expected extension exist
 select has_extension('pgcrypto');
 
 -- Check expected tables exist
 select has_table('category');
-select has_table('linter');
 select has_table('maturity');
 select has_table('organization');
 select has_table('project');
@@ -18,11 +17,6 @@ select has_table('repository');
 select columns_are('category', array[
     'category_id',
     'name'
-]);
-select columns_are('linter', array[
-    'linter_id',
-    'name',
-    'display_name'
 ]);
 select columns_are('maturity', array[
     'maturity_id',
@@ -60,14 +54,13 @@ select columns_are('report', array[
     'errors',
     'created_at',
     'updated_at',
-    'repository_id',
-    'linter_id'
+    'repository_id'
 ]);
 select columns_are('repository', array[
     'repository_id',
     'name',
     'url',
-    'kind',
+    'check_sets',
     'digest',
     'score',
     'created_at',
@@ -79,9 +72,6 @@ select columns_are('repository', array[
 select indexes_are('category', array[
     'category_pkey',
     'category_name_key'
-]);
-select indexes_are('linter', array[
-    'linter_pkey'
 ]);
 select indexes_are('maturity', array[
     'maturity_pkey',
@@ -97,7 +87,7 @@ select indexes_are('project', array[
 ]);
 select indexes_are('report', array[
     'report_pkey',
-    'report_repository_id_linter_id_key'
+    'report_repository_id_key'
 ]);
 select indexes_are('repository', array[
     'repository_pkey',
@@ -124,15 +114,6 @@ select results_eq(
         (6, 'serverless')
     $$,
     'Categories should exist'
-);
-
--- Check linters exist
-select results_eq(
-    'select * from linter',
-    $$ values
-        (0, 'core', 'CLOMonitor Core Linter')
-    $$,
-    'Linters should exist'
 );
 
 -- Check maturities exist

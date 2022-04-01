@@ -17,7 +17,7 @@ export interface BaseProject {
   devstats_url?: string;
   maturity_id: Maturity;
   category_id: Category;
-  score: Score;
+  score: { [key in ScoreType]?: number };
   updated_at: number;
 }
 
@@ -35,20 +35,19 @@ export interface ProjectDetail extends BaseProject {
 export interface BaseRepository {
   name: string;
   url: string;
-  kind: RepositoryKind;
+  check_sets: CheckSet[];
 }
 
 export interface Repository extends BaseRepository {
   digest: string;
   repository_id: string;
-  score: Score;
-  reports: Report[];
+  score: { [key in ScoreType]?: number };
+  report: Report;
 }
 
 export interface Report {
   data: CoreReport | any;
-  errors?: string;
-  linter_id: LinterId;
+  errors?: string | null;
   report_id: string;
   updated_at: number;
 }
@@ -67,10 +66,6 @@ export interface ReportCheck {
   value?: string;
   url?: string;
 }
-
-export type Score = {
-  [key in ScoreType]: number;
-} & { score_kind: ScoreKind };
 
 export interface FiltersSection {
   name: string;
@@ -133,10 +128,6 @@ export enum FilterKind {
   Rating = 'rating',
 }
 
-export enum LinterId {
-  core = 0,
-}
-
 export enum ScoreType {
   BestPractices = 'best_practices',
   Documentation = 'documentation',
@@ -156,14 +147,11 @@ export enum SortBy {
   Score = 'score',
 }
 
-export enum RepositoryKind {
-  Primary = 'primary',
-  Secondary = 'secondary',
-}
-
-export enum ScoreKind {
-  Primary = 'primary',
-  Secondary = 'secondary',
+export enum CheckSet {
+  Code = 'code',
+  CodeLite = 'code-lite',
+  Community = 'community',
+  Docs = 'docs',
 }
 
 export enum ReportOption {

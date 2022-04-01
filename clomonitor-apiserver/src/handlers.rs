@@ -6,7 +6,7 @@ use axum::{
     http::StatusCode,
     response::{self, Headers, IntoResponse},
 };
-use clomonitor_core::score::{primary, Score};
+use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
@@ -112,7 +112,7 @@ pub(crate) async fn project(
 #[derive(Template)]
 #[template(path = "report-summary.svg")]
 pub struct ReportSummaryTemplate {
-    pub score: primary::Score,
+    pub score: Score,
     pub theme: String,
 }
 
@@ -147,7 +147,7 @@ pub(crate) async fn report_summary_svg(
 
     // Render report summary SVG and return it
     match score {
-        Some(Json(Score::Primary(score))) => {
+        Some(Json(score)) => {
             let theme = match params.get("theme") {
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),

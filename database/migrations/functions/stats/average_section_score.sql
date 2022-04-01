@@ -4,7 +4,8 @@ create or replace function average_section_score(p_section text, p_maturity_id i
 returns real as $$
     select round(avg((score->>p_section)::real))
     from project
-    where
+    where score ? p_section
+    and
         case when p_maturity_id is not null then
             maturity_id = p_maturity_id
         else true end;

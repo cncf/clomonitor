@@ -9,6 +9,7 @@ exports[`ParamInfo creates snapshot 1`] = `
       <div
         class="dropdown-menu rounded-0 text-wrap dropdown"
         role="complementary"
+        style="width: auto;"
       >
         <div
           class="px-3 py-1"

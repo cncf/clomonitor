@@ -170,7 +170,7 @@ const Detail = () => {
                           </div>
                         </div>
                         <div className="d-flex d-md-none align-items-center ms-auto">
-                          <RoundScore score={detail.score.global} className={`ms-2 ${styles.global}`} />
+                          <RoundScore score={detail.score.global!} className={`ms-2 ${styles.global}`} />
                         </div>
                       </div>
                       <p className={`text-muted mt-3 mb-2 mt-md-4 mb-md-3 mx-3 mx-md-0 ${styles.description}`}>

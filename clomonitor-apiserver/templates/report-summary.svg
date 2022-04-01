@@ -258,7 +258,7 @@
     <circle class="chart-circle circle-{{ score.global|rating }}" cx="45" cy="45" r="40" stroke-width="5" />
 
     <g class="global">
-      <text x="45" y="45" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">{{ score.global }}</text>
+      <text x="45" y="45" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">{{ score.global|round }}</text>
     </g>
   </g>
 
@@ -293,7 +293,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.documentation }}</text>
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.documentation|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -310,7 +310,7 @@
           y="0"
           height="4"
           width="{{ score.documentation|rs_section_score_width }}"
-          class="bar-{{ score.documentation|rating }}"
+          class="bar-{{ score.documentation|rating_opt }}"
         />
       </g>
     </g>
@@ -347,7 +347,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.license }}</text>
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.license|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -364,7 +364,7 @@
           y="0"
           height="4"
           width="{{ score.license|rs_section_score_width }}"
-          class="bar-{{ score.license|rating }}"
+          class="bar-{{ score.license|rating_opt }}"
         />
       </g>
     </g>
@@ -404,7 +404,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.best_practices }}</text>
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.best_practices|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -421,7 +421,7 @@
           y="0"
           height="4"
           width="{{ score.best_practices|rs_section_score_width }}"
-          class="bar-{{ score.best_practices|rating }}"
+          class="bar-{{ score.best_practices|rating_opt }}"
         />
       </g>
     </g>
@@ -458,7 +458,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.security }}</text>
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.security|to_string }}</text>
       </g>
 
      <g transform="translate(175, 7)">
@@ -475,7 +475,7 @@
           y="0"
           height="4"
           width="{{ score.security|rs_section_score_width }}"
-          class="bar-{{ score.security|rating }}"
+          class="bar-{{ score.security|rating_opt }}"
         />
       </g>
     </g>
@@ -512,7 +512,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.legal }}</text>
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.legal|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -529,7 +529,7 @@
           y="0"
           height="4"
           width="{{ score.legal|rs_section_score_width }}"
-          class="bar-{{ score.legal|rating }}"
+          class="bar-{{ score.legal|rating_opt }}"
         />
       </g>
     </g>

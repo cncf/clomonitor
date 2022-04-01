@@ -17,7 +17,8 @@
 .headingLink {
   width: 35px;
   opacity: 0;
-  padding-top: 4px;
+  padding-top: 6px;
+  padding-bottom: 2px;
 }
 
 .headingLink svg {
@@ -35,6 +36,10 @@
 
 .alert {
   font-size: 0.9rem;
+}
+
+.checkSetBadge {
+  margin-top: 3px;
 }
 
 @media (hover: hover) {

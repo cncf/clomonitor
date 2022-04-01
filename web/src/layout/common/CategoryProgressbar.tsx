@@ -2,11 +2,12 @@ import { isUndefined } from 'lodash';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import getCategoryColor from '../../utils/getCategoryColor';
+import roundScoreValue from '../../utils/roundScoreValue';
 import styles from './CategoryProgressbar.module.css';
 
 interface Props {
   icon?: JSX.Element;
-  value: number;
+  value?: number;
   name: string;
   bigSize?: boolean;
   linkTo?: string;
@@ -49,21 +50,23 @@ const CategoryProgressbar = (props: Props) => {
           )}
         </div>
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
-          {props.value}
+          {isUndefined(props.value) ? 'n/a' : roundScoreValue(props.value)}
         </div>
         <div
           className={`flex-grow-1 position-relative mx-2 ${styles.progressWrapper}  ${
             props.bigSize ? styles.progressBigWrapper : ''
           }`}
         >
-          <div
-            data-testid="line"
-            className="position-absolute start-0 top-0 bottom-0"
-            style={{
-              width: `${props.value || 1}%`,
-              backgroundColor: `var(--rm-${color})`,
-            }}
-          />
+          {!isUndefined(props.value) && (
+            <div
+              data-testid="line"
+              className="position-absolute start-0 top-0 bottom-0"
+              style={{
+                width: `${props.value || 1}%`,
+                backgroundColor: `var(--rm-${color})`,
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

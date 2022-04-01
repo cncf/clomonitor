@@ -51,13 +51,13 @@ create table if not exists project (
     unique (organization_id, name)
 );
 
-create type repository_kind as enum ('primary', 'secondary');
+create type check_set as enum ('code', 'code-lite', 'community', 'docs');
 
 create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
     url text not null check (url <> ''),
-    kind repository_kind not null,
+    check_sets check_set[] not null,
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,
@@ -66,14 +66,6 @@ create table if not exists repository (
     unique (project_id, name)
 );
 
-create table if not exists linter (
-    linter_id integer primary key,
-    name text not null check (name <> ''),
-    display_name text check (display_name <> '')
-);
-
-insert into linter (linter_id, name, display_name) values (0, 'core', 'CLOMonitor Core Linter');
-
 create table if not exists report (
     report_id uuid primary key default gen_random_uuid(),
     data jsonb,
@@ -81,6 +73,5 @@ create table if not exists report (
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
     repository_id uuid not null references repository on delete cascade,
-    linter_id integer not null references linter on delete restrict,
-    unique (repository_id, linter_id)
+    unique (repository_id)
 );

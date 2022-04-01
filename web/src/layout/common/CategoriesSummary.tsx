@@ -2,13 +2,13 @@ import classNames from 'classnames';
 import { isUndefined } from 'lodash';
 
 import { CATEGORY_ICONS } from '../../data';
-import { Score, ScoreType } from '../../types';
+import { ScoreType } from '../../types';
 import styles from './CategoriesSummary.module.css';
 import CategoryProgressbar from './CategoryProgressbar';
 import RoundScore from './RoundScore';
 
 interface Props {
-  score: Score;
+  score: { [key in ScoreType]?: number };
   bigSize: boolean;
   repoName?: string;
   withLinks?: boolean;
@@ -37,7 +37,7 @@ const CategoriesSummary = (props: Props) => {
         )}
       >
         <div className="d-flex flex-column me-0 me-sm-4 mb-2 mb-sm-0">
-          <RoundScore score={props.score.global} />
+          <RoundScore score={props.score.global!} />
         </div>
       </div>
 

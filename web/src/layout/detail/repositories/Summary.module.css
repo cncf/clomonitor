@@ -37,6 +37,14 @@
     table-layout: fixed;
     overflow-wrap: break-word;
   }
+
+  .table th:first-child {
+    width: 65%;
+  }
+
+  .table th {
+    min-width: 100px !important;
+  }
 }
 
 @media only screen and (min-width: 768px) {

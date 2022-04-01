@@ -62,7 +62,7 @@ insert into project (
     'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
     'https://artifacthub.io',
     'https://artifacthub.devstats.cncf.io/',
-    '{"global": 95, "license": 100, "security": 100, "score_kind": "Primary", "documentation": 80, "best_practices": 100}',
+    '{"k": "v"}',
     'a',
     '2020-01-01',
     '2022-02-25 12:54:17.80674+01',
@@ -89,7 +89,7 @@ insert into project (
     'An industry-standard container runtime with an emphasis on simplicity, robustness and portability.',
     'https://containerd.io',
     'https://containerd.devstats.cncf.io',
-    '{"global": 80, "license": 80, "security": 100, "score_kind": "Primary", "documentation": 70, "best_practices": 70}',
+    '{"k": "v"}',
     'a',
     '2021-01-01',
     '2022-02-25 12:54:25.952208+01',
@@ -118,7 +118,7 @@ insert into project (
     'Python reference implementation of The Update Framework (TUF).',
     'https://theupdateframework.com',
     'https://tuf.devstats.cncf.io',
-    '{"global": 65, "license": 84, "security": 0, "score_kind": "Primary", "documentation": 84, "best_practices": 70}',
+    '{"k": "v"}',
     'b',
     '2022-01-01',
     '2022-02-25 12:54:23.937134+01',
@@ -130,52 +130,52 @@ insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0001-0000-000000000000',
     'artifact-hub',
     'https://github.com/artifacthub/hub',
-    'primary',
+    '{code,community}',
     '00000000-0001-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0002-0000-000000000000',
     'containerd',
     'https://github.com/containerd/containerd',
-    'primary',
+    '{code,community}',
     '00000000-0002-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0028-0000-000000000000',
     'python-tuf',
     'https://github.com/theupdateframework/python-tuf',
-    'primary',
+    '{code,community}',
     '00000000-0015-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
     name,
     url,
-    kind,
+    check_sets,
     project_id
 ) values (
     '00000000-0000-0027-0000-000000000000',
     'tuf',
     'https://github.com/theupdateframework/specification',
-    'secondary',
+    '{docs}',
     '00000000-0015-0000-0000-000000000000'
 );
 
@@ -205,19 +205,12 @@ select results_eq(
                     "rating": "a",
                     "repositories": [
                         {
-                            "kind": "primary",
+                            "check_sets": ["code", "community"],
                             "name": "artifact-hub",
                             "url": "https://github.com/artifacthub/hub"
                         }
                     ],
-                    "score": {
-                        "best_practices": 100,
-                        "documentation": 80,
-                        "global": 95,
-                        "license": 100,
-                        "score_kind": "Primary",
-                        "security": 100
-                    },
+                    "score": {"k": "v"},
                     "accepted_at": 1577836800,
                     "updated_at": 1645790057
                 },
@@ -236,19 +229,12 @@ select results_eq(
                     "rating": "a",
                     "repositories": [
                         {
-                            "kind": "primary",
+                            "check_sets": ["code", "community"],
                             "name": "containerd",
                             "url": "https://github.com/containerd/containerd"
                         }
                     ],
-                    "score": {
-                        "best_practices": 70,
-                        "documentation": 70,
-                        "global": 80,
-                        "license": 80,
-                        "score_kind": "Primary",
-                        "security": 100
-                    },
+                    "score": {"k": "v"},
                     "accepted_at": 1609459200,
                     "updated_at": 1645790065
                 },
@@ -268,24 +254,17 @@ select results_eq(
                     "rating": "b",
                     "repositories": [
                         {
-                            "kind": "primary",
+                            "check_sets": ["code", "community"],
                             "name": "python-tuf",
                             "url": "https://github.com/theupdateframework/python-tuf"
                         },
                         {
-                            "kind": "secondary",
+                            "check_sets": ["docs"],
                             "name": "tuf",
                             "url": "https://github.com/theupdateframework/specification"
                         }
                     ],
-                    "score": {
-                        "best_practices": 70,
-                        "documentation": 84,
-                        "global": 65,
-                        "license": 84,
-                        "score_kind": "Primary",
-                        "security": 0
-                    },
+                    "score": {"k": "v"},
                     "accepted_at": 1640995200,
                     "updated_at": 1645790063
                 }
@@ -319,19 +298,12 @@ select results_eq(
                     "rating": "a",
                     "repositories": [
                         {
-                            "kind": "primary",
+                            "check_sets": ["code", "community"],
                             "name": "artifact-hub",
                             "url": "https://github.com/artifacthub/hub"
                         }
                     ],
-                    "score": {
-                        "best_practices": 100,
-                        "documentation": 80,
-                        "global": 95,
-                        "license": 100,
-                        "score_kind": "Primary",
-                        "security": 100
-                    },
+                    "score": {"k": "v"},
                     "accepted_at": 1577836800,
                     "updated_at": 1645790057
                 }
@@ -365,19 +337,12 @@ select results_eq(
                     "rating": "a",
                     "repositories": [
                         {
-                            "kind": "primary",
+                            "check_sets": ["code", "community"],
                             "name": "artifact-hub",
                             "url": "https://github.com/artifacthub/hub"
                         }
                     ],
-                    "score": {
-                        "best_practices": 100,
-                        "documentation": 80,
-                        "global": 95,
-                        "license": 100,
-                        "score_kind": "Primary",
-                        "security": 100
-                    },
+                    "score": {"k": "v"},
                     "accepted_at": 1577836800,
                     "updated_at": 1645790057
                 }

@@ -1,10 +1,9 @@
-import { FaCrown } from 'react-icons/fa';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
-import { Repository, RepositoryKind, ScoreType } from '../../../types';
-import ElementWithTooltip from '../../common/ElementWithTooltip';
+import { Repository, ScoreType } from '../../../types';
+import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import BadgeCell from './BadgeCell';
 import styles from './Summary.module.css';
 
@@ -74,29 +73,15 @@ const Summary = (props: Props) => {
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
                   <div className="d-flex flex-row align-items-center">
                     <button
-                      className={`btn btn-link text-dark text-truncate fw-bold px-2 ${styles.repoBtn}`}
+                      className={`btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 ${styles.repoBtn}`}
                       onClick={() => goToAnchor(repo.name)}
                       aria-label={`Go from summary to section: ${repo.name}`}
                     >
                       {repo.name}
                     </button>
-                    {repo.kind === RepositoryKind.Primary && (
-                      <>
-                        <FaCrown className="d-block d-md-none text-warning" />
-                        <ElementWithTooltip
-                          className="lh-1"
-                          element={<FaCrown className="text-warning" />}
-                          tooltipWidth={210}
-                          tooltipClassName={styles.tooltipMessage}
-                          tooltipMessage={<div>Project's primary repository</div>}
-                          alignmentTooltip="left"
-                          forceAlignment
-                          visibleTooltip
-                          active
-                        />
-                      </>
-                    )}
+                    <CheckSetBadge checkSets={repo.check_sets} className="d-none d-xl-inline-flex" />
                   </div>
+                  <CheckSetBadge checkSets={repo.check_sets} className="d-inline-flex d-xl-none px-2" />
                 </td>
 
                 <BadgeCell

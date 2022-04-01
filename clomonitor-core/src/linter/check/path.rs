@@ -7,22 +7,14 @@ use std::{
 
 /// Glob matching configuration.
 #[derive(Debug)]
-pub(crate) struct Globs<'a, P>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
+pub(crate) struct Globs<'a> {
     pub root: &'a Path,
-    pub patterns: P,
+    pub patterns: &'a [&'a str],
     pub case_sensitive: bool,
 }
 
 /// Find the first path that matches any of the globs provided.
-pub(crate) fn find<P>(globs: Globs<P>) -> Result<Option<PathBuf>, Error>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
+pub(crate) fn find(globs: Globs) -> Result<Option<PathBuf>, Error> {
     let root = globs.root.to_owned();
     match matches(globs)?.first() {
         Some(path) => Ok(Some(
@@ -38,19 +30,15 @@ where
 }
 
 /// Return all paths that match any of the globs provided.
-pub(crate) fn matches<P>(globs: Globs<P>) -> Result<Vec<PathBuf>, PatternError>
-where
-    P: IntoIterator,
-    P::Item: AsRef<str>,
-{
+pub(crate) fn matches(globs: Globs) -> Result<Vec<PathBuf>, PatternError> {
     let options = MatchOptions {
         case_sensitive: globs.case_sensitive,
         ..Default::default()
     };
     globs
         .patterns
-        .into_iter()
-        .map(|pattern| globs.root.join(pattern.as_ref()))
+        .iter()
+        .map(|pattern| globs.root.join(pattern))
         .map(|pattern| pattern.to_string_lossy().into_owned())
         .try_fold(Vec::new(), |mut paths, pattern| {
             match glob_with(&pattern, options) {
@@ -75,7 +63,7 @@ mod tests {
         assert_eq!(
             find(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: MAINTAINERS_FILE,
+                patterns: &MAINTAINERS_FILE,
                 case_sensitive: false,
             })
             .unwrap(),
@@ -88,7 +76,7 @@ mod tests {
         assert_eq!(
             find(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["nonexisting"],
+                patterns: &["nonexisting"],
                 case_sensitive: false,
             })
             .unwrap(),
@@ -101,7 +89,7 @@ mod tests {
         assert!(matches!(
             find(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["invalid***"],
+                patterns: &["invalid***"],
                 case_sensitive: false,
             }),
             Err(_)
@@ -115,7 +103,7 @@ mod tests {
         assert_eq!(
             matches(Globs {
                 root: testdata,
-                patterns: MAINTAINERS_FILE,
+                patterns: &MAINTAINERS_FILE,
                 case_sensitive: false,
             })
             .unwrap(),
@@ -130,7 +118,7 @@ mod tests {
         assert_eq!(
             matches(Globs {
                 root: testdata,
-                patterns: ["OWNERS*"],
+                patterns: &["OWNERS*"],
                 case_sensitive: true,
             })
             .unwrap(),
@@ -143,7 +131,7 @@ mod tests {
         assert_eq!(
             matches(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["nonexisting"],
+                patterns: &["nonexisting"],
                 case_sensitive: false,
             })
             .unwrap(),
@@ -156,7 +144,7 @@ mod tests {
         assert!(matches!(
             matches(Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: vec!["invalid***"],
+                patterns: &["invalid***"],
                 case_sensitive: true,
             }),
             Err(_)

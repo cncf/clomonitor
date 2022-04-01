@@ -86,7 +86,7 @@ begin
                     select json_agg(json_build_object(
                         'name', name,
                         'url', url,
-                        'kind', kind::text
+                        'check_sets', check_sets
                     ))
                     from repository
                     where project_id = fp.project_id
@@ -99,8 +99,8 @@ begin
                 select *
                 from filtered_projects
                 order by
-                    (case when v_sort_by = 'score' and v_sort_direction = 'asc' then score->>'global' end) asc,
-                    (case when v_sort_by = 'score' and v_sort_direction = 'desc' then score->>'global' end) desc,
+                    (case when v_sort_by = 'score' and v_sort_direction = 'asc' then (score->>'global')::real end) asc,
+                    (case when v_sort_by = 'score' and v_sort_direction = 'desc' then (score->>'global')::real end) desc,
                     (case when v_sort_by = 'name' and v_sort_direction = 'asc' then name end) asc,
                     (case when v_sort_by = 'name' and v_sort_direction = 'desc' then name end) desc
                 limit v_limit

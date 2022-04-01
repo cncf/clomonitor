@@ -1,13 +1,12 @@
 use anyhow::{format_err, Error};
 use chrono::{DateTime, Duration, Utc};
 use clomonitor_core::{
-    linter::{lint, LintOptions, Report, RepositoryKind},
+    linter::{lint, CheckSet, LintOptions, Report},
     score::{self, Score},
-    Linter,
 };
 use deadpool_postgres::{Client as DbClient, Transaction};
+use std::path::Path;
 use std::time::Instant;
-use std::{path::Path, str::FromStr};
 use tempdir::TempDir;
 use tokio::process::Command;
 use tokio_postgres::types::Json;
@@ -20,7 +19,7 @@ use uuid::Uuid;
 pub(crate) struct Repository {
     repository_id: Uuid,
     url: String,
-    kind: RepositoryKind,
+    check_sets: Vec<CheckSet>,
     digest: Option<String>,
     updated_at: DateTime<Utc>,
 }
@@ -41,7 +40,7 @@ impl Repository {
         let start = Instant::now();
 
         // Process only if the repository has changed since the last time it
-        // was tracked or it hasn't been tracked in more than 1 day
+        // was tracked or if it hasn't been tracked in more than 1 day
         let remote_digest = self.get_remote_digest().await?;
         if let Some(digest) = &self.digest {
             if &remote_digest == digest && self.updated_at > Utc::now() - Duration::days(1) {
@@ -55,11 +54,11 @@ impl Repository {
         let tmp_dir = TempDir::new("clomonitor")?;
         self.clone(tmp_dir.path()).await?;
 
-        // Lint repository (only using core linter at the moment)
+        // Lint repository
         let mut errors: Option<String> = None;
         let options = LintOptions {
+            check_sets: self.check_sets.clone(),
             root: tmp_dir.into_path(),
-            kind: self.kind.clone(),
             url: self.url.clone(),
             github_token,
         };
@@ -78,8 +77,8 @@ impl Repository {
 
         // Store tracking results in database
         let tx = db.transaction().await?;
-        self.store_report(&tx, Linter::Core, report, errors).await?;
-        self.update_score(&tx).await?;
+        self.store_report(&tx, &report, errors).await?;
+        self.update_score(&tx, &report).await?;
         self.update_project_score(&tx).await?;
         self.update_digest(&tx, &remote_digest).await?;
         tx.commit().await?;
@@ -126,42 +125,36 @@ impl Repository {
     async fn store_report(
         &self,
         tx: &Transaction<'_>,
-        linter: Linter,
-        report: Option<Report>,
+        report: &Option<Report>,
         errors: Option<String>,
     ) -> Result<(), Error> {
         match report {
             Some(report) => {
                 tx.execute(
                     "
-                    insert into report (data, errors, repository_id, linter_id)
-                    values ($1::jsonb, $2::text, $3::uuid, $4::integer)
-                    on conflict (repository_id, linter_id) do update
+                    insert into report (data, errors, repository_id)
+                    values ($1::jsonb, $2::text, $3::uuid)
+                    on conflict (repository_id) do update
                     set
                         data = excluded.data,
                         errors = excluded.errors,
                         updated_at = current_timestamp;
                     ",
-                    &[
-                        &Json(&report),
-                        &errors,
-                        &self.repository_id,
-                        &(linter as i32),
-                    ],
+                    &[&Json(&report), &errors, &self.repository_id],
                 )
                 .await?;
             }
             None => {
                 tx.execute(
                     "
-                    insert into report (errors, repository_id, linter_id)
-                    values ($1::text, $2::uuid, $3::integer)
-                    on conflict (repository_id, linter_id) do update
+                    insert into report (errors, repository_id)
+                    values ($1::text, $2::uuid)
+                    on conflict (repository_id) do update
                     set
                         errors = excluded.errors,
                         updated_at = current_timestamp;
                     ",
-                    &[&errors, &self.repository_id, &(linter as i32)],
+                    &[&errors, &self.repository_id],
                 )
                 .await?;
             }
@@ -170,43 +163,22 @@ impl Repository {
         Ok(())
     }
 
-    /// Update repository's score based on the repository's linters reports.
-    async fn update_score(&self, tx: &Transaction<'_>) -> Result<(), Error> {
-        // Lock repository's row
-        tx.query_one(
-            "select 1 from repository where repository_id = $1::uuid for update;",
-            &[&self.repository_id],
-        )
-        .await?;
-
-        // Calculate repository's score from the linters reports available
-        let mut scores = Vec::<Score>::new();
-        let rows = tx
-            .query(
-                "select linter_id, data from report where repository_id = $1::uuid;",
-                &[&self.repository_id],
-            )
-            .await?;
-        for row in rows {
-            let linter_id: i32 = row.get("linter_id");
-            let linter = Linter::try_from(linter_id)?;
-            let report: Option<Json<Report>> = row.get("data");
-            if let Some(Json(report)) = report {
-                scores.push(score::calculate(linter, &report));
-            }
-        }
-
-        // Update repository's score
-        if !scores.is_empty() {
-            let repository_score = score::merge(scores);
+    /// Update repository's score based on the provided linter report.
+    async fn update_score(
+        &self,
+        tx: &Transaction<'_>,
+        report: &Option<Report>,
+    ) -> Result<(), Error> {
+        if let Some(report) = report {
+            let score = score::calculate(report);
             tx.execute(
                 "
-            update repository set
-                score = $1::jsonb,
-                updated_at = current_timestamp
-            where repository_id = $2::uuid;
-            ",
-                &[&Json(&repository_score), &self.repository_id],
+                update repository set
+                    score = $1::jsonb,
+                    updated_at = current_timestamp
+                where repository_id = $2::uuid;
+                ",
+                &[&Json(&score), &self.repository_id],
             )
             .await?;
         }
@@ -290,15 +262,24 @@ pub(crate) async fn get_all(db: DbClient) -> Result<Vec<Repository>, DbError> {
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db
         .query(
-            "select repository_id, url, digest, kind::text, updated_at from repository",
+            "
+            select
+                repository_id,
+                url,
+                digest,
+                to_json(check_sets) as check_sets,
+                updated_at
+            from repository
+            ",
             &[],
         )
         .await?;
     for row in rows {
+        let Json(check_sets): Json<Vec<CheckSet>> = row.get("check_sets");
         repositories.push(Repository {
             repository_id: row.get("repository_id"),
             url: row.get("url"),
-            kind: RepositoryKind::from_str(row.get("kind")).unwrap(),
+            check_sets,
             digest: row.get("digest"),
             updated_at: row.get("updated_at"),
         });

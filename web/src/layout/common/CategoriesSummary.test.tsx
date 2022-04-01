@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { ScoreKind, ScoreType } from '../../types';
+import { ScoreType } from '../../types';
 import CategoriesSummary from './CategoriesSummary';
 
 const defaultProps = {
@@ -10,7 +10,6 @@ const defaultProps = {
     [ScoreType.Documentation]: 85,
     [ScoreType.Global]: 65,
     [ScoreType.License]: 80,
-    score_kind: ScoreKind.Primary,
     [ScoreType.Security]: 0,
     [ScoreType.Legal]: 75,
   },

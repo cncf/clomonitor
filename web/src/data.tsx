@@ -220,7 +220,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <MdOutlineInventory />,
     name: 'Software bill of materials (SBOM)',
     shortName: 'SBOM',
-    legend: <span>List of components in a piece of software, including licenses, versions, etc.</span>,
+    legend: <span>List of components in a piece of software, including licenses, versions, etc</span>,
   },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,

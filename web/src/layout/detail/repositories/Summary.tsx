@@ -81,7 +81,6 @@ const Summary = (props: Props) => {
                     </button>
                     <CheckSetBadge checkSets={repo.check_sets} className="d-none d-xl-inline-flex" />
                   </div>
-                  <CheckSetBadge checkSets={repo.check_sets} className="d-inline-flex d-xl-none px-2" />
                 </td>
 
                 <BadgeCell

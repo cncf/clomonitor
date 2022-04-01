@@ -15,6 +15,10 @@
         <td width="50%"><img src="docs/screenshots/project-light.png?raw=true"></td>
         <td width="50%"><img src="docs/screenshots/project-dark.png?raw=true"></td>
     </tr>
+    <tr>
+        <td width="50%"><img src="docs/screenshots/stats-light.png?raw=true"></td>
+        <td width="50%"><img src="docs/screenshots/embed-report-light.png?raw=true"></td>
+    </tr>
 </table>
 
 ## Contributing

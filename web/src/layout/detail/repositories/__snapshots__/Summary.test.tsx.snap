@@ -239,20 +239,6 @@ exports[`Summary creates snapshot 1`] = `
                 </div>
               </div>
             </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  code
-                </div>
-              </div>
-            </div>
           </td>
           <td
             class="hoverableCell align-middle"
@@ -349,20 +335,6 @@ exports[`Summary creates snapshot 1`] = `
                   >
                     code
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  code
                 </div>
               </div>
             </div>
@@ -465,20 +437,6 @@ exports[`Summary creates snapshot 1`] = `
                 </div>
               </div>
             </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  code
-                </div>
-              </div>
-            </div>
           </td>
           <td
             class="hoverableCell align-middle"
@@ -575,20 +533,6 @@ exports[`Summary creates snapshot 1`] = `
                   >
                     code
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  code
                 </div>
               </div>
             </div>
@@ -691,20 +635,6 @@ exports[`Summary creates snapshot 1`] = `
                 </div>
               </div>
             </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  community
-                </div>
-              </div>
-            </div>
           </td>
           <td
             class="hoverableCell align-middle"
@@ -795,20 +725,6 @@ exports[`Summary creates snapshot 1`] = `
                   >
                     code
                   </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="d-inline-flex d-inline-flex d-xl-none px-2"
-            >
-              <div
-                class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-inline-flex d-xl-none px-2"
-                data-testid="repo-kind-badge"
-              >
-                <div
-                  class="d-flex flex-row align-items-center"
-                >
-                  code
                 </div>
               </div>
             </div>

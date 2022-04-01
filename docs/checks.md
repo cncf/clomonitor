@@ -1,10 +1,10 @@
 # Checks
 
-**CLOMonitor** runs a set of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
+**CLOMonitor** runs sets of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
 
-Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment three are supported: `code`, `community` and `docs` and the set of checks run for each one are as follows:
+Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment the following sets are supported: `code`, `code-lite`, `community` and `docs`. The set of checks run for each one are as follows:
 
-- **Check set: code** (recommended for project's primary code repository)
+- **code** (recommended for projects' primary code repository)
 
   - Documentation / Changelog
   - Documentation / Contributing
@@ -20,7 +20,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Security / SBOM
   - Security / Policy
 
-- **Check set: code-lite** (subset of *code*, recommended for secondary code repositories)
+- **code-lite** (subset of *code*, recommended for secondary code repositories)
 
   - Documentation / Contributing
   - Documentation / Maintainers
@@ -30,7 +30,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Best practices / DCO
   - Best practices / Recent release
 
-- **Check set: community** (recommended for repositories with community content)
+- **community** (recommended for repositories with community content)
 
   - Documentation / Adopters
   - Documentation / Code of conduct
@@ -44,7 +44,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Security / Policy
   - Legal / Trademark disclaimer
 
-- **Check set: docs** (recommended for other documentation repositories)
+- **docs** (recommended for other documentation repositories)
 
   - Documentation / Readme
   - License

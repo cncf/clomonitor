@@ -9,11 +9,12 @@ const LICENSES_DATA: &[u8] = include_bytes!("data/licenses.bin.zstd");
 
 /// CNCF approved licenses.
 /// https://github.com/cncf/foundation/blob/master/allowed-third-party-license-policy.md
-static APPROVED_LICENSES: [&str; 10] = [
+static APPROVED_LICENSES: [&str; 11] = [
     "Apache-2.0",
     "BSD-2-Clause",
     "BSD-2-Clause-FreeBSD",
     "BSD-3-Clause",
+    "CC-BY-4.0",
     "ISC",
     "MIT",
     "PostgreSQL",

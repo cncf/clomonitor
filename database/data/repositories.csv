@@ -207,4 +207,3 @@ repository_id;name;url;check_sets;project_id
 00000000-0000-0222-0000-000000000000;community;https://github.com/parallaxsecond/community;{community};00000000-0089-0000-0000-000000000000
 00000000-0000-0223-0000-000000000000;community;https://github.com/volcano-sh/community;{community};00000000-0108-0000-0000-000000000000
 00000000-0000-0224-0000-000000000000;keda-docs;https://github.com/kedacore/keda-docs;{docs};00000000-0033-0000-0000-000000000000
-00000000-0000-0225-0000-000000000000;keda-governance;https://github.com/kedacore/governance;{community};00000000-0033-0000-0000-000000000000

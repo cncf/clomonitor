@@ -75,7 +75,7 @@ This layer represents a set of **Rust APIs** that provide some core functionalit
 
 It's composed of two modules:
 
-- **linter:** this module implements the core linting functionality of CLOMonitor. All checks currently run by CLOMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to run multiple `check sets` on each repository. Each `check set` defines a number of checks that will be run on the repository. At the moment the supported check sets are: `code`, `code-lite`, `community` and `docs`. For more details about what checks are run on each `check set` please see the [checks documentation](https://github.com/cncf/clomonitor/blob/main/docs/checks.md).
+- **linter:** this module implements the core linting functionality of CLOMonitor. All checks currently run by CLOMonitor are handled by this module, and both the `CLI tool` and the `tracker` rely on it. The linter is able to run multiple `check sets` on each repository. Each `check set` defines a number of checks that will be run on the repository. For more details about what checks are run on each `check set` please see the [checks documentation](https://github.com/cncf/clomonitor/blob/main/docs/checks.md).
 
 - **score:** this module is in charge of scoring reports produced by the linter. The linter will produce different reports for each of the kinds supported, and each of the reports will be scored differently as well. In addition to the reports' scoring functionality, this module provides some score related features as well, like rating a given score or merging multiple scores.
 

@@ -21,6 +21,35 @@
     </tr>
 </table>
 
+## Checks
+
+**CLOMonitor** runs sets of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
+
+Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment the following sets are supported: `code`, `code-lite`, `community` and `docs`. Please see the [checks documentation](./docs/checks.md) for more details.
+
+## Linter CLI
+
+The CLOMonitor's linter can also be run locally or from CI workflows. At the moment we are publishing a [Docker image](https://gallery.ecr.aws/clomonitor/linter) with the tool, but we'll be publishing binaries for different platforms soon. You can find an example of how to integrate it with Github Actions [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/a25d69235ef9a196aa905e160c99977b692d5e34/.github/workflows/ci.yml#L40-L49).
+
+```sh
+$ clomonitor-linter --help
+clomonitor-linter 0.5.0
+A linter for CNCF projects repositories
+
+USAGE:
+    clomonitor-linter [OPTIONS] --url <URL>
+
+OPTIONS:
+        --check-set <CHECK_SET>      Sets of checks to run [default: code community] [possible
+                                     values: code, code-lite, community, docs]
+    -h, --help                       Print help information
+        --pass-score <PASS_SCORE>    Linter pass score [default: 80]
+        --path <PATH>                Repository root path [default: .]
+        --url <URL>                  Repository url [https://github.com/org/repo] (required for some
+                                     GitHub remote checks)
+    -V, --version                    Print version information
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.

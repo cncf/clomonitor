@@ -12,7 +12,6 @@ use std::{
 };
 
 pub(crate) mod content;
-pub(crate) mod git;
 pub(crate) mod github;
 pub(crate) mod license;
 pub(crate) mod metadata;
@@ -235,13 +234,6 @@ pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult, Err
 
 /// Developer Certificate of Origin check.
 pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
-    // DCO signature in commits
-    if let Ok(passed) = git::commits_have_dco_signature(&opts.root) {
-        if passed {
-            return Ok(true.into());
-        }
-    }
-
     // DCO check in Github
     Ok(github::has_check(&opts.url, &*DCO_IN_GH).await?.into())
 }

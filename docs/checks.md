@@ -406,8 +406,6 @@ Mechanism for contributors to certify that they wrote or have the right to submi
 
 This check passes if:
 
-- The last commits in the repository have the DCO signature (*Signed-off-by*). Merge pull request and merge branch commits are ignored for this check.
-
 - A DCO check is found in the last closed PR on Github. Regexps used:
 
 ```sh

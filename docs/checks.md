@@ -14,6 +14,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - License / Approved
   - License / Scanning
   - Best practices / Artifact Hub badge
+  - Best practices / CLA
   - Best practices / DCO
   - Best practices / OpenSSF badge
   - Best practices / Recent release
@@ -27,6 +28,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Readme
   - License
   - License / Approved
+  - Best practices / CLA
   - Best practices / DCO
   - Best practices / Recent release
 
@@ -360,6 +362,26 @@ This check passes if:
 "https://artifacthub.io/badge/repository/.*
 ```
 
+### Contributor license agreement
+
+**ID**: `cla`
+
+Defines the terms under which intellectual property has been contributed to a company/project.
+
+This check passes if:
+
+- A CLA check is found in the last closed PR on Github. Regexps used:
+
+```sh
+"(?i)cncf-cla"
+"(?i)cla/linuxfoundation"
+"(?i)easycla"
+"(?i)license/cla"
+"(?i)cla/google"
+```
+
+NOTE: *this check will be automatically marked as exempt if the DCO check passes and this one does not*.
+
 ### Community meeting
 
 **ID**: `community_meeting`
@@ -386,11 +408,13 @@ This check passes if:
 
 - The last commits in the repository have the DCO signature (*Signed-off-by*). Merge pull request and merge branch commits are ignored for this check.
 
-- A *reference* to the DCO app is found in the last PR checks page on Github. Regexps used:
+- A DCO check is found in the last closed PR on Github. Regexps used:
 
 ```sh
-"[">]DCO[<"]"
+"(?i)dco"
 ```
+
+NOTE: *this check will be automatically marked as exempt if the CLA check passes and this one does not*.
 
 ### OpenSSF badge
 

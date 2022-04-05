@@ -179,6 +179,9 @@ insert into report (
             }
         },
         "best_practices": {
+            "cla": {
+                "passed": true
+            },
             "dco": {
                 "passed": true
             },
@@ -277,6 +280,9 @@ insert into report (
             }
         },
         "best_practices": {
+            "cla": {
+                "passed": true
+            },
             "dco": {
                 "passed": true
             },
@@ -364,6 +370,9 @@ insert into report (
             }
         },
         "best_practices": {
+            "cla": {
+                "passed": false
+            },
             "dco": {
                 "passed": false
             },
@@ -458,6 +467,7 @@ select is(
                 },
                 "best_practices": {
                     "artifacthub_badge": 0,
+                    "cla": 67,
                     "community_meeting": 0,
                     "dco": 67,
                     "openssf_badge": 67,

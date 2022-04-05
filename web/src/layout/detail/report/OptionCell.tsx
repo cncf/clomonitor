@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
-import { RiErrorWarningLine } from 'react-icons/ri';
+import { MdRemoveCircleOutline } from 'react-icons/md';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
@@ -21,7 +21,7 @@ function getOptionInfo(key: ReportOption) {
 const OptionCell = (props: Props) => {
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
-  const exemptIcon = <RiErrorWarningLine data-testid="exempt-icon" className={`text-warning ${styles.exemptIcon}`} />;
+  const exemptIcon = <MdRemoveCircleOutline data-testid="exempt-icon" className={`text-muted ${styles.exemptIcon}`} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 

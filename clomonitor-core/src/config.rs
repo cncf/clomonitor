@@ -6,6 +6,7 @@ use std::collections::HashMap;
 pub const ADOPTERS: &str = "adopters";
 pub const ARTIFACTHUB_BADGE: &str = "artifacthub_badge";
 pub const CHANGELOG: &str = "changelog";
+pub const CLA: &str = "cla";
 pub const CODE_OF_CONDUCT: &str = "code_of_conduct";
 pub const COMMUNITY_MEETING: &str = "community_meeting";
 pub const CONTRIBUTING: &str = "contributing";
@@ -48,8 +49,9 @@ lazy_static! {
 
         // Best practices
         m.insert(ARTIFACTHUB_BADGE, 1);
+        m.insert(CLA, 1);
         m.insert(COMMUNITY_MEETING, 3);
-        m.insert(DCO, 2);
+        m.insert(DCO, 1);
         m.insert(OPENSSF_BADGE, 10);
         m.insert(RECENT_RELEASE, 3);
         m.insert(SLACK_PRESENCE, 1);
@@ -75,6 +77,7 @@ lazy_static! {
             vec![
                 ARTIFACTHUB_BADGE,
                 CHANGELOG,
+                CLA,
                 CONTRIBUTING,
                 DCO,
                 LICENSE_SPDX,
@@ -92,6 +95,7 @@ lazy_static! {
             CheckSet::CodeLite,
             vec![
                 CONTRIBUTING,
+                CLA,
                 DCO,
                 LICENSE_SPDX,
                 LICENSE_APPROVED,

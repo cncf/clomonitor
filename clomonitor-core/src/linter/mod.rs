@@ -70,6 +70,7 @@ pub struct License {
 #[non_exhaustive]
 pub struct BestPractices {
     pub artifacthub_badge: Option<CheckResult>,
+    pub cla: Option<CheckResult>,
     pub community_meeting: Option<CheckResult>,
     pub dco: Option<CheckResult>,
     pub openssf_badge: Option<CheckResult>,
@@ -119,6 +120,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
     // Async checks
     let (
         changelog,
+        cla,
         code_of_conduct,
         contributing,
         dco,
@@ -128,6 +130,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
         trademark_disclaimer,
     ) = tokio::try_join!(
         run_async_check(CHANGELOG, changelog, &check_opts),
+        run_async_check(CLA, cla, &check_opts),
         run_async_check(CODE_OF_CONDUCT, code_of_conduct, &check_opts),
         run_async_check(CONTRIBUTING, contributing, &check_opts),
         run_async_check(DCO, dco, &check_opts),
@@ -145,7 +148,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
     }
 
     // Build report and return it
-    Ok(Report {
+    let mut report = Report {
         documentation: Documentation {
             adopters: run_check(ADOPTERS, adopters, &check_opts)?,
             changelog,
@@ -164,6 +167,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
         },
         best_practices: BestPractices {
             artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &check_opts)?,
+            cla,
             community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &check_opts)?,
             dco,
             openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &check_opts)?,
@@ -177,5 +181,34 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
         legal: Legal {
             trademark_disclaimer,
         },
-    })
+    };
+
+    apply_exemptions(&mut report);
+    Ok(report)
+}
+
+/// Apply inter-checks exemptions.
+fn apply_exemptions(report: &mut Report) {
+    let passed = |r: &Option<CheckResult>| -> bool {
+        match r {
+            Some(r) => r.passed || r.exempt,
+            None => false,
+        }
+    };
+
+    // CLA / DCO
+    if passed(&report.best_practices.cla) && !passed(&report.best_practices.dco) {
+        report.best_practices.dco = Some(CheckResult {
+            exempt: true,
+            exemption_reason: Some("CLA check passed".to_string()),
+            ..Default::default()
+        });
+    }
+    if passed(&report.best_practices.dco) && !passed(&report.best_practices.cla) {
+        report.best_practices.cla = Some(CheckResult {
+            exempt: true,
+            exemption_reason: Some("DCO check passed".to_string()),
+            ..Default::default()
+        });
+    }
 }

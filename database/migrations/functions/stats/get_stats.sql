@@ -128,6 +128,7 @@ returns json as $$
                 ),
                 'best_practices', json_build_object(
                     'artifacthub_badge', repositories_passing_check('best_practices', 'artifacthub_badge'),
+                    'cla', repositories_passing_check('best_practices', 'cla'),
                     'community_meeting', repositories_passing_check('best_practices', 'community_meeting'),
                     'dco', repositories_passing_check('best_practices', 'dco'),
                     'openssf_badge', repositories_passing_check('best_practices', 'openssf_badge'),

@@ -1,7 +1,15 @@
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
-import { FaBalanceScale, FaCheckDouble, FaFileSignature, FaSlack, FaTools, FaTrademark } from 'react-icons/fa';
+import {
+  FaBalanceScale,
+  FaCheckDouble,
+  FaFileContract,
+  FaFileSignature,
+  FaSlack,
+  FaTools,
+  FaTrademark,
+} from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoLaw } from 'react-icons/go';
@@ -121,6 +129,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <CgFileDocument />,
     name: 'Changelog',
     legend: <span>A curated, chronologically ordered list of notable changes for each version</span>,
+  },
+  [ReportOption.CLA]: {
+    icon: <FaFileContract />,
+    name: 'Contributor License Agreement',
+    shortName: 'CLA',
+    legend: <span>Defines the terms under which intellectual property has been contributed to a company/project</span>,
   },
   [ReportOption.CodeOfConduct]: {
     icon: <GiFountainPen />,

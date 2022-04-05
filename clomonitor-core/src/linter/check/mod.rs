@@ -195,6 +195,12 @@ pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult, Error>
     Ok(false.into())
 }
 
+/// Contributor license agreement check.
+pub(crate) async fn cla(opts: &CheckOptions) -> Result<CheckResult, Error> {
+    // CLA check in Github
+    Ok(github::has_check(&opts.url, &*CLA_IN_GH).await?.into())
+}
+
 /// Code of conduct check.
 pub(crate) async fn code_of_conduct(opts: &CheckOptions) -> Result<CheckResult, Error> {
     // File in repo or reference in README file
@@ -236,12 +242,8 @@ pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
         }
     }
 
-    // DCO app reference in last closed PR
-    if github::last_pr_has_dco_check(&opts.url).await? {
-        return Ok(true.into());
-    }
-
-    Ok(false.into())
+    // DCO check in Github
+    Ok(github::has_check(&opts.url, &*DCO_IN_GH).await?.into())
 }
 
 /// Governance check.

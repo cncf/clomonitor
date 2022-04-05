@@ -99,6 +99,15 @@ lazy_static! {
     ]).expect("invalid exprs in CHANGELOG_IN_README");
 
     #[rustfmt::skip]
+    pub(crate) static ref CLA_IN_GH: RegexSet = RegexSet::new(vec![
+        r"(?i)cncf-cla",
+        r"(?i)cla/linuxfoundation",
+        r"(?i)easycla",
+        r"(?i)license/cla",
+        r"(?i)cla/google",
+    ]).expect("invalid exprs in CLA_IN_GH");
+
+    #[rustfmt::skip]
     pub(crate) static ref CODE_OF_CONDUCT_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*code of conduct.*$",
         r"(?im)^code of conduct$",
@@ -120,9 +129,9 @@ lazy_static! {
     ]).expect("invalid exprs in CONTRIBUTING_IN_README");
 
     #[rustfmt::skip]
-    pub(crate) static ref DCO_IN_PR: RegexSet = RegexSet::new(vec![
-        r#"[">]DCO[<"]"#,
-    ]).expect("invalid exprs in DCO_IN_PR");
+    pub(crate) static ref DCO_IN_GH: RegexSet = RegexSet::new(vec![
+        r"(?i)dco",
+    ]).expect("invalid exprs in DCO_IN_GH");
 
     #[rustfmt::skip]
     pub(crate) static ref FOSSA_URL: Regex = Regex::new(
@@ -258,6 +267,15 @@ Changelog
     }
 
     #[test]
+    fn cla_in_gh_match() {
+        assert!(CLA_IN_GH.is_match(r"EasyCLA"));
+        assert!(CLA_IN_GH.is_match(r"cncf-cla"));
+        assert!(CLA_IN_GH.is_match(r"cla/linuxfoundation"));
+        assert!(CLA_IN_GH.is_match(r"license/cla"));
+        assert!(CLA_IN_GH.is_match(r"cla/google"));
+    }
+
+    #[test]
     fn code_of_conduct_in_readme_match() {
         assert!(CODE_OF_CONDUCT_IN_README.is_match("# Code of conduct"));
         assert!(CODE_OF_CONDUCT_IN_README.is_match(
@@ -311,9 +329,8 @@ Contributing
     }
 
     #[test]
-    fn dco_match() {
-        assert!(DCO_IN_PR.is_match(r#"title="DCO""#));
-        assert!(DCO_IN_PR.is_match("<span>DCO</span>"));
+    fn dco_in_gh_match() {
+        assert!(DCO_IN_GH.is_match(r"DCO"));
     }
 
     #[test]

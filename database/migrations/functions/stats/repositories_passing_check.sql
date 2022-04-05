@@ -15,6 +15,5 @@ returns real as $$
             0
         end
     from reports_containing_check
-    where data @> format('{"%s": {"%s": {"passed": true}}}', p_category, p_check_name)::jsonb
-    or data @> format('{"%s": {"%s": {"exempt": true}}}', p_category, p_check_name)::jsonb;
+    where data @> format('{"%s": {"%s": {"passed": true}}}', p_category, p_check_name)::jsonb;
 $$ language sql;

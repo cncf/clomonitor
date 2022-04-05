@@ -99,6 +99,7 @@ pub fn calculate(report: &Report) -> Score {
     let bp = &report.best_practices;
     (score.best_practices, score.best_practices_weight) = calculate_section_score_and_weight(&[
         (ARTIFACTHUB_BADGE, should_score(&bp.artifacthub_badge)),
+        (CLA, should_score(&bp.cla)),
         (COMMUNITY_MEETING, should_score(&bp.community_meeting)),
         (DCO, should_score(&bp.dco)),
         (OPENSSF_BADGE, should_score(&bp.openssf_badge)),
@@ -352,6 +353,7 @@ mod tests {
                         exempt: true,
                         ..Default::default()
                     }),
+                    cla: Some(true.into()),
                     community_meeting: Some(true.into()),
                     dco: Some(true.into()),
                     openssf_badge: Some(true.into()),
@@ -408,6 +410,7 @@ mod tests {
                         exempt: false,
                         ..Default::default()
                     }),
+                    cla: Some(false.into()),
                     community_meeting: Some(false.into()),
                     dco: Some(false.into()),
                     openssf_badge: Some(false.into()),
@@ -470,6 +473,7 @@ mod tests {
                         exempt: true,
                         ..Default::default()
                     }),
+                    cla: Some(true.into()),
                     community_meeting: None,
                     dco: Some(true.into()),
                     openssf_badge: Some(true.into()),

@@ -102,6 +102,10 @@ pub(crate) fn display(report: &Report, score: &Score) {
             cell_check(&report.best_practices.artifacthub_badge),
         ])
         .add_row(vec![
+            cell_entry("Best practices / CLA"),
+            cell_check(&report.best_practices.cla),
+        ])
+        .add_row(vec![
             cell_entry("Best practices / Community meeting"),
             cell_check(&report.best_practices.community_meeting),
         ])
@@ -171,7 +175,7 @@ fn cell_check<T>(r: &Option<CheckResult<T>>) -> Cell {
     let (content, color) = match r {
         Some(r) => match (r.passed, r.exempt) {
             (true, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),
-            (false, true) => (EXEMPT_MSG.to_string(), Color::Yellow),
+            (false, true) => (EXEMPT_MSG.to_string(), Color::Grey),
             (false, _) => (FAILURE_SYMBOL.to_string(), Color::Red),
         },
         None => (NOT_APPLICABLE_MSG.to_string(), Color::Grey),

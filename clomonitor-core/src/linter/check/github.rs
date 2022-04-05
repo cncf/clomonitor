@@ -1,12 +1,12 @@
-use super::{content, patterns::*};
 use anyhow::{format_err, Error};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
 use octocrab::{
-    models::{repos::Release, Repository},
+    models::{repos::Release, Repository, Status},
     params::State,
 };
 use regex::{Regex, RegexSet};
+use serde::Deserialize;
 use std::path::Path;
 
 /// Build a url from the path and metadata provided.
@@ -28,6 +28,66 @@ pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository, Erro
         Ok(repo) => Ok(repo),
         Err(err) => Err(err.into()),
     }
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckSuitesResponse {
+    pub check_suites: Vec<GHCheckSuite>,
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckSuite {
+    pub app: GHApp,
+}
+
+#[derive(Deserialize)]
+pub struct GHApp {
+    pub name: String,
+}
+
+/// Check if the repo has a check that matches any of the regular expressions
+/// provided.
+pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Error> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+    let github = octocrab::instance();
+
+    // Get last closed PR head commit sha
+    let mut page = github
+        .pulls(&owner, &repo)
+        .list()
+        .state(State::Closed)
+        .per_page(1)
+        .send()
+        .await?;
+    let sha = match page.take_items().first() {
+        Some(pr) => pr.head.sha.clone(),
+        None => return Ok(false),
+    };
+
+    // Checks in commit statuses
+    let page = github
+        .repos(&owner, &repo)
+        .list_statuses(sha.clone())
+        .per_page(50)
+        .send()
+        .await?;
+    if github
+        .all_pages::<Status>(page)
+        .await?
+        .iter()
+        .filter(|s| s.context.is_some())
+        .any(|s| re.is_match(s.context.as_ref().unwrap()))
+    {
+        return Ok(true);
+    }
+
+    // Checks in check suites
+    let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
+    let response: GHCheckSuitesResponse = github.get(url, None::<&()>).await?;
+    Ok(response
+        .check_suites
+        .iter()
+        .any(|s| re.is_match(&s.app.name)))
 }
 
 /// Check if the given default community health file is available in the
@@ -83,29 +143,6 @@ pub(crate) async fn has_recent_release(repo_url: &str) -> Result<Option<String>,
         }
     }
     Ok(None)
-}
-
-/// Check if the last PR in the repository has the DCO check.
-pub(crate) async fn last_pr_has_dco_check(repo_url: &str) -> Result<bool, Error> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-    let github = octocrab::instance();
-    let mut page = github
-        .pulls(&owner, &repo)
-        .list()
-        .state(State::Closed)
-        .per_page(1)
-        .send()
-        .await?;
-    Ok(match page.take_items().first() {
-        Some(pr) => {
-            let checks_url = format!(
-                "https://github.com/{}/{}/pull/{}/checks",
-                &owner, &repo, pr.number
-            );
-            content::remote_matches(&checks_url, &*DCO_IN_PR).await?
-        }
-        None => false,
-    })
 }
 
 /// Return the last release of the provided repository when available.

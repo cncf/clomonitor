@@ -1,3 +1,4 @@
+import { isUndefined } from 'lodash';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -84,29 +85,35 @@ const Summary = (props: Props) => {
                 </td>
 
                 <BadgeCell
-                  value={repo.score.global}
+                  value={!isUndefined(repo.score) ? repo.score.global : undefined}
                   cellClassName="align-middle"
                   onClick={() => goToAnchor(repo.name)}
                 />
 
                 <BadgeCell
-                  value={repo.score.documentation}
+                  value={!isUndefined(repo.score) ? repo.score.documentation : undefined}
                   onClick={() => goToAnchor(`${repo.name}_${ScoreType.Documentation}`)}
                 />
 
-                <BadgeCell value={repo.score.license} onClick={() => goToAnchor(`${repo.name}_${ScoreType.License}`)} />
+                <BadgeCell
+                  value={!isUndefined(repo.score) ? repo.score.license : undefined}
+                  onClick={() => goToAnchor(`${repo.name}_${ScoreType.License}`)}
+                />
 
                 <BadgeCell
-                  value={repo.score.best_practices}
+                  value={!isUndefined(repo.score) ? repo.score.best_practices : undefined}
                   onClick={() => goToAnchor(`${repo.name}_${ScoreType.BestPractices}`)}
                 />
 
                 <BadgeCell
-                  value={repo.score.security}
+                  value={!isUndefined(repo.score) ? repo.score.security : undefined}
                   onClick={() => goToAnchor(`${repo.name}_${ScoreType.Security}`)}
                 />
 
-                <BadgeCell value={repo.score.legal} onClick={() => goToAnchor(`${repo.name}_${ScoreType.Legal}`)} />
+                <BadgeCell
+                  value={!isUndefined(repo.score) ? repo.score.legal : undefined}
+                  onClick={() => goToAnchor(`${repo.name}_${ScoreType.Legal}`)}
+                />
               </tr>
             );
           })}

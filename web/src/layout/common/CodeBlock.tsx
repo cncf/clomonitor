@@ -14,6 +14,7 @@ interface Props {
   withCopyBtn: boolean;
   label?: string;
   darkCode?: boolean;
+  style?: any;
 }
 
 const CodeBlock = (props: Props) => {
@@ -29,9 +30,10 @@ const CodeBlock = (props: Props) => {
         customStyle={{
           backgroundColor: 'var(--bg-code)',
           color: 'var(--color-font)',
-          padding: '1rem 0.5rem',
+          padding: '1rem',
           marginBottom: 0,
           width: props.withCopyBtn ? 'calc(100% - 1rem - 32px)' : '100%',
+          ...props.style,
         }}
       >
         {props.content}

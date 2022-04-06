@@ -41,12 +41,12 @@ export interface BaseRepository {
 export interface Repository extends BaseRepository {
   digest: string;
   repository_id: string;
-  score: { [key in ScoreType]?: number };
+  score?: { [key in ScoreType]?: number };
   report: Report;
 }
 
 export interface Report {
-  data: CoreReport | any;
+  data?: CoreReport | any;
   errors?: string | null;
   report_id: string;
   updated_at: number;

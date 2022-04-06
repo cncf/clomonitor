@@ -1,0 +1,289 @@
+[
+  {
+    "check_sets": ["code-lite"],
+    "digest": "d12adc5eba8e79653c4c9dd3b3ef4ace6e4d008e",
+    "name": "go-control-panel",
+    "report": {
+      "errors": "error running dco check",
+      "report_id": "6b3b4481-b44b-4274-8ebc-49203c07f6f9",
+      "updated_at": 1649234196
+    },
+    "repository_id": "00000000-0000-0005-0000-000000000000",
+    "url": "https://github.com/envoyproxy/go-control-plane"
+  },
+  {
+    "check_sets": ["community", "code"],
+    "digest": "7014ce6fd31ef7a2f6a2083d99d4b85bbe55b6c6",
+    "name": "envoy",
+    "report": {
+      "data": {
+        "best_practices": {
+          "artifacthub_badge": {
+            "exempt": false,
+            "passed": false
+          },
+          "cla": {
+            "exempt": true,
+            "exemption_reason": "DCO check passed",
+            "passed": false
+          },
+          "community_meeting": {
+            "exempt": false,
+            "passed": true
+          },
+          "dco": {
+            "exempt": false,
+            "passed": true
+          },
+          "openssf_badge": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://bestpractices.coreinfrastructure.org/projects/1266"
+          },
+          "recent_release": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.21.1"
+          },
+          "slack_presence": {
+            "exempt": false,
+            "passed": false
+          }
+        },
+        "documentation": {
+          "adopters": {
+            "exempt": false,
+            "passed": false
+          },
+          "changelog": {
+            "exempt": false,
+            "passed": false
+          },
+          "code_of_conduct": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/CODE_OF_CONDUCT.md"
+          },
+          "contributing": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/CONTRIBUTING.md"
+          },
+          "governance": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/GOVERNANCE.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/OWNERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/README.md"
+          },
+          "roadmap": {
+            "exempt": false,
+            "passed": false
+          },
+          "website": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://www.envoyproxy.io"
+          }
+        },
+        "legal": {
+          "trademark_disclaimer": {
+            "exempt": false,
+            "passed": true
+          }
+        },
+        "license": {
+          "approved": {
+            "exempt": false,
+            "passed": true,
+            "value": true
+          },
+          "scanning": {
+            "exempt": false,
+            "passed": false
+          },
+          "spdx_id": {
+            "exempt": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {
+          "sbom": {
+            "exempt": false,
+            "passed": false
+          },
+          "security_policy": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/envoy/blob/main/SECURITY.md"
+          }
+        }
+      },
+      "report_id": "8209355e-acab-4056-a0b6-e9bedb982374",
+      "updated_at": 1649234201
+    },
+    "repository_id": "00000000-0000-0004-0000-000000000000",
+    "score": {
+      "best_practices": 90,
+      "best_practices_weight": 20,
+      "documentation": 90,
+      "documentation_weight": 30,
+      "global": 86.66666666666666,
+      "global_weight": 90,
+      "legal": 100,
+      "legal_weight": 5,
+      "license": 75,
+      "license_weight": 20,
+      "security": 86.66666666666667,
+      "security_weight": 15
+    },
+    "url": "https://github.com/envoyproxy/envoy"
+  },
+  {
+    "check_sets": ["code-lite"],
+    "digest": "9616f57a3bb6f9aa79c6e2f85e9c80524839a9a0",
+    "name": "java-control-panel",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": true,
+            "exemption_reason": "DCO check passed",
+            "passed": false
+          },
+          "dco": {
+            "exempt": false,
+            "passed": true
+          },
+          "recent_release": {
+            "exempt": false,
+            "passed": false
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/java-control-plane/blob/main/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/java-control-plane/blob/main/OWNERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/java-control-plane/blob/main/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "08941f3b-51b3-4b88-badb-a39151d6b1d0",
+      "updated_at": 1649234279
+    },
+    "repository_id": "00000000-0000-0158-0000-000000000000",
+    "score": {
+      "best_practices": 40,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 91.89189189189187,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/envoyproxy/java-control-plane"
+  },
+  {
+    "check_sets": ["code-lite"],
+    "digest": "0611383ba820e9cc4daf6d3e2272ef4108e40474",
+    "name": "xds-relay",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": true,
+            "exemption_reason": "DCO check passed",
+            "passed": false
+          },
+          "dco": {
+            "exempt": false,
+            "passed": true
+          },
+          "recent_release": {
+            "exempt": false,
+            "passed": false
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/xds-relay/blob/main/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/xds-relay/blob/main/OWNERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://github.com/envoyproxy/xds-relay/blob/main/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "36efb63a-da92-43ad-9050-08dbcab2b951",
+      "updated_at": 1649234279
+    },
+    "repository_id": "00000000-0000-0157-0000-000000000000",
+    "score": {
+      "best_practices": 40,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 91.89189189189187,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/envoyproxy/xds-relay"
+  }
+]

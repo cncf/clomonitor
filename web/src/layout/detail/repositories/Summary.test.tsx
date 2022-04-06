@@ -78,6 +78,35 @@ describe('Summary', () => {
     });
   });
 
+  it('renders component when one of the repos failed', () => {
+    const repositories = getRepositories('2');
+    render(
+      <Router>
+        <Summary {...defaultProps} repositories={repositories} />
+      </Router>
+    );
+
+    expect(screen.getByText('Repository')).toBeInTheDocument();
+    expect(screen.getByText('Global')).toBeInTheDocument();
+    expect(screen.getByText('Documentation')).toBeInTheDocument();
+    expect(screen.getByText('License')).toBeInTheDocument();
+    expect(screen.getByText('Best Practices')).toBeInTheDocument();
+    expect(screen.getByText('Security')).toBeInTheDocument();
+
+    expect(screen.getByText('go-control-panel')).toBeInTheDocument();
+    expect(screen.getByText('envoy')).toBeInTheDocument();
+
+    const btns = screen.getAllByRole('button', { name: /Go from summary to section:/i });
+    expect(btns).toHaveLength(2);
+
+    expect(screen.getByText('75')).toBeInTheDocument();
+    expect(screen.getByText('100')).toBeInTheDocument();
+
+    expect(screen.getAllByText('90')).toHaveLength(2);
+    expect(screen.getAllByText('87')).toHaveLength(2);
+    expect(screen.getAllByText('n/a')).toHaveLength(6);
+  });
+
   it('renders component', () => {
     const repositories = getRepositories('1');
     render(

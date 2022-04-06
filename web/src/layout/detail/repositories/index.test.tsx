@@ -61,6 +61,18 @@ describe('RepositoriesList', () => {
       expect(anchorBtns[22]).toHaveAttribute('aria-label', 'Link to anchor sdk-python');
     });
 
+    it('renders component when one repo fails', () => {
+      const repositories = getRepositories('2');
+      render(
+        <Router>
+          <RepositoriesList {...defaultProps} repositories={repositories} />
+        </Router>
+      );
+
+      expect(screen.getByText('error running dco check')).toBeInTheDocument();
+      expect(screen.getByText('-')).toBeInTheDocument();
+    });
+
     it('clicks anchor link', () => {
       const repositories = getRepositories('1');
       render(

@@ -1,9 +1,11 @@
+import { isUndefined } from 'lodash';
+
 import getCategoryColor from '../../utils/getCategoryColor';
 import roundScoreValue from '../../utils/roundScoreValue';
 import styles from './RoundScore.module.css';
 
 interface Props {
-  score: number;
+  score?: number;
   className?: string;
 }
 
@@ -23,16 +25,19 @@ const RoundScore = (props: Props) => {
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
           />
-          <path
-            className={styles.circle}
-            strokeDasharray={`${props.score}, 100`}
-            style={{ stroke: `var(--rm-${color})` }}
-            d="M18 2.0845
+          {!isUndefined(props.score) && (
+            <path
+              className={styles.circle}
+              strokeDasharray={`${props.score}, 100`}
+              style={{ stroke: `var(--rm-${color})` }}
+              d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
+            />
+          )}
+
           <text x="18" y="23" className={styles.value}>
-            {roundScoreValue(props.score)}
+            {props.score ? roundScoreValue(props.score) : '-'}
           </text>
         </svg>
       </div>

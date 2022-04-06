@@ -1,6 +1,6 @@
 use self::path::Globs;
 use crate::{config::*, linter::CheckSet};
-use anyhow::Error;
+use anyhow::{Context, Result};
 use metadata::{Exemption, Metadata};
 use octocrab::models::Repository;
 use patterns::*;
@@ -119,12 +119,12 @@ impl<T> CheckResult<T> {
 /// Wrapper function that takes care of running some common pre-check
 /// operations and the synchronous check function provided.
 pub(crate) fn run_check<T, F>(
-    check_id: &str,
+    check_id: &'static str,
     check_fn: F,
     opts: &CheckOptions,
-) -> Result<Option<CheckResult<T>>, Error>
+) -> Result<Option<CheckResult<T>>>
 where
-    F: Fn(&CheckOptions) -> Result<CheckResult<T>, Error>,
+    F: Fn(&CheckOptions) -> Result<CheckResult<T>>,
 {
     if should_skip_check(check_id, &opts.check_sets) {
         return Ok(None);
@@ -136,19 +136,21 @@ where
     }
 
     // Call sync check function and wrap returned check result in an option
-    check_fn(opts).map(Some)
+    check_fn(opts)
+        .map(Some)
+        .context(format!("error running {check_id} check"))
 }
 
 /// Wrapper function that takes care of running some common pre-check
 /// operations and the asynchronous check function provided.
 pub(crate) async fn run_async_check<'a, T, F, Fut>(
-    check_id: &str,
+    check_id: &'static str,
     check_async_fn: F,
     opts: &'a CheckOptions,
-) -> Result<Option<CheckResult<T>>, Error>
+) -> Result<Option<CheckResult<T>>>
 where
     F: Fn(&'a CheckOptions) -> Fut,
-    Fut: Future<Output = Result<CheckResult<T>, Error>>,
+    Fut: Future<Output = Result<CheckResult<T>>>,
 {
     if should_skip_check(check_id, &opts.check_sets) {
         return Ok(None);
@@ -160,17 +162,20 @@ where
     }
 
     // Call async check function and wrap returned check result in an option
-    check_async_fn(opts).await.map(Some)
+    check_async_fn(opts)
+        .await
+        .map(Some)
+        .context(format!("error running {check_id} check"))
 }
 
 /// Adopters check.
-pub(crate) fn adopters(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn adopters(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     find_file_or_reference(opts, &ADOPTERS_FILE, &*ADOPTERS_IN_README)
 }
 
 /// Artifact Hub badge check.
-pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult> {
     // Reference in README file
     Ok(CheckResult::from_url(readme_capture(
         &opts.root,
@@ -179,7 +184,7 @@ pub(crate) fn artifacthub_badge(opts: &CheckOptions) -> Result<CheckResult, Erro
 }
 
 /// Changelog check.
-pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     let r = find_file_or_reference(opts, &CHANGELOG_FILE, &*CHANGELOG_IN_README)?;
     if r.passed {
@@ -195,13 +200,13 @@ pub(crate) async fn changelog(opts: &CheckOptions) -> Result<CheckResult, Error>
 }
 
 /// Contributor license agreement check.
-pub(crate) async fn cla(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn cla(opts: &CheckOptions) -> Result<CheckResult> {
     // CLA check in Github
     Ok(github::has_check(&opts.url, &*CLA_IN_GH).await?.into())
 }
 
 /// Code of conduct check.
-pub(crate) async fn code_of_conduct(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn code_of_conduct(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     let r = find_file_or_reference(opts, &CODE_OF_CONDUCT_FILE, &*CODE_OF_CONDUCT_IN_README)?;
     if r.passed {
@@ -214,13 +219,13 @@ pub(crate) async fn code_of_conduct(opts: &CheckOptions) -> Result<CheckResult, 
 }
 
 /// Community meeting check.
-pub(crate) fn community_meeting(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn community_meeting(opts: &CheckOptions) -> Result<CheckResult> {
     // Reference in README file
     Ok(readme_matches(&opts.root, &*COMMUNITY_MEETING_TEXT)?.into())
 }
 
 /// Contributing check.
-pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     let r = find_file_or_reference(opts, &CONTRIBUTING_FILE, &*CONTRIBUTING_IN_README)?;
     if r.passed {
@@ -233,19 +238,19 @@ pub(crate) async fn contributing(opts: &CheckOptions) -> Result<CheckResult, Err
 }
 
 /// Developer Certificate of Origin check.
-pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn dco(opts: &CheckOptions) -> Result<CheckResult> {
     // DCO check in Github
     Ok(github::has_check(&opts.url, &*DCO_IN_GH).await?.into())
 }
 
 /// Governance check.
-pub(crate) fn governance(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn governance(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     find_file_or_reference(opts, &GOVERNANCE_FILE, &*GOVERNANCE_IN_README)
 }
 
 /// License check.
-pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>, Error> {
+pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>> {
     // File in repo
     if let Some(spdx_id) = license::detect(Globs {
         root: &opts.root,
@@ -269,7 +274,7 @@ pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>, Error>
 pub(crate) fn license_approved(
     spdx_id: &Option<String>,
     opts: &CheckOptions,
-) -> Result<Option<CheckResult<bool>>, Error> {
+) -> Result<Option<CheckResult<bool>>> {
     if should_skip_check(LICENSE_APPROVED, &opts.check_sets) {
         return Ok(None);
     }
@@ -293,7 +298,7 @@ pub(crate) fn license_approved(
 }
 
 /// License scanning check.
-pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult> {
     // Scanning url in metadata file
     if let Some(md) = &opts.md {
         if let Some(license_scanning) = &md.license_scanning {
@@ -312,13 +317,13 @@ pub(crate) fn license_scanning(opts: &CheckOptions) -> Result<CheckResult, Error
 }
 
 /// Maintainers check.
-pub(crate) fn maintainers(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn maintainers(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     find_file_or_reference(opts, &MAINTAINERS_FILE, &*MAINTAINERS_IN_README)
 }
 
 /// OpenSSF badge check.
-pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult> {
     // Reference in README file
     Ok(CheckResult::from_url(readme_capture(
         &opts.root,
@@ -327,20 +332,20 @@ pub(crate) fn openssf_badge(opts: &CheckOptions) -> Result<CheckResult, Error> {
 }
 
 /// Recent release check.
-pub(crate) async fn recent_release(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn recent_release(opts: &CheckOptions) -> Result<CheckResult> {
     Ok(CheckResult::from_url(
         github::has_recent_release(&opts.url).await?,
     ))
 }
 
 /// Roadmap check.
-pub(crate) fn roadmap(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn roadmap(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README
     find_file_or_reference(opts, &ROADMAP_FILE, &*ROADMAP_IN_README)
 }
 
 /// Readme check.
-pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo
     if let Some(path) = path::find(readme_globs(&opts.root))? {
         return Ok(CheckResult::from_path(Some(path), &opts.gh_md));
@@ -350,7 +355,7 @@ pub(crate) fn readme(opts: &CheckOptions) -> Result<CheckResult, Error> {
 }
 
 /// Software bill of materials (SBOM).
-pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult> {
     // Asset in last release
     if let Some(last_release) = github::last_release(&opts.url).await? {
         if last_release
@@ -367,7 +372,7 @@ pub(crate) async fn sbom(opts: &CheckOptions) -> Result<CheckResult, Error> {
 }
 
 /// Security policy check.
-pub(crate) async fn security_policy(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn security_policy(opts: &CheckOptions) -> Result<CheckResult> {
     // File in repo or reference in README file
     let r = find_file_or_reference(opts, &SECURITY_POLICY_FILE, &*SECURITY_POLICY_IN_README)?;
     if r.passed {
@@ -380,13 +385,13 @@ pub(crate) async fn security_policy(opts: &CheckOptions) -> Result<CheckResult, 
 }
 
 /// Slack presence check.
-pub(crate) fn slack_presence(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn slack_presence(opts: &CheckOptions) -> Result<CheckResult> {
     // Reference in README file
     Ok(readme_matches(&opts.root, &*SLACK_IN_README)?.into())
 }
 
 /// Trademark disclaimer check.
-pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckResult> {
     // Trademark disclaimer in website setup in Github
     if let Some(url) = &opts.gh_md.homepage {
         if !url.is_empty() {
@@ -402,7 +407,7 @@ pub(crate) async fn trademark_disclaimer(opts: &CheckOptions) -> Result<CheckRes
 }
 
 /// Website check.
-pub(crate) fn website(opts: &CheckOptions) -> Result<CheckResult, Error> {
+pub(crate) fn website(opts: &CheckOptions) -> Result<CheckResult> {
     // Website in Github
     if let Some(url) = &opts.gh_md.homepage {
         if !url.is_empty() {
@@ -443,7 +448,7 @@ fn find_file_or_reference(
     opts: &CheckOptions,
     patterns: &[&str],
     re: &RegexSet,
-) -> Result<CheckResult, Error> {
+) -> Result<CheckResult> {
     // File in repo
     if let Some(path) = path::find(Globs {
         root: &opts.root,
@@ -463,13 +468,13 @@ fn find_file_or_reference(
 
 /// Check if the README file content matches any of the regular expressions
 /// provided.
-fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool, Error> {
+fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool> {
     content::matches(readme_globs(root), re)
 }
 
 /// Check if the README file content matches any of the regular expressions
 /// provided, returning the value from the first capture group.
-fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>, Error> {
+fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>> {
     content::find(readme_globs(root), regexps)
 }
 

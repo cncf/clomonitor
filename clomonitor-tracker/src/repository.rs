@@ -1,4 +1,4 @@
-use anyhow::{format_err, Error};
+use anyhow::{format_err, Result};
 use chrono::{DateTime, Duration, Utc};
 use clomonitor_core::{
     linter::{lint, CheckSet, LintOptions, Report},
@@ -32,11 +32,7 @@ impl Repository {
 
     /// Track repository if it has changed since the last time it was tracked.
     /// This involves cloning the repository, linting it and storing the results.
-    pub(crate) async fn track(
-        &self,
-        mut db: DbClient,
-        github_token: Option<String>,
-    ) -> Result<(), Error> {
+    pub(crate) async fn track(&self, mut db: DbClient, github_token: Option<String>) -> Result<()> {
         let start = Instant::now();
 
         // Process only if the repository has changed since the last time it
@@ -66,11 +62,10 @@ impl Repository {
             Ok(report) => Some(report),
             Err(err) => {
                 warn!(
-                    "error linting repository [id: {}]: {}",
-                    self.repository_id,
-                    err.to_string()
+                    "error linting repository [id: {}]: {:#}",
+                    self.repository_id, err
                 );
-                errors = Some(err.to_string());
+                errors = Some(format!("error linting repository: {:#}", err));
                 None
             }
         };
@@ -92,7 +87,7 @@ impl Repository {
     }
 
     /// Get the remote digest of a repository.
-    async fn get_remote_digest(&self) -> Result<String, Error> {
+    async fn get_remote_digest(&self) -> Result<String> {
         let output = Command::new("git")
             .arg("ls-remote")
             .arg(&self.url)
@@ -107,7 +102,7 @@ impl Repository {
     }
 
     /// Clone (shallow) the source git repo in the destination path provided.
-    async fn clone(&self, dst: &Path) -> Result<(), Error> {
+    async fn clone(&self, dst: &Path) -> Result<()> {
         let output = Command::new("git")
             .arg("clone")
             .arg("--depth=1")
@@ -127,7 +122,7 @@ impl Repository {
         tx: &Transaction<'_>,
         report: &Option<Report>,
         errors: Option<String>,
-    ) -> Result<(), Error> {
+    ) -> Result<()> {
         match report {
             Some(report) => {
                 tx.execute(
@@ -164,11 +159,7 @@ impl Repository {
     }
 
     /// Update repository's score based on the provided linter report.
-    async fn update_score(
-        &self,
-        tx: &Transaction<'_>,
-        report: &Option<Report>,
-    ) -> Result<(), Error> {
+    async fn update_score(&self, tx: &Transaction<'_>, report: &Option<Report>) -> Result<()> {
         if let Some(report) = report {
             let score = score::calculate(report);
             tx.execute(
@@ -187,7 +178,7 @@ impl Repository {
     }
 
     /// Update project's score based on the project's repositories scores.
-    async fn update_project_score(&self, tx: &Transaction<'_>) -> Result<(), Error> {
+    async fn update_project_score(&self, tx: &Transaction<'_>) -> Result<()> {
         // Get project's id and lock project's row
         let row = tx
             .query_one(
@@ -246,7 +237,7 @@ impl Repository {
     }
 
     /// Update repository's digest.
-    async fn update_digest(&self, tx: &Transaction<'_>, digest: &str) -> Result<(), Error> {
+    async fn update_digest(&self, tx: &Transaction<'_>, digest: &str) -> Result<()> {
         tx.execute(
             "update repository set digest = $1::text where repository_id = $2::uuid;",
             &[&digest, &self.repository_id],

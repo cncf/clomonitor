@@ -1,5 +1,5 @@
 use crate::handlers::*;
-use anyhow::Error;
+use anyhow::Result;
 use axum::{
     extract::Extension,
     http::StatusCode,
@@ -17,7 +17,7 @@ use tower_http::{
 };
 
 /// Setup API server router.
-pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router, Error> {
+pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router> {
     // Setup some paths
     let static_path = cfg.get_str("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");

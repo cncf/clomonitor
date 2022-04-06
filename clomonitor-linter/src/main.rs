@@ -1,4 +1,4 @@
-use anyhow::{format_err, Error};
+use anyhow::{format_err, Result};
 use clap::Parser;
 use clomonitor_core::{
     linter::{lint, CheckSet, LintOptions},
@@ -30,7 +30,7 @@ struct Args {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<()> {
     let args = Args::parse();
 
     // Lint repository provided and display results

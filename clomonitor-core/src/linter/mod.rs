@@ -1,5 +1,5 @@
 use super::config::*;
-use anyhow::Error;
+use anyhow::Result;
 use check::{
     metadata::{Metadata, METADATA_FILE},
     *,
@@ -94,7 +94,7 @@ pub struct Legal {
 }
 
 /// Lint the path provided and return a report.
-pub async fn lint(lint_opts: LintOptions) -> Result<Report, Error> {
+pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
     // Initialize Github API client
     let mut builder = octocrab::Octocrab::builder();
     if let Some(token) = &lint_opts.github_token {

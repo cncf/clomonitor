@@ -1,5 +1,5 @@
 use super::path::{self, Globs};
-use anyhow::Error;
+use anyhow::Result;
 use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
 use std::fs;
@@ -8,7 +8,7 @@ use std::fs;
 /// matches any of the regular expressions given, returning the captured value
 /// when there is a match. This function expects that the regular expressions
 /// provided contain one capture group.
-pub(crate) fn find(globs: Globs, regexps: Vec<&Regex>) -> Result<Option<String>, Error> {
+pub(crate) fn find(globs: Globs, regexps: Vec<&Regex>) -> Result<Option<String>> {
     for path in path::matches(globs)?.iter() {
         if let Ok(content) = fs::read_to_string(path) {
             for re in regexps.iter() {
@@ -25,7 +25,7 @@ pub(crate) fn find(globs: Globs, regexps: Vec<&Regex>) -> Result<Option<String>,
 
 /// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given.
-pub(crate) fn matches(globs: Globs, re: &RegexSet) -> Result<bool, Error> {
+pub(crate) fn matches(globs: Globs, re: &RegexSet) -> Result<bool> {
     Ok(path::matches(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
             return re.is_match(&content);
@@ -36,7 +36,7 @@ pub(crate) fn matches(globs: Globs, re: &RegexSet) -> Result<bool, Error> {
 
 /// Check if the content of the url provided matches any of the regular
 /// expressions given.
-pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool, Error> {
+pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool> {
     lazy_static! {
         static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
     }

@@ -1,5 +1,5 @@
 use crate::repository;
-use anyhow::Error;
+use anyhow::Result;
 use config::Config;
 use deadpool_postgres::Pool;
 use futures::{
@@ -14,7 +14,7 @@ use tracing::{error, info};
 const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
 
 /// Track all repositories registered in the database.
-pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<(), Error> {
+pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     info!("tracker started");
 
     // Get repositories to process

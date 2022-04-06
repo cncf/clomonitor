@@ -1,5 +1,5 @@
 use super::path::{matches, Globs};
-use anyhow::Error;
+use anyhow::Result;
 use askalono::*;
 use lazy_static::lazy_static;
 use std::fs;
@@ -29,7 +29,7 @@ pub(crate) fn is_approved(spdx_id: &str) -> bool {
 }
 
 /// Detect repository's license and return its SPDX id if possible.
-pub(crate) fn detect(globs: Globs) -> Result<Option<String>, Error> {
+pub(crate) fn detect(globs: Globs) -> Result<Option<String>> {
     lazy_static! {
         static ref LICENSES: Store = Store::from_cache(LICENSES_DATA).unwrap();
     }

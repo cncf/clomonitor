@@ -1,4 +1,4 @@
-use anyhow::Error;
+use anyhow::Result;
 use glob::{glob_with, MatchOptions, PatternError};
 use std::{
     ffi::OsStr,
@@ -14,7 +14,7 @@ pub(crate) struct Globs<'a> {
 }
 
 /// Find the first path that matches any of the globs provided.
-pub(crate) fn find(globs: Globs) -> Result<Option<PathBuf>, Error> {
+pub(crate) fn find(globs: Globs) -> Result<Option<PathBuf>> {
     let root = globs.root.to_owned();
     match matches(globs)?.first() {
         Some(path) => Ok(Some(

@@ -1,4 +1,4 @@
-use anyhow::Error;
+use anyhow::Result;
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
@@ -22,7 +22,7 @@ struct Args {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<()> {
     let args = Args::parse();
 
     // Setup logging

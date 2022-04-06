@@ -1,4 +1,4 @@
-use anyhow::Error;
+use anyhow::Result;
 use serde::Deserialize;
 use std::ffi::OsStr;
 use std::fs;
@@ -18,7 +18,7 @@ pub struct Metadata {
 impl Metadata {
     /// Create a new metadata instance from the contents of the file located at
     /// the path provided.
-    pub(crate) fn from<P: AsRef<OsStr>>(path: P) -> Result<Option<Self>, Error> {
+    pub(crate) fn from<P: AsRef<OsStr>>(path: P) -> Result<Option<Self>> {
         if !Path::new(&path).exists() {
             return Ok(None);
         }

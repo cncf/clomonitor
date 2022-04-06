@@ -1,4 +1,4 @@
-use anyhow::{format_err, Error};
+use anyhow::{format_err, Context, Result};
 use chrono::{Duration, Utc};
 use lazy_static::lazy_static;
 use octocrab::{
@@ -21,18 +21,19 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
 }
 
 /// Get repository's metadata from the Github API.
-pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository, Error> {
+pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
-    match github.repos(&owner, &repo).get().await {
-        Ok(repo) => Ok(repo),
-        Err(err) => Err(err.into()),
-    }
+    github
+        .repos(&owner, &repo)
+        .get()
+        .await
+        .context("error getting repository metadata")
 }
 
 /// Check if the repo has a check that matches any of the regular expressions
 /// provided.
-pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Error> {
+pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
 
@@ -43,7 +44,8 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
         .state(State::Closed)
         .per_page(1)
         .send()
-        .await?;
+        .await
+        .context("error getting last closed PR")?;
     let sha = match page.take_items().first() {
         Some(pr) => pr.head.sha.clone(),
         None => return Ok(false),
@@ -51,7 +53,10 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
 
     // Search in check suites
     let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
-    let response: GHCheckSuitesResponse = github.get(url, None::<&()>).await?;
+    let response: GHCheckSuitesResponse = github
+        .get(url, None::<&()>)
+        .await
+        .context("error getting check suites")?;
     if response
         .check_suites
         .iter()
@@ -68,7 +73,8 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
         .await?;
     if github
         .all_pages::<Status>(page)
-        .await?
+        .await
+        .context("error getting commit statuses")?
         .iter()
         .filter(|s| s.context.is_some())
         .any(|s| re.is_match(s.context.as_ref().unwrap()))
@@ -78,7 +84,10 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
 
     // Search in check runs
     let url = format!("repos/{}/{}/commits/{}/check-runs", &owner, &repo, &sha);
-    let response: GHCheckRunsResponse = github.get(url, None::<&()>).await?;
+    let response: GHCheckRunsResponse = github
+        .get(url, None::<&()>)
+        .await
+        .context("error getting check runs")?;
     Ok(response.check_runs.iter().any(|r| re.is_match(&r.name)))
 }
 
@@ -87,7 +96,7 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
 pub(crate) async fn has_community_health_file(
     file: &str,
     gh_md: &Repository,
-) -> Result<Option<String>, Error> {
+) -> Result<Option<String>> {
     // Setup HTTP client lazily
     lazy_static! {
         static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
@@ -111,7 +120,16 @@ pub(crate) async fn has_community_health_file(
         community_repo.default_branch.as_ref().unwrap(),
         file
     );
-    match HTTP_CLIENT.head(file_raw_url).send().await?.status() {
+    match HTTP_CLIENT
+        .head(&file_raw_url)
+        .send()
+        .await
+        .context(format!(
+            "error checking community health file {}",
+            &file_raw_url
+        ))?
+        .status()
+    {
         http::StatusCode::OK => {
             let url = build_url(
                 Path::new(file),
@@ -126,7 +144,7 @@ pub(crate) async fn has_community_health_file(
 }
 
 /// Check if the repository has released a new version in the last year.
-pub(crate) async fn has_recent_release(repo_url: &str) -> Result<Option<String>, Error> {
+pub(crate) async fn has_recent_release(repo_url: &str) -> Result<Option<String>> {
     if let Some(last_release) = last_release(repo_url).await? {
         if let Some(created_at) = last_release.created_at {
             if created_at > Utc::now() - Duration::days(365) {
@@ -138,7 +156,7 @@ pub(crate) async fn has_recent_release(repo_url: &str) -> Result<Option<String>,
 }
 
 /// Return the last release of the provided repository when available.
-pub(crate) async fn last_release(repo_url: &str) -> Result<Option<Release>, Error> {
+pub(crate) async fn last_release(repo_url: &str) -> Result<Option<Release>> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
     let github = octocrab::instance();
     let mut page = github
@@ -147,16 +165,14 @@ pub(crate) async fn last_release(repo_url: &str) -> Result<Option<Release>, Erro
         .list()
         .per_page(1)
         .send()
-        .await?;
+        .await
+        .context("error getting last release")?;
     Ok(page.take_items().first().cloned())
 }
 
 /// Check if the last release body matches any of the regular expressions
 /// provided.
-pub(crate) async fn last_release_body_matches(
-    repo_url: &str,
-    re: &RegexSet,
-) -> Result<bool, Error> {
+pub(crate) async fn last_release_body_matches(repo_url: &str, re: &RegexSet) -> Result<bool> {
     if let Some(last_release) = last_release(repo_url).await? {
         if let Some(body) = last_release.body {
             return Ok(re.is_match(&body));
@@ -166,7 +182,7 @@ pub(crate) async fn last_release_body_matches(
 }
 
 /// Extract the owner and repository from the repository url provided.
-fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
+fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
     lazy_static! {
         static ref GITHUB_REPO_URL_RE: Regex =
             Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$").unwrap();

@@ -4,6 +4,7 @@
 
 .progress {
   height: 0.35rem;
+  background-color: var(--bg-progressbar-stats) !important;
 }
 
 .scoreWrapper {

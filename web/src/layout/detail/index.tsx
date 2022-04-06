@@ -12,6 +12,7 @@ import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
 import updateMetaIndex from '../../utils/updateMetaIndex';
 import CartegoryBadge from '../common/badges/CategoryBadge';
+import FoundationBadge from '../common/badges/FoundationBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
 import ExternalLink from '../common/ExternalLink';
@@ -29,7 +30,7 @@ const Detail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentState = location.state as { currentSearch?: string };
-  const { org, project } = useParams();
+  const { org, project, foundation } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
 
@@ -64,7 +65,7 @@ const Detail = () => {
       window.scrollTo(0, 0); // Go to top when a new project is fetched
       setIsLoadingProject(true);
       try {
-        const projectDetail = await API.getProjectDetail(org!, project!);
+        const projectDetail = await API.getProjectDetail(org!, project!, foundation!);
         setDetail(projectDetail);
         updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
         setIsLoadingProject(false);
@@ -76,7 +77,7 @@ const Detail = () => {
     if (!isUndefined(org) && !isUndefined(project)) {
       fetchProjectDetail();
     }
-  }, [org, project]);
+  }, [org, project, foundation]);
 
   return (
     <>
@@ -129,8 +130,9 @@ const Detail = () => {
                           </div>
 
                           <div className="d-flex flex-row align-items-center my-2">
-                            <MaturityBadge maturityLevel={detail.maturity_id} />
-                            <CartegoryBadge categoryId={detail.category_id} className="d-none d-sm-block ms-2" />
+                            <FoundationBadge foundation={detail.foundation} />
+                            <MaturityBadge maturityLevel={detail.maturity} className="ms-2" />
+                            <CartegoryBadge category={detail.category} className="d-none d-md-block ms-2" />
                           </div>
 
                           <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>
@@ -151,7 +153,7 @@ const Detail = () => {
                               <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
                                 <GoCalendar className={`me-1 ${styles.statsIcon}`} />
                                 <div className="d-flex flex-row">
-                                  <span className="text-muted d-none d-lg-block me-1">Accepted by CNCF:</span>
+                                  <span className="text-muted d-none d-lg-block me-1">Accepted:</span>
                                   {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
                                 </div>
                               </div>
@@ -162,6 +164,7 @@ const Detail = () => {
                           <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
                             {org && (
                               <ProjectDropdown
+                                foundation={detail.foundation}
                                 orgName={org}
                                 projectName={detail.name}
                                 projectDisplayName={detail.display_name}

@@ -3,11 +3,11 @@
 exports[`CategoryBadge creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="badge text-secondary border border-secondary rounded-0 position-relative badge undefined"
+    class="badge text-dark lighterText rounded-0 position-relative badge undefined"
     data-testid="category-badge"
   >
     <div
-      class="d-flex flex-row align-items-center"
+      class="d-flex flex-row align-items-center text-capitalize"
     >
       <svg
         class="me-2"
@@ -35,7 +35,7 @@ exports[`CategoryBadge creates snapshot 1`] = `
           d="M3 13.5h8v8H3z"
         />
       </svg>
-      App definition
+      app definition
     </div>
   </div>
 </DocumentFragment>

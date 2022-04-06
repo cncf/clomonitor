@@ -1,42 +1,27 @@
 create extension if not exists pgcrypto;
 
+create type foundation as enum ('cncf', 'lfaidata');
+
 create table if not exists organization (
     organization_id uuid primary key default gen_random_uuid(),
-    name text not null check (name <> '') unique,
+    name text not null check (name <> ''),
     display_name text check (display_name <> ''),
     description text check (description <> ''),
     home_url text check (home_url <> ''),
     logo_url text check (logo_url <> ''),
-    created_at timestamptz default current_timestamp not null
+    created_at timestamptz default current_timestamp not null,
+    foundation foundation not null,
+    unique (foundation, name)
 );
 
-create table if not exists category (
-    category_id integer primary key,
-    name text not null check (name <> '') unique
-);
-
-insert into category (category_id, name) values (0, 'app definition');
-insert into category (category_id, name) values (1, 'observability');
-insert into category (category_id, name) values (2, 'orchestration');
-insert into category (category_id, name) values (3, 'platform');
-insert into category (category_id, name) values (4, 'provisioning');
-insert into category (category_id, name) values (5, 'runtime');
-insert into category (category_id, name) values (6, 'serverless');
-
-create table if not exists maturity (
-    maturity_id integer primary key,
-    name text not null check (name <> '') unique
-);
-
-insert into maturity (maturity_id, name) values (0, 'graduated');
-insert into maturity (maturity_id, name) values (1, 'incubating');
-insert into maturity (maturity_id, name) values (2, 'sandbox');
+create type maturity as enum ('graduated', 'incubating', 'sandbox');
 
 create table if not exists project (
     project_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
     display_name text check (display_name <> ''),
     description text check (description <> ''),
+    category text check (category <> ''),
     home_url text check (home_url <> ''),
     logo_url text check (logo_url <> ''),
     devstats_url text check (devstats_url <> ''),
@@ -45,9 +30,8 @@ create table if not exists project (
     accepted_at date,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
+    maturity maturity not null,
     organization_id uuid not null references organization on delete cascade,
-    category_id integer not null references category on delete restrict,
-    maturity_id integer not null references maturity on delete restrict,
     unique (organization_id, name)
 );
 
@@ -57,11 +41,11 @@ create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
     url text not null check (url <> ''),
-    check_sets check_set[] not null,
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
+    check_sets check_set[] not null,
     project_id uuid not null references project on delete cascade,
     unique (project_id, name)
 );

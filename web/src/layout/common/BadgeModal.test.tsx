@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { Foundation } from '../../types';
 import BadgeModal from './BadgeModal';
 
 const mockOnCloseModal = jest.fn();
 
 const defaultProps = {
+  foundation: Foundation.cncf,
   orgName: 'org',
   projectName: 'proj',
   openStatus: { status: true, name: 'badge' },
@@ -34,12 +36,12 @@ describe('BadgeModal', () => {
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge'
+        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge'
       );
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge)](http://localhost/projects/org/proj)'
+        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge)](http://localhost/projects/cncf/org/proj)'
       );
     });
 
@@ -55,12 +57,12 @@ describe('BadgeModal', () => {
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge'
+        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge'
       );
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        'http://localhost/projects/org/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge[CLOMonitor]]'
+        'http://localhost/projects/cncf/org/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge[CLOMonitor]]'
       );
     });
   });

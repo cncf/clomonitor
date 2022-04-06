@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { Foundation } from '../../types';
 import ReportSummaryModal from './ReportSummaryModal';
 
 const mockOnCloseModal = jest.fn();
 
 const defaultProps = {
+  foundation: Foundation.cncf,
   orgName: 'org',
   projectName: 'proj',
   openStatus: { status: true, name: 'reportSummary' },
@@ -45,7 +47,7 @@ describe('ReportSummaryModal', () => {
       expect(screen.getAllByText('Markdown')).toHaveLength(2);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '[![CLOMonitor report summary](http://localhost/api/projects/org/proj/report-summary?theme=light)](http://localhost/projects/org/proj)'
+        '[![CLOMonitor report summary](http://localhost/api/projects/cncf/org/proj/report-summary?theme=light)](http://localhost/projects/cncf/org/proj)'
       );
       expect(
         screen.getByRole('button', { name: 'Copy report summary markdown link to clipboard' })
@@ -61,7 +63,7 @@ describe('ReportSummaryModal', () => {
       userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        'http://localhost/projects/org/proj[image:http://localhost/api/projects/org/proj/report-summary?theme=light[CLOMonitor report summary]]'
+        'http://localhost/projects/cncf/org/proj[image:http://localhost/api/projects/cncf/org/proj/report-summary?theme=light[CLOMonitor report summary]]'
       );
       expect(screen.getByRole('button', { name: 'Copy report summary Ascii link to clipboard' })).toBeInTheDocument();
     });
@@ -75,7 +77,7 @@ describe('ReportSummaryModal', () => {
       userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '<a href="http://localhost/projects/org/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/org/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'
+        '<a href="http://localhost/projects/cncf/org/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/cncf/org/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'
       );
       expect(screen.getByRole('button', { name: 'Copy report summary html link to clipboard' })).toBeInTheDocument();
     });

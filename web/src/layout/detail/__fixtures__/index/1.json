@@ -1,18 +1,19 @@
 {
   "accepted_at": 1592870400,
-  "category_id": 0,
+  "category": "app definition",
   "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
   "devstats_url": "https://artifacthub.devstats.cncf.io/",
   "display_name": "Artifact Hub",
+  "foundation": "cncf",
   "id": "00000000-0001-0000-0000-000000000000",
   "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
-  "maturity_id": 2,
+  "maturity": "sandbox",
   "name": "artifact-hub",
   "rating": "a",
   "repositories": [
     {
       "check_sets": ["community", "code"],
-      "digest": "a25d69235ef9a196aa905e160c99977b692d5e34",
+      "digest": "c80de22e178c45ec4324e49cb5dd89e07397c364",
       "name": "artifact-hub",
       "report": {
         "data": {
@@ -21,6 +22,11 @@
               "exempt": false,
               "passed": true,
               "url": "https://artifacthub.io/packages/helm/artifact-hub/artifact-hub"
+            },
+            "cla": {
+              "exempt": true,
+              "exemption_reason": "DCO check passed",
+              "passed": false
             },
             "community_meeting": {
               "exempt": false,
@@ -123,8 +129,8 @@
             }
           }
         },
-        "report_id": "7db3c55c-4de8-458a-80b7-b3cb7911a5c1",
-        "updated_at": 1648739383
+        "report_id": "5804d557-9394-43aa-9591-c730fe6d8fba",
+        "updated_at": 1649318274
       },
       "repository_id": "00000000-0000-0001-0000-000000000000",
       "score": {
@@ -153,5 +159,5 @@
     "license": 100,
     "security": 86.66666666666667
   },
-  "updated_at": 1648739383
+  "updated_at": 1649318274
 }

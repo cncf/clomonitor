@@ -11,9 +11,9 @@ const defaultProps = {
     name: FilterKind.Maturity,
     title: 'Maturity level',
     filters: [
-      { name: Maturity.Graduated, label: 'Graduated' },
-      { name: Maturity.Incubating, label: 'Incubating' },
-      { name: Maturity.Sandbox, label: 'Sandbox' },
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+      { name: Maturity.sandbox, label: 'Sandbox' },
     ],
   },
   activeFilters: [],
@@ -43,7 +43,7 @@ describe('Section', () => {
     });
 
     it('renders Section with selected options', () => {
-      render(<Section {...defaultProps} activeFilters={['1', '2']} />);
+      render(<Section {...defaultProps} activeFilters={['incubating', 'sandbox']} />);
 
       expect(screen.getByRole('checkbox', { name: 'Incubating' })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeChecked();
@@ -59,11 +59,11 @@ describe('Section', () => {
       userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockOnChange).toHaveBeenCalledWith('maturity', '1', true);
+      expect(mockOnChange).toHaveBeenCalledWith('maturity', 'incubating', true);
     });
 
     it('calls onChange to click selected filter', () => {
-      render(<Section {...defaultProps} activeFilters={['0']} />);
+      render(<Section {...defaultProps} activeFilters={['graduated']} />);
 
       const check = screen.getByRole('checkbox', { name: 'Graduated' });
 
@@ -72,7 +72,7 @@ describe('Section', () => {
       userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockOnChange).toHaveBeenCalledWith('maturity', '0', false);
+      expect(mockOnChange).toHaveBeenCalledWith('maturity', 'graduated', false);
     });
   });
 });

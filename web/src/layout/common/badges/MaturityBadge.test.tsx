@@ -9,22 +9,22 @@ describe('MaturityBadge', () => {
   });
 
   it('creates snapshot', () => {
-    const { asFragment } = render(<MaturityBadge maturityLevel={Maturity.Graduated} />);
+    const { asFragment } = render(<MaturityBadge maturityLevel={Maturity.graduated} />);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders category 0', () => {
-    render(<MaturityBadge maturityLevel={Maturity.Graduated} />);
-    expect(screen.getByText('Graduated')).toBeInTheDocument();
+  it('renders category graduated', () => {
+    render(<MaturityBadge maturityLevel={Maturity.graduated} />);
+    expect(screen.getByText('graduated')).toBeInTheDocument();
   });
 
-  it('renders category 1', () => {
-    render(<MaturityBadge maturityLevel={Maturity.Incubating} />);
-    expect(screen.getByText('Incubating')).toBeInTheDocument();
+  it('renders category incubating', () => {
+    render(<MaturityBadge maturityLevel={Maturity.incubating} />);
+    expect(screen.getByText('incubating')).toBeInTheDocument();
   });
 
-  it('renders category 2', () => {
-    render(<MaturityBadge maturityLevel={Maturity.Sandbox} />);
-    expect(screen.getByText('Sandbox')).toBeInTheDocument();
+  it('renders category sandbox', () => {
+    render(<MaturityBadge maturityLevel={Maturity.sandbox} />);
+    expect(screen.getByText('sandbox')).toBeInTheDocument();
   });
 });

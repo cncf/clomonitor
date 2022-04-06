@@ -7,7 +7,7 @@ interface Props {
   name: string;
   value: string;
   label: string | JSX.Element;
-  legend?: string | number;
+  legend?: string;
   checked: boolean;
   disabled?: boolean;
   className?: string;

@@ -9,21 +9,21 @@ const mockQueries = [
     name: 'Only graduated projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [0] },
+      filters: { maturity: ['graduated'] },
     },
   },
   {
     name: 'Only incubating projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [1] },
+      filters: { maturity: ['incubating'] },
     },
   },
   {
     name: 'Only sandbox projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [2] },
+      filters: { maturity: ['sandbox'] },
     },
   },
 ];
@@ -97,7 +97,7 @@ describe('SampleQueries', () => {
       userEvent.click(links[0]);
 
       expect(window.location.pathname).toBe('/search');
-      expect(window.location.search).toBe('?maturity=0&page=1');
+      expect(window.location.search).toBe('?maturity=graduated&page=1');
     });
   });
 });

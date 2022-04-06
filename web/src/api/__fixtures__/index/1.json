@@ -1,71 +1,163 @@
 {
-  "category_id": 0,
+  "accepted_at": 1592870400,
+  "category": "app definition",
   "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
   "devstats_url": "https://artifacthub.devstats.cncf.io/",
   "display_name": "Artifact Hub",
-  "home_url": null,
+  "foundation": "cncf",
   "id": "00000000-0001-0000-0000-000000000000",
   "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
-  "maturity_id": 2,
+  "maturity": "sandbox",
   "name": "artifact-hub",
   "rating": "a",
   "repositories": [
     {
-      "digest": "653b5219d16a2e5be274a7fb765916789ae68fbb",
       "check_sets": ["community", "code"],
+      "digest": "c80de22e178c45ec4324e49cb5dd89e07397c364",
       "name": "artifact-hub",
       "report": {
         "data": {
           "best_practices": {
-            "artifacthub_badge": true,
-            "community_meeting": true,
-            "openssf_badge": true,
-            "recent_release": true
+            "artifacthub_badge": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://artifacthub.io/packages/helm/artifact-hub/artifact-hub"
+            },
+            "cla": {
+              "exempt": true,
+              "exemption_reason": "DCO check passed",
+              "passed": false
+            },
+            "community_meeting": {
+              "exempt": false,
+              "passed": true
+            },
+            "dco": {
+              "exempt": false,
+              "passed": true
+            },
+            "openssf_badge": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://bestpractices.coreinfrastructure.org/projects/4106"
+            },
+            "recent_release": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/releases/tag/v1.6.0"
+            },
+            "slack_presence": {
+              "exempt": false,
+              "passed": true
+            }
           },
           "documentation": {
-            "adopters": false,
-            "changelog": true,
-            "code_of_conduct": true,
-            "contributing": true,
-            "governance": false,
-            "maintainers": true,
-            "readme": true,
-            "roadmap": false,
-            "website": true
+            "adopters": {
+              "exempt": false,
+              "passed": false
+            },
+            "changelog": {
+              "exempt": false,
+              "passed": true
+            },
+            "code_of_conduct": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/blob/master/code-of-conduct.md"
+            },
+            "contributing": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/blob/master/CONTRIBUTING.md"
+            },
+            "governance": {
+              "exempt": false,
+              "passed": false
+            },
+            "maintainers": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/blob/master/OWNERS"
+            },
+            "readme": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/blob/master/README.md"
+            },
+            "roadmap": {
+              "exempt": false,
+              "passed": false
+            },
+            "website": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://artifacthub.io"
+            }
+          },
+          "legal": {
+            "trademark_disclaimer": {
+              "exempt": false,
+              "passed": false
+            }
           },
           "license": {
-            "approved": true,
-            "fossa_badge": true,
-            "spdx_id": "Apache-2.0"
+            "approved": {
+              "exempt": false,
+              "passed": true,
+              "value": true
+            },
+            "scanning": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fartifacthub%2Fhub?ref=badge_shield"
+            },
+            "spdx_id": {
+              "exempt": false,
+              "passed": true,
+              "value": "Apache-2.0"
+            }
           },
-
           "security": {
-            "security_policy": true
+            "sbom": {
+              "exempt": false,
+              "passed": false
+            },
+            "security_policy": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://github.com/artifacthub/hub/blob/master/SECURITY.md"
+            }
           }
         },
-        "errors": null,
-
-        "report_id": "73c7f8bc-a292-48a3-bd3f-b3a5afea829e",
-        "updated_at": 1645534816
+        "report_id": "5804d557-9394-43aa-9591-c730fe6d8fba",
+        "updated_at": 1649318274
       },
       "repository_id": "00000000-0000-0001-0000-000000000000",
       "score": {
         "best_practices": 100,
-        "documentation": 80,
-        "global": 95,
+        "best_practices_weight": 20,
+        "documentation": 83.33333333333331,
+        "documentation_weight": 30,
+        "global": 86.66666666666666,
+        "global_weight": 90,
+        "legal": 0,
+        "legal_weight": 5,
         "license": 100,
-        "security": 100
+        "license_weight": 20,
+        "security": 86.66666666666667,
+        "security_weight": 15
       },
       "url": "https://github.com/artifacthub/hub"
     }
   ],
   "score": {
     "best_practices": 100,
-    "documentation": 80,
-    "global": 95,
+    "documentation": 83.33333333333331,
+    "global": 86.66666666666666,
+    "global_weight": 0,
+    "legal": 0,
     "license": 100,
-
-    "security": 100
+    "security": 86.66666666666667
   },
-  "updated_at": 1645534816
+  "updated_at": 1649318274
 }

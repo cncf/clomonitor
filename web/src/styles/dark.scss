@@ -25,6 +25,8 @@
   --highlighted: #f0a;
 
   --color-light-font: #cbd3da;
+  --color-lighter-font: #e3e3e3;
+  --color-extra-light-font: #fff;
 
   --bs-white: #000;
   --bs-primary: #131216;
@@ -36,6 +38,8 @@
   --bg-code: rgba(0, 0, 0, 0.7);
   --bg-progressbar-stats: var(--color-black-10);
   --bg-loading: transparent;
+
+  --rm-tertiary: #08f;
 
   .text-primary,
   .text-light,
@@ -165,19 +169,6 @@
     filter: invert(1) grayscale(100%) brightness(200%);
   }
 
-  .progress-bar-striped {
-    background-image: linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.25) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(0, 0, 0, 0.25) 50%,
-      rgba(0, 0, 0, 0.25) 75%,
-      transparent 75%,
-      transparent
-    );
-  }
-
   .alert-warning {
     background-color: rgba(187, 128, 9, 0.15) !important;
     border-color: rgba(187, 128, 9, 0.4) !important;
@@ -187,6 +178,14 @@
   .lightIcon,
   .lightText {
     color: var(--color-light-font) !important;
+  }
+
+  .lighterText {
+    color: var(--color-lighter-font) !important;
+  }
+
+  .extraLightText {
+    color: var(--color-extra-light-font) !important;
   }
 
   .searchBar {

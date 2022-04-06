@@ -5,67 +5,69 @@ select plan(1);
 -- Seed some data
 insert into organization (
     organization_id,
-    name
+    name,
+    foundation
 ) values (
     '00000001-0000-0000-0000-000000000000',
-    'org1'
+    'org1',
+    'cncf'
 );
 insert into project (
     project_id,
     name,
+    category,
     score,
     rating,
     accepted_at,
-    organization_id,
-    category_id,
-    maturity_id
+    maturity,
+    organization_id
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'project1',
+    'category1',
     '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0}',
     'a',
     '2022-02-25',
-    '00000001-0000-0000-0000-000000000000',
-    0,
-    2
+    'sandbox',
+    '00000001-0000-0000-0000-000000000000'
 );
 insert into project (
     project_id,
     name,
+    category,
     score,
     rating,
     accepted_at,
-    organization_id,
-    category_id,
-    maturity_id
+    maturity,
+    organization_id
 ) values (
     '00000000-0002-0000-0000-000000000000',
     'project2',
+    'category1',
     '{"global": 70.0, "license": 80.0, "security": 60.0, "documentation": 70.0, "best_practices": 70.0}',
     'b',
     '2021-02-24',
-    '00000001-0000-0000-0000-000000000000',
-    5,
-    0
+    'graduated',
+    '00000001-0000-0000-0000-000000000000'
 );
 insert into project (
     project_id,
     name,
+    category,
     score,
     rating,
     accepted_at,
-    organization_id,
-    category_id,
-    maturity_id
+    maturity,
+    organization_id
 ) values (
     '00000000-0003-0000-0000-000000000000',
     'project3',
+    'category2',
     '{"global": 55.0, "license": 50.0, "security": 60.0, "documentation": 70.0, "best_practices": 40.0}',
     'c',
     '2021-02-25',
-    '00000001-0000-0000-0000-000000000000',
-    4,
-    0
+    'graduated',
+    '00000001-0000-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
@@ -399,7 +401,7 @@ insert into report (
 
 -- Run some tests
 select is(
-    get_stats()::jsonb - '{generated_at}'::text[],
+    get_stats('cncf')::jsonb - '{generated_at}'::text[],
     '{
         "projects": {
             "running_total": [

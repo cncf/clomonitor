@@ -24,7 +24,7 @@ describe('API', () => {
           status: 400,
         });
 
-        await expect(API.getProjectDetail('org1', 'proj1')).rejects.toEqual({
+        await expect(API.getProjectDetail('org1', 'proj1', 'foundation1')).rejects.toEqual({
           kind: ErrorKind.Other,
         });
         expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -38,7 +38,7 @@ describe('API', () => {
           status: 400,
         });
 
-        await expect(API.getProjectDetail('org1', 'proj1')).rejects.toEqual({
+        await expect(API.getProjectDetail('org1', 'proj1', 'foundation1')).rejects.toEqual({
           kind: ErrorKind.Other,
           message: 'custom error',
         });
@@ -56,10 +56,10 @@ describe('API', () => {
           status: 200,
         });
 
-        const response = await API.getProjectDetail('org1', 'proj1');
+        const response = await API.getProjectDetail('org1', 'proj1', 'foundation1');
 
         expect(fetchMock).toHaveBeenCalledTimes(1);
-        expect(fetchMock.mock.calls[0][0]).toEqual('/api/projects/org1/proj1');
+        expect(fetchMock.mock.calls[0][0]).toEqual('/api/projects/foundation1/org1/proj1');
         expect(response).toEqual(projectDetail);
       });
     });
@@ -70,7 +70,7 @@ describe('API', () => {
         fetchMock.mockResponse(JSON.stringify(data), {
           headers: {
             'content-type': 'application/json',
-            'Pagination-Total-Count': '7',
+            'Pagination-Total-Count': '4',
           },
           status: 200,
         });
@@ -81,8 +81,7 @@ describe('API', () => {
           sort_by: SortBy.Name,
           sort_direction: SortDirection.ASC,
           filters: {
-            category: ['0'],
-            maturity: ['2'],
+            maturity: ['sandbox', 'incubating'],
           },
         });
 

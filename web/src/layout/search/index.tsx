@@ -25,18 +25,8 @@ import styles from './Search.module.css';
 import SelectedFilters from './SelectedFilters';
 
 interface FiltersProp {
-  [key: string]: (string | number)[];
+  [key: string]: string[];
 }
-
-const prepareFilters = (filters: FiltersProp): FiltersProp => {
-  let f: FiltersProp = { ...filters };
-  Object.keys(filters).forEach((key: string) => {
-    if (['maturity', 'category'].includes(key)) {
-      f[key] = (f[key] as string[]).map((v: string) => parseInt(v));
-    }
-  });
-  return f;
-};
 
 interface Props {
   scrollPosition?: number;
@@ -189,7 +179,7 @@ const Search = (props: Props) => {
           accepted_to: formattedParams.accepted_to,
           sort_by: sort.by,
           sort_direction: sort.direction,
-          filters: prepareFilters(formattedParams.filters || {}),
+          filters: formattedParams.filters || {},
           offset: calculateOffset(formattedParams.pageNumber),
           limit: limit,
         });

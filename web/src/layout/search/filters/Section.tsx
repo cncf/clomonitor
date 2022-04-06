@@ -8,7 +8,7 @@ import styles from './Section.module.css';
 interface Props {
   section: FiltersSection;
   device: string;
-  activeFilters?: (string | number)[];
+  activeFilters?: string[];
   onChange: (name: string, value: string, checked: boolean) => void;
 }
 

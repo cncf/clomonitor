@@ -78,7 +78,7 @@ const Searchbar = (props: Props) => {
     forceBlur();
     setValue('');
     cleanProjectsSearch();
-    navigate(`/projects/${selectedProject.organization.name}/${selectedProject.name}`);
+    navigate(`/projects/${selectedProject.foundation}/${selectedProject.organization.name}/${selectedProject.name}`);
   };
 
   const forceBlur = (): void => {
@@ -305,7 +305,7 @@ const Searchbar = (props: Props) => {
                           </div>
 
                           <div className="d-flex flex-row align-items-center mt-1">
-                            <MaturityBadge maturityLevel={project.maturity_id} />
+                            <MaturityBadge maturityLevel={project.maturity} />
                           </div>
                         </div>
 

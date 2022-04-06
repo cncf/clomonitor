@@ -22,9 +22,9 @@ import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 import ExternalLink from './layout/common/ExternalLink';
 import QualityDot from './layout/common/QualityDot';
 import {
-  Category,
   FilterKind,
   FiltersSection,
+  Foundation,
   Maturity,
   Rating,
   ReportOption,
@@ -39,12 +39,20 @@ export const DEFAULT_SORT_DIRECTION = SortDirection.ASC;
 
 export const FILTERS: FiltersSection[] = [
   {
+    name: FilterKind.Foundation,
+    title: 'Foundation',
+    filters: [
+      { name: Foundation.cncf, label: 'CNCF' },
+      { name: Foundation.lfaidata, label: 'LF AI & Data' },
+    ],
+  },
+  {
     name: FilterKind.Maturity,
     title: 'Maturity level',
     filters: [
-      { name: Maturity.Graduated, label: 'Graduated' },
-      { name: Maturity.Incubating, label: 'Incubating' },
-      { name: Maturity.Sandbox, label: 'Sandbox' },
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+      { name: Maturity.sandbox, label: 'Sandbox' },
     ],
   },
   {
@@ -75,19 +83,6 @@ export const FILTERS: FiltersSection[] = [
         legend: '[0-24]',
         decorator: <QualityDot level={4} />,
       },
-    ],
-  },
-  {
-    name: FilterKind.Category,
-    title: 'Category',
-    filters: [
-      { name: Category['App definition'], label: 'App definition' },
-      { name: Category.Observability, label: 'Observability' },
-      { name: Category.Orchestration, label: 'Orchestration' },
-      { name: Category.Platform, label: 'Platform' },
-      { name: Category.Provisioning, label: 'Provisioning' },
-      { name: Category.Runtime, label: 'Runtime' },
-      { name: Category.Serverless, label: 'Serverless' },
     ],
   },
 ];
@@ -264,5 +259,14 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     icon: <BiWorld />,
     name: 'Website',
     legend: <span>A url that users can visit to learn more about your project</span>,
+  },
+};
+
+export const FOUNDATIONS = {
+  [Foundation.cncf]: {
+    name: 'CNCF',
+  },
+  [Foundation.lfaidata]: {
+    name: 'LF AI & Data',
   },
 };

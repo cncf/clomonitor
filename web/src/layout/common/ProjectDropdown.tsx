@@ -3,6 +3,7 @@ import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
+import { Foundation } from '../../types';
 import BadgeModal from './BadgeModal';
 import styles from './ProjectDropdown.module.css';
 import ReportSummaryModal from './ReportSummaryModal';
@@ -18,6 +19,7 @@ enum Modals {
 }
 
 interface Props {
+  foundation: Foundation;
   orgName: string;
   projectName: string;
   projectDisplayName?: string;
@@ -85,6 +87,7 @@ const ProjectDropdown = (props: Props) => {
       </div>
 
       <BadgeModal
+        foundation={props.foundation}
         orgName={props.orgName}
         projectName={props.projectName}
         openStatus={openStatus}
@@ -92,6 +95,7 @@ const ProjectDropdown = (props: Props) => {
       />
 
       <ReportSummaryModal
+        foundation={props.foundation}
         orgName={props.orgName}
         projectName={props.projectName}
         openStatus={openStatus}

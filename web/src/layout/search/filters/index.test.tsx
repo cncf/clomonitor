@@ -41,6 +41,10 @@ describe('Filters', () => {
 
       expect(screen.getByText('Filters')).toBeInTheDocument();
 
+      expect(screen.getByText('Foundation')).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'LF AI & Data' })).toBeInTheDocument();
+
       expect(screen.getByText('Maturity level')).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'Graduated' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'Incubating' })).toBeInTheDocument();
@@ -51,15 +55,6 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
-
-      expect(screen.getByText('Category')).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'App definition' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Observability' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Orchestration' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Platform' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Provisioning' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Runtime' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Serverless' })).toBeInTheDocument();
 
       expect(screen.getByText('Accepted')).toBeInTheDocument();
       expect(screen.getByText('2016')).toBeInTheDocument();
@@ -73,7 +68,7 @@ describe('Filters', () => {
     });
 
     it('renders Filters with selected options', () => {
-      render(<Filters {...defaultProps} activeFilters={{ maturity: ['2'], rating: ['a', 'b'] }} />);
+      render(<Filters {...defaultProps} activeFilters={{ maturity: ['sandbox'], rating: ['a', 'b'] }} />);
 
       expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeChecked();
@@ -83,14 +78,14 @@ describe('Filters', () => {
     it('calls onChange to click filter', () => {
       render(<Filters {...defaultProps} />);
 
-      const check = screen.getByRole('checkbox', { name: 'App definition' });
+      const check = screen.getByRole('checkbox', { name: 'Sandbox' });
 
       expect(check).not.toBeChecked();
 
       userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockOnChange).toHaveBeenCalledWith('category', '0', true);
+      expect(mockOnChange).toHaveBeenCalledWith('maturity', 'sandbox', true);
     });
   });
 });

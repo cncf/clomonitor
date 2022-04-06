@@ -1,12 +1,20 @@
 -- Helper function that returns the average score of the provided section for
 -- the reports of a given maturity (or all maturities when none is provided).
-create or replace function average_section_score(p_section text, p_maturity_id integer)
+create or replace function average_section_score(
+    p_foundation text,
+    p_section text,
+    p_maturity text
+)
 returns real as $$
-    select round(avg((score->>p_section)::real))
-    from project
-    where score ? p_section
+    select round(avg((p.score->>p_section)::real))
+    from project p
+    join organization o using (organization_id)
+    where p.score ? p_section
     and
-        case when p_maturity_id is not null then
-            maturity_id = p_maturity_id
+        case when p_foundation is not null then
+        o.foundation::text = p_foundation else true end
+    and
+        case when p_maturity is not null then
+            p.maturity::text = p_maturity
         else true end;
 $$ language sql;

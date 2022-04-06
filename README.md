@@ -3,7 +3,7 @@
 [![CI](https://github.com/cncf/clomonitor/workflows/CI/badge.svg)](https://github.com/cncf/clomonitor/actions?query=workflow%3ACI)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cncf/clomonitor)
 
-[**CLOMonitor**](https://clomonitor.io) is a tool that periodically checks CNCF projects repositories to verify they meet a certain project health best practices.
+[**CLOMonitor**](https://clomonitor.io) is a tool that periodically checks open source projects repositories to verify they meet a certain project health best practices.
 
 <br/>
 <table>
@@ -34,7 +34,7 @@ The CLOMonitor's linter can also be run locally or from CI workflows. At the mom
 ```sh
 $ clomonitor-linter --help
 clomonitor-linter 0.5.0
-A linter for CNCF projects repositories
+A linter for open source projects repositories
 
 USAGE:
     clomonitor-linter [OPTIONS] --url <URL>

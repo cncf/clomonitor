@@ -106,7 +106,7 @@ The linter CLI tool allows projects to lint their repositories locally or from t
 
 ```sh
 clomonitor-linter 0.5.0
-A linter for CNCF projects repositories
+A linter for open source projects repositories
 
 USAGE:
     clomonitor-linter [OPTIONS] --url <URL>

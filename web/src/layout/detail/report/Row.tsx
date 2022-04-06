@@ -55,7 +55,7 @@ const Row = (props: Props) => {
           <div className={`flex-grow-1 ${styles.progressbarWrapper}`}>
             <div className={`progress rounded-0 ${styles.progress}`}>
               <div
-                className="progress-bar progress-bar-striped"
+                className="progress-bar"
                 role="progressbar"
                 style={{ width: `${props.score || 1}%`, backgroundColor: `var(--rm-${color})` }}
               />

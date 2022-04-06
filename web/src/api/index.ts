@@ -105,12 +105,14 @@ class API_CLASS {
       .catch((error) => Promise.reject(error));
   }
 
-  public getProjectDetail(org: string, project: string): Promise<ProjectDetail> {
-    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${org}/${project}` });
+  public getProjectDetail(org: string, project: string, foundation: string): Promise<ProjectDetail> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${org}/${project}` });
   }
 
-  public getStats(): Promise<Stats> {
-    return this.apiFetch({ url: `${this.API_BASE_URL}/stats` });
+  public getStats(foundation?: string): Promise<Stats> {
+    return this.apiFetch({
+      url: `${this.API_BASE_URL}/stats${!isUndefined(foundation) ? `?foundation=${foundation}` : ''}`,
+    });
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; 'Pagination-Total-Count': string }> {

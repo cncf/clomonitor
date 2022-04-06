@@ -19,21 +19,21 @@ const QUERIES: SampleQuery[] = [
     name: 'Only graduated projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [0] },
+      filters: { maturity: ['graduated'] },
     },
   },
   {
     name: 'Only incubating projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [1] },
+      filters: { maturity: ['incubating'] },
     },
   },
   {
     name: 'Only sandbox projects',
     filters: {
       pageNumber: 1,
-      filters: { maturity: [2] },
+      filters: { maturity: ['sandbox'] },
     },
   },
   {
@@ -65,60 +65,18 @@ const QUERIES: SampleQuery[] = [
     },
   },
   {
-    name: 'Projects in app definition category',
+    name: 'Projects accepted by CNCF',
     filters: {
       pageNumber: 1,
-      filters: { category: [0] },
+      filters: { foundation: ['cncf'] },
     },
   },
 
   {
-    name: 'Projects in app definition category',
+    name: 'Projects accepted by LF AI & Data',
     filters: {
       pageNumber: 1,
-      filters: { category: [0] },
-    },
-  },
-  {
-    name: 'Projects in observability category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [1] },
-    },
-  },
-  {
-    name: 'Projects in orchestration category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [2] },
-    },
-  },
-  {
-    name: 'Projects in platform category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [3] },
-    },
-  },
-  {
-    name: 'Projects in provisioning category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [4] },
-    },
-  },
-  {
-    name: 'Projects in runtime category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [5] },
-    },
-  },
-  {
-    name: 'Projects in serverless category',
-    filters: {
-      pageNumber: 1,
-      filters: { category: [6] },
+      filters: { category: ['lfaidata'] },
     },
   },
 ];

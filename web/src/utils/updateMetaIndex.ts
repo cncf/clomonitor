@@ -1,6 +1,6 @@
 const updateMetaIndex = (
   title: string = 'CLOMonitor',
-  description: string = 'CLOMonitor is a tool that periodically checks CNCF projects repositories to verify they meet a certain project health best practices.'
+  description: string = 'CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet a certain project health best practices.'
 ): void => {
   document.title = title;
   document.querySelector(`meta[property='og:title']`)!.setAttribute('content', title);

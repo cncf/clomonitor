@@ -30,21 +30,6 @@ pub(crate) async fn get_repo_metadata(repo_url: &str) -> Result<Repository, Erro
     }
 }
 
-#[derive(Deserialize)]
-pub struct GHCheckSuitesResponse {
-    pub check_suites: Vec<GHCheckSuite>,
-}
-
-#[derive(Deserialize)]
-pub struct GHCheckSuite {
-    pub app: GHApp,
-}
-
-#[derive(Deserialize)]
-pub struct GHApp {
-    pub name: String,
-}
-
 /// Check if the repo has a check that matches any of the regular expressions
 /// provided.
 pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Error> {
@@ -64,11 +49,21 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
         None => return Ok(false),
     };
 
-    // Checks in commit statuses
+    // Search in check suites
+    let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
+    let response: GHCheckSuitesResponse = github.get(url, None::<&()>).await?;
+    if response
+        .check_suites
+        .iter()
+        .any(|s| re.is_match(&s.app.name))
+    {
+        return Ok(true);
+    }
+
+    // Search in commit statuses
     let page = github
         .repos(&owner, &repo)
         .list_statuses(sha.clone())
-        .per_page(50)
         .send()
         .await?;
     if github
@@ -81,13 +76,10 @@ pub(crate) async fn has_check(repo_url: &str, re: &RegexSet) -> Result<bool, Err
         return Ok(true);
     }
 
-    // Checks in check suites
-    let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
-    let response: GHCheckSuitesResponse = github.get(url, None::<&()>).await?;
-    Ok(response
-        .check_suites
-        .iter()
-        .any(|s| re.is_match(&s.app.name)))
+    // Search in check runs
+    let url = format!("repos/{}/{}/commits/{}/check-runs", &owner, &repo, &sha);
+    let response: GHCheckRunsResponse = github.get(url, None::<&()>).await?;
+    Ok(response.check_runs.iter().any(|r| re.is_match(&r.name)))
 }
 
 /// Check if the given default community health file is available in the
@@ -183,6 +175,31 @@ fn get_owner_and_repo(repo_url: &str) -> Result<(String, String), Error> {
         .captures(repo_url)
         .ok_or(format_err!("invalid repository url"))?;
     Ok((c["org"].to_string(), c["repo"].to_string()))
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckSuitesResponse {
+    pub check_suites: Vec<GHCheckSuite>,
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckSuite {
+    pub app: GHApp,
+}
+
+#[derive(Deserialize)]
+pub struct GHApp {
+    pub name: String,
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckRunsResponse {
+    pub check_runs: Vec<GHCheckRun>,
+}
+
+#[derive(Deserialize)]
+pub struct GHCheckRun {
+    pub name: String,
 }
 
 #[cfg(test)]

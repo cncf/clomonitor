@@ -16,10 +16,10 @@ const getMockDetail = (fixtureId: string): ProjectDetail => {
 };
 
 let path = {
-  pathname: '/projects/artifact-hub/artifact-hub',
+  pathname: '/projects/cncf/artifact-hub/artifact-hub',
   search: '',
   hash: '',
-  state: { currentSearch: '?maturity=2&rating=a&page=1' },
+  state: { currentSearch: '?maturity=sandbox&rating=a&page=1' },
   key: 'key',
 };
 
@@ -40,7 +40,7 @@ jest.mock('moment', () => ({
 
 describe('Project detail index', () => {
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ org: 'org', project: 'proj' });
+    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ org: 'org', project: 'proj', foundation: 'cncf' });
     jest.spyOn(ReactRouter, 'useLocation').mockReturnValue(path);
   });
 
@@ -77,7 +77,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
       });
 
       expect(screen.getByAltText('Artifact Hub logo')).toBeInTheDocument();
@@ -87,18 +87,19 @@ describe('Project detail index', () => {
           'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.'
         )
       ).toBeInTheDocument();
-      expect(screen.getByText('Sandbox')).toBeInTheDocument();
-      expect(screen.getByText('App definition')).toBeInTheDocument();
+      expect(screen.getByText('sandbox')).toBeInTheDocument();
+      expect(screen.getByText('app definition')).toBeInTheDocument();
+      expect(screen.getByText('CNCF')).toBeInTheDocument();
       expect(screen.getAllByText('artifact-hub')).toHaveLength(2);
       expect(screen.getByRole('link', { name: 'Repository link' })).toBeInTheDocument();
-      expect(screen.getByText('Accepted by CNCF:')).toBeInTheDocument();
+      expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getByText('23rd June 2020')).toBeInTheDocument();
     });
 
     it('renders Back to results', async () => {
       jest.spyOn(ReactRouter, 'useLocation').mockReturnValue({
         ...path,
-        state: { currentSearch: '?maturity=2&rating=a&page=1' },
+        state: { currentSearch: '?maturity=sandbox&rating=a&page=1' },
       });
 
       const mockProject = getMockDetail('1');
@@ -112,7 +113,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
       });
 
       const backBtn = screen.getByRole('button', { name: 'Back to results' });
@@ -121,7 +122,7 @@ describe('Project detail index', () => {
       userEvent.click(backBtn);
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
-      expect(mockUseNavigate).toHaveBeenCalledWith('/search?maturity=2&rating=a&page=1');
+      expect(mockUseNavigate).toHaveBeenCalledWith('/search?maturity=sandbox&rating=a&page=1');
     });
 
     it('renders placeholder when no data', async () => {
@@ -135,7 +136,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
       });
 
       expect(screen.getByText('Sorry, the project you requested was not found.')).toBeInTheDocument();

@@ -12,7 +12,7 @@ interface Props {
   acceptedFrom?: string;
   acceptedTo?: string;
   activeFilters: {
-    [key: string]: (string | number)[];
+    [key: string]: string[];
   };
   onChange: (name: string, value: string, checked: boolean) => void;
   onAcceptedDateRangeChange: (dates: any) => void;

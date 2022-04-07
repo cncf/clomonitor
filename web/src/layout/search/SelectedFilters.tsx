@@ -3,14 +3,14 @@ import moment from 'moment';
 import { Fragment } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
-import { FILTERS } from '../../data';
-import { Category, Filter, FilterKind, FiltersSection, Maturity } from '../../types';
+import { FILTERS, FOUNDATIONS } from '../../data';
+import { Filter, FilterKind, FiltersSection, Foundation } from '../../types';
 import styles from './SelectedFilters.module.css';
 
 interface Props {
   acceptedFrom?: string;
   acceptedTo?: string;
-  filters: { [key: string]: (string | number)[] };
+  filters: { [key: string]: string[] };
   onChange: (name: string, value: string, checked: boolean) => void;
   onAcceptedDateRangeChange: (dates: any) => void;
 }
@@ -18,12 +18,12 @@ interface Props {
 const SelectedFilters = (props: Props) => {
   if (isEmpty(props.filters) && isUndefined(props.acceptedFrom) && isUndefined(props.acceptedTo)) return null;
 
-  const getFilterName = (type: FilterKind, filter: string | number): string => {
+  const getFilterName = (type: FilterKind, filter: string): string => {
     switch (type) {
-      case FilterKind.Category:
-        return Category[parseInt(filter as string)];
+      case FilterKind.Foundation:
+        return FOUNDATIONS[filter as Foundation].name;
       case FilterKind.Maturity:
-        return Maturity[parseInt(filter as string)];
+        return filter;
       case FilterKind.Rating:
         let ratingName: string = '';
         const ratings = FILTERS.find((sec: FiltersSection) => sec.name === type);
@@ -86,7 +86,7 @@ const SelectedFilters = (props: Props) => {
           {Object.keys(props.filters).map((category: string) => {
             return (
               <Fragment key={`filter_${category}`}>
-                {props.filters[category].map((filter: string | number) => {
+                {props.filters[category].map((filter: string) => {
                   const filterName = getFilterName(category as FilterKind, filter);
                   return (
                     <span
@@ -97,7 +97,7 @@ const SelectedFilters = (props: Props) => {
                       <div className="d-flex flex-row align-items-baseline">
                         <div className={styles.content}>
                           <small className="text-uppercase fw-normal me-2">{category}:</small>
-                          {filterName}
+                          <span className="text-capitalize">{filterName}</span>
                         </div>
                         <button
                           className={`btn btn-link btn-sm lh-1 ${styles.btn}`}

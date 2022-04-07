@@ -6,7 +6,7 @@ const getURLSearchParams = (query: BasicQuery): URLSearchParams => {
   const q = new URLSearchParams();
   if (!isUndefined(query.filters) && !isEmpty(query.filters)) {
     Object.keys(query.filters).forEach((filterId: string) => {
-      return query.filters![filterId].forEach((id: string | number) => {
+      return query.filters![filterId].forEach((id: string) => {
         q.append(filterId, id.toString());
       });
     });

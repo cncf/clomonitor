@@ -15,6 +15,8 @@
   --bg-progressbar-stats: var(--color-black-5);
   --bg-loading: var(--color-white-25);
 
+  --rm-tertiary: #08f;
+
   .tooltip {
     &.bs-tooltip-bottom .tooltip-arrow::before {
       border-bottom-color: var(--color-font) !important;

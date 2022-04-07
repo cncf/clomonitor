@@ -1,27 +1,17 @@
 -- Start transaction and plan tests
 begin;
-select plan(25);
+select plan(17);
 
 -- Check expected extension exist
 select has_extension('pgcrypto');
 
 -- Check expected tables exist
-select has_table('category');
-select has_table('maturity');
 select has_table('organization');
 select has_table('project');
 select has_table('report');
 select has_table('repository');
 
 -- Check tables have expected columns
-select columns_are('category', array[
-    'category_id',
-    'name'
-]);
-select columns_are('maturity', array[
-    'maturity_id',
-    'name'
-]);
 select columns_are('organization', array[
     'organization_id',
     'name',
@@ -29,13 +19,15 @@ select columns_are('organization', array[
     'description',
     'home_url',
     'logo_url',
-    'created_at'
+    'created_at',
+    'foundation'
 ]);
 select columns_are('project', array[
     'project_id',
     'name',
     'display_name',
     'description',
+    'category',
     'home_url',
     'logo_url',
     'devstats_url',
@@ -44,9 +36,8 @@ select columns_are('project', array[
     'accepted_at',
     'created_at',
     'updated_at',
-    'organization_id',
-    'category_id',
-    'maturity_id'
+    'maturity',
+    'organization_id'
 ]);
 select columns_are('report', array[
     'report_id',
@@ -60,26 +51,18 @@ select columns_are('repository', array[
     'repository_id',
     'name',
     'url',
-    'check_sets',
     'digest',
     'score',
     'created_at',
     'updated_at',
+    'check_sets',
     'project_id'
 ]);
 
 -- Check tables have expected indexes
-select indexes_are('category', array[
-    'category_pkey',
-    'category_name_key'
-]);
-select indexes_are('maturity', array[
-    'maturity_pkey',
-    'maturity_name_key'
-]);
 select indexes_are('organization', array[
     'organization_pkey',
-    'organization_name_key'
+    'organization_foundation_name_key'
 ]);
 select indexes_are('project', array[
     'project_pkey',
@@ -100,32 +83,6 @@ select has_function('get_project');
 select has_function('search_projects');
 select has_function('repositories_passing_check');
 select has_function('get_stats');
-
--- Check categories exist
-select results_eq(
-    'select * from category',
-    $$ values
-        (0, 'app definition'),
-        (1, 'observability'),
-        (2, 'orchestration'),
-        (3, 'platform'),
-        (4, 'provisioning'),
-        (5, 'runtime'),
-        (6, 'serverless')
-    $$,
-    'Categories should exist'
-);
-
--- Check maturities exist
-select results_eq(
-    'select * from maturity',
-    $$ values
-        (0, 'graduated'),
-        (1, 'incubating'),
-        (2, 'sandbox')
-    $$,
-    'Maturities should exist'
-);
 
 -- Finish tests and rollback transaction
 select * from finish();

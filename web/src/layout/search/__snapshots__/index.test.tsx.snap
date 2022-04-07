@@ -91,7 +91,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           class="fw-bold text-uppercase text-primary categoryTitle"
                         >
                           <small>
-                            Maturity level
+                            Foundation
                           </small>
                         </div>
                         <div
@@ -103,16 +103,16 @@ exports[`Project detail index creates snapshot 1`] = `
                             <input
                               aria-checked="false"
                               class="form-check-input rounded-0 checkbox"
-                              id="mobile-maturity-0"
-                              name="maturity"
+                              id="mobile-foundation-cncf"
+                              name="foundation"
                               tabindex="0"
                               type="checkbox"
-                              value="0"
+                              value="cncf"
                             />
                             <label
                               class="form-check-label mw-100"
                               data-testid="checkboxLabel"
-                              for="mobile-maturity-0"
+                              for="mobile-foundation-cncf"
                             >
                               <div
                                 class="d-flex align-items-baseline mw-100"
@@ -123,7 +123,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 <span
                                   class="text-truncate"
                                 >
-                                  Graduated
+                                  CNCF
                                 </span>
                               </div>
                             </label>
@@ -134,16 +134,16 @@ exports[`Project detail index creates snapshot 1`] = `
                             <input
                               aria-checked="false"
                               class="form-check-input rounded-0 checkbox"
-                              id="mobile-maturity-1"
-                              name="maturity"
+                              id="mobile-foundation-lfaidata"
+                              name="foundation"
                               tabindex="0"
                               type="checkbox"
-                              value="1"
+                              value="lfaidata"
                             />
                             <label
                               class="form-check-label mw-100"
                               data-testid="checkboxLabel"
-                              for="mobile-maturity-1"
+                              for="mobile-foundation-lfaidata"
                             >
                               <div
                                 class="d-flex align-items-baseline mw-100"
@@ -154,38 +154,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 <span
                                   class="text-truncate"
                                 >
-                                  Incubating
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-maturity-2"
-                              name="maturity"
-                              tabindex="0"
-                              type="checkbox"
-                              value="2"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-maturity-2"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Sandbox
+                                  LF AI & Data
                                 </span>
                               </div>
                             </label>
@@ -299,6 +268,110 @@ exports[`Project detail index creates snapshot 1`] = `
                                 2021
                               </span>
                             </div>
+                          </div>
+                        </div>
+                        <div
+                          class="fw-bold text-uppercase text-primary categoryTitle"
+                        >
+                          <small>
+                            Maturity level
+                          </small>
+                        </div>
+                        <div
+                          class="mt-2"
+                        >
+                          <div
+                            class="form-check me-sm-2 mb-2 undefined"
+                          >
+                            <input
+                              aria-checked="false"
+                              class="form-check-input rounded-0 checkbox"
+                              id="mobile-maturity-graduated"
+                              name="maturity"
+                              tabindex="0"
+                              type="checkbox"
+                              value="graduated"
+                            />
+                            <label
+                              class="form-check-label mw-100"
+                              data-testid="checkboxLabel"
+                              for="mobile-maturity-graduated"
+                            >
+                              <div
+                                class="d-flex align-items-baseline mw-100"
+                              >
+                                <span
+                                  class="position-relative decorator"
+                                />
+                                <span
+                                  class="text-truncate"
+                                >
+                                  Graduated
+                                </span>
+                              </div>
+                            </label>
+                          </div>
+                          <div
+                            class="form-check me-sm-2 mb-2 undefined"
+                          >
+                            <input
+                              aria-checked="false"
+                              class="form-check-input rounded-0 checkbox"
+                              id="mobile-maturity-incubating"
+                              name="maturity"
+                              tabindex="0"
+                              type="checkbox"
+                              value="incubating"
+                            />
+                            <label
+                              class="form-check-label mw-100"
+                              data-testid="checkboxLabel"
+                              for="mobile-maturity-incubating"
+                            >
+                              <div
+                                class="d-flex align-items-baseline mw-100"
+                              >
+                                <span
+                                  class="position-relative decorator"
+                                />
+                                <span
+                                  class="text-truncate"
+                                >
+                                  Incubating
+                                </span>
+                              </div>
+                            </label>
+                          </div>
+                          <div
+                            class="form-check me-sm-2 mb-2 undefined"
+                          >
+                            <input
+                              aria-checked="false"
+                              class="form-check-input rounded-0 checkbox"
+                              id="mobile-maturity-sandbox"
+                              name="maturity"
+                              tabindex="0"
+                              type="checkbox"
+                              value="sandbox"
+                            />
+                            <label
+                              class="form-check-label mw-100"
+                              data-testid="checkboxLabel"
+                              for="mobile-maturity-sandbox"
+                            >
+                              <div
+                                class="d-flex align-items-baseline mw-100"
+                              >
+                                <span
+                                  class="position-relative decorator"
+                                />
+                                <span
+                                  class="text-truncate"
+                                >
+                                  Sandbox
+                                </span>
+                              </div>
+                            </label>
                           </div>
                         </div>
                         <div
@@ -476,234 +549,6 @@ exports[`Project detail index creates snapshot 1`] = `
                             </label>
                           </div>
                         </div>
-                        <div
-                          class="fw-bold text-uppercase text-primary categoryTitle"
-                        >
-                          <small>
-                            Category
-                          </small>
-                        </div>
-                        <div
-                          class="mt-2"
-                        >
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-0"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="0"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-0"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  App definition
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-1"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="1"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-1"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Observability
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-2"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="2"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-2"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Orchestration
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-3"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="3"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-3"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Platform
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-4"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="4"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-4"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Provisioning
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-5"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="5"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-5"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Runtime
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                          <div
-                            class="form-check me-sm-2 mb-2 undefined"
-                          >
-                            <input
-                              aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
-                              id="mobile-category-6"
-                              name="category"
-                              tabindex="0"
-                              type="checkbox"
-                              value="6"
-                            />
-                            <label
-                              class="form-check-label mw-100"
-                              data-testid="checkboxLabel"
-                              for="mobile-category-6"
-                            >
-                              <div
-                                class="d-flex align-items-baseline mw-100"
-                              >
-                                <span
-                                  class="position-relative decorator"
-                                />
-                                <span
-                                  class="text-truncate"
-                                >
-                                  Serverless
-                                </span>
-                              </div>
-                            </label>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -851,7 +696,7 @@ exports[`Project detail index creates snapshot 1`] = `
           class="fw-bold text-uppercase text-primary categoryTitle"
         >
           <small>
-            Maturity level
+            Foundation
           </small>
         </div>
         <div
@@ -863,16 +708,16 @@ exports[`Project detail index creates snapshot 1`] = `
             <input
               aria-checked="false"
               class="form-check-input rounded-0 checkbox"
-              id="desktop-maturity-0"
-              name="maturity"
+              id="desktop-foundation-cncf"
+              name="foundation"
               tabindex="0"
               type="checkbox"
-              value="0"
+              value="cncf"
             />
             <label
               class="form-check-label mw-100"
               data-testid="checkboxLabel"
-              for="desktop-maturity-0"
+              for="desktop-foundation-cncf"
             >
               <div
                 class="d-flex align-items-baseline mw-100"
@@ -883,7 +728,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 <span
                   class="text-truncate"
                 >
-                  Graduated
+                  CNCF
                 </span>
               </div>
             </label>
@@ -894,16 +739,16 @@ exports[`Project detail index creates snapshot 1`] = `
             <input
               aria-checked="false"
               class="form-check-input rounded-0 checkbox"
-              id="desktop-maturity-1"
-              name="maturity"
+              id="desktop-foundation-lfaidata"
+              name="foundation"
               tabindex="0"
               type="checkbox"
-              value="1"
+              value="lfaidata"
             />
             <label
               class="form-check-label mw-100"
               data-testid="checkboxLabel"
-              for="desktop-maturity-1"
+              for="desktop-foundation-lfaidata"
             >
               <div
                 class="d-flex align-items-baseline mw-100"
@@ -914,38 +759,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 <span
                   class="text-truncate"
                 >
-                  Incubating
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-maturity-2"
-              name="maturity"
-              tabindex="0"
-              type="checkbox"
-              value="2"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-maturity-2"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Sandbox
+                  LF AI & Data
                 </span>
               </div>
             </label>
@@ -1059,6 +873,110 @@ exports[`Project detail index creates snapshot 1`] = `
                 2021
               </span>
             </div>
+          </div>
+        </div>
+        <div
+          class="fw-bold text-uppercase text-primary categoryTitle"
+        >
+          <small>
+            Maturity level
+          </small>
+        </div>
+        <div
+          class="mt-2"
+        >
+          <div
+            class="form-check me-sm-2 mb-2 undefined"
+          >
+            <input
+              aria-checked="false"
+              class="form-check-input rounded-0 checkbox"
+              id="desktop-maturity-graduated"
+              name="maturity"
+              tabindex="0"
+              type="checkbox"
+              value="graduated"
+            />
+            <label
+              class="form-check-label mw-100"
+              data-testid="checkboxLabel"
+              for="desktop-maturity-graduated"
+            >
+              <div
+                class="d-flex align-items-baseline mw-100"
+              >
+                <span
+                  class="position-relative decorator"
+                />
+                <span
+                  class="text-truncate"
+                >
+                  Graduated
+                </span>
+              </div>
+            </label>
+          </div>
+          <div
+            class="form-check me-sm-2 mb-2 undefined"
+          >
+            <input
+              aria-checked="false"
+              class="form-check-input rounded-0 checkbox"
+              id="desktop-maturity-incubating"
+              name="maturity"
+              tabindex="0"
+              type="checkbox"
+              value="incubating"
+            />
+            <label
+              class="form-check-label mw-100"
+              data-testid="checkboxLabel"
+              for="desktop-maturity-incubating"
+            >
+              <div
+                class="d-flex align-items-baseline mw-100"
+              >
+                <span
+                  class="position-relative decorator"
+                />
+                <span
+                  class="text-truncate"
+                >
+                  Incubating
+                </span>
+              </div>
+            </label>
+          </div>
+          <div
+            class="form-check me-sm-2 mb-2 undefined"
+          >
+            <input
+              aria-checked="false"
+              class="form-check-input rounded-0 checkbox"
+              id="desktop-maturity-sandbox"
+              name="maturity"
+              tabindex="0"
+              type="checkbox"
+              value="sandbox"
+            />
+            <label
+              class="form-check-label mw-100"
+              data-testid="checkboxLabel"
+              for="desktop-maturity-sandbox"
+            >
+              <div
+                class="d-flex align-items-baseline mw-100"
+              >
+                <span
+                  class="position-relative decorator"
+                />
+                <span
+                  class="text-truncate"
+                >
+                  Sandbox
+                </span>
+              </div>
+            </label>
           </div>
         </div>
         <div
@@ -1232,234 +1150,6 @@ exports[`Project detail index creates snapshot 1`] = `
                 >
                   [0-24]
                 </small>
-              </div>
-            </label>
-          </div>
-        </div>
-        <div
-          class="fw-bold text-uppercase text-primary categoryTitle"
-        >
-          <small>
-            Category
-          </small>
-        </div>
-        <div
-          class="mt-2"
-        >
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-0"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="0"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-0"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  App definition
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-1"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="1"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-1"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Observability
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-2"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="2"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-2"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Orchestration
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-3"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="3"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-3"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Platform
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-4"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="4"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-4"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Provisioning
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-5"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="5"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-5"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Runtime
-                </span>
-              </div>
-            </label>
-          </div>
-          <div
-            class="form-check me-sm-2 mb-2 undefined"
-          >
-            <input
-              aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
-              id="desktop-category-6"
-              name="category"
-              tabindex="0"
-              type="checkbox"
-              value="6"
-            />
-            <label
-              class="form-check-label mw-100"
-              data-testid="checkboxLabel"
-              for="desktop-category-6"
-            >
-              <div
-                class="d-flex align-items-baseline mw-100"
-              >
-                <span
-                  class="position-relative decorator"
-                />
-                <span
-                  class="text-truncate"
-                >
-                  Serverless
-                </span>
               </div>
             </label>
           </div>

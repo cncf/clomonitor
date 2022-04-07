@@ -1,13 +1,14 @@
 {
   "items": [
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
       "devstats_url": "https://artifacthub.devstats.cncf.io/",
       "display_name": "Artifact Hub",
       "id": "00000000-0001-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "artifact-hub",
       "organization": {
         "name": "artifact-hub"
@@ -31,13 +32,14 @@
       "updated_at": 1645534816
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Backstage is an open platform for building developer portals.",
       "devstats_url": "https://backstage.devstats.cncf.io/",
       "display_name": "Backstage",
       "id": "00000000-0046-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/backstage/icon/color/backstage-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "backstage",
       "organization": {
         "name": "backstage"
@@ -61,13 +63,14 @@
       "updated_at": 1645606822
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.",
       "devstats_url": "https://keptn.devstats.cncf.io/",
       "display_name": "Keptn",
       "id": "00000000-0067-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/keptn/icon/color/keptn-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "keptn",
       "organization": {
         "name": "keptn"
@@ -91,14 +94,15 @@
       "updated_at": 1645606817
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Make shipping applications more enjoyable.",
       "devstats_url": "https://kubevela.devstats.cncf.io/",
       "display_name": "KubeVela",
       "home_url": "https://kubevela.io/",
       "id": "00000000-0072-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/color/kubevela-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "kubevela",
       "organization": {
         "name": "oam-dev"
@@ -127,13 +131,14 @@
       "updated_at": 1645599620
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Kubernetes Virtualization API and runtime in order to define and manage virtual machines.",
       "devstats_url": "https://kubevirt.devstats.cncf.io/",
       "display_name": "KubeVirt",
       "id": "00000000-0073-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevirt/icon/color/kubevirt-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "kubevirt",
       "organization": {
         "name": "kubevirt"
@@ -157,13 +162,14 @@
       "updated_at": 1645599617
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "Automate application management on Kubernetes.",
       "devstats_url": "https://openkruise.devstats.cncf.io/",
       "display_name": "OpenKruise",
       "id": "00000000-0085-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/openkruise/icon/color/openkruise-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "open-kruise",
       "organization": {
         "name": "open-kruise"
@@ -187,13 +193,14 @@
       "updated_at": 1645524719
     },
     {
-      "category_id": 0,
+      "category": "app definition",
       "description": "An early-stage event processing system for unstructured data with rich support for structural pattern-matching, filtering and transformation.",
       "devstats_url": "https://tremor.devstats.cncf.io/",
       "display_name": "Tremor",
       "id": "00000000-0104-0000-0000-000000000000",
       "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/tremor/icon/color/tremor-icon-color.svg",
-      "maturity_id": 2,
+      "maturity": "sandbox",
+      "foundation": "cncf",
       "name": "tremor",
       "organization": {
         "name": "tremor"

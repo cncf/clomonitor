@@ -1,8 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
+import { Foundation } from '../../types';
 import ProjectDropdown from './ProjectDropdown';
 
 const defaultProps = {
+  foundation: Foundation.cncf,
   orgName: 'org',
   projectName: 'proj',
 };

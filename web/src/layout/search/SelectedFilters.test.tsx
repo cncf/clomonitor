@@ -7,7 +7,7 @@ const mockOnChange = jest.fn();
 const mockOnAcceptedDateRangeChange = jest.fn();
 
 const defaultProps = {
-  filters: { maturity: ['2'], rating: ['a', 'b'], category: ['0', '1'] },
+  filters: { maturity: ['sandbox'], rating: ['a', 'b'], foundation: ['cncf'] },
   acceptedFrom: '2018-01-01',
   onChange: mockOnChange,
   onAcceptedDateRangeChange: mockOnAcceptedDateRangeChange,
@@ -29,25 +29,23 @@ describe('SelectedFilters', () => {
 
       expect(screen.getByText('Filters:')).toBeInTheDocument();
       expect(screen.getByRole('list')).toBeInTheDocument();
-      expect(screen.getAllByRole('listitem')).toHaveLength(6);
+      expect(screen.getAllByRole('listitem')).toHaveLength(5);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getByText('≥ 2018')).toBeInTheDocument();
       expect(screen.getByText('maturity:')).toBeInTheDocument();
-      expect(screen.getByText('Sandbox')).toBeInTheDocument();
+      expect(screen.getByText('sandbox')).toBeInTheDocument();
       expect(screen.getAllByText('rating:')).toHaveLength(2);
       expect(screen.getByText('A [75-100]')).toBeInTheDocument();
       expect(screen.getByText('B [50-74]')).toBeInTheDocument();
-      expect(screen.getAllByText('category:')).toHaveLength(2);
-      expect(screen.getByText('App definition')).toBeInTheDocument();
-      expect(screen.getByText('Observability')).toBeInTheDocument();
+      expect(screen.getByText('foundation:')).toBeInTheDocument();
+      expect(screen.getByText('CNCF')).toBeInTheDocument();
 
-      expect(screen.getAllByRole('button')).toHaveLength(6);
-      expect(screen.getByRole('button', { name: 'Remove Sandbox filter' })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Remove Sandbox filter' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button')).toHaveLength(5);
+      expect(screen.getByRole('button', { name: 'Remove sandbox filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove A [75-100] filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove B [50-74] filter' })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Remove App definition filter' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Remove CNCF filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove accepted filter' })).toBeInTheDocument();
     });
 

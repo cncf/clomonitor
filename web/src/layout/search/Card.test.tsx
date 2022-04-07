@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { CheckSet } from '../../types';
+import { CheckSet, Foundation, Maturity } from '../../types';
 import Card from './Card';
 
 jest.mock('moment', () => ({
@@ -17,7 +17,7 @@ const mockSaveScrollPosition = jest.fn();
 const defaultProps = {
   project: {
     accepted_at: 1592870400,
-    category_id: 0,
+    category: 'app definition',
     description:
       'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
     devstats_url: 'https://artifacthub.devstats.cncf.io/',
@@ -26,7 +26,8 @@ const defaultProps = {
     home_url: 'https://artifacthub.io',
     logo_url:
       'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
-    maturity_id: 2,
+    maturity: Maturity.sandbox,
+    foundation: Foundation.cncf,
     name: 'artifact-hub',
     organization: {
       name: 'artifact-hub',
@@ -84,9 +85,9 @@ describe('Card', () => {
 
       expect(screen.getByText('Artifact Hub')).toBeInTheDocument();
       expect(screen.getByTestId('maturity-badge')).toBeInTheDocument();
-      expect(screen.getByText('Sandbox')).toBeInTheDocument();
-      expect(screen.getByTestId('category-badge')).toBeInTheDocument();
-      expect(screen.getByText('App definition')).toBeInTheDocument();
+      expect(screen.getByText('sandbox')).toBeInTheDocument();
+      expect(screen.getByTestId('foundation-badge')).toBeInTheDocument();
+      expect(screen.getByText('CNCF')).toBeInTheDocument();
 
       const repoLink = screen.getByRole('link', { name: 'Repository link' });
       expect(repoLink).toHaveProperty('href', 'https://github.com/artifacthub/hub');

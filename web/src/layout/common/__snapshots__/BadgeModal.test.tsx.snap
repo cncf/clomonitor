@@ -93,7 +93,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                   >
                     <img
                       alt="CLOMonitor badge"
-                      src="https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge"
+                      src="https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge"
                     />
                   </div>
                   <div
@@ -121,7 +121,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                         <span
                           style="color: rgb(187, 102, 136);"
                         >
-                          https://img.shields.io/endpoint?url=http://localhost/api/projects/org/proj/badge
+                          https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge
                         </span>
                         <span>
                           )](
@@ -129,7 +129,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                         <span
                           style="color: rgb(187, 102, 136);"
                         >
-                          http://localhost/projects/org/proj
+                          http://localhost/projects/cncf/org/proj
                         </span>
                         <span>
                           )

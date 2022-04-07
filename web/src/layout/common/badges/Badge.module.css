@@ -1,15 +1,29 @@
 .badge {
-  background-color: var(--rm-secondary-15);
+  background-color: var(--color-light-gray);
+  border: 1px solid var(--color-light-gray);
   padding: 0.2em 0.5em;
+}
+
+.blueBadge {
+  background-color: var(--rm-tertiary);
+  border-color: var(--rm-tertiary);
 }
 
 .miniBadge {
   background-color: var(--bs-white);
+  border-color: var(--rm-secondary);
   font-size: 0.5rem;
   padding: 0.2em 0.5em;
+  padding-top: 2px;
   height: 15px;
 }
 
 .symbol {
   margin-top: -2px;
+}
+
+.logoWrapper {
+  height: 10px;
+  width: 10px;
+  top: -2px;
 }

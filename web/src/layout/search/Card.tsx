@@ -5,7 +5,7 @@ import { GrPieChart } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
 import { Project } from '../../types';
-import CartegoryBadge from '../common/badges/CategoryBadge';
+import FoundationBadge from '../common/badges/FoundationBadge';
 import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
 import ElementWithTooltip from '../common/ElementWithTooltip';
@@ -31,7 +31,7 @@ const Card = (props: Props) => {
         role="button"
         onClick={() => {
           props.saveScrollPosition();
-          navigate(`/projects/${props.project.organization.name}/${props.project.name}`, {
+          navigate(`/projects/${props.project.foundation}/${props.project.organization.name}/${props.project.name}`, {
             state: { currentSearch: props.currentQueryString },
           });
         }}
@@ -61,11 +61,8 @@ const Card = (props: Props) => {
                   </div>
 
                   <div className="d-flex flex-row align-items-center my-2">
-                    <MaturityBadge maturityLevel={props.project.maturity_id} />
-                    <CartegoryBadge
-                      categoryId={props.project.category_id}
-                      className="d-none d-md-block d-lg-none d-xxl-block ms-2"
-                    />
+                    <FoundationBadge foundation={props.project.foundation} />
+                    <MaturityBadge maturityLevel={props.project.maturity} className="ms-2" />
                   </div>
 
                   <div className={`d-none d-md-flex d-lg-none d-xl-flex flex-row align-items-center ${styles.info}`}>
@@ -94,7 +91,7 @@ const Card = (props: Props) => {
                         tooltipClassName={styles.tooltipMessage}
                         tooltipMessage={
                           <div className="d-flex flex-column">
-                            <div className="text-muted d-none d-lg-block">Accepted by CNCF:</div>
+                            <div className="text-muted d-none d-lg-block">Accepted:</div>
                             <div className="lightText">
                               {moment.unix(props.project.accepted_at!).format('Do MMMM YYYY')}
                             </div>

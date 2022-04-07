@@ -15,8 +15,9 @@ export interface BaseProject {
   home_url: string;
   logo_url?: string;
   devstats_url?: string;
-  maturity_id: Maturity;
-  category_id: Category;
+  maturity: Maturity;
+  foundation: Foundation;
+  category: string;
   score: { [key in ScoreType]?: number };
   updated_at: number;
 }
@@ -74,7 +75,7 @@ export interface FiltersSection {
 }
 
 export interface Filter {
-  name: string | number;
+  name: string;
   label: string;
   legend?: string;
   decorator?: JSX.Element;
@@ -99,20 +100,15 @@ export interface ReportOptionData {
   legend: JSX.Element;
 }
 
-export enum Maturity {
-  Graduated = 0,
-  Incubating,
-  Sandbox,
+export enum Foundation {
+  cncf = 'cncf',
+  lfaidata = 'lfaidata',
 }
 
-export enum Category {
-  'App definition' = 0,
-  Observability,
-  Orchestration,
-  Platform,
-  Provisioning,
-  Runtime,
-  Serverless,
+export enum Maturity {
+  graduated = 'graduated',
+  incubating = 'incubating',
+  sandbox = 'sandbox',
 }
 
 export enum Rating {
@@ -123,8 +119,8 @@ export enum Rating {
 }
 
 export enum FilterKind {
+  Foundation = 'foundation',
   Maturity = 'maturity',
-  Category = 'category',
   Rating = 'rating',
 }
 
@@ -188,7 +184,7 @@ export interface BasicQuery {
   accepted_from?: string;
   accepted_to?: string;
   filters?: {
-    [key: string]: (string | number)[];
+    [key: string]: string[];
   };
 }
 
@@ -207,8 +203,7 @@ export interface SearchData {
   text?: string;
   accepted_from?: string;
   accepted_to?: string;
-  category?: number[];
-  maturity?: number[];
+  maturity?: string[];
   rating?: number[];
 }
 

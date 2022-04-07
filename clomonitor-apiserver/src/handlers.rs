@@ -17,25 +17,10 @@ use tracing::error;
 /// Header that indicates the number of items available for pagination purposes.
 const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 
-/// Query input used when searching for projects.
-#[derive(Debug, Serialize, Deserialize)]
-pub(crate) struct SearchProjectsInput {
-    limit: Option<usize>,
-    offset: Option<usize>,
-    sort_by: Option<String>,
-    sort_direction: Option<String>,
-    text: Option<String>,
-    category: Option<Vec<usize>>,
-    maturity: Option<Vec<usize>>,
-    rating: Option<Vec<char>>,
-    accepted_from: Option<String>,
-    accepted_to: Option<String>,
-}
-
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
     Extension(db_pool): Extension<Pool>,
-    extract::Path((org, project)): extract::Path<(String, String)>,
+    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
 ) -> Result<response::Json<Value>, StatusCode> {
     // Get project rating from database
     let db = db_pool.get().await.map_err(internal_error)?;
@@ -45,10 +30,11 @@ pub(crate) async fn badge(
             select rating
             from project p
             join organization o using (organization_id)
-            where o.name = $1::text
-            and p.name = $2::text
+            where o.foundation::text = $1::text
+            and o.name = $2::text
+            and p.name = $3::text
             ",
-            &[&org, &project],
+            &[&foundation, &org, &project],
         )
         .await
         .map_err(internal_error)?;
@@ -92,12 +78,15 @@ pub(crate) async fn badge(
 /// Handler that returns the requested project.
 pub(crate) async fn project(
     Extension(db_pool): Extension<Pool>,
-    extract::Path((org, project)): extract::Path<(String, String)>,
+    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
 ) -> Result<response::Json<Value>, StatusCode> {
     // Get project from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
-        .query_one("select get_project($1::text, $2::text)", &[&org, &project])
+        .query_one(
+            "select get_project($1::text, $2::text, $3::text)",
+            &[&foundation, &org, &project],
+        )
         .await
         .map_err(internal_error)?;
     let project: Option<Json<Value>> = row.get(0);
@@ -119,7 +108,7 @@ pub struct ReportSummaryTemplate {
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
     Extension(db_pool): Extension<Pool>,
-    extract::Path((org, project)): extract::Path<(String, String)>,
+    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
     Query(params): Query<HashMap<String, String>>,
 ) -> Result<impl IntoResponse, StatusCode> {
     // Get project score from database
@@ -130,10 +119,11 @@ pub(crate) async fn report_summary_svg(
             select score
             from project p
             join organization o using (organization_id)
-            where o.name = $1::text
-            and p.name = $2::text
+            where o.foundation::text = $1::text
+            and o.name = $2::text
+            and p.name = $3::text
             ",
-            &[&org, &project],
+            &[&foundation, &org, &project],
         )
         .await
         .map_err(internal_error)?;
@@ -156,6 +146,21 @@ pub(crate) async fn report_summary_svg(
         }
         _ => Err(StatusCode::NOT_FOUND),
     }
+}
+
+/// Query input used when searching for projects.
+#[derive(Debug, Serialize, Deserialize)]
+pub(crate) struct SearchProjectsInput {
+    limit: Option<usize>,
+    offset: Option<usize>,
+    sort_by: Option<String>,
+    sort_direction: Option<String>,
+    text: Option<String>,
+    foundation: Option<Vec<String>>,
+    maturity: Option<Vec<String>>,
+    rating: Option<Vec<char>>,
+    accepted_from: Option<String>,
+    accepted_to: Option<String>,
 }
 
 /// Handler that allows searching for projects.
@@ -181,11 +186,12 @@ pub(crate) async fn search_projects(
 /// Handler that returns some general stats.
 pub(crate) async fn stats(
     Extension(db_pool): Extension<Pool>,
+    Query(params): Query<HashMap<String, String>>,
 ) -> Result<response::Json<Value>, StatusCode> {
     // Get stats from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
-        .query_one("select get_stats()", &[])
+        .query_one("select get_stats($1::text)", &[&params.get("foundation")])
         .await
         .map_err(internal_error)?;
     let Json(stats): Json<Value> = row.get(0);

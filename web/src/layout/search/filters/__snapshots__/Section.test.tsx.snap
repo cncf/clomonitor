@@ -18,16 +18,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 checkbox"
-        id="test-maturity-0"
+        id="test-maturity-graduated"
         name="maturity"
         tabindex="0"
         type="checkbox"
-        value="0"
+        value="graduated"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-0"
+        for="test-maturity-graduated"
       >
         <div
           class="d-flex align-items-baseline mw-100"
@@ -49,16 +49,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 checkbox"
-        id="test-maturity-1"
+        id="test-maturity-incubating"
         name="maturity"
         tabindex="0"
         type="checkbox"
-        value="1"
+        value="incubating"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-1"
+        for="test-maturity-incubating"
       >
         <div
           class="d-flex align-items-baseline mw-100"
@@ -80,16 +80,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 checkbox"
-        id="test-maturity-2"
+        id="test-maturity-sandbox"
         name="maturity"
         tabindex="0"
         type="checkbox"
-        value="2"
+        value="sandbox"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-2"
+        for="test-maturity-sandbox"
       >
         <div
           class="d-flex align-items-baseline mw-100"

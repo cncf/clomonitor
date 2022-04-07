@@ -31,6 +31,10 @@
   line-height: 1.2;
 }
 
+.foundationBadge {
+  top: -2px;
+}
+
 .link,
 .subtitle {
   font-size: 0.8rem;

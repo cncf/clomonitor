@@ -7,7 +7,7 @@ interface F {
 }
 
 const WHITELISTED_FILTER_KEYS = [
-  'category', // Project category
+  'foundation', // Project foundation
   'maturity', // Project maturity
   'rating', // Quality rating
 ];

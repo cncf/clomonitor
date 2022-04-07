@@ -12,10 +12,10 @@ const MaturityBadge = (props: Props) => {
   return (
     <div
       data-testid="maturity-badge"
-      className={`badge text-secondary border border-secondary rounded-0 position-relative ${styles.badge} ${props.className}`}
+      className={`badge text-dark lighterText rounded-0 position-relative ${styles.badge} ${props.className}`}
     >
-      <div className="d-flex flex-row align-items-center">
-        <GiStairsGoal className="me-2" />
+      <div className="d-flex flex-row align-items-center text-capitalize">
+        <GiStairsGoal className="me-1 me-xl-2" />
         {Maturity[props.maturityLevel]}
       </div>
     </div>

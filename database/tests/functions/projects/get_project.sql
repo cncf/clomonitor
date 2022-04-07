@@ -4,7 +4,7 @@ select plan(2);
 
 -- Non existing project
 select is(
-    get_project('non-existing', 'non-existing')::jsonb,
+    get_project('non-existing', 'non-existing', 'non-existing')::jsonb,
     (null::jsonb),
     'Null is returned if the requested project does not exist'
 );
@@ -13,40 +13,42 @@ select is(
 insert into organization (
     organization_id,
     name,
-    logo_url
+    logo_url,
+    foundation
 ) values (
     '00000001-0000-0000-0000-000000000000',
     'artifact-hub',
-    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg'
+    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
+    'cncf'
 );
 insert into project (
     project_id,
     name,
     display_name,
     description,
+    category,
     home_url,
     devstats_url,
     score,
     rating,
     accepted_at,
     updated_at,
-    organization_id,
-    category_id,
-    maturity_id
+    maturity,
+    organization_id
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'artifact-hub',
     'Artifact Hub',
     'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
+    'category1',
     'https://artifacthub.io',
     'https://artifacthub.devstats.cncf.io/',
     '{"k": "v"}',
     'a',
     '2021-01-01',
     '2022-02-24 09:40:42.695654+01',
-    '00000001-0000-0000-0000-000000000000',
-    0,
-    2
+    'sandbox',
+    '00000001-0000-0000-0000-000000000000'
 );
 insert into repository (
     repository_id,
@@ -79,16 +81,16 @@ insert into report (
 
 -- Run some tests
 select is(
-    get_project('artifact-hub', 'artifact-hub')::jsonb,
+    get_project('cncf', 'artifact-hub', 'artifact-hub')::jsonb,
     '{
-        "category_id": 0,
+        "category": "category1",
         "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
         "devstats_url": "https://artifacthub.devstats.cncf.io/",
         "display_name": "Artifact Hub",
         "home_url": "https://artifacthub.io",
         "id": "00000000-0001-0000-0000-000000000000",
         "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
-        "maturity_id": 2,
+        "maturity": "sandbox",
         "name": "artifact-hub",
         "rating": "a",
         "repositories": [
@@ -108,7 +110,8 @@ select is(
         ],
         "score": {"k": "v"},
         "accepted_at": 1609459200,
-        "updated_at": 1645692042
+        "updated_at": 1645692042,
+        "foundation": "cncf"
     }'::jsonb,
     'Project returned as a json object'
 );

@@ -120,7 +120,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
         sbom,
         security_policy,
         trademark_disclaimer,
-    ) = tokio::try_join!(
+    ) = tokio::join!(
         run_async_check(CHANGELOG, changelog, &check_opts),
         run_async_check(CLA, cla, &check_opts),
         run_async_check(CODE_OF_CONDUCT, code_of_conduct, &check_opts),
@@ -130,10 +130,10 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
         run_async_check(SBOM, sbom, &check_opts),
         run_async_check(SECURITY_POLICY, security_policy, &check_opts),
         run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &check_opts),
-    )?;
+    );
 
     // Sync checks
-    let spdx_id = run_check(LICENSE_SPDX, license, &check_opts)?;
+    let spdx_id = run_check(LICENSE_SPDX, license, &check_opts);
     let mut spdx_id_value: &Option<String> = &None;
     if let Some(r) = &spdx_id {
         spdx_id_value = &r.value;
@@ -142,29 +142,29 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
     // Build report and return it
     let mut report = Report {
         documentation: Documentation {
-            adopters: run_check(ADOPTERS, adopters, &check_opts)?,
+            adopters: run_check(ADOPTERS, adopters, &check_opts),
             changelog,
             code_of_conduct,
             contributing,
-            governance: run_check(GOVERNANCE, governance, &check_opts)?,
-            maintainers: run_check(MAINTAINERS, maintainers, &check_opts)?,
-            readme: run_check(README, readme, &check_opts)?,
-            roadmap: run_check(ROADMAP, roadmap, &check_opts)?,
-            website: run_check(WEBSITE, website, &check_opts)?,
+            governance: run_check(GOVERNANCE, governance, &check_opts),
+            maintainers: run_check(MAINTAINERS, maintainers, &check_opts),
+            readme: run_check(README, readme, &check_opts),
+            roadmap: run_check(ROADMAP, roadmap, &check_opts),
+            website: run_check(WEBSITE, website, &check_opts),
         },
         license: License {
-            approved: license_approved(spdx_id_value, &check_opts)?,
-            scanning: run_check(LICENSE_SCANNING, license_scanning, &check_opts)?,
+            approved: license_approved(spdx_id_value, &check_opts),
+            scanning: run_check(LICENSE_SCANNING, license_scanning, &check_opts),
             spdx_id,
         },
         best_practices: BestPractices {
-            artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &check_opts)?,
+            artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &check_opts),
             cla,
-            community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &check_opts)?,
+            community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &check_opts),
             dco,
-            openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &check_opts)?,
+            openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &check_opts),
             recent_release,
-            slack_presence: run_check(SLACK_PRESENCE, slack_presence, &check_opts)?,
+            slack_presence: run_check(SLACK_PRESENCE, slack_presence, &check_opts),
         },
         security: Security {
             sbom,

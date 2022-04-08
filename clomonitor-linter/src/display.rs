@@ -6,6 +6,7 @@ use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
 
 pub(crate) const SUCCESS_SYMBOL: char = '✓';
 pub(crate) const FAILURE_SYMBOL: char = '✗';
+pub(crate) const WARNING_SYMBOL: char = '!';
 pub(crate) const NOT_APPLICABLE_MSG: &str = "n/a";
 pub(crate) const EXEMPT_MSG: &str = "Exempt";
 
@@ -173,10 +174,11 @@ fn cell_score(score: Option<f64>) -> Cell {
 /// Build a cell used for checks results.
 fn cell_check<T>(r: &Option<CheckResult<T>>) -> Cell {
     let (content, color) = match r {
-        Some(r) => match (r.passed, r.exempt) {
-            (true, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),
-            (false, true) => (EXEMPT_MSG.to_string(), Color::Grey),
-            (false, _) => (FAILURE_SYMBOL.to_string(), Color::Red),
+        Some(r) => match (r.passed, r.exempt, r.failed) {
+            (true, _, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),
+            (false, true, _) => (EXEMPT_MSG.to_string(), Color::Grey),
+            (false, _, false) => (FAILURE_SYMBOL.to_string(), Color::Red),
+            (false, _, true) => (WARNING_SYMBOL.to_string(), Color::Yellow),
         },
         None => (NOT_APPLICABLE_MSG.to_string(), Color::Grey),
     };

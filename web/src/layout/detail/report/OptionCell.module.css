@@ -10,7 +10,12 @@
   font-size: 1.35rem;
 }
 
-.exemptionReason {
+.failedIcon {
+  font-size: 1.5rem;
+  color: var(--bs-orange);
+}
+
+.reason {
   font-size: 0.8rem;
 }
 
@@ -32,7 +37,7 @@
   margin-left: -3px;
 }
 
-.exemptionTooltipMessage {
+.reasonTooltipMessage {
   margin-left: 5px;
 }
 

@@ -188,6 +188,10 @@
     color: var(--color-extra-light-font) !important;
   }
 
+  .loadingBg {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
   .searchBar {
     background-color: var(--body-bg) !important;
   }

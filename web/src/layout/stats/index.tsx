@@ -374,10 +374,10 @@ const StatsView = (props: Props) => {
           </div>
         </div>
       </SubNavbar>
-      <main role="main" className="container-lg px-sm-4 px-lg-0 py-5">
+      {isLoading && <Loading className={`loadingBg ${styles.loadingWrapper}`} spinnerClassName={styles.loading} />}
+      <main role="main" className="container-lg px-sm-4 px-lg-0 py-5 position-relative">
         <div className="flex-grow-1 position-relative">
           {apiError && <NoData>{apiError}</NoData>}
-          {isLoading && <Loading />}
           {stats && (
             <>
               {emptyStats && (

@@ -27,7 +27,6 @@ pub struct LintOptions {
     pub check_sets: Vec<CheckSet>,
     pub root: PathBuf,
     pub url: String,
-    pub github_token: Option<String>,
 }
 
 /// Linter report.
@@ -95,13 +94,6 @@ pub struct Legal {
 
 /// Lint the path provided and return a report.
 pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
-    // Initialize Github API client
-    let mut builder = octocrab::Octocrab::builder();
-    if let Some(token) = &lint_opts.github_token {
-        builder = builder.personal_token(token.to_string());
-    }
-    octocrab::initialise(builder)?;
-
     // Get CLOMonitor metadata
     let md = Metadata::from(&lint_opts.root.join(METADATA_FILE))?;
 

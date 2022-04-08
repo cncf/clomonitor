@@ -404,6 +404,7 @@ dependencies = [
  "config",
  "deadpool-postgres",
  "futures",
+ "octocrab",
  "openssl",
  "postgres-openssl",
  "serde 1.0.136",

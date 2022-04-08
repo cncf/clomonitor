@@ -116,6 +116,7 @@ describe('OptionCell', () => {
         );
 
         expect(screen.getAllByTestId('exempt-icon')).toHaveLength(2);
+        expect(screen.queryByTestId('failed-icon')).toBeNull();
         expect(screen.queryByTestId('success-icon')).toBeNull();
         expect(screen.queryByTestId('error-icon')).toBeNull();
       });
@@ -143,6 +144,59 @@ describe('OptionCell', () => {
 
         expect(await screen.findByRole('tooltip')).toBeInTheDocument();
         expect(screen.getByText('This repository is exempt from passing this check')).toBeInTheDocument();
+        expect(screen.getByText('Reason:')).toBeInTheDocument();
+        expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
+
+        jest.useRealTimers();
+      });
+    });
+
+    describe('failed', () => {
+      it('when true', () => {
+        render(
+          <table>
+            <tbody>
+              <OptionCell
+                label={ReportOption.Adopters}
+                check={{
+                  passed: false,
+                  failed: true,
+                  fail_reason: 'this is a sample reason',
+                }}
+              />
+            </tbody>
+          </table>
+        );
+
+        expect(screen.getAllByTestId('failed-icon')).toHaveLength(2);
+        expect(screen.queryByTestId('exempt-icon')).toBeNull();
+        expect(screen.queryByTestId('success-icon')).toBeNull();
+        expect(screen.queryByTestId('error-icon')).toBeNull();
+      });
+
+      it('displays reason tooltip', async () => {
+        jest.useFakeTimers();
+
+        render(
+          <table>
+            <tbody>
+              <OptionCell
+                label={ReportOption.Adopters}
+                check={{
+                  passed: false,
+                  failed: true,
+                  fail_reason: 'this is a sample reason',
+                }}
+              />
+            </tbody>
+          </table>
+        );
+
+        const icon = screen.getByTestId('elementWithTooltip');
+        userEvent.hover(icon);
+
+        expect(await screen.findByRole('tooltip')).toBeInTheDocument();
+        expect(screen.getByText('Something went wrong running this check')).toBeInTheDocument();
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 

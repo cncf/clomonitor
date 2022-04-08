@@ -2,6 +2,7 @@ import { isUndefined } from 'lodash';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
+import { RiErrorWarningLine } from 'react-icons/ri';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
@@ -22,6 +23,7 @@ const OptionCell = (props: Props) => {
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
   const exemptIcon = <MdRemoveCircleOutline data-testid="exempt-icon" className={`text-muted ${styles.exemptIcon}`} />;
+  const failedIcon = <RiErrorWarningLine data-testid="failed-icon" className={styles.failedIcon} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
@@ -45,13 +47,13 @@ const OptionCell = (props: Props) => {
                 element={exemptIcon}
                 tooltipWidth={500}
                 className="cursorPointer"
-                tooltipClassName={styles.exemptionTooltipMessage}
+                tooltipClassName={styles.reasonTooltipMessage}
                 tooltipMessage={
                   <div className="text-start p-2">
                     <div className="border-bottom pb-2 mb-3 fw-bold">
                       This repository is exempt from passing this check
                     </div>
-                    <div className={`text-break ${styles.exemptionReason}`}>
+                    <div className={`text-break ${styles.reason}`}>
                       <span className="fw-bold">Reason:</span> {props.check.exemption_reason}
                     </div>
                   </div>
@@ -65,6 +67,36 @@ const OptionCell = (props: Props) => {
             </>
           ) : (
             <>{exemptIcon}</>
+          )}
+        </>
+      );
+    } else if (!isUndefined(props.check.failed) && props.check.failed) {
+      return (
+        <>
+          {!isUndefined(props.check.fail_reason) && props.check.fail_reason !== '' ? (
+            <>
+              <ElementWithTooltip
+                element={failedIcon}
+                tooltipWidth={500}
+                className="cursorPointer"
+                tooltipClassName={styles.reasonTooltipMessage}
+                tooltipMessage={
+                  <div className="text-start p-2">
+                    <div className="border-bottom pb-2 mb-3 fw-bold">Something went wrong running this check</div>
+                    <div className={`text-truncate ${styles.reason}`}>
+                      <span className="fw-bold">Reason:</span> {props.check.fail_reason}
+                    </div>
+                  </div>
+                }
+                alignmentTooltip="left"
+                forceAlignment
+                visibleTooltip
+                active
+              />
+              <span className="d-block d-md-none">{failedIcon}</span>
+            </>
+          ) : (
+            <>{failedIcon}</>
           )}
         </>
       );

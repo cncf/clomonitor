@@ -1,6 +1,6 @@
 use self::path::Globs;
 use crate::{config::*, linter::CheckSet};
-use anyhow::{Context, Result};
+use anyhow::Result;
 use metadata::{Exemption, Metadata};
 use octocrab::models::Repository;
 use patterns::*;
@@ -45,6 +45,11 @@ pub struct CheckResult<T = ()> {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub exemption_reason: Option<String>,
+
+    pub failed: bool,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fail_reason: Option<String>,
 }
 
 impl<T> Default for CheckResult<T> {
@@ -55,6 +60,8 @@ impl<T> Default for CheckResult<T> {
             value: None,
             exempt: false,
             exemption_reason: None,
+            failed: false,
+            fail_reason: None,
         }
     }
 }
@@ -122,23 +129,28 @@ pub(crate) fn run_check<T, F>(
     check_id: &'static str,
     check_fn: F,
     opts: &CheckOptions,
-) -> Result<Option<CheckResult<T>>>
+) -> Option<CheckResult<T>>
 where
     F: Fn(&CheckOptions) -> Result<CheckResult<T>>,
 {
     if should_skip_check(check_id, &opts.check_sets) {
-        return Ok(None);
+        return None;
     }
 
     // Check if an exemption has been declared for this check
     if let Some(exemption) = find_exemption(check_id, &opts.md) {
-        return Ok(Some(exemption.into()));
+        return Some(exemption.into());
     }
 
     // Call sync check function and wrap returned check result in an option
-    check_fn(opts)
-        .map(Some)
-        .context(format!("error running {check_id} check"))
+    match check_fn(opts) {
+        Ok(r) => Some(r),
+        Err(err) => Some(CheckResult {
+            failed: true,
+            fail_reason: Some(format!("{:#}", err)),
+            ..Default::default()
+        }),
+    }
 }
 
 /// Wrapper function that takes care of running some common pre-check
@@ -147,25 +159,29 @@ pub(crate) async fn run_async_check<'a, T, F, Fut>(
     check_id: &'static str,
     check_async_fn: F,
     opts: &'a CheckOptions,
-) -> Result<Option<CheckResult<T>>>
+) -> Option<CheckResult<T>>
 where
     F: Fn(&'a CheckOptions) -> Fut,
     Fut: Future<Output = Result<CheckResult<T>>>,
 {
     if should_skip_check(check_id, &opts.check_sets) {
-        return Ok(None);
+        return None;
     }
 
     // Check if an exemption has been declared for this check
     if let Some(exemption) = find_exemption(check_id, &opts.md) {
-        return Ok(Some(exemption.into()));
+        return Some(exemption.into());
     }
 
     // Call async check function and wrap returned check result in an option
-    check_async_fn(opts)
-        .await
-        .map(Some)
-        .context(format!("error running {check_id} check"))
+    match check_async_fn(opts).await {
+        Ok(r) => Some(r),
+        Err(err) => Some(CheckResult {
+            failed: true,
+            fail_reason: Some(format!("{:#}", err)),
+            ..Default::default()
+        }),
+    }
 }
 
 /// Adopters check.
@@ -274,14 +290,14 @@ pub(crate) fn license(opts: &CheckOptions) -> Result<CheckResult<String>> {
 pub(crate) fn license_approved(
     spdx_id: &Option<String>,
     opts: &CheckOptions,
-) -> Result<Option<CheckResult<bool>>> {
+) -> Option<CheckResult<bool>> {
     if should_skip_check(LICENSE_APPROVED, &opts.check_sets) {
-        return Ok(None);
+        return None;
     }
 
     // Check if an exemption has been declared for this check
     if let Some(exemption) = find_exemption(LICENSE_APPROVED, &opts.md) {
-        return Ok(Some(exemption.into()));
+        return Some(exemption.into());
     }
 
     // SPDX id in list of approved licenses
@@ -290,11 +306,11 @@ pub(crate) fn license_approved(
         approved = Some(license::is_approved(spdx_id))
     }
 
-    Ok(Some(CheckResult {
+    Some(CheckResult {
         passed: approved.unwrap_or(false),
         value: approved,
         ..Default::default()
-    }))
+    })
 }
 
 /// License scanning check.

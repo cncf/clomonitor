@@ -39,7 +39,6 @@ async fn main() -> Result<()> {
         check_sets: args.check_set,
         root: args.path,
         url: args.url,
-        github_token: None,
     };
     let report = lint(options).await?;
     let score = score::calculate(&report);

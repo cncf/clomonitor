@@ -1819,7 +1819,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="d-flex flex-row align-items-center"
                 >
                   <div>
-                    CNCF recommended templates: 
+                    Recommended templates: 
                     <a
                       aria-label="Open external link"
                       class="link d-inline-block"
@@ -2806,7 +2806,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="d-flex flex-row align-items-center"
                 >
                   <div>
-                    CNCF recommended templates: 
+                    Recommended templates: 
                     <a
                       aria-label="Open external link"
                       class="link d-inline-block"

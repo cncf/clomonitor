@@ -101,7 +101,7 @@ const Row = (props: Props) => {
             <li data-testid="recommended-templates" className="pt-1">
               <div className="d-flex flex-row align-items-center">
                 <div>
-                  CNCF recommended templates:{' '}
+                  Recommended templates:{' '}
                   {props.recommendedTemplates.map((tmpl: RecommendedTemplate, index: number) => {
                     return (
                       <Fragment key={`${props.label}_tmpl_${index}`}>

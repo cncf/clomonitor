@@ -99,7 +99,7 @@ describe('Row', () => {
 
       expect(screen.getByTestId('recommended-templates')).toBeInTheDocument();
       expect(screen.getByTestId('recommended-templates')).toHaveTextContent(
-        'CNCF recommended templates: template1.md and template2.md.'
+        'Recommended templates: template1.md and template2.md.'
       );
       const links = screen.getAllByRole('link');
       expect(links).toHaveLength(3);

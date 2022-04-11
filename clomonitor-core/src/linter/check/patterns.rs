@@ -116,6 +116,7 @@ lazy_static! {
 
     #[rustfmt::skip]
     pub(crate) static ref COMMUNITY_MEETING_TEXT: RegexSet = RegexSet::new(vec![
+        r"(?im)^#+.*meeting.*$",
         r"(?i)(community|developer|development) \[?(call|event|meeting|session)",
         r"(?i)(weekly|biweekly|monthly) \[?meeting",
         r"(?i)meeting minutes",
@@ -298,6 +299,7 @@ Code of Conduct
 
     #[test]
     fn community_meeting_text_match() {
+        assert!(COMMUNITY_MEETING_TEXT.is_match("# Project Status Meetings"));
         assert!(COMMUNITY_MEETING_TEXT.is_match("# Community meeting"));
         assert!(COMMUNITY_MEETING_TEXT.is_match("# Community [meeting](...)"));
         assert!(COMMUNITY_MEETING_TEXT.is_match("## Developer call"));

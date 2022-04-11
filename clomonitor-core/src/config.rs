@@ -72,6 +72,7 @@ lazy_static! {
     pub static ref CHECKSET: HashMap<CheckSet, Vec<&'static str>> = {
         let mut m = HashMap::new();
 
+        // Code
         m.insert(
             CheckSet::Code,
             vec![
@@ -91,6 +92,8 @@ lazy_static! {
                 SECURITY_POLICY,
             ],
         );
+
+        // CodeLite
         m.insert(
             CheckSet::CodeLite,
             vec![
@@ -104,6 +107,8 @@ lazy_static! {
                 RECENT_RELEASE,
             ],
         );
+
+        // Community
         m.insert(
             CheckSet::Community,
             vec![
@@ -120,6 +125,8 @@ lazy_static! {
                 WEBSITE,
             ],
         );
+
+        // Docs
         m.insert(CheckSet::Docs, vec![LICENSE_SPDX, LICENSE_APPROVED, README]);
 
         m

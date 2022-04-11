@@ -5,12 +5,12 @@ use std::fs;
 use std::path::Path;
 
 /// Metadata file name.
-pub const METADATA_FILE: &str = ".clomonitor.yml";
+pub(crate) const METADATA_FILE: &str = ".clomonitor.yml";
 
 /// CLOMonitor metadata.
 #[derive(Debug, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
-pub struct Metadata {
+pub(crate) struct Metadata {
     pub exemptions: Option<Vec<Exemption>>,
     pub license_scanning: Option<LicenseScanning>,
 }
@@ -29,14 +29,14 @@ impl Metadata {
 
 /// Metadata check exemption entry.
 #[derive(Debug, Deserialize, PartialEq, Clone)]
-pub struct Exemption {
+pub(crate) struct Exemption {
     pub check: String,
     pub reason: String,
 }
 
 /// License scanning section of the metadata.
 #[derive(Debug, Deserialize, PartialEq)]
-pub struct LicenseScanning {
+pub(crate) struct LicenseScanning {
     pub url: Option<String>,
 }
 

@@ -6,9 +6,9 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.52"
-clap = { version = "3.0.7", features = ["derive"] }
-comfy-table = "5.0.0"
+anyhow = "1.0.56"
+clap = { version = "3.1.8", features = ["derive"] }
+comfy-table = "5.0.1"
 clomonitor-core = { path = "../clomonitor-core" }
-openssl = { version = "0.10", features = ["vendored"] }
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+openssl = { version = "0.10.38", features = ["vendored"] }
+tokio = { version = "1.17.0", features = ["macros", "rt-multi-thread"] }

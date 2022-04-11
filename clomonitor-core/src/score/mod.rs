@@ -2,7 +2,7 @@ use crate::{config::*, linter::CheckResult, linter::Report};
 use serde::{Deserialize, Serialize};
 
 /// Score information.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Score {
     pub global: f64,
@@ -40,25 +40,6 @@ pub struct Score {
 }
 
 impl Score {
-    /// Create a new empty score.
-    #[allow(clippy::new_without_default)]
-    fn new() -> Self {
-        Score {
-            global: 0.0,
-            global_weight: 0,
-            documentation: None,
-            documentation_weight: None,
-            license: None,
-            license_weight: None,
-            best_practices: None,
-            best_practices_weight: None,
-            security: None,
-            security_weight: None,
-            legal: None,
-            legal_weight: None,
-        }
-    }
-
     /// Return the score's global value.
     pub fn global(&self) -> f64 {
         self.global
@@ -72,7 +53,7 @@ impl Score {
 
 /// Calculate score for the given linter report.
 pub fn calculate(report: &Report) -> Score {
-    let mut score = Score::new();
+    let mut score = Score::default();
 
     // Documentation
     let d = &report.documentation;
@@ -181,7 +162,7 @@ pub fn merge(scores: Vec<Score>) -> Score {
     };
 
     // Calculate merged score for each of the sections.
-    let mut m = Score::new();
+    let mut m = Score::default();
     for s in scores {
         m.global += s.global * (s.global_weight as f64 / global_weights_sum as f64);
         m.documentation = merge(
@@ -267,32 +248,11 @@ mod tests {
     use crate::linter::*;
 
     #[test]
-    fn new_returns_empty_score() {
-        assert_eq!(
-            Score::new(),
-            Score {
-                global: 0.0,
-                global_weight: 0,
-                documentation: None,
-                documentation_weight: None,
-                license: None,
-                license_weight: None,
-                best_practices: None,
-                best_practices_weight: None,
-                security: None,
-                security_weight: None,
-                legal: None,
-                legal_weight: None,
-            }
-        );
-    }
-
-    #[test]
     fn score_global() {
         assert_eq!(
             Score {
                 global: 10.0,
-                ..Score::new()
+                ..Score::default()
             }
             .global(),
             10.0
@@ -304,7 +264,7 @@ mod tests {
         assert_eq!(
             Score {
                 global: 80.0,
-                ..Score::new()
+                ..Score::default()
             }
             .rating(),
             'a'

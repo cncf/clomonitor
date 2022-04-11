@@ -109,7 +109,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
         gh_md,
     };
 
-    // Async checks
+    // Run some async checks
     let (
         changelog,
         cla,
@@ -132,7 +132,7 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
         run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &check_opts),
     );
 
-    // Sync checks
+    // Run some sync checks
     let spdx_id = run_check(LICENSE_SPDX, license, &check_opts);
     let mut spdx_id_value: &Option<String> = &None;
     if let Some(r) = &spdx_id {

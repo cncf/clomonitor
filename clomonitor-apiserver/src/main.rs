@@ -33,11 +33,12 @@ async fn main() -> Result<()> {
     info!("apiserver started");
 
     // Setup configuration
-    let mut cfg = Config::new();
-    cfg.set_default("db.dbname", "clomonitor")?;
-    cfg.set_default("apiserver.addr", "127.0.0.1:8000")?;
-    cfg.set_default("apiserver.basicAuth.enabled", false)?;
-    cfg.merge(File::from(args.config))?;
+    let cfg = Config::builder()
+        .set_default("db.dbname", "clomonitor")?
+        .set_default("apiserver.addr", "127.0.0.1:8000")?
+        .set_default("apiserver.basicAuth.enabled", false)?
+        .add_source(File::from(args.config))
+        .build()?;
 
     // Setup database
     let mut builder = SslConnector::builder(SslMethod::tls())?;
@@ -48,7 +49,7 @@ async fn main() -> Result<()> {
 
     // Setup and launch HTTP server
     let router = router::setup(&cfg, db_pool)?;
-    let addr: SocketAddr = cfg.get_str("apiserver.addr")?.parse()?;
+    let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
     info!("listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(router.into_make_service())

@@ -19,7 +19,7 @@ use tower_http::{
 /// Setup API server router.
 pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router> {
     // Setup some paths
-    let static_path = cfg.get_str("apiserver.staticPath")?;
+    let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
 
     // Setup error handler
@@ -57,8 +57,8 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router> {
 
     // Setup basic auth
     if cfg.get_bool("apiserver.basicAuth.enabled")? {
-        let username = cfg.get_str("apiserver.basicAuth.username")?;
-        let password = cfg.get_str("apiserver.basicAuth.password")?;
+        let username = cfg.get_string("apiserver.basicAuth.username")?;
+        let password = cfg.get_string("apiserver.basicAuth.password")?;
         router = router.layer(RequireAuthorizationLayer::basic(&username, &password));
     }
 

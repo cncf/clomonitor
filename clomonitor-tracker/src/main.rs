@@ -34,10 +34,11 @@ async fn main() -> Result<()> {
     }
 
     // Setup configuration
-    let mut cfg = Config::new();
-    cfg.set_default("db.dbname", "clomonitor")?;
-    cfg.set_default("tracker.concurrency", 10)?;
-    cfg.merge(File::from(args.config))?;
+    let cfg = Config::builder()
+        .set_default("db.dbname", "clomonitor")?
+        .set_default("tracker.concurrency", 10)?
+        .add_source(File::from(args.config))
+        .build()?;
 
     // Setup database
     let mut builder = SslConnector::builder(SslMethod::tls())?;

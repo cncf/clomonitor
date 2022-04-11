@@ -4,7 +4,7 @@ use axum::{
     extract,
     extract::{Extension, Query},
     http::StatusCode,
-    response::{self, Headers, IntoResponse},
+    response::{self, IntoResponse},
 };
 use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
@@ -133,7 +133,7 @@ pub(crate) async fn report_summary_svg(
     let score: Option<Json<Score>> = rows.first().unwrap().get("score");
 
     // Prepare response headers
-    let headers = Headers(vec![(http::header::CACHE_CONTROL, "max-age=3600")]);
+    let headers = [(http::header::CACHE_CONTROL, "max-age=3600")];
 
     // Render report summary SVG and return it
     match score {
@@ -178,7 +178,7 @@ pub(crate) async fn search_projects(
     let total_count: i64 = row.get("total_count");
 
     // Prepare response headers
-    let headers = Headers(vec![(PAGINATION_TOTAL_COUNT, total_count.to_string())]);
+    let headers = [(PAGINATION_TOTAL_COUNT, total_count.to_string())];
 
     Ok((headers, response::Json(projects)))
 }

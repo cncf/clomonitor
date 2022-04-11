@@ -20,7 +20,7 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
 
     // Initialize Github API client
     let mut builder = octocrab::Octocrab::builder();
-    if let Ok(token) = cfg.get_str("creds.githubToken") {
+    if let Ok(token) = cfg.get_string("creds.githubToken") {
         builder = builder.personal_token(token);
     }
     octocrab::initialise(builder)?;

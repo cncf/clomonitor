@@ -6,23 +6,23 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.52"
-askama = "0.11"
-askama_axum = "0.1"
-axum = "0.4.4"
-axum-debug = "0.3.2"
-clap = { version = "3.0.7", features = ["derive"] }
+anyhow = "1.0.56"
+askama = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
+askama_axum = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
+axum = "0.5.1"
+axum-debug = "0.3.3"
+clap = { version = "3.1.8", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
-config = "0.11.0"
-deadpool-postgres = { version = "0.10.1", features = ["serde"] }
+config = "0.13.0"
+deadpool-postgres = { version = "0.10.2", features = ["serde"] }
 http = "0.2.6"
-openssl = { version = "0.10", features = ["vendored"] }
+openssl = { version = "0.10.38", features = ["vendored"] }
 postgres-openssl = "0.5.0"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.74"
-tokio = {version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+tokio = {version = "1.17.0", features = ["macros", "rt-multi-thread", "signal"] }
 tokio-postgres = { version = "0.7.5", features = ["with-uuid-0_8", "with-serde_json-1"] }
-tower = "0.4.11"
-tower-http = { version = "0.2.0", features = ["auth", "fs", "trace"] }
-tracing = "0.1.29"
-tracing-subscriber = "0.3.6"
+tower = "0.4.12"
+tower-http = { version = "0.2.5", features = ["auth", "fs", "trace"] }
+tracing = "0.1.33"
+tracing-subscriber = "0.3.11"

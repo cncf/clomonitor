@@ -11,7 +11,7 @@ import useBreakpointDetect from '../../hooks/useBreakpointDetect';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import { Project } from '../../types';
 import prepareQueryString from '../../utils/prepareQueryString';
-import MaturityBadge from '../common/badges/MaturityBadge';
+import FoundationBadge from '../common/badges/FoundationBadge';
 import HoverableItem from '../common/HoverableItem';
 import Image from '../common/Image';
 import RoundScore from '../common/RoundScore';
@@ -305,7 +305,7 @@ const Searchbar = (props: Props) => {
                           </div>
 
                           <div className="d-flex flex-row align-items-center mt-1">
-                            <MaturityBadge maturityLevel={project.maturity} />
+                            <FoundationBadge foundation={project.foundation} />
                           </div>
                         </div>
 

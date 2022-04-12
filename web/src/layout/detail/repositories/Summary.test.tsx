@@ -128,6 +128,17 @@ describe('Summary', () => {
     );
   });
 
+  it('does not render repository without report', () => {
+    const repositories = getRepositories('3');
+    render(
+      <Router>
+        <Summary {...defaultProps} repositories={repositories} />
+      </Router>
+    );
+
+    expect(screen.queryByText('grpc.io')).toBeNull();
+  });
+
   describe('Does not render', () => {
     it('when repositories is empty', () => {
       const { container } = render(

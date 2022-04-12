@@ -91,6 +91,7 @@ const RepositoriesList = (props: Props) => {
       {repositories.length > 1 && <Summary repositories={repositories} scrollIntoView={props.scrollIntoView} />}
 
       {repositories.map((repo: Repository) => {
+        if (isUndefined(repo.report)) return null;
         return (
           <div
             data-testid="repository-info"

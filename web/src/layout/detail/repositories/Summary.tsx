@@ -69,6 +69,7 @@ const Summary = (props: Props) => {
         </thead>
         <tbody>
           {props.repositories.map((repo: Repository) => {
+            if (isUndefined(repo.report)) return null;
             return (
               <tr key={`summary_${repo.repository_id}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>

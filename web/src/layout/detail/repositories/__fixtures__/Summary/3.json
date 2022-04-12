@@ -1,0 +1,478 @@
+[
+  {
+    "check_sets": ["code-lite"],
+    "digest": "422e8cbcba42b13a00614707cca308b2a08220de",
+    "name": "grpc-node",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          },
+          "dco": {
+            "exempt": true,
+            "exemption_reason": "CLA check passed",
+            "failed": false,
+            "passed": false
+          },
+          "recent_release": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-node/releases/tag/%40grpc/grpc-js%401.6.3"
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-node/blob/master/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-node/blob/master/MAINTAINERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-node/blob/master/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "e75cf6cd-99ad-47a4-a3c6-4d6484e39f5b",
+      "updated_at": 1649725270
+    },
+    "repository_id": "00000000-0000-0057-0000-000000000000",
+    "score": {
+      "best_practices": 100,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 100,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/grpc/grpc-node"
+  },
+  {
+    "check_sets": ["code-lite"],
+    "digest": "8c5502186445e35002697f4bd8d1b820abdbed5d",
+    "name": "grpc-web",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          },
+          "dco": {
+            "exempt": true,
+            "exemption_reason": "CLA check passed",
+            "failed": false,
+            "passed": false
+          },
+          "recent_release": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-web/releases/tag/1.3.1"
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-web/blob/master/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-web/blob/master/MAINTAINERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-web/blob/master/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "d73a6646-202b-47b5-bb72-c8025401d9b8",
+      "updated_at": 1649725277
+    },
+    "repository_id": "00000000-0000-0060-0000-000000000000",
+    "score": {
+      "best_practices": 100,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 100,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/grpc/grpc-web"
+  },
+  {
+    "check_sets": ["code-lite"],
+    "digest": "4a137d6ef0415b4e4451ee01718cddf629b636e7",
+    "name": "grpc-java",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          },
+          "dco": {
+            "exempt": true,
+            "exemption_reason": "CLA check passed",
+            "failed": false,
+            "passed": false
+          },
+          "recent_release": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-java/releases/tag/v1.45.1"
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-java/blob/master/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-java/blob/master/MAINTAINERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-java/blob/master/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "2388304e-dc41-46ee-975e-2c6ee5203c3e",
+      "updated_at": 1649700022
+    },
+    "repository_id": "00000000-0000-0059-0000-000000000000",
+    "score": {
+      "best_practices": 100,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 100,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/grpc/grpc-java"
+  },
+  {
+    "check_sets": ["docs"],
+    "name": "grpc.io",
+    "repository_id": "00000000-0000-0224-0000-000000000000",
+    "url": "https://github.com/grpc/grpc.io"
+  },
+  {
+    "check_sets": ["code-lite"],
+    "digest": "ebd098392a8ba5a611762fbfd06de8fa06bca8ae",
+    "name": "grpc-go",
+    "report": {
+      "data": {
+        "best_practices": {
+          "cla": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          },
+          "dco": {
+            "exempt": true,
+            "exemption_reason": "CLA check passed",
+            "failed": false,
+            "passed": false
+          },
+          "recent_release": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-go/releases/tag/v1.45.0"
+          }
+        },
+        "documentation": {
+          "contributing": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-go/blob/master/CONTRIBUTING.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-go/blob/master/MAINTAINERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc-go/blob/master/README.md"
+          }
+        },
+        "legal": {},
+        "license": {
+          "approved": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": true
+          },
+          "spdx_id": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {}
+      },
+      "report_id": "84329490-9481-4dfd-9dc3-60829248f691",
+      "updated_at": 1649725289
+    },
+    "repository_id": "00000000-0000-0058-0000-000000000000",
+    "score": {
+      "best_practices": 100,
+      "best_practices_weight": 5,
+      "documentation": 100,
+      "documentation_weight": 17,
+      "global": 100,
+      "global_weight": 37,
+      "license": 100,
+      "license_weight": 15
+    },
+    "url": "https://github.com/grpc/grpc-go"
+  },
+  {
+    "check_sets": ["community", "code"],
+    "digest": "07a75427bd1447535708a3e33f26d31bca18074b",
+    "name": "grpc",
+    "report": {
+      "data": {
+        "best_practices": {
+          "artifacthub_badge": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "cla": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          },
+          "community_meeting": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "dco": {
+            "exempt": true,
+            "exemption_reason": "CLA check passed",
+            "failed": false,
+            "passed": false
+          },
+          "openssf_badge": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "recent_release": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/releases/tag/v1.45.2"
+          },
+          "slack_presence": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          }
+        },
+        "documentation": {
+          "adopters": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "changelog": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "code_of_conduct": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/CODE-OF-CONDUCT.md"
+          },
+          "contributing": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/CONTRIBUTING.md"
+          },
+          "governance": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/GOVERNANCE.md"
+          },
+          "maintainers": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/MAINTAINERS.md"
+          },
+          "readme": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/README.md"
+          },
+          "roadmap": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "website": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://grpc.io"
+          }
+        },
+        "legal": {
+          "trademark_disclaimer": {
+            "exempt": false,
+            "failed": false,
+            "passed": true
+          }
+        },
+        "license": {
+          "approved": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": true
+          },
+          "scanning": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "spdx_id": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "value": "Apache-2.0"
+          }
+        },
+        "security": {
+          "sbom": {
+            "exempt": false,
+            "failed": false,
+            "passed": false
+          },
+          "security_policy": {
+            "exempt": false,
+            "failed": false,
+            "passed": true,
+            "url": "https://github.com/grpc/grpc/blob/master/SECURITY.md"
+          }
+        }
+      },
+      "report_id": "723f7a5c-f7a2-4b4c-8572-7866e682187e",
+      "updated_at": 1649757642
+    },
+    "repository_id": "00000000-0000-0056-0000-000000000000",
+    "score": {
+      "best_practices": 25,
+      "best_practices_weight": 20,
+      "documentation": 90,
+      "documentation_weight": 30,
+      "global": 72.22222222222223,
+      "global_weight": 90,
+      "legal": 100,
+      "legal_weight": 5,
+      "license": 75,
+      "license_weight": 20,
+      "security": 86.66666666666667,
+      "security_weight": 15
+    },
+    "url": "https://github.com/grpc/grpc"
+  }
+]

@@ -1,8 +1,9 @@
 use super::patterns::GITHUB_REPO_URL;
 use anyhow::{format_err, Context, Result};
+use cached::proc_macro::cached;
 use chrono::{Duration, Utc};
 use octocrab::{
-    models::{repos::Release, Repository, Status},
+    models::{pulls::PullRequest, repos::Release, Repository, Status},
     params::State,
     Octocrab,
 };
@@ -22,6 +23,12 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
 }
 
 /// Get repository's metadata from the Github API.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}", repo_url) }"#
+)]
 pub(crate) async fn get_repo_metadata(
     github_client: &Octocrab,
     repo_url: &str,
@@ -44,27 +51,14 @@ pub(crate) async fn has_check(
     let (owner, repo) = get_owner_and_repo(repo_url)?;
 
     // Get last closed PR head commit sha
-    let mut page = github_client
-        .pulls(&owner, &repo)
-        .list()
-        .state(State::Closed)
-        .per_page(1)
-        .send()
-        .await
-        .context("error getting last closed PR")?;
-    let sha = match page.take_items().first() {
-        Some(pr) => pr.head.sha.clone(),
+    let sha = match get_last_closed_pr(github_client, &owner, &repo).await? {
+        Some(pr) => pr.head.sha,
         None => return Ok(false),
     };
 
     // Search in check suites
-    let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
-    let response: GHCheckSuitesResponse = github_client
-        .get(url, None::<&()>)
-        .await
-        .context("error getting check suites")?;
-    if response
-        .check_suites
+    if get_commit_check_suites(github_client, &owner, &repo, &sha)
+        .await?
         .iter()
         .any(|s| re.is_match(&s.app.name))
     {
@@ -72,15 +66,8 @@ pub(crate) async fn has_check(
     }
 
     // Search in commit statuses
-    let page = github_client
-        .repos(&owner, &repo)
-        .list_statuses(sha.clone())
-        .send()
-        .await?;
-    if github_client
-        .all_pages::<Status>(page)
-        .await
-        .context("error getting commit statuses")?
+    if get_commit_statuses(github_client, &owner, &repo, &sha)
+        .await?
         .iter()
         .filter(|s| s.context.is_some())
         .any(|s| re.is_match(s.context.as_ref().unwrap()))
@@ -89,12 +76,15 @@ pub(crate) async fn has_check(
     }
 
     // Search in check runs
-    let url = format!("repos/{}/{}/commits/{}/check-runs", &owner, &repo, &sha);
-    let response: GHCheckRunsResponse = github_client
-        .get(url, None::<&()>)
-        .await
-        .context("error getting check runs")?;
-    Ok(response.check_runs.iter().any(|r| re.is_match(&r.name)))
+    if get_commit_check_runs(github_client, &owner, &repo, &sha)
+        .await?
+        .iter()
+        .any(|r| re.is_match(&r.name))
+    {
+        return Ok(true);
+    }
+
+    Ok(false)
 }
 
 /// Check if the given default community health file is available in the
@@ -162,6 +152,12 @@ pub(crate) async fn has_recent_release(
 }
 
 /// Return the last release of the provided repository when available.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}", repo_url) }"#
+)]
 pub(crate) async fn last_release(
     github_client: &Octocrab,
     repo_url: &str,
@@ -193,6 +189,95 @@ pub(crate) async fn last_release_body_matches(
     Ok(false)
 }
 
+/// Get commit check runs.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}{}{}", owner, repo, sha) }"#
+)]
+async fn get_commit_check_runs(
+    github_client: &Octocrab,
+    owner: &str,
+    repo: &str,
+    sha: &str,
+) -> Result<Vec<GHCheckRun>> {
+    let url = format!("repos/{}/{}/commits/{}/check-runs", &owner, &repo, &sha);
+    let response: GHCheckRunsResponse = github_client
+        .get(url, None::<&()>)
+        .await
+        .context("error getting check runs")?;
+    Ok(response.check_runs)
+}
+
+/// Get commit check suites.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}{}{}", owner, repo, sha) }"#
+)]
+async fn get_commit_check_suites(
+    github_client: &Octocrab,
+    owner: &str,
+    repo: &str,
+    sha: &str,
+) -> Result<Vec<GHCheckSuite>> {
+    let url = format!("repos/{}/{}/commits/{}/check-suites", &owner, &repo, &sha);
+    let response: GHCheckSuitesResponse = github_client
+        .get(url, None::<&()>)
+        .await
+        .context("error getting check suites")?;
+    Ok(response.check_suites)
+}
+
+/// Get commit statuses.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}{}{}", owner, repo, sha) }"#
+)]
+async fn get_commit_statuses(
+    github_client: &Octocrab,
+    owner: &str,
+    repo: &str,
+    sha: &str,
+) -> Result<Vec<Status>> {
+    let page = github_client
+        .repos(owner, repo)
+        .list_statuses(sha.to_string())
+        .send()
+        .await?;
+    github_client
+        .all_pages::<Status>(page)
+        .await
+        .context("error getting commit statuses")
+}
+
+/// Get last closed PR in repository.
+#[cached(
+    result = true,
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}{}", owner, repo) }"#
+)]
+async fn get_last_closed_pr(
+    github_client: &Octocrab,
+    owner: &str,
+    repo: &str,
+) -> Result<Option<PullRequest>> {
+    let mut page = github_client
+        .pulls(owner, repo)
+        .list()
+        .state(State::Closed)
+        .per_page(1)
+        .send()
+        .await
+        .context("error getting last closed PR")?;
+    Ok(page.take_items().first().map(|pr| pr.to_owned()))
+}
+
 /// Extract the owner and repository from the repository url provided.
 fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
     let c = GITHUB_REPO_URL
@@ -206,12 +291,12 @@ pub struct GHCheckSuitesResponse {
     pub check_suites: Vec<GHCheckSuite>,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct GHCheckSuite {
     pub app: GHApp,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct GHApp {
     pub name: String,
 }
@@ -221,7 +306,7 @@ pub struct GHCheckRunsResponse {
     pub check_runs: Vec<GHCheckRun>,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct GHCheckRun {
     pub name: String,
 }

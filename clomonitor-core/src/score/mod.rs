@@ -1,4 +1,4 @@
-use crate::{config::*, linter::CheckResult, linter::Report};
+use crate::{config::*, linter::CheckOutput, linter::Report};
 use serde::{Deserialize, Serialize};
 
 /// Score information.
@@ -238,8 +238,8 @@ fn calculate_section_score_and_weight(
 
 /// Helper that checks if the provided check should be scored or not. At the
 /// moment a check gets a score if it has passed or is exempt.
-fn should_score<T>(r: &Option<CheckResult<T>>) -> Option<bool> {
-    r.as_ref().map(|r| r.passed || r.exempt)
+fn should_score<T>(output: &Option<CheckOutput<T>>) -> Option<bool> {
+    output.as_ref().map(|o| o.passed || o.exempt)
 }
 
 #[cfg(test)]
@@ -298,18 +298,18 @@ mod tests {
                     website: Some(true.into()),
                 },
                 license: License {
-                    approved: Some(CheckResult {
+                    approved: Some(CheckOutput {
                         passed: true,
                         value: Some(true),
                         ..Default::default()
                     }),
-                    scanning: Some(CheckResult::from_url(Some(
+                    scanning: Some(CheckOutput::from_url(Some(
                         "https://license-scanning.url".to_string()
                     ))),
                     spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: Some(CheckResult {
+                    artifacthub_badge: Some(CheckOutput {
                         exempt: true,
                         ..Default::default()
                     }),
@@ -366,7 +366,7 @@ mod tests {
                     spdx_id: Some(false.into()),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: Some(CheckResult {
+                    artifacthub_badge: Some(CheckOutput {
                         exempt: false,
                         ..Default::default()
                     }),
@@ -418,18 +418,18 @@ mod tests {
                     website: None,
                 },
                 license: License {
-                    approved: Some(CheckResult {
+                    approved: Some(CheckOutput {
                         passed: true,
                         value: Some(true),
                         ..Default::default()
                     }),
-                    scanning: Some(CheckResult::from_url(Some(
+                    scanning: Some(CheckOutput::from_url(Some(
                         "https://license-scanning.url".to_string()
                     ))),
                     spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
-                    artifacthub_badge: Some(CheckResult {
+                    artifacthub_badge: Some(CheckOutput {
                         exempt: true,
                         ..Default::default()
                     }),

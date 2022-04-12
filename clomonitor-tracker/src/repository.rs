@@ -1,7 +1,7 @@
 use anyhow::{format_err, Result};
 use chrono::{DateTime, Duration, Utc};
 use clomonitor_core::{
-    linter::{lint, CheckSet, LintOptions, Report},
+    linter::{lint, CheckSet, LintOptions, LintServices, Report},
     score::{self, Score},
 };
 use deadpool_postgres::{Client as DbClient, Transaction};
@@ -32,7 +32,7 @@ impl Repository {
 
     /// Track repository if it has changed since the last time it was tracked.
     /// This involves cloning the repository, linting it and storing the results.
-    pub(crate) async fn track(&self, mut db: DbClient) -> Result<()> {
+    pub(crate) async fn track(&self, mut db: DbClient, svc: &LintServices) -> Result<()> {
         let start = Instant::now();
 
         // Process only if the repository has changed since the last time it
@@ -52,12 +52,12 @@ impl Repository {
 
         // Lint repository
         let mut errors: Option<String> = None;
-        let options = LintOptions {
-            check_sets: self.check_sets.clone(),
+        let opts = LintOptions {
             root: tmp_dir.into_path(),
             url: self.url.clone(),
+            check_sets: self.check_sets.clone(),
         };
-        let report = match lint(options).await {
+        let report = match lint(&opts, svc).await {
             Ok(report) => Some(report),
             Err(err) => {
                 warn!(

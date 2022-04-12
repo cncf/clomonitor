@@ -1,5 +1,5 @@
 use clomonitor_core::{
-    linter::{CheckResult, Report},
+    linter::{CheckOutput, Report},
     score::Score,
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
@@ -171,9 +171,9 @@ fn cell_score(score: Option<f64>) -> Cell {
         .fg(color)
 }
 
-/// Build a cell used for checks results.
-fn cell_check<T>(r: &Option<CheckResult<T>>) -> Cell {
-    let (content, color) = match r {
+/// Build a cell used for checks output.
+fn cell_check<T>(output: &Option<CheckOutput<T>>) -> Cell {
+    let (content, color) = match output {
         Some(r) => match (r.passed, r.exempt, r.failed) {
             (true, _, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),
             (false, true, _) => (EXEMPT_MSG.to_string(), Color::Grey),

@@ -9,7 +9,45 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 mod check;
-pub use check::CheckResult;
+pub use check::CheckOutput;
+
+/// Linter configuration options.
+#[derive(Debug)]
+pub struct LintOptions {
+    pub root: PathBuf,
+    pub url: String,
+    pub check_sets: Vec<CheckSet>,
+}
+
+/// Credentials used by LintServices.
+#[derive(Debug, Default)]
+pub struct LintCredentials {
+    pub github_token: Option<String>,
+}
+
+/// Services used by the linter to perform some of the checks.
+#[derive(Debug)]
+#[non_exhaustive]
+pub struct LintServices {
+    pub http_client: reqwest::Client,
+    pub github_client: octocrab::Octocrab,
+}
+
+impl LintServices {
+    /// Create a new LintServices instance.
+    pub fn new(creds: LintCredentials) -> Result<Self> {
+        // Setup GitHub client
+        let mut octocrab_builder = octocrab::Octocrab::builder();
+        if let Some(token) = creds.github_token {
+            octocrab_builder = octocrab_builder.personal_token(token);
+        }
+
+        Ok(Self {
+            http_client: reqwest::Client::new(),
+            github_client: octocrab_builder.build()?,
+        })
+    }
+}
 
 /// Check sets define a set of checks that will be run on a given repository.
 /// Multiple check sets can be assigned to a repository.
@@ -20,13 +58,6 @@ pub enum CheckSet {
     CodeLite,
     Community,
     Docs,
-}
-
-/// Linter configuration options.
-pub struct LintOptions {
-    pub check_sets: Vec<CheckSet>,
-    pub root: PathBuf,
-    pub url: String,
 }
 
 /// Linter report.
@@ -44,68 +75,67 @@ pub struct Report {
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Documentation {
-    pub adopters: Option<CheckResult>,
-    pub changelog: Option<CheckResult>,
-    pub code_of_conduct: Option<CheckResult>,
-    pub contributing: Option<CheckResult>,
-    pub governance: Option<CheckResult>,
-    pub maintainers: Option<CheckResult>,
-    pub readme: Option<CheckResult>,
-    pub roadmap: Option<CheckResult>,
-    pub website: Option<CheckResult>,
+    pub adopters: Option<CheckOutput>,
+    pub changelog: Option<CheckOutput>,
+    pub code_of_conduct: Option<CheckOutput>,
+    pub contributing: Option<CheckOutput>,
+    pub governance: Option<CheckOutput>,
+    pub maintainers: Option<CheckOutput>,
+    pub readme: Option<CheckOutput>,
+    pub roadmap: Option<CheckOutput>,
+    pub website: Option<CheckOutput>,
 }
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct License {
-    pub approved: Option<CheckResult<bool>>,
-    pub scanning: Option<CheckResult>,
-    pub spdx_id: Option<CheckResult<String>>,
+    pub approved: Option<CheckOutput<bool>>,
+    pub scanning: Option<CheckOutput>,
+    pub spdx_id: Option<CheckOutput<String>>,
 }
 
 /// BestPractices section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct BestPractices {
-    pub artifacthub_badge: Option<CheckResult>,
-    pub cla: Option<CheckResult>,
-    pub community_meeting: Option<CheckResult>,
-    pub dco: Option<CheckResult>,
-    pub openssf_badge: Option<CheckResult>,
-    pub recent_release: Option<CheckResult>,
-    pub slack_presence: Option<CheckResult>,
+    pub artifacthub_badge: Option<CheckOutput>,
+    pub cla: Option<CheckOutput>,
+    pub community_meeting: Option<CheckOutput>,
+    pub dco: Option<CheckOutput>,
+    pub openssf_badge: Option<CheckOutput>,
+    pub recent_release: Option<CheckOutput>,
+    pub slack_presence: Option<CheckOutput>,
 }
 
 /// Security section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Security {
-    pub sbom: Option<CheckResult>,
-    pub security_policy: Option<CheckResult>,
+    pub sbom: Option<CheckOutput>,
+    pub security_policy: Option<CheckOutput>,
 }
 
 /// Legal section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Legal {
-    pub trademark_disclaimer: Option<CheckResult>,
+    pub trademark_disclaimer: Option<CheckOutput>,
 }
 
 /// Lint the path provided and return a report.
-pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
+pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     // Get CLOMonitor metadata
-    let md = Metadata::from(&lint_opts.root.join(METADATA_FILE))?;
+    let cm_md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
     // Get Github metadata
-    let gh_md = github::get_repo_metadata(&lint_opts.url).await?;
+    let gh_md = github::get_repo_metadata(&svc.github_client, &opts.url).await?;
 
-    // Prepare check options
-    let check_opts = CheckOptions {
-        check_sets: lint_opts.check_sets,
-        root: lint_opts.root,
-        url: lint_opts.url,
-        md,
+    // Prepare check input
+    let input = CheckInput {
+        opts,
+        svc,
+        cm_md,
         gh_md,
     };
 
@@ -121,19 +151,19 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
         security_policy,
         trademark_disclaimer,
     ) = tokio::join!(
-        run_async_check(CHANGELOG, changelog, &check_opts),
-        run_async_check(CLA, cla, &check_opts),
-        run_async_check(CODE_OF_CONDUCT, code_of_conduct, &check_opts),
-        run_async_check(CONTRIBUTING, contributing, &check_opts),
-        run_async_check(DCO, dco, &check_opts),
-        run_async_check(RECENT_RELEASE, recent_release, &check_opts),
-        run_async_check(SBOM, sbom, &check_opts),
-        run_async_check(SECURITY_POLICY, security_policy, &check_opts),
-        run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &check_opts),
+        run_async_check(CHANGELOG, changelog, &input),
+        run_async_check(CLA, cla, &input),
+        run_async_check(CODE_OF_CONDUCT, code_of_conduct, &input),
+        run_async_check(CONTRIBUTING, contributing, &input),
+        run_async_check(DCO, dco, &input),
+        run_async_check(RECENT_RELEASE, recent_release, &input),
+        run_async_check(SBOM, sbom, &input),
+        run_async_check(SECURITY_POLICY, security_policy, &input),
+        run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &input),
     );
 
     // Run some sync checks
-    let spdx_id = run_check(LICENSE_SPDX, license, &check_opts);
+    let spdx_id = run_check(LICENSE_SPDX, license, &input);
     let mut spdx_id_value: &Option<String> = &None;
     if let Some(r) = &spdx_id {
         spdx_id_value = &r.value;
@@ -142,29 +172,29 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
     // Build report and return it
     let mut report = Report {
         documentation: Documentation {
-            adopters: run_check(ADOPTERS, adopters, &check_opts),
+            adopters: run_check(ADOPTERS, adopters, &input),
             changelog,
             code_of_conduct,
             contributing,
-            governance: run_check(GOVERNANCE, governance, &check_opts),
-            maintainers: run_check(MAINTAINERS, maintainers, &check_opts),
-            readme: run_check(README, readme, &check_opts),
-            roadmap: run_check(ROADMAP, roadmap, &check_opts),
-            website: run_check(WEBSITE, website, &check_opts),
+            governance: run_check(GOVERNANCE, governance, &input),
+            maintainers: run_check(MAINTAINERS, maintainers, &input),
+            readme: run_check(README, readme, &input),
+            roadmap: run_check(ROADMAP, roadmap, &input),
+            website: run_check(WEBSITE, website, &input),
         },
         license: License {
-            approved: license_approved(spdx_id_value, &check_opts),
-            scanning: run_check(LICENSE_SCANNING, license_scanning, &check_opts),
+            approved: license_approved(spdx_id_value, &input),
+            scanning: run_check(LICENSE_SCANNING, license_scanning, &input),
             spdx_id,
         },
         best_practices: BestPractices {
-            artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &check_opts),
+            artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &input),
             cla,
-            community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &check_opts),
+            community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &input),
             dco,
-            openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &check_opts),
+            openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &input),
             recent_release,
-            slack_presence: run_check(SLACK_PRESENCE, slack_presence, &check_opts),
+            slack_presence: run_check(SLACK_PRESENCE, slack_presence, &input),
         },
         security: Security {
             sbom,
@@ -181,23 +211,23 @@ pub async fn lint(lint_opts: LintOptions) -> Result<Report> {
 
 /// Apply inter-checks exemptions.
 fn apply_exemptions(report: &mut Report) {
-    let passed = |r: &Option<CheckResult>| -> bool {
-        match r {
-            Some(r) => r.passed || r.exempt,
+    let passed = |o: &Option<CheckOutput>| -> bool {
+        match o {
+            Some(o) => o.passed || o.exempt,
             None => false,
         }
     };
 
     // CLA / DCO
     if passed(&report.best_practices.cla) && !passed(&report.best_practices.dco) {
-        report.best_practices.dco = Some(CheckResult {
+        report.best_practices.dco = Some(CheckOutput {
             exempt: true,
             exemption_reason: Some("CLA check passed".to_string()),
             ..Default::default()
         });
     }
     if passed(&report.best_practices.dco) && !passed(&report.best_practices.cla) {
-        report.best_practices.cla = Some(CheckResult {
+        report.best_practices.cla = Some(CheckOutput {
             exempt: true,
             exemption_reason: Some("DCO check passed".to_string()),
             ..Default::default()

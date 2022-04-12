@@ -547,7 +547,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn check_result_from_passed() {
+    fn check_output_from_passed() {
         assert_eq!(
             CheckOutput::<()>::from(true),
             CheckOutput {
@@ -558,7 +558,7 @@ mod tests {
     }
 
     #[test]
-    fn check_result_from_value_some() {
+    fn check_output_from_value_some() {
         assert_eq!(
             CheckOutput::from(Some("value".to_string())),
             CheckOutput {
@@ -570,7 +570,7 @@ mod tests {
     }
 
     #[test]
-    fn check_result_from_value_none() {
+    fn check_output_from_value_none() {
         assert_eq!(
             CheckOutput::<()>::from(None),
             CheckOutput {
@@ -581,7 +581,7 @@ mod tests {
     }
 
     #[test]
-    fn check_result_from_url_some() {
+    fn check_output_from_url_some() {
         assert_eq!(
             CheckOutput::<()>::from_url(Some("url".to_string())),
             CheckOutput {
@@ -593,7 +593,7 @@ mod tests {
     }
 
     #[test]
-    fn check_result_from_url_none() {
+    fn check_output_from_url_none() {
         assert_eq!(
             CheckOutput::<()>::from_url(None),
             CheckOutput {

@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.56"
 askalono = "0.4.4"
+cached = "0.34.0"
 clap = { version = "3.1.8", features = ["derive"] }
 chrono = "0.4.19"
 git2 = "0.14.2"

@@ -140,6 +140,11 @@ lazy_static! {
     ).expect("invalid exprs in FOSSA_URL");
 
     #[rustfmt::skip]
+    pub(crate) static ref GITHUB_REPO_URL: Regex = Regex::new(
+        "^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$"
+    ).expect("invalid exprs in GITHUB_REPO_URL");
+
+    #[rustfmt::skip]
     pub(crate) static ref GOVERNANCE_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*governance.*$",
         r"(?im)^governance$",
@@ -333,6 +338,12 @@ Contributing
     #[test]
     fn dco_in_gh_match() {
         assert!(DCO_IN_GH.is_match(r"DCO"));
+    }
+
+    #[test]
+    fn github_repo_url_match() {
+        assert!(GITHUB_REPO_URL.is_match("https://github.com/owner/repo"));
+        assert!(GITHUB_REPO_URL.is_match("https://github.com/owner/repo/"));
     }
 
     #[test]

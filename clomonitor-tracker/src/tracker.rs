@@ -1,5 +1,6 @@
 use crate::repository;
 use anyhow::Result;
+use clomonitor_core::linter::{LintCredentials, LintServices};
 use config::Config;
 use deadpool_postgres::Pool;
 use futures::{
@@ -7,7 +8,7 @@ use futures::{
     stream::{FuturesUnordered, StreamExt},
 };
 use serde_json::Value;
-use std::time::Duration;
+use std::{sync::Arc, time::Duration};
 use tokio::time::timeout;
 use tracing::{debug, error, info};
 
@@ -18,12 +19,10 @@ const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
 pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     info!("tracker started");
 
-    // Initialize Github API client
-    let mut builder = octocrab::Octocrab::builder();
-    if let Ok(token) = cfg.get_string("creds.githubToken") {
-        builder = builder.personal_token(token);
-    }
-    octocrab::initialise(builder)?;
+    // Setup lint services
+    let svc = Arc::new(LintServices::new(LintCredentials {
+        github_token: cfg.get_string("creds.githubToken").ok(),
+    })?);
 
     // Get repositories to process
     let repositories = repository::get_all(db_pool.get().await?).await?;
@@ -38,10 +37,11 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
         let db = db_pool.get().await?;
+        let svc = svc.clone();
         futs.push(tokio::spawn(async move {
             if let Err(err) = timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(db),
+                repository.track(db, &svc),
             )
             .await
             {
@@ -55,7 +55,7 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     future::join_all(futs).await;
 
     // Check Github API rate limit status
-    let response: Value = octocrab::instance().get("rate_limit", None::<&()>).await?;
+    let response: Value = svc.github_client.get("rate_limit", None::<&()>).await?;
     debug!("github rate limit info: {}", response["rate"]);
 
     info!("tracker finished");

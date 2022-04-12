@@ -1,7 +1,7 @@
 use anyhow::{format_err, Result};
 use clap::Parser;
 use clomonitor_core::{
-    linter::{lint, CheckSet, LintOptions},
+    linter::{lint, CheckSet, LintCredentials, LintOptions, LintServices},
     score,
 };
 use display::*;
@@ -16,6 +16,10 @@ struct Args {
     #[clap(long, parse(from_os_str), default_value = ".")]
     path: PathBuf,
 
+    /// Repository url [https://github.com/org/repo] (required for some GitHub remote checks)
+    #[clap(long)]
+    url: String,
+
     /// Sets of checks to run
     #[clap(arg_enum, long, default_values = &["code", "community"])]
     check_set: Vec<CheckSet>,
@@ -23,10 +27,6 @@ struct Args {
     /// Linter pass score
     #[clap(long, default_value = "80")]
     pass_score: f64,
-
-    /// Repository url [https://github.com/org/repo] (required for some GitHub remote checks)
-    #[clap(long)]
-    url: String,
 }
 
 #[tokio::main]
@@ -35,12 +35,13 @@ async fn main() -> Result<()> {
 
     // Lint repository provided and display results
     println!("\nRunning CLOMonitor linter...\n");
-    let options = LintOptions {
-        check_sets: args.check_set,
+    let opts = LintOptions {
         root: args.path,
         url: args.url,
+        check_sets: args.check_set,
     };
-    let report = lint(options).await?;
+    let svc = LintServices::new(LintCredentials::default())?;
+    let report = lint(&opts, &svc).await?;
     let score = score::calculate(&report);
     display(&report, &score);
 

@@ -1,6 +1,5 @@
 use super::path::{self, Globs};
 use anyhow::Result;
-use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
 use std::fs;
 
@@ -36,11 +35,12 @@ pub(crate) fn matches(globs: Globs, re: &RegexSet) -> Result<bool> {
 
 /// Check if the content of the url provided matches any of the regular
 /// expressions given.
-pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool> {
-    lazy_static! {
-        static ref HTTP_CLIENT: reqwest::Client = reqwest::Client::new();
-    }
-    let content = HTTP_CLIENT.get(url).send().await?.text().await?;
+pub(crate) async fn remote_matches(
+    http_client: &reqwest::Client,
+    url: &str,
+    re: &RegexSet,
+) -> Result<bool> {
+    let content = http_client.get(url).send().await?.text().await?;
     Ok(re.is_match(&content))
 }
 

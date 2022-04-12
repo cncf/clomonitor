@@ -73,6 +73,17 @@ describe('RepositoriesList', () => {
       expect(screen.getByText('-')).toBeInTheDocument();
     });
 
+    it('does not render repository without report', () => {
+      const repositories = getRepositories('3');
+      render(
+        <Router>
+          <RepositoriesList {...defaultProps} repositories={repositories} />
+        </Router>
+      );
+
+      expect(screen.queryByText('grpc.io')).toBeNull();
+    });
+
     it('clicks anchor link', () => {
       const repositories = getRepositories('1');
       render(

@@ -12,7 +12,7 @@ export interface BaseProject {
   display_name?: string;
   description?: string;
   accepted_at?: number;
-  home_url: string;
+  home_url?: string;
   logo_url?: string;
   devstats_url?: string;
   maturity: Maturity;
@@ -40,10 +40,10 @@ export interface BaseRepository {
 }
 
 export interface Repository extends BaseRepository {
-  digest: string;
+  digest?: string;
   repository_id: string;
   score?: { [key in ScoreType]?: number };
-  report: Report;
+  report?: Report;
 }
 
 export interface Report {

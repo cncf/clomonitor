@@ -1,7 +1,9 @@
+import classNames from 'classnames';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
@@ -23,15 +25,18 @@ interface HeatMapData {
   data: number[];
 }
 
+const FOUNDATION_QUERY = 'selected-foundation';
+
 const StatsView = (props: Props) => {
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isLightActive, setIsLightActive] = useState<boolean>(effective === 'light');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [emptyStats, setEmptyStats] = useState<boolean>(false);
   const [stats, setStats] = useState<Stats | null | undefined>();
   const [apiError, setApiError] = useState<string | null>(null);
-  const [selectedFoundation, setSelectedFoundation] = useState<string | undefined>();
+  const selectedFoundation = searchParams.get(FOUNDATION_QUERY);
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -39,7 +44,7 @@ const StatsView = (props: Props) => {
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    setSelectedFoundation(value === '' ? undefined : value);
+    setSearchParams(value !== '' ? { [FOUNDATION_QUERY]: value } : {});
   };
 
   const checkCurrentStats = (currentStats: Stats | null) => {
@@ -329,7 +334,7 @@ const StatsView = (props: Props) => {
 
   useEffect(() => {
     getStats();
-  }, [selectedFoundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [searchParams]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <div className="d-flex flex-column flex-grow-1 position-relative">
@@ -337,18 +342,18 @@ const StatsView = (props: Props) => {
         <div className="d-flex flex-column flex-sm-row align-items-center w-100 justify-content-between my-2">
           <div className="d-flex flex-column">
             <div className="h2 text-dark text-center text-md-start">CLOMonitor Stats</div>
-            {stats && (
-              <small className="d-flex flex-row">
-                <span className="d-none d-md-block me-2">Report generated at:</span>
-                {!isUndefined(stats.generated_at) ? (
-                  <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
-                ) : (
-                  <div className="d-inline text-primary" role="status">
-                    <span className="spinner-border spinner-border-sm" />
-                  </div>
-                )}
-              </small>
-            )}
+            <small className="d-flex flex-row">
+              <span className="d-none d-md-block me-2">Report generated at:</span>
+              {stats && !isUndefined(stats.generated_at) ? (
+                <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
+              ) : (
+                <div className="d-flex flex-row mt-1">
+                  <div className={styles.dot1} role="status" />
+                  <div className={styles.dot2} />
+                  <div className={styles.dot3} />
+                </div>
+              )}
+            </small>
           </div>
 
           <div className={styles.selectWrapper}>
@@ -374,7 +379,12 @@ const StatsView = (props: Props) => {
           </div>
         </div>
       </SubNavbar>
-      {isLoading && <Loading className={`loadingBg ${styles.loadingWrapper}`} spinnerClassName={styles.loading} />}
+      {isLoading && (
+        <Loading
+          className={classNames('loadingBg', styles.loadingWrapper, { [styles.withContent]: stats })}
+          spinnerClassName={styles.loading}
+        />
+      )}
       <main role="main" className="container-lg px-sm-4 px-lg-0 py-5 position-relative">
         <div className="flex-grow-1 position-relative">
           {apiError && <NoData>{apiError}</NoData>}

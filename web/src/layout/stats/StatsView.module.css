@@ -1,5 +1,8 @@
 .loading {
   position: fixed;
+}
+
+.withContent {
   top: 50%;
   margin-top: 115px !important;
 }
@@ -30,6 +33,42 @@
 
 .checksBody {
   padding: 1.5rem 2rem;
+}
+
+.dot1,
+.dot2,
+.dot3 {
+  background: var(--rm-primary);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  margin: 6px;
+}
+
+.dot1 {
+  animation: jump 1.2s -0.32s linear infinite;
+}
+
+.dot2 {
+  animation: jump 1.2s -0.16s linear infinite;
+}
+
+.dot3 {
+  animation: jump 1.2s linear infinite;
+}
+
+@keyframes jump {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+  }
 }
 
 [data-theme='dark'] :global(.card).chartWrapper {

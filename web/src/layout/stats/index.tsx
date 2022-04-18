@@ -25,7 +25,7 @@ interface HeatMapData {
   data: number[];
 }
 
-const FOUNDATION_QUERY = 'selected-foundation';
+const FOUNDATION_QUERY = 'foundation';
 
 const StatsView = (props: Props) => {
   const { ctx } = useContext(AppContext);
@@ -348,9 +348,9 @@ const StatsView = (props: Props) => {
                 <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
               ) : (
                 <div className="d-flex flex-row mt-1">
-                  <div className={styles.dot1} role="status" />
-                  <div className={styles.dot2} />
-                  <div className={styles.dot3} />
+                  <div className={`${styles.dot} ${styles.dot1} dot`} role="status" />
+                  <div className={`${styles.dot} ${styles.dot2} dot`} />
+                  <div className={`${styles.dot} ${styles.dot3} dot`} />
                 </div>
               )}
             </small>

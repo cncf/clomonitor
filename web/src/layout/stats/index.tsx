@@ -381,8 +381,8 @@ const StatsView = (props: Props) => {
       </SubNavbar>
       {isLoading && (
         <Loading
-          className={classNames('loadingBg', styles.loadingWrapper, { [styles.withContent]: stats })}
-          spinnerClassName={styles.loading}
+          className={`loadingBg ${styles.loadingWrapper}`}
+          spinnerClassName={classNames(styles.loading, { [styles.withContent]: stats })}
         />
       )}
       <main role="main" className="container-lg px-sm-4 px-lg-0 py-5 position-relative">

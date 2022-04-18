@@ -109,9 +109,9 @@ class API_CLASS {
     return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${org}/${project}` });
   }
 
-  public getStats(foundation?: string): Promise<Stats> {
+  public getStats(foundation: string | null): Promise<Stats> {
     return this.apiFetch({
-      url: `${this.API_BASE_URL}/stats${!isUndefined(foundation) ? `?foundation=${foundation}` : ''}`,
+      url: `${this.API_BASE_URL}/stats${!isNull(foundation) ? `?foundation=${foundation}` : ''}`,
     });
   }
 

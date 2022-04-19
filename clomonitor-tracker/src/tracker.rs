@@ -1,6 +1,6 @@
 use crate::repository;
 use anyhow::Result;
-use clomonitor_core::linter::{LintCredentials, LintServices};
+use clomonitor_core::linter::{GithubOptions, LintServices};
 use config::Config;
 use deadpool_postgres::Pool;
 use futures::{
@@ -20,9 +20,11 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     info!("tracker started");
 
     // Setup lint services
-    let svc = Arc::new(LintServices::new(LintCredentials {
-        github_token: cfg.get_string("creds.githubToken").ok(),
-    })?);
+    let gh_opts = GithubOptions {
+        token: cfg.get_string("creds.githubToken").ok(),
+        ..GithubOptions::default()
+    };
+    let svc = Arc::new(LintServices::new(gh_opts)?);
 
     // Get repositories to process
     let repositories = repository::get_all(db_pool.get().await?).await?;

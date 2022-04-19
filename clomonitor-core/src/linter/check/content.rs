@@ -49,6 +49,10 @@ mod tests {
     use super::*;
     use crate::linter::check::patterns::{ADOPTERS_IN_README, FOSSA_URL, README_FILE, SNYK_URL};
     use std::path::Path;
+    use wiremock::{
+        matchers::{method, path},
+        Mock, MockServer, ResponseTemplate,
+    };
 
     const TESTDATA_PATH: &str = "src/linter/check/testdata";
 
@@ -166,6 +170,59 @@ mod tests {
                 },
                 &RegexSet::new(["pattern"]).unwrap(),
             ),
+            Err(_)
+        ));
+    }
+
+    #[tokio::test]
+    async fn remote_matches_match() {
+        let mock_server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path("/"))
+            .respond_with(ResponseTemplate::new(200).set_body_string("sample data"))
+            .expect(1)
+            .named("root GET")
+            .mount(&mock_server)
+            .await;
+
+        assert!(remote_matches(
+            &reqwest::Client::new(),
+            &mock_server.uri(),
+            &RegexSet::new(["data"]).unwrap(),
+        )
+        .await
+        .unwrap());
+    }
+
+    #[tokio::test]
+    async fn remote_matches_no_match() {
+        let mock_server = MockServer::start().await;
+        Mock::given(method("GET"))
+            .and(path("/"))
+            .respond_with(ResponseTemplate::new(200).set_body_string("sample data"))
+            .expect(1)
+            .named("root GET")
+            .mount(&mock_server)
+            .await;
+
+        assert!(!remote_matches(
+            &reqwest::Client::new(),
+            &mock_server.uri(),
+            &RegexSet::new(["notfound"]).unwrap(),
+        )
+        .await
+        .unwrap());
+    }
+
+    #[tokio::test]
+    async fn remote_matches_request_failed() {
+        assert!(matches!(
+            remote_matches(
+                &reqwest::Client::new(),
+                "http://localhost:0",
+                &RegexSet::new(["data"]).unwrap(),
+            )
+            .await,
             Err(_)
         ));
     }

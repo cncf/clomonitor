@@ -11,18 +11,23 @@ use std::path::PathBuf;
 mod check;
 pub use check::CheckOutput;
 
+/// Check sets define a set of checks that will be run on a given repository.
+/// Multiple check sets can be assigned to a repository.
+#[derive(Debug, Clone, PartialEq, Eq, Hash, ArgEnum, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum CheckSet {
+    Code,
+    CodeLite,
+    Community,
+    Docs,
+}
+
 /// Linter configuration options.
 #[derive(Debug)]
 pub struct LintOptions {
     pub root: PathBuf,
     pub url: String,
     pub check_sets: Vec<CheckSet>,
-}
-
-/// Credentials used by LintServices.
-#[derive(Debug, Default)]
-pub struct LintCredentials {
-    pub github_token: Option<String>,
 }
 
 /// Services used by the linter to perform some of the checks.
@@ -33,31 +38,34 @@ pub struct LintServices {
     pub github_client: octocrab::Octocrab,
 }
 
-impl LintServices {
-    /// Create a new LintServices instance.
-    pub fn new(creds: LintCredentials) -> Result<Self> {
-        // Setup GitHub client
-        let mut octocrab_builder = octocrab::Octocrab::builder();
-        if let Some(token) = creds.github_token {
-            octocrab_builder = octocrab_builder.personal_token(token);
-        }
-
-        Ok(Self {
-            http_client: reqwest::Client::new(),
-            github_client: octocrab_builder.build()?,
-        })
-    }
+/// Options used to setup the Github client.
+#[derive(Debug, Default)]
+pub struct GithubOptions {
+    pub api_url: Option<String>,
+    pub token: Option<String>,
 }
 
-/// Check sets define a set of checks that will be run on a given repository.
-/// Multiple check sets can be assigned to a repository.
-#[derive(Debug, Clone, PartialEq, Eq, Hash, ArgEnum, Deserialize)]
-#[serde(rename_all = "kebab-case")]
-pub enum CheckSet {
-    Code,
-    CodeLite,
-    Community,
-    Docs,
+impl LintServices {
+    /// Create a new LintServices instance.
+    pub fn new(gh_opts: GithubOptions) -> Result<Self> {
+        // Setup http client
+        let http_client = reqwest::Client::new();
+
+        // Setup GitHub client
+        let mut octocrab_builder = octocrab::Octocrab::builder();
+        if let Some(url) = gh_opts.api_url {
+            octocrab_builder = octocrab_builder.base_url(url)?;
+        }
+        if let Some(token) = gh_opts.token {
+            octocrab_builder = octocrab_builder.personal_token(token);
+        }
+        let github_client = octocrab_builder.build()?;
+
+        Ok(Self {
+            http_client,
+            github_client,
+        })
+    }
 }
 
 /// Linter report.
@@ -169,7 +177,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
         spdx_id_value = &r.value;
     }
 
-    // Build report and return it
+    // Build report
     let mut report = Report {
         documentation: Documentation {
             adopters: run_check(ADOPTERS, adopters, &input),
@@ -206,6 +214,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     };
 
     apply_exemptions(&mut report);
+
     Ok(report)
 }
 

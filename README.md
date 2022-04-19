@@ -29,9 +29,15 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 
 ## Linter CLI
 
-The CLOMonitor's linter can also be run locally or from CI workflows. At the moment we are publishing a [Docker image](https://gallery.ecr.aws/clomonitor/linter) with the tool, but we'll be publishing binaries for different platforms soon. You can find an example of how to integrate it with Github Actions [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/a25d69235ef9a196aa905e160c99977b692d5e34/.github/workflows/ci.yml#L40-L49).
+The CLOMonitor's linter can also be run locally or from CI workflows. You can build it from source using [Cargo](https://rustup.rs), the Rust package manager:
 
 ```sh
+cargo install --git https://github.com/cncf/clomonitor clomonitor-linter
+```
+
+Alternatively, you can use the published [Docker image](https://gallery.ecr.aws/clomonitor/linter). An example of how to integrate CLOMonitor's linter with Github Actions can be found [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/a25d69235ef9a196aa905e160c99977b692d5e34/.github/workflows/ci.yml#L40-L49).
+
+```text
 $ clomonitor-linter --help
 clomonitor-linter 0.5.0
 A linter for open source projects repositories

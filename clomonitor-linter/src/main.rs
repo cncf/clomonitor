@@ -1,7 +1,7 @@
 use anyhow::{format_err, Result};
 use clap::Parser;
 use clomonitor_core::{
-    linter::{lint, CheckSet, LintCredentials, LintOptions, LintServices},
+    linter::{lint, CheckSet, GithubOptions, LintOptions, LintServices},
     score,
 };
 use display::*;
@@ -40,7 +40,7 @@ async fn main() -> Result<()> {
         url: args.url,
         check_sets: args.check_set,
     };
-    let svc = LintServices::new(LintCredentials::default())?;
+    let svc = LintServices::new(GithubOptions::default())?;
     let report = lint(&opts, &svc).await?;
     let score = score::calculate(&report);
     display(&report, &score);

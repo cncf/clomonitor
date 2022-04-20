@@ -1,23 +1,43 @@
+use crate::Args;
+use anyhow::{format_err, Result};
 use clomonitor_core::{
     linter::{CheckOutput, Report},
     score::Score,
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
+use std::fs;
 
-pub(crate) const SUCCESS_SYMBOL: char = '✓';
-pub(crate) const FAILURE_SYMBOL: char = '✗';
-pub(crate) const WARNING_SYMBOL: char = '!';
-pub(crate) const NOT_APPLICABLE_MSG: &str = "n/a";
-pub(crate) const EXEMPT_MSG: &str = "Exempt";
+const SUCCESS_SYMBOL: char = '✓';
+const FAILURE_SYMBOL: char = '✗';
+const WARNING_SYMBOL: char = '!';
+const NOT_APPLICABLE_MSG: &str = "n/a";
+const EXEMPT_MSG: &str = "Exempt";
 
 /// Print the linter results provided.
-pub(crate) fn display(report: &Report, score: &Score) {
+pub(crate) fn display(report: &Report, score: &Score, args: &Args) -> Result<()> {
     println!("CLOMonitor linter results\n");
+
+    // Repository information
+    println!("Repository information\n");
+    let mut repo_info = Table::new();
+    repo_info
+        .load_preset(UTF8_FULL)
+        .apply_modifier(UTF8_ROUND_CORNERS)
+        .add_row(vec![
+            cell_entry("Local path"),
+            cell_entry(&fs::canonicalize(&args.path)?.to_string_lossy()),
+        ])
+        .add_row(vec![cell_entry("Remote url"), cell_entry(&args.url)])
+        .add_row(vec![
+            cell_entry("Check sets"),
+            cell_entry(&format!("{:?}", args.check_set)),
+        ]);
+    println!("{}\n", repo_info);
 
     // Summary table
     println!("Score summary\n");
-    let mut summary = Table::new();
-    summary
+    let mut score_summary = Table::new();
+    score_summary
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
         .set_header(vec![cell_header("Section"), cell_header("Score")])
@@ -33,12 +53,12 @@ pub(crate) fn display(report: &Report, score: &Score) {
         ])
         .add_row(vec![cell_entry("Security"), cell_score(score.security)])
         .add_row(vec![cell_entry("Legal"), cell_score(score.legal)]);
-    println!("{summary}\n");
+    println!("{}\n", score_summary);
 
     // Checks table
     println!("Checks summary\n");
-    let mut checks = Table::new();
-    checks
+    let mut checks_summary = Table::new();
+    checks_summary
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
@@ -138,7 +158,22 @@ pub(crate) fn display(report: &Report, score: &Score) {
             cell_entry("Legal / Trademark disclaimer"),
             cell_check(&report.legal.trademark_disclaimer),
         ]);
-    println!("{checks}\n");
+    println!("{}\n", checks_summary);
+
+    // Check if the linter succeeded acording to the provided pass score
+    if score.global() >= args.pass_score {
+        println!(
+            "{SUCCESS_SYMBOL} Succeeded with a global score of {}\n",
+            score.global().round()
+        );
+        Ok(())
+    } else {
+        Err(format_err!(
+            "{FAILURE_SYMBOL} Failed with a global score of {} (pass score is {})\n",
+            score.global().round(),
+            args.pass_score
+        ))
+    }
 }
 
 /// Build a cell used for headers text.

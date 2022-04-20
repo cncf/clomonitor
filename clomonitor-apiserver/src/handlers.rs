@@ -1,15 +1,16 @@
 use super::filters;
 use askama_axum::Template;
 use axum::{
+    body::Full,
     extract,
     extract::{Extension, Query},
-    http::StatusCode,
+    http::{header, Response, StatusCode},
     response::{self, IntoResponse},
 };
 use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
+use serde_json::json;
 use std::collections::HashMap;
 use tokio_postgres::types::Json;
 use tracing::error;
@@ -21,7 +22,7 @@ const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 pub(crate) async fn badge(
     Extension(db_pool): Extension<Pool>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
-) -> Result<response::Json<Value>, StatusCode> {
+) -> impl IntoResponse {
     // Get project rating from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let rows = db
@@ -62,6 +63,7 @@ pub(crate) async fn badge(
             color = "grey";
         }
     }
+
     Ok(response::Json(json!({
         "labelColor": "3F1D63",
         "namedLogo": "cncf",
@@ -79,20 +81,23 @@ pub(crate) async fn badge(
 pub(crate) async fn project(
     Extension(db_pool): Extension<Pool>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
-) -> Result<response::Json<Value>, StatusCode> {
+) -> impl IntoResponse {
     // Get project from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
         .query_one(
-            "select get_project($1::text, $2::text, $3::text)",
+            "select get_project($1::text, $2::text, $3::text)::text",
             &[&foundation, &org, &project],
         )
         .await
         .map_err(internal_error)?;
-    let project: Option<Json<Value>> = row.get(0);
+    let project: Option<String> = row.get(0);
 
     match project {
-        Some(Json(project)) => Ok(response::Json(project)),
+        Some(project) => {
+            let headers = [(header::CONTENT_TYPE, "application/json")];
+            Ok((headers, project))
+        }
         None => Err(StatusCode::NOT_FOUND),
     }
 }
@@ -110,7 +115,7 @@ pub(crate) async fn report_summary_svg(
     Extension(db_pool): Extension<Pool>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
     Query(params): Query<HashMap<String, String>>,
-) -> Result<impl IntoResponse, StatusCode> {
+) -> impl IntoResponse {
     // Get project score from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let rows = db
@@ -132,9 +137,6 @@ pub(crate) async fn report_summary_svg(
     }
     let score: Option<Json<Score>> = rows.first().unwrap().get("score");
 
-    // Prepare response headers
-    let headers = [(http::header::CACHE_CONTROL, "max-age=3600")];
-
     // Render report summary SVG and return it
     match score {
         Some(Json(score)) => {
@@ -142,6 +144,7 @@ pub(crate) async fn report_summary_svg(
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),
             };
+            let headers = [(header::CACHE_CONTROL, "max-age=3600")];
             Ok((headers, ReportSummaryTemplate { score, theme }))
         }
         _ => Err(StatusCode::NOT_FOUND),
@@ -167,36 +170,46 @@ pub(crate) struct SearchProjectsInput {
 pub(crate) async fn search_projects(
     Extension(db_pool): Extension<Pool>,
     extract::Json(input): extract::Json<SearchProjectsInput>,
-) -> Result<impl IntoResponse, StatusCode> {
+) -> impl IntoResponse {
     // Search projects in database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
-        .query_one("select * from search_projects($1::jsonb)", &[&Json(input)])
+        .query_one(
+            "select total_count, projects::text from search_projects($1::jsonb)",
+            &[&Json(input)],
+        )
         .await
         .map_err(internal_error)?;
-    let Json(projects): Json<Value> = row.get("projects");
+    let projects: String = row.get("projects");
     let total_count: i64 = row.get("total_count");
 
-    // Prepare response headers
-    let headers = [(PAGINATION_TOTAL_COUNT, total_count.to_string())];
-
-    Ok((headers, response::Json(projects)))
+    Response::builder()
+        .header(header::CONTENT_TYPE, "application/json")
+        .header(PAGINATION_TOTAL_COUNT, total_count.to_string())
+        .body(Full::from(projects))
+        .map_err(internal_error)
 }
 
 /// Handler that returns some general stats.
 pub(crate) async fn stats(
     Extension(db_pool): Extension<Pool>,
     Query(params): Query<HashMap<String, String>>,
-) -> Result<response::Json<Value>, StatusCode> {
+) -> impl IntoResponse {
     // Get stats from database
     let db = db_pool.get().await.map_err(internal_error)?;
     let row = db
-        .query_one("select get_stats($1::text)", &[&params.get("foundation")])
+        .query_one(
+            "select get_stats($1::text)::text",
+            &[&params.get("foundation")],
+        )
         .await
         .map_err(internal_error)?;
-    let Json(stats): Json<Value> = row.get(0);
+    let stats: String = row.get(0);
 
-    Ok(response::Json(stats))
+    Response::builder()
+        .header(header::CONTENT_TYPE, "application/json")
+        .body(Full::from(stats))
+        .map_err(internal_error)
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.

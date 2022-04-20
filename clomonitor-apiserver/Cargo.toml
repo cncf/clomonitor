@@ -15,7 +15,6 @@ clap = { version = "3.1.8", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.0"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
-http = "0.2.6"
 openssl = { version = "0.10.38", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 serde = { version = "1.0.136", features = ["derive"] }

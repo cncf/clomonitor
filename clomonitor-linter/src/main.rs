@@ -1,10 +1,10 @@
-use anyhow::{format_err, Result};
+use anyhow::Result;
 use clap::Parser;
 use clomonitor_core::{
     linter::{lint, CheckSet, GithubOptions, LintOptions, LintServices},
     score,
 };
-use display::*;
+use display::display;
 use std::path::PathBuf;
 
 mod display;
@@ -36,27 +36,12 @@ async fn main() -> Result<()> {
     // Lint repository provided and display results
     println!("\nRunning CLOMonitor linter...\n");
     let opts = LintOptions {
-        root: args.path,
-        url: args.url,
-        check_sets: args.check_set,
+        root: args.path.clone(),
+        url: args.url.clone(),
+        check_sets: args.check_set.clone(),
     };
     let svc = LintServices::new(GithubOptions::default())?;
     let report = lint(&opts, &svc).await?;
     let score = score::calculate(&report);
-    display(&report, &score);
-
-    // Check if the linter succeeded acording to the provided pass score
-    if score.global() >= args.pass_score {
-        println!(
-            "{SUCCESS_SYMBOL} Succeeded with a global score of {}\n",
-            score.global().round()
-        );
-        Ok(())
-    } else {
-        Err(format_err!(
-            "{FAILURE_SYMBOL} Failed with a global score of {} (pass score is {})\n",
-            score.global().round(),
-            args.pass_score
-        ))
-    }
+    display(&report, &score, &args)
 }

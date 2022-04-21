@@ -5,7 +5,7 @@ use clomonitor_core::{
     score::Score,
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
-use std::fs;
+use std::{fs, io};
 
 const SUCCESS_SYMBOL: char = '✓';
 const FAILURE_SYMBOL: char = '✗';
@@ -14,29 +14,35 @@ const NOT_APPLICABLE_MSG: &str = "n/a";
 const EXEMPT_MSG: &str = "Exempt";
 
 /// Print the linter results provided.
-pub(crate) fn display(report: &Report, score: &Score, args: &Args) -> Result<()> {
-    println!("CLOMonitor linter results\n");
+pub(crate) fn display(
+    report: &Report,
+    score: &Score,
+    args: &Args,
+    w: &mut impl io::Write,
+) -> Result<()> {
+    writeln!(w, "CLOMonitor linter results\n")?;
 
     // Repository information
-    println!("Repository information\n");
-    let mut repo_info = Table::new();
+    let local_path = match fs::canonicalize(&args.path) {
+        Ok(cp) => cp.to_string_lossy().to_string(),
+        Err(_) => args.path.to_string_lossy().to_string(),
+    };
+    writeln!(w, "Repository information\n")?;
+    let mut repo_info = new_table();
     repo_info
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
-        .add_row(vec![
-            cell_entry("Local path"),
-            cell_entry(&fs::canonicalize(&args.path)?.to_string_lossy()),
-        ])
+        .add_row(vec![cell_entry("Local path"), cell_entry(&local_path)])
         .add_row(vec![cell_entry("Remote url"), cell_entry(&args.url)])
         .add_row(vec![
             cell_entry("Check sets"),
             cell_entry(&format!("{:?}", args.check_set)),
         ]);
-    println!("{}\n", repo_info);
+    writeln!(w, "{}\n", repo_info)?;
 
     // Summary table
-    println!("Score summary\n");
-    let mut score_summary = Table::new();
+    writeln!(w, "Score summary\n")?;
+    let mut score_summary = new_table();
     score_summary
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
@@ -53,11 +59,11 @@ pub(crate) fn display(report: &Report, score: &Score, args: &Args) -> Result<()>
         ])
         .add_row(vec![cell_entry("Security"), cell_score(score.security)])
         .add_row(vec![cell_entry("Legal"), cell_score(score.legal)]);
-    println!("{}\n", score_summary);
+    writeln!(w, "{}\n", score_summary)?;
 
     // Checks table
-    println!("Checks summary\n");
-    let mut checks_summary = Table::new();
+    writeln!(w, "Checks summary\n")?;
+    let mut checks_summary = new_table();
     checks_summary
         .load_preset(UTF8_FULL)
         .apply_modifier(UTF8_ROUND_CORNERS)
@@ -158,22 +164,37 @@ pub(crate) fn display(report: &Report, score: &Score, args: &Args) -> Result<()>
             cell_entry("Legal / Trademark disclaimer"),
             cell_check(&report.legal.trademark_disclaimer),
         ]);
-    println!("{}\n", checks_summary);
+    writeln!(w, "{}\n", checks_summary)?;
 
     // Check if the linter succeeded acording to the provided pass score
     if score.global() >= args.pass_score {
-        println!(
+        writeln!(
+            w,
             "{SUCCESS_SYMBOL} Succeeded with a global score of {}\n",
             score.global().round()
-        );
+        )?;
         Ok(())
     } else {
-        Err(format_err!(
+        writeln!(
+            w,
             "{FAILURE_SYMBOL} Failed with a global score of {} (pass score is {})\n",
             score.global().round(),
             args.pass_score
-        ))
+        )?;
+        Err(format_err!("pass score not reached"))
     }
+}
+
+/// Helper function to create a new table that will be forced to use a non-tty
+/// mode when running tests.
+#[allow(clippy::let_and_return, unused_mut)]
+fn new_table() -> Table {
+    let mut table = Table::new();
+
+    #[cfg(test)]
+    table.force_no_tty();
+
+    table
 }
 
 /// Build a cell used for headers text.
@@ -221,4 +242,99 @@ fn cell_check<T>(output: &Option<CheckOutput<T>>) -> Cell {
         .set_alignment(CellAlignment::Center)
         .add_attribute(Attribute::Bold)
         .fg(color)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::display;
+    use crate::Args;
+    use clomonitor_core::{
+        linter::{
+            BestPractices, CheckOutput, CheckSet, Documentation, Legal, License, Report, Security,
+        },
+        score::Score,
+    };
+    use std::{fs, path::PathBuf, str, str::FromStr};
+
+    #[test]
+    fn display_prints_results() {
+        // Setup test linter results
+        let report = Report {
+            documentation: Documentation {
+                adopters: Some(true.into()),
+                code_of_conduct: Some(true.into()),
+                contributing: Some(true.into()),
+                changelog: Some(true.into()),
+                governance: Some(true.into()),
+                maintainers: Some(true.into()),
+                readme: Some(true.into()),
+                roadmap: Some(true.into()),
+                website: Some(true.into()),
+            },
+            license: License {
+                approved: Some(CheckOutput {
+                    passed: true,
+                    value: Some(true),
+                    ..Default::default()
+                }),
+                scanning: Some(CheckOutput::from_url(Some(
+                    "https://license-scanning.url".to_string(),
+                ))),
+                spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+            },
+            best_practices: BestPractices {
+                artifacthub_badge: Some(CheckOutput {
+                    exempt: true,
+                    ..Default::default()
+                }),
+                cla: Some(true.into()),
+                community_meeting: Some(true.into()),
+                dco: Some(true.into()),
+                openssf_badge: Some(true.into()),
+                recent_release: Some(true.into()),
+                slack_presence: Some(true.into()),
+            },
+            security: Security {
+                sbom: Some(true.into()),
+                security_policy: Some(true.into()),
+            },
+            legal: Legal {
+                trademark_disclaimer: Some(true.into()),
+            },
+        };
+        let score = Score {
+            global: 99.99999999999999,
+            global_weight: 90,
+            documentation: Some(100.0),
+            documentation_weight: Some(30),
+            license: Some(100.0),
+            license_weight: Some(20),
+            best_practices: Some(100.0),
+            best_practices_weight: Some(20),
+            security: Some(100.0),
+            security_weight: Some(15),
+            legal: Some(100.0),
+            legal_weight: Some(5),
+        };
+        let args = Args {
+            path: PathBuf::from_str("test-repo-path").unwrap(),
+            url: "https://github.com/test-org/test-repo".to_string(),
+            check_set: vec![CheckSet::Code, CheckSet::Community],
+            pass_score: 80.0,
+        };
+
+        // Display linter results using a vector as output
+        let mut w = Vec::new();
+        display(&report, &score, &args, &mut w).unwrap();
+
+        let golden_path = "src/testdata/display.golden";
+
+        // Write output to golden file (uncomment line below to update golden)
+        // fs::write(golden_path, &w).unwrap();
+
+        // Check output matches golden file content
+        let output = str::from_utf8(w.as_slice()).unwrap();
+        let golden = fs::read_to_string(golden_path).unwrap();
+        assert_eq!(output, golden);
+    }
 }

@@ -21,7 +21,6 @@ pub(crate) mod patterns;
 
 /// Input used by checks to perform their operations.
 #[derive(Debug)]
-#[non_exhaustive]
 pub(crate) struct CheckInput<'a> {
     pub opts: &'a LintOptions,
     pub svc: &'a LintServices,
@@ -31,7 +30,6 @@ pub(crate) struct CheckInput<'a> {
 
 /// Check output information.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct CheckOutput<T = ()> {
     pub passed: bool,
 
@@ -97,7 +95,7 @@ impl<T> From<Exemption> for CheckOutput<T> {
 
 impl<T> CheckOutput<T> {
     /// Create a new CheckOutput instance from the url provided.
-    pub(crate) fn from_url(url: Option<String>) -> Self {
+    pub fn from_url(url: Option<String>) -> Self {
         Self {
             passed: url.is_some(),
             url,
@@ -107,7 +105,7 @@ impl<T> CheckOutput<T> {
 
     /// Create a new CheckOutput instance from the Github url built using the
     /// path provided.
-    pub(crate) fn from_path(path: Option<PathBuf>, gh_md: &Repository) -> Self {
+    pub fn from_path(path: Option<PathBuf>, gh_md: &Repository) -> Self {
         match path {
             Some(path) => {
                 let url = github::build_url(

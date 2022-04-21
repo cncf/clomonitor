@@ -32,7 +32,6 @@ pub struct LintOptions {
 
 /// Services used by the linter to perform some of the checks.
 #[derive(Debug)]
-#[non_exhaustive]
 pub struct LintServices {
     pub http_client: reqwest::Client,
     pub github_client: octocrab::Octocrab,
@@ -70,7 +69,6 @@ impl LintServices {
 
 /// Linter report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
@@ -81,7 +79,6 @@ pub struct Report {
 
 /// Documentation section of the report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct Documentation {
     pub adopters: Option<CheckOutput>,
     pub changelog: Option<CheckOutput>,
@@ -96,7 +93,6 @@ pub struct Documentation {
 
 /// License section of the report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct License {
     pub approved: Option<CheckOutput<bool>>,
     pub scanning: Option<CheckOutput>,
@@ -105,7 +101,6 @@ pub struct License {
 
 /// BestPractices section of the report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct BestPractices {
     pub artifacthub_badge: Option<CheckOutput>,
     pub cla: Option<CheckOutput>,
@@ -118,7 +113,6 @@ pub struct BestPractices {
 
 /// Security section of the report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct Security {
     pub sbom: Option<CheckOutput>,
     pub security_policy: Option<CheckOutput>,
@@ -126,7 +120,6 @@ pub struct Security {
 
 /// Legal section of the report.
 #[derive(Debug, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct Legal {
     pub trademark_disclaimer: Option<CheckOutput>,
 }

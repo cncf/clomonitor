@@ -5,7 +5,7 @@ use clomonitor_core::{
     score,
 };
 use display::display;
-use std::path::PathBuf;
+use std::{io, path::PathBuf};
 
 mod display;
 
@@ -43,5 +43,5 @@ async fn main() -> Result<()> {
     let svc = LintServices::new(GithubOptions::default())?;
     let report = lint(&opts, &svc).await?;
     let score = score::calculate(&report);
-    display(&report, &score, &args)
+    display(&report, &score, &args, &mut io::stdout())
 }

@@ -3,7 +3,6 @@ use serde::{Deserialize, Serialize};
 
 /// Score information.
 #[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[non_exhaustive]
 pub struct Score {
     pub global: f64,
     pub global_weight: usize,

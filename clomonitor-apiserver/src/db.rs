@@ -2,12 +2,14 @@ use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::score::Score;
 use deadpool_postgres::Pool;
+#[cfg(test)]
+use mockall::automock;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use tokio_postgres::types::Json;
 
 /// Type alias to represent a DB trait object.
-pub type DynDB = Arc<dyn DB + Send + Sync>;
+pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
 
 /// Type alias to represent a json string.
 type JsonString = String;
@@ -17,7 +19,8 @@ type Count = i64;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
-pub trait DB {
+#[cfg_attr(test, automock)]
+pub(crate) trait DB {
     /// Get project's details in json format.
     async fn project(
         &self,
@@ -46,17 +49,17 @@ pub trait DB {
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)>;
 
     /// Get some general stats.
-    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString>;
+    async fn stats(&self, foundation: Option<String>) -> Result<JsonString>;
 }
 
 /// DB implementation backed by PostgreSQL.
-pub struct PgDB {
+pub(crate) struct PgDB {
     pool: Pool,
 }
 
 impl PgDB {
     /// Create a new PgDB instance.
-    pub fn new(pool: Pool) -> Self {
+    pub(crate) fn new(pool: Pool) -> Self {
         Self { pool }
     }
 }
@@ -158,7 +161,7 @@ impl DB for PgDB {
         Ok((count, projects))
     }
 
-    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString> {
+    async fn stats(&self, foundation: Option<String>) -> Result<JsonString> {
         let row = self
             .pool
             .get()
@@ -171,16 +174,16 @@ impl DB for PgDB {
 }
 
 /// Query input used when searching for projects.
-#[derive(Debug, Serialize, Deserialize)]
-pub struct SearchProjectsInput {
-    limit: Option<usize>,
-    offset: Option<usize>,
-    sort_by: Option<String>,
-    sort_direction: Option<String>,
-    text: Option<String>,
-    foundation: Option<Vec<String>>,
-    maturity: Option<Vec<String>>,
-    rating: Option<Vec<char>>,
-    accepted_from: Option<String>,
-    accepted_to: Option<String>,
+#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
+pub(crate) struct SearchProjectsInput {
+    pub limit: Option<usize>,
+    pub offset: Option<usize>,
+    pub sort_by: Option<String>,
+    pub sort_direction: Option<String>,
+    pub text: Option<String>,
+    pub foundation: Option<Vec<String>>,
+    pub maturity: Option<Vec<String>>,
+    pub rating: Option<Vec<char>>,
+    pub accepted_from: Option<String>,
+    pub accepted_to: Option<String>,
 }

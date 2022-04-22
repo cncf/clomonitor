@@ -1,0 +1,539 @@
+<svg
+  class="light"
+  width="450"
+  height="212"
+  viewBox="0 0 450 212"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    .header {
+      fill: #2a0552;
+      stroke: #b3b6ba;
+    }
+
+    .dark .header {
+      fill: #0f0e11;
+      stroke: #676869;
+    }
+
+    .logo {
+      fill: #fff;
+    }
+
+    .clo {
+      font-family: "Arial", Gadget, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .monitor {
+      font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    .alpha {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 9px;
+      font-weight: 400;
+      fill: #fff;
+    }
+
+    .bg {
+      stroke: #c7cbcf;
+      fill: #f9f9f9;
+    }
+
+    .dark .bg {
+      stroke: #676869;
+      fill: #2c2e31;
+    }
+
+    .title {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .3px;
+      fill: #6c757d;
+    }
+
+    .dark .title {
+      fill: #a0a0a0;
+    }
+
+    .barBg {
+      fill: #fff;
+      stroke: #dee2e6;
+    }
+
+    .dark .barBg {
+      fill: #131216;
+      stroke: #676869;
+    }
+
+    .valueBg {
+      fill: #dee2e6;
+      stroke: #dee2e6;
+    }
+
+    .dark .valueBg {
+      fill: #2b2a2e;
+      stroke: #676869;
+    }
+
+    .value {
+      font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size: 12px;
+      font-weight: 600;
+      fill: #38383f;
+    }
+
+    .dark .value {
+      fill: #a3a3a6;
+    }
+
+    .barWrapper {
+      fill: #dee2e6;
+    }
+
+    .dark .barWrapper {
+      fill: #2b2a2e;
+    }
+
+    .bar-a {
+      fill: #90be6d;
+    }
+
+    .bar-b {
+      fill: #f9c74f;
+    }
+
+    .bar-c {
+      fill: #f8961e;
+    }
+
+    .bar-d {
+      fill: #f94144;
+    }
+
+    .empty-icon {
+      stroke: #6c757d;
+    }
+
+    .dark .empty-icon {
+      stroke: #a0a0a0;
+    }
+
+    .icon {
+      stroke: #6c757d;
+      fill: #6c757d;
+    }
+
+    .dark .icon {
+      stroke: #a0a0a0;
+      fill: #a0a0a0;
+    }
+
+    @supports(-moz-appearance: auto) {
+      /* Selector detects Firefox */
+      .value { font-size:12px; }
+    }
+
+    .circle {
+      fill: #fff;
+      stroke: #e2e2e2;
+    }
+
+    .dark .circle {
+      fill: #131216;
+      stroke: #676869;
+    }
+
+    .chart-circle {
+      fill: none;
+      stroke-dasharray: calc(251.42 + (251.42 * 80 / 100));
+      stroke-dashoffset: 251.42;
+      transform: rotate(-90deg);
+      transform-origin: 45px 45px;
+    }
+
+    .circle-a {
+      stroke: #90be6d;
+    }
+
+    .circle-b {
+      stroke: #f9c74f;
+    }
+
+    .circle-c {
+      stroke: #f8961e;
+    }
+
+    .circle-d {
+      stroke: #f94144;
+    }
+
+    .global {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 34px;
+      font-weight: 400;
+      fill: #38383f;
+    }
+
+    .dark .global {
+      fill: #a3a3a6;
+    }
+  </style>
+
+  <!-- Header start -->
+
+  <rect
+    x="1"
+    y="1"
+    class="header"
+    height="50"
+    width="448"
+  />
+
+  <!-- Logo -->
+
+  <g transform="translate(20, 32)">
+    <svg y="-17px" viewBox="0 0 20 20" height="20" width="20">
+      <g>
+        <g transform="matrix(0.296107 0 0 0.296107 -1.39579 -1.00098)">
+          <path d="M15.5,47.7L6.4,47.7L6.4,69.1L27.7,69.1L27.7,59.9L15.5,59.9L15.5,47.7Z" fill="#FFFFFF"/>
+          <path d="M61.3,47.8L61.3,59.9L49.1,59.9L49.1,59.8L49.1,69.1L70.4,69.1L70.4,47.7L61.2,47.7L61.3,47.8Z" fill="#FFFFFF"/>
+          <path d="M6.4,26.4L15.6,26.4L15.5,26.3L15.5,14.2L27.7,14.2L27.7,5L6.4,5L6.4,26.4Z" fill="#FFFFFF"/>
+          <path d="M49.1,5L49.1,14.2L61.3,14.2L61.3,26.4L70.4,26.4L70.4,5L49.1,5Z" fill="#FFFFFF"/>
+        </g>
+        <g transform="matrix(0.296107 0 0 0.296107 -1.39579 -1.00098)">
+          <path d="M42.8587,21.3587L35.7,14.2L49.1,14.2L49.1,5L27.7,5L27.7,14.2L34.8587,21.3587L42.8587,21.3587Z" fill="#FFFFFF" fill-opacity="0.5"/>
+          <path d="M41.441,52.241L33.441,52.241L39,57.8L41,59.9L27.7,59.9L27.7,69.1L49.1,69.1L49.1,59.8L43,53.8L41.441,52.241Z" fill="#FFFFFF" fill-opacity="0.5"/>
+          <path d="M61.3,26.4L61.3,39.7L59.2,37.6L53.6543,32.0543L53.6543,40.1543L55.1,41.6L61.2,47.7L70.4,47.7L70.4,26.4L61.3,26.4Z" fill="#FFFFFF" fill-opacity="0.5"/>
+          <path d="M23.6745,34.4745L15.6,26.4L6.4,26.4L6.4,47.7L15.5,47.7L15.5,34.4L23.6745,42.5745L23.6745,34.4745Z" fill="#FFFFFF" fill-opacity="0.5"/>
+        </g>
+        <path d="M9.9747,4.58795C7.0024,4.58795 4.59288,6.99746 4.59288,9.96977C4.59288,12.9421 7.0024,15.3516 9.9747,15.3516C12.947,15.3516 15.3565,12.9421 15.3565,9.96977C15.3565,6.99746 12.947,4.58795 9.9747,4.58795L9.9747,4.58795ZM9.9747,5.62959C12.3733,5.62959 14.3149,7.57075 14.3149,9.96977C14.3149,12.3684 12.3737,14.3099 9.9747,14.3099C7.57606,14.3099 5.63452,12.3688 5.63452,9.96977C5.63452,7.57112 7.57569,5.62959 9.9747,5.62959L9.9747,5.62959ZM13.0173,8.4565L12.5282,7.9635C12.4269,7.86139 12.262,7.86072 12.1599,7.96202L9.09247,11.0048L7.79493,9.69677C7.69366,9.59467 7.52877,9.59399 7.42667,9.69527L6.93365,10.1843C6.83154,10.2856 6.83087,10.4505 6.93217,10.5526L8.9022,12.5386C9.00348,12.6407 9.16836,12.6414 9.27046,12.5401L13.0158,8.82478C13.1179,8.72348 13.1185,8.5586 13.0173,8.4565L13.0173,8.4565Z" fill="#FFFFFF"/>
+      </g>
+    </svg>
+
+    <g class="logo clo">
+      <text x="25" y="0">CLO</text>
+    </g>
+
+    <g class="logo monitor" opacity="0.7">
+      <text x="65" y="0">MONITOR</text>
+    </g>
+
+    <rect
+      x="155"
+      y="-17px"
+      height="12"
+      width="39"
+      fill="#fff"
+      opacity="0.25"
+    />
+
+    <g class="alpha" transform="translate(160, -8)">
+      <text>ALPHA</text>
+    </g>
+  </g>
+
+  <!-- Header end -->
+
+  <!-- Body start -->
+
+  <rect
+    x="1"
+    y="50"
+    class="bg"
+    height="160"
+    width="448"
+  />
+
+  <!-- Global -->
+
+  <g transform="translate(23, 85)">
+    <circle class="circle" cx="45" cy="45" r="40" stroke-width="5" />
+    <circle class="chart-circle circle-a" cx="45" cy="45" r="40" stroke-width="5" />
+
+    <g class="global">
+      <text x="45" y="45" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">80</text>
+    </g>
+  </g>
+
+  <!-- Documentation -->
+
+  <g transform="translate(135, 70)">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="barBg"
+        height="18"
+        width="290"
+        stroke-opacity="1"
+      />
+
+      <g class="title" transform="translate(5, 0)">
+        <svg y="3" class="empty-icon" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+        </svg>
+
+        <text x="16" y="13">Documentation</text>
+      </g>
+
+      <rect
+        x="135"
+        y="0"
+        class="valueBg"
+        height="18"
+        width="30"
+        stroke-opacity="1"
+      />
+
+      <g class="value">
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">80</text>
+      </g>
+
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
+
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="85"
+          class="bar-a"
+        />
+      </g>
+    </g>
+  </g>
+
+  <!-- License -->
+
+  <g transform="translate(135, 95)">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="barBg"
+        height="18"
+        width="290"
+        stroke-opacity="1"
+      />
+
+      <g class="title" transform="translate(5, 0)">
+        <svg y="3" class="icon" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path d="M256 32c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 32 256 32zm0 208c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80zM193.7 307.4c-19.1-8.1-36.2-19.6-50.8-34.3-1.4-1.4-2.8-2.8-4.1-4.3L64 400h96l48 80 48-105.8 25.5-56.2c-8.4 1.3-16.9 2-25.5 2-21.6 0-42.5-4.2-62.3-12.6zM373.3 268.9c-1.3 1.4-2.7 2.9-4.1 4.3-14.6 14.6-31.7 26.2-50.7 34.2L294 361.2l-21.9 48.4L304 480l48-80h96l-74.7-131.1z" />
+        </svg>
+
+        <text x="16" y="13">License</text>
+      </g>
+
+      <rect
+        x="135"
+        y="0"
+        class="valueBg"
+        height="18"
+        width="30"
+        stroke-opacity="1"
+      />
+
+      <g class="value">
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">50</text>
+      </g>
+
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
+
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="53"
+          class="bar-b"
+        />
+      </g>
+    </g>
+  </g>
+
+  <!-- Best practices -->
+
+  <g transform="translate(135, 120)">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="barBg"
+        height="18"
+        width="290"
+        stroke-opacity="1"
+      />
+
+      <g class="title" transform="translate(5, 0)">
+        <svg y="3" class="icon" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path d="M5 4.604v9.185a4 4 0 0 0 1.781 3.328L12 20.597l5.219-3.48A4 4 0 0 0 19 13.79V4.604L12 3.05 5 4.604zM3.783 2.826L12 1l8.217 1.826a1 1 0 0 1 .783.976v9.987a6 6 0 0 1-2.672 4.992L12 23l-6.328-4.219A6 6 0 0 1 3 13.79V3.802a1 1 0 0 1 .783-.976zM12 13.5l-2.939 1.545.561-3.272-2.377-2.318 3.286-.478L12 6l1.47 2.977 3.285.478-2.377 2.318.56 3.272L12 13.5z"></path>
+          </g>
+        </svg>
+
+        <text x="16" y="13">Best Practices</text>
+      </g>
+
+      <rect
+        x="135"
+        y="0"
+        class="valueBg"
+        height="18"
+        width="30"
+        stroke-opacity="1"
+      />
+
+      <g class="value">
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">n/a</text>
+      </g>
+
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
+
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="0"
+          class="bar-na"
+        />
+      </g>
+    </g>
+  </g>
+
+  <!-- Security -->
+
+  <g transform="translate(135, 145)">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="barBg"
+        height="18"
+        width="290"
+        stroke-opacity="1"
+      />
+
+      <g class="title" transform="translate(5, 0)">
+        <svg y="3" class="icon" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C9.243 2 7 4.243 7 7v2H6c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-9c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v2H9V7zm9.002 13H13v-2.278c.595-.347 1-.985 1-1.722 0-1.103-.897-2-2-2s-2 .897-2 2c0 .736.405 1.375 1 1.722V20H6v-9h12l.002 9z" />
+        </svg>
+
+        <text x="16" y="13">Security</text>
+      </g>
+
+      <rect
+        x="135"
+        y="0"
+        class="valueBg"
+        height="18"
+        width="30"
+        stroke-opacity="1"
+      />
+
+      <g class="value">
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">n/a</text>
+      </g>
+
+     <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
+
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="0"
+          class="bar-na"
+        />
+      </g>
+    </g>
+  </g>
+
+  <!-- Legal -->
+
+  <g transform="translate(135, 170)">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="barBg"
+        height="18"
+        width="290"
+        stroke-opacity="1"
+      />
+
+      <g class="title" transform="translate(5, 0)">
+        <svg y="3" class="icon" stroke-width="0" viewBox="0 0 14 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z" />
+        </svg>
+
+        <text x="16" y="13">Legal</text>
+      </g>
+
+      <rect
+        x="135"
+        y="0"
+        class="valueBg"
+        height="18"
+        width="30"
+        stroke-opacity="1"
+      />
+
+      <g class="value">
+        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">n/a</text>
+      </g>
+
+      <g transform="translate(175, 7)">
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="106"
+          class="barWrapper"
+        />
+
+        <rect
+          x="0"
+          y="0"
+          height="4"
+          width="0"
+          class="bar-na"
+        />
+      </g>
+    </g>
+  </g>
+
+  <!-- Body end -->
+</svg>

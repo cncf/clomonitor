@@ -6,16 +6,20 @@ use axum::{
     body::Full,
     extract,
     extract::{Extension, Query},
-    http::{header, Response, StatusCode},
+    http::{
+        header::{CACHE_CONTROL, CONTENT_TYPE},
+        Response, StatusCode,
+    },
     response::{self, IntoResponse},
 };
 use clomonitor_core::score::Score;
+use mime::APPLICATION_JSON;
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display};
 use tracing::error;
 
 /// Header that indicates the number of items available for pagination purposes.
-const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
+pub const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
@@ -79,7 +83,7 @@ pub(crate) async fn project(
     // Return project information as json if found
     match project {
         Some(project) => {
-            let headers = [(header::CONTENT_TYPE, "application/json")];
+            let headers = [(CONTENT_TYPE, APPLICATION_JSON.as_ref())];
             Ok((headers, project))
         }
         None => Err(StatusCode::NOT_FOUND),
@@ -89,7 +93,7 @@ pub(crate) async fn project(
 /// Template for the report summary SVG image.
 #[derive(Template)]
 #[template(path = "report-summary.svg")]
-pub struct ReportSummaryTemplate {
+pub(crate) struct ReportSummaryTemplate {
     pub score: Score,
     pub theme: String,
 }
@@ -116,7 +120,7 @@ pub(crate) async fn report_summary_svg(
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),
             };
-            let headers = [(header::CACHE_CONTROL, "max-age=3600")];
+            let headers = [(CACHE_CONTROL, "max-age=3600")];
             Ok((headers, ReportSummaryTemplate { score, theme }))
         }
         _ => Err(StatusCode::NOT_FOUND),
@@ -133,7 +137,7 @@ pub(crate) async fn search_projects(
 
     // Return search results as json
     Response::builder()
-        .header(header::CONTENT_TYPE, "application/json")
+        .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .header(PAGINATION_TOTAL_COUNT, count.to_string())
         .body(Full::from(projects))
         .map_err(internal_error)
@@ -146,13 +150,13 @@ pub(crate) async fn stats(
 ) -> impl IntoResponse {
     // Get stats from database
     let stats = db
-        .stats(params.get("foundation"))
+        .stats(params.get("foundation").map(|p| p.to_owned()))
         .await
         .map_err(internal_error)?;
 
     // Return stats as json
     Response::builder()
-        .header(header::CONTENT_TYPE, "application/json")
+        .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .body(Full::from(stats))
         .map_err(internal_error)
 }

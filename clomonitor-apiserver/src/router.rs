@@ -1,4 +1,4 @@
-use crate::handlers::*;
+use crate::{db::DynDB, handlers::*};
 use anyhow::Result;
 use axum::{
     extract::Extension,
@@ -7,7 +7,6 @@ use axum::{
     Router,
 };
 use config::Config;
-use deadpool_postgres::Pool;
 use std::path::Path;
 use tower::ServiceBuilder;
 use tower_http::{
@@ -17,7 +16,7 @@ use tower_http::{
 };
 
 /// Setup API server router.
-pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router> {
+pub(crate) fn setup(cfg: &Config, db: DynDB) -> Result<Router> {
     // Setup some paths
     let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
@@ -52,7 +51,7 @@ pub(crate) fn setup(cfg: &Config, db_pool: Pool) -> Result<Router> {
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
-                .layer(Extension(db_pool)),
+                .layer(Extension(db)),
         );
 
     // Setup basic auth

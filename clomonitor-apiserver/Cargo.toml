@@ -9,6 +9,7 @@ rust-version = "1.58"
 anyhow = "1.0.56"
 askama = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
+async-trait = "0.1.53"
 axum = "0.5.1"
 axum-debug = "0.3.3"
 clap = { version = "3.1.8", features = ["derive"] }

@@ -1,3 +1,4 @@
+use crate::db::PgDB;
 use anyhow::Result;
 use clap::Parser;
 use config::{Config, File};
@@ -6,9 +7,11 @@ use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
 use std::net::SocketAddr;
 use std::path::PathBuf;
+use std::sync::Arc;
 use tokio::signal;
 use tracing::info;
 
+mod db;
 mod filters;
 mod handlers;
 mod router;
@@ -45,10 +48,11 @@ async fn main() -> Result<()> {
     builder.set_verify(SslVerifyMode::NONE);
     let connector = MakeTlsConnector::new(builder.build());
     let db_cfg: DbConfig = cfg.get("db").unwrap();
-    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
+    let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
+    let db = Arc::new(PgDB::new(pool));
 
     // Setup and launch HTTP server
-    let router = router::setup(&cfg, db_pool)?;
+    let router = router::setup(&cfg, db)?;
     let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
     info!("listening on {}", addr);
     axum::Server::bind(&addr)

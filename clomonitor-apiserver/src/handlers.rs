@@ -1,4 +1,6 @@
 use super::filters;
+use crate::db::{DynDB, SearchProjectsInput};
+use anyhow::Error;
 use askama_axum::Template;
 use axum::{
     body::Full,
@@ -8,11 +10,8 @@ use axum::{
     response::{self, IntoResponse},
 };
 use clomonitor_core::score::Score;
-use deadpool_postgres::Pool;
-use serde::{Deserialize, Serialize};
 use serde_json::json;
-use std::collections::HashMap;
-use tokio_postgres::types::Json;
+use std::{collections::HashMap, fmt::Display};
 use tracing::error;
 
 /// Header that indicates the number of items available for pagination purposes.
@@ -20,31 +19,19 @@ const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
-    Extension(db_pool): Extension<Pool>,
+    Extension(db): Extension<DynDB>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get project rating from database
-    let db = db_pool.get().await.map_err(internal_error)?;
-    let rows = db
-        .query(
-            "
-            select rating
-            from project p
-            join organization o using (organization_id)
-            where o.foundation::text = $1::text
-            and o.name = $2::text
-            and p.name = $3::text
-            ",
-            &[&foundation, &org, &project],
-        )
+    let rating = db
+        .project_rating(&foundation, &org, &project)
         .await
         .map_err(internal_error)?;
-    if rows.len() != 1 {
+    if rating.is_none() {
         return Err(StatusCode::NOT_FOUND);
     }
-    let rating: Option<String> = rows.first().unwrap().get("rating");
 
-    // Prepare badge configuration and return it
+    // Prepare badge configuration
     let message: String;
     let color: &str;
     match rating {
@@ -64,6 +51,7 @@ pub(crate) async fn badge(
         }
     }
 
+    // Return badge configuration as json
     Ok(response::Json(json!({
         "labelColor": "3F1D63",
         "namedLogo": "cncf",
@@ -79,20 +67,16 @@ pub(crate) async fn badge(
 
 /// Handler that returns the requested project.
 pub(crate) async fn project(
-    Extension(db_pool): Extension<Pool>,
+    Extension(db): Extension<DynDB>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get project from database
-    let db = db_pool.get().await.map_err(internal_error)?;
-    let row = db
-        .query_one(
-            "select get_project($1::text, $2::text, $3::text)::text",
-            &[&foundation, &org, &project],
-        )
+    let project = db
+        .project(&foundation, &org, &project)
         .await
         .map_err(internal_error)?;
-    let project: Option<String> = row.get(0);
 
+    // Return project information as json if found
     match project {
         Some(project) => {
             let headers = [(header::CONTENT_TYPE, "application/json")];
@@ -112,34 +96,22 @@ pub struct ReportSummaryTemplate {
 
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
-    Extension(db_pool): Extension<Pool>,
+    Extension(db): Extension<DynDB>,
     extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get project score from database
-    let db = db_pool.get().await.map_err(internal_error)?;
-    let rows = db
-        .query(
-            "
-            select score
-            from project p
-            join organization o using (organization_id)
-            where o.foundation::text = $1::text
-            and o.name = $2::text
-            and p.name = $3::text
-            ",
-            &[&foundation, &org, &project],
-        )
+    let score = db
+        .project_score(&foundation, &org, &project)
         .await
         .map_err(internal_error)?;
-    if rows.len() != 1 {
+    if score.is_none() {
         return Err(StatusCode::NOT_FOUND);
     }
-    let score: Option<Json<Score>> = rows.first().unwrap().get("score");
 
-    // Render report summary SVG and return it
+    // Render report summary SVG and return it if the score was found
     match score {
-        Some(Json(score)) => {
+        Some(score) => {
             let theme = match params.get("theme") {
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),
@@ -151,61 +123,34 @@ pub(crate) async fn report_summary_svg(
     }
 }
 
-/// Query input used when searching for projects.
-#[derive(Debug, Serialize, Deserialize)]
-pub(crate) struct SearchProjectsInput {
-    limit: Option<usize>,
-    offset: Option<usize>,
-    sort_by: Option<String>,
-    sort_direction: Option<String>,
-    text: Option<String>,
-    foundation: Option<Vec<String>>,
-    maturity: Option<Vec<String>>,
-    rating: Option<Vec<char>>,
-    accepted_from: Option<String>,
-    accepted_to: Option<String>,
-}
-
 /// Handler that allows searching for projects.
 pub(crate) async fn search_projects(
-    Extension(db_pool): Extension<Pool>,
+    Extension(db): Extension<DynDB>,
     extract::Json(input): extract::Json<SearchProjectsInput>,
 ) -> impl IntoResponse {
     // Search projects in database
-    let db = db_pool.get().await.map_err(internal_error)?;
-    let row = db
-        .query_one(
-            "select total_count, projects::text from search_projects($1::jsonb)",
-            &[&Json(input)],
-        )
-        .await
-        .map_err(internal_error)?;
-    let projects: String = row.get("projects");
-    let total_count: i64 = row.get("total_count");
+    let (count, projects) = db.search_projects(&input).await.map_err(internal_error)?;
 
+    // Return search results as json
     Response::builder()
         .header(header::CONTENT_TYPE, "application/json")
-        .header(PAGINATION_TOTAL_COUNT, total_count.to_string())
+        .header(PAGINATION_TOTAL_COUNT, count.to_string())
         .body(Full::from(projects))
         .map_err(internal_error)
 }
 
 /// Handler that returns some general stats.
 pub(crate) async fn stats(
-    Extension(db_pool): Extension<Pool>,
+    Extension(db): Extension<DynDB>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get stats from database
-    let db = db_pool.get().await.map_err(internal_error)?;
-    let row = db
-        .query_one(
-            "select get_stats($1::text)::text",
-            &[&params.get("foundation")],
-        )
+    let stats = db
+        .stats(params.get("foundation"))
         .await
         .map_err(internal_error)?;
-    let stats: String = row.get(0);
 
+    // Return stats as json
     Response::builder()
         .header(header::CONTENT_TYPE, "application/json")
         .body(Full::from(stats))
@@ -213,7 +158,10 @@ pub(crate) async fn stats(
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.
-fn internal_error<E: std::error::Error>(err: E) -> StatusCode {
+fn internal_error<E>(err: E) -> StatusCode
+where
+    E: Into<Error> + Display,
+{
     error!("{err}");
     StatusCode::INTERNAL_SERVER_ERROR
 }

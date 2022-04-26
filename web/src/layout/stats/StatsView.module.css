@@ -4,7 +4,7 @@
 
 .withContent {
   top: 50%;
-  margin-top: 115px !important;
+  margin-top: 9px;
 }
 
 .loadingWrapper {
@@ -138,5 +138,9 @@
 
   .select {
     width: 100%;
+  }
+
+  .withContent {
+    margin-top: 24px;
   }
 }

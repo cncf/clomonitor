@@ -360,7 +360,7 @@ const StatsView = (props: Props) => {
             <div className="d-flex flex-column ms-0 ms-sm-3 mt-3 mt-sm-0 px-4 px-sm-0">
               <label className="form-label me-2 mb-0 fw-bold">Foundation:</label>
               <select
-                className={`form-select rounded-0 cursorPointer ${styles.select}`}
+                className={`form-select rounded-0 cursorPointer foundation ${styles.select}`}
                 value={selectedFoundation || ''}
                 onChange={handleChange}
                 aria-label="Foundation options select"

@@ -393,11 +393,11 @@ mod tests {
     }
 
     fn setup_test_router(db: MockDB) -> Router {
-        let cfg = tests_config();
+        let cfg = setup_test_config();
         setup(&cfg, Arc::new(db)).unwrap()
     }
 
-    fn tests_config() -> Config {
+    fn setup_test_config() -> Config {
         Config::builder()
             .set_default("apiserver.staticPath", TESTDATA_PATH)
             .unwrap()

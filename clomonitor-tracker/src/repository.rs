@@ -7,7 +7,7 @@ use clomonitor_core::{
 use deadpool_postgres::{Client as DbClient, Transaction};
 use std::path::Path;
 use std::time::Instant;
-use tempdir::TempDir;
+use tempfile::Builder;
 use tokio::process::Command;
 use tokio_postgres::types::Json;
 use tokio_postgres::Error as DbError;
@@ -47,7 +47,7 @@ impl Repository {
         debug!("tracking repository [id: {}]", self.repository_id);
 
         // Clone repository
-        let tmp_dir = TempDir::new("clomonitor")?;
+        let tmp_dir = Builder::new().prefix("clomonitor").tempdir()?;
         self.clone(tmp_dir.path()).await?;
 
         // Lint repository

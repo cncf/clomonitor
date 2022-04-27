@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import { useContext, useRef, useState } from 'react';
-import { FaChartPie } from 'react-icons/fa';
+import { FaChartPie, FaFileAlt } from 'react-icons/fa';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { HiDotsVertical } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import { AppContext, updateTheme } from '../../context/AppContextProvider';
 import useOutsideClick from '../../hooks/useOutsideClick';
+import ExternalLink from '../common/ExternalLink';
 import styles from './MobileSettings.module.css';
 
 const MobileSettings = () => {
@@ -80,6 +81,20 @@ const MobileSettings = () => {
         </div>
 
         <hr />
+
+        <div className="dropdown-item mb-2">
+          <ExternalLink
+            className="text-decoration-none fw-bold d-inline-block w-100"
+            href="/docs"
+            label="Open documentation"
+            target="_self"
+          >
+            <div className="d-flex flex-row align-items-center py-1">
+              <FaFileAlt />
+              <div className="ms-2">Documentation</div>
+            </div>
+          </ExternalLink>
+        </div>
 
         <div className="dropdown-item mb-2">
           <Link className="text-decoration-none fw-bold d-inline-block w-100" to="/stats" onClick={closeDropdown}>

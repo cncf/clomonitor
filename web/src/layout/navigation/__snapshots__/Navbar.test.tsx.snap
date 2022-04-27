@@ -198,6 +198,45 @@ exports[`Navbar creates snapshot 1`] = `
                   class="dropdown-item mb-2"
                 >
                   <a
+                    aria-label="Open documentation"
+                    class="link text-decoration-none fw-bold d-inline-block w-100"
+                    href="/docs"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_self"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center py-1"
+                      >
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 384 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"
+                          />
+                        </svg>
+                        <div
+                          class="ms-2"
+                        >
+                          Documentation
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="dropdown-item mb-2"
+                >
+                  <a
                     class="text-decoration-none fw-bold d-inline-block w-100"
                     href="/stats"
                   >
@@ -284,7 +323,21 @@ exports[`Navbar creates snapshot 1`] = `
           class="d-none d-md-flex flex-row align-items-center ms-auto searchWrapper"
         >
           <a
-            class="position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
+            aria-label="Open documentation"
+            class="link position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
+            href="/docs"
+            rel="noopener noreferrer"
+            tabindex="-1"
+            target="_self"
+          >
+            <div
+              class="d-flex flex-row align-items-baseline"
+            >
+              Docs
+            </div>
+          </a>
+          <a
+            class="position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
             href="/stats"
           >
             Stats

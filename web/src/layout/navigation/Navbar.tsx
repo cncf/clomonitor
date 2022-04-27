@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../media/clomonitor.svg';
+import ExternalLink from '../common/ExternalLink';
 import ThemeSwitch from '../common/ThemeSwitch';
 import Searchbar from '../navigation/Searchbar';
 import MobileSettings from './MobileSettings';
@@ -27,9 +28,17 @@ const Navbar = (props: Props) => {
           </div>
           <Searchbar classNameWrapper={`my-3 ${styles.line}`} setScrollPosition={props.setScrollPosition} />
           <div className={`d-none d-md-flex flex-row align-items-center ms-auto ${styles.searchWrapper}`}>
+            <ExternalLink
+              className={`position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none ${styles.link} navbarLink`}
+              href="/docs"
+              label="Open documentation"
+              target="_self"
+            >
+              Docs
+            </ExternalLink>
             <Link
               to="/stats"
-              className={`position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none ${styles.link} navbarLink`}
+              className={`position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none ${styles.link} navbarLink`}
             >
               Stats
             </Link>

@@ -14,11 +14,7 @@ const Footer = () => {
           <div className={styles.footerCol}>
             <div className="h6 fw-bold text-uppercase">Project</div>
             <div className="d-flex flex-column text-start">
-              <ExternalLink
-                className="mb-1 opacity-75"
-                href="https://github.com/cncf/clomonitor/tree/main/docs"
-                label="Open documentation"
-              >
+              <ExternalLink className="mb-1 opacity-75" href="/docs" label="Open documentation" target="_self">
                 Documentation
               </ExternalLink>
               <Link className="mb-1 opacity-75" to="/stats">

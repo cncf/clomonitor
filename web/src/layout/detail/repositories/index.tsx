@@ -164,7 +164,7 @@ const RepositoriesList = (props: Props) => {
                     data={repo.report.data.documentation}
                     icon={CATEGORY_ICONS[ScoreType.Documentation]}
                     score={!isUndefined(repo.score) ? repo.score.documentation : undefined}
-                    referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                    referenceUrl="/docs/topics/checks/#documentation"
                     recommendedTemplates={
                       repo.check_sets && repo.check_sets.includes(CheckSet.Community)
                         ? [
@@ -189,7 +189,7 @@ const RepositoriesList = (props: Props) => {
                     data={repo.report.data.license}
                     icon={CATEGORY_ICONS[ScoreType.License]}
                     score={!isUndefined(repo.score) ? repo.score.license : undefined}
-                    referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                    referenceUrl="/docs/topics/checks/#license"
                     getAnchorLink={getAnchorLink}
                   />
                   <Row
@@ -200,7 +200,7 @@ const RepositoriesList = (props: Props) => {
                     data={repo.report.data.best_practices}
                     icon={CATEGORY_ICONS[ScoreType.BestPractices]}
                     score={!isUndefined(repo.score) ? repo.score.best_practices : undefined}
-                    referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
+                    referenceUrl="/docs/topics/checks/#best-practices"
                     getAnchorLink={getAnchorLink}
                   />
                   <Row
@@ -211,7 +211,7 @@ const RepositoriesList = (props: Props) => {
                     data={repo.report.data.security}
                     icon={CATEGORY_ICONS[ScoreType.Security]}
                     score={!isUndefined(repo.score) ? repo.score.security : undefined}
-                    referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
+                    referenceUrl="/docs/topics/checks/#security"
                     recommendedTemplates={[
                       {
                         name: 'SECURITY.md',
@@ -228,7 +228,7 @@ const RepositoriesList = (props: Props) => {
                     data={repo.report.data.legal}
                     icon={CATEGORY_ICONS[ScoreType.Legal]}
                     score={!isUndefined(repo.score) ? repo.score.legal : undefined}
-                    referenceUrl="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#legal"
+                    referenceUrl="/docs/topics/checks/#legal"
                     getAnchorLink={getAnchorLink}
                   />
                 </>

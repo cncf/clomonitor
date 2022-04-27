@@ -25,10 +25,10 @@ exports[`Footer creates snapshot 1`] = `
             <a
               aria-label="Open documentation"
               class="link mb-1 opacity-75"
-              href="https://github.com/cncf/clomonitor/tree/main/docs"
+              href="/docs"
               rel="noopener noreferrer"
               tabindex="-1"
-              target="_blank"
+              target="_self"
             >
               <div
                 class="d-flex flex-row align-items-baseline"

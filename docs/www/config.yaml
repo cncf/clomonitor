@@ -1,0 +1,13 @@
+baseURL: /docs
+languageCode: en-us
+title: CLOMonitor documentation
+theme: "hugo-geekdoc"
+publishdir: ../../web/build/docs
+build:
+  noJSConfigInAssets: false
+  useResourceCacheWhen: fallback
+  writeStats: false
+params:
+  AuthorName: CLOMonitor Team
+  geekdocSearch: false
+  geekdocAnchorCopy: false

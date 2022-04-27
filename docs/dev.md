@@ -76,16 +76,16 @@ clomonitor_db_client
 Once you've connected to the database, you can run the following commands -one by one- to load some organizations, projects and repositories (please make sure to adjust the path to the data files as needed):
 
 ```sql
-\copy organization (organization_id, name, home_url, logo_url)
-from '~/projects/clomonitor/database/data/organizations.csv'
+\copy organization (organization_id, name, home_url, logo_url, foundation)
+from '~/projects/clomonitor/database/data/cncf/organizations.csv'
 with (format csv, header true, delimiter ';');
 
-\copy project (project_id, maturity_id, category_id, name, display_name, description, logo_url, home_url, devstats_url, organization_id)
-from '~/projects/clomonitor/database/data/projects.csv'
+\copy project (project_id, name, display_name, description, category, home_url, logo_url, devstats_url, accepted_at, maturity, organization_id)
+from '~/projects/clomonitor/database/data/cncf/projects.csv'
 with (format csv, header true, delimiter ';');
 
-\copy repository (repository_id, name, url, kind, project_id)
-from '~/projects/clomonitor/database/data/repositories.csv'
+\copy repository (repository_id, name, url, check_sets, project_id)
+from '~/projects/clomonitor/database/data/cncf/repositories.csv'
 with (format csv, header true, delimiter ';');
 ```
 

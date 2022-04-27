@@ -33,7 +33,7 @@ describe('Footer', () => {
     const links = screen.getAllByRole('link');
     expect(links).toHaveLength(4);
     expect(links[0]).toHaveTextContent('Documentation');
-    expect(links[0]).toHaveAttribute('href', 'https://github.com/cncf/clomonitor/tree/main/docs');
+    expect(links[0]).toHaveAttribute('href', '/docs');
     expect(links[1]).toHaveTextContent('Statistics');
     expect(links[1]).toHaveAttribute('href', '/stats');
     expect(links[2]).toHaveTextContent('GitHub');

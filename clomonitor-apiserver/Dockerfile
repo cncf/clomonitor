@@ -15,6 +15,15 @@ ENV NODE_OPTIONS=--max_old_space_size=4096
 RUN yarn install
 RUN yarn build
 
+# Build docs
+FROM klakegg/hugo:0.78.2 AS docs-builder
+WORKDIR /
+COPY scripts scripts
+COPY docs docs
+RUN scripts/prepare-docs.sh
+WORKDIR /docs/www
+RUN hugo
+
 # Final stage
 FROM alpine:3.15
 RUN apk --no-cache add ca-certificates && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
@@ -23,3 +32,4 @@ WORKDIR /home/clomonitor
 COPY --from=builder /clomonitor/clomonitor-apiserver/target/release/clomonitor-apiserver /usr/local/bin
 COPY --from=frontend-builder /web/build ./web/build
 COPY --from=frontend-builder /web/package.json ./web
+COPY --from=docs-builder /web/build/docs ./web/build/docs

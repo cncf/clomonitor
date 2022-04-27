@@ -29,7 +29,7 @@ const tests: Test[] = [
 const placeholder = {
   title: 'CLOMonitor',
   description:
-    'CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet a certain project health best practices.',
+    'CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet certain project health best practices.',
 };
 
 describe('updateMetaIndex', () => {

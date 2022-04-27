@@ -57,4 +57,29 @@ describe('Navbar', () => {
 
     expect(window.location.pathname).toBe('/');
   });
+
+  it('clicks Docs page', () => {
+    render(
+      <Router>
+        <Navbar {...defaultProps} />
+      </Router>
+    );
+
+    const links = screen.getAllByRole('link', { name: 'Open documentation' });
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute('href', '/docs');
+  });
+
+  it('clicks Stats page', () => {
+    render(
+      <Router>
+        <Navbar {...defaultProps} />
+      </Router>
+    );
+
+    const links = screen.getAllByRole('link');
+    userEvent.click(links[2]);
+
+    expect(window.location.pathname).toBe('/stats');
+  });
 });

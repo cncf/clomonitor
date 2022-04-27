@@ -1768,7 +1768,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -2162,7 +2162,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -2542,7 +2542,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Best Practices category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#best-practices"
+                  href="/docs/topics/checks/#best-practices"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -2755,7 +2755,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Security category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#security"
+                  href="/docs/topics/checks/#security"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -3383,7 +3383,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -3669,7 +3669,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -4237,7 +4237,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -4523,7 +4523,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -5091,7 +5091,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -5377,7 +5377,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -5945,7 +5945,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -6231,7 +6231,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -6799,7 +6799,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for Documentation category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation"
+                  href="/docs/topics/checks/#documentation"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"
@@ -7085,7 +7085,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 <a
                   aria-label="Checks reference documentation for License category"
                   class="link d-inline-block"
-                  href="https://github.com/cncf/clomonitor/blob/main/docs/checks.md#license"
+                  href="/docs/topics/checks/#license"
                   rel="noopener noreferrer"
                   tabindex="-1"
                   target="_blank"

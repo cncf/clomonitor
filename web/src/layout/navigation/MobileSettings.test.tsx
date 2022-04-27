@@ -64,7 +64,7 @@ describe('MobileSettings', () => {
     expect(screen.getByRole('radio', { name: 'Dark' })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'Dark' })).not.toBeChecked();
     expect(screen.getByText('Statistics')).toBeInTheDocument();
-    expect(screen.getByRole('link')).toBeInTheDocument();
+    expect(screen.getAllByRole('link')).toHaveLength(2);
   });
 
   it('calls updateTheme event', () => {
@@ -85,6 +85,23 @@ describe('MobileSettings', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ theme: 'dark', type: 'updateTheme' });
   });
 
+  it('goes to Docs page', () => {
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: mockDispatch }}>
+        <Router>
+          <MobileSettings />
+        </Router>
+      </AppContext.Provider>
+    );
+
+    const btn = screen.getByRole('button', { name: 'Mobile settings button' });
+    userEvent.click(btn);
+
+    const link = screen.getByRole('link', { name: 'Open documentation' });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '/docs');
+  });
+
   it('goes to Stats page', () => {
     render(
       <AppContext.Provider value={{ ctx: mockCtx, dispatch: mockDispatch }}>
@@ -97,7 +114,8 @@ describe('MobileSettings', () => {
     const btn = screen.getByRole('button', { name: 'Mobile settings button' });
     userEvent.click(btn);
 
-    fireEvent.click(screen.getByRole('link'));
+    const links = screen.getAllByRole('link');
+    fireEvent.click(links[1]);
 
     expect(window.location.pathname).toBe('/stats');
   });

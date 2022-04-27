@@ -20,6 +20,7 @@ pub(crate) fn setup(cfg: &Config, db: DynDB) -> Result<Router> {
     // Setup some paths
     let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
+    let docs_path = Path::new(&static_path).join("docs");
 
     // Setup error handler
     let error_handler = |err: std::io::Error| async move {
@@ -42,6 +43,10 @@ pub(crate) fn setup(cfg: &Config, db: DynDB) -> Result<Router> {
         .route(
             "/",
             get_service(ServeFile::new(&index_path)).handle_error(error_handler),
+        )
+        .nest(
+            "/docs",
+            get_service(ServeDir::new(docs_path)).handle_error(error_handler),
         )
         .nest(
             "/static",

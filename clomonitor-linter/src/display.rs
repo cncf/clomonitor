@@ -153,12 +153,48 @@ pub(crate) fn display(
             cell_check(&report.best_practices.slack_presence),
         ])
         .add_row(vec![
+            cell_entry("Security / Binary artifacts"),
+            cell_check(&report.security.binary_artifacts),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Branch protection"),
+            cell_check(&report.security.branch_protection),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Code review"),
+            cell_check(&report.security.code_review),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Dangerous workflow"),
+            cell_check(&report.security.dangerous_workflow),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Dependency update tool"),
+            cell_check(&report.security.dependency_update_tool),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Maintained"),
+            cell_check(&report.security.maintained),
+        ])
+        .add_row(vec![
             cell_entry("Security / SBOM"),
             cell_check(&report.security.sbom),
         ])
         .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(&report.security.security_policy),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Signed release"),
+            cell_check(&report.security.signed_releases),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Token permissions"),
+            cell_check(&report.security.token_permissions),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Vulnerabilities"),
+            cell_check(&report.security.vulnerabilities),
         ])
         .add_row(vec![
             cell_entry("Legal / Trademark disclaimer"),
@@ -295,8 +331,17 @@ mod tests {
                 slack_presence: Some(true.into()),
             },
             security: Security {
+                binary_artifacts: Some(true.into()),
+                branch_protection: Some(true.into()),
+                code_review: Some(true.into()),
+                dangerous_workflow: Some(true.into()),
+                dependency_update_tool: Some(true.into()),
+                maintained: Some(true.into()),
                 sbom: Some(true.into()),
                 security_policy: Some(true.into()),
+                signed_releases: Some(true.into()),
+                token_permissions: Some(true.into()),
+                vulnerabilities: Some(true.into()),
             },
             legal: Legal {
                 trademark_disclaimer: Some(true.into()),

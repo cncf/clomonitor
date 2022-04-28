@@ -68,6 +68,7 @@ export interface ReportCheck {
   fail_reason?: string;
   value?: string;
   url?: string;
+  details?: string;
 }
 
 export interface FiltersSection {
@@ -156,14 +157,20 @@ export enum ReportOption {
   Adopters = 'adopters',
   ApprovedLicense = 'approved',
   ArtifactHubBadge = 'artifacthub_badge',
+  BinaryArtifacts = 'binary_artifacts',
+  BranchProtection = 'branch_protection',
   Changelog = 'changelog',
   CLA = 'cla',
   CodeOfConduct = 'code_of_conduct',
+  CodeReview = 'code_review',
   CommunityMeeting = 'community_meeting',
   Contributing = 'contributing',
+  DangerousWorkflow = 'dangerous_workflow',
+  DependencyUpdateTool = 'dependency_update_tool',
   DCO = 'dco',
   Governance = 'governance',
   LicenseScanning = 'scanning',
+  Maintained = 'maintained',
   Maintainers = 'maintainers',
   OpenSSFBadge = 'openssf_badge',
   Readme = 'readme',
@@ -171,9 +178,12 @@ export enum ReportOption {
   Roadmap = 'roadmap',
   SBOM = 'sbom',
   SecurityPolicy = 'security_policy',
+  SignedReleases = 'signed_releases',
   SlackPresence = 'slack_presence',
   SPDX = 'spdx_id',
+  TokenPermissions = 'token_permissions',
   TrademarkDisclaimer = 'trademark_disclaimer',
+  Vulnerabilities = 'vulnerabilities',
   Website = 'website',
 }
 

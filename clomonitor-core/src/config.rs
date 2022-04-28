@@ -5,16 +5,22 @@ use std::collections::HashMap;
 // Checks identifiers
 pub const ADOPTERS: &str = "adopters";
 pub const ARTIFACTHUB_BADGE: &str = "artifacthub_badge";
+pub const BINARY_ARTIFACTS: &str = "binary_artifacts";
+pub const BRANCH_PROTECTION: &str = "branch_protection";
 pub const CHANGELOG: &str = "changelog";
 pub const CLA: &str = "cla";
 pub const CODE_OF_CONDUCT: &str = "code_of_conduct";
+pub const CODE_REVIEW: &str = "code_review";
 pub const COMMUNITY_MEETING: &str = "community_meeting";
 pub const CONTRIBUTING: &str = "contributing";
+pub const DANGEROUS_WORKFLOW: &str = "dangerous_workflow";
+pub const DEPENDENCY_UPDATE_TOOL: &str = "dependency_update_tool";
 pub const DCO: &str = "dco";
 pub const GOVERNANCE: &str = "governance";
 pub const LICENSE_APPROVED: &str = "license_approved";
 pub const LICENSE_SCANNING: &str = "license_scanning";
 pub const LICENSE_SPDX: &str = "license_spdx_id";
+pub const MAINTAINED: &str = "maintained";
 pub const MAINTAINERS: &str = "maintainers";
 pub const OPENSSF_BADGE: &str = "openssf_badge";
 pub const README: &str = "readme";
@@ -23,7 +29,10 @@ pub const ROADMAP: &str = "roadmap";
 pub const SBOM: &str = "sbom";
 pub const SECURITY_POLICY: &str = "security_policy";
 pub const SLACK_PRESENCE: &str = "slack_presence";
+pub const SIGNED_RELEASES: &str = "signed_releases";
 pub const TRADEMARK_DISCLAIMER: &str = "trademark_disclaimer";
+pub const TOKEN_PERMISSIONS: &str = "token_permissions";
+pub const VULNERABILITIES: &str = "vulnerabilities";
 pub const WEBSITE: &str = "website";
 
 // Checks weights
@@ -57,8 +66,17 @@ lazy_static! {
         m.insert(SLACK_PRESENCE, 1);
 
         // Security
-        m.insert(SBOM, 2);
-        m.insert(SECURITY_POLICY, 13);
+        m.insert(BINARY_ARTIFACTS, 2);
+        m.insert(BRANCH_PROTECTION, 2);
+        m.insert(CODE_REVIEW, 2);
+        m.insert(DANGEROUS_WORKFLOW, 2);
+        m.insert(DEPENDENCY_UPDATE_TOOL, 2);
+        m.insert(MAINTAINED, 2);
+        m.insert(SBOM, 1);
+        m.insert(SECURITY_POLICY, 2);
+        m.insert(SIGNED_RELEASES, 2);
+        m.insert(TOKEN_PERMISSIONS, 2);
+        m.insert(VULNERABILITIES, 2);
 
         // Legal
         m.insert(TRADEMARK_DISCLAIMER, 5);
@@ -77,19 +95,28 @@ lazy_static! {
             CheckSet::Code,
             vec![
                 ARTIFACTHUB_BADGE,
+                BINARY_ARTIFACTS,
+                BRANCH_PROTECTION,
                 CHANGELOG,
                 CLA,
+                CODE_REVIEW,
                 CONTRIBUTING,
+                DANGEROUS_WORKFLOW,
                 DCO,
+                DEPENDENCY_UPDATE_TOOL,
                 LICENSE_SPDX,
                 LICENSE_APPROVED,
                 LICENSE_SCANNING,
+                MAINTAINED,
                 MAINTAINERS,
                 OPENSSF_BADGE,
                 README,
                 RECENT_RELEASE,
                 SBOM,
                 SECURITY_POLICY,
+                SIGNED_RELEASES,
+                TOKEN_PERMISSIONS,
+                VULNERABILITIES,
             ],
         );
 
@@ -128,6 +155,25 @@ lazy_static! {
 
         // Docs
         m.insert(CheckSet::Docs, vec![LICENSE_SPDX, LICENSE_APPROVED, README]);
+
+        m
+    };
+}
+
+// OpenSSF Scorecard checks mapping
+lazy_static! {
+    pub static ref SCORECARD_CHECK: HashMap<&'static str, &'static str> = {
+        let mut m = HashMap::new();
+
+        m.insert(BINARY_ARTIFACTS, "Binary-Artifacts");
+        m.insert(BRANCH_PROTECTION, "Branch-Protection");
+        m.insert(CODE_REVIEW, "Code-Review");
+        m.insert(DANGEROUS_WORKFLOW, "Dangerous-Workflow");
+        m.insert(DEPENDENCY_UPDATE_TOOL, "Dependency-Update-Tool");
+        m.insert(MAINTAINED, "Maintained");
+        m.insert(SIGNED_RELEASES, "Signed-Releases");
+        m.insert(TOKEN_PERMISSIONS, "Token-Permissions");
+        m.insert(VULNERABILITIES, "Vulnerabilities");
 
         m
     };

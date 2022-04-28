@@ -8,6 +8,7 @@ exports[`OptionCell creates snapshot 1`] = `
         <td
           class="text-center iconCell"
         >
+           
           <svg
             class="text-success icon"
             data-testid="success-icon"

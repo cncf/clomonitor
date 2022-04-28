@@ -3,9 +3,11 @@ import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { RiErrorWarningLine } from 'react-icons/ri';
+import ReactMarkdown from 'react-markdown';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
+import DropdownOnHover from '../../common/DropdownOnHover';
 import ElementWithTooltip from '../../common/ElementWithTooltip';
 import ExternalLink from '../../common/ExternalLink';
 import styles from './OptionCell.module.css';
@@ -27,6 +29,29 @@ const OptionCell = (props: Props) => {
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
+  const Heading = (props: any) => <div className="fs-6 border-bottom pb-2 fw-bold w-100">{props.children}</div>;
+
+  const Link = (data: any) => {
+    return (
+      <a href={data.href} target={data.target} rel="noopener noreferrer" className="text-decoration-underline">
+        {data.children}
+      </a>
+    );
+  };
+
+  const Blockquote = (data: any) => {
+    const content = data.children.find((el: any) => el.type === 'p');
+    let el = data.children;
+    if (content) {
+      el = content.props.children;
+    }
+    return (
+      <div className="pe-2">
+        <div className={`w-100 overflow-auto ${styles.codeContent} ${styles.visibleScroll}`}>{el}</div>
+      </div>
+    );
+  };
+
   const getCheckValue = (): string => {
     switch (props.label) {
       case ReportOption.SPDX:
@@ -37,6 +62,55 @@ const OptionCell = (props: Props) => {
     }
   };
 
+  const getDetailsInfo = (): JSX.Element => {
+    return (
+      <>
+        <div className="d-none d-lg-block">
+          <DropdownOnHover
+            width={700}
+            dropdownClassName={styles.detailsDropdown}
+            linkContent={
+              <>
+                {props.check.passed ? (
+                  <div className="position-relative">
+                    {successIcon}
+                    <div className={`position-absolute bg-success rounded-circle ${styles.dot}`} />
+                  </div>
+                ) : (
+                  <div className="position-relative">
+                    {errorIcon}
+                    <div className={`position-absolute bg-danger rounded-circle ${styles.dot}`} />
+                  </div>
+                )}
+              </>
+            }
+            tooltipStyle
+          >
+            <div className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll}`}>
+              <ReactMarkdown
+                className={styles.detailsContent}
+                children={props.check.details!}
+                linkTarget="_blank"
+                components={{
+                  h1: Heading,
+                  h2: Heading,
+                  h3: Heading,
+                  h4: Heading,
+                  h5: Heading,
+                  h6: Heading,
+                  a: Link,
+                  blockquote: Blockquote,
+                }}
+                skipHtml
+              />
+            </div>
+          </DropdownOnHover>
+        </div>
+        <span className="d-block d-lg-none">{props.check.passed ? successIcon : errorIcon}</span>
+      </>
+    );
+  };
+
   const getIconCheck = (): JSX.Element => {
     if (!isUndefined(props.check.exempt) && props.check.exempt) {
       return (
@@ -44,9 +118,13 @@ const OptionCell = (props: Props) => {
           {!isUndefined(props.check.exemption_reason) && props.check.exemption_reason !== '' ? (
             <>
               <ElementWithTooltip
-                element={exemptIcon}
+                element={
+                  <div className="position-relative">
+                    {exemptIcon}
+                    <div className={`position-absolute bg-muted rounded-circle ${styles.dot}`} />
+                  </div>
+                }
                 tooltipWidth={500}
-                className="cursorPointer"
                 tooltipClassName={styles.reasonTooltipMessage}
                 tooltipMessage={
                   <div className="text-start p-2">
@@ -76,9 +154,13 @@ const OptionCell = (props: Props) => {
           {!isUndefined(props.check.fail_reason) && props.check.fail_reason !== '' ? (
             <>
               <ElementWithTooltip
-                element={failedIcon}
+                element={
+                  <div className="position-relative">
+                    {failedIcon}
+                    <div className={`position-absolute bg-orange rounded-circle ${styles.dot}`} />
+                  </div>
+                }
                 tooltipWidth={500}
-                className="cursorPointer"
                 tooltipClassName={styles.reasonTooltipMessage}
                 tooltipMessage={
                   <div className="text-start p-2">
@@ -101,7 +183,9 @@ const OptionCell = (props: Props) => {
         </>
       );
     } else {
-      return props.check.passed ? successIcon : errorIcon;
+      return (
+        <>{props.check.details ? <> {getDetailsInfo()}</> : <> {props.check.passed ? successIcon : errorIcon}</>}</>
+      );
     }
   };
 
@@ -124,7 +208,9 @@ const OptionCell = (props: Props) => {
                     </ExternalLink>
                   </div>
                 ) : (
-                  <small className="fw-bold text-truncate">{getCheckValue()}</small>
+                  <>
+                    <small className="fw-bold text-truncate">{getCheckValue()}</small>
+                  </>
                 )}
               </div>
               <div className={`d-none d-lg-block text-muted text-truncate w-100 ${styles.legend}`}>{opt.legend}</div>

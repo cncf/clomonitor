@@ -167,9 +167,13 @@ Depending on the speed of your Internet connection and machine, this may take on
 
 In the section above we saw how the `tracker` is able to lint all repositories registered in the database. But sometimes it may be desirable to lint a single repository manually in an isolated way, maybe to quickly test some checks or to integrate with some other processes, like continuous integration or deployment tools. The `linter CLI` tool is designed to help in those scenarios.
 
+CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github API for some checks. To avoid issues with rate limits, a Github token (with `public_repo` scope) **must** be provided to authenticate those requests.
+
 If you are using the aliases provided below, you can run it this way:
 
 ```sh
+export GITHUB_TOKEN=<your token>
+
 clomonitor_linter --help
 ```
 

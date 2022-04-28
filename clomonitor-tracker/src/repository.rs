@@ -104,7 +104,7 @@ impl Repository {
     async fn clone(&self, dst: &Path) -> Result<()> {
         let output = Command::new("git")
             .arg("clone")
-            .arg("--depth=1")
+            .arg("--depth=10")
             .arg(&self.url)
             .arg(dst)
             .output()

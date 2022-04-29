@@ -55,6 +55,10 @@
     color: #a0a0a0 !important;
   }
 
+  .bg-muted {
+    background-color: #a0a0a0;
+  }
+
   .bg-white,
   .bg-light {
     background-color: var(--rm-primary) !important;
@@ -164,6 +168,16 @@
     & .tooltip-inner code {
       color: var(--highlighted);
     }
+  }
+
+  .tooltipDropdown {
+    background-color: var(--rm-secondary) !important;
+    border: 1px solid var(--solid-border) !important;
+    color: var(--color-font) !important;
+  }
+
+  .tooltipDropdown .arrow::before {
+    border-bottom-color: var(--solid-border) !important;
   }
 
   .btn-close {

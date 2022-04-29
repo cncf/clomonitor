@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Repository } from '../../../types';
 import RepositoriesList from './index';
+jest.mock('react-markdown', () => () => <div />);
 
 const mockUseNavigate = jest.fn();
 

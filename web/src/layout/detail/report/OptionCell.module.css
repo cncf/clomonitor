@@ -15,6 +15,14 @@
   color: var(--bs-orange);
 }
 
+.dot {
+  top: 0;
+  right: 5px;
+  height: 10px;
+  width: 10px;
+  border: 2px solid var(--body-bg);
+}
+
 .reason {
   font-size: 0.8rem;
 }
@@ -43,6 +51,49 @@
 
 .miniIcon {
   font-size: 0.75rem;
+}
+
+.infoIcon {
+  font-size: 0.75rem;
+  margin-top: -4px;
+}
+
+.detailsDropdown {
+  left: 0px;
+}
+
+.detailsWrapper {
+  max-height: 270px;
+  white-space: pre-line;
+}
+
+.detailsContent {
+  font-size: 0.8rem;
+}
+
+.detailsContent p {
+  margin-bottom: 0px;
+}
+
+.codeContent {
+  white-space: pre;
+}
+
+/* Scroll */
+.visibleScroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.visibleScroll::-webkit-scrollbar-thumb,
+.visibleScroll::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 10px;
+  background-color: #686868;
+  border: 2px solid var(--bs-white);
+}
+
+.visibleScroll::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 @media only screen and (min-width: 576px) {

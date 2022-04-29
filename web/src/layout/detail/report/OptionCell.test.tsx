@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ReportOption } from '../../../types';
 import OptionCell from './OptionCell';
+jest.mock('react-markdown', () => () => <div>markdown</div>);
 
 const defaultProps = {
   label: ReportOption.Adopters,
@@ -63,6 +64,68 @@ describe('OptionCell', () => {
       expect(screen.getByText('Apache-2.0')).toBeInTheDocument();
       expect(screen.getByText(/file contains the repository's license/)).toBeInTheDocument();
       expect(screen.getByText('LICENSE')).toBeInTheDocument();
+    });
+
+    it('renders option with url', () => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              {...defaultProps}
+              check={{
+                url: 'https://github.com/project-akri/akri/blob/main/ADOPTERS.md',
+                exempt: false,
+                failed: false,
+                passed: true,
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      const link = screen.getByRole('link');
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveTextContent('Adopters');
+      expect(link).toHaveProperty('target', '_blank');
+      expect(link).toHaveProperty('href', 'https://github.com/project-akri/akri/blob/main/ADOPTERS.md');
+      expect(link).toHaveProperty('rel', 'noopener noreferrer');
+    });
+
+    it('renders option with details', async () => {
+      jest.useFakeTimers();
+
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              label={ReportOption.DependencyUpdateTool}
+              check={{
+                exempt: false,
+                failed: false,
+                passed: false,
+                details:
+                  '### Determines if the project uses a dependency update tool\n\n**OpenSSF Scorecard score**: 0\n**Reason**: no update tool detected\n\n**Details**:\n\nWarn: dependabot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\nWarn: renovatebot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\n\n*Please see the [check docs](https://github.com/ossf/scorecard/blob/33f80c93dc79f860d874857c511c4d26d399609d/docs/checks.md#dependency-update-tool) for more details*',
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      const icons = screen.getAllByTestId('error-icon');
+      expect(icons).toHaveLength(2);
+
+      const dropdown = screen.getByRole('complementary');
+
+      expect(dropdown).not.toHaveClass('show');
+
+      userEvent.hover(icons[0]);
+
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+
+      expect(dropdown).toHaveClass('show');
+      expect(screen.getByText('markdown')).toBeInTheDocument();
     });
 
     describe('passed', () => {

@@ -18,8 +18,17 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Best practices / DCO
   - Best practices / OpenSSF badge
   - Best practices / Recent release
+  - Security / Binary artifacts
+  - Security / Branch protection
+  - Security / Code review
+  - Security / Dangerous workflow
+  - Security / Dependency update tool
+  - Security / Maintained
   - Security / SBOM
   - Security / Policy
+  - Security / Signed releases
+  - Security / Token permissions
+  - Security / Vulnerabilities
 
 - **code-lite** (subset of *code*, recommended for secondary code repositories)
 
@@ -459,6 +468,54 @@ This check passes if:
 
 ## Security
 
+### Binary artifacts (from OpenSSF Scorecard)
+
+**ID**: `binary_artifacts`
+
+This check determines whether the project has generated executable (binary) artifacts in the source repository.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#binary-artifacts) in the ossf/scorecard repository.*
+
+### Branch protection (from OpenSSF Scorecard)
+
+**ID**: `branch_protection`
+
+This check determines whether a project's default and release branches are protected with GitHub's branch protection settings.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection) in the ossf/scorecard repository.*
+
+### Code review (from OpenSSF Scorecard)
+
+**ID**: `code_review`
+
+This check determines whether the project requires code review before pull requests (merge requests) are merged.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#code-review) in the ossf/scorecard repository.*
+
+### Dangerous workflow (from OpenSSF Scorecard)
+
+**ID**: `dangerous_workflow`
+
+This check determines whether the project's GitHub Action workflows has dangerous code patterns.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dangerous-workflow) in the ossf/scorecard repository.*
+
+### Dependency update tool (from OpenSSF Scorecard)
+
+**ID**: `dependency_update_tool`
+
+This check tries to determine if the project uses a dependency update tool, specifically [dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates) or [renovatebot](https://docs.renovatebot.com/configuration-options/).
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dependency-update-tool) in the ossf/scorecard repository.*
+
+### Maintained (from OpenSSF Scorecard)
+
+**ID**: `maintained`
+
+This check determines whether the project is actively maintained.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained) in the ossf/scorecard repository.*
+
 ### Software bill of materials (SBOM)
 
 **ID**: `sbom`
@@ -509,6 +566,30 @@ CASE SENSITIVE: false
 ```
 
 - A security policy file is found in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
+
+### Signed releases (from OpenSSF Scorecard)
+
+**ID**: `signed_releases`
+
+This check tries to determine if the project cryptographically signs release artifacts.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#signed-releases) in the ossf/scorecard repository.*
+
+### Token permissions (from OpenSSF Scorecard)
+
+**ID**: `token_permissions`
+
+This check determines whether the project's automated workflows tokens are set to read-only by default.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions) in the ossf/scorecard repository.*
+
+### Vulnerabilities (from OpenSSF Scorecard)
+
+**ID**: `vulnerabilities`
+
+This check determines whether the project has open, unfixed vulnerabilities using the [OSV (Open Source Vulnerabilities)](https://osv.dev/) service.
+
+*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#vulnerabilities) in the ossf/scorecard repository.*
 
 ## Legal
 

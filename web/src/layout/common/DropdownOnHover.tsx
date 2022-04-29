@@ -9,7 +9,10 @@ interface Props {
   linkContent: JSX.Element | string;
   children: JSX.Element;
   className?: string;
+  dropdownClassName?: string;
+  arrowClassName?: string;
   width?: number;
+  tooltipStyle?: boolean;
 }
 
 const DropdownOnHover = (props: Props) => {
@@ -37,25 +40,34 @@ const DropdownOnHover = (props: Props) => {
         clearTimeout(timeout);
       }
     };
-  }, [onLinkHover, onDropdownHover, openStatus]);
+  }, [onLinkHover, onDropdownHover, openStatus]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
       <div className={props.className}>
         <div className="position-absolute">
-          <div
-            ref={ref}
-            role="complementary"
-            className={classNames('dropdown-menu rounded-0 text-wrap', styles.dropdown, {
-              show: openStatus,
-            })}
-            style={{
-              width: props.width ? `${props.width}px` : 'auto',
-            }}
-            onMouseEnter={() => setOnDropdownHover(true)}
-            onMouseLeave={() => setOnDropdownHover(false)}
-          >
-            <div className="px-3 py-1">{props.children}</div>
+          <div ref={ref} onMouseEnter={() => setOnDropdownHover(true)} onMouseLeave={() => setOnDropdownHover(false)}>
+            <div
+              role="complementary"
+              className={classNames(
+                'dropdown-menu rounded-0 text-wrap',
+                styles.dropdown,
+                props.dropdownClassName,
+                { [`tooltipDropdown ${styles.tooltip}`]: props.tooltipStyle },
+                {
+                  show: openStatus,
+                }
+              )}
+              style={{
+                width: props.width ? `${props.width}px` : 'auto',
+              }}
+            >
+              {props.tooltipStyle && (
+                <div className={`arrow ${styles.arrow} ${props.arrowClassName}`} data-testid="dropdown-arrow" />
+              )}
+              {/* {openStatus && <div className="ps-3 pe-2 pt-1">{props.children}</div>} */}
+              <div className="ps-3 pe-2 pt-1">{props.children}</div>
+            </div>
           </div>
         </div>
 

@@ -21,7 +21,7 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
 
     // Setup lint services
     let gh_opts = GithubOptions {
-        token: cfg.get_string("creds.githubToken").ok(),
+        token: cfg.get_string("creds.githubToken")?,
         ..GithubOptions::default()
     };
     let svc = Arc::new(LintServices::new(gh_opts)?);
@@ -40,10 +40,11 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     for repository in repositories {
         let db = db_pool.get().await?;
         let svc = svc.clone();
+        let github_token = cfg.get_string("creds.githubToken")?;
         futs.push(tokio::spawn(async move {
             if let Err(err) = timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(db, &svc),
+                repository.track(db, &svc, github_token),
             )
             .await
             {

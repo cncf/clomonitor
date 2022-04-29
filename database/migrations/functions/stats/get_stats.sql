@@ -155,8 +155,17 @@ returns json as $$
                     'slack_presence', repositories_passing_check(p_foundation, 'best_practices', 'slack_presence')
                 ),
                 'security', json_build_object(
+                    'binary_artifacts', repositories_passing_check(p_foundation, 'security', 'binary_artifacts'),
+                    'branch_protection', repositories_passing_check(p_foundation, 'security', 'branch_protection'),
+                    'code_review', repositories_passing_check(p_foundation, 'security', 'code_review'),
+                    'dangerous_workflow', repositories_passing_check(p_foundation, 'security', 'dangerous_workflow'),
+                    'dependency_update_tool', repositories_passing_check(p_foundation, 'security', 'dependency_update_tool'),
+                    'maintained', repositories_passing_check(p_foundation, 'security', 'maintained'),
                     'sbom', repositories_passing_check(p_foundation, 'security', 'sbom'),
-                    'security_policy', repositories_passing_check(p_foundation, 'security', 'security_policy')
+                    'security_policy', repositories_passing_check(p_foundation, 'security', 'security_policy'),
+                    'signed_releases', repositories_passing_check(p_foundation, 'security', 'signed_releases'),
+                    'token_permissions', repositories_passing_check(p_foundation, 'security', 'token_permissions'),
+                    'vulnerabilities', repositories_passing_check(p_foundation, 'security', 'vulnerabilities')
                 ),
                 'legal', json_build_object(
                     'trademark_disclaimer', repositories_passing_check(p_foundation, 'legal', 'trademark_disclaimer')

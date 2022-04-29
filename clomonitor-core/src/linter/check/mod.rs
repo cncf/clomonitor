@@ -1,4 +1,7 @@
-use self::path::Globs;
+use self::{
+    path::Globs,
+    scorecard::{Scorecard, ScorecardCheck},
+};
 use super::{LintOptions, LintServices};
 use crate::{config::*, linter::CheckSet};
 use anyhow::Result;
@@ -19,6 +22,7 @@ pub(crate) mod license;
 pub(crate) mod metadata;
 pub(crate) mod path;
 pub(crate) mod patterns;
+pub(crate) mod scorecard;
 
 /// Input used by checks to perform their operations.
 #[derive(Debug)]
@@ -27,6 +31,7 @@ pub(crate) struct CheckInput<'a> {
     pub svc: &'a LintServices,
     pub cm_md: Option<Metadata>,
     pub gh_md: Repository,
+    pub scorecard: Scorecard,
 }
 
 /// Check output information.
@@ -39,6 +44,9 @@ pub struct CheckOutput<T = ()> {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<T>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub details: Option<String>,
 
     pub exempt: bool,
 
@@ -57,6 +65,7 @@ impl<T> Default for CheckOutput<T> {
             passed: false,
             url: None,
             value: None,
+            details: None,
             exempt: false,
             exemption_reason: None,
             failed: false,
@@ -91,6 +100,35 @@ impl<T> From<Exemption> for CheckOutput<T> {
             exemption_reason: Some(exemption.reason),
             ..Default::default()
         }
+    }
+}
+
+impl<T> From<&ScorecardCheck> for CheckOutput<T> {
+    fn from(sc_check: &ScorecardCheck) -> Self {
+        let mut output = CheckOutput::default();
+        if sc_check.score >= 5.0 {
+            output.passed = true;
+        }
+        output.details = Some(format!(
+            r"# {} OpenSSF Scorecard check
+
+**Score**: {} (check passes with score >= 5)
+
+**Reason**: {}
+
+**Details**: {}
+
+**Please see the [check documentation]({}) in the ossf/scorecard repository for more details**",
+            sc_check.name,
+            sc_check.score,
+            sc_check.reason,
+            match &sc_check.details {
+                Some(details) => format!("\n\n>{}", details.join("\n")),
+                None => "-".to_string(),
+            },
+            sc_check.documentation.url,
+        ));
+        output
     }
 }
 
@@ -198,6 +236,22 @@ pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
     )?))
 }
 
+/// Binary artifacts check (from OpenSSF Scorecard).
+pub(crate) fn binary_artifacts(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(BINARY_ARTIFACTS) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
+/// Branch protection check (from OpenSSF Scorecard).
+pub(crate) fn branch_protection(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(BRANCH_PROTECTION) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
 /// Changelog check.
 pub(crate) async fn changelog(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // File in repo or reference in README file
@@ -249,6 +303,14 @@ pub(crate) async fn code_of_conduct(input: &CheckInput<'_>) -> Result<CheckOutpu
     Ok(CheckOutput::from_url(url))
 }
 
+/// Code review check (from OpenSSF Scorecard).
+pub(crate) fn code_review(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(CODE_REVIEW) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
 /// Community meeting check.
 pub(crate) fn community_meeting(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
@@ -274,6 +336,14 @@ pub(crate) async fn contributing(input: &CheckInput<'_>) -> Result<CheckOutput> 
     Ok(CheckOutput::from_url(url))
 }
 
+/// Dangerous workflow check (from OpenSSF Scorecard).
+pub(crate) fn dangerous_workflow(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(DANGEROUS_WORKFLOW) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
 /// Developer Certificate of Origin check.
 pub(crate) async fn dco(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // DCO signature in commits
@@ -289,6 +359,14 @@ pub(crate) async fn dco(input: &CheckInput<'_>) -> Result<CheckOutput> {
             .await?
             .into(),
     )
+}
+
+/// Dependency update tool check (from OpenSSF Scorecard).
+pub(crate) fn dependency_update_tool(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(DEPENDENCY_UPDATE_TOOL) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Governance check.
@@ -367,6 +445,14 @@ pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
     Ok(false.into())
 }
 
+/// Maintained check (from OpenSSF Scorecard).
+pub(crate) fn maintained(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(MAINTAINED) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
 /// Maintainers check.
 pub(crate) fn maintainers(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file
@@ -443,10 +529,26 @@ pub(crate) async fn security_policy(input: &CheckInput<'_>) -> Result<CheckOutpu
     Ok(CheckOutput::from_url(url))
 }
 
+/// Signed releases check (from OpenSSF Scorecard).
+pub(crate) fn signed_releases(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(SIGNED_RELEASES) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
+}
+
 /// Slack presence check.
 pub(crate) fn slack_presence(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     Ok(readme_matches(&input.opts.root, &*SLACK_IN_README)?.into())
+}
+
+/// Token permissions check (from OpenSSF Scorecard).
+pub(crate) fn token_permissions(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(TOKEN_PERMISSIONS) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Trademark disclaimer check.
@@ -465,6 +567,14 @@ pub(crate) async fn trademark_disclaimer(input: &CheckInput<'_>) -> Result<Check
     }
 
     Ok(false.into())
+}
+
+/// Vulnerabilities check (from OpenSSF Scorecard).
+pub(crate) fn vulnerabilities(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(VULNERABILITIES) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Website check.

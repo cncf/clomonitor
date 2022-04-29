@@ -29,7 +29,21 @@
     }
   }
 
+  .tooltipDropdown {
+    background-color: var(--bg-color) !important;
+    border: 1px solid var(--color-font) !important;
+    color: var(--color-font) !important;
+  }
+
+  .tooltipDropdown .arrow::before {
+    border-bottom-color: var(--color-font) !important;
+  }
+
   .alert-warning {
     border-color: rgba(212, 167, 44, 0.4) !important;
+  }
+
+  .bg-muted {
+    background-color: #6c757d;
   }
 }

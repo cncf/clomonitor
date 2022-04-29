@@ -141,6 +141,33 @@ insert into report (
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
+            },
+            "maintained": {
+                "passed": true
+            },
+            "code_review": {
+                "passed": true
+            },
+            "signed_releases": {
+                "passed": false
+            },
+            "vulnerabilities": {
+                "passed": true
+            },
+            "binary_artifacts": {
+                "passed": true
+            },
+            "branch_protection": {
+                "passed": false
+            },
+            "token_permissions": {
+                "passed": false
+            },
+            "dangerous_workflow": {
+                "passed": true
+            },
+            "dependency_update_tool": {
+                "passed": false
             }
         },
         "documentation": {
@@ -242,6 +269,33 @@ insert into report (
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
+            },
+            "maintained": {
+                "passed": true
+            },
+            "code_review": {
+                "passed": true
+            },
+            "signed_releases": {
+                "passed": false
+            },
+            "vulnerabilities": {
+                "passed": true
+            },
+            "binary_artifacts": {
+                "passed": true
+            },
+            "branch_protection": {
+                "passed": false
+            },
+            "token_permissions": {
+                "passed": false
+            },
+            "dangerous_workflow": {
+                "passed": true
+            },
+            "dependency_update_tool": {
+                "passed": false
             }
         },
         "documentation": {
@@ -339,6 +393,33 @@ insert into report (
                 "passed": false
             },
             "security_policy": {
+                "passed": false
+            },
+            "maintained": {
+                "passed": false
+            },
+            "code_review": {
+                "passed": false
+            },
+            "signed_releases": {
+                "passed": false
+            },
+            "vulnerabilities": {
+                "passed": false
+            },
+            "binary_artifacts": {
+                "passed": false
+            },
+            "branch_protection": {
+                "passed": false
+            },
+            "token_permissions": {
+                "passed": false
+            },
+            "dangerous_workflow": {
+                "passed": false
+            },
+            "dependency_update_tool": {
                 "passed": false
             }
         },
@@ -477,8 +558,17 @@ select is(
                     "slack_presence": 0
                 },
                 "security": {
+                    "binary_artifacts": 67,
+                    "branch_protection": 0,
+                    "code_review": 67,
+                    "dangerous_workflow": 67,
+                    "dependency_update_tool": 0,
+                    "maintained": 67,
                     "sbom": 0,
-                    "security_policy": 67
+                    "security_policy": 67,
+                    "signed_releases": 0,
+                    "token_permissions": 0,
+                    "vulnerabilities": 67
                 },
                 "legal": {
                     "trademark_disclaimer": 0

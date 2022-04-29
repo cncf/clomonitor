@@ -1,12 +1,15 @@
 use super::config::*;
-use anyhow::Result;
+use anyhow::{format_err, Result};
 use check::{
     metadata::{Metadata, METADATA_FILE},
     *,
 };
 use clap::ArgEnum;
+use octocrab::Octocrab;
+use scorecard::scorecard;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
+use which::which;
 
 mod check;
 pub use check::CheckOutput;
@@ -28,6 +31,7 @@ pub struct LintOptions {
     pub root: PathBuf,
     pub url: String,
     pub check_sets: Vec<CheckSet>,
+    pub github_token: String,
 }
 
 /// Services used by the linter to perform some of the checks.
@@ -40,8 +44,8 @@ pub struct LintServices {
 /// Options used to setup the Github client.
 #[derive(Debug, Default)]
 pub struct GithubOptions {
+    pub token: String,
     pub api_url: Option<String>,
-    pub token: Option<String>,
 }
 
 impl LintServices {
@@ -51,12 +55,9 @@ impl LintServices {
         let http_client = reqwest::Client::new();
 
         // Setup GitHub client
-        let mut octocrab_builder = octocrab::Octocrab::builder();
+        let mut octocrab_builder = Octocrab::builder().personal_token(gh_opts.token);
         if let Some(url) = gh_opts.api_url {
             octocrab_builder = octocrab_builder.base_url(url)?;
-        }
-        if let Some(token) = gh_opts.token {
-            octocrab_builder = octocrab_builder.personal_token(token);
         }
         let github_client = octocrab_builder.build()?;
 
@@ -114,8 +115,17 @@ pub struct BestPractices {
 /// Security section of the report.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Security {
+    pub binary_artifacts: Option<CheckOutput>,
+    pub branch_protection: Option<CheckOutput>,
+    pub code_review: Option<CheckOutput>,
+    pub dangerous_workflow: Option<CheckOutput>,
+    pub dependency_update_tool: Option<CheckOutput>,
+    pub maintained: Option<CheckOutput>,
     pub sbom: Option<CheckOutput>,
     pub security_policy: Option<CheckOutput>,
+    pub signed_releases: Option<CheckOutput>,
+    pub token_permissions: Option<CheckOutput>,
+    pub vulnerabilities: Option<CheckOutput>,
 }
 
 /// Legal section of the report.
@@ -126,11 +136,21 @@ pub struct Legal {
 
 /// Lint the path provided and return a report.
 pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
+    // Check if required external tools are available
+    if which("scorecard").is_err() {
+        return Err(format_err!(
+            "scorecard not found in PATH (https://github.com/ossf/scorecard#installation)"
+        ));
+    }
+
     // Get CLOMonitor metadata
     let cm_md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
     // Get Github metadata
     let gh_md = github::get_repo_metadata(&svc.github_client, &opts.url).await?;
+
+    // Get OpenSSF Scorecard
+    let scorecard = scorecard(&opts.url, &opts.github_token).await?;
 
     // Prepare check input
     let input = CheckInput {
@@ -138,6 +158,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
         svc,
         cm_md,
         gh_md,
+        scorecard,
     };
 
     // Run some async checks
@@ -198,8 +219,21 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             slack_presence: run_check(SLACK_PRESENCE, slack_presence, &input),
         },
         security: Security {
+            binary_artifacts: run_check(BINARY_ARTIFACTS, binary_artifacts, &input),
+            branch_protection: run_check(BRANCH_PROTECTION, branch_protection, &input),
+            code_review: run_check(CODE_REVIEW, code_review, &input),
+            dangerous_workflow: run_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
+            dependency_update_tool: run_check(
+                DEPENDENCY_UPDATE_TOOL,
+                dependency_update_tool,
+                &input,
+            ),
+            maintained: run_check(MAINTAINED, maintained, &input),
             sbom,
             security_policy,
+            signed_releases: run_check(SIGNED_RELEASES, signed_releases, &input),
+            token_permissions: run_check(TOKEN_PERMISSIONS, token_permissions, &input),
+            vulnerabilities: run_check(VULNERABILITIES, vulnerabilities, &input),
         },
         legal: Legal {
             trademark_disclaimer,

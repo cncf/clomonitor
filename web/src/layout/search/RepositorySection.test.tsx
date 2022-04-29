@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { CheckSet } from '../../types';
 import RepositorySection from './RepositorySection';
@@ -60,10 +61,24 @@ describe('RepositorySection', () => {
   });
 
   describe('Render', () => {
-    it('renders with more than one repo', () => {
+    it('renders with more than one repo', async () => {
+      jest.useFakeTimers();
+
       render(<RepositorySection {...defaultPropsRepos} />);
 
-      expect(screen.getByText('Repositories')).toBeInTheDocument();
+      const content = screen.getByText('Repositories');
+      expect(content).toBeInTheDocument();
+      const dropdown = screen.getByRole('complementary');
+
+      expect(dropdown).not.toHaveClass('show');
+
+      userEvent.hover(content);
+
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+
+      expect(dropdown).toHaveClass('show');
       expect(screen.getAllByRole('link', { name: 'Repository link' })).toHaveLength(6);
     });
 

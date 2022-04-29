@@ -90,8 +90,20 @@ pub fn calculate(report: &Report) -> Score {
     // Security
     let s = &report.security;
     (score.security, score.security_weight) = calculate_section_score_and_weight(&[
+        (BINARY_ARTIFACTS, should_score(&s.binary_artifacts)),
+        (BRANCH_PROTECTION, should_score(&s.branch_protection)),
+        (CODE_REVIEW, should_score(&s.code_review)),
+        (DANGEROUS_WORKFLOW, should_score(&s.dangerous_workflow)),
+        (
+            DEPENDENCY_UPDATE_TOOL,
+            should_score(&s.dependency_update_tool),
+        ),
+        (MAINTAINED, should_score(&s.maintained)),
         (SBOM, should_score(&s.sbom)),
         (SECURITY_POLICY, should_score(&s.security_policy)),
+        (SIGNED_RELEASES, should_score(&s.signed_releases)),
+        (TOKEN_PERMISSIONS, should_score(&s.token_permissions)),
+        (VULNERABILITIES, should_score(&s.vulnerabilities)),
     ]);
 
     // Legal
@@ -320,24 +332,33 @@ mod tests {
                     slack_presence: Some(true.into()),
                 },
                 security: Security {
+                    binary_artifacts: Some(true.into()),
+                    branch_protection: Some(true.into()),
+                    code_review: Some(true.into()),
+                    dangerous_workflow: Some(true.into()),
+                    dependency_update_tool: Some(true.into()),
+                    maintained: Some(true.into()),
                     sbom: Some(true.into()),
                     security_policy: Some(true.into()),
+                    signed_releases: Some(true.into()),
+                    token_permissions: Some(true.into()),
+                    vulnerabilities: Some(true.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: Some(true.into()),
                 },
             }),
             Score {
-                global: 99.99999999999999,
-                global_weight: 90,
+                global: 100.0,
+                global_weight: 96,
                 documentation: Some(100.0),
                 documentation_weight: Some(30),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(20),
-                security: Some(100.0),
-                security_weight: Some(15),
+                security: Some(99.99999999999999),
+                security_weight: Some(21),
                 legal: Some(100.0),
                 legal_weight: Some(5),
             }
@@ -377,8 +398,17 @@ mod tests {
                     slack_presence: Some(false.into()),
                 },
                 security: Security {
+                    binary_artifacts: Some(false.into()),
+                    branch_protection: Some(false.into()),
+                    code_review: Some(false.into()),
+                    dangerous_workflow: Some(false.into()),
+                    dependency_update_tool: Some(false.into()),
+                    maintained: Some(false.into()),
                     sbom: Some(false.into()),
                     security_policy: Some(false.into()),
+                    signed_releases: Some(false.into()),
+                    token_permissions: Some(false.into()),
+                    vulnerabilities: Some(false.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: Some(false.into()),
@@ -386,7 +416,7 @@ mod tests {
             }),
             Score {
                 global: 0.0,
-                global_weight: 90,
+                global_weight: 96,
                 documentation: Some(0.0),
                 documentation_weight: Some(30),
                 license: Some(0.0),
@@ -394,7 +424,7 @@ mod tests {
                 best_practices: Some(0.0),
                 best_practices_weight: Some(20),
                 security: Some(0.0),
-                security_weight: Some(15),
+                security_weight: Some(21),
                 legal: Some(0.0),
                 legal_weight: Some(5),
             }
@@ -440,8 +470,17 @@ mod tests {
                     slack_presence: None,
                 },
                 security: Security {
+                    binary_artifacts: Some(true.into()),
+                    branch_protection: Some(true.into()),
+                    code_review: Some(true.into()),
+                    dangerous_workflow: Some(true.into()),
+                    dependency_update_tool: Some(true.into()),
+                    maintained: Some(true.into()),
                     sbom: Some(true.into()),
                     security_policy: Some(true.into()),
+                    signed_releases: Some(true.into()),
+                    token_permissions: Some(true.into()),
+                    vulnerabilities: Some(true.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: None,
@@ -449,15 +488,15 @@ mod tests {
             }),
             Score {
                 global: 100.0,
-                global_weight: 69,
+                global_weight: 75,
                 documentation: Some(100.0),
                 documentation_weight: Some(18),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(16),
-                security: Some(100.0),
-                security_weight: Some(15),
+                security: Some(99.99999999999999),
+                security_weight: Some(21),
                 legal: None,
                 legal_weight: None,
             }

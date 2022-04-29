@@ -1,22 +1,28 @@
-import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BiLock, BiMedal, BiShieldQuarter, BiTargetLock, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
   FaBalanceScale,
   FaCheckDouble,
+  FaCodeBranch,
+  FaExclamationTriangle,
   FaFileContract,
   FaFileSignature,
+  FaRobot,
+  FaSignature,
   FaSlack,
   FaTools,
   FaTrademark,
+  FaUserCog,
+  FaUserSecret,
 } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
-import { GoLaw } from 'react-icons/go';
+import { GoFileBinary, GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
-import { MdOutlineInventory } from 'react-icons/md';
+import { MdOutlineInventory, MdPreview } from 'react-icons/md';
 import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 
 import ExternalLink from './layout/common/ExternalLink';
@@ -120,6 +126,18 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.BinaryArtifacts]: {
+    icon: <GoFileBinary />,
+    name: 'Binary artifacts',
+    legend: <span>Whether the project has generated executable (binary) artifacts in the source repository</span>,
+  },
+  [ReportOption.BranchProtection]: {
+    icon: <FaCodeBranch />,
+    name: 'Branch protection',
+    legend: (
+      <span>A project's default and release branches are protected with GitHub's branch protection settings</span>
+    ),
+  },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
     name: 'Changelog',
@@ -141,6 +159,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.CodeReview]: {
+    icon: <MdPreview />,
+    name: 'Code review',
+    legend: <span>The project requires code review before pull requests (merge requests) are merged</span>,
+  },
   [ReportOption.CommunityMeeting]: {
     icon: <IoIosPeople />,
     name: 'Community meeting',
@@ -159,6 +182,16 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         how they can help with your project
       </span>
     ),
+  },
+  [ReportOption.DangerousWorkflow]: {
+    icon: <FaExclamationTriangle />,
+    name: 'Dangerous workflow',
+    legend: <span>Whether the project's GitHub Action workflows has dangerous code patterns</span>,
+  },
+  [ReportOption.DependencyUpdateTool]: {
+    icon: <FaRobot />,
+    name: 'Dependency update tool',
+    legend: <span>The project uses a dependency update tool, specifically dependabot or renovatebot</span>,
   },
   [ReportOption.DCO]: {
     icon: <FaFileSignature />,
@@ -184,8 +217,13 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
-  [ReportOption.Maintainers]: {
+  [ReportOption.Maintained]: {
     icon: <FaTools />,
+    name: 'Maintained',
+    legend: <span>Whether the project is actively maintained</span>,
+  },
+  [ReportOption.Maintainers]: {
+    icon: <FaUserCog />,
     name: 'Maintainers',
     legend: (
       <span>
@@ -236,6 +274,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Security policy',
     legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
   },
+  [ReportOption.SignedReleases]: {
+    icon: <FaSignature />,
+    name: 'Signed releases',
+    legend: <span>The project cryptographically signs release artifacts</span>,
+  },
   [ReportOption.SlackPresence]: {
     icon: <FaSlack />,
     name: 'Slack presence',
@@ -250,10 +293,24 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
   },
+  [ReportOption.TokenPermissions]: {
+    icon: <FaUserSecret />,
+    name: 'Token permissions',
+    legend: <span>Whether the project's automated workflows tokens are set to read-only by default</span>,
+  },
   [ReportOption.TrademarkDisclaimer]: {
     icon: <FaTrademark />,
     name: 'Trademark disclaimer',
     legend: <span>Projects sites should have the Linux Foundation trademark disclaimer</span>,
+  },
+  [ReportOption.Vulnerabilities]: {
+    icon: <BiTargetLock />,
+    name: 'Vulnerabilities',
+    legend: (
+      <span>
+        Whether the project has open, unfixed vulnerabilities (uses the OSV -Open Source Vulnerabilities- service)
+      </span>
+    ),
   },
   [ReportOption.Website]: {
     icon: <BiWorld />,

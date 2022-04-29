@@ -8,6 +8,7 @@ import { ProjectDetail } from '../../types';
 import Detail from './index';
 jest.mock('../../utils/updateMetaIndex');
 jest.mock('../../api');
+jest.mock('react-markdown', () => () => <div />);
 
 const mockUseNavigate = jest.fn();
 

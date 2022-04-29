@@ -35,9 +35,13 @@ The CLOMonitor's linter can also be run locally or from CI workflows. You can bu
 cargo install --git https://github.com/cncf/clomonitor clomonitor-linter
 ```
 
-Alternatively, you can use the published [Docker image](https://gallery.ecr.aws/clomonitor/linter). An example of how to integrate CLOMonitor's linter with Github Actions can be found [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/a25d69235ef9a196aa905e160c99977b692d5e34/.github/workflows/ci.yml#L40-L49).
+Alternatively, you can use the published [Docker image](https://gallery.ecr.aws/clomonitor/linter). An example of how to integrate CLOMonitor's linter with Github Actions can be found [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/master/.github/workflows/ci.yml).
+
+CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github API for some checks. To avoid issues with rate limits, a Github token (with `public_repo` scope) **must** be provided to authenticate those requests.
 
 ```text
+$ export GITHUB_TOKEN=<your token>
+
 $ clomonitor-linter --help
 clomonitor-linter 0.5.0
 A linter for open source projects repositories

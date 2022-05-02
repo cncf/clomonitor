@@ -1,6 +1,12 @@
 use crate::config::SCORECARD_CHECK;
-use anyhow::{format_err, Result};
+use anyhow::{format_err, Error, Result};
+use cached::proc_macro::cached;
+use futures::{
+    future::{BoxFuture, Shared},
+    FutureExt, TryFutureExt,
+};
 use serde::Deserialize;
+use std::sync::Arc;
 use tokio::process::Command;
 
 #[derive(Debug, Clone, Deserialize)]
@@ -31,20 +37,36 @@ pub(crate) struct ScorecardCheckDocs {
     pub url: String,
 }
 
+/// Type alias for a shared boxed future that will resolve to a result
+/// containing a scorecard.
+type ScorecardFuture = Shared<BoxFuture<'static, Result<Scorecard, Arc<Error>>>>;
+
 /// Get repository's OpenSSF Scorecard.
-pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scorecard> {
-    let output = Command::new("scorecard")
-        .env("GITHUB_AUTH_TOKEN", github_token)
-        .arg(format!("--repo={repo_url}"))
-        .arg("--format=json")
-        .arg("--show-details")
-        .arg("--checks=Binary-Artifacts,Branch-Protection,Code-Review,Dangerous-Workflow,Dependency-Update-Tool,Maintained,Signed-Releases,Token-Permissions,Vulnerabilities")
-        .output()
-        .await?;
-    if !output.status.success() {
-        return Err(format_err!("{}", String::from_utf8_lossy(&output.stderr)));
+#[cached(
+    sync_writes = true,
+    key = "String",
+    convert = r#"{ format!("{}", repo_url) }"#
+)]
+pub(crate) fn scorecard(repo_url: String, github_token: String) -> ScorecardFuture {
+    async fn get_scorecard(repo_url: String, github_token: String) -> Result<Scorecard> {
+        let output = Command::new("scorecard")
+            .env("GITHUB_AUTH_TOKEN", github_token)
+            .arg(format!("--repo={repo_url}"))
+            .arg("--format=json")
+            .arg("--show-details")
+            .arg("--checks=Binary-Artifacts,Branch-Protection,Code-Review,Dangerous-Workflow,Dependency-Update-Tool,Maintained,Signed-Releases,Token-Permissions,Vulnerabilities")
+            .output()
+            .await?;
+        if !output.status.success() {
+            return Err(format_err!("{}", String::from_utf8_lossy(&output.stderr)));
+        }
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        let scorecard: Scorecard = serde_json::from_str(stdout.as_ref())?;
+        Ok(scorecard)
     }
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    let scorecard: Scorecard = serde_json::from_str(stdout.as_ref())?;
-    Ok(scorecard)
+
+    get_scorecard(repo_url, github_token)
+        .map_err(Arc::new)
+        .boxed()
+        .shared()
 }

@@ -6,7 +6,6 @@ use check::{
 };
 use clap::ArgEnum;
 use octocrab::Octocrab;
-use scorecard::scorecard;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use which::which;
@@ -149,39 +148,53 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     // Get Github metadata
     let gh_md = github::get_repo_metadata(&svc.github_client, &opts.url).await?;
 
-    // Get OpenSSF Scorecard
-    let scorecard = scorecard(&opts.url, &opts.github_token).await?;
-
     // Prepare check input
     let input = CheckInput {
         opts,
         svc,
         cm_md,
         gh_md,
-        scorecard,
     };
 
     // Run some async checks
     let (
+        binary_artifacts,
+        branch_protection,
         changelog,
         cla,
         code_of_conduct,
+        code_review,
         contributing,
+        dangerous_workflow,
         dco,
+        dependency_update_tool,
+        maintained,
         recent_release,
         sbom,
         security_policy,
+        signed_releases,
+        token_permissions,
         trademark_disclaimer,
+        vulnerabilities,
     ) = tokio::join!(
+        run_async_check(BINARY_ARTIFACTS, binary_artifacts, &input),
+        run_async_check(BRANCH_PROTECTION, branch_protection, &input),
         run_async_check(CHANGELOG, changelog, &input),
         run_async_check(CLA, cla, &input),
         run_async_check(CODE_OF_CONDUCT, code_of_conduct, &input),
+        run_async_check(CODE_REVIEW, code_review, &input),
         run_async_check(CONTRIBUTING, contributing, &input),
+        run_async_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
         run_async_check(DCO, dco, &input),
+        run_async_check(DEPENDENCY_UPDATE_TOOL, dependency_update_tool, &input),
+        run_async_check(MAINTAINED, maintained, &input),
         run_async_check(RECENT_RELEASE, recent_release, &input),
         run_async_check(SBOM, sbom, &input),
         run_async_check(SECURITY_POLICY, security_policy, &input),
+        run_async_check(SIGNED_RELEASES, signed_releases, &input),
+        run_async_check(TOKEN_PERMISSIONS, token_permissions, &input),
         run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &input),
+        run_async_check(VULNERABILITIES, vulnerabilities, &input),
     );
 
     // Run some sync checks
@@ -219,21 +232,17 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             slack_presence: run_check(SLACK_PRESENCE, slack_presence, &input),
         },
         security: Security {
-            binary_artifacts: run_check(BINARY_ARTIFACTS, binary_artifacts, &input),
-            branch_protection: run_check(BRANCH_PROTECTION, branch_protection, &input),
-            code_review: run_check(CODE_REVIEW, code_review, &input),
-            dangerous_workflow: run_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
-            dependency_update_tool: run_check(
-                DEPENDENCY_UPDATE_TOOL,
-                dependency_update_tool,
-                &input,
-            ),
-            maintained: run_check(MAINTAINED, maintained, &input),
+            binary_artifacts,
+            branch_protection,
+            code_review,
+            dangerous_workflow,
+            dependency_update_tool,
+            maintained,
             sbom,
             security_policy,
-            signed_releases: run_check(SIGNED_RELEASES, signed_releases, &input),
-            token_permissions: run_check(TOKEN_PERMISSIONS, token_permissions, &input),
-            vulnerabilities: run_check(VULNERABILITIES, vulnerabilities, &input),
+            signed_releases,
+            token_permissions,
+            vulnerabilities,
         },
         legal: Legal {
             trademark_disclaimer,

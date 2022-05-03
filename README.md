@@ -43,8 +43,11 @@ CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://
 $ export GITHUB_TOKEN=<your token>
 
 $ clomonitor-linter --help
-clomonitor-linter 0.5.0
-A linter for open source projects repositories
+clomonitor-linter
+Checks repository to verify it meets certain project health best practices
+
+This tool uses the Github API for some checks. Please make sure you provide a Github token (with
+`public_repo` scope) by setting the `GITHUB_TOKEN` environment variable.
 
 USAGE:
     clomonitor-linter [OPTIONS] --url <URL>

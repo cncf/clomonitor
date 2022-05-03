@@ -13,7 +13,13 @@ mod display;
 const GITHUB_TOKEN: &str = "GITHUB_TOKEN";
 
 #[derive(Debug, Parser)]
-#[clap(author, version, about)]
+#[clap(
+    author,
+    version,
+    about = "Checks repository to verify it meets certain project health best practices
+
+This tool uses the Github API for some checks. Please make sure you provide a Github token (with `public_repo` scope) by setting the `GITHUB_TOKEN` environment variable."
+)]
 struct Args {
     /// Repository root path
     #[clap(long, parse(from_os_str), default_value = ".")]

@@ -29,8 +29,8 @@ pub(crate) mod scorecard;
 pub(crate) struct CheckInput<'a> {
     pub opts: &'a LintOptions,
     pub svc: &'a LintServices,
-    pub cm_md: Option<Metadata>,
-    pub gh_md: Repository,
+    pub cm_md: &'a Option<Metadata>,
+    pub gh_md: &'a Repository,
 }
 
 /// Check output information.
@@ -190,7 +190,7 @@ where
     }
 
     // Check if an exemption has been declared for this check
-    if let Some(exemption) = find_exemption(id, &input.cm_md) {
+    if let Some(exemption) = find_exemption(id, input.cm_md) {
         return Some(exemption.into());
     }
 
@@ -221,7 +221,7 @@ where
     }
 
     // Check if an exemption has been declared for this check
-    if let Some(exemption) = find_exemption(id, &input.cm_md) {
+    if let Some(exemption) = find_exemption(id, input.cm_md) {
         return Some(exemption.into());
     }
 
@@ -308,7 +308,7 @@ pub(crate) async fn code_of_conduct(input: &CheckInput<'_>) -> Result<CheckOutpu
         &input.svc.github_client,
         &input.svc.http_client,
         "CODE_OF_CONDUCT.md",
-        &input.gh_md,
+        input.gh_md,
     )
     .await?;
     Ok(CheckOutput::from_url(url))
@@ -338,7 +338,7 @@ pub(crate) async fn contributing(input: &CheckInput<'_>) -> Result<CheckOutput> 
         &input.svc.github_client,
         &input.svc.http_client,
         "CONTRIBUTING.md",
-        &input.gh_md,
+        input.gh_md,
     )
     .await?;
     Ok(CheckOutput::from_url(url))
@@ -418,7 +418,7 @@ pub(crate) fn license_approved(
     }
 
     // Check if an exemption has been declared for this check
-    if let Some(exemption) = find_exemption(LICENSE_APPROVED, &input.cm_md) {
+    if let Some(exemption) = find_exemption(LICENSE_APPROVED, input.cm_md) {
         return Some(exemption.into());
     }
 
@@ -494,7 +494,7 @@ pub(crate) fn roadmap(input: &CheckInput) -> Result<CheckOutput> {
 pub(crate) fn readme(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo
     if let Some(path) = path::find(readme_globs(&input.opts.root))? {
-        return Ok(CheckOutput::from_path(Some(path), &input.gh_md));
+        return Ok(CheckOutput::from_path(Some(path), input.gh_md));
     }
 
     Ok(false.into())
@@ -532,7 +532,7 @@ pub(crate) async fn security_policy(input: &CheckInput<'_>) -> Result<CheckOutpu
         &input.svc.github_client,
         &input.svc.http_client,
         "SECURITY.md",
-        &input.gh_md,
+        input.gh_md,
     )
     .await?;
     Ok(CheckOutput::from_url(url))
@@ -629,7 +629,7 @@ fn find_file_or_reference(
         patterns,
         case_sensitive: false,
     })? {
-        return Ok(CheckOutput::from_path(Some(path), &input.gh_md));
+        return Ok(CheckOutput::from_path(Some(path), input.gh_md));
     }
 
     // Reference in README file

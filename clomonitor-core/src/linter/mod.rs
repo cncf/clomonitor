@@ -152,8 +152,8 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     let input = CheckInput {
         opts,
         svc,
-        cm_md,
-        gh_md,
+        cm_md: &cm_md,
+        gh_md: &gh_md,
     };
 
     // Run some async checks

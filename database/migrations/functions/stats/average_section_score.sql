@@ -6,7 +6,7 @@ create or replace function average_section_score(
     p_maturity text
 )
 returns real as $$
-    select round(avg((p.score->>p_section)::real))
+    select round(avg((p.score->>p_section)::real))::real
     from project p
     join organization o using (organization_id)
     where p.score ? p_section

@@ -18,15 +18,14 @@ tasks:
       echo -e "\n- Building backend..\n"
       sed -i 's/^default_toolchain.*/default_toolchain = "stable-x86_64-unknown-linux-gnu"/g' /home/gitpod/.rustup/settings.toml
       cargo build
-      echo -e "\n- Running tracker..\n"
+      go get -u github.com/ossf/scorecard/v4
       mkdir -p ~/.config/clomonitor && cp /workspace/clomonitor/.gitpod/*.yaml ~/.config/clomonitor
-      /workspace/clomonitor/target/debug/clomonitor-tracker -c ~/.config/clomonitor/tracker.yaml
       echo -e "\n- Waiting for frontend build to complete..\n"
       sleep 1 && while [ -f /tmp/.frontend-ready-lock ]; do sleep 1; done
-    command: |
-      echo -e "\n- Running apiserver..\n"
-      mkdir -p ~/.config/clomonitor && cp /workspace/clomonitor/.gitpod/*.yaml ~/.config/clomonitor
-      /workspace/clomonitor/target/debug/clomonitor-apiserver -c ~/.config/clomonitor/apiserver.yaml
+      echo -e "\nPlease set your Github token in ~/.config/clomonitor/tracker.yaml and run the tracker with the following command:\n"
+      echo -e "\n\t/workspace/clomonitor/target/debug/clomonitor-tracker -c ~/.config/clomonitor/tracker.yaml\n"
+      echo -e "\nOnce the tracker has completed, you can run the API server with the command below:\n"
+      echo -e "\n\t/workspace/clomonitor/target/debug/clomonitor-apiserver -c ~/.config/clomonitor/apiserver.yaml\n"
 ports:
   - port: 3000
     onOpen: ignore

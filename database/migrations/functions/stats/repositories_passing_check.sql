@@ -19,7 +19,7 @@ returns real as $$
     )
     select
         case when (select count(*) from reports_containing_check) > 0 then
-            round(count(*)::real / (select count(*) from reports_containing_check) * 100)
+            round(count(*)::real / (select count(*) from reports_containing_check) * 100)::real
         else
             0
         end

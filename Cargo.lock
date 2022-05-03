@@ -469,6 +469,7 @@ dependencies = [
  "cached",
  "chrono",
  "clap",
+ "futures",
  "git2",
  "glob",
  "http",

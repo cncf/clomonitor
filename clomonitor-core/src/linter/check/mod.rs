@@ -1,10 +1,10 @@
 use self::{
     path::Globs,
-    scorecard::{Scorecard, ScorecardCheck},
+    scorecard::{scorecard, ScorecardCheck},
 };
 use super::{LintOptions, LintServices};
 use crate::{config::*, linter::CheckSet};
-use anyhow::Result;
+use anyhow::{format_err, Result};
 use metadata::{Exemption, Metadata};
 use octocrab::models::Repository;
 use patterns::*;
@@ -31,7 +31,6 @@ pub(crate) struct CheckInput<'a> {
     pub svc: &'a LintServices,
     pub cm_md: Option<Metadata>,
     pub gh_md: Repository,
-    pub scorecard: Scorecard,
 }
 
 /// Check output information.
@@ -158,6 +157,22 @@ impl<T> CheckOutput<T> {
             None => false.into(),
         }
     }
+
+    /// Create a new CheckOutput instance from an OpenSSF Scorecard check.
+    pub async fn from_scorecard_check(
+        check_id: &str,
+        repo_url: &str,
+        github_token: &str,
+    ) -> Result<Self> {
+        let sc = match scorecard(repo_url.to_string(), github_token.to_string()).await {
+            Ok(sc) => sc,
+            Err(err) => return Err(format_err!("error getting repository scorecard: {}", &err)),
+        };
+        Ok(match sc.get_check(check_id) {
+            Some(sc_check) => sc_check.into(),
+            None => false.into(),
+        })
+    }
 }
 
 /// Wrapper function that takes care of running some common pre-check
@@ -237,19 +252,15 @@ pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Binary artifacts check (from OpenSSF Scorecard).
-pub(crate) fn binary_artifacts(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(BINARY_ARTIFACTS) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn binary_artifacts(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(BINARY_ARTIFACTS, &input.opts.url, &input.opts.github_token)
+        .await
 }
 
 /// Branch protection check (from OpenSSF Scorecard).
-pub(crate) fn branch_protection(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(BRANCH_PROTECTION) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn branch_protection(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(BRANCH_PROTECTION, &input.opts.url, &input.opts.github_token)
+        .await
 }
 
 /// Changelog check.
@@ -304,11 +315,8 @@ pub(crate) async fn code_of_conduct(input: &CheckInput<'_>) -> Result<CheckOutpu
 }
 
 /// Code review check (from OpenSSF Scorecard).
-pub(crate) fn code_review(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(CODE_REVIEW) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn code_review(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(CODE_REVIEW, &input.opts.url, &input.opts.github_token).await
 }
 
 /// Community meeting check.
@@ -337,11 +345,13 @@ pub(crate) async fn contributing(input: &CheckInput<'_>) -> Result<CheckOutput> 
 }
 
 /// Dangerous workflow check (from OpenSSF Scorecard).
-pub(crate) fn dangerous_workflow(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(DANGEROUS_WORKFLOW) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn dangerous_workflow(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(
+        DANGEROUS_WORKFLOW,
+        &input.opts.url,
+        &input.opts.github_token,
+    )
+    .await
 }
 
 /// Developer Certificate of Origin check.
@@ -362,11 +372,13 @@ pub(crate) async fn dco(input: &CheckInput<'_>) -> Result<CheckOutput> {
 }
 
 /// Dependency update tool check (from OpenSSF Scorecard).
-pub(crate) fn dependency_update_tool(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(DEPENDENCY_UPDATE_TOOL) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn dependency_update_tool(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(
+        DEPENDENCY_UPDATE_TOOL,
+        &input.opts.url,
+        &input.opts.github_token,
+    )
+    .await
 }
 
 /// Governance check.
@@ -446,11 +458,8 @@ pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Maintained check (from OpenSSF Scorecard).
-pub(crate) fn maintained(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(MAINTAINED) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn maintained(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(MAINTAINED, &input.opts.url, &input.opts.github_token).await
 }
 
 /// Maintainers check.
@@ -530,11 +539,9 @@ pub(crate) async fn security_policy(input: &CheckInput<'_>) -> Result<CheckOutpu
 }
 
 /// Signed releases check (from OpenSSF Scorecard).
-pub(crate) fn signed_releases(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(SIGNED_RELEASES) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn signed_releases(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(SIGNED_RELEASES, &input.opts.url, &input.opts.github_token)
+        .await
 }
 
 /// Slack presence check.
@@ -544,11 +551,9 @@ pub(crate) fn slack_presence(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Token permissions check (from OpenSSF Scorecard).
-pub(crate) fn token_permissions(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(TOKEN_PERMISSIONS) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn token_permissions(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(TOKEN_PERMISSIONS, &input.opts.url, &input.opts.github_token)
+        .await
 }
 
 /// Trademark disclaimer check.
@@ -570,11 +575,9 @@ pub(crate) async fn trademark_disclaimer(input: &CheckInput<'_>) -> Result<Check
 }
 
 /// Vulnerabilities check (from OpenSSF Scorecard).
-pub(crate) fn vulnerabilities(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(VULNERABILITIES) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
+pub(crate) async fn vulnerabilities(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    CheckOutput::from_scorecard_check(VULNERABILITIES, &input.opts.url, &input.opts.github_token)
+        .await
 }
 
 /// Website check.

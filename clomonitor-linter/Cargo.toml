@@ -7,8 +7,8 @@ rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.57"
-clap = { version = "3.1.12", features = ["derive"] }
+clap = { version = "3.1.15", features = ["derive"] }
 comfy-table = "5.0.1"
 clomonitor-core = { path = "../clomonitor-core" }
-openssl = { version = "0.10.38", features = ["vendored"] }
+openssl = { version = "0.10.39", features = ["vendored"] }
 tokio = { version = "1.17.0", features = ["macros", "process", "rt-multi-thread"] }

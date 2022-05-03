@@ -1,7 +1,6 @@
 use super::patterns::GITHUB_REPO_URL;
 use anyhow::{format_err, Context, Result};
 use cached::proc_macro::cached;
-use chrono::{Duration, Utc};
 use octocrab::{
     models::{pulls::PullRequest, repos::Release, Repository, Status},
     params::State,
@@ -10,6 +9,7 @@ use octocrab::{
 use regex::RegexSet;
 use serde::Deserialize;
 use std::path::Path;
+use time::{Duration, OffsetDateTime};
 
 /// Build a url from the path and metadata provided.
 pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> String {
@@ -143,7 +143,8 @@ pub(crate) async fn has_recent_release(
 ) -> Result<Option<String>> {
     if let Some(last_release) = last_release(github_client, repo_url).await? {
         if let Some(created_at) = last_release.created_at {
-            if created_at > Utc::now() - Duration::days(365) {
+            let one_year_ago = (OffsetDateTime::now_utc() - Duration::days(365)).unix_timestamp();
+            if created_at.timestamp() > one_year_ago {
                 return Ok(Some(last_release.html_url.into()));
             }
         }

@@ -1,5 +1,4 @@
 use anyhow::{format_err, Result};
-use chrono::{DateTime, Duration, Utc};
 use clomonitor_core::{
     linter::{lint, CheckSet, LintOptions, LintServices, Report},
     score::{self, Score},
@@ -8,6 +7,7 @@ use deadpool_postgres::{Client as DbClient, Transaction};
 use std::path::Path;
 use std::time::Instant;
 use tempfile::Builder;
+use time::{Duration, OffsetDateTime};
 use tokio::process::Command;
 use tokio_postgres::types::Json;
 use tokio_postgres::Error as DbError;
@@ -21,7 +21,7 @@ pub(crate) struct Repository {
     url: String,
     check_sets: Vec<CheckSet>,
     digest: Option<String>,
-    updated_at: DateTime<Utc>,
+    updated_at: OffsetDateTime,
 }
 
 impl Repository {
@@ -44,7 +44,8 @@ impl Repository {
         // was tracked or if it hasn't been tracked in more than 1 day
         let remote_digest = self.get_remote_digest().await?;
         if let Some(digest) = &self.digest {
-            if &remote_digest == digest && self.updated_at > Utc::now() - Duration::days(1) {
+            let one_day_ago = OffsetDateTime::now_utc() - Duration::days(1);
+            if &remote_digest == digest && self.updated_at > one_day_ago {
                 return Ok(());
             }
         }

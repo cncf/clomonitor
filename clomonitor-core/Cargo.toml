@@ -7,7 +7,7 @@ edition = "2021"
 anyhow = "1.0.57"
 askalono = "0.4.5"
 cached = "0.34.0"
-clap = { version = "3.1.12", features = ["derive"] }
+clap = { version = "3.1.15", features = ["derive"] }
 chrono = "0.4.19"
 futures = "0.3.21"
 git2 = "0.14.2"

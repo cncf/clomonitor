@@ -7,7 +7,7 @@ rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.57"
-clap = { version = "3.1.12", features = ["derive"] }
+clap = { version = "3.1.15", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
 chrono = "0.4.19"

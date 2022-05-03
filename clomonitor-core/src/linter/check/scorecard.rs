@@ -50,7 +50,7 @@ type ScorecardFuture = Shared<BoxFuture<'static, Result<Scorecard, Arc<Error>>>>
 pub(crate) fn scorecard(repo_url: String, github_token: String) -> ScorecardFuture {
     async fn get_scorecard(repo_url: String, github_token: String) -> Result<Scorecard> {
         let output = Command::new("scorecard")
-            .env("GITHUB_AUTH_TOKEN", github_token)
+            .env("GITHUB_TOKEN", github_token)
             .arg(format!("--repo={repo_url}"))
             .arg("--format=json")
             .arg("--show-details")

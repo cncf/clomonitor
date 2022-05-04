@@ -78,7 +78,7 @@ describe('Searchbar', () => {
   });
 
   describe('clear btn', () => {
-    it('clear input', () => {
+    it('clear input', async () => {
       jest
         .spyOn(ReactRouter, 'useSearchParams')
         .mockImplementation(() => [new URLSearchParams(''), jest.fn()])
@@ -99,8 +99,8 @@ describe('Searchbar', () => {
 
       expect(input).toBeInTheDocument();
       expect(input).toHaveValue('test');
-      userEvent.type(input, 'ing');
-      userEvent.click(clearBtn);
+      await userEvent.type(input, 'ing');
+      await userEvent.click(clearBtn);
       expect(input).toHaveValue('');
       expect(input).toHaveFocus();
     });
@@ -123,7 +123,7 @@ describe('Searchbar', () => {
 
     const input = screen.getByRole('textbox');
 
-    userEvent.type(input, 'testing');
+    await userEvent.type(input, 'testing');
 
     expect(input).toHaveValue('testing');
 
@@ -152,7 +152,7 @@ describe('Searchbar', () => {
 
       input.focus();
 
-      userEvent.type(input, 'testing');
+      await userEvent.type(input, 'testing');
       expect(input.value).toBe('testing');
 
       await waitFor(() => {
@@ -186,7 +186,7 @@ describe('Searchbar', () => {
       const input = screen.getByDisplayValue('test');
 
       input.focus();
-      userEvent.type(input, 'ing');
+      await userEvent.type(input, 'ing');
       input.blur();
 
       await waitFor(() => {
@@ -216,7 +216,7 @@ describe('Searchbar', () => {
 
       input.focus();
 
-      userEvent.type(input, 'testing');
+      await userEvent.type(input, 'testing');
       expect(input.value).toBe('testing');
 
       await waitFor(() => {
@@ -232,7 +232,7 @@ describe('Searchbar', () => {
 
       expect(screen.getByRole('listbox')).toBeInTheDocument();
       const items = screen.getAllByRole('option');
-      userEvent.click(items[1]);
+      await userEvent.click(items[1]);
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/backstage/backstage');
@@ -257,7 +257,7 @@ describe('Searchbar', () => {
 
       input.focus();
 
-      userEvent.type(input, 'testing');
+      await userEvent.type(input, 'testing');
       expect(input.value).toBe('testing');
 
       await waitFor(() => {
@@ -273,7 +273,7 @@ describe('Searchbar', () => {
 
       expect(screen.getByRole('listbox')).toBeInTheDocument();
       const allResults = screen.getByRole('option', { name: 'See all results' });
-      userEvent.click(allResults);
+      await userEvent.click(allResults);
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith({ pathname: '/search', search: '?text=testing&page=1' });
@@ -298,7 +298,7 @@ describe('Searchbar', () => {
 
       input.focus();
 
-      userEvent.type(input, 'testing');
+      await userEvent.type(input, 'testing');
       expect(input.value).toBe('testing');
 
       await waitFor(() => {
@@ -316,18 +316,18 @@ describe('Searchbar', () => {
       const options = screen.getAllByRole('option');
       expect(options[0]).not.toHaveClass('activeDropdownItem');
 
-      userEvent.keyboard('{arrowdown}');
+      await userEvent.keyboard('{arrowdown}');
 
       await waitFor(() => {
         expect(options[0]).toHaveClass('activeDropdownItem');
       });
 
-      userEvent.keyboard('{arrowdown}{arrowdown}');
+      await userEvent.keyboard('{arrowdown}{arrowdown}');
 
       expect(options[0]).not.toHaveClass('activeDropdownItem');
       expect(options[2]).toHaveClass('activeDropdownItem');
 
-      userEvent.keyboard('{enter}');
+      await userEvent.keyboard('{enter}');
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/keptn/keptn');
@@ -335,7 +335,7 @@ describe('Searchbar', () => {
   });
 
   describe('Navigate', () => {
-    it('calls on Enter key press', () => {
+    it('calls on Enter key press', async () => {
       jest
         .spyOn(ReactRouter, 'useSearchParams')
         .mockImplementation(() => [new URLSearchParams('?text=testing'), jest.fn()])
@@ -348,7 +348,7 @@ describe('Searchbar', () => {
       );
 
       const input = screen.getByRole('textbox');
-      userEvent.type(input, 'testing{enter}');
+      await userEvent.type(input, 'testing{enter}');
       expect(input).not.toBe(document.activeElement);
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith({
@@ -360,7 +360,7 @@ describe('Searchbar', () => {
       });
     });
 
-    it('calls navigate on Enter key press when text is empty with undefined text', () => {
+    it('calls navigate on Enter key press when text is empty with undefined text', async () => {
       render(
         <Router>
           <Searchbar {...defaultProps} />
@@ -368,7 +368,7 @@ describe('Searchbar', () => {
       );
 
       const input = screen.getByPlaceholderText('Search projects');
-      userEvent.type(input, '{enter}');
+      await userEvent.type(input, '{enter}');
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith({
         pathname: '/search',

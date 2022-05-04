@@ -49,27 +49,27 @@ describe('Section', () => {
       expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeChecked();
     });
 
-    it('calls onChange to click filter', () => {
+    it('calls onChange to click filter', async () => {
       render(<Section {...defaultProps} />);
 
       const check = screen.getByRole('checkbox', { name: 'Incubating' });
 
       expect(check).not.toBeChecked();
 
-      userEvent.click(check);
+      await userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockOnChange).toHaveBeenCalledWith('maturity', 'incubating', true);
     });
 
-    it('calls onChange to click selected filter', () => {
+    it('calls onChange to click selected filter', async () => {
       render(<Section {...defaultProps} activeFilters={['graduated']} />);
 
       const check = screen.getByRole('checkbox', { name: 'Graduated' });
 
       expect(check).toBeChecked();
 
-      userEvent.click(check);
+      await userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockOnChange).toHaveBeenCalledWith('maturity', 'graduated', false);

@@ -85,7 +85,7 @@ describe('RepositoriesList', () => {
       expect(screen.queryByText('grpc.io')).toBeNull();
     });
 
-    it('clicks anchor link', () => {
+    it('clicks anchor link', async () => {
       const repositories = getRepositories('1');
       render(
         <Router>
@@ -94,7 +94,7 @@ describe('RepositoriesList', () => {
       );
 
       const anchors = screen.getAllByRole('button', { name: 'Link to anchor sdk-go' });
-      userEvent.click(anchors[0]);
+      await userEvent.click(anchors[0]);
 
       expect(mockScrollIntoView).toHaveBeenCalledTimes(1);
       expect(mockScrollIntoView).toHaveBeenCalledWith('#sdk-go');

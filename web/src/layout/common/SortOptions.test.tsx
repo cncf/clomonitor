@@ -39,10 +39,10 @@ describe('SortOptions', () => {
     expect(screen.getByLabelText('Sort options select')).toHaveValue('name_asc');
   });
 
-  it('calls onChange to update select', () => {
+  it('calls onChange to update select', async () => {
     render(<SortOptions {...defaultProps} />);
 
-    userEvent.selectOptions(
+    await userEvent.selectOptions(
       screen.getByRole('combobox'),
       screen.getByRole('option', { name: 'Score (highest first)' })
     );

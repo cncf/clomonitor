@@ -120,7 +120,7 @@ describe('Project detail index', () => {
       const backBtn = screen.getByRole('button', { name: 'Back to results' });
       expect(backBtn).toBeInTheDocument();
 
-      userEvent.click(backBtn);
+      await userEvent.click(backBtn);
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
       expect(mockUseNavigate).toHaveBeenCalledWith('/search?maturity=sandbox&rating=a&page=1');

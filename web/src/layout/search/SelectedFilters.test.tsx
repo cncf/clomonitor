@@ -49,11 +49,11 @@ describe('SelectedFilters', () => {
       expect(screen.getByRole('button', { name: 'Remove accepted filter' })).toBeInTheDocument();
     });
 
-    it('calls on change', () => {
+    it('calls on change', async () => {
       render(<SelectedFilters {...defaultProps} />);
 
       const btn = screen.getByRole('button', { name: 'Remove B [50-74] filter' });
-      userEvent.click(btn);
+      await userEvent.click(btn);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockOnChange).toHaveBeenCalledWith('rating', 'b', false);

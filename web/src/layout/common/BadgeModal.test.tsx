@@ -45,13 +45,13 @@ describe('BadgeModal', () => {
       );
     });
 
-    it('renders ascii tab', () => {
+    it('renders ascii tab', async () => {
       render(<BadgeModal {...defaultProps} />);
 
       expect(screen.getAllByText('AsciiDoc')).toHaveLength(2);
       const btns = screen.getAllByRole('button', { name: /Open tab/ });
       expect(btns[1]).toHaveTextContent('AsciiDoc');
-      userEvent.click(btns[1]);
+      await userEvent.click(btns[1]);
 
       const badge = screen.getByAltText('CLOMonitor badge');
       expect(badge).toBeInTheDocument();

@@ -107,7 +107,7 @@ describe('Summary', () => {
     expect(screen.getAllByText('n/a')).toHaveLength(6);
   });
 
-  it('renders component', () => {
+  it('renders component', async () => {
     const repositories = getRepositories('1');
     render(
       <Router>
@@ -116,7 +116,7 @@ describe('Summary', () => {
     );
 
     const btn = screen.getAllByRole('button', { name: 'Go from summary to section: spec' });
-    userEvent.click(btn[0]);
+    await userEvent.click(btn[0]);
 
     expect(mockUseNavigate).toHaveBeenCalledTimes(1);
     expect(mockUseNavigate).toHaveBeenCalledWith(

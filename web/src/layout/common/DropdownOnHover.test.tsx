@@ -30,7 +30,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('displays dropdown to enter on content and hides on leave', async () => {
-      jest.useFakeTimers();
+      jest.useFakeTimers('legacy');
 
       render(
         <DropdownOnHover linkContent="content">
@@ -42,7 +42,7 @@ describe('DropdownOnHover', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      userEvent.hover(screen.getByText('content'));
+      await userEvent.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -51,7 +51,7 @@ describe('DropdownOnHover', () => {
       expect(dropdown).toHaveClass('show');
       expect(screen.getByRole('complementary')).toHaveTextContent('children');
 
-      userEvent.unhover(screen.getByText('content'));
+      await userEvent.unhover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(50);
@@ -63,7 +63,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('renders correct styles when tooltipStyle is enabled', async () => {
-      jest.useFakeTimers();
+      jest.useFakeTimers('legacy');
 
       render(
         <DropdownOnHover linkContent="content" tooltipStyle>
@@ -74,7 +74,7 @@ describe('DropdownOnHover', () => {
       const dropdown = screen.getByRole('complementary');
       expect(dropdown).not.toHaveClass('show');
 
-      userEvent.hover(screen.getByText('content'));
+      await userEvent.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -84,7 +84,7 @@ describe('DropdownOnHover', () => {
       expect(screen.getByRole('complementary')).toHaveTextContent('children');
       expect(screen.getByTestId('dropdown-arrow')).toBeInTheDocument();
 
-      userEvent.unhover(screen.getByText('content'));
+      await userEvent.unhover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(50);
@@ -96,7 +96,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('hides dropdown to leave it', async () => {
-      jest.useFakeTimers();
+      jest.useFakeTimers('legacy');
 
       render(
         <DropdownOnHover linkContent="content">
@@ -106,9 +106,9 @@ describe('DropdownOnHover', () => {
 
       const dropdown = screen.getByRole('complementary');
 
-      userEvent.hover(screen.getByText('content'));
-      userEvent.hover(dropdown);
-      userEvent.unhover(screen.getByText('content'));
+      await userEvent.hover(screen.getByText('content'));
+      await userEvent.hover(dropdown);
+      await userEvent.unhover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -116,7 +116,7 @@ describe('DropdownOnHover', () => {
 
       expect(dropdown).toHaveClass('show');
 
-      userEvent.unhover(dropdown);
+      await userEvent.unhover(dropdown);
 
       act(() => {
         jest.advanceTimersByTime(50);

@@ -86,7 +86,7 @@ describe('SampleQueries', () => {
       expect(screen.getByTestId('sampleQueryBreakLine')).toBeInTheDocument();
     });
 
-    it('opens first sample query', () => {
+    it('opens first sample query', async () => {
       render(
         <Router>
           <SampleQueries />
@@ -94,7 +94,7 @@ describe('SampleQueries', () => {
       );
 
       const links = screen.getAllByRole('link', { name: /Filter by/ });
-      userEvent.click(links[0]);
+      await userEvent.click(links[0]);
 
       expect(window.location.pathname).toBe('/search');
       expect(window.location.search).toBe('?maturity=graduated&page=1');

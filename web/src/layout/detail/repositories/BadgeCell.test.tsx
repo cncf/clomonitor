@@ -58,7 +58,7 @@ describe('Badge', () => {
       expect(screen.queryByRole('button')).toBeNull();
     });
 
-    it('clicks on anchor', () => {
+    it('clicks on anchor', async () => {
       render(
         <table>
           <tbody>
@@ -70,7 +70,7 @@ describe('Badge', () => {
       );
 
       const btn = screen.getByRole('button');
-      userEvent.click(btn);
+      await userEvent.click(btn);
 
       expect(mockOnClick).toHaveBeenCalledTimes(1);
     });

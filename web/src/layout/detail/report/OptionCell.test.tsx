@@ -13,8 +13,14 @@ const defaultProps = {
 };
 
 describe('OptionCell', () => {
+  beforeEach(() => {
+    jest.useFakeTimers('legacy');
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
   });
 
   it('creates snapshot', () => {
@@ -92,7 +98,7 @@ describe('OptionCell', () => {
     });
 
     it('renders option with details', async () => {
-      jest.useFakeTimers();
+      // jest.useFakeTimers('legacy');
 
       render(
         <table>
@@ -118,7 +124,7 @@ describe('OptionCell', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      userEvent.hover(icons[0]);
+      await userEvent.hover(icons[0]);
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -185,7 +191,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        jest.useFakeTimers();
+        // jest.useFakeTimers('legacy');
 
         render(
           <table>
@@ -203,14 +209,14 @@ describe('OptionCell', () => {
         );
 
         const icon = screen.getByTestId('elementWithTooltip');
-        userEvent.hover(icon);
+        await userEvent.hover(icon);
 
         expect(await screen.findByRole('tooltip')).toBeInTheDocument();
         expect(screen.getByText('This repository is exempt from passing this check')).toBeInTheDocument();
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        jest.useRealTimers();
+        // jest.useRealTimers();
       });
     });
 
@@ -238,7 +244,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        jest.useFakeTimers();
+        // jest.useFakeTimers('legacy');
 
         render(
           <table>
@@ -256,14 +262,14 @@ describe('OptionCell', () => {
         );
 
         const icon = screen.getByTestId('elementWithTooltip');
-        userEvent.hover(icon);
+        await userEvent.hover(icon);
 
         expect(await screen.findByRole('tooltip')).toBeInTheDocument();
         expect(screen.getByText('Something went wrong running this check')).toBeInTheDocument();
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        jest.useRealTimers();
+        // jest.useRealTimers();
       });
     });
   });

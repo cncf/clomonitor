@@ -42,7 +42,7 @@ describe('Navbar', () => {
     expect(screen.getByRole('switch')).toBeInTheDocument();
   });
 
-  it('clicks logo', () => {
+  it('clicks logo', async () => {
     render(
       <Router>
         <Navbar {...defaultProps} />
@@ -50,7 +50,7 @@ describe('Navbar', () => {
     );
 
     const links = screen.getAllByRole('link');
-    userEvent.click(links[0]);
+    await userEvent.click(links[0]);
 
     expect(mockSetScrollPosition).toHaveBeenCalledTimes(1);
     expect(mockSetScrollPosition).toHaveBeenCalledWith(0);
@@ -70,7 +70,7 @@ describe('Navbar', () => {
     expect(links[0]).toHaveAttribute('href', '/docs');
   });
 
-  it('clicks Stats page', () => {
+  it('clicks Stats page', async () => {
     render(
       <Router>
         <Navbar {...defaultProps} />
@@ -78,7 +78,7 @@ describe('Navbar', () => {
     );
 
     const links = screen.getAllByRole('link');
-    userEvent.click(links[2]);
+    await userEvent.click(links[2]);
 
     expect(window.location.pathname).toBe('/stats');
   });

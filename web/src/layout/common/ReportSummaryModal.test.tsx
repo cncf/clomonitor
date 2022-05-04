@@ -54,13 +54,13 @@ describe('ReportSummaryModal', () => {
       ).toBeInTheDocument();
     });
 
-    it('renders ascii tab', () => {
+    it('renders ascii tab', async () => {
       render(<ReportSummaryModal {...defaultProps} />);
 
       expect(screen.getAllByText('AsciiDoc')).toHaveLength(2);
       const btn = screen.getByRole('button', { name: 'Open tab ascii' });
       expect(btn).toHaveTextContent('AsciiDoc');
-      userEvent.click(btn);
+      await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
         'http://localhost/projects/cncf/org/proj[image:http://localhost/api/projects/cncf/org/proj/report-summary?theme=light[CLOMonitor report summary]]'
@@ -68,13 +68,13 @@ describe('ReportSummaryModal', () => {
       expect(screen.getByRole('button', { name: 'Copy report summary Ascii link to clipboard' })).toBeInTheDocument();
     });
 
-    it('renders html tab', () => {
+    it('renders html tab', async () => {
       render(<ReportSummaryModal {...defaultProps} />);
 
       expect(screen.getAllByText('HTML')).toHaveLength(2);
       const btn = screen.getByRole('button', { name: 'Open tab html' });
       expect(btn).toHaveTextContent('HTML');
-      userEvent.click(btn);
+      await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
         '<a href="http://localhost/projects/cncf/org/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/cncf/org/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'

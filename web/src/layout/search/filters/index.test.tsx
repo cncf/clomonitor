@@ -75,14 +75,14 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeChecked();
     });
 
-    it('calls onChange to click filter', () => {
+    it('calls onChange to click filter', async () => {
       render(<Filters {...defaultProps} />);
 
       const check = screen.getByRole('checkbox', { name: 'Sandbox' });
 
       expect(check).not.toBeChecked();
 
-      userEvent.click(check);
+      await userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockOnChange).toHaveBeenCalledWith('maturity', 'sandbox', true);

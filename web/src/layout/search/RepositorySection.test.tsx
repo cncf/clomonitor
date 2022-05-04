@@ -62,7 +62,7 @@ describe('RepositorySection', () => {
 
   describe('Render', () => {
     it('renders with more than one repo', async () => {
-      jest.useFakeTimers();
+      jest.useFakeTimers('legacy');
 
       render(<RepositorySection {...defaultPropsRepos} />);
 
@@ -72,7 +72,7 @@ describe('RepositorySection', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      userEvent.hover(content);
+      await userEvent.hover(content);
 
       act(() => {
         jest.advanceTimersByTime(100);

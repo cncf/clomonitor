@@ -45,11 +45,11 @@ describe('AcceptedDateRange', () => {
       expect(screen.getAllByRole('slider')).toHaveLength(2);
     });
 
-    it('calls mockOnAcceptedDateRangeChange', () => {
+    it('calls mockOnAcceptedDateRangeChange', async () => {
       render(<AcceptedDateRange {...defaultProps} />);
 
       const mark = screen.getByText("'20");
-      userEvent.click(mark);
+      await userEvent.click(mark);
 
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(1);
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledWith({
@@ -58,14 +58,14 @@ describe('AcceptedDateRange', () => {
       });
     });
 
-    it('calls mockOnAcceptedDateRangeChange twice', () => {
+    it('calls mockOnAcceptedDateRangeChange twice', async () => {
       render(<AcceptedDateRange {...defaultProps} />);
 
       const mark20 = screen.getByText("'20");
-      userEvent.click(mark20);
+      await userEvent.click(mark20);
 
       const mark18 = screen.getByText("'18");
-      userEvent.click(mark18);
+      await userEvent.click(mark18);
 
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(2);
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledWith({

@@ -1,0 +1,2 @@
+schema: "clomonitor-core/src/linter/check/github/github_schema.graphql"
+documents: "*.graphql"

@@ -1,3 +1,4 @@
+use self::check::scorecard;
 use super::config::*;
 use anyhow::{format_err, Result};
 use check::{
@@ -5,7 +6,6 @@ use check::{
     *,
 };
 use clap::ArgEnum;
-use octocrab::Octocrab;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use which::which;
@@ -37,7 +37,7 @@ pub struct LintOptions {
 #[derive(Debug)]
 pub struct LintServices {
     pub http_client: reqwest::Client,
-    pub github_client: octocrab::Octocrab,
+    pub http_client_gh: reqwest::Client,
 }
 
 /// Options used to setup the Github client.
@@ -53,16 +53,22 @@ impl LintServices {
         // Setup http client
         let http_client = reqwest::Client::new();
 
-        // Setup GitHub client
-        let mut octocrab_builder = Octocrab::builder().personal_token(gh_opts.token);
-        if let Some(url) = gh_opts.api_url {
-            octocrab_builder = octocrab_builder.base_url(url)?;
-        }
-        let github_client = octocrab_builder.build()?;
+        // Setup authenticated http client for Github API
+        let http_client_gh = reqwest::Client::builder()
+            .user_agent("clomonitor")
+            .default_headers(
+                std::iter::once((
+                    reqwest::header::AUTHORIZATION,
+                    reqwest::header::HeaderValue::from_str(&format!("Bearer {}", gh_opts.token))
+                        .unwrap(),
+                ))
+                .collect(),
+            )
+            .build()?;
 
         Ok(Self {
             http_client,
-            github_client,
+            http_client_gh,
         })
     }
 }
@@ -145,8 +151,11 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     // Get CLOMonitor metadata
     let cm_md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
-    // Get Github metadata
-    let gh_md = github::get_repo_metadata(&svc.github_client, &opts.url).await?;
+    // Get Github metadata and OpenSSF scorecard
+    let (gh_md, scorecard) = tokio::try_join!(
+        github::get_metadata(&svc.http_client_gh, &opts.url),
+        scorecard::get_scorecard(&opts.url, &opts.github_token),
+    )?;
 
     // Prepare check input
     let input = CheckInput {
@@ -154,47 +163,13 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
         svc,
         cm_md: &cm_md,
         gh_md: &gh_md,
+        scorecard: &scorecard,
     };
 
     // Run some async checks
-    let (
-        binary_artifacts,
-        branch_protection,
-        changelog,
-        cla,
-        code_of_conduct,
-        code_review,
-        contributing,
-        dangerous_workflow,
-        dco,
-        dependency_update_tool,
-        maintained,
-        recent_release,
-        sbom,
-        security_policy,
-        signed_releases,
-        token_permissions,
-        trademark_disclaimer,
-        vulnerabilities,
-    ) = tokio::join!(
-        run_async_check(BINARY_ARTIFACTS, binary_artifacts, &input),
-        run_async_check(BRANCH_PROTECTION, branch_protection, &input),
-        run_async_check(CHANGELOG, changelog, &input),
-        run_async_check(CLA, cla, &input),
-        run_async_check(CODE_OF_CONDUCT, code_of_conduct, &input),
-        run_async_check(CODE_REVIEW, code_review, &input),
+    let (contributing, trademark_disclaimer) = tokio::join!(
         run_async_check(CONTRIBUTING, contributing, &input),
-        run_async_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
-        run_async_check(DCO, dco, &input),
-        run_async_check(DEPENDENCY_UPDATE_TOOL, dependency_update_tool, &input),
-        run_async_check(MAINTAINED, maintained, &input),
-        run_async_check(RECENT_RELEASE, recent_release, &input),
-        run_async_check(SBOM, sbom, &input),
-        run_async_check(SECURITY_POLICY, security_policy, &input),
-        run_async_check(SIGNED_RELEASES, signed_releases, &input),
-        run_async_check(TOKEN_PERMISSIONS, token_permissions, &input),
         run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &input),
-        run_async_check(VULNERABILITIES, vulnerabilities, &input),
     );
 
     // Run some sync checks
@@ -208,8 +183,8 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     let mut report = Report {
         documentation: Documentation {
             adopters: run_check(ADOPTERS, adopters, &input),
-            changelog,
-            code_of_conduct,
+            changelog: run_check(CHANGELOG, changelog, &input),
+            code_of_conduct: run_check(CODE_OF_CONDUCT, code_of_conduct, &input),
             contributing,
             governance: run_check(GOVERNANCE, governance, &input),
             maintainers: run_check(MAINTAINERS, maintainers, &input),
@@ -224,25 +199,29 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
         },
         best_practices: BestPractices {
             artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &input),
-            cla,
+            cla: run_check(CLA, cla, &input),
             community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &input),
-            dco,
+            dco: run_check(DCO, dco, &input),
             openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &input),
-            recent_release,
+            recent_release: run_check(RECENT_RELEASE, recent_release, &input),
             slack_presence: run_check(SLACK_PRESENCE, slack_presence, &input),
         },
         security: Security {
-            binary_artifacts,
-            branch_protection,
-            code_review,
-            dangerous_workflow,
-            dependency_update_tool,
-            maintained,
-            sbom,
-            security_policy,
-            signed_releases,
-            token_permissions,
-            vulnerabilities,
+            binary_artifacts: run_check(BINARY_ARTIFACTS, binary_artifacts, &input),
+            branch_protection: run_check(BRANCH_PROTECTION, branch_protection, &input),
+            code_review: run_check(CODE_REVIEW, code_review, &input),
+            dangerous_workflow: run_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
+            dependency_update_tool: run_check(
+                DEPENDENCY_UPDATE_TOOL,
+                dependency_update_tool,
+                &input,
+            ),
+            maintained: run_check(MAINTAINED, maintained, &input),
+            sbom: run_check(SBOM, sbom, &input),
+            security_policy: run_check(SECURITY_POLICY, security_policy, &input),
+            signed_releases: run_check(SIGNED_RELEASES, signed_releases, &input),
+            token_permissions: run_check(TOKEN_PERMISSIONS, token_permissions, &input),
+            vulnerabilities: run_check(VULNERABILITIES, vulnerabilities, &input),
         },
         legal: Legal {
             trademark_disclaimer,

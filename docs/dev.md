@@ -153,7 +153,7 @@ tracker:
   concurrency: 10
 ```
 
-Some checks like *recent release* or *website* make some calls to the Github API. [Unauthenticated requests to the Github API are rate limited to 60 requests per hour](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting), so you'll probably need to add your own Github token to the `tracker` configuration file to get up to 5000 (or 15000) requests per hour (no special permissions needed for it).
+Some checks use the Github GraphQL API, which requires authentication, so you'll need to add your own Github token to the `tracker` configuration file.
 
 Once the configuration file is ready, it's time to launch the `tracker` for the first time:
 
@@ -167,7 +167,7 @@ Depending on the speed of your Internet connection and machine, this may take on
 
 In the section above we saw how the `tracker` is able to lint all repositories registered in the database. But sometimes it may be desirable to lint a single repository manually in an isolated way, maybe to quickly test some checks or to integrate with some other processes, like continuous integration or deployment tools. The `linter CLI` tool is designed to help in those scenarios.
 
-CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github API for some checks. To avoid issues with rate limits, a Github token (with `public_repo` scope) **must** be provided to authenticate those requests.
+CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github GraphQL API for some checks, which requires authentication. A Github token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
 
 If you are using the aliases provided below, you can run it this way:
 

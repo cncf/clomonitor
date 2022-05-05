@@ -58,8 +58,17 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     future::join_all(futs).await;
 
     // Check Github API rate limit status
-    let response: Value = svc.github_client.get("rate_limit", None::<&()>).await?;
-    debug!("github rate limit info: {}", response["rate"]);
+    let response: Value = svc
+        .http_client_gh
+        .get("https://api.github.com/rate_limit")
+        .send()
+        .await?
+        .json()
+        .await?;
+    debug!(
+        "github rate limit info: [rate: {}] [graphql: {}]",
+        response["rate"], response["resources"]["graphql"]
+    );
 
     info!("tracker finished");
     Ok(())

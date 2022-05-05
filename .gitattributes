@@ -1,1 +1,3 @@
-*.snap linguist-generated
+__fixtures__/** linguist-generated
+__snapshots__/** linguist-generated
+clomonitor-core/src/linter/check/github/github_schema.graphql linguist-generated

@@ -108,8 +108,9 @@ The linter CLI tool allows projects to lint their repositories locally or from t
 clomonitor-linter
 Checks repository to verify it meets certain project health best practices
 
-This tool uses the Github API for some checks. Please make sure you provide a Github token (with
-`public_repo` scope) by setting the `GITHUB_TOKEN` environment variable.
+This tool uses the Github GraphQL API for some checks, which requires authentication. Please make
+sure you provide a Github token (with `public_repo` scope) by setting the `GITHUB_TOKEN` environment
+variable.
 
 USAGE:
     clomonitor-linter [OPTIONS] --url <URL>

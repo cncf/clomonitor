@@ -1,12 +1,11 @@
 use self::{
     path::Globs,
-    scorecard::{scorecard, ScorecardCheck},
+    scorecard::{Scorecard, ScorecardCheck},
 };
 use super::{LintOptions, LintServices};
 use crate::{config::*, linter::CheckSet};
-use anyhow::{format_err, Result};
+use anyhow::Result;
 use metadata::{Exemption, Metadata};
-use octocrab::models::Repository;
 use patterns::*;
 use regex::{Regex, RegexSet};
 use serde::{Deserialize, Serialize};
@@ -14,6 +13,7 @@ use std::{
     future::Future,
     path::{Path, PathBuf},
 };
+use time::{format_description::well_known::Rfc3339, Duration, OffsetDateTime};
 
 pub(crate) mod content;
 pub(crate) mod git;
@@ -30,7 +30,8 @@ pub(crate) struct CheckInput<'a> {
     pub opts: &'a LintOptions,
     pub svc: &'a LintServices,
     pub cm_md: &'a Option<Metadata>,
-    pub gh_md: &'a Repository,
+    pub gh_md: &'a github::md::MdRepository,
+    pub scorecard: &'a Scorecard,
 }
 
 /// Check output information.
@@ -143,35 +144,19 @@ impl<T> CheckOutput<T> {
 
     /// Create a new CheckOutput instance from the Github url built using the
     /// path provided.
-    pub fn from_path(path: Option<PathBuf>, gh_md: &Repository) -> Self {
+    pub fn from_path(path: Option<PathBuf>, gh_md: &github::md::MdRepository) -> Self {
         match path {
             Some(path) => {
                 let url = github::build_url(
                     &path,
-                    &gh_md.owner.as_ref().unwrap().login,
+                    &gh_md.owner.login,
                     &gh_md.name,
-                    gh_md.default_branch.as_ref().unwrap(),
+                    &github::default_branch(&gh_md.default_branch_ref),
                 );
                 CheckOutput::from_url(Some(url))
             }
             None => false.into(),
         }
-    }
-
-    /// Create a new CheckOutput instance from an OpenSSF Scorecard check.
-    pub async fn from_scorecard_check(
-        check_id: &str,
-        repo_url: &str,
-        github_token: &str,
-    ) -> Result<Self> {
-        let sc = match scorecard(repo_url.to_string(), github_token.to_string()).await {
-            Ok(sc) => sc,
-            Err(err) => return Err(format_err!("error getting repository scorecard: {}", &err)),
-        };
-        Ok(match sc.get_check(check_id) {
-            Some(sc_check) => sc_check.into(),
-            None => false.into(),
-        })
     }
 }
 
@@ -252,19 +237,23 @@ pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Binary artifacts check (from OpenSSF Scorecard).
-pub(crate) async fn binary_artifacts(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(BINARY_ARTIFACTS, &input.opts.url, &input.opts.github_token)
-        .await
+pub(crate) fn binary_artifacts(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(BINARY_ARTIFACTS) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Branch protection check (from OpenSSF Scorecard).
-pub(crate) async fn branch_protection(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(BRANCH_PROTECTION, &input.opts.url, &input.opts.github_token)
-        .await
+pub(crate) fn branch_protection(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(BRANCH_PROTECTION) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Changelog check.
-pub(crate) async fn changelog(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn changelog(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file
     let r = find_file_or_reference(input, &CHANGELOG_FILE, &*CHANGELOG_IN_README)?;
     if r.passed {
@@ -272,13 +261,7 @@ pub(crate) async fn changelog(input: &CheckInput<'_>) -> Result<CheckOutput> {
     }
 
     // Reference in last release
-    if github::last_release_body_matches(
-        &input.svc.github_client,
-        &input.opts.url,
-        &*CHANGELOG_IN_GH_RELEASE,
-    )
-    .await?
-    {
+    if github::latest_release_description_matches(input.gh_md, &*CHANGELOG_IN_GH_RELEASE)? {
         return Ok(true.into());
     }
 
@@ -286,37 +269,33 @@ pub(crate) async fn changelog(input: &CheckInput<'_>) -> Result<CheckOutput> {
 }
 
 /// Contributor license agreement check.
-pub(crate) async fn cla(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn cla(input: &CheckInput) -> Result<CheckOutput> {
     // CLA check in Github
-    Ok(
-        github::has_check(&input.svc.github_client, &input.opts.url, &*CLA_IN_GH)
-            .await?
-            .into(),
-    )
+    Ok(github::has_check(input.gh_md, &*CLA_IN_GH)?.into())
 }
 
 /// Code of conduct check.
-pub(crate) async fn code_of_conduct(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn code_of_conduct(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file
     let r = find_file_or_reference(input, &CODE_OF_CONDUCT_FILE, &*CODE_OF_CONDUCT_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
-    // File in .github repo
-    let url = github::has_community_health_file(
-        &input.svc.github_client,
-        &input.svc.http_client,
-        "CODE_OF_CONDUCT.md",
-        input.gh_md,
-    )
-    .await?;
-    Ok(CheckOutput::from_url(url))
+    // File in Github (default community health file, for example)
+    if let Some(coc) = &input.gh_md.code_of_conduct {
+        return Ok(CheckOutput::from_url(coc.url.clone()));
+    }
+
+    Ok(false.into())
 }
 
 /// Code review check (from OpenSSF Scorecard).
-pub(crate) async fn code_review(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(CODE_REVIEW, &input.opts.url, &input.opts.github_token).await
+pub(crate) fn code_review(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(CODE_REVIEW) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Community meeting check.
@@ -334,28 +313,22 @@ pub(crate) async fn contributing(input: &CheckInput<'_>) -> Result<CheckOutput> 
     }
 
     // File in .github repo
-    let url = github::has_community_health_file(
-        &input.svc.github_client,
-        &input.svc.http_client,
-        "CONTRIBUTING.md",
-        input.gh_md,
-    )
-    .await?;
+    let url =
+        github::has_community_health_file(&input.svc.http_client, "CONTRIBUTING.md", input.gh_md)
+            .await?;
     Ok(CheckOutput::from_url(url))
 }
 
 /// Dangerous workflow check (from OpenSSF Scorecard).
-pub(crate) async fn dangerous_workflow(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(
-        DANGEROUS_WORKFLOW,
-        &input.opts.url,
-        &input.opts.github_token,
-    )
-    .await
+pub(crate) fn dangerous_workflow(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(DANGEROUS_WORKFLOW) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Developer Certificate of Origin check.
-pub(crate) async fn dco(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn dco(input: &CheckInput) -> Result<CheckOutput> {
     // DCO signature in commits
     if let Ok(passed) = git::commits_have_dco_signature(&input.opts.root) {
         if passed {
@@ -364,21 +337,15 @@ pub(crate) async fn dco(input: &CheckInput<'_>) -> Result<CheckOutput> {
     }
 
     // DCO check in Github
-    Ok(
-        github::has_check(&input.svc.github_client, &input.opts.url, &*DCO_IN_GH)
-            .await?
-            .into(),
-    )
+    Ok(github::has_check(input.gh_md, &*DCO_IN_GH)?.into())
 }
 
 /// Dependency update tool check (from OpenSSF Scorecard).
-pub(crate) async fn dependency_update_tool(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(
-        DEPENDENCY_UPDATE_TOOL,
-        &input.opts.url,
-        &input.opts.github_token,
-    )
-    .await
+pub(crate) fn dependency_update_tool(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(DEPENDENCY_UPDATE_TOOL) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Governance check.
@@ -399,9 +366,14 @@ pub(crate) fn license(input: &CheckInput) -> Result<CheckOutput<String>> {
     }
 
     // License detected by Github
-    if let Some(license) = &input.gh_md.license {
-        if license.spdx_id != "NOASSERTION" {
-            return Ok(Some(license.spdx_id.to_owned()).into());
+    if let Some(spdx_id) = input
+        .gh_md
+        .license_info
+        .as_ref()
+        .and_then(|l| l.spdx_id.as_ref())
+    {
+        if spdx_id != "NOASSERTION" {
+            return Ok(Some(spdx_id.to_owned()).into());
         }
     }
 
@@ -438,12 +410,13 @@ pub(crate) fn license_approved(
 /// License scanning check.
 pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
     // Scanning url in metadata file
-    if let Some(md) = &input.cm_md {
-        if let Some(license_scanning) = &md.license_scanning {
-            if let Some(url) = &license_scanning.url {
-                return Ok(CheckOutput::from_url(Some(url.to_owned())));
-            }
-        }
+    if let Some(url) = input
+        .cm_md
+        .as_ref()
+        .and_then(|md| md.license_scanning.as_ref())
+        .and_then(|ls| ls.url.as_ref())
+    {
+        return Ok(CheckOutput::from_url(Some(url.to_owned())));
     }
 
     // Reference in README file
@@ -458,8 +431,11 @@ pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Maintained check (from OpenSSF Scorecard).
-pub(crate) async fn maintained(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(MAINTAINED, &input.opts.url, &input.opts.github_token).await
+pub(crate) fn maintained(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(MAINTAINED) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Maintainers check.
@@ -478,10 +454,15 @@ pub(crate) fn openssf_badge(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Recent release check.
-pub(crate) async fn recent_release(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    Ok(CheckOutput::from_url(
-        github::has_recent_release(&input.svc.github_client, &input.opts.url).await?,
-    ))
+pub(crate) fn recent_release(input: &CheckInput) -> Result<CheckOutput> {
+    if let Some(latest_release) = input.gh_md.latest_release.as_ref() {
+        let created_at = OffsetDateTime::parse(&latest_release.created_at, &Rfc3339)?;
+        let one_year_ago = (OffsetDateTime::now_utc() - Duration::days(365)).unix_timestamp();
+        if created_at.unix_timestamp() > one_year_ago {
+            return Ok(CheckOutput::from_url(Some(latest_release.url.clone())));
+        }
+    }
+    Ok(false.into())
 }
 
 /// Roadmap check.
@@ -501,14 +482,17 @@ pub(crate) fn readme(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Software bill of materials (SBOM).
-pub(crate) async fn sbom(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn sbom(input: &CheckInput) -> Result<CheckOutput> {
     // Asset in last release
-    if let Some(last_release) =
-        github::last_release(&input.svc.github_client, &input.opts.url).await?
+    if let Some(assets) = input
+        .gh_md
+        .latest_release
+        .as_ref()
+        .and_then(|r| r.release_assets.nodes.as_ref())
     {
-        if last_release
-            .assets
+        if assets
             .iter()
+            .flatten()
             .any(|asset| SBOM_IN_GH_RELEASE.is_match(&asset.name))
         {
             return Ok(true.into());
@@ -520,28 +504,25 @@ pub(crate) async fn sbom(input: &CheckInput<'_>) -> Result<CheckOutput> {
 }
 
 /// Security policy check.
-pub(crate) async fn security_policy(input: &CheckInput<'_>) -> Result<CheckOutput> {
+pub(crate) fn security_policy(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file
     let r = find_file_or_reference(input, &SECURITY_POLICY_FILE, &*SECURITY_POLICY_IN_README)?;
     if r.passed {
         return Ok(r);
     }
 
-    // File in .github repo
-    let url = github::has_community_health_file(
-        &input.svc.github_client,
-        &input.svc.http_client,
-        "SECURITY.md",
-        input.gh_md,
-    )
-    .await?;
-    Ok(CheckOutput::from_url(url))
+    // File in Github (default community health file, for example)
+    Ok(CheckOutput::from_url(
+        input.gh_md.security_policy_url.clone(),
+    ))
 }
 
 /// Signed releases check (from OpenSSF Scorecard).
-pub(crate) async fn signed_releases(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(SIGNED_RELEASES, &input.opts.url, &input.opts.github_token)
-        .await
+pub(crate) fn signed_releases(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(SIGNED_RELEASES) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Slack presence check.
@@ -551,15 +532,17 @@ pub(crate) fn slack_presence(input: &CheckInput) -> Result<CheckOutput> {
 }
 
 /// Token permissions check (from OpenSSF Scorecard).
-pub(crate) async fn token_permissions(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(TOKEN_PERMISSIONS, &input.opts.url, &input.opts.github_token)
-        .await
+pub(crate) fn token_permissions(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(TOKEN_PERMISSIONS) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Trademark disclaimer check.
 pub(crate) async fn trademark_disclaimer(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // Trademark disclaimer in website setup in Github
-    if let Some(url) = &input.gh_md.homepage {
+    if let Some(url) = &input.gh_md.homepage_url {
         if !url.is_empty() {
             return Ok(content::remote_matches(
                 &input.svc.http_client,
@@ -575,15 +558,17 @@ pub(crate) async fn trademark_disclaimer(input: &CheckInput<'_>) -> Result<Check
 }
 
 /// Vulnerabilities check (from OpenSSF Scorecard).
-pub(crate) async fn vulnerabilities(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    CheckOutput::from_scorecard_check(VULNERABILITIES, &input.opts.url, &input.opts.github_token)
-        .await
+pub(crate) fn vulnerabilities(input: &CheckInput) -> Result<CheckOutput> {
+    Ok(match input.scorecard.get_check(VULNERABILITIES) {
+        Some(sc_check) => sc_check.into(),
+        None => false.into(),
+    })
 }
 
 /// Website check.
 pub(crate) fn website(input: &CheckInput) -> Result<CheckOutput> {
     // Website in Github
-    if let Some(url) = &input.gh_md.homepage {
+    if let Some(url) = &input.gh_md.homepage_url {
         if !url.is_empty() {
             return Ok(CheckOutput::from_url(Some(url.to_string())));
         }
@@ -604,15 +589,16 @@ fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool {
 
 /// Check if the repository is exempt from passing the provided check.
 fn find_exemption(check_id: &str, cm_md: &Option<Metadata>) -> Option<Exemption> {
-    if let Some(md) = cm_md {
-        if let Some(exemptions) = &md.exemptions {
-            if let Some(exemption) = exemptions.iter().find(|e| e.check == check_id) {
-                if !exemption.reason.is_empty() && exemption.reason != "~" {
-                    return Some(exemption.clone());
-                }
-            }
+    if let Some(exemption) = cm_md
+        .as_ref()
+        .and_then(|md| md.exemptions.as_ref())
+        .and_then(|exemptions| exemptions.iter().find(|e| e.check == check_id))
+    {
+        if !exemption.reason.is_empty() && exemption.reason != "~" {
+            return Some(exemption.to_owned());
         }
     }
+
     None
 }
 

@@ -157,7 +157,7 @@ CASE SENSITIVE: false
 "(?i)\[.*code of conduct.*\]\(.*\)"
 ```
 
-- A code of conduct file is found in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
+- A code of conduct *file* is found in Github (in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file), for example).
 
 ### Contributing
 
@@ -565,7 +565,7 @@ CASE SENSITIVE: false
 "(?i)\[.*security.*\]\(.*\)"
 ```
 
-- A security policy file is found in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file).
+- A security policy *file* is found in Github (in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file), for example).
 
 ### Signed releases (from OpenSSF Scorecard)
 

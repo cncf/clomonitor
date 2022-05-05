@@ -1,0 +1,57 @@
+query Md($repo: String!, $owner: String!) {
+    repository(name: $repo, owner: $owner) {
+        codeOfConduct {
+            url
+        }
+        defaultBranchRef {
+            name
+        }
+        homepageUrl
+        latestRelease {
+            createdAt
+            description
+            releaseAssets (first: 100) {
+                nodes {
+                    name
+                }
+            }
+            url
+        }
+        licenseInfo {
+            spdxId
+        }
+        name
+        owner {
+            __typename
+            login
+        }
+        pullRequests (last: 1, states: [CLOSED]) {
+            nodes {
+                commits (last: 1) {
+                    nodes {
+                        commit {
+                            checkSuites (first: 100) {
+                                nodes {
+                                    app {
+                                        name
+                                    }
+                                    checkRuns (first: 100) {
+                                        nodes {
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                            status {
+                                contexts {
+                                    context
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        securityPolicyUrl
+    }
+}

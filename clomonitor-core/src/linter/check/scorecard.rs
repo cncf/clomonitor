@@ -32,7 +32,7 @@ impl Scorecard {
 }
 
 /// Get repository's OpenSSF Scorecard.
-pub(crate) async fn get_scorecard(repo_url: &str, github_token: &str) -> Result<Scorecard> {
+pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scorecard> {
     let output = Command::new("scorecard")
         .env("GITHUB_TOKEN", github_token)
         .arg(format!("--repo={repo_url}"))

@@ -1,4 +1,5 @@
 import { isUndefined } from 'lodash';
+import { useRef } from 'react';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
@@ -22,6 +23,7 @@ function getOptionInfo(key: ReportOption) {
 }
 
 const OptionCell = (props: Props) => {
+  const details = useRef<HTMLDivElement | null>(null);
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
   const exemptIcon = <MdRemoveCircleOutline data-testid="exempt-icon" className={`text-muted ${styles.exemptIcon}`} />;
@@ -62,6 +64,12 @@ const OptionCell = (props: Props) => {
     }
   };
 
+  const scrollTop = () => {
+    if (details && details.current) {
+      details.current.scroll(0, 0);
+    }
+  };
+
   const getDetailsInfo = (): JSX.Element => {
     return (
       <>
@@ -84,9 +92,10 @@ const OptionCell = (props: Props) => {
                 )}
               </>
             }
+            onClose={scrollTop}
             tooltipStyle
           >
-            <div className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll}`}>
+            <div ref={details} className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll}`}>
               <ReactMarkdown
                 className={styles.detailsContent}
                 children={props.check.details!}

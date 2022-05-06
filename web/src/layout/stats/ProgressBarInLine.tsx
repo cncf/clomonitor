@@ -13,7 +13,7 @@ const ProgressBarInLine = (props: Props) => {
   return (
     <div className={`d-flex flex-column ${styles.wrapper}`}>
       <div className={`d-flex flex-row align-items-center ${styles.progressWrapper}`}>
-        <div className={`me-2 position-relative ${styles.icon}`}>{props.icon}</div>
+        <div className={`me-1 me-md-2 position-relative ${styles.icon}`}>{props.icon}</div>
         <div className={styles.progressTitle}>{props.title}</div>
         <div className="flex-grow-1 ms-2">
           <div className={`progress rounded-0 ${styles.progress}`}>

@@ -43,39 +43,8 @@ pub(crate) fn default_branch(r: &Option<md::MdRepositoryDefaultBranchRef>) -> St
     }
 }
 
-/// Get repository's metadata from the Github GraphQL API.
-pub(crate) async fn get_metadata(
-    http_client: &reqwest::Client,
-    repo_url: &str,
-) -> Result<md::MdRepository> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-
-    // Do request to GraphQL API
-    let vars = md::Variables { owner, repo };
-    let req_body = &Md::build_query(vars);
-    let resp = http_client
-        .post(GITHUB_GRAPHQL_API)
-        .json(req_body)
-        .send()
-        .await
-        .context("error requesting repository medatata from github graphql api")?;
-
-    // Parse response body and extract repository metadata
-    let resp_body: Response<md::ResponseData> = resp
-        .json()
-        .await
-        .context("error deserializing repository medatata response from github graphql api")?;
-    let repo = resp_body
-        .data
-        .ok_or_else(|| format_err!("data not found"))?
-        .repository
-        .ok_or_else(|| format_err!("repository not found"))?;
-
-    Ok(repo)
-}
-
-/// Check if the repo has a check in the latest PR that matches any of the
-/// regular expressions provided.
+/// Check if the repo has a check in the latest merged PR that matches any of
+/// the regular expressions provided.
 pub(crate) fn has_check(gh_md: &md::MdRepository, re: &RegexSet) -> Result<bool> {
     // Get latest PR head commit from metadata
     let latest_pr_head_commit = gh_md
@@ -169,20 +138,56 @@ pub(crate) async fn has_community_health_file(
     }
 }
 
+/// Get the repository's latest release from the metadata provided.
+pub(crate) fn latest_release(gh_md: &md::MdRepository) -> Option<&md::MdRepositoryReleasesNodes> {
+    gh_md
+        .releases
+        .nodes
+        .as_ref()
+        .and_then(|nodes| nodes.iter().flatten().next())
+}
+
 /// Check if the latest release description matches any of the regular
 /// expressions provided.
 pub(crate) fn latest_release_description_matches(
     gh_md: &md::MdRepository,
     re: &RegexSet,
 ) -> Result<bool> {
-    if let Some(description) = gh_md
-        .latest_release
-        .as_ref()
-        .and_then(|r| r.description.as_ref())
-    {
+    if let Some(description) = latest_release(gh_md).and_then(|r| r.description.as_ref()) {
         return Ok(re.is_match(description));
     }
     Ok(false)
+}
+
+/// Get repository's metadata from the Github GraphQL API.
+pub(crate) async fn metadata(
+    http_client: &reqwest::Client,
+    repo_url: &str,
+) -> Result<md::MdRepository> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+
+    // Do request to GraphQL API
+    let vars = md::Variables { owner, repo };
+    let req_body = &Md::build_query(vars);
+    let resp = http_client
+        .post(GITHUB_GRAPHQL_API)
+        .json(req_body)
+        .send()
+        .await
+        .context("error requesting repository medatata from github graphql api")?;
+
+    // Parse response body and extract repository metadata
+    let resp_body: Response<md::ResponseData> = resp
+        .json()
+        .await
+        .context("error deserializing repository medatata response from github graphql api")?;
+    let repo = resp_body
+        .data
+        .ok_or_else(|| format_err!("data field not found in github medatata response"))?
+        .repository
+        .ok_or_else(|| format_err!("repository field not found in github medatata response"))?;
+
+    Ok(repo)
 }
 
 /// Extract the owner and repository from the repository url provided.

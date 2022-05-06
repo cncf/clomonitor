@@ -1,4 +1,4 @@
-use self::check::scorecard;
+use self::check::scorecard::scorecard;
 use super::config::*;
 use anyhow::{format_err, Result};
 use check::{
@@ -153,8 +153,8 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
 
     // Get Github metadata and OpenSSF scorecard
     let (gh_md, scorecard) = tokio::try_join!(
-        github::get_metadata(&svc.http_client_gh, &opts.url),
-        scorecard::get_scorecard(&opts.url, &opts.github_token),
+        github::metadata(&svc.http_client_gh, &opts.url),
+        scorecard(&opts.url, &opts.github_token),
     )?;
 
     // Prepare check input

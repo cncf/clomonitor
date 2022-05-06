@@ -379,7 +379,7 @@ Defines the terms under which intellectual property has been contributed to a co
 
 This check passes if:
 
-- A CLA check is found in the last closed PR on Github. Regexps used:
+- A CLA check is found in the latest merged PR on Github. Regexps used:
 
 ```sh
 "(?i)cncf-cla"
@@ -417,7 +417,7 @@ This check passes if:
 
 - The last commits in the repository have the DCO signature (*Signed-off-by*). Merge pull request and merge branch commits are ignored for this check.
 
-- A DCO check is found in the last closed PR on Github. Regexps used:
+- A DCO check is found in the latest merged PR on Github. Regexps used:
 
 ```sh
 "(?i)dco"

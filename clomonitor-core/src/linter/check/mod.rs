@@ -455,7 +455,7 @@ pub(crate) fn openssf_badge(input: &CheckInput) -> Result<CheckOutput> {
 
 /// Recent release check.
 pub(crate) fn recent_release(input: &CheckInput) -> Result<CheckOutput> {
-    if let Some(latest_release) = input.gh_md.latest_release.as_ref() {
+    if let Some(latest_release) = github::latest_release(input.gh_md) {
         let created_at = OffsetDateTime::parse(&latest_release.created_at, &Rfc3339)?;
         let one_year_ago = (OffsetDateTime::now_utc() - Duration::days(365)).unix_timestamp();
         if created_at.unix_timestamp() > one_year_ago {
@@ -484,19 +484,16 @@ pub(crate) fn readme(input: &CheckInput) -> Result<CheckOutput> {
 /// Software bill of materials (SBOM).
 pub(crate) fn sbom(input: &CheckInput) -> Result<CheckOutput> {
     // Asset in last release
-    if let Some(assets) = input
-        .gh_md
-        .latest_release
-        .as_ref()
+    if let Some(true) = github::latest_release(input.gh_md)
         .and_then(|r| r.release_assets.nodes.as_ref())
+        .map(|assets| {
+            assets
+                .iter()
+                .flatten()
+                .any(|asset| SBOM_IN_GH_RELEASE.is_match(&asset.name))
+        })
     {
-        if assets
-            .iter()
-            .flatten()
-            .any(|asset| SBOM_IN_GH_RELEASE.is_match(&asset.name))
-        {
-            return Ok(true.into());
-        }
+        return Ok(true.into());
     }
 
     // Reference in README file
@@ -592,7 +589,11 @@ fn find_exemption(check_id: &str, cm_md: &Option<Metadata>) -> Option<Exemption>
     if let Some(exemption) = cm_md
         .as_ref()
         .and_then(|md| md.exemptions.as_ref())
-        .and_then(|exemptions| exemptions.iter().find(|e| e.check == check_id))
+        .and_then(|exemptions| {
+            exemptions
+                .iter()
+                .find(|exemption| exemption.check == check_id)
+        })
     {
         if !exemption.reason.is_empty() && exemption.reason != "~" {
             return Some(exemption.to_owned());

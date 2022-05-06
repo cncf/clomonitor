@@ -7,16 +7,6 @@ query Md($repo: String!, $owner: String!) {
             name
         }
         homepageUrl
-        latestRelease {
-            createdAt
-            description
-            releaseAssets (first: 100) {
-                nodes {
-                    name
-                }
-            }
-            url
-        }
         licenseInfo {
             spdxId
         }
@@ -25,7 +15,7 @@ query Md($repo: String!, $owner: String!) {
             __typename
             login
         }
-        pullRequests (last: 1, states: [CLOSED]) {
+        pullRequests (last: 1, states: [MERGED]) {
             nodes {
                 commits (last: 1) {
                     nodes {
@@ -50,6 +40,18 @@ query Md($repo: String!, $owner: String!) {
                         }
                     }
                 }
+            }
+        }
+        releases (last: 1) {
+            nodes {
+                createdAt
+                description
+                releaseAssets (first: 100) {
+                    nodes {
+                        name
+                    }
+                }
+                url
             }
         }
         securityPolicyUrl

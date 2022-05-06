@@ -13,6 +13,7 @@ interface Props {
   arrowClassName?: string;
   width?: number;
   tooltipStyle?: boolean;
+  onClose?: () => void;
 }
 
 const DropdownOnHover = (props: Props) => {
@@ -31,6 +32,9 @@ const DropdownOnHover = (props: Props) => {
     }
     if (openStatus && !onLinkHover && !onDropdownHover) {
       timeout = setTimeout(() => {
+        if (!isUndefined(props.onClose)) {
+          props.onClose();
+        }
         // Delay to hide the dropdown to let some time for changing between dropdown and link
         setOpenStatus(false);
       }, 50);
@@ -65,7 +69,6 @@ const DropdownOnHover = (props: Props) => {
               {props.tooltipStyle && (
                 <div className={`arrow ${styles.arrow} ${props.arrowClassName}`} data-testid="dropdown-arrow" />
               )}
-              {/* {openStatus && <div className="ps-3 pe-2 pt-1">{props.children}</div>} */}
               <div className="ps-3 pe-2 pt-1">{props.children}</div>
             </div>
           </div>

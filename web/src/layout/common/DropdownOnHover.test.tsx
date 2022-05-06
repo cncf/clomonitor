@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 
 import DropdownOnHover from './DropdownOnHover';
 
+const onCloseMock = jest.fn();
+
 describe('DropdownOnHover', () => {
   afterEach(() => {
     jest.resetAllMocks();
@@ -122,6 +124,39 @@ describe('DropdownOnHover', () => {
         jest.advanceTimersByTime(50);
       });
 
+      expect(dropdown).not.toHaveClass('show');
+
+      jest.useRealTimers();
+    });
+
+    it('calls onClose when it is defined', async () => {
+      jest.useFakeTimers('legacy');
+
+      render(
+        <DropdownOnHover linkContent="content" onClose={onCloseMock}>
+          <>children</>
+        </DropdownOnHover>
+      );
+
+      const dropdown = screen.getByRole('complementary');
+
+      await userEvent.hover(screen.getByText('content'));
+      await userEvent.hover(dropdown);
+      await userEvent.unhover(screen.getByText('content'));
+
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+
+      expect(dropdown).toHaveClass('show');
+
+      await userEvent.unhover(dropdown);
+
+      act(() => {
+        jest.advanceTimersByTime(50);
+      });
+
+      expect(onCloseMock).toHaveBeenCalledTimes(1);
       expect(dropdown).not.toHaveClass('show');
 
       jest.useRealTimers();

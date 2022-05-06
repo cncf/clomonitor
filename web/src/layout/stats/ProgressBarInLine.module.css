@@ -7,7 +7,7 @@
 }
 
 .progressTitle {
-  min-width: 160px;
+  min-width: 175px;
 }
 
 .progress {
@@ -25,4 +25,20 @@
 
 .scoreWrapper {
   width: 55px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .icon {
+    font-size: 0.65rem;
+  }
+
+  .progressTitle {
+    min-width: 145px;
+    font-size: 0.75rem;
+  }
+
+  .scoreWrapper {
+    width: 45px;
+    font-size: 0.7rem;
+  }
 }

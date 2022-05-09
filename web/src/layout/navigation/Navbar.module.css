@@ -40,3 +40,19 @@
     width: 100%;
   }
 }
+
+@media (min-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1040;
+  }
+
+  :global(.noScroll-modal) .navbar,
+  :global(.noScroll-sidebar) .navbar {
+    position: relative !important;
+    z-index: 1;
+  }
+}

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import useOnLocationChange from '../hooks/useOnLocationChange';
 import updateMetaIndex from '../utils/updateMetaIndex';
+import styles from './Layout.module.css';
 import Footer from './navigation/Footer';
 import Navbar from './navigation/Navbar';
 
@@ -20,7 +21,9 @@ const Layout = (props: Props) => {
   return (
     <div className="h-100 d-flex flex-column">
       <Navbar setScrollPosition={props.setScrollPosition} />
-      <Outlet />
+      <div className={styles.wrapper}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

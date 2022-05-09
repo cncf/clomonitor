@@ -1,0 +1,10 @@
+@media (min-width: 768px) {
+  .wrapper {
+    margin-top: 81px;
+  }
+
+  :global(.noScroll-modal) .wrapper,
+  :global(.noScroll-sidebar) .wrapper {
+    margin-top: 0px;
+  }
+}

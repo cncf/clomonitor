@@ -25,7 +25,7 @@ pub enum CheckSet {
 }
 
 /// Linter configuration options.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct LintOptions {
     pub root: PathBuf,
     pub url: String,
@@ -34,14 +34,14 @@ pub struct LintOptions {
 }
 
 /// Services used by the linter to perform some of the checks.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct LintServices {
     pub http_client: reqwest::Client,
     pub http_client_gh: reqwest::Client,
 }
 
 /// Options used to setup the Github client.
-#[derive(Debug, Default)]
+#[derive(Debug, Clone, Default)]
 pub struct GithubOptions {
     pub token: String,
     pub api_url: Option<String>,
@@ -49,7 +49,7 @@ pub struct GithubOptions {
 
 impl LintServices {
     /// Create a new LintServices instance.
-    pub fn new(gh_opts: GithubOptions) -> Result<Self> {
+    pub fn new(gh_opts: &GithubOptions) -> Result<Self> {
         // Setup http client
         let http_client = reqwest::Client::new();
 
@@ -74,7 +74,7 @@ impl LintServices {
 }
 
 /// Linter report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Report {
     pub documentation: Documentation,
     pub license: License,
@@ -84,7 +84,7 @@ pub struct Report {
 }
 
 /// Documentation section of the report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Documentation {
     pub adopters: Option<CheckOutput>,
     pub changelog: Option<CheckOutput>,
@@ -98,7 +98,7 @@ pub struct Documentation {
 }
 
 /// License section of the report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct License {
     pub approved: Option<CheckOutput<bool>>,
     pub scanning: Option<CheckOutput>,
@@ -106,7 +106,7 @@ pub struct License {
 }
 
 /// BestPractices section of the report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BestPractices {
     pub artifacthub_badge: Option<CheckOutput>,
     pub cla: Option<CheckOutput>,
@@ -118,7 +118,7 @@ pub struct BestPractices {
 }
 
 /// Security section of the report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Security {
     pub binary_artifacts: Option<CheckOutput>,
     pub branch_protection: Option<CheckOutput>,
@@ -134,7 +134,7 @@ pub struct Security {
 }
 
 /// Legal section of the report.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Legal {
     pub trademark_disclaimer: Option<CheckOutput>,
 }
@@ -161,7 +161,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     let input = CheckInput {
         opts,
         svc,
-        cm_md: &cm_md,
+        cm_md: cm_md.as_ref(),
         gh_md: &gh_md,
         scorecard: &scorecard,
     };
@@ -174,9 +174,9 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
 
     // Run some sync checks
     let spdx_id = run_check(LICENSE_SPDX, license, &input);
-    let mut spdx_id_value: &Option<String> = &None;
+    let mut spdx_id_value: Option<String> = None;
     if let Some(r) = &spdx_id {
-        spdx_id_value = &r.value;
+        spdx_id_value = r.value.clone();
     }
 
     // Build report
@@ -235,7 +235,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
 
 /// Apply inter-checks exemptions.
 fn apply_exemptions(report: &mut Report) {
-    let passed = |o: &Option<CheckOutput>| -> bool {
+    let passed = |o: Option<&CheckOutput>| -> bool {
         match o {
             Some(o) => o.passed || o.exempt,
             None => false,
@@ -243,14 +243,14 @@ fn apply_exemptions(report: &mut Report) {
     };
 
     // CLA / DCO
-    if passed(&report.best_practices.cla) && !passed(&report.best_practices.dco) {
+    if passed(report.best_practices.cla.as_ref()) && !passed(report.best_practices.dco.as_ref()) {
         report.best_practices.dco = Some(CheckOutput {
             exempt: true,
             exemption_reason: Some("CLA check passed".to_string()),
             ..Default::default()
         });
     }
-    if passed(&report.best_practices.dco) && !passed(&report.best_practices.cla) {
+    if passed(report.best_practices.dco.as_ref()) && !passed(report.best_practices.cla.as_ref()) {
         report.best_practices.cla = Some(CheckOutput {
             exempt: true,
             exemption_reason: Some("DCO check passed".to_string()),

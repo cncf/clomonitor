@@ -25,17 +25,17 @@ pub(crate) mod patterns;
 pub(crate) mod scorecard;
 
 /// Input used by checks to perform their operations.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub(crate) struct CheckInput<'a> {
     pub opts: &'a LintOptions,
     pub svc: &'a LintServices,
-    pub cm_md: &'a Option<Metadata>,
+    pub cm_md: Option<&'a Metadata>,
     pub gh_md: &'a github::md::MdRepository,
     pub scorecard: &'a Scorecard,
 }
 
 /// Check output information.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct CheckOutput<T = ()> {
     pub passed: bool,
 
@@ -144,14 +144,14 @@ impl<T> CheckOutput<T> {
 
     /// Create a new CheckOutput instance from the Github url built using the
     /// path provided.
-    pub fn from_path(path: Option<PathBuf>, gh_md: &github::md::MdRepository) -> Self {
+    pub fn from_path(path: Option<&PathBuf>, gh_md: &github::md::MdRepository) -> Self {
         match path {
             Some(path) => {
                 let url = github::build_url(
-                    &path,
+                    path,
                     &gh_md.owner.login,
                     &gh_md.name,
-                    &github::default_branch(&gh_md.default_branch_ref),
+                    &github::default_branch(gh_md.default_branch_ref.as_ref()),
                 );
                 CheckOutput::from_url(Some(url))
             }
@@ -232,7 +232,7 @@ pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     Ok(CheckOutput::from_url(readme_capture(
         &input.opts.root,
-        vec![&*ARTIFACTHUB_URL],
+        &[&*ARTIFACTHUB_URL],
     )?))
 }
 
@@ -357,7 +357,7 @@ pub(crate) fn governance(input: &CheckInput) -> Result<CheckOutput> {
 /// License check.
 pub(crate) fn license(input: &CheckInput) -> Result<CheckOutput<String>> {
     // File in repo
-    if let Some(spdx_id) = license::detect(Globs {
+    if let Some(spdx_id) = license::detect(&Globs {
         root: &input.opts.root,
         patterns: &LICENSE_FILE,
         case_sensitive: true,
@@ -382,7 +382,7 @@ pub(crate) fn license(input: &CheckInput) -> Result<CheckOutput<String>> {
 
 /// Approved license check.
 pub(crate) fn license_approved(
-    spdx_id: &Option<String>,
+    spdx_id: Option<String>,
     input: &CheckInput,
 ) -> Option<CheckOutput<bool>> {
     if should_skip_check(LICENSE_APPROVED, &input.opts.check_sets) {
@@ -420,10 +420,7 @@ pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // Reference in README file
-    if let Some(url) = content::find(
-        readme_globs(&input.opts.root),
-        vec![&*FOSSA_URL, &*SNYK_URL],
-    )? {
+    if let Some(url) = content::find(&readme_globs(&input.opts.root), &[&*FOSSA_URL, &*SNYK_URL])? {
         return Ok(CheckOutput::from_url(Some(url)));
     };
 
@@ -449,7 +446,7 @@ pub(crate) fn openssf_badge(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     Ok(CheckOutput::from_url(readme_capture(
         &input.opts.root,
-        vec![&*OPENSSF_URL],
+        &[&*OPENSSF_URL],
     )?))
 }
 
@@ -474,8 +471,8 @@ pub(crate) fn roadmap(input: &CheckInput) -> Result<CheckOutput> {
 /// Readme check.
 pub(crate) fn readme(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo
-    if let Some(path) = path::find(readme_globs(&input.opts.root))? {
-        return Ok(CheckOutput::from_path(Some(path), input.gh_md));
+    if let Some(path) = path::find(&readme_globs(&input.opts.root))? {
+        return Ok(CheckOutput::from_path(Some(&path), input.gh_md));
     }
 
     Ok(false.into())
@@ -585,7 +582,7 @@ fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool {
 }
 
 /// Check if the repository is exempt from passing the provided check.
-fn find_exemption(check_id: &str, cm_md: &Option<Metadata>) -> Option<Exemption> {
+fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option<Exemption> {
     if let Some(exemption) = cm_md
         .as_ref()
         .and_then(|md| md.exemptions.as_ref())
@@ -611,12 +608,12 @@ fn find_file_or_reference(
     re: &RegexSet,
 ) -> Result<CheckOutput> {
     // File in repo
-    if let Some(path) = path::find(Globs {
+    if let Some(path) = path::find(&Globs {
         root: &input.opts.root,
         patterns,
         case_sensitive: false,
     })? {
-        return Ok(CheckOutput::from_path(Some(path), input.gh_md));
+        return Ok(CheckOutput::from_path(Some(&path), input.gh_md));
     }
 
     // Reference in README file
@@ -630,13 +627,13 @@ fn find_file_or_reference(
 /// Check if the README file content matches any of the regular expressions
 /// provided.
 fn readme_matches(root: &Path, re: &RegexSet) -> Result<bool> {
-    content::matches(readme_globs(root), re)
+    content::matches(&readme_globs(root), re)
 }
 
 /// Check if the README file content matches any of the regular expressions
 /// provided, returning the value from the first capture group.
-fn readme_capture(root: &Path, regexps: Vec<&Regex>) -> Result<Option<String>> {
-    content::find(readme_globs(root), regexps)
+fn readme_capture(root: &Path, regexps: &[&Regex]) -> Result<Option<String>> {
+    content::find(&readme_globs(root), regexps)
 }
 
 // Returns a Globs instance used to locate the README file.

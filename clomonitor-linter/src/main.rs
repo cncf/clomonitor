@@ -56,7 +56,7 @@ async fn main() -> Result<()> {
         check_sets: args.check_set.clone(),
         github_token: github_token.clone(),
     };
-    let svc = LintServices::new(GithubOptions {
+    let svc = LintServices::new(&GithubOptions {
         token: github_token,
         ..GithubOptions::default()
     })?;

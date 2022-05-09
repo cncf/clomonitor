@@ -15,7 +15,7 @@ use tracing::{debug, warn};
 use uuid::Uuid;
 
 /// A project's repository.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub(crate) struct Repository {
     repository_id: Uuid,
     url: String,
@@ -34,7 +34,7 @@ impl Repository {
     /// This involves cloning the repository, linting it and storing the results.
     pub(crate) async fn track(
         &self,
-        mut db: DbClient,
+        db: &mut DbClient,
         svc: &LintServices,
         github_token: String,
     ) -> Result<()> {
@@ -78,8 +78,9 @@ impl Repository {
 
         // Store tracking results in database
         let tx = db.transaction().await?;
-        self.store_report(&tx, &report, errors).await?;
-        self.update_score(&tx, &report).await?;
+        self.store_report(&tx, report.as_ref(), errors.as_ref())
+            .await?;
+        self.update_score(&tx, report.as_ref()).await?;
         self.update_project_score(&tx).await?;
         self.update_digest(&tx, &remote_digest).await?;
         tx.commit().await?;
@@ -126,8 +127,8 @@ impl Repository {
     async fn store_report(
         &self,
         tx: &Transaction<'_>,
-        report: &Option<Report>,
-        errors: Option<String>,
+        report: Option<&Report>,
+        errors: Option<&String>,
     ) -> Result<()> {
         match report {
             Some(report) => {
@@ -165,7 +166,7 @@ impl Repository {
     }
 
     /// Update repository's score based on the provided linter report.
-    async fn update_score(&self, tx: &Transaction<'_>, report: &Option<Report>) -> Result<()> {
+    async fn update_score(&self, tx: &Transaction<'_>, report: Option<&Report>) -> Result<()> {
         if let Some(report) = report {
             let score = score::calculate(report);
             tx.execute(
@@ -221,7 +222,7 @@ impl Repository {
 
         // Update project's score and rating
         if !repositories_scores.is_empty() {
-            let project_score = score::merge(repositories_scores);
+            let project_score = score::merge(&repositories_scores[..]);
             tx.execute(
                 "
             update project set
@@ -254,7 +255,7 @@ impl Repository {
 }
 
 /// Get all repositories available in the database.
-pub(crate) async fn get_all(db: DbClient) -> Result<Vec<Repository>, DbError> {
+pub(crate) async fn get_all(db: &DbClient) -> Result<Vec<Repository>, DbError> {
     debug!("getting repositories");
     let mut repositories: Vec<Repository> = Vec::new();
     let rows = db

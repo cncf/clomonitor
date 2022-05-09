@@ -8,7 +8,7 @@ use std::path::Path;
 pub(crate) const METADATA_FILE: &str = ".clomonitor.yml";
 
 /// CLOMonitor metadata.
-#[derive(Debug, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub(crate) struct Metadata {
     pub exemptions: Option<Vec<Exemption>>,
@@ -28,14 +28,14 @@ impl Metadata {
 }
 
 /// Metadata check exemption entry.
-#[derive(Debug, Deserialize, PartialEq, Clone)]
+#[derive(Debug, Clone, Deserialize, PartialEq)]
 pub(crate) struct Exemption {
     pub check: String,
     pub reason: String,
 }
 
 /// License scanning section of the metadata.
-#[derive(Debug, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Deserialize, PartialEq)]
 pub(crate) struct LicenseScanning {
     pub url: Option<String>,
 }

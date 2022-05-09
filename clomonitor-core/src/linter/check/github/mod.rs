@@ -15,7 +15,7 @@ type URI = String;
 type DateTime = String;
 
 /// Represents the GraphQL Github API metadata query.
-#[derive(GraphQLQuery)]
+#[derive(Debug, Clone, GraphQLQuery)]
 #[graphql(
     schema_path = "src/linter/check/github/github_schema.graphql",
     query_path = "src/linter/check/github/md.graphql",
@@ -36,7 +36,7 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
 
 /// Returns the default branch to use from the default branch reference
 /// provided.
-pub(crate) fn default_branch(r: &Option<md::MdRepositoryDefaultBranchRef>) -> String {
+pub(crate) fn default_branch(r: Option<&md::MdRepositoryDefaultBranchRef>) -> String {
     match r {
         Some(r) => r.name.clone(),
         None => "master".to_string(),

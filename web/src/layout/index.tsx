@@ -21,7 +21,7 @@ const Layout = (props: Props) => {
   return (
     <div className="h-100 d-flex flex-column">
       <Navbar setScrollPosition={props.setScrollPosition} />
-      <div className={styles.wrapper}>
+      <div className={`d-flex flex-column flex-grow-1 ${styles.wrapper}`}>
         <Outlet />
       </div>
       <Footer />

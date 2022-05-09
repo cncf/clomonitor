@@ -2,7 +2,7 @@ use crate::{config::*, linter::CheckOutput, linter::Report};
 use serde::{Deserialize, Serialize};
 
 /// Score information.
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Score {
     pub global: f64,
     pub global_weight: usize,
@@ -142,7 +142,7 @@ pub fn calculate(report: &Report) -> Score {
 }
 
 /// Merge the scores provided into a single score.
-pub fn merge(scores: Vec<Score>) -> Score {
+pub fn merge(scores: &[Score]) -> Score {
     // Sum all scores weights for each of the sections. We'll use them to
     // calculate the coefficient we'll apply to each of the scores.
     let mut global_weights_sum = 0;
@@ -151,7 +151,7 @@ pub fn merge(scores: Vec<Score>) -> Score {
     let mut best_practices_weights_sum = 0;
     let mut security_weights_sum = 0;
     let mut legal_weights_sum = 0;
-    for score in &scores {
+    for score in scores {
         global_weights_sum += score.global_weight;
         documentation_weights_sum += score.documentation_weight.unwrap_or_default();
         license_weights_sum += score.license_weight.unwrap_or_default();
@@ -506,7 +506,7 @@ mod tests {
     #[test]
     fn merge_scores() {
         assert_eq!(
-            merge(vec![
+            merge(&[
                 Score {
                     global: 100.0,
                     global_weight: 90,

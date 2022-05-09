@@ -48,7 +48,7 @@ async fn main() -> Result<()> {
     let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
 
     // Run tracker
-    tracker::run(cfg, db_pool).await?;
+    tracker::run(&cfg, &db_pool).await?;
 
     Ok(())
 }

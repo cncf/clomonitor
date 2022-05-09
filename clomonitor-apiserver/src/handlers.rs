@@ -91,7 +91,7 @@ pub(crate) async fn project(
 }
 
 /// Template for the report summary SVG image.
-#[derive(Template)]
+#[derive(Debug, Clone, Template)]
 #[template(path = "report-summary.svg")]
 pub(crate) struct ReportSummaryTemplate {
     pub score: Score,
@@ -150,7 +150,7 @@ pub(crate) async fn stats(
 ) -> impl IntoResponse {
     // Get stats from database
     let stats = db
-        .stats(params.get("foundation").map(|p| p.to_owned()))
+        .stats(params.get("foundation"))
         .await
         .map_err(internal_error)?;
 

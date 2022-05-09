@@ -7,7 +7,7 @@ use std::fs;
 /// matches any of the regular expressions given, returning the captured value
 /// when there is a match. This function expects that the regular expressions
 /// provided contain one capture group.
-pub(crate) fn find(globs: Globs, regexps: Vec<&Regex>) -> Result<Option<String>> {
+pub(crate) fn find(globs: &Globs, regexps: &[&Regex]) -> Result<Option<String>> {
     for path in path::matches(globs)?.iter() {
         if let Ok(content) = fs::read_to_string(path) {
             for re in regexps.iter() {
@@ -24,7 +24,7 @@ pub(crate) fn find(globs: Globs, regexps: Vec<&Regex>) -> Result<Option<String>>
 
 /// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given.
-pub(crate) fn matches(globs: Globs, re: &RegexSet) -> Result<bool> {
+pub(crate) fn matches(globs: &Globs, re: &RegexSet) -> Result<bool> {
     Ok(path::matches(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
             return re.is_match(&content);
@@ -60,12 +60,12 @@ mod tests {
     fn find_found() {
         assert_eq!(
             find(
-                Globs {
+                &Globs {
                     root: Path::new(TESTDATA_PATH),
                     patterns: &README_FILE,
                     case_sensitive: true,
                 },
-                vec![&*FOSSA_URL, &*SNYK_URL]
+                &[&*FOSSA_URL, &*SNYK_URL]
             )
             .unwrap()
             .unwrap(),
@@ -77,12 +77,12 @@ mod tests {
     fn find_not_found() {
         assert_eq!(
             find(
-                Globs {
+                &Globs {
                     root: Path::new(TESTDATA_PATH),
                     patterns: &README_FILE,
                     case_sensitive: true,
                 },
-                vec![&Regex::new("non-existing pattern").unwrap()]
+                &[&Regex::new("non-existing pattern").unwrap()]
             )
             .unwrap(),
             None
@@ -93,12 +93,12 @@ mod tests {
     fn find_file_not_found() {
         assert_eq!(
             find(
-                Globs {
+                &Globs {
                     root: Path::new(TESTDATA_PATH),
                     patterns: &["nonexisting"],
                     case_sensitive: true,
                 },
-                vec![&Regex::new("pattern").unwrap()]
+                &[&Regex::new("pattern").unwrap()]
             )
             .unwrap(),
             None
@@ -109,12 +109,12 @@ mod tests {
     fn find_invalid_glob_pattern() {
         assert!(matches!(
             find(
-                Globs {
+                &Globs {
                     root: Path::new(TESTDATA_PATH),
                     patterns: &["invalid***"],
                     case_sensitive: true,
                 },
-                vec![&Regex::new("pattern").unwrap()]
+                &[&Regex::new("pattern").unwrap()]
             ),
             Err(_)
         ));
@@ -123,7 +123,7 @@ mod tests {
     #[test]
     fn matches_match() {
         assert!(matches(
-            Globs {
+            &Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &README_FILE,
                 case_sensitive: true,
@@ -136,7 +136,7 @@ mod tests {
     #[test]
     fn matches_no_match() {
         assert!(!matches(
-            Globs {
+            &Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &README_FILE,
                 case_sensitive: true,
@@ -149,7 +149,7 @@ mod tests {
     #[test]
     fn matches_file_not_found() {
         assert!(!matches(
-            Globs {
+            &Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &["nonexisting"],
                 case_sensitive: true,
@@ -163,7 +163,7 @@ mod tests {
     fn matches_invalid_glob_pattern() {
         assert!(matches!(
             matches(
-                Globs {
+                &Globs {
                     root: Path::new(TESTDATA_PATH),
                     patterns: &["invalid***"],
                     case_sensitive: true,

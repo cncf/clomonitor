@@ -49,7 +49,7 @@ pub(crate) trait DB {
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)>;
 
     /// Get some general stats.
-    async fn stats(&self, foundation: Option<String>) -> Result<JsonString>;
+    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString>;
 }
 
 /// DB implementation backed by PostgreSQL.
@@ -161,7 +161,7 @@ impl DB for PgDB {
         Ok((count, projects))
     }
 
-    async fn stats(&self, foundation: Option<String>) -> Result<JsonString> {
+    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString> {
         let row = self
             .pool
             .get()
@@ -174,7 +174,7 @@ impl DB for PgDB {
 }
 
 /// Query input used when searching for projects.
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub(crate) struct SearchProjectsInput {
     pub limit: Option<usize>,
     pub offset: Option<usize>,

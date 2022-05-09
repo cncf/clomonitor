@@ -314,7 +314,7 @@ mod tests {
     async fn stats() {
         let mut db = MockDB::new();
         db.expect_stats()
-            .with(eq(Some(FOUNDATION.to_string())))
+            .withf(|v| v.as_deref() == Some(&FOUNDATION.to_string()))
             .times(1)
             .returning(|_| Box::pin(future::ready(Ok(r#"{"some": "stats"}"#.to_string()))));
 

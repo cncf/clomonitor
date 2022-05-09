@@ -6,7 +6,7 @@ use std::{
 };
 
 /// Glob matching configuration.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub(crate) struct Globs<'a> {
     pub root: &'a Path,
     pub patterns: &'a [&'a str],
@@ -14,14 +14,13 @@ pub(crate) struct Globs<'a> {
 }
 
 /// Find the first path that matches any of the globs provided.
-pub(crate) fn find(globs: Globs) -> Result<Option<PathBuf>> {
-    let root = globs.root.to_owned();
+pub(crate) fn find(globs: &Globs) -> Result<Option<PathBuf>> {
     match matches(globs)?.first() {
         Some(path) => Ok(Some(
-            if root.as_os_str() == OsStr::new(".") || root.as_os_str().is_empty() {
+            if globs.root.as_os_str() == OsStr::new(".") || globs.root.as_os_str().is_empty() {
                 path
             } else {
-                path.strip_prefix(root)?
+                path.strip_prefix(globs.root)?
             }
             .to_owned(),
         )),
@@ -30,7 +29,7 @@ pub(crate) fn find(globs: Globs) -> Result<Option<PathBuf>> {
 }
 
 /// Return all paths that match any of the globs provided.
-pub(crate) fn matches(globs: Globs) -> Result<Vec<PathBuf>, PatternError> {
+pub(crate) fn matches(globs: &Globs) -> Result<Vec<PathBuf>, PatternError> {
     let options = MatchOptions {
         case_sensitive: globs.case_sensitive,
         ..Default::default()
@@ -61,7 +60,7 @@ mod tests {
     #[test]
     fn find_existing_path() {
         assert_eq!(
-            find(Globs {
+            find(&Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &MAINTAINERS_FILE,
                 case_sensitive: false,
@@ -74,7 +73,7 @@ mod tests {
     #[test]
     fn find_non_existing_path() {
         assert_eq!(
-            find(Globs {
+            find(&Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &["nonexisting"],
                 case_sensitive: false,
@@ -87,7 +86,7 @@ mod tests {
     #[test]
     fn find_invalid_glob_pattern() {
         assert!(matches!(
-            find(Globs {
+            find(&Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &["invalid***"],
                 case_sensitive: false,
@@ -101,7 +100,7 @@ mod tests {
         let testdata = Path::new(TESTDATA_PATH);
 
         assert_eq!(
-            matches(Globs {
+            matches(&Globs {
                 root: testdata,
                 patterns: &MAINTAINERS_FILE,
                 case_sensitive: false,
@@ -116,7 +115,7 @@ mod tests {
         let testdata = Path::new(TESTDATA_PATH);
 
         assert_eq!(
-            matches(Globs {
+            matches(&Globs {
                 root: testdata,
                 patterns: &["OWNERS*"],
                 case_sensitive: true,
@@ -129,7 +128,7 @@ mod tests {
     #[test]
     fn matches_not_found() {
         assert_eq!(
-            matches(Globs {
+            matches(&Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &["nonexisting"],
                 case_sensitive: false,
@@ -142,7 +141,7 @@ mod tests {
     #[test]
     fn matches_invalid_glob_pattern() {
         assert!(matches!(
-            matches(Globs {
+            matches(&Globs {
                 root: Path::new(TESTDATA_PATH),
                 patterns: &["invalid***"],
                 case_sensitive: true,

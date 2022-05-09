@@ -16,7 +16,7 @@ use tracing::{debug, error, info};
 const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
 
 /// Track all repositories registered in the database.
-pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
+pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     info!("tracker started");
 
     // Setup lint services
@@ -24,10 +24,10 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
         token: cfg.get_string("creds.githubToken")?,
         ..GithubOptions::default()
     };
-    let svc = Arc::new(LintServices::new(gh_opts)?);
+    let svc = Arc::new(LintServices::new(&gh_opts)?);
 
     // Get repositories to process
-    let repositories = repository::get_all(db_pool.get().await?).await?;
+    let repositories = repository::get_all(&db_pool.get().await?).await?;
     if repositories.is_empty() {
         info!("no repositories found");
         info!("tracker finished");
@@ -38,13 +38,13 @@ pub(crate) async fn run(cfg: Config, db_pool: Pool) -> Result<()> {
     info!("tracking repositories");
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
-        let db = db_pool.get().await?;
+        let mut db = db_pool.get().await?;
         let svc = svc.clone();
         let github_token = cfg.get_string("creds.githubToken")?;
         futs.push(tokio::spawn(async move {
             if let Err(err) = timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(db, &svc, github_token),
+                repository.track(&mut db, &svc, github_token),
             )
             .await
             {

@@ -35,6 +35,7 @@ impl Scorecard {
 pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scorecard> {
     let output = Command::new("scorecard")
         .env("GITHUB_TOKEN", github_token)
+        .env_remove("GITHUB_REF")
         .arg(format!("--repo={repo_url}"))
         .arg("--format=json")
         .arg("--show-details")

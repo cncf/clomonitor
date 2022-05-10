@@ -8,10 +8,11 @@ COPY clomonitor-tracker clomonitor-tracker
 WORKDIR /clomonitor/clomonitor-tracker
 RUN cargo build --release
 
-# Build OpenSSF scorecard
-FROM golang:1.17-alpine3.15 AS scorecard
-RUN apk --no-cache add git
-RUN go get -u github.com/ossf/scorecard/v4
+# Get OpenSSF scorecard binary
+FROM alpine:3.15 AS scorecard
+WORKDIR /tmp
+RUN wget -O scorecard.tar.gz https://github.com/ossf/scorecard/releases/download/v4.2.0/scorecard_4.2.0_linux_amd64.tar.gz
+RUN tar xvfz scorecard.tar.gz
 
 # Final stage
 FROM alpine:3.15
@@ -19,4 +20,4 @@ RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser 
 USER clomonitor
 WORKDIR /home/clomonitor
 COPY --from=builder /clomonitor/clomonitor-tracker/target/release/clomonitor-tracker /usr/local/bin
-COPY --from=scorecard /go/bin/scorecard /usr/local/bin
+COPY --from=scorecard /tmp/scorecard-linux-amd64 /usr/local/bin/scorecard

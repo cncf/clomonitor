@@ -1,3 +1,4 @@
+use self::md::*;
 use super::patterns::GITHUB_REPO_URL;
 use anyhow::{format_err, Context, Result};
 use graphql_client::{GraphQLQuery, Response};
@@ -19,9 +20,30 @@ type DateTime = String;
 #[graphql(
     schema_path = "src/linter/check/github/github_schema.graphql",
     query_path = "src/linter/check/github/md.graphql",
-    response_derives = "Debug"
+    response_derives = "Debug, PartialEq"
 )]
 pub struct Md;
+
+impl MdRepository {
+    pub fn default() -> Self {
+        Self {
+            code_of_conduct: None,
+            default_branch_ref: Some(MdRepositoryDefaultBranchRef {
+                name: "master".to_string(),
+            }),
+            homepage_url: None,
+            license_info: None,
+            name: "".to_string(),
+            pull_requests: MdRepositoryPullRequests { nodes: None },
+            owner: MdRepositoryOwner {
+                login: "".to_string(),
+                on: MdRepositoryOwnerOn::Organization,
+            },
+            releases: MdRepositoryReleases { nodes: None },
+            security_policy_url: None,
+        }
+    }
+}
 
 /// Build a url from the path and metadata provided.
 pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> String {
@@ -36,7 +58,7 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
 
 /// Returns the default branch to use from the default branch reference
 /// provided.
-pub(crate) fn default_branch(r: Option<&md::MdRepositoryDefaultBranchRef>) -> String {
+pub(crate) fn default_branch(r: Option<&MdRepositoryDefaultBranchRef>) -> String {
     match r {
         Some(r) => r.name.clone(),
         None => "master".to_string(),
@@ -45,7 +67,7 @@ pub(crate) fn default_branch(r: Option<&md::MdRepositoryDefaultBranchRef>) -> St
 
 /// Check if the repo has a check in the latest merged PR that matches any of
 /// the regular expressions provided.
-pub(crate) fn has_check(gh_md: &md::MdRepository, re: &RegexSet) -> Result<bool> {
+pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
     // Get latest PR head commit from metadata
     let latest_pr_head_commit = gh_md
         .pull_requests
@@ -75,7 +97,7 @@ pub(crate) fn has_check(gh_md: &md::MdRepository, re: &RegexSet) -> Result<bool>
         return Ok(true);
     }
 
-    // Search in check runs name
+    // Search in check suites check runs name
     if let Some(true) = check_suites.map(|check_suites| {
         check_suites.iter().flatten().any(|check_suite| {
             if let Some(match_found) = check_suite
@@ -113,7 +135,7 @@ pub(crate) fn has_check(gh_md: &md::MdRepository, re: &RegexSet) -> Result<bool>
 pub(crate) async fn has_community_health_file(
     http_client: &reqwest::Client,
     file: &str,
-    gh_md: &md::MdRepository,
+    gh_md: &MdRepository,
 ) -> Result<Option<String>> {
     // Check if the file is in the repo
     let file_raw_url = format!(
@@ -139,7 +161,7 @@ pub(crate) async fn has_community_health_file(
 }
 
 /// Get the repository's latest release from the metadata provided.
-pub(crate) fn latest_release(gh_md: &md::MdRepository) -> Option<&md::MdRepositoryReleasesNodes> {
+pub(crate) fn latest_release(gh_md: &MdRepository) -> Option<&MdRepositoryReleasesNodes> {
     gh_md
         .releases
         .nodes
@@ -149,21 +171,18 @@ pub(crate) fn latest_release(gh_md: &md::MdRepository) -> Option<&md::MdReposito
 
 /// Check if the latest release description matches any of the regular
 /// expressions provided.
-pub(crate) fn latest_release_description_matches(
-    gh_md: &md::MdRepository,
-    re: &RegexSet,
-) -> Result<bool> {
+pub(crate) fn latest_release_description_matches(gh_md: &MdRepository, re: &RegexSet) -> bool {
     if let Some(description) = latest_release(gh_md).and_then(|r| r.description.as_ref()) {
-        return Ok(re.is_match(description));
+        return re.is_match(description);
     }
-    Ok(false)
+    false
 }
 
 /// Get repository's metadata from the Github GraphQL API.
 pub(crate) async fn metadata(
     http_client: &reqwest::Client,
     repo_url: &str,
-) -> Result<md::MdRepository> {
+) -> Result<MdRepository> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
 
     // Do request to GraphQL API
@@ -208,6 +227,154 @@ mod tests {
             build_url(Path::new("path/test.md"), "owner", "repo", "main"),
             "https://github.com/owner/repo/blob/main/path/test.md".to_string()
         );
+    }
+
+    #[test]
+    fn default_branch_some() {
+        let r = MdRepositoryDefaultBranchRef {
+            name: "main".to_string(),
+        };
+
+        assert_eq!(default_branch(Some(&r)), "main".to_string());
+    }
+
+    #[test]
+    fn default_branch_none() {
+        assert_eq!(default_branch(None), "master".to_string());
+    }
+
+    #[test]
+    fn has_check_in_check_suite_app_name() {
+        let gh_md = MdRepository {
+            pull_requests: MdRepositoryPullRequests {
+                nodes: Some(vec![Some(MdRepositoryPullRequestsNodes {
+                    commits: MdRepositoryPullRequestsNodesCommits {
+                        nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodes {
+                            commit: MdRepositoryPullRequestsNodesCommitsNodesCommit {
+                                check_suites: Some(
+                                    MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuites {
+                                        nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuitesNodes {
+                                            app: Some(MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuitesNodesApp {
+                                                name: "dco".to_string(),
+                                            }),
+                                            check_runs: None,
+                                        })]),
+                                    },
+                                ),
+                                status: None,
+                            },
+                        })]),
+                    },
+                })]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+    }
+
+    #[test]
+    fn has_check_in_check_suite_check_run_name() {
+        let gh_md = MdRepository {
+            pull_requests: MdRepositoryPullRequests {
+                nodes: Some(vec![Some(MdRepositoryPullRequestsNodes {
+                    commits: MdRepositoryPullRequestsNodesCommits {
+                        nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodes {
+                            commit: MdRepositoryPullRequestsNodesCommitsNodesCommit {
+                                check_suites: Some(
+                                    MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuites {
+                                        nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuitesNodes {
+                                            app: None,
+                                            check_runs: Some(MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuitesNodesCheckRuns {
+                                                nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodesCommitCheckSuitesNodesCheckRunsNodes {
+                                                    name: "dco".to_string(),
+                                                })]),
+                                            }),
+                                        })]),
+                                    },
+                                ),
+                                status: None,
+                            },
+                        })]),
+                    },
+                })]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+    }
+
+    #[test]
+    fn has_check_in_commit_status_context() {
+        let gh_md = MdRepository {
+            pull_requests: MdRepositoryPullRequests {
+                nodes: Some(vec![Some(MdRepositoryPullRequestsNodes {
+                    commits: MdRepositoryPullRequestsNodesCommits {
+                        nodes: Some(vec![Some(MdRepositoryPullRequestsNodesCommitsNodes {
+                            commit: MdRepositoryPullRequestsNodesCommitsNodesCommit {
+                                check_suites: None,
+                                status: Some(
+                                    MdRepositoryPullRequestsNodesCommitsNodesCommitStatus {
+                                        contexts: vec![MdRepositoryPullRequestsNodesCommitsNodesCommitStatusContexts {
+                                            context: "dco".to_string(),
+                                        }],
+                                    },
+                                ),
+                            },
+                        })]),
+                    },
+                })]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+    }
+
+    #[test]
+    fn latest_release_found() {
+        let gh_md = MdRepository {
+            releases: MdRepositoryReleases {
+                nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                    created_at: "created_at_date".to_string(),
+                    description: None,
+                    release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                    url: "release_url".to_string(),
+                })]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert_eq!(
+            latest_release(&gh_md),
+            gh_md.releases.nodes.as_ref().unwrap()[0].as_ref()
+        );
+    }
+
+    #[test]
+    fn latest_release_not_found() {
+        assert!(matches!(latest_release(&MdRepository::default()), None));
+    }
+
+    #[test]
+    fn latest_release_description_matches_match_found() {
+        let gh_md = MdRepository {
+            releases: MdRepositoryReleases {
+                nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                    created_at: "created_at_date".to_string(),
+                    description: Some("description".to_string()),
+                    release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                    url: "release_url".to_string(),
+                })]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert!(latest_release_description_matches(
+            &gh_md,
+            &RegexSet::new(["description"]).unwrap()
+        ));
     }
 
     #[test]

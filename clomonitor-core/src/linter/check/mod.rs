@@ -261,7 +261,7 @@ pub(crate) fn changelog(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // Reference in last release
-    if github::latest_release_description_matches(input.gh_md, &*CHANGELOG_IN_GH_RELEASE)? {
+    if github::latest_release_description_matches(input.gh_md, &*CHANGELOG_IN_GH_RELEASE) {
         return Ok(true.into());
     }
 
@@ -648,6 +648,8 @@ fn readme_globs(root: &Path) -> Globs {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::linter::check::scorecard::ScorecardCheckDocs;
+    use github::md::*;
 
     #[test]
     fn check_output_from_passed() {
@@ -684,6 +686,67 @@ mod tests {
     }
 
     #[test]
+    fn check_output_from_exemption() {
+        let exemption = Exemption {
+            check: "test".to_string(),
+            reason: "test".to_string(),
+        };
+
+        assert_eq!(
+            CheckOutput::<()>::from(exemption),
+            CheckOutput {
+                exempt: true,
+                exemption_reason: Some("test".to_string()),
+                ..Default::default()
+            }
+        );
+    }
+
+    #[test]
+    fn check_output_from_scorecard_check_passed() {
+        let sc_check = ScorecardCheck {
+            name: "Code-Review".to_string(),
+            reason: "reason".to_string(),
+            details: Some(vec!["details".to_string()]),
+            score: 8.0,
+            documentation: ScorecardCheckDocs {
+                url: "https://test.url".to_string(),
+            },
+        };
+
+        assert_eq!(
+            CheckOutput::<()>::from(&sc_check),
+            CheckOutput {
+                passed: true,
+                details: Some("# Code-Review OpenSSF Scorecard check\n\n**Score**: 8 (check passes with score >= 5)\n\n**Reason**: reason\n\n**Details**: \n\n>details\n\n**Please see the [check documentation](https://test.url) in the ossf/scorecard repository for more details**".to_string()),
+                ..Default::default()
+            }
+        );
+    }
+
+    #[test]
+    fn check_output_from_scorecard_check_not_passed() {
+        let sc_check = ScorecardCheck {
+            name: "Code-Review".to_string(),
+            reason: "reason".to_string(),
+            details: Some(vec!["details".to_string()]),
+            score: 4.0,
+            documentation: ScorecardCheckDocs {
+                url: "https://test.url".to_string(),
+            },
+        };
+
+        assert_eq!(
+            CheckOutput::<()>::from(&sc_check),
+            CheckOutput {
+                passed: false,
+                details: Some("# Code-Review OpenSSF Scorecard check\n\n**Score**: 4 (check passes with score >= 5)\n\n**Reason**: reason\n\n**Details**: \n\n>details\n\n**Please see the [check documentation](https://test.url) in the ossf/scorecard repository for more details**".to_string()),
+                ..Default::default()
+            }
+        );
+    }
+
+    #[test]
     fn check_output_from_url_some() {
         assert_eq!(
             CheckOutput::<()>::from_url(Some("url".to_string())),
@@ -699,6 +762,38 @@ mod tests {
     fn check_output_from_url_none() {
         assert_eq!(
             CheckOutput::<()>::from_url(None),
+            CheckOutput {
+                passed: false,
+                ..Default::default()
+            }
+        );
+    }
+
+    #[test]
+    fn check_output_from_path_some() {
+        let gh_md = MdRepository {
+            name: "repo".to_string(),
+            owner: MdRepositoryOwner {
+                login: "owner".to_string(),
+                on: MdRepositoryOwnerOn::Organization,
+            },
+            ..MdRepository::default()
+        };
+
+        assert_eq!(
+            CheckOutput::<()>::from_path(Some(&PathBuf::from("path")), &gh_md),
+            CheckOutput {
+                passed: true,
+                url: Some("https://github.com/owner/repo/blob/master/path".to_string()),
+                ..Default::default()
+            }
+        );
+    }
+
+    #[test]
+    fn check_output_from_path_none() {
+        assert_eq!(
+            CheckOutput::<()>::from_path(None, &MdRepository::default()),
             CheckOutput {
                 passed: false,
                 ..Default::default()

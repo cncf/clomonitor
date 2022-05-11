@@ -11,4 +11,5 @@ clap = { version = "3.1.15", features = ["derive"] }
 comfy-table = "5.0.1"
 clomonitor-core = { path = "../clomonitor-core" }
 openssl = { version = "0.10.39", features = ["vendored"] }
+serde_json = "1.0.80"
 tokio = { version = "1.17.0", features = ["macros", "process", "rt-multi-thread"] }

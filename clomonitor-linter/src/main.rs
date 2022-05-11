@@ -1,16 +1,23 @@
 use anyhow::{format_err, Result};
-use clap::Parser;
+use clap::{ArgEnum, Parser};
 use clomonitor_core::{
     linter::{lint, CheckSet, GithubOptions, LintOptions, LintServices},
     score,
 };
-use display::display;
+use serde_json::json;
 use std::{env, io, path::PathBuf};
 
-mod display;
+mod table;
 
 /// Environment variable containing Github token.
 const GITHUB_TOKEN: &str = "GITHUB_TOKEN";
+
+/// CLI output format options.
+#[derive(Debug, Clone, ArgEnum)]
+pub enum Format {
+    Json,
+    Table,
+}
 
 #[derive(Debug, Parser)]
 #[clap(
@@ -46,6 +53,10 @@ struct Args {
     /// Linter pass score
     #[clap(long, default_value = "75")]
     pass_score: f64,
+
+    /// Output format
+    #[clap(arg_enum, long, default_value = "table")]
+    format: Format,
 }
 
 #[tokio::main]
@@ -58,8 +69,7 @@ async fn main() -> Result<()> {
         Ok(token) => token,
     };
 
-    // Lint repository provided and display results
-    println!("\nRunning CLOMonitor linter...\n");
+    // Lint repository provided
     let opts = LintOptions {
         root: args.path.clone(),
         url: args.url.clone(),
@@ -72,5 +82,22 @@ async fn main() -> Result<()> {
     })?;
     let report = lint(&opts, &svc).await?;
     let score = score::calculate(&report);
-    display(&report, &score, &args, &mut io::stdout())
+
+    // Display results using the requested format
+    match args.format {
+        Format::Table => table::display(&report, &score, &args, &mut io::stdout())?,
+        Format::Json => {
+            let output = json!({
+                "report": report,
+                "score": score,
+            });
+            println!("{output}");
+        }
+    }
+
+    // Check if the linter succeeded according to the provided pass score
+    if score.global() < args.pass_score {
+        std::process::exit(1);
+    }
+    Ok(())
 }

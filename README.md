@@ -46,19 +46,18 @@ $ clomonitor-linter --help
 clomonitor-linter
 Checks repository to verify it meets certain project health best practices
 
-This tool uses the Github API for some checks. Please make sure you provide a Github token (with
-`public_repo` scope) by setting the `GITHUB_TOKEN` environment variable.
-
 USAGE:
-    clomonitor-linter [OPTIONS] --url <URL>
+    clomonitor-linter [OPTIONS] --path <PATH> --url <URL>
 
 OPTIONS:
         --check-set <CHECK_SET>      Sets of checks to run [default: code community] [possible
                                      values: code, code-lite, community, docs]
+        --format <FORMAT>            Output format [default: table] [possible values: json, table]
     -h, --help                       Print help information
-        --pass-score <PASS_SCORE>    Linter pass score [default: 80]
-        --path <PATH>                Repository root path [default: .]
-        --url <URL>                  Repository url [https://github.com/org/repo] (required for some
+        --pass-score <PASS_SCORE>    Linter pass score [default: 75]
+        --path <PATH>                Repository local path (used for checks that can be done
+                                     locally)
+        --url <URL>                  Repository url [https://github.com/org/repo] (used for some
                                      GitHub remote checks)
     -V, --version                    Print version information
 ```

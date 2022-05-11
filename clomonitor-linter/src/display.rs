@@ -202,7 +202,7 @@ pub(crate) fn display(
         ]);
     writeln!(w, "{}\n", checks_summary)?;
 
-    // Check if the linter succeeded acording to the provided pass score
+    // Check if the linter succeeded according to the provided pass score
     if score.global() >= args.pass_score {
         writeln!(
             w,
@@ -313,9 +313,11 @@ mod tests {
                     value: Some(true),
                     ..Default::default()
                 }),
-                scanning: Some(CheckOutput::from_url(Some(
-                    "https://license-scanning.url".to_string(),
-                ))),
+                scanning: Some(CheckOutput {
+                    passed: true,
+                    url: (Some("https://license-scanning.url".to_string())),
+                    ..CheckOutput::default()
+                }),
                 spdx_id: Some(Some("Apache-2.0".to_string()).into()),
             },
             best_practices: BestPractices {

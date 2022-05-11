@@ -18,14 +18,24 @@ const GITHUB_TOKEN: &str = "GITHUB_TOKEN";
     version,
     about = "Checks repository to verify it meets certain project health best practices
 
-This tool uses the Github GraphQL API for some checks, which requires authentication. Please make sure you provide a Github token (with `public_repo` scope) by setting the `GITHUB_TOKEN` environment variable."
+The CLOMonitor linter runs some checks on the repository provided and produces
+a report with the result. Some of the checks are done locally using the path
+provided and some remotely as they rely on external APIs. Only GitHub repos
+are supported at the moment. For more information about the checks, please see
+https://clomonitor.io/docs/topics/checks/. The exit code will be 0 if the
+linter runs successfully and the score is equal or higher than the pass score
+provided, or non-zero otherwise.
+
+This tool uses the Github GraphQL API for some checks, which requires
+authentication. Please make sure you provide a Github token (with public_repo
+scope) by setting the GITHUB_TOKEN environment variable."
 )]
 struct Args {
-    /// Repository root path
-    #[clap(long, parse(from_os_str), default_value = ".")]
+    /// Repository local path (used for checks that can be done locally)
+    #[clap(long, parse(from_os_str))]
     path: PathBuf,
 
-    /// Repository url [https://github.com/org/repo] (required for some GitHub remote checks)
+    /// Repository url [https://github.com/org/repo] (used for some GitHub remote checks)
     #[clap(long)]
     url: String,
 
@@ -34,7 +44,7 @@ struct Args {
     check_set: Vec<CheckSet>,
 
     /// Linter pass score
-    #[clap(long, default_value = "80")]
+    #[clap(long, default_value = "75")]
     pass_score: f64,
 }
 

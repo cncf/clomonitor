@@ -134,7 +134,7 @@ impl<T> From<&ScorecardCheck> for CheckOutput<T> {
 
 impl<T> CheckOutput<T> {
     /// Create a new CheckOutput instance from the url provided.
-    pub fn from_url(url: Option<String>) -> Self {
+    pub(crate) fn from_url(url: Option<String>) -> Self {
         Self {
             passed: url.is_some(),
             url,
@@ -144,7 +144,7 @@ impl<T> CheckOutput<T> {
 
     /// Create a new CheckOutput instance from the Github url built using the
     /// path provided.
-    pub fn from_path(path: Option<&PathBuf>, gh_md: &github::md::MdRepository) -> Self {
+    pub(crate) fn from_path(path: Option<&PathBuf>, gh_md: &github::md::MdRepository) -> Self {
         match path {
             Some(path) => {
                 let url = github::build_url(

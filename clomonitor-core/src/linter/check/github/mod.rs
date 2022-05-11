@@ -25,7 +25,8 @@ type DateTime = String;
 pub struct Md;
 
 impl MdRepository {
-    pub fn default() -> Self {
+    #[cfg(test)]
+    pub(crate) fn default() -> Self {
         Self {
             code_of_conduct: None,
             default_branch_ref: Some(MdRepositoryDefaultBranchRef {

@@ -1,5 +1,5 @@
 use crate::Args;
-use anyhow::{format_err, Result};
+use anyhow::Result;
 use clomonitor_core::{
     linter::{CheckOutput, Report},
     score::Score,
@@ -20,7 +20,7 @@ pub(crate) fn display(
     args: &Args,
     w: &mut impl io::Write,
 ) -> Result<()> {
-    writeln!(w, "CLOMonitor linter results\n")?;
+    writeln!(w, "\nCLOMonitor linter results\n")?;
 
     // Repository information
     let local_path = match fs::canonicalize(&args.path) {
@@ -209,7 +209,6 @@ pub(crate) fn display(
             "{SUCCESS_SYMBOL} Succeeded with a global score of {}\n",
             score.global().round()
         )?;
-        Ok(())
     } else {
         writeln!(
             w,
@@ -217,8 +216,9 @@ pub(crate) fn display(
             score.global().round(),
             args.pass_score
         )?;
-        Err(format_err!("pass score not reached"))
     }
+
+    Ok(())
 }
 
 /// Helper function to create a new table that will be forced to use a non-tty
@@ -283,7 +283,7 @@ fn cell_check<T>(output: &Option<CheckOutput<T>>) -> Cell {
 #[cfg(test)]
 mod tests {
     use super::display;
-    use crate::Args;
+    use crate::{Args, Format};
     use clomonitor_core::{
         linter::{
             BestPractices, CheckOutput, CheckSet, Documentation, Legal, License, Report, Security,
@@ -368,6 +368,7 @@ mod tests {
             url: "https://github.com/test-org/test-repo".to_string(),
             check_set: vec![CheckSet::Code, CheckSet::Community],
             pass_score: 80.0,
+            format: Format::Table,
         };
 
         // Display linter results using a vector as output

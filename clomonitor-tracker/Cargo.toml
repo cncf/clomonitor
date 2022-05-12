@@ -2,6 +2,7 @@
 name = "clomonitor-tracker"
 description = "A tool to run the CLOMonitor linter on multiple repositories"
 version = "0.6.0"
+license = "Apache-2.0"
 edition = "2021"
 rust-version = "1.58"
 

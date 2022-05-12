@@ -1,0 +1,20 @@
+[advisories]
+vulnerability = "warn"
+ignore = [
+    "RUSTSEC-2019-0036",
+    "RUSTSEC-2020-0036"
+]
+
+[bans]
+multiple-versions = "allow"
+
+[licenses]
+allow-osi-fsf-free = "both"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+required-git-spec = "tag"
+allow-git = [
+    "https://github.com/djc/askama.git",
+]

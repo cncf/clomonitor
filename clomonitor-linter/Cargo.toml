@@ -2,6 +2,7 @@
 name = "clomonitor-linter"
 description = "A tool to check repositories to verify they meet certain project health best practices"
 version = "0.6.0"
+license = "Apache-2.0"
 edition = "2021"
 rust-version = "1.58"
 

@@ -78,7 +78,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -117,11 +119,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          List of organizations using this project in production or at stages of testing
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            List of organizations using this project in production or at stages of testing
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#adopters"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -149,7 +207,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -202,11 +262,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          A curated, chronologically ordered list of notable changes for each version
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            A curated, chronologically ordered list of notable changes for each version
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#changelog"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -234,7 +350,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -272,11 +390,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            Adopt a code of conduct to define community standards, signal a welcoming and inclusive project, and outline procedures for handling abuse
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#code-of-conduct"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -304,7 +478,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -344,15 +520,71 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          A 
-                          <em>
-                            contributing
-                          </em>
-                           file in your repository provides potential project contributors with a short guide to how they can help with your project
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            A 
+                            <em>
+                              contributing
+                            </em>
+                             file in your repository provides potential project contributors with a short guide to how they can help with your project
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#contributing"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -380,7 +612,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -418,11 +652,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          Document that explains how the governance and committer process works in the repository
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            Document that explains how the governance and committer process works in the repository
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#governance"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -450,7 +740,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -488,15 +780,71 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          The 
-                          <em>
-                            maintainers
-                          </em>
-                           file contains a list of the current maintainers of the repository
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            The 
+                            <em>
+                              maintainers
+                            </em>
+                             file contains a list of the current maintainers of the repository
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#maintainers"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -524,7 +872,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -565,15 +915,71 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          The 
-                          <em>
-                            readme
-                          </em>
-                           file introduces and explains a project. It contains information that is commonly required to understand what the project is about
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            The 
+                            <em>
+                              readme
+                            </em>
+                             file introduces and explains a project. It contains information that is commonly required to understand what the project is about
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#readme"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -601,7 +1007,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -645,11 +1053,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            Defines a high-level overview of the project's goals and deliverables ideally presented on a timeline
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#roadmap"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -677,7 +1141,9 @@ exports[`Row creates snapshot 1`] = `
                   />
                 </svg>
               </td>
-              <td>
+              <td
+                class="pe-4"
+              >
                 <div
                   class="d-table w-100 contentCell"
                 >
@@ -715,11 +1181,67 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
                       >
-                        <span>
-                          A url that users can visit to learn more about your project
-                        </span>
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            A url that users can visit to learn more about your project
+                          </span>
+                        </div>
+                        <div
+                          class="text-nowrap ms-1"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100"
+                            href="/docs/topics/checks/#website"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-baseline"
+                            >
+                              <small
+                                class="d-flex flex-row align-items-center w-100"
+                              >
+                                <div>
+                                  [check docs
+                                </div>
+                                <svg
+                                  class="ms-1 extraMiniIcon"
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                  />
+                                  <polyline
+                                    points="15 3 21 3 21 9"
+                                  />
+                                  <line
+                                    x1="10"
+                                    x2="21"
+                                    y1="14"
+                                    y2="3"
+                                  />
+                                </svg>
+                                <div>
+                                  ]
+                                </div>
+                              </small>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

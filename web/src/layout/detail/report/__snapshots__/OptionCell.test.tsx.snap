@@ -25,7 +25,9 @@ exports[`OptionCell creates snapshot 1`] = `
             />
           </svg>
         </td>
-        <td>
+        <td
+          class="pe-4"
+        >
           <div
             class="d-table w-100 contentCell"
           >
@@ -64,11 +66,67 @@ exports[`OptionCell creates snapshot 1`] = `
                   </small>
                 </div>
                 <div
-                  class="d-none d-lg-block text-muted text-truncate w-100 legend"
+                  class="d-none d-lg-flex flex-row text-muted w-100 legend"
                 >
-                  <span>
-                    List of organizations using this project in production or at stages of testing
-                  </span>
+                  <div
+                    class="text-truncate"
+                  >
+                    <span>
+                      List of organizations using this project in production or at stages of testing
+                    </span>
+                  </div>
+                  <div
+                    class="text-nowrap ms-1"
+                  >
+                    <a
+                      aria-label="Open external link"
+                      class="link d-inline w-100"
+                      href="/docs/topics/checks/#adopters"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_blank"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <small
+                          class="d-flex flex-row align-items-center w-100"
+                        >
+                          <div>
+                            [check docs
+                          </div>
+                          <svg
+                            class="ms-1 extraMiniIcon"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                            />
+                            <polyline
+                              points="15 3 21 3 21 9"
+                            />
+                            <line
+                              x1="10"
+                              x2="21"
+                              y1="14"
+                              y2="3"
+                            />
+                          </svg>
+                          <div>
+                            ]
+                          </div>
+                        </small>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

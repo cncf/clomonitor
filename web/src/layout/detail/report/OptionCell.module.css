@@ -53,6 +53,12 @@
   font-size: 0.75rem;
 }
 
+.extraMiniIcon {
+  font-size: 0.6rem;
+  margin-bottom: -1px;
+  padding-right: 1px;
+}
+
 .infoIcon {
   font-size: 0.75rem;
   margin-top: -4px;

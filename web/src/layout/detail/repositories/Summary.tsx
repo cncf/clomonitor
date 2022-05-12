@@ -73,9 +73,9 @@ const Summary = (props: Props) => {
             return (
               <tr key={`summary_${repo.repository_id}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
-                  <div className="d-flex flex-row align-items-center">
+                  <div className="d-flex flex-row align-items-center px-2">
                     <button
-                      className={`btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 ${styles.repoBtn}`}
+                      className={`btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 ${styles.repoBtn}`}
                       onClick={() => goToAnchor(repo.name)}
                       aria-label={`Go from summary to section: ${repo.name}`}
                     >

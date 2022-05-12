@@ -102,10 +102,10 @@ describe('Row', () => {
       expect(screen.getByTestId('recommended-templates')).toHaveTextContent(
         'Recommended templates: template1.md and template2.md.'
       );
-      const links = screen.getAllByRole('link');
-      expect(links).toHaveLength(3);
-      expect(links[1]).toHaveProperty('href', 'http://template1.com/');
-      expect(links[2]).toHaveProperty('href', 'http://template2.com/');
+      const links = screen.getAllByRole('link', { name: /Recommended template/ });
+      expect(links).toHaveLength(2);
+      expect(links[0]).toHaveProperty('href', 'http://template1.com/');
+      expect(links[1]).toHaveProperty('href', 'http://template2.com/');
     });
   });
 });

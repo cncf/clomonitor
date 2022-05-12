@@ -12,10 +12,10 @@
 .miniBadge {
   background-color: var(--bs-white);
   border-color: var(--rm-secondary);
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   padding: 0.2em 0.5em;
   padding-top: 2px;
-  height: 15px;
+  height: 18px;
 }
 
 .symbol {

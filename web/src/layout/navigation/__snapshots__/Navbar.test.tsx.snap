@@ -28,9 +28,9 @@ exports[`Navbar creates snapshot 1`] = `
               />
             </a>
             <div
-              class="ms-1 badge rounded-0 text-uppercase badge alphaBadge"
+              class="ms-1 badge rounded-0 text-uppercase badge betaBadge"
             >
-              Alpha
+              Beta
             </div>
             <div
               class="d-flex d-md-none ms-auto position-relative"

@@ -22,7 +22,7 @@ const Navbar = (props: Props) => {
               <Link to="/" onClick={() => props.setScrollPosition(0)} className="cursorPointer">
                 <img className={styles.logo} alt="CLOMonitor logo" src={logo} />
               </Link>
-              <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge} alphaBadge`}>Alpha</div>
+              <div className={`ms-1 badge rounded-0 text-uppercase ${styles.badge} betaBadge`}>Beta</div>
               <MobileSettings />
             </div>
           </div>

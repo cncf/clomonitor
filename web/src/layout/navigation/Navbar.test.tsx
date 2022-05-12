@@ -31,7 +31,7 @@ describe('Navbar', () => {
       </Router>
     );
 
-    expect(screen.getByText('Alpha')).toBeInTheDocument();
+    expect(screen.getByText('Beta')).toBeInTheDocument();
     expect(screen.getByAltText('CLOMonitor logo')).toBeInTheDocument();
 
     const links = screen.getAllByRole('link');

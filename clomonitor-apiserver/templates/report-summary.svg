@@ -33,7 +33,7 @@
       font-weight: 300;
     }
 
-    .alpha {
+    .beta {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       font-size: 9px;
       font-weight: 400;
@@ -229,13 +229,13 @@
       x="155"
       y="-17px"
       height="12"
-      width="39"
+      width="32"
       fill="#fff"
       opacity="0.25"
     />
 
-    <g class="alpha" transform="translate(160, -8)">
-      <text>ALPHA</text>
+    <g class="beta" transform="translate(160, -8)">
+      <text>BETA</text>
     </g>
   </g>
 

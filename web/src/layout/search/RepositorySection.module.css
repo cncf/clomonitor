@@ -1,6 +1,7 @@
 .link {
   font-size: 0.8rem;
   max-width: 100%;
+  color: var(--color-font);
 }
 
 .icon {

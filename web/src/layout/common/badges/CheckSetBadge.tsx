@@ -13,7 +13,7 @@ const CheckSetBadge = (props: Props) => {
     <div className={`d-inline-flex ${props.className}`}>
       <div
         data-testid="repo-kind-badge"
-        className={`badge text-secondary border border-secondary rounded-0 position-relative text-uppercase ${styles.miniBadge} ${props.className}`}
+        className={`badge text-secondary border border-secondary rounded-0 position-relative text-uppercase ${styles.miniBadge}`}
       >
         <div className="d-flex flex-row align-items-center">
           {props.checkSets.map((k: CheckSet, index: number) => {

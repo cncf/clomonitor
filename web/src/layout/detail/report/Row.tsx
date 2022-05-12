@@ -105,7 +105,11 @@ const Row = (props: Props) => {
                   {props.recommendedTemplates.map((tmpl: RecommendedTemplate, index: number) => {
                     return (
                       <Fragment key={`${props.label}_tmpl_${index}`}>
-                        <ExternalLink href={tmpl.url} className="d-inline-block">
+                        <ExternalLink
+                          href={tmpl.url}
+                          className="d-inline-block"
+                          label={`Recommended template: ${tmpl.name}`}
+                        >
                           <div className="d-flex flex-row align-items-center">
                             <code className="text-muted fw-bold">{tmpl.name}</code>
                             <FiExternalLink className={`ms-1 ms-md-2 position-relative ${styles.extIcon}`} />

@@ -216,11 +216,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-go"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-go
               </button>
@@ -228,7 +228,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div
@@ -315,11 +315,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-javascript"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-javascript
               </button>
@@ -327,7 +327,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div
@@ -414,11 +414,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-csharp"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-csharp
               </button>
@@ -426,7 +426,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div
@@ -513,11 +513,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-python"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-python
               </button>
@@ -525,7 +525,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div
@@ -612,11 +612,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: spec"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 spec
               </button>
@@ -624,7 +624,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div
@@ -705,11 +705,11 @@ exports[`Summary creates snapshot 1`] = `
             class="align-middle repoCell darkBgCell"
           >
             <div
-              class="d-flex flex-row align-items-center"
+              class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-java"
-                class="btn btn-link text-dark text-truncate fw-bold px-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
               >
                 sdk-java
               </button>
@@ -717,7 +717,7 @@ exports[`Summary creates snapshot 1`] = `
                 class="d-inline-flex d-none d-xl-inline-flex"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge d-none d-xl-inline-flex"
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
                   data-testid="repo-kind-badge"
                 >
                   <div

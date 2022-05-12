@@ -89,7 +89,7 @@ describe('OptionCell', () => {
         </table>
       );
 
-      const link = screen.getByRole('link');
+      const link = screen.getByRole('link', { name: 'Checks reference documentation' });
       expect(link).toBeInTheDocument();
       expect(link).toHaveTextContent('Adopters');
       expect(link).toHaveProperty('target', '_blank');

@@ -101,6 +101,7 @@ export interface ReportOptionData {
   name: string;
   shortName?: string;
   legend: JSX.Element;
+  reference?: string;
 }
 
 export enum Foundation {

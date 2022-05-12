@@ -201,7 +201,7 @@ const OptionCell = (props: Props) => {
   return (
     <tr>
       <td className={`text-center ${styles.iconCell}`}>{getIconCheck()}</td>
-      <td>
+      <td className="pe-4">
         <div className={`d-table w-100 ${styles.contentCell}`}>
           <div className="d-flex flex-row align-items-baseline align-items-lg-center">
             <div className="text-muted me-2">{opt.icon}</div>
@@ -209,7 +209,11 @@ const OptionCell = (props: Props) => {
               <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
                 {!isUndefined(props.check.url) ? (
                   <div>
-                    <ExternalLink href={props.check.url} className="d-inline w-100">
+                    <ExternalLink
+                      href={props.check.url}
+                      className="d-inline w-100"
+                      label="Checks reference documentation"
+                    >
                       <div className="d-flex flex-row align-items-center w-100">
                         <small className="fw-bold text-truncate">{getCheckValue()}</small>
                         <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
@@ -222,7 +226,20 @@ const OptionCell = (props: Props) => {
                   </>
                 )}
               </div>
-              <div className={`d-none d-lg-block text-muted text-truncate w-100 ${styles.legend}`}>{opt.legend}</div>
+              <div className={`d-none d-lg-flex flex-row text-muted w-100 ${styles.legend}`}>
+                <div className="text-truncate">{opt.legend}</div>
+                {opt.reference && (
+                  <div className="text-nowrap ms-1">
+                    <ExternalLink href={opt.reference} className="d-inline w-100">
+                      <small className="d-flex flex-row align-items-center w-100">
+                        <div>[check docs</div>
+                        <FiExternalLink className={`ms-1 ${styles.extraMiniIcon}`} />
+                        <div>]</div>
+                      </small>
+                    </ExternalLink>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

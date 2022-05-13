@@ -13,13 +13,24 @@ use axum::{
     response::{self, IntoResponse},
 };
 use clomonitor_core::score::Score;
-use mime::APPLICATION_JSON;
+use config::Config;
+use mime::{APPLICATION_JSON, HTML, PNG};
 use serde_json::json;
-use std::{collections::HashMap, fmt::Display};
+use std::{collections::HashMap, fmt::Display, sync::Arc};
+use tera::{Context, Tera};
 use tracing::error;
 
 /// Header that indicates the number of items available for pagination purposes.
 pub const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
+
+/// Metadata used when rendering the index HTML document.
+pub const INDEX_META_TITLE: &str = "CLOMonitor";
+pub const INDEX_META_DESCRIPTION: &str = "CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet certain project health best practices.";
+pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
+
+/// Report summary image dimensions.
+pub const REPORT_SUMMARY_WIDTH: u32 = 900;
+pub const REPORT_SUMMARY_HEIGHT: u32 = 424;
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
@@ -69,6 +80,55 @@ pub(crate) async fn badge(
     })))
 }
 
+/// Handler that returns the index HTML document with some metadata embedded.
+pub(crate) async fn index(
+    Extension(cfg): Extension<Arc<Config>>,
+    Extension(tmpl): Extension<Arc<Tera>>,
+) -> impl IntoResponse {
+    let mut ctx = Context::new();
+    ctx.insert("title", INDEX_META_TITLE);
+    ctx.insert("description", INDEX_META_DESCRIPTION);
+    ctx.insert(
+        "image",
+        &format!(
+            "{}/static/media/clomonitor.png",
+            cfg.get_string("apiserver.baseURL")
+                .expect("baseURL not found"),
+        ),
+    );
+    (
+        [(CONTENT_TYPE, HTML.as_ref())],
+        tmpl.render("index.html", &ctx).map_err(internal_error),
+    )
+}
+
+/// Handler that returns the index HTML document with some project specific
+/// metadata embedded.
+pub(crate) async fn index_project(
+    Extension(cfg): Extension<Arc<Config>>,
+    Extension(tmpl): Extension<Arc<Tera>>,
+    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+) -> impl IntoResponse {
+    let mut ctx = Context::new();
+    ctx.insert("title", &project);
+    ctx.insert("description", INDEX_META_DESCRIPTION_PROJECT);
+    ctx.insert(
+        "image",
+        &format!(
+            "{}/projects/{}/{}/{}/report-summary.png",
+            cfg.get_string("apiserver.baseURL")
+                .expect("baseURL not found"),
+            &foundation,
+            &org,
+            &project
+        ),
+    );
+    (
+        [(CONTENT_TYPE, HTML.as_ref())],
+        tmpl.render("index.html", &ctx).map_err(internal_error),
+    )
+}
+
 /// Handler that returns the requested project.
 pub(crate) async fn project(
     Extension(db): Extension<DynDB>,
@@ -98,6 +158,49 @@ pub(crate) struct ReportSummaryTemplate {
     pub theme: String,
 }
 
+/// Handler that returns a PNG image with the project's report summary.
+pub(crate) async fn report_summary_png(
+    Extension(db): Extension<DynDB>,
+    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+) -> impl IntoResponse {
+    // Get project score from database
+    let score = db
+        .project_score(&foundation, &org, &project)
+        .await
+        .map_err(internal_error)?;
+    if score.is_none() {
+        return Err(StatusCode::NOT_FOUND);
+    }
+
+    // Render report summary SVG
+    let svg = ReportSummaryTemplate {
+        score: score.unwrap(),
+        theme: "light".to_string(),
+    }
+    .render()
+    .map_err(internal_error)?;
+
+    // Convert report summary SVG to PNG
+    let mut opt = usvg::Options::default();
+    opt.fontdb.load_system_fonts();
+    let rtree = usvg::Tree::from_data(svg.as_bytes(), &opt.to_ref()).map_err(internal_error)?;
+    let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT).unwrap();
+    resvg::render(
+        &rtree,
+        usvg::FitTo::Size(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT),
+        tiny_skia::Transform::default(),
+        pixmap.as_mut(),
+    )
+    .unwrap();
+    let png = pixmap.encode_png().map_err(internal_error)?;
+
+    let headers = [
+        (CACHE_CONTROL, "max-age=3600"),
+        (CONTENT_TYPE, PNG.as_ref()),
+    ];
+    Ok((headers, png))
+}
+
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
     Extension(db): Extension<DynDB>,
@@ -109,9 +212,6 @@ pub(crate) async fn report_summary_svg(
         .project_score(&foundation, &org, &project)
         .await
         .map_err(internal_error)?;
-    if score.is_none() {
-        return Err(StatusCode::NOT_FOUND);
-    }
 
     // Render report summary SVG and return it if the score was found
     match score {
@@ -123,7 +223,7 @@ pub(crate) async fn report_summary_svg(
             let headers = [(CACHE_CONTROL, "max-age=3600")];
             Ok((headers, ReportSummaryTemplate { score, theme }))
         }
-        _ => Err(StatusCode::NOT_FOUND),
+        None => Err(StatusCode::NOT_FOUND),
     }
 }
 

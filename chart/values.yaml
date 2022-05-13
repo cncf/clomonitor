@@ -41,6 +41,8 @@ dbmigrator:
 apiserver:
   # Address to listen on
   addr: 0.0.0.0:8000
+  # Base URL
+  baseURL: http://localhost:8000
   # Path with static assets
   staticPath: /home/clomonitor/web/build
   basicAuth:

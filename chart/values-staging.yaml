@@ -1,4 +1,5 @@
 apiserver:
+  baseURL: https://clomonitor.io
   ingress:
     annotations:
       kubernetes.io/ingress.class: alb

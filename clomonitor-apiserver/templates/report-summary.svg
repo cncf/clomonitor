@@ -152,7 +152,6 @@
 
     .chart-circle {
       fill: none;
-      stroke-dasharray: calc(251.42 + (251.42 * {{ score.global }} / 100));
       stroke-dashoffset: 251.42;
       transform: rotate(-90deg);
       transform-origin: 45px 45px;
@@ -252,13 +251,14 @@
   />
 
   <!-- Global -->
-
   <g transform="translate(23, 85)">
-    <circle class="circle" cx="45" cy="45" r="40" stroke-width="5" />
-    <circle class="chart-circle circle-{{ score.global|rating }}" cx="45" cy="45" r="40" stroke-width="5" />
+    <g>
+      <circle class="circle" cx="45" cy="45" r="40" stroke-width="5" />
+      <circle class="chart-circle circle-{{ score.global|rating }}" cx="45" cy="45" r="40" stroke-width="5" stroke-dasharray="{{ score.global|stroke }}" />
+    </g>
 
     <g class="global">
-      <text x="45" y="45" dominant-baseline="middle" alignment-baseline="central" text-anchor="middle" color="#38383f">{{ score.global|round }}</text>
+      <text x="45" y="57" text-anchor="middle" color="#38383f">{{ score.global|round }}</text>
     </g>
   </g>
 
@@ -293,7 +293,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.documentation|to_string }}</text>
+        <text x="150" y="13" text-anchor="middle">{{ score.documentation|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -347,7 +347,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.license|to_string }}</text>
+        <text x="150" y="13" text-anchor="middle">{{ score.license|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -404,7 +404,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.best_practices|to_string }}</text>
+        <text x="150" y="13" text-anchor="middle">{{ score.best_practices|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">
@@ -458,7 +458,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.security|to_string }}</text>
+        <text x="150" y="13" text-anchor="middle">{{ score.security|to_string }}</text>
       </g>
 
      <g transform="translate(175, 7)">
@@ -512,7 +512,7 @@
       />
 
       <g class="value">
-        <text x="150" y="10" dominant-baseline="middle" text-anchor="middle">{{ score.legal|to_string }}</text>
+        <text x="150" y="13" text-anchor="middle">{{ score.legal|to_string }}</text>
       </g>
 
       <g transform="translate(175, 7)">

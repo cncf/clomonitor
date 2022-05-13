@@ -9,7 +9,10 @@ ignore = [
 multiple-versions = "allow"
 
 [licenses]
-allow-osi-fsf-free = "both"
+allow-osi-fsf-free = "either"
+allow = [
+    "MPL-2.0",
+]
 
 [sources]
 unknown-registry = "deny"

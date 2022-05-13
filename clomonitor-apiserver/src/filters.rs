@@ -34,6 +34,11 @@ pub(crate) fn rs_section_score_width(score: &Option<f64>) -> askama::Result<f64>
     })
 }
 
+/// Template filter that return the stroke-dasharray for the global score.
+pub(crate) fn stroke(v: &f64) -> askama::Result<f64> {
+    Ok(251.42 + (251.42 * v / 100.0))
+}
+
 /// Template filter that returns the integer part of the rounded score value
 /// provided as a string. "n/a" is returned when the value is none.
 pub(crate) fn to_string(score: &Option<f64>) -> askama::Result<String> {

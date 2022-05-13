@@ -7,21 +7,13 @@ use axum::{
     Router,
 };
 use config::Config;
-use std::path::Path;
+use std::{path::Path, sync::Arc};
+use tera::Tera;
 use tower::ServiceBuilder;
-use tower_http::{
-    auth::RequireAuthorizationLayer,
-    services::{ServeDir, ServeFile},
-    trace::TraceLayer,
-};
+use tower_http::{auth::RequireAuthorizationLayer, services::ServeDir, trace::TraceLayer};
 
 /// Setup API server router.
-pub(crate) fn setup(cfg: &Config, db: DynDB) -> Result<Router> {
-    // Setup some paths
-    let static_path = cfg.get_string("apiserver.staticPath")?;
-    let index_path = Path::new(&static_path).join("index.html");
-    let docs_path = Path::new(&static_path).join("docs");
-
+pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
     // Setup error handler
     let error_handler = |err: std::io::Error| async move {
         (
@@ -30,33 +22,42 @@ pub(crate) fn setup(cfg: &Config, db: DynDB) -> Result<Router> {
         )
     };
 
+    // Setup some paths
+    let static_path = cfg.get_string("apiserver.staticPath")?;
+    let index_path = Path::new(&static_path).join("index.html");
+    let docs_path = Path::new(&static_path).join("docs");
+
+    // Setup templates
+    let mut tmpl = Tera::default();
+    tmpl.autoescape_on(vec![]);
+    tmpl.add_template_file(index_path, Some("index.html"))?;
+    let tmpl = Arc::new(tmpl);
+
+    // Setup API routes
+    #[rustfmt::skip]
+    let api_routes = Router::new()
+        .route("/projects/search", post(search_projects))
+        .route("/projects/:foundation/:org/:project", get(project))
+        .route("/projects/:foundation/:org/:project/badge", get(badge))
+        .route("/projects/:foundation/:org/:project/report-summary", get(report_summary_svg))
+        .route("/stats", get(stats));
+
     // Setup router
+    #[rustfmt::skip]
     let mut router = Router::new()
-        .route("/api/projects/search", post(search_projects))
-        .route("/api/projects/:foundation/:org/:project", get(project))
-        .route("/api/projects/:foundation/:org/:project/badge", get(badge))
-        .route(
-            "/api/projects/:foundation/:org/:project/report-summary",
-            get(report_summary_svg),
-        )
-        .route("/api/stats", get(stats))
-        .route(
-            "/",
-            get_service(ServeFile::new(&index_path)).handle_error(error_handler),
-        )
-        .nest(
-            "/docs",
-            get_service(ServeDir::new(docs_path)).handle_error(error_handler),
-        )
-        .nest(
-            "/static",
-            get_service(ServeDir::new(static_path)).handle_error(error_handler),
-        )
-        .fallback(get_service(ServeFile::new(&index_path)).handle_error(error_handler))
+        .route("/", get(index))
+        .route("/projects/:foundation/:org/:project", get(index_project))
+        .route("/projects/:foundation/:org/:project/report-summary.png", get(report_summary_png))
+        .nest("/api", api_routes)
+        .nest("/docs", get_service(ServeDir::new(docs_path)).handle_error(error_handler))
+        .nest("/static", get_service(ServeDir::new(static_path)).handle_error(error_handler))
+        .fallback(get(index))
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
-                .layer(Extension(db)),
+                .layer(Extension(cfg.clone()))
+                .layer(Extension(db))
+                .layer(Extension(tmpl))
         );
 
     // Setup basic auth
@@ -85,6 +86,7 @@ mod tests {
     use mockall::predicate::*;
     use serde_json::json;
     use std::{fs, future, sync::Arc};
+    use tera::Context;
     use tower::ServiceExt;
 
     const TESTDATA_PATH: &str = "src/testdata";
@@ -155,6 +157,78 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn index() {
+        let response = setup_test_router(MockDB::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri("/")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            render_index(
+                INDEX_META_TITLE,
+                INDEX_META_DESCRIPTION,
+                "http://localhost:8000/static/media/clomonitor.png"
+            )
+        );
+    }
+
+    #[tokio::test]
+    async fn index_fallback() {
+        let response = setup_test_router(MockDB::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri("/not-found")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            render_index(
+                INDEX_META_TITLE,
+                INDEX_META_DESCRIPTION,
+                "http://localhost:8000/static/media/clomonitor.png"
+            )
+        );
+    }
+
+    #[tokio::test]
+    async fn index_project() {
+        let response = setup_test_router(MockDB::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!("/projects/{FOUNDATION}/{ORG}/{PROJECT}"))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            render_index(
+                PROJECT,
+                INDEX_META_DESCRIPTION_PROJECT,
+                "http://localhost:8000/projects/cncf/artifact-hub/artifact-hub/report-summary.png"
+            )
+        );
+    }
+
+    #[tokio::test]
     async fn project_found() {
         let mut db = MockDB::new();
         db.expect_project()
@@ -208,7 +282,31 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn report_summary_found() {
+    async fn report_summary_png_not_found() {
+        let mut db = MockDB::new();
+        db.expect_project_score()
+            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .times(1)
+            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/projects/{FOUNDATION}/{ORG}/{PROJECT}/report-summary.png"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    }
+
+    #[tokio::test]
+    async fn report_summary_svg_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
             .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
@@ -239,14 +337,14 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
-        let golden_path = "src/testdata/report-summary.golden";
+        let golden_path = "src/testdata/report-summary.golden.svg";
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
-        let golden = fs::read_to_string(golden_path).unwrap();
+        let golden = fs::read(golden_path).unwrap();
         assert_eq!(body, golden);
     }
 
     #[tokio::test]
-    async fn report_summary_not_found() {
+    async fn report_summary_svg_not_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
             .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
@@ -338,46 +436,6 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn index() {
-        let response = setup_test_router(MockDB::new())
-            .oneshot(
-                Request::builder()
-                    .method("GET")
-                    .uri("/")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-        assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
-            fs::read_to_string(Path::new(TESTDATA_PATH).join("index.html")).unwrap()
-        );
-    }
-
-    #[tokio::test]
-    async fn fallback_to_index() {
-        let response = setup_test_router(MockDB::new())
-            .oneshot(
-                Request::builder()
-                    .method("GET")
-                    .uri("/not-found")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-        assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
-            fs::read_to_string(Path::new(TESTDATA_PATH).join("index.html")).unwrap()
-        );
-    }
-
-    #[tokio::test]
     async fn static_content() {
         let response = setup_test_router(MockDB::new())
             .oneshot(
@@ -399,16 +457,27 @@ mod tests {
 
     fn setup_test_router(db: MockDB) -> Router {
         let cfg = setup_test_config();
-        setup(&cfg, Arc::new(db)).unwrap()
+        setup(Arc::new(cfg), Arc::new(db)).unwrap()
     }
 
     fn setup_test_config() -> Config {
         Config::builder()
+            .set_default("apiserver.baseURL", "http://localhost:8000")
+            .unwrap()
             .set_default("apiserver.staticPath", TESTDATA_PATH)
             .unwrap()
             .set_default("apiserver.basicAuth.enabled", false)
             .unwrap()
             .build()
             .unwrap()
+    }
+
+    fn render_index(title: &str, description: &str, image: &str) -> String {
+        let mut ctx = Context::new();
+        ctx.insert("title", title);
+        ctx.insert("description", description);
+        ctx.insert("image", image);
+        let input = fs::read_to_string(Path::new(TESTDATA_PATH).join("index.html")).unwrap();
+        Tera::one_off(&input, &ctx, false).unwrap()
     }
 }

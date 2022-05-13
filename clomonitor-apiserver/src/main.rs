@@ -39,9 +39,11 @@ async fn main() -> Result<()> {
     let cfg = Config::builder()
         .set_default("db.dbname", "clomonitor")?
         .set_default("apiserver.addr", "127.0.0.1:8000")?
+        .set_default("apiserver.baseURL", "http://localhost:8000")?
         .set_default("apiserver.basicAuth.enabled", false)?
         .add_source(File::from(args.config))
         .build()?;
+    let cfg = Arc::new(cfg);
 
     // Setup database
     let mut builder = SslConnector::builder(SslMethod::tls())?;
@@ -52,7 +54,7 @@ async fn main() -> Result<()> {
     let db = Arc::new(PgDB::new(pool));
 
     // Setup and launch HTTP server
-    let router = router::setup(&cfg, db)?;
+    let router = router::setup(cfg.clone(), db)?;
     let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
     info!("listening on {}", addr);
     axum::Server::bind(&addr)

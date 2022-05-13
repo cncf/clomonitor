@@ -26,7 +26,7 @@ RUN hugo
 
 # Final stage
 FROM alpine:3.15
-RUN apk --no-cache add ca-certificates terminus-font ttf-inconsolata ttf-dejavu font-bitstream-* font-noto font-noto-* ttf-font-awesome font-noto-extra && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
+RUN apk --no-cache add ca-certificates terminus-font ttf-inconsolata ttf-dejavu font-bitstream-type1 font-bitstream-speedo font-bitstream-75dpi font-bitstream-100dpi font-noto ttf-font-awesome font-noto-extra && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor
 COPY --from=builder /clomonitor/clomonitor-apiserver/target/release/clomonitor-apiserver /usr/local/bin

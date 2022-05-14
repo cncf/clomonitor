@@ -30,7 +30,7 @@ pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
 
 /// Report summary image dimensions.
 pub const REPORT_SUMMARY_WIDTH: u32 = 900;
-pub const REPORT_SUMMARY_HEIGHT: u32 = 424;
+pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(

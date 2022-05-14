@@ -1,8 +1,8 @@
 <svg
   class="{{ theme }}"
   width="450"
-  height="212"
-  viewBox="0 0 450 212"
+  height="235"
+  viewBox="0 0 450 235"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
 >
@@ -239,12 +239,12 @@
     x="0"
     y="50"
     class="bg"
-    height="160"
+    height="183"
     width="450"
   />
 
   <!-- Global -->
-  <g transform="translate(23, 85)">
+  <g transform="translate(23, 96)">
     <g>
       <circle class="circle" cx="45" cy="45" r="40" stroke-width="5" />
       <circle class="chart-circle circle-{{ score.global|rating }}" cx="45" cy="45" r="40" stroke-width="5" stroke-dasharray="{{ score.global|stroke }}" transform="rotate(-90 45 45)" />
@@ -257,7 +257,7 @@
 
   <!-- Documentation -->
 
-  <g transform="translate(135, 70)">
+  <g transform="translate(135, 80)">
     <g>
       <rect
         x="0"
@@ -311,7 +311,7 @@
 
   <!-- License -->
 
-  <g transform="translate(135, 95)">
+  <g transform="translate(135, 106)">
     <g>
       <rect
         x="0"
@@ -365,7 +365,7 @@
 
   <!-- Best practices -->
 
-  <g transform="translate(135, 120)">
+  <g transform="translate(135, 132)">
     <g>
       <rect
         x="0"
@@ -422,7 +422,7 @@
 
   <!-- Security -->
 
-  <g transform="translate(135, 145)">
+  <g transform="translate(135, 158)">
     <g>
       <rect
         x="0"
@@ -476,7 +476,7 @@
 
   <!-- Legal -->
 
-  <g transform="translate(135, 170)">
+  <g transform="translate(135, 184)">
     <g>
       <rect
         x="0"

@@ -134,7 +134,7 @@ const ReportSummaryModal = (props: Props) => {
           <label className={`text-primary text-uppercase fw-bold border-bottom mb-4 ${styles.label}`}>Preview</label>
 
           <div className={`mx-auto my-3 ${styles.imgWrapper}`}>
-            <img src={image} alt="CLOMonitor report summary" />
+            <img src={image} alt="CLOMonitor report summary" className="border" />
           </div>
         </div>
       </div>

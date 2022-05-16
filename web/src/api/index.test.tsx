@@ -86,7 +86,9 @@ describe('API', () => {
         });
 
         expect(fetchMock).toHaveBeenCalledTimes(1);
-        expect(fetchMock.mock.calls[0][0]).toEqual('/api/projects/search');
+        expect(fetchMock.mock.calls[0][0]).toEqual(
+          '/api/projects/search?limit=20&offset=0&sort_by=name&sort_direction=asc&maturity[0]=sandbox&maturity[1]=incubating'
+        );
         expect(response).toEqual(data);
       });
     });

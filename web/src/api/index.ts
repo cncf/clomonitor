@@ -2,7 +2,7 @@ import { isEmpty, isNull, isUndefined } from 'lodash';
 import isArray from 'lodash/isArray';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
-import { Error, ErrorKind, Project, ProjectDetail, SearchData, SearchQuery, Stats } from '../types';
+import { Error, ErrorKind, Project, ProjectDetail, SearchQuery, Stats } from '../types';
 
 interface FetchOptions {
   method: 'POST' | 'GET' | 'PUT' | 'DELETE' | 'HEAD';
@@ -116,33 +116,34 @@ class API_CLASS {
   }
 
   public searchProjects(query: SearchQuery): Promise<{ items: Project[]; 'Pagination-Total-Count': string }> {
-    let dataParams: SearchData = {
-      limit: query.limit,
-      offset: query.offset,
-      sort_by: query.sort_by || DEFAULT_SORT_BY,
-      sort_direction: query.sort_direction || DEFAULT_SORT_DIRECTION,
-    };
+    let q: string = `limit=${query.limit}&offset=${query.offset}&sort_by=${
+      query.sort_by || DEFAULT_SORT_BY
+    }&sort_direction=${query.sort_direction || DEFAULT_SORT_DIRECTION}`;
+
     if (query.text) {
-      dataParams['text'] = query.text;
+      q += `&text=${query.text}`;
     }
     if (query.accepted_from) {
-      dataParams['accepted_from'] = query.accepted_from;
+      q += `&accepted_from=${query.accepted_from}`;
     }
     if (query.accepted_to) {
-      dataParams['accepted_to'] = query.accepted_to;
+      q += `&accepted_to=${query.accepted_to}`;
     }
-    if (!isEmpty(query.filters)) {
-      dataParams = { ...dataParams, ...query.filters };
+    if (!isUndefined(query.filters) && !isEmpty(query.filters)) {
+      Object.keys(query.filters!).forEach((k: string) => {
+        query.filters![k].forEach((f: string, index: number) => {
+          q += `&${k}[${index}]=${f}`;
+        });
+      });
     }
     return this.apiFetch({
-      url: `${this.API_BASE_URL}/projects/search`,
+      url: `${this.API_BASE_URL}/projects/search?${q}`,
       headers: [this.HEADERS.pagination],
       opts: {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(dataParams),
       },
     });
   }

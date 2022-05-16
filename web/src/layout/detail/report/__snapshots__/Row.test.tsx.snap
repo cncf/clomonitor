@@ -142,7 +142,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -176,7 +176,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -285,7 +285,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -319,7 +319,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -413,7 +413,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -447,7 +447,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -547,7 +547,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -581,7 +581,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -675,7 +675,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -709,7 +709,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -807,7 +807,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -841,7 +841,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -942,7 +942,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -976,7 +976,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -1076,7 +1076,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -1110,7 +1110,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -1204,7 +1204,7 @@ exports[`Row creates snapshot 1`] = `
                             <div
                               class="d-flex flex-row align-items-baseline"
                             >
-                              <small
+                              <div
                                 class="d-flex flex-row align-items-center w-100"
                               >
                                 <div>
@@ -1238,7 +1238,7 @@ exports[`Row creates snapshot 1`] = `
                                 <div>
                                   ]
                                 </div>
-                              </small>
+                              </div>
                             </div>
                           </a>
                         </div>

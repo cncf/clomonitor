@@ -231,11 +231,11 @@ const OptionCell = (props: Props) => {
                 {opt.reference && (
                   <div className="text-nowrap ms-1">
                     <ExternalLink href={opt.reference} className="d-inline w-100">
-                      <small className="d-flex flex-row align-items-center w-100">
+                      <div className="d-flex flex-row align-items-center w-100">
                         <div>[check docs</div>
                         <FiExternalLink className={`ms-1 ${styles.extraMiniIcon}`} />
                         <div>]</div>
-                      </small>
+                      </div>
                     </ExternalLink>
                   </div>
                 )}

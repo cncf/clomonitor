@@ -357,6 +357,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                 >
                   <img
                     alt="CLOMonitor report summary"
+                    class="border"
                     src="http://localhost/api/projects/cncf/org/proj/report-summary?theme=light"
                   />
                 </div>

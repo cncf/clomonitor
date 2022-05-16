@@ -3,7 +3,7 @@ use anyhow::Result;
 use axum::{
     extract::Extension,
     http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
-    routing::{get, get_service, post},
+    routing::{get, get_service},
     Router,
 };
 use config::Config;
@@ -44,7 +44,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
 
     // Setup API routes
     let api_routes = Router::new()
-        .route("/projects/search", post(search_projects))
+        .route("/projects/search", get(search_projects))
         .route("/projects/:foundation/:org/:project", get(project))
         .route("/projects/:foundation/:org/:project/badge", get(badge))
         .route(
@@ -453,8 +453,14 @@ mod tests {
             .with(eq(SearchProjectsInput {
                 limit: Some(10),
                 offset: Some(1),
+                sort_by: Some("name".to_string()),
+                sort_direction: Some("asc".to_string()),
                 text: Some("hub".to_string()),
-                ..SearchProjectsInput::default()
+                foundation: Some(vec!["cncf".to_string()]),
+                maturity: Some(vec!["graduated".to_string(), "incubating".to_string()]),
+                rating: Some(vec!['a', 'b']),
+                accepted_from: Some("20200101".to_string()),
+                accepted_to: Some("20210101".to_string()),
             }))
             .times(1)
             .returning(|_| {
@@ -467,12 +473,9 @@ mod tests {
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
-                    .method("POST")
-                    .uri("/api/projects/search")
-                    .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
-                    .body(Body::from(
-                        json!({"limit": 10, "offset": 1, "text": "hub"}).to_string(),
-                    ))
+                    .method("GET")
+                    .uri("/api/projects/search?limit=10&offset=1&sort_by=name&sort_direction=asc&text=hub&foundation[0]=cncf&maturity[0]=graduated&maturity[1]=incubating&rating[0]=a&rating[1]=b&accepted_from=20200101&accepted_to=20210101")
+                    .body(Body::empty())
                     .unwrap(),
             )
             .await

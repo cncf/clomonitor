@@ -5,7 +5,7 @@ use askama_axum::Template;
 use axum::{
     body::Full,
     extract,
-    extract::{Extension, Query},
+    extract::{Extension, Query, RawQuery},
     http::{
         header::{CACHE_CONTROL, CONTENT_TYPE},
         Response, StatusCode,
@@ -254,9 +254,12 @@ pub(crate) async fn report_summary_svg(
 /// Handler that allows searching for projects.
 pub(crate) async fn search_projects(
     Extension(db): Extension<DynDB>,
-    extract::Json(input): extract::Json<SearchProjectsInput>,
+    RawQuery(query): RawQuery,
 ) -> impl IntoResponse {
     // Search projects in database
+    let query = query.unwrap_or_default();
+    let input: SearchProjectsInput =
+        serde_qs::from_str(&query).map_err(|_| StatusCode::BAD_REQUEST)?;
     let (count, projects) = db.search_projects(&input).await.map_err(internal_error)?;
 
     // Return search results as json

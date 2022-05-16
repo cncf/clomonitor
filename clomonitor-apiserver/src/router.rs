@@ -2,7 +2,7 @@ use crate::{db::DynDB, handlers::*};
 use anyhow::Result;
 use axum::{
     extract::Extension,
-    http::StatusCode,
+    http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
     routing::{get, get_service, post},
     Router,
 };
@@ -10,7 +10,16 @@ use config::Config;
 use std::{path::Path, sync::Arc};
 use tera::Tera;
 use tower::ServiceBuilder;
-use tower_http::{auth::RequireAuthorizationLayer, services::ServeDir, trace::TraceLayer};
+use tower_http::{
+    auth::RequireAuthorizationLayer, services::ServeDir, set_header::SetResponseHeader,
+    trace::TraceLayer,
+};
+
+/// Static files cache duration.
+pub const STATIC_CACHE_MAX_AGE: usize = 365 * 24 * 60 * 60;
+
+/// Documentation files cache duration.
+pub const DOCS_CACHE_MAX_AGE: usize = 300;
 
 /// Setup API server router.
 pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
@@ -34,30 +43,50 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
     let tmpl = Arc::new(tmpl);
 
     // Setup API routes
-    #[rustfmt::skip]
     let api_routes = Router::new()
         .route("/projects/search", post(search_projects))
         .route("/projects/:foundation/:org/:project", get(project))
         .route("/projects/:foundation/:org/:project/badge", get(badge))
-        .route("/projects/:foundation/:org/:project/report-summary", get(report_summary_svg))
+        .route(
+            "/projects/:foundation/:org/:project/report-summary",
+            get(report_summary_svg),
+        )
         .route("/stats", get(stats));
 
     // Setup router
-    #[rustfmt::skip]
     let mut router = Router::new()
         .route("/", get(index))
         .route("/projects/:foundation/:org/:project", get(index_project))
-        .route("/projects/:foundation/:org/:project/report-summary.png", get(report_summary_png))
+        .route(
+            "/projects/:foundation/:org/:project/report-summary.png",
+            get(report_summary_png),
+        )
         .nest("/api", api_routes)
-        .nest("/docs", get_service(ServeDir::new(docs_path)).handle_error(error_handler))
-        .nest("/static", get_service(ServeDir::new(static_path)).handle_error(error_handler))
+        .nest(
+            "/docs",
+            get_service(SetResponseHeader::overriding(
+                ServeDir::new(docs_path),
+                CACHE_CONTROL,
+                HeaderValue::try_from(format!("max-age={}", DOCS_CACHE_MAX_AGE))?,
+            ))
+            .handle_error(error_handler),
+        )
+        .nest(
+            "/static",
+            get_service(SetResponseHeader::overriding(
+                ServeDir::new(static_path),
+                CACHE_CONTROL,
+                HeaderValue::try_from(format!("max-age={}", STATIC_CACHE_MAX_AGE))?,
+            ))
+            .handle_error(error_handler),
+        )
         .fallback(get(index))
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
                 .layer(Extension(cfg.clone()))
                 .layer(Extension(db))
-                .layer(Extension(tmpl))
+                .layer(Extension(tmpl)),
         );
 
     // Setup basic auth
@@ -82,7 +111,7 @@ mod tests {
         },
     };
     use clomonitor_core::score::Score;
-    use mime::APPLICATION_JSON;
+    use mime::{APPLICATION_JSON, HTML};
     use mockall::predicate::*;
     use serde_json::json;
     use std::{fs, future, sync::Arc};
@@ -116,6 +145,10 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DEFAULT_API_MAX_AGE)
+        );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
@@ -157,6 +190,30 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn docs_files() {
+        let response = setup_test_router(MockDB::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri("/docs/topics.html")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DOCS_CACHE_MAX_AGE)
+        );
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            fs::read_to_string(Path::new(TESTDATA_PATH).join("docs").join("topics.html")).unwrap()
+        );
+    }
+
+    #[tokio::test]
     async fn index() {
         let response = setup_test_router(MockDB::new())
             .oneshot(
@@ -170,6 +227,11 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+        );
+        assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             render_index(
@@ -195,6 +257,11 @@ mod tests {
 
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+        );
+        assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
+        assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             render_index(
                 INDEX_META_TITLE,
@@ -218,6 +285,11 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+        );
+        assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             render_index(
@@ -252,6 +324,10 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DEFAULT_API_MAX_AGE)
+        );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
@@ -335,7 +411,10 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
-        assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DEFAULT_API_MAX_AGE)
+        );
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
         let golden_path = "src/testdata/report-summary.golden.svg";
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
@@ -400,11 +479,39 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DEFAULT_API_MAX_AGE)
+        );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(response.headers()[PAGINATION_TOTAL_COUNT], "1");
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             r#"[{"project": "info"}]"#.to_string(),
+        );
+    }
+
+    #[tokio::test]
+    async fn static_files() {
+        let response = setup_test_router(MockDB::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri("/static/lib.js")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", STATIC_CACHE_MAX_AGE)
+        );
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            fs::read_to_string(Path::new(TESTDATA_PATH).join("lib.js")).unwrap()
         );
     }
 
@@ -428,30 +535,11 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             r#"{"some": "stats"}"#.to_string(),
-        );
-    }
-
-    #[tokio::test]
-    async fn static_content() {
-        let response = setup_test_router(MockDB::new())
-            .oneshot(
-                Request::builder()
-                    .method("GET")
-                    .uri("/static/lib.js")
-                    .body(Body::empty())
-                    .unwrap(),
-            )
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-        assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
-            fs::read_to_string(Path::new(TESTDATA_PATH).join("lib.js")).unwrap()
         );
     }
 

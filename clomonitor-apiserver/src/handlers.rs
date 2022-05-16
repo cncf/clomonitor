@@ -20,6 +20,12 @@ use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
 use tracing::error;
 
+/// Index HTML document cache duration.
+pub const INDEX_CACHE_MAX_AGE: usize = 300;
+
+/// Default cache duration for some API endpoints.
+pub const DEFAULT_API_MAX_AGE: usize = 300;
+
 /// Header that indicates the number of items available for pagination purposes.
 pub const PAGINATION_TOTAL_COUNT: &str = "pagination-total-count";
 
@@ -67,17 +73,21 @@ pub(crate) async fn badge(
     }
 
     // Return badge configuration as json
-    Ok(response::Json(json!({
-        "labelColor": "3F1D63",
-        "namedLogo": "cncf",
-        "logoColor": "BEB5C8",
-        "logoWidth": 10,
-        "label": "CLOMonitor Report",
-        "message": message,
-        "color": color,
-        "schemaVersion": 1,
-        "style": "flat"
-    })))
+    let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
+    Ok((
+        headers,
+        response::Json(json!({
+            "labelColor": "3F1D63",
+            "namedLogo": "cncf",
+            "logoColor": "BEB5C8",
+            "logoWidth": 10,
+            "label": "CLOMonitor Report",
+            "message": message,
+            "color": color,
+            "schemaVersion": 1,
+            "style": "flat"
+        })),
+    ))
 }
 
 /// Handler that returns the index HTML document with some metadata embedded.
@@ -96,8 +106,13 @@ pub(crate) async fn index(
                 .expect("baseURL not found"),
         ),
     );
+
+    let headers = [
+        (CACHE_CONTROL, format!("max-age={}", INDEX_CACHE_MAX_AGE)),
+        (CONTENT_TYPE, HTML.to_string()),
+    ];
     (
-        [(CONTENT_TYPE, HTML.as_ref())],
+        headers,
         tmpl.render("index.html", &ctx).map_err(internal_error),
     )
 }
@@ -123,8 +138,13 @@ pub(crate) async fn index_project(
             &project
         ),
     );
+
+    let headers = [
+        (CACHE_CONTROL, format!("max-age={}", INDEX_CACHE_MAX_AGE)),
+        (CONTENT_TYPE, HTML.to_string()),
+    ];
     (
-        [(CONTENT_TYPE, HTML.as_ref())],
+        headers,
         tmpl.render("index.html", &ctx).map_err(internal_error),
     )
 }
@@ -143,7 +163,10 @@ pub(crate) async fn project(
     // Return project information as json if found
     match project {
         Some(project) => {
-            let headers = [(CONTENT_TYPE, APPLICATION_JSON.as_ref())];
+            let headers = [
+                (CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE)),
+                (CONTENT_TYPE, APPLICATION_JSON.to_string()),
+            ];
             Ok((headers, project))
         }
         None => Err(StatusCode::NOT_FOUND),
@@ -196,8 +219,8 @@ pub(crate) async fn report_summary_png(
     let png = pixmap.encode_png().map_err(internal_error)?;
 
     let headers = [
-        (CACHE_CONTROL, "max-age=3600"),
-        (CONTENT_TYPE, PNG.as_ref()),
+        (CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE)),
+        (CONTENT_TYPE, PNG.to_string()),
     ];
     Ok((headers, png))
 }
@@ -221,7 +244,7 @@ pub(crate) async fn report_summary_svg(
                 Some(v) => v.to_owned(),
                 _ => "light".to_string(),
             };
-            let headers = [(CACHE_CONTROL, "max-age=3600")];
+            let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
             Ok((headers, ReportSummaryTemplate { score, theme }))
         }
         None => Err(StatusCode::NOT_FOUND),
@@ -238,6 +261,7 @@ pub(crate) async fn search_projects(
 
     // Return search results as json
     Response::builder()
+        .header(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .header(PAGINATION_TOTAL_COUNT, count.to_string())
         .body(Full::from(projects))
@@ -257,6 +281,7 @@ pub(crate) async fn stats(
 
     // Return stats as json
     Response::builder()
+        .header(CACHE_CONTROL, "max-age=3600")
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .body(Full::from(stats))
         .map_err(internal_error)

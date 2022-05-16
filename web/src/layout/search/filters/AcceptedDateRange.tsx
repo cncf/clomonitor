@@ -35,21 +35,6 @@ const AcceptedDateRange = (props: Props) => {
   const [firstValue, setFirstValue] = useState<number>(0);
   const [secondValue, setSecondValue] = useState<number>(0);
 
-  const calculateRange = () => {
-    const yearsNumber = moment().diff(INITIAL_DATE, 'years');
-    setMaxValue(yearsNumber);
-    setSecondValue(yearsNumber);
-    const visibleYears: Mark = {};
-    const allYears: string[] = [];
-    range(yearsNumber + 1).forEach((n: number) => {
-      const year = moment(INITIAL_DATE).add(n, 'y');
-      visibleYears[n.toString()] = year.format(n === 0 || n === yearsNumber ? 'YYYY' : "'YY");
-      allYears.push(year.format('YYYY'));
-    });
-    setMarks(visibleYears);
-    setYears(allYears);
-  };
-
   const getDate = (index: number, fromDate: boolean): string | undefined => {
     let year: string | undefined;
     if ((fromDate && index !== 0) || (!fromDate && index !== maxValue)) {
@@ -62,7 +47,7 @@ const AcceptedDateRange = (props: Props) => {
     if (isUndefined(value)) return fromDate ? 0 : maxValue;
     const year = moment(value).format('YYYY');
     const yearIndex = years.findIndex((y: string) => y === year);
-    if (yearIndex && yearIndex >= 0) {
+    if (yearIndex >= 0) {
       return yearIndex;
     } else {
       return fromDate ? 0 : maxValue;
@@ -88,8 +73,25 @@ const AcceptedDateRange = (props: Props) => {
   }, [effective]);
 
   useEffect(() => {
+    const calculateRange = () => {
+      const yearsNumber = moment().diff(INITIAL_DATE, 'years');
+      setMaxValue(yearsNumber);
+      if (isUndefined(props.acceptedTo)) {
+        setSecondValue(yearsNumber);
+      }
+      const visibleYears: Mark = {};
+      const allYears: string[] = [];
+      range(yearsNumber + 1).forEach((n: number) => {
+        const year = moment(INITIAL_DATE).add(n, 'y');
+        visibleYears[n.toString()] = year.format(n === 0 || n === yearsNumber ? 'YYYY' : "'YY");
+        allYears.push(year.format('YYYY'));
+      });
+      setMarks(visibleYears);
+      setYears(allYears);
+    };
+
     calculateRange();
-  }, []);
+  }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>

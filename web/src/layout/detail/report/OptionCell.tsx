@@ -203,7 +203,7 @@ const OptionCell = (props: Props) => {
       <td className={`text-center ${styles.iconCell}`}>{getIconCheck()}</td>
       <td className="pe-4">
         <div className={`d-table w-100 ${styles.contentCell}`}>
-          <div className="d-flex flex-row align-items-baseline align-items-lg-center">
+          <div className="d-flex flex-row align-items-baseline align-items-md-center">
             <div className="text-muted me-2">{opt.icon}</div>
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
               <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
@@ -226,11 +226,11 @@ const OptionCell = (props: Props) => {
                   </>
                 )}
               </div>
-              <div className={`d-none d-lg-flex flex-row text-muted w-100 ${styles.legend}`}>
+              <div className={`d-none d-md-flex flex-row text-muted w-100 ${styles.legend}`}>
                 <div className="text-truncate">{opt.legend}</div>
                 {opt.reference && (
-                  <div className="text-nowrap ms-1">
-                    <ExternalLink href={opt.reference} className="d-inline w-100">
+                  <div className="d-none d-lg-flex text-nowrap">
+                    <ExternalLink href={opt.reference} className="d-inline w-100 ms-1">
                       <div className="d-flex flex-row align-items-center w-100">
                         <div>[check docs</div>
                         <FiExternalLink className={`ms-1 ${styles.extraMiniIcon}`} />

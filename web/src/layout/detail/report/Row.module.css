@@ -43,10 +43,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .table {
-    max-width: 75%;
-  }
-
   .headerAnchor {
     top: -115px;
   }

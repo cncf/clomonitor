@@ -85,7 +85,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -119,7 +119,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -129,11 +129,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#adopters"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -214,7 +214,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -262,7 +262,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -272,11 +272,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#changelog"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -357,7 +357,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -390,7 +390,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -400,11 +400,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#code-of-conduct"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -485,7 +485,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -520,7 +520,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -534,11 +534,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#contributing"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -619,7 +619,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -652,7 +652,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -662,11 +662,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#governance"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -747,7 +747,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -780,7 +780,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -794,11 +794,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#maintainers"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -879,7 +879,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -915,7 +915,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -929,11 +929,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#readme"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -1014,7 +1014,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -1053,7 +1053,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -1063,11 +1063,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#roadmap"
                             rel="noopener noreferrer"
                             tabindex="-1"
@@ -1148,7 +1148,7 @@ exports[`Row creates snapshot 1`] = `
                   class="d-table w-100 contentCell"
                 >
                   <div
-                    class="d-flex flex-row align-items-baseline align-items-lg-center"
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
                       class="text-muted me-2"
@@ -1181,7 +1181,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-lg-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
                       >
                         <div
                           class="text-truncate"
@@ -1191,11 +1191,11 @@ exports[`Row creates snapshot 1`] = `
                           </span>
                         </div>
                         <div
-                          class="text-nowrap ms-1"
+                          class="d-none d-lg-flex text-nowrap"
                         >
                           <a
                             aria-label="Open external link"
-                            class="link d-inline w-100"
+                            class="link d-inline w-100 ms-1"
                             href="/docs/topics/checks/#website"
                             rel="noopener noreferrer"
                             tabindex="-1"

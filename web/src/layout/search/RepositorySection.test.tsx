@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import { CheckSet } from '../../types';
 import RepositorySection from './RepositorySection';
 
+const user = userEvent.setup({ delay: null });
+
 const defaultPropsOneRepo = {
   repositories: [
     {
@@ -62,7 +64,7 @@ describe('RepositorySection', () => {
 
   describe('Render', () => {
     it('renders with more than one repo', async () => {
-      jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(<RepositorySection {...defaultPropsRepos} />);
 
@@ -72,7 +74,7 @@ describe('RepositorySection', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      await userEvent.hover(content);
+      await user.hover(content);
 
       act(() => {
         jest.advanceTimersByTime(100);

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import DropdownOnHover from './DropdownOnHover';
 
 const onCloseMock = jest.fn();
+const user = userEvent.setup({ delay: null });
 
 describe('DropdownOnHover', () => {
   afterEach(() => {
@@ -32,7 +33,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('displays dropdown to enter on content and hides on leave', async () => {
-      jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(
         <DropdownOnHover linkContent="content">
@@ -44,7 +45,7 @@ describe('DropdownOnHover', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      await userEvent.hover(screen.getByText('content'));
+      await user.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -53,7 +54,7 @@ describe('DropdownOnHover', () => {
       expect(dropdown).toHaveClass('show');
       expect(screen.getByRole('complementary')).toHaveTextContent('children');
 
-      await userEvent.unhover(screen.getByText('content'));
+      await user.unhover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(50);
@@ -65,7 +66,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('renders correct styles when tooltipStyle is enabled', async () => {
-      jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(
         <DropdownOnHover linkContent="content" tooltipStyle>
@@ -76,7 +77,7 @@ describe('DropdownOnHover', () => {
       const dropdown = screen.getByRole('complementary');
       expect(dropdown).not.toHaveClass('show');
 
-      await userEvent.hover(screen.getByText('content'));
+      await user.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -86,7 +87,7 @@ describe('DropdownOnHover', () => {
       expect(screen.getByRole('complementary')).toHaveTextContent('children');
       expect(screen.getByTestId('dropdown-arrow')).toBeInTheDocument();
 
-      await userEvent.unhover(screen.getByText('content'));
+      await user.unhover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(50);
@@ -98,7 +99,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('hides dropdown to leave it', async () => {
-      jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(
         <DropdownOnHover linkContent="content">
@@ -108,9 +109,7 @@ describe('DropdownOnHover', () => {
 
       const dropdown = screen.getByRole('complementary');
 
-      await userEvent.hover(screen.getByText('content'));
-      await userEvent.hover(dropdown);
-      await userEvent.unhover(screen.getByText('content'));
+      await user.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -118,7 +117,7 @@ describe('DropdownOnHover', () => {
 
       expect(dropdown).toHaveClass('show');
 
-      await userEvent.unhover(dropdown);
+      await user.unhover(dropdown);
 
       act(() => {
         jest.advanceTimersByTime(50);
@@ -130,7 +129,7 @@ describe('DropdownOnHover', () => {
     });
 
     it('calls onClose when it is defined', async () => {
-      jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(
         <DropdownOnHover linkContent="content" onClose={onCloseMock}>
@@ -140,9 +139,7 @@ describe('DropdownOnHover', () => {
 
       const dropdown = screen.getByRole('complementary');
 
-      await userEvent.hover(screen.getByText('content'));
-      await userEvent.hover(dropdown);
-      await userEvent.unhover(screen.getByText('content'));
+      await user.hover(screen.getByText('content'));
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -150,7 +147,7 @@ describe('DropdownOnHover', () => {
 
       expect(dropdown).toHaveClass('show');
 
-      await userEvent.unhover(dropdown);
+      await user.unhover(dropdown);
 
       act(() => {
         jest.advanceTimersByTime(50);

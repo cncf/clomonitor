@@ -12,15 +12,11 @@ const defaultProps = {
   },
 };
 
-describe('OptionCell', () => {
-  beforeEach(() => {
-    jest.useFakeTimers('legacy');
-  });
+const user = userEvent.setup({ delay: null });
 
+describe('OptionCell', () => {
   afterEach(() => {
     jest.resetAllMocks();
-    jest.runOnlyPendingTimers();
-    jest.useRealTimers();
   });
 
   it('creates snapshot', () => {
@@ -98,7 +94,7 @@ describe('OptionCell', () => {
     });
 
     it('renders option with details', async () => {
-      // jest.useFakeTimers('legacy');
+      jest.useFakeTimers();
 
       render(
         <table>
@@ -124,7 +120,7 @@ describe('OptionCell', () => {
 
       expect(dropdown).not.toHaveClass('show');
 
-      await userEvent.hover(icons[0]);
+      await user.hover(icons[0]);
 
       act(() => {
         jest.advanceTimersByTime(100);
@@ -132,6 +128,8 @@ describe('OptionCell', () => {
 
       expect(dropdown).toHaveClass('show');
       expect(screen.getByText('markdown')).toBeInTheDocument();
+
+      jest.useRealTimers();
     });
 
     describe('passed', () => {
@@ -191,7 +189,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        // jest.useFakeTimers('legacy');
+        jest.useFakeTimers();
 
         render(
           <table>
@@ -209,14 +207,14 @@ describe('OptionCell', () => {
         );
 
         const icon = screen.getByTestId('elementWithTooltip');
-        await userEvent.hover(icon);
+        await user.hover(icon);
 
         expect(await screen.findByRole('tooltip')).toBeInTheDocument();
         expect(screen.getByText('This repository is exempt from passing this check')).toBeInTheDocument();
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        // jest.useRealTimers();
+        jest.useRealTimers();
       });
     });
 
@@ -244,7 +242,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        // jest.useFakeTimers('legacy');
+        jest.useFakeTimers();
 
         render(
           <table>
@@ -262,14 +260,14 @@ describe('OptionCell', () => {
         );
 
         const icon = screen.getByTestId('elementWithTooltip');
-        await userEvent.hover(icon);
+        await user.hover(icon);
 
         expect(await screen.findByRole('tooltip')).toBeInTheDocument();
         expect(screen.getByText('Something went wrong running this check')).toBeInTheDocument();
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        // jest.useRealTimers();
+        jest.useRealTimers();
       });
     });
   });

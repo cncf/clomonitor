@@ -3,6 +3,7 @@ use anyhow::Result;
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
+use metrics_exporter_prometheus::PrometheusBuilder;
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
 use std::net::SocketAddr;
@@ -14,6 +15,7 @@ use tracing::info;
 mod db;
 mod filters;
 mod handlers;
+mod middleware;
 mod router;
 
 #[derive(Debug, Parser)]
@@ -52,6 +54,9 @@ async fn main() -> Result<()> {
     let db_cfg: DbConfig = cfg.get("db").unwrap();
     let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
     let db = Arc::new(PgDB::new(pool));
+
+    // Setup and launch Prometheus exporter
+    PrometheusBuilder::new().install()?;
 
     // Setup and launch HTTP server
     let router = router::setup(cfg.clone(), db)?;

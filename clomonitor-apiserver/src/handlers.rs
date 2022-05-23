@@ -4,8 +4,7 @@ use anyhow::Error;
 use askama_axum::Template;
 use axum::{
     body::Full,
-    extract,
-    extract::{Extension, Query, RawQuery},
+    extract::{Extension, Path, Query, RawQuery},
     http::{
         header::{CACHE_CONTROL, CONTENT_TYPE},
         Response, StatusCode,
@@ -41,7 +40,7 @@ pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
     Extension(db): Extension<DynDB>,
-    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+    Path((foundation, org, project)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get project rating from database
     let rating = db
@@ -122,7 +121,7 @@ pub(crate) async fn index(
 pub(crate) async fn index_project(
     Extension(cfg): Extension<Arc<Config>>,
     Extension(tmpl): Extension<Arc<Tera>>,
-    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+    Path((foundation, org, project)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     let mut ctx = Context::new();
     ctx.insert("title", &project);
@@ -149,10 +148,10 @@ pub(crate) async fn index_project(
     )
 }
 
-/// Handler that returns the requested project.
+/// Handler that returns some information about the requested project.
 pub(crate) async fn project(
     Extension(db): Extension<DynDB>,
-    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+    Path((foundation, org, project)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get project from database
     let project = db
@@ -181,10 +180,17 @@ pub(crate) struct ReportSummaryTemplate {
     pub theme: String,
 }
 
+impl ReportSummaryTemplate {
+    fn new(score: Score, theme: Option<String>) -> Self {
+        let theme = theme.unwrap_or_else(|| "light".to_string());
+        Self { score, theme }
+    }
+}
+
 /// Handler that returns a PNG image with the project's report summary.
 pub(crate) async fn report_summary_png(
     Extension(db): Extension<DynDB>,
-    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+    Path((foundation, org, project)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get project score from database
     let score = db
@@ -196,12 +202,9 @@ pub(crate) async fn report_summary_png(
     }
 
     // Render report summary SVG
-    let svg = ReportSummaryTemplate {
-        score: score.unwrap(),
-        theme: "light".to_string(),
-    }
-    .render()
-    .map_err(internal_error)?;
+    let svg = ReportSummaryTemplate::new(score.unwrap(), None)
+        .render()
+        .map_err(internal_error)?;
 
     // Convert report summary SVG to PNG
     let mut opt = usvg::Options::default();
@@ -228,7 +231,7 @@ pub(crate) async fn report_summary_png(
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
     Extension(db): Extension<DynDB>,
-    extract::Path((foundation, org, project)): extract::Path<(String, String, String)>,
+    Path((foundation, org, project)): Path<(String, String, String)>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get project score from database
@@ -240,12 +243,9 @@ pub(crate) async fn report_summary_svg(
     // Render report summary SVG and return it if the score was found
     match score {
         Some(score) => {
-            let theme = match params.get("theme") {
-                Some(v) => v.to_owned(),
-                _ => "light".to_string(),
-            };
             let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
-            Ok((headers, ReportSummaryTemplate { score, theme }))
+            let theme = params.get("theme").cloned();
+            Ok((headers, ReportSummaryTemplate::new(score, theme)))
         }
         None => Err(StatusCode::NOT_FOUND),
     }

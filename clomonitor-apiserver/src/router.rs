@@ -1,8 +1,9 @@
-use crate::{db::DynDB, handlers::*};
+use crate::{db::DynDB, handlers::*, middleware::metrics_collector};
 use anyhow::Result;
 use axum::{
     extract::Extension,
     http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
+    middleware,
     routing::{get, get_service},
     Router,
 };
@@ -84,6 +85,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
+                .layer(middleware::from_fn(metrics_collector))
                 .layer(Extension(cfg.clone()))
                 .layer(Extension(db))
                 .layer(Extension(tmpl)),

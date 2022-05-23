@@ -8,6 +8,7 @@ import Footer from './navigation/Footer';
 import Navbar from './navigation/Navbar';
 
 interface Props {
+  invisibleFooter: boolean;
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
 }
 
@@ -24,7 +25,7 @@ const Layout = (props: Props) => {
       <div className={`d-flex flex-column flex-grow-1 ${styles.wrapper}`}>
         <Outlet />
       </div>
-      <Footer />
+      <Footer invisibleFooter={props.invisibleFooter} />
     </div>
   );
 };

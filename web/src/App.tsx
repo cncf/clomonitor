@@ -18,19 +18,29 @@ const ProjectsRedirection = () => {
 
 function App() {
   const [scrollPosition, setScrollPosition] = useState<undefined | number>(undefined);
+  const [invisibleFooter, setInvisibleFooter] = useState<boolean>(false);
 
   return (
     <AppContextProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout setScrollPosition={setScrollPosition} />}>
+          <Route path="/" element={<Layout invisibleFooter={invisibleFooter} setScrollPosition={setScrollPosition} />}>
             <Route path="/" element={<Navigate to="/search?page=1" replace />} />
             <Route
               path="search"
-              element={<Search scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} />}
+              element={
+                <Search
+                  scrollPosition={scrollPosition}
+                  setScrollPosition={setScrollPosition}
+                  setInvisibleFooter={setInvisibleFooter}
+                />
+              }
             />
             <Route path="projects/:org/:project" element={<ProjectsRedirection />} />
-            <Route path="projects/:foundation/:org/:project" element={<Detail />} />
+            <Route
+              path="projects/:foundation/:org/:project"
+              element={<Detail setInvisibleFooter={setInvisibleFooter} />}
+            />
             <Route path="stats" element={<StatsView />} />
             <Route path="*" element={<NotFound />} />
           </Route>

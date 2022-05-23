@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import moment from 'moment';
-import { useCallback, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { GoCalendar } from 'react-icons/go';
 import { GrPieChart } from 'react-icons/gr';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -26,7 +26,11 @@ import RepositorySection from '../search/RepositorySection';
 import styles from './Detail.module.css';
 import RepositoriesList from './repositories';
 
-const Detail = () => {
+interface Props {
+  setInvisibleFooter: Dispatch<SetStateAction<boolean>>;
+}
+
+const Detail = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentState = location.state as { currentSearch?: string };
@@ -64,20 +68,23 @@ const Detail = () => {
     async function fetchProjectDetail() {
       window.scrollTo(0, 0); // Go to top when a new project is fetched
       setIsLoadingProject(true);
+      props.setInvisibleFooter(true);
       try {
         const projectDetail = await API.getProjectDetail(org!, project!, foundation!);
         setDetail(projectDetail);
         updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
         setIsLoadingProject(false);
+        props.setInvisibleFooter(false);
       } catch (err: any) {
         setDetail(null);
         setIsLoadingProject(false);
+        props.setInvisibleFooter(false);
       }
     }
     if (!isUndefined(org) && !isUndefined(project)) {
       fetchProjectDetail();
     }
-  }, [org, project, foundation]);
+  }, [org, project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
@@ -97,7 +104,14 @@ const Detail = () => {
       )}
 
       <main className="container-lg flex-grow-1 mb-0 mb-md-4">
-        {isLoadingProject && <Loading transparentBg />}
+        {isLoadingProject && (
+          <Loading
+            className={classNames(styles.loading, {
+              [styles.loadingWithBackBar]: currentState && currentState.currentSearch,
+            })}
+            transparentBg
+          />
+        )}
 
         {!isUndefined(detail) && (
           <div

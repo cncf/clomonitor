@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -6,9 +7,13 @@ import logo from '../../media/clomonitor.svg';
 import ExternalLink from '../common/ExternalLink';
 import styles from './Footer.module.css';
 
-const Footer = () => {
+interface Props {
+  invisibleFooter: boolean;
+}
+
+const Footer = (props: Props) => {
   return (
-    <footer className={`py-5 ${styles.footer}`}>
+    <footer className={classNames('py-5', styles.footer, { [styles.invisibleFooter]: props.invisibleFooter })}>
       <div className="container-lg">
         <div className="d-flex flex-row flex-wrap align-items-stretch justify-content-between text-light">
           <div className={styles.footerCol}>

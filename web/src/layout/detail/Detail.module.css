@@ -44,7 +44,23 @@
   font-size: 0.75rem;
 }
 
+.loadingWithBackBar {
+  top: 139px !important;
+}
+
+.loading {
+  top: 93px;
+}
+
 @media only screen and (max-width: 575.98px) {
+  .loadingWithBackBar {
+    top: 151px !important;
+  }
+
+  .loading {
+    top: 112px;
+  }
+
   .title {
     font-size: 1.1rem;
   }

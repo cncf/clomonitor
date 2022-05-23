@@ -27,6 +27,14 @@ main {
   max-width: calc(100% - 200px - 1.5rem);
 }
 
+.loading {
+  top: 144px !important;
+}
+
+.loadingWithFilters {
+  top: 183px !important;
+}
+
 @media only screen and (min-width: 1400px) {
   .sidebar {
     width: 250px;
@@ -45,9 +53,31 @@ main {
   }
 }
 
+@media only screen and (max-width: 991.98px) {
+  .loading {
+    top: 128px !important;
+  }
+
+  .loadingWithFilters {
+    top: 167px !important;
+  }
+}
+
 @media only screen and (max-width: 767.98px) {
   .contentWrapper {
     width: 100%;
     max-width: 100%;
+  }
+
+  .loading,
+  .loadingWithFilters {
+    top: 160px !important;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .loading,
+  .loadingWithFilters {
+    top: 207px !important;
   }
 }

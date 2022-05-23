@@ -15,6 +15,7 @@ const getMockSearch = (fixtureId: string): { items: Project[]; 'Pagination-Total
 const defaultProps = {
   scrollPosition: 0,
   setScrollPosition: jest.fn(),
+  setInvisibleFooter: jest.fn(),
 };
 
 describe('Project detail index', () => {

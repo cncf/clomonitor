@@ -30,6 +30,7 @@ interface FiltersProp {
 
 interface Props {
   scrollPosition?: number;
+  setInvisibleFooter: Dispatch<SetStateAction<boolean>>;
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
 }
 
@@ -172,6 +173,7 @@ const Search = (props: Props) => {
 
     async function searchProjects() {
       setIsLoading(true);
+      props.setInvisibleFooter(true);
       try {
         const newSearchResults = await API.searchProjects({
           text: formattedParams.text,
@@ -189,12 +191,15 @@ const Search = (props: Props) => {
         // TODO - error
       } finally {
         setIsLoading(false);
+        props.setInvisibleFooter(false);
         // Update scroll position
         updateWindowScrollPosition(props.scrollPosition || 0);
       }
     }
     searchProjects();
   }, [searchParams, limit, sort.by, sort.direction]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  const visibleFiltersLabels = !isEmpty(filters) || !isUndefined(acceptedFrom) || !isUndefined(acceptedTo);
 
   return (
     <>
@@ -211,7 +216,7 @@ const Search = (props: Props) => {
                 closeButton={<>See {total} results</>}
                 leftButton={
                   <>
-                    {(!isEmpty(filters) || !isUndefined(acceptedFrom) || !isUndefined(acceptedTo)) && (
+                    {visibleFiltersLabels && (
                       <div className="d-flex align-items-center">
                         <IoMdCloseCircleOutline className={`text-dark ${styles.resetBtnDecorator}`} />
                         <button
@@ -272,7 +277,13 @@ const Search = (props: Props) => {
       </SubNavbar>
 
       <main role="main" className="container-lg flex-grow-1 mb-4 mb-md-5">
-        {isLoading && <Loading position="fixed" transparentBg />}
+        {isLoading && (
+          <Loading
+            className={visibleFiltersLabels ? styles.loadingWithFilters : styles.loading}
+            position="fixed"
+            transparentBg
+          />
+        )}
         <div
           className={classNames('h-100 position-relative d-flex flex-row align-items-start', {
             'opacity-75': isLoading,

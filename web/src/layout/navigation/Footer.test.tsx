@@ -3,6 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Footer from './Footer';
 
+const defaultProps = {
+  invisibleFooter: false,
+};
+
 describe('Footer', () => {
   afterEach(() => {
     jest.resetAllMocks();
@@ -11,7 +15,7 @@ describe('Footer', () => {
   it('creates snapshot', () => {
     const { asFragment } = render(
       <Router>
-        <Footer />
+        <Footer {...defaultProps} />
       </Router>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -20,7 +24,7 @@ describe('Footer', () => {
   it('renders proper content', () => {
     render(
       <Router>
-        <Footer />
+        <Footer {...defaultProps} />
       </Router>
     );
 
@@ -40,5 +44,15 @@ describe('Footer', () => {
     expect(links[2]).toHaveAttribute('href', 'https://github.com/cncf/clomonitor');
     expect(links[3]).toHaveTextContent('Apache License 2.0');
     expect(links[3]).toHaveAttribute('href', 'https://www.apache.org/licenses/LICENSE-2.0');
+  });
+
+  it('renders proper class when footer has to be invisible', () => {
+    render(
+      <Router>
+        <Footer {...defaultProps} invisibleFooter />
+      </Router>
+    );
+
+    expect(screen.getByRole('contentinfo')).toHaveClass('invisibleFooter');
   });
 });

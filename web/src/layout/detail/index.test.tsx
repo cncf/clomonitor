@@ -39,6 +39,10 @@ jest.mock('moment', () => ({
   }),
 }));
 
+const defaultProps = {
+  setInvisibleFooter: jest.fn(),
+};
+
 describe('Project detail index', () => {
   beforeEach(() => {
     jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ org: 'org', project: 'proj', foundation: 'cncf' });
@@ -55,7 +59,7 @@ describe('Project detail index', () => {
 
     const { asFragment } = render(
       <Router>
-        <Detail />
+        <Detail {...defaultProps} />
       </Router>
     );
 
@@ -72,7 +76,7 @@ describe('Project detail index', () => {
 
       render(
         <Router>
-          <Detail />
+          <Detail {...defaultProps} />
         </Router>
       );
 
@@ -108,7 +112,7 @@ describe('Project detail index', () => {
 
       render(
         <Router>
-          <Detail />
+          <Detail {...defaultProps} />
         </Router>
       );
 
@@ -131,7 +135,7 @@ describe('Project detail index', () => {
 
       render(
         <Router>
-          <Detail />
+          <Detail {...defaultProps} />
         </Router>
       );
 

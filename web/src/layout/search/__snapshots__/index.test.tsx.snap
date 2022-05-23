@@ -659,7 +659,7 @@ exports[`Project detail index creates snapshot 1`] = `
     role="main"
   >
     <div
-      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed wrapper transparentBg"
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed wrapper transparentBg loading"
     >
       <div
         class="d-flex flex-row align-items-center justify-content-center w-100 h-100"

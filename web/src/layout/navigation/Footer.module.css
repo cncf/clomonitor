@@ -14,6 +14,10 @@
   padding-right: 5rem;
 }
 
+.invisibleFooter {
+  opacity: 0;
+}
+
 @media only screen and (max-width: 991.98px) {
   .hexagon {
     font-size: 3rem;

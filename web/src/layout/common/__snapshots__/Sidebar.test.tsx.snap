@@ -62,7 +62,7 @@ exports[`Sidebar creates snapshot 1`] = `
           >
             <button
               aria-label="Close"
-              class="ms-auto btn btn-sm btn-outline-secondary text-uppercase"
+              class="ms-auto btn btn-sm btn-secondary rounded-0 lightText text-uppercase undefined"
               type="button"
             >
               Close

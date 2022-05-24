@@ -213,7 +213,19 @@ const Search = (props: Props) => {
                 wrapperClassName="d-inline-block px-4"
                 buttonType={`btn-primary btn-sm rounded-circle position-relative ${styles.btnMobileFilters}`}
                 buttonIcon={<FaFilter />}
-                closeButton={<>See {total} results</>}
+                closeButtonClassName={styles.closeSidebar}
+                closeButton={
+                  <>
+                    {isLoading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                        <span className="ms-2">Searching...</span>
+                      </>
+                    ) : (
+                      <>See {total} results</>
+                    )}
+                  </>
+                }
                 leftButton={
                   <>
                     {visibleFiltersLabels && (

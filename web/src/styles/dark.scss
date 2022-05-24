@@ -77,6 +77,32 @@
     border-color: var(--solid-border) !important;
   }
 
+  .btn--outline-primary {
+    border-color: var(--highlighted) !important;
+
+    &:hover,
+    &:disabled,
+    &.disabled,
+    &.active,
+    &:active,
+    &:focus {
+      border-color: var(--highlighted) !important;
+    }
+  }
+
+  .btn--outline-primary {
+    border-color: var(--rm-primary);
+
+    &:hover,
+    &:disabled,
+    &.disabled,
+    &.active,
+    &:active,
+    &:focus {
+      border-color: var(--rm-primary);
+    }
+  }
+
   .form-check-label:before,
   .form-control,
   input,

@@ -14,6 +14,7 @@ interface Props {
   buttonTitle?: string;
   buttonIcon?: JSX.Element;
   closeButton?: JSX.Element | string;
+  closeButtonClassName?: string;
   leftButton?: JSX.Element;
   className?: string;
   wrapperClassName?: string;
@@ -98,7 +99,7 @@ const Sidebar = (props: Props) => {
               {!isUndefined(props.leftButton) && <>{props.leftButton}</>}
               <button
                 type="button"
-                className="ms-auto btn btn-sm btn-outline-secondary text-uppercase"
+                className={`ms-auto btn btn-sm btn-secondary rounded-0 lightText text-uppercase ${props.closeButtonClassName}`}
                 onClick={() => openStatusChange(false)}
                 aria-label="Close"
               >

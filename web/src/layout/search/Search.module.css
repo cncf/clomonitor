@@ -15,6 +15,10 @@ main {
   width: 2rem;
 }
 
+.closeSidebar {
+  min-width: 135px;
+}
+
 .searchResults {
   font-size: 0.9rem;
 }

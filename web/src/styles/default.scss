@@ -163,6 +163,19 @@ a,
   }
 }
 
+.btn-outline-primary {
+  border-color: var(--rm-primary);
+
+  &:hover,
+  &:disabled,
+  &.disabled,
+  &.active,
+  &:active,
+  &:focus {
+    border-color: var(--rm-primary);
+  }
+}
+
 .btn-secondary {
   background-color: var(--rm-secondary);
   border-color: var(--rm-secondary);

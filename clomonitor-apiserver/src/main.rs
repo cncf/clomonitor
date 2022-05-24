@@ -58,7 +58,7 @@ async fn main() -> Result<()> {
     // Setup and launch Prometheus exporter
     PrometheusBuilder::new()
         .set_buckets_for_metric(
-            Matcher::Full("http_request_duration".to_string()),
+            Matcher::Full("clomonitor_apiserver_http_request_duration".to_string()),
             &[
                 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0,
             ],

@@ -11,11 +11,11 @@ clap = { version = "3.1.18", features = ["derive"] }
 git2 = "0.14.4"
 glob = "0.3.0"
 graphql_client = { version = "0.10.0", features = ["reqwest"] }
-http = "0.2.6"
+http = "0.2.7"
 lazy_static = "1.4.0"
-regex = "1.5.5"
+regex = "1.5.6"
 reqwest = "0.11.10"
-serde = { version = "1.0.136", features = ["derive"] }
+serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.81"
 serde_yaml = "0.8.24"
 time = { version = "0.3.9", features = ["parsing", "serde"] }

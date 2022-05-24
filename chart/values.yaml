@@ -30,6 +30,11 @@ db:
 creds:
   githubToken: null
 
+# Log configuration
+log:
+  # Output format [json|pretty]
+  format: json
+
 # Database migrator configuration
 dbmigrator:
   job:

@@ -11,7 +11,7 @@ anyhow = "1.0.57"
 askama = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 async-trait = "0.1.53"
-axum = "0.5.5"
+axum = "0.5.6"
 clap = { version = "3.1.18", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"

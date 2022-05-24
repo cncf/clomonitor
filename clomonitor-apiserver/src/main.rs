@@ -11,6 +11,7 @@ use std::path::PathBuf;
 use std::sync::Arc;
 use tokio::signal;
 use tracing::info;
+use tracing_subscriber::EnvFilter;
 
 mod db;
 mod filters;
@@ -30,13 +31,6 @@ struct Args {
 async fn main() -> Result<()> {
     let args = Args::parse();
 
-    // Setup logging
-    if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "clomonitor_apiserver=debug,tower_http=debug")
-    }
-    tracing_subscriber::fmt::init();
-    info!("apiserver started");
-
     // Setup configuration
     let cfg = Config::builder()
         .set_default("db.dbname", "clomonitor")?
@@ -46,6 +40,18 @@ async fn main() -> Result<()> {
         .add_source(File::from(args.config))
         .build()?;
     let cfg = Arc::new(cfg);
+
+    // Setup logging
+    if std::env::var_os("RUST_LOG").is_none() {
+        std::env::set_var("RUST_LOG", "clomonitor_apiserver=debug,tower_http=debug")
+    }
+    let s = tracing_subscriber::fmt().with_env_filter(EnvFilter::from_default_env());
+    match cfg.get_string("log.format").as_deref() {
+        Ok("json") => s.json().init(),
+        _ => s.init(),
+    };
+
+    info!("apiserver started");
 
     // Setup database
     let mut builder = SslConnector::builder(SslMethod::tls())?;

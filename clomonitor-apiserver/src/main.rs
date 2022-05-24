@@ -3,7 +3,7 @@ use anyhow::Result;
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
-use metrics_exporter_prometheus::PrometheusBuilder;
+use metrics_exporter_prometheus::{Matcher, PrometheusBuilder};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
 use std::net::SocketAddr;
@@ -56,7 +56,14 @@ async fn main() -> Result<()> {
     let db = Arc::new(PgDB::new(pool));
 
     // Setup and launch Prometheus exporter
-    PrometheusBuilder::new().install()?;
+    PrometheusBuilder::new()
+        .set_buckets_for_metric(
+            Matcher::Full("http_request_duration".to_string()),
+            &[
+                0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0,
+            ],
+        )?
+        .install()?;
 
     // Setup and launch HTTP server
     let router = router::setup(cfg.clone(), db)?;

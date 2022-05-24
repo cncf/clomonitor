@@ -11,7 +11,7 @@ anyhow = "1.0.57"
 askama = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 async-trait = "0.1.53"
-axum = "0.5.5"
+axum = "0.5.6"
 clap = { version = "3.1.18", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
@@ -22,9 +22,9 @@ metrics-exporter-prometheus = "0.9.0"
 mime = "0.3.16"
 openssl = { version = "0.10.40", features = ["vendored"] }
 postgres-openssl = "0.5.0"
-regex = "1.5.5"
+regex = "1.5.6"
 resvg = "0.22.0"
-serde = { version = "1.0.136", features = ["derive"] }
+serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.81"
 serde_qs = "0.9.2"
 tera = { version = "1.15.0", default-features = false }
@@ -39,4 +39,4 @@ usvg = "0.22.0"
 
 [dev-dependencies]
 hyper = "0.14.18"
-mockall = "0.11.0"
+mockall = "0.11.1"

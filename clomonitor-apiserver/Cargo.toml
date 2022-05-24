@@ -39,4 +39,4 @@ usvg = "0.22.0"
 
 [dev-dependencies]
 hyper = "0.14.18"
-mockall = "0.11.0"
+mockall = "0.11.1"

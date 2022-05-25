@@ -102,7 +102,7 @@ pub(crate) async fn index(
         &format!(
             "{}/static/media/clomonitor.png",
             cfg.get_string("apiserver.baseURL")
-                .expect("baseURL not found"),
+                .expect("base url not found"),
         ),
     );
 
@@ -131,7 +131,7 @@ pub(crate) async fn index_project(
         &format!(
             "{}/projects/{}/{}/{}/report-summary.png",
             cfg.get_string("apiserver.baseURL")
-                .expect("baseURL not found"),
+                .expect("base url not found"),
             &foundation,
             &org,
             &project

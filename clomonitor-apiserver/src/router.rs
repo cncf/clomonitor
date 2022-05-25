@@ -92,7 +92,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
         );
 
     // Setup basic auth
-    if cfg.get_bool("apiserver.basicAuth.enabled")? {
+    if cfg.get_bool("apiserver.basicAuth.enabled").unwrap_or(false) {
         let username = cfg.get_string("apiserver.basicAuth.username")?;
         let password = cfg.get_string("apiserver.basicAuth.password")?;
         router = router.layer(RequireAuthorizationLayer::basic(&username, &password));

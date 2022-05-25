@@ -1,5 +1,5 @@
 use crate::db::PgDB;
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
@@ -10,7 +10,7 @@ use std::net::SocketAddr;
 use std::path::PathBuf;
 use std::sync::Arc;
 use tokio::signal;
-use tracing::info;
+use tracing::{debug, info};
 use tracing_subscriber::EnvFilter;
 
 mod db;
@@ -33,12 +33,11 @@ async fn main() -> Result<()> {
 
     // Setup configuration
     let cfg = Config::builder()
-        .set_default("db.dbname", "clomonitor")?
         .set_default("apiserver.addr", "127.0.0.1:8000")?
-        .set_default("apiserver.baseURL", "http://localhost:8000")?
-        .set_default("apiserver.basicAuth.enabled", false)?
+        .set_default("apiserver.baseURL", "http://127.0.0.1:8000")?
         .add_source(File::from(args.config))
-        .build()?;
+        .build()
+        .context("error setting up configuration")?;
     let cfg = Arc::new(cfg);
 
     // Setup logging
@@ -51,17 +50,17 @@ async fn main() -> Result<()> {
         _ => s.init(),
     };
 
-    info!("apiserver started");
-
     // Setup database
+    debug!("setting up database");
     let mut builder = SslConnector::builder(SslMethod::tls())?;
     builder.set_verify(SslVerifyMode::NONE);
     let connector = MakeTlsConnector::new(builder.build());
-    let db_cfg: DbConfig = cfg.get("db").unwrap();
+    let db_cfg: DbConfig = cfg.get("db")?;
     let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
     let db = Arc::new(PgDB::new(pool));
 
     // Setup and launch Prometheus exporter
+    debug!("setting up prometheus exporter");
     PrometheusBuilder::new()
         .set_buckets_for_metric(
             Matcher::Full("clomonitor_apiserver_http_request_duration".to_string()),
@@ -71,17 +70,19 @@ async fn main() -> Result<()> {
         )?
         .install()?;
 
-    // Setup and launch HTTP server
+    // Setup and launch API HTTP server
+    debug!("setting up apiserver");
     let router = router::setup(cfg.clone(), db)?;
     let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
+    info!("apiserver started");
     info!("listening on {}", addr);
     axum::Server::bind(&addr)
         .serve(router.into_make_service())
         .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
-
     info!("apiserver stopped");
+
     Ok(())
 }
 
@@ -109,5 +110,5 @@ async fn shutdown_signal() {
         _ = ctrl_c => {},
         _ = terminate => {},
     }
-    info!("apiserver stopping...");
+    info!("apiserver stopping");
 }

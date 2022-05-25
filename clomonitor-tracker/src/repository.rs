@@ -11,7 +11,7 @@ use time::{Duration, OffsetDateTime};
 use tokio::process::Command;
 use tokio_postgres::types::Json;
 use tokio_postgres::Error as DbError;
-use tracing::{debug, warn};
+use tracing::{debug, instrument, warn};
 use uuid::Uuid;
 
 /// A project's repository.
@@ -25,13 +25,9 @@ pub(crate) struct Repository {
 }
 
 impl Repository {
-    /// Get repository's id.
-    pub(crate) fn id(&self) -> Uuid {
-        self.repository_id
-    }
-
     /// Track repository if it has changed since the last time it was tracked.
     /// This involves cloning the repository, linting it and storing the results.
+    #[instrument(fields(repository_id = %self.repository_id), skip_all, err)]
     pub(crate) async fn track(
         &self,
         db: &mut DbClient,
@@ -50,7 +46,7 @@ impl Repository {
             }
         }
 
-        debug!("tracking repository [id: {}]", self.repository_id);
+        debug!("started");
 
         // Clone repository
         let tmp_dir = Builder::new().prefix("clomonitor").tempdir()?;
@@ -67,10 +63,7 @@ impl Repository {
         let report = match lint(&opts, svc).await {
             Ok(report) => Some(report),
             Err(err) => {
-                warn!(
-                    "error linting repository [id: {}]: {:#}",
-                    self.repository_id, err
-                );
+                warn!("error linting repository: {:#}", err);
                 errors = Some(format!("error linting repository: {:#}", err));
                 None
             }
@@ -85,11 +78,7 @@ impl Repository {
         self.update_digest(&tx, &remote_digest).await?;
         tx.commit().await?;
 
-        debug!(
-            "repository tracked in {}s [id: {}]",
-            start.elapsed().as_secs(),
-            self.repository_id
-        );
+        debug!("completed in {}s", start.elapsed().as_secs());
         Ok(())
     }
 

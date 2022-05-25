@@ -1,10 +1,11 @@
-use anyhow::{format_err, Result};
+use anyhow::{format_err, Context, Result};
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
 use std::path::PathBuf;
+use tracing::debug;
 use tracing_subscriber::EnvFilter;
 use which::which;
 
@@ -25,10 +26,10 @@ async fn main() -> Result<()> {
 
     // Setup configuration
     let cfg = Config::builder()
-        .set_default("db.dbname", "clomonitor")?
         .set_default("tracker.concurrency", 10)?
         .add_source(File::from(args.config))
-        .build()?;
+        .build()
+        .context("error setting up configuration")?;
 
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
@@ -41,15 +42,17 @@ async fn main() -> Result<()> {
     };
 
     // Check if required external tools are available
+    debug!("checking required external tools");
     if which("git").is_err() {
         return Err(format_err!("git not found in PATH"));
     }
 
     // Setup database
+    debug!("setting up database");
     let mut builder = SslConnector::builder(SslMethod::tls())?;
     builder.set_verify(SslVerifyMode::NONE);
     let connector = MakeTlsConnector::new(builder.build());
-    let db_cfg: DbConfig = cfg.get("db").unwrap();
+    let db_cfg: DbConfig = cfg.get("db")?;
     let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
 
     // Run tracker

@@ -8,6 +8,7 @@
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "nth-check": "^2.0.1",
     "rc-slider": "^10.0.0-alpha.6",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.0",

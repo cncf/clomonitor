@@ -38,5 +38,5 @@ tracing-subscriber = { version = "0.3.11", features = ["env-filter", "json"] }
 usvg = "0.22.0"
 
 [dev-dependencies]
-hyper = "0.14.18"
+hyper = "0.14.19"
 mockall = "0.11.1"

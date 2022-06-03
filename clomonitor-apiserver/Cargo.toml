@@ -10,15 +10,15 @@ rust-version = "1.58"
 anyhow = "1.0.57"
 askama = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "ab39ced64e4a56b741ee32487d3340e008c7e4fb" }
-async-trait = "0.1.53"
+async-trait = "0.1.56"
 axum = "0.5.6"
 clap = { version = "3.1.18", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
 lazy_static = "1.4.0"
-metrics = "0.18.1"
-metrics-exporter-prometheus = "0.9.0"
+metrics = "0.19.0"
+metrics-exporter-prometheus = "0.10.0"
 mime = "0.3.16"
 openssl = { version = "0.10.40", features = ["vendored"] }
 postgres-openssl = "0.5.0"
@@ -38,5 +38,5 @@ tracing-subscriber = { version = "0.3.11", features = ["env-filter", "json"] }
 usvg = "0.22.0"
 
 [dev-dependencies]
-hyper = "0.14.18"
+hyper = "0.14.19"
 mockall = "0.11.1"

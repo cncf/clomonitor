@@ -58,3 +58,4 @@ repository_id;name;url;check_sets;project_id
 10000000-0000-0057-0000-000000000000;kedro-viz;https://github.com/kedro-org/kedro-viz;{code-lite};10000000-0025-0000-0000-000000000000
 10000000-0000-0058-0000-000000000000;openbytes-docs;https://github.com/Project-OpenBytes/OpenBytes;{docs};10000000-0032-0000-0000-000000000000
 10000000-0000-0059-0000-000000000000;rosaenlg-java;https://github.com/RosaeNLG/rosaenlg-java;{code-lite};10000000-0036-0000-0000-000000000000
+10000000-0000-0060-0000-000000000000;1chipML;https://github.com/1chipML/1chipML;{community, code};10000000-0037-0000-0000-000000000000

@@ -53,7 +53,7 @@ organization_id;name;home_url;logo_url;foundation
 00000052-0000-0000-0000-000000000000;chaos-blade;https://github.com/chaosblade-io/chaosblade;https://kubeovn.teststats.cncf.io/public/img/projects/chaosblade.svg;cncf
 00000053-0000-0000-0000-000000000000;chubao-fs;https://chubao.io/cgi-sys/suspendedpage.cgi;https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg;cncf
 00000054-0000-0000-0000-000000000000;cloud-custodian;https://cloudcustodian.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudcustodian/icon/color/cloudcustodian-icon-color.svg;cncf
-00000055-0000-0000-0000-000000000000;cni-genie;https://github.com/cni-genie/CNI-Genie;https://kubeovn.teststats.cncf.io/public/img/projects/cni.svg;cncf
+00000055-0000-0000-0000-000000000000;cni-genie;https://github.com/cni-genie/CNI-Genie;https://landscape.cncf.io/logos/cni-genie.svg;cncf
 00000056-0000-0000-0000-000000000000;curiefense;https://www.curiefense.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/curiefense/icon/color/curiefense-icon-color.svg;cncf
 00000057-0000-0000-0000-000000000000;dex;https://github.com/dexidp/dex;https://raw.githubusercontent.com/cncf/artwork/master/projects/dex/icon/color/dex-icon-color.svg;cncf
 00000058-0000-0000-0000-000000000000;fluid;http://pasa-bigdata.nju.edu.cn/fluid/index.html;https://raw.githubusercontent.com/cncf/artwork/master/projects/fluid/icon/color/fluid-icon-color.svg;cncf
@@ -114,3 +114,8 @@ organization_id;name;home_url;logo_url;foundation
 00000113-0000-0000-0000-000000000000;kube-rs;https://kube.rs;https://raw.githubusercontent.com/cncf/artwork/master/projects/kube-rs/icon/black/kube-rs-icon-black.svg;cncf
 00000114-0000-0000-0000-000000000000;kubedl;https://kubedl.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/kubedl/icon/color/kubedl-icon-color.svg;cncf
 00000115-0000-0000-0000-000000000000;openelb;https://openelb.github.io/;https://landscape.cncf.io/logos/open-elb.svg;cncf
+00000116-0000-0000-0000-000000000000;confidential-containers;https://github.com/confidential-containers;https://raw.githubusercontent.com/cncf/artwork/master/projects/confidential-containers/icon/color/confidential-containers-icon.svg;cncf
+00000117-0000-0000-0000-000000000000;openfunction;https://openfunction.dev;https://landscape.cncf.io/logos/open-function.svg;cncf
+00000118-0000-0000-0000-000000000000;sealer;http://sealer.cool;https://landscape.cncf.io/logos/sealer.svg;cncf
+00000119-0000-0000-0000-000000000000;teller;https://tlr.dev;https://landscape.cncf.io/logos/teller.svg;cncf
+00000120-0000-0000-0000-000000000000;fabedge;http://www.fabedge.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/fabedge/icon/color/fabedge-color.svg;cncf

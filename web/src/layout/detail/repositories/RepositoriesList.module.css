@@ -38,6 +38,12 @@
   font-size: 0.9rem;
 }
 
+.error {
+  background-color: var(--bg-code);
+  color: var(--color-font);
+  width: 100%;
+}
+
 .checkSetBadge {
   margin-top: 3px;
 }

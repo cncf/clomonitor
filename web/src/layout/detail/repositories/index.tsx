@@ -10,7 +10,6 @@ import { CATEGORY_ICONS } from '../../../data';
 import { CheckSet, Repository, ScoreType } from '../../../types';
 import sortRepos from '../../../utils/sortRepos';
 import CheckSetBadge from '../../common/badges/CheckSetBadge';
-import CodeBlock from '../../common/CodeBlock';
 import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
 import Row from '../report/Row';
@@ -144,13 +143,7 @@ const RepositoriesList = (props: Props) => {
                         Something went wrong processing this repository {moment.unix(repo.report.updated_at).fromNow()}
                       </span>
                     </div>
-                    <CodeBlock
-                      language="bash"
-                      content={repo.report.errors}
-                      withCopyBtn={false}
-                      style={{ maxHeight: '6rem' }}
-                      darkCode
-                    />
+                    <pre className={`d-block p-3 mb-0 w-100 overflow-auto ${styles.error}`}>{repo.report.errors}</pre>
                   </div>
                 </div>
               )}

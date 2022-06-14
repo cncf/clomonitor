@@ -1,9 +1,6 @@
 [advisories]
 vulnerability = "warn"
-ignore = [
-    "RUSTSEC-2019-0036",
-    "RUSTSEC-2020-0036"
-]
+ignore = []
 
 [bans]
 multiple-versions = "allow"
@@ -20,4 +17,5 @@ unknown-git = "deny"
 required-git-spec = "tag"
 allow-git = [
     "https://github.com/djc/askama.git",
+    "https://github.com/graphql-rust/graphql-client.git"
 ]

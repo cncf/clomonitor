@@ -11,6 +11,7 @@ RUN cargo build --release
 FROM alpine:3.15 AS scorecard
 WORKDIR /tmp
 RUN wget -O scorecard-linux-amd64 https://github.com/ossf/scorecard/releases/download/v4.4.0/scorecard-linux-amd64
+RUN chmod +x scorecard-linux-amd64
 
 # Final stage
 FROM alpine:3.15

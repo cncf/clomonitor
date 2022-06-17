@@ -3,12 +3,13 @@ import { groupBy, isEmpty, isNull, isNumber, isUndefined } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
 import { FOUNDATIONS } from '../../data';
-import { DistributionData, Foundation, RatingKind, Stats } from '../../types';
+import { DistributionData, Foundation, Maturity, Rating, RatingKind, Stats } from '../../types';
+import prepareQueryString from '../../utils/prepareQueryString';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import SubNavbar from '../navigation/SubNavbar';
@@ -16,18 +17,20 @@ import Average from './Average';
 import Checks from './Checks';
 import styles from './StatsView.module.css';
 
-interface Props {
-  hash?: string;
-}
-
 interface HeatMapData {
   name: string;
   data: number[];
 }
 
+interface SelectedPoint {
+  rating: string[];
+  maturity?: string[];
+}
+
 const FOUNDATION_QUERY = 'foundation';
 
-const StatsView = (props: Props) => {
+const StatsView = () => {
+  const navigate = useNavigate();
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,6 +40,7 @@ const StatsView = (props: Props) => {
   const [stats, setStats] = useState<Stats | null | undefined>();
   const [apiError, setApiError] = useState<string | null>(null);
   const selectedFoundation = searchParams.get(FOUNDATION_QUERY);
+  const [selectedPoint, setSelectedPoint] = useState<SelectedPoint | undefined>();
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -44,7 +48,12 @@ const StatsView = (props: Props) => {
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    setSearchParams(value !== '' ? { [FOUNDATION_QUERY]: value } : {});
+    if (value === '') {
+      searchParams.delete(FOUNDATION_QUERY);
+    } else {
+      searchParams.set(FOUNDATION_QUERY, value);
+    }
+    setSearchParams(searchParams);
   };
 
   const checkCurrentStats = (currentStats: Stats | null) => {
@@ -54,6 +63,19 @@ const StatsView = (props: Props) => {
       });
       setEmptyStats(!notEmptyItems);
     }
+  };
+
+  const loadSearchPage = (filters: SelectedPoint) => {
+    navigate({
+      pathname: '/search',
+      search: prepareQueryString({
+        filters: {
+          ...filters,
+          ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
+        },
+        pageNumber: 1,
+      }),
+    });
   };
 
   const getAreaChartConfig = (): ApexCharts.ApexOptions => {
@@ -153,12 +175,21 @@ const StatsView = (props: Props) => {
     };
   };
 
-  const getDonutChartConfig = (): ApexCharts.ApexOptions => {
+  const getDonutChartConfig = (maturityLevel?: string): ApexCharts.ApexOptions => {
     return {
       chart: {
+        id: `${maturityLevel || 'all'}Donut`,
         fontFamily: "'Lato', Roboto, 'Helvetica Neue', Arial, sans-serif !default",
         height: 250,
         type: 'donut',
+        events: {
+          dataPointSelection: (event: any, chartContext: any, config: any) => {
+            setSelectedPoint({
+              rating: [Object.values(Rating)[config.dataPointIndex]],
+              ...(!isUndefined(maturityLevel) && { maturity: [maturityLevel] }),
+            });
+          },
+        },
       },
       labels: Object.keys(RatingKind),
       dataLabels: {
@@ -187,6 +218,12 @@ const StatsView = (props: Props) => {
           filter: {
             type: 'darken',
             value: 0.8,
+          },
+        },
+        active: {
+          allowMultipleDataPointsSelection: false,
+          filter: {
+            type: 'none',
           },
         },
       },
@@ -336,6 +373,13 @@ const StatsView = (props: Props) => {
     getStats();
   }, [searchParams]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
+  // Link search page from donut charts
+  useEffect(() => {
+    if (!isUndefined(selectedPoint)) {
+      loadSearchPage(selectedPoint);
+    }
+  }, [selectedPoint]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
   return (
     <div className="d-flex flex-column flex-grow-1 position-relative">
       <SubNavbar>
@@ -463,7 +507,7 @@ const StatsView = (props: Props) => {
                             </div>
                             <div className={`card-body ${styles.donutWrapper}`}>
                               <ReactApexChart
-                                options={getDonutChartConfig()}
+                                options={getDonutChartConfig(Maturity.graduated)}
                                 series={prepareDonutData(stats.projects.rating_distribution.graduated)}
                                 type="donut"
                                 height={250}
@@ -481,7 +525,7 @@ const StatsView = (props: Props) => {
                             </div>
                             <div className={`card-body ${styles.donutWrapper}`}>
                               <ReactApexChart
-                                options={getDonutChartConfig()}
+                                options={getDonutChartConfig(Maturity.incubating)}
                                 series={prepareDonutData(stats.projects.rating_distribution.incubating)}
                                 type="donut"
                                 height={250}
@@ -499,7 +543,7 @@ const StatsView = (props: Props) => {
                             </div>
                             <div className={`card-body ${styles.donutWrapper}`}>
                               <ReactApexChart
-                                options={getDonutChartConfig()}
+                                options={getDonutChartConfig(Maturity.sandbox)}
                                 series={prepareDonutData(stats.projects.rating_distribution.sandbox)}
                                 type="donut"
                                 height={250}

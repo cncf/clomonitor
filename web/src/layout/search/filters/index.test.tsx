@@ -56,15 +56,9 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
 
-      expect(screen.getByText('Accepted')).toBeInTheDocument();
-      expect(screen.getByText('2016')).toBeInTheDocument();
-      expect(screen.getByText("'17")).toBeInTheDocument();
-      expect(screen.getByText("'18")).toBeInTheDocument();
-      expect(screen.getByText("'19")).toBeInTheDocument();
-      expect(screen.getByText("'20")).toBeInTheDocument();
-      expect(screen.getByText("'21")).toBeInTheDocument();
-      expect(screen.getByText('2022')).toBeInTheDocument();
-      expect(screen.getAllByRole('slider')).toHaveLength(2);
+      expect(screen.getByText('From:')).toBeInTheDocument();
+      expect(screen.getByText('To:')).toBeInTheDocument();
+      expect(screen.getByText('Jan 1, 2016 - Mar 24, 2022')).toBeInTheDocument();
     });
 
     it('renders Filters with selected options', () => {

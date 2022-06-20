@@ -87,11 +87,13 @@ begin
                 'maturity', maturity,
                 'repositories', (
                     select json_agg(json_build_object(
-                        'name', name,
-                        'url', url,
-                        'check_sets', check_sets
+                        'name', r.name,
+                        'url', r.url,
+                        'check_sets', r.check_sets,
+                        'website_url', rp.data->'documentation'->'website'->'url'
                     ))
-                    from repository
+                    from repository r
+                    left join report rp using (repository_id)
                     where project_id = fp.project_id
                 ),
                 'organization', json_build_object(

@@ -168,105 +168,942 @@ exports[`Project detail index creates snapshot 1`] = `
                           </small>
                         </div>
                         <div
-                          class="mt-3 mb-5 ms-3 ms-md-2 me-4 me-md-2 me-xxl-5 sliderWrapper"
+                          class="mt-3"
                         >
+                          <button
+                            aria-label="Open calendar"
+                            class="btn btn-sm btn-outline-secondary rounded-0 w-100 dateBtn"
+                          >
+                            Jan 1, 2016 - Oct 23, 2021
+                          </button>
                           <div
-                            class="rc-slider rc-slider-horizontal rc-slider-with-marks"
+                            class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+                            role="complementary"
                           >
                             <div
-                              class="rc-slider-rail"
+                              class="arrow arrow"
                             />
                             <div
-                              class="rc-slider-track rc-slider-track-1"
-                              style="left: 0%; width: 100%; background-color: rgb(105, 80, 133);"
-                            />
-                            <div
-                              class="rc-slider-step"
+                              class="d-flex flex-row w-100 pt-3 text-uppercase text-muted legends"
                             >
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 20%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 40%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 60%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 80%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
-                              <span
-                                class="rc-slider-dot rc-slider-dot-active"
-                                style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
-                              />
+                              <div
+                                class="w-50 legendFrom"
+                              >
+                                From:
+                              </div>
+                              <div
+                                class="w-50 legendTo"
+                              >
+                                To:
+                              </div>
                             </div>
                             <div
-                              aria-disabled="false"
-                              aria-valuemax="5"
-                              aria-valuemin="0"
-                              aria-valuenow="0"
-                              class="rc-slider-handle rc-slider-handle-1"
-                              role="slider"
-                              style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
-                              tabindex="0"
-                            />
-                            <div
-                              aria-disabled="false"
-                              aria-valuemax="5"
-                              aria-valuemin="0"
-                              aria-valuenow="5"
-                              class="rc-slider-handle rc-slider-handle-2"
-                              role="slider"
-                              style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
-                              tabindex="0"
-                            />
-                            <div
-                              class="rc-slider-mark"
+                              class="rdrCalendarWrapper rdrDateRangeWrapper dateRange"
                             >
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 0%; transform: translateX(-50%);"
+                              <div
+                                class="rdrDateDisplayWrapper"
                               >
-                                2016
-                              </span>
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 20%; transform: translateX(-50%);"
+                                <div
+                                  class="rdrDateDisplay"
+                                  style="color: rgb(61, 145, 255);"
+                                >
+                                  <span
+                                    class="rdrDateInput rdrDateDisplayItem rdrDateDisplayItemActive"
+                                  >
+                                    <input
+                                      placeholder="Early"
+                                      value="Jan 1, 2016"
+                                    />
+                                  </span>
+                                  <span
+                                    class="rdrDateInput rdrDateDisplayItem"
+                                  >
+                                    <input
+                                      placeholder="Continuous"
+                                      value="Oct 23, 2021"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                              <div
+                                class="rdrMonthAndYearWrapper"
                               >
-                                '17
-                              </span>
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 40%; transform: translateX(-50%);"
+                                <button
+                                  class="rdrNextPrevButton rdrPprevButton"
+                                  type="button"
+                                >
+                                  <i />
+                                </button>
+                                <span
+                                  class="rdrMonthAndYearPickers"
+                                >
+                                  <span
+                                    class="rdrMonthPicker"
+                                  >
+                                    <select>
+                                      <option
+                                        value="0"
+                                      >
+                                        January
+                                      </option>
+                                      <option
+                                        value="1"
+                                      >
+                                        February
+                                      </option>
+                                      <option
+                                        value="2"
+                                      >
+                                        March
+                                      </option>
+                                      <option
+                                        value="3"
+                                      >
+                                        April
+                                      </option>
+                                      <option
+                                        value="4"
+                                      >
+                                        May
+                                      </option>
+                                      <option
+                                        value="5"
+                                      >
+                                        June
+                                      </option>
+                                      <option
+                                        value="6"
+                                      >
+                                        July
+                                      </option>
+                                      <option
+                                        value="7"
+                                      >
+                                        August
+                                      </option>
+                                      <option
+                                        value="8"
+                                      >
+                                        September
+                                      </option>
+                                      <option
+                                        value="9"
+                                      >
+                                        October
+                                      </option>
+                                      <option
+                                        value="10"
+                                      >
+                                        November
+                                      </option>
+                                      <option
+                                        value="11"
+                                      >
+                                        December
+                                      </option>
+                                    </select>
+                                  </span>
+                                  <span />
+                                  <span
+                                    class="rdrYearPicker"
+                                  >
+                                    <select>
+                                      <option
+                                        value="2021"
+                                      >
+                                        2021
+                                      </option>
+                                      <option
+                                        value="2020"
+                                      >
+                                        2020
+                                      </option>
+                                      <option
+                                        value="2019"
+                                      >
+                                        2019
+                                      </option>
+                                      <option
+                                        value="2018"
+                                      >
+                                        2018
+                                      </option>
+                                      <option
+                                        value="2017"
+                                      >
+                                        2017
+                                      </option>
+                                      <option
+                                        value="2016"
+                                      >
+                                        2016
+                                      </option>
+                                    </select>
+                                  </span>
+                                </span>
+                                <button
+                                  class="rdrNextPrevButton rdrNextButton"
+                                  type="button"
+                                >
+                                  <i />
+                                </button>
+                              </div>
+                              <div
+                                class="rdrMonths rdrMonthsVertical"
                               >
-                                '18
-                              </span>
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 60%; transform: translateX(-50%);"
-                              >
-                                '19
-                              </span>
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 80%; transform: translateX(-50%);"
-                              >
-                                '20
-                              </span>
-                              <span
-                                class="rc-slider-mark-text rc-slider-mark-text-active"
-                                style="left: 100%; transform: translateX(-50%);"
-                              >
-                                2021
-                              </span>
+                                <div
+                                  class="rdrMonth"
+                                >
+                                  <div
+                                    class="rdrWeekDays"
+                                  >
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Sun
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Mon
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Tue
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Wed
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Thu
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Fri
+                                    </span>
+                                    <span
+                                      class="rdrWeekDay"
+                                    >
+                                      Sat
+                                    </span>
+                                  </div>
+                                  <div
+                                    class="rdrDays"
+                                  >
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayDisabled rdrDayWeekend rdrDayStartOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          27
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          28
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          29
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          30
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          31
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayStartOfMonth"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrStartEdge"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          1
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          2
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          3
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          4
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          5
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          6
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          7
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          8
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          9
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          10
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          11
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          12
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          13
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          14
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          15
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          16
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          17
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          18
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          19
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          20
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          21
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          22
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          23
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          24
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          25
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          26
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          27
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          28
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          29
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          30
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek rdrDayEndOfMonth"
+                                      style="color: rgb(61, 145, 255);"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          31
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          1
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          2
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          3
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          4
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          5
+                                        </span>
+                                      </span>
+                                    </button>
+                                    <button
+                                      class="rdrDay rdrDayPassive rdrDayWeekend rdrDayEndOfWeek"
+                                      style="color: rgb(61, 145, 255);"
+                                      tabindex="-1"
+                                      type="button"
+                                    >
+                                      <span
+                                        class="rdrInRange"
+                                        style="color: rgb(61, 145, 255);"
+                                      />
+                                      <span
+                                        class="rdrDayNumber"
+                                      >
+                                        <span>
+                                          6
+                                        </span>
+                                      </span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -782,105 +1619,942 @@ exports[`Project detail index creates snapshot 1`] = `
           </small>
         </div>
         <div
-          class="mt-3 mb-5 ms-3 ms-md-2 me-4 me-md-2 me-xxl-5 sliderWrapper"
+          class="mt-3"
         >
+          <button
+            aria-label="Open calendar"
+            class="btn btn-sm btn-outline-secondary rounded-0 w-100 dateBtn"
+          >
+            Jan 1, 2016 - Oct 23, 2021
+          </button>
           <div
-            class="rc-slider rc-slider-horizontal rc-slider-with-marks"
+            class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+            role="complementary"
           >
             <div
-              class="rc-slider-rail"
+              class="arrow arrow"
             />
             <div
-              class="rc-slider-track rc-slider-track-1"
-              style="left: 0%; width: 100%; background-color: rgb(105, 80, 133);"
-            />
-            <div
-              class="rc-slider-step"
+              class="d-flex flex-row w-100 pt-3 text-uppercase text-muted legends"
             >
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
-              />
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 20%; transform: translateX(-50%); border-color: #2a0552;"
-              />
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 40%; transform: translateX(-50%); border-color: #2a0552;"
-              />
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 60%; transform: translateX(-50%); border-color: #2a0552;"
-              />
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 80%; transform: translateX(-50%); border-color: #2a0552;"
-              />
-              <span
-                class="rc-slider-dot rc-slider-dot-active"
-                style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
-              />
+              <div
+                class="w-50 legendFrom"
+              >
+                From:
+              </div>
+              <div
+                class="w-50 legendTo"
+              >
+                To:
+              </div>
             </div>
             <div
-              aria-disabled="false"
-              aria-valuemax="5"
-              aria-valuemin="0"
-              aria-valuenow="0"
-              class="rc-slider-handle rc-slider-handle-1"
-              role="slider"
-              style="left: 0%; transform: translateX(-50%); border-color: #2a0552;"
-              tabindex="0"
-            />
-            <div
-              aria-disabled="false"
-              aria-valuemax="5"
-              aria-valuemin="0"
-              aria-valuenow="5"
-              class="rc-slider-handle rc-slider-handle-2"
-              role="slider"
-              style="left: 100%; transform: translateX(-50%); border-color: #2a0552;"
-              tabindex="0"
-            />
-            <div
-              class="rc-slider-mark"
+              class="rdrCalendarWrapper rdrDateRangeWrapper dateRange"
             >
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 0%; transform: translateX(-50%);"
+              <div
+                class="rdrDateDisplayWrapper"
               >
-                2016
-              </span>
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 20%; transform: translateX(-50%);"
+                <div
+                  class="rdrDateDisplay"
+                  style="color: rgb(61, 145, 255);"
+                >
+                  <span
+                    class="rdrDateInput rdrDateDisplayItem rdrDateDisplayItemActive"
+                  >
+                    <input
+                      placeholder="Early"
+                      value="Jan 1, 2016"
+                    />
+                  </span>
+                  <span
+                    class="rdrDateInput rdrDateDisplayItem"
+                  >
+                    <input
+                      placeholder="Continuous"
+                      value="Oct 23, 2021"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div
+                class="rdrMonthAndYearWrapper"
               >
-                '17
-              </span>
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 40%; transform: translateX(-50%);"
+                <button
+                  class="rdrNextPrevButton rdrPprevButton"
+                  type="button"
+                >
+                  <i />
+                </button>
+                <span
+                  class="rdrMonthAndYearPickers"
+                >
+                  <span
+                    class="rdrMonthPicker"
+                  >
+                    <select>
+                      <option
+                        value="0"
+                      >
+                        January
+                      </option>
+                      <option
+                        value="1"
+                      >
+                        February
+                      </option>
+                      <option
+                        value="2"
+                      >
+                        March
+                      </option>
+                      <option
+                        value="3"
+                      >
+                        April
+                      </option>
+                      <option
+                        value="4"
+                      >
+                        May
+                      </option>
+                      <option
+                        value="5"
+                      >
+                        June
+                      </option>
+                      <option
+                        value="6"
+                      >
+                        July
+                      </option>
+                      <option
+                        value="7"
+                      >
+                        August
+                      </option>
+                      <option
+                        value="8"
+                      >
+                        September
+                      </option>
+                      <option
+                        value="9"
+                      >
+                        October
+                      </option>
+                      <option
+                        value="10"
+                      >
+                        November
+                      </option>
+                      <option
+                        value="11"
+                      >
+                        December
+                      </option>
+                    </select>
+                  </span>
+                  <span />
+                  <span
+                    class="rdrYearPicker"
+                  >
+                    <select>
+                      <option
+                        value="2021"
+                      >
+                        2021
+                      </option>
+                      <option
+                        value="2020"
+                      >
+                        2020
+                      </option>
+                      <option
+                        value="2019"
+                      >
+                        2019
+                      </option>
+                      <option
+                        value="2018"
+                      >
+                        2018
+                      </option>
+                      <option
+                        value="2017"
+                      >
+                        2017
+                      </option>
+                      <option
+                        value="2016"
+                      >
+                        2016
+                      </option>
+                    </select>
+                  </span>
+                </span>
+                <button
+                  class="rdrNextPrevButton rdrNextButton"
+                  type="button"
+                >
+                  <i />
+                </button>
+              </div>
+              <div
+                class="rdrMonths rdrMonthsVertical"
               >
-                '18
-              </span>
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 60%; transform: translateX(-50%);"
-              >
-                '19
-              </span>
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 80%; transform: translateX(-50%);"
-              >
-                '20
-              </span>
-              <span
-                class="rc-slider-mark-text rc-slider-mark-text-active"
-                style="left: 100%; transform: translateX(-50%);"
-              >
-                2021
-              </span>
+                <div
+                  class="rdrMonth"
+                >
+                  <div
+                    class="rdrWeekDays"
+                  >
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Sun
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Mon
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Tue
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Wed
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Thu
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Fri
+                    </span>
+                    <span
+                      class="rdrWeekDay"
+                    >
+                      Sat
+                    </span>
+                  </div>
+                  <div
+                    class="rdrDays"
+                  >
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayDisabled rdrDayWeekend rdrDayStartOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          27
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          28
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          29
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          30
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayDisabled"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          31
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayStartOfMonth"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrStartEdge"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          1
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          2
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          3
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          4
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          5
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          6
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          7
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          8
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          9
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          10
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          11
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          12
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          13
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          14
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          15
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          16
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          17
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          18
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          19
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          20
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          21
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          22
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          23
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          24
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          25
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          26
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          27
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          28
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          29
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          30
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayWeekend rdrDayStartOfWeek rdrDayEndOfMonth"
+                      style="color: rgb(61, 145, 255);"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          31
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          1
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          2
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          3
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          4
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          5
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="rdrDay rdrDayPassive rdrDayWeekend rdrDayEndOfWeek"
+                      style="color: rgb(61, 145, 255);"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <span
+                        class="rdrInRange"
+                        style="color: rgb(61, 145, 255);"
+                      />
+                      <span
+                        class="rdrDayNumber"
+                      >
+                        <span>
+                          6
+                        </span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

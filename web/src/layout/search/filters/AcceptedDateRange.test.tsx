@@ -34,47 +34,37 @@ describe('AcceptedDateRange', () => {
     it('renders', () => {
       render(<AcceptedDateRange {...defaultProps} />);
 
-      expect(screen.getByText('Accepted')).toBeInTheDocument();
-      expect(screen.getByText('2016')).toBeInTheDocument();
-      expect(screen.getByText("'17")).toBeInTheDocument();
-      expect(screen.getByText("'18")).toBeInTheDocument();
-      expect(screen.getByText("'19")).toBeInTheDocument();
-      expect(screen.getByText("'20")).toBeInTheDocument();
-      expect(screen.getByText("'21")).toBeInTheDocument();
-      expect(screen.getByText('2022')).toBeInTheDocument();
-      expect(screen.getAllByRole('slider')).toHaveLength(2);
+      expect(screen.getByText('From:')).toBeInTheDocument();
+      expect(screen.getByText('To:')).toBeInTheDocument();
+      expect(screen.getByText('Jan 1, 2016 - Mar 24, 2022')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Open calendar' })).toBeInTheDocument();
+      expect(screen.getByRole('complementary')).not.toHaveClass('show');
+    });
+
+    it('displays calendar', async () => {
+      render(<AcceptedDateRange {...defaultProps} />);
+
+      const btn = screen.getByRole('button', { name: 'Open calendar' });
+      await userEvent.click(btn);
+
+      expect(screen.getByRole('complementary')).toHaveClass('show');
     });
 
     it('calls mockOnAcceptedDateRangeChange', async () => {
       render(<AcceptedDateRange {...defaultProps} />);
 
-      const mark = screen.getByText("'20");
-      await userEvent.click(mark);
+      const btn = screen.getByRole('button', { name: 'Open calendar' });
+      await userEvent.click(btn);
+
+      expect(screen.getByRole('complementary')).toHaveClass('show');
+
+      const day20Btn = screen.getByText('20').closest('button');
+      await userEvent.click(day20Btn);
 
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(1);
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledWith({
-        accepted_from: undefined,
-        accepted_to: '2020-12-31',
-      });
-    });
-
-    it('calls mockOnAcceptedDateRangeChange twice', async () => {
-      render(<AcceptedDateRange {...defaultProps} />);
-
-      const mark20 = screen.getByText("'20");
-      await userEvent.click(mark20);
-
-      const mark18 = screen.getByText("'18");
-      await userEvent.click(mark18);
-
-      expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(2);
-      expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledWith({
-        accepted_from: undefined,
-        accepted_to: '2020-12-31',
-      });
-      expect(mockOnAcceptedDateRangeChange).toHaveBeenLastCalledWith({
-        accepted_from: undefined,
-        accepted_to: '2018-12-31',
+        accepted_from: '2016-01-20',
+        accepted_to: '2016-01-20',
       });
     });
   });

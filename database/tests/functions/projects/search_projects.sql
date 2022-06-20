@@ -184,6 +184,13 @@ insert into repository (
     '{docs}',
     '00000000-0015-0000-0000-000000000000'
 );
+insert into report (
+    repository_id,
+    data
+) values (
+    '00000000-0000-0001-0000-000000000000',
+    '{"documentation": {"website": {"url": "https://test.url"}}}'
+);
 
 -- Run some tests
 
@@ -213,7 +220,8 @@ select results_eq(
                         {
                             "check_sets": ["code", "community"],
                             "name": "artifact-hub",
-                            "url": "https://github.com/artifacthub/hub"
+                            "url": "https://github.com/artifacthub/hub",
+                            "website_url": "https://test.url"
                         }
                     ],
                     "score": {"k": "v"},
@@ -309,7 +317,8 @@ select results_eq(
                         {
                             "check_sets": ["code", "community"],
                             "name": "artifact-hub",
-                            "url": "https://github.com/artifacthub/hub"
+                            "url": "https://github.com/artifacthub/hub",
+                            "website_url": "https://test.url"
                         }
                     ],
                     "score": {"k": "v"},
@@ -349,7 +358,8 @@ select results_eq(
                         {
                             "check_sets": ["code", "community"],
                             "name": "artifact-hub",
-                            "url": "https://github.com/artifacthub/hub"
+                            "url": "https://github.com/artifacthub/hub",
+                            "website_url": "https://test.url"
                         }
                     ],
                     "score": {"k": "v"},

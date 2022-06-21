@@ -16,6 +16,7 @@ pub const CONTRIBUTING: &str = "contributing";
 pub const DANGEROUS_WORKFLOW: &str = "dangerous_workflow";
 pub const DEPENDENCY_UPDATE_TOOL: &str = "dependency_update_tool";
 pub const DCO: &str = "dco";
+pub const GA4: &str = "ga4";
 pub const GOVERNANCE: &str = "governance";
 pub const LICENSE_APPROVED: &str = "license_approved";
 pub const LICENSE_SCANNING: &str = "license_scanning";
@@ -61,7 +62,8 @@ lazy_static! {
         m.insert(CLA, 1);
         m.insert(COMMUNITY_MEETING, 3);
         m.insert(DCO, 1);
-        m.insert(OPENSSF_BADGE, 10);
+        m.insert(GA4, 1);
+        m.insert(OPENSSF_BADGE, 9);
         m.insert(RECENT_RELEASE, 3);
         m.insert(SLACK_PRESENCE, 1);
 
@@ -143,6 +145,7 @@ lazy_static! {
                 CODE_OF_CONDUCT,
                 COMMUNITY_MEETING,
                 CONTRIBUTING,
+                GA4,
                 GOVERNANCE,
                 README,
                 ROADMAP,

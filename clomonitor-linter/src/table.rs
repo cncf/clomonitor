@@ -141,6 +141,10 @@ pub(crate) fn display(
             cell_check(&report.best_practices.dco),
         ])
         .add_row(vec![
+            cell_entry("Best practices / Google Analytics 4"),
+            cell_check(&report.best_practices.ga4),
+        ])
+        .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),
             cell_check(&report.best_practices.openssf_badge),
         ])
@@ -328,6 +332,7 @@ mod tests {
                 cla: Some(true.into()),
                 community_meeting: Some(true.into()),
                 dco: Some(true.into()),
+                ga4: Some(true.into()),
                 openssf_badge: Some(true.into()),
                 recent_release: Some(true.into()),
                 slack_presence: Some(true.into()),

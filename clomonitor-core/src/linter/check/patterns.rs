@@ -140,6 +140,11 @@ lazy_static! {
     ).expect("invalid exprs in FOSSA_URL");
 
     #[rustfmt::skip]
+    pub(crate) static ref GA4_IN_WEBSITE: RegexSet = RegexSet::new(vec![
+        "G-[A-Z0-9]{8,10}",
+    ]).expect("invalid exprs in GA4_IN_WEBSITE");
+
+    #[rustfmt::skip]
     pub(crate) static ref GITHUB_REPO_URL: Regex = Regex::new(
         "^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$"
     ).expect("invalid exprs in GITHUB_REPO_URL");
@@ -338,6 +343,13 @@ Contributing
     #[test]
     fn dco_in_gh_match() {
         assert!(DCO_IN_GH.is_match(r"DCO"));
+    }
+
+    #[test]
+    fn ga4_in_website() {
+        assert!(GA4_IN_WEBSITE.is_match("G-XXXXXXXXXX"));
+        assert!(GA4_IN_WEBSITE.is_match("G-NVMH1T3GEK"));
+        assert!(GA4_IN_WEBSITE.is_match("G-12345678"));
     }
 
     #[test]

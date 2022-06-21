@@ -3,6 +3,7 @@ import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
   FaBalanceScale,
+  FaChartBar,
   FaCheckDouble,
   FaCodeBranch,
   FaExclamationTriangle,
@@ -216,6 +217,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
     reference: '/docs/topics/checks/#developer-certificate-of-origin',
+  },
+  [ReportOption.GA4]: {
+    icon: <FaChartBar />,
+    name: 'Google Analytics 4',
+    legend: <span>Projects should migrate to Google Analytics 4</span>,
+    reference: '/docs/topics/checks/#google-analytics-4',
   },
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,

@@ -280,3 +280,8 @@ export interface RecommendedTemplate {
   name: string;
   url: string;
 }
+
+export enum AcceptedRangeKind {
+  To = 'accepted_to',
+  From = 'accepted_from',
+}

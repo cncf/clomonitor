@@ -1,143 +1,25 @@
-.categoryTitle {
-  margin-top: 2rem;
-}
-
-label {
-  font-size: 0.9rem;
-}
-
 .label {
   font-size: 0.75rem;
 }
 
-.dateBtn {
-  background-color: var(--body-bg);
-  border-color: var(--color-black-25) !important;
-  color: var(--font-color);
+.input {
+  width: 125px;
 }
 
-.dateBtn:hover,
-.dateBtn:disabled,
-.dateBtn.disabled,
-.dateBtn.active,
-.dateBtn:active,
-.dateBtn:focus {
-  background-color: var(--color-black-5);
-  border-color: var(--color-black-25) !important;
-  color: var(--font-color);
-}
-
-[data-theme='light'] :global(.tooltipDropdown) {
-  border-color: var(--default-border) !important;
-}
-
-[data-theme='light'] :global(.tooltipDropdown .arrow)::before {
-  border-bottom-color: var(--default-border) !important;
-}
-
-.arrow {
-  position: absolute;
+.desktopDateRange {
   display: block;
-  width: 0.8rem;
-  height: 0.4rem;
-  top: -0.5rem;
-  left: 0.85rem;
 }
 
-.arrow::before {
-  position: absolute;
-  content: '';
-  border-color: transparent;
-  border-style: solid;
-  bottom: -1px;
-  border-width: 0 0.4rem 0.4rem;
+.mobileDateRange {
+  display: none;
 }
 
-.legends {
-  font-size: 0.65rem;
-  background-color: var(--bg-color);
-}
+@media screen and (max-device-width: 640px) {
+  .desktopDateRange {
+    display: none;
+  }
 
-.legendFrom {
-  padding-left: 0.7rem;
-}
-
-.legendTo {
-  padding-left: 0.35rem;
-}
-
-.dateRange {
-  background-color: var(--body-bg);
-  color: var(--color-font);
-}
-
-.dateRange :global(.rdrDateDisplay) {
-  margin-top: 0;
-}
-
-.dateRange :global(.rdrDateDisplayWrapper) {
-  background-color: var(--bg-color);
-  border-bottom: 1px solid var(--default-border);
-}
-
-.dateRange :global(.rdrDateInput),
-.dateRange :global(.rdrNextPrevButton) {
-  border-radius: 0;
-  border-color: var(--default-border);
-  background-color: var(--body-bg);
-  color: var(--color-font);
-  box-shadow: none;
-}
-
-.dateRange :global(.rdrDateInput) input {
-  color: var(--color-font);
-}
-
-.dateRange :global(.rdrNextPrevButton) {
-  background-color: var(--color-black-10);
-  border: 1px solid var(--default-border);
-}
-
-.dateRange :global(.rdrNextButton) i {
-  border-color: transparent transparent transparent var(--color-font);
-}
-
-.dateRange :global(.rdrPprevButton) i {
-  border-color: transparent var(--color-font) transparent transparent;
-}
-
-.dateRange :global(select) {
-  border-radius: 0;
-  border: 1px solid var(--default-border);
-  padding: 2px 30px 2px 10px;
-  min-width: 115px;
-  color: var(--color-font);
-}
-
-[data-theme='dark'] .dateRange :global(.rdrNextPrevButton) {
-  color: var(--color-light-font);
-}
-
-.dateRange :global(.rdrDayDisabled) {
-  cursor: default;
-}
-
-[data-theme='dark'] .dateRange :global(.rdrDay) span {
-  color: var(--color-light-font);
-}
-
-[data-theme='dark'] .dateRange :global(.rdrDayDisabled) {
-  background-color: var(--color-black-5);
-}
-
-[data-theme='dark'] .dateRange :global(.rdrDayDisabled) span,
-[data-theme='dark'] .dateRange :global(.rdrDayPassive) span {
-  color: var(--color-black-25);
-}
-
-@media only screen and (min-width: 1400px) {
-  .dateBtn {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.3rem;
+  .mobileDateRange {
+    display: flex;
   }
 }

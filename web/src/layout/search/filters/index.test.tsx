@@ -58,7 +58,8 @@ describe('Filters', () => {
 
       expect(screen.getAllByText('From:')).toHaveLength(2);
       expect(screen.getAllByText('To:')).toHaveLength(2);
-      expect(screen.getByText('Jan 1, 2016 - Mar 24, 2022')).toBeInTheDocument();
+      expect(screen.getByText('Jan 1, 2016')).toBeInTheDocument();
+      expect(screen.getByText('Mar 24, 2022')).toBeInTheDocument();
     });
 
     it('renders Filters with selected options', () => {

@@ -6,6 +6,10 @@ label {
   font-size: 0.9rem;
 }
 
+.label {
+  font-size: 0.75rem;
+}
+
 .dateBtn {
   background-color: var(--body-bg);
   border-color: var(--color-black-25) !important;
@@ -129,4 +133,11 @@ label {
 [data-theme='dark'] .dateRange :global(.rdrDayDisabled) span,
 [data-theme='dark'] .dateRange :global(.rdrDayPassive) span {
   color: var(--color-black-25);
+}
+
+@media only screen and (min-width: 1400px) {
+  .dateBtn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.3rem;
+  }
 }

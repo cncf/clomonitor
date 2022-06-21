@@ -168,13 +168,60 @@ exports[`Project detail index creates snapshot 1`] = `
                           </small>
                         </div>
                         <div
-                          class="mt-3"
+                          class="d-flex flex-column d-md-none"
+                        >
+                          <div
+                            class="my-2"
+                          >
+                            <label
+                              class="form-label text-uppercase text-muted label"
+                              for="from"
+                            >
+                              From:
+                            </label>
+                            <input
+                              class="form-control form-control-sm rounded-0"
+                              id="from"
+                              max="2021-10-23"
+                              min="2016-01-01"
+                              type="date"
+                              value="2016-01-01"
+                            />
+                          </div>
+                          <div>
+                            <label
+                              class="form-label text-uppercase text-muted label"
+                              for="to"
+                            >
+                              To:
+                            </label>
+                            <input
+                              class="form-control form-control-sm rounded-0"
+                              id="to"
+                              max="2021-10-23"
+                              min="2016-01-01"
+                              type="date"
+                              value="2021-10-23"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="d-none d-md-block mt-3"
                         >
                           <button
                             aria-label="Open calendar"
                             class="btn btn-sm btn-outline-secondary rounded-0 w-100 dateBtn"
                           >
-                            Jan 1, 2016 - Oct 23, 2021
+                            <span
+                              class="d-none d-xxl-block"
+                            >
+                              Jan 1, 2016 - Oct 23, 2021
+                            </span>
+                            <span
+                              class="d-block d-xxl-none"
+                            >
+                              Jan 1, 16 - Oct 23, 21
+                            </span>
                           </button>
                           <div
                             class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
@@ -1619,13 +1666,60 @@ exports[`Project detail index creates snapshot 1`] = `
           </small>
         </div>
         <div
-          class="mt-3"
+          class="d-flex flex-column d-md-none"
+        >
+          <div
+            class="my-2"
+          >
+            <label
+              class="form-label text-uppercase text-muted label"
+              for="from"
+            >
+              From:
+            </label>
+            <input
+              class="form-control form-control-sm rounded-0"
+              id="from"
+              max="2021-10-23"
+              min="2016-01-01"
+              type="date"
+              value="2016-01-01"
+            />
+          </div>
+          <div>
+            <label
+              class="form-label text-uppercase text-muted label"
+              for="to"
+            >
+              To:
+            </label>
+            <input
+              class="form-control form-control-sm rounded-0"
+              id="to"
+              max="2021-10-23"
+              min="2016-01-01"
+              type="date"
+              value="2021-10-23"
+            />
+          </div>
+        </div>
+        <div
+          class="d-none d-md-block mt-3"
         >
           <button
             aria-label="Open calendar"
             class="btn btn-sm btn-outline-secondary rounded-0 w-100 dateBtn"
           >
-            Jan 1, 2016 - Oct 23, 2021
+            <span
+              class="d-none d-xxl-block"
+            >
+              Jan 1, 2016 - Oct 23, 2021
+            </span>
+            <span
+              class="d-block d-xxl-none"
+            >
+              Jan 1, 16 - Oct 23, 21
+            </span>
           </button>
           <div
             class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"

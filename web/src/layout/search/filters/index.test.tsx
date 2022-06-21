@@ -56,8 +56,8 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
 
-      expect(screen.getByText('From:')).toBeInTheDocument();
-      expect(screen.getByText('To:')).toBeInTheDocument();
+      expect(screen.getAllByText('From:')).toHaveLength(2);
+      expect(screen.getAllByText('To:')).toHaveLength(2);
       expect(screen.getByText('Jan 1, 2016 - Mar 24, 2022')).toBeInTheDocument();
     });
 

@@ -34,8 +34,8 @@ describe('AcceptedDateRange', () => {
     it('renders', () => {
       render(<AcceptedDateRange {...defaultProps} />);
 
-      expect(screen.getByText('From:')).toBeInTheDocument();
-      expect(screen.getByText('To:')).toBeInTheDocument();
+      expect(screen.getAllByText('From:')).toHaveLength(2);
+      expect(screen.getAllByText('To:')).toHaveLength(2);
       expect(screen.getByText('Jan 1, 2016 - Mar 24, 2022')).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Open calendar' })).toBeInTheDocument();
       expect(screen.getByRole('complementary')).not.toHaveClass('show');
@@ -59,7 +59,7 @@ describe('AcceptedDateRange', () => {
       expect(screen.getByRole('complementary')).toHaveClass('show');
 
       const day20Btn = screen.getByText('20').closest('button');
-      await userEvent.click(day20Btn);
+      await userEvent.click(day20Btn as HTMLButtonElement);
 
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(1);
       expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledWith({

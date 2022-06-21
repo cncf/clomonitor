@@ -348,6 +348,22 @@ pub(crate) fn dependency_update_tool(input: &CheckInput) -> Result<CheckOutput> 
     })
 }
 
+/// Google Analytics 4.
+pub(crate) async fn ga4(input: &CheckInput<'_>) -> Result<CheckOutput> {
+    // Google Analytics 4 measurement ID in website setup in Github
+    if let Some(url) = &input.gh_md.homepage_url {
+        if !url.is_empty() {
+            return Ok(
+                content::remote_matches(&input.svc.http_client, url, &*GA4_IN_WEBSITE)
+                    .await?
+                    .into(),
+            );
+        }
+    }
+
+    Ok(false.into())
+}
+
 /// Governance check.
 pub(crate) fn governance(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file
@@ -592,6 +608,7 @@ fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option<Exemption>
                 .find(|exemption| exemption.check == check_id)
         })
     {
+        // "~" -> https://github.com/dtolnay/serde-yaml/issues/87
         if !exemption.reason.is_empty() && exemption.reason != "~" {
             return Some(exemption.to_owned());
         }

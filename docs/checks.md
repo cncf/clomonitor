@@ -51,6 +51,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Roadmap
   - Documentation / Website
   - Best practices / Community meeting
+  - Best practices / Google Analytics 4
   - Best practices / Slack presence
   - Security / Policy
   - Legal / Trademark disclaimer
@@ -424,6 +425,20 @@ This check passes if:
 ```
 
 NOTE: *this check will be automatically marked as exempt if the CLA check passes and this one does not*.
+
+### Google Analytics 4
+
+**ID**: `ga4`
+
+Projects sites should migrate to Google Analytics 4.
+
+This check passes if:
+
+- A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"G-[A-Z0-9]{8,10}"
+```
 
 ### OpenSSF badge
 

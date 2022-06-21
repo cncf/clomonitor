@@ -150,6 +150,7 @@ returns json as $$
                     'cla', repositories_passing_check(p_foundation, 'best_practices', 'cla'),
                     'community_meeting', repositories_passing_check(p_foundation, 'best_practices', 'community_meeting'),
                     'dco', repositories_passing_check(p_foundation, 'best_practices', 'dco'),
+                    'ga4', repositories_passing_check(p_foundation, 'best_practices', 'ga4'),
                     'openssf_badge', repositories_passing_check(p_foundation, 'best_practices', 'openssf_badge'),
                     'recent_release', repositories_passing_check(p_foundation, 'best_practices', 'recent_release'),
                     'slack_presence', repositories_passing_check(p_foundation, 'best_practices', 'slack_presence')

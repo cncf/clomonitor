@@ -214,6 +214,9 @@ insert into report (
             "dco": {
                 "passed": true
             },
+            "ga4": {
+                "passed": true
+            },
             "openssf_badge": {
                 "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
                 "passed": true
@@ -342,6 +345,9 @@ insert into report (
             "dco": {
                 "passed": true
             },
+            "ga4": {
+                "passed": true
+            },
             "openssf_badge": {
                 "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
                 "passed": true
@@ -459,6 +465,9 @@ insert into report (
             "dco": {
                 "passed": false
             },
+            "ga4": {
+                "passed": false
+            },
             "openssf_badge": {
                 "passed": false
             },
@@ -553,6 +562,7 @@ select is(
                     "cla": 67,
                     "community_meeting": 0,
                     "dco": 67,
+                    "ga4": 67,
                     "openssf_badge": 67,
                     "recent_release": 67,
                     "slack_presence": 0

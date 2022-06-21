@@ -169,6 +169,7 @@ export enum ReportOption {
   DangerousWorkflow = 'dangerous_workflow',
   DependencyUpdateTool = 'dependency_update_tool',
   DCO = 'dco',
+  GA4 = 'ga4',
   Governance = 'governance',
   LicenseScanning = 'scanning',
   Maintained = 'maintained',

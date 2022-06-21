@@ -27,6 +27,11 @@ interface SelectedPoint {
   maturity?: string[];
 }
 
+interface SelectedRange {
+  from: string;
+  to: string;
+}
+
 const FOUNDATION_QUERY = 'foundation';
 
 const StatsView = () => {
@@ -41,6 +46,7 @@ const StatsView = () => {
   const [apiError, setApiError] = useState<string | null>(null);
   const selectedFoundation = searchParams.get(FOUNDATION_QUERY);
   const [selectedPoint, setSelectedPoint] = useState<SelectedPoint | undefined>();
+  const [selectedRange, setSelectedRange] = useState<SelectedRange | undefined>();
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -71,6 +77,20 @@ const StatsView = () => {
       search: prepareQueryString({
         filters: {
           ...filters,
+          ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
+        },
+        pageNumber: 1,
+      }),
+    });
+  };
+
+  const loadSearchPageWithAcceptedRange = (range: SelectedRange) => {
+    navigate({
+      pathname: '/search',
+      search: prepareQueryString({
+        accepted_from: range.from,
+        accepted_to: range.to,
+        filters: {
           ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
         },
         pageNumber: 1,
@@ -241,6 +261,20 @@ const StatsView = () => {
         toolbar: {
           show: false,
         },
+        events: {
+          dataPointSelection: (event: any, chartContext: any, config: any) => {
+            const value = config.w.globals.series[config.seriesIndex][config.dataPointIndex] - 10;
+            if (value > 0) {
+              const selectedMonth = config.w.globals.labels[config.dataPointIndex];
+              const selectedYear = config.w.globals.seriesNames[config.seriesIndex];
+              const initialDay = `${selectedYear}-${selectedMonth}-01`;
+              setSelectedRange({
+                from: moment(initialDay, 'YYYY-MMM-DD').format('YYYY-MM-DD'),
+                to: moment(initialDay, 'YYYY-MMM-DD').endOf('month').format('YYYY-MM-DD'),
+              });
+            }
+          },
+        },
       },
       grid: { borderColor: 'var(--color-light-gray)' },
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -379,6 +413,13 @@ const StatsView = () => {
       loadSearchPage(selectedPoint);
     }
   }, [selectedPoint]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  // Link search page from heat map
+  useEffect(() => {
+    if (!isUndefined(selectedRange)) {
+      loadSearchPageWithAcceptedRange(selectedRange);
+    }
+  }, [selectedRange]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <div className="d-flex flex-column flex-grow-1 position-relative">

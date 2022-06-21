@@ -37,24 +37,16 @@ const SelectedFilters = (props: Props) => {
     }
   };
 
-  const getYearFromDate = (date?: string): string => {
+  const getFormatDate = (date?: string): string => {
     if (isUndefined(date)) return '';
-    return moment(date).format('YYYY');
+    return moment(date).format('MMM D, YYYY');
   };
 
   const compoundAcceptedFilter = (): string => {
     if (props.acceptedFrom && props.acceptedTo) {
-      const formattedAcceptedFrom = getYearFromDate(props.acceptedFrom);
-      const formattedAcceptedTo = getYearFromDate(props.acceptedTo);
-      if (formattedAcceptedFrom === formattedAcceptedTo) {
-        return formattedAcceptedFrom;
-      } else {
-        return `${formattedAcceptedFrom} - ${formattedAcceptedTo}`;
-      }
+      return `${getFormatDate(props.acceptedFrom)} - ${getFormatDate(props.acceptedTo)}`;
     } else {
-      return `${isUndefined(props.acceptedFrom) ? '≤' : '≥'} ${getYearFromDate(
-        props.acceptedFrom || props.acceptedTo
-      )}`;
+      return `${isUndefined(props.acceptedFrom) ? '≤' : '≥'} ${getFormatDate(props.acceptedFrom || props.acceptedTo)}`;
     }
   };
 

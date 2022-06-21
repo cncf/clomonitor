@@ -115,7 +115,8 @@
   border-radius: 0 !important;
 }
 
-.donutWrapper :global(.apexcharts-series.apexcharts-pie-series) {
+.donutWrapper :global(.apexcharts-series.apexcharts-pie-series),
+.chartWrapper :global(.apexcharts-heatmap-rect):not([val='10']) {
   cursor: pointer;
 }
 

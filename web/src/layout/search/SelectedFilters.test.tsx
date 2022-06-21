@@ -32,7 +32,7 @@ describe('SelectedFilters', () => {
       expect(screen.getAllByRole('listitem')).toHaveLength(5);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('≥ 2018')).toBeInTheDocument();
+      expect(screen.getByText('≥ Jan 1, 2018')).toBeInTheDocument();
       expect(screen.getByText('maturity:')).toBeInTheDocument();
       expect(screen.getByText('sandbox')).toBeInTheDocument();
       expect(screen.getAllByText('rating:')).toHaveLength(2);
@@ -65,28 +65,28 @@ describe('SelectedFilters', () => {
       render(<SelectedFilters {...defaultProps} acceptedTo="2021-12-31" />);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('2018 - 2021')).toBeInTheDocument();
+      expect(screen.getByText('Jan 1, 2018 - Dec 31, 2021')).toBeInTheDocument();
     });
 
     it('when both dates are defined and are the same year', () => {
       render(<SelectedFilters {...defaultProps} acceptedTo="2018-12-31" />);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('2018')).toBeInTheDocument();
+      expect(screen.getByText('Jan 1, 2018 - Dec 31, 2018')).toBeInTheDocument();
     });
 
     it('only accepted_from is defined', () => {
       render(<SelectedFilters {...defaultProps} />);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('≥ 2018')).toBeInTheDocument();
+      expect(screen.getByText('≥ Jan 1, 2018')).toBeInTheDocument();
     });
 
     it('only accepted_to is defined', () => {
       render(<SelectedFilters {...defaultProps} acceptedFrom={undefined} acceptedTo="2021-12-31" />);
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('≤ 2021')).toBeInTheDocument();
+      expect(screen.getByText('≤ Dec 31, 2021')).toBeInTheDocument();
     });
   });
 

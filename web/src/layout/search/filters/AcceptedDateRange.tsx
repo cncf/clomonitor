@@ -84,6 +84,8 @@ const AcceptedDateRange = (props: Props) => {
         key: 'selection',
       },
     ]);
+    setDateFrom(props.acceptedFrom || INITIAL_DATE);
+    setDateTo(props.acceptedTo || END_DATE);
   }, [props.acceptedFrom, props.acceptedTo]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   useEffect(() => {

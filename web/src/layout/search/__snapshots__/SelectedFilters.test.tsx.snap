@@ -32,7 +32,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               >
                 Accepted:
               </small>
-              ≥ 2018
+              ≥ Jan 1, 2018
             </div>
             <button
               aria-label="Remove accepted filter"

@@ -3,8 +3,8 @@ import { isNull, isUndefined } from 'lodash';
 import moment from 'moment';
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { GoCalendar } from 'react-icons/go';
-import { GrPieChart } from 'react-icons/gr';
 import { IoIosArrowBack } from 'react-icons/io';
+import { IoBarChart } from 'react-icons/io5';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import API from '../../api';
@@ -23,6 +23,7 @@ import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
 import SubNavbar from '../navigation/SubNavbar';
 import RepositorySection from '../search/RepositorySection';
+import WebsiteSection from '../search/WebsiteSection';
 import styles from './Detail.module.css';
 import RepositoriesList from './repositories';
 
@@ -152,11 +153,13 @@ const Detail = (props: Props) => {
                           <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>
                             <RepositorySection repositories={detail.repositories} />
 
+                            <WebsiteSection repositories={detail.repositories} />
+
                             {detail.devstats_url && (
                               <>
                                 <ExternalLink href={detail.devstats_url} className="ms-3">
                                   <div className={`d-flex flex-row align-items-center ${styles.link}`}>
-                                    <GrPieChart className={`me-1 ${styles.statsIcon}`} />
+                                    <IoBarChart className={`me-1 ${styles.statsIcon}`} />
                                     <div>DevStats</div>
                                   </div>
                                 </ExternalLink>
@@ -168,7 +171,12 @@ const Detail = (props: Props) => {
                                 <GoCalendar className={`me-1 ${styles.statsIcon}`} />
                                 <div className="d-flex flex-row">
                                   <span className="text-muted d-none d-lg-block me-1">Accepted:</span>
-                                  {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
+                                  <span className="d-none d-md-block">
+                                    {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
+                                  </span>
+                                  <span className="d-block d-md-none">
+                                    {moment.unix(detail.accepted_at!).format('YYYY')}
+                                  </span>
                                 </div>
                               </div>
                             )}

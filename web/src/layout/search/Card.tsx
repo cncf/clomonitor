@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 import moment from 'moment';
+import { FaChartBar } from 'react-icons/fa';
 import { GoCalendar } from 'react-icons/go';
-import { GrPieChart } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
 import { Project } from '../../types';
@@ -14,6 +14,7 @@ import Image from '../common/Image';
 import RoundScore from '../common/RoundScore';
 import styles from './Card.module.css';
 import RepositorySection from './RepositorySection';
+import WebsiteSection from './WebsiteSection';
 
 interface Props {
   project: Project;
@@ -65,15 +66,18 @@ const Card = (props: Props) => {
                     <MaturityBadge maturityLevel={props.project.maturity} className="d-none d-md-flex ms-2" />
                   </div>
 
-                  <div className={`d-none d-md-flex d-lg-none d-xl-flex flex-row align-items-center ${styles.info}`}>
-                    <RepositorySection repositories={props.project.repositories} />
+                  <div
+                    className={`d-none d-md-flex d-lg-none d-xl-flex flex-row mt-0 mt-md-1 mt-lg-0 mt-xl-1 align-items-center ${styles.info}`}
+                  >
+                    <RepositorySection repositories={props.project.repositories} onlyIcon />
+
+                    <WebsiteSection repositories={props.project.repositories} onlyIcon />
 
                     {props.project.devstats_url && (
                       <>
                         <ExternalLink label="Dev stats link" href={props.project.devstats_url} className="ms-3">
-                          <div className={`d-flex flex-row align-items-center ${styles.link}`}>
-                            <GrPieChart className={`me-1 ${styles.statsIcon}`} />
-                            <div>DevStats</div>
+                          <div className={`d-flex flex-row align-items-center text-muted ${styles.link}`}>
+                            <FaChartBar className={styles.statsIcon} />
                           </div>
                         </ExternalLink>
                       </>
@@ -82,8 +86,10 @@ const Card = (props: Props) => {
                     {!isUndefined(props.project.accepted_at) && (
                       <ElementWithTooltip
                         element={
-                          <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
-                            <GoCalendar className={`me-1 ${styles.statsIcon}`} />
+                          <div
+                            className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle} ${styles.wrapperCalendar}`}
+                          >
+                            <GoCalendar className={`me-1 text-muted ${styles.calendarIcon}`} />
                             <div>{moment.unix(props.project.accepted_at!).format('YYYY')}</div>
                           </div>
                         }

@@ -1,38 +1,56 @@
 import classNames from 'classnames';
 import { isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
-import { VscGithub } from 'react-icons/vsc';
+import { IoGlobeOutline } from 'react-icons/io5';
 
 import { BaseRepository, Repository } from '../../types';
-import sortRepos from '../../utils/sortRepos';
 import DropdownOnHover from '../common/DropdownOnHover';
 import ExternalLink from '../common/ExternalLink';
-import styles from './RepositorySection.module.css';
+import styles from './WebsiteSection.module.css';
 
 interface Props {
   repositories: BaseRepository[] | Repository[];
   onlyIcon?: boolean;
 }
 
-const RepositorySection = (props: Props) => {
-  const [repositories, setRepositories] = useState<BaseRepository[] | Repository[]>([]);
+const WebsiteSection = (props: Props) => {
+  const [websites, setWebsites] = useState<string[]>([]);
   const isOnlyIcon = !isUndefined(props.onlyIcon) && props.onlyIcon;
 
   useEffect(() => {
-    setRepositories(sortRepos(props.repositories as Repository[]));
+    let urls: string[] = [];
+    props.repositories.forEach((repo: BaseRepository | Repository) => {
+      if (repo.hasOwnProperty('report')) {
+        const currentRepo = repo as Repository;
+        if (
+          currentRepo.report &&
+          currentRepo.report.data &&
+          currentRepo.report.data.documentation &&
+          currentRepo.report.data.documentation.website &&
+          currentRepo.report.data.documentation.website.url
+        ) {
+          urls.push(currentRepo.report.data.documentation.website.url);
+        }
+      } else if (!isUndefined(repo.website_url)) {
+        urls.push(repo.website_url);
+      }
+    });
+    setWebsites(urls);
   }, [props.repositories]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
+  if (websites.length === 0) return null;
+
   return (
-    <>
-      {repositories.length === 1 ? (
-        <ExternalLink label="Repository link" href={repositories[0].url}>
+    <div className="ms-3">
+      {websites.length === 1 ? (
+        <ExternalLink label="Website link" href={websites[0]}>
           <div
             className={classNames('d-flex flex-row align-items-center', styles.link, {
               [`text-muted ${styles.onlyIcon}`]: isOnlyIcon,
             })}
           >
-            <VscGithub className={styles.icon} />
-            {!isOnlyIcon && <div className="ms-1">Repository</div>}
+            <IoGlobeOutline className={styles.icon} />
+            {!isOnlyIcon && <div className="ms-1">Website</div>}
           </div>
         </ExternalLink>
       ) : (
@@ -44,24 +62,24 @@ const RepositorySection = (props: Props) => {
                 [`text-muted ${styles.onlyIcon}`]: isOnlyIcon,
               })}
             >
-              <VscGithub className={styles.icon} />
-              {!isOnlyIcon && <div className="ms-1">Repositories</div>}
+              <IoGlobeOutline className={styles.icon} />
+              {!isOnlyIcon && <div className="ms-1">Websites</div>}
             </div>
           }
         >
           <>
-            {repositories.map((repo: Repository | BaseRepository, index: number) => {
+            {websites.map((url: string, index: number) => {
               return (
                 <div key={`repo_${index}`} className={`d-flex flex-row align-items-center my-1 ${styles.link}`}>
-                  <VscGithub className={`me-2 position-relative ${styles.miniIcon}`} />
+                  <IoGlobeOutline className={`me-2 position-relative ${styles.miniIcon}`} />
                   <div className="truncateWrapper">
                     <ExternalLink
-                      label="Repository link"
-                      href={repo.url}
+                      label="Website link"
+                      href={url}
                       className={`d-block text-truncate text-dark ${styles.link}`}
                       visibleExternalIcon
                     >
-                      <div className="text-truncate">{repo.name}</div>
+                      <div className="text-truncate">{url}</div>
                     </ExternalLink>
                   </div>
                 </div>
@@ -70,8 +88,8 @@ const RepositorySection = (props: Props) => {
           </>
         </DropdownOnHover>
       )}
-    </>
+    </div>
   );
 };
 
-export default RepositorySection;
+export default WebsiteSection;

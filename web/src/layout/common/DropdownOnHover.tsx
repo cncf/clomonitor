@@ -83,6 +83,10 @@ const DropdownOnHover = (props: Props) => {
           onMouseLeave={() => {
             setOnLinkHover(false);
           }}
+          // Prevent going to a different page when clicking on the link
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
           aria-expanded={openStatus}
         >
           {props.linkContent}

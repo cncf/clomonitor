@@ -87,12 +87,16 @@ const ElementWithTooltip = (props: Props) => {
       <div
         ref={wrapper}
         data-testid="elementWithTooltip"
+        className="cursorDefault"
         onMouseEnter={(e) => {
           e.preventDefault();
           setOnLabelHover(true);
         }}
         onMouseLeave={() => {
           setOnLabelHover(false);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
         }}
       >
         {props.element}

@@ -37,6 +37,7 @@ export interface BaseRepository {
   name: string;
   url: string;
   check_sets: CheckSet[];
+  website_url?: string;
 }
 
 export interface Repository extends BaseRepository {

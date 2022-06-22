@@ -38,6 +38,7 @@ const defaultProps = {
         check_sets: [CheckSet.Community, CheckSet.Code],
         name: 'artifact-hub',
         url: 'https://github.com/artifacthub/hub',
+        website_url: 'https://artifacthub.io',
       },
     ],
     score: {
@@ -91,6 +92,9 @@ describe('Card', () => {
 
       const repoLink = screen.getByRole('link', { name: 'Repository link' });
       expect(repoLink).toHaveProperty('href', 'https://github.com/artifacthub/hub');
+
+      const websiteLink = screen.getByRole('link', { name: 'Website link' });
+      expect(websiteLink).toHaveProperty('href', 'https://artifacthub.io/');
 
       const statsLink = screen.getByRole('link', { name: 'Dev stats link' });
       expect(statsLink).toHaveProperty('href', 'https://artifacthub.devstats.cncf.io/');

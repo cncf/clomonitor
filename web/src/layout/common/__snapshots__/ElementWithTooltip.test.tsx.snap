@@ -6,6 +6,7 @@ exports[`ElementWithTooltip creates snapshot 1`] = `
     class="d-none d-md-block position-relative undefined"
   >
     <div
+      class="cursorDefault"
       data-testid="elementWithTooltip"
     >
       <div>

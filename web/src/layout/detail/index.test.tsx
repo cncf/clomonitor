@@ -98,7 +98,7 @@ describe('Project detail index', () => {
       expect(screen.getAllByText('artifact-hub')).toHaveLength(2);
       expect(screen.getByRole('link', { name: 'Repository link' })).toBeInTheDocument();
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getByText('23rd June 2020')).toBeInTheDocument();
+      expect(screen.getAllByText('23rd June 2020')).toHaveLength(2);
     });
 
     it('renders Back to results', async () => {

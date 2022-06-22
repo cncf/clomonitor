@@ -35,9 +35,23 @@
   top: -2px;
 }
 
-.link,
 .subtitle {
   font-size: 0.8rem;
+}
+
+.statsIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.calendarIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.wrapperCalendar:hover .calendarIcon,
+.link:hover {
+  color: var(--rm-tertiary) !important;
 }
 
 .legend {

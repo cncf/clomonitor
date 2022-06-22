@@ -13,7 +13,7 @@ use axum::{
 };
 use clomonitor_core::score::Score;
 use config::Config;
-use mime::{APPLICATION_JSON, HTML, PNG};
+use mime::{APPLICATION_JSON, CSV, HTML, PNG};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
@@ -249,6 +249,21 @@ pub(crate) async fn report_summary_svg(
         }
         None => Err(StatusCode::NOT_FOUND),
     }
+}
+
+/// Handler that returns all repositories with checks details in CSV format.
+pub(crate) async fn repositories_checks(Extension(db): Extension<DynDB>) -> impl IntoResponse {
+    // Get all repositories from database
+    let repos = db
+        .repositories_with_checks()
+        .await
+        .map_err(internal_error)?;
+
+    Response::builder()
+        .header(CACHE_CONTROL, "max-age=3600")
+        .header(CONTENT_TYPE, CSV.as_ref())
+        .body(Full::from(repos))
+        .map_err(internal_error)
 }
 
 /// Handler that allows searching for projects.

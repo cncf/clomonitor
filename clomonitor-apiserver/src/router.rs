@@ -62,6 +62,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             "/projects/:foundation/:org/:project/report-summary.png",
             get(report_summary_png),
         )
+        .route("/data/repositories.csv", get(repositories_checks))
         .nest("/api", api_routes)
         .nest(
             "/docs",

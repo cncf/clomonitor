@@ -45,6 +45,9 @@ pub(crate) trait DB {
         project: &str,
     ) -> Result<Option<Score>>;
 
+    /// Get all repositories including checks details.
+    async fn repositories_with_checks(&self) -> Result<String>;
+
     /// Search projects that match the criteria provided.
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)>;
 
@@ -144,6 +147,22 @@ impl DB for PgDB {
             Some(Json(score)) => Ok(Some(score)),
             None => Ok(None),
         }
+    }
+
+    async fn repositories_with_checks(&self) -> Result<String> {
+        let rows = self
+            .pool
+            .get()
+            .await?
+            .query("select get_repositories_with_checks()", &[])
+            .await?;
+        let mut repos = String::new();
+        for row in rows {
+            let repo = row.get(0);
+            repos.push_str(repo);
+            repos.push('\n');
+        }
+        Ok(repos)
     }
 
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)> {

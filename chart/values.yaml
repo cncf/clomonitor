@@ -81,7 +81,7 @@ tracker:
       repository: clomonitor/tracker
     resources: {}
   # Number of repositories to process concurrently
-  concurrency: 10
+  concurrency: 5
 
 # Values for postgresql chart dependency
 postgresql:

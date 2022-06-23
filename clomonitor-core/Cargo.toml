@@ -5,7 +5,7 @@ license = "Apache-2.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.57"
+anyhow = "1.0.58"
 askalono = "0.4.6"
 clap = { version = "3.2.5", features = ["derive"] }
 git2 = "0.14.4"

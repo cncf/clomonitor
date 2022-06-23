@@ -7,7 +7,7 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.57"
+anyhow = "1.0.58"
 askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 async-trait = "0.1.56"

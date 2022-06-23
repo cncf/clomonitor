@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import { isEmpty, isEqual, isNil, omitBy } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
@@ -29,7 +29,19 @@ const AcceptedDateRange = (props: Props) => {
   useOutsideClick([ref], showCalendar, () => setShowCalendar(false));
 
   const updateAcceptedRange = (dates: AcceptedDate) => {
-    if (!isEmpty(dates)) {
+    if (
+      !isEmpty(dates) &&
+      !isEqual(
+        dates,
+        omitBy(
+          {
+            accepted_from: props.acceptedFrom,
+            accepted_to: props.acceptedTo,
+          },
+          isNil
+        )
+      )
+    ) {
       props.onAcceptedDateRangeChange(dates);
     }
   };

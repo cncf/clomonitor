@@ -7,12 +7,12 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.57"
+anyhow = "1.0.58"
 askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 async-trait = "0.1.56"
-axum = "0.5.7"
-clap = { version = "3.2.5", features = ["derive"] }
+axum = "0.5.9"
+clap = { version = "3.2.6", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
@@ -31,7 +31,7 @@ tera = { version = "1.16.0", default-features = false }
 tiny-skia = "0.6.5"
 tokio = {version = "1.19.2", features = ["macros", "rt-multi-thread", "signal"] }
 tokio-postgres = { version = "0.7.6", features = ["with-uuid-1", "with-serde_json-1"] }
-tower = "0.4.12"
+tower = "0.4.13"
 tower-http = { version = "0.3.4", features = ["auth", "fs", "set-header", "trace"] }
 tracing = "0.1.35"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter", "json"] }

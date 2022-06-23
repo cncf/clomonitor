@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBarInLine creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-column wrapper"
+  >
+    <div
+      class="d-flex flex-row align-items-center progressWrapper"
+    >
+      <div
+        class="me-1 me-md-2 position-relative icon"
+      >
+        icon
+      </div>
+      <div
+        class="progressTitle"
+      >
+        Security
+      </div>
+      <div
+        class="flex-grow-1 ms-2"
+      >
+        <div
+          class="progress rounded-0 progress"
+        >
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: 75%;"
+          />
+        </div>
+      </div>
+      <div
+        class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+      >
+        75%
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,442 @@
+{
+  "generated_at": 1655619936353,
+  "projects": {
+    "running_total": [
+      [1456790400000, 1],
+      [1462060800000, 2],
+      [1477958400000, 3],
+      [1483228800000, 4],
+      [1485907200000, 6],
+      [1488326400000, 7],
+      [1493596800000, 8],
+      [1504224000000, 10],
+      [1506816000000, 12],
+      [1514764800000, 13],
+      [1517443200000, 14],
+      [1519862400000, 18],
+      [1525132800000, 20],
+      [1527811200000, 22],
+      [1530403200000, 24],
+      [1533081600000, 26],
+      [1535760000000, 27],
+      [1538352000000, 29],
+      [1541030400000, 30],
+      [1543622400000, 33],
+      [1546300800000, 34],
+      [1551398400000, 36],
+      [1554076800000, 39],
+      [1556668800000, 41],
+      [1561939200000, 44],
+      [1564617600000, 46],
+      [1567296000000, 48],
+      [1569888000000, 50],
+      [1575158400000, 53],
+      [1577836800000, 54],
+      [1583020800000, 58],
+      [1585699200000, 60],
+      [1588291200000, 61],
+      [1590969600000, 75],
+      [1593561600000, 79],
+      [1596240000000, 81],
+      [1598918400000, 92],
+      [1604188800000, 100],
+      [1606780800000, 101],
+      [1609459200000, 108],
+      [1612137600000, 109],
+      [1614556800000, 115],
+      [1617235200000, 123],
+      [1619827200000, 129],
+      [1622505600000, 133],
+      [1625097600000, 135],
+      [1630454400000, 141],
+      [1633046400000, 143],
+      [1635724800000, 150],
+      [1640995200000, 151],
+      [1646092800000, 154],
+      [1648771200000, 157]
+    ],
+    "accepted_distribution": [
+      {
+        "year": 2022,
+        "month": 4,
+        "total": 3
+      },
+      {
+        "year": 2022,
+        "month": 3,
+        "total": 3
+      },
+      {
+        "year": 2022,
+        "month": 1,
+        "total": 1
+      },
+      {
+        "year": 2021,
+        "month": 11,
+        "total": 7
+      },
+      {
+        "year": 2021,
+        "month": 10,
+        "total": 2
+      },
+      {
+        "year": 2021,
+        "month": 9,
+        "total": 6
+      },
+      {
+        "year": 2021,
+        "month": 7,
+        "total": 2
+      },
+      {
+        "year": 2021,
+        "month": 6,
+        "total": 4
+      },
+      {
+        "year": 2021,
+        "month": 5,
+        "total": 6
+      },
+      {
+        "year": 2021,
+        "month": 4,
+        "total": 8
+      },
+      {
+        "year": 2021,
+        "month": 3,
+        "total": 6
+      },
+      {
+        "year": 2021,
+        "month": 2,
+        "total": 1
+      },
+      {
+        "year": 2021,
+        "month": 1,
+        "total": 7
+      },
+      {
+        "year": 2020,
+        "month": 12,
+        "total": 1
+      },
+      {
+        "year": 2020,
+        "month": 11,
+        "total": 8
+      },
+      {
+        "year": 2020,
+        "month": 9,
+        "total": 11
+      },
+      {
+        "year": 2020,
+        "month": 8,
+        "total": 2
+      },
+      {
+        "year": 2020,
+        "month": 7,
+        "total": 4
+      },
+      {
+        "year": 2020,
+        "month": 6,
+        "total": 14
+      },
+      {
+        "year": 2020,
+        "month": 5,
+        "total": 1
+      },
+      {
+        "year": 2020,
+        "month": 4,
+        "total": 2
+      },
+      {
+        "year": 2020,
+        "month": 3,
+        "total": 4
+      },
+      {
+        "year": 2020,
+        "month": 1,
+        "total": 1
+      },
+      {
+        "year": 2019,
+        "month": 12,
+        "total": 3
+      },
+      {
+        "year": 2019,
+        "month": 10,
+        "total": 2
+      },
+      {
+        "year": 2019,
+        "month": 9,
+        "total": 2
+      },
+      {
+        "year": 2019,
+        "month": 8,
+        "total": 2
+      },
+      {
+        "year": 2019,
+        "month": 7,
+        "total": 3
+      },
+      {
+        "year": 2019,
+        "month": 5,
+        "total": 2
+      },
+      {
+        "year": 2019,
+        "month": 4,
+        "total": 3
+      },
+      {
+        "year": 2019,
+        "month": 3,
+        "total": 2
+      },
+      {
+        "year": 2019,
+        "month": 1,
+        "total": 1
+      },
+      {
+        "year": 2018,
+        "month": 12,
+        "total": 3
+      },
+      {
+        "year": 2018,
+        "month": 11,
+        "total": 1
+      },
+      {
+        "year": 2018,
+        "month": 10,
+        "total": 2
+      },
+      {
+        "year": 2018,
+        "month": 9,
+        "total": 1
+      },
+      {
+        "year": 2018,
+        "month": 8,
+        "total": 2
+      },
+      {
+        "year": 2018,
+        "month": 7,
+        "total": 2
+      },
+      {
+        "year": 2018,
+        "month": 6,
+        "total": 2
+      },
+      {
+        "year": 2018,
+        "month": 5,
+        "total": 2
+      },
+      {
+        "year": 2018,
+        "month": 3,
+        "total": 4
+      },
+      {
+        "year": 2018,
+        "month": 2,
+        "total": 1
+      },
+      {
+        "year": 2018,
+        "month": 1,
+        "total": 1
+      },
+      {
+        "year": 2017,
+        "month": 10,
+        "total": 2
+      },
+      {
+        "year": 2017,
+        "month": 9,
+        "total": 2
+      },
+      {
+        "year": 2017,
+        "month": 5,
+        "total": 1
+      },
+      {
+        "year": 2017,
+        "month": 3,
+        "total": 1
+      },
+      {
+        "year": 2017,
+        "month": 2,
+        "total": 2
+      },
+      {
+        "year": 2017,
+        "month": 1,
+        "total": 1
+      },
+      {
+        "year": 2016,
+        "month": 11,
+        "total": 1
+      },
+      {
+        "year": 2016,
+        "month": 5,
+        "total": 1
+      },
+      {
+        "year": 2016,
+        "month": 3,
+        "total": 1
+      }
+    ],
+    "rating_distribution": {
+      "all": [
+        {
+          "a": 63
+        },
+        {
+          "b": 84
+        },
+        {
+          "c": 10
+        }
+      ],
+      "graduated": [
+        {
+          "a": 17
+        },
+        {
+          "b": 6
+        },
+        {
+          "c": 2
+        }
+      ],
+      "incubating": [
+        {
+          "a": 22
+        },
+        {
+          "b": 28
+        },
+        {
+          "c": 5
+        }
+      ],
+      "sandbox": [
+        {
+          "a": 24
+        },
+        {
+          "b": 50
+        },
+        {
+          "c": 3
+        }
+      ]
+    },
+    "sections_average": {
+      "all": {
+        "documentation": 85,
+        "license": 79,
+        "best_practices": 61,
+        "security": 55,
+        "legal": 40
+      },
+      "graduated": {
+        "documentation": 87,
+        "license": 77,
+        "best_practices": 74,
+        "security": 56,
+        "legal": 48
+      },
+      "incubating": {
+        "documentation": 83,
+        "license": 80,
+        "best_practices": 59,
+        "security": 56,
+        "legal": 36
+      },
+      "sandbox": {
+        "documentation": 85,
+        "license": 79,
+        "best_practices": 59,
+        "security": 53,
+        "legal": 40
+      }
+    }
+  },
+  "repositories": {
+    "passing_check": {
+      "documentation": {
+        "adopters": 36,
+        "changelog": 77,
+        "code_of_conduct": 88,
+        "contributing": 83,
+        "governance": 59,
+        "maintainers": 83,
+        "readme": 98,
+        "roadmap": 37,
+        "website": 80
+      },
+      "license": {
+        "approved": 93,
+        "scanning": 22,
+        "spdx_id": 94
+      },
+      "best_practices": {
+        "artifacthub_badge": 9,
+        "cla": 8,
+        "community_meeting": 43,
+        "dco": 81,
+        "openssf_badge": 59,
+        "recent_release": 81,
+        "slack_presence": 33
+      },
+      "security": {
+        "binary_artifacts": 99,
+        "branch_protection": 44,
+        "code_review": 82,
+        "dangerous_workflow": 61,
+        "dependency_update_tool": 26,
+        "maintained": 87,
+        "sbom": 4,
+        "security_policy": 57,
+        "signed_releases": 5,
+        "token_permissions": 18,
+        "vulnerabilities": 100
+      },
+      "legal": {
+        "trademark_disclaimer": 40
+      }
+    }
+  }
+}

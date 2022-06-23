@@ -72,5 +72,11 @@ describe('AcceptedDateRange', () => {
         accepted_from: '2016-01-20',
       });
     });
+
+    it('does not call to mockOnAcceptedDateRangeChange when range is the same than received props', async () => {
+      render(<AcceptedDateRange {...defaultProps} acceptedFrom="2018-01-02" />);
+
+      expect(mockOnAcceptedDateRangeChange).toHaveBeenCalledTimes(0);
+    });
   });
 });

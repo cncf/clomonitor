@@ -8,7 +8,7 @@ rust-version = "1.58"
 
 [dependencies]
 anyhow = "1.0.57"
-clap = { version = "3.2.5", features = ["derive"] }
+clap = { version = "3.2.6", features = ["derive"] }
 comfy-table = "6.0.0"
 clomonitor-core = { path = "../clomonitor-core" }
 openssl = { version = "0.10.40", features = ["vendored"] }

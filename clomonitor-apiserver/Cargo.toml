@@ -12,7 +12,7 @@ askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e
 askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 async-trait = "0.1.56"
 axum = "0.5.7"
-clap = { version = "3.2.5", features = ["derive"] }
+clap = { version = "3.2.6", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }

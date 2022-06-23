@@ -7,7 +7,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.57"
 askalono = "0.4.6"
-clap = { version = "3.2.5", features = ["derive"] }
+clap = { version = "3.2.6", features = ["derive"] }
 git2 = "0.14.4"
 glob = "0.3.0"
 graphql_client = { git = "https://github.com/graphql-rust/graphql-client", rev = "f2faa9feb96067921528eaf65040a3a1776837fc", features = ["reqwest"] }

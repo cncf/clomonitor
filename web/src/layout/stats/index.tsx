@@ -65,7 +65,7 @@ const StatsView = () => {
   const checkCurrentStats = (currentStats: Stats | null) => {
     if (!isNull(currentStats)) {
       const notEmptyItems = Object.keys(currentStats).some((elem: string) => {
-        return elem !== 'generated_at' && (currentStats as any)[elem].total !== 0;
+        return elem !== 'generated_at' && !isEmpty((currentStats as any)[elem]);
       });
       setEmptyStats(!notEmptyItems);
     }

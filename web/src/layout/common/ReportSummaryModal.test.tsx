@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Foundation } from '../../types';
@@ -38,6 +38,27 @@ describe('ReportSummaryModal', () => {
       expect(screen.getByRole('button', { name: 'Open tab html' })).toBeInTheDocument();
       expect(screen.getByText('Preview')).toBeInTheDocument();
       expect(screen.getByAltText('CLOMonitor report summary')).toBeInTheDocument();
+    });
+
+    it('displays loading while image is loading', async () => {
+      render(<ReportSummaryModal {...defaultProps} />);
+
+      expect(screen.getByRole('status')).toBeInTheDocument();
+
+      const image = screen.getByAltText('CLOMonitor report summary');
+      fireEvent.load(image);
+
+      expect(screen.queryByRole('status')).toBeNull();
+
+      const darkThemeInput = screen.getByRole('radio', { name: 'dark' });
+      expect(darkThemeInput).not.toBeChecked();
+      await userEvent.click(darkThemeInput);
+
+      expect(screen.getByRole('status')).toBeInTheDocument();
+
+      fireEvent.load(image);
+
+      expect(screen.queryByRole('status')).toBeNull();
     });
 
     it('renders markdown tab', () => {

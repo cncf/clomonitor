@@ -3,6 +3,7 @@ import { FiMoon, FiSun } from 'react-icons/fi';
 
 import { Foundation } from '../../types';
 import CodeBlock from './CodeBlock';
+import Loading from './Loading';
 import Modal from './Modal';
 import styles from './ReportSummaryModal.module.css';
 import Tabs from './Tabs';
@@ -42,11 +43,18 @@ const ReportSummaryModal = (props: Props) => {
   const markdownLink = `[![CLOMonitor report summary](${image})](${projectLink})`;
   const asciiLink = `${projectLink}[image:${image}[CLOMonitor report summary]]`;
   const htmlLink = `<a href="${projectLink}" rel="noopener noreferrer" target="_blank"><img src="${image}" alt="CLOMonitor report summary" /></a>`;
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
+  const onCloseModal = () => {
+    props.onCloseModal();
+    setTheme(DEFAULT_THEME);
+    setImageLoaded(false);
+  };
 
   return (
     <Modal
       header="Embed report summary"
-      onClose={props.onCloseModal}
+      onClose={onCloseModal}
       open={props.openStatus.status && props.openStatus.name === 'reportSummary'}
     >
       <div className="w-100 position-relative">
@@ -67,7 +75,10 @@ const ReportSummaryModal = (props: Props) => {
                   id={themeOpt.name}
                   value={themeOpt.name}
                   checked={theme === themeOpt.name}
-                  onChange={() => setTheme(themeOpt.name)}
+                  onChange={() => {
+                    setImageLoaded(false);
+                    setTheme(themeOpt.name);
+                  }}
                   required
                   readOnly
                 />
@@ -133,8 +144,9 @@ const ReportSummaryModal = (props: Props) => {
         <div className="mt-4 d-flex flex-column">
           <label className={`text-primary text-uppercase fw-bold border-bottom mb-4 ${styles.label}`}>Preview</label>
 
-          <div className={`mx-auto my-3 ${styles.imgWrapper}`}>
-            <img src={image} alt="CLOMonitor report summary" className="border" />
+          <div className={`text-center mx-auto my-3 position-relative w-100 ${styles.imgWrapper}`}>
+            {!imageLoaded && <Loading />}
+            <img src={image} alt="CLOMonitor report summary" className="border" onLoad={() => setImageLoaded(true)} />
           </div>
         </div>
       </div>

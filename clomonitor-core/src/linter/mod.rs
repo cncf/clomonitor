@@ -113,6 +113,7 @@ pub struct BestPractices {
     pub community_meeting: Option<CheckOutput>,
     pub dco: Option<CheckOutput>,
     pub ga4: Option<CheckOutput>,
+    pub github_discussions: Option<CheckOutput>,
     pub openssf_badge: Option<CheckOutput>,
     pub recent_release: Option<CheckOutput>,
     pub slack_presence: Option<CheckOutput>,
@@ -205,6 +206,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &input),
             dco: run_check(DCO, dco, &input),
             ga4,
+            github_discussions: run_check(GITHUB_DISCUSSIONS, github_discussions, &input),
             openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &input),
             recent_release: run_check(RECENT_RELEASE, recent_release, &input),
             slack_presence: run_check(SLACK_PRESENCE, slack_presence, &input),
@@ -257,6 +259,26 @@ fn apply_exemptions(report: &mut Report) {
         report.best_practices.cla = Some(CheckOutput {
             exempt: true,
             exemption_reason: Some("DCO check passed".to_string()),
+            ..Default::default()
+        });
+    }
+
+    // Slack presence / GitHub discussions
+    if passed(report.best_practices.slack_presence.as_ref())
+        && !passed(report.best_practices.github_discussions.as_ref())
+    {
+        report.best_practices.github_discussions = Some(CheckOutput {
+            exempt: true,
+            exemption_reason: Some("Slack presence check passed".to_string()),
+            ..Default::default()
+        });
+    }
+    if passed(report.best_practices.github_discussions.as_ref())
+        && !passed(report.best_practices.slack_presence.as_ref())
+    {
+        report.best_practices.slack_presence = Some(CheckOutput {
+            exempt: true,
+            exemption_reason: Some("GitHub discussions check passed".to_string()),
             ..Default::default()
         });
     }

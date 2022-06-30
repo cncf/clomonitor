@@ -19,7 +19,7 @@ import {
 } from 'react-icons/fa';
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
-import { GoFileBinary, GoLaw } from 'react-icons/go';
+import { GoCommentDiscussion, GoFileBinary, GoLaw } from 'react-icons/go';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
@@ -223,6 +223,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Google Analytics 4',
     legend: <span>Projects should migrate to Google Analytics 4</span>,
     reference: '/docs/topics/checks/#google-analytics-4',
+  },
+  [ReportOption.GithubDiscussions]: {
+    icon: <GoCommentDiscussion />,
+    name: 'GitHub discussions',
+    legend: <span>Projects should enable discussions in their repositories</span>,
+    reference: '/docs/topics/checks/#github-discussions',
   },
   [ReportOption.Governance]: {
     icon: <GiTiedScroll />,

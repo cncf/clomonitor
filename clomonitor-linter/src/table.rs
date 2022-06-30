@@ -141,6 +141,10 @@ pub(crate) fn display(
             cell_check(&report.best_practices.dco),
         ])
         .add_row(vec![
+            cell_entry("Best practices / GitHub discussions"),
+            cell_check(&report.best_practices.github_discussions),
+        ])
+        .add_row(vec![
             cell_entry("Best practices / Google Analytics 4"),
             cell_check(&report.best_practices.ga4),
         ])
@@ -333,6 +337,7 @@ mod tests {
                 community_meeting: Some(true.into()),
                 dco: Some(true.into()),
                 ga4: Some(true.into()),
+                github_discussions: Some(true.into()),
                 openssf_badge: Some(true.into()),
                 recent_release: Some(true.into()),
                 slack_presence: Some(true.into()),

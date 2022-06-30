@@ -52,6 +52,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Website
   - Best practices / Community meeting
   - Best practices / Google Analytics 4
+  - Best practices / GitHub discussions
   - Best practices / Slack presence
   - Security / Policy
   - Legal / Trademark disclaimer
@@ -439,6 +440,16 @@ This check passes if:
 ```sh
 "G-[A-Z0-9]{8,10}"
 ```
+
+### GitHub discussions
+
+**ID**: `github_discussions`
+
+Projects should enabled GitHub discussions in their repositories.
+
+This check passes if:
+
+- One or more discussion categories are found in the repository.
 
 ### OpenSSF badge
 

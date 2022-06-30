@@ -364,6 +364,16 @@ pub(crate) async fn ga4(input: &CheckInput<'_>) -> Result<CheckOutput> {
     Ok(false.into())
 }
 
+/// GitHub discussions check.
+pub(crate) fn github_discussions(input: &CheckInput) -> Result<CheckOutput> {
+    // Check if there are one or more discussion categories in the repository
+    if input.gh_md.discussion_categories.total_count > 0 {
+        return Ok(true.into());
+    }
+
+    Ok(false.into())
+}
+
 /// Governance check.
 pub(crate) fn governance(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file

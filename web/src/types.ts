@@ -171,6 +171,7 @@ export enum ReportOption {
   DependencyUpdateTool = 'dependency_update_tool',
   DCO = 'dco',
   GA4 = 'ga4',
+  GithubDiscussions = 'github_discussions',
   Governance = 'governance',
   LicenseScanning = 'scanning',
   Maintained = 'maintained',

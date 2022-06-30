@@ -6,6 +6,9 @@ query Md($repo: String!, $owner: String!) {
         defaultBranchRef {
             name
         }
+        discussionCategories (first: 1) {
+            totalCount
+        }
         homepageUrl
         licenseInfo {
             spdxId

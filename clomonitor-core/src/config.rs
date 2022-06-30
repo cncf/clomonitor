@@ -17,6 +17,7 @@ pub const DANGEROUS_WORKFLOW: &str = "dangerous_workflow";
 pub const DEPENDENCY_UPDATE_TOOL: &str = "dependency_update_tool";
 pub const DCO: &str = "dco";
 pub const GA4: &str = "ga4";
+pub const GITHUB_DISCUSSIONS: &str = "github_discussions";
 pub const GOVERNANCE: &str = "governance";
 pub const LICENSE_APPROVED: &str = "license_approved";
 pub const LICENSE_SCANNING: &str = "license_scanning";
@@ -63,9 +64,10 @@ lazy_static! {
         m.insert(COMMUNITY_MEETING, 3);
         m.insert(DCO, 1);
         m.insert(GA4, 1);
-        m.insert(OPENSSF_BADGE, 9);
+        m.insert(GITHUB_DISCUSSIONS, 0);
+        m.insert(OPENSSF_BADGE, 10);
         m.insert(RECENT_RELEASE, 3);
-        m.insert(SLACK_PRESENCE, 1);
+        m.insert(SLACK_PRESENCE, 0);
 
         // Security
         m.insert(BINARY_ARTIFACTS, 2);
@@ -146,6 +148,7 @@ lazy_static! {
                 COMMUNITY_MEETING,
                 CONTRIBUTING,
                 GA4,
+                GITHUB_DISCUSSIONS,
                 GOVERNANCE,
                 README,
                 ROADMAP,

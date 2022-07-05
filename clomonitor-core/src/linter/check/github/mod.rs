@@ -32,7 +32,7 @@ impl MdRepository {
             default_branch_ref: Some(MdRepositoryDefaultBranchRef {
                 name: "master".to_string(),
             }),
-            discussion_categories: MdRepositoryDiscussionCategories { total_count: 1 },
+            discussions: MdRepositoryDiscussions { nodes: None },
             homepage_url: None,
             license_info: None,
             name: "".to_string(),

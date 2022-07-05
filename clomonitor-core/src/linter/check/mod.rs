@@ -366,11 +366,19 @@ pub(crate) async fn ga4(input: &CheckInput<'_>) -> Result<CheckOutput> {
 
 /// GitHub discussions check.
 pub(crate) fn github_discussions(input: &CheckInput) -> Result<CheckOutput> {
-    // Check if there are one or more discussion categories in the repository
-    if input.gh_md.discussion_categories.total_count > 0 {
-        return Ok(true.into());
+    if let Some(latest_discussion) = input
+        .gh_md
+        .discussions
+        .nodes
+        .as_ref()
+        .and_then(|nodes| nodes.iter().flatten().next())
+    {
+        let created_at = OffsetDateTime::parse(&latest_discussion.created_at, &Rfc3339)?;
+        let one_year_ago = (OffsetDateTime::now_utc() - Duration::days(365)).unix_timestamp();
+        if created_at.unix_timestamp() > one_year_ago {
+            return Ok(CheckOutput::from_url(Some(latest_discussion.url.clone())));
+        }
     }
-
     Ok(false.into())
 }
 

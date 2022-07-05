@@ -445,11 +445,11 @@ This check passes if:
 
 **ID**: `github_discussions`
 
-Projects should enabled GitHub discussions in their repositories.
+Projects should enable GitHub discussions in their repositories.
 
 This check passes if:
 
-- One or more discussion categories are found in the repository.
+- A discussion that is less than one year old is found on Github.
 
 ### OpenSSF badge
 

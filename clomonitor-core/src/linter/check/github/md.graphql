@@ -6,8 +6,11 @@ query Md($repo: String!, $owner: String!) {
         defaultBranchRef {
             name
         }
-        discussionCategories (first: 1) {
-            totalCount
+        discussions (first: 1, orderBy: {field: CREATED_AT, direction: DESC}) {
+            nodes {
+              createdAt
+              url
+            }
         }
         homepageUrl
         licenseInfo {

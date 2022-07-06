@@ -22,7 +22,7 @@ metrics-exporter-prometheus = "0.10.0"
 mime = "0.3.16"
 openssl = { version = "0.10.40", features = ["vendored"] }
 postgres-openssl = "0.5.0"
-regex = "1.5.6"
+regex = "1.6.0"
 resvg = "0.23.0"
 serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.82"

@@ -13,7 +13,7 @@ glob = "0.3.0"
 graphql_client = { git = "https://github.com/graphql-rust/graphql-client", rev = "f2faa9feb96067921528eaf65040a3a1776837fc", features = ["reqwest"] }
 http = "0.2.8"
 lazy_static = "1.4.0"
-regex = "1.5.6"
+regex = "1.6.0"
 reqwest = "0.11.11"
 serde = { version = "1.0.137", features = ["derive"] }
 serde_json = "1.0.82"

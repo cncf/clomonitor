@@ -34,7 +34,7 @@ tokio-postgres = { version = "0.7.6", features = ["with-uuid-1", "with-serde_jso
 tower = "0.4.13"
 tower-http = { version = "0.3.4", features = ["auth", "fs", "set-header", "trace"] }
 tracing = "0.1.35"
-tracing-subscriber = { version = "0.3.12", features = ["env-filter", "json"] }
+tracing-subscriber = { version = "0.3.14", features = ["env-filter", "json"] }
 usvg = "0.23.0"
 
 [dev-dependencies]

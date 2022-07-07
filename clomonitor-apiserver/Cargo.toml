@@ -11,7 +11,7 @@ anyhow = "1.0.58"
 askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 async-trait = "0.1.56"
-axum = "0.5.10"
+axum = "0.5.11"
 clap = { version = "3.2.8", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
@@ -22,9 +22,9 @@ metrics-exporter-prometheus = "0.10.0"
 mime = "0.3.16"
 openssl = { version = "0.10.40", features = ["vendored"] }
 postgres-openssl = "0.5.0"
-regex = "1.5.6"
+regex = "1.6.0"
 resvg = "0.23.0"
-serde = { version = "1.0.137", features = ["derive"] }
+serde = { version = "1.0.138", features = ["derive"] }
 serde_json = "1.0.82"
 serde_qs = "0.9.2"
 tera = { version = "1.16.0", default-features = false }
@@ -34,7 +34,7 @@ tokio-postgres = { version = "0.7.6", features = ["with-uuid-1", "with-serde_jso
 tower = "0.4.13"
 tower-http = { version = "0.3.4", features = ["auth", "fs", "set-header", "trace"] }
 tracing = "0.1.35"
-tracing-subscriber = { version = "0.3.12", features = ["env-filter", "json"] }
+tracing-subscriber = { version = "0.3.14", features = ["env-filter", "json"] }
 usvg = "0.23.0"
 
 [dev-dependencies]

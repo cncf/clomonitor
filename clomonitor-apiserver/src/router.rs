@@ -464,6 +464,8 @@ mod tests {
                 rating: Some(vec!['a', 'b']),
                 accepted_from: Some("20200101".to_string()),
                 accepted_to: Some("20210101".to_string()),
+                passing_check: Some(vec!["dco".to_string(), "readme".to_string()]),
+                not_passing_check: Some(vec!["website".to_string()]),
             }))
             .times(1)
             .returning(|_| {
@@ -477,7 +479,26 @@ mod tests {
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri("/api/projects/search?limit=10&offset=1&sort_by=name&sort_direction=asc&text=hub&foundation[0]=cncf&maturity[0]=graduated&maturity[1]=incubating&rating[0]=a&rating[1]=b&accepted_from=20200101&accepted_to=20210101")
+                    .uri(
+                        "\
+                        /api/projects/search?\
+                            limit=10&\
+                            offset=1&\
+                            sort_by=name&\
+                            sort_direction=asc&\
+                            text=hub&\
+                            foundation[0]=cncf&\
+                            maturity[0]=graduated&\
+                            maturity[1]=incubating&\
+                            rating[0]=a&\
+                            rating[1]=b&\
+                            accepted_from=20200101&\
+                            accepted_to=20210101&\
+                            passing_check[0]=dco&\
+                            passing_check[1]=readme&\
+                            not_passing_check[0]=website\
+                        ",
+                    )
                     .body(Body::empty())
                     .unwrap(),
             )

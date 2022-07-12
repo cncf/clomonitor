@@ -101,16 +101,16 @@
           }
         },
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "passed": true,
             "value": true
           },
-          "scanning": {
+          "license_scanning": {
             "exempt": false,
             "passed": false
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "passed": true,
             "value": "Apache-2.0"

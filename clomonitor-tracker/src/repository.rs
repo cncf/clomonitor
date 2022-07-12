@@ -217,6 +217,7 @@ impl Repository {
             update project set
                 score = $1::jsonb,
                 rating = $2::text,
+                passed_checks = (select get_project_passed_checks($3::uuid)),
                 updated_at = current_timestamp
             where project_id = $3::uuid;
             ",

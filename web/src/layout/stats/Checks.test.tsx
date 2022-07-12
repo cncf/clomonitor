@@ -53,7 +53,7 @@ describe('Checks', () => {
     });
 
     it('renders checks properly sorted', () => {
-      render(<Checks data={{ approved: 93, scanning: 22, spdx_id: 94 }} title="License" />);
+      render(<Checks data={{ license_approved: 93, license_scanning: 22, license_spdx_id: 94 }} title="License" />);
 
       expect(screen.getAllByText('License')).toHaveLength(2);
       expect(screen.getByText('Approved license')).toBeInTheDocument();

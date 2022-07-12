@@ -46,13 +46,13 @@
         },
         "legal": {},
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "failed": false,
             "passed": true,
             "value": true
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "failed": false,
             "passed": true,
@@ -124,13 +124,13 @@
         },
         "legal": {},
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "failed": false,
             "passed": true,
             "value": true
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "failed": false,
             "passed": true,
@@ -202,13 +202,13 @@
         },
         "legal": {},
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "failed": false,
             "passed": true,
             "value": true
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "failed": false,
             "passed": true,
@@ -286,13 +286,13 @@
         },
         "legal": {},
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "failed": false,
             "passed": true,
             "value": true
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "failed": false,
             "passed": true,
@@ -423,18 +423,18 @@
           }
         },
         "license": {
-          "approved": {
+          "license_approved": {
             "exempt": false,
             "failed": false,
             "passed": true,
             "value": true
           },
-          "scanning": {
+          "license_scanning": {
             "exempt": false,
             "failed": false,
             "passed": false
           },
-          "spdx_id": {
+          "license_spdx_id": {
             "exempt": false,
             "failed": false,
             "passed": true,

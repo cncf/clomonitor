@@ -106,7 +106,7 @@ pub(crate) fn display(
         ])
         .add_row(vec![
             cell_entry("License"),
-            Cell::new(match &report.license.spdx_id {
+            Cell::new(match &report.license.license_spdx_id {
                 None => NOT_APPLICABLE_MSG.to_string(),
                 Some(r) => r
                     .value
@@ -118,11 +118,11 @@ pub(crate) fn display(
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(&report.license.approved),
+            cell_check(&report.license.license_approved),
         ])
         .add_row(vec![
             cell_entry("License / Scanning"),
-            cell_check(&report.license.scanning),
+            cell_check(&report.license.license_scanning),
         ])
         .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
@@ -316,17 +316,17 @@ mod tests {
                 website: Some(true.into()),
             },
             license: License {
-                approved: Some(CheckOutput {
+                license_approved: Some(CheckOutput {
                     passed: true,
                     value: Some(true),
                     ..Default::default()
                 }),
-                scanning: Some(CheckOutput {
+                license_scanning: Some(CheckOutput {
                     passed: true,
                     url: (Some("https://license-scanning.url".to_string())),
                     ..CheckOutput::default()
                 }),
-                spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
             },
             best_practices: BestPractices {
                 artifacthub_badge: Some(CheckOutput {

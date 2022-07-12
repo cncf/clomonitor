@@ -408,9 +408,9 @@
         "website": 80
       },
       "license": {
-        "approved": 93,
-        "scanning": 22,
-        "spdx_id": 94
+        "license_approved": 93,
+        "license_scanning": 22,
+        "license_spdx_id": 94
       },
       "best_practices": {
         "artifacthub_badge": 9,

@@ -157,7 +157,7 @@ export enum CheckSet {
 
 export enum ReportOption {
   Adopters = 'adopters',
-  ApprovedLicense = 'approved',
+  ApprovedLicense = 'license_approved',
   ArtifactHubBadge = 'artifacthub_badge',
   BinaryArtifacts = 'binary_artifacts',
   BranchProtection = 'branch_protection',
@@ -173,7 +173,7 @@ export enum ReportOption {
   GA4 = 'ga4',
   GithubDiscussions = 'github_discussions',
   Governance = 'governance',
-  LicenseScanning = 'scanning',
+  LicenseScanning = 'license_scanning',
   Maintained = 'maintained',
   Maintainers = 'maintainers',
   OpenSSFBadge = 'openssf_badge',
@@ -184,7 +184,7 @@ export enum ReportOption {
   SecurityPolicy = 'security_policy',
   SignedReleases = 'signed_releases',
   SlackPresence = 'slack_presence',
-  SPDX = 'spdx_id',
+  SPDX = 'license_spdx_id',
   TokenPermissions = 'token_permissions',
   TrademarkDisclaimer = 'trademark_disclaimer',
   Vulnerabilities = 'vulnerabilities',

@@ -217,3 +217,15 @@ repository_id;name;url;check_sets;project_id
 00000000-0000-0232-0000-000000000000;teller;https://github.com/SpectralOps/teller;{community,code};00000000-0121-0000-0000-000000000000
 00000000-0000-0233-0000-000000000000;fabedge;https://github.com/FabEdge/fabedge;{community,code};00000000-0122-0000-0000-000000000000
 00000000-0000-0234-0000-000000000000;fab-dns;https://github.com/FabEdge/fab-dns;{code-lite};00000000-0122-0000-0000-000000000000
+00000000-0000-0235-0000-000000000000;clusterpedia;https://github.com/clusterpedia-io/clusterpedia;{community,code};00000000-0123-0000-0000-000000000000
+00000000-0000-0236-0000-000000000000;opencost;https://github.com/kubecost/opencost;{community,code};00000000-0124-0000-0000-000000000000
+00000000-0000-0237-0000-000000000000;aeraki;https://github.com/aeraki-mesh/aeraki;{community,code};00000000-0125-0000-0000-000000000000
+00000000-0000-0238-0000-000000000000;curve;https://github.com/opencurve/curve;{community,code};00000000-0126-0000-0000-000000000000
+00000000-0000-0239-0000-000000000000;community;https://github.com/open-feature/community;{community};00000000-0127-0000-0000-000000000000
+00000000-0000-0240-0000-000000000000;spec;https://github.com/open-feature/spec;{docs};00000000-0127-0000-0000-000000000000
+00000000-0000-0241-0000-000000000000;open-feature-operator;https://github.com/open-feature/open-feature-operator;{code-lite};00000000-0127-0000-0000-000000000000
+00000000-0000-0242-0000-000000000000;flagd;https://github.com/open-feature/flagd;{code-lite};00000000-0127-0000-0000-000000000000
+00000000-0000-0243-0000-000000000000;docs;https://github.com/kubewarden/docs;{docs};00000000-0128-0000-0000-000000000000
+00000000-0000-0244-0000-000000000000;policy-server;https://github.com/kubewarden/policy-server;{code-lite};00000000-0128-0000-0000-000000000000
+00000000-0000-0245-0000-000000000000;kubewarden-controller;https://github.com/kubewarden/kubewarden-controller;{community,code};00000000-0128-0000-0000-000000000000
+00000000-0000-0246-0000-000000000000;devstream;https://github.com/devstream-io/devstream;{community,code};00000000-0129-0000-0000-000000000000

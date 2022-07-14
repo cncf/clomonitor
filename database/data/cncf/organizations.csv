@@ -119,3 +119,10 @@ organization_id;name;home_url;logo_url;foundation
 00000118-0000-0000-0000-000000000000;sealer;http://sealer.cool;https://landscape.cncf.io/logos/sealer.svg;cncf
 00000119-0000-0000-0000-000000000000;teller;https://tlr.dev;https://landscape.cncf.io/logos/teller.svg;cncf
 00000120-0000-0000-0000-000000000000;fabedge;http://www.fabedge.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/fabedge/icon/color/fabedge-color.svg;cncf
+00000121-0000-0000-0000-000000000000;clusterpedia;https://clusterpedia.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/clusterpedia/icon/color/clusterpedia-icon-color.svg;cncf
+00000122-0000-0000-0000-000000000000;kubecost;https://www.kubecost.com;https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/color/Opencost_Icon_Color.svg;cncf
+00000123-0000-0000-0000-000000000000;aeraki-mesh;https://aeraki.net/;https://avatars.githubusercontent.com/u/73976586?s=200&v=4;cncf
+00000124-0000-0000-0000-000000000000;curve;https://www.opencurve.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/curve/icon/color/curve_icon_color.svg;cncf
+00000125-0000-0000-0000-000000000000;openfeature;https://openfeature.dev/;https://landscape.cncf.io/logos/open-feature.svg;cncf
+00000126-0000-0000-0000-000000000000;kubewarden;https://www.kubewarden.io;https://www.kubewarden.io/images/logo-kubewarden.svg;cncf
+00000127-0000-0000-0000-000000000000;devstream;https://www.devstream.io/;https://raw.githubusercontent.com/cncf/artwork/master/projects/devstream/icon/color/devstream-icon-color.svg;cncf

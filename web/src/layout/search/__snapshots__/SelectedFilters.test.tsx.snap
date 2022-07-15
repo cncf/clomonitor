@@ -70,7 +70,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               <small
                 class="text-uppercase fw-normal me-2"
               >
-                maturity:
+                Maturity:
               </small>
               <span
                 class="text-capitalize"
@@ -114,7 +114,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               <small
                 class="text-uppercase fw-normal me-2"
               >
-                rating:
+                Rating:
               </small>
               <span
                 class="text-capitalize"
@@ -158,7 +158,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               <small
                 class="text-uppercase fw-normal me-2"
               >
-                rating:
+                Rating:
               </small>
               <span
                 class="text-capitalize"
@@ -202,7 +202,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               <small
                 class="text-uppercase fw-normal me-2"
               >
-                foundation:
+                Foundation:
               </small>
               <span
                 class="text-capitalize"

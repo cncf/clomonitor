@@ -4,12 +4,14 @@ import userEvent from '@testing-library/user-event';
 import Filters from './index';
 
 const mockOnChange = jest.fn();
+const mockOnChecksChange = jest.fn();
 const mockOnAcceptedDateRangeChange = jest.fn();
 
 const defaultProps = {
   visibleTitle: true,
   activeFilters: {},
   onChange: mockOnChange,
+  onChecksChange: mockOnChecksChange,
   onAcceptedDateRangeChange: mockOnAcceptedDateRangeChange,
   device: 'test',
 };

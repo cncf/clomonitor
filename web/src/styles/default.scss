@@ -191,14 +191,35 @@ a,
   }
 }
 
-.border-primary {
-  border-color: var(--rm-primary) !important;
-}
-
 .btn {
   &:hover {
     filter: brightness(0.8);
   }
+}
+
+.btn-outline-secondary {
+  background-color: var(--body-bg);
+  border-color: var(--color-black-25) !important;
+  color: var(--font-color);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:disabled,
+.btn-outline-secondary.disabled,
+.btn-outline-secondary.active,
+.btn-outline-secondary:active,
+.btn-outline-secondary:focus {
+  background-color: var(--body-bg);
+  border-color: var(--color-black-25) !important;
+  color: var(--font-color);
+}
+
+.btn-outline-secondary:hover {
+  filter: brightness(0.95);
+}
+
+.border-primary {
+  border-color: var(--rm-primary) !important;
 }
 
 .alert-warning {

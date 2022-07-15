@@ -1,22 +1,24 @@
 import isNull from 'lodash/isNull';
 
-import { SearchFiltersURL } from '../types';
+import { FilterKind, SearchFiltersURL } from '../types';
 
 interface F {
   [key: string]: string[];
 }
 
 const WHITELISTED_FILTER_KEYS = [
-  'foundation', // Project foundation
-  'maturity', // Project maturity
-  'rating', // Quality rating
+  FilterKind.Foundation, // Project foundation
+  FilterKind.Maturity, // Project maturity
+  FilterKind.Rating, // Quality rating
+  FilterKind.PassingCheck, // Passing checks
+  FilterKind.NotPassingCheck, // Not `assing checks
 ];
 
 const buildSearchParams = (p: URLSearchParams): SearchFiltersURL => {
   let filters: F = {};
 
   p.forEach((value, key) => {
-    if (WHITELISTED_FILTER_KEYS.includes(key)) {
+    if (WHITELISTED_FILTER_KEYS.includes(key as FilterKind)) {
       const values = filters[key] || [];
       values.push(value);
       filters[key] = values;

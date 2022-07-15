@@ -1,23 +1,5 @@
 .dateBtn {
-  background-color: var(--body-bg);
-  border-color: var(--color-black-25) !important;
-  color: var(--font-color);
   width: 150px;
-}
-
-.dateBtn:hover,
-.dateBtn:disabled,
-.dateBtn.disabled,
-.dateBtn.active,
-.dateBtn:active,
-.dateBtn:focus {
-  background-color: var(--body-bg);
-  border-color: var(--color-black-25) !important;
-  color: var(--font-color);
-}
-
-.dateBtn:hover {
-  filter: brightness(0.95);
 }
 
 .legend {

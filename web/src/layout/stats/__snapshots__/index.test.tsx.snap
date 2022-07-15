@@ -1489,7 +1489,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Adopters
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Adopters
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Adopters
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1552,7 +1565,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Changelog
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Changelog
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Changelog
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1600,7 +1626,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Code of conduct
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Code of conduct
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Code of conduct
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1650,7 +1689,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Contributing
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Contributing
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Contributing
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1698,7 +1750,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Governance
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Governance
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Governance
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1746,7 +1811,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Maintainers
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Maintainers
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Maintainers
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1797,7 +1875,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Readme
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Readme
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Readme
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1851,7 +1942,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Roadmap
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Roadmap
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Roadmap
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1899,7 +2003,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Website
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Website
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Website
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -1960,7 +2077,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              License
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                License found
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  License found
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2008,7 +2138,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Approved license
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Approved license
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Approved license
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2056,7 +2199,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              License scanning
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                License scanning
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  License scanning
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2119,7 +2275,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Artifact Hub badge
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Artifact Hub badge
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Artifact Hub badge
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2167,7 +2336,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              CLA
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                CLA
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  CLA
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2218,7 +2400,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Community meeting
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Community meeting
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Community meeting
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2266,7 +2461,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              DCO
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                DCO
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  DCO
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2317,7 +2525,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              OpenSSF badge
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                OpenSSF badge
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  OpenSSF badge
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2368,7 +2589,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Recent release
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Recent release
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Recent release
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2416,7 +2650,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Slack presence
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Slack presence
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Slack presence
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2478,7 +2725,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Binary artifacts
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Binary artifacts
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Binary artifacts
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2526,7 +2786,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Branch protection
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Branch protection
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Branch protection
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2578,7 +2851,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Code review
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Code review
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Code review
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2626,7 +2912,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Dangerous workflow
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Dangerous workflow
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Dangerous workflow
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2674,7 +2973,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Dependency update tool
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Dependency update tool
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Dependency update tool
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2722,7 +3034,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Maintained
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Maintained
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Maintained
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2777,7 +3102,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              SBOM
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                SBOM
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  SBOM
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2825,7 +3163,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Security policy
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Security policy
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Security policy
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2873,7 +3224,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Signed releases
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Signed releases
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Signed releases
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2921,7 +3285,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Token permissions
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Token permissions
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Token permissions
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -2974,7 +3351,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Vulnerabilities
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Vulnerabilities
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Vulnerabilities
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"
@@ -3035,7 +3425,20 @@ exports[`StatsView creates snapshot 1`] = `
                             <div
                               class="progressTitle"
                             >
-                              Trademark disclaimer
+                              <span
+                                class="d-inline-block d-md-none"
+                              >
+                                Trademark disclaimer
+                              </span>
+                              <span
+                                class="d-none d-md-inline-block"
+                              >
+                                <button
+                                  class="btn btn-link p-0 btn"
+                                >
+                                  Trademark disclaimer
+                                </button>
+                              </span>
                             </div>
                             <div
                               class="flex-grow-1 ms-2"

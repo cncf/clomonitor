@@ -29,6 +29,7 @@ import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 import ExternalLink from './layout/common/ExternalLink';
 import QualityDot from './layout/common/QualityDot';
 import {
+  ChecksPerCategory,
   FilterKind,
   FiltersSection,
   Foundation,
@@ -101,6 +102,23 @@ export const CATEGORY_ICONS = {
   [ScoreType.Legal]: <GoLaw />,
   [ScoreType.License]: <IoMdRibbon />,
   [ScoreType.Security]: <BiLock />,
+};
+
+export const CATEGORY_NAMES = {
+  [ScoreType.BestPractices]: 'Best Practices',
+  [ScoreType.Documentation]: 'Documentation',
+  [ScoreType.Global]: 'Global',
+  [ScoreType.Legal]: 'Legal',
+  [ScoreType.License]: 'License',
+  [ScoreType.Security]: 'Security',
+};
+
+export const FILTER_CATEGORY_NAMES = {
+  [FilterKind.Foundation]: 'Foundation',
+  [FilterKind.Maturity]: 'Maturity',
+  [FilterKind.Rating]: 'Rating',
+  [FilterKind.PassingCheck]: 'Passed',
+  [FilterKind.NotPassingCheck]: 'Not passed',
 };
 
 export const REPORT_OPTIONS: ReportOptionInfo = {
@@ -325,7 +343,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   },
   [ReportOption.SPDX]: {
     icon: <FaBalanceScale />,
-    name: 'License',
+    name: 'License found',
     legend: (
       <span>
         The <em>LICENSE</em> file contains the repository's license
@@ -370,4 +388,44 @@ export const FOUNDATIONS = {
   [Foundation.lfaidata]: {
     name: 'LF AI & Data',
   },
+};
+
+export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
+  [ScoreType.Documentation]: [
+    ReportOption.Adopters,
+    ReportOption.Changelog,
+    ReportOption.CodeOfConduct,
+    ReportOption.Contributing,
+    ReportOption.Governance,
+    ReportOption.Maintainers,
+    ReportOption.Readme,
+    ReportOption.Roadmap,
+    ReportOption.Website,
+  ],
+  [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.LicenseScanning],
+  [ScoreType.BestPractices]: [
+    ReportOption.ArtifactHubBadge,
+    ReportOption.CLA,
+    ReportOption.CommunityMeeting,
+    ReportOption.DCO,
+    ReportOption.GA4,
+    ReportOption.GithubDiscussions,
+    ReportOption.OpenSSFBadge,
+    ReportOption.RecentRelease,
+    ReportOption.SlackPresence,
+  ],
+  [ScoreType.Security]: [
+    ReportOption.BinaryArtifacts,
+    ReportOption.BranchProtection,
+    ReportOption.CodeReview,
+    ReportOption.DangerousWorkflow,
+    ReportOption.DependencyUpdateTool,
+    ReportOption.Maintained,
+    ReportOption.SBOM,
+    ReportOption.SecurityPolicy,
+    ReportOption.SignedReleases,
+    ReportOption.TokenPermissions,
+    ReportOption.Vulnerabilities,
+  ],
+  [ScoreType.Legal]: [ReportOption.TrademarkDisclaimer],
 };

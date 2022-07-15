@@ -1,0 +1,67 @@
+.categoryTitle {
+  margin-top: 2rem;
+}
+
+.btnCheck {
+  margin-top: -2px;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.legend {
+  font-size: 0.75rem;
+}
+
+.btn {
+  background-color: var(--body-bg);
+  border-color: var(--color-black-25) !important;
+  color: var(--font-color);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.3rem;
+  width: 150px;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+}
+
+.iconTooltipArrow {
+  left: 2px !important;
+}
+
+.wrapperChecks {
+  margin-top: 0.75rem;
+}
+
+.squareCheck {
+  border: 1px solid var(--color-black-25);
+  color: var(--bs-white);
+  height: 16px;
+  width: 16px;
+  font-size: 0.7rem;
+}
+
+.passing {
+  background-color: var(--rm-green);
+  color: var(--bs-white);
+}
+
+.notPassing {
+  background-color: var(--rm-red);
+  color: var(--bs-white);
+}
+
+.checkName {
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+
+@media (hover: hover) {
+  .checkWrapper:hover .btnCheck {
+    text-decoration: underline;
+  }
+
+  .checkWrapper:hover .btnCheck {
+    display: inline-block;
+  }
+}

@@ -3,8 +3,8 @@ import moment from 'moment';
 import { Fragment } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
-import { FILTERS, FOUNDATIONS } from '../../data';
-import { Filter, FilterKind, FiltersSection, Foundation } from '../../types';
+import { FILTER_CATEGORY_NAMES, FILTERS, FOUNDATIONS, REPORT_OPTIONS } from '../../data';
+import { Filter, FilterKind, FiltersSection, Foundation, ReportOption } from '../../types';
 import styles from './SelectedFilters.module.css';
 
 interface Props {
@@ -22,8 +22,14 @@ const SelectedFilters = (props: Props) => {
     switch (type) {
       case FilterKind.Foundation:
         return FOUNDATIONS[filter as Foundation].name;
+
       case FilterKind.Maturity:
         return filter;
+
+      case FilterKind.PassingCheck:
+      case FilterKind.NotPassingCheck:
+        return REPORT_OPTIONS[filter as ReportOption].shortName || REPORT_OPTIONS[filter as ReportOption].name;
+
       case FilterKind.Rating:
         let ratingName: string = '';
         const ratings = FILTERS.find((sec: FiltersSection) => sec.name === type);
@@ -76,6 +82,7 @@ const SelectedFilters = (props: Props) => {
             </span>
           )}
           {Object.keys(props.filters).map((category: string) => {
+            const categoryName = FILTER_CATEGORY_NAMES[category as FilterKind];
             return (
               <Fragment key={`filter_${category}`}>
                 {props.filters[category].map((filter: string) => {
@@ -88,7 +95,7 @@ const SelectedFilters = (props: Props) => {
                     >
                       <div className="d-flex flex-row align-items-baseline">
                         <div className={styles.content}>
-                          <small className="text-uppercase fw-normal me-2">{category}:</small>
+                          <small className="text-uppercase fw-normal me-2">{categoryName}:</small>
                           <span className="text-capitalize">{filterName}</span>
                         </div>
                         <button

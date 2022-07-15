@@ -122,15 +122,15 @@ insert into report (
             }
         },
         "license": {
-            "spdx_id": {
+            "license_spdx_id": {
                 "value": "Apache-2.0",
                 "passed": true
             },
-            "approved": {
+            "license_approved": {
                 "value": true,
                 "passed": true
             },
-            "scanning": {
+            "license_scanning": {
                 "passed": false
             }
         },
@@ -256,15 +256,15 @@ insert into report (
             }
         },
         "license": {
-            "spdx_id": {
+            "license_spdx_id": {
                 "value": "Apache-2.0",
                 "passed": true
             },
-            "approved": {
+            "license_approved": {
                 "value": true,
                 "passed": true
             },
-            "scanning": {
+            "license_scanning": {
                 "passed": false
             }
         },
@@ -390,13 +390,13 @@ insert into report (
             }
         },
         "license": {
-            "spdx_id": {
+            "license_spdx_id": {
                 "passed": false
             },
-            "approved": {
+            "license_approved": {
                 "passed": false
             },
-            "scanning": {
+            "license_scanning": {
                 "passed": false
             }
         },
@@ -562,9 +562,9 @@ select is(
                     "website": 67
                 },
                 "license": {
-                    "approved": 67,
-                    "scanning": 0,
-                    "spdx_id": 67
+                    "license_approved": 67,
+                    "license_scanning": 0,
+                    "license_spdx_id": 67
                 },
                 "best_practices": {
                     "artifacthub_badge": 0,

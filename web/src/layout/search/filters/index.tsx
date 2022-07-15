@@ -3,9 +3,13 @@ import React from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTERS } from '../../../data';
-import { FiltersSection } from '../../../types';
+import { FilterKind, FiltersSection, ReportOption } from '../../../types';
 import AcceptedDateRange from './AcceptedDateRange';
+import Checks from './checks';
 import Section from './Section';
+interface FiltersProp {
+  [key: string]: string[];
+}
 
 interface Props {
   visibleTitle: boolean;
@@ -15,6 +19,7 @@ interface Props {
     [key: string]: string[];
   };
   onChange: (name: string, value: string, checked: boolean) => void;
+  onChecksChange: (filters: FiltersProp) => void;
   onAcceptedDateRangeChange: (dates: any) => void;
   onResetFilters?: () => void;
   device: string;
@@ -55,6 +60,15 @@ const Filters = (props: Props) => {
           )}
         </React.Fragment>
       ))}
+
+      <div className="d-none d-md-block">
+        <Checks
+          activePassingChecks={props.activeFilters[FilterKind.PassingCheck] as ReportOption[]}
+          activeNotPassingChecks={props.activeFilters[FilterKind.NotPassingCheck] as ReportOption[]}
+          onChecksChange={props.onChecksChange}
+          onChange={props.onChange}
+        />
+      </div>
     </>
   );
 };

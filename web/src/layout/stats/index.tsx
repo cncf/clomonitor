@@ -8,7 +8,16 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
 import { FOUNDATIONS } from '../../data';
-import { DistributionData, Foundation, Maturity, Rating, RatingKind, Stats } from '../../types';
+import {
+  DistributionData,
+  FilterKind,
+  Foundation,
+  Maturity,
+  Rating,
+  RatingKind,
+  ReportOption,
+  Stats,
+} from '../../types';
 import prepareQueryString from '../../utils/prepareQueryString';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
@@ -69,6 +78,18 @@ const StatsView = () => {
       });
       setEmptyStats(!notEmptyItems);
     }
+  };
+
+  const selectCheck = (name: ReportOption) => {
+    navigate({
+      pathname: '/search',
+      search: prepareQueryString({
+        filters: {
+          [FilterKind.PassingCheck]: [name],
+        },
+        pageNumber: 1,
+      }),
+    });
   };
 
   const loadSearchPage = (filters: SelectedPoint) => {
@@ -652,11 +673,31 @@ const StatsView = () => {
                         <div className={`card rounded-0 ${styles.chartWrapper}`}>
                           <div className={`card-body ${styles.checksBody}`}>
                             <div className="row g-4 justify-content-center">
-                              <Checks title="Documentation" data={stats.repositories.passing_check.documentation} />
-                              <Checks title="License" data={stats.repositories.passing_check.license} />
-                              <Checks title="Best Practices" data={stats.repositories.passing_check.best_practices} />
-                              <Checks title="Security" data={stats.repositories.passing_check.security} />
-                              <Checks title="Legal" data={stats.repositories.passing_check.legal} />
+                              <Checks
+                                title="Documentation"
+                                data={stats.repositories.passing_check.documentation}
+                                onSelectCheck={selectCheck}
+                              />
+                              <Checks
+                                title="License"
+                                data={stats.repositories.passing_check.license}
+                                onSelectCheck={selectCheck}
+                              />
+                              <Checks
+                                title="Best Practices"
+                                data={stats.repositories.passing_check.best_practices}
+                                onSelectCheck={selectCheck}
+                              />
+                              <Checks
+                                title="Security"
+                                data={stats.repositories.passing_check.security}
+                                onSelectCheck={selectCheck}
+                              />
+                              <Checks
+                                title="Legal"
+                                data={stats.repositories.passing_check.legal}
+                                onSelectCheck={selectCheck}
+                              />
                             </div>
                           </div>
                         </div>

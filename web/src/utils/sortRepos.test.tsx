@@ -22,8 +22,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -62,9 +62,9 @@ const tests: Test[] = [
               website: true,
             },
             license: {
-              approved: true,
+              license_approved: true,
               fossa_badge: false,
-              spdx_id: 'Apache-2.0',
+              license_spdx_id: 'Apache-2.0',
             },
 
             security: {
@@ -112,9 +112,9 @@ const tests: Test[] = [
               website: true,
             },
             license: {
-              approved: true,
+              license_approved: true,
               fossa_badge: false,
-              spdx_id: 'Apache-2.0',
+              license_spdx_id: 'Apache-2.0',
             },
 
             security: {
@@ -149,8 +149,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -182,8 +182,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -211,8 +211,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -240,8 +240,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -269,8 +269,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -298,8 +298,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -338,9 +338,9 @@ const tests: Test[] = [
               website: true,
             },
             license: {
-              approved: true,
+              license_approved: true,
               fossa_badge: false,
-              spdx_id: 'Apache-2.0',
+              license_spdx_id: 'Apache-2.0',
             },
 
             security: {
@@ -388,9 +388,9 @@ const tests: Test[] = [
               website: true,
             },
             license: {
-              approved: true,
+              license_approved: true,
               fossa_badge: false,
-              spdx_id: 'Apache-2.0',
+              license_spdx_id: 'Apache-2.0',
             },
 
             security: {
@@ -424,8 +424,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -453,8 +453,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -482,8 +482,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -511,8 +511,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,
@@ -540,8 +540,8 @@ const tests: Test[] = [
               readme: true,
             },
             license: {
-              approved: true,
-              spdx_id: 'Apache-2.0',
+              license_approved: true,
+              license_spdx_id: 'Apache-2.0',
             },
           },
           errors: null,

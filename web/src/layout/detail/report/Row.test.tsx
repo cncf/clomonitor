@@ -73,9 +73,9 @@ describe('Row', () => {
         <Row
           {...defaultProps}
           data={{
-            approved: { passed: true },
-            scanning: { passed: true, url: 'http://url.com' },
-            spdx_id: { passed: true, value: 'Apache-2.0' },
+            license_approved: { passed: true },
+            license_scanning: { passed: true, url: 'http://url.com' },
+            license_spdx_id: { passed: true, value: 'Apache-2.0' },
           }}
         />
       );

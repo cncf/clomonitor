@@ -11,6 +11,8 @@ declare
     v_foundation text[];
     v_maturity text[];
     v_rating text[];
+    v_passing_check text[];
+    v_not_passing_check text[];
     v_accepted_from date := (p_input->>'accepted_from');
     v_accepted_to date := (p_input->>'accepted_to');
 begin
@@ -27,6 +29,14 @@ begin
         select array_agg(e::text) into v_rating
         from jsonb_array_elements_text(p_input->'rating') e;
     end if;
+    if p_input ? 'passing_check' and p_input->'passing_check' <> 'null' then
+        select array_agg(e::text) into v_passing_check
+        from jsonb_array_elements_text(p_input->'passing_check') e;
+    end if;
+    if p_input ? 'not_passing_check' and p_input->'not_passing_check' <> 'null' then
+        select array_agg(e::text) into v_not_passing_check
+        from jsonb_array_elements_text(p_input->'not_passing_check') e;
+    end if;
 
     return query
     with filtered_projects as (
@@ -41,6 +51,7 @@ begin
             p.devstats_url,
             p.score,
             p.rating,
+            p.passed_checks,
             p.accepted_at,
             p.updated_at,
             p.maturity,
@@ -68,6 +79,12 @@ begin
         and
             case when v_accepted_to is not null then
             p.accepted_at <= v_accepted_to else true end
+        and
+            case when cardinality(v_passing_check) > 0 then
+            passed_checks @> v_passing_check else true end
+        and
+            case when cardinality(v_not_passing_check) > 0 then
+            not passed_checks && v_not_passing_check else true end
     )
     select
         (

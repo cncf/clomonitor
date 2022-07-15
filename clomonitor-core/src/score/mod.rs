@@ -70,9 +70,15 @@ pub fn calculate(report: &Report) -> Score {
 
     // License
     (score.license, score.license_weight) = calculate_section_score_and_weight(&[
-        (LICENSE_APPROVED, should_score(&report.license.approved)),
-        (LICENSE_SCANNING, should_score(&report.license.scanning)),
-        (LICENSE_SPDX, should_score(&report.license.spdx_id)),
+        (
+            LICENSE_APPROVED,
+            should_score(&report.license.license_approved),
+        ),
+        (
+            LICENSE_SCANNING,
+            should_score(&report.license.license_scanning),
+        ),
+        (LICENSE_SPDX, should_score(&report.license.license_spdx_id)),
     ]);
 
     // Best practices
@@ -311,15 +317,15 @@ mod tests {
                     website: Some(true.into()),
                 },
                 license: License {
-                    approved: Some(CheckOutput {
+                    license_approved: Some(CheckOutput {
                         passed: true,
                         value: Some(true),
                         ..Default::default()
                     }),
-                    scanning: Some(CheckOutput::from_url(Some(
+                    license_scanning: Some(CheckOutput::from_url(Some(
                         "https://license-scanning.url".to_string()
                     ))),
-                    spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                    license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
                     artifacthub_badge: Some(CheckOutput {
@@ -385,9 +391,9 @@ mod tests {
                     website: Some(false.into()),
                 },
                 license: License {
-                    approved: Some(false.into()),
-                    scanning: Some(false.into()),
-                    spdx_id: Some(false.into()),
+                    license_approved: Some(false.into()),
+                    license_scanning: Some(false.into()),
+                    license_spdx_id: Some(false.into()),
                 },
                 best_practices: BestPractices {
                     artifacthub_badge: Some(CheckOutput {
@@ -453,15 +459,15 @@ mod tests {
                     website: None,
                 },
                 license: License {
-                    approved: Some(CheckOutput {
+                    license_approved: Some(CheckOutput {
                         passed: true,
                         value: Some(true),
                         ..Default::default()
                     }),
-                    scanning: Some(CheckOutput::from_url(Some(
+                    license_scanning: Some(CheckOutput::from_url(Some(
                         "https://license-scanning.url".to_string()
                     ))),
-                    spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                    license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
                     artifacthub_badge: Some(CheckOutput {

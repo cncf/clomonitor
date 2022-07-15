@@ -27,6 +27,7 @@ create table if not exists project (
     devstats_url text check (devstats_url <> ''),
     score jsonb,
     rating text,
+    passed_checks text[],
     accepted_at date,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,

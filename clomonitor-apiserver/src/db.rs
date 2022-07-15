@@ -205,4 +205,6 @@ pub(crate) struct SearchProjectsInput {
     pub rating: Option<Vec<char>>,
     pub accepted_from: Option<String>,
     pub accepted_to: Option<String>,
+    pub passing_check: Option<Vec<String>>,
+    pub not_passing_check: Option<Vec<String>>,
 }

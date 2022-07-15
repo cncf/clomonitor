@@ -101,17 +101,17 @@
             }
           },
           "license": {
-            "approved": {
+            "license_approved": {
               "exempt": false,
               "passed": true,
               "value": true
             },
-            "scanning": {
+            "license_scanning": {
               "exempt": false,
               "passed": true,
               "url": "https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fartifacthub%2Fhub?ref=badge_shield"
             },
-            "spdx_id": {
+            "license_spdx_id": {
               "exempt": false,
               "passed": true,
               "value": "Apache-2.0"

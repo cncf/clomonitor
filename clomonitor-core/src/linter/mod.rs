@@ -100,9 +100,9 @@ pub struct Documentation {
 /// License section of the report.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct License {
-    pub approved: Option<CheckOutput<bool>>,
-    pub scanning: Option<CheckOutput>,
-    pub spdx_id: Option<CheckOutput<String>>,
+    pub license_approved: Option<CheckOutput<bool>>,
+    pub license_scanning: Option<CheckOutput>,
+    pub license_spdx_id: Option<CheckOutput<String>>,
 }
 
 /// BestPractices section of the report.
@@ -196,9 +196,9 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             website: run_check(WEBSITE, website, &input),
         },
         license: License {
-            approved: license_approved(spdx_id_value, &input),
-            scanning: run_check(LICENSE_SCANNING, license_scanning, &input),
-            spdx_id,
+            license_approved: license_approved(spdx_id_value, &input),
+            license_scanning: run_check(LICENSE_SCANNING, license_scanning, &input),
+            license_spdx_id: spdx_id,
         },
         best_practices: BestPractices {
             artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &input),

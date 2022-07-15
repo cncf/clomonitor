@@ -7,7 +7,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.58"
 askalono = "0.4.6"
-clap = { version = "3.2.8", features = ["derive"] }
+clap = { version = "3.2.12", features = ["derive"] }
 git2 = "0.14.4"
 glob = "0.3.0"
 graphql_client = { git = "https://github.com/graphql-rust/graphql-client", rev = "f2faa9feb96067921528eaf65040a3a1776837fc", features = ["reqwest"] }
@@ -15,11 +15,11 @@ http = "0.2.8"
 lazy_static = "1.4.0"
 regex = "1.6.0"
 reqwest = "0.11.11"
-serde = { version = "1.0.138", features = ["derive"] }
+serde = { version = "1.0.139", features = ["derive"] }
 serde_json = "1.0.82"
-serde_yaml = "0.8.24"
+serde_yaml = "0.8.25"
 time = { version = "0.3.11", features = ["parsing", "serde"] }
-tokio = { version = "1.19.2", features = ["macros", "process", "rt-multi-thread"] }
+tokio = { version = "1.20.0", features = ["macros", "process", "rt-multi-thread"] }
 tracing = "0.1.35"
 which = "4.2.5"
 

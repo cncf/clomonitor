@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react';
 
+import { ReportOption } from '../../types';
 import ProgressBarInLine from './ProgressBarInLine';
 
 const defaultProps = {
-  title: 'Security',
+  title: 'Governance',
   icon: <>icon</>,
   value: 75,
+  name: ReportOption.Governance,
+  onSelectCheck: jest.fn(),
 };
 
 describe('ProgressBarInLine', () => {
@@ -23,7 +26,7 @@ describe('ProgressBarInLine', () => {
     it('renders bar', () => {
       render(<ProgressBarInLine {...defaultProps} />);
 
-      expect(screen.getByText('Security')).toBeInTheDocument();
+      expect(screen.getAllByText('Governance')).toHaveLength(2);
       expect(screen.getByText('icon')).toBeInTheDocument();
       expect(screen.getByText('75%')).toBeInTheDocument();
 

@@ -127,6 +127,8 @@ export enum FilterKind {
   Foundation = 'foundation',
   Maturity = 'maturity',
   Rating = 'rating',
+  PassingCheck = 'passing_check',
+  NotPassingCheck = 'not_passing_check',
 }
 
 export enum ScoreType {
@@ -221,6 +223,8 @@ export interface SearchData {
   accepted_to?: string;
   maturity?: string[];
   rating?: number[];
+  passing_check?: string[];
+  not_passing_check?: string[];
 }
 
 export interface Stats {
@@ -287,3 +291,7 @@ export enum AcceptedRangeKind {
   To = 'accepted_to',
   From = 'accepted_from',
 }
+
+export type ChecksPerCategory = {
+  [key in ScoreType]?: ReportOption[];
+};

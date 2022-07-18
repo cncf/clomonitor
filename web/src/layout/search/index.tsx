@@ -134,6 +134,12 @@ const Search = (props: Props) => {
     });
   };
 
+  const onChecksChange = (updatedFilters: FiltersProp) => {
+    updateCurrentPage({
+      filters: { ...filters, ...updatedFilters },
+    });
+  };
+
   const onPaginationLimitChange = (newLimit: number): void => {
     props.setScrollPosition(0);
     navigate({
@@ -251,6 +257,7 @@ const Search = (props: Props) => {
                     acceptedTo={acceptedTo}
                     activeFilters={filters}
                     onChange={onFiltersChange}
+                    onChecksChange={onChecksChange}
                     onAcceptedDateRangeChange={onAcceptedDateRangeChange}
                     visibleTitle={false}
                   />
@@ -311,6 +318,7 @@ const Search = (props: Props) => {
               acceptedTo={acceptedTo}
               activeFilters={filters}
               onChange={onFiltersChange}
+              onChecksChange={onChecksChange}
               onAcceptedDateRangeChange={onAcceptedDateRangeChange}
               onResetFilters={onResetFilters}
               visibleTitle

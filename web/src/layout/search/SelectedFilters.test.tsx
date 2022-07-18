@@ -33,12 +33,12 @@ describe('SelectedFilters', () => {
 
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getByText('≥ Jan 1, 2018')).toBeInTheDocument();
-      expect(screen.getByText('maturity:')).toBeInTheDocument();
+      expect(screen.getByText('Maturity:')).toBeInTheDocument();
       expect(screen.getByText('sandbox')).toBeInTheDocument();
-      expect(screen.getAllByText('rating:')).toHaveLength(2);
+      expect(screen.getAllByText('Rating:')).toHaveLength(2);
       expect(screen.getByText('A [75-100]')).toBeInTheDocument();
       expect(screen.getByText('B [50-74]')).toBeInTheDocument();
-      expect(screen.getByText('foundation:')).toBeInTheDocument();
+      expect(screen.getByText('Foundation:')).toBeInTheDocument();
       expect(screen.getByText('CNCF')).toBeInTheDocument();
 
       expect(screen.getAllByRole('button')).toHaveLength(5);

@@ -16,7 +16,20 @@ exports[`ProgressBarInLine creates snapshot 1`] = `
       <div
         class="progressTitle"
       >
-        Security
+        <span
+          class="d-inline-block d-md-none"
+        >
+          Governance
+        </span>
+        <span
+          class="d-none d-md-inline-block"
+        >
+          <button
+            class="btn btn-link p-0 btn"
+          >
+            Governance
+          </button>
+        </span>
       </div>
       <div
         class="flex-grow-1 ms-2"

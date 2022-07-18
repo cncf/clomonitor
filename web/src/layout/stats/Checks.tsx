@@ -6,6 +6,7 @@ import ProgressBarInLine from './ProgressBarInLine';
 interface Props {
   title: string;
   data: { [key in ReportOption]?: number };
+  onSelectCheck: (name: ReportOption) => void;
 }
 
 function getOptionInfo(key: ReportOption) {
@@ -25,8 +26,10 @@ const Checks = (props: Props) => {
             <ProgressBarInLine
               key={`check_${opt.name}`}
               title={opt.shortName || opt.name}
+              name={check}
               icon={opt.icon}
               value={props.data[check] as number}
+              onSelectCheck={props.onSelectCheck}
             />
           );
         })}

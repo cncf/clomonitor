@@ -2,7 +2,8 @@
   margin: 0.75rem 0;
 }
 
-.progressWrapper {
+.progressWrapper,
+.btn {
   font-size: 0.85rem;
 }
 

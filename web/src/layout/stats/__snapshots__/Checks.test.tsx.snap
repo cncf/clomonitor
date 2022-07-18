@@ -41,7 +41,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            Artifact Hub badge
+            <span
+              class="d-inline-block d-md-none"
+            >
+              Artifact Hub badge
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                Artifact Hub badge
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -89,7 +102,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            CLA
+            <span
+              class="d-inline-block d-md-none"
+            >
+              CLA
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                CLA
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -140,7 +166,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            Community meeting
+            <span
+              class="d-inline-block d-md-none"
+            >
+              Community meeting
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                Community meeting
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -188,7 +227,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            DCO
+            <span
+              class="d-inline-block d-md-none"
+            >
+              DCO
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                DCO
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -236,7 +288,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            Google Analytics 4
+            <span
+              class="d-inline-block d-md-none"
+            >
+              Google Analytics 4
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                Google Analytics 4
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -287,7 +352,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            OpenSSF badge
+            <span
+              class="d-inline-block d-md-none"
+            >
+              OpenSSF badge
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                OpenSSF badge
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -338,7 +416,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            Recent release
+            <span
+              class="d-inline-block d-md-none"
+            >
+              Recent release
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                Recent release
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"
@@ -386,7 +477,20 @@ exports[`Checks creates snapshot 1`] = `
           <div
             class="progressTitle"
           >
-            Slack presence
+            <span
+              class="d-inline-block d-md-none"
+            >
+              Slack presence
+            </span>
+            <span
+              class="d-none d-md-inline-block"
+            >
+              <button
+                class="btn btn-link p-0 btn"
+              >
+                Slack presence
+              </button>
+            </span>
           </div>
           <div
             class="flex-grow-1 ms-2"

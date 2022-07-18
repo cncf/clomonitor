@@ -1,0 +1,33 @@
+.btn {
+  height: 24px;
+  width: 24px;
+  color: var(--color-black-25);
+  background-color: var(--bg-progressbar-stats);
+  border-color: var(--color-black-25) !important;
+}
+
+.passingBtn {
+  margin-right: 0.35rem;
+}
+
+.isPassing {
+  background-color: var(--rm-green);
+  color: #fff;
+}
+
+.isPassing:hover {
+  color: var(--bs-white);
+}
+
+.isNotPassing {
+  background-color: var(--rm-red);
+  color: #fff;
+}
+
+.isNotPassing:hover {
+  color: var(--bs-white);
+}
+
+.iconTooltipArrow {
+  left: 5px !important;
+}

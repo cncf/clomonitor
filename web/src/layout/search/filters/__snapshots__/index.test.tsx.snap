@@ -1857,5 +1857,31 @@ exports[`Filters creates snapshot 1`] = `
       </label>
     </div>
   </div>
+  <div
+    class="d-none d-md-block"
+  >
+    <div
+      class="d-flex flex-row align-items-center text-primary categoryTitle"
+    >
+      <div
+        class="fw-bold text-uppercase"
+      >
+        <small>
+          Checks
+        </small>
+      </div>
+    </div>
+    <div>
+      <button
+        aria-label="Open modal"
+        class="btn btn-outline-secondary btn-sm rounded-0 mb-4 btn mt-3"
+        type="button"
+      >
+        <span>
+          Add checks filters
+        </span>
+      </button>
+    </div>
+  </div>
 </DocumentFragment>
 `;

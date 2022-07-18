@@ -141,9 +141,9 @@ returns json as $$
                     'website', repositories_passing_check(p_foundation, 'documentation', 'website')
                 ),
                 'license', json_build_object(
-                    'approved', repositories_passing_check(p_foundation, 'license', 'approved'),
-                    'scanning', repositories_passing_check(p_foundation, 'license', 'scanning'),
-                    'spdx_id', repositories_passing_check(p_foundation, 'license', 'spdx_id')
+                    'license_approved', repositories_passing_check(p_foundation, 'license', 'license_approved'),
+                    'license_scanning', repositories_passing_check(p_foundation, 'license', 'license_scanning'),
+                    'license_spdx_id', repositories_passing_check(p_foundation, 'license', 'license_spdx_id')
                 ),
                 'best_practices', json_build_object(
                     'artifacthub_badge', repositories_passing_check(p_foundation, 'best_practices', 'artifacthub_badge'),

@@ -72,14 +72,12 @@ exports[`SelectedFilters creates snapshot 1`] = `
               >
                 Maturity:
               </small>
-              <span
-                class="text-capitalize"
-              >
-                sandbox
+              <span>
+                Sandbox
               </span>
             </div>
             <button
-              aria-label="Remove sandbox filter"
+              aria-label="Remove Sandbox filter"
               class="btn btn-link btn-sm lh-1 btn"
             >
               <svg
@@ -116,9 +114,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               >
                 Rating:
               </small>
-              <span
-                class="text-capitalize"
-              >
+              <span>
                 A [75-100]
               </span>
             </div>
@@ -160,9 +156,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               >
                 Rating:
               </small>
-              <span
-                class="text-capitalize"
-              >
+              <span>
                 B [50-74]
               </span>
             </div>
@@ -204,9 +198,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
               >
                 Foundation:
               </small>
-              <span
-                class="text-capitalize"
-              >
+              <span>
                 CNCF
               </span>
             </div>

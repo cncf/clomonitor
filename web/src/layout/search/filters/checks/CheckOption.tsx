@@ -47,12 +47,15 @@ const CheckOption = (props: Props) => {
           alignmentTooltip="left"
           forceAlignment
           visibleTooltip
+          delay={1200}
           active
+          onlyInHoverableDevices
         />
 
         <ElementWithTooltip
           element={
             <button
+              type="button"
               className={classNames('btn rounded-0 border p-0', styles.btn, {
                 [styles.isNotPassing]: isInNotPassingCheck,
               })}
@@ -70,7 +73,9 @@ const CheckOption = (props: Props) => {
           alignmentTooltip="left"
           forceAlignment
           visibleTooltip
+          delay={1200}
           active
+          onlyInHoverableDevices
         />
       </div>
       <small className="me-2">{option.icon}</small>

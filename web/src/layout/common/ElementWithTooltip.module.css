@@ -31,3 +31,10 @@
   left: auto;
   right: 10px;
 }
+
+/* When prop `onlyInHoverableDevices`, only display dropdown on devices that can conveniently hover. */
+@media (hover: none) {
+  .visibleOnHover {
+    display: none;
+  }
+}

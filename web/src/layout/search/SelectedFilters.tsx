@@ -5,6 +5,7 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTER_CATEGORY_NAMES, FILTERS, FOUNDATIONS, REPORT_OPTIONS } from '../../data';
 import { Filter, FilterKind, FiltersSection, Foundation, ReportOption } from '../../types';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import styles from './SelectedFilters.module.css';
 
 interface Props {
@@ -86,7 +87,7 @@ const SelectedFilters = (props: Props) => {
             return (
               <Fragment key={`filter_${category}`}>
                 {props.filters[category].map((filter: string) => {
-                  const filterName = getFilterName(category as FilterKind, filter);
+                  const filterName = capitalizeFirstLetter(getFilterName(category as FilterKind, filter));
                   return (
                     <span
                       role="listitem"
@@ -96,7 +97,7 @@ const SelectedFilters = (props: Props) => {
                       <div className="d-flex flex-row align-items-baseline">
                         <div className={styles.content}>
                           <small className="text-uppercase fw-normal me-2">{categoryName}:</small>
-                          <span className="text-capitalize">{filterName}</span>
+                          <span>{filterName}</span>
                         </div>
                         <button
                           className={`btn btn-link btn-sm lh-1 ${styles.btn}`}

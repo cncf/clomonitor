@@ -1,7 +1,9 @@
 import { isUndefined } from 'lodash';
+import { BsDot } from 'react-icons/bs';
 
 import { CATEGORY_NAMES, CHECKS_PER_CATEGORY } from '../../../../data';
 import { FilterKind, ReportOption, ScoreType } from '../../../../types';
+import styles from './Block.module.css';
 import CheckOption from './CheckOption';
 
 interface Props {
@@ -9,6 +11,9 @@ interface Props {
   activePassingChecks: ReportOption[];
   activeNotPassingChecks: ReportOption[];
   onChange: (name: FilterKind.PassingCheck | FilterKind.NotPassingCheck, value: ReportOption, checked: boolean) => void;
+  resetChecksPerCategory: (category: ScoreType) => void;
+  markAllAsPassedPerCategory: (category: ScoreType) => void;
+  markAllAsNotPassedPerCategory: (category: ScoreType) => void;
 }
 
 const Block = (props: Props) => {
@@ -17,8 +22,30 @@ const Block = (props: Props) => {
 
   return (
     <div className="mb-4">
-      <div className="fw-bold text-uppercase text-muted mb-3">
-        <small>{CATEGORY_NAMES[props.type]}</small>
+      <div className="d-flex flex-column mb-3">
+        <small className="fw-bold text-uppercase text-muted">{CATEGORY_NAMES[props.type]}</small>
+        <div className="d-flex flex-row align-items-center mt-1">
+          <button
+            className={`btn btn-link btn-sm p-0 ${styles.btn}`}
+            onClick={() => props.markAllAsPassedPerCategory(props.type)}
+          >
+            All passed
+          </button>
+          <BsDot className="mx-1" />
+          <button
+            className={`btn btn-link btn-sm p-0 ${styles.btn}`}
+            onClick={() => props.markAllAsNotPassedPerCategory(props.type)}
+          >
+            None passed
+          </button>
+          <BsDot className="mx-1" />
+          <button
+            className={`btn btn-link btn-sm p-0 ${styles.btn}`}
+            onClick={() => props.resetChecksPerCategory(props.type)}
+          >
+            Reset
+          </button>
+        </div>
       </div>
       {checks.map((check: ReportOption) => {
         return (

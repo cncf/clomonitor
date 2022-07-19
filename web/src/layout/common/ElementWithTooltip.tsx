@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import isNull from 'lodash/isNull';
 import isUndefined from 'lodash/isUndefined';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -16,10 +17,13 @@ interface Props {
   alignmentTooltip?: 'right' | 'left';
   tooltipWidth?: number;
   forceAlignment?: boolean;
+  delay?: number;
+  onlyInHoverableDevices?: boolean;
 }
 
 const DEFAULT_TOOLTIP_WIDTH = 150;
 const DEFAULT_MARGIN = 30;
+const DEFAULT_DELAY = 500; // 500ms
 
 const ElementWithTooltip = (props: Props) => {
   const tooltipWidth: number = props.tooltipWidth || DEFAULT_TOOLTIP_WIDTH;
@@ -58,7 +62,7 @@ const ElementWithTooltip = (props: Props) => {
       calculateTooltipPosition();
       timeout = setTimeout(() => {
         setVisibleTooltipStatus(true);
-      }, 500);
+      }, props.delay || DEFAULT_DELAY);
     }
     if (visibleTooltipStatus && !onLabelHover) {
       timeout = setTimeout(() => {
@@ -104,7 +108,9 @@ const ElementWithTooltip = (props: Props) => {
 
       {props.visibleTooltip && visibleTooltipStatus && (
         <div
-          className={`position-absolute ${styles[`${tooltipAlignment}Aligned`]}`}
+          className={classNames('position-absolute', styles[`${tooltipAlignment}Aligned`], {
+            [styles.visibleOnHover]: !isUndefined(props.onlyInHoverableDevices) && props.onlyInHoverableDevices,
+          })}
           style={{
             left: tooltipAlignment === 'center' ? `${-(tooltipWidth - elWidth) / 2}px` : 'auto',
           }}

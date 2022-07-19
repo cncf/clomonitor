@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { isEmpty, isUndefined } from 'lodash';
+import { difference, isEmpty, isUndefined, union } from 'lodash';
 import { useEffect, useState } from 'react';
 import { BsCheckAll } from 'react-icons/bs';
 import { GoCheck, GoX } from 'react-icons/go';
@@ -46,6 +46,9 @@ const ChecksFilter = (props: Props) => {
     (isUndefined(props.activePassingChecks) || props.activePassingChecks.length === 0) &&
     (isUndefined(props.activeNotPassingChecks) || props.activeNotPassingChecks.length === 0);
 
+  const noSelectedChecks =
+    selectedChecks[FilterKind.PassingCheck].length === 0 && selectedChecks[FilterKind.NotPassingCheck].length === 0;
+
   const onCloseModal = () => {
     props.onChecksChange(selectedChecks);
     setOpenStatus(false);
@@ -55,6 +58,31 @@ const ChecksFilter = (props: Props) => {
     setSelectedChecks({
       [FilterKind.PassingCheck]: [],
       [FilterKind.NotPassingCheck]: [],
+    });
+  };
+
+  const resetChecksPerCategory = (category: ScoreType) => {
+    setSelectedChecks({
+      [FilterKind.PassingCheck]: difference(selectedChecks[FilterKind.PassingCheck], CHECKS_PER_CATEGORY[category]!),
+      [FilterKind.NotPassingCheck]: difference(
+        selectedChecks[FilterKind.NotPassingCheck],
+        CHECKS_PER_CATEGORY[category]!
+      ),
+    });
+  };
+  const markAllAsPassedPerCategory = (category: ScoreType) => {
+    setSelectedChecks({
+      [FilterKind.PassingCheck]: union(selectedChecks[FilterKind.PassingCheck], CHECKS_PER_CATEGORY[category]),
+      [FilterKind.NotPassingCheck]: difference(
+        selectedChecks[FilterKind.NotPassingCheck],
+        CHECKS_PER_CATEGORY[category]!
+      ),
+    });
+  };
+  const markAllAsNotPassedPerCategory = (category: ScoreType) => {
+    setSelectedChecks({
+      [FilterKind.PassingCheck]: difference(selectedChecks[FilterKind.PassingCheck], CHECKS_PER_CATEGORY[category]!),
+      [FilterKind.NotPassingCheck]: union(selectedChecks[FilterKind.NotPassingCheck], CHECKS_PER_CATEGORY[category]),
     });
   };
 
@@ -143,7 +171,7 @@ const ChecksFilter = (props: Props) => {
                         active
                       />
 
-                      <div className={`d-flex flex-row align-items-center ${styles.checkWrapper}`}>
+                      <div className={`flex-grow-1 d-flex flex-row align-items-center ${styles.checkWrapper}`}>
                         <div className={`ms-2 text-truncate ${styles.checkName}`}>{opt.shortName || opt.name}</div>
                         <button
                           className={`btn btn-link text-decoration-none py-0 px-2 position-relative ${styles.btnCheck}`}
@@ -205,15 +233,18 @@ const ChecksFilter = (props: Props) => {
             <div className="d-flex flex-row align-items-center justify-content-between w-100">
               <button
                 type="button"
-                className="btn btn-sm rounded-0 btn-secondary text-uppercase"
+                className={classNames('btn btn-sm rounded-0 btn-secondary text-uppercase', {
+                  disabled: noSelectedChecks,
+                })}
                 onClick={() => {
                   resetChecks();
                 }}
+                disabled={noSelectedChecks}
                 aria-label="Reset checks filters"
               >
                 <div className="d-flex flex-row align-items-center">
                   <IoMdCloseCircleOutline className="me-2" />
-                  <div>Reset </div>
+                  <div>Reset</div>
                 </div>
               </button>
 
@@ -247,36 +278,21 @@ const ChecksFilter = (props: Props) => {
               </p>
             </div>
 
-            <Block
-              type={ScoreType.Documentation}
-              activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
-              activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
-              onChange={onCheckChange}
-            />
-            <Block
-              type={ScoreType.License}
-              activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
-              activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
-              onChange={onCheckChange}
-            />
-            <Block
-              type={ScoreType.BestPractices}
-              activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
-              activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
-              onChange={onCheckChange}
-            />
-            <Block
-              type={ScoreType.Security}
-              activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
-              activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
-              onChange={onCheckChange}
-            />
-            <Block
-              type={ScoreType.Legal}
-              onChange={onCheckChange}
-              activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
-              activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
-            />
+            {Object.keys(CHECKS_PER_CATEGORY).map((cat: string) => {
+              return (
+                <span key={`block_${cat}`}>
+                  <Block
+                    type={cat as ScoreType}
+                    activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
+                    activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
+                    onChange={onCheckChange}
+                    resetChecksPerCategory={resetChecksPerCategory}
+                    markAllAsPassedPerCategory={markAllAsPassedPerCategory}
+                    markAllAsNotPassedPerCategory={markAllAsNotPassedPerCategory}
+                  />
+                </span>
+              );
+            })}
           </div>
         </Modal>
       )}

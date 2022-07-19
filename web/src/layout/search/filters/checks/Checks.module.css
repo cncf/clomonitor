@@ -3,7 +3,7 @@
 }
 
 .btnCheck {
-  margin-top: -2px;
+  margin-top: -3px;
   font-size: 0.85rem;
   display: none;
 }
@@ -54,6 +54,10 @@
 .checkName {
   font-size: 0.8rem;
   line-height: 1.5rem;
+}
+
+.checkWrapper {
+  min-width: 1px;
 }
 
 @media (hover: hover) {

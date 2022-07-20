@@ -34,7 +34,7 @@ describe('SelectedFilters', () => {
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getByText('≥ Jan 1, 2018')).toBeInTheDocument();
       expect(screen.getByText('Maturity:')).toBeInTheDocument();
-      expect(screen.getByText('sandbox')).toBeInTheDocument();
+      expect(screen.getByText('Sandbox')).toBeInTheDocument();
       expect(screen.getAllByText('Rating:')).toHaveLength(2);
       expect(screen.getByText('A [75-100]')).toBeInTheDocument();
       expect(screen.getByText('B [50-74]')).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('SelectedFilters', () => {
       expect(screen.getByText('CNCF')).toBeInTheDocument();
 
       expect(screen.getAllByRole('button')).toHaveLength(5);
-      expect(screen.getByRole('button', { name: 'Remove sandbox filter' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Remove Sandbox filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove A [75-100] filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove B [50-74] filter' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Remove CNCF filter' })).toBeInTheDocument();

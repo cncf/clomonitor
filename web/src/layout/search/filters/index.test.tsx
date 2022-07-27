@@ -62,6 +62,9 @@ describe('Filters', () => {
       expect(screen.getAllByText('To:')).toHaveLength(2);
       expect(screen.getByText('Jan 1, 2016')).toBeInTheDocument();
       expect(screen.getByText('Mar 24, 2022')).toBeInTheDocument();
+
+      expect(screen.getByText('Checks')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Open checks modal' })).toHaveTextContent('Add checks filters');
     });
 
     it('renders Filters with selected options', () => {

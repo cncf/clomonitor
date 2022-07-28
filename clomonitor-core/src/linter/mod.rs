@@ -1,6 +1,6 @@
 use self::check::scorecard::scorecard;
 use super::config::*;
-use anyhow::{format_err, Result};
+use anyhow::{format_err, Context, Result};
 use check::{
     metadata::{Metadata, METADATA_FILE},
     *,
@@ -50,27 +50,28 @@ pub struct GithubOptions {
 impl LintServices {
     /// Create a new LintServices instance.
     pub fn new(gh_opts: &GithubOptions) -> Result<Self> {
-        // Setup http client
-        let http_client = reqwest::Client::new();
-
-        // Setup authenticated http client for Github API
-        let http_client_gh = reqwest::Client::builder()
-            .user_agent("clomonitor")
-            .default_headers(
-                std::iter::once((
-                    reqwest::header::AUTHORIZATION,
-                    reqwest::header::HeaderValue::from_str(&format!("Bearer {}", gh_opts.token))
-                        .unwrap(),
-                ))
-                .collect(),
-            )
-            .build()?;
-
         Ok(Self {
-            http_client,
-            http_client_gh,
+            http_client: reqwest::Client::new(),
+            http_client_gh: setup_github_http_client(gh_opts)?,
         })
     }
+}
+
+// Setup a new authenticated http client to interact with the GitHub API.
+pub fn setup_github_http_client(
+    gh_opts: &GithubOptions,
+) -> Result<reqwest::Client, reqwest::Error> {
+    reqwest::Client::builder()
+        .user_agent("clomonitor")
+        .default_headers(
+            std::iter::once((
+                reqwest::header::AUTHORIZATION,
+                reqwest::header::HeaderValue::from_str(&format!("Bearer {}", gh_opts.token))
+                    .unwrap(),
+            ))
+            .collect(),
+        )
+        .build()
 }
 
 /// Linter report.
@@ -153,11 +154,17 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     // Get CLOMonitor metadata
     let cm_md = Metadata::from(&opts.root.join(METADATA_FILE))?;
 
-    // Get Github metadata and OpenSSF scorecard
-    let (gh_md, scorecard) = tokio::try_join!(
-        github::metadata(&svc.http_client_gh, &opts.url),
-        scorecard(&opts.url, &opts.github_token),
-    )?;
+    // The next both actions (get GitHub metadata and get scorecard) make use
+    // of the GitHub token, which when used concurrently, may trigger some
+    // GitHub secondary rate limits. So they should not be run concurrently.
+
+    // Get Github metadata
+    let gh_md = github::metadata(&svc.http_client_gh, &opts.url).await?;
+
+    // Get OpenSSF scorecard
+    let scorecard = scorecard(&opts.url, &opts.github_token)
+        .await
+        .context("error getting scorecard")?;
 
     // Prepare check input
     let input = CheckInput {

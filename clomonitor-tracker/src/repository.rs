@@ -1,6 +1,6 @@
 use anyhow::{format_err, Result};
 use clomonitor_core::{
-    linter::{lint, CheckSet, LintOptions, LintServices, Report},
+    linter::{lint, CheckSet, GithubOptions, LintOptions, LintServices, Report},
     score::{self, Score},
 };
 use deadpool_postgres::{Client as DbClient, Transaction};
@@ -28,12 +28,7 @@ impl Repository {
     /// Track repository if it has changed since the last time it was tracked.
     /// This involves cloning the repository, linting it and storing the results.
     #[instrument(fields(repository_id = %self.repository_id), skip_all, err)]
-    pub(crate) async fn track(
-        &self,
-        db: &mut DbClient,
-        svc: &LintServices,
-        github_token: String,
-    ) -> Result<()> {
+    pub(crate) async fn track(&self, db: &mut DbClient, github_token: &str) -> Result<()> {
         let start = Instant::now();
 
         // Process only if the repository has changed since the last time it
@@ -58,9 +53,13 @@ impl Repository {
             root: tmp_dir.into_path(),
             url: self.url.clone(),
             check_sets: self.check_sets.clone(),
-            github_token,
+            github_token: github_token.to_string(),
         };
-        let report = match lint(&opts, svc).await {
+        let svc = LintServices::new(&GithubOptions {
+            token: github_token.to_string(),
+            ..GithubOptions::default()
+        })?;
+        let report = match lint(&opts, &svc).await {
             Ok(report) => Some(report),
             Err(err) => {
                 warn!("error linting repository: {:#}", err);

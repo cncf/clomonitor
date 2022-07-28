@@ -1,14 +1,15 @@
 use crate::repository;
 use anyhow::Result;
-use clomonitor_core::linter::{GithubOptions, LintServices};
+use clomonitor_core::linter::{setup_github_http_client, GithubOptions};
 use config::Config;
+use deadpool::unmanaged;
 use deadpool_postgres::Pool;
 use futures::{
     future,
     stream::{FuturesUnordered, StreamExt},
 };
 use serde_json::Value;
-use std::{sync::Arc, time::Duration};
+use std::time::Duration;
 use tokio::time::timeout;
 use tracing::{debug, info};
 
@@ -19,12 +20,9 @@ const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
 pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     info!("tracker started");
 
-    // Setup lint services
-    let gh_opts = GithubOptions {
-        token: cfg.get_string("creds.githubToken")?,
-        ..GithubOptions::default()
-    };
-    let svc = Arc::new(LintServices::new(&gh_opts)?);
+    // Setup GitHub tokens pool
+    let gh_tokens = cfg.get::<Vec<String>>("creds.githubTokens")?;
+    let gh_tokens_pool = unmanaged::Pool::from(gh_tokens.clone());
 
     // Get repositories to process
     let repositories = repository::get_all(&db_pool.get().await?).await?;
@@ -39,33 +37,39 @@ pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
         let mut db = db_pool.get().await?;
-        let svc = svc.clone();
-        let github_token = cfg.get_string("creds.githubToken")?;
+        let github_token = gh_tokens_pool.get().await?;
+
         futs.push(tokio::spawn(async move {
             timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(&mut db, &svc, github_token),
+                repository.track(&mut db, github_token.as_ref()),
             )
             .await
         }));
+
         if futs.len() == cfg.get::<usize>("tracker.concurrency")? {
             futs.next().await;
         }
     }
     future::join_all(futs).await;
 
-    // Check Github API rate limit status
-    let response: Value = svc
-        .http_client_gh
-        .get("https://api.github.com/rate_limit")
-        .send()
-        .await?
-        .json()
-        .await?;
-    debug!(
-        "github rate limit info: [rate: {}] [graphql: {}]",
-        response["rate"], response["resources"]["graphql"]
-    );
+    // Check Github API rate limit status for each token
+    for (i, token) in gh_tokens.into_iter().enumerate() {
+        let client = setup_github_http_client(&GithubOptions {
+            token,
+            ..GithubOptions::default()
+        })?;
+        let response: Value = client
+            .get("https://api.github.com/rate_limit")
+            .send()
+            .await?
+            .json()
+            .await?;
+        debug!(
+            "token [{}] github rate limit info: [rate: {}] [graphql: {}]",
+            i, response["rate"], response["resources"]["graphql"]
+        );
+    }
 
     info!("tracker finished");
     Ok(())

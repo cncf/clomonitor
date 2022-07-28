@@ -451,6 +451,7 @@ dependencies = [
  "clap",
  "clomonitor-core",
  "config",
+ "deadpool",
  "deadpool-postgres",
  "futures",
  "openssl",

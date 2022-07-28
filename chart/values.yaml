@@ -28,7 +28,7 @@ db:
 
 # Credentials
 creds:
-  githubToken: null
+  githubTokens: []
 
 # Log configuration
 log:
@@ -81,7 +81,10 @@ tracker:
       repository: clomonitor/tracker
     resources: {}
   # Number of repositories to process concurrently
-  concurrency: 5
+  # The number of tokens defined in creds.githubTokens must be equal or greater
+  # than the concurrency value, otherwise the concurrency will be limited to
+  # the number of tokens available.
+  concurrency: 10
 
 # Values for postgresql chart dependency
 postgresql:

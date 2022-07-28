@@ -1,4 +1,4 @@
-use super::path::{matches, Globs};
+use super::path::{self, Globs};
 use anyhow::Result;
 use askalono::*;
 use lazy_static::lazy_static;
@@ -34,7 +34,7 @@ pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
         static ref LICENSES: Store = Store::from_cache(LICENSES_DATA).unwrap();
     }
     let mut spdx_id: Option<String> = None;
-    matches(globs)?.iter().any(|path| {
+    path::matches(globs)?.iter().any(|path| {
         if let Ok(content) = fs::read_to_string(path) {
             let m = LICENSES.analyze(&TextData::from(content));
             if m.score > 0.9 {

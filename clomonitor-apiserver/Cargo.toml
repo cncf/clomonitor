@@ -17,7 +17,7 @@ clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.1"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
 lazy_static = "1.4.0"
-metrics = "0.20.0"
+metrics = "0.20.1"
 metrics-exporter-prometheus = "0.11.0"
 mime = "0.3.16"
 openssl = { version = "0.10.41", features = ["vendored"] }

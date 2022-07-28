@@ -31,7 +31,7 @@ const MobileSettings = () => {
       <button
         className={`btn btn-sm btn-primary text-white rounded-0 lh-1 ms-3 ${styles.btn}`}
         type="button"
-        onClick={() => setVisibleDropdown(true)}
+        onClick={() => setVisibleDropdown(!visibleDropdown)}
         aria-label="Mobile settings button"
         aria-expanded={visibleDropdown}
       >

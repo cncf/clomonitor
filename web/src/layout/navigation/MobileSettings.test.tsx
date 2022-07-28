@@ -12,6 +12,7 @@ const mockCtx = {
     theme: { effective: 'light' },
   },
 };
+
 const mockDispatch = jest.fn();
 
 describe('MobileSettings', () => {
@@ -65,6 +66,35 @@ describe('MobileSettings', () => {
     expect(screen.getByRole('radio', { name: 'Dark' })).not.toBeChecked();
     expect(screen.getByText('Statistics')).toBeInTheDocument();
     expect(screen.getAllByRole('link')).toHaveLength(2);
+  });
+
+  it('opens dropdown and closes it using Settings button', async () => {
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Router>
+          <MobileSettings />
+        </Router>
+      </AppContext.Provider>
+    );
+
+    const dropdown = screen.getByRole('menu');
+    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).not.toHaveClass('show');
+
+    const btn = screen.getByRole('button', { name: 'Mobile settings button' });
+    await userEvent.click(btn);
+
+    expect(dropdown).toHaveClass('show');
+    expect(screen.getByRole('radio', { name: 'Light' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Light' })).toBeChecked();
+    expect(screen.getByRole('radio', { name: 'Dark' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Dark' })).not.toBeChecked();
+    expect(screen.getByText('Statistics')).toBeInTheDocument();
+    expect(screen.getAllByRole('link')).toHaveLength(2);
+
+    await userEvent.click(btn);
+
+    expect(dropdown).not.toHaveClass('show');
   });
 
   it('calls updateTheme event', async () => {

@@ -36,6 +36,7 @@ const CheckOption = (props: Props) => {
               onClick={() => {
                 props.onChange(FilterKind.PassingCheck, props.option, !isInPassingCheck);
               }}
+              aria-label={`${isInPassingCheck ? 'Unselect' : 'Select'} ${option.name} as passed`}
             >
               <div className="d-flex align-items-center justify-content-center">
                 <GoCheck />
@@ -62,6 +63,7 @@ const CheckOption = (props: Props) => {
               onClick={() => {
                 props.onChange(FilterKind.NotPassingCheck, props.option, !isInNotPassingCheck);
               }}
+              aria-label={`${isInNotPassingCheck ? 'Unselect' : 'Select'} ${option.name} as not passed`}
             >
               <div className="d-flex align-items-center justify-content-center">
                 <GoX />

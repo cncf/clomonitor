@@ -4,6 +4,6 @@ db:
   dbname: clomonitor
   user: gitpod
 creds:
-  githubToken: ""
+  githubTokens: []
 tracker:
-  concurrency: 10
+  concurrency: 1

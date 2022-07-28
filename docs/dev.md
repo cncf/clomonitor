@@ -148,7 +148,8 @@ db:
   user: postgres
   password: ""
 creds:
-  githubToken: <YOUR_GITHUB_TOKEN>
+  githubTokens:
+    - <YOUR_GITHUB_TOKEN>
 tracker:
   concurrency: 10
 ```

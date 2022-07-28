@@ -2,6 +2,7 @@ use self::md::*;
 use super::patterns::GITHUB_REPO_URL;
 use anyhow::{format_err, Context, Result};
 use graphql_client::{GraphQLQuery, Response};
+use http::StatusCode;
 use regex::RegexSet;
 use std::path::Path;
 
@@ -196,6 +197,13 @@ pub(crate) async fn metadata(
         .send()
         .await
         .context("error requesting repository medatata from github graphql api")?;
+    if resp.status() != StatusCode::OK {
+        return Err(format_err!(
+            "unexpected status code getting repository medatata from github graphql api: {} - {}",
+            resp.status(),
+            resp.text().await?,
+        ));
+    }
 
     // Parse response body and extract repository metadata
     let resp_body: Response<md::ResponseData> = resp

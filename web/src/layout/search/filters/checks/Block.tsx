@@ -18,16 +18,19 @@ interface Props {
 
 const Block = (props: Props) => {
   const checks = CHECKS_PER_CATEGORY[props.type];
+  const categoryName = CATEGORY_NAMES[props.type];
+
   if (isUndefined(checks)) return null;
 
   return (
     <div className="mb-4">
       <div className="d-flex flex-column mb-3">
-        <small className="fw-bold text-uppercase text-muted">{CATEGORY_NAMES[props.type]}</small>
+        <small className="fw-bold text-uppercase text-muted">{categoryName}</small>
         <div className="d-flex flex-row align-items-center mt-1">
           <button
             className={`btn btn-link btn-sm p-0 ${styles.btn}`}
             onClick={() => props.markAllAsPassedPerCategory(props.type)}
+            aria-label={`Mark all checks in ${categoryName} category as passed`}
           >
             All passed
           </button>
@@ -35,6 +38,7 @@ const Block = (props: Props) => {
           <button
             className={`btn btn-link btn-sm p-0 ${styles.btn}`}
             onClick={() => props.markAllAsNotPassedPerCategory(props.type)}
+            aria-label={`Mark all checks in ${categoryName} category as not passed`}
           >
             None passed
           </button>
@@ -42,6 +46,7 @@ const Block = (props: Props) => {
           <button
             className={`btn btn-link btn-sm p-0 ${styles.btn}`}
             onClick={() => props.resetChecksPerCategory(props.type)}
+            aria-label={`Reset checks in ${categoryName} category`}
           >
             Reset
           </button>
@@ -49,13 +54,15 @@ const Block = (props: Props) => {
       </div>
       {checks.map((check: ReportOption) => {
         return (
-          <CheckOption
-            type={props.type}
-            option={check}
-            activePassingChecks={props.activePassingChecks}
-            activeNotPassingChecks={props.activeNotPassingChecks}
-            onChange={props.onChange}
-          />
+          <span key={`opt_${check}`}>
+            <CheckOption
+              type={props.type}
+              option={check}
+              activePassingChecks={props.activePassingChecks}
+              activeNotPassingChecks={props.activeNotPassingChecks}
+              onChange={props.onChange}
+            />
+          </span>
         );
       })}
     </div>

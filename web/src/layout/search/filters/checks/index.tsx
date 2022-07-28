@@ -182,6 +182,7 @@ const ChecksFilter = (props: Props) => {
                               false
                             );
                           }}
+                          aria-label={`Remove ${opt.passing ? 'passing' : 'not passing'} ${opt.name} check`}
                         >
                           <IoMdCloseCircleOutline />
                         </button>
@@ -220,7 +221,7 @@ const ChecksFilter = (props: Props) => {
             'mt-3': noActiveChecks,
           })}
           onClick={() => setOpenStatus(true)}
-          aria-label="Open modal"
+          aria-label="Open checks modal"
         >
           <span>{noActiveChecks ? 'Add' : 'Edit'} checks filters</span>
         </button>
@@ -254,7 +255,7 @@ const ChecksFilter = (props: Props) => {
                 onClick={() => {
                   onCloseModal();
                 }}
-                aria-label="Close modal"
+                aria-label="Apply filters"
               >
                 <div className="d-flex flex-row align-items-center">
                   <BsCheckAll className="me-2" />

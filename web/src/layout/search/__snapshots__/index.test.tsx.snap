@@ -2038,7 +2038,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           </div>
                           <div>
                             <button
-                              aria-label="Open modal"
+                              aria-label="Open checks modal"
                               class="btn btn-outline-secondary btn-sm rounded-0 mb-4 btn mt-3"
                               type="button"
                             >
@@ -4151,7 +4151,7 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
           <div>
             <button
-              aria-label="Open modal"
+              aria-label="Open checks modal"
               class="btn btn-outline-secondary btn-sm rounded-0 mb-4 btn mt-3"
               type="button"
             >

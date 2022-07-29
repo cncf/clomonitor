@@ -17,7 +17,7 @@ use uuid::Uuid;
 /// A project's repository.
 #[derive(Debug, Clone)]
 pub(crate) struct Repository {
-    repository_id: Uuid,
+    pub repository_id: Uuid,
     url: String,
     check_sets: Vec<CheckSet>,
     digest: Option<String>,

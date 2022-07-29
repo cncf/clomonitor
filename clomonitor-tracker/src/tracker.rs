@@ -11,7 +11,7 @@ use futures::{
 use serde_json::Value;
 use std::time::Duration;
 use tokio::time::timeout;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 /// Maximum time that can take tracking a single repository.
 const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
@@ -36,17 +36,24 @@ pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     info!("tracking repositories");
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
+        // Get db connection and GitHub token from the corresponding pool
         let mut db = db_pool.get().await?;
         let github_token = gh_tokens_pool.get().await?;
 
+        // Track next repository
         futs.push(tokio::spawn(async move {
-            timeout(
+            if timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
                 repository.track(&mut db, github_token.as_ref()),
             )
             .await
+            .is_err()
+            {
+                warn!("timeout tracking repository {}", repository.repository_id);
+            }
         }));
 
+        // Wait if needed to honor the concurrency limits
         if futs.len() == cfg.get::<usize>("tracker.concurrency")? {
             futs.next().await;
         }

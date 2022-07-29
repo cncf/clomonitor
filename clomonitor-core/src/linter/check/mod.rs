@@ -626,8 +626,7 @@ fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option<Exemption>
                 .find(|exemption| exemption.check == check_id)
         })
     {
-        // "~" -> https://github.com/dtolnay/serde-yaml/issues/87
-        if !exemption.reason.is_empty() && exemption.reason != "~" {
+        if !exemption.reason.is_empty() {
             return Some(exemption.to_owned());
         }
     }

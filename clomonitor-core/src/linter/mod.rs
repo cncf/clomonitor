@@ -109,11 +109,11 @@ pub struct License {
 /// BestPractices section of the report.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BestPractices {
+    pub analytics: Option<CheckOutput<Vec<String>>>,
     pub artifacthub_badge: Option<CheckOutput>,
     pub cla: Option<CheckOutput>,
     pub community_meeting: Option<CheckOutput>,
     pub dco: Option<CheckOutput>,
-    pub ga4: Option<CheckOutput>,
     pub github_discussions: Option<CheckOutput>,
     pub openssf_badge: Option<CheckOutput>,
     pub recent_release: Option<CheckOutput>,
@@ -176,9 +176,9 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     };
 
     // Run some async checks
-    let (contributing, ga4, trademark_disclaimer) = tokio::join!(
+    let (analytics, contributing, trademark_disclaimer) = tokio::join!(
+        run_async_check(ANALYTICS, analytics, &input),
         run_async_check(CONTRIBUTING, contributing, &input),
-        run_async_check(GA4, ga4, &input),
         run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &input),
     );
 
@@ -208,11 +208,11 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             license_spdx_id: spdx_id,
         },
         best_practices: BestPractices {
+            analytics,
             artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &input),
             cla: run_check(CLA, cla, &input),
             community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &input),
             dco: run_check(DCO, dco, &input),
-            ga4,
             github_discussions: run_check(GITHUB_DISCUSSIONS, github_discussions, &input),
             openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &input),
             recent_release: run_check(RECENT_RELEASE, recent_release, &input),

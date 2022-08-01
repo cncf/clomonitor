@@ -4,11 +4,11 @@ import Checks from './Checks';
 
 const defaultProps = {
   data: {
+    analytics: 8,
     artifacthub_badge: 9,
     cla: 12,
     community_meeting: 43,
     dco: 83,
-    ga4: 8,
     openssf_badge: 59,
     recent_release: 81,
     slack_presence: 33,
@@ -33,6 +33,8 @@ describe('Checks', () => {
       render(<Checks {...defaultProps} />);
 
       expect(screen.getByText('Best Practices')).toBeInTheDocument();
+      expect(screen.getAllByText('Analytics')).toHaveLength(2);
+      expect(screen.getByText('8%')).toBeInTheDocument();
       expect(screen.getAllByText('Artifact Hub badge')).toHaveLength(2);
       expect(screen.getByText('9%')).toBeInTheDocument();
       expect(screen.getAllByText('CLA')).toHaveLength(2);
@@ -41,8 +43,6 @@ describe('Checks', () => {
       expect(screen.getByText('43%')).toBeInTheDocument();
       expect(screen.getAllByText('DCO')).toHaveLength(2);
       expect(screen.getByText('83%')).toBeInTheDocument();
-      expect(screen.getAllByText('Google Analytics 4')).toHaveLength(2);
-      expect(screen.getByText('8%')).toBeInTheDocument();
       expect(screen.getAllByText('OpenSSF badge')).toHaveLength(2);
       expect(screen.getByText('59%')).toBeInTheDocument();
       expect(screen.getAllByText('Recent release')).toHaveLength(2);

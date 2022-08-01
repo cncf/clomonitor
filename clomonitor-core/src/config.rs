@@ -4,6 +4,7 @@ use std::collections::HashMap;
 
 // Checks identifiers
 pub const ADOPTERS: &str = "adopters";
+pub const ANALYTICS: &str = "analytics";
 pub const ARTIFACTHUB_BADGE: &str = "artifacthub_badge";
 pub const BINARY_ARTIFACTS: &str = "binary_artifacts";
 pub const BRANCH_PROTECTION: &str = "branch_protection";
@@ -16,7 +17,6 @@ pub const CONTRIBUTING: &str = "contributing";
 pub const DANGEROUS_WORKFLOW: &str = "dangerous_workflow";
 pub const DEPENDENCY_UPDATE_TOOL: &str = "dependency_update_tool";
 pub const DCO: &str = "dco";
-pub const GA4: &str = "ga4";
 pub const GITHUB_DISCUSSIONS: &str = "github_discussions";
 pub const GOVERNANCE: &str = "governance";
 pub const LICENSE_APPROVED: &str = "license_approved";
@@ -59,11 +59,11 @@ lazy_static! {
         m.insert(LICENSE_SPDX, 5);
 
         // Best practices
+        m.insert(ANALYTICS, 1);
         m.insert(ARTIFACTHUB_BADGE, 1);
         m.insert(CLA, 1);
         m.insert(COMMUNITY_MEETING, 3);
         m.insert(DCO, 1);
-        m.insert(GA4, 1);
         m.insert(GITHUB_DISCUSSIONS, 0);
         m.insert(OPENSSF_BADGE, 10);
         m.insert(RECENT_RELEASE, 3);
@@ -144,10 +144,10 @@ lazy_static! {
             CheckSet::Community,
             vec![
                 ADOPTERS,
+                ANALYTICS,
                 CODE_OF_CONDUCT,
                 COMMUNITY_MEETING,
                 CONTRIBUTING,
-                GA4,
                 GITHUB_DISCUSSIONS,
                 GOVERNANCE,
                 README,

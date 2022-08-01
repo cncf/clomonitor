@@ -50,8 +50,8 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Readme
   - Documentation / Roadmap
   - Documentation / Website
+  - Best practices / Analytics
   - Best practices / Community meeting
-  - Best practices / Google Analytics 4
   - Best practices / GitHub discussions
   - Best practices / Slack presence
   - Security / Policy
@@ -359,6 +359,32 @@ This check passes if:
 
 ## Best practices
 
+### Analytics
+
+**ID**: `analytics`
+
+Projects websites should provide some web analytics.
+
+This check passes if:
+
+- A Google Analytics 3 (Universal Analytics) **Tracking ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"UA-[0-9]+-[0-9]+"
+```
+
+- A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"G-[A-Z0-9]+"
+```
+
+- The HubSpot **tracking code** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"//js.hs-scripts.com/.+\.js"
+```
+
 ### Artifact Hub badge
 
 **ID**: `artifacthub_badge`
@@ -426,20 +452,6 @@ This check passes if:
 ```
 
 NOTE: *this check will be automatically marked as exempt if the CLA check passes and this one does not*.
-
-### Google Analytics 4
-
-**ID**: `ga4`
-
-Projects sites should migrate to Google Analytics 4.
-
-This check passes if:
-
-- A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
-
-```sh
-"G-[A-Z0-9]{8,10}"
-```
 
 ### GitHub discussions
 

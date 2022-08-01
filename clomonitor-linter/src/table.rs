@@ -125,6 +125,21 @@ pub(crate) fn display(
             cell_check(&report.license.license_scanning),
         ])
         .add_row(vec![
+            cell_entry("Best practices / Analytics"),
+            if let Some(value) = report
+                .best_practices
+                .analytics
+                .as_ref()
+                .and_then(|analytics| analytics.value.as_ref())
+            {
+                Cell::new(value.join(" · "))
+                    .set_alignment(CellAlignment::Center)
+                    .add_attribute(Attribute::Bold)
+            } else {
+                cell_check(&report.best_practices.analytics)
+            },
+        ])
+        .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
             cell_check(&report.best_practices.artifacthub_badge),
         ])
@@ -143,10 +158,6 @@ pub(crate) fn display(
         .add_row(vec![
             cell_entry("Best practices / GitHub discussions"),
             cell_check(&report.best_practices.github_discussions),
-        ])
-        .add_row(vec![
-            cell_entry("Best practices / Google Analytics 4"),
-            cell_check(&report.best_practices.ga4),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF (CII) badge"),
@@ -329,6 +340,7 @@ mod tests {
                 license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
             },
             best_practices: BestPractices {
+                analytics: Some(Some(vec!["GA3".to_string(), "GA4".to_string()]).into()),
                 artifacthub_badge: Some(CheckOutput {
                     exempt: true,
                     ..Default::default()
@@ -336,7 +348,6 @@ mod tests {
                 cla: Some(true.into()),
                 community_meeting: Some(true.into()),
                 dco: Some(true.into()),
-                ga4: Some(true.into()),
                 github_discussions: Some(true.into()),
                 openssf_badge: Some(true.into()),
                 recent_release: Some(true.into()),

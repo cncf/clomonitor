@@ -146,11 +146,11 @@ returns json as $$
                     'license_spdx_id', repositories_passing_check(p_foundation, 'license', 'license_spdx_id')
                 ),
                 'best_practices', json_build_object(
+                    'analytics', repositories_passing_check(p_foundation, 'best_practices', 'analytics'),
                     'artifacthub_badge', repositories_passing_check(p_foundation, 'best_practices', 'artifacthub_badge'),
                     'cla', repositories_passing_check(p_foundation, 'best_practices', 'cla'),
                     'community_meeting', repositories_passing_check(p_foundation, 'best_practices', 'community_meeting'),
                     'dco', repositories_passing_check(p_foundation, 'best_practices', 'dco'),
-                    'ga4', repositories_passing_check(p_foundation, 'best_practices', 'ga4'),
                     'github_discussions', repositories_passing_check(p_foundation, 'best_practices', 'github_discussions'),
                     'openssf_badge', repositories_passing_check(p_foundation, 'best_practices', 'openssf_badge'),
                     'recent_release', repositories_passing_check(p_foundation, 'best_practices', 'recent_release'),

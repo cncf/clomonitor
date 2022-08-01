@@ -42,11 +42,11 @@ describe('Block', () => {
         screen.getByRole('button', { name: 'Mark all checks in Best Practices category as not passed' })
       ).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Reset checks in Best Practices category' })).toBeInTheDocument();
+      expect(screen.getByText('Analytics')).toBeInTheDocument();
       expect(screen.getByText('Artifact Hub badge')).toBeInTheDocument();
       expect(screen.getByText('Contributor License Agreement')).toBeInTheDocument();
       expect(screen.getByText('Community meeting')).toBeInTheDocument();
       expect(screen.getByText('Developer Certificate of Origin')).toBeInTheDocument();
-      expect(screen.getByText('Google Analytics 4')).toBeInTheDocument();
       expect(screen.getByText('GitHub discussions')).toBeInTheDocument();
       expect(screen.getByText('OpenSSF badge')).toBeInTheDocument();
       expect(screen.getByText('Recent release')).toBeInTheDocument();
@@ -122,7 +122,7 @@ describe('Block', () => {
       const { rerender } = render(
         <Block
           {...defaultProps}
-          activePassingChecks={[ReportOption.CLA, ReportOption.GA4]}
+          activePassingChecks={[ReportOption.Analytics, ReportOption.CLA]}
           activeNotPassingChecks={[ReportOption.ArtifactHubBadge]}
         />
       );

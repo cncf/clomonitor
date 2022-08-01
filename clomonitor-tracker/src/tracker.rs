@@ -14,7 +14,7 @@ use tokio::time::timeout;
 use tracing::{debug, info, warn};
 
 /// Maximum time that can take tracking a single repository.
-const REPOSITORY_TRACK_TIMEOUT: u64 = 300;
+const REPOSITORY_TRACK_TIMEOUT: u64 = 600;
 
 /// Track all repositories registered in the database.
 pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {

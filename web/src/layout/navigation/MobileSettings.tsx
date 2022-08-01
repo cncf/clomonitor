@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
+import { BsList } from 'react-icons/bs';
 import { FaChartPie, FaFileAlt } from 'react-icons/fa';
-import { HiDotsVertical } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
@@ -27,7 +27,7 @@ const MobileSettings = () => {
         aria-label="Mobile settings button"
         aria-expanded={visibleDropdown}
       >
-        <HiDotsVertical />
+        <BsList />
       </button>
 
       <div role="menu" className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>

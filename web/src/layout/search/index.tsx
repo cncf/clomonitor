@@ -3,7 +3,7 @@ import { isEmpty, isUndefined } from 'lodash';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
@@ -41,6 +41,7 @@ interface AcceptedDate {
 
 const Search = (props: Props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { ctx, dispatch } = useContext(AppContext);
   const { limit, sort } = ctx.prefs.search;
   const [searchParams] = useSearchParams();
@@ -52,6 +53,7 @@ const Search = (props: Props) => {
   const [total, setTotal] = useState<number>(0);
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const currentState = location.state as { resetScrollPosition?: boolean };
 
   useScrollRestorationFix();
 
@@ -198,8 +200,12 @@ const Search = (props: Props) => {
       } finally {
         setIsLoading(false);
         props.setInvisibleFooter(false);
+        let currentScrollPosition = props.scrollPosition || 0;
+        if (currentState && currentState.resetScrollPosition) {
+          currentScrollPosition = 0;
+        }
         // Update scroll position
-        updateWindowScrollPosition(props.scrollPosition || 0);
+        updateWindowScrollPosition(currentScrollPosition);
       }
     }
     searchProjects();

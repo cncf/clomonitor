@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
-import { FaCogs } from 'react-icons/fa';
+import { FaCog } from 'react-icons/fa';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
 import styles from './Settings.module.css';
@@ -24,7 +24,7 @@ const Settings = () => {
         aria-label="Settings button"
         aria-expanded={visibleDropdown}
       >
-        <FaCogs />
+        <FaCog />
       </button>
 
       <div role="menu" className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>

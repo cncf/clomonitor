@@ -4,7 +4,7 @@ import { FiMoon, FiSun } from 'react-icons/fi';
 import { GoBrowser } from 'react-icons/go';
 
 import { AppContext, updateTheme } from '../../context/AppContextProvider';
-import styles from './MobileSettings.module.css';
+import styles from './ThemeMode.module.css';
 
 interface Props {
   onChange?: () => void;
@@ -39,11 +39,8 @@ const ThemeMode = (props: Props) => {
             tabIndex={-1}
             checked={configured === 'automatic'}
           />
-          <label
-            className={`form-check-label fw-bold w-100 ${styles.label}`}
-            htmlFor={`theme-${props.device}-automatic`}
-          >
-            <GoBrowser className={`mx-1 position-relative ${styles.icon}`} />
+          <label className="form-check-label w-100" htmlFor={`theme-${props.device}-automatic`}>
+            <GoBrowser className="mx-1 position-relative" />
             Automatic
           </label>
         </div>
@@ -62,8 +59,8 @@ const ThemeMode = (props: Props) => {
             tabIndex={-1}
             checked={configured === 'light'}
           />
-          <label className={`form-check-label fw-bold w-100 ${styles.label}`} htmlFor={`theme-${props.device}-light`}>
-            <FiSun className={`mx-1 position-relative ${styles.icon}`} />
+          <label className="form-check-label w-100" htmlFor={`theme-${props.device}-light`}>
+            <FiSun className="mx-1 position-relative" />
             Light
           </label>
         </div>
@@ -82,8 +79,8 @@ const ThemeMode = (props: Props) => {
             tabIndex={-1}
             checked={configured === 'dark'}
           />
-          <label className={`form-check-label fw-bold w-100 ${styles.label}`} htmlFor={`theme-${props.device}-dark`}>
-            <FiMoon className={`mx-1 position-relative ${styles.icon}`} />
+          <label className="form-check-label w-100" htmlFor={`theme-${props.device}-dark`}>
+            <FiMoon className="mx-1 position-relative" />
             Dark
           </label>
         </div>

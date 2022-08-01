@@ -23,11 +23,11 @@ exports[`ThemeMode creates snapshot 1`] = `
         value="light"
       />
       <label
-        class="form-check-label fw-bold w-100 label"
+        class="form-check-label w-100"
         for="theme-desktop-automatic"
       >
         <svg
-          class="mx-1 position-relative icon"
+          class="mx-1 position-relative"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -62,11 +62,11 @@ exports[`ThemeMode creates snapshot 1`] = `
         value="light"
       />
       <label
-        class="form-check-label fw-bold w-100 label"
+        class="form-check-label w-100"
         for="theme-desktop-light"
       >
         <svg
-          class="mx-1 position-relative icon"
+          class="mx-1 position-relative"
           fill="none"
           height="1em"
           stroke="currentColor"
@@ -151,11 +151,11 @@ exports[`ThemeMode creates snapshot 1`] = `
         value="dark"
       />
       <label
-        class="form-check-label fw-bold w-100 label"
+        class="form-check-label w-100"
         for="theme-desktop-dark"
       >
         <svg
-          class="mx-1 position-relative icon"
+          class="mx-1 position-relative"
           fill="none"
           height="1em"
           stroke="currentColor"

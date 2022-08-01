@@ -81,42 +81,51 @@ const StatsView = () => {
   };
 
   const selectCheck = (name: ReportOption) => {
-    navigate({
-      pathname: '/search',
-      search: prepareQueryString({
-        filters: {
-          [FilterKind.PassingCheck]: [name],
-        },
-        pageNumber: 1,
-      }),
-    });
+    navigate(
+      {
+        pathname: '/search',
+        search: prepareQueryString({
+          filters: {
+            [FilterKind.PassingCheck]: [name],
+          },
+          pageNumber: 1,
+        }),
+      },
+      { state: { resetScrollPosition: true } }
+    );
   };
 
   const loadSearchPage = (filters: SelectedPoint) => {
-    navigate({
-      pathname: '/search',
-      search: prepareQueryString({
-        filters: {
-          ...filters,
-          ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
-        },
-        pageNumber: 1,
-      }),
-    });
+    navigate(
+      {
+        pathname: '/search',
+        search: prepareQueryString({
+          filters: {
+            ...filters,
+            ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
+          },
+          pageNumber: 1,
+        }),
+      },
+      { state: { resetScrollPosition: true } }
+    );
   };
 
   const loadSearchPageWithAcceptedRange = (range: SelectedRange) => {
-    navigate({
-      pathname: '/search',
-      search: prepareQueryString({
-        accepted_from: range.from,
-        accepted_to: range.to,
-        filters: {
-          ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
-        },
-        pageNumber: 1,
-      }),
-    });
+    navigate(
+      {
+        pathname: '/search',
+        search: prepareQueryString({
+          accepted_from: range.from,
+          accepted_to: range.to,
+          filters: {
+            ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
+          },
+          pageNumber: 1,
+        }),
+      },
+      { state: { resetScrollPosition: true } }
+    );
   };
 
   const getAreaChartConfig = (): ApexCharts.ApexOptions => {

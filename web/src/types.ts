@@ -67,7 +67,7 @@ export interface ReportCheck {
   exemption_reason?: string;
   failed?: boolean;
   fail_reason?: string;
-  value?: string;
+  value?: string | string[];
   url?: string;
   details?: string;
 }
@@ -162,6 +162,7 @@ export enum CheckSet {
 
 export enum ReportOption {
   Adopters = 'adopters',
+  Analytics = 'analytics',
   ApprovedLicense = 'license_approved',
   ArtifactHubBadge = 'artifacthub_badge',
   BinaryArtifacts = 'binary_artifacts',
@@ -175,7 +176,6 @@ export enum ReportOption {
   DangerousWorkflow = 'dangerous_workflow',
   DependencyUpdateTool = 'dependency_update_tool',
   DCO = 'dco',
-  GA4 = 'ga4',
   GithubDiscussions = 'github_discussions',
   Governance = 'governance',
   LicenseScanning = 'license_scanning',

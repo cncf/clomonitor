@@ -214,7 +214,7 @@ insert into report (
             "dco": {
                 "passed": true
             },
-            "ga4": {
+            "analytics": {
                 "passed": true
             },
             "github_discussions": {
@@ -348,7 +348,7 @@ insert into report (
             "dco": {
                 "passed": true
             },
-            "ga4": {
+            "analytics": {
                 "passed": true
             },
             "github_discussions": {
@@ -471,7 +471,7 @@ insert into report (
             "dco": {
                 "passed": false
             },
-            "ga4": {
+            "analytics": {
                 "passed": false
             },
             "github_discussions": {
@@ -571,7 +571,7 @@ select is(
                     "cla": 67,
                     "community_meeting": 0,
                     "dco": 67,
-                    "ga4": 67,
+                    "analytics": 67,
                     "github_discussions": 67,
                     "openssf_badge": 67,
                     "recent_release": 67,

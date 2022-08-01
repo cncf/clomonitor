@@ -84,11 +84,11 @@ pub fn calculate(report: &Report) -> Score {
     // Best practices
     let bp = &report.best_practices;
     (score.best_practices, score.best_practices_weight) = calculate_section_score_and_weight(&[
+        (ANALYTICS, should_score(&bp.analytics)),
         (ARTIFACTHUB_BADGE, should_score(&bp.artifacthub_badge)),
         (CLA, should_score(&bp.cla)),
         (COMMUNITY_MEETING, should_score(&bp.community_meeting)),
         (DCO, should_score(&bp.dco)),
-        (GA4, should_score(&bp.ga4)),
         (GITHUB_DISCUSSIONS, should_score(&bp.github_discussions)),
         (OPENSSF_BADGE, should_score(&bp.openssf_badge)),
         (RECENT_RELEASE, should_score(&bp.recent_release)),
@@ -328,6 +328,7 @@ mod tests {
                     license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(true.into()),
                     artifacthub_badge: Some(CheckOutput {
                         exempt: true,
                         ..Default::default()
@@ -335,7 +336,6 @@ mod tests {
                     cla: Some(true.into()),
                     community_meeting: Some(true.into()),
                     dco: Some(true.into()),
-                    ga4: Some(true.into()),
                     github_discussions: Some(true.into()),
                     openssf_badge: Some(true.into()),
                     recent_release: Some(true.into()),
@@ -396,6 +396,7 @@ mod tests {
                     license_spdx_id: Some(false.into()),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(false.into()),
                     artifacthub_badge: Some(CheckOutput {
                         exempt: false,
                         ..Default::default()
@@ -403,7 +404,6 @@ mod tests {
                     cla: Some(false.into()),
                     community_meeting: Some(false.into()),
                     dco: Some(false.into()),
-                    ga4: Some(false.into()),
                     github_discussions: Some(false.into()),
                     openssf_badge: Some(false.into()),
                     recent_release: Some(false.into()),
@@ -470,6 +470,7 @@ mod tests {
                     license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(true.into()),
                     artifacthub_badge: Some(CheckOutput {
                         exempt: true,
                         ..Default::default()
@@ -477,7 +478,6 @@ mod tests {
                     cla: Some(true.into()),
                     community_meeting: None,
                     dco: Some(true.into()),
-                    ga4: Some(true.into()),
                     github_discussions: Some(true.into()),
                     openssf_badge: Some(true.into()),
                     recent_release: Some(true.into()),

@@ -227,6 +227,48 @@ pub(crate) fn adopters(input: &CheckInput) -> Result<CheckOutput> {
     find_file_or_reference(input, &ADOPTERS_FILE, &*ADOPTERS_IN_README)
 }
 
+/// Analytics check.
+pub(crate) async fn analytics(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<String>>> {
+    // Get website content
+    let content = match &input.gh_md.homepage_url {
+        Some(url) if !url.is_empty() => input.svc.http_client.get(url).send().await?.text().await?,
+        _ => return Ok(false.into()),
+    };
+
+    let mut analytics_detected: Vec<String> = Vec::new();
+    let mut details: String =
+        "# Analytics providers detected in project's website \n\n".to_string();
+
+    // Check Google Analytics 3 (Universal Analytics) tracking ID
+    if GA3_IN_WEBSITE.is_match(&content) {
+        analytics_detected.push("GA3".to_string());
+        details.push_str("· Google Analytics 3 (Universal Analytics)\n")
+    }
+
+    // Check Google Analytics 4 measurement ID
+    if GA4_IN_WEBSITE.is_match(&content) {
+        analytics_detected.push("GA4".to_string());
+        details.push_str("· Google Analytics 4\n")
+    }
+
+    // Check HubSpot tracking code
+    if HUBSPOT_IN_WEBSITE.is_match(&content) {
+        analytics_detected.push("HubSpot".to_string());
+        details.push_str("· HubSpot\n")
+    }
+
+    // Return check output
+    if !analytics_detected.is_empty() {
+        return Ok(CheckOutput {
+            passed: true,
+            value: Some(analytics_detected),
+            details: Some(details),
+            ..Default::default()
+        });
+    }
+    Ok(false.into())
+}
+
 /// Artifact Hub badge check.
 pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
@@ -346,22 +388,6 @@ pub(crate) fn dependency_update_tool(input: &CheckInput) -> Result<CheckOutput> 
         Some(sc_check) => sc_check.into(),
         None => false.into(),
     })
-}
-
-/// Google Analytics 4.
-pub(crate) async fn ga4(input: &CheckInput<'_>) -> Result<CheckOutput> {
-    // Google Analytics 4 measurement ID in website setup in Github
-    if let Some(url) = &input.gh_md.homepage_url {
-        if !url.is_empty() {
-            return Ok(
-                content::remote_matches(&input.svc.http_client, url, &*GA4_IN_WEBSITE)
-                    .await?
-                    .into(),
-            );
-        }
-    }
-
-    Ok(false.into())
 }
 
 /// GitHub discussions check.

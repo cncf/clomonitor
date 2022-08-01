@@ -140,9 +140,14 @@ lazy_static! {
     ).expect("invalid exprs in FOSSA_URL");
 
     #[rustfmt::skip]
-    pub(crate) static ref GA4_IN_WEBSITE: RegexSet = RegexSet::new(vec![
-        "G-[A-Z0-9]{8,10}",
-    ]).expect("invalid exprs in GA4_IN_WEBSITE");
+    pub(crate) static ref GA3_IN_WEBSITE: Regex = Regex::new(
+        "UA-[0-9]+-[0-9]+",
+    ).expect("invalid exprs in GA3_IN_WEBSITE");
+
+    #[rustfmt::skip]
+    pub(crate) static ref GA4_IN_WEBSITE: Regex = Regex::new(
+        "G-[A-Z0-9]+",
+    ).expect("invalid exprs in GA4_IN_WEBSITE");
 
     #[rustfmt::skip]
     pub(crate) static ref GITHUB_REPO_URL: Regex = Regex::new(
@@ -155,6 +160,11 @@ lazy_static! {
         r"(?im)^governance$",
         r"(?i)\[.*governance.*\]\(.*\)",
     ]).expect("invalid exprs in GOVERNANCE_IN_README");
+
+    #[rustfmt::skip]
+    pub(crate) static ref HUBSPOT_IN_WEBSITE: Regex = Regex::new(
+        r"//js.hs-scripts.com/.+\.js",
+    ).expect("invalid exprs in HUBSPOT_IN_WEBSITE");
 
     #[rustfmt::skip]
     pub(crate) static ref MAINTAINERS_IN_README: RegexSet = RegexSet::new(vec![
@@ -346,6 +356,12 @@ Contributing
     }
 
     #[test]
+    fn ga3_in_website() {
+        assert!(GA3_IN_WEBSITE.is_match("UA-123456-0"));
+        assert!(GA3_IN_WEBSITE.is_match("UA-12345678-90"));
+    }
+
+    #[test]
     fn ga4_in_website() {
         assert!(GA4_IN_WEBSITE.is_match("G-XXXXXXXXXX"));
         assert!(GA4_IN_WEBSITE.is_match("G-NVMH1T3GEK"));
@@ -377,6 +393,11 @@ Governance
             "
         ));
         assert!(GOVERNANCE_IN_README.is_match("[Project governance](...)"));
+    }
+
+    #[test]
+    fn hubspot_in_website() {
+        assert!(HUBSPOT_IN_WEBSITE.is_match("https://js.hs-scripts.com/123.js"));
     }
 
     #[test]

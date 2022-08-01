@@ -236,11 +236,11 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     ),
     reference: '/docs/topics/checks/#developer-certificate-of-origin',
   },
-  [ReportOption.GA4]: {
+  [ReportOption.Analytics]: {
     icon: <FaChartBar />,
-    name: 'Google Analytics 4',
-    legend: <span>Projects should migrate to Google Analytics 4</span>,
-    reference: '/docs/topics/checks/#google-analytics-4',
+    name: 'Analytics',
+    legend: <span>Projects websites should provide some web analytics</span>,
+    reference: '/docs/topics/checks/#analytics',
   },
   [ReportOption.GithubDiscussions]: {
     icon: <GoCommentDiscussion />,
@@ -404,11 +404,11 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
   ],
   [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.LicenseScanning],
   [ScoreType.BestPractices]: [
+    ReportOption.Analytics,
     ReportOption.ArtifactHubBadge,
     ReportOption.CLA,
     ReportOption.CommunityMeeting,
     ReportOption.DCO,
-    ReportOption.GA4,
     ReportOption.GithubDiscussions,
     ReportOption.OpenSSFBadge,
     ReportOption.RecentRelease,

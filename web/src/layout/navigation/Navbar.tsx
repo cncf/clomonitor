@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../media/clomonitor.svg';
 import ExternalLink from '../common/ExternalLink';
-import ThemeSwitch from '../common/ThemeSwitch';
 import Searchbar from '../navigation/Searchbar';
 import MobileSettings from './MobileSettings';
 import styles from './Navbar.module.css';
+import Settings from './Settings';
 
 interface Props {
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
@@ -42,7 +42,7 @@ const Navbar = (props: Props) => {
             >
               Stats
             </Link>
-            <ThemeSwitch />
+            <Settings />
           </div>
         </div>
       </div>

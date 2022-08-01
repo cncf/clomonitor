@@ -92,9 +92,12 @@ export interface Issue {
 
 export interface Prefs {
   search: { limit: number; sort: { by: SortBy; direction: SortDirection } };
-  theme: {
-    effective: string;
-  };
+  theme: ThemePrefs;
+}
+
+export interface ThemePrefs {
+  configured: string;
+  effective: string;
 }
 
 export interface ReportOptionData {

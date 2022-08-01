@@ -38,7 +38,7 @@ exports[`Navbar creates snapshot 1`] = `
               <button
                 aria-expanded="false"
                 aria-label="Mobile settings button"
-                class="btn btn-sm btn-primary text-white rounded-0 lh-1 ms-3 btn"
+                class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 btn"
                 type="button"
               >
                 <svg
@@ -71,10 +71,9 @@ exports[`Navbar creates snapshot 1`] = `
                     class="form-check"
                   >
                     <input
-                      aria-checked="true"
-                      checked=""
+                      aria-checked="false"
                       class="form-check-input input"
-                      id="theme-light"
+                      id="theme-mobile-automatic"
                       name="light"
                       tabindex="-1"
                       type="radio"
@@ -82,7 +81,46 @@ exports[`Navbar creates snapshot 1`] = `
                     />
                     <label
                       class="form-check-label fw-bold w-100 label"
-                      for="theme-light"
+                      for="theme-mobile-automatic"
+                    >
+                      <svg
+                        class="mx-1 position-relative icon"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 14 16"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 3h1v1H5V3zM3 3h1v1H3V3zM1 3h1v1H1V3zm12 10H1V5h12v8zm0-9H7V3h6v1zm1-1c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V3z"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                      Automatic
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="dropdown-item"
+                >
+                  <div
+                    class="form-check"
+                  >
+                    <input
+                      aria-checked="true"
+                      checked=""
+                      class="form-check-input input"
+                      id="theme-mobile-light"
+                      name="light"
+                      tabindex="-1"
+                      type="radio"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label fw-bold w-100 label"
+                      for="theme-mobile-light"
                     >
                       <svg
                         class="mx-1 position-relative icon"
@@ -163,7 +201,7 @@ exports[`Navbar creates snapshot 1`] = `
                     <input
                       aria-checked="false"
                       class="form-check-input input"
-                      id="theme-dark"
+                      id="theme-mobile-dark"
                       name="dark"
                       tabindex="-1"
                       type="radio"
@@ -171,7 +209,7 @@ exports[`Navbar creates snapshot 1`] = `
                     />
                     <label
                       class="form-check-label fw-bold w-100 label"
-                      for="theme-dark"
+                      for="theme-mobile-dark"
                     >
                       <svg
                         class="mx-1 position-relative icon"
@@ -343,41 +381,208 @@ exports[`Navbar creates snapshot 1`] = `
             Stats
           </a>
           <div
-            class="form-check form-switch ms-4 position-relative d-none d-sm-block cursorPointer"
+            class="ms-2 position-relative"
           >
-            <div>
+            <button
+              aria-expanded="false"
+              aria-label="Settings button"
+              class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 btn"
+              type="button"
+            >
               <svg
-                class="text-light position-absolute sunIcon"
-                data-testid="sun-icon"
-                fill="none"
+                fill="currentColor"
                 height="1em"
                 stroke="currentColor"
                 stroke-width="0"
-                viewBox="0 0 24 24"
+                viewBox="0 0 640 512"
                 width="1em"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  clip-rule="evenodd"
-                  d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                />
-                <path
-                  clip-rule="evenodd"
-                  d="M11 0H13V4.06189C12.6724 4.02104 12.3387 4 12 4C11.6613 4 11.3276 4.02104 11 4.06189V0ZM7.0943 5.68018L4.22173 2.80761L2.80752 4.22183L5.6801 7.09441C6.09071 6.56618 6.56608 6.0908 7.0943 5.68018ZM4.06189 11H0V13H4.06189C4.02104 12.6724 4 12.3387 4 12C4 11.6613 4.02104 11.3276 4.06189 11ZM5.6801 16.9056L2.80751 19.7782L4.22173 21.1924L7.0943 18.3198C6.56608 17.9092 6.09071 17.4338 5.6801 16.9056ZM11 19.9381V24H13V19.9381C12.6724 19.979 12.3387 20 12 20C11.6613 20 11.3276 19.979 11 19.9381ZM16.9056 18.3199L19.7781 21.1924L21.1923 19.7782L18.3198 16.9057C17.9092 17.4339 17.4338 17.9093 16.9056 18.3199ZM19.9381 13H24V11H19.9381C19.979 11.3276 20 11.6613 20 12C20 12.3387 19.979 12.6724 19.9381 13ZM18.3198 7.0943L21.1923 4.22183L19.7781 2.80762L16.9056 5.6801C17.4338 6.09071 17.9092 6.56608 18.3198 7.0943Z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
+                  d="M512.1 191l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0L552 6.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zm-10.5-58.8c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.7-82.4 14.3-52.8 52.8zM386.3 286.1l33.7 16.8c10.1 5.8 14.5 18.1 10.5 29.1-8.9 24.2-26.4 46.4-42.6 65.8-7.4 8.9-20.2 11.1-30.3 5.3l-29.1-16.8c-16 13.7-34.6 24.6-54.9 31.7v33.6c0 11.6-8.3 21.6-19.7 23.6-24.6 4.2-50.4 4.4-75.9 0-11.5-2-20-11.9-20-23.6V418c-20.3-7.2-38.9-18-54.9-31.7L74 403c-10 5.8-22.9 3.6-30.3-5.3-16.2-19.4-33.3-41.6-42.2-65.7-4-10.9.4-23.2 10.5-29.1l33.3-16.8c-3.9-20.9-3.9-42.4 0-63.4L12 205.8c-10.1-5.8-14.6-18.1-10.5-29 8.9-24.2 26-46.4 42.2-65.8 7.4-8.9 20.2-11.1 30.3-5.3l29.1 16.8c16-13.7 34.6-24.6 54.9-31.7V57.1c0-11.5 8.2-21.5 19.6-23.5 24.6-4.2 50.5-4.4 76-.1 11.5 2 20 11.9 20 23.6v33.6c20.3 7.2 38.9 18 54.9 31.7l29.1-16.8c10-5.8 22.9-3.6 30.3 5.3 16.2 19.4 33.2 41.6 42.1 65.8 4 10.9.1 23.2-10 29.1l-33.7 16.8c3.9 21 3.9 42.5 0 63.5zm-117.6 21.1c59.2-77-28.7-164.9-105.7-105.7-59.2 77 28.7 164.9 105.7 105.7zm243.4 182.7l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0l8.2-14.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zM501.6 431c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.6-82.4 14.3-52.8 52.8z"
                 />
               </svg>
+            </button>
+            <div
+              class="dropdown-menu rounded-0 dropdown"
+              role="menu"
+            >
+              <div
+                class="dropdown-arrow arrow"
+              />
+              <div
+                class="px-3 py-2 lightText text-secondary text-uppercase fw-bold"
+              >
+                Theme
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="false"
+                    class="form-check-input input"
+                    id="theme-desktop-automatic"
+                    name="light"
+                    tabindex="-1"
+                    type="radio"
+                    value="light"
+                  />
+                  <label
+                    class="form-check-label fw-bold w-100 label"
+                    for="theme-desktop-automatic"
+                  >
+                    <svg
+                      class="mx-1 position-relative icon"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 14 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 3h1v1H5V3zM3 3h1v1H3V3zM1 3h1v1H1V3zm12 10H1V5h12v8zm0-9H7V3h6v1zm1-1c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V3z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    Automatic
+                  </label>
+                </div>
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="true"
+                    checked=""
+                    class="form-check-input input"
+                    id="theme-desktop-light"
+                    name="light"
+                    tabindex="-1"
+                    type="radio"
+                    value="light"
+                  />
+                  <label
+                    class="form-check-label fw-bold w-100 label"
+                    for="theme-desktop-light"
+                  >
+                    <svg
+                      class="mx-1 position-relative icon"
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="5"
+                      />
+                      <line
+                        x1="12"
+                        x2="12"
+                        y1="1"
+                        y2="3"
+                      />
+                      <line
+                        x1="12"
+                        x2="12"
+                        y1="21"
+                        y2="23"
+                      />
+                      <line
+                        x1="4.22"
+                        x2="5.64"
+                        y1="4.22"
+                        y2="5.64"
+                      />
+                      <line
+                        x1="18.36"
+                        x2="19.78"
+                        y1="18.36"
+                        y2="19.78"
+                      />
+                      <line
+                        x1="1"
+                        x2="3"
+                        y1="12"
+                        y2="12"
+                      />
+                      <line
+                        x1="21"
+                        x2="23"
+                        y1="12"
+                        y2="12"
+                      />
+                      <line
+                        x1="4.22"
+                        x2="5.64"
+                        y1="19.78"
+                        y2="18.36"
+                      />
+                      <line
+                        x1="18.36"
+                        x2="19.78"
+                        y1="5.64"
+                        y2="4.22"
+                      />
+                    </svg>
+                    Light
+                  </label>
+                </div>
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="false"
+                    class="form-check-input input"
+                    id="theme-desktop-dark"
+                    name="dark"
+                    tabindex="-1"
+                    type="radio"
+                    value="dark"
+                  />
+                  <label
+                    class="form-check-label fw-bold w-100 label"
+                    for="theme-desktop-dark"
+                  >
+                    <svg
+                      class="mx-1 position-relative icon"
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                      />
+                    </svg>
+                    Dark
+                  </label>
+                </div>
+              </div>
             </div>
-            <input
-              checked=""
-              class="form-check-input cursorPointer themeSwitch"
-              id="theme"
-              role="switch"
-              type="checkbox"
-            />
           </div>
         </div>
       </div>

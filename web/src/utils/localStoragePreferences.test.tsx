@@ -7,6 +7,7 @@ const defaultPrefs: Prefs = {
   search: { limit: 20, sort: { by: SortBy.Name, direction: SortDirection.ASC } },
   theme: {
     effective: 'light',
+    configured: 'light',
   },
 };
 
@@ -28,6 +29,7 @@ const applyMigrationsTests: ApplyMigrationsTests[] = [
         search: { limit: 20 },
         theme: {
           effective: 'light',
+          configured: 'light',
         },
       },
     },
@@ -42,11 +44,26 @@ const applyMigrationsTests: ApplyMigrationsTests[] = [
         search: { limit: 20 },
         theme: {
           effective: 'dark',
+          configured: 'dark',
         },
       },
     },
     output: {
-      guest: { ...defaultPrefs, theme: { effective: 'dark' } },
+      guest: { ...defaultPrefs, theme: { effective: 'dark', configured: 'dark' } },
+    },
+  },
+  {
+    appliedMigration: '1',
+    input: {
+      guest: {
+        search: { limit: 20, sort: { by: 'name', direction: 'asc' } },
+        theme: {
+          effective: 'dark',
+        },
+      },
+    },
+    output: {
+      guest: { ...defaultPrefs, theme: { effective: 'dark', configured: 'dark' } },
     },
   },
 ];
@@ -69,7 +86,7 @@ describe('localStoragePreferences', () => {
     expect(lsPreferences.getPrefs()).toStrictEqual(defaultPrefs);
     const newPrefs: Prefs = {
       ...defaultPrefs,
-      theme: { effective: 'dark' },
+      theme: { effective: 'dark', configured: 'dark' },
     };
     lsPreferences.setPrefs(newPrefs);
     expect(lsPreferences.getPrefs()).toStrictEqual(newPrefs);

@@ -2,6 +2,7 @@ import { isEmpty, isUndefined, sortBy } from 'lodash';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
 import { Prefs } from '../types';
+import detectActiveThemeMode from './detectActiveThemeMode';
 
 export interface PreferencesList {
   [key: string]: Prefs;
@@ -20,7 +21,7 @@ interface Migration {
 
 const DEFAULT_PREFS: Prefs = {
   search: { limit: DEFAULT_SEARCH_LIMIT, sort: { by: DEFAULT_SORT_BY, direction: DEFAULT_SORT_DIRECTION } },
-  theme: { effective: DEFAULT_THEME },
+  theme: { configured: DEFAULT_THEME, effective: detectActiveThemeMode() },
 };
 
 const migrations: Migration[] = [
@@ -35,6 +36,22 @@ const migrations: Migration[] = [
         guestPrefs.search = {
           ...guestPrefs.search,
           sort: DEFAULT_PREFS.search.sort,
+        };
+      }
+      return { ...lsUpdated, guest: { ...guestPrefs } };
+    },
+  },
+  {
+    key: 2,
+    description: 'Add configured theme criteria',
+    method: (lsActual: PreferencesList): PreferencesList => {
+      let lsUpdated: PreferencesList = { ...lsActual };
+      let guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
+
+      if (isUndefined(guestPrefs.theme.configured)) {
+        guestPrefs.theme = {
+          ...guestPrefs.theme,
+          configured: guestPrefs.theme.effective,
         };
       }
       return { ...lsUpdated, guest: { ...guestPrefs } };
@@ -62,7 +79,7 @@ export const applyMigrations = (lsActual: PreferencesList): PreferencesList => {
     }
   }
 
-  migrationsToApply.forEach((migration: Migration, index: number) => {
+  migrationsToApply.forEach((migration: Migration) => {
     lsUpdated = migration.method(lsUpdated);
   });
 

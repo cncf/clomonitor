@@ -39,7 +39,10 @@ describe('Navbar', () => {
     expect(links[0]).toHaveAttribute('href', '/');
 
     expect(screen.getByRole('textbox')).toBeInTheDocument();
-    expect(screen.getByRole('switch')).toBeInTheDocument();
+
+    expect(screen.getAllByRole('radio', { name: 'Automatic' })).toHaveLength(2);
+    expect(screen.getAllByRole('radio', { name: 'Light' })).toHaveLength(2);
+    expect(screen.getAllByRole('radio', { name: 'Dark' })).toHaveLength(2);
   });
 
   it('clicks logo', async () => {

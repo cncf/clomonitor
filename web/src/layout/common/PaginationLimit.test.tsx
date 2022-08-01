@@ -13,7 +13,7 @@ const defaultProps = {
 const mockCtx = {
   prefs: {
     search: { limit: 20, sort: { by: SortBy.Name, direction: SortDirection.ASC } },
-    theme: { effective: 'light' },
+    theme: { effective: 'light', configured: 'light' },
   },
 };
 

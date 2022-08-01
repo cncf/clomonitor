@@ -1,0 +1,6 @@
+@media (hover: hover) {
+  .input:not([disabled]),
+  .input:not([disabled]) + label {
+    cursor: pointer;
+  }
+}

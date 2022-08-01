@@ -1,7 +1,9 @@
 import { isNull } from 'lodash';
 import { createContext, Dispatch, useContext, useEffect, useReducer, useState } from 'react';
 
+import useSystemThemeMode from '../hooks/useSystemThemeMode';
 import { Prefs, SortBy, SortDirection } from '../types';
+import detectActiveThemeMode from '../utils/detectActiveThemeMode';
 import getMetaTag from '../utils/getMetaTag';
 import lsStorage from '../utils/localStoragePreferences';
 import themeBuilder from '../utils/themeBuilder';
@@ -20,6 +22,7 @@ const initialState: AppState = {
 
 type Action =
   | { type: 'updateTheme'; theme: string }
+  | { type: 'updateEffectiveTheme'; theme: string }
   | { type: 'updateLimit'; limit: number }
   | { type: 'updateSort'; by: SortBy; direction: SortDirection };
 
@@ -32,6 +35,10 @@ export const AppContext = createContext<{
 });
 
 export function updateTheme(theme: string) {
+  return { type: 'updateTheme', theme };
+}
+
+export function updateEffectiveTheme(theme: string) {
   return { type: 'updateTheme', theme };
 }
 
@@ -55,13 +62,30 @@ export function appReducer(state: AppState, action: Action) {
   let prefs;
   switch (action.type) {
     case 'updateTheme':
+      const effective = action.theme === 'automatic' ? detectActiveThemeMode() : action.theme;
       prefs = {
         ...state.prefs,
         theme: {
-          effective: action.theme,
+          configured: action.theme,
+          effective: effective,
         },
       };
 
+      lsStorage.setPrefs(prefs);
+      updateActiveStyleSheet(effective);
+      return {
+        ...state,
+        prefs: prefs,
+      };
+
+    case 'updateEffectiveTheme':
+      prefs = {
+        ...state.prefs,
+        theme: {
+          ...state.prefs.theme,
+          effective: action.theme,
+        },
+      };
       lsStorage.setPrefs(prefs);
       updateActiveStyleSheet(action.theme);
       return {
@@ -113,11 +137,16 @@ function AppContextProvider(props: Props) {
   const [activeInitialTheme, setActiveInitialTheme] = useState<string | null>(null);
 
   useEffect(() => {
-    const theme = activeProfilePrefs.theme.effective || 'light';
+    const theme =
+      activeProfilePrefs.theme.configured === 'automatic'
+        ? detectActiveThemeMode()
+        : activeProfilePrefs.theme.configured;
     themeBuilder.init();
     updateActiveStyleSheet(theme);
     setActiveInitialTheme(theme);
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  useSystemThemeMode(ctx.prefs.theme.configured === 'automatic', dispatch);
 
   if (isNull(activeInitialTheme)) return null;
 

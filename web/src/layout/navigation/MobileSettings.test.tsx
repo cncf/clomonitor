@@ -9,7 +9,7 @@ import MobileSettings from './MobileSettings';
 const mockCtx = {
   prefs: {
     search: { limit: 20, sort: { by: SortBy.Name, direction: SortDirection.ASC } },
-    theme: { effective: 'light' },
+    theme: { effective: 'light', configured: 'light' },
   },
 };
 
@@ -60,6 +60,8 @@ describe('MobileSettings', () => {
     await userEvent.click(btn);
 
     expect(dropdown).toHaveClass('show');
+    expect(screen.getByRole('radio', { name: 'Automatic' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Automatic' })).not.toBeChecked();
     expect(screen.getByRole('radio', { name: 'Light' })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'Light' })).toBeChecked();
     expect(screen.getByRole('radio', { name: 'Dark' })).toBeInTheDocument();
@@ -85,6 +87,8 @@ describe('MobileSettings', () => {
     await userEvent.click(btn);
 
     expect(dropdown).toHaveClass('show');
+    expect(screen.getByRole('radio', { name: 'Automatic' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Automatic' })).not.toBeChecked();
     expect(screen.getByRole('radio', { name: 'Light' })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'Light' })).toBeChecked();
     expect(screen.getByRole('radio', { name: 'Dark' })).toBeInTheDocument();
@@ -95,24 +99,6 @@ describe('MobileSettings', () => {
     await userEvent.click(btn);
 
     expect(dropdown).not.toHaveClass('show');
-  });
-
-  it('calls updateTheme event', async () => {
-    render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: mockDispatch }}>
-        <Router>
-          <MobileSettings />
-        </Router>
-      </AppContext.Provider>
-    );
-
-    const btn = screen.getByRole('button', { name: 'Mobile settings button' });
-    await userEvent.click(btn);
-
-    fireEvent.click(screen.getByRole('radio', { name: 'Dark' }));
-
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
-    expect(mockDispatch).toHaveBeenCalledWith({ theme: 'dark', type: 'updateTheme' });
   });
 
   it('goes to Docs page', async () => {

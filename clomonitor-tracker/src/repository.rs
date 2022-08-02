@@ -213,13 +213,13 @@ impl Repository {
             let project_score = score::merge(&repositories_scores[..]);
             tx.execute(
                 "
-            update project set
-                score = $1::jsonb,
-                rating = $2::text,
-                passed_checks = (select get_project_passed_checks($3::uuid)),
-                updated_at = current_timestamp
-            where project_id = $3::uuid;
-            ",
+                update project set
+                    score = $1::jsonb,
+                    rating = $2::text,
+                    passed_checks = (select get_project_passed_checks($3::uuid)),
+                    updated_at = current_timestamp
+                where project_id = $3::uuid;
+                ",
                 &[
                     &Json(&project_score),
                     &project_score.rating().to_string(),

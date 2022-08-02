@@ -114,7 +114,7 @@ mod tests {
         },
     };
     use clomonitor_core::score::Score;
-    use mime::{APPLICATION_JSON, HTML};
+    use mime::{APPLICATION_JSON, CSV, HTML};
     use mockall::predicate::*;
     use serde_json::json;
     use std::{fs, future, sync::Arc};
@@ -447,6 +447,33 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    }
+
+    #[tokio::test]
+    async fn repositories_checks() {
+        let mut db = MockDB::new();
+        db.expect_repositories_with_checks()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok("CSV data".to_string()))));
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri("/data/repositories.csv")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
+        assert_eq!(response.headers()[CONTENT_TYPE], CSV.as_ref());
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            "CSV data".to_string(),
+        );
     }
 
     #[tokio::test]

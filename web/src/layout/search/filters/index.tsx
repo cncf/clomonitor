@@ -43,7 +43,7 @@ const Filters = (props: Props) => {
         </div>
       )}
 
-      {FILTERS.map((section: FiltersSection, index: number) => (
+      {FILTERS.map((section: FiltersSection) => (
         <React.Fragment key={`sec_${section.name}`}>
           <Section
             device={props.device}
@@ -51,13 +51,6 @@ const Filters = (props: Props) => {
             section={section}
             onChange={props.onChange}
           />
-          {index === 0 && (
-            <AcceptedDateRange
-              acceptedFrom={props.acceptedFrom}
-              acceptedTo={props.acceptedTo}
-              onAcceptedDateRangeChange={props.onAcceptedDateRangeChange}
-            />
-          )}
         </React.Fragment>
       ))}
 
@@ -69,6 +62,12 @@ const Filters = (props: Props) => {
           onChange={props.onChange}
         />
       </div>
+
+      <AcceptedDateRange
+        acceptedFrom={props.acceptedFrom}
+        acceptedTo={props.acceptedTo}
+        onAcceptedDateRangeChange={props.onAcceptedDateRangeChange}
+      />
     </>
   );
 };

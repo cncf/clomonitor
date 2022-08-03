@@ -10,7 +10,7 @@ exports[`AcceptedDateRange creates snapshot 1`] = `
     </small>
   </div>
   <div
-    class="flex-column mobileDateRange"
+    class="flex-column mb-4 mobileDateRange"
   >
     <div
       class="my-2"
@@ -48,7 +48,7 @@ exports[`AcceptedDateRange creates snapshot 1`] = `
     </div>
   </div>
   <div
-    class="mt-3 desktopDateRange"
+    class="mt-3 mb-4 desktopDateRange"
   >
     <div
       class="text-uppercase text-muted mb-1 legend"

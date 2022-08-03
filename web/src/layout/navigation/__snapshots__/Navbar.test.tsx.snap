@@ -38,7 +38,7 @@ exports[`Navbar creates snapshot 1`] = `
               <button
                 aria-expanded="false"
                 aria-label="Mobile settings button"
-                class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 btn"
+                class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 btn"
                 type="button"
               >
                 <svg
@@ -46,12 +46,13 @@ exports[`Navbar creates snapshot 1`] = `
                   height="1em"
                   stroke="currentColor"
                   stroke-width="0"
-                  viewBox="0 0 20 20"
+                  viewBox="0 0 16 16"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                    fill-rule="evenodd"
                   />
                 </svg>
               </button>

@@ -217,7 +217,7 @@ const ChecksFilter = (props: Props) => {
       <div>
         <button
           type="button"
-          className={classNames('btn btn-outline-secondary btn-sm rounded-0 mb-4', styles.btn, {
+          className={classNames('btn btn-outline-secondary btn-sm rounded-0', styles.btn, {
             'mt-3': noActiveChecks,
           })}
           onClick={() => setOpenStatus(true)}
@@ -264,6 +264,7 @@ const ChecksFilter = (props: Props) => {
               </button>
             </div>
           }
+          modalClassName={styles.modal}
           onClose={onCloseModal}
           size="md"
           open={openStatus}

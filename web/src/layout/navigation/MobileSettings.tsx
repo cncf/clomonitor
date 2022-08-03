@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useRef, useState } from 'react';
+import { BsList } from 'react-icons/bs';
 import { FaChartPie, FaFileAlt } from 'react-icons/fa';
-import { HiDotsVertical } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import useOutsideClick from '../../hooks/useOutsideClick';
@@ -21,13 +21,13 @@ const MobileSettings = () => {
   return (
     <div ref={ref} className="d-flex d-md-none ms-auto position-relative">
       <button
-        className={`btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 ${styles.btn}`}
+        className={`btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 ${styles.btn}`}
         type="button"
         onClick={() => setVisibleDropdown(!visibleDropdown)}
         aria-label="Mobile settings button"
         aria-expanded={visibleDropdown}
       >
-        <HiDotsVertical />
+        <BsList />
       </button>
 
       <div role="menu" className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>

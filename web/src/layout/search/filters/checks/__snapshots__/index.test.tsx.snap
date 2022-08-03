@@ -16,7 +16,7 @@ exports[`Checks creates snapshot 1`] = `
   <div>
     <button
       aria-label="Open checks modal"
-      class="btn btn-outline-secondary btn-sm rounded-0 mb-4 btn mt-3"
+      class="btn btn-outline-secondary btn-sm rounded-0 btn mt-3"
       type="button"
     >
       <span>

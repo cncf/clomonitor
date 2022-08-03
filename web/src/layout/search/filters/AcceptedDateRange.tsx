@@ -79,7 +79,7 @@ const AcceptedDateRange = (props: Props) => {
         <small>Accepted</small>
       </div>
 
-      <div className={`flex-column ${styles.mobileDateRange}`}>
+      <div className={`flex-column mb-4 ${styles.mobileDateRange}`}>
         <div className="my-2">
           <label htmlFor="from" className={`form-label text-uppercase text-muted ${styles.label}`}>
             From:
@@ -110,7 +110,7 @@ const AcceptedDateRange = (props: Props) => {
         </div>
       </div>
 
-      <div className={`mt-3 ${styles.desktopDateRange}`}>
+      <div className={`mt-3 mb-4 ${styles.desktopDateRange}`}>
         <AcceptedDateBtn
           date={dateFrom}
           min={INITIAL_DATE}

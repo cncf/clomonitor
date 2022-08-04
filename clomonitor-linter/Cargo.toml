@@ -7,10 +7,10 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.58"
-clap = { version = "3.2.15", features = ["derive"] }
+anyhow = "1.0.59"
+clap = { version = "3.2.16", features = ["derive"] }
 comfy-table = "6.0.0"
 clomonitor-core = { path = "../clomonitor-core" }
 openssl = { version = "0.10.41", features = ["vendored"] }
-serde_json = "1.0.82"
+serde_json = "1.0.83"
 tokio = { version = "1.20.1", features = ["macros", "process", "rt-multi-thread"] }

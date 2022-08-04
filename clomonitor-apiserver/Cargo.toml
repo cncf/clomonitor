@@ -7,14 +7,14 @@ edition = "2021"
 rust-version = "1.58"
 
 [dependencies]
-anyhow = "1.0.58"
+anyhow = "1.0.59"
 askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
-async-trait = "0.1.56"
+async-trait = "0.1.57"
 axum = "0.5.13"
-clap = { version = "3.2.15", features = ["derive"] }
+clap = { version = "3.2.16", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
-config = "0.13.1"
+config = "0.13.2"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
 lazy_static = "1.4.0"
 metrics = "0.20.1"
@@ -24,8 +24,8 @@ openssl = { version = "0.10.41", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 regex = "1.6.0"
 resvg = "0.23.0"
-serde = { version = "1.0.140", features = ["derive"] }
-serde_json = "1.0.82"
+serde = { version = "1.0.142", features = ["derive"] }
+serde_json = "1.0.83"
 serde_qs = "0.10.1"
 tera = { version = "1.16.0", default-features = false }
 tiny-skia = "0.6.6"
@@ -33,7 +33,7 @@ tokio = { version = "1.20.1", features = ["macros", "rt-multi-thread", "signal"]
 tokio-postgres = { version = "0.7.6", features = ["with-uuid-1", "with-serde_json-1"] }
 tower = "0.4.13"
 tower-http = { version = "0.3.4", features = ["auth", "fs", "set-header", "trace"] }
-tracing = "0.1.35"
+tracing = "0.1.36"
 tracing-subscriber = { version = "0.3.15", features = ["env-filter", "json"] }
 usvg = "0.23.0"
 

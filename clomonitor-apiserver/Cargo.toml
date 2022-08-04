@@ -14,7 +14,7 @@ async-trait = "0.1.56"
 axum = "0.5.13"
 clap = { version = "3.2.15", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
-config = "0.13.1"
+config = "0.13.2"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
 lazy_static = "1.4.0"
 metrics = "0.20.1"

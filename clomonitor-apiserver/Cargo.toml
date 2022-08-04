@@ -24,7 +24,7 @@ openssl = { version = "0.10.41", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 regex = "1.6.0"
 resvg = "0.23.0"
-serde = { version = "1.0.140", features = ["derive"] }
+serde = { version = "1.0.142", features = ["derive"] }
 serde_json = "1.0.82"
 serde_qs = "0.10.1"
 tera = { version = "1.16.0", default-features = false }

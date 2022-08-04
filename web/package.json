@@ -22,10 +22,10 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^14.1.1",
+    "@testing-library/user-event": "^14.4.1",
     "@types/jest": "^28.1.0",
     "@types/lodash": "^4.14.178",
-    "@types/node": "^18.6.2",
+    "@types/node": "^18.6.3",
     "@types/react": "^18.0.8",
     "@types/react-date-range": "^1.4.3",
     "@types/react-dom": "^18.0.3",
@@ -38,7 +38,7 @@
     "postcss": "^8.2.13",
     "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.45.2",
+    "sass": "^1.54.1",
     "shx": "^0.3.4",
     "typescript": "^4.4.2"
   },

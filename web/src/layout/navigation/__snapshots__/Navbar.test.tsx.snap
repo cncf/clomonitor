@@ -72,13 +72,14 @@ exports[`Navbar creates snapshot 1`] = `
                     class="form-check"
                   >
                     <input
-                      aria-checked="false"
+                      aria-checked="true"
+                      checked=""
                       class="form-check-input input"
                       id="theme-mobile-automatic"
-                      name="light"
+                      name="automatic"
                       tabindex="-1"
                       type="radio"
-                      value="light"
+                      value="automatic"
                     />
                     <label
                       class="form-check-label w-100"
@@ -110,8 +111,7 @@ exports[`Navbar creates snapshot 1`] = `
                     class="form-check"
                   >
                     <input
-                      aria-checked="true"
-                      checked=""
+                      aria-checked="false"
                       class="form-check-input input"
                       id="theme-mobile-light"
                       name="light"
@@ -423,13 +423,14 @@ exports[`Navbar creates snapshot 1`] = `
                   class="form-check"
                 >
                   <input
-                    aria-checked="false"
+                    aria-checked="true"
+                    checked=""
                     class="form-check-input input"
                     id="theme-desktop-automatic"
-                    name="light"
+                    name="automatic"
                     tabindex="-1"
                     type="radio"
-                    value="light"
+                    value="automatic"
                   />
                   <label
                     class="form-check-label w-100"
@@ -461,8 +462,7 @@ exports[`Navbar creates snapshot 1`] = `
                   class="form-check"
                 >
                   <input
-                    aria-checked="true"
-                    checked=""
+                    aria-checked="false"
                     class="form-check-input input"
                     id="theme-desktop-light"
                     name="light"

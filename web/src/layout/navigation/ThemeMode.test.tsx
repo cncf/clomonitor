@@ -33,6 +33,7 @@ describe('ThemeMode', () => {
         </Router>
       </AppContext.Provider>
     );
+
     expect(asFragment()).toMatchSnapshot();
   });
 

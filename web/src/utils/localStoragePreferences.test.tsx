@@ -7,7 +7,7 @@ const defaultPrefs: Prefs = {
   search: { limit: 20, sort: { by: SortBy.Name, direction: SortDirection.ASC } },
   theme: {
     effective: 'light',
-    configured: 'light',
+    configured: 'automatic',
   },
 };
 
@@ -20,7 +20,7 @@ interface ApplyMigrationsTests {
 const applyMigrationsTests: ApplyMigrationsTests[] = [
   {
     input: {},
-    output: { guest: { ...defaultPrefs } },
+    output: { guest: defaultPrefs },
   },
   {
     appliedMigration: '0',
@@ -29,12 +29,11 @@ const applyMigrationsTests: ApplyMigrationsTests[] = [
         search: { limit: 20 },
         theme: {
           effective: 'light',
-          configured: 'light',
         },
       },
     },
     output: {
-      guest: defaultPrefs,
+      guest: { ...defaultPrefs, theme: { effective: 'light', configured: 'light' } },
     },
   },
   {
@@ -64,6 +63,35 @@ const applyMigrationsTests: ApplyMigrationsTests[] = [
     },
     output: {
       guest: { ...defaultPrefs, theme: { effective: 'dark', configured: 'dark' } },
+    },
+  },
+  {
+    appliedMigration: '2',
+    input: {
+      guest: {
+        search: { limit: 20, sort: { by: 'name', direction: 'asc' } },
+        theme: {
+          effective: 'light',
+        },
+      },
+    },
+    output: {
+      guest: { ...defaultPrefs, theme: { effective: 'light', configured: 'light' } },
+    },
+  },
+  {
+    appliedMigration: '2',
+    input: {
+      guest: {
+        search: { limit: 20, sort: { by: 'name', direction: 'asc' } },
+        theme: {
+          configured: 'automatic',
+          effective: 'light',
+        },
+      },
+    },
+    output: {
+      guest: { ...defaultPrefs, theme: { effective: 'light', configured: 'automatic' } },
     },
   },
 ];

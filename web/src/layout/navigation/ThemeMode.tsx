@@ -30,10 +30,10 @@ const ThemeMode = (props: Props) => {
         <div className="form-check">
           <input
             id={`theme-${props.device}-automatic`}
-            name="light"
+            name="automatic"
             className={`form-check-input ${styles.input}`}
             type="radio"
-            value="light"
+            value="automatic"
             onChange={() => onHandleChange('automatic')}
             aria-checked={configured === 'automatic'}
             tabIndex={-1}

@@ -1,7 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { AppContext } from '../../context/AppContextProvider';
+import { SortBy, SortDirection } from '../../types';
 import Settings from './Settings';
+
+const mockCtx = {
+  prefs: {
+    search: { limit: 20, sort: { by: SortBy.Name, direction: SortDirection.ASC } },
+    theme: { effective: 'light', configured: 'light' },
+  },
+};
 
 describe('Settings', () => {
   afterEach(() => {
@@ -9,18 +18,30 @@ describe('Settings', () => {
   });
 
   it('creates snapshot', () => {
-    const { asFragment } = render(<Settings />);
+    const { asFragment } = render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Settings />
+      </AppContext.Provider>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders proper content', () => {
-    render(<Settings />);
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Settings />
+      </AppContext.Provider>
+    );
 
     expect(screen.getByRole('button', { name: 'Settings button' })).toBeInTheDocument();
   });
 
   it('opens dropdown', async () => {
-    render(<Settings />);
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Settings />
+      </AppContext.Provider>
+    );
 
     const dropdown = screen.getByRole('menu');
     expect(dropdown).toBeInTheDocument();
@@ -39,7 +60,11 @@ describe('Settings', () => {
   });
 
   it('opens dropdown and closes it using Settings button', async () => {
-    render(<Settings />);
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Settings />
+      </AppContext.Provider>
+    );
 
     const dropdown = screen.getByRole('menu');
     expect(dropdown).toBeInTheDocument();

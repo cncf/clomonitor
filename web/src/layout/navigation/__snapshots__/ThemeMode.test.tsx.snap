@@ -17,10 +17,10 @@ exports[`ThemeMode creates snapshot 1`] = `
         aria-checked="false"
         class="form-check-input input"
         id="theme-desktop-automatic"
-        name="light"
+        name="automatic"
         tabindex="-1"
         type="radio"
-        value="light"
+        value="automatic"
       />
       <label
         class="form-check-label w-100"

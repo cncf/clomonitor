@@ -11,7 +11,7 @@ export interface PreferencesList {
 const LS_ITEM = 'clomonitorPrefs';
 const APPLIED_MIGRATION = 'clomonitorAppliedMigration';
 export const DEFAULT_SEARCH_LIMIT = 20;
-const DEFAULT_THEME = 'light';
+const DEFAULT_THEME = 'automatic';
 
 interface Migration {
   key: number;
@@ -43,7 +43,12 @@ const migrations: Migration[] = [
   },
   {
     key: 2,
-    description: 'Add configured theme criteria',
+    description: 'Fix error with prev migration applied',
+    method: (lsActual: PreferencesList): PreferencesList => lsActual,
+  },
+  {
+    key: 3,
+    description: 'Add configured theme',
     method: (lsActual: PreferencesList): PreferencesList => {
       let lsUpdated: PreferencesList = { ...lsActual };
       let guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
@@ -61,30 +66,35 @@ const migrations: Migration[] = [
 
 export const applyMigrations = (lsActual: PreferencesList): PreferencesList => {
   let lsUpdated: PreferencesList = { ...lsActual };
-  if (isEmpty(lsUpdated)) {
-    return { guest: DEFAULT_PREFS };
-  }
-  const sortedMigrations: Migration[] = sortBy(migrations, 'key');
-  let migrationsToApply = [...sortedMigrations];
-  const migrationApplied = window.localStorage.getItem(APPLIED_MIGRATION);
   const lastMigration = getLastMigrationNumber();
 
-  if (migrationApplied) {
-    // If latest migration has been applied, we don't do anything
-    if (lastMigration === parseInt(migrationApplied)) {
-      migrationsToApply = [];
-    } else {
-      // Migrations newest than current one are applied to prefs
-      migrationsToApply = sortedMigrations.filter((migration: Migration) => migration.key > parseInt(migrationApplied));
-    }
-  }
+  if (isEmpty(lsUpdated)) {
+    lsUpdated = { guest: DEFAULT_PREFS };
+  } else {
+    const sortedMigrations: Migration[] = sortBy(migrations, 'key');
+    let migrationsToApply = [...sortedMigrations];
+    const migrationApplied = window.localStorage.getItem(APPLIED_MIGRATION);
 
-  migrationsToApply.forEach((migration: Migration) => {
-    lsUpdated = migration.method(lsUpdated);
-  });
+    if (migrationApplied) {
+      // If latest migration has been applied, we don't do anything
+      if (lastMigration === parseInt(migrationApplied)) {
+        migrationsToApply = [];
+      } else {
+        // Migrations newest than current one are applied to prefs
+        migrationsToApply = sortedMigrations.filter(
+          (migration: Migration) => migration.key > parseInt(migrationApplied)
+        );
+      }
+    }
+
+    migrationsToApply.forEach((migration: Migration) => {
+      lsUpdated = migration.method(lsUpdated);
+    });
+  }
 
   // Saved last migration
   try {
+    window.localStorage.setItem(LS_ITEM, JSON.stringify(lsUpdated));
     window.localStorage.setItem(APPLIED_MIGRATION, lastMigration.toString());
   } catch {
     // Incognite mode

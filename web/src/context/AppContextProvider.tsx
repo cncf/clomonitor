@@ -140,7 +140,7 @@ function AppContextProvider(props: Props) {
     const theme =
       activeProfilePrefs.theme.configured === 'automatic'
         ? detectActiveThemeMode()
-        : activeProfilePrefs.theme.configured;
+        : activeProfilePrefs.theme.configured || activeProfilePrefs.theme.effective; // Use effective theme if configured is undefined
     themeBuilder.init();
     updateActiveStyleSheet(theme);
     setActiveInitialTheme(theme);

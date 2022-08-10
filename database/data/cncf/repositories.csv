@@ -229,3 +229,4 @@ repository_id;name;url;check_sets;project_id
 00000000-0000-0244-0000-000000000000;policy-server;https://github.com/kubewarden/policy-server;{code-lite};00000000-0128-0000-0000-000000000000
 00000000-0000-0245-0000-000000000000;kubewarden-controller;https://github.com/kubewarden/kubewarden-controller;{community,code};00000000-0128-0000-0000-000000000000
 00000000-0000-0246-0000-000000000000;devstream;https://github.com/devstream-io/devstream;{community,code};00000000-0129-0000-0000-000000000000
+00000000-0000-0247-0000-000000000000;argo-site;https://github.com/argoproj/argo-site;{docs};00000000-0018-0000-0000-000000000000

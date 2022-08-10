@@ -24,4 +24,4 @@ tracing = "0.1.36"
 which = "4.2.5"
 
 [dev-dependencies]
-wiremock = "0.5.13"
+wiremock = "0.5.14"

@@ -11,7 +11,7 @@ RUN cargo build --release
 # Get OpenSSF scorecard binary
 FROM alpine:3.15 AS scorecard
 WORKDIR /tmp
-RUN wget -O scorecard.tar.gz https://github.com/ossf/scorecard/releases/download/v4.4.0/scorecard_4.4.0_linux_amd64.tar.gz
+RUN wget -O scorecard.tar.gz https://github.com/ossf/scorecard/releases/download/v4.6.0/scorecard_4.6.0_linux_amd64.tar.gz
 RUN tar xvfz scorecard.tar.gz
 RUN chown root:root scorecard-linux-amd64
 RUN chmod 755 scorecard-linux-amd64

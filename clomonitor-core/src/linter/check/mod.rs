@@ -35,7 +35,7 @@ pub(crate) struct CheckInput<'a> {
 }
 
 /// Check output information.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct CheckOutput<T = ()> {
     pub passed: bool,
 

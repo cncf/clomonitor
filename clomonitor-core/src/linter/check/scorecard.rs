@@ -39,7 +39,7 @@ pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scor
         .arg(format!("--repo={repo_url}"))
         .arg("--format=json")
         .arg("--show-details")
-        .arg("--checks=Binary-Artifacts,Branch-Protection,Code-Review,Dangerous-Workflow,Dependency-Update-Tool,Maintained,Signed-Releases,Token-Permissions,Vulnerabilities")
+        .arg("--checks=Binary-Artifacts,Code-Review,Dangerous-Workflow,Dependency-Update-Tool,Maintained,Signed-Releases,Token-Permissions,Vulnerabilities")
         .output()
         .await?;
     if !output.status.success() {

@@ -423,7 +423,6 @@
       },
       "security": {
         "binary_artifacts": 99,
-        "branch_protection": 44,
         "code_review": 82,
         "dangerous_workflow": 61,
         "dependency_update_tool": 26,

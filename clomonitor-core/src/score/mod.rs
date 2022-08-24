@@ -99,7 +99,6 @@ pub fn calculate(report: &Report) -> Score {
     let s = &report.security;
     (score.security, score.security_weight) = calculate_section_score_and_weight(&[
         (BINARY_ARTIFACTS, should_score(&s.binary_artifacts)),
-        (BRANCH_PROTECTION, should_score(&s.branch_protection)),
         (CODE_REVIEW, should_score(&s.code_review)),
         (DANGEROUS_WORKFLOW, should_score(&s.dangerous_workflow)),
         (
@@ -343,7 +342,6 @@ mod tests {
                 },
                 security: Security {
                     binary_artifacts: Some(true.into()),
-                    branch_protection: Some(true.into()),
                     code_review: Some(true.into()),
                     dangerous_workflow: Some(true.into()),
                     dependency_update_tool: Some(true.into()),
@@ -359,16 +357,16 @@ mod tests {
                 },
             }),
             Score {
-                global: 100.0,
-                global_weight: 96,
+                global: 99.99999999999999,
+                global_weight: 94,
                 documentation: Some(100.0),
                 documentation_weight: Some(30),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(20),
-                security: Some(99.99999999999999),
-                security_weight: Some(21),
+                security: Some(100.0),
+                security_weight: Some(19),
                 legal: Some(100.0),
                 legal_weight: Some(5),
             }
@@ -411,7 +409,6 @@ mod tests {
                 },
                 security: Security {
                     binary_artifacts: Some(false.into()),
-                    branch_protection: Some(false.into()),
                     code_review: Some(false.into()),
                     dangerous_workflow: Some(false.into()),
                     dependency_update_tool: Some(false.into()),
@@ -428,7 +425,7 @@ mod tests {
             }),
             Score {
                 global: 0.0,
-                global_weight: 96,
+                global_weight: 94,
                 documentation: Some(0.0),
                 documentation_weight: Some(30),
                 license: Some(0.0),
@@ -436,7 +433,7 @@ mod tests {
                 best_practices: Some(0.0),
                 best_practices_weight: Some(20),
                 security: Some(0.0),
-                security_weight: Some(21),
+                security_weight: Some(19),
                 legal: Some(0.0),
                 legal_weight: Some(5),
             }
@@ -485,7 +482,6 @@ mod tests {
                 },
                 security: Security {
                     binary_artifacts: Some(true.into()),
-                    branch_protection: Some(true.into()),
                     code_review: Some(true.into()),
                     dangerous_workflow: Some(true.into()),
                     dependency_update_tool: Some(true.into()),
@@ -502,15 +498,15 @@ mod tests {
             }),
             Score {
                 global: 100.0,
-                global_weight: 76,
+                global_weight: 74,
                 documentation: Some(100.0),
                 documentation_weight: Some(18),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(17),
-                security: Some(99.99999999999999),
-                security_weight: Some(21),
+                security: Some(100.0),
+                security_weight: Some(19),
                 legal: None,
                 legal_weight: None,
             }

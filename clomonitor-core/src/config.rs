@@ -7,7 +7,6 @@ pub const ADOPTERS: &str = "adopters";
 pub const ANALYTICS: &str = "analytics";
 pub const ARTIFACTHUB_BADGE: &str = "artifacthub_badge";
 pub const BINARY_ARTIFACTS: &str = "binary_artifacts";
-pub const BRANCH_PROTECTION: &str = "branch_protection";
 pub const CHANGELOG: &str = "changelog";
 pub const CLA: &str = "cla";
 pub const CODE_OF_CONDUCT: &str = "code_of_conduct";
@@ -71,7 +70,6 @@ lazy_static! {
 
         // Security
         m.insert(BINARY_ARTIFACTS, 2);
-        m.insert(BRANCH_PROTECTION, 2);
         m.insert(CODE_REVIEW, 2);
         m.insert(DANGEROUS_WORKFLOW, 2);
         m.insert(DEPENDENCY_UPDATE_TOOL, 2);
@@ -100,7 +98,6 @@ lazy_static! {
             vec![
                 ARTIFACTHUB_BADGE,
                 BINARY_ARTIFACTS,
-                BRANCH_PROTECTION,
                 CHANGELOG,
                 CLA,
                 CODE_REVIEW,
@@ -172,7 +169,6 @@ lazy_static! {
         let mut m = HashMap::new();
 
         m.insert(BINARY_ARTIFACTS, "Binary-Artifacts");
-        m.insert(BRANCH_PROTECTION, "Branch-Protection");
         m.insert(CODE_REVIEW, "Code-Review");
         m.insert(DANGEROUS_WORKFLOW, "Dangerous-Workflow");
         m.insert(DEPENDENCY_UPDATE_TOOL, "Dependency-Update-Tool");

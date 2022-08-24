@@ -106,9 +106,6 @@ insert into report (
             "binary_artifacts": {
                 "passed": true
             },
-            "branch_protection": {
-                "passed": false
-            },
             "token_permissions": {
                 "passed": false
             },
@@ -238,7 +235,6 @@ select results_eq(
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'signed_releases', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'vulnerabilities', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'binary_artifacts', true),
-            ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'branch_protection', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'token_permissions', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'dangerous_workflow', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'dependency_update_tool', false),

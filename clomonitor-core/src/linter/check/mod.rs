@@ -286,14 +286,6 @@ pub(crate) fn binary_artifacts(input: &CheckInput) -> Result<CheckOutput> {
     })
 }
 
-/// Branch protection check (from OpenSSF Scorecard).
-pub(crate) fn branch_protection(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(BRANCH_PROTECTION) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
-}
-
 /// Changelog check.
 pub(crate) fn changelog(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo or reference in README file

@@ -5,7 +5,6 @@ import {
   FaBalanceScale,
   FaChartBar,
   FaCheckDouble,
-  FaCodeBranch,
   FaExclamationTriangle,
   FaFileContract,
   FaFileSignature,
@@ -153,14 +152,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Binary artifacts',
     legend: <span>Whether the project has generated executable (binary) artifacts in the source repository</span>,
     reference: '/docs/topics/checks/#binary-artifacts-from-openssf-scorecard',
-  },
-  [ReportOption.BranchProtection]: {
-    icon: <FaCodeBranch />,
-    name: 'Branch protection',
-    legend: (
-      <span>A project's default and release branches are protected with GitHub's branch protection settings</span>
-    ),
-    reference: '/docs/topics/checks/#branch-protection-from-openssf-scorecard',
   },
   [ReportOption.Changelog]: {
     icon: <CgFileDocument />,
@@ -416,7 +407,6 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
   ],
   [ScoreType.Security]: [
     ReportOption.BinaryArtifacts,
-    ReportOption.BranchProtection,
     ReportOption.CodeReview,
     ReportOption.DangerousWorkflow,
     ReportOption.DependencyUpdateTool,

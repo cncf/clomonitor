@@ -106,9 +106,6 @@ insert into report (
             "binary_artifacts": {
                 "passed": true
             },
-            "branch_protection": {
-                "passed": false
-            },
             "token_permissions": {
                 "passed": false
             },
@@ -228,9 +225,9 @@ select results_eq(
     $$,
     $$
         values
-            ('Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Branch Protection,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Vulnerabilities,Trademark Disclaimer'),
-            ('cncf,project1,https://repo1.url,"{code,community}",t,t,t,t,t,t,t,f,t,t,f,Apache-2.0,GA4,f,t,f,t,t,t,t,f,t,f,t,t,f,t,f,t,f,f,t,f'),
-            ('cncf,project1,https://repo2.url,{docs},,,,,,,f,,,t,,Apache-2.0,,,,,,,,,,,,,,,,,,,,,')
+            ('Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Vulnerabilities,Trademark Disclaimer'),
+            ('cncf,project1,https://repo1.url,"{code,community}",t,t,t,t,t,t,t,f,t,t,f,Apache-2.0,GA4,f,t,f,t,t,t,t,f,t,t,t,f,t,f,t,f,f,t,f'),
+            ('cncf,project1,https://repo2.url,{docs},,,,,,,f,,,t,,Apache-2.0,,,,,,,,,,,,,,,,,,,,')
     $$,
     'Return all repositories with all checks'
 );

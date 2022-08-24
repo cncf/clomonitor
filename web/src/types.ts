@@ -166,7 +166,6 @@ export enum ReportOption {
   ApprovedLicense = 'license_approved',
   ArtifactHubBadge = 'artifacthub_badge',
   BinaryArtifacts = 'binary_artifacts',
-  BranchProtection = 'branch_protection',
   Changelog = 'changelog',
   CLA = 'cla',
   CodeOfConduct = 'code_of_conduct',

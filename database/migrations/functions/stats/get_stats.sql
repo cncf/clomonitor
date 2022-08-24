@@ -158,7 +158,6 @@ returns json as $$
                 ),
                 'security', json_build_object(
                     'binary_artifacts', repositories_passing_check(p_foundation, 'security', 'binary_artifacts'),
-                    'branch_protection', repositories_passing_check(p_foundation, 'security', 'branch_protection'),
                     'code_review', repositories_passing_check(p_foundation, 'security', 'code_review'),
                     'dangerous_workflow', repositories_passing_check(p_foundation, 'security', 'dangerous_workflow'),
                     'dependency_update_tool', repositories_passing_check(p_foundation, 'security', 'dependency_update_tool'),

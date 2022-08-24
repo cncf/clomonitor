@@ -124,7 +124,6 @@ pub struct BestPractices {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Security {
     pub binary_artifacts: Option<CheckOutput>,
-    pub branch_protection: Option<CheckOutput>,
     pub code_review: Option<CheckOutput>,
     pub dangerous_workflow: Option<CheckOutput>,
     pub dependency_update_tool: Option<CheckOutput>,
@@ -220,7 +219,6 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
         },
         security: Security {
             binary_artifacts: run_check(BINARY_ARTIFACTS, binary_artifacts, &input),
-            branch_protection: run_check(BRANCH_PROTECTION, branch_protection, &input),
             code_review: run_check(CODE_REVIEW, code_review, &input),
             dangerous_workflow: run_check(DANGEROUS_WORKFLOW, dangerous_workflow, &input),
             dependency_update_tool: run_check(

@@ -19,7 +19,6 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Best practices / OpenSSF badge
   - Best practices / Recent release
   - Security / Binary artifacts
-  - Security / Branch protection
   - Security / Code review
   - Security / Dangerous workflow
   - Security / Dependency update tool
@@ -513,14 +512,6 @@ This check passes if:
 This check determines whether the project has generated executable (binary) artifacts in the source repository.
 
 *This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#binary-artifacts) in the ossf/scorecard repository.*
-
-### Branch protection (from OpenSSF Scorecard)
-
-**ID**: `branch_protection`
-
-This check determines whether a project's default and release branches are protected with GitHub's branch protection settings.
-
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection) in the ossf/scorecard repository.*
 
 ### Code review (from OpenSSF Scorecard)
 

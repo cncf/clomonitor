@@ -176,10 +176,6 @@ pub(crate) fn display(
             cell_check(&report.security.binary_artifacts),
         ])
         .add_row(vec![
-            cell_entry("Security / Branch protection"),
-            cell_check(&report.security.branch_protection),
-        ])
-        .add_row(vec![
             cell_entry("Security / Code review"),
             cell_check(&report.security.code_review),
         ])
@@ -355,7 +351,6 @@ mod tests {
             },
             security: Security {
                 binary_artifacts: Some(true.into()),
-                branch_protection: Some(true.into()),
                 code_review: Some(true.into()),
                 dangerous_workflow: Some(true.into()),
                 dependency_update_tool: Some(true.into()),

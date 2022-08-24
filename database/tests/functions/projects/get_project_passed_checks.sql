@@ -106,9 +106,6 @@ insert into report (
             "binary_artifacts": {
                 "passed": true
             },
-            "branch_protection": {
-                "passed": false
-            },
             "token_permissions": {
                 "passed": false
             },

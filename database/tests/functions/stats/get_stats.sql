@@ -157,9 +157,6 @@ insert into report (
             "binary_artifacts": {
                 "passed": true
             },
-            "branch_protection": {
-                "passed": false
-            },
             "token_permissions": {
                 "passed": false
             },
@@ -291,9 +288,6 @@ insert into report (
             "binary_artifacts": {
                 "passed": true
             },
-            "branch_protection": {
-                "passed": false
-            },
             "token_permissions": {
                 "passed": false
             },
@@ -420,9 +414,6 @@ insert into report (
                 "passed": false
             },
             "binary_artifacts": {
-                "passed": false
-            },
-            "branch_protection": {
                 "passed": false
             },
             "token_permissions": {
@@ -579,7 +570,6 @@ select is(
                 },
                 "security": {
                     "binary_artifacts": 67,
-                    "branch_protection": 0,
                     "code_review": 67,
                     "dangerous_workflow": 67,
                     "dependency_update_tool": 0,

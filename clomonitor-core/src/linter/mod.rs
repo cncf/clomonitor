@@ -132,7 +132,6 @@ pub struct Security {
     pub security_policy: Option<CheckOutput>,
     pub signed_releases: Option<CheckOutput>,
     pub token_permissions: Option<CheckOutput>,
-    pub vulnerabilities: Option<CheckOutput>,
 }
 
 /// Legal section of the report.
@@ -231,7 +230,6 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
             security_policy: run_check(SECURITY_POLICY, security_policy, &input),
             signed_releases: run_check(SIGNED_RELEASES, signed_releases, &input),
             token_permissions: run_check(TOKEN_PERMISSIONS, token_permissions, &input),
-            vulnerabilities: run_check(VULNERABILITIES, vulnerabilities, &input),
         },
         legal: Legal {
             trademark_disclaimer,

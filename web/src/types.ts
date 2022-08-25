@@ -191,7 +191,6 @@ export enum ReportOption {
   SPDX = 'license_spdx_id',
   TokenPermissions = 'token_permissions',
   TrademarkDisclaimer = 'trademark_disclaimer',
-  Vulnerabilities = 'vulnerabilities',
   Website = 'website',
 }
 

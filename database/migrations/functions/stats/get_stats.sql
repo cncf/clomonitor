@@ -165,8 +165,7 @@ returns json as $$
                     'sbom', repositories_passing_check(p_foundation, 'security', 'sbom'),
                     'security_policy', repositories_passing_check(p_foundation, 'security', 'security_policy'),
                     'signed_releases', repositories_passing_check(p_foundation, 'security', 'signed_releases'),
-                    'token_permissions', repositories_passing_check(p_foundation, 'security', 'token_permissions'),
-                    'vulnerabilities', repositories_passing_check(p_foundation, 'security', 'vulnerabilities')
+                    'token_permissions', repositories_passing_check(p_foundation, 'security', 'token_permissions')
                 ),
                 'legal', json_build_object(
                     'trademark_disclaimer', repositories_passing_check(p_foundation, 'legal', 'trademark_disclaimer')

@@ -1,4 +1,4 @@
-import { BiLock, BiMedal, BiShieldQuarter, BiTargetLock, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
@@ -354,16 +354,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>Projects sites should have the Linux Foundation trademark disclaimer</span>,
     reference: '/docs/topics/checks/#trademark-disclaimer',
   },
-  [ReportOption.Vulnerabilities]: {
-    icon: <BiTargetLock />,
-    name: 'Vulnerabilities',
-    legend: (
-      <span>
-        Whether the project has open, unfixed vulnerabilities (uses the OSV -Open Source Vulnerabilities- service)
-      </span>
-    ),
-    reference: '/docs/topics/checks/#vulnerabilities-from-openssf-scorecard',
-  },
   [ReportOption.Website]: {
     icon: <BiWorld />,
     name: 'Website',
@@ -415,7 +405,6 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.SecurityPolicy,
     ReportOption.SignedReleases,
     ReportOption.TokenPermissions,
-    ReportOption.Vulnerabilities,
   ],
   [ScoreType.Legal]: [ReportOption.TrademarkDisclaimer],
 };

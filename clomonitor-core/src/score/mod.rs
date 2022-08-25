@@ -110,7 +110,6 @@ pub fn calculate(report: &Report) -> Score {
         (SECURITY_POLICY, should_score(&s.security_policy)),
         (SIGNED_RELEASES, should_score(&s.signed_releases)),
         (TOKEN_PERMISSIONS, should_score(&s.token_permissions)),
-        (VULNERABILITIES, should_score(&s.vulnerabilities)),
     ]);
 
     // Legal
@@ -350,7 +349,6 @@ mod tests {
                     security_policy: Some(true.into()),
                     signed_releases: Some(true.into()),
                     token_permissions: Some(true.into()),
-                    vulnerabilities: Some(true.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: Some(true.into()),
@@ -358,7 +356,7 @@ mod tests {
             }),
             Score {
                 global: 99.99999999999999,
-                global_weight: 94,
+                global_weight: 95,
                 documentation: Some(100.0),
                 documentation_weight: Some(30),
                 license: Some(100.0),
@@ -366,7 +364,7 @@ mod tests {
                 best_practices: Some(100.0),
                 best_practices_weight: Some(20),
                 security: Some(100.0),
-                security_weight: Some(19),
+                security_weight: Some(20),
                 legal: Some(100.0),
                 legal_weight: Some(5),
             }
@@ -417,7 +415,6 @@ mod tests {
                     security_policy: Some(false.into()),
                     signed_releases: Some(false.into()),
                     token_permissions: Some(false.into()),
-                    vulnerabilities: Some(false.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: Some(false.into()),
@@ -425,7 +422,7 @@ mod tests {
             }),
             Score {
                 global: 0.0,
-                global_weight: 94,
+                global_weight: 95,
                 documentation: Some(0.0),
                 documentation_weight: Some(30),
                 license: Some(0.0),
@@ -433,7 +430,7 @@ mod tests {
                 best_practices: Some(0.0),
                 best_practices_weight: Some(20),
                 security: Some(0.0),
-                security_weight: Some(19),
+                security_weight: Some(20),
                 legal: Some(0.0),
                 legal_weight: Some(5),
             }
@@ -490,15 +487,14 @@ mod tests {
                     security_policy: Some(true.into()),
                     signed_releases: Some(true.into()),
                     token_permissions: Some(true.into()),
-                    vulnerabilities: Some(true.into()),
                 },
                 legal: Legal {
                     trademark_disclaimer: None,
                 },
             }),
             Score {
-                global: 100.0,
-                global_weight: 74,
+                global: 100.00000000000001,
+                global_weight: 75,
                 documentation: Some(100.0),
                 documentation_weight: Some(18),
                 license: Some(100.0),
@@ -506,7 +502,7 @@ mod tests {
                 best_practices: Some(100.0),
                 best_practices_weight: Some(17),
                 security: Some(100.0),
-                security_weight: Some(19),
+                security_weight: Some(20),
                 legal: None,
                 legal_weight: None,
             }

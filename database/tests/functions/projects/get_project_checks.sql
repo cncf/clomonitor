@@ -100,9 +100,6 @@ insert into report (
             "signed_releases": {
                 "passed": false
             },
-            "vulnerabilities": {
-                "passed": true
-            },
             "binary_artifacts": {
                 "passed": true
             },
@@ -233,7 +230,6 @@ select results_eq(
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'code_review', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'security_policy', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'signed_releases', false),
-            ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'vulnerabilities', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'binary_artifacts', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'token_permissions', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'security', 'dangerous_workflow', true),

@@ -430,8 +430,7 @@
         "sbom": 4,
         "security_policy": 57,
         "signed_releases": 5,
-        "token_permissions": 18,
-        "vulnerabilities": 100
+        "token_permissions": 18
       },
       "legal": {
         "trademark_disclaimer": 40

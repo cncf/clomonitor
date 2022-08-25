@@ -603,14 +603,6 @@ pub(crate) async fn trademark_disclaimer(input: &CheckInput<'_>) -> Result<Check
     Ok(false.into())
 }
 
-/// Vulnerabilities check (from OpenSSF Scorecard).
-pub(crate) fn vulnerabilities(input: &CheckInput) -> Result<CheckOutput> {
-    Ok(match input.scorecard.get_check(VULNERABILITIES) {
-        Some(sc_check) => sc_check.into(),
-        None => false.into(),
-    })
-}
-
 /// Website check.
 pub(crate) fn website(input: &CheckInput) -> Result<CheckOutput> {
     // Website in Github

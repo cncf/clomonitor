@@ -208,10 +208,6 @@ pub(crate) fn display(
             cell_check(&report.security.token_permissions),
         ])
         .add_row(vec![
-            cell_entry("Security / Vulnerabilities"),
-            cell_check(&report.security.vulnerabilities),
-        ])
-        .add_row(vec![
             cell_entry("Legal / Trademark disclaimer"),
             cell_check(&report.legal.trademark_disclaimer),
         ]);
@@ -359,7 +355,6 @@ mod tests {
                 security_policy: Some(true.into()),
                 signed_releases: Some(true.into()),
                 token_permissions: Some(true.into()),
-                vulnerabilities: Some(true.into()),
             },
             legal: Legal {
                 trademark_disclaimer: Some(true.into()),

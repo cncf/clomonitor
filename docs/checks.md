@@ -27,7 +27,6 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Security / Policy
   - Security / Signed releases
   - Security / Token permissions
-  - Security / Vulnerabilities
 
 - **code-lite** (subset of *code*, recommended for secondary code repositories)
 
@@ -611,14 +610,6 @@ This check tries to determine if the project cryptographically signs release art
 This check determines whether the project's automated workflows tokens are set to read-only by default.
 
 *This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions) in the ossf/scorecard repository.*
-
-### Vulnerabilities (from OpenSSF Scorecard)
-
-**ID**: `vulnerabilities`
-
-This check determines whether the project has open, unfixed vulnerabilities using the [OSV (Open Source Vulnerabilities)](https://osv.dev/) service.
-
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#vulnerabilities) in the ossf/scorecard repository.*
 
 ## Legal
 

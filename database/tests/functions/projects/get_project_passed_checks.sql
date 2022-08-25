@@ -100,9 +100,6 @@ insert into report (
             "signed_releases": {
                 "passed": false
             },
-            "vulnerabilities": {
-                "passed": true
-            },
             "binary_artifacts": {
                 "passed": true
             },
@@ -243,7 +240,6 @@ select results_eq(
             openssf_badge,
             recent_release,
             security_policy,
-            vulnerabilities,
             website
         }'::text[])
     $$,

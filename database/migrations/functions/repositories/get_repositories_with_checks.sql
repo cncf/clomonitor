@@ -40,7 +40,6 @@ returns setof text as $$
             (rp.data->'security'->'security_policy'->'passed')::boolean as security_policy,
             (rp.data->'security'->'signed_releases'->'passed')::boolean as signed_releases,
             (rp.data->'security'->'token_permissions'->'passed')::boolean as token_permissions,
-            (rp.data->'security'->'vulnerabilities'->'passed')::boolean as vulnerabilities,
             (rp.data->'legal'->'trademark_disclaimer'->'passed')::boolean as trademark_disclaimer
         from organization o
         join project p using (organization_id)
@@ -48,7 +47,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by o.foundation asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Vulnerabilities,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

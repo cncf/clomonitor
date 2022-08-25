@@ -151,9 +151,6 @@ insert into report (
             "signed_releases": {
                 "passed": false
             },
-            "vulnerabilities": {
-                "passed": true
-            },
             "binary_artifacts": {
                 "passed": true
             },
@@ -282,9 +279,6 @@ insert into report (
             "signed_releases": {
                 "passed": false
             },
-            "vulnerabilities": {
-                "passed": true
-            },
             "binary_artifacts": {
                 "passed": true
             },
@@ -408,9 +402,6 @@ insert into report (
                 "passed": false
             },
             "signed_releases": {
-                "passed": false
-            },
-            "vulnerabilities": {
                 "passed": false
             },
             "binary_artifacts": {
@@ -577,8 +568,7 @@ select is(
                     "sbom": 0,
                     "security_policy": 67,
                     "signed_releases": 0,
-                    "token_permissions": 0,
-                    "vulnerabilities": 67
+                    "token_permissions": 0
                 },
                 "legal": {
                     "trademark_disclaimer": 0

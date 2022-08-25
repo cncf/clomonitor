@@ -33,7 +33,6 @@ pub const SLACK_PRESENCE: &str = "slack_presence";
 pub const SIGNED_RELEASES: &str = "signed_releases";
 pub const TRADEMARK_DISCLAIMER: &str = "trademark_disclaimer";
 pub const TOKEN_PERMISSIONS: &str = "token_permissions";
-pub const VULNERABILITIES: &str = "vulnerabilities";
 pub const WEBSITE: &str = "website";
 
 // Checks weights
@@ -70,15 +69,14 @@ lazy_static! {
 
         // Security
         m.insert(BINARY_ARTIFACTS, 2);
-        m.insert(CODE_REVIEW, 2);
+        m.insert(CODE_REVIEW, 3);
         m.insert(DANGEROUS_WORKFLOW, 2);
         m.insert(DEPENDENCY_UPDATE_TOOL, 2);
-        m.insert(MAINTAINED, 2);
+        m.insert(MAINTAINED, 3);
         m.insert(SBOM, 1);
-        m.insert(SECURITY_POLICY, 2);
+        m.insert(SECURITY_POLICY, 3);
         m.insert(SIGNED_RELEASES, 2);
         m.insert(TOKEN_PERMISSIONS, 2);
-        m.insert(VULNERABILITIES, 2);
 
         // Legal
         m.insert(TRADEMARK_DISCLAIMER, 5);
@@ -117,7 +115,6 @@ lazy_static! {
                 SECURITY_POLICY,
                 SIGNED_RELEASES,
                 TOKEN_PERMISSIONS,
-                VULNERABILITIES,
             ],
         );
 
@@ -175,7 +172,6 @@ lazy_static! {
         m.insert(MAINTAINED, "Maintained");
         m.insert(SIGNED_RELEASES, "Signed-Releases");
         m.insert(TOKEN_PERMISSIONS, "Token-Permissions");
-        m.insert(VULNERABILITIES, "Vulnerabilities");
 
         m
     };

@@ -8,7 +8,6 @@ const mockOnCloseModal = jest.fn();
 
 const defaultProps = {
   foundation: Foundation.cncf,
-  orgName: 'org',
   projectName: 'proj',
   openStatus: { status: true, name: 'badge' },
   onCloseModal: mockOnCloseModal,
@@ -36,12 +35,12 @@ describe('BadgeModal', () => {
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge'
+        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge'
       );
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge)](http://localhost/projects/cncf/org/proj)'
+        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge)](http://localhost/projects/cncf/proj)'
       );
     });
 
@@ -57,12 +56,12 @@ describe('BadgeModal', () => {
       expect(badge).toBeInTheDocument();
       expect(badge).toHaveProperty(
         'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge'
+        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge'
       );
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        'http://localhost/projects/cncf/org/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/org/proj/badge[CLOMonitor]]'
+        'http://localhost/projects/cncf/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge[CLOMonitor]]'
       );
     });
   });

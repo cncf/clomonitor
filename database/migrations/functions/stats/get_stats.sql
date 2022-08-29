@@ -6,11 +6,10 @@ returns json as $$
     with ratings as (
         select p.maturity, p.rating, count(*) as total
         from project p
-        join organization o using (organization_id)
         where p.rating is not null
         and
             case when p_foundation is not null then
-            o.foundation::text = p_foundation else true end
+            p.foundation_id = p_foundation else true end
         group by p.maturity, p.rating
     )
     select json_strip_nulls(json_build_object(
@@ -30,11 +29,10 @@ returns json as $$
                             date_trunc('month', p.accepted_at) as projects_month,
                             count(*) as total
                         from project p
-                        join organization o using (organization_id)
                         where p.accepted_at is not null
                         and
                             case when p_foundation is not null then
-                            o.foundation::text = p_foundation else true end
+                            p.foundation_id = p_foundation else true end
                         group by date_trunc('month', p.accepted_at)
                     ) mt
                 ) rt
@@ -47,11 +45,10 @@ returns json as $$
                         extract('month' from p.accepted_at) as month,
                         count(*) as total
                     from project p
-                    join organization o using (organization_id)
                     where p.accepted_at is not null
                     and
                         case when p_foundation is not null then
-                        o.foundation::text = p_foundation else true end
+                        p.foundation_id = p_foundation else true end
                     group by
                         extract('year' from p.accepted_at),
                         extract('month' from p.accepted_at)

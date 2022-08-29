@@ -4,23 +4,12 @@ select plan(2);
 
 -- Non existing project
 select is(
-    get_project('non-existing', 'non-existing', 'non-existing')::jsonb,
+    get_project('non-existing', 'non-existing')::jsonb,
     (null::jsonb),
     'Null is returned if the requested project does not exist'
 );
 
 -- Seed some data
-insert into organization (
-    organization_id,
-    name,
-    logo_url,
-    foundation
-) values (
-    '00000001-0000-0000-0000-000000000000',
-    'artifact-hub',
-    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
-    'cncf'
-);
 insert into project (
     project_id,
     name,
@@ -28,13 +17,14 @@ insert into project (
     description,
     category,
     home_url,
+    logo_url,
     devstats_url,
     score,
     rating,
     accepted_at,
     updated_at,
     maturity,
-    organization_id
+    foundation_id
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'artifact-hub',
@@ -42,13 +32,14 @@ insert into project (
     'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
     'category1',
     'https://artifacthub.io',
+    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
     'https://artifacthub.devstats.cncf.io/',
     '{"k": "v"}',
     'a',
     '2021-01-01',
     '2022-02-24 09:40:42.695654+01',
     'sandbox',
-    '00000001-0000-0000-0000-000000000000'
+    'cncf'
 );
 insert into repository (
     repository_id,
@@ -81,7 +72,7 @@ insert into report (
 
 -- Run some tests
 select is(
-    get_project('cncf', 'artifact-hub', 'artifact-hub')::jsonb,
+    get_project('cncf', 'artifact-hub')::jsonb,
     '{
         "category": "category1",
         "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",

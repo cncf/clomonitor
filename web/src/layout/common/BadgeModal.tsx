@@ -10,7 +10,6 @@ interface OpenModalStatus {
 
 interface Props {
   foundation: Foundation;
-  orgName: string;
   projectName: string;
   openStatus: OpenModalStatus;
   onCloseModal: () => void;
@@ -18,9 +17,9 @@ interface Props {
 
 const BadgeModal = (props: Props) => {
   const origin = window.location.origin;
-  const badgeImage = `https://img.shields.io/endpoint?url=${origin}/api/projects/${props.foundation}/${props.orgName}/${props.projectName}/badge`;
-  const markdownLink = `[![CLOMonitor](${badgeImage})](${origin}/projects/${props.foundation}/${props.orgName}/${props.projectName})`;
-  const asciiLink = `${origin}/projects/${props.foundation}/${props.orgName}/${props.projectName}[image:${badgeImage}[CLOMonitor]]`;
+  const badgeImage = `https://img.shields.io/endpoint?url=${origin}/api/projects/${props.foundation}/${props.projectName}/badge`;
+  const markdownLink = `[![CLOMonitor](${badgeImage})](${origin}/projects/${props.foundation}/${props.projectName})`;
+  const asciiLink = `${origin}/projects/${props.foundation}/${props.projectName}[image:${badgeImage}[CLOMonitor]]`;
 
   return (
     <Modal

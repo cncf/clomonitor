@@ -3,15 +3,6 @@ begin;
 select plan(1);
 
 -- Seed some data
-insert into organization (
-    organization_id,
-    name,
-    foundation
-) values (
-    '00000001-0000-0000-0000-000000000000',
-    'org1',
-    'cncf'
-);
 insert into project (
     project_id,
     name,
@@ -20,7 +11,7 @@ insert into project (
     rating,
     accepted_at,
     maturity,
-    organization_id
+    foundation_id
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'project1',
@@ -29,7 +20,7 @@ insert into project (
     'a',
     '2022-02-25',
     'sandbox',
-    '00000001-0000-0000-0000-000000000000'
+    'cncf'
 );
 insert into repository (
     repository_id,

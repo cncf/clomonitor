@@ -12,8 +12,8 @@ import StatsView from './layout/stats';
 
 // Old path without :foundation is redirected to CNCF foundation by default
 const ProjectsRedirection = () => {
-  const { org, project } = useParams();
-  return <Navigate to={`/projects/cncf/${org}/${project}`} replace />;
+  const { project } = useParams();
+  return <Navigate to={`/projects/cncf/${project}`} replace />;
 };
 
 function App() {
@@ -36,11 +36,8 @@ function App() {
                 />
               }
             />
-            <Route path="projects/:org/:project" element={<ProjectsRedirection />} />
-            <Route
-              path="projects/:foundation/:org/:project"
-              element={<Detail setInvisibleFooter={setInvisibleFooter} />}
-            />
+            <Route path="projects/:project" element={<ProjectsRedirection />} />
+            <Route path="projects/:foundation/:project" element={<Detail setInvisibleFooter={setInvisibleFooter} />} />
             <Route path="stats" element={<StatsView />} />
             <Route path="*" element={<NotFound />} />
           </Route>

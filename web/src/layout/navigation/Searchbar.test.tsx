@@ -235,7 +235,7 @@ describe('Searchbar', () => {
       await userEvent.click(items[1]);
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
-      expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/backstage/backstage');
+      expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/backstage');
     });
 
     it('loads new search from search dropdown', async () => {
@@ -330,7 +330,7 @@ describe('Searchbar', () => {
       await userEvent.keyboard('{enter}');
 
       expect(mockUseNavigate).toHaveBeenCalledTimes(1);
-      expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/keptn/keptn');
+      expect(mockUseNavigate).toHaveBeenCalledWith('/projects/cncf/keptn');
     });
   });
 

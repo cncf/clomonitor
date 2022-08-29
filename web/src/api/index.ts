@@ -105,8 +105,8 @@ class API_CLASS {
       .catch((error) => Promise.reject(error));
   }
 
-  public getProjectDetail(org: string, project: string, foundation: string): Promise<ProjectDetail> {
-    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${org}/${project}` });
+  public getProjectDetail(project: string, foundation: string): Promise<ProjectDetail> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${project}` });
   }
 
   public getStats(foundation: string | null): Promise<Stats> {

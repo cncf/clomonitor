@@ -5,7 +5,6 @@ import ProjectDropdown from './ProjectDropdown';
 
 const defaultProps = {
   foundation: Foundation.cncf,
-  orgName: 'org',
   projectName: 'proj',
 };
 

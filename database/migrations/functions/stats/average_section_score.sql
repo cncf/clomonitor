@@ -8,11 +8,10 @@ create or replace function average_section_score(
 returns real as $$
     select round(avg((p.score->>p_section)::real))::real
     from project p
-    join organization o using (organization_id)
     where p.score ? p_section
     and
         case when p_foundation is not null then
-        o.foundation::text = p_foundation else true end
+        p.foundation_id = p_foundation else true end
     and
         case when p_maturity is not null then
             p.maturity::text = p_maturity

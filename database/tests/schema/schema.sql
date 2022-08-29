@@ -6,21 +6,16 @@ select plan(20);
 select has_extension('pgcrypto');
 
 -- Check expected tables exist
-select has_table('organization');
+select has_table('foundation');
 select has_table('project');
 select has_table('report');
 select has_table('repository');
 
 -- Check tables have expected columns
-select columns_are('organization', array[
-    'organization_id',
-    'name',
+select columns_are('foundation', array[
+    'foundation_id',
     'display_name',
-    'description',
-    'home_url',
-    'logo_url',
-    'created_at',
-    'foundation'
+    'data_url'
 ]);
 select columns_are('project', array[
     'project_id',
@@ -38,7 +33,7 @@ select columns_are('project', array[
     'created_at',
     'updated_at',
     'maturity',
-    'organization_id'
+    'foundation_id'
 ]);
 select columns_are('report', array[
     'report_id',
@@ -61,13 +56,12 @@ select columns_are('repository', array[
 ]);
 
 -- Check tables have expected indexes
-select indexes_are('organization', array[
-    'organization_pkey',
-    'organization_foundation_name_key'
+select indexes_are('foundation', array[
+    'foundation_pkey'
 ]);
 select indexes_are('project', array[
     'project_pkey',
-    'project_organization_id_name_key'
+    'project_foundation_id_name_key'
 ]);
 select indexes_are('report', array[
     'report_pkey',

@@ -8,7 +8,6 @@ const mockOnCloseModal = jest.fn();
 
 const defaultProps = {
   foundation: Foundation.cncf,
-  orgName: 'org',
   projectName: 'proj',
   openStatus: { status: true, name: 'reportSummary' },
   onCloseModal: mockOnCloseModal,
@@ -68,7 +67,7 @@ describe('ReportSummaryModal', () => {
       expect(screen.getAllByText('Markdown')).toHaveLength(2);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '[![CLOMonitor report summary](http://localhost/api/projects/cncf/org/proj/report-summary?theme=light)](http://localhost/projects/cncf/org/proj)'
+        '[![CLOMonitor report summary](http://localhost/api/projects/cncf/proj/report-summary?theme=light)](http://localhost/projects/cncf/proj)'
       );
       expect(
         screen.getByRole('button', { name: 'Copy report summary markdown link to clipboard' })
@@ -84,7 +83,7 @@ describe('ReportSummaryModal', () => {
       await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        'http://localhost/projects/cncf/org/proj[image:http://localhost/api/projects/cncf/org/proj/report-summary?theme=light[CLOMonitor report summary]]'
+        'http://localhost/projects/cncf/proj[image:http://localhost/api/projects/cncf/proj/report-summary?theme=light[CLOMonitor report summary]]'
       );
       expect(screen.getByRole('button', { name: 'Copy report summary Ascii link to clipboard' })).toBeInTheDocument();
     });
@@ -98,7 +97,7 @@ describe('ReportSummaryModal', () => {
       await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '<a href="http://localhost/projects/cncf/org/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/cncf/org/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'
+        '<a href="http://localhost/projects/cncf/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/cncf/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'
       );
       expect(screen.getByRole('button', { name: 'Copy report summary html link to clipboard' })).toBeInTheDocument();
     });

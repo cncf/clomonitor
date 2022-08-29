@@ -22,28 +22,13 @@ type Count = i64;
 #[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get project's details in json format.
-    async fn project(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<JsonString>>;
+    async fn project(&self, foundation: &str, project: &str) -> Result<Option<JsonString>>;
 
     /// Get project's rating.
-    async fn project_rating(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<String>>;
+    async fn project_rating(&self, foundation: &str, project: &str) -> Result<Option<String>>;
 
     /// Get project's score.
-    async fn project_score(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<Score>>;
+    async fn project_score(&self, foundation: &str, project: &str) -> Result<Option<Score>>;
 
     /// Get all repositories including checks details.
     async fn repositories_with_checks(&self) -> Result<String>;
@@ -69,31 +54,21 @@ impl PgDB {
 
 #[async_trait]
 impl DB for PgDB {
-    async fn project(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<JsonString>> {
+    async fn project(&self, foundation: &str, project: &str) -> Result<Option<JsonString>> {
         let row = self
             .pool
             .get()
             .await?
             .query_one(
-                "select get_project($1::text, $2::text, $3::text)::text",
-                &[&foundation, &org, &project],
+                "select get_project($1::text, $2::text)::text",
+                &[&foundation, &project],
             )
             .await?;
         let project: Option<String> = row.get(0);
         Ok(project)
     }
 
-    async fn project_rating(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<String>> {
+    async fn project_rating(&self, foundation: &str, project: &str) -> Result<Option<String>> {
         let rows = self
             .pool
             .get()
@@ -102,12 +77,10 @@ impl DB for PgDB {
                 "
                 select rating
                 from project p
-                join organization o using (organization_id)
-                where o.foundation::text = $1::text
-                and o.name = $2::text
-                and p.name = $3::text
+                where p.foundation_id = $1::text
+                and p.name = $2::text
                 ",
-                &[&foundation, &org, &project],
+                &[&foundation, &project],
             )
             .await?;
         if rows.len() != 1 {
@@ -117,12 +90,7 @@ impl DB for PgDB {
         Ok(rating)
     }
 
-    async fn project_score(
-        &self,
-        foundation: &str,
-        org: &str,
-        project: &str,
-    ) -> Result<Option<Score>> {
+    async fn project_score(&self, foundation: &str, project: &str) -> Result<Option<Score>> {
         let rows = self
             .pool
             .get()
@@ -131,12 +99,10 @@ impl DB for PgDB {
                 "
                 select score
                 from project p
-                join organization o using (organization_id)
-                where o.foundation::text = $1::text
-                and o.name = $2::text
-                and p.name = $3::text
+                where p.foundation_id = $1::text
+                and p.name = $2::text
                 ",
-                &[&foundation, &org, &project],
+                &[&foundation, &project],
             )
             .await?;
         if rows.len() != 1 {

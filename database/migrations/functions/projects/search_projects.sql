@@ -47,7 +47,7 @@ begin
             p.description,
             p.category,
             p.home_url,
-            coalesce(p.logo_url, o.logo_url) as logo_url,
+            p.logo_url,
             p.devstats_url,
             p.score,
             p.rating,
@@ -55,10 +55,8 @@ begin
             p.accepted_at,
             p.updated_at,
             p.maturity,
-            o.name as organization_name,
-            o.foundation
+            p.foundation_id
         from project p
-        join organization o using (organization_id)
         where score is not null
         and
             case when v_text is not null then
@@ -66,7 +64,7 @@ begin
             end
         and
             case when cardinality(v_foundation) > 0 then
-            o.foundation::text = any(v_foundation) else true end
+            p.foundation_id = any(v_foundation) else true end
         and
             case when cardinality(v_maturity) > 0 then
             p.maturity::text = any(v_maturity) else true end
@@ -113,10 +111,7 @@ begin
                     left join report rp using (repository_id)
                     where project_id = fp.project_id
                 ),
-                'organization', json_build_object(
-                    'name', organization_name
-                ),
-                'foundation', foundation
+                'foundation', foundation_id
             ))), '[]')
             from (
                 select *

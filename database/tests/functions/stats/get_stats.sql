@@ -3,13 +3,23 @@ begin;
 select plan(1);
 
 -- Seed some data
-insert into organization (
-    organization_id,
+insert into project (
+    project_id,
     name,
-    foundation
+    category,
+    score,
+    rating,
+    accepted_at,
+    maturity,
+    foundation_id
 ) values (
-    '00000001-0000-0000-0000-000000000000',
-    'org1',
+    '00000000-0001-0000-0000-000000000000',
+    'project1',
+    'category1',
+    '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0}',
+    'a',
+    '2022-02-25',
+    'sandbox',
     'cncf'
 );
 insert into project (
@@ -20,26 +30,7 @@ insert into project (
     rating,
     accepted_at,
     maturity,
-    organization_id
-) values (
-    '00000000-0001-0000-0000-000000000000',
-    'project1',
-    'category1',
-    '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0}',
-    'a',
-    '2022-02-25',
-    'sandbox',
-    '00000001-0000-0000-0000-000000000000'
-);
-insert into project (
-    project_id,
-    name,
-    category,
-    score,
-    rating,
-    accepted_at,
-    maturity,
-    organization_id
+    foundation_id
 ) values (
     '00000000-0002-0000-0000-000000000000',
     'project2',
@@ -48,7 +39,7 @@ insert into project (
     'b',
     '2021-02-24',
     'graduated',
-    '00000001-0000-0000-0000-000000000000'
+    'cncf'
 );
 insert into project (
     project_id,
@@ -58,7 +49,7 @@ insert into project (
     rating,
     accepted_at,
     maturity,
-    organization_id
+    foundation_id
 ) values (
     '00000000-0003-0000-0000-000000000000',
     'project3',
@@ -67,7 +58,7 @@ insert into project (
     'c',
     '2021-02-25',
     'graduated',
-    '00000001-0000-0000-0000-000000000000'
+    'cncf'
 );
 insert into repository (
     repository_id,

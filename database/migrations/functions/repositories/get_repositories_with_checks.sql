@@ -3,7 +3,7 @@ create or replace function get_repositories_with_checks()
 returns setof text as $$
     with repositories as (
         select
-            o.foundation,
+            p.foundation_id as foundation,
             p.name as project,
             r.url as repository_url,
             r.check_sets,
@@ -41,11 +41,10 @@ returns setof text as $$
             (rp.data->'security'->'signed_releases'->'passed')::boolean as signed_releases,
             (rp.data->'security'->'token_permissions'->'passed')::boolean as token_permissions,
             (rp.data->'legal'->'trademark_disclaimer'->'passed')::boolean as trademark_disclaimer
-        from organization o
-        join project p using (organization_id)
+        from project p
         join repository r using (project_id)
         join report rp using (repository_id)
-        order by o.foundation asc, p.name asc
+        order by p.foundation_id asc, p.name asc
     )
     select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all

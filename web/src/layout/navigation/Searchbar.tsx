@@ -78,7 +78,7 @@ const Searchbar = (props: Props) => {
     forceBlur();
     setValue('');
     cleanProjectsSearch();
-    navigate(`/projects/${selectedProject.foundation}/${selectedProject.organization.name}/${selectedProject.name}`);
+    navigate(`/projects/${selectedProject.foundation}/${selectedProject.name}`);
   };
 
   const forceBlur = (): void => {

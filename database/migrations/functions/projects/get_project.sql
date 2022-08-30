@@ -1,7 +1,6 @@
 -- Returns some information about a project in json format.
 create or replace function get_project(
     p_foundation text,
-    p_org_name text,
     p_project_name text
 )
 returns json as $$
@@ -12,7 +11,7 @@ returns json as $$
         'description', p.description,
         'category', p.category,
         'home_url', p.home_url,
-        'logo_url', coalesce(p.logo_url, o.logo_url),
+        'logo_url', p.logo_url,
         'devstats_url', p.devstats_url,
         'score', p.score,
         'rating', p.rating,
@@ -41,11 +40,9 @@ returns json as $$
             from repository r
             where project_id = p.project_id
         ),
-        'foundation', o.foundation
+        'foundation', p.foundation_id
     ))
     from project p
-    join organization o using (organization_id)
-    where o.foundation::text = p_foundation
-    and o.name = p_org_name
+    where p.foundation_id = p_foundation
     and p.name = p_project_name;
 $$ language sql;

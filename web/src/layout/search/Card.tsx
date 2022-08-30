@@ -32,7 +32,7 @@ const Card = (props: Props) => {
         role="button"
         onClick={() => {
           props.saveScrollPosition();
-          navigate(`/projects/${props.project.foundation}/${props.project.organization.name}/${props.project.name}`, {
+          navigate(`/projects/${props.project.foundation}/${props.project.name}`, {
             state: { currentSearch: props.currentQueryString },
           });
         }}

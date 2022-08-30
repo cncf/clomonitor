@@ -29,7 +29,6 @@ const THEMES: ReportSummaryTheme[] = [
 
 interface Props {
   foundation: Foundation;
-  orgName: string;
   projectName: string;
   openStatus: OpenModalStatus;
   onCloseModal: () => void;
@@ -38,8 +37,8 @@ interface Props {
 const ReportSummaryModal = (props: Props) => {
   const origin = window.location.origin;
   const [theme, setTheme] = useState<string>(DEFAULT_THEME);
-  const image = `${origin}/api/projects/${props.foundation}/${props.orgName}/${props.projectName}/report-summary?theme=${theme}`;
-  const projectLink = `${origin}/projects/${props.foundation}/${props.orgName}/${props.projectName}`;
+  const image = `${origin}/api/projects/${props.foundation}/${props.projectName}/report-summary?theme=${theme}`;
+  const projectLink = `${origin}/projects/${props.foundation}/${props.projectName}`;
   const markdownLink = `[![CLOMonitor report summary](${image})](${projectLink})`;
   const asciiLink = `${projectLink}[image:${image}[CLOMonitor report summary]]`;
   const htmlLink = `<a href="${projectLink}" rel="noopener noreferrer" target="_blank"><img src="${image}" alt="CLOMonitor report summary" /></a>`;

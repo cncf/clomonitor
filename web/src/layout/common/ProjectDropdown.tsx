@@ -20,7 +20,6 @@ enum Modals {
 
 interface Props {
   foundation: Foundation;
-  orgName: string;
   projectName: string;
   projectDisplayName?: string;
 }
@@ -88,7 +87,6 @@ const ProjectDropdown = (props: Props) => {
 
       <BadgeModal
         foundation={props.foundation}
-        orgName={props.orgName}
         projectName={props.projectName}
         openStatus={openStatus}
         onCloseModal={onCloseModal}
@@ -96,7 +94,6 @@ const ProjectDropdown = (props: Props) => {
 
       <ReportSummaryModal
         foundation={props.foundation}
-        orgName={props.orgName}
         projectName={props.projectName}
         openStatus={openStatus}
         onCloseModal={onCloseModal}

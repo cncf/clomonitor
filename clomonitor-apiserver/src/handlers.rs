@@ -40,11 +40,11 @@ pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
     Extension(db): Extension<DynDB>,
-    Path((foundation, org, project)): Path<(String, String, String)>,
+    Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project rating from database
     let rating = db
-        .project_rating(&foundation, &org, &project)
+        .project_rating(&foundation, &project)
         .await
         .map_err(internal_error)?;
     if rating.is_none() {
@@ -121,7 +121,7 @@ pub(crate) async fn index(
 pub(crate) async fn index_project(
     Extension(cfg): Extension<Arc<Config>>,
     Extension(tmpl): Extension<Arc<Tera>>,
-    Path((foundation, org, project)): Path<(String, String, String)>,
+    Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     let mut ctx = Context::new();
     ctx.insert("title", &project);
@@ -129,11 +129,10 @@ pub(crate) async fn index_project(
     ctx.insert(
         "image",
         &format!(
-            "{}/projects/{}/{}/{}/report-summary.png",
+            "{}/projects/{}/{}/report-summary.png",
             cfg.get_string("apiserver.baseURL")
                 .expect("base url not found"),
             &foundation,
-            &org,
             &project
         ),
     );
@@ -151,11 +150,11 @@ pub(crate) async fn index_project(
 /// Handler that returns some information about the requested project.
 pub(crate) async fn project(
     Extension(db): Extension<DynDB>,
-    Path((foundation, org, project)): Path<(String, String, String)>,
+    Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project from database
     let project = db
-        .project(&foundation, &org, &project)
+        .project(&foundation, &project)
         .await
         .map_err(internal_error)?;
 
@@ -190,11 +189,11 @@ impl ReportSummaryTemplate {
 /// Handler that returns a PNG image with the project's report summary.
 pub(crate) async fn report_summary_png(
     Extension(db): Extension<DynDB>,
-    Path((foundation, org, project)): Path<(String, String, String)>,
+    Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project score from database
     let score = db
-        .project_score(&foundation, &org, &project)
+        .project_score(&foundation, &project)
         .await
         .map_err(internal_error)?;
     if score.is_none() {
@@ -231,12 +230,12 @@ pub(crate) async fn report_summary_png(
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
     Extension(db): Extension<DynDB>,
-    Path((foundation, org, project)): Path<(String, String, String)>,
+    Path((foundation, project)): Path<(String, String)>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get project score from database
     let score = db
-        .project_score(&foundation, &org, &project)
+        .project_score(&foundation, &project)
         .await
         .map_err(internal_error)?;
 

@@ -45,7 +45,7 @@ const defaultProps = {
 
 describe('Project detail index', () => {
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ org: 'org', project: 'proj', foundation: 'cncf' });
+    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
     jest.spyOn(ReactRouter, 'useLocation').mockReturnValue(path);
   });
 
@@ -82,7 +82,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('proj', 'cncf');
       });
 
       expect(screen.getByAltText('Artifact Hub logo')).toBeInTheDocument();
@@ -118,7 +118,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('proj', 'cncf');
       });
 
       const backBtn = screen.getByRole('button', { name: 'Back to results' });
@@ -141,7 +141,7 @@ describe('Project detail index', () => {
 
       await waitFor(() => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(1);
-        expect(API.getProjectDetail).toHaveBeenCalledWith('org', 'proj', 'cncf');
+        expect(API.getProjectDetail).toHaveBeenCalledWith('proj', 'cncf');
       });
 
       expect(screen.getByText('Sorry, the project you requested was not found.')).toBeInTheDocument();

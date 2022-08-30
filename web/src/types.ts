@@ -1,11 +1,3 @@
-export interface Organization {
-  name: string;
-  display_name?: string;
-  description?: string;
-  home_url: string;
-  logo_url?: string;
-}
-
 export interface BaseProject {
   id: string;
   name: string;
@@ -24,9 +16,6 @@ export interface BaseProject {
 
 export interface Project extends BaseProject {
   repositories: BaseRepository[];
-  organization: {
-    name: string;
-  };
 }
 
 export interface ProjectDetail extends BaseProject {

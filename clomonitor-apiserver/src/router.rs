@@ -46,10 +46,10 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
     // Setup API routes
     let api_routes = Router::new()
         .route("/projects/search", get(search_projects))
-        .route("/projects/:foundation/:org/:project", get(project))
-        .route("/projects/:foundation/:org/:project/badge", get(badge))
+        .route("/projects/:foundation/:project", get(project))
+        .route("/projects/:foundation/:project/badge", get(badge))
         .route(
-            "/projects/:foundation/:org/:project/report-summary",
+            "/projects/:foundation/:project/report-summary",
             get(report_summary_svg),
         )
         .route("/stats", get(stats));
@@ -57,9 +57,9 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
     // Setup router
     let mut router = Router::new()
         .route("/", get(index))
-        .route("/projects/:foundation/:org/:project", get(index_project))
+        .route("/projects/:foundation/:project", get(index_project))
         .route(
-            "/projects/:foundation/:org/:project/report-summary.png",
+            "/projects/:foundation/:project/report-summary.png",
             get(report_summary_png),
         )
         .route("/data/repositories.csv", get(repositories_checks))
@@ -123,24 +123,21 @@ mod tests {
 
     const TESTDATA_PATH: &str = "src/testdata";
     const FOUNDATION: &str = "cncf";
-    const ORG: &str = "artifact-hub";
     const PROJECT: &str = "artifact-hub";
 
     #[tokio::test]
     async fn badge_found() {
         let mut db = MockDB::new();
         db.expect_project_rating()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| {
-                Box::pin(future::ready(Ok(Some("a".to_string()))))
-            });
+            .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(Some("a".to_string())))));
 
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri(format!("/api/projects/{FOUNDATION}/{ORG}/{PROJECT}/badge"))
+                    .uri(format!("/api/projects/{FOUNDATION}/{PROJECT}/badge"))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -174,15 +171,15 @@ mod tests {
     async fn badge_not_found() {
         let mut db = MockDB::new();
         db.expect_project_rating()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+            .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri(format!("/api/projects/{FOUNDATION}/{ORG}/{PROJECT}/badge"))
+                    .uri(format!("/api/projects/{FOUNDATION}/{PROJECT}/badge"))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -280,7 +277,7 @@ mod tests {
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri(format!("/projects/{FOUNDATION}/{ORG}/{PROJECT}"))
+                    .uri(format!("/projects/{FOUNDATION}/{PROJECT}"))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -298,7 +295,7 @@ mod tests {
             render_index(
                 PROJECT,
                 INDEX_META_DESCRIPTION_PROJECT,
-                "http://localhost:8000/projects/cncf/artifact-hub/artifact-hub/report-summary.png"
+                "http://localhost:8000/projects/cncf/artifact-hub/report-summary.png"
             )
         );
     }
@@ -307,9 +304,9 @@ mod tests {
     async fn project_found() {
         let mut db = MockDB::new();
         db.expect_project()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_, _, _| {
+            .returning(|_, _| {
                 Box::pin(future::ready(Ok(Some(
                     r#"{"project": "info"}"#.to_string(),
                 ))))
@@ -319,7 +316,7 @@ mod tests {
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri(format!("/api/projects/{FOUNDATION}/{ORG}/{PROJECT}"))
+                    .uri(format!("/api/projects/{FOUNDATION}/{PROJECT}"))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -342,15 +339,15 @@ mod tests {
     async fn project_not_found() {
         let mut db = MockDB::new();
         db.expect_project()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+            .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
                     .method("GET")
-                    .uri(format!("/api/projects/{FOUNDATION}/{ORG}/{PROJECT}"))
+                    .uri(format!("/api/projects/{FOUNDATION}/{PROJECT}"))
                     .body(Body::empty())
                     .unwrap(),
             )
@@ -364,16 +361,16 @@ mod tests {
     async fn report_summary_png_not_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+            .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
                     .method("GET")
                     .uri(format!(
-                        "/projects/{FOUNDATION}/{ORG}/{PROJECT}/report-summary.png"
+                        "/projects/{FOUNDATION}/{PROJECT}/report-summary.png"
                     ))
                     .body(Body::empty())
                     .unwrap(),
@@ -388,9 +385,9 @@ mod tests {
     async fn report_summary_svg_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| {
+            .returning(|_: &str, _: &str| {
                 let score = Score {
                     global: 80.0,
                     documentation: Some(80.0),
@@ -405,7 +402,7 @@ mod tests {
                 Request::builder()
                     .method("GET")
                     .uri(format!(
-                        "/api/projects/{FOUNDATION}/{ORG}/{PROJECT}/report-summary"
+                        "/api/projects/{FOUNDATION}/{PROJECT}/report-summary"
                     ))
                     .body(Body::empty())
                     .unwrap(),
@@ -429,16 +426,16 @@ mod tests {
     async fn report_summary_svg_not_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
-            .with(eq(FOUNDATION), eq(ORG), eq(PROJECT))
+            .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
-            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+            .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
         let response = setup_test_router(db)
             .oneshot(
                 Request::builder()
                     .method("GET")
                     .uri(format!(
-                        "/api/projects/{FOUNDATION}/{ORG}/{PROJECT}/report-summary"
+                        "/api/projects/{FOUNDATION}/{PROJECT}/report-summary"
                     ))
                     .body(Body::empty())
                     .unwrap(),

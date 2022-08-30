@@ -1,18 +1,13 @@
 create extension if not exists pgcrypto;
 
-create type foundation as enum ('cncf', 'lfaidata');
-
-create table if not exists organization (
-    organization_id uuid primary key default gen_random_uuid(),
-    name text not null check (name <> ''),
-    display_name text check (display_name <> ''),
-    description text check (description <> ''),
-    home_url text check (home_url <> ''),
-    logo_url text check (logo_url <> ''),
-    created_at timestamptz default current_timestamp not null,
-    foundation foundation not null,
-    unique (foundation, name)
+create table if not exists foundation (
+    foundation_id text primary key,
+    display_name text not null check (display_name <> ''),
+    data_url text not null check (data_url <> '')
 );
+
+insert into foundation values ('cncf', 'CNCF', 'https://raw.githubusercontent.com/cncf/landscape/master/landscape.yml');
+insert into foundation values ('lfaidata', 'LF AI & Data', 'https://raw.githubusercontent.com/lfai/lfai-landscape/main/landscape.yml');
 
 create type maturity as enum ('graduated', 'incubating', 'sandbox');
 
@@ -32,8 +27,8 @@ create table if not exists project (
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
     maturity maturity not null,
-    organization_id uuid not null references organization on delete cascade,
-    unique (organization_id, name)
+    foundation_id text not null references foundation on delete restrict,
+    unique (foundation_id, name)
 );
 
 create type check_set as enum ('code', 'code-lite', 'community', 'docs');

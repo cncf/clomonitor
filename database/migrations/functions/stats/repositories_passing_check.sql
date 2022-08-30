@@ -11,11 +11,10 @@ returns real as $$
         from report rp
         join repository r using (repository_id)
         join project p using (project_id)
-        join organization o using (organization_id)
         where (rp.data->p_category)->p_check_name <> 'null'
         and
             case when p_foundation is not null then
-            o.foundation::text = p_foundation else true end
+            p.foundation_id = p_foundation else true end
     )
     select
         case when (select count(*) from reports_containing_check) > 0 then

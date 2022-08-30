@@ -29,9 +29,6 @@ const defaultProps = {
     maturity: Maturity.sandbox,
     foundation: Foundation.cncf,
     name: 'artifact-hub',
-    organization: {
-      name: 'artifact-hub',
-    },
     rating: 'a',
     repositories: [
       {

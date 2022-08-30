@@ -35,7 +35,7 @@ const Detail = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentState = location.state as { currentSearch?: string };
-  const { org, project, foundation } = useParams();
+  const { project, foundation } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
 
@@ -71,7 +71,7 @@ const Detail = (props: Props) => {
       setIsLoadingProject(true);
       props.setInvisibleFooter(true);
       try {
-        const projectDetail = await API.getProjectDetail(org!, project!, foundation!);
+        const projectDetail = await API.getProjectDetail(project!, foundation!);
         setDetail(projectDetail);
         updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
         setIsLoadingProject(false);
@@ -82,10 +82,10 @@ const Detail = (props: Props) => {
         props.setInvisibleFooter(false);
       }
     }
-    if (!isUndefined(org) && !isUndefined(project)) {
+    if (!isUndefined(project)) {
       fetchProjectDetail();
     }
-  }, [org, project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
@@ -184,14 +184,11 @@ const Detail = (props: Props) => {
                         </div>
                         <div className="d-none d-md-block ms-auto">
                           <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
-                            {org && (
-                              <ProjectDropdown
-                                foundation={detail.foundation}
-                                orgName={org}
-                                projectName={detail.name}
-                                projectDisplayName={detail.display_name}
-                              />
-                            )}
+                            <ProjectDropdown
+                              foundation={detail.foundation}
+                              projectName={detail.name}
+                              projectDisplayName={detail.display_name}
+                            />
                           </div>
                         </div>
                         <div className="d-flex d-md-none align-items-center ms-auto">

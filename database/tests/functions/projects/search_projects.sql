@@ -14,39 +14,6 @@ select results_eq(
 );
 
 -- Seed some data
-insert into organization (
-    organization_id,
-    name,
-    logo_url,
-    foundation
-) values (
-    '00000001-0000-0000-0000-000000000000',
-    'artifact-hub',
-    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
-    'cncf'
-);
-insert into organization (
-    organization_id,
-    name,
-    logo_url,
-    foundation
-) values (
-    '00000002-0000-0000-0000-000000000000',
-    'containerd',
-    'https://raw.githubusercontent.com/cncf/artwork/master/projects/containerd/icon/color/containerd-icon-color.svg',
-    'cncf'
-);
-insert into organization (
-    organization_id,
-    name,
-    logo_url,
-    foundation
-) values (
-    '00000015-0000-0000-0000-000000000000',
-    'tuf',
-    'https://raw.githubusercontent.com/cncf/artwork/master/projects/tuf/icon/color/tuf-icon-color.svg',
-    'cncf'
-);
 insert into project (
     project_id,
     name,
@@ -54,13 +21,14 @@ insert into project (
     description,
     category,
     home_url,
+    logo_url,
     devstats_url,
     score,
     rating,
     accepted_at,
     updated_at,
     maturity,
-    organization_id
+    foundation_id
 ) values (
     '00000000-0001-0000-0000-000000000000',
     'artifact-hub',
@@ -68,13 +36,14 @@ insert into project (
     'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.',
     'category1',
     'https://artifacthub.io',
+    'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
     'https://artifacthub.devstats.cncf.io/',
     '{"k": "v"}',
     'a',
     '2020-01-01',
     '2022-02-25 12:54:17.80674+01',
     'sandbox',
-    '00000001-0000-0000-0000-000000000000'
+    'cncf'
 );
 insert into project (
     project_id,
@@ -82,26 +51,28 @@ insert into project (
     description,
     category,
     home_url,
+    logo_url,
     devstats_url,
     score,
     rating,
     accepted_at,
     updated_at,
-    organization_id,
-    maturity
+    maturity,
+    foundation_id
 ) values (
     '00000000-0002-0000-0000-000000000000',
     'containerd',
     'An industry-standard container runtime with an emphasis on simplicity, robustness and portability.',
     'category1',
     'https://containerd.io',
+    'https://raw.githubusercontent.com/cncf/artwork/master/projects/containerd/icon/color/containerd-icon-color.svg',
     'https://containerd.devstats.cncf.io',
     '{"k": "v"}',
     'a',
     '2021-01-01',
     '2022-02-25 12:54:25.952208+01',
-    '00000002-0000-0000-0000-000000000000',
-    'graduated'
+    'graduated',
+    'cncf'
 );
 insert into project (
     project_id,
@@ -110,13 +81,14 @@ insert into project (
     description,
     category,
     home_url,
+    logo_url,
     devstats_url,
     score,
     rating,
     accepted_at,
     updated_at,
-    organization_id,
-    maturity
+    maturity,
+    foundation_id
 ) values (
     '00000000-0015-0000-0000-000000000000',
     'tuf',
@@ -124,13 +96,14 @@ insert into project (
     'Python reference implementation of The Update Framework (TUF).',
     'category2',
     'https://theupdateframework.com',
+    'https://raw.githubusercontent.com/cncf/artwork/master/projects/tuf/icon/color/tuf-icon-color.svg',
     'https://tuf.devstats.cncf.io',
     '{"k": "v"}',
     'b',
     '2022-01-01',
     '2022-02-25 12:54:23.937134+01',
-    '00000015-0000-0000-0000-000000000000',
-    'graduated'
+    'graduated',
+    'cncf'
 );
 insert into repository (
     repository_id,
@@ -212,9 +185,6 @@ select results_eq(
                     "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
                     "maturity": "sandbox",
                     "name": "artifact-hub",
-                    "organization": {
-                        "name": "artifact-hub"
-                    },
                     "rating": "a",
                     "repositories": [
                         {
@@ -238,9 +208,6 @@ select results_eq(
                     "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/containerd/icon/color/containerd-icon-color.svg",
                     "maturity": "graduated",
                     "name": "containerd",
-                    "organization": {
-                        "name": "containerd"
-                    },
                     "rating": "a",
                     "repositories": [
                         {
@@ -264,9 +231,6 @@ select results_eq(
                     "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/tuf/icon/color/tuf-icon-color.svg",
                     "maturity": "graduated",
                     "name": "tuf",
-                    "organization": {
-                        "name": "tuf"
-                    },
                     "rating": "b",
                     "repositories": [
                         {
@@ -309,9 +273,6 @@ select results_eq(
                     "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
                     "maturity": "sandbox",
                     "name": "artifact-hub",
-                    "organization": {
-                        "name": "artifact-hub"
-                    },
                     "rating": "a",
                     "repositories": [
                         {
@@ -350,9 +311,6 @@ select results_eq(
                     "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
                     "maturity": "sandbox",
                     "name": "artifact-hub",
-                    "organization": {
-                        "name": "artifact-hub"
-                    },
                     "rating": "a",
                     "repositories": [
                         {

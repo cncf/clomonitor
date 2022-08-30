@@ -287,7 +287,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                           <span
                             style="color: rgb(187, 102, 136);"
                           >
-                            http://localhost/api/projects/cncf/org/proj/report-summary?theme=light
+                            http://localhost/api/projects/cncf/proj/report-summary?theme=light
                           </span>
                           <span>
                             )](
@@ -295,7 +295,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                           <span
                             style="color: rgb(187, 102, 136);"
                           >
-                            http://localhost/projects/cncf/org/proj
+                            http://localhost/projects/cncf/proj
                           </span>
                           <span>
                             )
@@ -376,7 +376,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                   <img
                     alt="CLOMonitor report summary"
                     class="border"
-                    src="http://localhost/api/projects/cncf/org/proj/report-summary?theme=light"
+                    src="http://localhost/api/projects/cncf/proj/report-summary?theme=light"
                   />
                 </div>
               </div>

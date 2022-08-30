@@ -63,7 +63,7 @@
 }
 
 .description {
-  max-height: 43px;
+  height: 43px;
   font-size: 0.9rem;
   overflow: hidden;
   display: -webkit-box;
@@ -86,6 +86,7 @@
   .description {
     -webkit-line-clamp: 4;
     max-height: 86px;
+    height: auto;
   }
 
   .title {

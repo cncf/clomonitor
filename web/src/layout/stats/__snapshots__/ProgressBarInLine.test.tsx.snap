@@ -25,6 +25,7 @@ exports[`ProgressBarInLine creates snapshot 1`] = `
           class="d-none d-md-inline-block"
         >
           <button
+            aria-label="Search projects with passed Governance check"
             class="btn btn-link p-0 btn"
           >
             Governance

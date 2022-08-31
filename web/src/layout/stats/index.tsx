@@ -87,6 +87,7 @@ const StatsView = () => {
         search: prepareQueryString({
           filters: {
             [FilterKind.PassingCheck]: [name],
+            ...(!isNull(selectedFoundation) ? { [FOUNDATION_QUERY]: [selectedFoundation] } : {}),
           },
           pageNumber: 1,
         }),

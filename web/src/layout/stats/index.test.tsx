@@ -1,4 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { mocked } from 'jest-mock';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -12,6 +13,13 @@ jest.mock('react-apexcharts', () => () => <div>Chart</div>);
 const getMockStats = (fixtureId: string): Stats => {
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;
 };
+
+const mockUseNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...(jest.requireActual('react-router-dom') as any),
+  useNavigate: () => mockUseNavigate,
+}));
 
 const mockCtx = {
   prefs: {
@@ -80,6 +88,79 @@ describe('StatsView', () => {
       expect(screen.getByText('Projects average score per category')).toBeInTheDocument();
       expect(screen.getByText('Repositories')).toBeInTheDocument();
       expect(screen.getByText('Percentage of repositories passing each check')).toBeInTheDocument();
+    });
+
+    it('loads search page with correct parameters', async () => {
+      const mockStats = getMockStats('1');
+      mocked(API).getStats.mockResolvedValue(mockStats);
+
+      render(
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+          <Router>
+            <StatsView />
+          </Router>
+        </AppContext.Provider>
+      );
+
+      await waitFor(() => {
+        expect(API.getStats).toHaveBeenCalledTimes(1);
+      });
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Chart')).toHaveLength(6);
+      });
+
+      const btn = screen.getByRole('button', { name: 'Search projects with passed Governance check' });
+      await userEvent.click(btn);
+
+      expect(mockUseNavigate).toHaveBeenCalledTimes(1);
+      expect(mockUseNavigate).toHaveBeenCalledWith(
+        {
+          pathname: '/search',
+          search: '?passing_check=governance&page=1',
+        },
+        { state: { resetScrollPosition: true } }
+      );
+    });
+
+    it('loads search page with selected foundation', async () => {
+      const mockStats = getMockStats('1');
+      mocked(API).getStats.mockResolvedValue(mockStats);
+
+      render(
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+          <Router>
+            <StatsView />
+          </Router>
+        </AppContext.Provider>
+      );
+
+      await waitFor(() => {
+        expect(API.getStats).toHaveBeenCalledTimes(1);
+      });
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Chart')).toHaveLength(6);
+      });
+
+      const select = screen.getByRole('combobox', { name: 'Foundation options select' });
+      fireEvent.change(select, {
+        target: { value: 'cncf' },
+      });
+
+      expect(screen.getByText('CNCF')).toBeInTheDocument();
+
+      const btn = screen.getByRole('button', { name: 'Search projects with passed Governance check' });
+      await userEvent.click(btn);
+
+      expect(mockUseNavigate).toHaveBeenCalledTimes(1);
+      expect(mockUseNavigate).toHaveBeenCalledWith(
+        {
+          pathname: '/search',
+          search: '?passing_check=governance&foundation=cncf&page=1',
+        },
+        { state: { resetScrollPosition: true } }
+      );
     });
 
     it('renders component with empty stats', async () => {

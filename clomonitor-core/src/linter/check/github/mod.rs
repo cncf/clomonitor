@@ -155,7 +155,7 @@ pub(crate) async fn has_community_health_file(
         ))?
         .status()
     {
-        http::StatusCode::OK => {
+        StatusCode::OK => {
             let url = build_url(Path::new(file), &gh_md.owner.login, ".github", "HEAD");
             Ok(Some(url))
         }

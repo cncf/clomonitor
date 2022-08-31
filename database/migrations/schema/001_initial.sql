@@ -6,9 +6,6 @@ create table if not exists foundation (
     data_url text not null check (data_url <> '')
 );
 
-insert into foundation values ('cncf', 'CNCF', 'https://raw.githubusercontent.com/cncf/landscape/master/landscape.yml');
-insert into foundation values ('lfaidata', 'LF AI & Data', 'https://raw.githubusercontent.com/lfai/lfai-landscape/main/landscape.yml');
-
 create type maturity as enum ('graduated', 'incubating', 'sandbox');
 
 create table if not exists project (
@@ -27,6 +24,7 @@ create table if not exists project (
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
     maturity maturity not null,
+    digest text,
     foundation_id text not null references foundation on delete restrict,
     unique (foundation_id, name)
 );
@@ -36,7 +34,7 @@ create type check_set as enum ('code', 'code-lite', 'community', 'docs');
 create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
-    url text not null check (url <> ''),
+    url text not null check (url <> '') unique,
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,

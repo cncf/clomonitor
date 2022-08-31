@@ -31,6 +31,13 @@ apiserver:
         cpu: 1
         memory: 1000Mi
 
+registrar:
+  cronjob:
+    resources:
+      requests:
+        cpu: 1
+        memory: 250Mi
+
 tracker:
   cronjob:
     resources:

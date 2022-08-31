@@ -20,7 +20,11 @@ const ProgressBarInLine = (props: Props) => {
         <div className={styles.progressTitle}>
           <span className="d-inline-block d-md-none">{props.title}</span>
           <span className="d-none d-md-inline-block">
-            <button onClick={() => props.onSelectCheck(props.name)} className={`btn btn-link p-0 ${styles.btn}`}>
+            <button
+              aria-label={`Search projects with passed ${props.title} check`}
+              onClick={() => props.onSelectCheck(props.name)}
+              className={`btn btn-link p-0 ${styles.btn}`}
+            >
               {props.title}
             </button>
           </span>

@@ -48,6 +48,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed Analytics check"
                 class="btn btn-link p-0 btn"
               >
                 Analytics
@@ -111,6 +112,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed Artifact Hub badge check"
                 class="btn btn-link p-0 btn"
               >
                 Artifact Hub badge
@@ -172,6 +174,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed CLA check"
                 class="btn btn-link p-0 btn"
               >
                 CLA
@@ -236,6 +239,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed Community meeting check"
                 class="btn btn-link p-0 btn"
               >
                 Community meeting
@@ -297,6 +301,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed DCO check"
                 class="btn btn-link p-0 btn"
               >
                 DCO
@@ -361,6 +366,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed OpenSSF badge check"
                 class="btn btn-link p-0 btn"
               >
                 OpenSSF badge
@@ -425,6 +431,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed Recent release check"
                 class="btn btn-link p-0 btn"
               >
                 Recent release
@@ -486,6 +493,7 @@ exports[`Checks creates snapshot 1`] = `
               class="d-none d-md-inline-block"
             >
               <button
+                aria-label="Search projects with passed Slack presence check"
                 class="btn btn-link p-0 btn"
               >
                 Slack presence

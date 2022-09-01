@@ -1,5 +1,5 @@
 # Build apiserver
-FROM rust:1-alpine3.15 as builder
+FROM rust:1-alpine3.16 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY clomonitor-core clomonitor-core
@@ -8,7 +8,7 @@ WORKDIR /clomonitor/clomonitor-apiserver
 RUN cargo build --release
 
 # Build frontend
-FROM node:14-alpine3.15 AS frontend-builder
+FROM node:16-alpine3.16 AS frontend-builder
 WORKDIR /web
 COPY web .
 ENV NODE_OPTIONS=--max_old_space_size=4096
@@ -16,7 +16,7 @@ RUN yarn install
 RUN yarn build
 
 # Build docs
-FROM klakegg/hugo:0.78.2 AS docs-builder
+FROM klakegg/hugo:0.101.0 AS docs-builder
 WORKDIR /
 COPY scripts scripts
 COPY docs docs
@@ -25,7 +25,7 @@ WORKDIR /docs/www
 RUN hugo
 
 # Final stage
-FROM alpine:3.15
+FROM alpine:3.16.2
 RUN apk --no-cache add ca-certificates ttf-opensans && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

@@ -25,4 +25,4 @@ tokio-postgres = { version = "0.7.7", features = ["with-uuid-1", "with-serde_jso
 tracing = "0.1.36"
 tracing-subscriber = { version = "0.3.15", features = ["env-filter", "json"] }
 uuid = "1.1.2"
-which = "4.2.5"
+which = "4.3.0"

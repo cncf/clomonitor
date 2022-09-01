@@ -21,7 +21,7 @@ serde_yaml = "0.9.10"
 time = { version = "0.3.13", features = ["parsing", "serde"] }
 tokio = { version = "1.20.1", features = ["macros", "process", "rt-multi-thread"] }
 tracing = "0.1.36"
-which = "4.2.5"
+which = "4.3.0"
 
 [dev-dependencies]
 wiremock = "0.5.14"

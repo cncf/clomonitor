@@ -13,7 +13,7 @@ clomonitor-core = { path = "../clomonitor-core" }
 config = "0.13.2"
 deadpool = "0.9.5"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }
-futures = "0.3.23"
+futures = "0.3.24"
 openssl = { version = "0.10.41", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 serde = { version = "1.0.144", features = ["derive"] }

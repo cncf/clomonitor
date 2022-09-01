@@ -1,0 +1,572 @@
+- name: 1chipml
+  display_name: 1chipML
+  description: 1chipML is a library for numerical crunching and machine learning on microcontrollers
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/1chipML/color/1chipML_color.svg
+  accepted_at: "2022-04-07"
+  maturity: sandbox
+  repositories:
+    - name: 1chipML
+      url: https://github.com/1chipML/1chipML
+      check_sets:
+        - community
+        - code
+- name: acumos
+  display_name: Acumos
+  description: LF AI & Data Foundation supports open source innovation in artificial intelligence and data
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/acumos/icon/color/acumos-icon-color.svg
+  accepted_at: "2018-03-26"
+  maturity: graduated
+  repositories:
+    - name: generic-model-runner
+      url: https://github.com/acumos/generic-model-runner
+      check_sets:
+        - code-lite
+    - name: documentation
+      url: https://github.com/acumos/documentation
+      check_sets:
+        - community
+        - docs
+    - name: acumos-python-client
+      url: https://github.com/acumos/acumos-python-client
+      check_sets:
+        - code-lite
+- name: adlik
+  display_name: Adlik
+  description: Toolkit for Accelerating Deep Learning Inference
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/adlik/icon/color/adlik-icon-color.svg
+  accepted_at: "2019-09-26"
+  maturity: incubating
+  repositories:
+    - name: adlik
+      url: https://github.com/Adlik/Adlik
+      check_sets:
+        - community
+        - code
+- name: adversarial-robustness-toolbox
+  display_name: Adversarial Robustness Toolbox
+  description: Adversarial Robustness Toolbox (ART) - Python Library for Machine Learning Security - Evasion, Poisoning, Extraction, Inference - Red and Blue Teams
+  category: trusted & responsible ai
+  home_url: https://adversarial-robustness-toolbox.org
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/adversarial-robustness-toolbox/icon/color/adversarial-robustness-toolbox-icon-color.svg
+  accepted_at: "2020-06-18"
+  maturity: graduated
+  repositories:
+    - name: adversarial-robustness-toolbox
+      url: https://github.com/Trusted-AI/adversarial-robustness-toolbox
+      check_sets:
+        - community
+        - code
+- name: aif360
+  display_name: AI Fairness 360 Toolkit
+  description: A comprehensive set of fairness metrics for datasets and machine learning models, explanations for these metrics, and algorithms to mitigate bias in datasets and models
+  category: trusted & responsible ai
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/ai-fairness-360/icon/color/ai-fairness-360-icon-color.svg
+  accepted_at: "2020-06-18"
+  maturity: incubating
+  repositories:
+    - name: aif360
+      url: https://github.com/Trusted-AI/AIF360
+      check_sets:
+        - community
+        - code
+- name: aix360
+  display_name: AI Explainability 360 Toolkit
+  description: Interpretability and explainability of data and machine learning models
+  category: trusted & responsible ai
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/ai-explainability-360/icon/color/ai-explainability-360-icon-color.svg
+  accepted_at: "2020-06-18"
+  maturity: incubating
+  repositories:
+    - name: aix360
+      url: https://github.com/Trusted-AI/AIX360
+      check_sets:
+        - community
+        - code
+- name: amundsen
+  display_name: Amundsen
+  description: Amundsen is a metadata driven application for improving the productivity of data analysts, data scientists and engineers when interacting with data
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/amundsen/icon/color/amundsen-icon-color.svg
+  accepted_at: "2020-08-30"
+  maturity: incubating
+  repositories:
+    - name: amundsenrds
+      url: https://github.com/amundsen-io/amundsenrds
+      check_sets:
+        - code-lite
+    - name: amundsengremlin
+      url: https://github.com/amundsen-io/amundsengremlin
+      check_sets:
+        - code-lite
+    - name: amundsen
+      url: https://github.com/amundsen-io/amundsen
+      check_sets:
+        - community
+        - code
+- name: angel-ml
+  display_name: Angel ML
+  description: The Angel Project is a high-performance distributed machine learning platform based on Parameter Server, running on YARN and Apache Spark
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/angel/icon/color/angel-icon-color.svg
+  accepted_at: "2018-06-07"
+  maturity: graduated
+  repositories:
+    - name: serving
+      url: https://github.com/Angel-ML/serving
+      check_sets:
+        - code-lite
+    - name: papers-we-learn
+      url: https://github.com/Angel-ML/papers-we-learn
+      check_sets:
+        - docs
+    - name: angel
+      url: https://github.com/Angel-ML/angel
+      check_sets:
+        - community
+        - code
+- name: artigraph
+  display_name: Artigraph
+  description: Artigraph is a tool to improve the authorship, management, and quality of data. It emphasizes that the core deliverable of a data pipeline or workflow is the data, not the tasks
+  category: data
+  logo_url: https://landscape.lfai.foundation/logos/artigraph.svg
+  accepted_at: "2022-01-27"
+  maturity: sandbox
+  repositories:
+    - name: artigraph
+      url: https://github.com/artigraph/artigraph
+      check_sets:
+        - community
+        - code
+- name: datapractices
+  display_name: DataPractices
+  description: Datapractices site
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/datapractices/icon/color/datapractices-icon-color.svg
+  accepted_at: "2020-11-05"
+  maturity: incubating
+  repositories:
+    - name: datapractices
+      url: https://github.com/datapractices/data-practices-site
+      check_sets:
+        - community
+        - docs
+- name: datashim
+  display_name: Datashim
+  description: A kubernetes based framework for hassle free handling of datasets
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/datashim/horizontal/color/datashim-horizontal-color.svg
+  accepted_at: "2021-01-14"
+  maturity: incubating
+  repositories:
+    - name: datashim
+      url: https://github.com/datashim-io/datashim
+      check_sets:
+        - community
+        - code
+- name: delta
+  display_name: DELTA
+  description: DELTA is a deep learning based natural language and speech processing platform
+  category: natural language processing
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/delta/icon/color/delta-icon-color.svg
+  accepted_at: "2020-09-10"
+  maturity: incubating
+  repositories:
+    - name: delta
+      url: https://github.com/Delta-ML/delta
+      check_sets:
+        - community
+        - code
+- name: egeria
+  display_name: Egeria
+  description: Open Metadata and Governance
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/egeria/icon/color/egeria-icon-color.svg
+  accepted_at: "2020-09-24"
+  maturity: graduated
+  repositories:
+    - name: egeria
+      url: https://github.com/odpi/egeria
+      check_sets:
+        - code
+    - name: egeria-docs
+      url: https://github.com/odpi/egeria-docs
+      check_sets:
+        - docs
+    - name: data-governance
+      url: https://github.com/odpi/data-governance
+      check_sets:
+        - community
+- name: elasticdeeplearning
+  display_name: Elastic Deep Learning
+  description: Elastic Deep Learning for deep learning framework on Kubernetes
+  category: distributed computing
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/edl/icon/color/edl-icon-color.svg
+  accepted_at: "2018-07-05"
+  maturity: incubating
+  repositories:
+    - name: edl
+      url: https://github.com/elasticdeeplearning/edl
+      check_sets:
+        - community
+        - code
+- name: feast
+  display_name: Feast
+  description: Feature Store for Machine Learning
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/feast/icon/color/feast-icon-color.svg
+  accepted_at: "2020-09-24"
+  maturity: incubating
+  repositories:
+    - name: feast
+      url: https://github.com/feast-dev/feast
+      check_sets:
+        - community
+        - code
+- name: flyte
+  display_name: Flyte
+  description: Kubernetes-native workflow automation platform for complex, mission-critical data and ML processes at scale. It has been battle-tested at Lyft, Spotify, Freenome, and others and is truly open-source
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/flyte/icon/color/flyte-icon-color.svg
+  accepted_at: "2021-02-25"
+  maturity: graduated
+  repositories:
+    - name: flyte
+      url: https://github.com/flyteorg/flyte
+      check_sets:
+        - community
+        - code
+    - name: flytesnacks
+      url: https://github.com/flyteorg/flytesnacks
+      check_sets:
+        - docs
+    - name: flytekit
+      url: https://github.com/flyteorg/flytekit
+      check_sets:
+        - code-lite
+- name: forestflow
+  display_name: ForestFlow
+  description: ForestFlow is a policy-driven Machine Learning Model Server. It is an LF AI Foundation incubation project
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/forestflow/icon/color/forestflow-icon-color.svg
+  accepted_at: "2020-03-26"
+  maturity: incubating
+  repositories:
+    - name: forestflow
+      url: https://github.com/ForestFlow/ForestFlow
+      check_sets:
+        - community
+        - code
+- name: horovod
+  display_name: Horovod
+  description: Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/horovod/icon/color/horovod-icon-color.svg
+  accepted_at: "2018-12-06"
+  maturity: graduated
+  repositories:
+    - name: horovod
+      url: https://github.com/horovod/horovod
+      check_sets:
+        - community
+        - code
+- name: janusgraph
+  display_name: JanusGraph
+  description: 'JanusGraph: an open-source, distributed graph database'
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/janusgraph/icon/color/janusgraph-icon-color.svg
+  accepted_at: "2020-12-03"
+  maturity: incubating
+  repositories:
+    - name: janusgraph
+      url: https://github.com/JanusGraph/janusgraph
+      check_sets:
+        - community
+        - code
+    - name: docs.janusgraph.org
+      url: https://github.com/JanusGraph/docs.janusgraph.org
+      check_sets:
+        - docs
+- name: kedro
+  display_name: Kedro
+  description: A Python framework for creating reproducible, maintainable and modular data science code
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/kedro/icon/color/kedro-icon-color.svg
+  accepted_at: "2021-09-09"
+  maturity: incubating
+  repositories:
+    - name: kedro-viz
+      url: https://github.com/kedro-org/kedro-viz
+      check_sets:
+        - code-lite
+    - name: kedro
+      url: https://github.com/quantumblacklabs/kedro
+      check_sets:
+        - community
+        - code
+- name: kompute
+  display_name: Kompute
+  description: General purpose GPU compute framework built on Vulkan to support 1000s of cross vendor graphics cards (AMD, Qualcomm, NVIDIA & friends). Blazing fast, mobile-enabled, asynchronous and optimized for advanced GPU data processing usecases. Backed by the Linux Foundation
+  category: programming
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/kompute/icon/color/kompute-icon-color.svg
+  accepted_at: "2021-05-06"
+  maturity: incubating
+  repositories:
+    - name: kompute
+      url: https://github.com/KomputeProject/kompute
+      check_sets:
+        - community
+        - code
+- name: kserve
+  display_name: KServe
+  description: Serverless Inferencing on Kubernetes
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/kserve/icon/color/k-serve-icon-color.svg
+  accepted_at: "2021-11-18"
+  maturity: incubating
+  repositories:
+    - name: kserve
+      url: https://github.com/kserve/kserve
+      check_sets:
+        - community
+        - code
+    - name: modelmesh-serving
+      url: https://github.com/kserve/modelmesh-serving
+      check_sets:
+        - code-lite
+- name: ludwig
+  display_name: Ludwig
+  description: Ludwig is a toolbox that allows to train and evaluate deep learning models without the need to write code
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/ludwig/icon/ludwig-icon-empty.svg
+  accepted_at: "2020-05-07"
+  maturity: incubating
+  repositories:
+    - name: ludwig
+      url: https://github.com/ludwig-ai/ludwig
+      check_sets:
+        - community
+        - code
+- name: marquez
+  display_name: Marquez
+  description: Collect, aggregate, and visualize a data ecosystem's metadata
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/marquez/icon/color/marquez-icon-color.svg
+  accepted_at: "2019-12-19"
+  maturity: incubating
+  repositories:
+    - name: marquez
+      url: https://github.com/MarquezProject/marquez
+      check_sets:
+        - community
+        - code
+- name: milvus
+  display_name: Milvus
+  description: An open source vector database powered by Faiss, NMSLIB and Annoy
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/milvus/icon/color/milvus-icon-color.png
+  accepted_at: "2020-01-16"
+  maturity: graduated
+  repositories:
+    - name: milvus
+      url: https://github.com/milvus-io/milvus
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/milvus-io/community
+      check_sets:
+        - community
+    - name: bootcamp
+      url: https://github.com/milvus-io/bootcamp
+      check_sets:
+        - code-lite
+- name: ml-exchange
+  display_name: Machine Learning eXchange
+  description: Machine Learning eXchange (MLX). Data and AI Assets Catalog and Execution Engine
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/mlx/icon/color/mlx-icon-color.svg
+  accepted_at: "2021-05-06"
+  maturity: sandbox
+  repositories:
+    - name: mlx
+      url: https://github.com/machine-learning-exchange/mlx
+      check_sets:
+        - community
+        - code
+- name: nnstreamer
+  display_name: NNStreamer
+  description: Neural Network (NN) Streamer, Stream Processing Paradigm for Neural Network Apps/Devices
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/nnstreamer/icon/color/nnstreamer-icon-color.svg
+  accepted_at: "2020-03-12"
+  maturity: incubating
+  repositories:
+    - name: nntrainer
+      url: https://github.com/nnstreamer/nntrainer
+      check_sets:
+        - code-lite
+    - name: TAOS-CI
+      url: https://github.com/nnstreamer/TAOS-CI
+      check_sets:
+        - code-lite
+    - name: nnstreamer
+      url: https://github.com/nnstreamer/nnstreamer
+      check_sets:
+        - community
+        - code
+- name: onnx
+  display_name: ONNX
+  description: Open standard for machine learning interoperability
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/onnx/icon/color/onnx-icon-color.svg
+  accepted_at: "2019-10-31"
+  maturity: graduated
+  repositories:
+    - name: onnx
+      url: https://github.com/onnx/onnx
+      check_sets:
+        - community
+        - code
+    - name: models
+      url: https://github.com/onnx/models
+      check_sets:
+        - docs
+- name: openbytes
+  display_name: OpenBytes
+  description: This repo contains documentation related to the operation of the OpenBytes project
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/openbytes/icon/color/OpenBytes-icon-color.svg
+  accepted_at: "2021-10-21"
+  maturity: sandbox
+  repositories:
+    - name: openbytes-docs
+      url: https://github.com/Project-OpenBytes/OpenBytes
+      check_sets:
+        - docs
+    - name: openbytes
+      url: https://github.com/Project-OpenBytes/OpenBytes
+      check_sets:
+        - community
+        - code
+- name: opends4all
+  display_name: OpenDS4All
+  description: OpenDS4All project, hosted by LF AI & Data
+  category: data
+  home_url: https://github.com/odpi/OpenDS4All
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/opends4all/icon/color/opends4all-icon-color.svg
+  accepted_at: "2020-09-24"
+  maturity: incubating
+  repositories:
+    - name: opends4all
+      url: https://github.com/odpi/OpenDS4All
+      check_sets:
+        - community
+        - code
+- name: openlineage
+  display_name: OpenLineage
+  description: An Open Standard for lineage metadata collection
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/openlineage/horizontal/color/openlineage-horizontal-color.svg
+  accepted_at: "2021-05-20"
+  maturity: sandbox
+  repositories:
+    - name: openlineage
+      url: https://github.com/OpenLineage/OpenLineage
+      check_sets:
+        - community
+        - code
+- name: pyro
+  display_name: Pyro
+  description: Deep universal probabilistic programming with Python and PyTorch
+  category: programming
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/pyro/icon/color/pyro-icon-color.svg
+  accepted_at: "2019-01-17"
+  maturity: graduated
+  repositories:
+    - name: funsor
+      url: https://github.com/pyro-ppl/funsor
+      check_sets:
+        - code-lite
+    - name: pyro
+      url: https://github.com/pyro-ppl/pyro
+      check_sets:
+        - community
+        - code
+    - name: numpyro
+      url: https://github.com/pyro-ppl/numpyro
+      check_sets:
+        - code-lite
+- name: rosaenlg
+  display_name: RosaeNLG
+  description: RosaeNLG is a Natural Language Generation library for node.js and browser rendering, based on the Pug template engine
+  category: natural language processing
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/rosaenlg/icon/color/RosaeNLG-icon-color.svg
+  accepted_at: "2021-03-11"
+  maturity: sandbox
+  repositories:
+    - name: rosaenlg
+      url: https://github.com/RosaeNLG/rosaenlg
+      check_sets:
+        - community
+        - code
+    - name: rosaenlg-java
+      url: https://github.com/RosaeNLG/rosaenlg-java
+      check_sets:
+        - code-lite
+- name: soajs
+  display_name: SOAJS
+  description: LF AI & Data Foundation supports open source innovation in artificial intelligence and data
+  category: distributed computing
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/soajs/icon/color/soajs-icon-color.svg
+  accepted_at: "2020-09-10"
+  maturity: incubating
+  repositories:
+    - name: soajs
+      url: https://github.com/soajs/soajs
+      check_sets:
+        - community
+        - code
+- name: sparklyr
+  description: R interface for Apache Spark
+  category: distributed computing
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/sparklyr/color/sparklyr-color.svg
+  accepted_at: "2019-12-05"
+  maturity: incubating
+  repositories:
+    - name: sparklyr
+      url: https://github.com/sparklyr/sparklyr
+      check_sets:
+        - community
+        - code
+- name: substra
+  display_name: Substra
+  description: Substra is a framework for traceable ML orchestration on decentralized sensitive data
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/substra/icon/color/substra-icon-color.svg
+  accepted_at: "2021-03-25"
+  maturity: incubating
+  repositories:
+    - name: substra
+      url: https://github.com/Substra/substra
+      check_sets:
+        - community
+        - code
+    - name: substra-documentation
+      url: https://github.com/Substra/substra-documentation
+      check_sets:
+        - docs
+- name: tony
+  display_name: TonY
+  description: TonY is a framework to natively run deep learning frameworks on Apache Hadoop
+  category: deep learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/tony/icon/color/TonY-icon-color.svg
+  accepted_at: "2021-07-15"
+  maturity: incubating
+  repositories:
+    - name: tony
+      url: https://github.com/tony-framework/TonY
+      check_sets:
+        - community
+        - code

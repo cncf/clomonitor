@@ -73,6 +73,16 @@ apiserver:
       repository: clomonitor/apiserver
     resources: {}
 
+# Registrar configuration
+registrar:
+  cronjob:
+    image:
+      # Registrar image repository (without the tag)
+      repository: clomonitor/registrar
+    resources: {}
+  # Number of foundations to process concurrently
+  concurrency: 1
+
 # Tracker configuration
 tracker:
   cronjob:

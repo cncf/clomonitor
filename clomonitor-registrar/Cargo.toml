@@ -1,0 +1,29 @@
+[package]
+name = "clomonitor-registrar"
+description = "A tool that registers projects in the CLOMonitor database"
+version = "0.6.0"
+license = "Apache-2.0"
+edition = "2021"
+rust-version = "1.58"
+
+[dependencies]
+anyhow = "1.0.62"
+async-trait = "0.1.57"
+bincode = "1.3.3"
+clap = { version = "3.2.17", features = ["derive"] }
+config = "0.13.2"
+deadpool-postgres = { version = "0.10.2", features = ["serde"] }
+futures = "0.3.23"
+hex = "0.4.3"
+http = "0.2.8"
+openssl = { version = "0.10.41", features = ["vendored"] }
+postgres-openssl = "0.5.0"
+reqwest = "0.11.11"
+serde = { version = "1.0.144", features = ["derive"] }
+serde_json = "1.0.85"
+serde_yaml = "0.9.10"
+sha2 = "0.10.3"
+tokio = { version = "1.20.1", features = ["macros", "process", "rt-multi-thread", "time"] }
+tokio-postgres = { version = "0.7.7", features = ["with-uuid-1", "with-serde_json-1", "with-time-0_3"] }
+tracing = "0.1.36"
+tracing-subscriber = { version = "0.3.15", features = ["env-filter", "json"] }

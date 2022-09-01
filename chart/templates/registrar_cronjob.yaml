@@ -5,9 +5,9 @@ apiVersion: batch/v1beta1
 {{- end }}
 kind: CronJob
 metadata:
-  name: {{ include "chart.resourceNamePrefix" . }}tracker
+  name: {{ include "chart.resourceNamePrefix" . }}registrar
 spec:
-  schedule: "0 * * * *"
+  schedule: "*/15 * * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
@@ -31,17 +31,17 @@ spec:
                 value: "{{ .Values.db.port }}"
             command: ['sh', '-c', 'until pg_isready; do echo waiting for database; sleep 2; done;']
           containers:
-          - name: tracker
-            image: {{ .Values.tracker.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
+          - name: registrar
+            image: {{ .Values.registrar.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
             imagePullPolicy: {{ .Values.pullPolicy }}
             resources:
-              {{- toYaml .Values.tracker.cronjob.resources | nindent 14 }}
+              {{- toYaml .Values.registrar.cronjob.resources | nindent 14 }}
             volumeMounts:
-            - name: tracker-config
+            - name: registrar-config
               mountPath: {{ .Values.configDir | quote }}
               readOnly: true
-            command: ['clomonitor-tracker', '-c', '{{ .Values.configDir }}/tracker.yaml']
+            command: ['clomonitor-registrar', '-c', '{{ .Values.configDir }}/registrar.yaml']
           volumes:
-          - name: tracker-config
+          - name: registrar-config
             secret:
-              secretName: {{ include "chart.resourceNamePrefix" . }}tracker-config
+              secretName: {{ include "chart.resourceNamePrefix" . }}registrar-config

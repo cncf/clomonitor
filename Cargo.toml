@@ -3,5 +3,6 @@ members = [
     "clomonitor-apiserver",
     "clomonitor-core",
     "clomonitor-linter",
+    "clomonitor-registrar",
     "clomonitor-tracker"
 ]

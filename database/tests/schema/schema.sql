@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(20);
+select plan(22);
 
 -- Check expected extension exist
 select has_extension('pgcrypto');
@@ -33,6 +33,7 @@ select columns_are('project', array[
     'created_at',
     'updated_at',
     'maturity',
+    'digest',
     'foundation_id'
 ]);
 select columns_are('report', array[
@@ -69,7 +70,8 @@ select indexes_are('report', array[
 ]);
 select indexes_are('repository', array[
     'repository_pkey',
-    'repository_project_id_name_key'
+    'repository_project_id_name_key',
+    'repository_url_key'
 ]);
 
 -- Check expected functions exist
@@ -77,7 +79,9 @@ select indexes_are('repository', array[
 select has_function('get_project');
 select has_function('get_project_checks');
 select has_function('get_project_passed_checks');
+select has_function('register_project');
 select has_function('search_projects');
+select has_function('unregister_project');
 -- Repositories
 select has_function('get_repositories_with_checks');
 -- Stats

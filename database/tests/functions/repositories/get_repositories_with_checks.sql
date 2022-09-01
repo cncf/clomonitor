@@ -3,6 +3,7 @@ begin;
 select plan(1);
 
 -- Seed some data
+insert into foundation values ('cncf', 'CNCF', 'http://127.0.0.1:8080/cncf.yaml');
 insert into project (
     project_id,
     name,

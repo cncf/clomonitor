@@ -208,7 +208,7 @@ pub(crate) async fn report_summary_png(
     // Convert report summary SVG to PNG
     let mut opt = usvg::Options::default();
     opt.fontdb.load_system_fonts();
-    opt.font_family = "Open Sans Semibold".to_string();
+    opt.font_family = "Open Sans SemiBold".to_string();
     let rtree = usvg::Tree::from_data(svg.as_bytes(), &opt.to_ref()).map_err(internal_error)?;
     let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT).unwrap();
     resvg::render(

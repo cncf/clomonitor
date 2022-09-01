@@ -40,7 +40,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.54.4",
     "shx": "^0.3.4",
-    "typescript": "^4.4.2"
+    "typescript": "^4.8.2"
   },
   "resolutions": {
     "react-scripts/**/nth-check": "^2.0.1",

@@ -226,7 +226,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg
   devstats_url: https://chubaofs.devstats.cncf.io/
   accepted_at: "2019-12-17"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: chubaofs
       url: https://github.com/chubaofs/chubaofs
@@ -244,10 +244,6 @@
   repositories:
     - name: ebpf
       url: https://github.com/cilium/ebpf
-      check_sets:
-        - code-lite
-    - name: hubble
-      url: https://github.com/cilium/hubble
       check_sets:
         - code-lite
     - name: cilium
@@ -951,7 +947,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keptn/icon/color/keptn-icon-color.svg
   devstats_url: https://keptn.devstats.cncf.io/
   accepted_at: "2020-06-23"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: keptn
       url: https://github.com/keptn/keptn
@@ -1234,7 +1230,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kyverno/icon/color/kyverno-icon-color.svg
   devstats_url: https://kyverno.devstats.cncf.io/
   accepted_at: "2020-11-10"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: kyverno
       url: https://github.com/kyverno/kyverno
@@ -1908,13 +1904,22 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/spiffe/icon/color/spiffe-icon-color.svg
   devstats_url: https://spiffe.devstats.cncf.io/
   accepted_at: "2018-03-29"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: spiffe
       url: https://github.com/spiffe/spiffe
       check_sets:
         - community
         - code
+- name: spire
+  display_name: SPIRE
+  description: The SPIFFE Runtime Environment
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/spire/icon/color/spire-icon-color.svg
+  devstats_url: https://spire.devstats.cncf.io/
+  accepted_at: "2018-03-29"
+  maturity: graduated
+  repositories:
     - name: spire
       url: https://github.com/spiffe/spire
       check_sets:
@@ -2190,6 +2195,135 @@
   repositories:
     - name: wasmedge
       url: https://github.com/WasmEdge/WasmEdge
+      check_sets:
+        - community
+        - code
+- name: tetragon
+  display_name: Tetragon
+  description: eBPF-based Security Observability and Runtime Enforcement
+  category: provisioning
+  logo_url: https://landscape.cncf.io/logos/tetragon.svg
+  accepted_at: "2021-10-13"
+  maturity: incubating
+  repositories:
+    - name: tetragon
+      url: https://github.com/cilium/tetragon
+      check_sets:
+        - community
+        - code
+- name: hubble
+  display_name: Hubble
+  description: Hubble - Network, Service & Security Observability for Kubernetes using eBPF
+  category: observability
+  logo_url: https://landscape.cncf.io/logos/hubble.svg
+  maturity: incubating
+  repositories:
+    - name: hubble
+      url: https://github.com/cilium/hubble
+      check_sets:
+        - community
+        - code
+- name: kubearmor
+  display_name: Kubearmor
+  description: Runtime protection for Kubernetes & other cloud Workloads. Kubearmor provides a observability and policy enforcement system to restrict any
+              unwanted, malicious behaviour of cloud-native workloads at runtime
+  category: provisioning
+  logo_url: https://landscape.cncf.io/logos/kube-armor.svg
+  devstats_url: https://kubearmor.devstats.cncf.io/
+  accepted_at: "2021-11-16"
+  maturity: sandbox
+  repositories:
+    - name: kubearmor
+      url: https://github.com/kubearmor/kubearmor
+      check_sets:
+        - community
+        - code
+    - name: kubearmor-client
+      url: https://github.com/kubearmor/kubearmor-client
+      check_sets:
+        - code-lite
+    - name: policy-templates
+      url: https://github.com/kubearmor/policy-templates
+      check_sets:
+        - code-lite
+    - name: kvm-service
+      url: https://github.com/kubearmor/kvm-service
+      check_sets:
+        - code-lite
+    - name: kastore
+      url: https://github.com/kubearmor/kastore
+      check_sets:
+        - code-lite
+- name: konveyor
+  display_name: Konveyor
+  description: Documentation for Konveyor Community
+  category: app definition
+  logo_url: https://landscape.cncf.io/logos/konveyor.svg
+  devstats_url: https://konveyor.devstats.cncf.io
+  accepted_at: "2022-07-26"
+  maturity: sandbox
+  repositories:
+    - name: community
+      url: https://github.com/konveyor/community
+      check_sets:
+        - community
+- name: external-secrets
+  display_name: External Secrets
+  description: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/external-secrets-operator/icon/color/eso-icon-color.svg
+  devstats_url: https://external-secrets.devstats.cncf.io/
+  accepted_at: "2022-07-26"
+  maturity: sandbox
+  repositories:
+    - name: external-secrets
+      url: https://github.com/external-secrets/external-secrets
+      check_sets:
+        - community
+        - code
+- name: hexapolicyorchestrator
+  display_name: Hexa Policy Orchestrator
+  description: Hexa Policy Orchestrator enables you to manage all of your policies consistently across software providers so that you can unify access policy management.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hexa/icon/hexa-icon-color.svg
+  devstats_url: https://hexapolicyorchestrator.devstats.cncf.io
+  accepted_at: "2022-07-26"
+  maturity: sandbox
+  repositories:
+    - name: policy-orchestrator
+      url: https://github.com/hexa-org/policy-orchestrator
+      check_sets:
+        - community
+        - code
+    - name: policy
+      url: https://github.com/hexa-org/policy
+      check_sets:
+        - code-lite
+- name: armada
+  display_name: Armada
+  description: Armada is a multi-Kubernetes cluster batch job scheduler
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/G-Research/armada/master/logo.svg
+  devstats_url: https://armada.devstats.cncf.io
+  accepted_at: "2022-07-26"
+  maturity: sandbox
+  repositories:
+    - name: armada
+      url: https://github.com/G-Research/armada
+      check_sets:
+        - community
+        - code
+- name: distribution
+  display_name: Distribution
+  description: The toolkit to pack, ship, store, and deliver container content
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cncf-distribution/icon/color/cncf-distribution-icon-color.svg
+  devstats_url: https://distribution.devstats.cncf.io
+  accepted_at: "2021-01-26"
+  maturity: sandbox
+  repositories:
+    - name: distribution
+      url: https://github.com/distribution/distribution
       check_sets:
         - community
         - code

@@ -1,5 +1,5 @@
 use crate::config::SCORECARD_CHECK;
-use anyhow::{format_err, Result};
+use anyhow::{format_err, Error, Result};
 use serde::Deserialize;
 use tokio::process::Command;
 
@@ -22,15 +22,6 @@ pub(crate) struct ScorecardCheckDocs {
     pub url: String,
 }
 
-impl Scorecard {
-    /// Get a check from the scoreboard if available.
-    pub(crate) fn get_check(&self, check_id: &str) -> Option<&ScorecardCheck> {
-        self.checks
-            .iter()
-            .find(|c| c.name == SCORECARD_CHECK[check_id])
-    }
-}
-
 /// Get repository's OpenSSF Scorecard.
 pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scorecard> {
     let output = Command::new("scorecard")
@@ -50,6 +41,20 @@ pub(crate) async fn scorecard(repo_url: &str, github_token: &str) -> Result<Scor
     Ok(scorecard)
 }
 
+// Get a check from the scorecard provided if available.
+pub(crate) fn get_check<'a>(
+    scorecard: &'a Result<Scorecard>,
+    check_id: &'a str,
+) -> Result<Option<&'a ScorecardCheck>, &'a Error> {
+    match scorecard {
+        Ok(scorecard) => Ok(scorecard
+            .checks
+            .iter()
+            .find(|c| c.name == SCORECARD_CHECK[check_id])),
+        Err(err) => Err(err),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -57,7 +62,7 @@ mod tests {
 
     #[test]
     fn get_check_found() {
-        let scorecard = Scorecard {
+        let scorecard = Ok(Scorecard {
             checks: vec![ScorecardCheck {
                 name: "Code-Review".to_string(),
                 reason: "test".to_string(),
@@ -67,18 +72,18 @@ mod tests {
                     url: "https://test.url".to_string(),
                 },
             }],
-        };
+        });
 
         assert_eq!(
-            scorecard.get_check(CODE_REVIEW).unwrap(),
-            &scorecard.checks[0]
+            get_check(&scorecard, CODE_REVIEW).unwrap().unwrap(),
+            &scorecard.as_ref().unwrap().checks[0]
         );
     }
 
     #[test]
     fn get_check_not_found() {
-        let scorecard = Scorecard { checks: vec![] };
+        let scorecard = Ok(Scorecard { checks: vec![] });
 
-        assert!(matches!(scorecard.get_check(CODE_REVIEW), None));
+        assert!(matches!(get_check(&scorecard, CODE_REVIEW).unwrap(), None));
     }
 }

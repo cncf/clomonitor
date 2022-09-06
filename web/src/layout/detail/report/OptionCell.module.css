@@ -27,6 +27,10 @@
   font-size: 0.8rem;
 }
 
+.failedReason {
+  white-space: pre-line;
+}
+
 .iconCell {
   width: 40px;
 }

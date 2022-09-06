@@ -1173,11 +1173,31 @@
     - name: policy-server
       url: https://github.com/kubewarden/policy-server
       check_sets:
-        - code-lite
+        - code
     - name: kubewarden-controller
       url: https://github.com/kubewarden/kubewarden-controller
       check_sets:
         - community
+        - code
+    - name: kwctl
+      url: https://github.com/kubewarden/kwctl
+      check_sets:
+        - code
+    - name: policy-sdk-rust
+      url: https://github.com/kubewarden/policy-sdk-rust
+      check_sets:
+        - code
+    - name: policy-sdk-go
+      url: https://github.com/kubewarden/policy-sdk-go
+      check_sets:
+        - code
+    - name: policy-sdk-swift
+      url: https://github.com/kubewarden/policy-sdk-swift
+      check_sets:
+        - code
+    - name: policy-sdk-dotnet
+      url: https://github.com/kubewarden/policy-sdk-dotnet
+      check_sets:
         - code
 - name: kudo
   display_name: KUDO

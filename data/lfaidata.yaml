@@ -11,27 +11,6 @@
       check_sets:
         - community
         - code
-- name: acumos
-  display_name: Acumos
-  description: LF AI & Data Foundation supports open source innovation in artificial intelligence and data
-  category: model
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/acumos/icon/color/acumos-icon-color.svg
-  accepted_at: "2018-03-26"
-  maturity: graduated
-  repositories:
-    - name: generic-model-runner
-      url: https://github.com/acumos/generic-model-runner
-      check_sets:
-        - code-lite
-    - name: documentation
-      url: https://github.com/acumos/documentation
-      check_sets:
-        - community
-        - docs
-    - name: acumos-python-client
-      url: https://github.com/acumos/acumos-python-client
-      check_sets:
-        - code-lite
 - name: adlik
   display_name: Adlik
   description: Toolkit for Accelerating Deep Learning Inference
@@ -570,3 +549,86 @@
       check_sets:
         - community
         - code
+- name: beyond-ml
+  display_name: BeyondML
+  description: BeyondML is a framework for developing sparse neural networks that can perform multiple tasks across multiple data domains.
+  category: deep learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/BeyondML/stacked/color/BeyondML_stacked-color.svg
+  accepted_at: "2022-06-16"
+  maturity: sandbox
+  repositories:
+    - name: BeyondML
+      url: https://github.com/Beyond-ML-Labs/BeyondML
+      check_sets:
+        - community
+        - code
+- name: flag-ai
+  display_name: FlagAI
+  description: FlagAI (Fast LArge-scale General AI models) is a fast, easy-to-use and extensible toolkit for large-scale models.
+  category: deep learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/flagai/stacked/color/flagAI_stacked-color.svg
+  accepted_at: "2022-06-30"
+  maturity: sandbox
+  repositories:
+    - name: FlagAI
+      url: https://github.com/BAAI-Open/FlagAI
+      check_sets:
+        - community
+        - code
+- name: fate
+  display_name: FATE
+  description: FATE (Federated AI Technology Enabler) is the world's first industrial grade federated learning open source framework to enable enterprises and institutions to collaborate on data while protecting data security and privacy.
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/fate/color/fate-color.svg
+  accepted_at: "2022-07-28"
+  maturity: incubating
+  repositories:
+    - name: FATE
+      url: https://github.com/FederatedAI/FATE
+      check_sets:
+        - code
+    - name: KubeFATE
+      url: https://github.com/FederatedAI/KubeFATE
+      check_sets:
+        - code-lite
+    - name: FATE-Flow
+      url: https://github.com/FederatedAI/FATE-Flow
+      check_sets:
+        - code-lite
+    - name: FATE-Serving
+      url: https://github.com/FederatedAI/FATE-Serving
+      check_sets:
+        - code-lite
+    - name: FATE-Cloud
+      url: https://github.com/FederatedAI/FATE-Cloud
+      check_sets:
+        - code-lite
+    - name: FATE-Community
+      url: https://github.com/FederatedAI/FATE-Community
+      check_sets:
+        - community
+- name: feathr
+  display_name: Feathr
+  description: An Enterprise-Grade, High Performance Feature Store.
+  category: data
+  logo_url: https://landscape.lfai.foundation/logos/feathr.svg
+  accepted_at: "2022-08-25"
+  maturity: sandbox
+  repositories:
+    - name: feathr
+      url: https://github.com/linkedin/feathr
+      check_sets:
+        - community
+        - code
+- name: opendataology
+  display_name: OpenDataology
+  description: Best practices for AI dataset metadata and license compliance
+  category: data
+  logo_url: https://landscape.lfai.foundation/logos/open-dataology.svg
+  accepted_at: "2022-08-11"
+  maturity: sandbox
+  repositories:
+    - name: OpenDataology
+      url: https://github.com/OpenDataology/OpenDataology
+      check_sets:
+        - community

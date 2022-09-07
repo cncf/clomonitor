@@ -162,7 +162,7 @@ pub async fn lint(opts: &LintOptions, svc: &LintServices) -> Result<Report> {
     // Get OpenSSF scorecard
     let scorecard = scorecard(&opts.url, &opts.github_token)
         .await
-        .context("error getting scorecard")?;
+        .context("error running scorecard command");
 
     // Prepare check input
     let input = CheckInput {

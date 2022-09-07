@@ -183,7 +183,10 @@ const OptionCell = (props: Props) => {
                 tooltipMessage={
                   <div className="text-start p-2">
                     <div className="border-bottom pb-2 mb-3 fw-bold">Something went wrong running this check</div>
-                    <div className={`text-truncate ${styles.reason}`}>
+                    <div
+                      ref={details}
+                      className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll} ${styles.reason} ${styles.failedReason}`}
+                    >
                       <span className="fw-bold">Reason:</span> {props.check.fail_reason}
                     </div>
                   </div>

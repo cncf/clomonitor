@@ -73,21 +73,13 @@ You can load some sample data by using the `psql` PostgreSQL client this way:
 clomonitor_db_client
 ```
 
-Once you've connected to the database, you can run the following commands -one by one- to load some organizations, projects and repositories (please make sure to adjust the path to the data files as needed):
+Once you've connected to the database, you can run the following command to load one sample foundation:
 
 ```sql
-\copy organization (organization_id, name, home_url, logo_url, foundation)
-from '~/projects/clomonitor/database/data/cncf/organizations.csv'
-with (format csv, header true, delimiter ';');
-
-\copy project (project_id, name, display_name, description, category, home_url, logo_url, devstats_url, accepted_at, maturity, organization_id)
-from '~/projects/clomonitor/database/data/cncf/projects.csv'
-with (format csv, header true, delimiter ';');
-
-\copy repository (repository_id, name, url, check_sets, project_id)
-from '~/projects/clomonitor/database/data/cncf/repositories.csv'
-with (format csv, header true, delimiter ';');
+insert into foundation values ('cncf', 'CNCF', 'https://raw.githubusercontent.com/cncf/clomonitor/main/data/cncf.yaml');
 ```
+
+The `registrar` component will process the foundations' data files and register the projects available.
 
 At this point our database is ready to launch our local instance of CLOMonitor and start doing some work on it.
 
@@ -131,6 +123,29 @@ clomonitor_apiserver
 ```
 
 The `apiserver` process launches an http server that serves the web application and the API that powers it. Once it is up and running, you can point your browser to [http://localhost:8000](http://localhost:8000) and you should see the CLOMonitor web application. Initially there won't be any projects listed on it, but we'll take care of that in the next section.
+
+### Registrar
+
+The `registrar` is a backend component responsible for registering the projects available in each foundation's data file into the database. Foundations' data files are expected to be served by an HTTP server, and their url should be provided to CLOMonitor when registering the foundation in the database. On production deployments, it is usually run periodically using a `cronjob` on Kubernetes. Locally, while developing, you can just run it as often as you need as any other CLI tool.
+
+This component can be configured using a `yaml` file. We'll create one in `~/.config/clomonitor` named `registrar.yaml` with the following content (please adjust as needed):
+
+```yaml
+db:
+  host: localhost
+  port: "5432"
+  dbname: clomonitor
+  user: postgres
+  password: ""
+registrar:
+  concurrency: 1
+```
+
+Once the configuration file is ready, it's time to launch the `registrar` for the first time. If you added the suggested sample foundation when setting up the database, you should see some projects registered.
+
+```sh
+clomonitor_registrar
+```
 
 ### Tracker
 
@@ -237,6 +252,7 @@ alias clomonitor_db_migrate="pushd $CLOMONITOR_SOURCE/database/migrations; TERN_
 alias clomonitor_db_migrate_tests="pushd $CLOMONITOR_SOURCE/database/migrations; TERN_CONF=~/.config/clomonitor/tern-tests.conf ./migrate.sh; popd"
 alias clomonitor_db_tests="pushd $CLOMONITOR_SOURCE/database/tests; pg_prove --host localhost --dbname clomonitor_tests --username postgres --verbose **/*.sql; popd"
 alias clomonitor_apiserver="$CLOMONITOR_SOURCE/target/debug/clomonitor-apiserver -c ~/.config/clomonitor/apiserver.yaml"
+alias clomonitor_registrar="$CLOMONITOR_SOURCE/target/debug/clomonitor-registrar -c ~/.config/clomonitor/registrar.yaml"
 alias clomonitor_tracker="$CLOMONITOR_SOURCE/target/debug/clomonitor-tracker -c ~/.config/clomonitor/tracker.yaml"
 alias clomonitor_linter="$CLOMONITOR_SOURCE/target/debug/clomonitor-linter"
 alias clomonitor_frontend_build="pushd $CLOMONITOR_SOURCE/web; yarn build; popd"

@@ -13,6 +13,7 @@ clomonitor
 ├── clomonitor-apiserver
 ├── clomonitor-core
 ├── clomonitor-linter
+├── clomonitor-registrar
 ├── clomonitor-tracker
 ├── database
 ├── docs
@@ -28,6 +29,8 @@ clomonitor
 - **clomonitor-core:** contains the source code of the `core backend modules`, like linter and score.
 
 - **clomonitor-linter:** contains the source code of `linter CLI` tool.
+
+- **clomonitor-registrar:** contains the source code of the `registrar` backend component.
 
 - **clomonitor-tracker:** contains the source code of the `tracker` backend component.
 
@@ -45,7 +48,7 @@ CLOMonitor is structured in multiple layers, each of them providing a set of ser
 
 - **Core library:** this layer represents a set of Rust APIs that allow performing core operations supported by CLOMonitor, such as linting a repository or calculating scores. Please see the [core library](#core-library) section for more details.
 
-- **Backend applications:** this layer represents the applications that form the backend: `apiserver` and `tracker`. These applications rely on the `database` and `core library` layers to perform their tasks. Please see the [backend applications](#backend-applications) section for more details.
+- **Backend applications:** this layer represents the applications that form the backend: `apiserver`, `registrar` and `tracker`. These applications rely on the `database` and `core library` layers to perform their tasks. Please see the [backend applications](#backend-applications) section for more details.
 
 - **Linter CLI:** this layer represents a CLI tool that allows projects to lint their repositories locally or from their CI workflows. Please see the [linter CLI](#linter-cli) section for more details.
 
@@ -81,7 +84,7 @@ It's composed of two modules:
 
 ## Backend applications
 
-The backend applications are `apiserver` and `tracker`. They are located in the `clomonitor-apiserver` and `clomonitor-tracker` directories respectively. Each of the applications' directory contains a `Dockerfile` that will be used to build the corresponding Docker image.
+The backend applications are `apiserver`, `registrar` and `tracker`. They are located in the `clomonitor-apiserver`, `clomonitor-registrar` and `clomonitor-tracker` directories respectively. Each of the applications' directory contains a `Dockerfile` that will be used to build the corresponding Docker image.
 
 ```sh
 .
@@ -90,6 +93,10 @@ The backend applications are `apiserver` and `tracker`. They are located in the 
 │   ├── Dockerfile
 │   ├── src
 │   └── templates
+├── clomonitor-registrar
+│   ├── Cargo.toml
+│   ├── Dockerfile
+│   └── src
 └── clomonitor-tracker
     ├── Cargo.toml
     ├── Dockerfile
@@ -97,6 +104,8 @@ The backend applications are `apiserver` and `tracker`. They are located in the 
 ```
 
 - **apiserver:** this component provides an HTTP API that exposes some endpoints used by the web application layer, plus some extra functionality like badges configuration, reports summary, etc. It is also in charge of serving the web application static assets.
+
+- **registrar:** this component is in charge of registering the projects available on each foundation's data file in the database. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/registrar_cronjob.yaml).
 
 - **tracker:** this component is in charge of linting and scoring all projects and repositories registered in the database. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/tracker_cronjob.yaml).
 

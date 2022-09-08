@@ -127,18 +127,6 @@ async fn process_foundation(
     let foundation_id = &foundation.foundation_id;
     let projects_registered = db.foundation_projects(foundation_id).await?;
 
-    // Unregister projects no longer available in the data file
-    if !projects_available.is_empty() {
-        for name in projects_registered.keys() {
-            if !projects_available.contains_key(name) {
-                debug!("unregistering project {}", name);
-                if let Err(err) = db.unregister_project(foundation_id, name).await {
-                    error!("error unregistering project {}: {}", name, err);
-                };
-            }
-        }
-    }
-
     // Register or update available projects as needed
     for (name, project) in &projects_available {
         // Check if the project is already registered
@@ -152,6 +140,18 @@ async fn process_foundation(
         debug!("registering project {}", project.name);
         if let Err(err) = db.register_project(foundation_id, project).await {
             error!("error registering project {}: {}", project.name, err);
+        }
+    }
+
+    // Unregister projects no longer available in the data file
+    if !projects_available.is_empty() {
+        for name in projects_registered.keys() {
+            if !projects_available.contains_key(name) {
+                debug!("unregistering project {}", name);
+                if let Err(err) = db.unregister_project(foundation_id, name).await {
+                    error!("error unregistering project {}: {}", name, err);
+                };
+            }
         }
     }
 

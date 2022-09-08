@@ -253,7 +253,7 @@
         - code
 - name: janusgraph
   display_name: JanusGraph
-  description: 'JanusGraph: an open-source, distributed graph database'
+  description: "JanusGraph: an open-source, distributed graph database"
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/janusgraph/icon/color/janusgraph-icon-color.svg
   accepted_at: "2020-12-03"
@@ -607,6 +607,7 @@
       url: https://github.com/FederatedAI/FATE-Community
       check_sets:
         - community
+
 - name: feathr
   display_name: Feathr
   description: An Enterprise-Grade, High Performance Feature Store.

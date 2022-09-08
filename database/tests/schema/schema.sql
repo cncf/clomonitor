@@ -70,8 +70,7 @@ select indexes_are('report', array[
 ]);
 select indexes_are('repository', array[
     'repository_pkey',
-    'repository_project_id_name_key',
-    'repository_url_key'
+    'repository_project_id_url_key'
 ]);
 
 -- Check expected functions exist

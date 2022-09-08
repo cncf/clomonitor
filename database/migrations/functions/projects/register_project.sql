@@ -44,7 +44,7 @@ begin
         digest = excluded.digest
     returning project_id into v_project_id;
 
-    -- Repositories repositories or update existing ones
+    -- Register repositories or update existing ones
     for v_repository in select * from jsonb_array_elements(p_project->'repositories')
     loop
         insert into repository (
@@ -58,7 +58,7 @@ begin
             (select array(select jsonb_array_elements_text(v_repository->'check_sets')))::check_set[],
             v_project_id
         )
-        on conflict (url) do update
+        on conflict (project_id, url) do update
         set
             name = excluded.name,
             check_sets = excluded.check_sets;

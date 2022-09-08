@@ -34,14 +34,14 @@ create type check_set as enum ('code', 'code-lite', 'community', 'docs');
 create table if not exists repository (
     repository_id uuid primary key default gen_random_uuid(),
     name text not null check (name <> ''),
-    url text not null check (url <> '') unique,
+    url text not null check (url <> ''),
     digest text,
     score jsonb,
     created_at timestamptz default current_timestamp not null,
     updated_at timestamptz default current_timestamp not null,
     check_sets check_set[] not null,
     project_id uuid not null references project on delete cascade,
-    unique (project_id, name)
+    unique (project_id, url)
 );
 
 create table if not exists report (

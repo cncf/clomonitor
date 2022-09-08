@@ -13,4 +13,4 @@ comfy-table = "6.1.0"
 clomonitor-core = { path = "../clomonitor-core" }
 openssl = { version = "0.10.41", features = ["vendored"] }
 serde_json = "1.0.85"
-tokio = { version = "1.20.1", features = ["macros", "process", "rt-multi-thread"] }
+tokio = { version = "1.21.0", features = ["macros", "process", "rt-multi-thread"] }

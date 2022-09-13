@@ -120,6 +120,19 @@
   cursor: pointer;
 }
 
+.downloadBtn {
+  font-size: 90%;
+}
+
+.downloadIcon {
+  top: -2px;
+  height: 12px;
+}
+
+.downloadSpinner {
+  right: -30px;
+}
+
 @media only screen and (max-width: 575.98px) {
   .loadingWrapper {
     top: 172px !important;
@@ -147,5 +160,22 @@
 
   .withContent {
     margin-top: 24px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .downloadBtn {
+    font-size: 80%;
+  }
+
+  .downloadIcon {
+    height: 11px;
+    top: -2px;
   }
 }

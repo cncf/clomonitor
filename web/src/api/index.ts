@@ -77,8 +77,7 @@ class API_CLASS {
 
     switch (response.headers.get('Content-Type')) {
       case 'text/plain; charset=utf-8':
-      case 'text/markdown':
-      case 'application/yaml':
+      case 'csv':
         const text = await response.text();
         return text;
       case 'application/json':
@@ -145,6 +144,12 @@ class API_CLASS {
           'Content-Type': 'application/json',
         },
       },
+    });
+  }
+
+  public getRepositoriesCSV(): Promise<string> {
+    return this.apiFetch({
+      url: '/data/repositories.csv',
     });
   }
 }

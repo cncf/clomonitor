@@ -1,4 +1,4 @@
-insert into foundation values ('cncf', 'CNCF', '');
+insert into foundation values ('cncf', 'CNCF', 'https://raw.githubusercontent.com/cncf/clomonitor/main/data/cncf.yaml');
 
 insert into project (project_id, name, display_name, description, category, devstats_url, maturity, foundation_id)
 values ('00000000-0001-0000-0000-000000000000', 'artifact-hub', 'Artifact Hub', 'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.', 'app definition', 'https://artifacthub.devstats.cncf.io/', 'sandbox', 'cncf');

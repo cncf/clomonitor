@@ -450,6 +450,7 @@ name = "clomonitor-tracker"
 version = "0.6.0"
 dependencies = [
  "anyhow",
+ "async-trait",
  "clap",
  "clomonitor-core",
  "config",

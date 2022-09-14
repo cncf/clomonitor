@@ -258,7 +258,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudcustodian/icon/color/cloudcustodian-icon-color.svg
   devstats_url: https://cloudcustodian.devstats.cncf.io/
   accepted_at: "2020-06-23"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: cloud-custodian
       url: https://github.com/cloud-custodian/cloud-custodian

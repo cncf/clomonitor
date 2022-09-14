@@ -185,6 +185,35 @@ describe('StatsView', () => {
     });
   });
 
+  it('downloads repositories csv', async () => {
+    const mockStats = getMockStats('1');
+    mocked(API).getStats.mockResolvedValue(mockStats);
+    mocked(API).getStats.mockResolvedValue(mockStats);
+
+    render(
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <Router>
+          <StatsView />
+        </Router>
+      </AppContext.Provider>
+    );
+
+    await waitFor(() => {
+      expect(API.getStats).toHaveBeenCalledTimes(1);
+    });
+
+    await waitFor(() => {
+      expect(screen.getAllByText('Chart')).toHaveLength(6);
+    });
+
+    const btn = screen.getByRole('button', { name: 'Download repositories CSV file' });
+    await userEvent.click(btn);
+
+    await waitFor(() => {
+      expect(API.getRepositoriesCSV).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('when getStats call fails', () => {
     it('renders error message', async () => {
       mocked(API).getStats.mockRejectedValue(null);

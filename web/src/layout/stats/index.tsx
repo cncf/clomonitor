@@ -3,6 +3,7 @@ import { groupBy, isEmpty, isNull, isNumber, isUndefined } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { GrDocumentCsv } from 'react-icons/gr';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
@@ -56,6 +57,7 @@ const StatsView = () => {
   const selectedFoundation = searchParams.get(FOUNDATION_QUERY);
   const [selectedPoint, setSelectedPoint] = useState<SelectedPoint | undefined>();
   const [selectedRange, setSelectedRange] = useState<SelectedRange | undefined>();
+  const [downloadingCSV, setDownloadingCSV] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -452,6 +454,29 @@ const StatsView = () => {
     }
   }, [selectedRange]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
+  const downloadRepositoriesCSV = () => {
+    async function getCSV() {
+      try {
+        setDownloadingCSV(true);
+        const csv = await API.getRepositoriesCSV();
+
+        const blob = new Blob([csv], {
+          type: 'text/csv',
+        });
+        const link: HTMLAnchorElement = document.createElement('a');
+        link.download = 'repositories.csv';
+        link.href = window.URL.createObjectURL(blob);
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        setDownloadingCSV(false);
+      } catch {
+        setDownloadingCSV(false);
+      }
+    }
+    getCSV();
+  };
+
   return (
     <div className="d-flex flex-column flex-grow-1 position-relative">
       <SubNavbar>
@@ -515,7 +540,7 @@ const StatsView = () => {
               {stats.projects.running_total && stats.projects.accepted_distribution && (
                 <>
                   <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>Projects</div>
-                  <div className="text-dark text-center mb-3 fw-bold">Projects accepted</div>
+                  <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects accepted</div>
 
                   <div className="py-4">
                     <div className="row g-4 g-xxl-5 justify-content-center">
@@ -551,7 +576,9 @@ const StatsView = () => {
 
               {stats.projects.rating_distribution && (
                 <>
-                  <div className="text-dark text-center fw-bold mt-4 mb-3">Distribution of projects by rating</div>
+                  <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                    Distribution of projects by rating
+                  </div>
 
                   <div className="py-4">
                     <div className="row g-4 g-xxl-5 justify-content-center">
@@ -631,7 +658,9 @@ const StatsView = () => {
 
               {stats.projects.sections_average && (
                 <>
-                  <div className="text-dark text-center fw-bold mt-4 mb-3">Projects average score per category</div>
+                  <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                    Projects average score per category
+                  </div>
 
                   <div className="py-4">
                     <div className="row g-4 g-xxl-5 justify-content-center">
@@ -674,8 +703,28 @@ const StatsView = () => {
                   <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>
                     Repositories
                   </div>
-                  <div className="text-dark text-center fw-bold mb-3">
-                    Percentage of repositories passing each check
+                  <div className="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3">
+                    <div className={`text-dark fw-bold mx-auto mx-md-0 ${styles.subtitle}`}>
+                      Percentage of repositories passing each check
+                    </div>
+                    <button
+                      className={`btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 ${styles.downloadBtn}`}
+                      onClick={downloadRepositoriesCSV}
+                      aria-label="Download repositories CSV file"
+                    >
+                      <div className="d-flex flex-row align-items-baseline position-relative">
+                        <div>(</div>
+                        <div className="me-2">
+                          <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
+                        </div>
+                        <div>Download CSV file)</div>
+                        {downloadingCSV && (
+                          <div className={`position-absolute ${styles.downloadSpinner}`}>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                          </div>
+                        )}
+                      </div>
+                    </button>
                   </div>
                   <div className="py-4">
                     <div className="row no-gutters justify-content-center">

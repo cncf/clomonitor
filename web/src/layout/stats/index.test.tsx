@@ -228,7 +228,8 @@ describe('StatsView', () => {
 
       const noData = await screen.findByRole('alert');
       expect(noData).toBeInTheDocument();
-      expect(noData).toHaveTextContent('An error occurred getting CLOMonitor stats, please try again later.');
+      expect(noData).toHaveTextContent('An error occurred getting CLOMonitor stats.');
+      expect(noData).toHaveTextContent('Please try again later.');
     });
   });
 });

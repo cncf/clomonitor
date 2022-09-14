@@ -90,6 +90,10 @@
   .backBtn {
     font-size: 0.9rem;
   }
+
+  .extraMarginB {
+    margin-bottom: 4rem !important;
+  }
 }
 
 @media only screen and (min-width: 1400px) {

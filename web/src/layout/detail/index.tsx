@@ -122,9 +122,8 @@ const Detail = (props: Props) => {
           >
             {isNull(detail) ? (
               <div className="pt-5">
-                <NoData>
-                  <div className="mb-4 mb-lg-5 h2">Sorry, the project you requested was not found.</div>
-
+                <NoData className={styles.extraMarginB}>
+                  <div className="mb-4 mb-lg-5 h2">The requested project was not found.</div>
                   <p className="h5 mb-0">The project you are looking for may have been deleted.</p>
                 </NoData>
               </div>

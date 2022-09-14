@@ -1,0 +1,21 @@
+.alert {
+  top: 20px;
+  right: 20px;
+  max-width: 350px;
+}
+
+.active {
+  z-index: 1160;
+}
+
+.btnClose {
+  font-size: 0.75rem;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .alert {
+    max-width: 90%;
+    right: 5%;
+    left: 5%;
+  }
+}

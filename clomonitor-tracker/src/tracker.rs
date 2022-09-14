@@ -1,5 +1,5 @@
 use crate::{db::DynDB, git::DynGit};
-use anyhow::Result;
+use anyhow::{format_err, Result};
 use clomonitor_core::linter::{
     lint, setup_github_http_client, CheckSet, GithubOptions, LintOptions, LintServices,
 };
@@ -36,6 +36,11 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit) -> Result<()> {
 
     // Setup GitHub tokens pool
     let gh_tokens = cfg.get::<Vec<String>>("creds.githubTokens")?;
+    if gh_tokens.is_empty() {
+        return Err(format_err!(
+            "GitHub tokens not found in config file (creds.githubTokens)"
+        ));
+    }
     let gh_tokens_pool = Pool::from(gh_tokens.clone());
 
     // Get repositories to process

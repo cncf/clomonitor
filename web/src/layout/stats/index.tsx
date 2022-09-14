@@ -714,7 +714,7 @@ const StatsView = () => {
                     >
                       <div className="d-flex flex-row align-items-baseline position-relative">
                         <div>(</div>
-                        <div className="me-2">
+                        <div className="me-1">
                           <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
                         </div>
                         <div>Download CSV file)</div>

@@ -1,15 +1,16 @@
-use anyhow::{format_err, Context, Result};
+use crate::{db::PgDB, git::GitCLI};
+use anyhow::{Context, Result};
 use clap::Parser;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
-use std::path::PathBuf;
+use std::{path::PathBuf, sync::Arc};
 use tracing::debug;
 use tracing_subscriber::EnvFilter;
-use which::which;
 
-mod repository;
+mod db;
+mod git;
 mod tracker;
 
 #[derive(Debug, Parser)]
@@ -41,22 +42,20 @@ async fn main() -> Result<()> {
         _ => s.init(),
     };
 
-    // Check if required external tools are available
-    debug!("checking required external tools");
-    if which("git").is_err() {
-        return Err(format_err!("git not found in PATH"));
-    }
-
     // Setup database
     debug!("setting up database");
     let mut builder = SslConnector::builder(SslMethod::tls())?;
     builder.set_verify(SslVerifyMode::NONE);
     let connector = MakeTlsConnector::new(builder.build());
     let db_cfg: DbConfig = cfg.get("db")?;
-    let db_pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
+    let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
+    let db = Arc::new(PgDB::new(pool));
+
+    // Setup Git
+    let git = Arc::new(GitCLI::new()?);
 
     // Run tracker
-    tracker::run(&cfg, &db_pool).await?;
+    tracker::run(&cfg, db, git).await?;
 
     Ok(())
 }

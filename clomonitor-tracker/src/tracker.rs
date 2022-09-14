@@ -1,31 +1,46 @@
-use crate::repository;
+use crate::{db::DynDB, git::DynGit};
 use anyhow::Result;
-use clomonitor_core::linter::{setup_github_http_client, GithubOptions};
+use clomonitor_core::linter::{
+    lint, setup_github_http_client, CheckSet, GithubOptions, LintOptions, LintServices,
+};
 use config::Config;
-use deadpool::unmanaged;
-use deadpool_postgres::Pool;
+use deadpool::unmanaged::{Object, Pool};
 use futures::{
     future,
     stream::{FuturesUnordered, StreamExt},
 };
 use serde_json::Value;
-use std::time::Duration;
+use std::time::{Duration, Instant};
+use tempfile::Builder;
+use time::{self, OffsetDateTime};
 use tokio::time::timeout;
-use tracing::{debug, info, warn};
+use tracing::{debug, info, instrument, warn};
+use uuid::Uuid;
 
 /// Maximum time that can take tracking a single repository.
 const REPOSITORY_TRACK_TIMEOUT: u64 = 600;
 
+/// A project's repository.
+#[derive(Debug, Clone)]
+pub(crate) struct Repository {
+    pub repository_id: Uuid,
+    pub url: String,
+    pub check_sets: Vec<CheckSet>,
+    pub digest: Option<String>,
+    pub updated_at: OffsetDateTime,
+}
+
 /// Track all repositories registered in the database.
-pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
+pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit) -> Result<()> {
     info!("tracker started");
 
     // Setup GitHub tokens pool
     let gh_tokens = cfg.get::<Vec<String>>("creds.githubTokens")?;
-    let gh_tokens_pool = unmanaged::Pool::from(gh_tokens.clone());
+    let gh_tokens_pool = Pool::from(gh_tokens.clone());
 
     // Get repositories to process
-    let repositories = repository::get_all(&db_pool.get().await?).await?;
+    debug!("getting repositories");
+    let repositories = db.repositories().await?;
     if repositories.is_empty() {
         info!("no repositories found");
         info!("tracker finished");
@@ -36,20 +51,20 @@ pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     info!("tracking repositories");
     let mut futs = FuturesUnordered::new();
     for repository in repositories {
-        // Get db connection and GitHub token from the corresponding pool
-        let mut db = db_pool.get().await?;
-        let github_token = gh_tokens_pool.get().await?;
-
         // Track next repository
+        let db = db.clone();
+        let git = git.clone();
+        let github_token = gh_tokens_pool.get().await?;
+        let repository_id = repository.repository_id;
         futs.push(tokio::spawn(async move {
             if timeout(
                 Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                repository.track(&mut db, github_token.as_ref()),
+                track_repository(db, git, github_token, repository),
             )
             .await
             .is_err()
             {
-                warn!("timeout tracking repository {}", repository.repository_id);
+                warn!("timeout tracking repository {}", repository_id);
             }
         }));
 
@@ -62,11 +77,11 @@ pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
 
     // Check Github API rate limit status for each token
     for (i, token) in gh_tokens.into_iter().enumerate() {
-        let client = setup_github_http_client(&GithubOptions {
+        let gh_client = setup_github_http_client(&GithubOptions {
             token,
             ..GithubOptions::default()
         })?;
-        let response: Value = client
+        let response: Value = gh_client
             .get("https://api.github.com/rate_limit")
             .send()
             .await?
@@ -79,5 +94,67 @@ pub(crate) async fn run(cfg: &Config, db_pool: &Pool) -> Result<()> {
     }
 
     info!("tracker finished");
+    Ok(())
+}
+
+/// Track repository if it has changed since the last time it was tracked.
+/// This involves cloning the repository, linting it and storing the results.
+#[instrument(fields(repository_id = %repository.repository_id), skip_all, err)]
+pub(crate) async fn track_repository(
+    db: DynDB,
+    git: DynGit,
+    github_token: Object<String>,
+    repository: Repository,
+) -> Result<()> {
+    let start = Instant::now();
+
+    // Process only if the repository has changed since the last time it
+    // was tracked or if it hasn't been tracked in more than 1 day
+    let remote_digest = git.remote_digest(&repository.url).await?;
+    if let Some(digest) = &repository.digest {
+        let one_day_ago = OffsetDateTime::now_utc() - time::Duration::days(1);
+        if &remote_digest == digest && repository.updated_at > one_day_ago {
+            return Ok(());
+        }
+    }
+
+    debug!("started");
+
+    // Clone repository
+    let tmp_dir = Builder::new().prefix("clomonitor").tempdir()?;
+    git.clone_repository(&repository.url, tmp_dir.path())
+        .await?;
+
+    // Lint repository
+    let mut errors: Option<String> = None;
+    let opts = LintOptions {
+        root: tmp_dir.into_path(),
+        url: repository.url.clone(),
+        check_sets: repository.check_sets.clone(),
+        github_token: github_token.to_owned(),
+    };
+    let svc = LintServices::new(&GithubOptions {
+        token: github_token.to_owned(),
+        ..GithubOptions::default()
+    })?;
+    let report = match lint(&opts, &svc).await {
+        Ok(report) => Some(report),
+        Err(err) => {
+            warn!("error linting repository: {:#}", err);
+            errors = Some(format!("error linting repository: {:#}", err));
+            None
+        }
+    };
+
+    // Store tracking results in database
+    db.store_results(
+        &repository.repository_id,
+        report.as_ref(),
+        errors.as_ref(),
+        &remote_digest,
+    )
+    .await?;
+
+    debug!("completed in {}s", start.elapsed().as_secs());
     Ok(())
 }

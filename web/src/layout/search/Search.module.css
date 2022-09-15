@@ -84,4 +84,9 @@ main {
   .loadingWithFilters {
     top: 207px !important;
   }
+
+  .extraMargin {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+  }
 }

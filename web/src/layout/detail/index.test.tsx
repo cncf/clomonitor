@@ -10,20 +10,6 @@ jest.mock('../../utils/updateMetaIndex');
 jest.mock('../../api');
 jest.mock('react-markdown', () => () => <div />);
 
-const mockUseNavigate = jest.fn();
-
-const getMockDetail = (fixtureId: string): ProjectDetail => {
-  return require(`./__fixtures__/index/${fixtureId}.json`) as ProjectDetail;
-};
-
-let path = {
-  pathname: '/projects/cncf/artifact-hub/artifact-hub',
-  search: '',
-  hash: '',
-  state: { currentSearch: '?maturity=sandbox&rating=a&page=1' },
-  key: 'key',
-};
-
 jest.mock('react-router-dom', () => ({
   ...(jest.requireActual('react-router-dom') as any),
   useParams: jest.fn(),
@@ -38,6 +24,20 @@ jest.mock('moment', () => ({
     format: () => '23rd June 2020',
   }),
 }));
+
+const mockUseNavigate = jest.fn();
+
+const getMockDetail = (fixtureId: string): ProjectDetail => {
+  return require(`./__fixtures__/index/${fixtureId}.json`) as ProjectDetail;
+};
+
+let path = {
+  pathname: '/projects/cncf/artifact-hub/artifact-hub',
+  search: '',
+  hash: '',
+  state: { currentSearch: '?maturity=sandbox&rating=a&page=1' },
+  key: 'key',
+};
 
 const defaultProps = {
   setInvisibleFooter: jest.fn(),
@@ -144,7 +144,7 @@ describe('Project detail index', () => {
         expect(API.getProjectDetail).toHaveBeenCalledWith('proj', 'cncf');
       });
 
-      expect(screen.getByText('Sorry, the project you requested was not found.')).toBeInTheDocument();
+      expect(screen.getByText('The requested project was not found.')).toBeInTheDocument();
       expect(screen.getByText('The project you are looking for may have been deleted.')).toBeInTheDocument();
     });
   });

@@ -53,6 +53,7 @@ const Search = (props: Props) => {
   const [total, setTotal] = useState<number>(0);
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [apiError, setApiError] = useState<string | null>(null);
   const currentState = location.state as { resetScrollPosition?: boolean };
 
   useScrollRestorationFix();
@@ -197,6 +198,7 @@ const Search = (props: Props) => {
         setProjects(newSearchResults.items);
       } catch {
         // TODO - error
+        setApiError('An error occurred searching projects.');
       } finally {
         setIsLoading(false);
         props.setInvisibleFooter(false);
@@ -331,6 +333,13 @@ const Search = (props: Props) => {
             />
           </aside>
           <div className={`d-flex flex-column flex-grow-1 mt-2 mt-md-3 ${styles.contentWrapper}`}>
+            {apiError && (
+              <NoData className={styles.extraMargin}>
+                <div className="mb-4 mb-lg-5 h2">{apiError}</div>
+                <p className="h5 mb-0">Please try again later.</p>
+              </NoData>
+            )}
+
             {projects && (
               <>
                 {isEmpty(projects) ? (

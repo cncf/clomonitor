@@ -19,6 +19,7 @@ import {
   ReportOption,
   Stats,
 } from '../../types';
+import alertDispatcher from '../../utils/alertDispatcher';
 import prepareQueryString from '../../utils/prepareQueryString';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
@@ -431,7 +432,7 @@ const StatsView = () => {
       setIsLoading(false);
     } catch (err: any) {
       setIsLoading(false);
-      setApiError('An error occurred getting CLOMonitor stats, please try again later.');
+      setApiError('An error occurred getting CLOMonitor stats.');
       setStats(null);
     }
   }
@@ -471,6 +472,10 @@ const StatsView = () => {
         link.click();
         setDownloadingCSV(false);
       } catch {
+        alertDispatcher.postAlert({
+          type: 'danger',
+          message: 'An error occurred downloading the repositories CSV file, please try again later.',
+        });
         setDownloadingCSV(false);
       }
     }
@@ -483,18 +488,20 @@ const StatsView = () => {
         <div className="d-flex flex-column flex-sm-row align-items-center w-100 justify-content-between my-2">
           <div className="d-flex flex-column">
             <div className="h2 text-dark text-center text-md-start">CLOMonitor Stats</div>
-            <small className="d-flex flex-row">
-              <span className="d-none d-md-block me-2">Report generated at:</span>
-              {stats && !isUndefined(stats.generated_at) ? (
-                <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
-              ) : (
-                <div className="d-flex flex-row mt-1">
-                  <div className={`${styles.dot} ${styles.dot1} dot`} role="status" />
-                  <div className={`${styles.dot} ${styles.dot2} dot`} />
-                  <div className={`${styles.dot} ${styles.dot3} dot`} />
-                </div>
-              )}
-            </small>
+            {isNull(apiError) && (
+              <small className="d-flex flex-row">
+                <span className="d-none d-md-block me-2">Report generated at:</span>
+                {stats && !isUndefined(stats.generated_at) ? (
+                  <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
+                ) : (
+                  <div className="d-flex flex-row mt-1">
+                    <div className={`${styles.dot} ${styles.dot1} dot`} role="status" />
+                    <div className={`${styles.dot} ${styles.dot2} dot`} />
+                    <div className={`${styles.dot} ${styles.dot3} dot`} />
+                  </div>
+                )}
+              </small>
+            )}
           </div>
 
           <div className={styles.selectWrapper}>
@@ -528,12 +535,20 @@ const StatsView = () => {
       )}
       <main role="main" className="container-lg px-sm-4 px-lg-0 py-5 position-relative">
         <div className="flex-grow-1 position-relative">
-          {apiError && <NoData>{apiError}</NoData>}
+          {apiError && (
+            <NoData>
+              <div className="mb-4 mb-lg-5 h2">{apiError}</div>
+              <p className="h5 mb-0">Please try again later.</p>
+            </NoData>
+          )}
           {stats && (
             <>
               {emptyStats && (
                 <div>
-                  <NoData>No Stats available for the moment</NoData>
+                  <NoData>
+                    <div className="mb-4 mb-lg-5 h2">No Stats available for the moment.</div>
+                    <p className="h5 mb-0">Please try again later.</p>
+                  </NoData>
                 </div>
               )}
 

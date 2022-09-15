@@ -285,3 +285,10 @@ export enum AcceptedRangeKind {
 export type ChecksPerCategory = {
   [key in ScoreType]?: ReportOption[];
 };
+
+export interface Alert {
+  type: 'success' | 'danger' | 'warning' | 'info';
+  message: string;
+  dismissOn?: number;
+  autoClose?: boolean;
+}

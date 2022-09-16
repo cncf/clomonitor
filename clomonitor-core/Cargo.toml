@@ -5,9 +5,9 @@ license = "Apache-2.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.64"
+anyhow = "1.0.65"
 askalono = "0.4.6"
-clap = { version = "3.2.20", features = ["derive"] }
+clap = { version = "3.2.21", features = ["derive"] }
 git2 = "0.15.0"
 glob = "0.3.0"
 graphql_client = { git = "https://github.com/graphql-rust/graphql-client", rev = "f2faa9feb96067921528eaf65040a3a1776837fc", features = ["reqwest"] }
@@ -17,9 +17,9 @@ regex = "1.6.0"
 reqwest = "0.11.11"
 serde = { version = "1.0.144", features = ["derive"] }
 serde_json = "1.0.85"
-serde_yaml = "0.9.11"
+serde_yaml = "0.9.13"
 time = { version = "0.3.14", features = ["parsing", "serde"] }
-tokio = { version = "1.21.0", features = ["macros", "process", "rt-multi-thread"] }
+tokio = { version = "1.21.1", features = ["macros", "process", "rt-multi-thread"] }
 tracing = "0.1.36"
 which = "4.3.0"
 

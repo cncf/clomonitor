@@ -78,25 +78,25 @@ lazy_static! {
         r"(?im)^#+.*adopters.*$",
         r"(?im)^adopters$",
         r"(?i)\[.*adopters.*\]\(.*\)",
-    ]).expect("invalid exprs in ADOPTERS_IN_README");
+    ]).expect("exprs in ADOPTERS_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref ARTIFACTHUB_URL: Regex = Regex::new(
         r#"(https://artifacthub.io/packages/[^"'\)]+)"#
-    ).expect("invalid exprs in ARTIFACTHUB_URL");
+    ).expect("exprs in ARTIFACTHUB_URL to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref CHANGELOG_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
         r"(?i)changelog",
         r"(?i)changes",
-    ]).expect("invalid exprs in CHANGELOG_IN_GH_RELEASE");
+    ]).expect("exprs in CHANGELOG_IN_GH_RELEASE to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref CHANGELOG_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*changelog.*$",
         r"(?im)^changelog$",
         r"(?i)\[.*changelog.*\]\(.*\)",
-    ]).expect("invalid exprs in CHANGELOG_IN_README");
+    ]).expect("exprs in CHANGELOG_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref CLA_IN_GH: RegexSet = RegexSet::new(vec![
@@ -105,14 +105,14 @@ lazy_static! {
         r"(?i)easycla",
         r"(?i)license/cla",
         r"(?i)cla/google",
-    ]).expect("invalid exprs in CLA_IN_GH");
+    ]).expect("exprs in CLA_IN_GH to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref CODE_OF_CONDUCT_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*code of conduct.*$",
         r"(?im)^code of conduct$",
         r"(?i)\[.*code of conduct.*\]\(.*\)",
-    ]).expect("invalid exprs in CODE_OF_CONDUCT_IN_README");
+    ]).expect("exprs in CODE_OF_CONDUCT_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref COMMUNITY_MEETING_TEXT: RegexSet = RegexSet::new(vec![
@@ -120,75 +120,75 @@ lazy_static! {
         r"(?i)(community|developer|development) \[?(call|event|meeting|session)",
         r"(?i)(weekly|biweekly|monthly) \[?meeting",
         r"(?i)meeting minutes",
-    ]).expect("invalid exprs in COMMUNITY_MEETING_TEXT");
+    ]).expect("exprs in COMMUNITY_MEETING_TEXT to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref CONTRIBUTING_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*contributing.*$",
         r"(?im)^contributing$",
         r"(?i)\[.*contributing.*\]\(.*\)",
-    ]).expect("invalid exprs in CONTRIBUTING_IN_README");
+    ]).expect("exprs in CONTRIBUTING_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref DCO_IN_GH: RegexSet = RegexSet::new(vec![
         r"(?i)dco",
-    ]).expect("invalid exprs in DCO_IN_GH");
+    ]).expect("exprs in DCO_IN_GH to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref FOSSA_URL: Regex = Regex::new(
         r#"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"#
-    ).expect("invalid exprs in FOSSA_URL");
+    ).expect("exprs in FOSSA_URL to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref GA3_IN_WEBSITE: Regex = Regex::new(
         "UA-[0-9]+-[0-9]+",
-    ).expect("invalid exprs in GA3_IN_WEBSITE");
+    ).expect("exprs in GA3_IN_WEBSITE to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref GA4_IN_WEBSITE: Regex = Regex::new(
         "G-[A-Z0-9]+",
-    ).expect("invalid exprs in GA4_IN_WEBSITE");
+    ).expect("exprs in GA4_IN_WEBSITE to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref GITHUB_REPO_URL: Regex = Regex::new(
         "^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$"
-    ).expect("invalid exprs in GITHUB_REPO_URL");
+    ).expect("exprs in GITHUB_REPO_URL to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref GOVERNANCE_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*governance.*$",
         r"(?im)^governance$",
         r"(?i)\[.*governance.*\]\(.*\)",
-    ]).expect("invalid exprs in GOVERNANCE_IN_README");
+    ]).expect("exprs in GOVERNANCE_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref HUBSPOT_IN_WEBSITE: Regex = Regex::new(
         r"//js.hs-scripts.com/.+\.js",
-    ).expect("invalid exprs in HUBSPOT_IN_WEBSITE");
+    ).expect("exprs in HUBSPOT_IN_WEBSITE to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref MAINTAINERS_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*maintainers.*$",
         r"(?im)^maintainers$",
         r"(?i)\[.*maintainers.*\]\(.*\)",
-    ]).expect("invalid exprs in MAINTAINERS_IN_README");
+    ]).expect("exprs in MAINTAINERS_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref OPENSSF_URL: Regex = Regex::new(
         r"(https://bestpractices.coreinfrastructure.org/projects/\d+)",
-    ).expect("invalid exprs in OPENSSF_URL");
+    ).expect("exprs in OPENSSF_URL to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref ROADMAP_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*roadmap.*$",
         r"(?im)^roadmap$",
         r"(?i)\[.*roadmap.*\]\(.*\)",
-    ]).expect("invalid exprs in ROADMAP_IN_README");
+    ]).expect("exprs in ROADMAP_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref SBOM_IN_GH_RELEASE: RegexSet = RegexSet::new(vec![
         r"(?i)sbom",
-    ]).expect("invalid exprs in SBOM_IN_GH_RELEASE");
+    ]).expect("exprs in SBOM_IN_GH_RELEASE to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref SBOM_IN_README: RegexSet = RegexSet::new(vec![
@@ -196,14 +196,14 @@ lazy_static! {
         r"(?im)^#+.*software bill of materials.*$",
         r"(?im)^sbom$",
         r"(?im)^software bill of materials$",
-    ]).expect("invalid exprs in SBOM_IN_README");
+    ]).expect("exprs in SBOM_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref SECURITY_POLICY_IN_README: RegexSet = RegexSet::new(vec![
         r"(?im)^#+.*security.*$",
         r"(?im)^security$",
         r"(?i)\[.*security.*\]\(.*\)",
-    ]).expect("invalid exprs in SECURITY_POLICY_IN_README");
+    ]).expect("exprs in SECURITY_POLICY_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref SLACK_IN_README: RegexSet = RegexSet::new(vec![
@@ -211,18 +211,18 @@ lazy_static! {
         r"(?i)https?://slack.cncf.io",
         r"(?i)https?://kubernetes.slack.com",
         r"(?i)https?://slack.k8s.io",
-    ]).expect("invalid exprs in SLACK_IN_README");
+    ]).expect("exprs in SLACK_IN_README to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref SNYK_URL: Regex = Regex::new(
         r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#
-    ).expect("invalid exprs in SNYK_URL");
+    ).expect("exprs in SNYK_URL to be valid");
 
     #[rustfmt::skip]
     pub(crate) static ref TRADEMARK_DISCLAIMER_IN_WEBSITE: RegexSet = RegexSet::new(vec![
         r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
-    ]).expect("invalid exprs in TRADEMARK_DISCLAIMER");
+    ]).expect("exprs in TRADEMARK_DISCLAIMER to be valid");
 }
 
 #[cfg(test)]

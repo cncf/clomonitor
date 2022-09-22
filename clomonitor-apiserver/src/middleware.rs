@@ -11,7 +11,7 @@ pub(crate) async fn metrics_collector<B>(req: Request<B>, next: Next<B>) -> impl
             r"^/api/.*$",
             r"^/projects/:foundation/:org/:project/report-summary.png$",
         ])
-        .expect("invalid exprs in ENDPOINTS_TO_MONITOR");
+        .expect("exprs in ENDPOINTS_TO_MONITOR to be valid");
     }
 
     let start = Instant::now();

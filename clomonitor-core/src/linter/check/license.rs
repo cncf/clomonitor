@@ -31,7 +31,8 @@ pub(crate) fn is_approved(spdx_id: &str) -> bool {
 /// Detect repository's license and return its SPDX id if possible.
 pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
     lazy_static! {
-        static ref LICENSES: Store = Store::from_cache(LICENSES_DATA).unwrap();
+        static ref LICENSES: Store =
+            Store::from_cache(LICENSES_DATA).expect("valid licenses data file present");
     }
     let mut spdx_id: Option<String> = None;
     path::matches(globs)?.iter().any(|path| {

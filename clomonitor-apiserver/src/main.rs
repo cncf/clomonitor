@@ -79,8 +79,7 @@ async fn main() -> Result<()> {
     axum::Server::bind(&addr)
         .serve(router.into_make_service())
         .with_graceful_shutdown(shutdown_signal())
-        .await
-        .unwrap();
+        .await?;
     info!("apiserver stopped");
 
     Ok(())
@@ -91,13 +90,13 @@ async fn shutdown_signal() {
     let ctrl_c = async {
         signal::ctrl_c()
             .await
-            .expect("failed to install ctrl+c signal handler");
+            .expect("ctrl+c signal handler to be installed");
     };
 
     #[cfg(unix)]
     let terminate = async {
         signal::unix::signal(signal::unix::SignalKind::terminate())
-            .expect("failed to install terminate signal handler")
+            .expect("terminate signal handler to be installed")
             .recv()
             .await;
     };

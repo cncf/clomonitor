@@ -67,7 +67,7 @@ pub fn setup_github_http_client(
             std::iter::once((
                 reqwest::header::AUTHORIZATION,
                 reqwest::header::HeaderValue::from_str(&format!("Bearer {}", gh_opts.token))
-                    .unwrap(),
+                    .expect("header value only uses visible ascii chars"),
             ))
             .collect(),
         )

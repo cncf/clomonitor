@@ -57,6 +57,10 @@ impl Git for GitCLI {
             return Err(format_err!("{}", String::from_utf8_lossy(&output.stderr)));
         }
         let stdout = String::from_utf8_lossy(&output.stdout);
-        Ok(stdout.split_whitespace().next().unwrap().to_string())
+        Ok(stdout
+            .split_whitespace()
+            .next()
+            .expect("value present, status checked above")
+            .to_string())
     }
 }

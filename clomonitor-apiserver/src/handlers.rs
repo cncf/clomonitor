@@ -102,7 +102,7 @@ pub(crate) async fn index(
         &format!(
             "{}/static/media/clomonitor.png",
             cfg.get_string("apiserver.baseURL")
-                .expect("base url not found"),
+                .expect("base url to be set"),
         ),
     );
 
@@ -131,7 +131,7 @@ pub(crate) async fn index_project(
         &format!(
             "{}/projects/{}/{}/report-summary.png",
             cfg.get_string("apiserver.baseURL")
-                .expect("base url not found"),
+                .expect("base url to be set"),
             &foundation,
             &project
         ),
@@ -201,7 +201,7 @@ pub(crate) async fn report_summary_png(
     }
 
     // Render report summary SVG
-    let svg = ReportSummaryTemplate::new(score.unwrap(), None)
+    let svg = ReportSummaryTemplate::new(score.expect("checked if is some above"), None)
         .render()
         .map_err(internal_error)?;
 
@@ -210,14 +210,15 @@ pub(crate) async fn report_summary_png(
     opt.fontdb.load_system_fonts();
     opt.font_family = "Open Sans SemiBold".to_string();
     let rtree = usvg::Tree::from_data(svg.as_bytes(), &opt.to_ref()).map_err(internal_error)?;
-    let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT).unwrap();
+    let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT)
+        .expect("width or height defined in consts are not zero");
     resvg::render(
         &rtree,
         usvg::FitTo::Size(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT),
         tiny_skia::Transform::default(),
         pixmap.as_mut(),
     )
-    .unwrap();
+    .expect("width or height defined in consts are not zero");
     let png = pixmap.encode_png().map_err(internal_error)?;
 
     let headers = [

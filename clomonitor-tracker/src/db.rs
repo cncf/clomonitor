@@ -6,6 +6,8 @@ use clomonitor_core::{
     score::{self, Score},
 };
 use deadpool_postgres::{Pool, Transaction};
+#[cfg(test)]
+use mockall::automock;
 use std::sync::Arc;
 use tokio_postgres::types::Json;
 use uuid::Uuid;
@@ -15,6 +17,7 @@ pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
+#[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get all repositories registered in the database.
     async fn repositories(&self) -> Result<Vec<Repository>>;

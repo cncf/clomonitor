@@ -1,5 +1,7 @@
 use anyhow::{format_err, Result};
 use async_trait::async_trait;
+#[cfg(test)]
+use mockall::automock;
 use std::{path::Path, sync::Arc};
 use tokio::process::Command;
 use which::which;
@@ -9,6 +11,7 @@ pub(crate) type DynGit = Arc<dyn Git + Send + Sync>;
 
 /// Trait that defines some operations a Git implementation must support.
 #[async_trait]
+#[cfg_attr(test, automock)]
 pub(crate) trait Git {
     /// Clone (shallow) the repository in the destination path provided.
     async fn clone_repository(&self, url: &str, dst: &Path) -> Result<()>;

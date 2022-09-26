@@ -1,4 +1,4 @@
-use crate::{config::*, linter::CheckOutput, linter::Report};
+use crate::{config::*, linter::*};
 use serde::{Deserialize, Serialize};
 
 /// Score information.
@@ -262,7 +262,6 @@ fn should_score<T>(output: &Option<CheckOutput<T>>) -> Option<bool> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::*;
 
     #[test]
     fn score_global() {

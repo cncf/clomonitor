@@ -1,7 +1,7 @@
 use anyhow::{format_err, Result};
 use clap::{ArgEnum, Parser};
 use clomonitor_core::{
-    linter::{lint, CheckSet, GithubOptions, LintOptions, LintServices},
+    linter::{CheckSet, CoreLinter, Linter, LinterInput},
     score,
 };
 use serde_json::json;
@@ -70,17 +70,13 @@ async fn main() -> Result<()> {
     };
 
     // Lint repository provided
-    let opts = LintOptions {
+    let input = LinterInput {
         root: args.path.clone(),
         url: args.url.clone(),
         check_sets: args.check_set.clone(),
-        github_token: github_token.clone(),
+        github_token,
     };
-    let svc = LintServices::new(&GithubOptions {
-        token: github_token,
-        ..GithubOptions::default()
-    })?;
-    let report = lint(&opts, &svc).await?;
+    let report = CoreLinter::new().lint(&input).await?;
     let score = score::calculate(&report);
 
     // Display results using the requested format

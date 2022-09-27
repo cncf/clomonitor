@@ -24,8 +24,6 @@ jobs:
         with:
           command: fmt
           args: --all -- --check
-      - name: Run cargo-deny
-        uses: EmbarkStudios/cargo-deny-action@v1
 
   tests-database:
     runs-on: ubuntu-latest

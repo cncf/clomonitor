@@ -1,42 +1,42 @@
 [package]
 name = "clomonitor-apiserver"
 description = "Server that exposes the CLOMonitor HTTP API and serves static assets"
-version = "0.6.0"
-license = "Apache-2.0"
-edition = "2021"
-rust-version = "1.58"
+version.workspace = true
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-anyhow = "1.0.65"
-askama = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
-askama_axum = { git = "https://github.com/djc/askama", rev = "71267bc88554c15caf4ee1e7c0d256556303e0e8" }
-async-trait = "0.1.57"
-axum = "0.5.16"
-clap = { version = "3.2.22", features = ["derive"] }
+anyhow = { workspace = true }
+askama = { workspace = true }
+askama_axum = { workspace = true }
+async-trait = { workspace = true }
+axum = { workspace = true }
+clap = { workspace = true }
 clomonitor-core = { path = "../clomonitor-core" }
-config = "0.13.2"
-deadpool-postgres = { version = "0.10.2", features = ["serde"] }
-lazy_static = "1.4.0"
-metrics = "0.20.1"
-metrics-exporter-prometheus = "0.11.0"
-mime = "0.3.16"
-openssl = { version = "0.10.41", features = ["vendored"] }
-postgres-openssl = "0.5.0"
-regex = "1.6.0"
-resvg = "0.23.0"
-serde = { version = "1.0.144", features = ["derive"] }
-serde_json = "1.0.85"
-serde_qs = "0.10.1"
-tera = { version = "1.17.1", default-features = false }
-tiny-skia = "0.6.6"
-tokio = { version = "1.21.1", features = ["macros", "rt-multi-thread", "signal"] }
-tokio-postgres = { version = "0.7.7", features = ["with-uuid-1", "with-serde_json-1"] }
-tower = "0.4.13"
-tower-http = { version = "0.3.4", features = ["auth", "fs", "set-header", "trace"] }
-tracing = "0.1.36"
-tracing-subscriber = { version = "0.3.15", features = ["env-filter", "json"] }
-usvg = "0.23.0"
+config = { workspace = true }
+deadpool-postgres = { workspace = true }
+lazy_static = { workspace = true }
+metrics = { workspace = true }
+metrics-exporter-prometheus = { workspace = true }
+mime = { workspace = true }
+openssl = { workspace = true }
+postgres-openssl = { workspace = true }
+regex = { workspace = true }
+resvg = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_qs = { workspace = true }
+tera = { workspace = true, default-features = false }
+tiny-skia = { workspace = true }
+tokio = { workspace = true }
+tokio-postgres = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+usvg = { workspace = true }
 
 [dev-dependencies]
-hyper = "0.14.20"
-mockall = "0.11.2"
+hyper = { workspace = true }
+mockall = { workspace = true }

@@ -1,16 +1,16 @@
 [package]
 name = "clomonitor-linter"
 description = "A tool to check repositories to verify they meet certain project health best practices"
-version = "0.6.0"
-license = "Apache-2.0"
-edition = "2021"
-rust-version = "1.58"
+version.workspace = true
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [dependencies]
-anyhow = "1.0.65"
-clap = { version = "3.2.22", features = ["derive"] }
-comfy-table = "6.1.0"
+anyhow = { workspace = true }
+clap = { workspace = true }
+comfy-table = { workspace = true }
 clomonitor-core = { path = "../clomonitor-core" }
-openssl = { version = "0.10.41", features = ["vendored"] }
-serde_json = "1.0.85"
-tokio = { version = "1.21.1", features = ["macros", "process", "rt-multi-thread"] }
+openssl = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }

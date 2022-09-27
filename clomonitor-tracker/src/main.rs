@@ -1,6 +1,7 @@
 use crate::{db::PgDB, git::GitCLI};
 use anyhow::{Context, Result};
 use clap::Parser;
+use clomonitor_core::linter::CoreLinter;
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
@@ -51,11 +52,8 @@ async fn main() -> Result<()> {
     let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
     let db = Arc::new(PgDB::new(pool));
 
-    // Setup Git
-    let git = Arc::new(GitCLI::new()?);
-
     // Run tracker
-    tracker::run(&cfg, db, git).await?;
-
-    Ok(())
+    let git = Arc::new(GitCLI::new()?);
+    let linter = Arc::new(CoreLinter::new());
+    tracker::run(&cfg, db, git, linter).await
 }

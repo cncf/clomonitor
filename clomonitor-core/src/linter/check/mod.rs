@@ -2,7 +2,7 @@ use self::{
     path::Globs,
     scorecard::{Scorecard, ScorecardCheck},
 };
-use super::{LintOptions, LintServices};
+use super::{CoreLinterServices, LinterInput};
 use crate::{config::*, linter::CheckSet};
 use anyhow::{Error, Result};
 use metadata::{Exemption, Metadata};
@@ -27,8 +27,8 @@ pub(crate) mod scorecard;
 /// Input used by checks to perform their operations.
 #[derive(Debug, Clone)]
 pub(crate) struct CheckInput<'a> {
-    pub opts: &'a LintOptions,
-    pub svc: &'a LintServices,
+    pub svc: &'a CoreLinterServices,
+    pub li: &'a LinterInput,
     pub cm_md: Option<&'a Metadata>,
     pub gh_md: &'a github::md::MdRepository,
     pub scorecard: &'a Result<Scorecard>,
@@ -182,7 +182,7 @@ pub(crate) fn run_check<T, F>(
 where
     F: Fn(&CheckInput) -> Result<CheckOutput<T>>,
 {
-    if should_skip_check(id, &input.opts.check_sets) {
+    if should_skip_check(id, &input.li.check_sets) {
         return None;
     }
 
@@ -213,7 +213,7 @@ where
     F: Fn(&'a CheckInput<'a>) -> Fut,
     Fut: Future<Output = Result<CheckOutput<T>>>,
 {
-    if should_skip_check(id, &input.opts.check_sets) {
+    if should_skip_check(id, &input.li.check_sets) {
         return None;
     }
 
@@ -285,7 +285,7 @@ pub(crate) async fn analytics(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<
 pub(crate) fn artifacthub_badge(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     Ok(CheckOutput::from_url(readme_capture(
-        &input.opts.root,
+        &input.li.root,
         &[&*ARTIFACTHUB_URL],
     )?))
 }
@@ -341,7 +341,7 @@ pub(crate) fn code_review(input: &CheckInput) -> Result<CheckOutput> {
 /// Community meeting check.
 pub(crate) fn community_meeting(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
-    Ok(readme_matches(&input.opts.root, &*COMMUNITY_MEETING_TEXT)?.into())
+    Ok(readme_matches(&input.li.root, &*COMMUNITY_MEETING_TEXT)?.into())
 }
 
 /// Contributing check.
@@ -367,7 +367,7 @@ pub(crate) fn dangerous_workflow(input: &CheckInput) -> Result<CheckOutput> {
 /// Developer Certificate of Origin check.
 pub(crate) fn dco(input: &CheckInput) -> Result<CheckOutput> {
     // DCO signature in commits
-    if let Ok(passed) = git::commits_have_dco_signature(&input.opts.root) {
+    if let Ok(passed) = git::commits_have_dco_signature(&input.li.root) {
         if passed {
             return Ok(true.into());
         }
@@ -410,7 +410,7 @@ pub(crate) fn governance(input: &CheckInput) -> Result<CheckOutput> {
 pub(crate) fn license(input: &CheckInput) -> Result<CheckOutput<String>> {
     // File in repo
     if let Some(spdx_id) = license::detect(&Globs {
-        root: &input.opts.root,
+        root: &input.li.root,
         patterns: &LICENSE_FILE,
         case_sensitive: true,
     })? {
@@ -437,7 +437,7 @@ pub(crate) fn license_approved(
     spdx_id: Option<String>,
     input: &CheckInput,
 ) -> Option<CheckOutput<bool>> {
-    if should_skip_check(LICENSE_APPROVED, &input.opts.check_sets) {
+    if should_skip_check(LICENSE_APPROVED, &input.li.check_sets) {
         return None;
     }
 
@@ -472,7 +472,7 @@ pub(crate) fn license_scanning(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // Reference in README file
-    if let Some(url) = content::find(&readme_globs(&input.opts.root), &[&*FOSSA_URL, &*SNYK_URL])? {
+    if let Some(url) = content::find(&readme_globs(&input.li.root), &[&*FOSSA_URL, &*SNYK_URL])? {
         return Ok(CheckOutput::from_url(Some(url)));
     };
 
@@ -494,7 +494,7 @@ pub(crate) fn maintainers(input: &CheckInput) -> Result<CheckOutput> {
 pub(crate) fn openssf_badge(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     Ok(CheckOutput::from_url(readme_capture(
-        &input.opts.root,
+        &input.li.root,
         &[&*OPENSSF_URL],
     )?))
 }
@@ -520,7 +520,7 @@ pub(crate) fn roadmap(input: &CheckInput) -> Result<CheckOutput> {
 /// Readme check.
 pub(crate) fn readme(input: &CheckInput) -> Result<CheckOutput> {
     // File in repo
-    if let Some(path) = path::find(&readme_globs(&input.opts.root))? {
+    if let Some(path) = path::find(&readme_globs(&input.li.root))? {
         return Ok(CheckOutput::from_path(Some(&path), input.gh_md));
     }
 
@@ -543,7 +543,7 @@ pub(crate) fn sbom(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // Reference in README file
-    Ok(readme_matches(&input.opts.root, &*SBOM_IN_README)?.into())
+    Ok(readme_matches(&input.li.root, &*SBOM_IN_README)?.into())
 }
 
 /// Security policy check.
@@ -568,7 +568,7 @@ pub(crate) fn signed_releases(input: &CheckInput) -> Result<CheckOutput> {
 /// Slack presence check.
 pub(crate) fn slack_presence(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
-    Ok(readme_matches(&input.opts.root, &*SLACK_IN_README)?.into())
+    Ok(readme_matches(&input.li.root, &*SLACK_IN_README)?.into())
 }
 
 /// Token permissions check (from OpenSSF Scorecard).
@@ -644,7 +644,7 @@ fn find_file_or_reference(
 ) -> Result<CheckOutput> {
     // File in repo
     if let Some(path) = path::find(&Globs {
-        root: &input.opts.root,
+        root: &input.li.root,
         patterns,
         case_sensitive: false,
     })? {
@@ -652,7 +652,7 @@ fn find_file_or_reference(
     }
 
     // Reference in README file
-    if readme_matches(&input.opts.root, re)? {
+    if readme_matches(&input.li.root, re)? {
         return Ok(true.into());
     }
 

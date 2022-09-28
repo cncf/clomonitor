@@ -16,4 +16,4 @@ FROM alpine:3.16.2
 RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor
-COPY --from=builder /clomonitor/clomonitor-registrar/target/release/clomonitor-registrar /usr/local/bin
+COPY --from=builder /clomonitor/target/release/clomonitor-registrar /usr/local/bin

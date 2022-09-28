@@ -1,15 +1,27 @@
 #!/bin/sh
 
+# apiserver
+docker build \
+    -f clomonitor-apiserver/Dockerfile \
+    -t clomonitor/apiserver \
+.
+
 # dbmigrator
 docker build \
     -f database/migrations/Dockerfile \
     -t clomonitor/dbmigrator \
 .
 
-# apiserver
+# linter
 docker build \
-    -f clomonitor-apiserver/Dockerfile \
-    -t clomonitor/apiserver \
+    -f clomonitor-linter/Dockerfile \
+    -t clomonitor/linter \
+.
+
+# registrar
+docker build \
+    -f clomonitor-registrar/Dockerfile \
+    -t clomonitor/registrar \
 .
 
 # tracker
@@ -18,8 +30,3 @@ docker build \
     -t clomonitor/tracker \
 .
 
-# linter
-docker build \
-    -f clomonitor-linter/Dockerfile \
-    -t clomonitor/linter \
-.

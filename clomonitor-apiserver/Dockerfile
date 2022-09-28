@@ -33,7 +33,7 @@ FROM alpine:3.16.2
 RUN apk --no-cache add ca-certificates ttf-opensans && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor
-COPY --from=builder /clomonitor/clomonitor-apiserver/target/release/clomonitor-apiserver /usr/local/bin
+COPY --from=builder /clomonitor/target/release/clomonitor-apiserver /usr/local/bin
 COPY --from=frontend-builder /web/build ./web/build
 COPY --from=frontend-builder /web/package.json ./web
 COPY --from=docs-builder /web/build/docs ./web/build/docs

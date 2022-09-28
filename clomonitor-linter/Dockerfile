@@ -24,5 +24,5 @@ FROM alpine:3.16.2
 RUN addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor
-COPY --from=builder /clomonitor/clomonitor-linter/target/release/clomonitor-linter /usr/local/bin
+COPY --from=builder /clomonitor/target/release/clomonitor-linter /usr/local/bin
 COPY --from=scorecard /tmp/scorecard-linux-amd64 /usr/local/bin/scorecard

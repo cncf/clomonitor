@@ -349,7 +349,7 @@ dependencies = [
 
 [[package]]
 name = "clomonitor-apiserver"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "askama",
@@ -386,7 +386,7 @@ dependencies = [
 
 [[package]]
 name = "clomonitor-core"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "askalono",
@@ -412,7 +412,7 @@ dependencies = [
 
 [[package]]
 name = "clomonitor-linter"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -425,7 +425,7 @@ dependencies = [
 
 [[package]]
 name = "clomonitor-registrar"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -451,7 +451,7 @@ dependencies = [
 
 [[package]]
 name = "clomonitor-tracker"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "async-trait",

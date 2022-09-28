@@ -2,7 +2,7 @@
 FROM rust:1-alpine3.16 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
-COPY Cargo.* .
+COPY Cargo.* ./
 COPY clomonitor-apiserver/Cargo.* clomonitor-apiserver
 COPY clomonitor-registrar/Cargo.* clomonitor-registrar
 COPY clomonitor-core clomonitor-core

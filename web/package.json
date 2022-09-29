@@ -24,8 +24,8 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.0.3",
-    "@types/lodash": "^4.14.185",
-    "@types/node": "^18.7.18",
+    "@types/lodash": "^4.14.186",
+    "@types/node": "^18.7.23",
     "@types/react": "^18.0.18",
     "@types/react-date-range": "^1.4.3",
     "@types/react-dom": "^18.0.3",
@@ -40,7 +40,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.55.0",
     "shx": "^0.3.4",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "resolutions": {
     "react-scripts/**/nth-check": "^2.0.1",

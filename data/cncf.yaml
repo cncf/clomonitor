@@ -125,23 +125,6 @@
       check_sets:
         - community
         - code
-- name: brigade
-  display_name: Brigade
-  description: Brigade is a tool for running scriptable, automated tasks
-  category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/brigade/icon/color/brigade-icon-color.svg
-  devstats_url: https://brigade.devstats.cncf.io/
-  accepted_at: "2019-03-18"
-  maturity: sandbox
-  repositories:
-    - name: community
-      url: https://github.com/brigadecore/community
-      check_sets:
-        - community
-    - name: brigade
-      url: https://github.com/brigadecore/brigade
-      check_sets:
-        - code
 - name: buildpacks
   display_name: Buildpacks
   description: Cloud Native Buildpacks transform your application source code into images that can run on any cloud
@@ -595,6 +578,10 @@
       url: https://github.com/envoyproxy/xds-relay
       check_sets:
         - code-lite
+    - name: envoy-website
+      url: https://github.com/envoyproxy/envoy-website
+      check_sets:
+        - docs
 - name: etcd
   display_name: etcd
   description: Distributed reliable key-value store for the most critical data of a distributed system
@@ -2308,6 +2295,141 @@
   repositories:
     - name: distribution
       url: https://github.com/distribution/distribution
+      check_sets:
+        - community
+        - code
+- name: serverless-devs
+  display_name: Serverless devs
+  description: Serverless Devs developer tool ( Serverless Devs 开发者工具 )
+  category: serverless
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/a7624ce326be3dd2a596120454956237410076e0/projects/serverless-devs/icon/color/serverless-devs-icon-color.svg
+  devstats_url: https://serverlessdevs.devstats.cncf.io/
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: serverless-devs
+      url: https://github.com/serverless-devs/serverless-devs
+      check_sets:
+        - community
+        - code
+    - name: core
+      url: https://github.com/Serverless-Devs/core
+      check_sets:
+        - code-lite
+    - name: registry-cli
+      url: https://github.com/Serverless-Devs/registry-cli
+      check_sets:
+        - code-lite
+- name: containerssh
+  display_name: ContainerSSH
+  description: ContainerSSH launches a new container for each SSH connection in Kubernetes, Podman or Docker. The user is transparently dropped in the container and the container is removed when the user disconnects. Authentication and container configuration are dynamic using webhooks, no system users required
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerssh/icon/containerssh-icon-dark.svg
+  devstats_url: https://containerssh.devstats.cncf.io
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: ContainerSSH
+      url: https://github.com/ContainerSSH/ContainerSSH
+      check_sets:
+        - community
+        - code
+    - name: libcontainerssh
+      url: https://github.com/ContainerSSH/libcontainerssh
+      check_sets:
+        - code-lite
+    - name: containerssh.github.io
+      url: https://github.com/ContainerSSH/containerssh.github.io
+      check_sets:
+        - docs
+    - name: images
+      url: https://github.com/ContainerSSH/images
+      check_sets:
+        - code-lite
+    - name: examples
+      url: https://github.com/ContainerSSH/examples
+      check_sets:
+        - code-lite
+- name: openfga
+  display_name: OpenFGA
+  description: OpenFGA is a high performance and flexible authorization/permission system built for developers and inspired by Google Zanzibar
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfga/icon/color/openfga-icon-color.svg
+  devstats_url: https://openfga.devstats.cncf.io/
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: openfga
+      url: https://github.com/openfga/openfga
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/openfga/community
+      check_sets:
+        - community
+    - name: go-sdk
+      url: https://github.com/openfga/go-sdk
+      check_sets:
+        - code-lite
+    - name: js-sdk
+      url: https://github.com/openfga/js-sdk
+      check_sets:
+        - code-lite
+    - name: dotnet-sdk
+      url: https://github.com/openfga/dotnet-sdk
+      check_sets:
+        - code-lite
+    - name: openfga.dev
+      url: https://github.com/openfga/openfga.dev
+      check_sets:
+        - docs
+- name: carvel
+  display_name: Carvel
+  description: Carvel provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to
+              Kubernetes
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/1c28d1abf8b9ce1f375f474a21171bf8478e555d/cached_logos/carvel.svg
+  devstats_url: https://carvel.devstats.cncf.io/
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: carvel-ytt
+      url: https://github.com/vmware-tanzu/carvel-ytt
+      check_sets:
+        - code
+    - name: carvel
+      url: https://github.com/vmware-tanzu/carvel
+      check_sets:
+        - community
+    - name: carvel-imgpkg
+      url: https://github.com/vmware-tanzu/carvel-imgpkg
+      check_sets:
+        - code-lite
+- name: lima
+  display_name: Lima
+  description: Linux virtual machines, on macOS
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/lima-vm/lima/master/docs/images/lima-logo-01.svg
+  devstats_url: https://lima.devstats.cncf.io/
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: lima
+      url: https://github.com/lima-vm/lima
+      check_sets:
+        - community
+        - code
+- name: kured
+  display_name: Kured
+  description: Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications
+  category: orchestration
+  logo_url: https://avatars.githubusercontent.com/u/113497315?s=200&v=4
+  devstats_url: https://kured.devstats.cncf.io/
+  accepted_at: "2022-09-13"
+  maturity: sandbox
+  repositories:
+    - name: kured
+      url: https://github.com/kubereboot/kured
       check_sets:
         - community
         - code

@@ -33,37 +33,41 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 
 ## Linter CLI
 
-The CLOMonitor's linter can also be run locally or from CI workflows. You can build it from source using [Cargo](https://rustup.rs), the Rust package manager:
+The CLOMonitor's linter can also be run locally or from CI workflows. This can be done by using the [container image](https://gallery.ecr.aws/clomonitor/linter) provided or by building the CLI tool from the source.
 
-```sh
-cargo install --git https://github.com/cncf/clomonitor clomonitor-linter
-```
+CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard). When building from the source, you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. The container image already includes the `scorecard` binary, so if you opt for using it you are ready to go.
 
-Alternatively, you can use the published [Docker image](https://gallery.ecr.aws/clomonitor/linter). An example of how to integrate CLOMonitor's linter with Github Actions can be found [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/c73dafa519020415927665e14fb6eac1066120eb/.github/workflows/ci.yml#L46-L57).
+Both CLOMonitor and Scorecard use the GitHub GraphQL API for some checks, which requires authentication. A GitHub token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
 
-CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and Scorecard use the Github GraphQL API for some checks, which requires authentication. A Github token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
+### Using Docker
+
+You can run the linter CLI tool from Docker by running the following command:
 
 ```text
 $ export GITHUB_TOKEN=<your token>
 
+$ docker run -it \
+  --volume $PWD:/repo \
+  --env GITHUB_TOKEN=$GITHUB_TOKEN \
+  public.ecr.aws/clomonitor/linter clomonitor-linter \
+    --path /repo \
+    --url https://github.com/<org>/<repo>
+```
+
+Note: *the command assumes the current working directory is the repo you would like to lint. Please adjust the repo url as needed.*
+
+#### CI workflow integration
+
+An example of how to integrate CLOMonitor's linter with GitHub Actions can be found [in the Artifact Hub repository](https://github.com/artifacthub/hub/blob/c73dafa519020415927665e14fb6eac1066120eb/.github/workflows/ci.yml#L46-L57).
+
+### Building from source
+
+You can also build the CLOMonitor's linter CLI tool from the source by using [Cargo](https://rustup.rs), the Rust package manager:
+
+```text
+$ cargo install --git https://github.com/cncf/clomonitor clomonitor-linter
+
 $ clomonitor-linter --help
-clomonitor-linter
-Checks repository to verify it meets certain project health best practices
-
-USAGE:
-    clomonitor-linter [OPTIONS] --path <PATH> --url <URL>
-
-OPTIONS:
-        --check-set <CHECK_SET>      Sets of checks to run [default: code community] [possible
-                                     values: code, code-lite, community, docs]
-        --format <FORMAT>            Output format [default: table] [possible values: json, table]
-    -h, --help                       Print help information
-        --pass-score <PASS_SCORE>    Linter pass score [default: 75]
-        --path <PATH>                Repository local path (used for checks that can be done
-                                     locally)
-        --url <URL>                  Repository url [https://github.com/org/repo] (used for some
-                                     GitHub remote checks)
-    -V, --version                    Print version information
 ```
 
 ## Contributing

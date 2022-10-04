@@ -109,13 +109,17 @@ impl<T> From<Result<Option<&ScorecardCheck>, &Error>> for CheckOutput<T> {
             Ok(sc_check) => match sc_check {
                 Some(sc_check) => {
                     let mut output = CheckOutput::default();
-                    if sc_check.score >= 5.0 {
+                    let pass_threshold = match &sc_check.name {
+                        n if n == SCORECARD_CHECK[SIGNED_RELEASES] => 1.0,
+                        _ => 5.0,
+                    };
+                    if sc_check.score >= pass_threshold {
                         output.passed = true;
                     }
                     output.details = Some(format!(
                         r"# {} OpenSSF Scorecard check
 
-**Score**: {} (check passes with score >= 5)
+**Score**: {} (check passes with score >= {})
 
 **Reason**: {}
 
@@ -124,6 +128,7 @@ impl<T> From<Result<Option<&ScorecardCheck>, &Error>> for CheckOutput<T> {
 **Please see the [check documentation]({}) in the ossf/scorecard repository for more details**",
                         sc_check.name,
                         sc_check.score,
+                        pass_threshold,
                         sc_check.reason,
                         match &sc_check.details {
                             Some(details) => format!("\n\n>{}", details.join("\n")),

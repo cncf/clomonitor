@@ -2342,14 +2342,6 @@
       url: https://github.com/ContainerSSH/containerssh.github.io
       check_sets:
         - docs
-    - name: images
-      url: https://github.com/ContainerSSH/images
-      check_sets:
-        - code-lite
-    - name: examples
-      url: https://github.com/ContainerSSH/examples
-      check_sets:
-        - code-lite
 - name: openfga
   display_name: OpenFGA
   description: OpenFGA is a high performance and flexible authorization/permission system built for developers and inspired by Google Zanzibar
@@ -2393,18 +2385,34 @@
   accepted_at: "2022-09-13"
   maturity: sandbox
   repositories:
-    - name: carvel-ytt
-      url: https://github.com/vmware-tanzu/carvel-ytt
-      check_sets:
-        - code
     - name: carvel
       url: https://github.com/vmware-tanzu/carvel
       check_sets:
         - community
+    - name: carvel-kapp
+      url: https://github.com/vmware-tanzu/carvel-kapp
+      check_sets:
+        - code
+    - name: carvel-ytt
+      url: https://github.com/vmware-tanzu/carvel-ytt
+      check_sets:
+        - code
     - name: carvel-imgpkg
       url: https://github.com/vmware-tanzu/carvel-imgpkg
       check_sets:
-        - code-lite
+        - code
+    - name: carvel-kapp-controller
+      url: https://github.com/vmware-tanzu/carvel-kapp-controller
+      check_sets:
+        - code
+    - name: carvel-vendir
+      url: https://github.com/vmware-tanzu/carvel-vendir
+      check_sets:
+        - code
+    - name: carvel-secretgen-controller
+      url: https://github.com/vmware-tanzu/carvel-secretgen-controller
+      check_sets:
+        - code
 - name: lima
   display_name: Lima
   description: Linux virtual machines, on macOS
@@ -2433,3 +2441,11 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/kubereboot/website
+      check_sets:
+        - docs
+    - name: charts
+      url: https://github.com/kubereboot/charts
+      check_sets:
+        - code-lite

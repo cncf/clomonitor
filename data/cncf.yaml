@@ -77,6 +77,10 @@
       url: https://github.com/argoproj/argo-workflows
       check_sets:
         - code
+    - name: argo-helm
+      url: https://github.com/argoproj/argo-helm
+      check_sets:
+        - code
 - name: artifact-hub
   display_name: Artifact Hub
   description: Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects

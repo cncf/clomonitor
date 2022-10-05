@@ -65,6 +65,14 @@
       url: https://github.com/argoproj/argo-site
       check_sets:
         - docs
+    - name: argo-events
+      url: https://github.com/argoproj/argo-events
+      check_sets:
+        - code
+    - name: argo-rollouts
+      url: https://github.com/argoproj/argo-rollouts
+      check_sets:
+        - code
     - name: argo-workflows
       url: https://github.com/argoproj/argo-workflows
       check_sets:

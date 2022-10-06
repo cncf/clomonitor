@@ -6,7 +6,7 @@ use check::{
     metadata::{Metadata, METADATA_FILE},
     *,
 };
-use clap::ArgEnum;
+use clap::ValueEnum;
 #[cfg(feature = "mocks")]
 use mockall::automock;
 use serde::Deserialize;
@@ -40,7 +40,7 @@ pub struct LinterInput {
 
 /// Check sets define a set of checks that will be run on a given repository.
 /// Multiple check sets can be assigned to a repository.
-#[derive(Debug, Clone, PartialEq, Eq, Hash, ArgEnum, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, ValueEnum, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum CheckSet {
     Code,

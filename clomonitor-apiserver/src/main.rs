@@ -23,7 +23,7 @@ mod router;
 #[clap(author, version, about)]
 struct Args {
     /// Config file path
-    #[clap(short, long, parse(from_os_str))]
+    #[clap(short, long)]
     config: PathBuf,
 }
 

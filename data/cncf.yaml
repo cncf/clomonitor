@@ -268,7 +268,11 @@
   devstats_url: https://cloudevents.devstats.cncf.io/
   accepted_at: "2018-05-22"
   maturity: incubating
-  repositories:
+  repositories: 
+    ### 
+    # CloudEvents does not require a code checkset because the primary deliverable
+    # is a specification with only secondary code bases included in the project
+    ###
     - name: spec
       url: https://github.com/cloudevents/spec
       check_sets:
@@ -1585,7 +1589,7 @@
     - name: open-feature-operator
       url: https://github.com/open-feature/open-feature-operator
       check_sets:
-        - code-lite
+        - code
     - name: community
       url: https://github.com/open-feature/community
       check_sets:

@@ -1,5 +1,5 @@
 use anyhow::{format_err, Result};
-use clap::{ArgEnum, Parser};
+use clap::{Parser, ValueEnum};
 use clomonitor_core::{
     linter::{CheckSet, CoreLinter, Linter, LinterInput},
     score,
@@ -13,7 +13,7 @@ mod table;
 const GITHUB_TOKEN: &str = "GITHUB_TOKEN";
 
 /// CLI output format options.
-#[derive(Debug, Clone, ArgEnum)]
+#[derive(Debug, Clone, ValueEnum)]
 pub enum Format {
     Json,
     Table,
@@ -39,7 +39,7 @@ scope) by setting the GITHUB_TOKEN environment variable."
 )]
 struct Args {
     /// Repository local path (used for checks that can be done locally)
-    #[clap(long, parse(from_os_str))]
+    #[clap(long)]
     path: PathBuf,
 
     /// Repository url [https://github.com/org/repo] (used for some GitHub remote checks)
@@ -47,7 +47,7 @@ struct Args {
     url: String,
 
     /// Sets of checks to run
-    #[clap(arg_enum, long, default_values = &["code", "community"])]
+    #[clap(value_enum, long, default_values = &["code", "community"])]
     check_set: Vec<CheckSet>,
 
     /// Linter pass score
@@ -55,7 +55,7 @@ struct Args {
     pass_score: f64,
 
     /// Output format
-    #[clap(arg_enum, long, default_value = "table")]
+    #[clap(value_enum, long, default_value = "table")]
     format: Format,
 }
 

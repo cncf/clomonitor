@@ -5,6 +5,9 @@ updates:
     schedule:
       interval: "weekly"
       day: "wednesday"
+    ignore:
+      - dependency-name: "bootstrap"
+        versions: ["5.2.x"]
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:

@@ -61,7 +61,8 @@ begin
         on conflict (project_id, url) do update
         set
             name = excluded.name,
-            check_sets = excluded.check_sets;
+            check_sets = excluded.check_sets,
+            digest = null;
     end loop;
 
     -- Delete repositories that are no longer available

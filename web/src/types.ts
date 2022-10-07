@@ -38,6 +38,7 @@ export interface Repository extends BaseRepository {
 
 export interface Report {
   data?: CoreReport | any;
+  check_sets?: CheckSet[];
   errors?: string | null;
   report_id: string;
   updated_at: number;

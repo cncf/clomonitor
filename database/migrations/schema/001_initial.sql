@@ -46,6 +46,7 @@ create table if not exists repository (
 
 create table if not exists report (
     report_id uuid primary key default gen_random_uuid(),
+    check_sets check_set[],
     data jsonb,
     errors text,
     created_at timestamptz default current_timestamp not null,

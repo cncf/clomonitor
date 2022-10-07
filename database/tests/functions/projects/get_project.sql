@@ -61,11 +61,13 @@ insert into repository (
 );
 insert into report (
     report_id,
+    check_sets,
     data,
     updated_at,
     repository_id
 ) values (
     '5133b909-a5b3-4c24-87b1-16b02a955ffa',
+    '{code, community}',
     '{"k": "v"}',
     '2022-02-24 09:40:42.695654+01',
     '00000000-0000-0001-0000-000000000000'
@@ -92,6 +94,7 @@ select is(
                 "name": "artifact-hub",
                 "report": {
                     "report_id": "5133b909-a5b3-4c24-87b1-16b02a955ffa",
+                    "check_sets": ["code", "community"],
                     "data": {"k": "v"},
                     "updated_at": 1645692042
                 },

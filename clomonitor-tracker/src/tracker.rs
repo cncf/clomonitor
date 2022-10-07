@@ -144,6 +144,7 @@ async fn track_repository(
     // Store tracking results in database
     db.store_results(
         &repository.repository_id,
+        &repository.check_sets,
         report.as_ref(),
         errors.as_ref(),
         &remote_digest,
@@ -450,15 +451,16 @@ mod tests {
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Ok(Report::default()))));
         db.expect_store_results()
-            .withf(|repository_id, report, errors, digest| {
+            .withf(|repository_id, check_sets, report, errors, digest| {
                 *repository_id == Uuid::parse_str(r1_id).unwrap()
+                    && check_sets == [CheckSet::Code]
                     && *report == Some(&Report::default())
                     && errors.is_none()
                     && digest == "r1_digest"
             })
             .times(1)
             .returning(
-                |_: &Uuid, _: Option<&Report>, _: Option<&String>, _: &str| {
+                |_: &Uuid, _: &[CheckSet], _: Option<&Report>, _: Option<&String>, _: &str| {
                     Box::pin(future::ready(Ok(())))
                 },
             );
@@ -483,15 +485,16 @@ mod tests {
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Err(format_err!("fake error")))));
         db.expect_store_results()
-            .withf(|repository_id, report, errors, digest| {
+            .withf(|repository_id, check_sets, report, errors, digest| {
                 *repository_id == Uuid::parse_str(r2_id).unwrap()
+                    && check_sets == [CheckSet::Code]
                     && report.is_none()
                     && *errors == Some(&"error linting repository: fake error".to_string())
                     && digest == "r2_digest"
             })
             .times(1)
             .returning(
-                |_: &Uuid, _: Option<&Report>, _: Option<&String>, _: &str| {
+                |_: &Uuid, _: &[CheckSet], _: Option<&Report>, _: Option<&String>, _: &str| {
                     Box::pin(future::ready(Ok(())))
                 },
             );

@@ -38,6 +38,7 @@ select columns_are('project', array[
 ]);
 select columns_are('report', array[
     'report_id',
+    'check_sets',
     'data',
     'errors',
     'created_at',

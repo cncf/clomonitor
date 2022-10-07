@@ -26,6 +26,7 @@ pub(crate) trait DB {
     async fn store_results(
         &self,
         repository_id: &Uuid,
+        check_sets: &[CheckSet],
         report: Option<&Report>,
         errors: Option<&String>,
         remote_digest: &str,
@@ -72,13 +73,14 @@ impl DB for PgDB {
     async fn store_results(
         &self,
         repository_id: &Uuid,
+        check_sets: &[CheckSet],
         report: Option<&Report>,
         errors: Option<&String>,
         remote_digest: &str,
     ) -> Result<()> {
         let mut db = self.pool.get().await?;
         let tx = db.transaction().await?;
-        PgDB::store_report(&tx, repository_id, report, errors).await?;
+        PgDB::store_report(&tx, repository_id, check_sets, report, errors).await?;
         PgDB::update_repository_score(&tx, repository_id, report).await?;
         PgDB::update_project_score(&tx, repository_id).await?;
         PgDB::update_repository_digest(&tx, repository_id, remote_digest).await?;
@@ -97,6 +99,7 @@ impl PgDB {
     async fn store_report(
         tx: &Transaction<'_>,
         repository_id: &Uuid,
+        check_sets: &[CheckSet],
         report: Option<&Report>,
         errors: Option<&String>,
     ) -> Result<()> {
@@ -104,15 +107,16 @@ impl PgDB {
             Some(report) => {
                 tx.execute(
                     "
-                    insert into report (data, errors, repository_id)
-                    values ($1::jsonb, $2::text, $3::uuid)
+                    insert into report (check_sets, data, errors, repository_id)
+                    values ($1::check_set[], $2::jsonb, $3::text, $4::uuid)
                     on conflict (repository_id) do update
                     set
+                        check_sets = excluded.check_sets,
                         data = excluded.data,
                         errors = excluded.errors,
                         updated_at = current_timestamp;
                     ",
-                    &[&Json(&report), &errors, &repository_id],
+                    &[&check_sets, &Json(&report), &errors, &repository_id],
                 )
                 .await?;
             }

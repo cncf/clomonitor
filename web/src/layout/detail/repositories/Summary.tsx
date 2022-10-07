@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
 import { Repository, ScoreType } from '../../../types';
+import getCheckSets from '../../../utils/getCheckSets';
 import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import BadgeCell from './BadgeCell';
 import styles from './Summary.module.css';
@@ -70,6 +71,7 @@ const Summary = (props: Props) => {
         <tbody>
           {props.repositories.map((repo: Repository) => {
             if (isUndefined(repo.report)) return null;
+            const checkSets = getCheckSets(repo);
             return (
               <tr key={`summary_${repo.repository_id}`}>
                 <td className={`align-middle ${styles.repoCell} ${styles.darkBgCell}`}>
@@ -81,7 +83,7 @@ const Summary = (props: Props) => {
                     >
                       {repo.name}
                     </button>
-                    <CheckSetBadge checkSets={repo.check_sets} className="d-none d-xl-inline-flex" />
+                    <CheckSetBadge checkSets={checkSets} className="d-none d-xl-inline-flex" />
                   </div>
                 </td>
 

@@ -396,6 +396,7 @@ dependencies = [
  "http",
  "lazy_static",
  "mockall",
+ "postgres-types",
  "regex",
  "reqwest",
  "serde",
@@ -1943,6 +1944,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "15eb2c6e362923af47e13c23ca5afb859e83d54452c55b0b9ac763b8f7c1ac16"
 
 [[package]]
+name = "postgres-derive"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9e76c801e97c9cf696097369e517785b98056e98b21149384c812febfc5912f2"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "postgres-openssl"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1981,6 +1993,7 @@ checksum = "73d946ec7d256b04dfadc4e6a3292324e6f417124750fc5c0950f981b703a0f1"
 dependencies = [
  "bytes",
  "fallible-iterator",
+ "postgres-derive",
  "postgres-protocol",
  "serde",
  "serde_json",

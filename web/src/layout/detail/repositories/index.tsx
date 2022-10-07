@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
 import { CheckSet, Repository, ScoreType } from '../../../types';
+import getCheckSets from '../../../utils/getCheckSets';
 import sortRepos from '../../../utils/sortRepos';
 import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import ExternalLink from '../../common/ExternalLink';
@@ -91,6 +92,7 @@ const RepositoriesList = (props: Props) => {
 
       {repositories.map((repo: Repository) => {
         if (isUndefined(repo.report)) return null;
+        const checkSets = getCheckSets(repo);
         return (
           <div
             data-testid="repository-info"
@@ -105,7 +107,7 @@ const RepositoriesList = (props: Props) => {
                   <div className="d-none d-md-block">
                     <div className={`d-inline-flex flex-row align-items-center h4 fw-bold mb-2 ${styles.titleWrapper}`}>
                       <div className="text-truncate">{repo.name}</div>
-                      <CheckSetBadge checkSets={repo.check_sets} className={`ms-2 ${styles.checkSetBadge}`} />
+                      <CheckSetBadge checkSets={checkSets} className={`ms-2 ${styles.checkSetBadge}`} />
                       {getAnchorLink(repo.name)}
                     </div>
                     <ExternalLink href={repo.url}>
@@ -122,7 +124,7 @@ const RepositoriesList = (props: Props) => {
                       </ExternalLink>
                       {getAnchorLink(repo.name)}
                     </div>
-                    <CheckSetBadge checkSets={repo.check_sets} />
+                    <CheckSetBadge checkSets={checkSets} />
                   </div>
                 </div>
                 <div className="ms-3 ms-md-0 me-0 me-md-3">
@@ -159,7 +161,7 @@ const RepositoriesList = (props: Props) => {
                     score={!isUndefined(repo.score) ? repo.score.documentation : undefined}
                     referenceUrl="/docs/topics/checks/#documentation"
                     recommendedTemplates={
-                      repo.check_sets && repo.check_sets.includes(CheckSet.Community)
+                      checkSets.includes(CheckSet.Community)
                         ? [
                             {
                               name: 'CONTRIBUTING.md',

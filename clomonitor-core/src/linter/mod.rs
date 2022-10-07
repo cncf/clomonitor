@@ -9,6 +9,7 @@ use check::{
 use clap::ValueEnum;
 #[cfg(feature = "mocks")]
 use mockall::automock;
+use postgres_types::ToSql;
 use serde::Deserialize;
 use std::{path::PathBuf, sync::Arc};
 use which::which;
@@ -40,12 +41,17 @@ pub struct LinterInput {
 
 /// Check sets define a set of checks that will be run on a given repository.
 /// Multiple check sets can be assigned to a repository.
-#[derive(Debug, Clone, PartialEq, Eq, Hash, ValueEnum, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, ValueEnum, Deserialize, ToSql)]
 #[serde(rename_all = "kebab-case")]
+#[postgres(name = "check_set")]
 pub enum CheckSet {
+    #[postgres(name = "code")]
     Code,
+    #[postgres(name = "code-lite")]
     CodeLite,
+    #[postgres(name = "community")]
     Community,
+    #[postgres(name = "docs")]
     Docs,
 }
 

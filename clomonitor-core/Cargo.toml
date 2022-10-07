@@ -21,6 +21,7 @@ graphql_client = { workspace = true }
 http = { workspace = true }
 lazy_static = { workspace = true }
 mockall = { workspace = true }
+postgres-types = { workspace = true }
 regex = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }

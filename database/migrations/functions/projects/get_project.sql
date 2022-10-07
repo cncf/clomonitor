@@ -29,6 +29,7 @@ returns json as $$
                 'report', (
                     select json_build_object(
                         'report_id', report_id,
+                        'check_sets', check_sets,
                         'data', data,
                         'errors', errors,
                         'updated_at', floor(extract(epoch from updated_at))

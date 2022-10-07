@@ -28,7 +28,7 @@ pub(crate) async fn metrics_collector<B>(req: Request<B>, next: Next<B>) -> impl
     let response = next.run(req).await;
 
     // Collect some info from response and track metric if the path matches
-    // with an endpoint we'd like to monitor
+    // any of the endpoints we'd like to monitor
     if ENDPOINTS_TO_MONITOR.is_match(&path) {
         let duration = start.elapsed().as_secs_f64();
         let labels = [

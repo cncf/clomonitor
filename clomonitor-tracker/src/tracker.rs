@@ -1,9 +1,13 @@
 use crate::{db::DynDB, git::DynGit};
 use anyhow::{format_err, Error, Result};
+#[cfg(not(test))]
+use clomonitor_core::linter::setup_github_http_client;
 use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput};
 use config::Config;
 use deadpool::unmanaged::{Object, Pool};
 use futures::stream::{self, StreamExt};
+#[cfg(not(test))]
+use serde_json::Value;
 use std::time::{Duration, Instant};
 use tempfile::Builder;
 use time::{self, OffsetDateTime};
@@ -90,6 +94,22 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
                 },
             },
         );
+
+    // Check Github API rate limit status for each token
+    #[cfg(not(test))]
+    for (i, token) in gh_tokens.into_iter().enumerate() {
+        let gh_client = setup_github_http_client(&token)?;
+        let response: Value = gh_client
+            .get("https://api.github.com/rate_limit")
+            .send()
+            .await?
+            .json()
+            .await?;
+        debug!(
+            "token [{}] github rate limit info: [rate: {}] [graphql: {}]",
+            i, response["rate"], response["resources"]["graphql"]
+        );
+    }
 
     info!("tracker finished");
     result

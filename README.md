@@ -25,6 +25,8 @@
 
 [clomonitor.io](https://clomonitor.io) lists most of the projects in the [CNCF](https://www.cncf.io/projects/) and [LF AI & DATA](https://lfaidata.foundation/projects/) foundations. If you notice that a project that belongs to any of those foundations is missing or has some incorrect or missing information, please feel free to submit a pull request with your suggested changes. The YAML data files for the registered foundations can be found in this repository, at the [/data](https://github.com/cncf/clomonitor/tree/main/data) path. **CLOMonitor** checks periodically those data files and applies the corresponding changes as needed.
 
+Every project featured on [clomonitor.io](https://clomonitor.io) will be provided with a badge and report summary that is ready for use in your project repos. Simply click the menu dropdown on your project page and copy+paste the code snippet into your markdown as desired. An example can be seen in the [image shown above](docs/screenshots/embed-report-light.png).
+
 ## Checks
 
 **CLOMonitor** runs sets of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.

@@ -188,7 +188,7 @@ impl CoreLinterServices {
     }
 }
 // Setup a new authenticated http client to interact with the GitHub API.
-fn setup_github_http_client(github_token: &str) -> Result<reqwest::Client, reqwest::Error> {
+pub fn setup_github_http_client(github_token: &str) -> Result<reqwest::Client, reqwest::Error> {
     reqwest::Client::builder()
         .user_agent("clomonitor")
         .default_headers(

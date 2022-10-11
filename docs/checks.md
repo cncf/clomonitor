@@ -173,6 +173,7 @@ This check passes if:
 "contributing*"
 ".github/contributing*"
 "docs/contributing*"
+"community/contributing*"
 
 CASE SENSITIVE: false
 ```

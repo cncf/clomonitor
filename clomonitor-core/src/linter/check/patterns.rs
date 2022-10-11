@@ -22,10 +22,11 @@ pub(crate) static CODE_OF_CONDUCT_FILE: [&str; 3] = [
 ];
 
 #[rustfmt::skip]
-pub(crate) static CONTRIBUTING_FILE: [&str; 3] = [
+pub(crate) static CONTRIBUTING_FILE: [&str; 4] = [
     "contributing*",
     ".github/contributing*",
     "docs/contributing*",
+    "community/contributing*",
 ];
 
 #[rustfmt::skip]

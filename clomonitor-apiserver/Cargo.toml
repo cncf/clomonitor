@@ -28,6 +28,7 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 serde_qs = { workspace = true }
 tera = { workspace = true, default-features = false }
+time = { workspace = true }
 tiny-skia = { workspace = true }
 tokio = { workspace = true }
 tokio-postgres = { workspace = true }
@@ -36,6 +37,7 @@ tower-http = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 usvg = { workspace = true }
+uuid = { workspace = true }
 
 [dev-dependencies]
 hyper = { workspace = true }

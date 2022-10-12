@@ -52,6 +52,10 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             "/projects/:foundation/:project/report-summary",
             get(report_summary_svg),
         )
+        .route(
+            "/projects/:foundation/:project/:repository/report.md",
+            get(repository_report_md),
+        )
         .route("/stats", get(stats));
 
     // Setup router
@@ -113,7 +117,7 @@ mod tests {
             Request,
         },
     };
-    use clomonitor_core::score::Score;
+    use clomonitor_core::{linter::*, score::Score};
     use mime::{APPLICATION_JSON, CSV, HTML};
     use mockall::predicate::*;
     use serde_json::json;
@@ -124,6 +128,7 @@ mod tests {
     const TESTDATA_PATH: &str = "src/testdata";
     const FOUNDATION: &str = "cncf";
     const PROJECT: &str = "artifact-hub";
+    const REPOSITORY: &str = "artifact-hub";
 
     #[tokio::test]
     async fn badge_found() {
@@ -416,7 +421,7 @@ mod tests {
             format!("max-age={}", DEFAULT_API_MAX_AGE)
         );
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
-        let golden_path = "src/testdata/report-summary.golden.svg";
+        let golden_path = "src/testdata/project-report-summary.golden.svg";
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
         let golden = fs::read(golden_path).unwrap();
         assert_eq!(body, golden);
@@ -471,6 +476,136 @@ mod tests {
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             "CSV data".to_string(),
         );
+    }
+
+    #[tokio::test]
+    async fn repository_report_md_found() {
+        let mut db = MockDB::new();
+        db.expect_repository_report_md()
+            .with(eq(FOUNDATION), eq(PROJECT), eq(REPOSITORY))
+            .times(1)
+            .returning(|_: &str, _: &str, _: &str| {
+                let report_md = RepositoryReportMDTemplate {
+                    name: "artifact-hub".to_string(),
+                    url: "https://github.com/artifacthub/hub".to_string(),
+                    check_sets: vec![CheckSet::Code],
+                    score: Some(Score {
+                        global: 99.99999999999999,
+                        global_weight: 95,
+                        documentation: Some(100.0),
+                        documentation_weight: Some(30),
+                        license: Some(100.0),
+                        license_weight: Some(20),
+                        best_practices: Some(100.0),
+                        best_practices_weight: Some(20),
+                        security: Some(100.0),
+                        security_weight: Some(20),
+                        legal: Some(100.0),
+                        legal_weight: Some(5),
+                    }),
+                    report: Some(Report {
+                        documentation: Documentation {
+                            adopters: Some(true.into()),
+                            code_of_conduct: Some(true.into()),
+                            contributing: Some(true.into()),
+                            changelog: Some(true.into()),
+                            governance: Some(true.into()),
+                            maintainers: Some(true.into()),
+                            readme: Some(true.into()),
+                            roadmap: Some(true.into()),
+                            website: Some(true.into()),
+                        },
+                        license: License {
+                            license_approved: Some(CheckOutput {
+                                passed: true,
+                                value: Some(true),
+                                ..Default::default()
+                            }),
+                            license_scanning: Some(CheckOutput::from_url(Some(
+                                "https://license-scanning.url".to_string(),
+                            ))),
+                            license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                        },
+                        best_practices: BestPractices {
+                            analytics: Some(true.into()),
+                            artifacthub_badge: Some(CheckOutput {
+                                exempt: true,
+                                ..Default::default()
+                            }),
+                            cla: Some(true.into()),
+                            community_meeting: Some(true.into()),
+                            dco: Some(true.into()),
+                            github_discussions: Some(true.into()),
+                            openssf_badge: Some(true.into()),
+                            recent_release: Some(true.into()),
+                            slack_presence: Some(true.into()),
+                        },
+                        security: Security {
+                            binary_artifacts: Some(true.into()),
+                            code_review: Some(true.into()),
+                            dangerous_workflow: Some(true.into()),
+                            dependency_update_tool: Some(true.into()),
+                            maintained: Some(true.into()),
+                            sbom: Some(true.into()),
+                            security_policy: Some(true.into()),
+                            signed_releases: Some(true.into()),
+                            token_permissions: Some(true.into()),
+                        },
+                        legal: Legal {
+                            trademark_disclaimer: Some(true.into()),
+                        },
+                    }),
+                };
+                Box::pin(future::ready(Ok(Some(report_md))))
+            });
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/{REPOSITORY}/report.md"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={}", DEFAULT_API_MAX_AGE)
+        );
+        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        let golden_path = "src/testdata/repository-report.golden.md";
+        // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
+        let golden = fs::read(golden_path).unwrap();
+        assert_eq!(body, golden);
+    }
+
+    #[tokio::test]
+    async fn repository_report_md_not_found() {
+        let mut db = MockDB::new();
+        db.expect_repository_report_md()
+            .with(eq(FOUNDATION), eq(PROJECT), eq(REPOSITORY))
+            .times(1)
+            .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/{REPOSITORY}/report.md"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND);
     }
 
     #[tokio::test]

@@ -151,7 +151,7 @@ impl<T> From<Result<Option<&ScorecardCheck>, &Error>> for CheckOutput<T> {
 
 impl<T> CheckOutput<T> {
     /// Create a new CheckOutput instance from the url provided.
-    pub(crate) fn from_url(url: Option<String>) -> Self {
+    pub fn from_url(url: Option<String>) -> Self {
         Self {
             passed: url.is_some(),
             url,

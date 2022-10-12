@@ -824,24 +824,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  spec
+                  <div
+                    class="text-truncate"
+                  >
+                    spec
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        community
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor spec"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/spec"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/spec
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/spec"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        spec
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor spec"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -854,153 +970,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor spec"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/spec"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/spec
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/spec"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      spec
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor spec"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    community
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="41, 100"
+                      style="stroke: var(--rm-orange);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      41
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="41, 100"
-                    style="stroke: var(--rm-orange);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    41
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/spec/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -3760,24 +3817,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  sdk-go
+                  <div
+                    class="text-truncate"
+                  >
+                    sdk-go
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        code
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor sdk-go"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/sdk-go"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/sdk-go
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/sdk-go"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        sdk-go
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor sdk-go"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -3790,153 +3963,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor sdk-go"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/sdk-go"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/sdk-go
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/sdk-go"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      sdk-go
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor sdk-go"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    code
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="95, 100"
+                      style="stroke: var(--rm-green);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      95
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="95, 100"
-                    style="stroke: var(--rm-green);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    95
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/sdk-go/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -4909,24 +5023,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  sdk-javascript
+                  <div
+                    class="text-truncate"
+                  >
+                    sdk-javascript
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        code
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor sdk-javascript"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/sdk-javascript"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/sdk-javascript
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/sdk-javascript"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        sdk-javascript
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor sdk-javascript"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -4939,153 +5169,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor sdk-javascript"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/sdk-javascript"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/sdk-javascript
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/sdk-javascript"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      sdk-javascript
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor sdk-javascript"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    code
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="95, 100"
+                      style="stroke: var(--rm-green);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      95
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="95, 100"
-                    style="stroke: var(--rm-green);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    95
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/sdk-javascript/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -6058,24 +6229,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  sdk-csharp
+                  <div
+                    class="text-truncate"
+                  >
+                    sdk-csharp
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        code
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor sdk-csharp"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/sdk-csharp"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/sdk-csharp
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/sdk-csharp"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        sdk-csharp
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor sdk-csharp"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -6088,153 +6375,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor sdk-csharp"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/sdk-csharp"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/sdk-csharp
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/sdk-csharp"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      sdk-csharp
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor sdk-csharp"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    code
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="85, 100"
+                      style="stroke: var(--rm-green);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      85
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="85, 100"
-                    style="stroke: var(--rm-green);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    85
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/sdk-csharp/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -7207,24 +7435,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  sdk-java
+                  <div
+                    class="text-truncate"
+                  >
+                    sdk-java
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        code
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor sdk-java"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/sdk-java"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/sdk-java
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/sdk-java"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        sdk-java
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor sdk-java"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -7237,153 +7581,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor sdk-java"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/sdk-java"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/sdk-java
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/sdk-java"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      sdk-java
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor sdk-java"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    code
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="85, 100"
+                      style="stroke: var(--rm-green);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      85
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="85, 100"
-                    style="stroke: var(--rm-green);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    85
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/sdk-java/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -8356,24 +8641,140 @@ exports[`RepositoriesList creates snapshot 1`] = `
         class="border px-3 py-2 px-md-4 py-md-4 mb-2 headerWrapper"
       >
         <div
-          class="d-flex flex-row flex-md-row-reverse align-items-center"
+          class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
+            class="d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
-              class="d-none d-md-block"
+              class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
             >
               <div
-                class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
+                class="d-none d-md-block"
               >
                 <div
-                  class="text-truncate"
+                  class="d-inline-flex flex-row align-items-center h4 fw-bold mb-2 titleWrapper"
                 >
-                  sdk-python
+                  <div
+                    class="text-truncate"
+                  >
+                    sdk-python
+                  </div>
+                  <div
+                    class="d-inline-flex ms-2 checkSetBadge"
+                  >
+                    <div
+                      class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
+                      data-testid="repo-kind-badge"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center"
+                      >
+                        code
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    aria-label="Link to anchor sdk-python"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <a
+                  aria-label="Open external link"
+                  class="link undefined"
+                  href="https://github.com/cloudevents/sdk-python"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center link"
+                    >
+                      <svg
+                        class="me-1"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                        />
+                      </svg>
+                      <div>
+                        https://github.com/cloudevents/sdk-python
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="d-block d-md-none"
+              >
+                <div
+                  class="d-flex flex-row align-items-center"
+                >
+                  <a
+                    aria-label="Open external link"
+                    class="link fw-bold text-truncate repoName"
+                    href="https://github.com/cloudevents/sdk-python"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_blank"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-baseline"
+                    >
+                      <div
+                        class="text-truncate"
+                      >
+                        sdk-python
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    aria-label="Link to anchor sdk-python"
+                    class="btn btn-link text-reset text-center lh-1 headingLink undefined"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 16 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div
-                  class="d-inline-flex ms-2 checkSetBadge"
+                  class="d-inline-flex undefined"
                 >
                   <div
                     class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
@@ -8386,153 +8787,94 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     </div>
                   </div>
                 </div>
-                <button
-                  aria-label="Link to anchor sdk-python"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
               </div>
-              <a
-                aria-label="Open external link"
-                class="link undefined"
-                href="https://github.com/cloudevents/sdk-python"
-                rel="noopener noreferrer"
-                tabindex="-1"
-                target="_blank"
-              >
-                <div
-                  class="d-flex flex-row align-items-baseline"
-                >
-                  <div
-                    class="d-flex flex-row align-items-center link"
-                  >
-                    <svg
-                      class="me-1"
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
-                      />
-                    </svg>
-                    <div>
-                      https://github.com/cloudevents/sdk-python
-                    </div>
-                  </div>
-                </div>
-              </a>
             </div>
             <div
-              class="d-block d-md-none"
+              class="ms-3 ms-md-0 me-0 me-md-3"
             >
               <div
-                class="d-flex flex-row align-items-center"
-              >
-                <a
-                  aria-label="Open external link"
-                  class="link fw-bold text-truncate repoName"
-                  href="https://github.com/cloudevents/sdk-python"
-                  rel="noopener noreferrer"
-                  tabindex="-1"
-                  target="_blank"
-                >
-                  <div
-                    class="d-flex flex-row align-items-baseline"
-                  >
-                    <div
-                      class="text-truncate"
-                    >
-                      sdk-python
-                    </div>
-                  </div>
-                </a>
-                <button
-                  aria-label="Link to anchor sdk-python"
-                  class="btn btn-link text-reset text-center lh-1 headingLink undefined"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="d-inline-flex undefined"
+                class="d-flex align-items-center justify-content-center rounded-pill score global"
+                data-testid="global-score"
               >
                 <div
-                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase miniBadge"
-                  data-testid="repo-kind-badge"
+                  class="chart"
                 >
-                  <div
-                    class="d-flex flex-row align-items-center"
+                  <svg
+                    class="d-block"
+                    viewBox="0 0 36 36"
                   >
-                    code
-                  </div>
+                    <path
+                      class="circleBg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      stroke-dasharray="85, 100"
+                      style="stroke: var(--rm-green);"
+                    />
+                    <text
+                      class="value"
+                      x="18"
+                      y="23"
+                    >
+                      85
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="ms-3 ms-md-0 me-0 me-md-3"
+            class="d-none d-lg-flex"
           >
-            <div
-              class="d-flex align-items-center justify-content-center rounded-pill score global"
-              data-testid="global-score"
-            >
+            <div>
               <div
-                class="chart"
+                class="ms-auto position-relative"
               >
-                <svg
-                  class="d-block"
-                  viewBox="0 0 36 36"
+                <button
+                  class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+                  data-testid="dropdown-btn"
+                  type="button"
                 >
-                  <path
-                    class="circleBg"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    class="circle"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    stroke-dasharray="85, 100"
-                    style="stroke: var(--rm-green);"
-                  />
-                  <text
-                    class="value"
-                    x="18"
-                    y="23"
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 12 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    85
-                  </text>
-                </svg>
+                    <path
+                      d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu rounded-0 dropdown"
+                  role="complementary"
+                >
+                  <li>
+                    <a
+                      aria-label="Open repository report"
+                      class="link dropdown-item lightText"
+                      href="/api/projects/undefined/undefined/sdk-python/report.md"
+                      rel="noopener noreferrer"
+                      tabindex="-1"
+                      target="_self"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-baseline"
+                      >
+                        <div>
+                          Get markdown
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

@@ -15,6 +15,7 @@ import ExternalLink from '../../common/ExternalLink';
 import RoundScore from '../../common/RoundScore';
 import Row from '../report/Row';
 import styles from './RepositoriesList.module.css';
+import RepositoryDropdown from './RepositoryDropdown';
 import Summary from './Summary';
 
 interface Props {
@@ -102,36 +103,45 @@ const RepositoriesList = (props: Props) => {
             <div id={repo.name} className={`position-absolute ${styles.headerAnchor}`} />
 
             <div className={`border px-3 py-2 px-md-4 py-md-4 mb-2 ${styles.headerWrapper}`}>
-              <div className="d-flex flex-row flex-md-row-reverse align-items-center">
-                <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
-                  <div className="d-none d-md-block">
-                    <div className={`d-inline-flex flex-row align-items-center h4 fw-bold mb-2 ${styles.titleWrapper}`}>
-                      <div className="text-truncate">{repo.name}</div>
-                      <CheckSetBadge checkSets={checkSets} className={`ms-2 ${styles.checkSetBadge}`} />
-                      {getAnchorLink(repo.name)}
-                    </div>
-                    <ExternalLink href={repo.url}>
-                      <div className={`d-flex flex-row align-items-center ${styles.link}`}>
-                        <VscGithub className="me-1" />
-                        <div>{repo.url}</div>
-                      </div>
-                    </ExternalLink>
-                  </div>
-                  <div className="d-block d-md-none">
-                    <div className="d-flex flex-row align-items-center">
-                      <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
+              <div className="d-flex flex-row justify-content-between align-items-top">
+                <div className="d-flex flex-row flex-md-row-reverse align-items-center">
+                  <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
+                    <div className="d-none d-md-block">
+                      <div
+                        className={`d-inline-flex flex-row align-items-center h4 fw-bold mb-2 ${styles.titleWrapper}`}
+                      >
                         <div className="text-truncate">{repo.name}</div>
+                        <CheckSetBadge checkSets={checkSets} className={`ms-2 ${styles.checkSetBadge}`} />
+                        {getAnchorLink(repo.name)}
+                      </div>
+                      <ExternalLink href={repo.url}>
+                        <div className={`d-flex flex-row align-items-center ${styles.link}`}>
+                          <VscGithub className="me-1" />
+                          <div>{repo.url}</div>
+                        </div>
                       </ExternalLink>
-                      {getAnchorLink(repo.name)}
                     </div>
-                    <CheckSetBadge checkSets={checkSets} />
+                    <div className="d-block d-md-none">
+                      <div className="d-flex flex-row align-items-center">
+                        <ExternalLink href={repo.url} className={`fw-bold text-truncate ${styles.repoName}`}>
+                          <div className="text-truncate">{repo.name}</div>
+                        </ExternalLink>
+                        {getAnchorLink(repo.name)}
+                      </div>
+                      <CheckSetBadge checkSets={checkSets} />
+                    </div>
+                  </div>
+                  <div className="ms-3 ms-md-0 me-0 me-md-3">
+                    <RoundScore
+                      score={!isUndefined(repo.score) ? repo.score.global : undefined}
+                      className={styles.global}
+                    />
                   </div>
                 </div>
-                <div className="ms-3 ms-md-0 me-0 me-md-3">
-                  <RoundScore
-                    score={!isUndefined(repo.score) ? repo.score.global : undefined}
-                    className={styles.global}
-                  />
+                <div className="d-none d-lg-flex">
+                  <div>
+                    <RepositoryDropdown repoName={repo.name} />
+                  </div>
                 </div>
               </div>
             </div>

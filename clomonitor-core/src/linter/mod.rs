@@ -10,8 +10,8 @@ use clap::ValueEnum;
 #[cfg(feature = "mocks")]
 use mockall::automock;
 use postgres_types::ToSql;
-use serde::Deserialize;
-use std::{path::PathBuf, sync::Arc};
+use serde::{Deserialize, Serialize};
+use std::{fmt, path::PathBuf, sync::Arc};
 use which::which;
 
 mod check;
@@ -41,7 +41,7 @@ pub struct LinterInput {
 
 /// Check sets define a set of checks that will be run on a given repository.
 /// Multiple check sets can be assigned to a repository.
-#[derive(Debug, Clone, PartialEq, Eq, Hash, ValueEnum, Deserialize, ToSql)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, ValueEnum, Serialize, Deserialize, ToSql)]
 #[serde(rename_all = "kebab-case")]
 #[postgres(name = "check_set")]
 pub enum CheckSet {
@@ -53,6 +53,18 @@ pub enum CheckSet {
     Community,
     #[postgres(name = "docs")]
     Docs,
+}
+
+impl fmt::Display for CheckSet {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let output = match self {
+            Self::Code => "CODE",
+            Self::CodeLite => "CODE-LITE",
+            Self::Community => "COMMUNITY",
+            Self::Docs => "DOCS",
+        };
+        write!(f, "{output}")
+    }
 }
 
 /// CLOMonitor core linter (Linter implementation).

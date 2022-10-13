@@ -1,3 +1,4 @@
+use crate::handlers::RepositoryReportMDTemplate;
 use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::score::Score;
@@ -22,16 +23,24 @@ type Count = i64;
 #[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get project's details in json format.
-    async fn project(&self, foundation: &str, project: &str) -> Result<Option<JsonString>>;
+    async fn project(&self, foundation: &str, project_name: &str) -> Result<Option<JsonString>>;
 
     /// Get project's rating.
-    async fn project_rating(&self, foundation: &str, project: &str) -> Result<Option<String>>;
+    async fn project_rating(&self, foundation: &str, project_name: &str) -> Result<Option<String>>;
 
     /// Get project's score.
-    async fn project_score(&self, foundation: &str, project: &str) -> Result<Option<Score>>;
+    async fn project_score(&self, foundation: &str, project_name: &str) -> Result<Option<Score>>;
 
     /// Get all repositories including checks details.
     async fn repositories_with_checks(&self) -> Result<String>;
+
+    /// Get some repository info to prepare report in markdown format.
+    async fn repository_report_md(
+        &self,
+        foundation: &str,
+        project_name: &str,
+        repository_name: &str,
+    ) -> Result<Option<RepositoryReportMDTemplate>>;
 
     /// Search projects that match the criteria provided.
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)>;
@@ -54,21 +63,21 @@ impl PgDB {
 
 #[async_trait]
 impl DB for PgDB {
-    async fn project(&self, foundation: &str, project: &str) -> Result<Option<JsonString>> {
+    async fn project(&self, foundation: &str, project_name: &str) -> Result<Option<JsonString>> {
         let row = self
             .pool
             .get()
             .await?
             .query_one(
                 "select get_project($1::text, $2::text)::text",
-                &[&foundation, &project],
+                &[&foundation, &project_name],
             )
             .await?;
         let project: Option<String> = row.get(0);
         Ok(project)
     }
 
-    async fn project_rating(&self, foundation: &str, project: &str) -> Result<Option<String>> {
+    async fn project_rating(&self, foundation: &str, project_name: &str) -> Result<Option<String>> {
         let rows = self
             .pool
             .get()
@@ -80,7 +89,7 @@ impl DB for PgDB {
                 where p.foundation_id = $1::text
                 and p.name = $2::text
                 ",
-                &[&foundation, &project],
+                &[&foundation, &project_name],
             )
             .await?;
         if rows.len() != 1 {
@@ -90,7 +99,7 @@ impl DB for PgDB {
         Ok(rating)
     }
 
-    async fn project_score(&self, foundation: &str, project: &str) -> Result<Option<Score>> {
+    async fn project_score(&self, foundation: &str, project_name: &str) -> Result<Option<Score>> {
         let rows = self
             .pool
             .get()
@@ -102,7 +111,7 @@ impl DB for PgDB {
                 where p.foundation_id = $1::text
                 and p.name = $2::text
                 ",
-                &[&foundation, &project],
+                &[&foundation, &project_name],
             )
             .await?;
         if rows.len() != 1 {
@@ -129,6 +138,28 @@ impl DB for PgDB {
             repos.push('\n');
         }
         Ok(repos)
+    }
+
+    async fn repository_report_md(
+        &self,
+        foundation: &str,
+        project_name: &str,
+        repository_name: &str,
+    ) -> Result<Option<RepositoryReportMDTemplate>> {
+        let row = self
+            .pool
+            .get()
+            .await?
+            .query_one(
+                "select get_repository_report($1::text, $2::text, $3::text)",
+                &[&foundation, &project_name, &repository_name],
+            )
+            .await?;
+        let report_md: Option<Json<RepositoryReportMDTemplate>> = row.get(0);
+        if let Some(Json(report_md)) = report_md {
+            return Ok(Some(report_md));
+        }
+        Ok(None)
     }
 
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)> {

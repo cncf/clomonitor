@@ -13,6 +13,7 @@ interface Props {
   ariaHidden?: boolean;
   visibleExternalIcon?: boolean;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 const ExternalLink = (props: Props) => {
@@ -35,6 +36,8 @@ const ExternalLink = (props: Props) => {
             e.stopPropagation();
             e.preventDefault();
 
+            if (props.onClick) props.onClick();
+
             if (isUndefined(props.disabled) || !props.disabled) {
               window.open(props.href, props.target || '_blank');
             }
@@ -51,7 +54,11 @@ const ExternalLink = (props: Props) => {
           href={props.href}
           target={props.target || '_blank'}
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+
+            if (props.onClick) props.onClick();
+          }}
           aria-label={props.label || 'Open external link'}
           aria-hidden={props.ariaHidden}
           tabIndex={-1}

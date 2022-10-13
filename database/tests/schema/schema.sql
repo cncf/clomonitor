@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(22);
+select plan(23);
 
 -- Check expected extension exist
 select has_extension('pgcrypto');
@@ -84,6 +84,7 @@ select has_function('search_projects');
 select has_function('unregister_project');
 -- Repositories
 select has_function('get_repositories_with_checks');
+select has_function('get_repository_report');
 -- Stats
 select has_function('repositories_passing_check');
 select has_function('get_stats');

@@ -144,8 +144,9 @@
   .dropdown-item {
     color: var(--color-light-font);
 
-    &:hover {
-      background-color: var(--bg-color);
+    &:hover,
+    &:focus {
+      background-color: var(--bg-color) !important;
     }
   }
 

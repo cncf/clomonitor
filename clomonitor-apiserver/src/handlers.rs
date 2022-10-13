@@ -11,9 +11,13 @@ use axum::{
     },
     response::{self, IntoResponse},
 };
-use clomonitor_core::score::Score;
+use clomonitor_core::{
+    linter::{CheckSet, Report},
+    score::Score,
+};
 use config::Config;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
+use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
@@ -264,6 +268,38 @@ pub(crate) async fn repositories_checks(Extension(db): Extension<DynDB>) -> impl
         .header(CONTENT_TYPE, CSV.as_ref())
         .body(Full::from(repos))
         .map_err(internal_error)
+}
+
+/// Template for the repository report in markdown format.
+#[derive(Debug, Clone, Template, Serialize, Deserialize)]
+#[template(path = "repository-report.md")]
+pub(crate) struct RepositoryReportMDTemplate {
+    pub name: String,
+    pub url: String,
+    pub check_sets: Vec<CheckSet>,
+    pub score: Option<Score>,
+    pub report: Option<Report>,
+}
+
+/// Handler that returns the repository's report in markdown format.
+pub(crate) async fn repository_report_md(
+    Extension(db): Extension<DynDB>,
+    Path((foundation, project, repository)): Path<(String, String, String)>,
+) -> impl IntoResponse {
+    // Get repository report info from database
+    let report_md = db
+        .repository_report_md(&foundation, &project, &repository)
+        .await
+        .map_err(internal_error)?;
+
+    // Render repository report in markdown format and return it
+    match report_md {
+        Some(report_md) => {
+            let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
+            Ok((headers, report_md))
+        }
+        None => Err(StatusCode::NOT_FOUND),
+    }
 }
 
 /// Handler that allows searching for projects.

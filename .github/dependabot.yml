@@ -8,6 +8,7 @@ updates:
     ignore:
       - dependency-name: "bootstrap"
         versions: ["5.2.x"]
+      - dependency-name: "postcss"
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:

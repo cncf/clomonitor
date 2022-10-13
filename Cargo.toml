@@ -78,4 +78,4 @@ tracing-subscriber = { version = "0.3.15", features = ["env-filter", "json"] }
 usvg = "0.23.0"
 uuid = { version = "1.1.2", features = ["serde"] }
 which = "4.3.0"
-wiremock = "0.5.14"
+wiremock = "0.5.15"

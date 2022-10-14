@@ -21,7 +21,7 @@ query Md($repo: String!, $owner: String!) {
             __typename
             login
         }
-        pullRequests (last: 1, states: [MERGED]) {
+        pullRequests (first: 1, orderBy: {field: CREATED_AT, direction: DESC}, states: [MERGED]) {
             nodes {
                 commits (last: 1) {
                     nodes {
@@ -48,7 +48,7 @@ query Md($repo: String!, $owner: String!) {
                 }
             }
         }
-        releases (last: 1) {
+        releases (first: 1, orderBy: {field: CREATED_AT, direction: DESC}) {
             nodes {
                 createdAt
                 description

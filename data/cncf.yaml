@@ -727,10 +727,6 @@
       url: https://github.com/fluxcd/community
       check_sets:
         - community
-    - name: flux
-      url: https://github.com/fluxcd/flux
-      check_sets:
-        - code-lite
     - name: flux2
       url: https://github.com/fluxcd/flux2
       check_sets:

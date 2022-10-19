@@ -179,7 +179,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cert-manager/icon/color/cert-manager-icon-color.svg
   devstats_url: https://certmanager.devstats.cncf.io/
   accepted_at: "2020-11-10"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: cert-manager
       url: https://github.com/jetstack/cert-manager
@@ -268,8 +268,8 @@
   devstats_url: https://cloudevents.devstats.cncf.io/
   accepted_at: "2018-05-22"
   maturity: incubating
-  repositories: 
-    ### 
+  repositories:
+    ###
     # CloudEvents does not require a code checkset because the primary deliverable
     # is a specification with only secondary code bases included in the project
     ###
@@ -2459,5 +2459,30 @@
         - docs
     - name: charts
       url: https://github.com/kubereboot/charts
+      check_sets:
+        - code-lite
+- name: istio
+  display_name: Istio
+  description: Connect, secure, control, and observe services
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/istio/istio/master/logo/istio-bluelogo-whitebackground-unframed.svg
+  devstats_url: https://istio.devstats.cncf.io
+  accepted_at: "2022-09-28"
+  maturity: incubating
+  repositories:
+    - name: istio
+      url: https://github.com/istio/istio
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/istio/community
+      check_sets:
+        - community
+    - name: istio.io
+      url: https://github.com/istio/istio.io
+      check_sets:
+        - docs
+    - name: proxy
+      url: https://github.com/istio/proxy
       check_sets:
         - code-lite

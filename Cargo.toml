@@ -23,7 +23,7 @@ axum = "0.5.16"
 bincode = "1.3.3"
 clap = { version = "4.0.15", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
-comfy-table = "6.1.0"
+comfy-table = "6.1.1"
 config = "0.13.2"
 deadpool = "0.9.5"
 deadpool-postgres = { version = "0.10.2", features = ["serde"] }

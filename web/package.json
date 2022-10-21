@@ -43,6 +43,7 @@
     "typescript": "^4.8.4"
   },
   "resolutions": {
+    "react-scripts/**/minimatch": "^5.1.0",
     "react-scripts/**/nth-check": "^2.0.1",
     "react-scripts/**/postcss": "^8.2.13"
   },

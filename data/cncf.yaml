@@ -1578,6 +1578,10 @@
       url: https://github.com/open-feature/spec
       check_sets:
         - docs
+    - name: java-sdk
+      url: https://github.com/open-feature/java-sdk
+      check_sets:
+        - code
     - name: flagd
       url: https://github.com/open-feature/flagd
       check_sets:

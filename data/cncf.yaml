@@ -1156,7 +1156,7 @@
   display_name: Kubewarden
   description: Kubewarden is a policy engine for Kubernetes. It helps with keeping your Kubernetes clusters secure and compliant
   category: provisioning
-  logo_url: https://www.kubewarden.io/images/logo-kubewarden.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubewarden/icon/color/kubewarden.icon.svg
   devstats_url: https://kubewarden.teststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -1569,7 +1569,7 @@
   display_name: OpenFeature
   description: Standardizing Feature Flagging for Everyone
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/open-feature.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/black/openfeature-stacked-black.svg
   devstats_url: https://openfeature.teststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -2245,7 +2245,7 @@
   display_name: Konveyor
   description: Documentation for Konveyor Community
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/konveyor.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/konveyor/icon/color/konveyor-icon-color.svg
   devstats_url: https://konveyor.devstats.cncf.io
   accepted_at: "2022-07-26"
   maturity: sandbox
@@ -2290,7 +2290,7 @@
   display_name: Armada
   description: Armada is a multi-Kubernetes cluster batch job scheduler
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/G-Research/armada/master/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/stacked/color/armada-stacked-color.svg
   devstats_url: https://armada.devstats.cncf.io
   accepted_at: "2022-07-26"
   maturity: sandbox
@@ -2340,7 +2340,7 @@
   display_name: ContainerSSH
   description: ContainerSSH launches a new container for each SSH connection in Kubernetes, Podman or Docker. The user is transparently dropped in the container and the container is removed when the user disconnects. Authentication and container configuration are dynamic using webhooks, no system users required
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerssh/icon/containerssh-icon-dark.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerssh/icon/containerssh-icon-light.svg
   devstats_url: https://containerssh.devstats.cncf.io
   accepted_at: "2022-09-13"
   maturity: sandbox
@@ -2437,7 +2437,7 @@
   display_name: Lima
   description: Linux virtual machines, on macOS
   category: runtime
-  logo_url: https://raw.githubusercontent.com/lima-vm/lima/master/docs/images/lima-logo-01.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/lima/horizontal/color/lima-horizontal-color.svg
   devstats_url: https://lima.devstats.cncf.io/
   accepted_at: "2022-09-13"
   maturity: sandbox
@@ -2451,7 +2451,7 @@
   display_name: Kured
   description: Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications
   category: orchestration
-  logo_url: https://avatars.githubusercontent.com/u/113497315?s=200&v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kured/stacked/color/kured_stacked-color.svg
   devstats_url: https://kured.devstats.cncf.io/
   accepted_at: "2022-09-13"
   maturity: sandbox
@@ -2473,7 +2473,7 @@
   display_name: Istio
   description: Connect, secure, control, and observe services
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/istio/istio/master/logo/istio-bluelogo-whitebackground-unframed.svg
+  logo_url: https://opensource.google/images/projects/os-projects-istio.svg
   devstats_url: https://istio.devstats.cncf.io
   accepted_at: "2022-09-28"
   maturity: incubating

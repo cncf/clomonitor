@@ -55,7 +55,7 @@ serde_qs = "0.10.1"
 sha2 = "0.10.6"
 tempfile = "3.3.0"
 tera = { version = "1.17.1", default-features = false }
-time = { version = "0.3.15" }
+time = { version = "0.3.16" }
 tiny-skia = "0.6.6"
 tokio = { version = "1.21.2", features = [
     "macros",

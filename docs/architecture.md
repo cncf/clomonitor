@@ -11,6 +11,7 @@ clomonitor
 ├── .github
 ├── chart
 ├── clomonitor-apiserver
+├── clomonitor-archiver
 ├── clomonitor-core
 ├── clomonitor-linter
 ├── clomonitor-registrar
@@ -25,6 +26,8 @@ clomonitor
 - **chart:** contains the CLOMonitor Helm chart, which is the recommended installation method.
 
 - **clomonitor-apiserver** contains the source code of the `apiserver` backend component.
+
+- **clomonitor-archiver** contains the source code of the `archiver` backend component.
 
 - **clomonitor-core:** contains the source code of the `core backend modules`, like linter and score.
 
@@ -84,7 +87,7 @@ It's composed of two modules:
 
 ## Backend applications
 
-The backend applications are `apiserver`, `registrar` and `tracker`. They are located in the `clomonitor-apiserver`, `clomonitor-registrar` and `clomonitor-tracker` directories respectively. Each of the applications' directory contains a `Dockerfile` that will be used to build the corresponding Docker image.
+The backend applications are `apiserver`, `archiver`, `registrar` and `tracker`. They are located in the `clomonitor-apiserver`, `clomonitor-archiver`, `clomonitor-registrar` and `clomonitor-tracker` directories respectively. Each of the applications' directory contains a `Dockerfile` that will be used to build the corresponding Docker image.
 
 ```sh
 .
@@ -93,6 +96,10 @@ The backend applications are `apiserver`, `registrar` and `tracker`. They are lo
 │   ├── Dockerfile
 │   ├── src
 │   └── templates
+├── clomonitor-archiver
+│   ├── Cargo.toml
+│   ├── Dockerfile
+│   └── src
 ├── clomonitor-registrar
 │   ├── Cargo.toml
 │   ├── Dockerfile
@@ -104,6 +111,8 @@ The backend applications are `apiserver`, `registrar` and `tracker`. They are lo
 ```
 
 - **apiserver:** this component provides an HTTP API that exposes some endpoints used by the web application layer, plus some extra functionality like badges configuration, reports summary, etc. It is also in charge of serving the web application static assets.
+
+- **archiver:** this component is in charge of creating snapshots of projects' data periodically. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/archiver_cronjob.yaml).
 
 - **registrar:** this component is in charge of registering the projects available on each foundation's data file in the database. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/registrar_cronjob.yaml).
 

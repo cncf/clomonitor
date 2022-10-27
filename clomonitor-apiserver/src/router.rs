@@ -308,7 +308,7 @@ mod tests {
     #[tokio::test]
     async fn project_found() {
         let mut db = MockDB::new();
-        db.expect_project()
+        db.expect_project_data()
             .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
             .returning(|_, _| {
@@ -343,7 +343,7 @@ mod tests {
     #[tokio::test]
     async fn project_not_found() {
         let mut db = MockDB::new();
-        db.expect_project()
+        db.expect_project_data()
             .with(eq(FOUNDATION), eq(PROJECT))
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));

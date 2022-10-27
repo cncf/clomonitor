@@ -73,6 +73,14 @@ apiserver:
       repository: clomonitor/apiserver
     resources: {}
 
+# Archiver configuration
+archiver:
+  cronjob:
+    image:
+      # Archiver image repository (without the tag)
+      repository: clomonitor/archiver
+    resources: {}
+
 # Registrar configuration
 registrar:
   cronjob:

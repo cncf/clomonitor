@@ -6,6 +6,12 @@ docker build \
     -t clomonitor/apiserver \
 .
 
+# archiver
+docker build \
+    -f clomonitor-archiver/Dockerfile \
+    -t clomonitor/archiver \
+.
+
 # dbmigrator
 docker build \
     -f database/migrations/Dockerfile \

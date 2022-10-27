@@ -158,7 +158,7 @@ pub(crate) async fn project(
 ) -> impl IntoResponse {
     // Get project from database
     let project = db
-        .project(&foundation, &project)
+        .project_data(&foundation, &project)
         .await
         .map_err(internal_error)?;
 

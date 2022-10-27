@@ -1,8 +1,5 @@
 -- Returns some information about a project in json format.
-create or replace function get_project(
-    p_foundation text,
-    p_project_name text
-)
+create or replace function get_project_by_id(p_project_id uuid)
 returns json as $$
     select json_strip_nulls(json_build_object(
         'id', p.project_id,
@@ -41,9 +38,18 @@ returns json as $$
             from repository r
             where project_id = p.project_id
         ),
+        'snapshots', (
+            select json_agg(s.date)
+            from (
+                select date
+                from project_snapshot
+                where project_id = p_project_id
+                order by date desc
+            ) s
+        ),
         'foundation', p.foundation_id
     ))
     from project p
-    where p.foundation_id = p_foundation
-    and p.name = p_project_name;
+    where p.project_id = p_project_id
+    and p.score is not null;
 $$ language sql;

@@ -54,3 +54,10 @@ create table if not exists report (
     repository_id uuid not null references repository on delete cascade,
     unique (repository_id)
 );
+
+create table if not exists project_snapshot (
+    project_id uuid not null references project on delete cascade,
+    date date default current_date not null,
+    data jsonb,
+    primary key (project_id, date)
+);

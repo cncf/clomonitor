@@ -827,7 +827,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -3820,7 +3820,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -5026,7 +5026,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -6232,7 +6232,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -7438,7 +7438,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -8644,7 +8644,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"

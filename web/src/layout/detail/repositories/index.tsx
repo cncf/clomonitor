@@ -104,7 +104,7 @@ const RepositoriesList = (props: Props) => {
 
             <div className={`border px-3 py-2 px-md-4 py-md-4 mb-2 ${styles.headerWrapper}`}>
               <div className="d-flex flex-row justify-content-between align-items-top">
-                <div className="d-flex flex-row flex-md-row-reverse align-items-center">
+                <div className="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center">
                   <div className="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative">
                     <div className="d-none d-md-block">
                       <div

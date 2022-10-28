@@ -4,7 +4,7 @@ select plan(2);
 
 -- Non existing project
 select is(
-    get_project('non-existing', 'non-existing')::jsonb,
+    get_project_by_name('non-existing', 'non-existing')::jsonb,
     (null::jsonb),
     'Null is returned if the requested project does not exist'
 );
@@ -75,7 +75,7 @@ insert into report (
 
 -- Run some tests
 select is(
-    get_project('cncf', 'artifact-hub')::jsonb,
+    get_project_by_name('cncf', 'artifact-hub')::jsonb,
     '{
         "category": "category1",
         "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",

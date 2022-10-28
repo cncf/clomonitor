@@ -28,6 +28,11 @@ updates:
       - dependency-name: "node"
         versions: ["18-alpine3.16", "19-alpine3.16"]
   - package-ecosystem: "docker"
+    directory: "/clomonitor-archiver"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+  - package-ecosystem: "docker"
     directory: "/clomonitor-linter"
     schedule:
       interval: "weekly"

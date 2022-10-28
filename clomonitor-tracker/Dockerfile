@@ -4,9 +4,10 @@ RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
 COPY clomonitor-apiserver/Cargo.* clomonitor-apiserver
-COPY clomonitor-registrar/Cargo.* clomonitor-registrar
+COPY clomonitor-archiver/Cargo.* clomonitor-archiver
 COPY clomonitor-core clomonitor-core
 COPY clomonitor-linter clomonitor-linter
+COPY clomonitor-registrar/Cargo.* clomonitor-registrar
 COPY clomonitor-tracker clomonitor-tracker
 WORKDIR /clomonitor/clomonitor-tracker
 RUN cargo build --release

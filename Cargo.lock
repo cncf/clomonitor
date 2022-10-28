@@ -370,6 +370,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "clomonitor-archiver"
+version = "0.7.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "clap",
+ "config",
+ "deadpool-postgres",
+ "openssl",
+ "postgres-openssl",
+ "serde_json",
+ "time",
+ "tokio",
+ "tokio-postgres",
+ "tracing",
+ "tracing-subscriber",
+ "uuid",
+]
+
+[[package]]
 name = "clomonitor-core"
 version = "0.7.0"
 dependencies = [

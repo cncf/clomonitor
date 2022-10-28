@@ -22,8 +22,12 @@ type Count = i64;
 #[async_trait]
 #[cfg_attr(test, automock)]
 pub(crate) trait DB {
-    /// Get project's details in json format.
-    async fn project(&self, foundation: &str, project_name: &str) -> Result<Option<JsonString>>;
+    /// Get project's data in json format.
+    async fn project_data(
+        &self,
+        foundation: &str,
+        project_name: &str,
+    ) -> Result<Option<JsonString>>;
 
     /// Get project's rating.
     async fn project_rating(&self, foundation: &str, project_name: &str) -> Result<Option<String>>;
@@ -63,13 +67,15 @@ impl PgDB {
 
 #[async_trait]
 impl DB for PgDB {
-    async fn project(&self, foundation: &str, project_name: &str) -> Result<Option<JsonString>> {
-        let row = self
-            .pool
-            .get()
-            .await?
+    async fn project_data(
+        &self,
+        foundation: &str,
+        project_name: &str,
+    ) -> Result<Option<JsonString>> {
+        let db = self.pool.get().await?;
+        let row = db
             .query_one(
-                "select get_project($1::text, $2::text)::text",
+                "select get_project_by_name($1::text, $2::text)::text",
                 &[&foundation, &project_name],
             )
             .await?;
@@ -78,11 +84,9 @@ impl DB for PgDB {
     }
 
     async fn project_rating(&self, foundation: &str, project_name: &str) -> Result<Option<String>> {
-        let rows = self
-            .pool
-            .get()
-            .await?
-            .query(
+        let db = self.pool.get().await?;
+        let row = db
+            .query_opt(
                 "
                 select rating
                 from project p
@@ -92,19 +96,14 @@ impl DB for PgDB {
                 &[&foundation, &project_name],
             )
             .await?;
-        if rows.len() != 1 {
-            return Ok(None);
-        }
-        let rating: Option<String> = rows.first().unwrap().get("rating");
+        let rating: Option<String> = row.and_then(|row| row.get(0));
         Ok(rating)
     }
 
     async fn project_score(&self, foundation: &str, project_name: &str) -> Result<Option<Score>> {
-        let rows = self
-            .pool
-            .get()
-            .await?
-            .query(
+        let db = self.pool.get().await?;
+        let row = db
+            .query_opt(
                 "
                 select score
                 from project p
@@ -114,10 +113,7 @@ impl DB for PgDB {
                 &[&foundation, &project_name],
             )
             .await?;
-        if rows.len() != 1 {
-            return Ok(None);
-        }
-        let score: Option<Json<Score>> = rows.first().unwrap().get("score");
+        let score: Option<Json<Score>> = row.and_then(|row| row.get(0));
         match score {
             Some(Json(score)) => Ok(Some(score)),
             None => Ok(None),
@@ -125,10 +121,8 @@ impl DB for PgDB {
     }
 
     async fn repositories_with_checks(&self) -> Result<String> {
-        let rows = self
-            .pool
-            .get()
-            .await?
+        let db = self.pool.get().await?;
+        let rows = db
             .query("select get_repositories_with_checks()", &[])
             .await?;
         let mut repos = String::new();
@@ -146,10 +140,8 @@ impl DB for PgDB {
         project_name: &str,
         repository_name: &str,
     ) -> Result<Option<RepositoryReportMDTemplate>> {
-        let row = self
-            .pool
-            .get()
-            .await?
+        let db = self.pool.get().await?;
+        let row = db
             .query_one(
                 "select get_repository_report($1::text, $2::text, $3::text)",
                 &[&foundation, &project_name, &repository_name],
@@ -163,10 +155,8 @@ impl DB for PgDB {
     }
 
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)> {
-        let row = self
-            .pool
-            .get()
-            .await?
+        let db = self.pool.get().await?;
+        let row = db
             .query_one(
                 "select total_count, projects::text from search_projects($1::jsonb)",
                 &[&Json(input)],
@@ -178,10 +168,8 @@ impl DB for PgDB {
     }
 
     async fn stats(&self, foundation: Option<&String>) -> Result<JsonString> {
-        let row = self
-            .pool
-            .get()
-            .await?
+        let db = self.pool.get().await?;
+        let row = db
             .query_one("select get_stats($1::text)::text", &[&foundation])
             .await?;
         let stats: String = row.get(0);

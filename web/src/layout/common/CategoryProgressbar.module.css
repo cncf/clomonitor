@@ -29,6 +29,10 @@
   margin-top: 10px;
 }
 
+.line {
+  transition: width 0.6s ease;
+}
+
 .arrow {
   width: 0px;
   height: 0px;

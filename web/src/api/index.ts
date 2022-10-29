@@ -152,6 +152,10 @@ class API_CLASS {
       url: '/data/repositories.csv',
     });
   }
+
+  public getProjectSnapshot(project: string, foundation: string, date: string): Promise<ProjectDetail> {
+    return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${project}/snapshots/${date}` });
+  }
 }
 
 const API = new API_CLASS();

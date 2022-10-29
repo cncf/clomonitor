@@ -6,6 +6,7 @@ import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
 import API from '../../api';
 import { ProjectDetail } from '../../types';
 import Detail from './index';
+jest.mock('./timeline/Timeline', () => () => <>Timeline</>);
 jest.mock('../../utils/updateMetaIndex');
 jest.mock('../../api');
 jest.mock('react-markdown', () => () => <div />);

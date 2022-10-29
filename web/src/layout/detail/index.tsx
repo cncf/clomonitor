@@ -26,6 +26,7 @@ import RepositorySection from '../search/RepositorySection';
 import WebsiteSection from '../search/WebsiteSection';
 import styles from './Detail.module.css';
 import RepositoriesList from './repositories';
+import Timeline from './timeline/Timeline';
 
 interface Props {
   setInvisibleFooter: Dispatch<SetStateAction<boolean>>;
@@ -38,6 +39,8 @@ const Detail = (props: Props) => {
   const { project, foundation } = useParams();
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
+  const [activeDate, setActiveDate] = useState<string | undefined>();
+  const [snapshots, setSnapshots] = useState<string[]>([]);
 
   useScrollRestorationFix();
 
@@ -65,15 +68,44 @@ const Detail = (props: Props) => {
     [location.hash]
   );
 
+  async function fetchProjectDetail() {
+    window.scrollTo(0, 0); // Go to top when a new project is fetched
+    setIsLoadingProject(true);
+    props.setInvisibleFooter(true);
+    try {
+      const projectDetail = await API.getProjectDetail(project!, foundation!);
+      setDetail(projectDetail);
+      setSnapshots(projectDetail.snapshots || []);
+      updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
+      setIsLoadingProject(false);
+      props.setInvisibleFooter(false);
+    } catch (err: any) {
+      setDetail(null);
+      setIsLoadingProject(false);
+      props.setInvisibleFooter(false);
+    }
+  }
+
   useEffect(() => {
-    async function fetchProjectDetail() {
-      window.scrollTo(0, 0); // Go to top when a new project is fetched
+    if (detail) {
+      if (!isUndefined(activeDate)) {
+        setActiveDate(undefined);
+      } else {
+        fetchProjectDetail();
+      }
+    } else {
+      if (!isUndefined(project)) {
+        fetchProjectDetail();
+      }
+    }
+  }, [project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  useEffect(() => {
+    async function fetchSnapshot() {
       setIsLoadingProject(true);
-      props.setInvisibleFooter(true);
       try {
-        const projectDetail = await API.getProjectDetail(project!, foundation!);
+        const projectDetail = await API.getProjectSnapshot(project!, foundation!, activeDate!);
         setDetail(projectDetail);
-        updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
         setIsLoadingProject(false);
         props.setInvisibleFooter(false);
       } catch (err: any) {
@@ -82,10 +114,15 @@ const Detail = (props: Props) => {
         props.setInvisibleFooter(false);
       }
     }
-    if (!isUndefined(project)) {
-      fetchProjectDetail();
+
+    if (detail) {
+      if (isUndefined(activeDate)) {
+        fetchProjectDetail();
+      } else {
+        fetchSnapshot();
+      }
     }
-  }, [project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [activeDate]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   return (
     <>
@@ -128,93 +165,109 @@ const Detail = (props: Props) => {
                 </NoData>
               </div>
             ) : (
-              <>
-                <div className="my-4 my-md-5">
-                  <div className="border">
-                    <div className="px-0 px-md-4 pt-0 pt-md-4">
-                      <div className={`d-flex flex-row align-items-stretch px-3 py-2 p-md-0 ${styles.titleWrapper}`}>
-                        <div
-                          className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
-                        >
-                          <Image alt={`${detail.display_name || detail.name} logo`} url={detail.logo_url} />
-                        </div>
-                        <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
-                          <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>
-                            {detail.display_name || detail.name}
+              <div className="d-flex flex-row">
+                <div className="flex-grow-1">
+                  <div className="my-4 my-md-5">
+                    <div className="border">
+                      <div className="px-0 px-md-4 pt-0 pt-md-4">
+                        <div className={`d-flex flex-row align-items-stretch px-3 py-2 p-md-0 ${styles.titleWrapper}`}>
+                          <div
+                            className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
+                          >
+                            <Image alt={`${detail.display_name || detail.name} logo`} url={detail.logo_url} />
                           </div>
+                          <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
+                            <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>
+                              {detail.display_name || detail.name}
+                            </div>
 
-                          <div className="d-flex flex-row align-items-center my-2">
-                            <FoundationBadge foundation={detail.foundation} />
-                            <MaturityBadge maturityLevel={detail.maturity} className="ms-2" />
-                            <CartegoryBadge category={detail.category} className="d-none d-md-block ms-2" />
-                          </div>
+                            <div className="d-flex flex-row align-items-center my-2">
+                              <FoundationBadge foundation={detail.foundation} />
+                              <MaturityBadge maturityLevel={detail.maturity} className="ms-2" />
+                              <CartegoryBadge category={detail.category} className="d-none d-md-block ms-2" />
+                            </div>
 
-                          <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>
-                            <RepositorySection repositories={detail.repositories} />
+                            <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>
+                              <RepositorySection repositories={detail.repositories} />
 
-                            <WebsiteSection repositories={detail.repositories} />
+                              <WebsiteSection repositories={detail.repositories} />
 
-                            {detail.devstats_url && (
-                              <>
-                                <ExternalLink href={detail.devstats_url} className="ms-3">
-                                  <div className={`d-flex flex-row align-items-center ${styles.link}`}>
-                                    <IoBarChart className={`me-1 ${styles.statsIcon}`} />
-                                    <div>DevStats</div>
+                              {detail.devstats_url && (
+                                <>
+                                  <ExternalLink href={detail.devstats_url} className="ms-3">
+                                    <div className={`d-flex flex-row align-items-center ${styles.link}`}>
+                                      <IoBarChart className={`me-1 ${styles.statsIcon}`} />
+                                      <div>DevStats</div>
+                                    </div>
+                                  </ExternalLink>
+                                </>
+                              )}
+
+                              {!isUndefined(detail.accepted_at) && (
+                                <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
+                                  <GoCalendar className={`me-1 ${styles.statsIcon}`} />
+                                  <div className="d-flex flex-row">
+                                    <span className="text-muted d-none d-lg-block me-1">Accepted:</span>
+                                    <span className="d-none d-md-block">
+                                      {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
+                                    </span>
+                                    <span className="d-block d-md-none">
+                                      {moment.unix(detail.accepted_at!).format('YYYY')}
+                                    </span>
                                   </div>
-                                </ExternalLink>
-                              </>
-                            )}
-
-                            {!isUndefined(detail.accepted_at) && (
-                              <div className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle}`}>
-                                <GoCalendar className={`me-1 ${styles.statsIcon}`} />
-                                <div className="d-flex flex-row">
-                                  <span className="text-muted d-none d-lg-block me-1">Accepted:</span>
-                                  <span className="d-none d-md-block">
-                                    {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
-                                  </span>
-                                  <span className="d-block d-md-none">
-                                    {moment.unix(detail.accepted_at!).format('YYYY')}
-                                  </span>
                                 </div>
-                              </div>
-                            )}
+                              )}
+                            </div>
+                          </div>
+                          <div className="d-none d-md-block ms-auto">
+                            <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
+                              <ProjectDropdown
+                                foundation={detail.foundation}
+                                projectName={detail.name}
+                                projectDisplayName={detail.display_name}
+                              />
+                            </div>
+                          </div>
+                          <div className="d-flex d-md-none align-items-center ms-auto">
+                            <RoundScore score={detail.score.global!} className={`ms-2 ${styles.global}`} />
                           </div>
                         </div>
-                        <div className="d-none d-md-block ms-auto">
-                          <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
-                            <ProjectDropdown
-                              foundation={detail.foundation}
-                              projectName={detail.name}
-                              projectDisplayName={detail.display_name}
-                            />
-                          </div>
-                        </div>
-                        <div className="d-flex d-md-none align-items-center ms-auto">
-                          <RoundScore score={detail.score.global!} className={`ms-2 ${styles.global}`} />
+                        <p className={`text-muted mt-3 mb-2 mt-md-4 mb-md-3 mx-3 mx-md-0 ${styles.description}`}>
+                          {detail.description}
+                        </p>
+                        <div className={`text-muted fst-italic mx-3 mx-md-0 mb-2 mb-md-3 ${styles.updated}`}>
+                          {isUndefined(activeDate) ? (
+                            <>Updated {moment.unix(detail.updated_at).fromNow()}</>
+                          ) : (
+                            <>
+                              This is a snapshot of the project taken on{' '}
+                              <span className="fw-bold">{moment(activeDate, 'YYYY-MM-DD').format("Do MMM 'YY")}</span>.
+                            </>
+                          )}
                         </div>
                       </div>
-                      <p className={`text-muted mt-3 mb-2 mt-md-4 mb-md-3 mx-3 mx-md-0 ${styles.description}`}>
-                        {detail.description}
-                      </p>
-                      <div className={`text-muted fst-italic mx-3 mx-md-0 mb-2 mb-md-3 ${styles.updated}`}>
-                        Updated {moment.unix(detail.updated_at).fromNow()}
+                      <div className="pt-2">
+                        <CategoriesSummary
+                          score={detail.score}
+                          repoName={detail.repositories.length === 1 ? detail.repositories[0].name : undefined}
+                          scrollIntoView={scrollIntoView}
+                          bigSize
+                          withLinks
+                        />
                       </div>
-                    </div>
-                    <div className="pt-2">
-                      <CategoriesSummary
-                        score={detail.score}
-                        repoName={detail.repositories.length === 1 ? detail.repositories[0].name : undefined}
-                        scrollIntoView={scrollIntoView}
-                        bigSize
-                        withLinks
-                      />
                     </div>
                   </div>
+
+                  <RepositoriesList repositories={detail.repositories} scrollIntoView={scrollIntoView} />
                 </div>
 
-                <RepositoriesList repositories={detail.repositories} scrollIntoView={scrollIntoView} />
-              </>
+                <Timeline
+                  snapshots={snapshots}
+                  activeDate={activeDate}
+                  setActiveDate={setActiveDate}
+                  currentSearch={currentState ? currentState.currentSearch : undefined}
+                />
+              </div>
             )}
           </div>
         )}

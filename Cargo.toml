@@ -56,14 +56,17 @@ serde_qs = "0.10.1"
 sha2 = "0.10.6"
 tempfile = "3.3.0"
 tera = { version = "1.17.1", default-features = false }
-time = { version = "0.3.16" }
+time = { version = "0.3.16", features = ["macros", "parsing", "serde"] }
 tiny-skia = "0.8.2"
 tokio = { version = "1.21.2", features = [
     "macros",
+    "process",
     "rt-multi-thread",
     "signal",
+    "time",
 ] }
 tokio-postgres = { version = "0.7.7", features = [
+    "with-time-0_3",
     "with-serde_json-1",
     "with-uuid-1",
 ] }

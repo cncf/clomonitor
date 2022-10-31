@@ -7,6 +7,7 @@ use deadpool_postgres::Pool;
 use mockall::automock;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
+use time::Date;
 use tokio_postgres::types::Json;
 
 /// Type alias to represent a DB trait object.
@@ -34,6 +35,14 @@ pub(crate) trait DB {
 
     /// Get project's score.
     async fn project_score(&self, foundation: &str, project_name: &str) -> Result<Option<Score>>;
+
+    /// Get project's snapshot data.
+    async fn project_snapshot(
+        &self,
+        foundation: &str,
+        project_name: &str,
+        date: &Date,
+    ) -> Result<Option<JsonString>>;
 
     /// Get all repositories including checks details.
     async fn repositories_with_checks(&self) -> Result<String>;
@@ -79,7 +88,7 @@ impl DB for PgDB {
                 &[&foundation, &project_name],
             )
             .await?;
-        let project: Option<String> = row.get(0);
+        let project: Option<JsonString> = row.get(0);
         Ok(project)
     }
 
@@ -118,6 +127,30 @@ impl DB for PgDB {
             Some(Json(score)) => Ok(Some(score)),
             None => Ok(None),
         }
+    }
+
+    async fn project_snapshot(
+        &self,
+        foundation: &str,
+        project_name: &str,
+        date: &Date,
+    ) -> Result<Option<JsonString>> {
+        let db = self.pool.get().await?;
+        let row = db
+            .query_opt(
+                "
+                select data::text
+                from project_snapshot s
+                join project p using (project_id)
+                where p.foundation_id = $1
+                and p.name = $2
+                and s.date = $3
+                ",
+                &[&foundation, &project_name, &date],
+            )
+            .await?;
+        let snapshot: Option<JsonString> = row.and_then(|row| row.get(0));
+        Ok(snapshot)
     }
 
     async fn repositories_with_checks(&self) -> Result<String> {

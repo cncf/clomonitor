@@ -53,6 +53,10 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             get(report_summary_svg),
         )
         .route(
+            "/projects/:foundation/:project/snapshots/:date",
+            get(project_snapshot),
+        )
+        .route(
             "/projects/:foundation/:project/:repository/report.md",
             get(repository_report_md),
         )
@@ -118,17 +122,28 @@ mod tests {
         },
     };
     use clomonitor_core::{linter::*, score::Score};
+    use lazy_static::lazy_static;
     use mime::{APPLICATION_JSON, CSV, HTML};
     use mockall::predicate::*;
     use serde_json::json;
     use std::{fs, future, sync::Arc};
     use tera::Context;
+    use time::{
+        format_description::{self, FormatItem},
+        Date,
+    };
     use tower::ServiceExt;
 
     const TESTDATA_PATH: &str = "src/testdata";
     const FOUNDATION: &str = "cncf";
     const PROJECT: &str = "artifact-hub";
+    const DATE: &str = "2022-10-28";
     const REPOSITORY: &str = "artifact-hub";
+
+    lazy_static! {
+        static ref DATE_FORMAT: Vec<FormatItem<'static>> =
+            format_description::parse(SNAPSHOT_DATE_FORMAT).unwrap();
+    }
 
     #[tokio::test]
     async fn badge_found() {
@@ -353,6 +368,92 @@ mod tests {
                 Request::builder()
                     .method("GET")
                     .uri(format!("/api/projects/{FOUNDATION}/{PROJECT}"))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    }
+
+    #[tokio::test]
+    async fn project_snapshot_invalid_date_format() {
+        let db = MockDB::new();
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/snapshots/20221028"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    }
+
+    #[tokio::test]
+    async fn project_snapshot_found() {
+        let mut db = MockDB::new();
+        db.expect_project_snapshot()
+            .with(
+                eq(FOUNDATION),
+                eq(PROJECT),
+                eq(Date::parse(DATE, &DATE_FORMAT).unwrap()),
+            )
+            .times(1)
+            .returning(|_, _, _| {
+                Box::pin(future::ready(Ok(Some(
+                    r#"{"snapshot": "data"}"#.to_string(),
+                ))))
+            });
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/snapshots/{DATE}"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(response.headers()[CACHE_CONTROL], "max-age=86400");
+        assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            r#"{"snapshot": "data"}"#.to_string(),
+        );
+    }
+
+    #[tokio::test]
+    async fn project_snapshot_not_found() {
+        let mut db = MockDB::new();
+        db.expect_project_snapshot()
+            .with(
+                eq(FOUNDATION),
+                eq(PROJECT),
+                eq(Date::parse(DATE, &DATE_FORMAT).unwrap()),
+            )
+            .times(1)
+            .returning(|_, _, _| Box::pin(future::ready(Ok(None))));
+
+        let response = setup_test_router(db)
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/snapshots/{DATE}"
+                    ))
                     .body(Body::empty())
                     .unwrap(),
             )

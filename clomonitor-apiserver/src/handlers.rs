@@ -21,6 +21,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
+use time::{format_description, Date};
 use tracing::error;
 
 /// Index HTML document cache duration.
@@ -40,6 +41,9 @@ pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
 /// Report summary image dimensions.
 pub const REPORT_SUMMARY_WIDTH: u32 = 900;
 pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
+
+/// Format used in snapshots dates.
+pub const SNAPSHOT_DATE_FORMAT: &str = "[year]-[month]-[day]";
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
@@ -167,6 +171,34 @@ pub(crate) async fn project(
         Some(project) => {
             let headers = [
                 (CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE)),
+                (CONTENT_TYPE, APPLICATION_JSON.to_string()),
+            ];
+            Ok((headers, project))
+        }
+        None => Err(StatusCode::NOT_FOUND),
+    }
+}
+
+/// Handler that returns the requested project snapshot.
+pub(crate) async fn project_snapshot(
+    Extension(db): Extension<DynDB>,
+    Path((foundation, project, date)): Path<(String, String, String)>,
+) -> impl IntoResponse {
+    // Parse date
+    let format = format_description::parse(SNAPSHOT_DATE_FORMAT).expect("valid date format");
+    let date: Date = Date::parse(&date, &format).map_err(|_| StatusCode::BAD_REQUEST)?;
+
+    // Get project snapshot from database
+    let project = db
+        .project_snapshot(&foundation, &project, &date)
+        .await
+        .map_err(internal_error)?;
+
+    // Return project snapshot data if found
+    match project {
+        Some(project) => {
+            let headers = [
+                (CACHE_CONTROL, format!("max-age={}", 24 * 60 * 60)),
                 (CONTENT_TYPE, APPLICATION_JSON.to_string()),
             ];
             Ok((headers, project))

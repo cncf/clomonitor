@@ -20,6 +20,7 @@ export interface Project extends BaseProject {
 
 export interface ProjectDetail extends BaseProject {
   repositories: Repository[];
+  snapshots?: string[];
 }
 
 export interface BaseRepository {
@@ -292,4 +293,10 @@ export interface Alert {
   message: string;
   dismissOn?: number;
   autoClose?: boolean;
+}
+
+export interface SortedDates {
+  [key: string]: {
+    [key: string]: string[];
+  };
 }

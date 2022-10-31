@@ -60,7 +60,7 @@ const CategoryProgressbar = (props: Props) => {
           {!isUndefined(props.value) && (
             <div
               data-testid="line"
-              className="position-absolute start-0 top-0 bottom-0"
+              className={`position-absolute start-0 top-0 bottom-0 ${styles.line}`}
               style={{
                 width: `${props.value || 1}%`,
                 backgroundColor: `var(--rm-${color})`,

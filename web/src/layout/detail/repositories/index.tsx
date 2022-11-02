@@ -20,6 +20,7 @@ import Summary from './Summary';
 
 interface Props {
   repositories: Repository[];
+  isSnapshotVisible: boolean;
   scrollIntoView: (id?: string) => void;
 }
 
@@ -138,11 +139,13 @@ const RepositoriesList = (props: Props) => {
                     />
                   </div>
                 </div>
-                <div className="d-none d-lg-flex">
-                  <div>
-                    <RepositoryDropdown repoName={repo.name} />
+                {!props.isSnapshotVisible && (
+                  <div className="d-none d-lg-flex">
+                    <div>
+                      <RepositoryDropdown repoName={repo.name} />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div>

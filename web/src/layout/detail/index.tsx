@@ -219,15 +219,17 @@ const Detail = (props: Props) => {
                               )}
                             </div>
                           </div>
-                          <div className="d-none d-md-block ms-auto">
-                            <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
-                              <ProjectDropdown
-                                foundation={detail.foundation}
-                                projectName={detail.name}
-                                projectDisplayName={detail.display_name}
-                              />
+                          {isUndefined(activeDate) && (
+                            <div className="d-none d-md-block ms-auto">
+                              <div className="h-100 position-relative d-flex flex-column justify-content-between align-items-end">
+                                <ProjectDropdown
+                                  foundation={detail.foundation}
+                                  projectName={detail.name}
+                                  projectDisplayName={detail.display_name}
+                                />
+                              </div>
                             </div>
-                          </div>
+                          )}
                           <div className="d-flex d-md-none align-items-center ms-auto">
                             <RoundScore score={detail.score.global!} className={`ms-2 ${styles.global}`} />
                           </div>
@@ -258,7 +260,11 @@ const Detail = (props: Props) => {
                     </div>
                   </div>
 
-                  <RepositoriesList repositories={detail.repositories} scrollIntoView={scrollIntoView} />
+                  <RepositoriesList
+                    isSnapshotVisible={!isUndefined(activeDate)}
+                    repositories={detail.repositories}
+                    scrollIntoView={scrollIntoView}
+                  />
                 </div>
 
                 <Timeline

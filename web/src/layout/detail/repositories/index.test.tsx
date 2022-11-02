@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter as Router } from 'react-router-dom';
+import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
 
 import { Repository } from '../../../types';
 import RepositoriesList from './index';
@@ -20,10 +20,15 @@ const getRepositories = (fixtureId: string): Repository[] => {
 const mockScrollIntoView = jest.fn();
 
 const defaultProps = {
+  isSnapshotVisible: false,
   scrollIntoView: mockScrollIntoView,
 };
 
 describe('RepositoriesList', () => {
+  beforeEach(() => {
+    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -50,6 +55,7 @@ describe('RepositoriesList', () => {
       expect(screen.getByText('Repositories')).toBeInTheDocument();
       expect(screen.getByTestId('repositories-summary')).toBeInTheDocument();
       expect(screen.getAllByTestId('repository-info')).toHaveLength(6);
+      expect(screen.getAllByTestId('dropdown-btn')).toHaveLength(6);
       const anchorBtns = screen.getAllByRole('button', { name: /Link to anchor/i });
       expect(anchorBtns).toHaveLength(26);
 
@@ -106,6 +112,18 @@ describe('RepositoriesList', () => {
         },
         { state: null }
       );
+    });
+
+    it('does not render dropdown when snapshot is visible', async () => {
+      const repositories = getRepositories('1');
+      render(
+        <Router>
+          <RepositoriesList {...defaultProps} repositories={repositories} isSnapshotVisible />
+        </Router>
+      );
+
+      expect(screen.getByText('Repositories')).toBeInTheDocument();
+      expect(screen.queryByTestId('dropdown-btn')).toBeNull();
     });
   });
 });

@@ -6,12 +6,6 @@
   height: 25px;
 }
 
-.badge {
-  background-color: var(--color-white-25);
-  font-size: 0.65rem;
-  padding: 0.25rem 0.4rem;
-}
-
 .link {
   letter-spacing: 2px;
 }

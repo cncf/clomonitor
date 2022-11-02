@@ -1132,7 +1132,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 60%;"
                   />
@@ -2575,7 +2575,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 80%;"
                   />
@@ -2985,7 +2985,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 25%;"
                   />
@@ -3536,7 +3536,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 1%;"
                   />
@@ -4125,7 +4125,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 90%;"
                   />
@@ -4670,7 +4670,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
                   />
@@ -5331,7 +5331,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 90%;"
                   />
@@ -5876,7 +5876,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
                   />
@@ -6537,7 +6537,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
                   />
@@ -7082,7 +7082,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
                   />
@@ -7743,7 +7743,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
                   />
@@ -8288,7 +8288,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
                   />
@@ -8949,7 +8949,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
                   />
@@ -9494,7 +9494,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
-                    class="progress-bar"
+                    class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
                   />

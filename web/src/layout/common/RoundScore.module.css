@@ -19,6 +19,7 @@
 .circle {
   fill: none;
   stroke-width: 3px;
+  transition: all 0.6s ease-in-out;
 }
 
 .value {

@@ -1043,7 +1043,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/spec/report.md"
+                      href="/api/projects/cncf/proj/spec/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"
@@ -4036,7 +4036,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/sdk-go/report.md"
+                      href="/api/projects/cncf/proj/sdk-go/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"
@@ -5242,7 +5242,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/sdk-javascript/report.md"
+                      href="/api/projects/cncf/proj/sdk-javascript/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"
@@ -6448,7 +6448,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/sdk-csharp/report.md"
+                      href="/api/projects/cncf/proj/sdk-csharp/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"
@@ -7654,7 +7654,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/sdk-java/report.md"
+                      href="/api/projects/cncf/proj/sdk-java/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"
@@ -8860,7 +8860,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Open repository report"
                       class="link dropdown-item lightText"
-                      href="/api/projects/undefined/undefined/sdk-python/report.md"
+                      href="/api/projects/cncf/proj/sdk-python/report.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_self"

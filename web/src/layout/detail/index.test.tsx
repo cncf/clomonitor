@@ -100,6 +100,7 @@ describe('Project detail index', () => {
       expect(screen.getByRole('link', { name: 'Repository link' })).toBeInTheDocument();
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getAllByText('23rd June 2020')).toHaveLength(2);
+      expect(screen.getAllByTestId('dropdown-btn')).toHaveLength(2);
     });
 
     it('renders Back to results', async () => {

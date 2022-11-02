@@ -36,6 +36,10 @@
   background-color: var(--bg-color);
 }
 
+.progressbar {
+  animation: all 0.6s ease;
+}
+
 @media only screen and (min-width: 576px) {
   .progressbarWrapper {
     max-width: 50%;

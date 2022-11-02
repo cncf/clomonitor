@@ -27,7 +27,7 @@ exports[`ProgressBar creates snapshot 1`] = `
           class="progress rounded-0 progress"
         >
           <div
-            class="progress-bar"
+            class="progress-bar progressbar"
             role="progressbar"
             style="width: 75%;"
           />

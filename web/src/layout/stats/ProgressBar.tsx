@@ -20,7 +20,7 @@ const ProgressBar = (props: Props) => {
         <div className={`flex-grow-1 ${styles.progressbarWrapper}`}>
           <div className={`progress rounded-0 ${styles.progress}`}>
             <div
-              className="progress-bar"
+              className={`progress-bar ${styles.progressbar}`}
               role="progressbar"
               style={{ width: `${props.value || 1}%`, backgroundColor: `var(--rm-${color})` }}
             />

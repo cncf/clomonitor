@@ -287,7 +287,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 85%;"
                           />
@@ -341,7 +341,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 79%;"
                           />
@@ -401,7 +401,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 61%;"
                           />
@@ -455,7 +455,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 55%;"
                           />
@@ -510,7 +510,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 40%;"
                           />
@@ -584,7 +584,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 87%;"
                           />
@@ -638,7 +638,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 77%;"
                           />
@@ -698,7 +698,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 74%;"
                           />
@@ -752,7 +752,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 56%;"
                           />
@@ -807,7 +807,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 48%;"
                           />
@@ -881,7 +881,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 83%;"
                           />
@@ -935,7 +935,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 80%;"
                           />
@@ -995,7 +995,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 59%;"
                           />
@@ -1049,7 +1049,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 56%;"
                           />
@@ -1104,7 +1104,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 36%;"
                           />
@@ -1178,7 +1178,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 85%;"
                           />
@@ -1232,7 +1232,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 79%;"
                           />
@@ -1292,7 +1292,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 59%;"
                           />
@@ -1346,7 +1346,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 53%;"
                           />
@@ -1401,7 +1401,7 @@ exports[`StatsView creates snapshot 1`] = `
                           class="progress rounded-0 progress"
                         >
                           <div
-                            class="progress-bar"
+                            class="progress-bar progressbar"
                             role="progressbar"
                             style="width: 40%;"
                           />
@@ -1552,7 +1552,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 36%;"
                                 />
@@ -1629,7 +1629,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 77%;"
                                 />
@@ -1691,7 +1691,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 88%;"
                                 />
@@ -1755,7 +1755,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 83%;"
                                 />
@@ -1817,7 +1817,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 59%;"
                                 />
@@ -1879,7 +1879,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 83%;"
                                 />
@@ -1944,7 +1944,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 98%;"
                                 />
@@ -2012,7 +2012,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 37%;"
                                 />
@@ -2074,7 +2074,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 80%;"
                                 />
@@ -2149,7 +2149,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 94%;"
                                 />
@@ -2211,7 +2211,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 93%;"
                                 />
@@ -2273,7 +2273,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 22%;"
                                 />
@@ -2350,7 +2350,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 9%;"
                                 />
@@ -2412,7 +2412,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 8%;"
                                 />
@@ -2477,7 +2477,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 43%;"
                                 />
@@ -2539,7 +2539,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 81%;"
                                 />
@@ -2604,7 +2604,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 59%;"
                                 />
@@ -2669,7 +2669,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 81%;"
                                 />
@@ -2731,7 +2731,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 33%;"
                                 />
@@ -2807,7 +2807,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 99%;"
                                 />
@@ -2873,7 +2873,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 82%;"
                                 />
@@ -2935,7 +2935,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 61%;"
                                 />
@@ -2997,7 +2997,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 26%;"
                                 />
@@ -3059,7 +3059,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 87%;"
                                 />
@@ -3128,7 +3128,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 4%;"
                                 />
@@ -3190,7 +3190,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 57%;"
                                 />
@@ -3252,7 +3252,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 5%;"
                                 />
@@ -3314,7 +3314,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 18%;"
                                 />
@@ -3389,7 +3389,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="progress rounded-0 progress"
                               >
                                 <div
-                                  class="progress-bar"
+                                  class="progress-bar progressbar"
                                   role="progressbar"
                                   style="width: 40%;"
                                 />

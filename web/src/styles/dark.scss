@@ -257,10 +257,6 @@
     border-color: var(--solid-border);
   }
 
-  .betaBadge {
-    background-color: var(--color-black-25);
-  }
-
   @media (hover: hover) {
     .navbarLink:hover::before {
       background-color: var(--color-light-font);

@@ -36,7 +36,7 @@ graphql_client = { git = "https://github.com/graphql-rust/graphql-client", rev =
 ] }
 hex = "0.4.3"
 http = "0.2.8"
-hyper = "0.14.20"
+hyper = "0.14.22"
 lazy_static = "1.4.0"
 metrics = "0.20.1"
 metrics-exporter-prometheus = "0.11.0"

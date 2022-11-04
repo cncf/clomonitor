@@ -17,7 +17,7 @@ exports[`Sidebar creates snapshot 1`] = `
     </button>
     <div
       aria-label="Sidebar"
-      class="sidebar position-fixed top-0 bottom-0 w-75 sidebar left"
+      class="sidebar position-fixed top-0 bottom-0 sidebar left"
       role="complementary"
     >
       <div

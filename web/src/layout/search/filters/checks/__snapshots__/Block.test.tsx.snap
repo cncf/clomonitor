@@ -69,78 +69,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Analytics as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Analytics as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Analytics as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Analytics as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Analytics as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Analytics as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -157,9 +213,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Analytics
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Analytics
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            Analytics
+          </span>
         </div>
       </div>
     </span>
@@ -168,78 +233,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Artifact Hub badge as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Artifact Hub badge as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Artifact Hub badge as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Artifact Hub badge as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Artifact Hub badge as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Artifact Hub badge as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="none"
@@ -258,9 +379,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Artifact Hub badge
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Artifact Hub badge
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            Artifact Hub badge
+          </span>
         </div>
       </div>
     </span>
@@ -269,78 +399,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Contributor License Agreement as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Contributor License Agreement as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Contributor License Agreement as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Contributor License Agreement as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Contributor License Agreement as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Contributor License Agreement as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -357,9 +543,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Contributor License Agreement
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Contributor License Agreement
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            CLA
+          </span>
         </div>
       </div>
     </span>
@@ -368,78 +563,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Community meeting as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Community meeting as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Community meeting as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Community meeting as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Community meeting as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Community meeting as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -459,9 +710,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Community meeting
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Community meeting
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            Community meeting
+          </span>
         </div>
       </div>
     </span>
@@ -470,78 +730,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Developer Certificate of Origin as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Developer Certificate of Origin as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Developer Certificate of Origin as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Developer Certificate of Origin as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Developer Certificate of Origin as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Developer Certificate of Origin as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -558,9 +874,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Developer Certificate of Origin
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Developer Certificate of Origin
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            DCO
+          </span>
         </div>
       </div>
     </span>
@@ -569,78 +894,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select GitHub discussions as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select GitHub discussions as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select GitHub discussions as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select GitHub discussions as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select GitHub discussions as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select GitHub discussions as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -658,9 +1039,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          GitHub discussions
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            GitHub discussions
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            GitHub discussions
+          </span>
         </div>
       </div>
     </span>
@@ -669,78 +1059,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select OpenSSF badge as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select OpenSSF badge as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select OpenSSF badge as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select OpenSSF badge as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select OpenSSF badge as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select OpenSSF badge as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -760,9 +1206,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          OpenSSF badge
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            OpenSSF badge
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            OpenSSF badge
+          </span>
         </div>
       </div>
     </span>
@@ -771,78 +1226,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Recent release as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Recent release as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Recent release as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Recent release as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Recent release as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Recent release as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -862,9 +1373,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Recent release
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Recent release
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            Recent release
+          </span>
         </div>
       </div>
     </span>
@@ -873,78 +1393,134 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-4 btns"
+          class="btn-group me-2 me-sm-4 btns"
           role="group"
         >
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-none d-md-flex"
           >
             <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+              class="d-none d-md-block position-relative undefined"
             >
-              <button
-                aria-label="Select Slack presence as passed"
-                class="btn rounded-0 border p-0 btn passingBtn"
-                type="button"
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <button
+                  aria-label="Select Slack presence as passed"
+                  class="btn rounded-0 border p-0 btn passingBtn"
+                  type="button"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div
+                    class="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block position-relative undefined"
+            >
+              <div
+                class="cursorDefault"
+                data-testid="elementWithTooltip"
+              >
+                <button
+                  aria-label="Select Slack presence as not passed"
+                  class="btn rounded-0 border p-0 btn"
+                  type="button"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 12 16"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
           <div
-            class="d-none d-md-block position-relative undefined"
+            class="d-flex d-md-none"
           >
-            <div
-              class="cursorDefault"
-              data-testid="elementWithTooltip"
+            <button
+              aria-label="Select Slack presence as passed"
+              class="btn rounded-0 border p-0 btn passingBtn"
+              type="button"
             >
-              <button
-                aria-label="Select Slack presence as not passed"
-                class="btn rounded-0 border p-0 btn"
-                type="button"
+              <div
+                class="d-flex align-items-center justify-content-center"
               >
-                <div
-                  class="d-flex align-items-center justify-content-center"
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 12 16"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </div>
+                  <path
+                    d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="Select Slack presence as not passed"
+              class="btn rounded-0 border p-0 btn"
+              type="button"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 12 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
         <small
-          class="me-2"
+          class="me-1 me-md-2 position-relative"
         >
           <svg
             fill="currentColor"
@@ -961,9 +1537,18 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-2"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
         >
-          Slack presence
+          <span
+            class="d-none d-sm-block text-truncate"
+          >
+            Slack presence
+          </span>
+          <span
+            class="d-block d-sm-none text-truncate"
+          >
+            Slack presence
+          </span>
         </div>
       </div>
     </span>

@@ -48,7 +48,7 @@ exports[`Project detail index creates snapshot 1`] = `
               </button>
               <div
                 aria-label="Sidebar"
-                class="sidebar position-fixed top-0 bottom-0 w-75 sidebar left"
+                class="sidebar position-fixed top-0 bottom-0 sidebar left"
                 role="complementary"
               >
                 <div
@@ -439,9 +439,7 @@ exports[`Project detail index creates snapshot 1`] = `
                             </label>
                           </div>
                         </div>
-                        <div
-                          class="d-none d-md-block"
-                        >
+                        <div>
                           <div
                             class="d-flex flex-row align-items-center text-primary categoryTitle"
                           >
@@ -2552,9 +2550,7 @@ exports[`Project detail index creates snapshot 1`] = `
             </label>
           </div>
         </div>
-        <div
-          class="d-none d-md-block"
-        >
+        <div>
           <div
             class="d-flex flex-row align-items-center text-primary categoryTitle"
           >

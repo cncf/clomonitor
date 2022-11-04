@@ -170,6 +170,21 @@ const ChecksFilter = (props: Props) => {
                         visibleTooltip
                         active
                       />
+                      <div className="d-block d-md-none">
+                        {opt.passing ? (
+                          <div
+                            className={`d-flex align-items-center justify-content-center ${styles.squareCheck} ${styles.passing}`}
+                          >
+                            <GoCheck />
+                          </div>
+                        ) : (
+                          <div
+                            className={`d-flex align-items-center justify-content-center ${styles.squareCheck} ${styles.notPassing}`}
+                          >
+                            <GoX />
+                          </div>
+                        )}
+                      </div>
 
                       <div className={`flex-grow-1 d-flex flex-row align-items-center ${styles.checkWrapper}`}>
                         <div className={`ms-2 text-truncate ${styles.checkName}`}>{opt.shortName || opt.name}</div>
@@ -270,7 +285,7 @@ const ChecksFilter = (props: Props) => {
           open={openStatus}
         >
           <div className="w-100 position-relative">
-            <div className={`text-muted ${styles.legend}`}>
+            <div className={`text-muted d-none d-md-block ${styles.legend}`}>
               <p className="mb-3">
                 Please note that checks are run per <span className="fst-italic">repository</span>, and this is a filter
                 for <span className="fst-italic">projects</span>, which can have multiple repositories. We consider that

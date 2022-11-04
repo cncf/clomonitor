@@ -363,9 +363,7 @@ exports[`Filters creates snapshot 1`] = `
       </label>
     </div>
   </div>
-  <div
-    class="d-none d-md-block"
-  >
+  <div>
     <div
       class="d-flex flex-row align-items-center text-primary categoryTitle"
     >

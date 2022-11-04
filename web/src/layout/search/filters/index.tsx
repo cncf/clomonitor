@@ -54,7 +54,7 @@ const Filters = (props: Props) => {
         </React.Fragment>
       ))}
 
-      <div className="d-none d-md-block">
+      <div>
         <Checks
           activePassingChecks={props.activeFilters[FilterKind.PassingCheck] as ReportOption[]}
           activeNotPassingChecks={props.activeFilters[FilterKind.NotPassingCheck] as ReportOption[]}

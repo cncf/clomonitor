@@ -42,36 +42,38 @@ describe('Block', () => {
         screen.getByRole('button', { name: 'Mark all checks in Best Practices category as not passed' })
       ).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Reset checks in Best Practices category' })).toBeInTheDocument();
-      expect(screen.getByText('Analytics')).toBeInTheDocument();
-      expect(screen.getByText('Artifact Hub badge')).toBeInTheDocument();
+      expect(screen.getAllByText('Analytics')).toHaveLength(2);
+      expect(screen.getAllByText('Artifact Hub badge')).toHaveLength(2);
       expect(screen.getByText('Contributor License Agreement')).toBeInTheDocument();
-      expect(screen.getByText('Community meeting')).toBeInTheDocument();
+      expect(screen.getByText('CLA')).toBeInTheDocument();
+      expect(screen.getAllByText('Community meeting')).toHaveLength(2);
       expect(screen.getByText('Developer Certificate of Origin')).toBeInTheDocument();
-      expect(screen.getByText('GitHub discussions')).toBeInTheDocument();
-      expect(screen.getByText('OpenSSF badge')).toBeInTheDocument();
-      expect(screen.getByText('Recent release')).toBeInTheDocument();
-      expect(screen.getByText('Slack presence')).toBeInTheDocument();
+      expect(screen.getByText('DCO')).toBeInTheDocument();
+      expect(screen.getAllByText('GitHub discussions')).toHaveLength(2);
+      expect(screen.getAllByText('OpenSSF badge')).toHaveLength(2);
+      expect(screen.getAllByText('Recent release')).toHaveLength(2);
+      expect(screen.getAllByText('Slack presence')).toHaveLength(2);
 
-      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(10);
-      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(10);
+      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(19);
+      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(19);
     });
 
     it('renders option Slack presence as passed', () => {
       render(<Block {...defaultProps} activePassingChecks={[ReportOption.SlackPresence]} />);
 
-      expect(screen.getByRole('button', { name: 'Unselect Slack presence as passed' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button', { name: 'Unselect Slack presence as passed' })).toHaveLength(2);
     });
 
     it('renders option Slack presence as not passed', () => {
       render(<Block {...defaultProps} activeNotPassingChecks={[ReportOption.SlackPresence]} />);
 
-      expect(screen.getByRole('button', { name: 'Unselect Slack presence as not passed' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button', { name: 'Unselect Slack presence as not passed' })).toHaveLength(2);
     });
 
     it('calls onChange to click remove one option', async () => {
       render(<Block {...defaultProps} activePassingChecks={[ReportOption.SlackPresence]} />);
 
-      const btn = screen.getByRole('button', { name: 'Unselect Slack presence as passed' });
+      const btn = screen.getAllByRole('button', { name: 'Unselect Slack presence as passed' })[0];
       expect(btn).toBeInTheDocument();
 
       await userEvent.click(btn);
@@ -83,7 +85,7 @@ describe('Block', () => {
     it('calls markAllAsPassedPerCategory to select all options as passed', async () => {
       const { rerender } = render(<Block {...defaultProps} />);
 
-      expect(screen.getByRole('button', { name: 'Select Artifact Hub badge as passed' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as passed' })).toHaveLength(2);
 
       const btn = screen.getByRole('button', { name: 'Mark all checks in Best Practices category as passed' });
       expect(btn).toBeInTheDocument();
@@ -95,13 +97,13 @@ describe('Block', () => {
 
       rerender(<Block {...defaultProps} activePassingChecks={[ReportOption.ArtifactHubBadge]} />);
 
-      expect(await screen.findByRole('button', { name: 'Unselect Artifact Hub badge as passed' })).toBeInTheDocument();
+      expect(await screen.findAllByRole('button', { name: 'Unselect Artifact Hub badge as passed' })).toHaveLength(2);
     });
 
     it('calls markAllAsNotPassedPerCategory to select all options as not passed', async () => {
       const { rerender } = render(<Block {...defaultProps} />);
 
-      expect(screen.getByRole('button', { name: 'Select Artifact Hub badge as not passed' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as not passed' })).toHaveLength(2);
 
       const btn = screen.getByRole('button', { name: 'Mark all checks in Best Practices category as not passed' });
       expect(btn).toBeInTheDocument();
@@ -113,9 +115,9 @@ describe('Block', () => {
 
       rerender(<Block {...defaultProps} activeNotPassingChecks={[ReportOption.ArtifactHubBadge]} />);
 
-      expect(
-        await screen.findByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })
-      ).toBeInTheDocument();
+      expect(await screen.findAllByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })).toHaveLength(
+        2
+      );
     });
 
     it('calls resetChecksPerCategory to unselect all marked options', async () => {
@@ -127,8 +129,8 @@ describe('Block', () => {
         />
       );
 
-      expect(screen.getByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Select Artifact Hub badge as passed' })).toBeInTheDocument();
+      expect(screen.getAllByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })).toHaveLength(2);
+      expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as passed' })).toHaveLength(2);
 
       const btn = screen.getByRole('button', { name: 'Reset checks in Best Practices category' });
       expect(btn).toBeInTheDocument();
@@ -140,8 +142,8 @@ describe('Block', () => {
 
       rerender(<Block {...defaultProps} />);
 
-      expect(await screen.findByRole('button', { name: 'Select Artifact Hub badge as passed' })).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Select Artifact Hub badge as not passed' })).toBeInTheDocument();
+      expect(await screen.findAllByRole('button', { name: 'Select Artifact Hub badge as passed' })).toHaveLength(2);
+      expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as not passed' })).toHaveLength(2);
     });
   });
 });

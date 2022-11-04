@@ -3,6 +3,8 @@
   -webkit-transition: all 0.15s linear;
   z-index: 1050;
   background-color: var(--body-bg);
+  width: 75%;
+  min-width: 260px;
 }
 
 .left {

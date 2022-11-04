@@ -70,7 +70,7 @@ const Sidebar = (props: Props) => {
         role="complementary"
         aria-label="Sidebar"
         ref={ref}
-        className={classnames('sidebar position-fixed top-0 bottom-0 w-75', styles.sidebar, styles[direction], {
+        className={classnames('sidebar position-fixed top-0 bottom-0', styles.sidebar, styles[direction], {
           [styles.active]: openStatus,
         })}
       >

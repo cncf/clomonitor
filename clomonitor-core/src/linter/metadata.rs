@@ -44,7 +44,7 @@ pub(crate) struct LicenseScanning {
 mod tests {
     use super::*;
 
-    const TESTDATA_PATH: &str = "src/linter/check/testdata";
+    const TESTDATA_PATH: &str = "src/testdata";
 
     #[test]
     fn metadata_from_path_success() {
@@ -75,7 +75,7 @@ mod tests {
     #[test]
     fn metadata_from_path_invalid_metadata_file() {
         assert!(matches!(
-            Metadata::from(Path::new(TESTDATA_PATH).join("invalid")),
+            Metadata::from(Path::new(TESTDATA_PATH).join(".clomonitor-invalid.yaml")),
             Err(_)
         ));
     }

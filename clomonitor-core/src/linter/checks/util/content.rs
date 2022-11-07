@@ -47,14 +47,18 @@ pub(crate) async fn remote_matches(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::check::patterns::{ADOPTERS_IN_README, FOSSA_URL, README_FILE, SNYK_URL};
+    use crate::linter::checks::{
+        adopters,
+        license_scanning::{FOSSA_URL, SNYK_URL},
+        readme,
+    };
     use std::path::Path;
     use wiremock::{
         matchers::{method, path},
         Mock, MockServer, ResponseTemplate,
     };
 
-    const TESTDATA_PATH: &str = "src/linter/check/testdata";
+    const TESTDATA_PATH: &str = "src/testdata";
 
     #[test]
     fn find_found() {
@@ -62,10 +66,10 @@ mod tests {
             find(
                 &Globs {
                     root: Path::new(TESTDATA_PATH),
-                    patterns: &README_FILE,
+                    patterns: &readme::FILE_PATTERNS,
                     case_sensitive: true,
                 },
-                &[&*FOSSA_URL, &*SNYK_URL]
+                &[&FOSSA_URL, &SNYK_URL]
             )
             .unwrap()
             .unwrap(),
@@ -79,7 +83,7 @@ mod tests {
             find(
                 &Globs {
                     root: Path::new(TESTDATA_PATH),
-                    patterns: &README_FILE,
+                    patterns: &readme::FILE_PATTERNS,
                     case_sensitive: true,
                 },
                 &[&Regex::new("non-existing pattern").unwrap()]
@@ -125,10 +129,10 @@ mod tests {
         assert!(matches(
             &Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &README_FILE,
+                patterns: &readme::FILE_PATTERNS,
                 case_sensitive: true,
             },
-            &*ADOPTERS_IN_README
+            &adopters::README_REF
         )
         .unwrap());
     }
@@ -138,7 +142,7 @@ mod tests {
         assert!(!matches(
             &Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &README_FILE,
+                patterns: &readme::FILE_PATTERNS,
                 case_sensitive: true,
             },
             &RegexSet::new(["non-existing pattern"]).unwrap(),

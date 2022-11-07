@@ -166,7 +166,7 @@ const Detail = (props: Props) => {
               </div>
             ) : (
               <div className="d-flex flex-row">
-                <div className="flex-grow-1">
+                <div className={`flex-grow-1 ${styles.contentWrapper}`}>
                   <div className="my-4 my-md-5">
                     <div className="border">
                       <div className="px-0 px-md-4 pt-0 pt-md-4">
@@ -183,7 +183,7 @@ const Detail = (props: Props) => {
 
                             <div className="d-flex flex-row align-items-center my-2">
                               <FoundationBadge foundation={detail.foundation} />
-                              <MaturityBadge maturityLevel={detail.maturity} className="ms-2" />
+                              <MaturityBadge maturityLevel={detail.maturity} className="d-none d-md-block ms-2" />
                               <CartegoryBadge category={detail.category} className="d-none d-md-block ms-2" />
                             </div>
 

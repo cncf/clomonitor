@@ -827,7 +827,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -1175,7 +1175,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1304,7 +1304,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1447,7 +1447,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1575,7 +1575,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1709,7 +1709,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1837,7 +1837,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -1969,7 +1969,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -2104,7 +2104,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -2238,7 +2238,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -2618,7 +2618,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -2750,7 +2750,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -3028,7 +3028,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -3173,7 +3173,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -3304,7 +3304,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -3579,7 +3579,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -3820,7 +3820,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -4168,7 +4168,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -4302,7 +4302,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -4434,7 +4434,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -4713,7 +4713,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -4845,7 +4845,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -5026,7 +5026,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -5374,7 +5374,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -5508,7 +5508,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -5640,7 +5640,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -5919,7 +5919,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -6051,7 +6051,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -6232,7 +6232,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -6580,7 +6580,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -6714,7 +6714,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -6846,7 +6846,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -7125,7 +7125,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -7257,7 +7257,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -7438,7 +7438,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -7786,7 +7786,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -7920,7 +7920,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -8052,7 +8052,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -8331,7 +8331,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -8463,7 +8463,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -8644,7 +8644,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
           class="d-flex flex-row justify-content-between align-items-top"
         >
           <div
-            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center"
+            class="flex-grow-1 d-flex flex-row flex-md-row-reverse align-items-center w-100"
           >
             <div
               class="mx-0 mx-md-1 flex-grow-1 truncateWrapper position-relative"
@@ -8992,7 +8992,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -9126,7 +9126,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -9258,7 +9258,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -9537,7 +9537,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"
@@ -9669,7 +9669,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                       </svg>
                     </td>
                     <td
-                      class="pe-4"
+                      class="pe-2 pe-md-4"
                     >
                       <div
                         class="d-table w-100 contentCell"

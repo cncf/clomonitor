@@ -1,5 +1,5 @@
-.content {
-  background-color: var(--bg-color);
+.contentWrapper {
+  width: calc(100% - 70px);
 }
 
 .imageWrapper {
@@ -53,6 +53,10 @@
 }
 
 @media only screen and (max-width: 575.98px) {
+  .contentWrapper {
+    width: 100%;
+  }
+
   .loadingWithBackBar {
     top: 151px !important;
   }

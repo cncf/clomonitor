@@ -213,7 +213,7 @@ const OptionCell = (props: Props) => {
   return (
     <tr>
       <td className={`text-center ${styles.iconCell}`}>{getIconCheck()}</td>
-      <td className="pe-4">
+      <td className="pe-2 pe-md-4">
         <div className={`d-table w-100 ${styles.contentCell}`}>
           <div className="d-flex flex-row align-items-baseline align-items-md-center">
             <div className="text-muted me-2">{opt.icon}</div>

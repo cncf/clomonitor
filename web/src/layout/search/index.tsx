@@ -232,7 +232,7 @@ const Search = (props: Props) => {
                   <>
                     {isLoading ? (
                       <>
-                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                        <Loading spinnerClassName={styles.spinner} noWrapper smallSize />
                         <span className="ms-2">Searching...</span>
                       </>
                     ) : (

@@ -24,7 +24,7 @@ exports[`StatsView creates snapshot 1`] = `
               CLOMonitor Stats
             </div>
             <small
-              class="d-flex flex-row"
+              class="d-flex flex-row justify-content-center justify-content-md-start"
             >
               <span
                 class="d-none d-md-block me-2"

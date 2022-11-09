@@ -2060,11 +2060,16 @@ exports[`Project detail index creates snapshot 1`] = `
                         class="ms-auto btn btn-sm btn-secondary rounded-0 lightText text-uppercase closeSidebar"
                         type="button"
                       >
-                        <span
-                          aria-hidden="true"
-                          class="spinner-border spinner-border-sm"
+                        <div
+                          class="spinner-border text-primary miniSpinner spinner"
                           role="status"
-                        />
+                        >
+                          <span
+                            class="visually-hidden"
+                          >
+                            Loading...
+                          </span>
+                        </div>
                         <span
                           class="ms-2"
                         >

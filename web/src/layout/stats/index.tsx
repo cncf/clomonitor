@@ -489,13 +489,13 @@ const StatsView = () => {
           <div className="d-flex flex-column">
             <div className="h2 text-dark text-center text-md-start">CLOMonitor Stats</div>
             {isNull(apiError) && (
-              <small className="d-flex flex-row">
+              <small className="d-flex flex-row justify-content-center justify-content-md-start">
                 <span className="d-none d-md-block me-2">Report generated at:</span>
                 {stats && !isUndefined(stats.generated_at) ? (
                   <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
                 ) : (
-                  <div className="d-flex flex-row mt-1">
-                    <div className={`${styles.dot} ${styles.dot1} dot`} role="status" />
+                  <div className="d-flex flex-row mt-1" role="status">
+                    <div className={`${styles.dot} ${styles.dot1} dot`} />
                     <div className={`${styles.dot} ${styles.dot2} dot`} />
                     <div className={`${styles.dot} ${styles.dot3} dot`} />
                   </div>
@@ -735,7 +735,7 @@ const StatsView = () => {
                         <div>Download CSV file)</div>
                         {downloadingCSV && (
                           <div className={`position-absolute ${styles.downloadSpinner}`}>
-                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+                            <Loading spinnerClassName={`position-relative ${styles.miniSpinner}`} noWrapper smallSize />
                           </div>
                         )}
                       </div>

@@ -57,6 +57,10 @@
   animation: jump 1.2s linear infinite;
 }
 
+.miniSpinner {
+  top: 2px;
+}
+
 @keyframes jump {
   0%,
   80%,

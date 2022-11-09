@@ -10,6 +10,15 @@ main {
   margin-right: 1.5rem;
 }
 
+.spinner {
+  color: var(--bg-color) !important;
+}
+
+.spinner:before,
+.spinner:after {
+  border-color: var(--bg-color);
+}
+
 .btnMobileFilters {
   height: 2rem;
   width: 2rem;

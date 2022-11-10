@@ -63,14 +63,14 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
     let mut snapshots_to_keep = Vec::new();
 
     for snapshot in snapshots.iter().copied() {
-        // Include previous 2 days
+        // Include snapshots for the previous 2 days
         if ref_date - snapshot <= 2.days() {
             snapshots_to_keep.push(snapshot);
             continue;
         }
 
-        // Include latest snapshot for each week in the ref date month
-        if snapshot.month() == ref_date.month()
+        // Include latest snapshot for each week in the last month
+        if ref_date - snapshot <= 30.days()
             && snapshots_to_keep.last().map_or(true, |last_snapshot_kept| {
                 last_snapshot_kept.iso_week() > snapshot.iso_week()
             })
@@ -79,8 +79,8 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
             continue;
         }
 
-        // Include latest snapshot for each month in the ref date year
-        if snapshot.year() == ref_date.year()
+        // Include latest snapshot for each month in the last 2 years
+        if ref_date - snapshot <= (2 * 365).days()
             && snapshots_to_keep.last().map_or(true, |last_snapshot_kept| {
                 last_snapshot_kept.month() as u8 > snapshot.month() as u8
             })
@@ -229,6 +229,7 @@ mod tests {
             vec![
                 date!(2022 - 10 - 18),
                 date!(2021 - 10 - 17),
+                date!(2021 - 9 - 29),
                 date!(2020 - 9 - 11),
             ]
         );
@@ -249,9 +250,10 @@ mod tests {
                     date!(2022 - 7 - 1),
                     date!(2022 - 6 - 2),
                     date!(2022 - 6 - 1),
+                    date!(2021 - 12 - 9),
                     date!(2021 - 9 - 29),
                     date!(2020 - 9 - 11),
-                    date!(2020 - 8 - 1),
+                    date!(2020 - 8 - 23),
                 ]
             ),
             vec![
@@ -261,6 +263,7 @@ mod tests {
                 date!(2022 - 10 - 13),
                 date!(2022 - 7 - 1),
                 date!(2022 - 6 - 2),
+                date!(2021 - 12 - 9),
                 date!(2021 - 9 - 29),
                 date!(2020 - 9 - 11),
             ]

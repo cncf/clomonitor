@@ -46,7 +46,7 @@ openssl = { version = "0.10.42", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 postgres-types = { version = "0.2.4", features = ["derive"] }
 predicates = "2.1.1"
-regex = "1.6.0"
+regex = "1.7.0"
 reqwest = "0.11.12"
 resvg = "0.24.0"
 serde = { version = "1.0.147", features = ["derive"] }

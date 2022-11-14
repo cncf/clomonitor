@@ -21,6 +21,8 @@ You can get some information about the project's **architecture** and how to set
 - [Architecture](https://github.com/cncf/clomonitor/blob/main/docs/architecture.md)
 - [Development environment setup](https://github.com/cncf/clomonitor/blob/main/docs/dev.md)
 
+The documentation also includes a page that describes the process of [adding a new check](https://github.com/cncf/clomonitor/blob/main/docs/new-check.md).
+
 ## Developer Certificate of Origin
 
 The CLOMonitor project uses a [Developers Certificate of Origin (DCO)](https://developercertificate.org/) to sign-off that you have the right to contribute the code being contributed. The full text of the DCO reads:

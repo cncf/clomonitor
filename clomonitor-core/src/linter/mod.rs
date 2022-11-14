@@ -1,23 +1,25 @@
-use self::check::scorecard::scorecard;
-use super::config::*;
-use anyhow::{format_err, Context, Result};
-use async_trait::async_trait;
-use check::{
-    metadata::{Metadata, METADATA_FILE},
-    *,
+use self::{
+    check::*,
+    checks::util::helpers::{find_exemption, should_skip_check},
 };
+use anyhow::Result;
+use async_trait::async_trait;
 use clap::ValueEnum;
 #[cfg(feature = "mocks")]
 use mockall::automock;
 use postgres_types::ToSql;
 use serde::{Deserialize, Serialize};
 use std::{fmt, path::PathBuf, sync::Arc};
-use which::which;
 
 mod check;
+mod checks;
+mod metadata;
 mod report;
-pub use check::CheckOutput;
-pub use report::*;
+pub use self::{
+    check::{CheckId, CheckOutput},
+    report::*,
+};
+pub(crate) use checks::*;
 
 /// Type alias to represent a Linter trait object.
 pub type DynLinter = Arc<dyn Linter + Send + Sync>;
@@ -81,97 +83,62 @@ impl CoreLinter {
 #[async_trait]
 impl Linter for CoreLinter {
     async fn lint(&self, li: &LinterInput) -> Result<Report> {
-        // Check if required external tools are available
-        if which("scorecard").is_err() {
-            return Err(format_err!(
-                "scorecard not found in PATH (https://github.com/ossf/scorecard#installation)"
-            ));
-        }
-
-        // Setup linter services
-        let svc = CoreLinterServices::new(&li.github_token)?;
-
-        // Get CLOMonitor metadata
-        let cm_md = Metadata::from(&li.root.join(METADATA_FILE))?;
-
-        // The next both actions (get GitHub metadata and get scorecard) make use
-        // of the GitHub token, which when used concurrently, may trigger some
-        // GitHub secondary rate limits. So they should not be run concurrently.
-
-        // Get Github metadata
-        let gh_md = github::metadata(&svc.http_client_gh, &li.url).await?;
-
-        // Get OpenSSF scorecard
-        let scorecard = scorecard(&li.url, &li.github_token)
-            .await
-            .context("error running scorecard command");
-
         // Prepare check input
-        let ci = CheckInput {
-            svc: &svc,
-            li,
-            cm_md: cm_md.as_ref(),
-            gh_md: &gh_md,
-            scorecard: &scorecard,
-        };
+        let ci = CheckInput::new(li).await?;
 
-        // Run some async checks
+        // Run some async checks concurrently
         let (analytics, contributing, trademark_disclaimer) = tokio::join!(
-            run_async_check(ANALYTICS, analytics, &ci),
-            run_async_check(CONTRIBUTING, contributing, &ci),
-            run_async_check(TRADEMARK_DISCLAIMER, trademark_disclaimer, &ci),
+            run_async!(analytics, &ci),
+            run_async!(contributing, &ci),
+            run_async!(trademark_disclaimer, &ci),
         );
 
-        // Run some sync checks
-        let spdx_id = run_check(LICENSE_SPDX, license, &ci);
+        // Run some sync checks needed in advance
+        let spdx_id = run!(license_spdx_id, &ci);
         let mut spdx_id_value: Option<String> = None;
         if let Some(r) = &spdx_id {
             spdx_id_value = r.value.clone();
         }
 
-        // Build report
+        // Run the remaining sync checks and build report
         let mut report = Report {
             documentation: Documentation {
-                adopters: run_check(ADOPTERS, adopters, &ci),
-                changelog: run_check(CHANGELOG, changelog, &ci),
-                code_of_conduct: run_check(CODE_OF_CONDUCT, code_of_conduct, &ci),
+                adopters: run!(adopters, &ci),
+                changelog: run!(changelog, &ci),
+                code_of_conduct: run!(code_of_conduct, &ci),
                 contributing,
-                governance: run_check(GOVERNANCE, governance, &ci),
-                maintainers: run_check(MAINTAINERS, maintainers, &ci),
-                readme: run_check(README, readme, &ci),
-                roadmap: run_check(ROADMAP, roadmap, &ci),
-                website: run_check(WEBSITE, website, &ci),
+                governance: run!(governance, &ci),
+                maintainers: run!(maintainers, &ci),
+                readme: run!(readme, &ci),
+                roadmap: run!(roadmap, &ci),
+                website: run!(website, &ci),
             },
             license: License {
-                license_approved: license_approved(spdx_id_value, &ci),
-                license_scanning: run_check(LICENSE_SCANNING, license_scanning, &ci),
+                license_approved: license_approved::check(&ci, spdx_id_value),
+                license_scanning: run!(license_scanning, &ci),
                 license_spdx_id: spdx_id,
             },
             best_practices: BestPractices {
                 analytics,
-                artifacthub_badge: run_check(ARTIFACTHUB_BADGE, artifacthub_badge, &ci),
-                cla: run_check(CLA, cla, &ci),
-                community_meeting: run_check(COMMUNITY_MEETING, community_meeting, &ci),
-                dco: run_check(DCO, dco, &ci),
-                github_discussions: run_check(GITHUB_DISCUSSIONS, github_discussions, &ci),
-                openssf_badge: run_check(OPENSSF_BADGE, openssf_badge, &ci),
-                recent_release: run_check(RECENT_RELEASE, recent_release, &ci),
-                slack_presence: run_check(SLACK_PRESENCE, slack_presence, &ci),
+                artifacthub_badge: run!(artifacthub_badge, &ci),
+                cla: run!(cla, &ci),
+                community_meeting: run!(community_meeting, &ci),
+                dco: run!(dco, &ci),
+                github_discussions: run!(github_discussions, &ci),
+                openssf_badge: run!(openssf_badge, &ci),
+                recent_release: run!(recent_release, &ci),
+                slack_presence: run!(slack_presence, &ci),
             },
             security: Security {
-                binary_artifacts: run_check(BINARY_ARTIFACTS, binary_artifacts, &ci),
-                code_review: run_check(CODE_REVIEW, code_review, &ci),
-                dangerous_workflow: run_check(DANGEROUS_WORKFLOW, dangerous_workflow, &ci),
-                dependency_update_tool: run_check(
-                    DEPENDENCY_UPDATE_TOOL,
-                    dependency_update_tool,
-                    &ci,
-                ),
-                maintained: run_check(MAINTAINED, maintained, &ci),
-                sbom: run_check(SBOM, sbom, &ci),
-                security_policy: run_check(SECURITY_POLICY, security_policy, &ci),
-                signed_releases: run_check(SIGNED_RELEASES, signed_releases, &ci),
-                token_permissions: run_check(TOKEN_PERMISSIONS, token_permissions, &ci),
+                binary_artifacts: run!(binary_artifacts, &ci),
+                code_review: run!(code_review, &ci),
+                dangerous_workflow: run!(dangerous_workflow, &ci),
+                dependency_update_tool: run!(dependency_update_tool, &ci),
+                maintained: run!(maintained, &ci),
+                sbom: run!(sbom, &ci),
+                security_policy: run!(security_policy, &ci),
+                signed_releases: run!(signed_releases, &ci),
+                token_permissions: run!(token_permissions, &ci),
             },
             legal: Legal {
                 trademark_disclaimer,
@@ -199,6 +166,7 @@ impl CoreLinterServices {
         })
     }
 }
+
 // Setup a new authenticated http client to interact with the GitHub API.
 pub fn setup_github_http_client(github_token: &str) -> Result<reqwest::Client, reqwest::Error> {
     reqwest::Client::builder()

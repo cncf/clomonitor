@@ -1,31 +1,51 @@
-use super::path::{self, Globs};
+use super::util::path::Globs;
+use crate::linter::check::{CheckId, CheckInput, CheckOutput};
+use crate::linter::checks::util::path;
+use crate::linter::CheckSet;
 use anyhow::Result;
 use askalono::*;
 use lazy_static::lazy_static;
 use std::fs;
 
+/// Check identifier.
+pub(crate) const ID: CheckId = "license_spdx_id";
+
+/// Check score weight.
+pub(crate) const WEIGHT: usize = 5;
+
+/// Check sets this check belongs to.
+pub(crate) const CHECK_SETS: [CheckSet; 3] = [CheckSet::Code, CheckSet::CodeLite, CheckSet::Docs];
+
 /// SPDX licenses data. Used to detect license used by repositories.
 const LICENSES_DATA: &[u8] = include_bytes!("data/licenses.bin.zstd");
 
-/// CNCF approved licenses.
-/// https://github.com/cncf/foundation/blob/master/allowed-third-party-license-policy.md
-static APPROVED_LICENSES: [&str; 11] = [
-    "Apache-2.0",
-    "BSD-2-Clause",
-    "BSD-2-Clause-FreeBSD",
-    "BSD-3-Clause",
-    "CC-BY-4.0",
-    "ISC",
-    "MIT",
-    "PostgreSQL",
-    "Python-2.0",
-    "X11",
-    "Zlib",
-];
+/// Patterns used to locate a file in the repository.
+pub(crate) const FILE_PATTERNS: [&str; 2] = ["LICENSE*", "COPYING*"];
 
-/// Check if the license provided is an approved one.
-pub(crate) fn is_approved(spdx_id: &str) -> bool {
-    APPROVED_LICENSES.contains(&spdx_id)
+/// Check main function.
+pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
+    // File in repo
+    if let Some(spdx_id) = detect(&Globs {
+        root: &input.li.root,
+        patterns: &FILE_PATTERNS,
+        case_sensitive: true,
+    })? {
+        return Ok(CheckOutput::passed().value(Some(spdx_id)));
+    }
+
+    // License detected by Github
+    if let Some(spdx_id) = input
+        .gh_md
+        .license_info
+        .as_ref()
+        .and_then(|l| l.spdx_id.as_ref())
+    {
+        if spdx_id != "NOASSERTION" {
+            return Ok(CheckOutput::passed().value(Some(spdx_id.to_owned())));
+        }
+    }
+
+    Ok(CheckOutput::not_passed())
 }
 
 /// Detect repository's license and return its SPDX id if possible.
@@ -51,28 +71,17 @@ pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::check::patterns::*;
+    use crate::linter::checks::license_spdx_id;
     use std::path::Path;
 
-    const TESTDATA_PATH: &str = "src/linter/check/testdata";
-
-    #[test]
-    fn approved_license() {
-        assert!(is_approved("Apache-2.0"));
-        assert!(is_approved("MIT"));
-    }
-
-    #[test]
-    fn non_approved_license() {
-        assert!(!is_approved("AGPL-1.0-only"));
-    }
+    const TESTDATA_PATH: &str = "src/testdata";
 
     #[test]
     fn detect_identified() {
         assert_eq!(
             detect(&Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &LICENSE_FILE,
+                patterns: &license_spdx_id::FILE_PATTERNS,
                 case_sensitive: true,
             })
             .unwrap()

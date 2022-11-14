@@ -1,13 +1,19 @@
 use self::md::*;
-use super::patterns::GITHUB_REPO_URL;
 use anyhow::{format_err, Context, Result};
 use graphql_client::{GraphQLQuery, Response};
 use http::StatusCode;
-use regex::RegexSet;
+use lazy_static::lazy_static;
+use regex::{Regex, RegexSet};
 use std::path::Path;
 
-/// Github GraphQL API URL.
+/// GitHub GraphQL API URL.
 const GITHUB_GRAPHQL_API: &str = "https://api.github.com/graphql";
+
+lazy_static! {
+    static ref GITHUB_REPO_URL: Regex =
+        Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$")
+            .expect("exprs in GITHUB_REPO_URL to be valid");
+}
 
 /// Type alias for GraphQL URI scalar type.
 #[allow(clippy::upper_case_acronyms)]
@@ -19,9 +25,9 @@ type DateTime = String;
 /// Represents the GraphQL Github API metadata query.
 #[derive(Debug, Clone, GraphQLQuery)]
 #[graphql(
-    schema_path = "src/linter/check/github/github_schema.graphql",
-    query_path = "src/linter/check/github/md.graphql",
-    response_derives = "Debug, PartialEq"
+    schema_path = "src/linter/checks/util/github/github_schema.graphql",
+    query_path = "src/linter/checks/util/github/md.graphql",
+    response_derives = "Debug, PartialEq, Eq"
 )]
 pub struct Md;
 
@@ -46,6 +52,44 @@ impl MdRepository {
             security_policy_url: None,
         }
     }
+}
+
+/// Get repository's metadata from the Github GraphQL API.
+pub(crate) async fn metadata(
+    http_client: &reqwest::Client,
+    repo_url: &str,
+) -> Result<MdRepository> {
+    let (owner, repo) = get_owner_and_repo(repo_url)?;
+
+    // Do request to GraphQL API
+    let vars = md::Variables { owner, repo };
+    let req_body = &Md::build_query(vars);
+    let resp = http_client
+        .post(GITHUB_GRAPHQL_API)
+        .json(req_body)
+        .send()
+        .await
+        .context("error requesting repository medatata from github graphql api")?;
+    if resp.status() != StatusCode::OK {
+        return Err(format_err!(
+            "unexpected status code getting repository medatata from github graphql api: {} - {}",
+            resp.status(),
+            resp.text().await?,
+        ));
+    }
+
+    // Parse response body and extract repository metadata
+    let resp_body: Response<md::ResponseData> = resp
+        .json()
+        .await
+        .context("error deserializing repository medatata response from github graphql api")?;
+    let repo = resp_body
+        .data
+        .ok_or_else(|| format_err!("data field not found in github medatata response"))?
+        .repository
+        .ok_or_else(|| format_err!("repository field not found in github medatata response"))?;
+
+    Ok(repo)
 }
 
 /// Build a url from the path and metadata provided.
@@ -181,44 +225,6 @@ pub(crate) fn latest_release_description_matches(gh_md: &MdRepository, re: &Rege
     false
 }
 
-/// Get repository's metadata from the Github GraphQL API.
-pub(crate) async fn metadata(
-    http_client: &reqwest::Client,
-    repo_url: &str,
-) -> Result<MdRepository> {
-    let (owner, repo) = get_owner_and_repo(repo_url)?;
-
-    // Do request to GraphQL API
-    let vars = md::Variables { owner, repo };
-    let req_body = &Md::build_query(vars);
-    let resp = http_client
-        .post(GITHUB_GRAPHQL_API)
-        .json(req_body)
-        .send()
-        .await
-        .context("error requesting repository medatata from github graphql api")?;
-    if resp.status() != StatusCode::OK {
-        return Err(format_err!(
-            "unexpected status code getting repository medatata from github graphql api: {} - {}",
-            resp.status(),
-            resp.text().await?,
-        ));
-    }
-
-    // Parse response body and extract repository metadata
-    let resp_body: Response<md::ResponseData> = resp
-        .json()
-        .await
-        .context("error deserializing repository medatata response from github graphql api")?;
-    let repo = resp_body
-        .data
-        .ok_or_else(|| format_err!("data field not found in github medatata response"))?
-        .repository
-        .ok_or_else(|| format_err!("repository field not found in github medatata response"))?;
-
-    Ok(repo)
-}
-
 /// Extract the owner and repository from the repository url provided.
 fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
     let c = GITHUB_REPO_URL
@@ -230,6 +236,12 @@ fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn github_repo_url_match() {
+        assert!(GITHUB_REPO_URL.is_match("https://github.com/owner/repo"));
+        assert!(GITHUB_REPO_URL.is_match("https://github.com/owner/repo/"));
+    }
 
     #[test]
     fn build_url_works() {

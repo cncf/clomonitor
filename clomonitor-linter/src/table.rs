@@ -308,56 +308,49 @@ mod tests {
         // Setup test linter results
         let report = Report {
             documentation: Documentation {
-                adopters: Some(true.into()),
-                code_of_conduct: Some(true.into()),
-                contributing: Some(true.into()),
-                changelog: Some(true.into()),
-                governance: Some(true.into()),
-                maintainers: Some(true.into()),
-                readme: Some(true.into()),
-                roadmap: Some(true.into()),
-                website: Some(true.into()),
+                adopters: Some(CheckOutput::passed()),
+                code_of_conduct: Some(CheckOutput::passed()),
+                contributing: Some(CheckOutput::passed()),
+                changelog: Some(CheckOutput::passed()),
+                governance: Some(CheckOutput::passed()),
+                maintainers: Some(CheckOutput::passed()),
+                readme: Some(CheckOutput::passed()),
+                roadmap: Some(CheckOutput::passed()),
+                website: Some(CheckOutput::passed()),
             },
             license: License {
-                license_approved: Some(CheckOutput {
-                    passed: true,
-                    value: Some(true),
-                    ..Default::default()
-                }),
-                license_scanning: Some(CheckOutput {
-                    passed: true,
-                    url: (Some("https://license-scanning.url".to_string())),
-                    ..CheckOutput::default()
-                }),
-                license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                license_approved: Some(CheckOutput::passed()),
+                license_scanning: Some(
+                    CheckOutput::passed().url(Some("https://license-scanning.url".to_string())),
+                ),
+                license_spdx_id: Some(CheckOutput::passed().value(Some("Apache-2.0".to_string()))),
             },
             best_practices: BestPractices {
-                analytics: Some(Some(vec!["GA3".to_string(), "GA4".to_string()]).into()),
-                artifacthub_badge: Some(CheckOutput {
-                    exempt: true,
-                    ..Default::default()
-                }),
-                cla: Some(true.into()),
-                community_meeting: Some(true.into()),
-                dco: Some(true.into()),
-                github_discussions: Some(true.into()),
-                openssf_badge: Some(true.into()),
-                recent_release: Some(true.into()),
-                slack_presence: Some(true.into()),
+                analytics: Some(
+                    CheckOutput::passed().value(Some(vec!["GA3".to_string(), "GA4".to_string()])),
+                ),
+                artifacthub_badge: Some(CheckOutput::exempt()),
+                cla: Some(CheckOutput::passed()),
+                community_meeting: Some(CheckOutput::passed()),
+                dco: Some(CheckOutput::passed()),
+                github_discussions: Some(CheckOutput::passed()),
+                openssf_badge: Some(CheckOutput::passed()),
+                recent_release: Some(CheckOutput::passed()),
+                slack_presence: Some(CheckOutput::passed()),
             },
             security: Security {
-                binary_artifacts: Some(true.into()),
-                code_review: Some(true.into()),
-                dangerous_workflow: Some(true.into()),
-                dependency_update_tool: Some(true.into()),
-                maintained: Some(true.into()),
-                sbom: Some(true.into()),
-                security_policy: Some(true.into()),
-                signed_releases: Some(true.into()),
-                token_permissions: Some(true.into()),
+                binary_artifacts: Some(CheckOutput::passed()),
+                code_review: Some(CheckOutput::passed()),
+                dangerous_workflow: Some(CheckOutput::passed()),
+                dependency_update_tool: Some(CheckOutput::passed()),
+                maintained: Some(CheckOutput::passed()),
+                sbom: Some(CheckOutput::passed()),
+                security_policy: Some(CheckOutput::passed()),
+                signed_releases: Some(CheckOutput::passed()),
+                token_permissions: Some(CheckOutput::passed()),
             },
             legal: Legal {
-                trademark_disclaimer: Some(true.into()),
+                trademark_disclaimer: Some(CheckOutput::passed()),
             },
         };
         let score = Score {

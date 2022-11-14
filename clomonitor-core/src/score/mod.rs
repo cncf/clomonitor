@@ -1,4 +1,4 @@
-use crate::{config::*, linter::*};
+use crate::linter::*;
 use serde::{Deserialize, Serialize};
 
 /// Score information.
@@ -54,69 +54,25 @@ impl Score {
 pub fn calculate(report: &Report) -> Score {
     let mut score = Score::default();
 
-    // Documentation
-    let d = &report.documentation;
-    (score.documentation, score.documentation_weight) = calculate_section_score_and_weight(&[
-        (ADOPTERS, should_score(&d.adopters)),
-        (CHANGELOG, should_score(&d.changelog)),
-        (CODE_OF_CONDUCT, should_score(&d.code_of_conduct)),
-        (CONTRIBUTING, should_score(&d.contributing)),
-        (GOVERNANCE, should_score(&d.governance)),
-        (MAINTAINERS, should_score(&d.maintainers)),
-        (README, should_score(&d.readme)),
-        (ROADMAP, should_score(&d.roadmap)),
-        (WEBSITE, should_score(&d.website)),
-    ]);
-
-    // License
-    (score.license, score.license_weight) = calculate_section_score_and_weight(&[
-        (
-            LICENSE_APPROVED,
-            should_score(&report.license.license_approved),
-        ),
-        (
-            LICENSE_SCANNING,
-            should_score(&report.license.license_scanning),
-        ),
-        (LICENSE_SPDX, should_score(&report.license.license_spdx_id)),
-    ]);
-
-    // Best practices
-    let bp = &report.best_practices;
-    (score.best_practices, score.best_practices_weight) = calculate_section_score_and_weight(&[
-        (ANALYTICS, should_score(&bp.analytics)),
-        (ARTIFACTHUB_BADGE, should_score(&bp.artifacthub_badge)),
-        (CLA, should_score(&bp.cla)),
-        (COMMUNITY_MEETING, should_score(&bp.community_meeting)),
-        (DCO, should_score(&bp.dco)),
-        (GITHUB_DISCUSSIONS, should_score(&bp.github_discussions)),
-        (OPENSSF_BADGE, should_score(&bp.openssf_badge)),
-        (RECENT_RELEASE, should_score(&bp.recent_release)),
-        (SLACK_PRESENCE, should_score(&bp.slack_presence)),
-    ]);
-
-    // Security
-    let s = &report.security;
-    (score.security, score.security_weight) = calculate_section_score_and_weight(&[
-        (BINARY_ARTIFACTS, should_score(&s.binary_artifacts)),
-        (CODE_REVIEW, should_score(&s.code_review)),
-        (DANGEROUS_WORKFLOW, should_score(&s.dangerous_workflow)),
-        (
-            DEPENDENCY_UPDATE_TOOL,
-            should_score(&s.dependency_update_tool),
-        ),
-        (MAINTAINED, should_score(&s.maintained)),
-        (SBOM, should_score(&s.sbom)),
-        (SECURITY_POLICY, should_score(&s.security_policy)),
-        (SIGNED_RELEASES, should_score(&s.signed_releases)),
-        (TOKEN_PERMISSIONS, should_score(&s.token_permissions)),
-    ]);
-
-    // Legal
-    (score.legal, score.legal_weight) = calculate_section_score_and_weight(&[(
-        TRADEMARK_DISCLAIMER,
-        should_score(&report.legal.trademark_disclaimer),
-    )]);
+    // Sections
+    (score.documentation, score.documentation_weight) = calculate_section(
+        &report.documentation.available(),
+        &report.documentation.passed_or_exempt(),
+    );
+    (score.license, score.license_weight) = calculate_section(
+        &report.license.available(),
+        &report.license.passed_or_exempt(),
+    );
+    (score.best_practices, score.best_practices_weight) = calculate_section(
+        &report.best_practices.available(),
+        &report.best_practices.passed_or_exempt(),
+    );
+    (score.security, score.security_weight) = calculate_section(
+        &report.security.available(),
+        &report.security.passed_or_exempt(),
+    );
+    (score.legal, score.legal_weight) =
+        calculate_section(&report.legal.available(), &report.legal.passed_or_exempt());
 
     // Global
     let sections_scores = &[
@@ -147,6 +103,27 @@ pub fn calculate(report: &Report) -> Score {
     score
 }
 
+/// Calculate score and weight for a report's section from the checks provided.
+fn calculate_section(
+    checks_available: &[CheckId],
+    checks_passed_or_exempt: &[CheckId],
+) -> (Option<f64>, Option<usize>) {
+    // Calculate section weight
+    let weight = checks_available
+        .iter()
+        .fold(0, |weight, check_id| weight + CHECKS[check_id].weight);
+    if weight == 0 {
+        return (None, None);
+    }
+
+    // Calculate section score
+    let score = checks_passed_or_exempt.iter().fold(0.0, |score, check_id| {
+        score + CHECKS[check_id].weight as f64 / weight as f64 * 100.0
+    });
+
+    (Some(score), Some(weight))
+}
+
 /// Merge the scores provided into a single score.
 pub fn merge(scores: &[Score]) -> Score {
     // Sum all scores weights for each of the sections. We'll use them to
@@ -167,7 +144,7 @@ pub fn merge(scores: &[Score]) -> Score {
     }
 
     // Helper function that merges a score into the merged value provided after
-    // applying the given coefficient to it
+    // applying the given coefficient to it.
     let merge = |merged: Option<f64>, score: Option<f64>, k: f64| -> Option<f64> {
         if let Some(v) = score {
             return match merged {
@@ -223,42 +200,6 @@ pub fn rating(score: f64) -> char {
     }
 }
 
-/// Calculate score for a report's section from the checks provided.
-fn calculate_section_score_and_weight(
-    checks: &[(&'static str, Option<bool>)],
-) -> (Option<f64>, Option<usize>) {
-    // Calculate section weight
-    let mut section_weight = 0;
-    for (check_id, should_score) in checks {
-        if should_score.is_some() {
-            section_weight += CHECK_WEIGHT[check_id];
-        }
-    }
-
-    // None of the checks were provided
-    if section_weight == 0 {
-        return (None, None);
-    }
-
-    // Calculate section score
-    let mut score = 0.0;
-    for (check_id, should_score) in checks {
-        if let Some(should_score) = should_score {
-            if *should_score {
-                score += CHECK_WEIGHT[check_id] as f64 / section_weight as f64 * 100.0;
-            }
-        }
-    }
-
-    (Some(score), Some(section_weight))
-}
-
-/// Helper that checks if the provided check should be scored or not. At the
-/// moment a check gets a score if it has passed or is exempt.
-fn should_score<T>(output: &Option<CheckOutput<T>>) -> Option<bool> {
-    output.as_ref().map(|o| o.passed || o.exempt)
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -303,54 +244,49 @@ mod tests {
         assert_eq!(
             calculate(&Report {
                 documentation: Documentation {
-                    adopters: Some(true.into()),
-                    code_of_conduct: Some(true.into()),
-                    contributing: Some(true.into()),
-                    changelog: Some(true.into()),
-                    governance: Some(true.into()),
-                    maintainers: Some(true.into()),
-                    readme: Some(true.into()),
-                    roadmap: Some(true.into()),
-                    website: Some(true.into()),
+                    adopters: Some(CheckOutput::passed()),
+                    code_of_conduct: Some(CheckOutput::passed()),
+                    contributing: Some(CheckOutput::passed()),
+                    changelog: Some(CheckOutput::passed()),
+                    governance: Some(CheckOutput::passed()),
+                    maintainers: Some(CheckOutput::passed()),
+                    readme: Some(CheckOutput::passed()),
+                    roadmap: Some(CheckOutput::passed()),
+                    website: Some(CheckOutput::passed()),
                 },
                 license: License {
-                    license_approved: Some(CheckOutput {
-                        passed: true,
-                        value: Some(true),
-                        ..Default::default()
-                    }),
-                    license_scanning: Some(CheckOutput::from_url(Some(
-                        "https://license-scanning.url".to_string()
-                    ))),
-                    license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                    license_approved: Some(CheckOutput::passed()),
+                    license_scanning: Some(
+                        CheckOutput::passed().url(Some("https://license-scanning.url".to_string()))
+                    ),
+                    license_spdx_id: Some(
+                        CheckOutput::passed().value(Some("Apache-2.0".to_string()))
+                    ),
                 },
                 best_practices: BestPractices {
-                    analytics: Some(true.into()),
-                    artifacthub_badge: Some(CheckOutput {
-                        exempt: true,
-                        ..Default::default()
-                    }),
-                    cla: Some(true.into()),
-                    community_meeting: Some(true.into()),
-                    dco: Some(true.into()),
-                    github_discussions: Some(true.into()),
-                    openssf_badge: Some(true.into()),
-                    recent_release: Some(true.into()),
-                    slack_presence: Some(true.into()),
+                    analytics: Some(CheckOutput::passed()),
+                    artifacthub_badge: Some(CheckOutput::exempt()),
+                    cla: Some(CheckOutput::passed()),
+                    community_meeting: Some(CheckOutput::passed()),
+                    dco: Some(CheckOutput::passed()),
+                    github_discussions: Some(CheckOutput::passed()),
+                    openssf_badge: Some(CheckOutput::passed()),
+                    recent_release: Some(CheckOutput::passed()),
+                    slack_presence: Some(CheckOutput::passed()),
                 },
                 security: Security {
-                    binary_artifacts: Some(true.into()),
-                    code_review: Some(true.into()),
-                    dangerous_workflow: Some(true.into()),
-                    dependency_update_tool: Some(true.into()),
-                    maintained: Some(true.into()),
-                    sbom: Some(true.into()),
-                    security_policy: Some(true.into()),
-                    signed_releases: Some(true.into()),
-                    token_permissions: Some(true.into()),
+                    binary_artifacts: Some(CheckOutput::passed()),
+                    code_review: Some(CheckOutput::passed()),
+                    dangerous_workflow: Some(CheckOutput::passed()),
+                    dependency_update_tool: Some(CheckOutput::passed()),
+                    maintained: Some(CheckOutput::passed()),
+                    sbom: Some(CheckOutput::passed()),
+                    security_policy: Some(CheckOutput::passed()),
+                    signed_releases: Some(CheckOutput::passed()),
+                    token_permissions: Some(CheckOutput::passed()),
                 },
                 legal: Legal {
-                    trademark_disclaimer: Some(true.into()),
+                    trademark_disclaimer: Some(CheckOutput::passed()),
                 },
             }),
             Score {
@@ -375,48 +311,45 @@ mod tests {
         assert_eq!(
             calculate(&Report {
                 documentation: Documentation {
-                    adopters: Some(false.into()),
-                    code_of_conduct: Some(false.into()),
-                    contributing: Some(false.into()),
-                    changelog: Some(false.into()),
-                    governance: Some(false.into()),
-                    maintainers: Some(false.into()),
-                    readme: Some(false.into()),
-                    roadmap: Some(false.into()),
-                    website: Some(false.into()),
+                    adopters: Some(CheckOutput::not_passed()),
+                    code_of_conduct: Some(CheckOutput::not_passed()),
+                    contributing: Some(CheckOutput::not_passed()),
+                    changelog: Some(CheckOutput::not_passed()),
+                    governance: Some(CheckOutput::not_passed()),
+                    maintainers: Some(CheckOutput::not_passed()),
+                    readme: Some(CheckOutput::not_passed()),
+                    roadmap: Some(CheckOutput::not_passed()),
+                    website: Some(CheckOutput::not_passed()),
                 },
                 license: License {
-                    license_approved: Some(false.into()),
-                    license_scanning: Some(false.into()),
-                    license_spdx_id: Some(false.into()),
+                    license_approved: Some(CheckOutput::not_passed()),
+                    license_scanning: Some(CheckOutput::not_passed()),
+                    license_spdx_id: Some(CheckOutput::not_passed()),
                 },
                 best_practices: BestPractices {
-                    analytics: Some(false.into()),
-                    artifacthub_badge: Some(CheckOutput {
-                        exempt: false,
-                        ..Default::default()
-                    }),
-                    cla: Some(false.into()),
-                    community_meeting: Some(false.into()),
-                    dco: Some(false.into()),
-                    github_discussions: Some(false.into()),
-                    openssf_badge: Some(false.into()),
-                    recent_release: Some(false.into()),
-                    slack_presence: Some(false.into()),
+                    analytics: Some(CheckOutput::not_passed()),
+                    artifacthub_badge: Some(CheckOutput::not_passed()),
+                    cla: Some(CheckOutput::not_passed()),
+                    community_meeting: Some(CheckOutput::not_passed()),
+                    dco: Some(CheckOutput::not_passed()),
+                    github_discussions: Some(CheckOutput::not_passed()),
+                    openssf_badge: Some(CheckOutput::not_passed()),
+                    recent_release: Some(CheckOutput::not_passed()),
+                    slack_presence: Some(CheckOutput::not_passed()),
                 },
                 security: Security {
-                    binary_artifacts: Some(false.into()),
-                    code_review: Some(false.into()),
-                    dangerous_workflow: Some(false.into()),
-                    dependency_update_tool: Some(false.into()),
-                    maintained: Some(false.into()),
-                    sbom: Some(false.into()),
-                    security_policy: Some(false.into()),
-                    signed_releases: Some(false.into()),
-                    token_permissions: Some(false.into()),
+                    binary_artifacts: Some(CheckOutput::not_passed()),
+                    code_review: Some(CheckOutput::not_passed()),
+                    dangerous_workflow: Some(CheckOutput::not_passed()),
+                    dependency_update_tool: Some(CheckOutput::not_passed()),
+                    maintained: Some(CheckOutput::not_passed()),
+                    sbom: Some(CheckOutput::not_passed()),
+                    security_policy: Some(CheckOutput::not_passed()),
+                    signed_releases: Some(CheckOutput::not_passed()),
+                    token_permissions: Some(CheckOutput::not_passed()),
                 },
                 legal: Legal {
-                    trademark_disclaimer: Some(false.into()),
+                    trademark_disclaimer: Some(CheckOutput::not_passed()),
                 },
             }),
             Score {
@@ -443,49 +376,44 @@ mod tests {
                 documentation: Documentation {
                     adopters: None,
                     code_of_conduct: None,
-                    contributing: Some(true.into()),
-                    changelog: Some(true.into()),
+                    contributing: Some(CheckOutput::passed()),
+                    changelog: Some(CheckOutput::passed()),
                     governance: None,
-                    maintainers: Some(true.into()),
-                    readme: Some(true.into()),
+                    maintainers: Some(CheckOutput::passed()),
+                    readme: Some(CheckOutput::passed()),
                     roadmap: None,
                     website: None,
                 },
                 license: License {
-                    license_approved: Some(CheckOutput {
-                        passed: true,
-                        value: Some(true),
-                        ..Default::default()
-                    }),
-                    license_scanning: Some(CheckOutput::from_url(Some(
-                        "https://license-scanning.url".to_string()
-                    ))),
-                    license_spdx_id: Some(Some("Apache-2.0".to_string()).into()),
+                    license_approved: Some(CheckOutput::passed()),
+                    license_scanning: Some(
+                        CheckOutput::passed().url(Some("https://license-scanning.url".to_string()))
+                    ),
+                    license_spdx_id: Some(
+                        CheckOutput::passed().value(Some("Apache-2.0".to_string()))
+                    ),
                 },
                 best_practices: BestPractices {
-                    analytics: Some(true.into()),
-                    artifacthub_badge: Some(CheckOutput {
-                        exempt: true,
-                        ..Default::default()
-                    }),
-                    cla: Some(true.into()),
+                    analytics: Some(CheckOutput::passed()),
+                    artifacthub_badge: Some(CheckOutput::exempt()),
+                    cla: Some(CheckOutput::passed()),
                     community_meeting: None,
-                    dco: Some(true.into()),
-                    github_discussions: Some(true.into()),
-                    openssf_badge: Some(true.into()),
-                    recent_release: Some(true.into()),
+                    dco: Some(CheckOutput::passed()),
+                    github_discussions: Some(CheckOutput::passed()),
+                    openssf_badge: Some(CheckOutput::passed()),
+                    recent_release: Some(CheckOutput::passed()),
                     slack_presence: None,
                 },
                 security: Security {
-                    binary_artifacts: Some(true.into()),
-                    code_review: Some(true.into()),
-                    dangerous_workflow: Some(true.into()),
-                    dependency_update_tool: Some(true.into()),
-                    maintained: Some(true.into()),
-                    sbom: Some(true.into()),
-                    security_policy: Some(true.into()),
-                    signed_releases: Some(true.into()),
-                    token_permissions: Some(true.into()),
+                    binary_artifacts: Some(CheckOutput::passed()),
+                    code_review: Some(CheckOutput::passed()),
+                    dangerous_workflow: Some(CheckOutput::passed()),
+                    dependency_update_tool: Some(CheckOutput::passed()),
+                    maintained: Some(CheckOutput::passed()),
+                    sbom: Some(CheckOutput::passed()),
+                    security_policy: Some(CheckOutput::passed()),
+                    signed_releases: Some(CheckOutput::passed()),
+                    token_permissions: Some(CheckOutput::passed()),
                 },
                 legal: Legal {
                     trademark_disclaimer: None,

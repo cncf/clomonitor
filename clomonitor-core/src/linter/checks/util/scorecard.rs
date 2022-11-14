@@ -1,4 +1,4 @@
-use crate::config::SCORECARD_CHECK;
+use crate::linter::checks::CHECKS;
 use anyhow::{format_err, Error, Result};
 use serde::Deserialize;
 use tokio::process::Command;
@@ -50,7 +50,7 @@ pub(crate) fn get_check<'a>(
         Ok(scorecard) => Ok(scorecard
             .checks
             .iter()
-            .find(|c| c.name == SCORECARD_CHECK[check_id])),
+            .find(|c| &c.name == CHECKS[check_id].scorecard_name.as_ref().unwrap())),
         Err(err) => Err(err),
     }
 }
@@ -58,7 +58,7 @@ pub(crate) fn get_check<'a>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::config::CODE_REVIEW;
+    use crate::linter::checks::code_review;
 
     #[test]
     fn get_check_found() {
@@ -75,7 +75,7 @@ mod tests {
         });
 
         assert_eq!(
-            get_check(&scorecard, CODE_REVIEW).unwrap().unwrap(),
+            get_check(&scorecard, code_review::ID).unwrap().unwrap(),
             &scorecard.as_ref().unwrap().checks[0]
         );
     }
@@ -84,6 +84,9 @@ mod tests {
     fn get_check_not_found() {
         let scorecard = Ok(Scorecard { checks: vec![] });
 
-        assert!(matches!(get_check(&scorecard, CODE_REVIEW).unwrap(), None));
+        assert!(matches!(
+            get_check(&scorecard, code_review::ID).unwrap(),
+            None
+        ));
     }
 }

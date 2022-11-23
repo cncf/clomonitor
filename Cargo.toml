@@ -58,7 +58,7 @@ tempfile = "3.3.0"
 tera = { version = "1.17.1", default-features = false }
 time = { version = "0.3.17", features = ["macros", "parsing", "serde"] }
 tiny-skia = "0.8.2"
-tokio = { version = "1.21.2", features = [
+tokio = { version = "1.22.0", features = [
     "macros",
     "process",
     "rt-multi-thread",

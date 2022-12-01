@@ -1,7 +1,7 @@
 use crate::{db::DynDB, handlers::*, middleware::metrics_collector};
 use anyhow::Result;
 use axum::{
-    extract::Extension,
+    extract::FromRef,
     http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
     middleware,
     routing::{get, get_service},
@@ -21,6 +21,14 @@ pub const STATIC_CACHE_MAX_AGE: usize = 365 * 24 * 60 * 60;
 
 /// Documentation files cache duration.
 pub const DOCS_CACHE_MAX_AGE: usize = 300;
+
+/// API server router's state.
+#[derive(Clone, FromRef)]
+struct RouterState {
+    cfg: Arc<Config>,
+    db: DynDB,
+    tmpl: Arc<Tera>,
+}
 
 /// Setup API server router.
 pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
@@ -72,7 +80,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
         )
         .route("/data/repositories.csv", get(repositories_checks))
         .nest("/api", api_routes)
-        .nest(
+        .nest_service(
             "/docs",
             get_service(SetResponseHeader::overriding(
                 ServeDir::new(docs_path),
@@ -81,7 +89,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             ))
             .handle_error(error_handler),
         )
-        .nest(
+        .nest_service(
             "/static",
             get_service(SetResponseHeader::overriding(
                 ServeDir::new(static_path),
@@ -90,15 +98,17 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             ))
             .handle_error(error_handler),
         )
-        .fallback(get(index))
+        .fallback(index)
         .layer(
             ServiceBuilder::new()
                 .layer(TraceLayer::new_for_http())
-                .layer(middleware::from_fn(metrics_collector))
-                .layer(Extension(cfg.clone()))
-                .layer(Extension(db))
-                .layer(Extension(tmpl)),
-        );
+                .layer(middleware::from_fn(metrics_collector)),
+        )
+        .with_state(RouterState {
+            cfg: cfg.clone(),
+            db,
+            tmpl,
+        });
 
     // Setup basic auth
     if cfg.get_bool("apiserver.basicAuth.enabled").unwrap_or(false) {

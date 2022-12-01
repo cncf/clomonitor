@@ -4,7 +4,7 @@ use anyhow::Error;
 use askama_axum::Template;
 use axum::{
     body::Full,
-    extract::{Extension, Path, Query, RawQuery},
+    extract::{Path, Query, RawQuery, State},
     http::{
         header::{CACHE_CONTROL, CONTENT_TYPE},
         Response, StatusCode,
@@ -47,7 +47,7 @@ pub const SNAPSHOT_DATE_FORMAT: &str = "[year]-[month]-[day]";
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project rating from database
@@ -99,8 +99,8 @@ pub(crate) async fn badge(
 
 /// Handler that returns the index HTML document with some metadata embedded.
 pub(crate) async fn index(
-    Extension(cfg): Extension<Arc<Config>>,
-    Extension(tmpl): Extension<Arc<Tera>>,
+    State(cfg): State<Arc<Config>>,
+    State(tmpl): State<Arc<Tera>>,
 ) -> impl IntoResponse {
     let mut ctx = Context::new();
     ctx.insert("title", INDEX_META_TITLE);
@@ -127,8 +127,8 @@ pub(crate) async fn index(
 /// Handler that returns the index HTML document with some project specific
 /// metadata embedded.
 pub(crate) async fn index_project(
-    Extension(cfg): Extension<Arc<Config>>,
-    Extension(tmpl): Extension<Arc<Tera>>,
+    State(cfg): State<Arc<Config>>,
+    State(tmpl): State<Arc<Tera>>,
     Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     let mut ctx = Context::new();
@@ -157,7 +157,7 @@ pub(crate) async fn index_project(
 
 /// Handler that returns some information about the requested project.
 pub(crate) async fn project(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project from database
@@ -181,7 +181,7 @@ pub(crate) async fn project(
 
 /// Handler that returns the requested project snapshot.
 pub(crate) async fn project_snapshot(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project, date)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Parse date
@@ -224,7 +224,7 @@ impl ReportSummaryTemplate {
 
 /// Handler that returns a PNG image with the project's report summary.
 pub(crate) async fn report_summary_png(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project)): Path<(String, String)>,
 ) -> impl IntoResponse {
     // Get project score from database
@@ -266,7 +266,7 @@ pub(crate) async fn report_summary_png(
 
 /// Handler that returns an SVG image with the project's report summary.
 pub(crate) async fn report_summary_svg(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project)): Path<(String, String)>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
@@ -288,7 +288,7 @@ pub(crate) async fn report_summary_svg(
 }
 
 /// Handler that returns all repositories with checks details in CSV format.
-pub(crate) async fn repositories_checks(Extension(db): Extension<DynDB>) -> impl IntoResponse {
+pub(crate) async fn repositories_checks(State(db): State<DynDB>) -> impl IntoResponse {
     // Get all repositories from database
     let repos = db
         .repositories_with_checks()
@@ -315,7 +315,7 @@ pub(crate) struct RepositoryReportMDTemplate {
 
 /// Handler that returns the repository's report in markdown format.
 pub(crate) async fn repository_report_md(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Path((foundation, project, repository)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Get repository report info from database
@@ -336,7 +336,7 @@ pub(crate) async fn repository_report_md(
 
 /// Handler that allows searching for projects.
 pub(crate) async fn search_projects(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     RawQuery(query): RawQuery,
 ) -> impl IntoResponse {
     // Search projects in database
@@ -356,7 +356,7 @@ pub(crate) async fn search_projects(
 
 /// Handler that returns some general stats.
 pub(crate) async fn stats(
-    Extension(db): Extension<DynDB>,
+    State(db): State<DynDB>,
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get stats from database

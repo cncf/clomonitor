@@ -43,16 +43,15 @@ impl PgDB {
 impl DB for PgDB {
     async fn foundations(&self) -> Result<Vec<Foundation>> {
         let db = self.pool.get().await?;
-        let rows = db
+        let foundations = db
             .query("select foundation_id, data_url from foundation", &[])
-            .await?;
-        let mut foundations = vec![];
-        for row in rows {
-            foundations.push(Foundation {
+            .await?
+            .iter()
+            .map(|row| Foundation {
                 foundation_id: row.get("foundation_id"),
                 data_url: row.get("data_url"),
-            });
-        }
+            })
+            .collect();
         Ok(foundations)
     }
 
@@ -61,16 +60,15 @@ impl DB for PgDB {
         foundation_id: &str,
     ) -> Result<HashMap<String, Option<String>>> {
         let db = self.pool.get().await?;
-        let rows = db
+        let projects = db
             .query(
                 "select name, digest from project where foundation_id = $1::text",
                 &[&foundation_id],
             )
-            .await?;
-        let mut projects = HashMap::new();
-        for row in rows {
-            projects.insert(row.get("name"), row.get("digest"));
-        }
+            .await?
+            .iter()
+            .map(|row| (row.get("name"), row.get("digest")))
+            .collect();
         Ok(projects)
     }
 

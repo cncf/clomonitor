@@ -58,29 +58,35 @@ impl DB for PgDB {
 
     async fn project_data(&self, project_id: &Uuid) -> Result<Option<Value>> {
         let db = self.pool.get().await?;
-        let row = db
+        let data: Option<Value> = db
             .query_one("select get_project_by_id($1::uuid)", &[&project_id])
-            .await?;
-        let data: Option<Value> = row.get(0);
+            .await?
+            .get(0);
         Ok(data)
     }
 
     async fn project_snapshots(&self, project_id: &Uuid) -> Result<Vec<Date>> {
         let db = self.pool.get().await?;
-        let rows = db
+        let snapshots = db
             .query(
                 "select date from project_snapshot where project_id = $1 order by date desc",
                 &[&project_id],
             )
-            .await?;
-        let snapshots = rows.iter().map(|row| row.get(0)).collect();
+            .await?
+            .iter()
+            .map(|row| row.get("date"))
+            .collect();
         Ok(snapshots)
     }
 
     async fn projects_ids(&self) -> Result<Vec<Uuid>> {
         let db = self.pool.get().await?;
-        let rows = db.query("select project_id from project", &[]).await?;
-        let projects = rows.iter().map(|row| row.get(0)).collect();
+        let projects = db
+            .query("select project_id from project", &[])
+            .await?
+            .iter()
+            .map(|row| row.get("project_id"))
+            .collect();
         Ok(projects)
     }
 

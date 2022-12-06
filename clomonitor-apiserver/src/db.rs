@@ -82,19 +82,19 @@ impl DB for PgDB {
         project_name: &str,
     ) -> Result<Option<JsonString>> {
         let db = self.pool.get().await?;
-        let row = db
+        let project: Option<JsonString> = db
             .query_one(
                 "select get_project_by_name($1::text, $2::text)::text",
                 &[&foundation, &project_name],
             )
-            .await?;
-        let project: Option<JsonString> = row.get(0);
+            .await?
+            .get(0);
         Ok(project)
     }
 
     async fn project_rating(&self, foundation: &str, project_name: &str) -> Result<Option<String>> {
         let db = self.pool.get().await?;
-        let row = db
+        let rating = db
             .query_opt(
                 "
                 select rating
@@ -104,14 +104,14 @@ impl DB for PgDB {
                 ",
                 &[&foundation, &project_name],
             )
-            .await?;
-        let rating: Option<String> = row.and_then(|row| row.get(0));
+            .await?
+            .and_then(|row| row.get("rating"));
         Ok(rating)
     }
 
     async fn project_score(&self, foundation: &str, project_name: &str) -> Result<Option<Score>> {
         let db = self.pool.get().await?;
-        let row = db
+        let score = db
             .query_opt(
                 "
                 select score
@@ -121,12 +121,12 @@ impl DB for PgDB {
                 ",
                 &[&foundation, &project_name],
             )
-            .await?;
-        let score: Option<Json<Score>> = row.and_then(|row| row.get(0));
-        match score {
-            Some(Json(score)) => Ok(Some(score)),
-            None => Ok(None),
-        }
+            .await?
+            .and_then(|row| {
+                let score: Option<Json<Score>> = row.get("score");
+                score.map(|Json(score)| score)
+            });
+        Ok(score)
     }
 
     async fn project_snapshot(
@@ -136,7 +136,7 @@ impl DB for PgDB {
         date: &Date,
     ) -> Result<Option<JsonString>> {
         let db = self.pool.get().await?;
-        let row = db
+        let snapshot = db
             .query_opt(
                 "
                 select data::text
@@ -148,22 +148,19 @@ impl DB for PgDB {
                 ",
                 &[&foundation, &project_name, &date],
             )
-            .await?;
-        let snapshot: Option<JsonString> = row.and_then(|row| row.get(0));
+            .await?
+            .and_then(|row| row.get("data"));
         Ok(snapshot)
     }
 
     async fn repositories_with_checks(&self) -> Result<String> {
         let db = self.pool.get().await?;
-        let rows = db
+        let repos = db
             .query("select get_repositories_with_checks()", &[])
-            .await?;
-        let mut repos = String::new();
-        for row in rows {
-            let repo = row.get(0);
-            repos.push_str(repo);
-            repos.push('\n');
-        }
+            .await?
+            .iter()
+            .map(|row| format!("{}\n", row.get::<_, String>(0)))
+            .collect();
         Ok(repos)
     }
 
@@ -174,17 +171,15 @@ impl DB for PgDB {
         repository_name: &str,
     ) -> Result<Option<RepositoryReportMDTemplate>> {
         let db = self.pool.get().await?;
-        let row = db
+        let report_md = db
             .query_one(
                 "select get_repository_report($1::text, $2::text, $3::text)",
                 &[&foundation, &project_name, &repository_name],
             )
-            .await?;
-        let report_md: Option<Json<RepositoryReportMDTemplate>> = row.get(0);
-        if let Some(Json(report_md)) = report_md {
-            return Ok(Some(report_md));
-        }
-        Ok(None)
+            .await?
+            .get::<_, Option<Json<RepositoryReportMDTemplate>>>(0)
+            .map(|Json(report_md)| report_md);
+        Ok(report_md)
     }
 
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)> {
@@ -202,10 +197,10 @@ impl DB for PgDB {
 
     async fn stats(&self, foundation: Option<&String>) -> Result<JsonString> {
         let db = self.pool.get().await?;
-        let row = db
+        let stats = db
             .query_one("select get_stats($1::text)::text", &[&foundation])
-            .await?;
-        let stats: String = row.get(0);
+            .await?
+            .get(0);
         Ok(stats)
     }
 }

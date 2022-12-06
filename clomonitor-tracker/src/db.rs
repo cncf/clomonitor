@@ -41,9 +41,8 @@ pub(crate) struct PgDB {
 #[async_trait]
 impl DB for PgDB {
     async fn repositories(&self) -> Result<Vec<Repository>> {
-        let mut repositories: Vec<Repository> = Vec::new();
         let db = self.pool.get().await?;
-        let rows = db
+        let repositories = db
             .query(
                 "
                 select
@@ -56,17 +55,19 @@ impl DB for PgDB {
                 ",
                 &[],
             )
-            .await?;
-        for row in rows {
-            let Json(check_sets): Json<Vec<CheckSet>> = row.get("check_sets");
-            repositories.push(Repository {
-                repository_id: row.get("repository_id"),
-                url: row.get("url"),
-                check_sets,
-                digest: row.get("digest"),
-                updated_at: row.get("updated_at"),
-            });
-        }
+            .await?
+            .iter()
+            .map(|row| {
+                let Json(check_sets): Json<Vec<CheckSet>> = row.get("check_sets");
+                Repository {
+                    repository_id: row.get("repository_id"),
+                    url: row.get("url"),
+                    check_sets,
+                    digest: row.get("digest"),
+                    updated_at: row.get("updated_at"),
+                }
+            })
+            .collect();
         Ok(repositories)
     }
 
@@ -142,7 +143,7 @@ impl PgDB {
     /// Update the score of the project the repository provided belongs to.
     async fn update_project_score(tx: &Transaction<'_>, repository_id: &Uuid) -> Result<()> {
         // Get project's id and lock project's row
-        let row = tx
+        let project_id: Uuid = tx
             .query_one(
                 "
                 select project_id from project
@@ -152,12 +153,11 @@ impl PgDB {
                 ",
                 &[&repository_id],
             )
-            .await?;
-        let project_id: Uuid = row.get("project_id");
+            .await?
+            .get("project_id");
 
         // Calculate project's score from the repositories' scores
-        let mut repositories_scores = Vec::<Score>::new();
-        let rows = tx
+        let repositories_scores: Vec<Score> = tx
             .query(
                 "
                 select score from repository
@@ -167,13 +167,13 @@ impl PgDB {
                 ",
                 &[&project_id],
             )
-            .await?;
-        for row in rows {
-            let score: Option<Json<Score>> = row.get("score");
-            if let Some(Json(score)) = score {
-                repositories_scores.push(score);
-            }
-        }
+            .await?
+            .iter()
+            .filter_map(|row| {
+                let score: Option<Json<Score>> = row.get("score");
+                score.map(|Json(score)| score)
+            })
+            .collect();
 
         // Update project's score and rating
         if !repositories_scores.is_empty() {

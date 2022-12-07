@@ -69,25 +69,23 @@ pub(crate) async fn metadata(
         .json(req_body)
         .send()
         .await
-        .context("error requesting repository medatata from github graphql api")?;
+        .context("error querying graphql api")?;
     if resp.status() != StatusCode::OK {
         return Err(format_err!(
-            "unexpected status code getting repository medatata from github graphql api: {} - {}",
+            "unexpected status code querying graphql api: {} - {}",
             resp.status(),
             resp.text().await?,
         ));
     }
 
     // Parse response body and extract repository metadata
-    let resp_body: Response<md::ResponseData> = resp
-        .json()
-        .await
-        .context("error deserializing repository medatata response from github graphql api")?;
-    let repo = resp_body
+    let resp_body = resp.text().await?;
+    let repo = serde_json::from_str::<Response<md::ResponseData>>(&resp_body)
+        .context(format!("error deserializing query response: {resp_body}"))?
         .data
-        .ok_or_else(|| format_err!("data field not found in github medatata response"))?
+        .ok_or_else(|| format_err!("data field not found: {resp_body}"))?
         .repository
-        .ok_or_else(|| format_err!("repository field not found in github medatata response"))?;
+        .ok_or_else(|| format_err!("repository field not found: {resp_body}"))?;
 
     Ok(repo)
 }

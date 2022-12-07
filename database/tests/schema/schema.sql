@@ -69,6 +69,7 @@ select indexes_are('foundation', array[
 ]);
 select indexes_are('project', array[
     'project_pkey',
+    'project_foundation_id_idx',
     'project_foundation_id_name_key'
 ]);
 select indexes_are('project_snapshot', array[
@@ -76,10 +77,12 @@ select indexes_are('project_snapshot', array[
 ]);
 select indexes_are('report', array[
     'report_pkey',
+    'report_repository_id_idx',
     'report_repository_id_key'
 ]);
 select indexes_are('repository', array[
     'repository_pkey',
+    'repository_project_id_idx',
     'repository_project_id_url_key'
 ]);
 

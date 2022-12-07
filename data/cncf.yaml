@@ -51,7 +51,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/argo/icon/color/argo-icon-color.svg
   devstats_url: https://argo.devstats.cncf.io/
   accepted_at: "2020-04-07"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: argo-cd
       url: https://github.com/argoproj/argo-cd
@@ -721,7 +721,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/flux/icon/color/flux-icon-color.svg
   devstats_url: https://flux.devstats.cncf.io/
   accepted_at: "2019-07-15"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: community
       url: https://github.com/fluxcd/community
@@ -2390,7 +2390,7 @@
     - name: python-sdk
       url: https://github.com/openfga/python-sdk
       check_sets:
-        - code-lite        
+        - code-lite
     - name: openfga.dev
       url: https://github.com/openfga/openfga.dev
       check_sets:

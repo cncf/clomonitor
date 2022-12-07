@@ -1,0 +1,32 @@
+.syntaxWrapper {
+  background-color: var(--extra-light-gray);
+}
+
+.modalContent {
+  max-height: 80% !important;
+}
+
+@media only screen and (min-width: 576px) {
+  .modalDialog {
+    max-width: 80% !important;
+    min-height: calc(100% - 10rem) !important;
+    max-height: calc(100% - 10rem) !important;
+    margin: 5rem auto !important;
+  }
+
+  .modalContent {
+    max-height: 100% !important;
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .modalDialog {
+    min-height: calc(100% - 6rem) !important;
+    max-height: calc(100% - 6rem) !important;
+    margin: 3rem auto !important;
+  }
+
+  .modalContent {
+    max-height: 100% !important;
+  }
+}

@@ -1,21 +1,29 @@
 import classNames from 'classnames';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
-import { useParams } from 'react-router-dom';
 
 import useOutsideClick from '../../../hooks/useOutsideClick';
-import ExternalLink from '../../common/ExternalLink';
 import styles from './RepositoryDropdown.module.css';
+import RepositoryReportModal from './RepositoryReportModal';
 
 interface Props {
   repoName: string;
 }
 
 const RepositoryDropdown = (props: Props) => {
-  const { project, foundation } = useParams();
   const ref = useRef(null);
   const [visibleDropdown, setVisibleDropdown] = useState<boolean>(false);
+  const [openReportModalStatus, setOpenReportModalStatus] = useState<boolean>(false);
   useOutsideClick([ref], visibleDropdown, () => setVisibleDropdown(false));
+
+  const onOpenModal = () => {
+    setOpenReportModalStatus(true);
+    setVisibleDropdown(false);
+  };
+
+  const onCloseModal = () => {
+    setOpenReportModalStatus(false);
+  };
 
   return (
     <>
@@ -38,18 +46,14 @@ const RepositoryDropdown = (props: Props) => {
           className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}
         >
           <li>
-            <ExternalLink
-              href={`/api/projects/${foundation}/${project}/${props.repoName}/report.md`}
-              className="dropdown-item lightText"
-              label="Open repository report"
-              target="_self"
-              onClick={() => setVisibleDropdown(false)}
-            >
-              <div>Get markdown</div>
-            </ExternalLink>
+            <button className="dropdown-item lightText" aria-label="Open repository report" onClick={onOpenModal}>
+              Get markdown
+            </button>
           </li>
         </ul>
       </div>
+
+      <RepositoryReportModal openStatus={openReportModalStatus} repoName={props.repoName} onCloseModal={onCloseModal} />
     </>
   );
 };

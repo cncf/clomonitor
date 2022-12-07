@@ -307,7 +307,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                       >
                         <button
                           aria-label="Copy report summary markdown link to clipboard"
-                          class="btn btn-sm btn-primary rounded-circle btn"
+                          class="btn btn-sm btn-primary rounded-0 btn"
                           type="button"
                         >
                           <div

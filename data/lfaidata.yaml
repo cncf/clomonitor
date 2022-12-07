@@ -632,3 +632,16 @@
       url: https://github.com/OpenDataology/OpenDataology
       check_sets:
         - community
+- name: docarrary
+  display_name: DocArray
+  description: DocArray is an open source project offering the data structure for multimodal data
+  category: data
+  logo_url: https://raw.githubusercontent.com/docarray/artwork/main/icon/color/docarray-icon-color.svg
+  accepted_at: "2022-11-03"
+  maturity: sandbox
+  repositories:
+    - name: docarray
+      url: https://github.com/docarray/docarray
+      check_sets:
+        - community
+        - code

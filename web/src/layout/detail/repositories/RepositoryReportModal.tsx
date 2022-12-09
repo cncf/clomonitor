@@ -32,6 +32,7 @@ const RepositoryReportModal = (props: Props) => {
         setReport(await API.getRepositoryReportMD(foundation!, project!, props.repoName));
         setIsGettingMd(false);
       } catch {
+        setReport('');
         setIsGettingMd(false);
       }
     }

@@ -3,6 +3,7 @@
 }
 
 .modalContent {
+  height: 80%;
   max-height: 80% !important;
 }
 
@@ -15,6 +16,7 @@
   }
 
   .modalContent {
+    height: 100%;
     max-height: 100% !important;
   }
 }
@@ -27,6 +29,7 @@
   }
 
   .modalContent {
+    height: 100%;
     max-height: 100% !important;
   }
 }

@@ -77,6 +77,7 @@ class API_CLASS {
 
     switch (response.headers.get('Content-Type')) {
       case 'text/plain; charset=utf-8':
+      case 'text/markdown':
       case 'csv':
         const text = await response.text();
         return text;
@@ -155,6 +156,12 @@ class API_CLASS {
 
   public getProjectSnapshot(project: string, foundation: string, date: string): Promise<ProjectDetail> {
     return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${project}/snapshots/${date}` });
+  }
+
+  public getRepositoryReportMD(foundation: string, project: string, repoName: string): Promise<string> {
+    return this.apiFetch({
+      url: `${this.API_BASE_URL}/projects/${foundation}/${project}/${repoName}/report.md`,
+    });
   }
 }
 

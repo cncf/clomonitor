@@ -30,22 +30,12 @@ exports[`RepositoryDropdown creates snapshot 1`] = `
       role="complementary"
     >
       <li>
-        <a
+        <button
           aria-label="Open repository report"
-          class="link dropdown-item lightText"
-          href="/api/projects/cncf/proj/repo/report.md"
-          rel="noopener noreferrer"
-          tabindex="-1"
-          target="_self"
+          class="dropdown-item lightText"
         >
-          <div
-            class="d-flex flex-row align-items-baseline"
-          >
-            <div>
-              Get markdown
-            </div>
-          </div>
-        </a>
+          Get markdown
+        </button>
       </li>
     </ul>
   </div>

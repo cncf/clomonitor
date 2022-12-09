@@ -25,7 +25,7 @@ exports[`CodeBlock creates snapshot 1`] = `
     >
       <button
         aria-label="Copy btn"
-        class="btn btn-sm btn-primary rounded-circle btn"
+        class="btn btn-sm btn-primary rounded-0 btn"
         type="button"
       >
         <div

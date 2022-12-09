@@ -141,7 +141,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                     >
                       <button
                         aria-label="Copy badge markdown link to clipboard"
-                        class="btn btn-sm btn-primary rounded-circle btn"
+                        class="btn btn-sm btn-primary rounded-0 btn"
                         type="button"
                       >
                         <div

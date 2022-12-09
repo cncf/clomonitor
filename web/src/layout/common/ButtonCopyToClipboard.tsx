@@ -81,7 +81,7 @@ const ButtonCopyToClipboard = (props: Props) => {
         type="button"
         className={classnames(
           'btn btn-sm',
-          { [`btn-primary rounded-circle ${styles.btn}`]: isUndefined(props.className) },
+          { [`btn-primary rounded-0 ${styles.btn}`]: isUndefined(props.className) },
           props.className
         )}
         style={props.style}

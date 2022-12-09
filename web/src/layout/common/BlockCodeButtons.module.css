@@ -1,0 +1,15 @@
+.wrapper {
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
+.btn {
+  height: 32px;
+  width: 32px;
+  line-height: 0.75rem;
+}
+
+.btn svg {
+  margin-left: -3px;
+}

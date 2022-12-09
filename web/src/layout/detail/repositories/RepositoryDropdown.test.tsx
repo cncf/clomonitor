@@ -54,11 +54,7 @@ describe('RepositoryDropdown', () => {
       await userEvent.click(btn);
 
       expect(await screen.findByRole('complementary')).toBeInTheDocument();
-      const link = screen.getByRole('link');
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveProperty('target', '_self');
-      expect(link).toHaveProperty('href', 'http://localhost/api/projects/cncf/proj/repo/report.md');
-      expect(link).toHaveProperty('rel', 'noopener noreferrer');
+      expect(screen.getByRole('button', { name: 'Open repository report' })).toBeInTheDocument();
     });
   });
 });

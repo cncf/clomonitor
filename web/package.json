@@ -18,7 +18,8 @@
     "react-markdown": "^8.0.3",
     "react-router-dom": "^6.4.5",
     "react-syntax-highlighter": "^15.5.0",
-    "tinycolor2": "^1.4.2"
+    "tinycolor2": "^1.4.2",
+    "ua-parser-js": "^1.0.32"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -64,7 +65,7 @@
     "isready": "yarn format && yarn lint && yarn test --watchAll=false --passWithNoTests --verbose && yarn build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
-    "start": "yarn copy:static && react-scripts start",
+    "start": "yarn copy:static && DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "test": "sed -i -e 's/const FORCE_EXIT_DELAY = 500;/const FORCE_EXIT_DELAY = 1000;/g' ./node_modules/jest-worker/build/base/BaseWorkerPool.js && TZ=UTC react-scripts test # See https://github.com/facebook/jest/issues/11354",
     "test:coverage": "react-scripts test --coverage --watchAll=false"
   },

@@ -11,6 +11,7 @@ import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
+import scrollToTop from '../../utils/scrollToTop';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import Pagination from '../common/Pagination';
@@ -60,10 +61,6 @@ const Search = (props: Props) => {
 
   const saveScrollPosition = () => {
     props.setScrollPosition(window.scrollY);
-  };
-
-  const updateWindowScrollPosition = (newPosition: number) => {
-    window.scrollTo(0, newPosition);
   };
 
   const onResetFilters = (): void => {
@@ -207,7 +204,7 @@ const Search = (props: Props) => {
           currentScrollPosition = 0;
         }
         // Update scroll position
-        updateWindowScrollPosition(currentScrollPosition);
+        scrollToTop(currentScrollPosition);
       }
     }
     searchProjects();

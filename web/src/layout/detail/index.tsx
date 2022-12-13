@@ -10,6 +10,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import API from '../../api';
 import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
 import { ProjectDetail } from '../../types';
+import scrollToTop from '../../utils/scrollToTop';
 import updateMetaIndex from '../../utils/updateMetaIndex';
 import CartegoryBadge from '../common/badges/CategoryBadge';
 import FoundationBadge from '../common/badges/FoundationBadge';
@@ -46,7 +47,7 @@ const Detail = (props: Props) => {
 
   useEffect(() => {
     if (location.hash === '') {
-      window.scrollTo(0, 0);
+      scrollToTop();
     } else {
       scrollIntoView();
     }
@@ -69,7 +70,7 @@ const Detail = (props: Props) => {
   );
 
   async function fetchProjectDetail() {
-    window.scrollTo(0, 0); // Go to top when a new project is fetched
+    scrollToTop(); // Go to top when a new project is fetched
     setIsLoadingProject(true);
     props.setInvisibleFooter(true);
     try {

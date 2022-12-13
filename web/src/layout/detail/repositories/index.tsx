@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CATEGORY_ICONS } from '../../../data';
 import { CheckSet, Repository, ScoreType } from '../../../types';
 import getCheckSets from '../../../utils/getCheckSets';
+import scrollToTop from '../../../utils/scrollToTop';
 import sortRepos from '../../../utils/sortRepos';
 import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import ExternalLink from '../../common/ExternalLink';
@@ -63,7 +64,7 @@ const RepositoriesList = (props: Props) => {
     };
 
     if (hash === '') {
-      window.scrollTo(0, 0);
+      scrollToTop();
     } else {
       // We need to check if element is in the DOM
       timer = setInterval(() => {

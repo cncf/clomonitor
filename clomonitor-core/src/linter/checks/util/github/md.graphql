@@ -48,10 +48,11 @@ query Md($repo: String!, $owner: String!) {
                 }
             }
         }
-        releases (first: 1, orderBy: {field: CREATED_AT, direction: DESC}) {
+        releases (first: 30, orderBy: {field: CREATED_AT, direction: DESC}) {
             nodes {
                 createdAt
                 description
+                isPrerelease
                 releaseAssets (first: 100) {
                     nodes {
                         name

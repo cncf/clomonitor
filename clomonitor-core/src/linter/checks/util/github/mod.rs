@@ -207,11 +207,12 @@ pub(crate) async fn has_community_health_file(
 
 /// Get the repository's latest release from the metadata provided.
 pub(crate) fn latest_release(gh_md: &MdRepository) -> Option<&MdRepositoryReleasesNodes> {
-    gh_md
-        .releases
-        .nodes
-        .as_ref()
-        .and_then(|nodes| nodes.iter().flatten().next())
+    gh_md.releases.nodes.as_ref().and_then(|nodes| {
+        nodes
+            .iter()
+            .flatten()
+            .find(|release| !release.is_prerelease)
+    })
 }
 
 /// Check if the latest release description matches any of the regular
@@ -359,6 +360,7 @@ mod tests {
                 nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                     created_at: "created_at_date".to_string(),
                     description: None,
+                    is_prerelease: false,
                     release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                     url: "release_url".to_string(),
                 })]),
@@ -384,6 +386,7 @@ mod tests {
                 nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                     created_at: "created_at_date".to_string(),
                     description: Some("description".to_string()),
+                    is_prerelease: false,
                     release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                     url: "release_url".to_string(),
                 })]),

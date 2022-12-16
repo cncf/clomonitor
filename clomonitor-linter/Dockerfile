@@ -18,7 +18,7 @@ WORKDIR /tmp
 RUN apk --no-cache add git make bash gcc musl-dev binutils-gold
 RUN git clone https://github.com/ossf/scorecard
 WORKDIR /tmp/scorecard
-RUN git checkout 084bcd90098bababa68c6abfe28dc777bfc4b060
+RUN git checkout v4.10.0
 RUN make install
 RUN make build
 

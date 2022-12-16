@@ -19,7 +19,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 lazy_static! {
     #[rustfmt::skip]
     pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new(vec![
-        r"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage",
+        r"https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
     ]).expect("exprs in TRADEMARK_DISCLAIMER to be valid");
 }

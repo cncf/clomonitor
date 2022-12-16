@@ -624,6 +624,6 @@ This check passes if:
 - The Linux Foundation trademark disclaimer is found in the content of the website configured in Github. Regexps used:
 
 ```sh
-"https://(?:w{3}\.)?linuxfoundation.org/trademark-usage"
+"https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage"
 "The Linux Foundation.* has registered trademarks and uses trademarks"
 ```

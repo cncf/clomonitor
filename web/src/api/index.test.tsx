@@ -202,5 +202,23 @@ cncf,akri,https://github.com/project-akri/akri,"{community,code}",t,t,t,t,t,t,t,
         expect(response).toEqual(reportSample);
       });
     });
+
+    describe('trackView', () => {
+      it('success', async () => {
+        fetchMock.mockResponse('', {
+          headers: {
+            'content-type': 'text/plain; charset=utf-8',
+          },
+          status: 204,
+        });
+
+        const response = await API.trackView('projectID');
+
+        expect(fetchMock).toHaveBeenCalledTimes(1);
+        expect(fetchMock.mock.calls[0][0]).toEqual('/api/projects/views/projectID');
+        expect(fetchMock.mock.calls[0][1]!.method).toBe('POST');
+        expect(response).toBe('');
+      });
+    });
   });
 });

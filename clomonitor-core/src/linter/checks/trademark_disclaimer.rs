@@ -45,7 +45,9 @@ mod tests {
     #[test]
     fn trademark_disclaimer_match() {
         assert!(TRADEMARK_DISCLAIMER.is_match("https://www.linuxfoundation.org/trademark-usage"));
+        assert!(TRADEMARK_DISCLAIMER.is_match("https://www.linuxfoundation.org/legal/trademark-usage"));
         assert!(TRADEMARK_DISCLAIMER.is_match("https://linuxfoundation.org/trademark-usage"));
+        assert!(TRADEMARK_DISCLAIMER.is_match("https://linuxfoundation.org/legal/trademark-usage"));
         assert!(TRADEMARK_DISCLAIMER.is_match(
             "The Linux Foundation® (TLF) has registered trademarks and uses trademarks."
         ));

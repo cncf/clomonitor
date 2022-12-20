@@ -1,0 +1,1608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepositoryReportModal creates snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="modal-backdrop activeBackdrop"
+      data-testid="modalBackdrop"
+    />
+    <div
+      aria-modal="true"
+      class="modal modal active d-block"
+      role="dialog"
+    >
+      <div
+        class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modalDialog"
+      >
+        <div
+          class="modal-content rounded-0 border border-3 mx-auto content modalContent"
+        >
+          <div
+            class="modal-header rounded-0 d-flex flex-row align-items-center header"
+          >
+            <div
+              class="modal-title h5 m-2 flex-grow-1"
+            >
+              Repository report
+            </div>
+            <button
+              aria-label="Close"
+              class="btn-close"
+              type="button"
+            />
+          </div>
+          <div
+            class="modal-body p-4 h-100 d-flex flex-column"
+          >
+            <div
+              class="border overflow-auto h-100 mw-100"
+            >
+              <div
+                class="position-relative h-100 mh-100 syntaxWrapper"
+              >
+                <div
+                  class="position-absolute d-flex flex-row wrapper mt-2"
+                >
+                  <div
+                    class="position-relative me-2"
+                  >
+                    <button
+                      aria-label="Copy to clipboard"
+                      class="btn btn-sm btn-primary rounded-0 btn"
+                      type="button"
+                    >
+                      <div
+                        aria-hidden="true"
+                        class="d-flex flex-row align-items-center"
+                      >
+                        <svg
+                          fill="none"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            height="13"
+                            rx="2"
+                            ry="2"
+                            width="13"
+                            x="9"
+                            y="9"
+                          />
+                          <path
+                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <pre
+                  style="display: block; overflow-x: auto; padding: 1rem; background: rgb(248, 248, 255); margin-bottom: 0px; font-size: 0.8rem; height: 100%;"
+                >
+                  <code
+                    class="language-markdown"
+                    style="white-space: pre;"
+                  >
+                    <span>
+                      
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ## CLOMonitor report
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Summary
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="font-weight: bold;"
+                    >
+                      **Repository**
+                    </span>
+                    <span>
+                      : artifact-hub
+
+                    </span>
+                    <span />
+                    <span
+                      style="font-weight: bold;"
+                    >
+                      **URL**
+                    </span>
+                    <span>
+                      : https://github.com/artifacthub/hub
+
+                    </span>
+                    <span />
+                    <span
+                      style="font-weight: bold;"
+                    >
+                      **Checks sets**
+                    </span>
+                    <span>
+                      :  
+                    </span>
+                    <span
+                      class="hljs-code"
+                    >
+                      \`COMMUNITY\`
+                    </span>
+                    <span>
+                       + 
+                    </span>
+                    <span
+                      class="hljs-code"
+                    >
+                      \`CODE\`
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    <span />
+                    <span
+                      style="font-weight: bold;"
+                    >
+                      **Score**
+                    </span>
+                    <span>
+                      : 95
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Checks passed per category
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+| Category  |  Score  |
+| :----------------- | --------: |
+|  Documentation  |  87%  |
+|  License  |  100%  |
+|  Best Practices  |  95%  |
+|  Security  |  100%  |
+|  Legal  |  100%  |
+
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ## Checks
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Documentation [87%]
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Adopters
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/ADOPTERS.md
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#adopters
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Changelog ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#changelog
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Code of conduct
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/code-of-conduct.md
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#code-of-conduct
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Contributing
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/CONTRIBUTING.md
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#contributing
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                       
+                    </span>
+                    <span>
+                      ] Governance ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#governance
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Maintainers
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/OWNERS
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#maintainers
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Readme
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/README.md
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#readme
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                       
+                    </span>
+                    <span>
+                      ] Roadmap ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#roadmap
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Website
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://artifacthub.io
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#website
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### License [100%]
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Apache-2.0 ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#spdx-id
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Approved license ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#approved-license
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      License scanning
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fartifacthub%2Fhub?ref=badge_shield
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#license-scanning
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Best Practices [95%]
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                       
+                    </span>
+                    <span>
+                      ] Analytics ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#analytics
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Artifact Hub badge
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#artifact-hub-badge
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Contributor License Agreement ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#contributor-license-agreement
+                    </span>
+                    <span>
+                      )) 
+                    </span>
+                    <span
+                      class="hljs-code"
+                    >
+                      \`EXEMPT\`
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Community meeting ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#community-meeting
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Developer Certificate of Origin ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#developer-certificate-of-origin
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Github discussions
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/discussions/2621
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#github-discussions
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      OpenSSF badge
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://bestpractices.coreinfrastructure.org/projects/4106
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#openssf-badge
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Recent release
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/releases/tag/v1.11.0
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#recent-release
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Slack precense ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#slack-presence
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Security [100%]
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Binary artifacts ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#binary-artifacts-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Code review ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#code-review-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Dangerous workflow ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#dangerous-workflow-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Dependency update tool ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#dependency-update-tool-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Maintained ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#maintained-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Software bill of materials (SBOM) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#software-bill-of-materials-sbom
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      Security policy
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://github.com/artifacthub/hub/blob/master/SECURITY.md
+                    </span>
+                    <span>
+                      ) ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#security-policy
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Signed releases ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#signed-releases-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Token permissions ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#token-permissions-from-openssf-scorecard
+                    </span>
+                    <span>
+                      ))
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(25, 70, 157);"
+                    >
+                      ### Legal [100%]
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span />
+                    <span
+                      style="color: rgb(153, 0, 115);"
+                    >
+                        -
+                    </span>
+                    <span>
+                       [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      x
+                    </span>
+                    <span>
+                      ] Trademark disclaimer ([
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      _docs_
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/#trademark-disclaimer
+                    </span>
+                    <span>
+                      )) 
+                    </span>
+                    <span
+                      class="hljs-code"
+                    >
+                      \`EXEMPT\`
+                    </span>
+                    <span>
+                      
+
+                    </span>
+                    
+
+                    <span>
+                      For more information about the checks sets available and how each of the checks work, please see the [
+                    </span>
+                    <span
+                      style="color: rgb(33, 145, 97);"
+                    >
+                      CLOMonitor's documentation
+                    </span>
+                    <span>
+                      ](
+                    </span>
+                    <span
+                      style="color: rgb(187, 102, 136);"
+                    >
+                      https://clomonitor.io/docs/topics/checks/
+                    </span>
+                    <span>
+                      ).
+
+                    </span>
+                  </code>
+                </pre>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal-footer p-3"
+          >
+            <button
+              aria-label="Close modal"
+              class="btn btn-sm rounded-0 btn-secondary text-uppercase"
+              type="button"
+            >
+              <div
+                class="d-flex flex-row align-items-center"
+              >
+                <svg
+                  class="me-2"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+                <div>
+                  Close
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

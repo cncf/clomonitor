@@ -40,7 +40,7 @@
     "postcss": "^8.2.20",
     "prettier": "^2.8.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.56.2",
+    "sass": "^1.57.1",
     "shx": "^0.3.4",
     "typescript": "^4.9.4"
   },

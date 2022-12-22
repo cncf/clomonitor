@@ -1,10 +1,10 @@
-use crate::{db::DynDB, handlers::*, middleware::metrics_collector};
+use crate::{db::DynDB, handlers::*, middleware::metrics_collector, views::DynVT};
 use anyhow::Result;
 use axum::{
     extract::FromRef,
     http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
     middleware,
-    routing::{get, get_service},
+    routing::{get, get_service, post},
     Router,
 };
 use config::Config;
@@ -27,11 +27,12 @@ pub const DOCS_CACHE_MAX_AGE: usize = 300;
 struct RouterState {
     cfg: Arc<Config>,
     db: DynDB,
+    vt: DynVT,
     tmpl: Arc<Tera>,
 }
 
 /// Setup API server router.
-pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
+pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     // Setup error handler
     let error_handler = |err: std::io::Error| async move {
         (
@@ -54,6 +55,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
     // Setup API routes
     let api_routes = Router::new()
         .route("/projects/search", get(search_projects))
+        .route("/projects/views/:project_id", post(track_view))
         .route("/projects/:foundation/:project", get(project))
         .route("/projects/:foundation/:project/badge", get(badge))
         .route(
@@ -61,12 +63,12 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
             get(report_summary_svg),
         )
         .route(
-            "/projects/:foundation/:project/snapshots/:date",
-            get(project_snapshot),
-        )
-        .route(
             "/projects/:foundation/:project/:repository/report.md",
             get(repository_report_md),
+        )
+        .route(
+            "/projects/:foundation/:project/snapshots/:date",
+            get(project_snapshot),
         )
         .route("/stats", get(stats));
 
@@ -107,6 +109,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
         .with_state(RouterState {
             cfg: cfg.clone(),
             db,
+            vt,
             tmpl,
         });
 
@@ -123,7 +126,10 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB) -> Result<Router> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::db::{MockDB, SearchProjectsInput};
+    use crate::{
+        db::{MockDB, SearchProjectsInput},
+        views::MockViewsTracker,
+    };
     use axum::{
         body::Body,
         http::{
@@ -142,11 +148,14 @@ mod tests {
         format_description::{self, FormatItem},
         Date,
     };
+    use tokio::sync::RwLock;
     use tower::ServiceExt;
+    use uuid::Uuid;
 
     const TESTDATA_PATH: &str = "src/testdata";
     const FOUNDATION: &str = "cncf";
     const PROJECT: &str = "artifact-hub";
+    const PROJECT_ID: &str = "00000000-0000-0000-0000-000000000001";
     const DATE: &str = "2022-10-28";
     const REPOSITORY: &str = "artifact-hub";
 
@@ -163,7 +172,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(Some("a".to_string())))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -205,7 +214,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -221,7 +230,7 @@ mod tests {
 
     #[tokio::test]
     async fn docs_files() {
-        let response = setup_test_router(MockDB::new())
+        let response = setup_test_router(MockDB::new(), MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -245,7 +254,7 @@ mod tests {
 
     #[tokio::test]
     async fn index() {
-        let response = setup_test_router(MockDB::new())
+        let response = setup_test_router(MockDB::new(), MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -274,7 +283,7 @@ mod tests {
 
     #[tokio::test]
     async fn index_fallback() {
-        let response = setup_test_router(MockDB::new())
+        let response = setup_test_router(MockDB::new(), MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -303,7 +312,7 @@ mod tests {
 
     #[tokio::test]
     async fn index_project() {
-        let response = setup_test_router(MockDB::new())
+        let response = setup_test_router(MockDB::new(), MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -342,7 +351,7 @@ mod tests {
                 ))))
             });
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -373,7 +382,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -391,7 +400,7 @@ mod tests {
     async fn project_snapshot_invalid_date_format() {
         let db = MockDB::new();
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -423,7 +432,7 @@ mod tests {
                 ))))
             });
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -457,7 +466,7 @@ mod tests {
             .times(1)
             .returning(|_, _, _| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -481,7 +490,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -513,7 +522,7 @@ mod tests {
                 Box::pin(future::ready(Ok(Some(score))))
             });
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -546,7 +555,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -569,7 +578,7 @@ mod tests {
             .times(1)
             .returning(|| Box::pin(future::ready(Ok("CSV data".to_string()))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -666,7 +675,7 @@ mod tests {
                 Box::pin(future::ready(Ok(Some(report_md))))
             });
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -699,7 +708,7 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &str, _: &str| Box::pin(future::ready(Ok(None))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -741,7 +750,7 @@ mod tests {
                 ))))
             });
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -786,7 +795,7 @@ mod tests {
 
     #[tokio::test]
     async fn static_files() {
-        let response = setup_test_router(MockDB::new())
+        let response = setup_test_router(MockDB::new(), MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -812,11 +821,11 @@ mod tests {
     async fn stats() {
         let mut db = MockDB::new();
         db.expect_stats()
-            .withf(|v| v.as_deref() == Some(&FOUNDATION.to_string()))
+            .withf(|v| v.as_deref() == Some(FOUNDATION))
             .times(1)
             .returning(|_| Box::pin(future::ready(Ok(r#"{"some": "stats"}"#.to_string()))));
 
-        let response = setup_test_router(db)
+        let response = setup_test_router(db, MockViewsTracker::new())
             .oneshot(
                 Request::builder()
                     .method("GET")
@@ -836,9 +845,31 @@ mod tests {
         );
     }
 
-    fn setup_test_router(db: MockDB) -> Router {
+    #[tokio::test]
+    async fn track_view() {
+        let mut vt = MockViewsTracker::new();
+        vt.expect_track_view()
+            .withf(|project_id| *project_id == Uuid::parse_str(PROJECT_ID).unwrap())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(()))));
+
+        let response = setup_test_router(MockDB::new(), vt)
+            .oneshot(
+                Request::builder()
+                    .method("POST")
+                    .uri(format!("/api/projects/views/{PROJECT_ID}"))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NO_CONTENT);
+    }
+
+    fn setup_test_router(db: MockDB, vt: MockViewsTracker) -> Router {
         let cfg = setup_test_config();
-        setup(Arc::new(cfg), Arc::new(db)).unwrap()
+        setup(Arc::new(cfg), Arc::new(db), Arc::new(RwLock::new(vt))).unwrap()
     }
 
     fn setup_test_config() -> Config {

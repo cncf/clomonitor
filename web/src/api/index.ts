@@ -163,6 +163,15 @@ class API_CLASS {
       url: `${this.API_BASE_URL}/projects/${foundation}/${project}/${repoName}/report.md`,
     });
   }
+
+  public trackView(projectId: string): Promise<null> {
+    return this.apiFetch({
+      url: `${this.API_BASE_URL}/projects/views/${projectId}`,
+      opts: {
+        method: 'POST',
+      },
+    });
+  }
 }
 
 const API = new API_CLASS();

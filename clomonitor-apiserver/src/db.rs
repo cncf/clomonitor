@@ -1,4 +1,7 @@
-use crate::handlers::RepositoryReportMDTemplate;
+use crate::{
+    handlers::RepositoryReportMDTemplate,
+    views::{ProjectId, Total},
+};
 use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::score::Score;
@@ -9,6 +12,9 @@ use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use time::Date;
 use tokio_postgres::types::Json;
+
+// Lock key used when updating the projects views in the database.
+const LOCK_KEY_UPDATE_PROJECTS_VIEWS: i64 = 1;
 
 /// Type alias to represent a DB trait object.
 pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
@@ -59,7 +65,10 @@ pub(crate) trait DB {
     async fn search_projects(&self, input: &SearchProjectsInput) -> Result<(Count, JsonString)>;
 
     /// Get some general stats.
-    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString>;
+    async fn stats(&self, foundation: Option<&str>) -> Result<JsonString>;
+
+    /// Update the number of views of the projects provided.
+    async fn update_projects_views(&self, data: Vec<(ProjectId, Date, Total)>) -> Result<()>;
 }
 
 /// DB implementation backed by PostgreSQL.
@@ -195,13 +204,23 @@ impl DB for PgDB {
         Ok((count, projects))
     }
 
-    async fn stats(&self, foundation: Option<&String>) -> Result<JsonString> {
+    async fn stats(&self, foundation: Option<&str>) -> Result<JsonString> {
         let db = self.pool.get().await?;
         let stats = db
             .query_one("select get_stats($1::text)::text", &[&foundation])
             .await?
             .get(0);
         Ok(stats)
+    }
+
+    async fn update_projects_views(&self, data: Vec<(ProjectId, Date, Total)>) -> Result<()> {
+        let db = self.pool.get().await?;
+        db.execute(
+            "select update_projects_views($1::bigint, $2::jsonb)",
+            &[&LOCK_KEY_UPDATE_PROJECTS_VIEWS, &Json(&data)],
+        )
+        .await?;
+        Ok(())
     }
 }
 

@@ -1,4 +1,4 @@
-use crate::db::PgDB;
+use crate::{db::PgDB, views::ViewsTrackerDB};
 use anyhow::{Context, Result};
 use clap::Parser;
 use config::{Config, File};
@@ -9,7 +9,7 @@ use postgres_openssl::MakeTlsConnector;
 use std::net::SocketAddr;
 use std::path::PathBuf;
 use std::sync::Arc;
-use tokio::signal;
+use tokio::{signal, sync::RwLock};
 use tracing::{debug, info};
 use tracing_subscriber::EnvFilter;
 
@@ -18,6 +18,7 @@ mod filters;
 mod handlers;
 mod middleware;
 mod router;
+mod views;
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]
@@ -59,6 +60,9 @@ async fn main() -> Result<()> {
     let pool = db_cfg.create_pool(Some(Runtime::Tokio1), connector)?;
     let db = Arc::new(PgDB::new(pool));
 
+    // Setup views tracker
+    let vt = Arc::new(RwLock::new(ViewsTrackerDB::new(db.clone())));
+
     // Setup and launch Prometheus exporter
     debug!("setting up prometheus exporter");
     PrometheusBuilder::new()
@@ -72,7 +76,7 @@ async fn main() -> Result<()> {
 
     // Setup and launch API HTTP server
     debug!("setting up apiserver");
-    let router = router::setup(cfg.clone(), db)?;
+    let router = router::setup(cfg.clone(), db, vt.clone())?;
     let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
     info!("apiserver started");
     info!("listening on {}", addr);
@@ -80,8 +84,11 @@ async fn main() -> Result<()> {
         .serve(router.into_make_service())
         .with_graceful_shutdown(shutdown_signal())
         .await?;
-    info!("apiserver stopped");
 
+    // Ask views tracker to stop and wait for it to finish
+    vt.write().await.stop().await;
+
+    info!("apiserver stopped");
     Ok(())
 }
 

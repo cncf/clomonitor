@@ -1,5 +1,8 @@
 use super::filters;
-use crate::db::{DynDB, SearchProjectsInput};
+use crate::{
+    db::{DynDB, SearchProjectsInput},
+    views::DynVT,
+};
 use anyhow::Error;
 use askama_axum::Template;
 use axum::{
@@ -23,6 +26,7 @@ use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
 use time::{format_description, Date};
 use tracing::error;
+use uuid::Uuid;
 
 /// Index HTML document cache duration.
 pub const INDEX_CACHE_MAX_AGE: usize = 300;
@@ -361,7 +365,7 @@ pub(crate) async fn stats(
 ) -> impl IntoResponse {
     // Get stats from database
     let stats = db
-        .stats(params.get("foundation"))
+        .stats(params.get("foundation").map(|p| p.as_str()))
         .await
         .map_err(internal_error)?;
 
@@ -371,6 +375,17 @@ pub(crate) async fn stats(
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .body(Full::from(stats))
         .map_err(internal_error)
+}
+
+/// Handler used to track a project view.
+pub(crate) async fn track_view(
+    State(vt): State<DynVT>,
+    Path(project_id): Path<Uuid>,
+) -> impl IntoResponse {
+    match vt.read().await.track_view(project_id).await {
+        Ok(_) => StatusCode::NO_CONTENT,
+        Err(err) => internal_error(err),
+    }
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.

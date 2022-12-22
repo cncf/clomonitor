@@ -69,12 +69,21 @@ const Detail = (props: Props) => {
     [location.hash]
   );
 
+  async function trackView(projectID: string) {
+    try {
+      API.trackView(projectID);
+    } catch {
+      // Do not do anything
+    }
+  }
+
   async function fetchProjectDetail() {
     scrollToTop(); // Go to top when a new project is fetched
     setIsLoadingProject(true);
     props.setInvisibleFooter(true);
     try {
       const projectDetail = await API.getProjectDetail(project!, foundation!);
+      trackView(projectDetail.id);
       setDetail(projectDetail);
       setSnapshots(projectDetail.snapshots || []);
       updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);

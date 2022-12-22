@@ -15,7 +15,7 @@ edition = "2021"
 rust-version = "1.65"
 
 [workspace.dependencies]
-anyhow = "1.0.66"
+anyhow = "1.0.68"
 askalono = "0.4.6"
 askama = { git = "https://github.com/djc/askama", rev = "eeec6f0654f32270aec4e4a0d0f42e4ad39bc28e" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "eeec6f0654f32270aec4e4a0d0f42e4ad39bc28e" }

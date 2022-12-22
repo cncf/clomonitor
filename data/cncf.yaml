@@ -246,6 +246,14 @@
       check_sets:
         - community
         - code
+    - name: hubble
+      url: https://github.com/cilium/hubble
+      check_sets:
+        - code-lite
+    - name: tetragon
+      url: https://github.com/cilium/tetragon
+      check_sets:  
+      - code-lite
 - name: cloud-custodian
   display_name: Cloud Custodian
   description: Rules engine for cloud security, cost optimization, and governance, DSL in yaml for policies to query, filter, and take actions on resources
@@ -2182,31 +2190,6 @@
   repositories:
     - name: wasmedge
       url: https://github.com/WasmEdge/WasmEdge
-      check_sets:
-        - community
-        - code
-- name: tetragon
-  display_name: Tetragon
-  description: eBPF-based Security Observability and Runtime Enforcement
-  category: provisioning
-  logo_url: https://landscape.cncf.io/logos/tetragon.svg
-  accepted_at: "2021-10-13"
-  maturity: incubating
-  repositories:
-    - name: tetragon
-      url: https://github.com/cilium/tetragon
-      check_sets:
-        - community
-        - code
-- name: hubble
-  display_name: Hubble
-  description: Hubble - Network, Service & Security Observability for Kubernetes using eBPF
-  category: observability
-  logo_url: https://landscape.cncf.io/logos/hubble.svg
-  maturity: incubating
-  repositories:
-    - name: hubble
-      url: https://github.com/cilium/hubble
       check_sets:
         - community
         - code

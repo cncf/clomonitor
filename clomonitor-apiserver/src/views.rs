@@ -7,7 +7,7 @@ use mockall::automock;
 use std::{collections::HashMap, sync::Arc, time::Duration};
 use time::{
     format_description::{self, FormatItem},
-    Date, OffsetDateTime,
+    OffsetDateTime,
 };
 use tokio::{
     sync::{broadcast, mpsc, RwLock},
@@ -25,6 +25,9 @@ pub(crate) type DynVT = Arc<RwLock<dyn ViewsTracker + Send + Sync>>;
 
 /// Type alias to represent a project id.
 pub(crate) type ProjectId = Uuid;
+
+/// Type alias to represent a day in DATE_FORMAT.
+pub(crate) type Day = String;
 
 /// Type alias to represent a views counter.
 pub(crate) type Total = u32;
@@ -130,11 +133,11 @@ async fn aggregator(
 async fn flusher(db: DynDB, mut batches_rx: mpsc::Receiver<Batch>) {
     while let Some(batch) = batches_rx.recv().await {
         // Prepare batch data for database update
-        let mut data: Vec<(ProjectId, Date, Total)> = batch
+        let mut data: Vec<(ProjectId, Day, Total)> = batch
             .iter()
             .map(|(key, total)| {
-                let (project_id, date) = parse_key(key);
-                (project_id, date, *total)
+                let (project_id, day) = parse_key(key);
+                (project_id, day, *total)
             })
             .collect();
         data.sort();
@@ -148,17 +151,14 @@ async fn flusher(db: DynDB, mut batches_rx: mpsc::Receiver<Batch>) {
 
 /// Build key used to track views for a given project.
 fn build_key(project_id: ProjectId) -> String {
-    format!(
-        "{}##{}",
-        project_id,
-        OffsetDateTime::now_utc().format(&DATE_FORMAT).unwrap()
-    )
+    let day = OffsetDateTime::now_utc().format(&DATE_FORMAT).unwrap();
+    format!("{}##{}", project_id, day)
 }
 
-/// Parse project views key, returning the project id and the date.
-fn parse_key(key: &str) -> (ProjectId, Date) {
+/// Parse project views key, returning the project id and the day.
+fn parse_key(key: &str) -> (ProjectId, Day) {
     let mut parts = key.split("##");
     let project_id = Uuid::parse_str(parts.next().unwrap()).unwrap();
-    let date = Date::parse(parts.next().unwrap(), &DATE_FORMAT).unwrap();
-    (project_id, date)
+    let day = parts.next().unwrap().to_owned();
+    (project_id, day)
 }

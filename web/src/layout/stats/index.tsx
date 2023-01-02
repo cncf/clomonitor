@@ -21,6 +21,7 @@ import {
 } from '../../types';
 import alertDispatcher from '../../utils/alertDispatcher';
 import prepareQueryString from '../../utils/prepareQueryString';
+import prettifyNumber from '../../utils/prettifyNumber';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import SubNavbar from '../navigation/SubNavbar';
@@ -386,6 +387,132 @@ const StatsView = () => {
           },
         },
       },
+    };
+  };
+
+  const getBarChartConfig = (monthlyFormatter: boolean, dataLength: number): ApexCharts.ApexOptions => {
+    const getBarColors = (): string[] => {
+      if (dataLength > 0) {
+        let colors = Array.from({ length: dataLength - 1 }, () => 'var(--rm-tertiary)');
+        // Color for the last bar
+        colors.push(effective === 'dark' ? '#cce7ff' : '#003666');
+        return colors;
+      }
+      return ['var(--rm-tertiary)'];
+    };
+
+    return {
+      chart: {
+        height: 300,
+        type: 'bar',
+        redrawOnWindowResize: true,
+        redrawOnParentResize: false,
+        zoom: {
+          enabled: false,
+        },
+        fontFamily: "'Lato', Roboto, 'Helvetica Neue', Arial, sans-serif !default",
+        toolbar: {
+          show: false,
+        },
+      },
+      grid: { borderColor: 'var(--color-light-gray)' },
+      plotOptions: {
+        bar: {
+          distributed: true, // Its is neccesary to display different bar colors
+          borderRadius: 0,
+          dataLabels: {
+            position: 'top',
+          },
+        },
+      },
+      legend: {
+        show: false, // After enabling 'distributed', we have to hide the legend
+      },
+      dataLabels: {
+        enabled: true,
+        offsetY: -20,
+        style: {
+          fontSize: '12px',
+          colors: ['var(--color-font)'],
+        },
+        formatter: (value: number) => {
+          if (value === 0) return '';
+          return prettifyNumber(value, 1);
+        },
+      },
+      colors: getBarColors(),
+      xaxis: {
+        type: 'datetime',
+        min: monthlyFormatter ? undefined : moment().subtract(30, 'days').unix() * 1000,
+        labels: {
+          style: {
+            colors: 'var(--color-font)',
+            fontSize: '11px',
+          },
+          format: monthlyFormatter ? 'MM/yy' : undefined,
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: ['var(--color-font)'],
+          },
+        },
+      },
+      tooltip: {
+        x: {
+          formatter: (val: number): string => {
+            return monthlyFormatter ? moment(val).format('MM/YY') : moment(val).format('DD MMM YY');
+          },
+        },
+      },
+      responsive: [
+        {
+          breakpoint: 1920,
+          options: {
+            plotOptions: {
+              bar: {
+                columnWidth: '80%',
+              },
+            },
+            dataLabels: {
+              offsetY: -15,
+              style: {
+                fontSize: '9px',
+              },
+            },
+          },
+        },
+        {
+          breakpoint: 1400,
+          options: {
+            dataLabels: {
+              offsetY: monthlyFormatter ? -17 : -14,
+              style: {
+                fontSize: monthlyFormatter ? '10px' : '8px',
+              },
+            },
+          },
+        },
+        {
+          breakpoint: 992,
+          options: {
+            dataLabels: {
+              enabled: false,
+            },
+          },
+        },
+        {
+          breakpoint: 768,
+          options: {
+            plotOptions: {
+              bar: {
+                columnWidth: '50%',
+              },
+            },
+          },
+        },
+      ],
     };
   };
 
@@ -773,6 +900,30 @@ const StatsView = () => {
                                 onSelectCheck={selectCheck}
                               />
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {stats.projects.views_daily && (
+                <>
+                  <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>Usage</div>
+                  <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects daily views</div>
+
+                  <div className="py-4">
+                    <div className="row g-4 g-xxl-5 justify-content-center">
+                      <div className="col-12">
+                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                          <div className={`card-body ${styles.reducedPaddingBottom}`}>
+                            <ReactApexChart
+                              options={getBarChartConfig(false, stats.projects.views_daily.length)}
+                              series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
+                              type="bar"
+                              height={250}
+                            />
                           </div>
                         </div>
                       </div>

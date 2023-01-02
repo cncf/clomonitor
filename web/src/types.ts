@@ -236,6 +236,7 @@ export interface Stats {
       incubating: { [key in ScoreType]: number };
       sandbox: { [key in ScoreType]: number };
     };
+    views_daily: number[][];
     accepted_distribution: DistributionData[];
   };
   repositories: {

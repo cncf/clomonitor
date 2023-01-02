@@ -1,6 +1,6 @@
 use crate::{
     handlers::RepositoryReportMDTemplate,
-    views::{ProjectId, Total},
+    views::{Day, ProjectId, Total},
 };
 use anyhow::Result;
 use async_trait::async_trait;
@@ -68,7 +68,7 @@ pub(crate) trait DB {
     async fn stats(&self, foundation: Option<&str>) -> Result<JsonString>;
 
     /// Update the number of views of the projects provided.
-    async fn update_projects_views(&self, data: Vec<(ProjectId, Date, Total)>) -> Result<()>;
+    async fn update_projects_views(&self, data: Vec<(ProjectId, Day, Total)>) -> Result<()>;
 }
 
 /// DB implementation backed by PostgreSQL.
@@ -213,7 +213,7 @@ impl DB for PgDB {
         Ok(stats)
     }
 
-    async fn update_projects_views(&self, data: Vec<(ProjectId, Date, Total)>) -> Result<()> {
+    async fn update_projects_views(&self, data: Vec<(ProjectId, Day, Total)>) -> Result<()> {
         let db = self.pool.get().await?;
         db.execute(
             "select update_projects_views($1::bigint, $2::jsonb)",

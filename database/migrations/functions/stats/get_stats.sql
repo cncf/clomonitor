@@ -122,6 +122,20 @@ returns json as $$
                     'security', (average_section_score(p_foundation, 'security', 'sandbox')),
                     'legal', (average_section_score(p_foundation, 'legal', 'sandbox'))
                 )
+            ),
+            'views_daily', (
+                select json_agg(json_build_array(extract(epoch from day)*1000, total))
+                from (
+                    select pv.day, sum(pv.total) as total
+                    from project_views pv
+                    join project p using (project_id)
+                    where pv.day >= current_date - '1 month'::interval
+                    and
+                        case when p_foundation is not null then
+                        p.foundation_id = p_foundation else true end
+                    group by day
+                    order by day asc
+                ) dt
             )
         ),
         'repositories', json_build_object(

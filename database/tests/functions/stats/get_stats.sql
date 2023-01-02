@@ -471,6 +471,33 @@ insert into report (
     '2022-02-24 09:40:42.695654+01',
     '00000000-0000-0003-0000-000000000000'
 );
+insert into project_views (
+    project_id,
+    day,
+    total
+) values (
+    '00000000-0001-0000-0000-000000000000',
+    '2023-01-02',
+    '5'
+);
+insert into project_views (
+    project_id,
+    day,
+    total
+) values (
+    '00000000-0001-0000-0000-000000000000',
+    '2023-01-03',
+    '1'
+);
+insert into project_views (
+    project_id,
+    day,
+    total
+) values (
+    '00000000-0002-0000-0000-000000000000',
+    '2023-01-03',
+    '1'
+);
 
 -- Run some tests
 select is(
@@ -520,7 +547,11 @@ select is(
                 },
                 "incubating": {
                 }
-            }
+            },
+            "views_daily": [
+                [1672617600000, 5],
+                [1672704000000, 2]
+            ]
         },
         "repositories": {
             "passing_check": {

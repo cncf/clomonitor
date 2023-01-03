@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined } from 'lodash';
 import moment from 'moment';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { GrDocumentCsv } from 'react-icons/gr';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
@@ -25,6 +25,7 @@ import prettifyNumber from '../../utils/prettifyNumber';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import SubNavbar from '../navigation/SubNavbar';
+import AnchorHeader from './AnchorHeader';
 import Average from './Average';
 import Checks from './Checks';
 import styles from './StatsView.module.css';
@@ -48,6 +49,7 @@ const FOUNDATION_QUERY = 'foundation';
 
 const StatsView = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,6 +66,22 @@ const StatsView = () => {
   useEffect(() => {
     setIsLightActive(effective === 'light');
   }, [effective]);
+
+  const scrollIntoView = useCallback(
+    (id?: string) => {
+      const elId = id || location.hash;
+      if (isUndefined(elId) || elId === '') return;
+      try {
+        const element = document.getElementById(elId.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
+        }
+      } finally {
+        return;
+      }
+    },
+    [location.hash]
+  );
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -572,6 +590,9 @@ const StatsView = () => {
       setIsLoading(false);
       setApiError('An error occurred getting CLOMonitor stats.');
       setStats(null);
+    } finally {
+      // Go to hash after getting stats
+      scrollIntoView(location.hash);
     }
   }
 
@@ -921,7 +942,12 @@ const StatsView = () => {
 
               {stats.projects.views_daily && (
                 <>
-                  <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>Usage</div>
+                  <AnchorHeader
+                    title="Usage"
+                    className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}
+                    scrollIntoView={scrollIntoView}
+                  />
+
                   <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects daily views</div>
 
                   <div className="py-4">

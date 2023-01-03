@@ -390,12 +390,23 @@ const StatsView = () => {
     };
   };
 
-  const getBarChartConfig = (monthlyFormatter: boolean, dataLength: number): ApexCharts.ApexOptions => {
+  const getBarChartConfig = (
+    monthlyFormatter: boolean,
+    dataLength: number,
+    lastBarDate?: number
+  ): ApexCharts.ApexOptions => {
     const getBarColors = (): string[] => {
       if (dataLength > 0) {
+        const isCurrent = !isUndefined(lastBarDate)
+          ? moment(moment.unix(lastBarDate / 1000)).isSame(moment(), monthlyFormatter ? 'month' : 'day')
+          : false;
         let colors = Array.from({ length: dataLength - 1 }, () => 'var(--rm-tertiary)');
-        // Color for the last bar
-        colors.push(effective === 'dark' ? '#cce7ff' : '#003666');
+        if (isCurrent) {
+          // Color for the last bar
+          colors.push(effective === 'dark' ? '#cce7ff' : '#003666');
+        } else {
+          colors.push('var(--rm-tertiary');
+        }
         return colors;
       }
       return ['var(--rm-tertiary)'];
@@ -919,7 +930,13 @@ const StatsView = () => {
                         <div className={`card rounded-0 ${styles.chartWrapper}`}>
                           <div className={`card-body ${styles.reducedPaddingBottom}`}>
                             <ReactApexChart
-                              options={getBarChartConfig(false, stats.projects.views_daily.length)}
+                              options={getBarChartConfig(
+                                false,
+                                stats.projects.views_daily.length,
+                                stats.projects.views_daily.length > 0
+                                  ? stats.projects.views_daily.slice(-1)[0][0]
+                                  : undefined
+                              )}
                               series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
                               type="bar"
                               height={250}

@@ -4,15 +4,22 @@ use time::{ext::NumericalDuration, Date, OffsetDateTime};
 use tracing::{debug, info, instrument};
 use uuid::Uuid;
 
-/// Process all projects, generating snapshots when needed and removing the
-/// ones that are no longer needed.
+/// Process projects and stats, generating snapshots when needed and removing
+/// the ones that are no longer needed.
 #[instrument(skip_all, err)]
 pub(crate) async fn run(db: DynDB) -> Result<()> {
     info!("started");
 
+    debug!("processing projects");
     for project_id in db.projects_ids().await?.iter() {
         process_project(db.clone(), project_id).await?;
     }
+
+    debug!("processing stats");
+    for foundation_id in db.foundations_ids().await?.iter() {
+        process_stats(db.clone(), Some(foundation_id)).await?;
+    }
+    process_stats(db.clone(), None).await?; // All foundations
 
     info!("finished");
     Ok(())
@@ -26,7 +33,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
     let snapshots = db
         .project_snapshots(project_id)
         .await
-        .context("error getting project snapshots")?;
+        .context("error getting snapshots")?;
     let latest_snapshot_date = snapshots.first().map(|d| d.to_owned());
 
     // Store new project's snapshot if needed
@@ -39,7 +46,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
         if let Some(data) = data {
             db.store_project_snapshot(project_id, data)
                 .await
-                .context("error storing project snapshot")?;
+                .context("error storing snapshot")?;
             debug!("snapshot [{}] stored", today);
         }
     }
@@ -49,6 +56,46 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
     for snapshot in snapshots.iter() {
         if !snapshots_to_keep.contains(snapshot) {
             db.delete_project_snapshot(project_id, snapshot)
+                .await
+                .context(format!("error deleting snapshot {}", snapshot))?;
+            debug!("snapshot [{}] deleted", snapshot);
+        }
+    }
+
+    Ok(())
+}
+
+/// Process stats, generating a snapshot for the current day when needed and
+/// cleaning up the ones no longer needed.
+#[instrument(fields(foundation_id = foundation_id.unwrap_or_default()), skip_all, err)]
+async fn process_stats(db: DynDB, foundation_id: Option<&str>) -> Result<()> {
+    // Get stats's snapshots
+    let snapshots = db
+        .stats_snapshots(foundation_id)
+        .await
+        .context("error getting snapshots")?;
+    let latest_snapshot_date = snapshots.first().map(|d| d.to_owned());
+
+    // Store new stats snapshot if needed
+    let today = OffsetDateTime::now_utc().date();
+    if latest_snapshot_date.unwrap_or(Date::MIN) < today {
+        let data = db
+            .stats_data(foundation_id)
+            .await
+            .context("error getting stats data")?;
+        if let Some(data) = data {
+            db.store_stats_snapshot(foundation_id, data)
+                .await
+                .context("error storing snapshot")?;
+            debug!("snapshot [{}] stored", today);
+        }
+    }
+
+    // Delete snapshots no longer needed
+    let snapshots_to_keep = get_snapshots_to_keep(today, snapshots.as_slice());
+    for snapshot in snapshots.iter() {
+        if !snapshots_to_keep.contains(snapshot) {
+            db.delete_stats_snapshot(foundation_id, snapshot)
                 .await
                 .context(format!("error deleting snapshot {}", snapshot))?;
             debug!("snapshot [{}] deleted", snapshot);

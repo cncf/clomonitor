@@ -18,7 +18,7 @@
     "react-markdown": "^8.0.3",
     "react-router-dom": "^6.6.0",
     "react-syntax-highlighter": "^15.5.0",
-    "tinycolor2": "^1.5.0",
+    "tinycolor2": "^1.5.2",
     "ua-parser-js": "^1.0.32"
   },
   "devDependencies": {

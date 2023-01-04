@@ -1,0 +1,34 @@
+.headerAnchor {
+  top: -90px;
+}
+
+.headingLink {
+  margin-right: -35px;
+  width: 35px;
+  opacity: 0;
+  padding-top: 4px;
+}
+
+.headingLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (hover: hover) {
+  .headingWrapper:hover .headingLink {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .headingLink {
+    opacity: 1;
+    margin-right: -20px;
+    width: 30px;
+  }
+
+  .headingLink svg {
+    width: 13px;
+    height: 13px;
+  }
+}

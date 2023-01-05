@@ -67,6 +67,13 @@ pub(crate) trait DB {
     /// Get some general stats.
     async fn stats(&self, foundation: Option<&str>) -> Result<JsonString>;
 
+    /// Get stats' snapshot data.
+    async fn stats_snapshot(
+        &self,
+        foundation: Option<&str>,
+        date: &Date,
+    ) -> Result<Option<JsonString>>;
+
     /// Update the number of views of the projects provided.
     async fn update_projects_views(&self, data: Vec<(ProjectId, Day, Total)>) -> Result<()>;
 }
@@ -211,6 +218,29 @@ impl DB for PgDB {
             .await?
             .get(0);
         Ok(stats)
+    }
+
+    async fn stats_snapshot(
+        &self,
+        foundation: Option<&str>,
+        date: &Date,
+    ) -> Result<Option<JsonString>> {
+        let db = self.pool.get().await?;
+        let row = match foundation {
+            Some(foundation) => {
+                db.query_opt(
+                    "select data::text from stats_snapshot where foundation_id = $1 and date = $2",
+                    &[&foundation, &date],
+                )
+                .await?
+            }
+            None => db.query_opt(
+                "select data::text from stats_snapshot where foundation_id is null and date = $1",
+                &[&date],
+            ).await?,
+        };
+        let snapshot = row.and_then(|row| row.get("data"));
+        Ok(snapshot)
     }
 
     async fn update_projects_views(&self, data: Vec<(ProjectId, Day, Total)>) -> Result<()> {

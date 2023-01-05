@@ -19,12 +19,16 @@ use clomonitor_core::{
     score::Score,
 };
 use config::Config;
+use lazy_static::lazy_static;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
-use time::{format_description, Date};
+use time::{
+    format_description::{self, FormatItem},
+    Date,
+};
 use tracing::error;
 use uuid::Uuid;
 
@@ -46,8 +50,12 @@ pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
 pub const REPORT_SUMMARY_WIDTH: u32 = 900;
 pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 
-/// Format used in snapshots dates.
-pub const SNAPSHOT_DATE_FORMAT: &str = "[year]-[month]-[day]";
+lazy_static! {
+    /// Format used in snapshots dates.
+    pub static ref SNAPSHOT_DATE_FORMAT: Vec<FormatItem<'static>> =
+        format_description::parse("[year]-[month]-[day]")
+        .expect("format to be valid");
+}
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(
@@ -189,8 +197,8 @@ pub(crate) async fn project_snapshot(
     Path((foundation, project, date)): Path<(String, String, String)>,
 ) -> impl IntoResponse {
     // Parse date
-    let format = format_description::parse(SNAPSHOT_DATE_FORMAT).expect("valid date format");
-    let date: Date = Date::parse(&date, &format).map_err(|_| StatusCode::BAD_REQUEST)?;
+    let date: Date =
+        Date::parse(&date, &SNAPSHOT_DATE_FORMAT).map_err(|_| StatusCode::BAD_REQUEST)?;
 
     // Get project snapshot from database
     let project = db
@@ -375,6 +383,34 @@ pub(crate) async fn stats(
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .body(Full::from(stats))
         .map_err(internal_error)
+}
+
+/// Handler that returns the requested stats snapshot.
+pub(crate) async fn stats_snapshot(
+    State(db): State<DynDB>,
+    Path(date): Path<String>,
+    Query(params): Query<HashMap<String, String>>,
+) -> impl IntoResponse {
+    // Get stats snapshot from database
+    let foundation = params.get("foundation").map(|f| f.as_str());
+    let date: Date =
+        Date::parse(&date, &SNAPSHOT_DATE_FORMAT).map_err(|_| StatusCode::BAD_REQUEST)?;
+    let stats = db
+        .stats_snapshot(foundation, &date)
+        .await
+        .map_err(internal_error)?;
+
+    // Return snapshot data if found
+    match stats {
+        Some(stats) => {
+            let headers = [
+                (CACHE_CONTROL, format!("max-age={}", 24 * 60 * 60)),
+                (CONTENT_TYPE, APPLICATION_JSON.to_string()),
+            ];
+            Ok((headers, stats))
+        }
+        None => Err(StatusCode::NOT_FOUND),
+    }
 }
 
 /// Handler used to track a project view.

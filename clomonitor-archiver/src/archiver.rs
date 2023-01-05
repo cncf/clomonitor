@@ -16,8 +16,8 @@ pub(crate) async fn run(db: DynDB) -> Result<()> {
     }
 
     debug!("processing stats");
-    for foundation_id in db.foundations_ids().await?.iter() {
-        process_stats(db.clone(), Some(foundation_id)).await?;
+    for foundation in db.foundations().await?.iter() {
+        process_stats(db.clone(), Some(foundation)).await?;
     }
     process_stats(db.clone(), None).await?; // All foundations
 
@@ -67,11 +67,11 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
 
 /// Process stats, generating a snapshot for the current day when needed and
 /// cleaning up the ones no longer needed.
-#[instrument(fields(foundation_id = foundation_id.unwrap_or_default()), skip_all, err)]
-async fn process_stats(db: DynDB, foundation_id: Option<&str>) -> Result<()> {
+#[instrument(fields(foundation = foundation.unwrap_or_default()), skip_all, err)]
+async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
     // Get stats's snapshots
     let snapshots = db
-        .stats_snapshots(foundation_id)
+        .stats_snapshots(foundation)
         .await
         .context("error getting snapshots")?;
     let latest_snapshot_date = snapshots.first().map(|d| d.to_owned());
@@ -80,11 +80,11 @@ async fn process_stats(db: DynDB, foundation_id: Option<&str>) -> Result<()> {
     let today = OffsetDateTime::now_utc().date();
     if latest_snapshot_date.unwrap_or(Date::MIN) < today {
         let data = db
-            .stats_data(foundation_id)
+            .stats_data(foundation)
             .await
             .context("error getting stats data")?;
         if let Some(data) = data {
-            db.store_stats_snapshot(foundation_id, data)
+            db.store_stats_snapshot(foundation, data)
                 .await
                 .context("error storing snapshot")?;
             debug!("snapshot [{}] stored", today);
@@ -95,7 +95,7 @@ async fn process_stats(db: DynDB, foundation_id: Option<&str>) -> Result<()> {
     let snapshots_to_keep = get_snapshots_to_keep(today, snapshots.as_slice());
     for snapshot in snapshots.iter() {
         if !snapshots_to_keep.contains(snapshot) {
-            db.delete_stats_snapshot(foundation_id, snapshot)
+            db.delete_stats_snapshot(foundation, snapshot)
                 .await
                 .context(format!("error deleting snapshot {}", snapshot))?;
             debug!("snapshot [{}] deleted", snapshot);

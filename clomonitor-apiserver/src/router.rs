@@ -70,7 +70,8 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
             "/projects/:foundation/:project/snapshots/:date",
             get(project_snapshot),
         )
-        .route("/stats", get(stats));
+        .route("/stats", get(stats))
+        .route("/stats/snapshots/:date", get(stats_snapshot));
 
     // Setup router
     let mut router = Router::new()
@@ -138,16 +139,12 @@ mod tests {
         },
     };
     use clomonitor_core::{linter::*, score::Score};
-    use lazy_static::lazy_static;
     use mime::{APPLICATION_JSON, CSV, HTML};
     use mockall::predicate::*;
     use serde_json::json;
     use std::{fs, future, sync::Arc};
     use tera::Context;
-    use time::{
-        format_description::{self, FormatItem},
-        Date,
-    };
+    use time::Date;
     use tokio::sync::RwLock;
     use tower::ServiceExt;
     use uuid::Uuid;
@@ -158,11 +155,6 @@ mod tests {
     const PROJECT_ID: &str = "00000000-0000-0000-0000-000000000001";
     const DATE: &str = "2022-10-28";
     const REPOSITORY: &str = "artifact-hub";
-
-    lazy_static! {
-        static ref DATE_FORMAT: Vec<FormatItem<'static>> =
-            format_description::parse(SNAPSHOT_DATE_FORMAT).unwrap();
-    }
 
     #[tokio::test]
     async fn badge_found() {
@@ -423,7 +415,7 @@ mod tests {
             .with(
                 eq(FOUNDATION),
                 eq(PROJECT),
-                eq(Date::parse(DATE, &DATE_FORMAT).unwrap()),
+                eq(Date::parse(DATE, &SNAPSHOT_DATE_FORMAT).unwrap()),
             )
             .times(1)
             .returning(|_, _, _| {
@@ -461,7 +453,7 @@ mod tests {
             .with(
                 eq(FOUNDATION),
                 eq(PROJECT),
-                eq(Date::parse(DATE, &DATE_FORMAT).unwrap()),
+                eq(Date::parse(DATE, &SNAPSHOT_DATE_FORMAT).unwrap()),
             )
             .times(1)
             .returning(|_, _, _| Box::pin(future::ready(Ok(None))));
@@ -843,6 +835,86 @@ mod tests {
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
             r#"{"some": "stats"}"#.to_string(),
         );
+    }
+
+    #[tokio::test]
+    async fn stats_snapshot_invalid_date_format() {
+        let db = MockDB::new();
+
+        let response = setup_test_router(db, MockViewsTracker::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/stats/snapshots/20230105?foundation={FOUNDATION}"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    }
+
+    #[tokio::test]
+    async fn stats_snapshot_found() {
+        let mut db = MockDB::new();
+        db.expect_stats_snapshot()
+            .withf(|foundation, date| {
+                foundation.as_deref() == Some(FOUNDATION)
+                    && *date == Date::parse(DATE, &SNAPSHOT_DATE_FORMAT).unwrap()
+            })
+            .times(1)
+            .returning(|_, _| {
+                Box::pin(future::ready(Ok(Some(r#"{"some": "stats"}"#.to_string()))))
+            });
+
+        let response = setup_test_router(db, MockViewsTracker::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/stats/snapshots/{DATE}?foundation={FOUNDATION}"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(response.headers()[CACHE_CONTROL], "max-age=86400");
+        assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
+        assert_eq!(
+            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            r#"{"some": "stats"}"#.to_string(),
+        );
+    }
+
+    #[tokio::test]
+    async fn stats_snapshot_not_found() {
+        let mut db = MockDB::new();
+        db.expect_stats_snapshot()
+            .withf(|foundation, date| {
+                foundation.as_deref().is_none()
+                    && *date == Date::parse(DATE, &SNAPSHOT_DATE_FORMAT).unwrap()
+            })
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(None))));
+
+        let response = setup_test_router(db, MockViewsTracker::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!("/api/stats/snapshots/{DATE}"))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND);
     }
 
     #[tokio::test]

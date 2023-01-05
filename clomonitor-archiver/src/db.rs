@@ -16,10 +16,10 @@ pub(crate) trait DB {
     async fn delete_project_snapshot(&self, project_id: &Uuid, date: &Date) -> Result<()>;
 
     /// Delete the provided stats' snapshot.
-    async fn delete_stats_snapshot(&self, foundation_id: Option<&str>, date: &Date) -> Result<()>;
+    async fn delete_stats_snapshot(&self, foundation: Option<&str>, date: &Date) -> Result<()>;
 
     /// Get the ids of all foundations registered in the database.
-    async fn foundations_ids(&self) -> Result<Vec<String>>;
+    async fn foundations(&self) -> Result<Vec<String>>;
 
     /// Get project's data.
     async fn project_data(&self, project_id: &Uuid) -> Result<Option<Value>>;
@@ -31,16 +31,16 @@ pub(crate) trait DB {
     async fn projects_ids(&self) -> Result<Vec<Uuid>>;
 
     /// Get stats' data.
-    async fn stats_data(&self, foundation_id: Option<&str>) -> Result<Option<Value>>;
+    async fn stats_data(&self, foundation: Option<&str>) -> Result<Option<Value>>;
 
     /// Get the dates of all the stats' snapshots.
-    async fn stats_snapshots(&self, foundation_id: Option<&str>) -> Result<Vec<Date>>;
+    async fn stats_snapshots(&self, foundation: Option<&str>) -> Result<Vec<Date>>;
 
     /// Store the provided project's snapshot.
     async fn store_project_snapshot(&self, project_id: &Uuid, data: Value) -> Result<()>;
 
     /// Store the provided stats' snapshot.
-    async fn store_stats_snapshot(&self, foundation_id: Option<&str>, data: Value) -> Result<()>;
+    async fn store_stats_snapshot(&self, foundation: Option<&str>, data: Value) -> Result<()>;
 }
 
 /// DB implementation backed by PostgreSQL.
@@ -67,13 +67,13 @@ impl DB for PgDB {
         Ok(())
     }
 
-    async fn delete_stats_snapshot(&self, foundation_id: Option<&str>, date: &Date) -> Result<()> {
+    async fn delete_stats_snapshot(&self, foundation: Option<&str>, date: &Date) -> Result<()> {
         let db = self.pool.get().await?;
-        match foundation_id {
-            Some(foundation_id) => {
+        match foundation {
+            Some(foundation) => {
                 db.execute(
                     "delete from stats_snapshot where foundation_id = $1 and date = $2",
-                    &[&foundation_id, &date],
+                    &[&foundation, &date],
                 )
                 .await
             }
@@ -88,7 +88,7 @@ impl DB for PgDB {
         Ok(())
     }
 
-    async fn foundations_ids(&self) -> Result<Vec<String>> {
+    async fn foundations(&self) -> Result<Vec<String>> {
         let db = self.pool.get().await?;
         let foundations = db
             .query("select foundation_id from foundation", &[])
@@ -133,22 +133,22 @@ impl DB for PgDB {
         Ok(projects)
     }
 
-    async fn stats_data(&self, foundation_id: Option<&str>) -> Result<Option<Value>> {
+    async fn stats_data(&self, foundation: Option<&str>) -> Result<Option<Value>> {
         let db = self.pool.get().await?;
         let data: Option<Value> = db
-            .query_one("select get_stats($1::text)", &[&foundation_id])
+            .query_one("select get_stats($1::text)", &[&foundation])
             .await?
             .get(0);
         Ok(data)
     }
 
-    async fn stats_snapshots(&self, foundation_id: Option<&str>) -> Result<Vec<Date>> {
+    async fn stats_snapshots(&self, foundation: Option<&str>) -> Result<Vec<Date>> {
         let db = self.pool.get().await?;
-        let rows = match foundation_id {
-            Some(foundation_id) => {
+        let rows = match foundation {
+            Some(foundation) => {
                 db.query(
                     "select date from stats_snapshot where foundation_id = $1 order by date desc",
-                    &[&foundation_id],
+                    &[&foundation],
                 )
                 .await?
             }
@@ -171,11 +171,11 @@ impl DB for PgDB {
         Ok(())
     }
 
-    async fn store_stats_snapshot(&self, foundation_id: Option<&str>, data: Value) -> Result<()> {
+    async fn store_stats_snapshot(&self, foundation: Option<&str>, data: Value) -> Result<()> {
         let db = self.pool.get().await?;
         db.execute(
             "insert into stats_snapshot (foundation_id, data) values ($1::text, $2::jsonb)",
-            &[&foundation_id, &data],
+            &[&foundation, &data],
         )
         .await?;
         Ok(())

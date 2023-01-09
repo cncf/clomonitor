@@ -48,7 +48,7 @@ impl<'a> CheckInput<'a> {
         let svc = CoreLinterServices::new(&li.github_token)?;
 
         // Get CLOMonitor metadata
-        let cm_md = Metadata::from(&li.root.join(METADATA_FILE))?;
+        let cm_md = Metadata::from(li.root.join(METADATA_FILE))?;
 
         // The next both actions (get GitHub metadata and get scorecard) make use
         // of the GitHub token, which when used concurrently, may trigger some

@@ -9,6 +9,7 @@ returns json as $$
         'category', p.category,
         'home_url', p.home_url,
         'logo_url', p.logo_url,
+        'logo_dark_url', p.logo_dark_url,
         'devstats_url', p.devstats_url,
         'score', p.score,
         'rating', p.rating,

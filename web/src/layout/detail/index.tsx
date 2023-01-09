@@ -184,7 +184,11 @@ const Detail = (props: Props) => {
                           <div
                             className={`d-flex align-items-center justify-content-center my-auto ${styles.imageWrapper}`}
                           >
-                            <Image alt={`${detail.display_name || detail.name} logo`} url={detail.logo_url} />
+                            <Image
+                              alt={`${detail.display_name || detail.name} logo`}
+                              url={detail.logo_url}
+                              dark_url={detail.logo_dark_url}
+                            />
                           </div>
                           <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
                             <div className={`text-truncate fw-bold mb-0 ${styles.title}`}>

@@ -6,6 +6,7 @@ export interface BaseProject {
   accepted_at?: number;
   home_url?: string;
   logo_url?: string;
+  logo_dark_url?: string;
   devstats_url?: string;
   maturity: Maturity;
   foundation: Foundation;

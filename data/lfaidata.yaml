@@ -3,6 +3,7 @@
   description: 1chipML is a library for numerical crunching and machine learning on microcontrollers
   category: machine learning
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/1chipML/color/1chipML_color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/1chipML/white/1chipML_white.svg
   accepted_at: "2022-04-07"
   maturity: sandbox
   repositories:
@@ -16,6 +17,7 @@
   description: Toolkit for Accelerating Deep Learning Inference
   category: model
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/adlik/icon/color/adlik-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/adlik/icon/white/adlik-icon-white.svg
   accepted_at: "2019-09-26"
   maturity: incubating
   repositories:
@@ -137,6 +139,7 @@
   description: A kubernetes based framework for hassle free handling of datasets
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/datashim/horizontal/color/datashim-horizontal-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/datashim/horizontal/white/datashim-horizontal-white.svg
   accepted_at: "2021-01-14"
   maturity: incubating
   repositories:
@@ -163,6 +166,7 @@
   description: Open Metadata and Governance
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/egeria/icon/color/egeria-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/egeria/icon/white/egeria-icon-white.svg
   accepted_at: "2020-09-24"
   maturity: graduated
   repositories:
@@ -256,6 +260,7 @@
   description: "JanusGraph: an open-source, distributed graph database"
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/janusgraph/icon/color/janusgraph-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/janusgraph/icon/color-white/janusgraph-icon-color-white.svg
   accepted_at: "2020-12-03"
   maturity: incubating
   repositories:
@@ -553,7 +558,7 @@
   display_name: BeyondML
   description: BeyondML is a framework for developing sparse neural networks that can perform multiple tasks across multiple data domains.
   category: deep learning
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/BeyondML/stacked/color/BeyondML_stacked-color.svg
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/BeyondML/icon/color/BeyondML_icon-color.svg
   accepted_at: "2022-06-16"
   maturity: sandbox
   repositories:
@@ -566,7 +571,7 @@
   display_name: FlagAI
   description: FlagAI (Fast LArge-scale General AI models) is a fast, easy-to-use and extensible toolkit for large-scale models.
   category: deep learning
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/flagai/stacked/color/flagAI_stacked-color.svg
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/flagai/icon/color/flagAI_icon-color.svg
   accepted_at: "2022-06-30"
   maturity: sandbox
   repositories:
@@ -625,6 +630,7 @@
   description: Best practices for AI dataset metadata and license compliance
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/opendataology/icon/color/OpenDataology_icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/opendataology/icon/white/OpenDataology_icon-white.svg
   accepted_at: "2022-08-11"
   maturity: sandbox
   repositories:

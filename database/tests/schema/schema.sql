@@ -27,6 +27,7 @@ select columns_are('project', array[
     'category',
     'home_url',
     'logo_url',
+    'logo_dark_url',
     'devstats_url',
     'score',
     'rating',

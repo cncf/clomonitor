@@ -41,7 +41,11 @@ const Card = (props: Props) => {
           <div
             className={`d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center ${styles.imageWrapper}`}
           >
-            <Image alt={`${props.project.display_name || props.project.name} logo`} url={props.project.logo_url} />
+            <Image
+              alt={`${props.project.display_name || props.project.name} logo`}
+              url={props.project.logo_url}
+              dark_url={props.project.logo_dark_url}
+            />
           </div>
           <div className="flex-grow-1 ms-0 ms-md-3 ms-lg-0 ms-xl-3 w-100 truncateWrapper">
             <div className={`p-2 p-md-3 p-lg-2 p-xl-3 ${styles.content}`}>
@@ -52,6 +56,7 @@ const Card = (props: Props) => {
                   <Image
                     alt={`${props.project.display_name || props.project.name} logo`}
                     url={props.project.logo_url}
+                    dark_url={props.project.logo_dark_url}
                   />
                 </div>
                 <div className="d-flex flex-column w-100 truncateWrapper">

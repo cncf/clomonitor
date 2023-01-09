@@ -2,7 +2,7 @@
   display_name: Aeraki Mesh
   description: Aeraki Mesh allows you to manage any layer-7 traffic in a service mesh
   category: orchestration
-  logo_url: https://landscape.cncf.io/logos/aeraki-mesh.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/aerakimesh/icon/light/aerakimesh-icon-light.svg
   devstats_url: https://aerakimesh.teststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -205,6 +205,7 @@
   description: A Chaos Engineering Platform for Kubernetes
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/chaosmesh/icon/color/chaosmesh-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/chaosmesh/icon/white/chaosmesh-icon-white.svg
   devstats_url: https://chaosmesh.devstats.cncf.io/
   accepted_at: "2020-07-14"
   maturity: incubating
@@ -252,7 +253,7 @@
         - code-lite
     - name: tetragon
       url: https://github.com/cilium/tetragon
-      check_sets:  
+      check_sets:
       - code-lite
 - name: cloud-custodian
   display_name: Cloud Custodian
@@ -372,6 +373,7 @@
   description: An industry-standard container runtime with an emphasis on simplicity, robustness and portability
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerd/icon/color/containerd-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerd/icon/white/containerd-icon-white.svg
   devstats_url: https://containerd.devstats.cncf.io
   accepted_at: "2017-03-29"
   maturity: graduated
@@ -501,6 +503,7 @@
   description: An open standard defining containerized development environments that enables developer tools to simplify and accelerate workflows
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/color/devfile-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/white/devfile-icon-white.svg
   devstats_url: https://devfile.devstats.cncf.io/
   accepted_at: "2021-01-11"
   maturity: sandbox
@@ -564,6 +567,7 @@
   description: open source Kubernetes-native API gateway for microservices built on the Envoy Proxy
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/emissary-ingress/icon/color/emissary-ingress-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/emissary-ingress/icon/white/emissary-ingress-icon-white.svg
   devstats_url: https://emissaryingress.devstats.cncf.io/
   accepted_at: "2021-04-14"
   maturity: incubating
@@ -765,6 +769,7 @@
   description: A high performance, open source universal RPC framework
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/grpc/icon/color/grpc-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/grpc/icon/white/grpc-icon-white.svg
   devstats_url: https://grpc.devstats.cncf.io/
   accepted_at: "2017-02-16"
   maturity: incubating
@@ -816,6 +821,7 @@
   description: The Kubernetes Package Manager
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/white/helm-icon-white.svg
   devstats_url: https://helm.devstats.cncf.io/
   accepted_at: "2018-06-01"
   maturity: graduated
@@ -1074,6 +1080,7 @@
   description: rust kubernetes client and controller runtime
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kube-rs/icon/black/kube-rs-icon-black.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kube-rs/icon/white/kube-rs-icon-white.svg
   devstats_url: https://kubers.devstats.cncf.io/
   accepted_at: "2021-11-16"
   maturity: sandbox
@@ -1131,6 +1138,7 @@
   category: app definition
   home_url: https://kubevela.io/
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/color/kubevela-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/white/kubevela-icon-white.svg
   devstats_url: https://kubevela.devstats.cncf.io/
   accepted_at: "2021-04-05"
   maturity: sandbox
@@ -1205,6 +1213,7 @@
   description: The universal Envoy service mesh for distributed service connectivity
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kuma/icon/color/kuma-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kuma/icon/white/kuma-icon-white.svg
   devstats_url: https://kuma.devstats.cncf.io/
   accepted_at: "2020-06-23"
   maturity: sandbox
@@ -1376,6 +1385,7 @@
   description: Notary is a project that allows anyone to have trust over arbitrary collections of data
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/notary/icon/color/notary-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/notary/icon/white/notary-icon-white.svg
   devstats_url: https://notary.devstats.cncf.io/
   accepted_at: "2017-10-24"
   maturity: incubating
@@ -1525,6 +1535,7 @@
   category: observability
   home_url: https://www.opencost.io
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/color/Opencost_Icon_Color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/white/Opencost_Icon_White.svg
   devstats_url: https://opencost.teststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -1578,6 +1589,7 @@
   description: Standardizing Feature Flagging for Everyone
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/black/openfeature-stacked-black.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/white/openfeature-stacked-white.svg
   devstats_url: https://openfeature.teststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -2017,6 +2029,7 @@
   description: A distributed transactional key-value database. Based on the design of Google Spanner and HBase, but simpler to manage and without dependencies on any distributed filesystem
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/tikv/icon/color/tikv-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/tikv/icon/white/tikv-icon-white.svg
   devstats_url: https://tikv.devstats.cncf.io/
   accepted_at: "2018-08-28"
   maturity: graduated
@@ -2093,6 +2106,7 @@
   description: Python reference implementation of The Update Framework (TUF)
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/tuf/icon/color/tuf-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/tuf/icon/white/tuf-icon-white.svg
   devstats_url: https://tuf.devstats.cncf.io/
   accepted_at: "2017-10-24"
   maturity: graduated
@@ -2125,6 +2139,7 @@
   description: Virtual Kubelet is an open source Kubernetes kubelet implementation
   category: serverless
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/virtualkubelet/icon/color/virtualkubelet-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/virtualkubelet/icon/white/virtualkubelet-icon-white.svg
   devstats_url: https://virtualkubelet.devstats.cncf.io/
   accepted_at: "2018-12-04"
   maturity: sandbox
@@ -2198,7 +2213,7 @@
   description: Runtime protection for Kubernetes & other cloud Workloads. Kubearmor provides a observability and policy enforcement system to restrict any
               unwanted, malicious behaviour of cloud-native workloads at runtime
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/kube-armor.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubearmor/icon/color/kubearmor-icon-color.svg
   devstats_url: https://kubearmor.devstats.cncf.io/
   accepted_at: "2021-11-16"
   maturity: sandbox
@@ -2229,6 +2244,7 @@
   description: Documentation for Konveyor Community
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/konveyor/icon/color/konveyor-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/konveyor/icon/white/konveyor-icon-white-text.svg
   devstats_url: https://konveyor.devstats.cncf.io
   accepted_at: "2022-07-26"
   maturity: sandbox
@@ -2273,7 +2289,8 @@
   display_name: Armada
   description: Armada is a multi-Kubernetes cluster batch job scheduler
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/stacked/color/armada-stacked-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/icon/color/armada-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/icon/white/armada-icon-white.svg
   devstats_url: https://armada.devstats.cncf.io
   accepted_at: "2022-07-26"
   maturity: sandbox
@@ -2434,7 +2451,7 @@
   display_name: Kured
   description: Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kured/stacked/color/kured_stacked-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kured/icon/color/kured-icon-color.svg
   devstats_url: https://kured.devstats.cncf.io/
   accepted_at: "2022-09-13"
   maturity: sandbox
@@ -2456,7 +2473,8 @@
   display_name: Istio
   description: Connect, secure, control, and observe services
   category: orchestration
-  logo_url: https://opensource.google/images/projects/os-projects-istio.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/istio/icon/color/istio-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/istio/icon/white/istio-icon-white.svg
   devstats_url: https://istio.devstats.cncf.io
   accepted_at: "2022-09-28"
   maturity: incubating

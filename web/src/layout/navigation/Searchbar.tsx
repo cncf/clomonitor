@@ -295,7 +295,7 @@ const Searchbar = (props: Props) => {
                         <div
                           className={`d-flex align-items-center justify-content-center me-2 ${styles.miniImageWrapper}`}
                         >
-                          <Image alt={`${project.name}`} url={project.logo_url} />
+                          <Image alt={`${project.name}`} url={project.logo_url} dark_url={project.logo_dark_url} />
                         </div>
                         <div className="flex-grow-1 d-flex flex-column w-100 truncateWrapper">
                           <div className="d-flex flex-row justify-content-between align-items-end">

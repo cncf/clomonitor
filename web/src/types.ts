@@ -222,6 +222,7 @@ export interface SearchData {
 
 export interface Stats {
   generated_at?: number;
+  snapshots?: string[];
   projects: {
     total: number;
     running_total?: any[];

@@ -158,6 +158,12 @@ class API_CLASS {
     return this.apiFetch({ url: `${this.API_BASE_URL}/projects/${foundation}/${project}/snapshots/${date}` });
   }
 
+  public getStatsSnapshot(date: string, foundation: string | null): Promise<Stats> {
+    return this.apiFetch({
+      url: `${this.API_BASE_URL}/stats/snapshots/${date}${!isNull(foundation) ? `?foundation=${foundation}` : ''}`,
+    });
+  }
+
   public getRepositoryReportMD(foundation: string, project: string, repoName: string): Promise<string> {
     return this.apiFetch({
       url: `${this.API_BASE_URL}/projects/${foundation}/${project}/${repoName}/report.md`,

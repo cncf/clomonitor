@@ -22,12 +22,12 @@ import Loading from '../common/Loading';
 import NoData from '../common/NoData';
 import ProjectDropdown from '../common/ProjectDropdown';
 import RoundScore from '../common/RoundScore';
+import Timeline from '../common/timeline/Timeline';
 import SubNavbar from '../navigation/SubNavbar';
 import RepositorySection from '../search/RepositorySection';
 import WebsiteSection from '../search/WebsiteSection';
 import styles from './Detail.module.css';
 import RepositoriesList from './repositories';
-import Timeline from './timeline/Timeline';
 
 interface Props {
   setInvisibleFooter: Dispatch<SetStateAction<boolean>>;
@@ -283,6 +283,7 @@ const Detail = (props: Props) => {
 
                 <Timeline
                   snapshots={snapshots}
+                  className="my-4 my-md-5 ms-4 ms-md-5"
                   activeDate={activeDate}
                   setActiveDate={setActiveDate}
                   currentSearch={currentState ? currentState.currentSearch : undefined}

@@ -9,6 +9,7 @@ import groupDatesByYearAndMonth from '../../../utils/groupDatesByYearAndMonth';
 import styles from './Timeline.module.css';
 
 interface Props {
+  className?: string;
   snapshots: string[];
   activeDate?: string;
   currentSearch?: string;
@@ -34,7 +35,7 @@ const Timeline = (props: Props) => {
   if (isUndefined(dates) || availablaSnapshots.length < MIN_NUMBER_SNAPSHOTS) return null;
 
   return (
-    <div className="d-none d-sm-flex my-4 my-md-5 ms-4 ms-md-5">
+    <div className={`d-none d-sm-flex ${props.className}`}>
       <div>
         <div className="d-flex flex-column text-center border">
           <div className="mt-2 pb-3 fs-4">

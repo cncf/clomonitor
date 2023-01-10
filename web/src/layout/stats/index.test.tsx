@@ -9,6 +9,7 @@ import { SortBy, SortDirection, Stats } from '../../types';
 import StatsView from './index';
 jest.mock('../../api');
 jest.mock('react-apexcharts', () => () => <div>Chart</div>);
+jest.mock('../common/timeline/Timeline', () => () => <>Timeline</>);
 
 const getMockStats = (fixtureId: string): Stats => {
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;

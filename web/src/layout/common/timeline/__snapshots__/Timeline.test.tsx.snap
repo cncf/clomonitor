@@ -3,7 +3,7 @@
 exports[`Timeline creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="d-none d-sm-flex my-4 my-md-5 ms-4 ms-md-5"
+    class="d-none d-sm-flex undefined"
   >
     <div>
       <div

@@ -24,6 +24,7 @@ import prepareQueryString from '../../utils/prepareQueryString';
 import prettifyNumber from '../../utils/prettifyNumber';
 import Loading from '../common/Loading';
 import NoData from '../common/NoData';
+import Timeline from '../common/timeline/Timeline';
 import SubNavbar from '../navigation/SubNavbar';
 import AnchorHeader from './AnchorHeader';
 import Average from './Average';
@@ -62,6 +63,8 @@ const StatsView = () => {
   const [selectedPoint, setSelectedPoint] = useState<SelectedPoint | undefined>();
   const [selectedRange, setSelectedRange] = useState<SelectedRange | undefined>();
   const [downloadingCSV, setDownloadingCSV] = useState<boolean>(false);
+  const [activeDate, setActiveDate] = useState<string | undefined>();
+  const [snapshots, setSnapshots] = useState<string[]>([]);
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -157,6 +160,7 @@ const StatsView = () => {
         fontFamily: "'Lato', Roboto, 'Helvetica Neue', Arial, sans-serif !default",
         height: 250,
         type: 'area',
+        redrawOnWindowResize: true,
         redrawOnParentResize: false,
         zoom: {
           type: 'x',
@@ -255,6 +259,8 @@ const StatsView = () => {
         fontFamily: "'Lato', Roboto, 'Helvetica Neue', Arial, sans-serif !default",
         height: 250,
         type: 'donut',
+        redrawOnWindowResize: true,
+        redrawOnParentResize: false,
         events: {
           dataPointSelection: (event: any, chartContext: any, config: any) => {
             setSelectedPoint({
@@ -311,6 +317,8 @@ const StatsView = () => {
       chart: {
         height: 250,
         type: 'heatmap',
+        redrawOnWindowResize: true,
+        redrawOnParentResize: false,
         toolbar: {
           show: false,
         },
@@ -582,6 +590,7 @@ const StatsView = () => {
     try {
       setIsLoading(true);
       const stats = await API.getStats(selectedFoundation);
+      setSnapshots(stats.snapshots || []);
       setStats(stats);
       checkCurrentStats(stats);
       setApiError(null);
@@ -597,6 +606,7 @@ const StatsView = () => {
   }
 
   useEffect(() => {
+    setActiveDate(undefined);
     getStats();
   }, [searchParams]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
@@ -613,6 +623,29 @@ const StatsView = () => {
       loadSearchPageWithAcceptedRange(selectedRange);
     }
   }, [selectedRange]); /* eslint-disable-line react-hooks/exhaustive-deps */
+
+  useEffect(() => {
+    async function fetchSnapshot() {
+      setIsLoading(true);
+      try {
+        const stats = await API.getStatsSnapshot(activeDate!, selectedFoundation);
+        setStats(stats);
+        checkCurrentStats(stats);
+        setIsLoading(false);
+      } catch (err: any) {
+        setStats(null);
+        setIsLoading(false);
+      }
+    }
+
+    if (stats) {
+      if (isUndefined(activeDate)) {
+        getStats();
+      } else {
+        fetchSnapshot();
+      }
+    }
+  }, [activeDate]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   const downloadRepositoriesCSV = () => {
     async function getCSV() {
@@ -692,291 +725,310 @@ const StatsView = () => {
           spinnerClassName={classNames(styles.loading, { [styles.withContent]: stats })}
         />
       )}
-      <main role="main" className="container-lg px-sm-4 px-lg-0 py-5 position-relative">
-        <div className="flex-grow-1 position-relative">
-          {apiError && (
-            <NoData>
-              <div className="mb-4 mb-lg-5 h2">{apiError}</div>
-              <p className="h5 mb-0">Please try again later.</p>
-            </NoData>
-          )}
-          {stats && (
-            <>
-              {emptyStats && (
-                <div>
-                  <NoData>
-                    <div className="mb-4 mb-lg-5 h2">No Stats available for the moment.</div>
-                    <p className="h5 mb-0">Please try again later.</p>
-                  </NoData>
-                </div>
-              )}
+      <main role="main" className="container-lg py-5 position-relative">
+        <div className="d-flex flex-row">
+          <div className="flex-grow-1 position-relative">
+            {apiError && (
+              <NoData>
+                <div className="mb-4 mb-lg-5 h2">{apiError}</div>
+                <p className="h5 mb-0">Please try again later.</p>
+              </NoData>
+            )}
+            {stats && (
+              <>
+                {emptyStats && (
+                  <div>
+                    <NoData>
+                      <div className="mb-4 mb-lg-5 h2">No Stats available for the moment.</div>
+                      <p className="h5 mb-0">Please try again later.</p>
+                    </NoData>
+                  </div>
+                )}
 
-              {stats.projects.running_total && stats.projects.accepted_distribution && (
                 <>
-                  <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>Projects</div>
-                  <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects accepted</div>
+                  {stats.projects.running_total && stats.projects.accepted_distribution && (
+                    <>
+                      <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>
+                        Projects
+                      </div>
+                      <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects accepted</div>
 
-                  <div className="py-4">
-                    <div className="row g-4 g-xxl-5 justify-content-center">
-                      <div className="col-12 col-md-6 col-xl-8">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className={`card-body ${styles.reducedPaddingBottom}`}>
-                            <ReactApexChart
-                              options={getAreaChartConfig()}
-                              series={[{ name: 'Projects', data: stats.projects.running_total }]}
-                              type="area"
-                              height={250}
-                            />
+                      <div className="py-4">
+                        <div className="row g-4 g-xxl-5 justify-content-center">
+                          <div className="col-12 col-md-6 col-xl-8">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className={`card-body ${styles.reducedPaddingBottom}`}>
+                                <ReactApexChart
+                                  options={getAreaChartConfig()}
+                                  series={[{ name: 'Projects', data: stats.projects.running_total }]}
+                                  type="area"
+                                  height={250}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-12 col-md-6 col-xl-4">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className={`card-body ${styles.reducedPaddingBottom}`}>
+                                <ReactApexChart
+                                  options={getHeatMapChartConfig()}
+                                  series={prepareHeatMapData(stats.projects.accepted_distribution)}
+                                  type="heatmap"
+                                  height={250}
+                                />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    </>
+                  )}
 
-                      <div className="col-12 col-md-6 col-xl-4">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className={`card-body ${styles.reducedPaddingBottom}`}>
-                            <ReactApexChart
-                              options={getHeatMapChartConfig()}
-                              series={prepareHeatMapData(stats.projects.accepted_distribution)}
-                              type="heatmap"
-                              height={250}
-                            />
+                  {stats.projects.rating_distribution && (
+                    <>
+                      <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                        Distribution of projects by rating
+                      </div>
+
+                      <div className="py-4">
+                        <div className="row g-4 g-xxl-5 justify-content-center">
+                          <div className="col-6 col-xl-3">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
+                                All
+                              </div>
+                              <div className={`card-body ${styles.donutWrapper}`}>
+                                <ReactApexChart
+                                  options={getDonutChartConfig()}
+                                  series={prepareDonutData(stats.projects.rating_distribution.all)}
+                                  type="donut"
+                                  height={250}
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {stats.projects.rating_distribution.graduated && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
+                                  Graduated
+                                </div>
+                                <div className={`card-body ${styles.donutWrapper}`}>
+                                  <ReactApexChart
+                                    options={getDonutChartConfig(Maturity.graduated)}
+                                    series={prepareDonutData(stats.projects.rating_distribution.graduated)}
+                                    type="donut"
+                                    height={250}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {stats.projects.rating_distribution.incubating && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
+                                  Incubating
+                                </div>
+                                <div className={`card-body ${styles.donutWrapper}`}>
+                                  <ReactApexChart
+                                    options={getDonutChartConfig(Maturity.incubating)}
+                                    series={prepareDonutData(stats.projects.rating_distribution.incubating)}
+                                    type="donut"
+                                    height={250}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {stats.projects.rating_distribution.sandbox && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
+                                  Sandbox
+                                </div>
+                                <div className={`card-body ${styles.donutWrapper}`}>
+                                  <ReactApexChart
+                                    options={getDonutChartConfig(Maturity.sandbox)}
+                                    series={prepareDonutData(stats.projects.rating_distribution.sandbox)}
+                                    type="donut"
+                                    height={250}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {stats.projects.sections_average && (
+                    <>
+                      <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                        Projects average score per category
+                      </div>
+
+                      <div className="py-4">
+                        <div className="row g-4 g-xxl-5 justify-content-center">
+                          <div className="col-6 col-xl-3">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <Average title="All" data={stats.projects.sections_average.all} />
+                            </div>
+                          </div>
+
+                          {!isEmpty(stats.projects.sections_average.graduated) && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <Average title="Graduated" data={stats.projects.sections_average.graduated} />
+                              </div>
+                            </div>
+                          )}
+
+                          {!isEmpty(stats.projects.sections_average.incubating) && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <Average title="Incubating" data={stats.projects.sections_average.incubating} />
+                              </div>
+                            </div>
+                          )}
+
+                          {!isEmpty(stats.projects.sections_average.sandbox) && (
+                            <div className="col-6 col-xl-3">
+                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                <Average title="Sandbox" data={stats.projects.sections_average.sandbox} />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {stats.repositories.passing_check && (
+                    <>
+                      <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>
+                        Repositories
+                      </div>
+                      <div className="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3">
+                        <div className={`text-dark fw-bold mx-auto mx-md-0 ${styles.subtitle}`}>
+                          Percentage of repositories passing each check
+                        </div>
+                        <button
+                          className={`btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 ${styles.downloadBtn}`}
+                          onClick={downloadRepositoriesCSV}
+                          aria-label="Download repositories CSV file"
+                        >
+                          <div className="d-flex flex-row align-items-baseline position-relative">
+                            <div>(</div>
+                            <div className="me-1">
+                              <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
+                            </div>
+                            <div>Download CSV file)</div>
+                            {downloadingCSV && (
+                              <div className={`position-absolute ${styles.downloadSpinner}`}>
+                                <Loading
+                                  spinnerClassName={`position-relative ${styles.miniSpinner}`}
+                                  noWrapper
+                                  smallSize
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      </div>
+                      <div className="py-4">
+                        <div className="row no-gutters justify-content-center">
+                          <div className="col-12">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className={`card-body ${styles.checksBody}`}>
+                                <div className="row g-4 justify-content-center">
+                                  <Checks
+                                    title="Documentation"
+                                    data={stats.repositories.passing_check.documentation}
+                                    onSelectCheck={selectCheck}
+                                  />
+                                  <Checks
+                                    title="License"
+                                    data={stats.repositories.passing_check.license}
+                                    onSelectCheck={selectCheck}
+                                  />
+                                  <Checks
+                                    title="Best Practices"
+                                    data={stats.repositories.passing_check.best_practices}
+                                    onSelectCheck={selectCheck}
+                                  />
+                                  <Checks
+                                    title="Security"
+                                    data={stats.repositories.passing_check.security}
+                                    onSelectCheck={selectCheck}
+                                  />
+                                  <Checks
+                                    title="Legal"
+                                    data={stats.repositories.passing_check.legal}
+                                    onSelectCheck={selectCheck}
+                                  />
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </>
+                  )}
+
+                  {stats.projects.views_daily && (
+                    <>
+                      <AnchorHeader
+                        title="Usage"
+                        className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}
+                        scrollIntoView={scrollIntoView}
+                      />
+
+                      <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>
+                        Projects daily views
+                      </div>
+
+                      <div className="py-4">
+                        <div className="row g-4 g-xxl-5 justify-content-center">
+                          <div className="col-12">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className={`card-body ${styles.reducedPaddingBottom}`}>
+                                <ReactApexChart
+                                  options={getBarChartConfig(
+                                    false,
+                                    stats.projects.views_daily.length,
+                                    stats.projects.views_daily.length > 0
+                                      ? stats.projects.views_daily.slice(-1)[0][0]
+                                      : undefined
+                                  )}
+                                  series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
+                                  type="bar"
+                                  height={250}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </>
-              )}
+              </>
+            )}
+          </div>
 
-              {stats.projects.rating_distribution && (
-                <>
-                  <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
-                    Distribution of projects by rating
-                  </div>
-
-                  <div className="py-4">
-                    <div className="row g-4 g-xxl-5 justify-content-center">
-                      <div className="col-6 col-xl-3">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                            All
-                          </div>
-                          <div className={`card-body ${styles.donutWrapper}`}>
-                            <ReactApexChart
-                              options={getDonutChartConfig()}
-                              series={prepareDonutData(stats.projects.rating_distribution.all)}
-                              type="donut"
-                              height={250}
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {stats.projects.rating_distribution.graduated && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                              Graduated
-                            </div>
-                            <div className={`card-body ${styles.donutWrapper}`}>
-                              <ReactApexChart
-                                options={getDonutChartConfig(Maturity.graduated)}
-                                series={prepareDonutData(stats.projects.rating_distribution.graduated)}
-                                type="donut"
-                                height={250}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {stats.projects.rating_distribution.incubating && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                              Incubating
-                            </div>
-                            <div className={`card-body ${styles.donutWrapper}`}>
-                              <ReactApexChart
-                                options={getDonutChartConfig(Maturity.incubating)}
-                                series={prepareDonutData(stats.projects.rating_distribution.incubating)}
-                                type="donut"
-                                height={250}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {stats.projects.rating_distribution.sandbox && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                              Sandbox
-                            </div>
-                            <div className={`card-body ${styles.donutWrapper}`}>
-                              <ReactApexChart
-                                options={getDonutChartConfig(Maturity.sandbox)}
-                                series={prepareDonutData(stats.projects.rating_distribution.sandbox)}
-                                type="donut"
-                                height={250}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {stats.projects.sections_average && (
-                <>
-                  <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
-                    Projects average score per category
-                  </div>
-
-                  <div className="py-4">
-                    <div className="row g-4 g-xxl-5 justify-content-center">
-                      <div className="col-6 col-xl-3">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <Average title="All" data={stats.projects.sections_average.all} />
-                        </div>
-                      </div>
-
-                      {!isEmpty(stats.projects.sections_average.graduated) && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <Average title="Graduated" data={stats.projects.sections_average.graduated} />
-                          </div>
-                        </div>
-                      )}
-
-                      {!isEmpty(stats.projects.sections_average.incubating) && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <Average title="Incubating" data={stats.projects.sections_average.incubating} />
-                          </div>
-                        </div>
-                      )}
-
-                      {!isEmpty(stats.projects.sections_average.sandbox) && (
-                        <div className="col-6 col-xl-3">
-                          <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                            <Average title="Sandbox" data={stats.projects.sections_average.sandbox} />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {stats.repositories.passing_check && (
-                <>
-                  <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>
-                    Repositories
-                  </div>
-                  <div className="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3">
-                    <div className={`text-dark fw-bold mx-auto mx-md-0 ${styles.subtitle}`}>
-                      Percentage of repositories passing each check
-                    </div>
-                    <button
-                      className={`btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 ${styles.downloadBtn}`}
-                      onClick={downloadRepositoriesCSV}
-                      aria-label="Download repositories CSV file"
-                    >
-                      <div className="d-flex flex-row align-items-baseline position-relative">
-                        <div>(</div>
-                        <div className="me-1">
-                          <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
-                        </div>
-                        <div>Download CSV file)</div>
-                        {downloadingCSV && (
-                          <div className={`position-absolute ${styles.downloadSpinner}`}>
-                            <Loading spinnerClassName={`position-relative ${styles.miniSpinner}`} noWrapper smallSize />
-                          </div>
-                        )}
-                      </div>
-                    </button>
-                  </div>
-                  <div className="py-4">
-                    <div className="row no-gutters justify-content-center">
-                      <div className="col-12">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className={`card-body ${styles.checksBody}`}>
-                            <div className="row g-4 justify-content-center">
-                              <Checks
-                                title="Documentation"
-                                data={stats.repositories.passing_check.documentation}
-                                onSelectCheck={selectCheck}
-                              />
-                              <Checks
-                                title="License"
-                                data={stats.repositories.passing_check.license}
-                                onSelectCheck={selectCheck}
-                              />
-                              <Checks
-                                title="Best Practices"
-                                data={stats.repositories.passing_check.best_practices}
-                                onSelectCheck={selectCheck}
-                              />
-                              <Checks
-                                title="Security"
-                                data={stats.repositories.passing_check.security}
-                                onSelectCheck={selectCheck}
-                              />
-                              <Checks
-                                title="Legal"
-                                data={stats.repositories.passing_check.legal}
-                                onSelectCheck={selectCheck}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {stats.projects.views_daily && (
-                <>
-                  <AnchorHeader
-                    title="Usage"
-                    className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}
-                    scrollIntoView={scrollIntoView}
-                  />
-
-                  <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects daily views</div>
-
-                  <div className="py-4">
-                    <div className="row g-4 g-xxl-5 justify-content-center">
-                      <div className="col-12">
-                        <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                          <div className={`card-body ${styles.reducedPaddingBottom}`}>
-                            <ReactApexChart
-                              options={getBarChartConfig(
-                                false,
-                                stats.projects.views_daily.length,
-                                stats.projects.views_daily.length > 0
-                                  ? stats.projects.views_daily.slice(-1)[0][0]
-                                  : undefined
-                              )}
-                              series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
-                              type="bar"
-                              height={250}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-            </>
-          )}
-        </div>
+          <Timeline
+            snapshots={snapshots}
+            className={`ms-4 ms-lg-5 ${styles.timeline}`}
+            activeDate={activeDate}
+            setActiveDate={setActiveDate}
+          />
+        </div>{' '}
       </main>
     </div>
   );

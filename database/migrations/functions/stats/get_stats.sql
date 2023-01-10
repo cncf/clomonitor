@@ -14,6 +14,20 @@ returns json as $$
     )
     select json_strip_nulls(json_build_object(
         'generated_at', floor(extract(epoch from current_timestamp) * 1000),
+        'snapshots', (
+            select json_agg(s.date)
+            from (
+                select date
+                from stats_snapshot
+                where
+                    case when p_foundation is not null then
+                        foundation_id = p_foundation
+                    else
+                        foundation_id is null
+                    end
+                order by date desc
+            ) s
+        ),
         'projects', json_build_object(
             'running_total', (
                 select json_agg(json_build_array(

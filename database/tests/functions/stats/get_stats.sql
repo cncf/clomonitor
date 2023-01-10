@@ -498,11 +498,33 @@ insert into project_views (
     '2023-01-03',
     '1'
 );
+insert into stats_snapshot (
+    foundation_id,
+    date,
+    data
+) values (
+    'cncf',
+    '2023-01-10',
+    '{"k": "v"}'
+);
+insert into stats_snapshot (
+    foundation_id,
+    date,
+    data
+) values (
+    'cncf',
+    '2023-01-09',
+    '{"k": "v"}'
+);
 
 -- Run some tests
 select is(
     get_stats('cncf')::jsonb - '{generated_at}'::text[],
     '{
+        "snapshots": [
+            "2023-01-10",
+            "2023-01-09"
+        ],
         "projects": {
             "running_total": [
                 [1612137600000, 2],

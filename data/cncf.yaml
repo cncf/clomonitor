@@ -254,7 +254,7 @@
     - name: tetragon
       url: https://github.com/cilium/tetragon
       check_sets:
-      - code-lite
+        - code-lite
 - name: cloud-custodian
   display_name: Cloud Custodian
   description: Rules engine for cloud security, cost optimization, and governance, DSL in yaml for policies to query, filter, and take actions on resources
@@ -2495,3 +2495,100 @@
       url: https://github.com/istio/proxy
       check_sets:
         - code-lite
+- name: merbridge
+  display_name: Merbridge
+  description: Use eBPF to speed up your Service Mesh like crossing an Einstein-Rosen Bridge
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/merbridge/icon/color/merbridge-icon-color.svg
+  devstats_url: https://merbridge.devstats.cncf.io/
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: merbridge
+      url: https://github.com/merbridge/merbridge
+      check_sets:
+        - community
+        - code
+- name: devspace
+  display_name: DevSpace
+  description: Client-Only Developer Tool for Cloud-Native Development with Kubernetes
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/cached_logos/dev-space.svg
+  devstats_url: https://devspace.devstats.cncf.io/
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: devspace
+      url: https://github.com/loft-sh/devspace
+      check_sets:
+        - community
+        - code
+- name: opcr
+  display_name: Open Policy Registry
+  description: A docker-inspired CLI for building, tagging, pushing, pulling, and signing OPA policies to and from OCI-compliant registries
+  category: provisioning
+  logo_url: https://landscape.cncf.io/logos/open-policy-containers.svg
+  devstats_url: https://opcr.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: policy
+      url: https://github.com/opcr-io/policy
+      check_sets:
+        - community
+        - code
+- name: kubescape
+  display_name: Kubescape
+  description: Kubescape is an open source security and compliance platform that scans clusters, Kubernetes manifest files (YAML files, and Helm charts), code repositories, container registries and images. It detects misconfigurations according to frameworks such as the NSA-CISA, MITRE ATT&CK® and CIS, as well as software vulnerabilities, and calculates risk scores
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/icon/color/kubescape-icon-color.svg
+  devstats_url: https://kubescape.devstats.cncf.io/
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: kubescape
+      url: https://github.com/kubescape/kubescape
+      check_sets:
+        - community
+        - code
+- name: paralus
+  display_name: Paralus
+  description: Paralus is a free, open source tool that enables controlled, audited access to Kubernetes infrastructure and Zero trust Kubernetes with zero friction
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/paralus/icon/color/paralus-icon-color.svg
+  devstats_url: https://paralus.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: paralus
+      url: https://github.com/paralus/paralus
+      check_sets:
+        - community
+        - code
+- name: carina
+  display_name: Carina
+  description: "Carina: an high performance and ops-free local storage for kubernetes"
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/carina/icon/color/carina-icon-color.svg
+  devstats_url: https://carina.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: carina
+      url: https://github.com/carina-io/carina
+      check_sets:
+        - code
+        - community
+- name: ko
+  description: Build and deploy Go applications on Kubernetes
+  category: app definition
+  logo_url: https://landscape.cncf.io/logos/ko.svg
+  devstats_url: https://ko.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: ko
+      url: https://github.com/ko-build/ko
+      check_sets:
+        - community
+        - code

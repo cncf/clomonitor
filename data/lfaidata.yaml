@@ -651,3 +651,29 @@
       check_sets:
         - community
         - code
+- name: claimed
+  display_name: CLAIMED
+  description: The goal of CLAIMED is to enable low-code/no-code rapid prototyping style programming to seamlessly CI/CD into production
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/claimed/color/claimed-color.svg
+  accepted_at: "2022-11-17"
+  maturity: sandbox
+  repositories:
+    - name: component-library
+      url: https://github.com/claimed-framework/component-library
+      check_sets:
+        - community
+        - code
+- name: xtreme1
+  display_name: Xtreme1
+  description: "The Next GEN Platform for Multisensory Training Data. #3D annotation, lidar-camera fusion annotation, image annotation and visualation tools are supported!"
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/xtreme1/icon/color/xtreme1_icon-color.svg
+  accepted_at: "2022-12-01"
+  maturity: sandbox
+  repositories:
+    - name: xtreme1
+      url: https://github.com/xtreme1-io/xtreme1
+      check_sets:
+        - code
+        - community

@@ -18,7 +18,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?i)https?://cloud-native.slack.com",
         r"(?i)https?://slack.cncf.io",
         r"(?i)https?://kubernetes.slack.com",

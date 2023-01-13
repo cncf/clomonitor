@@ -36,7 +36,7 @@ lazy_static! {
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<String>>> {
     // Get website content
     let content = match &input.gh_md.homepage_url {
-        Some(url) if !url.is_empty() => input.svc.http_client.get(url).send().await?.text().await?,
+        Some(url) if !url.is_empty() => reqwest::get(url).await?.text().await?,
         _ => return Ok(CheckOutput::not_passed()),
     };
 

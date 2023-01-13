@@ -55,13 +55,11 @@ impl MdRepository {
 }
 
 /// Get repository's metadata from the Github GraphQL API.
-pub(crate) async fn metadata(
-    http_client: &reqwest::Client,
-    repo_url: &str,
-) -> Result<MdRepository> {
+pub(crate) async fn metadata(repo_url: &str, token: &str) -> Result<MdRepository> {
     let (owner, repo) = get_owner_and_repo(repo_url)?;
 
     // Do request to GraphQL API
+    let http_client = setup_http_client(token)?;
     let vars = md::Variables { owner, repo };
     let req_body = &Md::build_query(vars);
     let resp = http_client
@@ -178,7 +176,6 @@ pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
 /// Check if the given default community health file is available in the
 /// .github repository, returning the url to the file when found.
 pub(crate) async fn has_community_health_file(
-    http_client: &reqwest::Client,
     file: &str,
     gh_md: &MdRepository,
 ) -> Result<Option<String>> {
@@ -187,6 +184,7 @@ pub(crate) async fn has_community_health_file(
         "https://raw.githubusercontent.com/{}/.github/HEAD/{}",
         &gh_md.owner.login, file
     );
+    let http_client = reqwest::Client::new();
     match http_client
         .head(&file_raw_url)
         .send()
@@ -222,6 +220,21 @@ pub(crate) fn latest_release_description_matches(gh_md: &MdRepository, re: &Rege
         return re.is_match(description);
     }
     false
+}
+
+// Setup a new authenticated http client to interact with the GitHub API.
+pub fn setup_http_client(token: &str) -> Result<reqwest::Client, reqwest::Error> {
+    reqwest::Client::builder()
+        .user_agent("clomonitor")
+        .default_headers(
+            std::iter::once((
+                reqwest::header::AUTHORIZATION,
+                reqwest::header::HeaderValue::from_str(&format!("Bearer {}", token))
+                    .expect("header value only uses visible ascii chars"),
+            ))
+            .collect(),
+        )
+        .build()
 }
 
 /// Extract the owner and repository from the repository url provided.

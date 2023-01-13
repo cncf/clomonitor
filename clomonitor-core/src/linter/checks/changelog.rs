@@ -21,14 +21,14 @@ pub(crate) static FILE_PATTERNS: [&str; 1] = ["changelog*"];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*changelog.*$",
         r"(?im)^changelog$",
         r"(?i)\[.*changelog.*\]\(.*\)",
     ]).expect("exprs in README_REF to be valid");
 
     #[rustfmt::skip]
-    static ref RELEASE_REF: RegexSet = RegexSet::new(vec![
+    static ref RELEASE_REF: RegexSet = RegexSet::new([
         r"(?i)changelog",
         r"(?i)changes",
     ]).expect("exprs in RELEASE_REF to be valid");

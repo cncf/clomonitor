@@ -18,7 +18,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
 lazy_static! {
     #[rustfmt::skip]
-    pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new([
         r"https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
     ]).expect("exprs in TRADEMARK_DISCLAIMER to be valid");
@@ -28,9 +28,7 @@ lazy_static! {
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // Trademark disclaimer in website setup in Github
     if let Some(url) = &input.gh_md.homepage_url {
-        if !url.is_empty()
-            && content::remote_matches(&input.svc.http_client, url, &TRADEMARK_DISCLAIMER).await?
-        {
+        if !url.is_empty() && content::remote_matches(url, &TRADEMARK_DISCLAIMER).await? {
             return Ok(CheckOutput::passed());
         }
     }

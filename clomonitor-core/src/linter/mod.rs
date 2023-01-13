@@ -15,10 +15,12 @@ mod check;
 mod checks;
 mod metadata;
 mod report;
+
 pub use self::{
     check::{CheckId, CheckOutput},
     report::*,
 };
+pub use checks::util::github::setup_http_client as setup_github_http_client;
 pub(crate) use checks::*;
 
 /// Type alias to represent a Linter trait object.
@@ -33,7 +35,7 @@ pub trait Linter {
 }
 
 /// Input used by the linter to perform its operations.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct LinterInput {
     pub root: PathBuf,
     pub url: String,
@@ -148,36 +150,4 @@ impl Linter for CoreLinter {
 
         Ok(report)
     }
-}
-
-/// Services used by the core linter to perform some of the checks.
-#[derive(Debug, Clone)]
-pub(crate) struct CoreLinterServices {
-    pub http_client: reqwest::Client,
-    pub http_client_gh: reqwest::Client,
-}
-
-impl CoreLinterServices {
-    /// Create a new CoreLinterServices instance.
-    pub fn new(github_token: &str) -> Result<Self> {
-        Ok(Self {
-            http_client: reqwest::Client::new(),
-            http_client_gh: setup_github_http_client(github_token)?,
-        })
-    }
-}
-
-// Setup a new authenticated http client to interact with the GitHub API.
-pub fn setup_github_http_client(github_token: &str) -> Result<reqwest::Client, reqwest::Error> {
-    reqwest::Client::builder()
-        .user_agent("clomonitor")
-        .default_headers(
-            std::iter::once((
-                reqwest::header::AUTHORIZATION,
-                reqwest::header::HeaderValue::from_str(&format!("Bearer {}", github_token))
-                    .expect("header value only uses visible ascii chars"),
-            ))
-            .collect(),
-        )
-        .build()
 }

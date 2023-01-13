@@ -18,7 +18,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 2] = [CheckSet::Code, CheckSet::CodeLite
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref CHECK_REF: RegexSet = RegexSet::new(vec![
+    static ref CHECK_REF: RegexSet = RegexSet::new([
         r"(?i)cncf-cla",
         r"(?i)cla/linuxfoundation",
         r"(?i)easycla",

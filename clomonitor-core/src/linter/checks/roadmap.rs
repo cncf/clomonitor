@@ -21,7 +21,7 @@ const FILE_PATTERNS: [&str; 1] = ["roadmap*"];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*roadmap.*$",
         r"(?im)^roadmap$",
         r"(?i)\[.*roadmap.*\]\(.*\)",

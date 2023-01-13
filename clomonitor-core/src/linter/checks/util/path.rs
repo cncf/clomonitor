@@ -52,8 +52,6 @@ pub(crate) fn matches(globs: &Globs) -> Result<Vec<PathBuf>, PatternError> {
 
 #[cfg(test)]
 mod tests {
-    use crate::linter::checks::maintainers;
-
     use super::*;
 
     const TESTDATA_PATH: &str = "src/testdata";
@@ -63,7 +61,7 @@ mod tests {
         assert_eq!(
             find(&Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &maintainers::FILE_PATTERNS,
+                patterns: &["maintainers*"],
                 case_sensitive: false,
             })
             .unwrap(),
@@ -103,11 +101,11 @@ mod tests {
         assert_eq!(
             matches(&Globs {
                 root: testdata,
-                patterns: &maintainers::FILE_PATTERNS,
+                patterns: &["maintainers*"],
                 case_sensitive: false,
             })
             .unwrap(),
-            vec![testdata.join("MAINTAINERS"), testdata.join("OWNERS"),]
+            vec![testdata.join("MAINTAINERS")]
         );
     }
 

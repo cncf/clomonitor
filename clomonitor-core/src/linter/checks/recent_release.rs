@@ -28,3 +28,90 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 
     Ok(CheckOutput::not_passed())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::linter::{
+        util::github::md::{
+            MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
+            MdRepositoryReleasesNodesReleaseAssets,
+        },
+        LinterInput,
+    };
+    use anyhow::format_err;
+
+    #[test]
+    fn not_passed_no_release_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn not_passed_no_recent_release_found() {
+        let two_years_ago = (OffsetDateTime::now_utc() - Duration::days(365 * 2))
+            .format(&Rfc3339)
+            .unwrap();
+
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    releases: MdRepositoryReleases {
+                        nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                            created_at: two_years_ago,
+                            description: None,
+                            is_prerelease: false,
+                            release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                            url: "release_url".to_string(),
+                        })]),
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn passed_recent_release_found() {
+        let one_week_ago = (OffsetDateTime::now_utc() - Duration::days(7))
+            .format(&Rfc3339)
+            .unwrap();
+
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    releases: MdRepositoryReleases {
+                        nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                            created_at: one_week_ago,
+                            description: None,
+                            is_prerelease: false,
+                            release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                            url: "release_url".to_string(),
+                        })]),
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::passed().url(Some("release_url".to_string())),
+        );
+    }
+}

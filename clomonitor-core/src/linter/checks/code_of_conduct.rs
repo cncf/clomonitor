@@ -25,7 +25,7 @@ pub(crate) static FILE_PATTERNS: [&str; 3] = [
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*code of conduct.*$",
         r"(?im)^code of conduct$",
         r"(?i)\[.*code of conduct.*\]\(.*\)",

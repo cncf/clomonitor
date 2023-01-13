@@ -22,7 +22,7 @@ const DCO_MAX_COMMITS: usize = 20;
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref CHECK_REF: RegexSet = RegexSet::new(vec![
+    static ref CHECK_REF: RegexSet = RegexSet::new([
         r"(?i)dco",
     ]).expect("exprs in CHECK_REF to be valid");
 }

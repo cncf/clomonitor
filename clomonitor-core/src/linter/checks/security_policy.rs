@@ -21,7 +21,7 @@ static FILE_PATTERNS: [&str; 3] = ["security*", ".github/security*", "docs/secur
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*security.*$",
         r"(?im)^security$",
         r"(?i)\[.*security.*\]\(.*\)",

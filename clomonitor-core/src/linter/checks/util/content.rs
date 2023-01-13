@@ -35,23 +35,14 @@ pub(crate) fn matches(globs: &Globs, re: &RegexSet) -> Result<bool> {
 
 /// Check if the content of the url provided matches any of the regular
 /// expressions given.
-pub(crate) async fn remote_matches(
-    http_client: &reqwest::Client,
-    url: &str,
-    re: &RegexSet,
-) -> Result<bool> {
-    let content = http_client.get(url).send().await?.text().await?;
+pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool> {
+    let content = reqwest::get(url).await?.text().await?;
     Ok(re.is_match(&content))
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::checks::{
-        adopters,
-        license_scanning::{FOSSA_URL, SNYK_URL},
-        readme,
-    };
     use std::path::Path;
     use wiremock::{
         matchers::{method, path},
@@ -66,10 +57,10 @@ mod tests {
             find(
                 &Globs {
                     root: Path::new(TESTDATA_PATH),
-                    patterns: &readme::FILE_PATTERNS,
+                    patterns: &["README*"],
                     case_sensitive: true,
                 },
-                &[&FOSSA_URL, &SNYK_URL]
+                &[&Regex::new(r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#).unwrap()]
             )
             .unwrap()
             .unwrap(),
@@ -83,7 +74,7 @@ mod tests {
             find(
                 &Globs {
                     root: Path::new(TESTDATA_PATH),
-                    patterns: &readme::FILE_PATTERNS,
+                    patterns: &["README*"],
                     case_sensitive: true,
                 },
                 &[&Regex::new("non-existing pattern").unwrap()]
@@ -129,10 +120,10 @@ mod tests {
         assert!(matches(
             &Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &readme::FILE_PATTERNS,
+                patterns: &["README*"],
                 case_sensitive: true,
             },
-            &adopters::README_REF
+            &RegexSet::new([r"(?im)^#+.*adopters.*$"]).unwrap(),
         )
         .unwrap());
     }
@@ -142,7 +133,7 @@ mod tests {
         assert!(!matches(
             &Globs {
                 root: Path::new(TESTDATA_PATH),
-                patterns: &readme::FILE_PATTERNS,
+                patterns: &["README*"],
                 case_sensitive: true,
             },
             &RegexSet::new(["non-existing pattern"]).unwrap(),
@@ -189,13 +180,11 @@ mod tests {
             .mount(&mock_server)
             .await;
 
-        assert!(remote_matches(
-            &reqwest::Client::new(),
-            &mock_server.uri(),
-            &RegexSet::new(["data"]).unwrap(),
-        )
-        .await
-        .unwrap());
+        assert!(
+            remote_matches(&mock_server.uri(), &RegexSet::new(["data"]).unwrap(),)
+                .await
+                .unwrap()
+        );
     }
 
     #[tokio::test]
@@ -209,24 +198,17 @@ mod tests {
             .mount(&mock_server)
             .await;
 
-        assert!(!remote_matches(
-            &reqwest::Client::new(),
-            &mock_server.uri(),
-            &RegexSet::new(["notfound"]).unwrap(),
-        )
-        .await
-        .unwrap());
+        assert!(
+            !remote_matches(&mock_server.uri(), &RegexSet::new(["notfound"]).unwrap(),)
+                .await
+                .unwrap()
+        );
     }
 
     #[tokio::test]
     async fn remote_matches_request_failed() {
         assert!(matches!(
-            remote_matches(
-                &reqwest::Client::new(),
-                "http://localhost:0",
-                &RegexSet::new(["data"]).unwrap(),
-            )
-            .await,
+            remote_matches("http://localhost:0", &RegexSet::new(["data"]).unwrap(),).await,
             Err(_)
         ));
     }

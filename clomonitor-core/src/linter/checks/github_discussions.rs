@@ -31,3 +31,82 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     }
     Ok(CheckOutput::not_passed())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::linter::{
+        util::github::md::{MdRepository, MdRepositoryDiscussions, MdRepositoryDiscussionsNodes},
+        LinterInput,
+    };
+    use anyhow::format_err;
+
+    #[test]
+    fn not_passed_no_discussion_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    discussions: MdRepositoryDiscussions { nodes: None },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn not_passed_no_recent_discussion_found() {
+        let two_years_ago = (OffsetDateTime::now_utc() - Duration::days(365 * 2))
+            .format(&Rfc3339)
+            .unwrap();
+
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    discussions: MdRepositoryDiscussions {
+                        nodes: Some(vec![Some(MdRepositoryDiscussionsNodes {
+                            created_at: two_years_ago,
+                            url: "discussion_url".to_string(),
+                        })])
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn passed_recent_discussion_found() {
+        let one_week_ago = (OffsetDateTime::now_utc() - Duration::days(7))
+            .format(&Rfc3339)
+            .unwrap();
+
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    discussions: MdRepositoryDiscussions {
+                        nodes: Some(vec![Some(MdRepositoryDiscussionsNodes {
+                            created_at: one_week_ago,
+                            url: "discussion_url".to_string(),
+                        })])
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::passed().url(Some("discussion_url".to_string())),
+        );
+    }
+}

@@ -95,3 +95,163 @@ pub(crate) fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool
 
     false
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::linter::{
+        adopters, sbom,
+        util::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
+        LinterInput,
+    };
+    use anyhow::format_err;
+    use std::path::PathBuf;
+
+    const TESTDATA_PATH: &str = "src/testdata";
+
+    #[test]
+    fn find_file_or_readme_ref_file_found() {
+        assert_eq!(
+            find_file_or_readme_ref(
+                &CheckInput {
+                    li: &LinterInput {
+                        root: PathBuf::from(TESTDATA_PATH),
+                        ..LinterInput::default()
+                    },
+                    cm_md: None,
+                    gh_md: MdRepository {
+                        name: "repo".to_string(),
+                        owner: MdRepositoryOwner {
+                            login: "owner".to_string(),
+                            on: MdRepositoryOwnerOn::Organization,
+                        },
+                        ..MdRepository::default()
+                    },
+                    scorecard: Err(format_err!("no scorecard available")),
+                },
+                &["README*"],
+                &RegexSet::new(["nothing"]).unwrap(),
+            )
+            .unwrap(),
+            CheckOutput::passed().url(Some(
+                "https://github.com/owner/repo/blob/master/README.md".to_string()
+            )),
+        );
+    }
+
+    #[test]
+    fn find_file_or_readme_ref_ref_found() {
+        assert_eq!(
+            find_file_or_readme_ref(
+                &CheckInput {
+                    li: &LinterInput {
+                        root: PathBuf::from(TESTDATA_PATH),
+                        ..LinterInput::default()
+                    },
+                    cm_md: None,
+                    gh_md: MdRepository::default(),
+                    scorecard: Err(format_err!("no scorecard available")),
+                },
+                &["ADOPTERS*"],
+                &RegexSet::new([r"(?im)^#+.*adopters.*$"]).unwrap(),
+            )
+            .unwrap(),
+            CheckOutput::passed(),
+        );
+    }
+
+    #[test]
+    fn find_file_or_readme_ref_not_found() {
+        assert_eq!(
+            find_file_or_readme_ref(
+                &CheckInput {
+                    li: &LinterInput {
+                        root: PathBuf::from(TESTDATA_PATH),
+                        ..LinterInput::default()
+                    },
+                    cm_md: None,
+                    gh_md: MdRepository::default(),
+                    scorecard: Err(format_err!("no scorecard available")),
+                },
+                &["inexistent_file*"],
+                &RegexSet::new(["inexistent_ref"]).unwrap(),
+            )
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn find_exemption_found() {
+        assert_eq!(
+            find_exemption(
+                "check-id",
+                Some(&Metadata {
+                    exemptions: Some(vec![Exemption {
+                        check: "check-id".to_string(),
+                        reason: "sample reason".to_string(),
+                    }]),
+                    license_scanning: None
+                })
+            ),
+            Some(Exemption {
+                check: "check-id".to_string(),
+                reason: "sample reason".to_string(),
+            }),
+        );
+    }
+
+    #[test]
+    fn find_exemption_not_found_in_md() {
+        assert_eq!(
+            find_exemption(
+                "not-found",
+                Some(&Metadata {
+                    exemptions: Some(vec![Exemption {
+                        check: "check-id".to_string(),
+                        reason: "sample reason".to_string(),
+                    }]),
+                    license_scanning: None
+                })
+            ),
+            None,
+        );
+    }
+
+    #[test]
+    fn find_exemption_not_found_no_exemptions_in_md() {
+        assert_eq!(
+            find_exemption(
+                "check-id",
+                Some(&Metadata {
+                    exemptions: None,
+                    license_scanning: None
+                })
+            ),
+            None,
+        );
+    }
+
+    #[test]
+    fn find_exemption_not_found_no_md() {
+        assert_eq!(find_exemption("check-id", None), None,);
+    }
+
+    #[test]
+    fn should_skip_check_affirmative() {
+        assert!(should_skip_check(adopters::ID, &[CheckSet::Code]));
+        assert!(should_skip_check(sbom::ID, &[CheckSet::Community]));
+    }
+
+    #[test]
+    fn should_skip_check_negative() {
+        assert!(!should_skip_check(
+            adopters::ID,
+            &[CheckSet::Code, CheckSet::Community]
+        ));
+        assert!(!should_skip_check(
+            sbom::ID,
+            &[CheckSet::Code, CheckSet::Community]
+        ));
+    }
+}

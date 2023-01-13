@@ -7,7 +7,7 @@ use std::time::Instant;
 pub(crate) async fn metrics_collector<B>(req: Request<B>, next: Next<B>) -> impl IntoResponse {
     // Define the endpoints we'd like to monitor
     lazy_static! {
-        static ref ENDPOINTS_TO_MONITOR: RegexSet = RegexSet::new(vec![
+        static ref ENDPOINTS_TO_MONITOR: RegexSet = RegexSet::new([
             r"^/api/.*$",
             r"^/projects/:foundation/:org/:project/report-summary.png$",
         ])

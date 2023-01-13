@@ -18,7 +18,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*meeting.*$",
         r"(?i)(community|developer|development) \[?(call|event|meeting|session)",
         r"(?i)(weekly|biweekly|monthly) \[?meeting",

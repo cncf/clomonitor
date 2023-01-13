@@ -21,7 +21,7 @@ const FILE_PATTERNS: [&str; 2] = ["adopters*", "users*"];
 
 lazy_static! {
     #[rustfmt::skip]
-    pub(crate) static ref README_REF: RegexSet = RegexSet::new(vec![
+    pub(crate) static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*adopters.*$",
         r"(?im)^adopters$",
         r"(?i)\[.*adopters.*\]\(.*\)",

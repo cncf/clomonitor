@@ -26,7 +26,7 @@ const FILE_PATTERNS: [&str; 3] = [
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*contributing.*$",
         r"(?im)^contributing$",
         r"(?i)\[.*contributing.*\]\(.*\)",
@@ -42,10 +42,7 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
     }
 
     // File in .github repo
-    if let Some(url) =
-        github::has_community_health_file(&input.svc.http_client, "CONTRIBUTING.md", &input.gh_md)
-            .await?
-    {
+    if let Some(url) = github::has_community_health_file("CONTRIBUTING.md", &input.gh_md).await? {
         return Ok(CheckOutput::passed().url(Some(url)));
     }
 

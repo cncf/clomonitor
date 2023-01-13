@@ -9,7 +9,7 @@ use super::{
     },
     metadata::{Exemption, Metadata, METADATA_FILE},
     util::scorecard::scorecard,
-    CheckSet, CoreLinterServices, LinterInput,
+    CheckSet, LinterInput,
 };
 use anyhow::{format_err, Context, Error, Result};
 use serde::{Deserialize, Serialize};
@@ -28,7 +28,6 @@ pub(crate) struct CheckConfig {
 /// Input used by checks to perform their operations.
 #[derive(Debug)]
 pub(crate) struct CheckInput<'a> {
-    pub svc: CoreLinterServices,
     pub li: &'a LinterInput,
     pub cm_md: Option<Metadata>,
     pub gh_md: github::md::MdRepository,
@@ -44,9 +43,6 @@ impl<'a> CheckInput<'a> {
             ));
         }
 
-        // Setup linter services
-        let svc = CoreLinterServices::new(&li.github_token)?;
-
         // Get CLOMonitor metadata
         let cm_md = Metadata::from(li.root.join(METADATA_FILE))?;
 
@@ -55,7 +51,7 @@ impl<'a> CheckInput<'a> {
         // GitHub secondary rate limits. So they should not be run concurrently.
 
         // Get GitHub metadata
-        let gh_md = github::metadata(&svc.http_client_gh, &li.url).await?;
+        let gh_md = github::metadata(&li.url, &li.github_token).await?;
 
         // Get OpenSSF scorecard
         let scorecard = scorecard(&li.url, &li.github_token)
@@ -64,7 +60,6 @@ impl<'a> CheckInput<'a> {
 
         // Prepare and return check input
         let ci = CheckInput {
-            svc,
             li,
             cm_md,
             gh_md,

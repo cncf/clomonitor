@@ -51,6 +51,62 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::linter::{
+        metadata::{LicenseScanning, Metadata},
+        util::github::md::MdRepository,
+        LinterInput,
+    };
+    use anyhow::format_err;
+
+    #[test]
+    fn not_passed_no_md_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository::default(),
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn not_passed_no_license_scanning_info_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: Some(Metadata {
+                    exemptions: None,
+                    license_scanning: None,
+                }),
+                gh_md: MdRepository::default(),
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn passed_license_scanning_info_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: Some(Metadata {
+                    exemptions: None,
+                    license_scanning: Some(LicenseScanning {
+                        url: Some("license_scanning_url".to_string()),
+                    }),
+                }),
+                gh_md: MdRepository::default(),
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::passed().url(Some("license_scanning_url".to_string())),
+        );
+    }
 
     #[test]
     fn fossa_url_extract() {

@@ -18,7 +18,7 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new(vec![
+    static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*sbom.*$",
         r"(?im)^#+.*software bill of materials.*$",
         r"(?im)^sbom$",
@@ -26,7 +26,7 @@ lazy_static! {
     ]).expect("exprs in README_REF to be valid");
 
     #[rustfmt::skip]
-    static ref RELEASE_REF: RegexSet = RegexSet::new(vec![
+    static ref RELEASE_REF: RegexSet = RegexSet::new([
         r"(?i)sbom",
     ]).expect("exprs in RELEASE_REF to be valid");
 }
@@ -57,6 +57,92 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::linter::{
+        util::github::md::{
+            MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
+            MdRepositoryReleasesNodesReleaseAssets, MdRepositoryReleasesNodesReleaseAssetsNodes,
+        },
+        LinterInput,
+    };
+    use anyhow::format_err;
+
+    #[test]
+    fn not_passed_no_release_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn not_passed_no_ref_in_release_found() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    releases: MdRepositoryReleases {
+                        nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                            created_at: "created_at_date".to_string(),
+                            description: None,
+                            is_prerelease: false,
+                            release_assets: MdRepositoryReleasesNodesReleaseAssets {
+                                nodes: Some(vec![Some(
+                                    MdRepositoryReleasesNodesReleaseAssetsNodes {
+                                        name: "test.txt".to_string()
+                                    }
+                                )])
+                            },
+                            url: "release_url".to_string(),
+                        })]),
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::not_passed(),
+        );
+    }
+
+    #[test]
+    fn passed_ref_found_in_latest_release() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: None,
+                gh_md: MdRepository {
+                    releases: MdRepositoryReleases {
+                        nodes: Some(vec![Some(MdRepositoryReleasesNodes {
+                            created_at: "created_at_date".to_string(),
+                            description: None,
+                            is_prerelease: false,
+                            release_assets: MdRepositoryReleasesNodesReleaseAssets {
+                                nodes: Some(vec![Some(
+                                    MdRepositoryReleasesNodesReleaseAssetsNodes {
+                                        name: "test_sbom.spdx.json".to_string()
+                                    }
+                                )])
+                            },
+                            url: "release_url".to_string(),
+                        })]),
+                    },
+                    ..MdRepository::default()
+                },
+                scorecard: Err(format_err!("no scorecard available")),
+            })
+            .unwrap(),
+            CheckOutput::passed(),
+        );
+    }
 
     #[test]
     fn readme_ref_match() {
@@ -81,6 +167,6 @@ Software Bill of Materials
 
     #[test]
     fn release_ref_match() {
-        assert!(RELEASE_REF.is_match("flux_0.28.2_sbom.spdx.json"));
+        assert!(RELEASE_REF.is_match("test_sbom.spdx.json"));
     }
 }

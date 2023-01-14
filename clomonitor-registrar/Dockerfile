@@ -13,7 +13,7 @@ WORKDIR /clomonitor/clomonitor-registrar
 RUN cargo build --release
 
 # Final stage
-FROM alpine:3.16.3
+FROM alpine:3.17.1
 RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

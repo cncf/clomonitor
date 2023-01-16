@@ -21,6 +21,7 @@ use clomonitor_core::{
 use config::Config;
 use lazy_static::lazy_static;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
+use resvg::usvg_text_layout::{fontdb, TreeTextToPath};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
@@ -255,13 +256,15 @@ pub(crate) async fn report_summary_png(
 
     // Convert report summary SVG to PNG
     let mut opt = usvg::Options::default();
-    opt.fontdb.load_system_fonts();
     opt.font_family = "Open Sans SemiBold".to_string();
-    let rtree = usvg::Tree::from_data(svg.as_bytes(), &opt.to_ref()).map_err(internal_error)?;
+    let mut fontdb = fontdb::Database::new();
+    fontdb.load_system_fonts();
+    let mut tree = usvg::Tree::from_data(svg.as_bytes(), &opt).map_err(internal_error)?;
+    tree.convert_text(&fontdb, opt.keep_named_groups);
     let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT)
         .expect("width or height defined in consts are not zero");
     resvg::render(
-        &rtree,
+        &tree,
         usvg::FitTo::Size(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT),
         tiny_skia::Transform::default(),
         pixmap.as_mut(),

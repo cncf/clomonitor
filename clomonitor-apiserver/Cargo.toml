@@ -16,6 +16,7 @@ clap = { workspace = true }
 clomonitor-core = { path = "../clomonitor-core" }
 config = { workspace = true }
 deadpool-postgres = { workspace = true }
+futures = { workspace = true }
 lazy_static = { workspace = true }
 metrics = { workspace = true }
 metrics-exporter-prometheus = { workspace = true }

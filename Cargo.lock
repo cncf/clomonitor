@@ -342,6 +342,7 @@ dependencies = [
  "clomonitor-core",
  "config",
  "deadpool-postgres",
+ "futures",
  "hyper",
  "lazy_static",
  "metrics",

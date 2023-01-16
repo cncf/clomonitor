@@ -18,7 +18,10 @@ use tracing::error;
 use uuid::Uuid;
 
 /// How often projects views will be written to the database.
+#[cfg(not(test))]
 const FLUSH_FREQUENCY: Duration = Duration::from_secs(300);
+#[cfg(test)]
+const FLUSH_FREQUENCY: Duration = Duration::from_millis(100);
 
 /// Type alias to represent a ViewsTracker trait object.
 pub(crate) type DynVT = Arc<RwLock<dyn ViewsTracker + Send + Sync>>;
@@ -161,4 +164,59 @@ fn parse_key(key: &str) -> (ProjectId, Day) {
     let project_id = Uuid::parse_str(parts.next().unwrap()).unwrap();
     let day = parts.next().unwrap().to_owned();
     (project_id, day)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::db::MockDB;
+    use futures::future;
+    use mockall::predicate::eq;
+    use tokio::time::{sleep, Duration};
+
+    lazy_static! {
+        static ref PROJECT1_ID: Uuid =
+            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
+        static ref PROJECT2_ID: Uuid =
+            Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap();
+    }
+
+    #[tokio::test]
+    async fn no_views_tracked_nothing_to_flush() {
+        let mut vt = ViewsTrackerDB::new(Arc::new(MockDB::new()));
+        vt.stop().await;
+    }
+
+    #[tokio::test]
+    async fn flush_periodically() {
+        let vt = ViewsTrackerDB::new(setup_mock_db());
+        vt.track_view(*PROJECT1_ID).await.unwrap();
+        vt.track_view(*PROJECT1_ID).await.unwrap();
+        vt.track_view(*PROJECT2_ID).await.unwrap();
+        sleep(Duration::from_millis(500)).await;
+    }
+
+    #[tokio::test]
+    async fn flush_on_stop() {
+        let mut vt = ViewsTrackerDB::new(setup_mock_db());
+        vt.track_view(*PROJECT1_ID).await.unwrap();
+        vt.track_view(*PROJECT1_ID).await.unwrap();
+        vt.track_view(*PROJECT2_ID).await.unwrap();
+        vt.stop().await;
+    }
+
+    fn setup_mock_db() -> Arc<MockDB> {
+        let day = OffsetDateTime::now_utc().format(&DATE_FORMAT).unwrap();
+
+        let mut db = MockDB::new();
+        db.expect_update_projects_views()
+            .with(eq(vec![
+                (*PROJECT1_ID, day.clone(), 2),
+                (*PROJECT2_ID, day, 1),
+            ]))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(()))));
+
+        Arc::new(db)
+    }
 }

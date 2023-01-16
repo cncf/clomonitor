@@ -30,7 +30,7 @@ deadpool = "0.9.5"
 deadpool-postgres = { version = "0.10.3", features = ["serde"] }
 futures = "0.3.25"
 git2 = "0.15.0"
-glob = "0.3.0"
+glob = "0.3.1"
 graphql_client = { version = "0.11.0", features = ["reqwest"] }
 hex = "0.4.3"
 http = "0.2.8"

@@ -19,19 +19,19 @@ anyhow = "1.0.68"
 askalono = "0.4.6"
 askama = { git = "https://github.com/djc/askama", rev = "eeec6f0654f32270aec4e4a0d0f42e4ad39bc28e" }
 askama_axum = { git = "https://github.com/djc/askama", rev = "eeec6f0654f32270aec4e4a0d0f42e4ad39bc28e" }
-async-trait = "0.1.60"
-axum = { version = "0.6.1", features = ["macros"] }
+async-trait = "0.1.61"
+axum = { version = "0.6.2", features = ["macros"] }
 bincode = "1.3.3"
-clap = { version = "4.0.32", features = ["derive"] }
+clap = { version = "4.1.1", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 comfy-table = "6.1.4"
 config = "0.13.3"
 deadpool = "0.9.5"
 deadpool-postgres = { version = "0.10.3", features = ["serde"] }
 futures = "0.3.25"
-git2 = "0.15.0"
-glob = "0.3.0"
-graphql_client = { version = "0.11.0", features = ["reqwest"] }
+git2 = "0.16.0"
+glob = "0.3.1"
+graphql_client = { version = "0.12.0", features = ["reqwest"] }
 hex = "0.4.3"
 http = "0.2.8"
 hyper = "0.14.23"
@@ -44,13 +44,13 @@ openssl = { version = "0.10.45", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 postgres-types = { version = "0.2.4", features = ["derive"] }
 predicates = "2.1.5"
-regex = "1.7.0"
+regex = "1.7.1"
 reqwest = "0.11.13"
-resvg = "0.27.0"
+resvg = "0.28.0"
 serde = { version = "1.0.152", features = ["derive"] }
 serde_json = "1.0.91"
 serde_yaml = "0.9.16"
-serde_qs = "0.10.1"
+serde_qs = "0.11.0"
 sha2 = "0.10.6"
 tempfile = "3.3.0"
 tera = { version = "1.17.1", default-features = false }
@@ -61,7 +61,7 @@ time = { version = "0.3.17", features = [
     "serde",
 ] }
 tiny-skia = "0.8.2"
-tokio = { version = "1.23.1", features = [
+tokio = { version = "1.24.1", features = [
     "macros",
     "process",
     "rt-multi-thread",
@@ -82,7 +82,7 @@ tower-http = { version = "0.3.5", features = [
 ] }
 tracing = "0.1.37"
 tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"] }
-usvg = "0.27.0"
+usvg = "0.28.0"
 uuid = { version = "1.2.2", features = ["serde"] }
 which = "4.3.0"
-wiremock = "0.5.16"
+wiremock = "0.5.17"

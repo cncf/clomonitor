@@ -46,7 +46,7 @@ postgres-types = { version = "0.2.4", features = ["derive"] }
 predicates = "2.1.5"
 regex = "1.7.1"
 reqwest = "0.11.13"
-resvg = "0.28.0"
+resvg = "0.27.0"
 serde = { version = "1.0.152", features = ["derive"] }
 serde_json = "1.0.91"
 serde_yaml = "0.9.16"
@@ -82,7 +82,7 @@ tower-http = { version = "0.3.5", features = [
 ] }
 tracing = "0.1.37"
 tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"] }
-usvg = "0.28.0"
+usvg = "0.27.0"
 uuid = { version = "1.2.2", features = ["serde"] }
 which = "4.3.0"
 wiremock = "0.5.17"

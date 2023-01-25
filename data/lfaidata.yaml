@@ -676,3 +676,16 @@
       check_sets:
         - code
         - community
+- name: openfl
+  display_name: OpenFL
+  description: An open framework for Federated Learning
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/lfai-landscape/057536bc2b265a38cd2a0cd65bd2307fe4389779/cached_logos/open-fl.svg
+  accepted_at: "2022-01-26"
+  maturity: sandbox
+  repositories:
+    - name: openfl
+      url: https://github.com/intel/openfl
+      check_sets:
+        - code
+        - community

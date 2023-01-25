@@ -3,7 +3,7 @@
   description: Aeraki Mesh allows you to manage any layer-7 traffic in a service mesh
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/aerakimesh/icon/light/aerakimesh-icon-light.svg
-  devstats_url: https://aerakimesh.teststats.cncf.io/
+  devstats_url: https://aerakimesh.devststats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
   repositories:
@@ -986,6 +986,7 @@
   description: Kubernetes-based platform to build, deploy, and manage modern serverless workloads
   category: serverless
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/knative/icon/color/knative-icon-color.svg
+  devstats_url: https://knative.devstats.cncf.io/
   accepted_at: "2022-03-02"
   maturity: incubating
   repositories:
@@ -2524,10 +2525,10 @@
         - community
         - code
 - name: opcr
-  display_name: Open Policy Registry
+  display_name: Open Policy Containers
   description: A docker-inspired CLI for building, tagging, pushing, pulling, and signing OPA policies to and from OCI-compliant registries
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/open-policy-containers.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opcr/icon/color/opcr-icon-color.svg
   devstats_url: https://opcr.devstats.cncf.io
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -2589,6 +2590,51 @@
   repositories:
     - name: ko
       url: https://github.com/ko-build/ko
+      check_sets:
+        - community
+        - code
+- name: werf
+  description: werf is a GitOps CLI tool designed to simplify and speed up the delivery of applications in your CI/CD pipelines. It makes your Git repo a single source of truth to build your Docker images and deploy them to Kubernetes. Integrates easily with GitLab CI and other CI systems.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/werf/icon/color/werf-icon-color.svg
+  devstats_url: https://werf.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: werf
+      url: https://github.com/werf/werf
+      check_sets:
+        - community
+        - code
+- name: capsule
+  display_name: Capsule
+  description: Multi-tenancy and policy-based framework for Kubernetes
+  category: orchestration
+  logo_url: https://landscape.cncf.io/logos/capsule.svg
+  devstats_url: https://capsule.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: capsule
+      url: https://github.com/clastix/capsule
+      check_sets:
+        - community
+        - code
+    - name: capsule-proxy
+      url: https://github.com/clastix/capsule-proxy
+      check_sets:
+        - code-lite
+- name: zot
+  display_name: Zot
+  description: Zot is an OCI-native container registry for distributing container images and OCI artifacts
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/zot/icon/color/zot-color-icon.svg
+  devstats_url: https://zot.devstats.cncf.io
+  accepted_at: "2022-12-13"
+  maturity: sandbox
+  repositories:
+    - name: zot
+      url: https://github.com/project-zot/zot
       check_sets:
         - community
         - code

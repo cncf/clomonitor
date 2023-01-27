@@ -2164,6 +2164,10 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/vitessio/website/
+      check_sets:
+        - docs
 - name: volcano
   display_name: Volcano
   description: A Kubernetes native system for high-performance workloads

@@ -74,8 +74,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB) -> Result<()> {
                 Err(err) => Err(format_err!("{}", err)),
             }
             .context(format!(
-                "error processing foundation {} data file",
-                foundation_id
+                "error processing foundation {foundation_id} data file",
             ))
         })
         .buffer_unordered(cfg.get("registrar.concurrency")?)

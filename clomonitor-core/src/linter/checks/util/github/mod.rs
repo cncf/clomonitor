@@ -229,7 +229,7 @@ pub fn setup_http_client(token: &str) -> Result<reqwest::Client, reqwest::Error>
         .default_headers(
             std::iter::once((
                 reqwest::header::AUTHORIZATION,
-                reqwest::header::HeaderValue::from_str(&format!("Bearer {}", token))
+                reqwest::header::HeaderValue::from_str(&format!("Bearer {token}"))
                     .expect("header value only uses visible ascii chars"),
             ))
             .collect(),

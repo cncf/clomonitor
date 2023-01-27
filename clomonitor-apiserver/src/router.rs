@@ -37,7 +37,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     let error_handler = |err: std::io::Error| async move {
         (
             StatusCode::INTERNAL_SERVER_ERROR,
-            format!("internal error: {}", err),
+            format!("internal error: {err}"),
         )
     };
 
@@ -88,7 +88,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
             get_service(SetResponseHeader::overriding(
                 ServeDir::new(docs_path),
                 CACHE_CONTROL,
-                HeaderValue::try_from(format!("max-age={}", DOCS_CACHE_MAX_AGE))?,
+                HeaderValue::try_from(format!("max-age={DOCS_CACHE_MAX_AGE}"))?,
             ))
             .handle_error(error_handler),
         )
@@ -97,7 +97,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
             get_service(SetResponseHeader::overriding(
                 ServeDir::new(static_path),
                 CACHE_CONTROL,
-                HeaderValue::try_from(format!("max-age={}", STATIC_CACHE_MAX_AGE))?,
+                HeaderValue::try_from(format!("max-age={STATIC_CACHE_MAX_AGE}"))?,
             ))
             .handle_error(error_handler),
         )
@@ -178,7 +178,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DEFAULT_API_MAX_AGE)
+            format!("max-age={DEFAULT_API_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
@@ -236,7 +236,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DOCS_CACHE_MAX_AGE)
+            format!("max-age={DOCS_CACHE_MAX_AGE}")
         );
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),
@@ -260,7 +260,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+            format!("max-age={INDEX_CACHE_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
@@ -289,7 +289,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+            format!("max-age={INDEX_CACHE_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
@@ -318,7 +318,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", INDEX_CACHE_MAX_AGE)
+            format!("max-age={INDEX_CACHE_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
@@ -357,7 +357,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DEFAULT_API_MAX_AGE)
+            format!("max-age={DEFAULT_API_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
@@ -530,7 +530,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DEFAULT_API_MAX_AGE)
+            format!("max-age={DEFAULT_API_MAX_AGE}")
         );
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
         let golden_path = "src/testdata/project-report-summary.golden.svg";
@@ -683,7 +683,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DEFAULT_API_MAX_AGE)
+            format!("max-age={DEFAULT_API_MAX_AGE}")
         );
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
         let golden_path = "src/testdata/repository-report.golden.md";
@@ -775,7 +775,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", DEFAULT_API_MAX_AGE)
+            format!("max-age={DEFAULT_API_MAX_AGE}")
         );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(response.headers()[PAGINATION_TOTAL_COUNT], "1");
@@ -801,7 +801,7 @@ mod tests {
         assert_eq!(response.status(), StatusCode::OK);
         assert_eq!(
             response.headers()[CACHE_CONTROL],
-            format!("max-age={}", STATIC_CACHE_MAX_AGE)
+            format!("max-age={STATIC_CACHE_MAX_AGE}")
         );
         assert_eq!(
             hyper::body::to_bytes(response.into_body()).await.unwrap(),

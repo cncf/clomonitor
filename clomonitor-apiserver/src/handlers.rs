@@ -92,7 +92,7 @@ pub(crate) async fn badge(
     }
 
     // Return badge configuration as json
-    let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
+    let headers = [(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))];
     Ok((
         headers,
         response::Json(json!({
@@ -127,7 +127,7 @@ pub(crate) async fn index(
     );
 
     let headers = [
-        (CACHE_CONTROL, format!("max-age={}", INDEX_CACHE_MAX_AGE)),
+        (CACHE_CONTROL, format!("max-age={INDEX_CACHE_MAX_AGE}")),
         (CONTENT_TYPE, HTML.to_string()),
     ];
     (
@@ -158,7 +158,7 @@ pub(crate) async fn index_project(
     );
 
     let headers = [
-        (CACHE_CONTROL, format!("max-age={}", INDEX_CACHE_MAX_AGE)),
+        (CACHE_CONTROL, format!("max-age={INDEX_CACHE_MAX_AGE}")),
         (CONTENT_TYPE, HTML.to_string()),
     ];
     (
@@ -182,7 +182,7 @@ pub(crate) async fn project(
     match project {
         Some(project) => {
             let headers = [
-                (CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE)),
+                (CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}")),
                 (CONTENT_TYPE, APPLICATION_JSON.to_string()),
             ];
             Ok((headers, project))
@@ -270,7 +270,7 @@ pub(crate) async fn report_summary_png(
     let png = pixmap.encode_png().map_err(internal_error)?;
 
     let headers = [
-        (CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE)),
+        (CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}")),
         (CONTENT_TYPE, PNG.to_string()),
     ];
     Ok((headers, png))
@@ -291,7 +291,7 @@ pub(crate) async fn report_summary_svg(
     // Render report summary SVG and return it if the score was found
     match score {
         Some(score) => {
-            let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
+            let headers = [(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))];
             let theme = params.get("theme").cloned();
             Ok((headers, ReportSummaryTemplate::new(score, theme)))
         }
@@ -339,7 +339,7 @@ pub(crate) async fn repository_report_md(
     // Render repository report in markdown format and return it
     match report_md {
         Some(report_md) => {
-            let headers = [(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))];
+            let headers = [(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))];
             Ok((headers, report_md))
         }
         None => Err(StatusCode::NOT_FOUND),
@@ -359,7 +359,7 @@ pub(crate) async fn search_projects(
 
     // Return search results as json
     Response::builder()
-        .header(CACHE_CONTROL, format!("max-age={}", DEFAULT_API_MAX_AGE))
+        .header(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .header(PAGINATION_TOTAL_COUNT, count.to_string())
         .body(Full::from(projects))

@@ -57,7 +57,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
         if !snapshots_to_keep.contains(snapshot) {
             db.delete_project_snapshot(project_id, snapshot)
                 .await
-                .context(format!("error deleting snapshot {}", snapshot))?;
+                .context(format!("error deleting snapshot {snapshot}"))?;
             debug!("snapshot [{}] deleted", snapshot);
         }
     }
@@ -97,7 +97,7 @@ async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
         if !snapshots_to_keep.contains(snapshot) {
             db.delete_stats_snapshot(foundation, snapshot)
                 .await
-                .context(format!("error deleting snapshot {}", snapshot))?;
+                .context(format!("error deleting snapshot {snapshot}"))?;
             debug!("snapshot [{}] deleted", snapshot);
         }
     }

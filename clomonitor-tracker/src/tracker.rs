@@ -156,7 +156,7 @@ async fn track_repository(
         Ok(report) => Some(report),
         Err(err) => {
             warn!("error linting repository: {:#}", err);
-            errors = Some(format!("error linting repository: {:#}", err));
+            errors = Some(format!("error linting repository: {err:#}"));
             None
         }
     };

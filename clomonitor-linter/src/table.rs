@@ -38,7 +38,7 @@ pub(crate) fn display(
             cell_entry("Check sets"),
             cell_entry(&format!("{:?}", args.check_set)),
         ]);
-    writeln!(w, "{}\n", repo_info)?;
+    writeln!(w, "{repo_info}\n")?;
 
     // Summary table
     writeln!(w, "Score summary\n")?;
@@ -59,7 +59,7 @@ pub(crate) fn display(
         ])
         .add_row(vec![cell_entry("Security"), cell_score(score.security)])
         .add_row(vec![cell_entry("Legal"), cell_score(score.legal)]);
-    writeln!(w, "{}\n", score_summary)?;
+    writeln!(w, "{score_summary}\n")?;
 
     // Checks table
     writeln!(w, "Checks summary\n")?;
@@ -211,7 +211,7 @@ pub(crate) fn display(
             cell_entry("Legal / Trademark disclaimer"),
             cell_check(&report.legal.trademark_disclaimer),
         ]);
-    writeln!(w, "{}\n", checks_summary)?;
+    writeln!(w, "{checks_summary}\n")?;
 
     // Check if the linter succeeded according to the provided pass score
     if score.global() >= args.pass_score {

@@ -218,7 +218,7 @@ impl<T> From<Result<Option<&ScorecardCheck>, &Error>> for CheckOutput<T> {
                 }
                 None => CheckOutput::not_passed(),
             },
-            Err(err) => CheckOutput::failed().fail_reason(Some(format!("{:#}", err))),
+            Err(err) => CheckOutput::failed().fail_reason(Some(format!("{err:#}"))),
         }
     }
 }

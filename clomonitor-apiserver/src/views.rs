@@ -155,7 +155,7 @@ async fn flusher(db: DynDB, mut batches_rx: mpsc::Receiver<Batch>) {
 /// Build key used to track views for a given project.
 fn build_key(project_id: ProjectId) -> String {
     let day = OffsetDateTime::now_utc().format(&DATE_FORMAT).unwrap();
-    format!("{}##{}", project_id, day)
+    format!("{project_id}##{day}")
 }
 
 /// Parse project views key, returning the project id and the day.

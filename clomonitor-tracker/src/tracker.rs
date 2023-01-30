@@ -181,8 +181,23 @@ mod tests {
     use crate::{db::MockDB, git::MockGit};
     use clomonitor_core::linter::{MockLinter, Report};
     use futures::future;
+    use lazy_static::lazy_static;
     use predicates::prelude::{predicate::*, *};
     use std::{path::Path, sync::Arc};
+
+    const TOKEN1: &str = "0001";
+    const TOKEN2: &str = "0002";
+    const REPOSITORY1_URL: &str = "https://repo1.url";
+    const REPOSITORY2_URL: &str = "https://repo2.url";
+    const REPOSITORY1_DIGEST: &str = "repo1_digest";
+    const REPOSITORY2_DIGEST: &str = "repo2_digest";
+
+    lazy_static! {
+        static ref REPOSITORY1_ID: Uuid =
+            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
+        static ref REPOSITORY2_ID: Uuid =
+            Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap();
+    }
 
     #[tokio::test]
     async fn error_getting_github_tokens() {
@@ -200,11 +215,7 @@ mod tests {
 
     #[tokio::test]
     async fn empty_list_of_github_tokens_provided() {
-        let cfg = Config::builder()
-            .set_default("creds.githubTokens", Vec::<String>::new())
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[]);
         let db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
@@ -218,11 +229,7 @@ mod tests {
 
     #[tokio::test]
     async fn error_getting_repositories() {
-        let cfg = Config::builder()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
@@ -237,11 +244,7 @@ mod tests {
 
     #[tokio::test]
     async fn no_repositories_found() {
-        let cfg = Config::builder()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
@@ -257,30 +260,22 @@ mod tests {
 
     #[tokio::test]
     async fn error_getting_repository_digest() {
-        let cfg = Config::builder()
-            .set_default("tracker.concurrency", 1)
-            .unwrap()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
 
-        let r1_id = "00000000-0000-0000-0000-000000000001";
-        let r1_url = "url1";
         db.expect_repositories().times(1).returning(|| {
             Box::pin(future::ready(Ok(vec![Repository {
-                repository_id: Uuid::parse_str(r1_id).unwrap(),
-                url: r1_url.to_string(),
+                repository_id: *REPOSITORY1_ID,
+                url: REPOSITORY1_URL.to_string(),
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
             }])))
         });
         git.expect_remote_digest()
-            .with(eq(r1_url))
+            .with(eq(REPOSITORY1_URL))
             .times(1)
             .returning(|_: &str| Box::pin(future::ready(Err(format_err!("fake error")))));
 
@@ -291,32 +286,24 @@ mod tests {
 
     #[tokio::test]
     async fn repository_has_not_changed_and_was_tracked_within_last_day() {
-        let cfg = Config::builder()
-            .set_default("tracker.concurrency", 1)
-            .unwrap()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
 
-        let r1_id = "00000000-0000-0000-0000-000000000001";
-        let r1_url = "url1";
         db.expect_repositories().times(1).returning(|| {
             Box::pin(future::ready(Ok(vec![Repository {
-                repository_id: Uuid::parse_str(r1_id).unwrap(),
-                url: r1_url.to_string(),
+                repository_id: *REPOSITORY1_ID,
+                url: REPOSITORY1_URL.to_string(),
                 check_sets: vec![CheckSet::Code],
-                digest: Some("r1_digest".to_string()),
+                digest: Some(REPOSITORY1_DIGEST.to_string()),
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
             }])))
         });
         git.expect_remote_digest()
-            .with(eq(r1_url))
+            .with(eq(REPOSITORY1_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Ok("r1_digest".to_string()))));
+            .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY1_DIGEST.to_string()))));
 
         run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
             .await
@@ -325,34 +312,26 @@ mod tests {
 
     #[tokio::test]
     async fn error_cloning_repository() {
-        let cfg = Config::builder()
-            .set_default("tracker.concurrency", 1)
-            .unwrap()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
 
-        let r1_id = "00000000-0000-0000-0000-000000000001";
-        let r1_url = "url1";
         db.expect_repositories().times(1).returning(|| {
             Box::pin(future::ready(Ok(vec![Repository {
-                repository_id: Uuid::parse_str(r1_id).unwrap(),
-                url: r1_url.to_string(),
+                repository_id: *REPOSITORY1_ID,
+                url: REPOSITORY1_URL.to_string(),
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
             }])))
         });
         git.expect_remote_digest()
-            .with(eq(r1_url))
+            .with(eq(REPOSITORY1_URL))
             .times(1)
             .returning(|_: &str| Box::pin(future::ready(Ok("r1_digest".to_string()))));
         git.expect_clone_repository()
-            .with(eq(r1_url), path::exists().and(path::is_dir()))
+            .with(eq(REPOSITORY1_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Err(format_err!("fake error")))));
 
@@ -363,43 +342,35 @@ mod tests {
 
     #[tokio::test]
     async fn panic_linting_repository() {
-        let cfg = Config::builder()
-            .set_default("tracker.concurrency", 1)
-            .unwrap()
-            .set_default("creds.githubTokens", vec!["0000".to_string()])
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let mut linter = MockLinter::new();
 
-        let r1_id = "00000000-0000-0000-0000-000000000001";
-        let r1_url = "url1";
         db.expect_repositories().times(1).returning(|| {
             Box::pin(future::ready(Ok(vec![Repository {
-                repository_id: Uuid::parse_str(r1_id).unwrap(),
-                url: r1_url.to_string(),
+                repository_id: *REPOSITORY1_ID,
+                url: REPOSITORY1_URL.to_string(),
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
             }])))
         });
         git.expect_remote_digest()
-            .with(eq(r1_url))
+            .with(eq(REPOSITORY1_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Ok("r1_digest".to_string()))));
+            .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY1_DIGEST.to_string()))));
         git.expect_clone_repository()
-            .with(eq(r1_url), path::exists().and(path::is_dir()))
+            .with(eq(REPOSITORY1_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Ok(()))));
         linter
             .expect_lint()
             .withf(move |input: &LinterInput| {
                 path::exists().and(path::is_dir()).eval(&input.root)
-                    && input.url == r1_url
+                    && input.url == REPOSITORY1_URL
                     && input.check_sets == vec![CheckSet::Code]
-                    && input.github_token == "0000"
+                    && input.github_token == TOKEN1
             })
             .times(1)
             .returning(|_: &LinterInput| panic!("fake panic"));
@@ -412,14 +383,7 @@ mod tests {
     #[tokio::test]
     async fn two_repos_tracked_successfully() {
         // Setup config
-        let github_tokens = vec!["0000".to_string(), "1111".to_string()];
-        let cfg = Config::builder()
-            .set_default("tracker.concurrency", 2)
-            .unwrap()
-            .set_default("creds.githubTokens", github_tokens.clone())
-            .unwrap()
-            .build()
-            .unwrap();
+        let cfg = setup_test_cfg(2, &[TOKEN1, TOKEN2]);
 
         // Setup mocks and expectations
         let mut db = MockDB::new();
@@ -427,22 +391,18 @@ mod tests {
         let mut linter = MockLinter::new();
 
         // Get repositories
-        let r1_id = "00000000-0000-0000-0000-000000000001";
-        let r1_url = "url1";
-        let r2_id = "00000000-0000-0000-0000-000000000002";
-        let r2_url = "url2";
         db.expect_repositories().times(1).returning(|| {
             Box::pin(future::ready(Ok(vec![
                 Repository {
-                    repository_id: Uuid::parse_str(r1_id).unwrap(),
-                    url: r1_url.to_string(),
+                    repository_id: *REPOSITORY1_ID,
+                    url: REPOSITORY1_URL.to_string(),
                     check_sets: vec![CheckSet::Code],
                     digest: None,
                     updated_at: OffsetDateTime::now_utc() - time::Duration::days(7),
                 },
                 Repository {
-                    repository_id: Uuid::parse_str(r2_id).unwrap(),
-                    url: r2_url.to_string(),
+                    repository_id: *REPOSITORY2_ID,
+                    url: REPOSITORY2_URL.to_string(),
                     check_sets: vec![CheckSet::Code],
                     digest: None,
                     updated_at: OffsetDateTime::now_utc() - time::Duration::days(7),
@@ -451,32 +411,31 @@ mod tests {
         });
 
         // Track repository 1
-        let github_tokens_copy = github_tokens.clone();
         git.expect_remote_digest()
-            .with(eq(r1_url))
+            .with(eq(REPOSITORY1_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Ok("r1_digest".to_string()))));
+            .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY1_DIGEST.to_string()))));
         git.expect_clone_repository()
-            .with(eq(r1_url), path::exists().and(path::is_dir()))
+            .with(eq(REPOSITORY1_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Ok(()))));
         linter
             .expect_lint()
             .withf(move |input: &LinterInput| {
                 path::exists().and(path::is_dir()).eval(&input.root)
-                    && input.url == r1_url
+                    && input.url == REPOSITORY1_URL
                     && input.check_sets == vec![CheckSet::Code]
-                    && github_tokens_copy.contains(&input.github_token)
+                    && [TOKEN1, TOKEN2].contains(&&input.github_token[..])
             })
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Ok(Report::default()))));
         db.expect_store_results()
             .withf(|repository_id, check_sets, report, errors, digest| {
-                *repository_id == Uuid::parse_str(r1_id).unwrap()
+                *repository_id == *REPOSITORY1_ID
                     && check_sets == [CheckSet::Code]
                     && *report == Some(&Report::default())
                     && errors.is_none()
-                    && digest == "r1_digest"
+                    && digest == REPOSITORY1_DIGEST
             })
             .times(1)
             .returning(
@@ -487,30 +446,30 @@ mod tests {
 
         // Track repository 2
         git.expect_remote_digest()
-            .with(eq(r2_url))
+            .with(eq(REPOSITORY2_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Ok("r2_digest".to_string()))));
+            .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY2_DIGEST.to_string()))));
         git.expect_clone_repository()
-            .with(eq(r2_url), path::exists().and(path::is_dir()))
+            .with(eq(REPOSITORY2_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Ok(()))));
         linter
             .expect_lint()
             .withf(move |input: &LinterInput| {
                 path::exists().and(path::is_dir()).eval(&input.root)
-                    && input.url == r2_url
+                    && input.url == REPOSITORY2_URL
                     && input.check_sets == vec![CheckSet::Code]
-                    && github_tokens.contains(&input.github_token)
+                    && [TOKEN1, TOKEN2].contains(&&input.github_token[..])
             })
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Err(format_err!("fake error")))));
         db.expect_store_results()
             .withf(|repository_id, check_sets, report, errors, digest| {
-                *repository_id == Uuid::parse_str(r2_id).unwrap()
+                *repository_id == *REPOSITORY2_ID
                     && check_sets == [CheckSet::Code]
                     && report.is_none()
                     && *errors == Some(&"error linting repository: fake error".to_string())
-                    && digest == "r2_digest"
+                    && digest == REPOSITORY2_DIGEST
             })
             .times(1)
             .returning(
@@ -523,5 +482,21 @@ mod tests {
         run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
             .await
             .unwrap();
+    }
+
+    fn setup_test_cfg(concurrency: u8, tokens: &[&str]) -> Config {
+        Config::builder()
+            .set_default("tracker.concurrency", concurrency)
+            .unwrap()
+            .set_default(
+                "creds.githubTokens",
+                tokens
+                    .iter()
+                    .map(|t| t.to_string())
+                    .collect::<Vec<String>>(),
+            )
+            .unwrap()
+            .build()
+            .unwrap()
     }
 }

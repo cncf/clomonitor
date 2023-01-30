@@ -473,6 +473,7 @@ dependencies = [
  "deadpool",
  "deadpool-postgres",
  "futures",
+ "lazy_static",
  "mockall",
  "openssl",
  "postgres-openssl",

@@ -1,6 +1,8 @@
 use anyhow::Result;
 use async_trait::async_trait;
 use deadpool_postgres::Pool;
+#[cfg(test)]
+use mockall::automock;
 use serde_json::Value;
 use std::sync::Arc;
 use time::Date;
@@ -11,6 +13,7 @@ pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
+#[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Delete the provided project's snapshot.
     async fn delete_project_snapshot(&self, project_id: &Uuid, date: &Date) -> Result<()>;

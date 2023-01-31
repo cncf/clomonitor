@@ -150,7 +150,263 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use time::macros::date;
+    use crate::db::MockDB;
+    use anyhow::format_err;
+    use futures::future;
+    use lazy_static::lazy_static;
+    use mockall::predicate::eq;
+    use serde_json::{json, Value};
+    use std::sync::Arc;
+    use time::{macros::date, Month};
+
+    const FAKE_ERROR: &str = "fake error";
+
+    lazy_static! {
+        static ref PROJECT_ID: Uuid =
+            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
+        static ref SNAPSHOT_DATA: Value = json!({"some": "data"});
+        static ref SNAPSHOT_1980_12: Date =
+            Date::from_calendar_date(1980, Month::December, 1).unwrap();
+        static ref SNAPSHOT_1980_11: Date =
+            Date::from_calendar_date(1980, Month::November, 1).unwrap();
+    }
+
+    #[tokio::test]
+    async fn error_getting_projects() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let result = run(Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
+    }
+
+    #[tokio::test]
+    async fn error_getting_foundations() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let result = run(Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
+    }
+
+    #[tokio::test]
+    async fn project_error_getting_snapshots() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![*PROJECT_ID]))));
+        db.expect_project_snapshots()
+            .with(eq(*PROJECT_ID))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let result = run(Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
+    }
+
+    #[tokio::test]
+    async fn project_store_new_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![*PROJECT_ID]))));
+        db.expect_project_snapshots()
+            .with(eq(*PROJECT_ID))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_project_data()
+            .with(eq(*PROJECT_ID))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(Some(SNAPSHOT_DATA.clone())))));
+        db.expect_store_project_snapshot()
+            .with(eq(*PROJECT_ID), eq(SNAPSHOT_DATA.clone()))
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn project_no_need_to_store_new_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![*PROJECT_ID]))));
+        db.expect_project_snapshots()
+            .with(eq(*PROJECT_ID))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn project_delete_old_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![*PROJECT_ID]))));
+        db.expect_project_snapshots()
+            .with(eq(*PROJECT_ID))
+            .times(1)
+            .returning(|_| {
+                Box::pin(future::ready(Ok(vec![
+                    OffsetDateTime::now_utc().date(),
+                    *SNAPSHOT_1980_12,
+                    *SNAPSHOT_1980_11,
+                ])))
+            });
+        db.expect_delete_project_snapshot()
+            .with(eq(*PROJECT_ID), eq(*SNAPSHOT_1980_11))
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn stats_all_foundations_error_getting_snapshots() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let result = run(Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
+    }
+
+    #[tokio::test]
+    async fn stats_all_foundations_store_new_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_data()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(Some(SNAPSHOT_DATA.clone())))));
+        db.expect_store_stats_snapshot()
+            .withf(|foundation, data| foundation.is_none() && data == &SNAPSHOT_DATA.clone())
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn stats_single_foundation_store_new_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec!["cncf".to_string()]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation == &Some("cncf"))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_data()
+            .withf(|foundation| foundation == &Some("cncf"))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(Some(SNAPSHOT_DATA.clone())))));
+        db.expect_store_stats_snapshot()
+            .withf(|foundation, data| foundation == &Some("cncf") && data == &SNAPSHOT_DATA.clone())
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn stats_all_foundations_no_need_to_store_new_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(vec![OffsetDateTime::now_utc().date()]))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn stats_all_foundations_delete_old_snapshot() {
+        let mut db = MockDB::new();
+        db.expect_projects_ids()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+        db.expect_stats_snapshots()
+            .withf(|foundation| foundation.is_none())
+            .times(1)
+            .returning(|_| {
+                Box::pin(future::ready(Ok(vec![
+                    OffsetDateTime::now_utc().date(),
+                    *SNAPSHOT_1980_12,
+                    *SNAPSHOT_1980_11,
+                ])))
+            });
+        db.expect_delete_stats_snapshot()
+            .withf(|foundation, date| foundation.is_none() && date == &*SNAPSHOT_1980_11)
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+
+        run(Arc::new(db)).await.unwrap();
+    }
 
     #[test]
     fn get_snapshots_to_keep_1() {

@@ -1,0 +1,14 @@
+- name: artifact-hub
+  display_name: Artifact Hub
+  description: Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg
+  devstats_url: https://artifacthub.devstats.cncf.io/
+  accepted_at: "2020-06-23"
+  maturity: sandbox
+  repositories:
+    - name: artifact-hub
+      url: https://github.com/artifacthub/hub
+      check_sets:
+        - community
+        - code

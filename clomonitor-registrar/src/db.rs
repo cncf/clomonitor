@@ -2,6 +2,8 @@ use crate::registrar::{Foundation, Project};
 use anyhow::Result;
 use async_trait::async_trait;
 use deadpool_postgres::Pool;
+#[cfg(test)]
+use mockall::automock;
 use std::{collections::HashMap, sync::Arc};
 use tokio_postgres::types::Json;
 
@@ -10,6 +12,7 @@ pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
+#[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get foundations registered in the database.
     async fn foundations(&self) -> Result<Vec<Foundation>>;

@@ -191,6 +191,7 @@ mod tests {
     const REPOSITORY2_URL: &str = "https://repo2.url";
     const REPOSITORY1_DIGEST: &str = "repo1_digest";
     const REPOSITORY2_DIGEST: &str = "repo2_digest";
+    const FAKE_ERROR: &str = "fake error";
 
     lazy_static! {
         static ref REPOSITORY1_ID: Uuid =
@@ -215,7 +216,7 @@ mod tests {
 
     #[tokio::test]
     async fn empty_list_of_github_tokens_provided() {
-        let cfg = setup_test_cfg(1, &[]);
+        let cfg = setup_test_config(1, &[]);
         let db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
@@ -229,22 +230,22 @@ mod tests {
 
     #[tokio::test]
     async fn error_getting_repositories() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
 
         db.expect_repositories()
             .times(1)
-            .returning(|| Box::pin(future::ready(Err(format_err!("fake error")))));
+            .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
         let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
-        assert_eq!(result.unwrap_err().to_string(), "fake error");
+        assert_eq!(result.unwrap_err().to_string(), FAKE_ERROR);
     }
 
     #[tokio::test]
     async fn no_repositories_found() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let git = MockGit::new();
         let linter = MockLinter::new();
@@ -260,7 +261,7 @@ mod tests {
 
     #[tokio::test]
     async fn error_getting_repository_digest() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
@@ -277,7 +278,7 @@ mod tests {
         git.expect_remote_digest()
             .with(eq(REPOSITORY1_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Err(format_err!("fake error")))));
+            .returning(|_: &str| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
         run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
             .await
@@ -286,7 +287,7 @@ mod tests {
 
     #[tokio::test]
     async fn repository_has_not_changed_and_was_tracked_within_last_day() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
@@ -312,7 +313,7 @@ mod tests {
 
     #[tokio::test]
     async fn error_cloning_repository() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let linter = MockLinter::new();
@@ -329,11 +330,11 @@ mod tests {
         git.expect_remote_digest()
             .with(eq(REPOSITORY1_URL))
             .times(1)
-            .returning(|_: &str| Box::pin(future::ready(Ok("r1_digest".to_string()))));
+            .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY1_DIGEST.to_string()))));
         git.expect_clone_repository()
             .with(eq(REPOSITORY1_URL), path::exists().and(path::is_dir()))
             .times(1)
-            .returning(|_: &str, _: &Path| Box::pin(future::ready(Err(format_err!("fake error")))));
+            .returning(|_: &str, _: &Path| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
         run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
             .await
@@ -342,7 +343,7 @@ mod tests {
 
     #[tokio::test]
     async fn panic_linting_repository() {
-        let cfg = setup_test_cfg(1, &[TOKEN1]);
+        let cfg = setup_test_config(1, &[TOKEN1]);
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let mut linter = MockLinter::new();
@@ -383,7 +384,7 @@ mod tests {
     #[tokio::test]
     async fn two_repos_tracked_successfully() {
         // Setup config
-        let cfg = setup_test_cfg(2, &[TOKEN1, TOKEN2]);
+        let cfg = setup_test_config(2, &[TOKEN1, TOKEN2]);
 
         // Setup mocks and expectations
         let mut db = MockDB::new();
@@ -462,13 +463,13 @@ mod tests {
                     && [TOKEN1, TOKEN2].contains(&&input.github_token[..])
             })
             .times(1)
-            .returning(|_: &LinterInput| Box::pin(future::ready(Err(format_err!("fake error")))));
+            .returning(|_: &LinterInput| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
         db.expect_store_results()
             .withf(|repository_id, check_sets, report, errors, digest| {
                 *repository_id == *REPOSITORY2_ID
                     && check_sets == [CheckSet::Code]
                     && report.is_none()
-                    && *errors == Some(&"error linting repository: fake error".to_string())
+                    && *errors == Some(&format!("error linting repository: {FAKE_ERROR}"))
                     && digest == REPOSITORY2_DIGEST
             })
             .times(1)
@@ -484,7 +485,7 @@ mod tests {
             .unwrap();
     }
 
-    fn setup_test_cfg(concurrency: u8, tokens: &[&str]) -> Config {
+    fn setup_test_config(concurrency: u8, tokens: &[&str]) -> Config {
         Config::builder()
             .set_default("tracker.concurrency", concurrency)
             .unwrap()

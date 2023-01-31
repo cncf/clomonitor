@@ -185,7 +185,7 @@ mod tests {
             .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
         let result = run(&cfg, Arc::new(db)).await;
-        assert_eq!(result.unwrap_err().to_string(), FAKE_ERROR);
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
     }
 
     #[tokio::test]

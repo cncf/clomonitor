@@ -209,7 +209,7 @@ mod tests {
 
         let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
         assert_eq!(
-            result.unwrap_err().to_string(),
+            result.unwrap_err().root_cause().to_string(),
             r#"configuration property "creds.githubTokens" not found"#
         );
     }
@@ -223,7 +223,7 @@ mod tests {
 
         let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
         assert_eq!(
-            result.unwrap_err().to_string(),
+            result.unwrap_err().root_cause().to_string(),
             "GitHub tokens not found in config file (creds.githubTokens)"
         );
     }
@@ -240,7 +240,7 @@ mod tests {
             .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
         let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
-        assert_eq!(result.unwrap_err().to_string(), FAKE_ERROR);
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
     }
 
     #[tokio::test]

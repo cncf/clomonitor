@@ -21,3 +21,8 @@ tokio-postgres = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 uuid = { workspace = true }
+
+[dev-dependencies]
+lazy_static = { workspace = true }
+mockall = { workspace = true }
+futures = { workspace = true }

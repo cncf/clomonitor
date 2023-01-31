@@ -20,7 +20,7 @@ pub(crate) struct Foundation {
 }
 
 /// Represents a project to be registered or updated.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub(crate) struct Project {
     pub name: String,
     pub display_name: Option<String>,
@@ -46,7 +46,7 @@ impl Project {
 }
 
 /// Represents a project's repository.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub(crate) struct Repository {
     pub name: String,
     pub url: String,
@@ -71,7 +71,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB) -> Result<()> {
             .await
             {
                 Ok(result) => result,
-                Err(err) => Err(format_err!("{}", err)),
+                Err(err) => Err(format_err!("{err}")),
             }
             .context(format!(
                 "error processing foundation {foundation_id} data file",
@@ -161,4 +161,247 @@ async fn process_foundation(
 
     debug!("completed in {}s", start.elapsed().as_secs());
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::db::MockDB;
+    use futures::future;
+    use mockall::predicate::eq;
+    use std::sync::Arc;
+
+    const TESTDATA_PATH: &str = "src/testdata";
+    const FOUNDATION: &str = "cncf";
+    const FAKE_ERROR: &str = "fake error";
+
+    #[tokio::test]
+    async fn error_getting_foundations() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let result = run(&cfg, Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().to_string(), FAKE_ERROR);
+    }
+
+    #[tokio::test]
+    async fn no_foundations_found() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations()
+            .times(1)
+            .returning(|| Box::pin(future::ready(Ok(vec![]))));
+
+        run(&cfg, Arc::new(db)).await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn error_fetching_foundation_data_file() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+
+        let data_file_req = mockito::mock("GET", "/").with_status(404).create();
+
+        let result = run(&cfg, Arc::new(db)).await;
+        assert_eq!(
+            result.unwrap_err().root_cause().to_string(),
+            "unexpected status code getting data file: 404 Not Found"
+        );
+        data_file_req.assert();
+    }
+
+    #[tokio::test]
+    async fn invalid_foundation_data_file() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+
+        let data_file_req = mockito::mock("GET", "/")
+            .with_status(200)
+            .with_body("{invalid")
+            .create();
+
+        let result = run(&cfg, Arc::new(db)).await;
+        assert_eq!(
+            result.unwrap_err().root_cause().to_string(),
+            "invalid type: map, expected a sequence"
+        );
+        data_file_req.assert();
+    }
+
+    #[tokio::test]
+    async fn error_getting_projects_registered_in_database() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+        db.expect_foundation_projects()
+            .with(eq(FOUNDATION))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
+
+        let data_file_req = mockito::mock("GET", "/")
+            .with_status(200)
+            .with_body("")
+            .create();
+
+        let result = run(&cfg, Arc::new(db)).await;
+        assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
+        data_file_req.assert();
+    }
+
+    #[tokio::test]
+    async fn no_need_to_register_registered_project_same_digest() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+        db.expect_foundation_projects()
+            .with(eq(FOUNDATION))
+            .times(1)
+            .returning(|_| {
+                let mut projects_registered = HashMap::new();
+                projects_registered.insert(
+                    "artifact-hub".to_string(),
+                    Some(
+                        "bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033"
+                            .to_string(),
+                    ),
+                );
+                Box::pin(future::ready(Ok(projects_registered)))
+            });
+
+        let data_file_req = mockito::mock("GET", "/")
+            .with_status(200)
+            .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
+            .create();
+
+        run(&cfg, Arc::new(db)).await.unwrap();
+        data_file_req.assert();
+    }
+
+    #[tokio::test]
+    async fn register_project_not_registered_yet() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+        db.expect_foundation_projects()
+            .with(eq(FOUNDATION))
+            .times(1)
+            .returning(|_| Box::pin(future::ready(Ok(HashMap::new()))));
+        db.expect_register_project()
+            .with(
+                eq(FOUNDATION),
+                eq(Project {
+                    name: "artifact-hub".to_string(),
+                    display_name: Some("Artifact Hub".to_string()),
+                    description: "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects".to_string(),
+                    category: "app definition".to_string(),
+                    home_url: None,
+                    logo_url: Some("https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg".to_string()),
+                    logo_dark_url: None,
+                    devstats_url: Some("https://artifacthub.devstats.cncf.io/".to_string()),
+                    accepted_at: Some("2020-06-23".to_string()),
+                    maturity: "sandbox".to_string(),
+                    digest: Some("bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033".to_string()),
+                    repositories: vec![Repository{
+                        name: "artifact-hub".to_string(),
+                        url: "https://github.com/artifacthub/hub".to_string(),
+                        check_sets: vec!["community".to_string(), "code".to_string()],
+                    }]
+                }),
+            )
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+
+        let data_file_req = mockito::mock("GET", "/")
+            .with_status(200)
+            .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
+            .create();
+
+        run(&cfg, Arc::new(db)).await.unwrap();
+        data_file_req.assert();
+    }
+
+    #[tokio::test]
+    async fn unregister_registered_project() {
+        let cfg = setup_test_config();
+
+        let mut db = MockDB::new();
+        db.expect_foundations().times(1).returning(|| {
+            Box::pin(future::ready(Ok(vec![Foundation {
+                foundation_id: FOUNDATION.to_string(),
+                data_url: mockito::server_url(),
+            }])))
+        });
+        db.expect_foundation_projects()
+            .with(eq(FOUNDATION))
+            .times(1)
+            .returning(|_| {
+                let mut projects_registered = HashMap::new();
+                projects_registered.insert(
+                    "artifact-hub".to_string(),
+                    Some(
+                        "bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033"
+                            .to_string(),
+                    ),
+                );
+                projects_registered.insert("project-name".to_string(), Some("digest".to_string()));
+                Box::pin(future::ready(Ok(projects_registered)))
+            });
+        db.expect_unregister_project()
+            .with(eq(FOUNDATION), eq("project-name"))
+            .times(1)
+            .returning(|_, _| Box::pin(future::ready(Ok(()))));
+
+        let data_file_req = mockito::mock("GET", "/")
+            .with_status(200)
+            .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
+            .create();
+
+        run(&cfg, Arc::new(db)).await.unwrap();
+        data_file_req.assert();
+    }
+
+    fn setup_test_config() -> Config {
+        Config::builder()
+            .set_default("registrar.concurrency", 1)
+            .unwrap()
+            .build()
+            .unwrap()
+    }
 }

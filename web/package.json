@@ -35,7 +35,7 @@
     "@types/react-syntax-highlighter": "^15.5.6",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-simple-import-sort": "^9.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "jest-fetch-mock": "^3.0.3",
     "postcss": "^8.2.13",
     "prettier": "^2.8.2",

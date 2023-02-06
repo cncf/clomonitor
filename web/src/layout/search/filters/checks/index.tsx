@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { ElementWithTooltip, Modal } from 'clo-ui';
 import { difference, isEmpty, isUndefined, union } from 'lodash';
 import { useEffect, useState } from 'react';
 import { BsCheckAll } from 'react-icons/bs';
@@ -7,8 +8,6 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { CATEGORY_NAMES, CHECKS_PER_CATEGORY, REPORT_OPTIONS } from '../../../../data';
 import { FilterKind, ReportOption, ScoreType } from '../../../../types';
-import ElementWithTooltip from '../../../common/ElementWithTooltip';
-import Modal from '../../../common/Modal';
 import Block from './Block';
 import styles from './Checks.module.css';
 

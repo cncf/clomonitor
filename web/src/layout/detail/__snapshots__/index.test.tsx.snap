@@ -3,7 +3,7 @@
 exports[`Project detail index creates snapshot 1`] = `
 <DocumentFragment>
   <nav
-    class="navbar navbar-expand-sm navbar"
+    class="navbar navbar-expand-sm SubNavbar-module_navbar__wuZcB"
     role="navigation"
   >
     <div
@@ -41,13 +41,13 @@ exports[`Project detail index creates snapshot 1`] = `
     class="container-lg flex-grow-1 mb-0 mb-md-4"
   >
     <div
-      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute wrapper transparentBg loading loadingWithBackBar"
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF loading loadingWithBackBar"
     >
       <div
         class="d-flex flex-row align-items-center justify-content-center w-100 h-100"
       >
         <div
-          class="wave"
+          class="Loading-module_wave__h1voE"
           role="status"
         >
           <span

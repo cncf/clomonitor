@@ -6,7 +6,6 @@ import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
 import API from '../../api';
 import { ProjectDetail } from '../../types';
 import Detail from './index';
-jest.mock('../common/timeline/Timeline', () => () => <>Timeline</>);
 jest.mock('../../utils/updateMetaIndex');
 jest.mock('../../api');
 jest.mock('react-markdown', () => () => <div />);
@@ -16,6 +15,11 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(),
   useLocation: jest.fn(),
   useNavigate: () => mockUseNavigate,
+}));
+
+jest.mock('clo-ui', () => ({
+  ...(jest.requireActual('clo-ui') as any),
+  Timeline: () => <>Timeline</>,
 }));
 
 jest.mock('moment', () => ({
@@ -87,7 +91,7 @@ describe('Project detail index', () => {
       });
 
       expect(screen.getByAltText('Artifact Hub logo')).toBeInTheDocument();
-      expect(screen.getAllByText('Artifact Hub')).toHaveLength(2);
+      expect(screen.getByText('Artifact Hub')).toBeInTheDocument();
       expect(
         screen.getByText(
           'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.'
@@ -96,8 +100,7 @@ describe('Project detail index', () => {
       expect(screen.getByText('sandbox')).toBeInTheDocument();
       expect(screen.getByText('app definition')).toBeInTheDocument();
       expect(screen.getByText('CNCF')).toBeInTheDocument();
-      expect(screen.getAllByText('artifact-hub')).toHaveLength(2);
-      expect(screen.getByRole('link', { name: 'Repository link' })).toBeInTheDocument();
+      expect(await screen.findByRole('link', { name: 'Repository link' })).toBeInTheDocument();
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
       expect(screen.getAllByText('23rd June 2020')).toHaveLength(2);
       expect(screen.getAllByTestId('dropdown-btn')).toHaveLength(2);
@@ -146,7 +149,7 @@ describe('Project detail index', () => {
         expect(API.getProjectDetail).toHaveBeenCalledWith('proj', 'cncf');
       });
 
-      expect(screen.getByText('The requested project was not found.')).toBeInTheDocument();
+      expect(await screen.findByText('The requested project was not found.')).toBeInTheDocument();
       expect(screen.getByText('The project you are looking for may have been deleted.')).toBeInTheDocument();
     });
   });

@@ -1,4 +1,6 @@
-import { CheckSet, Repository } from '../types';
+import { CheckSet } from 'clo-ui';
+
+import { Repository } from '../types';
 import sortRepos from './sortRepos';
 
 interface Test {

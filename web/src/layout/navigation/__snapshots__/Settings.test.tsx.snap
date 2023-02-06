@@ -45,7 +45,7 @@ exports[`Settings creates snapshot 1`] = `
         >
           <input
             aria-checked="false"
-            class="form-check-input input"
+            class="form-check-input ThemeMode-module_input__iMfv3"
             id="theme-desktop-automatic"
             name="automatic"
             tabindex="-1"
@@ -84,7 +84,7 @@ exports[`Settings creates snapshot 1`] = `
           <input
             aria-checked="true"
             checked=""
-            class="form-check-input input"
+            class="form-check-input ThemeMode-module_input__iMfv3"
             id="theme-desktop-light"
             name="light"
             tabindex="-1"
@@ -173,7 +173,7 @@ exports[`Settings creates snapshot 1`] = `
         >
           <input
             aria-checked="false"
-            class="form-check-input input"
+            class="form-check-input ThemeMode-module_input__iMfv3"
             id="theme-desktop-dark"
             name="dark"
             tabindex="-1"

@@ -1,11 +1,10 @@
 import classNames from 'classnames';
+import { DropdownOnHover, ExternalLink } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
 import { IoGlobeOutline } from 'react-icons/io5';
 
 import { BaseRepository, Repository } from '../../types';
-import DropdownOnHover from '../common/DropdownOnHover';
-import ExternalLink from '../common/ExternalLink';
 import styles from './WebsiteSection.module.css';
 
 interface Props {

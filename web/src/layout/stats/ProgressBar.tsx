@@ -1,4 +1,5 @@
-import getCategoryColor from '../../utils/getCategoryColor';
+import { getCategoryColor } from 'clo-ui';
+
 import styles from './ProgressBar.module.css';
 
 interface Props {
@@ -22,7 +23,7 @@ const ProgressBar = (props: Props) => {
             <div
               className={`progress-bar ${styles.progressbar}`}
               role="progressbar"
-              style={{ width: `${props.value || 1}%`, backgroundColor: `var(--rm-${color})` }}
+              style={{ width: `${props.value || 1}%`, backgroundColor: `var(--clo-${color})` }}
             />
           </div>
         </div>

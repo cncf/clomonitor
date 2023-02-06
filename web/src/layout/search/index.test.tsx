@@ -6,7 +6,10 @@ import API from '../../api';
 import { Project } from '../../types';
 import Search from './index';
 jest.mock('../../api');
-jest.mock('../common/SampleQueries', () => () => <div />);
+// jest.mock('clo-ui', () => ({
+//   ...(jest.requireActual('clo-ui') as any),
+//   SampleQueries: () => <div />,
+// }));
 
 const getMockSearch = (fixtureId: string): { items: Project[]; 'Pagination-Total-Count': string } => {
   return require(`./__fixtures__/index/${fixtureId}.json`) as { items: Project[]; 'Pagination-Total-Count': string };

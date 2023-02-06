@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { alertDispatcher, Foundation, Loading, Maturity, NoData, prettifyNumber, SubNavbar, Timeline } from 'clo-ui';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
@@ -9,23 +10,8 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
 import { FOUNDATIONS } from '../../data';
-import {
-  DistributionData,
-  FilterKind,
-  Foundation,
-  Maturity,
-  Rating,
-  RatingKind,
-  ReportOption,
-  Stats,
-} from '../../types';
-import alertDispatcher from '../../utils/alertDispatcher';
+import { DistributionData, FilterKind, Rating, RatingKind, ReportOption, Stats } from '../../types';
 import prepareQueryString from '../../utils/prepareQueryString';
-import prettifyNumber from '../../utils/prettifyNumber';
-import Loading from '../common/Loading';
-import NoData from '../common/NoData';
-import Timeline from '../common/timeline/Timeline';
-import SubNavbar from '../navigation/SubNavbar';
 import AnchorHeader from './AnchorHeader';
 import Average from './Average';
 import Checks from './Checks';
@@ -64,7 +50,7 @@ const StatsView = () => {
   const [selectedRange, setSelectedRange] = useState<SelectedRange | undefined>();
   const [downloadingCSV, setDownloadingCSV] = useState<boolean>(false);
   const [activeDate, setActiveDate] = useState<string | undefined>();
-  const [snapshots, setSnapshots] = useState<string[]>([]);
+  const [snapshots, setSnapshots] = useState<string[] | undefined>(undefined);
 
   useEffect(() => {
     setIsLightActive(effective === 'light');
@@ -178,18 +164,18 @@ const StatsView = () => {
         height: 250,
         type: 'area',
         redrawOnWindowResize: true,
-        redrawOnParentResize: false,
+        redrawOnParentResize: true,
         zoom: {
           type: 'x',
           enabled: true,
           autoScaleYaxis: true,
           zoomedArea: {
             fill: {
-              color: 'var(--rm-secondary-15)',
+              color: 'var(--clo-secondary-15)',
               opacity: 0.4,
             },
             stroke: {
-              color: 'var(--rm-secondary-900)',
+              color: 'var(--clo-secondary-900)',
               opacity: 0.8,
               width: 1,
             },
@@ -277,7 +263,7 @@ const StatsView = () => {
         height: 250,
         type: 'donut',
         redrawOnWindowResize: true,
-        redrawOnParentResize: false,
+        redrawOnParentResize: true,
         events: {
           dataPointSelection: (event: any, chartContext: any, config: any) => {
             setSelectedPoint({
@@ -335,7 +321,7 @@ const StatsView = () => {
         height: 250,
         type: 'heatmap',
         redrawOnWindowResize: true,
-        redrawOnParentResize: false,
+        redrawOnParentResize: true,
         toolbar: {
           show: false,
         },
@@ -443,16 +429,16 @@ const StatsView = () => {
         const isCurrent = !isUndefined(lastBarDate)
           ? moment(moment.unix(lastBarDate / 1000)).isSame(moment(), monthlyFormatter ? 'month' : 'day')
           : false;
-        let colors = Array.from({ length: dataLength - 1 }, () => 'var(--rm-tertiary)');
+        let colors = Array.from({ length: dataLength - 1 }, () => 'var(--clo-tertiary)');
         if (isCurrent) {
           // Color for the last bar
           colors.push(effective === 'dark' ? '#cce7ff' : '#003666');
         } else {
-          colors.push('var(--rm-tertiary');
+          colors.push('var(--clo-tertiary');
         }
         return colors;
       }
-      return ['var(--rm-tertiary)'];
+      return ['var(--clo-tertiary)'];
     };
 
     return {
@@ -460,7 +446,7 @@ const StatsView = () => {
         height: 300,
         type: 'bar',
         redrawOnWindowResize: true,
-        redrawOnParentResize: false,
+        redrawOnParentResize: true,
         zoom: {
           enabled: false,
         },
@@ -615,6 +601,7 @@ const StatsView = () => {
     } catch (err: any) {
       setIsLoading(false);
       setApiError('An error occurred getting CLOMonitor stats.');
+      setSnapshots([]);
       setStats(null);
     } finally {
       // Go to hash after getting stats
@@ -744,7 +731,11 @@ const StatsView = () => {
       )}
       <main role="main" className="container-lg py-5 position-relative">
         <div className="d-flex flex-row">
-          <div className="flex-grow-1 position-relative">
+          <div
+            className={classNames('d-flex flex-column position-relative', styles.statsWrapper, {
+              'w-100': !isUndefined(snapshots) && snapshots.length < 3,
+            })}
+          >
             {apiError && (
               <NoData>
                 <div className="mb-4 mb-lg-5 h2">{apiError}</div>
@@ -1076,7 +1067,7 @@ const StatsView = () => {
           </div>
 
           <Timeline
-            snapshots={snapshots}
+            snapshots={snapshots || []}
             className={`ms-4 ms-lg-5 ${styles.timeline}`}
             activeDate={activeDate}
             setActiveDate={setActiveDate}

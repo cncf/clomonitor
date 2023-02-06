@@ -11,7 +11,7 @@
 }
 
 .isPassing {
-  background-color: var(--rm-green);
+  background-color: var(--clo-green);
   color: #fff;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .isNotPassing {
-  background-color: var(--rm-red);
+  background-color: var(--clo-red);
   color: #fff;
 }
 

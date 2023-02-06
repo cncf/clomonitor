@@ -9,7 +9,11 @@ import { SortBy, SortDirection, Stats } from '../../types';
 import StatsView from './index';
 jest.mock('../../api');
 jest.mock('react-apexcharts', () => () => <div>Chart</div>);
-jest.mock('../common/timeline/Timeline', () => () => <>Timeline</>);
+
+jest.mock('clo-ui', () => ({
+  ...(jest.requireActual('clo-ui') as any),
+  Timeline: () => <>Timeline</>,
+}));
 
 const getMockStats = (fixtureId: string): Stats => {
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;
@@ -201,7 +205,7 @@ describe('StatsView', () => {
         expect(API.getStats).toHaveBeenCalledTimes(1);
       });
 
-      expect(screen.getByText('Usage')).toBeInTheDocument();
+      expect(await screen.findByText('Usage')).toBeInTheDocument();
       expect(screen.getByText('Projects monthly views')).toBeInTheDocument();
       expect(screen.getByText('Projects daily views')).toBeInTheDocument();
     });

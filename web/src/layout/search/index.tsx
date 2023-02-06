@@ -1,4 +1,16 @@
 import classNames from 'classnames';
+import {
+  Loading,
+  NoData,
+  Pagination,
+  PaginationLimitOptions,
+  SampleQueries,
+  scrollToTop,
+  Sidebar,
+  SortOptions,
+  SubNavbar,
+  useScrollRestorationFix,
+} from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
@@ -7,19 +19,10 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
-import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
+import { QUERIES, SORT_OPTIONS } from '../../data';
 import { Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
-import scrollToTop from '../../utils/scrollToTop';
-import Loading from '../common/Loading';
-import NoData from '../common/NoData';
-import Pagination from '../common/Pagination';
-import PaginationLimit from '../common/PaginationLimit';
-import SampleQueries from '../common/SampleQueries';
-import Sidebar from '../common/Sidebar';
-import SortOptions from '../common/SortOptions';
-import SubNavbar from '../navigation/SubNavbar';
 import Card from './Card';
 import Filters from './filters';
 import styles from './Search.module.css';
@@ -152,7 +155,8 @@ const Search = (props: Props) => {
     dispatch(updateLimit(newLimit));
   };
 
-  const onSortChange = (by: SortBy, direction: SortDirection): void => {
+  const onSortChange = (value: string): void => {
+    const opts = value.split('_');
     props.setScrollPosition(0);
     // Load pageNumber is forced before update Sorting criteria
     navigate(
@@ -165,7 +169,7 @@ const Search = (props: Props) => {
       },
       { replace: true }
     );
-    dispatch(updateSort(by, direction));
+    dispatch(updateSort(opts[0] as SortBy, opts[1] as SortDirection));
   };
 
   useEffect(() => {
@@ -204,7 +208,13 @@ const Search = (props: Props) => {
           currentScrollPosition = 0;
         }
         // Update scroll position
-        scrollToTop(currentScrollPosition);
+        if (currentScrollPosition !== 0) {
+          setTimeout(() => {
+            scrollToTop(currentScrollPosition);
+          }, 200);
+        } else {
+          scrollToTop();
+        }
       }
     }
     searchProjects();
@@ -285,8 +295,14 @@ const Search = (props: Props) => {
               </div>
             </div>
             <div className="d-flex flex-wrap flex-row justify-content-sm-end mt-3 mt-sm-0 ms-0 ms-md-3 w-100">
-              <SortOptions by={sort.by} direction={sort.direction} onSortChange={onSortChange} />
-              <PaginationLimit onPaginationLimitChange={onPaginationLimitChange} />
+              <SortOptions
+                options={SORT_OPTIONS as any[]}
+                by={sort.by}
+                direction={sort.direction}
+                width={180}
+                onSortChange={onSortChange}
+              />
+              <PaginationLimitOptions limit={limit} onPaginationLimitChange={onPaginationLimitChange} />
             </div>
           </div>
 
@@ -383,7 +399,12 @@ const Search = (props: Props) => {
                         <> or try a new search.</>
                       </p>
                       <div className="h5 d-flex flex-row align-items-end justify-content-center flex-wrap">
-                        <SampleQueries className="bg-light text-dark border-secondary text-dark" />
+                        <SampleQueries
+                          className="bg-light text-dark border-secondary text-dark"
+                          queries={QUERIES}
+                          maxQueriesNumber={5}
+                          prepareQueryString={prepareQueryString}
+                        />
                       </div>
                     </div>
                   </NoData>

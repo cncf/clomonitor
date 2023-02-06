@@ -1,8 +1,8 @@
+import { detectActiveThemeMode } from 'clo-ui';
 import { isEmpty, isUndefined, sortBy } from 'lodash';
 
 import { DEFAULT_SORT_BY, DEFAULT_SORT_DIRECTION } from '../data';
 import { Prefs } from '../types';
-import detectActiveThemeMode from './detectActiveThemeMode';
 
 export interface PreferencesList {
   [key: string]: Prefs;

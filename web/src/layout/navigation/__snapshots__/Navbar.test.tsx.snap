@@ -3,7 +3,7 @@
 exports[`Navbar creates snapshot 1`] = `
 <DocumentFragment>
   <nav
-    class="navbar navbar"
+    class="navbar Navbar-module_navbar__Ey25T navbar"
   >
     <div
       class="container-lg"
@@ -69,7 +69,7 @@ exports[`Navbar creates snapshot 1`] = `
                     <input
                       aria-checked="true"
                       checked=""
-                      class="form-check-input input"
+                      class="form-check-input ThemeMode-module_input__iMfv3"
                       id="theme-mobile-automatic"
                       name="automatic"
                       tabindex="-1"
@@ -107,7 +107,7 @@ exports[`Navbar creates snapshot 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      class="form-check-input input"
+                      class="form-check-input ThemeMode-module_input__iMfv3"
                       id="theme-mobile-light"
                       name="light"
                       tabindex="-1"
@@ -196,7 +196,7 @@ exports[`Navbar creates snapshot 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      class="form-check-input input"
+                      class="form-check-input ThemeMode-module_input__iMfv3"
                       id="theme-mobile-dark"
                       name="dark"
                       tabindex="-1"
@@ -240,29 +240,25 @@ exports[`Navbar creates snapshot 1`] = `
                     target="_self"
                   >
                     <div
-                      class="d-flex flex-row align-items-baseline"
+                      class="d-flex flex-row align-items-center py-1"
                     >
-                      <div
-                        class="d-flex flex-row align-items-center py-1"
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 384 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <svg
-                          fill="currentColor"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-width="0"
-                          viewBox="0 0 384 512"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"
-                          />
-                        </svg>
-                        <div
-                          class="ms-2"
-                        >
-                          Documentation
-                        </div>
+                        <path
+                          d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"
+                        />
+                      </svg>
+                      <div
+                        class="ms-2"
+                      >
+                        Documentation
                       </div>
                     </div>
                   </a>
@@ -306,13 +302,13 @@ exports[`Navbar creates snapshot 1`] = `
           class="position-relative my-3 line"
         >
           <div
-            class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto searchBar search"
+            class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto SearchbarWithDropdown-module_searchBar__gq6Pz search"
           >
             <input
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
-              class="flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base input"
+              class="flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base undefined"
               data-testid="search-bar"
               placeholder="Search projects"
               spellcheck="false"
@@ -321,10 +317,10 @@ exports[`Navbar creates snapshot 1`] = `
             />
             <button
               aria-label="Search text"
-              class="btn btn-link lh-1 px-2 btnIcon"
+              class="btn btn-link lh-1 px-2 SearchbarWithDropdown-module_btnIcon__Yu56a"
             >
               <div
-                class="iconWrapper lightIcon"
+                class="SearchbarWithDropdown-module_iconWrapper__pRj6N lightIcon"
               >
                 <svg
                   fill="none"
@@ -364,11 +360,7 @@ exports[`Navbar creates snapshot 1`] = `
             tabindex="-1"
             target="_self"
           >
-            <div
-              class="d-flex flex-row align-items-baseline"
-            >
-              Docs
-            </div>
+            Docs
           </a>
           <a
             class="position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
@@ -420,7 +412,7 @@ exports[`Navbar creates snapshot 1`] = `
                   <input
                     aria-checked="true"
                     checked=""
-                    class="form-check-input input"
+                    class="form-check-input ThemeMode-module_input__iMfv3"
                     id="theme-desktop-automatic"
                     name="automatic"
                     tabindex="-1"
@@ -458,7 +450,7 @@ exports[`Navbar creates snapshot 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    class="form-check-input input"
+                    class="form-check-input ThemeMode-module_input__iMfv3"
                     id="theme-desktop-light"
                     name="light"
                     tabindex="-1"
@@ -547,7 +539,7 @@ exports[`Navbar creates snapshot 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    class="form-check-input input"
+                    class="form-check-input ThemeMode-module_input__iMfv3"
                     id="theme-desktop-dark"
                     name="dark"
                     tabindex="-1"

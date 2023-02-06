@@ -1,11 +1,11 @@
+import { capitalizeFirstLetter, Foundation } from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
 import moment from 'moment';
 import { Fragment } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTER_CATEGORY_NAMES, FILTERS, FOUNDATIONS, REPORT_OPTIONS } from '../../data';
-import { Filter, FilterKind, FiltersSection, Foundation, ReportOption } from '../../types';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import { Filter, FilterKind, FiltersSection, ReportOption } from '../../types';
 import styles from './SelectedFilters.module.css';
 
 interface Props {

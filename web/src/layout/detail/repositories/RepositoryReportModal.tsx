@@ -1,3 +1,4 @@
+import { BlockCodeButtons, Loading, Modal } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -7,9 +8,6 @@ import { tomorrowNight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import API from '../../../api';
 import { AppContext } from '../../../context/AppContextProvider';
-import BlockCodeButtons from '../../common/BlockCodeButtons';
-import Loading from '../../common/Loading';
-import Modal from '../../common/Modal';
 import styles from './RepositoryReportModal.module.css';
 
 interface Props {

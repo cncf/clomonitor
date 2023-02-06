@@ -42,12 +42,12 @@
 }
 
 .passing {
-  background-color: var(--rm-green);
+  background-color: var(--clo-green);
   color: var(--bs-white);
 }
 
 .notPassing {
-  background-color: var(--rm-red);
+  background-color: var(--clo-red);
   color: var(--bs-white);
 }
 

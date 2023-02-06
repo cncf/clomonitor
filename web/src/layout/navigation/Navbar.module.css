@@ -1,5 +1,5 @@
 .navbar {
-  background-color: var(--rm-secondary);
+  background-color: var(--clo-secondary);
 }
 
 .logo {
@@ -37,7 +37,7 @@
 
 @media (min-width: 768px) {
   .navbar {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     right: 0;
     left: 0;

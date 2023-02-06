@@ -12,28 +12,32 @@ exports[`CategoriesSummary creates snapshot 1`] = `
         class="d-flex flex-column me-0 me-sm-4 mb-2 mb-sm-0"
       >
         <div
-          class="d-flex align-items-center justify-content-center rounded-pill score undefined"
+          class="d-flex align-items-center justify-content-center rounded-pill RoundScore-module_score__AbYPP undefined"
           data-testid="global-score"
         >
           <div
-            class="chart"
+            class="RoundScore-module_chart__s05eS"
           >
             <svg
               class="d-block"
               viewBox="0 0 36 36"
             >
               <path
-                class="circleBg"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="RoundScore-module_circleBg__3qRLN"
+                d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
               />
               <path
-                class="circle"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="RoundScore-module_circle__C-6ak"
+                d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
                 stroke-dasharray="65, 100"
-                style="stroke: var(--rm-yellow);"
+                style="stroke: var(--clo-yellow);"
               />
               <text
-                class="value"
+                class="RoundScore-module_value__mx3Fe"
                 x="18"
                 y="23"
               >

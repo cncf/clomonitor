@@ -14,7 +14,7 @@
 }
 
 .onlyIcon:hover {
-  color: var(--rm-tertiary) !important;
+  color: var(--clo-tertiary) !important;
 }
 
 .miniIcon {

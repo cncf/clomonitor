@@ -1,8 +1,7 @@
 import classNames from 'classnames';
+import { getCategoryColor, roundScoreValue } from 'clo-ui';
 import { isUndefined } from 'lodash';
 
-import getCategoryColor from '../../../utils/getCategoryColor';
-import roundScoreValue from '../../../utils/roundScoreValue';
 import styles from './BadgeCell.module.css';
 
 interface Props {
@@ -36,7 +35,7 @@ const BadgeCell = (props: Props) => {
       <div
         className={`mx-auto px-2 text-center text-dark fw-bold ${styles.badge}`}
         style={{
-          borderBottomColor: `var(--rm-${color})`,
+          borderBottomColor: `var(--clo-${color})`,
         }}
       >
         {roundScoreValue(props.value)}

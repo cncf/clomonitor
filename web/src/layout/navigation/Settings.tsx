@@ -1,8 +1,8 @@
 import classNames from 'classnames';
+import { useOutsideClick } from 'clo-ui';
 import { useRef, useState } from 'react';
 import { FaCog } from 'react-icons/fa';
 
-import useOutsideClick from '../../hooks/useOutsideClick';
 import styles from './Settings.module.css';
 import ThemeMode from './ThemeMode';
 
@@ -10,10 +10,6 @@ const Settings = () => {
   const [visibleDropdown, setVisibleDropdown] = useState(false);
   const ref = useRef(null);
   useOutsideClick([ref], visibleDropdown, () => setVisibleDropdown(false));
-
-  const closeDropdown = () => {
-    setVisibleDropdown(false);
-  };
 
   return (
     <div ref={ref} className="ms-2 position-relative">
@@ -29,7 +25,7 @@ const Settings = () => {
 
       <div role="menu" className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>
         <div className={`dropdown-arrow ${styles.arrow}`} />
-        <ThemeMode onChange={closeDropdown} device="desktop" />
+        <ThemeMode closeDropdown={() => setVisibleDropdown(false)} device="desktop" />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Maturity } from 'clo-ui';
 
-import { FilterKind, Maturity } from '../../../types';
+import { FilterKind } from '../../../types';
 import Section from './Section';
 
 const mockOnChange = jest.fn();

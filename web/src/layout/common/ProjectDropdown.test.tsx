@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { Foundation } from 'clo-ui';
 
-import { Foundation } from '../../types';
 import ProjectDropdown from './ProjectDropdown';
 
 const defaultProps = {

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
+import { useOutsideClick } from 'clo-ui';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 
-import useOutsideClick from '../../../hooks/useOutsideClick';
 import styles from './RepositoryDropdown.module.css';
 import RepositoryReportModal from './RepositoryReportModal';
 

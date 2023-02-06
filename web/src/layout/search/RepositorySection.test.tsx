@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { CheckSet } from 'clo-ui';
 
-import { CheckSet } from '../../types';
 import RepositorySection from './RepositorySection';
 
 const user = userEvent.setup({ delay: null });

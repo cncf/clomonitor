@@ -11,7 +11,7 @@ exports[`WebsiteSection creates snapshot 1`] = `
       >
         <div>
           <div
-            class="dropdown-menu rounded-0 text-wrap dropdown"
+            class="dropdown-menu rounded-0 text-wrap DropdownOnHover-module_dropdown__huQ9u"
             role="complementary"
             style="width: 250px;"
           >
@@ -77,7 +77,7 @@ exports[`WebsiteSection creates snapshot 1`] = `
                         https://cloudevents.io
                       </div>
                       <svg
-                        class="ms-2 icon"
+                        class="ms-2 icon undefined"
                         fill="none"
                         height="1em"
                         stroke="currentColor"
@@ -164,7 +164,7 @@ exports[`WebsiteSection creates snapshot 1`] = `
                         https://cloudevents.io/test
                       </div>
                       <svg
-                        class="ms-2 icon"
+                        class="ms-2 icon undefined"
                         fill="none"
                         height="1em"
                         stroke="currentColor"

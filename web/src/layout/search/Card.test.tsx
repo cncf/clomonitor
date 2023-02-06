@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { CheckSet, Foundation, Maturity } from 'clo-ui';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { CheckSet, Foundation, Maturity } from '../../types';
 import Card from './Card';
 
 jest.mock('moment', () => ({
@@ -67,7 +67,7 @@ describe('Card', () => {
   });
 
   describe('Render', () => {
-    it('renders component', () => {
+    it('renders component', async () => {
       render(
         <Router>
           <Card {...defaultProps} />{' '}
@@ -87,7 +87,7 @@ describe('Card', () => {
       expect(screen.getByTestId('foundation-badge')).toBeInTheDocument();
       expect(screen.getByText('CNCF')).toBeInTheDocument();
 
-      const repoLink = screen.getByRole('link', { name: 'Repository link' });
+      const repoLink = await screen.findByRole('link', { name: 'Repository link' });
       expect(repoLink).toHaveProperty('href', 'https://github.com/artifacthub/hub');
 
       const websiteLink = screen.getByRole('link', { name: 'Website link' });

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
+import { RoundScore } from 'clo-ui';
 import { isUndefined } from 'lodash';
 
 import { CATEGORY_ICONS } from '../../data';
 import { ScoreType } from '../../types';
 import styles from './CategoriesSummary.module.css';
 import CategoryProgressbar from './CategoryProgressbar';
-import RoundScore from './RoundScore';
 
 interface Props {
   score: { [key in ScoreType]?: number };

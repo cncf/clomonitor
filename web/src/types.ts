@@ -238,7 +238,7 @@ export interface Stats {
       sandbox: { [key in ScoreType]: number };
     };
     views_daily: number[][];
-    views_monthly: number[][];
+    views_monthly?: number[][];
     accepted_distribution: DistributionData[];
   };
   repositories: {

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { groupBy, isEmpty, isNull, isNumber, isUndefined } from 'lodash';
+import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
@@ -135,6 +135,23 @@ const StatsView = () => {
       },
       { state: { resetScrollPosition: true } }
     );
+  };
+
+  const prepareMonthlyViewsData = (data: number[][]): number[][] => {
+    let finalData: number[][] = [...data];
+    if (data.length < 13 && data.length > 0) {
+      const oldDate = data[0][0];
+      range(1, 13 - data.length).forEach((x: number) => {
+        finalData.unshift([
+          moment
+            .unix(oldDate / 1000)
+            .subtract(x, 'month')
+            .unix() * 1000,
+          0,
+        ]);
+      });
+    }
+    return finalData;
   };
 
   const loadSearchPageWithAcceptedRange = (range: SelectedRange) => {
@@ -981,7 +998,7 @@ const StatsView = () => {
                     </>
                   )}
 
-                  {stats.projects.views_daily && (
+                  {(stats.projects.views_daily || stats.projects.views_monthly) && (
                     <>
                       <AnchorHeader
                         title="Usage"
@@ -990,6 +1007,38 @@ const StatsView = () => {
                       />
 
                       <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>
+                        Projects monthly views
+                      </div>
+
+                      <div className="py-4">
+                        <div className="row g-4 g-xxl-5 justify-content-center">
+                          <div className="col-12">
+                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                              <div className="card-body">
+                                <ReactApexChart
+                                  options={getBarChartConfig(
+                                    true,
+                                    stats.projects.views_monthly.length,
+                                    stats.projects.views_monthly.length > 0
+                                      ? stats.projects.views_daily.slice(-1)[0][0]
+                                      : undefined
+                                  )}
+                                  series={[
+                                    {
+                                      name: 'Monthly views',
+                                      data: prepareMonthlyViewsData(stats.projects.views_monthly),
+                                    },
+                                  ]}
+                                  type="bar"
+                                  height={250}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className={`text-dark text-center my-3 fw-bold ${styles.subtitle}`}>
                         Projects daily views
                       </div>
 
@@ -1028,7 +1077,7 @@ const StatsView = () => {
             activeDate={activeDate}
             setActiveDate={setActiveDate}
           />
-        </div>{' '}
+        </div>
       </main>
     </div>
   );

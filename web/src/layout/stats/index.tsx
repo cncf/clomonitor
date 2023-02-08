@@ -1006,37 +1006,41 @@ const StatsView = () => {
                         scrollIntoView={scrollIntoView}
                       />
 
-                      <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>
-                        Projects monthly views
-                      </div>
+                      {!isUndefined(stats.projects.views_monthly) && (
+                        <>
+                          <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>
+                            Projects monthly views
+                          </div>
 
-                      <div className="py-4">
-                        <div className="row g-4 g-xxl-5 justify-content-center">
-                          <div className="col-12">
-                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                              <div className="card-body">
-                                <ReactApexChart
-                                  options={getBarChartConfig(
-                                    true,
-                                    stats.projects.views_monthly.length,
-                                    stats.projects.views_monthly.length > 0
-                                      ? stats.projects.views_daily.slice(-1)[0][0]
-                                      : undefined
-                                  )}
-                                  series={[
-                                    {
-                                      name: 'Monthly views',
-                                      data: prepareMonthlyViewsData(stats.projects.views_monthly),
-                                    },
-                                  ]}
-                                  type="bar"
-                                  height={250}
-                                />
+                          <div className="py-4">
+                            <div className="row g-4 g-xxl-5 justify-content-center">
+                              <div className="col-12">
+                                <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                  <div className="card-body">
+                                    <ReactApexChart
+                                      options={getBarChartConfig(
+                                        true,
+                                        stats.projects.views_monthly.length,
+                                        stats.projects.views_monthly.length > 0
+                                          ? stats.projects.views_daily.slice(-1)[0][0]
+                                          : undefined
+                                      )}
+                                      series={[
+                                        {
+                                          name: 'Monthly views',
+                                          data: prepareMonthlyViewsData(stats.projects.views_monthly),
+                                        },
+                                      ]}
+                                      type="bar"
+                                      height={250}
+                                    />
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        </>
+                      )}
 
                       <div className={`text-dark text-center my-3 fw-bold ${styles.subtitle}`}>
                         Projects daily views

@@ -150,6 +150,20 @@ returns json as $$
                     group by day
                     order by day asc
                 ) dt
+            ),
+            'views_monthly', (
+                select json_agg(json_build_array(extract(epoch from month)*1000, total))
+                from (
+                    select date_trunc('month', pv.day) as month, sum(pv.total) as total
+                    from project_views pv
+                    join project p using (project_id)
+                    where pv.day >= current_date - '2 year'::interval
+                    and
+                        case when p_foundation is not null then
+                        p.foundation_id = p_foundation else true end
+                    group by month
+                    order by month asc
+                ) mt
             )
         ),
         'repositories', json_build_object(

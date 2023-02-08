@@ -184,6 +184,27 @@ describe('StatsView', () => {
       expect(noData).toBeInTheDocument();
       expect(noData).toHaveTextContent('No Stats available for the moment');
     });
+
+    it('renders component with Usage stats', async () => {
+      const mockStats = getMockStats('3');
+      mocked(API).getStats.mockResolvedValue(mockStats);
+
+      render(
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+          <Router>
+            <StatsView />
+          </Router>
+        </AppContext.Provider>
+      );
+
+      await waitFor(() => {
+        expect(API.getStats).toHaveBeenCalledTimes(1);
+      });
+
+      expect(screen.getByText('Usage')).toBeInTheDocument();
+      expect(screen.getByText('Projects monthly views')).toBeInTheDocument();
+      expect(screen.getByText('Projects daily views')).toBeInTheDocument();
+    });
   });
 
   it('downloads repositories csv', async () => {

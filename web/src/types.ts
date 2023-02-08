@@ -224,7 +224,6 @@ export interface Stats {
   generated_at?: number;
   snapshots?: string[];
   projects: {
-    total: number;
     running_total?: any[];
     rating_distribution: {
       all: { [key: string]: number }[];
@@ -239,6 +238,7 @@ export interface Stats {
       sandbox: { [key in ScoreType]: number };
     };
     views_daily: number[][];
+    views_monthly: number[][];
     accepted_distribution: DistributionData[];
   };
   repositories: {

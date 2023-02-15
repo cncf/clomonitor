@@ -30,7 +30,7 @@ WORKDIR /docs/www
 RUN hugo
 
 # Final stage
-FROM alpine:3.17.1
+FROM alpine:3.17.2
 RUN apk --no-cache add ca-certificates ttf-opensans && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

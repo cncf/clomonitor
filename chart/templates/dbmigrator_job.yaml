@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+{{- if .Release.IsInstall }}
+  name: {{ include "chart.resourceNamePrefix" . }}dbmigrator-install
+{{- else }}
+  name: {{ include "chart.resourceNamePrefix" . }}dbmigrator-upgrade
+  annotations:
+    "helm.sh/hook": pre-upgrade
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation
+{{- end }}
+spec:
+  template:
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      restartPolicy: Never
+      initContainers:
+        - {{- include "chart.checkDbIsReadyInitContainer" . | nindent 10 }}
+      containers:
+        - name: dbmigrator
+          image: {{ .Values.dbmigrator.job.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          env:
+            - name: TERN_CONF
+              value: {{ .Values.configDir }}/tern.conf
+          volumeMounts:
+            - name: dbmigrator-config
+              mountPath: {{ .Values.configDir }}
+              readOnly: true
+          command: ["./migrate.sh"]
+      volumes:
+        - name: dbmigrator-config
+          secret:
+            secretName: {{ include "chart.resourceNamePrefix" . }}dbmigrator-config

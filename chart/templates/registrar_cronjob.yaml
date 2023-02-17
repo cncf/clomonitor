@@ -21,27 +21,19 @@ spec:
         {{- end }}
           restartPolicy: Never
           initContainers:
-          - name: check-db-ready
-            image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
-            imagePullPolicy: {{ .Values.pullPolicy }}
-            env:
-              - name: PGHOST
-                value: {{ default (printf "%s-postgresql.%s" .Release.Name .Release.Namespace) .Values.db.host }}
-              - name: PGPORT
-                value: "{{ .Values.db.port }}"
-            command: ['sh', '-c', 'until pg_isready; do echo waiting for database; sleep 2; done;']
+            - {{- include "chart.checkDbIsReadyInitContainer" . | nindent 14 }}
           containers:
-          - name: registrar
-            image: {{ .Values.registrar.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
-            imagePullPolicy: {{ .Values.pullPolicy }}
-            resources:
-              {{- toYaml .Values.registrar.cronjob.resources | nindent 14 }}
-            volumeMounts:
-            - name: registrar-config
-              mountPath: {{ .Values.configDir | quote }}
-              readOnly: true
-            command: ['clomonitor-registrar', '-c', '{{ .Values.configDir }}/registrar.yaml']
+            - name: registrar
+              image: {{ .Values.registrar.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
+              imagePullPolicy: {{ .Values.pullPolicy }}
+              resources:
+                {{- toYaml .Values.registrar.cronjob.resources | nindent 16 }}
+              volumeMounts:
+                - name: registrar-config
+                  mountPath: {{ .Values.configDir | quote }}
+                  readOnly: true
+              command: ['clomonitor-registrar', '-c', '{{ .Values.configDir }}/registrar.yaml']
           volumes:
-          - name: registrar-config
-            secret:
-              secretName: {{ include "chart.resourceNamePrefix" . }}registrar-config
+            - name: registrar-config
+              secret:
+                secretName: {{ include "chart.resourceNamePrefix" . }}registrar-config

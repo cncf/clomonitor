@@ -147,7 +147,7 @@ async fn flusher(db: DynDB, mut batches_rx: mpsc::Receiver<Batch>) {
 
         // Write data to database
         if let Err(err) = db.update_projects_views(data).await {
-            error!("error writing projects views to database: {:#?}", err);
+            error!(?err, "error writing projects views to database");
         }
     }
 }

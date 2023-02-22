@@ -29,8 +29,9 @@ pub(crate) struct Repository {
 }
 
 /// Track all repositories registered in the database.
+#[instrument(skip_all, err)]
 pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter) -> Result<()> {
-    info!("tracker started");
+    info!("started");
 
     // Setup GitHub tokens pool
     let gh_tokens = cfg.get::<Vec<String>>("creds.githubTokens")?;
@@ -45,8 +46,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
     debug!("getting repositories");
     let repositories = db.repositories().await?;
     if repositories.is_empty() {
-        info!("no repositories found");
-        info!("tracker finished");
+        info!("no repositories found, finished");
         return Ok(());
     }
 
@@ -58,7 +58,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
             let git = git.clone();
             let linter = linter.clone();
             let github_token = gh_tokens_pool.get().await.expect("token -when available-");
-            let repository_id = repository.repository_id;
+            let url = repository.url.clone();
 
             tokio::spawn(async move {
                 match timeout(
@@ -70,11 +70,11 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
                     Ok(result) => match result {
                         Ok(()) => {}
                         Err(err) => {
-                            error!("error tracking repository {}: {:#}", repository_id, err)
+                            error!(url, ?err, "error tracking")
                         }
                     },
                     Err(err) => {
-                        warn!("timeout tracking repository {}: {}", repository_id, err)
+                        warn!(url, ?err, "timeout tracking")
                     }
                 }
             })
@@ -106,18 +106,20 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
             .json()
             .await?;
         debug!(
-            "token [{}] github rate limit info: [rate: {}] [graphql: {}]",
-            i, response["rate"], response["resources"]["graphql"]
+            token = i,
+            rate = %response["rate"],
+            graphql = %response["resources"]["graphql"],
+            "token github rate limit info"
         );
     }
 
-    info!("tracker finished");
+    info!("finished");
     result
 }
 
 /// Track repository if it has changed since the last time it was tracked.
 /// This involves cloning the repository, linting it and storing the results.
-#[instrument(fields(repository_id = %repository.repository_id), skip_all, err)]
+#[instrument(fields(url = repository.url), skip_all, err)]
 async fn track_repository(
     db: DynDB,
     git: DynGit,
@@ -155,7 +157,7 @@ async fn track_repository(
     let report = match linter.lint(&input).await {
         Ok(report) => Some(report),
         Err(err) => {
-            warn!("error linting repository: {:#}", err);
+            warn!(?err, "error linting repository");
             errors = Some(format!("error linting repository: {err:#}"));
             None
         }
@@ -171,7 +173,7 @@ async fn track_repository(
     )
     .await?;
 
-    debug!("completed in {}s", start.elapsed().as_secs());
+    debug!(duration_secs = start.elapsed().as_secs(), "completed");
     Ok(())
 }
 

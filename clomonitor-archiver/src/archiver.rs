@@ -47,7 +47,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
             db.store_project_snapshot(project_id, data)
                 .await
                 .context("error storing snapshot")?;
-            debug!("snapshot [{}] stored", today);
+            debug!(date = %today, "snapshot stored");
         }
     }
 
@@ -58,7 +58,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
             db.delete_project_snapshot(project_id, snapshot)
                 .await
                 .context(format!("error deleting snapshot {snapshot}"))?;
-            debug!("snapshot [{}] deleted", snapshot);
+            debug!(date = %snapshot, "snapshot deleted");
         }
     }
 
@@ -87,7 +87,7 @@ async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
             db.store_stats_snapshot(foundation, data)
                 .await
                 .context("error storing snapshot")?;
-            debug!("snapshot [{}] stored", today);
+            debug!(date = %today, "snapshot stored");
         }
     }
 
@@ -98,7 +98,7 @@ async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
             db.delete_stats_snapshot(foundation, snapshot)
                 .await
                 .context(format!("error deleting snapshot {snapshot}"))?;
-            debug!("snapshot [{}] deleted", snapshot);
+            debug!(date = %snapshot, "snapshot deleted");
         }
     }
 

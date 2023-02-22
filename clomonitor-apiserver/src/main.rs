@@ -79,7 +79,7 @@ async fn main() -> Result<()> {
     let router = router::setup(cfg.clone(), db, vt.clone())?;
     let addr: SocketAddr = cfg.get_string("apiserver.addr")?.parse()?;
     info!("apiserver started");
-    info!("listening on {}", addr);
+    info!(%addr, "listening");
     axum::Server::bind(&addr)
         .serve(router.into_make_service())
         .with_graceful_shutdown(shutdown_signal())

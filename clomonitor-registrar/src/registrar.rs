@@ -141,9 +141,9 @@ async fn process_foundation(
         }
 
         // Register project
-        debug!("registering project {}", project.name);
+        debug!(project = project.name, "registering");
         if let Err(err) = db.register_project(foundation_id, project).await {
-            error!("error registering project {}: {}", project.name, err);
+            error!(project = project.name, ?err, "error registering");
         }
     }
 
@@ -151,15 +151,15 @@ async fn process_foundation(
     if !projects_available.is_empty() {
         for name in projects_registered.keys() {
             if !projects_available.contains_key(name) {
-                debug!("unregistering project {}", name);
+                debug!(project = name, "unregistering");
                 if let Err(err) = db.unregister_project(foundation_id, name).await {
-                    error!("error unregistering project {}: {}", name, err);
+                    error!(project = name, ?err, "error unregistering");
                 };
             }
         }
     }
 
-    debug!("completed in {}s", start.elapsed().as_secs());
+    debug!(duration_secs = start.elapsed().as_secs(), "completed");
     Ok(())
 }
 

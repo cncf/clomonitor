@@ -27,7 +27,7 @@ pub(crate) async fn run(db: DynDB) -> Result<()> {
 
 /// Process project provided, generating a snapshot for the current day when
 /// needed and cleaning up the ones no longer needed.
-#[instrument(fields(project_id = project_id.to_string()), skip_all, err)]
+#[instrument(fields(project_id = %project_id), skip_all, err)]
 async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
     // Get project's snapshots
     let snapshots = db

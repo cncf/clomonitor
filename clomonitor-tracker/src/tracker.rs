@@ -70,11 +70,11 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
                     Ok(result) => match result {
                         Ok(()) => {}
                         Err(err) => {
-                            error!(url, ?err, "error tracking")
+                            error!(?err, url, "error tracking")
                         }
                     },
                     Err(err) => {
-                        warn!(url, ?err, "timeout tracking")
+                        warn!(?err, url, "timeout tracking")
                     }
                 }
             })

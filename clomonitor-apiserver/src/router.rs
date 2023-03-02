@@ -2,7 +2,7 @@ use crate::{db::DynDB, handlers::*, middleware::metrics_collector, views::DynVT}
 use anyhow::Result;
 use axum::{
     extract::FromRef,
-    http::{header::CACHE_CONTROL, HeaderValue, StatusCode},
+    http::{header::CACHE_CONTROL, HeaderValue},
     middleware,
     routing::{get, get_service, post},
     Router,
@@ -12,8 +12,8 @@ use std::{path::Path, sync::Arc};
 use tera::Tera;
 use tower::ServiceBuilder;
 use tower_http::{
-    auth::RequireAuthorizationLayer, services::ServeDir, set_header::SetResponseHeader,
-    trace::TraceLayer,
+    services::ServeDir, set_header::SetResponseHeader, trace::TraceLayer,
+    validate_request::ValidateRequestHeaderLayer,
 };
 
 /// Static files cache duration.
@@ -33,14 +33,6 @@ struct RouterState {
 
 /// Setup API server router.
 pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
-    // Setup error handler
-    let error_handler = |err: std::io::Error| async move {
-        (
-            StatusCode::INTERNAL_SERVER_ERROR,
-            format!("internal error: {err}"),
-        )
-    };
-
     // Setup some paths
     let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
@@ -89,8 +81,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
                 ServeDir::new(docs_path),
                 CACHE_CONTROL,
                 HeaderValue::try_from(format!("max-age={DOCS_CACHE_MAX_AGE}"))?,
-            ))
-            .handle_error(error_handler),
+            )),
         )
         .nest_service(
             "/static",
@@ -98,8 +89,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
                 ServeDir::new(static_path),
                 CACHE_CONTROL,
                 HeaderValue::try_from(format!("max-age={STATIC_CACHE_MAX_AGE}"))?,
-            ))
-            .handle_error(error_handler),
+            )),
         )
         .fallback(index)
         .layer(
@@ -118,7 +108,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     if cfg.get_bool("apiserver.basicAuth.enabled").unwrap_or(false) {
         let username = cfg.get_string("apiserver.basicAuth.username")?;
         let password = cfg.get_string("apiserver.basicAuth.password")?;
-        router = router.layer(RequireAuthorizationLayer::basic(&username, &password));
+        router = router.layer(ValidateRequestHeaderLayer::basic(&username, &password));
     }
 
     Ok(router)
@@ -135,7 +125,7 @@ mod tests {
         body::Body,
         http::{
             header::{CACHE_CONTROL, CONTENT_TYPE},
-            Request,
+            Request, StatusCode,
         },
     };
     use clomonitor_core::{linter::*, score::Score};

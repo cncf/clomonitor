@@ -100,7 +100,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB) -> Result<()> {
 /// in the database and existing ones which have changed will be updated. When
 /// a project is removed from the data file, it'll be removed from the database
 /// as well.
-#[instrument(fields(foundation_id = foundation.foundation_id), skip_all, err)]
+#[instrument(fields(foundation = foundation.foundation_id), skip_all, err)]
 async fn process_foundation(
     db: DynDB,
     http_client: reqwest::Client,
@@ -143,7 +143,7 @@ async fn process_foundation(
         // Register project
         debug!(project = project.name, "registering");
         if let Err(err) = db.register_project(foundation_id, project).await {
-            error!(project = project.name, ?err, "error registering");
+            error!(?err, project = project.name, "error registering");
         }
     }
 
@@ -153,7 +153,7 @@ async fn process_foundation(
             if !projects_available.contains_key(name) {
                 debug!(project = name, "unregistering");
                 if let Err(err) = db.unregister_project(foundation_id, name).await {
-                    error!(project = name, ?err, "error unregistering");
+                    error!(?err, project = name, "error unregistering");
                 };
             }
         }
@@ -204,58 +204,73 @@ mod tests {
     async fn error_fetching_foundation_data_file() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
 
-        let data_file_req = mockito::mock("GET", "/").with_status(404).create();
+        let data_file_req = server
+            .mock("GET", "/")
+            .with_status(404)
+            .create_async()
+            .await;
 
         let result = run(&cfg, Arc::new(db)).await;
         assert_eq!(
             result.unwrap_err().root_cause().to_string(),
             "unexpected status code getting data file: 404 Not Found"
         );
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     #[tokio::test]
     async fn invalid_foundation_data_file() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
 
-        let data_file_req = mockito::mock("GET", "/")
+        let data_file_req = server
+            .mock("GET", "/")
             .with_status(200)
             .with_body("{invalid")
-            .create();
+            .create_async()
+            .await;
 
         let result = run(&cfg, Arc::new(db)).await;
         assert_eq!(
             result.unwrap_err().root_cause().to_string(),
             "invalid type: map, expected a sequence"
         );
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     #[tokio::test]
     async fn error_getting_projects_registered_in_database() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
         db.expect_foundation_projects()
@@ -263,25 +278,30 @@ mod tests {
             .times(1)
             .returning(|_| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
-        let data_file_req = mockito::mock("GET", "/")
+        let data_file_req = server
+            .mock("GET", "/")
             .with_status(200)
             .with_body("")
-            .create();
+            .create_async()
+            .await;
 
         let result = run(&cfg, Arc::new(db)).await;
         assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     #[tokio::test]
     async fn no_need_to_register_registered_project_same_digest() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
         db.expect_foundation_projects()
@@ -299,24 +319,29 @@ mod tests {
                 Box::pin(future::ready(Ok(projects_registered)))
             });
 
-        let data_file_req = mockito::mock("GET", "/")
+        let data_file_req = server
+            .mock("GET", "/")
             .with_status(200)
             .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
-            .create();
+            .create_async()
+            .await;
 
         run(&cfg, Arc::new(db)).await.unwrap();
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     #[tokio::test]
     async fn register_project_not_registered_yet() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
         db.expect_foundation_projects()
@@ -348,24 +373,29 @@ mod tests {
             .times(1)
             .returning(|_, _| Box::pin(future::ready(Ok(()))));
 
-        let data_file_req = mockito::mock("GET", "/")
+        let data_file_req = server
+            .mock("GET", "/")
             .with_status(200)
             .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
-            .create();
+            .create_async()
+            .await;
 
         run(&cfg, Arc::new(db)).await.unwrap();
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     #[tokio::test]
     async fn unregister_registered_project() {
         let cfg = setup_test_config();
 
+        let mut server = mockito::Server::new_async().await;
+        let url = server.url();
+
         let mut db = MockDB::new();
-        db.expect_foundations().times(1).returning(|| {
+        db.expect_foundations().times(1).returning(move || {
             Box::pin(future::ready(Ok(vec![Foundation {
                 foundation_id: FOUNDATION.to_string(),
-                data_url: mockito::server_url(),
+                data_url: url.clone(),
             }])))
         });
         db.expect_foundation_projects()
@@ -388,13 +418,15 @@ mod tests {
             .times(1)
             .returning(|_, _| Box::pin(future::ready(Ok(()))));
 
-        let data_file_req = mockito::mock("GET", "/")
+        let data_file_req = server
+            .mock("GET", "/")
             .with_status(200)
             .with_body_from_file(format!("{TESTDATA_PATH}/cncf.yaml"))
-            .create();
+            .create_async()
+            .await;
 
         run(&cfg, Arc::new(db)).await.unwrap();
-        data_file_req.assert();
+        data_file_req.assert_async().await;
     }
 
     fn setup_test_config() -> Config {

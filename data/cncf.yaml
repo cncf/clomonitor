@@ -3,7 +3,7 @@
   description: Aeraki Mesh allows you to manage any layer-7 traffic in a service mesh
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/aerakimesh/icon/light/aerakimesh-icon-light.svg
-  devstats_url: https://aerakimesh.devststats.cncf.io/
+  devstats_url: https://aerakimesh.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
   repositories:
@@ -1468,7 +1468,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openkruise/icon/color/openkruise-icon-color.svg
   devstats_url: https://openkruise.devstats.cncf.io/
   accepted_at: "2020-11-10"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: kruise
       url: https://github.com/openkruise/kruise

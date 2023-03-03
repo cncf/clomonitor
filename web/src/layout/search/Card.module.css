@@ -51,7 +51,7 @@
 
 .wrapperCalendar:hover .calendarIcon,
 .link:hover {
-  color: var(--rm-tertiary) !important;
+  color: var(--clo-tertiary) !important;
 }
 
 .legend {
@@ -117,8 +117,8 @@
 
 @media (hover: hover) {
   .card:hover {
-    border-color: var(--rm-primary);
-    box-shadow: 0px 0px 5px 0px var(--rm-primary-50);
+    border-color: var(--clo-primary);
+    box-shadow: 0px 0px 5px 0px var(--clo-primary-50);
   }
 }
 

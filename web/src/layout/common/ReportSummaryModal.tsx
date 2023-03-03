@@ -1,12 +1,9 @@
-import { useState } from 'react';
+import { CodeBlock, Foundation, Loading, Modal, Tabs } from 'clo-ui';
+import { useContext, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 
-import { Foundation } from '../../types';
-import CodeBlock from './CodeBlock';
-import Loading from './Loading';
-import Modal from './Modal';
+import { AppContext } from '../../context/AppContextProvider';
 import styles from './ReportSummaryModal.module.css';
-import Tabs from './Tabs';
 
 interface OpenModalStatus {
   status: boolean;
@@ -35,6 +32,8 @@ interface Props {
 }
 
 const ReportSummaryModal = (props: Props) => {
+  const { ctx } = useContext(AppContext);
+  const { effective } = ctx.prefs.theme;
   const origin = window.location.origin;
   const [theme, setTheme] = useState<string>(DEFAULT_THEME);
   const image = `${origin}/api/projects/${props.foundation}/${props.projectName}/report-summary?theme=${theme}`;
@@ -105,6 +104,7 @@ const ReportSummaryModal = (props: Props) => {
                     language="markdown"
                     content={markdownLink}
                     label="Copy report summary markdown link to clipboard"
+                    effective_theme={effective}
                     withCopyBtn
                   />
                 ),
@@ -118,6 +118,7 @@ const ReportSummaryModal = (props: Props) => {
                     language="asciidoc"
                     content={asciiLink}
                     label="Copy report summary Ascii link to clipboard"
+                    effective_theme={effective}
                     withCopyBtn
                   />
                 ),
@@ -130,6 +131,7 @@ const ReportSummaryModal = (props: Props) => {
                     language="html"
                     content={htmlLink}
                     label="Copy report summary html link to clipboard"
+                    effective_theme={effective}
                     withCopyBtn
                   />
                 ),

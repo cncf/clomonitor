@@ -1,3 +1,4 @@
+import { ExternalLink, Foundation, Maturity, SampleQuery } from 'clo-ui';
 import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
@@ -25,20 +26,18 @@ import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { MdOutlineInventory, MdPreview } from 'react-icons/md';
 import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
 
-import ExternalLink from './layout/common/ExternalLink';
 import QualityDot from './layout/common/QualityDot';
 import {
   ChecksPerCategory,
   FilterKind,
   FiltersSection,
-  Foundation,
-  Maturity,
   Rating,
   ReportOption,
   ReportOptionInfo,
   ScoreType,
   SortBy,
   SortDirection,
+  SortOption,
 } from './types';
 
 export const DEFAULT_SORT_BY = SortBy.Name;
@@ -91,6 +90,96 @@ export const FILTERS: FiltersSection[] = [
         decorator: <QualityDot level={4} />,
       },
     ],
+  },
+];
+
+export const SORT_OPTIONS: SortOption[] = [
+  {
+    label: 'Alphabetically (A-Z)',
+    by: SortBy.Name,
+    direction: SortDirection.ASC,
+  },
+  {
+    label: 'Alphabetically (Z-A)',
+    by: SortBy.Name,
+    direction: SortDirection.DESC,
+  },
+  {
+    label: 'Score (highest first)',
+    by: SortBy.Score,
+    direction: SortDirection.DESC,
+  },
+  {
+    label: 'Score (lowest first)',
+    by: SortBy.Score,
+    direction: SortDirection.ASC,
+  },
+];
+
+export const QUERIES: SampleQuery[] = [
+  {
+    name: 'Only graduated projects',
+    filters: {
+      pageNumber: 1,
+      filters: { maturity: ['graduated'] },
+    },
+  },
+  {
+    name: 'Only incubating projects',
+    filters: {
+      pageNumber: 1,
+      filters: { maturity: ['incubating'] },
+    },
+  },
+  {
+    name: 'Only sandbox projects',
+    filters: {
+      pageNumber: 1,
+      filters: { maturity: ['sandbox'] },
+    },
+  },
+  {
+    name: 'Projects with A rating',
+    filters: {
+      pageNumber: 1,
+      filters: { rating: ['a'] },
+    },
+  },
+  {
+    name: 'Projects with B rating',
+    filters: {
+      pageNumber: 1,
+      filters: { rating: ['b'] },
+    },
+  },
+  {
+    name: 'Projects with C rating',
+    filters: {
+      pageNumber: 1,
+      filters: { rating: ['c'] },
+    },
+  },
+  {
+    name: 'Projects with D rating',
+    filters: {
+      pageNumber: 1,
+      filters: { rating: ['d'] },
+    },
+  },
+  {
+    name: 'Projects accepted by CNCF',
+    filters: {
+      pageNumber: 1,
+      filters: { foundation: ['cncf'] },
+    },
+  },
+
+  {
+    name: 'Projects accepted by LF AI & Data',
+    filters: {
+      pageNumber: 1,
+      filters: { category: ['lfaidata'] },
+    },
   },
 ];
 

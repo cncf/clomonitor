@@ -1,8 +1,7 @@
+import { getCategoryColor, roundScoreValue } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import getCategoryColor from '../../utils/getCategoryColor';
-import roundScoreValue from '../../utils/roundScoreValue';
 import styles from './CategoryProgressbar.module.css';
 
 interface Props {
@@ -63,7 +62,7 @@ const CategoryProgressbar = (props: Props) => {
               className={`position-absolute start-0 top-0 bottom-0 ${styles.line}`}
               style={{
                 width: `${props.value || 1}%`,
-                backgroundColor: `var(--rm-${color})`,
+                backgroundColor: `var(--clo-${color})`,
               }}
             />
           )}

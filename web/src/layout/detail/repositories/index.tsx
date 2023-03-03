@@ -1,3 +1,5 @@
+import { CheckSet, CheckSetBadge, ExternalLink, RoundScore } from 'clo-ui';
+import { scrollToTop } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import moment from 'moment';
 import { useEffect, useRef, useState } from 'react';
@@ -7,13 +9,9 @@ import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CATEGORY_ICONS } from '../../../data';
-import { CheckSet, Repository, ScoreType } from '../../../types';
+import { Repository, ScoreType } from '../../../types';
 import getCheckSets from '../../../utils/getCheckSets';
-import scrollToTop from '../../../utils/scrollToTop';
 import sortRepos from '../../../utils/sortRepos';
-import CheckSetBadge from '../../common/badges/CheckSetBadge';
-import ExternalLink from '../../common/ExternalLink';
-import RoundScore from '../../common/RoundScore';
 import Row from '../report/Row';
 import styles from './RepositoriesList.module.css';
 import RepositoryDropdown from './RepositoryDropdown';

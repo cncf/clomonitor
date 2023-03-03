@@ -35,6 +35,10 @@
   padding: 1.5rem 2rem;
 }
 
+.statsWrapper {
+  width: calc(100% - 44px - 3rem);
+}
+
 .timeline {
   margin-top: 124px;
 }
@@ -42,7 +46,7 @@
 .dot1,
 .dot2,
 .dot3 {
-  background: var(--rm-primary);
+  background: var(--clo-primary);
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -93,7 +97,7 @@
 
 :global(.apexcharts-tooltip) {
   background-color: var(--bs-white) !important;
-  border-color: var(--rm-secondary-900) !important;
+  border-color: var(--clo-secondary-900) !important;
   color: var(--font-color) !important;
 }
 
@@ -105,18 +109,18 @@
 
 :global(.apexcharts-tooltip-title) {
   background-color: var(--color-black-5) !important;
-  border-color: var(--rm-secondary-900) !important;
+  border-color: var(--clo-secondary-900) !important;
 }
 
 :global(.apexcharts-xaxistooltip) {
   background-color: var(--bs-white) !important;
   color: var(--font-color) !important;
-  border-color: var(--rm-secondary-900) !important;
+  border-color: var(--clo-secondary-900) !important;
 }
 
 :global(.apexcharts-xaxistooltip)::before,
 :global(.apexcharts-xaxistooltip)::after {
-  border-bottom-color: var(--rm-secondary-900) !important;
+  border-bottom-color: var(--clo-secondary-900) !important;
 }
 
 :global(.apexcharts-canvas) {
@@ -145,7 +149,17 @@
   right: -30px;
 }
 
+@media only screen and (max-width: 991.98px) {
+  .statsWrapper {
+    width: calc(100% - 44px - 1.5rem);
+  }
+}
+
 @media only screen and (max-width: 575.98px) {
+  .statsWrapper {
+    width: 100%;
+  }
+
   .loadingWrapper {
     top: 172px !important;
   }

@@ -140,42 +140,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -283,42 +279,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -411,42 +403,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -545,42 +533,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -673,42 +657,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -805,42 +785,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -940,42 +916,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -1074,42 +1046,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -1202,42 +1170,38 @@ exports[`Row creates snapshot 1`] = `
                             target="_blank"
                           >
                             <div
-                              class="d-flex flex-row align-items-baseline"
+                              class="d-flex flex-row align-items-center w-100"
                             >
-                              <div
-                                class="d-flex flex-row align-items-center w-100"
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <div>
-                                  [check docs
-                                </div>
-                                <svg
-                                  class="ms-1 extraMiniIcon"
-                                  fill="none"
-                                  height="1em"
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  viewBox="0 0 24 24"
-                                  width="1em"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                                  />
-                                  <polyline
-                                    points="15 3 21 3 21 9"
-                                  />
-                                  <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                  />
-                                </svg>
-                                <div>
-                                  ]
-                                </div>
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
                               </div>
                             </div>
                           </a>
@@ -1266,40 +1230,36 @@ exports[`Row creates snapshot 1`] = `
             target="_blank"
           >
             <div
-              class="d-flex flex-row align-items-baseline"
+              class="d-flex flex-row align-items-center"
             >
-              <div
-                class="d-flex flex-row align-items-center"
-              >
-                <div>
-                  Checks reference documentation
-                </div>
-                <svg
-                  class="ms-1 ms-md-2 position-relative extIcon"
-                  fill="none"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                  />
-                  <polyline
-                    points="15 3 21 3 21 9"
-                  />
-                  <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                </svg>
+              <div>
+                Checks reference documentation
               </div>
+              <svg
+                class="ms-1 ms-md-2 position-relative extIcon"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline
+                  points="15 3 21 3 21 9"
+                />
+                <line
+                  x1="10"
+                  x2="21"
+                  y1="14"
+                  y2="3"
+                />
+              </svg>
             </div>
           </a>
         </li>

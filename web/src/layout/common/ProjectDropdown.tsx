@@ -1,9 +1,8 @@
 import classNames from 'classnames';
+import { Foundation, useOutsideClick } from 'clo-ui';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 
-import useOutsideClick from '../../hooks/useOutsideClick';
-import { Foundation } from '../../types';
 import BadgeModal from './BadgeModal';
 import styles from './ProjectDropdown.module.css';
 import ReportSummaryModal from './ReportSummaryModal';

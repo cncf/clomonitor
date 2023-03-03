@@ -53,6 +53,6 @@ describe('Footer', () => {
       </Router>
     );
 
-    expect(screen.getByRole('contentinfo')).toHaveClass('invisibleFooter');
+    expect(screen.getByRole('contentinfo')).toHaveClass('opacity-0');
   });
 });

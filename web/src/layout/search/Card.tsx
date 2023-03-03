@@ -1,17 +1,22 @@
+import {
+  Card as CardWrapper,
+  ElementWithTooltip,
+  ExternalLink,
+  FoundationBadge,
+  Image,
+  MaturityBadge,
+  RoundScore,
+} from 'clo-ui';
 import { isUndefined } from 'lodash';
 import moment from 'moment';
+import { useContext } from 'react';
 import { FaChartBar } from 'react-icons/fa';
 import { GoCalendar } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
 
+import { AppContext } from '../../context/AppContextProvider';
 import { Project } from '../../types';
-import FoundationBadge from '../common/badges/FoundationBadge';
-import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
-import ElementWithTooltip from '../common/ElementWithTooltip';
-import ExternalLink from '../common/ExternalLink';
-import Image from '../common/Image';
-import RoundScore from '../common/RoundScore';
 import styles from './Card.module.css';
 import RepositorySection from './RepositorySection';
 import WebsiteSection from './WebsiteSection';
@@ -24,19 +29,22 @@ interface Props {
 
 const Card = (props: Props) => {
   const navigate = useNavigate();
+  const { ctx } = useContext(AppContext);
+  const { effective } = ctx.prefs.theme;
 
   return (
-    <div className={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`} role="listitem">
-      <div
-        className={`card rounded-0 p-0 p-md-3 p-lg-0 p-xl-3 h-100 mw-100 d-flex text-reset text-decoration-none ${styles.card} card`}
-        role="button"
-        onClick={() => {
-          props.saveScrollPosition();
-          navigate(`/projects/${props.project.foundation}/${props.project.name}`, {
-            state: { currentSearch: props.currentQueryString },
-          });
-        }}
-      >
+    <CardWrapper
+      className={`p-md-3 p-lg-0 p-xl-3 ${styles.card} card`}
+      wrapperClassName={`col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 ${styles.cardWrapper}`}
+      onClick={() => {
+        props.saveScrollPosition();
+        navigate(`/projects/${props.project.foundation}/${props.project.name}`, {
+          state: { currentSearch: props.currentQueryString },
+        });
+      }}
+      hoverable
+    >
+      <>
         <div className="d-flex flex-column flex-sm-row align-items-center">
           <div
             className={`d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center ${styles.imageWrapper}`}
@@ -45,6 +53,7 @@ const Card = (props: Props) => {
               alt={`${props.project.display_name || props.project.name} logo`}
               url={props.project.logo_url}
               dark_url={props.project.logo_dark_url}
+              effective_theme={effective}
             />
           </div>
           <div className="flex-grow-1 ms-0 ms-md-3 ms-lg-0 ms-xl-3 w-100 truncateWrapper">
@@ -57,6 +66,7 @@ const Card = (props: Props) => {
                     alt={`${props.project.display_name || props.project.name} logo`}
                     url={props.project.logo_url}
                     dark_url={props.project.logo_dark_url}
+                    effective_theme={effective}
                   />
                 </div>
                 <div className="d-flex flex-column w-100 truncateWrapper">
@@ -131,8 +141,8 @@ const Card = (props: Props) => {
         <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
           Updated {moment.unix(props.project.updated_at).fromNow()}
         </div>
-      </div>
-    </div>
+      </>
+    </CardWrapper>
   );
 };
 

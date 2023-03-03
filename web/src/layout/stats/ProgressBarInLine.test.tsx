@@ -32,7 +32,7 @@ describe('ProgressBarInLine', () => {
 
       const progressBar = screen.getByRole('progressbar');
       expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--rm-green)' });
+      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--clo-green)' });
       expect(progressBar).toHaveStyle({ width: '75%' });
     });
 
@@ -43,7 +43,7 @@ describe('ProgressBarInLine', () => {
 
       const progressBar = screen.getByRole('progressbar');
       expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--rm-red)' });
+      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--clo-red)' });
       expect(progressBar).toHaveStyle({ width: '20%' });
     });
 
@@ -54,7 +54,7 @@ describe('ProgressBarInLine', () => {
 
       const progressBar = screen.getByRole('progressbar');
       expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--rm-orange)' });
+      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--clo-orange)' });
       expect(progressBar).toHaveStyle({ width: '40%' });
     });
 
@@ -65,7 +65,7 @@ describe('ProgressBarInLine', () => {
 
       const progressBar = screen.getByRole('progressbar');
       expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--rm-yellow)' });
+      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--clo-yellow)' });
       expect(progressBar).toHaveStyle({ width: '60%' });
     });
 
@@ -76,7 +76,7 @@ describe('ProgressBarInLine', () => {
 
       const progressBar = screen.getByRole('progressbar');
       expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--rm-green)' });
+      expect(progressBar).toHaveStyle({ backgroundColor: 'var(--clo-green)' });
       expect(progressBar).toHaveStyle({ width: '80%' });
     });
   });

@@ -1,3 +1,4 @@
+import { CheckSetBadge } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -5,7 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CATEGORY_ICONS } from '../../../data';
 import { Repository, ScoreType } from '../../../types';
 import getCheckSets from '../../../utils/getCheckSets';
-import CheckSetBadge from '../../common/badges/CheckSetBadge';
 import BadgeCell from './BadgeCell';
 import styles from './Summary.module.css';
 

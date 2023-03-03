@@ -1,12 +1,9 @@
+import { detectActiveThemeMode, getMetaTag, useSystemThemeMode } from 'clo-ui';
 import { isNull } from 'lodash';
 import { createContext, Dispatch, useContext, useEffect, useReducer, useState } from 'react';
 
-import useSystemThemeMode from '../hooks/useSystemThemeMode';
 import { Prefs, SortBy, SortDirection } from '../types';
-import detectActiveThemeMode from '../utils/detectActiveThemeMode';
-import getMetaTag from '../utils/getMetaTag';
 import lsStorage from '../utils/localStoragePreferences';
-import themeBuilder from '../utils/themeBuilder';
 
 interface AppState {
   prefs: Prefs;
@@ -141,7 +138,6 @@ function AppContextProvider(props: Props) {
       activeProfilePrefs.theme.configured === 'automatic'
         ? detectActiveThemeMode()
         : activeProfilePrefs.theme.configured || activeProfilePrefs.theme.effective; // Use effective theme if configured is undefined
-    themeBuilder.init();
     updateActiveStyleSheet(theme);
     setActiveInitialTheme(theme);
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */

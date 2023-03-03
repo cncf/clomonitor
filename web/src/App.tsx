@@ -1,11 +1,11 @@
-import './styles/default.scss';
+import 'clo-ui/dist/styles/xxxl_grid.scss';
 
+import { AlertController } from 'clo-ui';
 import { useState } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom';
 
 import { AppContextProvider } from './context/AppContextProvider';
 import Layout from './layout';
-import AlertController from './layout/common/AlertController';
 import Detail from './layout/detail';
 import NotFound from './layout/notFound';
 import Search from './layout/search';

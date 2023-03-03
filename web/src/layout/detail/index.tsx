@@ -1,29 +1,32 @@
 import classNames from 'classnames';
+import {
+  CategoryBadge,
+  ExternalLink,
+  FoundationBadge,
+  Image,
+  Loading,
+  MaturityBadge,
+  NoData,
+  RoundScore,
+  scrollToTop,
+  SubNavbar,
+  Timeline,
+  useScrollRestorationFix,
+} from 'clo-ui';
 import { isNull, isUndefined } from 'lodash';
 import moment from 'moment';
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from 'react';
 import { GoCalendar } from 'react-icons/go';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoBarChart } from 'react-icons/io5';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import API from '../../api';
-import useScrollRestorationFix from '../../hooks/useScrollRestorationFix';
+import { AppContext } from '../../context/AppContextProvider';
 import { ProjectDetail } from '../../types';
-import scrollToTop from '../../utils/scrollToTop';
 import updateMetaIndex from '../../utils/updateMetaIndex';
-import CartegoryBadge from '../common/badges/CategoryBadge';
-import FoundationBadge from '../common/badges/FoundationBadge';
-import MaturityBadge from '../common/badges/MaturityBadge';
 import CategoriesSummary from '../common/CategoriesSummary';
-import ExternalLink from '../common/ExternalLink';
-import Image from '../common/Image';
-import Loading from '../common/Loading';
-import NoData from '../common/NoData';
 import ProjectDropdown from '../common/ProjectDropdown';
-import RoundScore from '../common/RoundScore';
-import Timeline from '../common/timeline/Timeline';
-import SubNavbar from '../navigation/SubNavbar';
 import RepositorySection from '../search/RepositorySection';
 import WebsiteSection from '../search/WebsiteSection';
 import styles from './Detail.module.css';
@@ -38,6 +41,8 @@ const Detail = (props: Props) => {
   const location = useLocation();
   const currentState = location.state as { currentSearch?: string };
   const { project, foundation } = useParams();
+  const { ctx } = useContext(AppContext);
+  const { effective } = ctx.prefs.theme;
   const [detail, setDetail] = useState<ProjectDetail | null | undefined>();
   const [isLoadingProject, setIsLoadingProject] = useState<boolean>(false);
   const [activeDate, setActiveDate] = useState<string | undefined>();
@@ -112,6 +117,7 @@ const Detail = (props: Props) => {
 
   useEffect(() => {
     async function fetchSnapshot() {
+      scrollToTop(); // Go to top when a snapshot is fetched
       setIsLoadingProject(true);
       try {
         const projectDetail = await API.getProjectSnapshot(project!, foundation!, activeDate!);
@@ -188,6 +194,7 @@ const Detail = (props: Props) => {
                               alt={`${detail.display_name || detail.name} logo`}
                               url={detail.logo_url}
                               dark_url={detail.logo_dark_url}
+                              effective_theme={effective}
                             />
                           </div>
                           <div className="d-flex flex-column justify-content-between ms-3 ms-sm-4 truncateWrapper">
@@ -198,7 +205,7 @@ const Detail = (props: Props) => {
                             <div className="d-flex flex-row align-items-center my-2">
                               <FoundationBadge foundation={detail.foundation} />
                               <MaturityBadge maturityLevel={detail.maturity} className="d-none d-md-block ms-2" />
-                              <CartegoryBadge category={detail.category} className="d-none d-md-block ms-2" />
+                              <CategoryBadge category={detail.category} className="d-none d-md-block ms-2" />
                             </div>
 
                             <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>

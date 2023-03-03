@@ -1,8 +1,8 @@
 [data-theme='light'] {
-  --rm-secondary: #2a0552;
-  --rm-primary: #f0a;
-  --rm-secondary-900: #110222;
-  --rm-primary-50: rgba(225, 0, 170, 0.050);
+  --clo-secondary: #2a0552;
+  --clo-primary: #f0a;
+  --clo-secondary-900: #110222;
+  --clo-primary-50: rgba(225, 0, 170, 0.050);
 
   --color-font: #38383f;
   --body-bg: #fff;
@@ -12,7 +12,7 @@
   --secondary-font: #2a0552;
   --color-black-75: rgba(0,0,0,.075);
   --color-black-125: rgba(0,0,0,.125);
-  --rm-white: #fff;
+  --clo-white: #fff;
   --light-gray: #f8f9fa;
   --mid-gray: #f6f8fa;
   --border-table: #e9ecef;
@@ -22,10 +22,10 @@
 }
 
 [data-theme='dark'] {
-  --rm-secondary: #131216;
-  --rm-primary: #131216;
-  --rm-secondary-900: #0f0e11;
-  --rm-primary-50: rgba(255, 255, 255, 0.050);
+  --clo-secondary: #131216;
+  --clo-primary: #131216;
+  --clo-secondary-900: #0f0e11;
+  --clo-primary-50: rgba(255, 255, 255, 0.050);
 
   --color-font: #a3a3a6;
   --body-bg: #222529;
@@ -35,7 +35,7 @@
   --secondary-font: #cbd3da;
   --color-black-75: rgba(255,255,255,.075);
   --color-black-125: rgba(255,255,255,.125);
-  --rm-white: #000;
+  --clo-white: #000;
   --light-gray: #131216;
   --mid-gray: #131216;
   --border-table: #49494C;
@@ -62,7 +62,7 @@ code {
 
 .gdoc-header {
   font-size: 1rem;
-  background: var(--rm-secondary);
+  background: var(--clo-secondary);
   border: 0;
 }
 
@@ -80,7 +80,7 @@ code {
 }
 
 .gdoc-footer {
-  background-color: var(--rm-secondary-900);
+  background-color: var(--clo-secondary-900);
 }
 
 .gdoc-markdown a {
@@ -184,12 +184,12 @@ strong {
 }
 
 .gdoc-nav__list .gdoc-nav__entry:hover {
-  background-color: var(--rm-primary-50);
+  background-color: var(--clo-primary-50);
   text-decoration: none;
 }
 
 .gdoc-nav__entry.is-active {
-  background-color: var(--rm-primary-50);
+  background-color: var(--clo-primary-50);
   text-decoration: none;
 }
 
@@ -200,7 +200,7 @@ strong {
   bottom: 0;
   left: 0;
   width: 3px;
-  background-color: var(--rm-primary);
+  background-color: var(--clo-primary);
 }
 
 .gdoc-nav__icon {
@@ -236,7 +236,7 @@ strong {
 
 /* Search */
 .gdoc-search__input {
-  background-color: var(--rm-white);
+  background-color: var(--clo-white);
   border-color: var(--color-black-125);
 }
 
@@ -260,7 +260,7 @@ strong {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: var(--rm-white);
+  background-color: var(--clo-white);
   background-clip: padding-box;
   border: 1px solid var(--color-black-125);
   border-radius: .25rem;
@@ -293,7 +293,7 @@ strong {
 
 .gdoc-search__arrow::after {
   top: 1px;
-  border-bottom-color: var(--rm-white);
+  border-bottom-color: var(--clo-white);
 }
 
 .has-hits + .gdoc-search__arrow {

@@ -1,8 +1,8 @@
+import { useOutsideClick } from 'clo-ui';
 import { isEmpty, isEqual, isNil, omitBy } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-import useOutsideClick from '../../../hooks/useOutsideClick';
 import { AcceptedRangeKind } from '../../../types';
 import AcceptedDateBtn from './AcceptedDateBtn';
 import styles from './AcceptedDateRange.module.css';

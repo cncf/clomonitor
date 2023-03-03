@@ -1,3 +1,4 @@
+import { DropdownOnHover, ElementWithTooltip, ExternalLink } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useRef } from 'react';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
@@ -8,9 +9,6 @@ import ReactMarkdown from 'react-markdown';
 
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
-import DropdownOnHover from '../../common/DropdownOnHover';
-import ElementWithTooltip from '../../common/ElementWithTooltip';
-import ExternalLink from '../../common/ExternalLink';
 import styles from './OptionCell.module.css';
 
 interface Props {

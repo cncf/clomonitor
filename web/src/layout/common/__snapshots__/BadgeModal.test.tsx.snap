@@ -4,22 +4,22 @@ exports[`BadgeModal creates snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="modal-backdrop activeBackdrop"
+      class="modal-backdrop Modal-module_activeBackdrop__FOECF"
       data-testid="modalBackdrop"
     />
     <div
       aria-modal="true"
-      class="modal modal active d-block"
+      class="modal Modal-module_modal__aD7aP Modal-module_active__tFp3m d-block"
       role="dialog"
     >
       <div
         class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
       >
         <div
-          class="modal-content rounded-0 border border-3 mx-auto content"
+          class="modal-content rounded-0 border border-3 mx-auto Modal-module_content__dWO-B"
         >
           <div
-            class="modal-header rounded-0 d-flex flex-row align-items-center header"
+            class="modal-header rounded-0 d-flex flex-row align-items-center Modal-module_header__ILG9i"
           >
             <div
               class="modal-title h5 m-2 flex-grow-1"
@@ -40,14 +40,14 @@ exports[`BadgeModal creates snapshot 1`] = `
             >
               <div>
                 <ul
-                  class="nav nav-tabs tabs"
+                  class="nav nav-tabs Tabs-module_tabs__QzIkz"
                 >
                   <li
                     class="nav-item"
                   >
                     <button
                       aria-label="Open tab markdown"
-                      class="btn nav-item rounded-0 lightText btn active btn-secondary active"
+                      class="btn nav-item rounded-0 lightText Tabs-module_btn__Ifkmk active btn-secondary Tabs-module_active__PTNtG"
                     >
                       <span
                         class="d-none d-sm-block"
@@ -66,7 +66,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                   >
                     <button
                       aria-label="Open tab ascii"
-                      class="btn nav-item rounded-0 lightText btn"
+                      class="btn nav-item rounded-0 lightText Tabs-module_btn__Ifkmk"
                     >
                       <span
                         class="d-none d-sm-block"
@@ -97,7 +97,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                     />
                   </div>
                   <div
-                    class="d-flex flex-row align-items-center pb-2 codeBlock"
+                    class="d-flex flex-row align-items-center pb-2 CodeBlock-module_codeBlock__lPhMf"
                     data-testid="code"
                   >
                     <pre
@@ -141,7 +141,7 @@ exports[`BadgeModal creates snapshot 1`] = `
                     >
                       <button
                         aria-label="Copy badge markdown link to clipboard"
-                        class="btn btn-sm btn-primary rounded-0 btn"
+                        class="btn btn-sm btn-primary rounded-0 ButtonCopyToClipboard-module_btn__kHG6G"
                         type="button"
                       >
                         <div

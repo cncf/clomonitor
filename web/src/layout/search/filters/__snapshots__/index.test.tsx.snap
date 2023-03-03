@@ -26,7 +26,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-foundation-cncf"
         name="foundation"
         tabindex="0"
@@ -57,7 +57,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-foundation-lfaidata"
         name="foundation"
         tabindex="0"
@@ -99,7 +99,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-graduated"
         name="maturity"
         tabindex="0"
@@ -130,7 +130,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-incubating"
         name="maturity"
         tabindex="0"
@@ -161,7 +161,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-sandbox"
         name="maturity"
         tabindex="0"
@@ -203,7 +203,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-rating-a"
         name="rating"
         tabindex="0"
@@ -244,7 +244,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-rating-b"
         name="rating"
         tabindex="0"
@@ -285,7 +285,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-rating-c"
         name="rating"
         tabindex="0"
@@ -326,7 +326,7 @@ exports[`Filters creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-rating-d"
         name="rating"
         tabindex="0"

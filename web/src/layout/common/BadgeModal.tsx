@@ -1,7 +1,7 @@
-import { Foundation } from '../../types';
-import CodeBlock from './CodeBlock';
-import Modal from './Modal';
-import Tabs from './Tabs';
+import { CodeBlock, Foundation, Modal, Tabs } from 'clo-ui';
+import { useContext } from 'react';
+
+import { AppContext } from '../../context/AppContextProvider';
 
 interface OpenModalStatus {
   status: boolean;
@@ -16,6 +16,8 @@ interface Props {
 }
 
 const BadgeModal = (props: Props) => {
+  const { ctx } = useContext(AppContext);
+  const { effective } = ctx.prefs.theme;
   const origin = window.location.origin;
   const badgeImage = `https://img.shields.io/endpoint?url=${origin}/api/projects/${props.foundation}/${props.projectName}/badge`;
   const markdownLink = `[![CLOMonitor](${badgeImage})](${origin}/projects/${props.foundation}/${props.projectName})`;
@@ -43,6 +45,7 @@ const BadgeModal = (props: Props) => {
                     language="markdown"
                     content={markdownLink}
                     label="Copy badge markdown link to clipboard"
+                    effective_theme={effective}
                     withCopyBtn
                   />
                 </>
@@ -61,6 +64,7 @@ const BadgeModal = (props: Props) => {
                     language="asciidoc"
                     content={asciiLink}
                     label="Copy badge Ascii link to clipboard"
+                    effective_theme={effective}
                     withCopyBtn
                   />
                 </>

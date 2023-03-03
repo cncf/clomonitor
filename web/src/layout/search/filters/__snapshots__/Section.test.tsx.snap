@@ -17,7 +17,7 @@ exports[`Section creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-graduated"
         name="maturity"
         tabindex="0"
@@ -48,7 +48,7 @@ exports[`Section creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-incubating"
         name="maturity"
         tabindex="0"
@@ -79,7 +79,7 @@ exports[`Section creates snapshot 1`] = `
     >
       <input
         aria-checked="false"
-        class="form-check-input rounded-0 checkbox"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
         id="test-maturity-sandbox"
         name="maturity"
         tabindex="0"

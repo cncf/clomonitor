@@ -8,7 +8,7 @@ exports[`RepositorySection creates snapshot 1`] = `
     >
       <div>
         <div
-          class="dropdown-menu rounded-0 text-wrap dropdown"
+          class="dropdown-menu rounded-0 text-wrap DropdownOnHover-module_dropdown__huQ9u"
           role="complementary"
           style="width: 250px;"
         >
@@ -52,7 +52,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       spec
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"
@@ -117,7 +117,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       sdk-csharp
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"
@@ -182,7 +182,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       sdk-go
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"
@@ -247,7 +247,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       sdk-java
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"
@@ -312,7 +312,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       sdk-javascript
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"
@@ -377,7 +377,7 @@ exports[`RepositorySection creates snapshot 1`] = `
                       sdk-python
                     </div>
                     <svg
-                      class="ms-2 icon"
+                      class="ms-2 icon undefined"
                       fill="none"
                       height="1em"
                       stroke="currentColor"

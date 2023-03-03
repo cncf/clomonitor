@@ -2,11 +2,11 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import classNames from 'classnames';
+import { useOutsideClick } from 'clo-ui';
 import moment from 'moment';
 import { useRef, useState } from 'react';
 import { Calendar } from 'react-date-range';
 
-import useOutsideClick from '../../../hooks/useOutsideClick';
 import { AcceptedRangeKind } from '../../../types';
 import styles from './AcceptedDateBtn.module.css';
 

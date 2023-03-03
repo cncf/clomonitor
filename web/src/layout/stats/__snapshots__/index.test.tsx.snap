@@ -6,7 +6,7 @@ exports[`StatsView creates snapshot 1`] = `
     class="d-flex flex-column flex-grow-1 position-relative"
   >
     <nav
-      class="navbar navbar-expand-sm navbar"
+      class="navbar navbar-expand-sm SubNavbar-module_navbar__wuZcB"
       role="navigation"
     >
       <div
@@ -82,7 +82,7 @@ exports[`StatsView creates snapshot 1`] = `
         class="d-flex flex-row"
       >
         <div
-          class="flex-grow-1 position-relative"
+          class="d-flex flex-column position-relative statsWrapper w-100"
         >
           <div
             class="text-dark fw-bold text-uppercase text-center mb-4 title"

@@ -6,17 +6,17 @@
 }
 
 .level1 {
-  background-color: var(--rm-green);
+  background-color: var(--clo-green);
 }
 
 .level2 {
-  background-color: var(--rm-yellow);
+  background-color: var(--clo-yellow);
 }
 
 .level3 {
-  background-color: var(--rm-orange);
+  background-color: var(--clo-orange);
 }
 
 .level4 {
-  background-color: var(--rm-red);
+  background-color: var(--clo-red);
 }

@@ -3,7 +3,7 @@
 exports[`Project detail index creates snapshot 1`] = `
 <DocumentFragment>
   <nav
-    class="navbar navbar-expand-sm navbar"
+    class="navbar navbar-expand-sm SubNavbar-module_navbar__wuZcB"
     role="navigation"
   >
     <div
@@ -48,7 +48,7 @@ exports[`Project detail index creates snapshot 1`] = `
               </button>
               <div
                 aria-label="Sidebar"
-                class="sidebar position-fixed top-0 bottom-0 sidebar left"
+                class="sidebar position-fixed top-0 bottom-0 Sidebar-module_sidebar__UB1qz Sidebar-module_left__Lg1y2"
                 role="complementary"
               >
                 <div
@@ -72,14 +72,14 @@ exports[`Project detail index creates snapshot 1`] = `
                       <div>
                         <button
                           aria-label="Close sidebar"
-                          class="btn-close closeBtn"
+                          class="btn-close Sidebar-module_closeBtn__J7T5g"
                           type="button"
                         />
                       </div>
                     </div>
                   </div>
                   <div
-                    class="flex-grow-1 d-flex contentWrapper d-inline-block px-4"
+                    class="flex-grow-1 d-flex Sidebar-module_contentWrapper__dp68G d-inline-block px-4"
                   >
                     <div
                       class="overflow-auto mh-100 w-100 py-3"
@@ -102,7 +102,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-foundation-cncf"
                               name="foundation"
                               tabindex="0"
@@ -133,7 +133,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-foundation-lfaidata"
                               name="foundation"
                               tabindex="0"
@@ -175,7 +175,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-maturity-graduated"
                               name="maturity"
                               tabindex="0"
@@ -206,7 +206,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-maturity-incubating"
                               name="maturity"
                               tabindex="0"
@@ -237,7 +237,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-maturity-sandbox"
                               name="maturity"
                               tabindex="0"
@@ -279,7 +279,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-rating-a"
                               name="rating"
                               tabindex="0"
@@ -320,7 +320,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-rating-b"
                               name="rating"
                               tabindex="0"
@@ -361,7 +361,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-rating-c"
                               name="rating"
                               tabindex="0"
@@ -402,7 +402,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <input
                               aria-checked="false"
-                              class="form-check-input rounded-0 checkbox"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-rating-d"
                               name="rating"
                               tabindex="0"
@@ -2061,7 +2061,7 @@ exports[`Project detail index creates snapshot 1`] = `
                         type="button"
                       >
                         <div
-                          class="wave miniWave spinner"
+                          class="Loading-module_wave__h1voE Loading-module_miniWave__Tc14v spinner"
                           role="status"
                         >
                           <span
@@ -2097,7 +2097,7 @@ exports[`Project detail index creates snapshot 1`] = `
             class="d-flex flex-wrap flex-row justify-content-sm-end mt-3 mt-sm-0 ms-0 ms-md-3 w-100"
           >
             <div
-              class="d-flex flex-nowrap align-items-center me-2 me-md-4"
+              class="d-flex flex-nowrap align-items-center me-2 me-md-4 undefined"
             >
               <label
                 class="form-label me-2 mb-0"
@@ -2106,7 +2106,8 @@ exports[`Project detail index creates snapshot 1`] = `
               </label>
               <select
                 aria-label="Sort options select"
-                class="form-select form-select-sm rounded-0 cursorPointer select"
+                class="form-select form-select-sm rounded-0 cursorPointer"
+                style="width: 180px;"
               >
                 <option
                   value="name_asc"
@@ -2141,7 +2142,7 @@ exports[`Project detail index creates snapshot 1`] = `
               </label>
               <select
                 aria-label="Pagination limit select"
-                class="form-select form-select-sm rounded-0 cursorPointer select"
+                class="form-select form-select-sm rounded-0 cursorPointer PaginationLimitOptions-module_select__ojPAl"
               >
                 <option
                   value="20"
@@ -2170,13 +2171,13 @@ exports[`Project detail index creates snapshot 1`] = `
     role="main"
   >
     <div
-      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed wrapper transparentBg loading"
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF loading"
     >
       <div
         class="d-flex flex-row align-items-center justify-content-center w-100 h-100"
       >
         <div
-          class="wave"
+          class="Loading-module_wave__h1voE"
           role="status"
         >
           <span
@@ -2218,7 +2219,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-foundation-cncf"
               name="foundation"
               tabindex="0"
@@ -2249,7 +2250,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-foundation-lfaidata"
               name="foundation"
               tabindex="0"
@@ -2291,7 +2292,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-maturity-graduated"
               name="maturity"
               tabindex="0"
@@ -2322,7 +2323,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-maturity-incubating"
               name="maturity"
               tabindex="0"
@@ -2353,7 +2354,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-maturity-sandbox"
               name="maturity"
               tabindex="0"
@@ -2395,7 +2396,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-rating-a"
               name="rating"
               tabindex="0"
@@ -2436,7 +2437,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-rating-b"
               name="rating"
               tabindex="0"
@@ -2477,7 +2478,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-rating-c"
               name="rating"
               tabindex="0"
@@ -2518,7 +2519,7 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <input
               aria-checked="false"
-              class="form-check-input rounded-0 checkbox"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
               id="desktop-rating-d"
               name="rating"
               tabindex="0"

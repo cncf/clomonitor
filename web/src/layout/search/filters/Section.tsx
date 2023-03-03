@@ -1,8 +1,8 @@
+import { CheckBox } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { ChangeEvent } from 'react';
 
 import { Filter, FiltersSection } from '../../../types';
-import CheckBox from '../../common/Checkbox';
 import styles from './Section.module.css';
 
 interface Props {

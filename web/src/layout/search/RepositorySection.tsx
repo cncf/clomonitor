@@ -1,12 +1,11 @@
 import classNames from 'classnames';
+import { DropdownOnHover, ExternalLink } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
 import { VscGithub } from 'react-icons/vsc';
 
 import { BaseRepository, Repository } from '../../types';
 import sortRepos from '../../utils/sortRepos';
-import DropdownOnHover from '../common/DropdownOnHover';
-import ExternalLink from '../common/ExternalLink';
 import styles from './RepositorySection.module.css';
 
 interface Props {

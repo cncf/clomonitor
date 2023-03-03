@@ -1,10 +1,10 @@
 import classNames from 'classnames';
+import { ElementWithTooltip } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { GoCheck, GoX } from 'react-icons/go';
 
 import { REPORT_OPTIONS } from '../../../../data';
 import { FilterKind, ReportOption, ScoreType } from '../../../../types';
-import ElementWithTooltip from '../../../common/ElementWithTooltip';
 import styles from './CheckOption.module.css';
 
 interface Props {

@@ -1,11 +1,10 @@
 import classNames from 'classnames';
+import { ExternalLink, useOutsideClick } from 'clo-ui';
 import { useRef, useState } from 'react';
 import { BsList } from 'react-icons/bs';
 import { FaChartPie, FaFileAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import useOutsideClick from '../../hooks/useOutsideClick';
-import ExternalLink from '../common/ExternalLink';
 import styles from './MobileSettings.module.css';
 import ThemeMode from './ThemeMode';
 
@@ -31,7 +30,7 @@ const MobileSettings = () => {
       </button>
 
       <div role="menu" className={classNames('dropdown-menu rounded-0', styles.dropdown, { show: visibleDropdown })}>
-        <ThemeMode onChange={closeDropdown} device="mobile" />
+        <ThemeMode closeDropdown={closeDropdown} device="mobile" />
 
         <hr />
 

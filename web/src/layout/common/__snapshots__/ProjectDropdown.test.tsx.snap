@@ -48,17 +48,17 @@ exports[`ProjectDropdown creates snapshot 1`] = `
   <div>
     <div
       aria-modal="false"
-      class="modal modal"
+      class="modal Modal-module_modal__aD7aP"
       role="dialog"
     >
       <div
         class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
       >
         <div
-          class="modal-content rounded-0 border border-3 mx-auto content"
+          class="modal-content rounded-0 border border-3 mx-auto Modal-module_content__dWO-B"
         >
           <div
-            class="modal-header rounded-0 d-flex flex-row align-items-center header"
+            class="modal-header rounded-0 d-flex flex-row align-items-center Modal-module_header__ILG9i"
           >
             <div
               class="modal-title h5 m-2 flex-grow-1"
@@ -116,17 +116,17 @@ exports[`ProjectDropdown creates snapshot 1`] = `
   <div>
     <div
       aria-modal="false"
-      class="modal modal"
+      class="modal Modal-module_modal__aD7aP"
       role="dialog"
     >
       <div
         class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
       >
         <div
-          class="modal-content rounded-0 border border-3 mx-auto content"
+          class="modal-content rounded-0 border border-3 mx-auto Modal-module_content__dWO-B"
         >
           <div
-            class="modal-header rounded-0 d-flex flex-row align-items-center header"
+            class="modal-header rounded-0 d-flex flex-row align-items-center Modal-module_header__ILG9i"
           >
             <div
               class="modal-title h5 m-2 flex-grow-1"

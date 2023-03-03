@@ -1,12 +1,11 @@
+import { ExternalLink } from 'clo-ui';
+import { getCategoryColor, roundScoreValue } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
-import getCategoryColor from '../../../utils/getCategoryColor';
-import roundScoreValue from '../../../utils/roundScoreValue';
 import sortChecks from '../../../utils/sortChecks';
-import ExternalLink from '../../common/ExternalLink';
 import OptionCell from './OptionCell';
 import styles from './Row.module.css';
 import Title from './Title';
@@ -57,7 +56,7 @@ const Row = (props: Props) => {
               <div
                 className={`progress-bar ${styles.progressbar}`}
                 role="progressbar"
-                style={{ width: `${props.score || 1}%`, backgroundColor: `var(--rm-${color})` }}
+                style={{ width: `${props.score || 1}%`, backgroundColor: `var(--clo-${color})` }}
               />
             </div>
           </div>

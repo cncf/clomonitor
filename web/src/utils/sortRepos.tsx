@@ -1,6 +1,7 @@
+import { CheckSet } from 'clo-ui';
 import { orderBy } from 'lodash';
 
-import { CheckSet, Repository } from '../types';
+import { Repository } from '../types';
 import getCheckSets from './getCheckSets';
 
 // Sort by community repo kind, score global and alphabetically

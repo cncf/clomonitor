@@ -14,10 +14,11 @@ RUN cargo build --release
 
 # Build frontend
 FROM node:16-alpine3.17 AS frontend-builder
+RUN apk --no-cache add git
 WORKDIR /web
 COPY web .
 ENV NODE_OPTIONS=--max_old_space_size=4096
-RUN yarn install
+RUN yarn install --network-concurrency 1
 RUN yarn build
 
 # Build docs

@@ -1,3 +1,5 @@
+import { CheckSet, Foundation, Maturity } from 'clo-ui';
+
 export interface BaseProject {
   id: string;
   name: string;
@@ -100,17 +102,6 @@ export interface ReportOptionData {
   reference?: string;
 }
 
-export enum Foundation {
-  cncf = 'cncf',
-  lfaidata = 'lfaidata',
-}
-
-export enum Maturity {
-  graduated = 'graduated',
-  incubating = 'incubating',
-  sandbox = 'sandbox',
-}
-
 export enum Rating {
   A = 'a',
   B = 'b',
@@ -143,13 +134,6 @@ export enum SortDirection {
 export enum SortBy {
   Name = 'name',
   Score = 'score',
-}
-
-export enum CheckSet {
-  Code = 'code',
-  CodeLite = 'code-lite',
-  Community = 'community',
-  Docs = 'docs',
 }
 
 export enum ReportOption {
@@ -296,6 +280,12 @@ export interface Alert {
   message: string;
   dismissOn?: number;
   autoClose?: boolean;
+}
+
+export interface SortOption {
+  label: string;
+  by: SortBy;
+  direction: SortDirection;
 }
 
 export interface SortedDates {

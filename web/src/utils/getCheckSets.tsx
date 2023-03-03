@@ -1,4 +1,6 @@
-import { CheckSet, Repository } from '../types';
+import { CheckSet } from 'clo-ui';
+
+import { Repository } from '../types';
 
 const getCheckSets = (repo: Repository): CheckSet[] => {
   if (repo.report && repo.report.check_sets) {

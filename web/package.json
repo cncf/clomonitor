@@ -5,7 +5,7 @@
   "dependencies": {
     "apexcharts": "^3.37.1",
     "classnames": "^2.3.2",
-    "clo-ui": "https://github.com/cncf/clo-ui.git#0.1.1",
+    "clo-ui": "https://github.com/cncf/clo-ui.git#0.1.2",
     "lodash": "^4.17.21",
     "minimatch": "^7.4.2",
     "moment": "^2.29.1",
@@ -16,16 +16,16 @@
     "react-dom": "^18.0.2",
     "react-icons": "^4.8.0",
     "react-markdown": "^8.0.5",
-    "react-router-dom": "^6.8.2",
+    "react-router-dom": "^6.9.0",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.4.0",
+    "@types/jest": "^29.4.4",
     "@types/lodash": "^4.14.191",
-    "@types/node": "^18.14.6",
+    "@types/node": "^18.15.3",
     "@types/react": "^18.0.28",
     "@types/react-date-range": "^1.4.3",
     "@types/react-dom": "^18.0.11",
@@ -38,7 +38,7 @@
     "postcss": "^8.2.13",
     "prettier": "^2.8.4",
     "react-scripts": "5.0.1",
-    "sass": "^1.58.3",
+    "sass": "^1.59.3",
     "shx": "^0.3.4",
     "typescript": "^4.9.5"
   },

@@ -41,7 +41,7 @@ metrics-exporter-prometheus = "0.11.0"
 mime = "0.3.16"
 mockall = "0.11.3"
 mockito = "1.0.0"
-openssl = { version = "0.10.46", features = ["vendored"] }
+openssl = { version = "0.10.48", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 postgres-types = { version = "0.2.4", features = ["derive"] }
 predicates = "3.0.1"

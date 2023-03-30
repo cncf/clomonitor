@@ -417,6 +417,11 @@
       url: https://github.com/onnx/models
       check_sets:
         - docs
+    - name: website
+      url: https://github.com/onnx/onnx.github.io
+      check_sets:
+        - docs
+        - community
 - name: openbytes
   display_name: OpenBytes
   description: This repo contains documentation related to the operation of the OpenBytes project

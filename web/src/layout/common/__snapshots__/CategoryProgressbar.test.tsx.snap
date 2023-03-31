@@ -6,7 +6,7 @@ exports[`CategoryProgressbar creates snapshot 1`] = `
     class="wrapper col-12"
   >
     <div
-      class="d-flex flex-row bg-white position-relative border overflow-hidden"
+      class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
     >
       <div
         class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"

@@ -1498,7 +1498,7 @@ exports[`StatsView creates snapshot 1`] = `
                         class="col-12"
                       >
                         <div
-                          class="fw-bold border-bottom pb-2 mb-3 lightText"
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
                         >
                           Documentation
                         </div>
@@ -2097,7 +2097,7 @@ exports[`StatsView creates snapshot 1`] = `
                         class="col-12"
                       >
                         <div
-                          class="fw-bold border-bottom pb-2 mb-3 lightText"
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
                         >
                           License
                         </div>
@@ -2296,7 +2296,7 @@ exports[`StatsView creates snapshot 1`] = `
                         class="col-12"
                       >
                         <div
-                          class="fw-bold border-bottom pb-2 mb-3 lightText"
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
                         >
                           Best Practices
                         </div>
@@ -2754,7 +2754,7 @@ exports[`StatsView creates snapshot 1`] = `
                         class="col-12"
                       >
                         <div
-                          class="fw-bold border-bottom pb-2 mb-3 lightText"
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
                         >
                           Security
                         </div>
@@ -3337,7 +3337,7 @@ exports[`StatsView creates snapshot 1`] = `
                         class="col-12"
                       >
                         <div
-                          class="fw-bold border-bottom pb-2 mb-3 lightText"
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
                         >
                           Legal
                         </div>

@@ -51,7 +51,7 @@ const RepositoryReportModal = (props: Props) => {
           onClose={props.onCloseModal}
           open={props.openStatus}
         >
-          <div className="border overflow-auto h-100 mw-100">
+          <div className="border border-1 overflow-auto h-100 mw-100">
             <div className={`position-relative h-100 mh-100 ${styles.syntaxWrapper}`}>
               {isGettingMd && <Loading />}
               <BlockCodeButtons

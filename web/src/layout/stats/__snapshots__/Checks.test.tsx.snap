@@ -6,7 +6,7 @@ exports[`Checks creates snapshot 1`] = `
     class="col-12"
   >
     <div
-      class="fw-bold border-bottom pb-2 mb-3 lightText"
+      class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
     >
       Best Practices
     </div>

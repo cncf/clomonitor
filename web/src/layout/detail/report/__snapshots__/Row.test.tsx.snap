@@ -3,7 +3,7 @@
 exports[`Row creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="p-3 p-md-4 border mb-2 reportContent"
+    class="p-3 p-md-4 border border-1 mb-2 reportContent"
   >
     <div
       class="mx-0 mx-md-1"

@@ -29,7 +29,7 @@ const Filters = (props: Props) => {
   return (
     <>
       {props.visibleTitle && (
-        <div className="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom">
+        <div className="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom border-1">
           <div className="h6 text-uppercase mb-0 lh-base text-primary fw-bold">Filters</div>
           {(!isEmpty(props.activeFilters) || !isUndefined(props.acceptedFrom) || !isUndefined(props.acceptedTo)) && (
             <button className="btn btn-link text-primary" onClick={props.onResetFilters} aria-label="Reset filters">

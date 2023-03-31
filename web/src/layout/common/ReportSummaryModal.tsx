@@ -57,7 +57,7 @@ const ReportSummaryModal = (props: Props) => {
     >
       <div className="w-100 position-relative">
         <label
-          className={`w-100 text-primary text-uppercase fw-bold border-bottom mb-3 ${styles.label}`}
+          className={`w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 ${styles.label}`}
           htmlFor="theme"
         >
           Theme
@@ -92,7 +92,9 @@ const ReportSummaryModal = (props: Props) => {
         </div>
 
         <div className="mt-4">
-          <label className={`w-100 text-primary text-uppercase fw-bold border-bottom mb-3 ${styles.label}`}>Code</label>
+          <label className={`w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 ${styles.label}`}>
+            Code
+          </label>
           <Tabs
             className="pt-2"
             tabs={[
@@ -143,11 +145,18 @@ const ReportSummaryModal = (props: Props) => {
         </div>
 
         <div className="mt-4 d-flex flex-column">
-          <label className={`text-primary text-uppercase fw-bold border-bottom mb-4 ${styles.label}`}>Preview</label>
+          <label className={`text-primary text-uppercase fw-bold border-bottom border-1 mb-4 ${styles.label}`}>
+            Preview
+          </label>
 
           <div className={`text-center mx-auto my-3 position-relative w-100 ${styles.imgWrapper}`}>
             {!imageLoaded && <Loading />}
-            <img src={image} alt="CLOMonitor report summary" className="border" onLoad={() => setImageLoaded(true)} />
+            <img
+              src={image}
+              alt="CLOMonitor report summary"
+              className="border border-1"
+              onLoad={() => setImageLoaded(true)}
+            />
           </div>
         </div>
       </div>

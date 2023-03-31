@@ -20,7 +20,7 @@ const CategoryProgressbar = (props: Props) => {
 
   return (
     <div className={`${styles.wrapper} ${props.bigSize ? 'col-12 col-lg-9 col-xxxl-8' : 'col-12'}`}>
-      <div className="d-flex flex-row bg-white position-relative border overflow-hidden">
+      <div className="d-flex flex-row bg-white position-relative border border-1 overflow-hidden">
         <div
           className={`d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto ${styles.title}`}
         >

@@ -9,9 +9,9 @@ const QualityDot = (props: Props) => {
   return (
     <div
       data-testid="quality-dot"
-      className={`me-2 border rounded-pill position-relative ${styles.quality} ${styles[`level${props.level}`]} ${
-        props.className
-      }`}
+      className={`me-2 border border-1 rounded-pill position-relative ${styles.quality} ${
+        styles[`level${props.level}`]
+      } ${props.className}`}
     />
   );
 };

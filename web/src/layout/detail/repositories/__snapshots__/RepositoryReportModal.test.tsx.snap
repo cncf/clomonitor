@@ -36,7 +36,7 @@ exports[`RepositoryReportModal creates snapshot 1`] = `
             class="modal-body p-4 h-100 d-flex flex-column"
           >
             <div
-              class="border overflow-auto h-100 mw-100"
+              class="border border-1 overflow-auto h-100 mw-100"
             >
               <div
                 class="position-relative h-100 mh-100 syntaxWrapper"

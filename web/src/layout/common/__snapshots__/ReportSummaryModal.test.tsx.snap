@@ -39,7 +39,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
               class="w-100 position-relative"
             >
               <label
-                class="w-100 text-primary text-uppercase fw-bold border-bottom mb-3 label"
+                class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 label"
                 for="theme"
               >
                 Theme
@@ -187,7 +187,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                 class="mt-4"
               >
                 <label
-                  class="w-100 text-primary text-uppercase fw-bold border-bottom mb-3 label"
+                  class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 label"
                 >
                   Code
                 </label>
@@ -348,7 +348,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                 class="mt-4 d-flex flex-column"
               >
                 <label
-                  class="text-primary text-uppercase fw-bold border-bottom mb-4 label"
+                  class="text-primary text-uppercase fw-bold border-bottom border-1 mb-4 label"
                 >
                   Preview
                 </label>
@@ -375,7 +375,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                   </div>
                   <img
                     alt="CLOMonitor report summary"
-                    class="border"
+                    class="border border-1"
                     src="http://localhost/api/projects/cncf/proj/report-summary?theme=light"
                   />
                 </div>

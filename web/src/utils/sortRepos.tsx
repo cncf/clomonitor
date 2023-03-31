@@ -19,7 +19,7 @@ const sortRepos = (repos: Repository[]): Repository[] => {
       'name',
     ],
     ['asc', 'desc', 'asc']
-  );
+  ) as Repository[];
 };
 
 export default sortRepos;

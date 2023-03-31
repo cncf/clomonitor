@@ -21,7 +21,7 @@ exports[`CheckOption creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -54,7 +54,7 @@ exports[`CheckOption creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -84,7 +84,7 @@ exports[`CheckOption creates snapshot 1`] = `
       >
         <button
           aria-label="Select Artifact Hub badge as passed"
-          class="btn rounded-0 border p-0 btn passingBtn"
+          class="btn rounded-0 border border-1 p-0 btn passingBtn"
           type="button"
         >
           <div
@@ -108,7 +108,7 @@ exports[`CheckOption creates snapshot 1`] = `
         </button>
         <button
           aria-label="Select Artifact Hub badge as not passed"
-          class="btn rounded-0 border p-0 btn"
+          class="btn rounded-0 border border-1 p-0 btn"
           type="button"
         >
           <div

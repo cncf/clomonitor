@@ -31,7 +31,7 @@ const CheckOption = (props: Props) => {
             element={
               <button
                 type="button"
-                className={classNames('btn rounded-0 border p-0', styles.btn, styles.passingBtn, {
+                className={classNames('btn rounded-0 border border-1 p-0', styles.btn, styles.passingBtn, {
                   [styles.isPassing]: isInPassingCheck,
                 })}
                 onClick={() => {
@@ -58,7 +58,7 @@ const CheckOption = (props: Props) => {
             element={
               <button
                 type="button"
-                className={classNames('btn rounded-0 border p-0', styles.btn, {
+                className={classNames('btn rounded-0 border border-1 p-0', styles.btn, {
                   [styles.isNotPassing]: isInNotPassingCheck,
                 })}
                 onClick={() => {
@@ -84,7 +84,7 @@ const CheckOption = (props: Props) => {
         <div className="d-flex d-md-none">
           <button
             type="button"
-            className={classNames('btn rounded-0 border p-0', styles.btn, styles.passingBtn, {
+            className={classNames('btn rounded-0 border border-1 p-0', styles.btn, styles.passingBtn, {
               [styles.isPassing]: isInPassingCheck,
             })}
             onClick={() => {
@@ -98,7 +98,7 @@ const CheckOption = (props: Props) => {
           </button>
           <button
             type="button"
-            className={classNames('btn rounded-0 border p-0', styles.btn, {
+            className={classNames('btn rounded-0 border border-1 p-0', styles.btn, {
               [styles.isNotPassing]: isInNotPassingCheck,
             })}
             onClick={() => {

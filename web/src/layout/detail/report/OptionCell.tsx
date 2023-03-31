@@ -29,7 +29,9 @@ const OptionCell = (props: Props) => {
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
-  const Heading = (props: any) => <div className="fs-6 border-bottom pb-2 fw-bold w-100">{props.children}</div>;
+  const Heading = (props: any) => (
+    <div className="fs-6 border-bottom border-1 pb-2 fw-bold w-100">{props.children}</div>
+  );
 
   const Link = (data: any) => {
     return (
@@ -144,7 +146,7 @@ const OptionCell = (props: Props) => {
                 tooltipClassName={styles.reasonTooltipMessage}
                 tooltipMessage={
                   <div className="text-start p-2">
-                    <div className="border-bottom pb-2 mb-3 fw-bold">
+                    <div className="border-bottom border-1 pb-2 mb-3 fw-bold">
                       This repository is exempt from passing this check
                     </div>
                     <div className={`text-break ${styles.reason}`}>
@@ -180,7 +182,9 @@ const OptionCell = (props: Props) => {
                 tooltipClassName={styles.reasonTooltipMessage}
                 tooltipMessage={
                   <div className="text-start p-2">
-                    <div className="border-bottom pb-2 mb-3 fw-bold">Something went wrong running this check</div>
+                    <div className="border-bottom border-1 pb-2 mb-3 fw-bold">
+                      Something went wrong running this check
+                    </div>
                     <div
                       ref={details}
                       className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll} ${styles.reason} ${styles.failedReason}`}

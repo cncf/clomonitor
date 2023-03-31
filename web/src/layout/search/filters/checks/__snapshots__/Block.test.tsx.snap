@@ -84,7 +84,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Analytics as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -117,7 +117,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Analytics as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -147,7 +147,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Analytics as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -171,7 +171,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Analytics as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -248,7 +248,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Artifact Hub badge as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -281,7 +281,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Artifact Hub badge as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -311,7 +311,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -335,7 +335,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Artifact Hub badge as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -414,7 +414,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Contributor License Agreement as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -447,7 +447,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Contributor License Agreement as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -477,7 +477,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Contributor License Agreement as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -501,7 +501,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Contributor License Agreement as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -578,7 +578,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Community meeting as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -611,7 +611,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Community meeting as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -641,7 +641,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Community meeting as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -665,7 +665,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Community meeting as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -745,7 +745,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Developer Certificate of Origin as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -778,7 +778,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Developer Certificate of Origin as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -808,7 +808,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Developer Certificate of Origin as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -832,7 +832,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Developer Certificate of Origin as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -909,7 +909,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select GitHub discussions as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -942,7 +942,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select GitHub discussions as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -972,7 +972,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select GitHub discussions as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -996,7 +996,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select GitHub discussions as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -1074,7 +1074,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF badge as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -1107,7 +1107,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF badge as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -1137,7 +1137,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select OpenSSF badge as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -1161,7 +1161,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select OpenSSF badge as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -1241,7 +1241,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Recent release as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -1274,7 +1274,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Recent release as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -1304,7 +1304,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Recent release as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -1328,7 +1328,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Recent release as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div
@@ -1408,7 +1408,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Slack presence as passed"
-                  class="btn rounded-0 border p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
                   type="button"
                 >
                   <div
@@ -1441,7 +1441,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Slack presence as not passed"
-                  class="btn rounded-0 border p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 btn"
                   type="button"
                 >
                   <div
@@ -1471,7 +1471,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Slack presence as passed"
-              class="btn rounded-0 border p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 btn passingBtn"
               type="button"
             >
               <div
@@ -1495,7 +1495,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Slack presence as not passed"
-              class="btn rounded-0 border p-0 btn"
+              class="btn rounded-0 border border-1 p-0 btn"
               type="button"
             >
               <div

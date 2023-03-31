@@ -3,7 +3,7 @@
 exports[`Filters creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom"
+    class="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom border-1"
   >
     <div
       class="h6 text-uppercase mb-0 lh-base text-primary fw-bold"
@@ -222,7 +222,7 @@ exports[`Filters creates snapshot 1`] = `
             class="position-relative decorator"
           >
             <div
-              class="me-2 border rounded-pill position-relative quality level1 undefined"
+              class="me-2 border border-1 rounded-pill position-relative quality level1 undefined"
               data-testid="quality-dot"
             />
           </span>
@@ -263,7 +263,7 @@ exports[`Filters creates snapshot 1`] = `
             class="position-relative decorator"
           >
             <div
-              class="me-2 border rounded-pill position-relative quality level2 undefined"
+              class="me-2 border border-1 rounded-pill position-relative quality level2 undefined"
               data-testid="quality-dot"
             />
           </span>
@@ -304,7 +304,7 @@ exports[`Filters creates snapshot 1`] = `
             class="position-relative decorator"
           >
             <div
-              class="me-2 border rounded-pill position-relative quality level3 undefined"
+              class="me-2 border border-1 rounded-pill position-relative quality level3 undefined"
               data-testid="quality-dot"
             />
           </span>
@@ -345,7 +345,7 @@ exports[`Filters creates snapshot 1`] = `
             class="position-relative decorator"
           >
             <div
-              class="me-2 border rounded-pill position-relative quality level4 undefined"
+              class="me-2 border border-1 rounded-pill position-relative quality level4 undefined"
               data-testid="quality-dot"
             />
           </span>

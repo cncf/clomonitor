@@ -39,7 +39,7 @@ const Row = (props: Props) => {
   if (options.length === 0 || isUndefined(props.score)) return null;
 
   return (
-    <div className={`p-3 p-md-4 border mb-2 ${styles.reportContent}`}>
+    <div className={`p-3 p-md-4 border border-1 mb-2 ${styles.reportContent}`}>
       <div className="mx-0 mx-md-1">
         <div className="d-flex flex-row position-relative">
           <div id={`${props.repoName}_${props.name}`} className={`position-absolute ${styles.headerAnchor}`} />

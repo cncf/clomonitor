@@ -330,7 +330,7 @@ const Search = (props: Props) => {
           })}
         >
           <aside
-            className={`d-none d-md-block position-relative p-3 rounded-0 border mb-3 mb-lg-4 ${styles.sidebar}`}
+            className={`d-none d-md-block position-relative p-3 rounded-0 border border-1 mb-3 mb-lg-4 ${styles.sidebar}`}
             aria-label="Filters"
           >
             <Filters

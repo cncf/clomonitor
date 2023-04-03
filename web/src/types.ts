@@ -165,6 +165,7 @@ export enum ReportOption {
   SignedReleases = 'signed_releases',
   SlackPresence = 'slack_presence',
   SPDX = 'license_spdx_id',
+  SummaryTable = 'summary_table',
   TokenPermissions = 'token_permissions',
   TrademarkDisclaimer = 'trademark_disclaimer',
   Website = 'website',

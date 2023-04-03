@@ -1,5 +1,5 @@
 import { ExternalLink, Foundation, Maturity, SampleQuery } from 'clo-ui';
-import { BiLock, BiMedal, BiShieldQuarter, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3 } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
@@ -228,7 +228,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: (
       <span>
         Projects can list their content on{' '}
-        <ExternalLink className="d-inline-block" href="https://artifacthub.io">
+        <ExternalLink className="d-inline-block text-decoration-underline" href="https://artifacthub.io">
           Artifact Hub
         </ExternalLink>{' '}
         to improve their discoverability
@@ -431,6 +431,26 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     ),
     reference: '/docs/topics/checks/#spdx-id',
   },
+  [ReportOption.SummaryTable]: {
+    icon: <BiTable />,
+    name: 'Summary Table',
+    legend: (
+      <span>
+        Projects should{' '}
+        <ExternalLink
+          href="https://github.com/cncf/landscape/blob/master/readme_summary.md"
+          className="text-decoration-underline"
+        >
+          provide some information
+        </ExternalLink>{' '}
+        for the{' '}
+        <ExternalLink href="https://landscape.cncf.io/summary" className="text-decoration-underline">
+          Landscape Summary Table
+        </ExternalLink>
+      </span>
+    ),
+    reference: '/docs/topics/checks/#summary-table',
+  },
   [ReportOption.TokenPermissions]: {
     icon: <FaUserSecret />,
     name: 'Token permissions',
@@ -470,6 +490,7 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.Maintainers,
     ReportOption.Readme,
     ReportOption.Roadmap,
+    ReportOption.SummaryTable,
     ReportOption.Website,
   ],
   [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.LicenseScanning],

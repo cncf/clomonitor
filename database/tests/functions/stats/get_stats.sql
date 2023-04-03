@@ -164,6 +164,9 @@ insert into report (
             "roadmap": {
                 "passed": false
             },
+            "summary_table": {
+                "passed": false
+            },
             "website": {
                 "url": "https://www.fluentd.org",
                 "passed": true
@@ -292,6 +295,9 @@ insert into report (
             "roadmap": {
                 "passed": false
             },
+            "summary_table": {
+                "passed": false
+            },
             "website": {
                 "url": "https://www.fluentd.org",
                 "passed": true
@@ -414,6 +420,9 @@ insert into report (
                 "passed": false
             },
             "roadmap": {
+                "passed": false
+            },
+            "summary_table": {
                 "passed": false
             },
             "website": {
@@ -555,6 +564,7 @@ select is(
                     "maintainers": 67,
                     "readme": 67,
                     "roadmap": 0,
+                    "summary_table": 0,
                     "website": 67
                 },
                 "license": {

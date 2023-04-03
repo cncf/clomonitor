@@ -30,6 +30,7 @@ pub(crate) mod sbom;
 pub(crate) mod security_policy;
 pub(crate) mod signed_releases;
 pub(crate) mod slack_presence;
+pub(crate) mod summary_table;
 pub(crate) mod token_permissions;
 pub(crate) mod trademark_disclaimer;
 pub(crate) mod util;
@@ -90,6 +91,7 @@ lazy_static! {
         register_check!(security_policy);
         register_check!(signed_releases, "Signed-Releases");
         register_check!(slack_presence);
+        register_check!(summary_table);
         register_check!(token_permissions, "Token-Permissions");
         register_check!(trademark_disclaimer);
         register_check!(website);

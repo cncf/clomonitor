@@ -11,13 +11,13 @@
 
 ### Checks passed per category
 
-| Category  |  Score  |
-| :----------------- | --------: |
-|  Documentation  |  {% call category_score(score.documentation) %}  |
-|  License  |  {% call category_score(score.license) %}  |
-|  Best Practices  |  {% call category_score(score.best_practices) %}  |
-|  Security  |  {% call category_score(score.security) %}  |
-|  Legal  |  {% call category_score(score.legal) %}  |
+| Category       |                                           Score |
+| :------------- | ----------------------------------------------: |
+| Documentation  |  {% call category_score(score.documentation) %} |
+| License        |        {% call category_score(score.license) %} |
+| Best Practices | {% call category_score(score.best_practices) %} |
+| Security       |       {% call category_score(score.security) %} |
+| Legal          |          {% call category_score(score.legal) %} |
 
 ## Checks
 
@@ -32,6 +32,7 @@
   {% call check("maintainers", "Maintainers", report.documentation.maintainers) -%}
   {% call check("readme", "Readme", report.documentation.readme) -%}
   {% call check("roadmap", "Roadmap", report.documentation.roadmap) -%}
+  {% call check("summary-table", "Summary Table", report.documentation.summary_table) -%}
   {% call check("website", "Website", report.documentation.website) -%}
 
 {%- endif %}

@@ -24,11 +24,11 @@ impl Report {
         // CLA / DCO
         if passed(self.best_practices.cla.as_ref()) && !passed(self.best_practices.dco.as_ref()) {
             self.best_practices.dco =
-                Some(CheckOutput::exempt().examption_reason(Some("CLA check passed".to_string())));
+                Some(CheckOutput::exempt().exemption_reason(Some("CLA check passed".to_string())));
         }
         if passed(self.best_practices.dco.as_ref()) && !passed(self.best_practices.cla.as_ref()) {
             self.best_practices.cla =
-                Some(CheckOutput::exempt().examption_reason(Some("DCO check passed".to_string())));
+                Some(CheckOutput::exempt().exemption_reason(Some("DCO check passed".to_string())));
         }
 
         // Slack presence / GitHub discussions
@@ -37,7 +37,7 @@ impl Report {
         {
             self.best_practices.github_discussions = Some(
                 CheckOutput::exempt()
-                    .examption_reason(Some("Slack presence check passed".to_string())),
+                    .exemption_reason(Some("Slack presence check passed".to_string())),
             );
         }
         if passed(self.best_practices.github_discussions.as_ref())
@@ -45,7 +45,7 @@ impl Report {
         {
             self.best_practices.slack_presence = Some(
                 CheckOutput::exempt()
-                    .examption_reason(Some("Github discussions check passed".to_string())),
+                    .exemption_reason(Some("Github discussions check passed".to_string())),
             );
         }
     }
@@ -62,6 +62,7 @@ pub struct Documentation {
     pub maintainers: Option<CheckOutput>,
     pub readme: Option<CheckOutput>,
     pub roadmap: Option<CheckOutput>,
+    pub summary_table: Option<CheckOutput>,
     pub website: Option<CheckOutput>,
 }
 
@@ -76,6 +77,7 @@ section_impl!(
     maintainers,
     readme,
     roadmap,
+    summary_table,
     website
 );
 
@@ -213,7 +215,7 @@ mod tests {
                     cla: Some(CheckOutput::passed()),
                     dco: Some(
                         CheckOutput::exempt()
-                            .examption_reason(Some("CLA check passed".to_string()))
+                            .exemption_reason(Some("CLA check passed".to_string()))
                     ),
                     ..Default::default()
                 },
@@ -240,7 +242,7 @@ mod tests {
                     dco: Some(CheckOutput::passed()),
                     cla: Some(
                         CheckOutput::exempt()
-                            .examption_reason(Some("DCO check passed".to_string()))
+                            .exemption_reason(Some("DCO check passed".to_string()))
                     ),
                     ..Default::default()
                 },
@@ -267,7 +269,7 @@ mod tests {
                     slack_presence: Some(CheckOutput::passed()),
                     github_discussions: Some(
                         CheckOutput::exempt()
-                            .examption_reason(Some("Slack presence check passed".to_string()))
+                            .exemption_reason(Some("Slack presence check passed".to_string()))
                     ),
                     ..Default::default()
                 },
@@ -294,7 +296,7 @@ mod tests {
                     github_discussions: Some(CheckOutput::passed()),
                     slack_presence: Some(
                         CheckOutput::exempt()
-                            .examption_reason(Some("Github discussions check passed".to_string()))
+                            .exemption_reason(Some("Github discussions check passed".to_string()))
                     ),
                     ..Default::default()
                 },

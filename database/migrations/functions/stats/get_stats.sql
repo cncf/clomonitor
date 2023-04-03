@@ -177,6 +177,7 @@ returns json as $$
                     'maintainers', repositories_passing_check(p_foundation, 'documentation', 'maintainers'),
                     'readme', repositories_passing_check(p_foundation, 'documentation', 'readme'),
                     'roadmap', repositories_passing_check(p_foundation, 'documentation', 'roadmap'),
+                    'summary_table', repositories_passing_check(p_foundation, 'documentation', 'summary_table'),
                     'website', repositories_passing_check(p_foundation, 'documentation', 'website')
                 ),
                 'license', json_build_object(

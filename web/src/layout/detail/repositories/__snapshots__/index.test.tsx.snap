@@ -3005,7 +3005,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                                   Projects can list their content on 
                                   <a
                                     aria-label="Open external link"
-                                    class="link d-inline-block"
+                                    class="link d-inline-block text-decoration-underline"
                                     href="https://artifacthub.io"
                                     rel="noopener noreferrer"
                                     tabindex="-1"

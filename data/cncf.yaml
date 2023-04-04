@@ -1531,7 +1531,7 @@
       check_sets:
         - code
 - name: opencost
-  display_name: Opencost
+  display_name: OpenCost
   description: OpenCost provides visibility into current and historical Kubernetes spend and resource allocation
   category: observability
   home_url: https://www.opencost.io
@@ -1542,7 +1542,7 @@
   maturity: sandbox
   repositories:
     - name: opencost
-      url: https://github.com/kubecost/opencost
+      url: https://github.com/opencost/opencost
       check_sets:
         - community
         - code

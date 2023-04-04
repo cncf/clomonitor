@@ -146,7 +146,7 @@ impl<T> CheckOutput<T> {
     }
 
     /// Exemption reason field setter.
-    pub fn examption_reason(mut self, reason: Option<String>) -> CheckOutput<T> {
+    pub fn exemption_reason(mut self, reason: Option<String>) -> CheckOutput<T> {
         self.exemption_reason = reason;
         self
     }
@@ -175,7 +175,7 @@ impl<T> Default for CheckOutput<T> {
 
 impl<T> From<Exemption> for CheckOutput<T> {
     fn from(exemption: Exemption) -> Self {
-        Self::exempt().examption_reason(Some(exemption.reason))
+        Self::exempt().exemption_reason(Some(exemption.reason))
     }
 }
 

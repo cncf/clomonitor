@@ -71,6 +71,7 @@ async fn main() -> Result<()> {
 
     // Lint repository provided
     let input = LinterInput {
+        project: None,
         root: args.path.clone(),
         url: args.url.clone(),
         check_sets: args.check_set.clone(),

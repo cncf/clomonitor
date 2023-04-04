@@ -9,13 +9,13 @@
 
 ### Checks passed per category
 
-| Category  |  Score  |
-| :----------------- | --------: |
-|  Documentation  |  100%  |
-|  License  |  100%  |
-|  Best Practices  |  100%  |
-|  Security  |  100%  |
-|  Legal  |  100%  |
+| Category       |                                           Score |
+| :------------- | ----------------------------------------------: |
+| Documentation  |  100% |
+| License        |        100% |
+| Best Practices | 100% |
+| Security       |       100% |
+| Legal          |          100% |
 
 ## Checks
 
@@ -29,6 +29,7 @@
   - [x] Maintainers ([_docs_](https://clomonitor.io/docs/topics/checks/#maintainers))
   - [x] Readme ([_docs_](https://clomonitor.io/docs/topics/checks/#readme))
   - [x] Roadmap ([_docs_](https://clomonitor.io/docs/topics/checks/#roadmap))
+  - [x] Summary Table ([_docs_](https://clomonitor.io/docs/topics/checks/#summary-table))
   - [x] Website ([_docs_](https://clomonitor.io/docs/topics/checks/#website))
   
 ### License [100%]

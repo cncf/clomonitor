@@ -14,6 +14,7 @@ mocks = []
 anyhow = { workspace = true }
 askalono = { workspace = true }
 async-trait = { workspace = true }
+cached = { workspace = true }
 clap = { workspace = true }
 git2 = { workspace = true }
 glob = { workspace = true }

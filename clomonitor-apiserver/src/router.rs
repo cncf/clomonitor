@@ -615,6 +615,7 @@ mod tests {
                             maintainers: Some(CheckOutput::passed()),
                             readme: Some(CheckOutput::passed()),
                             roadmap: Some(CheckOutput::passed()),
+                            summary_table: Some(CheckOutput::passed()),
                             website: Some(CheckOutput::passed()),
                         },
                         license: License {

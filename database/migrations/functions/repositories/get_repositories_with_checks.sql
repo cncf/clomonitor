@@ -15,6 +15,7 @@ returns setof text as $$
             (rp.data->'documentation'->'maintainers'->'passed')::boolean as maintainers,
             (rp.data->'documentation'->'readme'->'passed')::boolean as readme,
             (rp.data->'documentation'->'roadmap'->'passed')::boolean as roadmap,
+            (rp.data->'documentation'->'summary_table'->'passed')::boolean as summary_table,
             (rp.data->'documentation'->'website'->'passed')::boolean as website,
             (rp.data->'license'->'license_approved'->'passed')::boolean as license_approved,
             (rp.data->'license'->'license_scanning'->'passed')::boolean as license_scanning,
@@ -46,7 +47,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

@@ -13,6 +13,7 @@ use std::{fmt, path::PathBuf, sync::Arc};
 
 mod check;
 mod checks;
+mod landscape;
 mod metadata;
 mod report;
 
@@ -37,10 +38,24 @@ pub trait Linter {
 /// Input used by the linter to perform its operations.
 #[derive(Debug, Clone, Default)]
 pub struct LinterInput {
+    pub project: Option<Project>,
     pub root: PathBuf,
     pub url: String,
     pub check_sets: Vec<CheckSet>,
     pub github_token: String,
+}
+
+/// Project's details
+#[derive(Debug, Clone, Default)]
+pub struct Project {
+    pub name: String,
+    pub foundation: Foundation,
+}
+
+/// Foundation's details
+#[derive(Debug, Clone, Default)]
+pub struct Foundation {
+    pub landscape_url: Option<String>,
 }
 
 /// Check sets define a set of checks that will be run on a given repository.
@@ -89,9 +104,10 @@ impl Linter for CoreLinter {
         let ci = CheckInput::new(li).await?;
 
         // Run some async checks concurrently
-        let (analytics, contributing, trademark_disclaimer) = tokio::join!(
+        let (analytics, contributing, summary_table, trademark_disclaimer) = tokio::join!(
             run_async!(analytics, &ci),
             run_async!(contributing, &ci),
+            run_async!(summary_table, &ci),
             run_async!(trademark_disclaimer, &ci),
         );
 
@@ -113,6 +129,7 @@ impl Linter for CoreLinter {
                 maintainers: run!(maintainers, &ci),
                 readme: run!(readme, &ci),
                 roadmap: run!(roadmap, &ci),
+                summary_table,
                 website: run!(website, &ci),
             },
             license: License {

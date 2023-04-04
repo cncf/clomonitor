@@ -252,6 +252,7 @@ mod tests {
                     maintainers: Some(CheckOutput::passed()),
                     readme: Some(CheckOutput::passed()),
                     roadmap: Some(CheckOutput::passed()),
+                    summary_table: Some(CheckOutput::passed()),
                     website: Some(CheckOutput::passed()),
                 },
                 license: License {
@@ -319,6 +320,7 @@ mod tests {
                     maintainers: Some(CheckOutput::not_passed()),
                     readme: Some(CheckOutput::not_passed()),
                     roadmap: Some(CheckOutput::not_passed()),
+                    summary_table: Some(CheckOutput::not_passed()),
                     website: Some(CheckOutput::not_passed()),
                 },
                 license: License {
@@ -382,6 +384,7 @@ mod tests {
                     maintainers: Some(CheckOutput::passed()),
                     readme: Some(CheckOutput::passed()),
                     roadmap: None,
+                    summary_table: None,
                     website: None,
                 },
                 license: License {
@@ -420,10 +423,10 @@ mod tests {
                 },
             }),
             Score {
-                global: 100.00000000000001,
-                global_weight: 75,
+                global: 100.0,
+                global_weight: 74,
                 documentation: Some(100.0),
-                documentation_weight: Some(18),
+                documentation_weight: Some(17),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),

@@ -2,7 +2,7 @@ use crate::{db::DynDB, git::DynGit};
 use anyhow::{format_err, Error, Result};
 #[cfg(not(test))]
 use clomonitor_core::linter::setup_github_http_client;
-use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput};
+use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput, Project};
 use config::Config;
 use deadpool::unmanaged::{Object, Pool};
 use futures::stream::{self, StreamExt};
@@ -26,6 +26,7 @@ pub(crate) struct Repository {
     pub check_sets: Vec<CheckSet>,
     pub digest: Option<String>,
     pub updated_at: OffsetDateTime,
+    pub project: Project,
 }
 
 /// Track all repositories registered in the database.
@@ -149,6 +150,7 @@ async fn track_repository(
     // Lint repository
     let mut errors: Option<String> = None;
     let input = LinterInput {
+        project: Some(repository.project),
         root: tmp_dir.into_path(),
         url: repository.url.clone(),
         check_sets: repository.check_sets.clone(),
@@ -275,6 +277,7 @@ mod tests {
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
+                project: Project::default(),
             }])))
         });
         git.expect_remote_digest()
@@ -301,6 +304,7 @@ mod tests {
                 check_sets: vec![CheckSet::Code],
                 digest: Some(REPOSITORY1_DIGEST.to_string()),
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
+                project: Project::default(),
             }])))
         });
         git.expect_remote_digest()
@@ -327,6 +331,7 @@ mod tests {
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
+                project: Project::default(),
             }])))
         });
         git.expect_remote_digest()
@@ -357,6 +362,7 @@ mod tests {
                 check_sets: vec![CheckSet::Code],
                 digest: None,
                 updated_at: OffsetDateTime::now_utc() - time::Duration::hours(6),
+                project: Project::default(),
             }])))
         });
         git.expect_remote_digest()
@@ -402,6 +408,7 @@ mod tests {
                     check_sets: vec![CheckSet::Code],
                     digest: None,
                     updated_at: OffsetDateTime::now_utc() - time::Duration::days(7),
+                    project: Project::default(),
                 },
                 Repository {
                     repository_id: *REPOSITORY2_ID,
@@ -409,6 +416,7 @@ mod tests {
                     check_sets: vec![CheckSet::Code],
                     digest: None,
                     updated_at: OffsetDateTime::now_utc() - time::Duration::days(7),
+                    project: Project::default(),
                 },
             ])))
         });

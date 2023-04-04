@@ -101,6 +101,10 @@ pub(crate) fn display(
             cell_check(&report.documentation.roadmap),
         ])
         .add_row(vec![
+            cell_entry("Documentation / Summary table"),
+            cell_check(&report.documentation.summary_table),
+        ])
+        .add_row(vec![
             cell_entry("Documentation / Website"),
             cell_check(&report.documentation.website),
         ])
@@ -316,6 +320,7 @@ mod tests {
                 maintainers: Some(CheckOutput::passed()),
                 readme: Some(CheckOutput::passed()),
                 roadmap: Some(CheckOutput::passed()),
+                summary_table: Some(CheckOutput::passed()),
                 website: Some(CheckOutput::passed()),
             },
             license: License {

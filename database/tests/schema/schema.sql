@@ -17,7 +17,8 @@ select has_table('repository');
 select columns_are('foundation', array[
     'foundation_id',
     'display_name',
-    'data_url'
+    'data_url',
+    'landscape_url'
 ]);
 select columns_are('project', array[
     'project_id',

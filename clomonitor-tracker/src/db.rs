@@ -2,7 +2,7 @@ use crate::tracker::Repository;
 use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::{
-    linter::{CheckSet, Report},
+    linter::{CheckSet, Foundation, Project, Report},
     score::{self, Score},
 };
 use deadpool_postgres::{Pool, Transaction};
@@ -46,12 +46,16 @@ impl DB for PgDB {
             .query(
                 "
                 select
-                    repository_id,
-                    url,
-                    digest,
-                    to_json(check_sets) as check_sets,
-                    updated_at
-                from repository
+                    r.repository_id,
+                    r.url,
+                    r.digest,
+                    to_json(r.check_sets) as check_sets,
+                    r.updated_at,
+                    p.name as project_name,
+                    f.landscape_url as foundation_landscape_url
+                from repository r
+                join project p using (project_id)
+                join foundation f using (foundation_id)
                 ",
                 &[],
             )
@@ -65,6 +69,12 @@ impl DB for PgDB {
                     check_sets,
                     digest: row.get("digest"),
                     updated_at: row.get("updated_at"),
+                    project: Project {
+                        name: row.get("project_name"),
+                        foundation: Foundation {
+                            landscape_url: row.get("foundation_landscape_url"),
+                        },
+                    },
                 }
             })
             .collect();

@@ -11,7 +11,7 @@ import styles from './Row.module.css';
 import Title from './Title';
 
 interface OptData {
-  [key: string]: ReportCheck;
+  [key: string]: ReportCheck | undefined;
 }
 
 interface Props {
@@ -68,11 +68,12 @@ const Row = (props: Props) => {
           <table className={`table align-middle w-100 border ${styles.table}`}>
             <tbody>
               {options.map((opt: string) => {
+                if (isUndefined(props.data[opt])) return null;
                 return (
                   <OptionCell
                     key={`${props.reportId}_${props.label}_${opt}_cell`}
                     label={opt as ReportOption}
-                    check={props.data[opt]}
+                    check={props.data[opt]!}
                   />
                 );
               })}

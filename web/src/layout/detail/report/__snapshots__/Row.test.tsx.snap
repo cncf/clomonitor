@@ -1095,6 +1095,151 @@ exports[`Row creates snapshot 1`] = `
               >
                  
                 <svg
+                  class="text-danger icon"
+                  data-testid="error-icon"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                  />
+                </svg>
+              </td>
+              <td
+                class="pe-2 pe-md-4"
+              >
+                <div
+                  class="d-table w-100 contentCell"
+                >
+                  <div
+                    class="d-flex flex-row align-items-baseline align-items-md-center"
+                  >
+                    <div
+                      class="text-muted me-2"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 21h15.893c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zm0-2v-5h4v5H4zM14 7v5h-4V7h4zM8 7v5H4V7h4zm2 12v-5h4v5h-4zm6 0v-5h3.894v5H16zm3.893-7H16V7h3.893v5z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center w-100 name"
+                        data-testid="opt-name"
+                      >
+                        <small
+                          class="fw-bold text-truncate"
+                        >
+                          Summary Table
+                        </small>
+                      </div>
+                      <div
+                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                      >
+                        <div
+                          class="text-truncate"
+                        >
+                          <span>
+                            Projects should 
+                            <a
+                              aria-label="Open external link"
+                              class="link text-decoration-underline"
+                              href="https://github.com/cncf/landscape/blob/master/readme_summary.md"
+                              rel="noopener noreferrer"
+                              tabindex="-1"
+                              target="_blank"
+                            >
+                              provide some information
+                            </a>
+                             for the 
+                            <a
+                              aria-label="Open external link"
+                              class="link text-decoration-underline"
+                              href="https://landscape.cncf.io/summary"
+                              rel="noopener noreferrer"
+                              tabindex="-1"
+                              target="_blank"
+                            >
+                              Landscape Summary Table
+                            </a>
+                          </span>
+                        </div>
+                        <div
+                          class="d-none d-lg-flex text-nowrap"
+                        >
+                          <a
+                            aria-label="Open external link"
+                            class="link d-inline w-100 ms-1"
+                            href="/docs/topics/checks/#summary-table"
+                            rel="noopener noreferrer"
+                            tabindex="-1"
+                            target="_blank"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100"
+                            >
+                              <div>
+                                [check docs
+                              </div>
+                              <svg
+                                class="ms-1 extraMiniIcon"
+                                fill="none"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                />
+                                <polyline
+                                  points="15 3 21 3 21 9"
+                                />
+                                <line
+                                  x1="10"
+                                  x2="21"
+                                  y1="14"
+                                  y2="3"
+                                />
+                              </svg>
+                              <div>
+                                ]
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="text-center iconCell"
+              >
+                 
+                <svg
                   class="text-success icon"
                   data-testid="success-icon"
                   fill="currentColor"

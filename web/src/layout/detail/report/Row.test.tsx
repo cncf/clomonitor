@@ -20,6 +20,30 @@ const defaultProps = {
     contributing: { passed: true },
     governance: { passed: false },
     readme: { passed: true },
+    summary_table: { passed: false },
+  },
+  score: 90,
+  referenceUrl: 'http://reference.com',
+  getAnchorLink: jest.fn(),
+};
+
+const incompleteData = {
+  repoName: 'repo',
+  reportId: 'id',
+  name: ScoreType.Documentation,
+  label: 'label',
+  icon: <>icon</>,
+  data: {
+    roadmap: { passed: false },
+    code_of_conduct: { passed: true },
+    adopters: { passed: false },
+    changelog: { passed: true },
+    maintainers: { passed: true },
+    website: { passed: true },
+    contributing: { passed: true },
+    governance: { passed: false },
+    readme: { passed: true },
+    summary_table: undefined,
   },
   score: 90,
   referenceUrl: 'http://reference.com',
@@ -46,7 +70,7 @@ describe('Row', () => {
       expect(screen.getByText('icon')).toBeInTheDocument();
       expect(screen.getByRole('progressbar')).toBeInTheDocument();
       expect(screen.getByRole('progressbar')).toHaveStyle('width: 90%');
-      expect(screen.getAllByTestId('opt-name')).toHaveLength(9);
+      expect(screen.getAllByTestId('opt-name')).toHaveLength(10);
       expect(
         screen.getByRole('link', { name: 'Checks reference documentation for label category' })
       ).toBeInTheDocument();
@@ -56,7 +80,7 @@ describe('Row', () => {
       render(<Row {...defaultProps} />);
 
       const opts = screen.getAllByTestId('opt-name');
-      expect(opts).toHaveLength(9);
+      expect(opts).toHaveLength(10);
       expect(opts[0]).toHaveTextContent('Adopters');
       expect(opts[1]).toHaveTextContent('Changelog');
       expect(opts[2]).toHaveTextContent('Code of conduct');
@@ -65,7 +89,8 @@ describe('Row', () => {
       expect(opts[5]).toHaveTextContent('Maintainers');
       expect(opts[6]).toHaveTextContent('Readme');
       expect(opts[7]).toHaveTextContent('Roadmap');
-      expect(opts[8]).toHaveTextContent('Website');
+      expect(opts[8]).toHaveTextContent('Summary Table');
+      expect(opts[9]).toHaveTextContent('Website');
     });
 
     it('renders options in correct order', () => {
@@ -106,6 +131,22 @@ describe('Row', () => {
       expect(links).toHaveLength(2);
       expect(links[0]).toHaveProperty('href', 'http://template1.com/');
       expect(links[1]).toHaveProperty('href', 'http://template2.com/');
+    });
+
+    it('renders component with undefined option', () => {
+      render(<Row {...incompleteData} />);
+
+      const opts = screen.getAllByTestId('opt-name');
+      expect(opts).toHaveLength(9);
+      expect(opts[0]).toHaveTextContent('Adopters');
+      expect(opts[1]).toHaveTextContent('Changelog');
+      expect(opts[2]).toHaveTextContent('Code of conduct');
+      expect(opts[3]).toHaveTextContent('Contributing');
+      expect(opts[4]).toHaveTextContent('Governance');
+      expect(opts[5]).toHaveTextContent('Maintainers');
+      expect(opts[6]).toHaveTextContent('Readme');
+      expect(opts[7]).toHaveTextContent('Roadmap');
+      expect(opts[8]).toHaveTextContent('Website');
     });
   });
 });

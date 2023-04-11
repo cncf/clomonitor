@@ -7,7 +7,7 @@
     "classnames": "^2.3.2",
     "clo-ui": "https://github.com/cncf/clo-ui.git#0.1.6",
     "lodash": "^4.17.21",
-    "minimatch": "^7.4.6",
+    "minimatch": "^9.0.0",
     "moment": "^2.29.1",
     "nth-check": "^2.0.1",
     "react": "^18.0.2",

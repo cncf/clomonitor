@@ -51,7 +51,7 @@ reqwest = "0.11.16"
 resvg = "0.27.0"
 serde = { version = "1.0.159", features = ["derive"] }
 serde_json = "1.0.95"
-serde_yaml = "0.9.19"
+serde_yaml = "0.9.21"
 serde_qs = "0.12.0"
 sha2 = "0.10.6"
 tempfile = "3.5.0"

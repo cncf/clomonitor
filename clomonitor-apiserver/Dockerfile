@@ -13,7 +13,7 @@ WORKDIR /clomonitor/clomonitor-apiserver
 RUN cargo build --release
 
 # Build frontend
-FROM node:16-alpine3.17 AS frontend-builder
+FROM node:20-alpine3.17 AS frontend-builder
 RUN apk --no-cache add git
 WORKDIR /web
 COPY web .

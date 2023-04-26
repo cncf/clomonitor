@@ -62,7 +62,7 @@ time = { version = "0.3.20", features = [
     "parsing",
     "serde",
 ] }
-tiny-skia = "0.8.3"
+tiny-skia = "0.8.4"
 tokio = { version = "1.27.0", features = [
     "macros",
     "process",

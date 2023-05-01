@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import {
+  DateRangeOpts,
   Loading,
   NoData,
   Pagination,
@@ -36,11 +37,6 @@ interface Props {
   scrollPosition?: number;
   setInvisibleFooter: Dispatch<SetStateAction<boolean>>;
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;
-}
-
-interface AcceptedDate {
-  accepted_from?: string;
-  accepted_to?: string;
 }
 
 const Search = (props: Props) => {
@@ -92,14 +88,14 @@ const Search = (props: Props) => {
     };
   };
 
-  const onAcceptedDateRangeChange = (dates: AcceptedDate) => {
+  const onAcceptedDateRangeChange = (dates: DateRangeOpts) => {
     props.setScrollPosition(0);
     navigate({
       pathname: '/search',
       search: prepareQueryString({
         ...getCurrentFilters(),
-        accepted_from: dates.accepted_from,
-        accepted_to: dates.accepted_to,
+        accepted_from: dates.from,
+        accepted_to: dates.to,
         pageNumber: 1,
       }),
     });
@@ -300,6 +296,7 @@ const Search = (props: Props) => {
                 by={sort.by}
                 direction={sort.direction}
                 width={180}
+                className="me-2 me-md-4"
                 onSortChange={onSortChange}
               />
               <PaginationLimitOptions limit={limit} onPaginationLimitChange={onPaginationLimitChange} />

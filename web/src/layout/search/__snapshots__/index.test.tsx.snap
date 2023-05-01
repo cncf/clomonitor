@@ -464,26 +464,26 @@ exports[`Project detail index creates snapshot 1`] = `
                           </div>
                         </div>
                         <div
-                          class="fw-bold text-uppercase text-primary categoryTitle"
+                          class="fw-bold text-uppercase text-primary DateRangeFilter-module_categoryTitle__9phB8"
                         >
                           <small>
                             Accepted
                           </small>
                         </div>
                         <div
-                          class="flex-column mb-4 mobileDateRange"
+                          class="flex-column mb-4 DateRangeFilter-module_mobileDateRange__8RTYt"
                         >
                           <div
                             class="my-2"
                           >
                             <label
-                              class="form-label text-uppercase text-muted label"
+                              class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
                               for="from"
                             >
                               From:
                             </label>
                             <input
-                              class="form-control form-control-sm rounded-0 input"
+                              class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
                               id="from"
                               max="2021-10-23"
                               min="2016-01-01"
@@ -493,13 +493,13 @@ exports[`Project detail index creates snapshot 1`] = `
                           </div>
                           <div>
                             <label
-                              class="form-label text-uppercase text-muted label"
+                              class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
                               for="to"
                             >
                               To:
                             </label>
                             <input
-                              class="form-control form-control-sm rounded-0 input"
+                              class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
                               id="to"
                               max="2021-10-23"
                               min="2016-01-01"
@@ -509,28 +509,28 @@ exports[`Project detail index creates snapshot 1`] = `
                           </div>
                         </div>
                         <div
-                          class="mt-3 mb-4 desktopDateRange"
+                          class="mt-3 mb-4 DateRangeFilter-module_desktopDateRange__WaHPN"
                         >
                           <div
-                            class="text-uppercase text-muted mb-1 legend"
+                            class="text-uppercase text-muted mb-1 DateRangeBtn-module_legend__k4w8w"
                           >
                             From:
                           </div>
                           <button
-                            aria-label="Open calendar to choose date accepted_from"
-                            class="btn btn-sm btn-outline-secondary rounded-0 dateBtn"
+                            aria-label="Open calendar to choose date from"
+                            class="btn btn-sm btn-outline-secondary rounded-0 DateRangeBtn-module_dateBtn__Q73E7"
                           >
                             Jan 1, 2016
                           </button>
                           <div
-                            class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+                            class="dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
                             role="complementary"
                           >
                             <div
-                              class="arrow arrow"
+                              class="arrow DateRangeBtn-module_arrow__A17Dm"
                             />
                             <div
-                              class="rdrCalendarWrapper calendar"
+                              class="rdrCalendarWrapper DateRangeBtn-module_calendar__x8pmm"
                             >
                               <div
                                 class="rdrDateDisplayWrapper"
@@ -1276,25 +1276,25 @@ exports[`Project detail index creates snapshot 1`] = `
                             class="mt-3"
                           >
                             <div
-                              class="text-uppercase text-muted mb-1 legend"
+                              class="text-uppercase text-muted mb-1 DateRangeBtn-module_legend__k4w8w"
                             >
                               To:
                             </div>
                             <button
-                              aria-label="Open calendar to choose date accepted_to"
-                              class="btn btn-sm btn-outline-secondary rounded-0 dateBtn"
+                              aria-label="Open calendar to choose date to"
+                              class="btn btn-sm btn-outline-secondary rounded-0 DateRangeBtn-module_dateBtn__Q73E7"
                             >
                               Oct 23, 2021
                             </button>
                             <div
-                              class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+                              class="dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
                               role="complementary"
                             >
                               <div
-                                class="arrow arrow"
+                                class="arrow DateRangeBtn-module_arrow__A17Dm"
                               />
                               <div
-                                class="rdrCalendarWrapper calendar"
+                                class="rdrCalendarWrapper DateRangeBtn-module_calendar__x8pmm"
                               >
                                 <div
                                   class="rdrDateDisplayWrapper"
@@ -2097,7 +2097,7 @@ exports[`Project detail index creates snapshot 1`] = `
             class="d-flex flex-wrap flex-row justify-content-sm-end mt-3 mt-sm-0 ms-0 ms-md-3 w-100"
           >
             <div
-              class="d-flex flex-nowrap align-items-center me-2 me-md-4 undefined"
+              class="d-flex flex-nowrap align-items-center me-2 me-md-4"
             >
               <label
                 class="form-label me-2 mb-0"
@@ -2581,26 +2581,26 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="fw-bold text-uppercase text-primary categoryTitle"
+          class="fw-bold text-uppercase text-primary DateRangeFilter-module_categoryTitle__9phB8"
         >
           <small>
             Accepted
           </small>
         </div>
         <div
-          class="flex-column mb-4 mobileDateRange"
+          class="flex-column mb-4 DateRangeFilter-module_mobileDateRange__8RTYt"
         >
           <div
             class="my-2"
           >
             <label
-              class="form-label text-uppercase text-muted label"
+              class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
               for="from"
             >
               From:
             </label>
             <input
-              class="form-control form-control-sm rounded-0 input"
+              class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
               id="from"
               max="2021-10-23"
               min="2016-01-01"
@@ -2610,13 +2610,13 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
           <div>
             <label
-              class="form-label text-uppercase text-muted label"
+              class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
               for="to"
             >
               To:
             </label>
             <input
-              class="form-control form-control-sm rounded-0 input"
+              class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
               id="to"
               max="2021-10-23"
               min="2016-01-01"
@@ -2626,28 +2626,28 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="mt-3 mb-4 desktopDateRange"
+          class="mt-3 mb-4 DateRangeFilter-module_desktopDateRange__WaHPN"
         >
           <div
-            class="text-uppercase text-muted mb-1 legend"
+            class="text-uppercase text-muted mb-1 DateRangeBtn-module_legend__k4w8w"
           >
             From:
           </div>
           <button
-            aria-label="Open calendar to choose date accepted_from"
-            class="btn btn-sm btn-outline-secondary rounded-0 dateBtn"
+            aria-label="Open calendar to choose date from"
+            class="btn btn-sm btn-outline-secondary rounded-0 DateRangeBtn-module_dateBtn__Q73E7"
           >
             Jan 1, 2016
           </button>
           <div
-            class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+            class="dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
             role="complementary"
           >
             <div
-              class="arrow arrow"
+              class="arrow DateRangeBtn-module_arrow__A17Dm"
             />
             <div
-              class="rdrCalendarWrapper calendar"
+              class="rdrCalendarWrapper DateRangeBtn-module_calendar__x8pmm"
             >
               <div
                 class="rdrDateDisplayWrapper"
@@ -3393,25 +3393,25 @@ exports[`Project detail index creates snapshot 1`] = `
             class="mt-3"
           >
             <div
-              class="text-uppercase text-muted mb-1 legend"
+              class="text-uppercase text-muted mb-1 DateRangeBtn-module_legend__k4w8w"
             >
               To:
             </div>
             <button
-              aria-label="Open calendar to choose date accepted_to"
-              class="btn btn-sm btn-outline-secondary rounded-0 dateBtn"
+              aria-label="Open calendar to choose date to"
+              class="btn btn-sm btn-outline-secondary rounded-0 DateRangeBtn-module_dateBtn__Q73E7"
             >
               Oct 23, 2021
             </button>
             <div
-              class="dropdown dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
+              class="dropdown-menu tooltipDropdown rounded-0 text-wrap mt-2 p-0"
               role="complementary"
             >
               <div
-                class="arrow arrow"
+                class="arrow DateRangeBtn-module_arrow__A17Dm"
               />
               <div
-                class="rdrCalendarWrapper calendar"
+                class="rdrCalendarWrapper DateRangeBtn-module_calendar__x8pmm"
               >
                 <div
                   class="rdrDateDisplayWrapper"

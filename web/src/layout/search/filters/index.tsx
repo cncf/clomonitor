@@ -1,10 +1,10 @@
+import { DateRangeFilter } from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
 import React from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTERS } from '../../../data';
 import { FilterKind, FiltersSection, ReportOption } from '../../../types';
-import AcceptedDateRange from './AcceptedDateRange';
 import Checks from './checks';
 import Section from './Section';
 interface FiltersProp {
@@ -63,10 +63,11 @@ const Filters = (props: Props) => {
         />
       </div>
 
-      <AcceptedDateRange
-        acceptedFrom={props.acceptedFrom}
-        acceptedTo={props.acceptedTo}
-        onAcceptedDateRangeChange={props.onAcceptedDateRangeChange}
+      <DateRangeFilter
+        initialDate="2016-01-01"
+        from={props.acceptedFrom}
+        to={props.acceptedTo}
+        onDateRangeChange={props.onAcceptedDateRangeChange}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter, Foundation } from 'clo-ui';
+import { capitalizeFirstLetter, Foundation, SelectedFilterBadge } from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
 import moment from 'moment';
 import { Fragment } from 'react';
@@ -89,25 +89,15 @@ const SelectedFilters = (props: Props) => {
                 {props.filters[category].map((filter: string) => {
                   const filterName = capitalizeFirstLetter(getFilterName(category as FilterKind, filter));
                   return (
-                    <span
-                      role="listitem"
-                      className={`badge bg-secondary rounded-0 text-light me-3 my-1 ${styles.badge} lightBorder`}
-                      key={`filter_${category}_${filter}`}
-                    >
-                      <div className="d-flex flex-row align-items-baseline">
-                        <div className={styles.content}>
-                          <small className="text-uppercase fw-normal me-2">{categoryName}:</small>
-                          <span>{filterName}</span>
-                        </div>
-                        <button
-                          className={`btn btn-link btn-sm lh-1 ${styles.btn}`}
-                          onClick={() => props.onChange(category, filter as string, false)}
-                          aria-label={`Remove ${filterName} filter`}
-                        >
-                          <IoMdCloseCircleOutline />
-                        </button>
-                      </div>
-                    </span>
+                    <Fragment key={`filter_${category}_${filter}`}>
+                      <SelectedFilterBadge
+                        categoryName={categoryName}
+                        category={category}
+                        filterName={filterName}
+                        filter={filter}
+                        onClick={() => props.onChange(category, filter as string, false)}
+                      />
+                    </Fragment>
                   );
                 })}
               </Fragment>

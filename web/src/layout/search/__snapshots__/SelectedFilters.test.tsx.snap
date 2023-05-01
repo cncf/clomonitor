@@ -58,14 +58,14 @@ exports[`SelectedFilters creates snapshot 1`] = `
           </div>
         </span>
         <span
-          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 SelectedFilterBadge-module_badge__HToiJ lightBorder"
           role="listitem"
         >
           <div
             class="d-flex flex-row align-items-baseline"
           >
             <div
-              class="content"
+              class="SelectedFilterBadge-module_content__0mfR2"
             >
               <small
                 class="text-uppercase fw-normal me-2"
@@ -78,7 +78,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
             </div>
             <button
               aria-label="Remove Sandbox filter"
-              class="btn btn-link btn-sm lh-1 btn"
+              class="btn btn-link btn-sm lh-1 SelectedFilterBadge-module_btn__B66iA"
             >
               <svg
                 fill="currentColor"
@@ -100,14 +100,14 @@ exports[`SelectedFilters creates snapshot 1`] = `
           </div>
         </span>
         <span
-          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 SelectedFilterBadge-module_badge__HToiJ lightBorder"
           role="listitem"
         >
           <div
             class="d-flex flex-row align-items-baseline"
           >
             <div
-              class="content"
+              class="SelectedFilterBadge-module_content__0mfR2"
             >
               <small
                 class="text-uppercase fw-normal me-2"
@@ -120,7 +120,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
             </div>
             <button
               aria-label="Remove A [75-100] filter"
-              class="btn btn-link btn-sm lh-1 btn"
+              class="btn btn-link btn-sm lh-1 SelectedFilterBadge-module_btn__B66iA"
             >
               <svg
                 fill="currentColor"
@@ -142,14 +142,14 @@ exports[`SelectedFilters creates snapshot 1`] = `
           </div>
         </span>
         <span
-          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 SelectedFilterBadge-module_badge__HToiJ lightBorder"
           role="listitem"
         >
           <div
             class="d-flex flex-row align-items-baseline"
           >
             <div
-              class="content"
+              class="SelectedFilterBadge-module_content__0mfR2"
             >
               <small
                 class="text-uppercase fw-normal me-2"
@@ -162,7 +162,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
             </div>
             <button
               aria-label="Remove B [50-74] filter"
-              class="btn btn-link btn-sm lh-1 btn"
+              class="btn btn-link btn-sm lh-1 SelectedFilterBadge-module_btn__B66iA"
             >
               <svg
                 fill="currentColor"
@@ -184,14 +184,14 @@ exports[`SelectedFilters creates snapshot 1`] = `
           </div>
         </span>
         <span
-          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 SelectedFilterBadge-module_badge__HToiJ lightBorder"
           role="listitem"
         >
           <div
             class="d-flex flex-row align-items-baseline"
           >
             <div
-              class="content"
+              class="SelectedFilterBadge-module_content__0mfR2"
             >
               <small
                 class="text-uppercase fw-normal me-2"
@@ -204,7 +204,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
             </div>
             <button
               aria-label="Remove CNCF filter"
-              class="btn btn-link btn-sm lh-1 btn"
+              class="btn btn-link btn-sm lh-1 SelectedFilterBadge-module_btn__B66iA"
             >
               <svg
                 fill="currentColor"

@@ -2642,3 +2642,45 @@
       check_sets:
         - community
         - code
+- name: keycloak
+  display_name: Keycloak
+  description: Keycloak is an open-source identity and access management solution for modern applications and services, built on top of industry security standard protocols
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/keycloak/keycloak/d9025db5366c9be08648b0e145adba7df8ae70f6/js/apps/admin-ui/public/icon.svg
+  devstats_url: https://keycloak.devstats.cncf.io
+  accepted_at: "2023-04-11"
+  maturity: incubating
+  repositories:
+    - name: keycloak
+      url: https://github.com/keycloak/keycloak
+      check_sets:
+        - community
+        - code
+- name: clusternet
+  display_name: Clusternet
+  description: Managing your Kubernetes clusters (including public, private, edge, etc.) as easily as visiting the Internet
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/clusternet/icon/color/clusternet-icon-color.svg
+  devstats_url: https://clusternet.devstats.cncf.io/
+  accepted_at: "2023-03-07"
+  maturity: sandbox
+  repositories:
+    - name: clusternet
+      url: https://github.com/clusternet/clusternet
+      check_sets:
+        - community
+        - code
+- name: inspektor-gadget
+  display_name: Inspektor gadget
+  description: Introspecting and debugging Kubernetes applications using BPF "gadgets"
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/inspektor-gadget/website/89720a978e52e9200d14ab3c2c5f0349f8b1a663/static/media/brand-logo.svg
+  devstats_url: https://inspektorgadget.devstats.cncf.io
+  accepted_at: "2023-03-07"
+  maturity: sandbox
+  repositories:
+    - name: inspektor-gadget
+      url: https://github.com/inspektor-gadget/inspektor-gadget
+      check_sets:
+        - community
+        - code

@@ -53,7 +53,8 @@
   {% call check("community-meeting", "Community meeting", report.best_practices.community_meeting) -%}
   {% call check("developer-certificate-of-origin", "Developer Certificate of Origin", report.best_practices.dco) -%}
   {% call check("github-discussions", "Github discussions", report.best_practices.github_discussions) -%}
-  {% call check("openssf-badge", "OpenSSF badge", report.best_practices.openssf_badge) -%}
+  {% call check("openssf-badge", "OpenSSF best practices badge", report.best_practices.openssf_badge) -%}
+  {% call check("openssf-scorecard-badge", "OpenSSF Scorecard badge", report.best_practices.openssf_scorecard_badge) -%}
   {% call check("recent-release", "Recent release", report.best_practices.recent_release) -%}
   {% call check("slack-presence", "Slack precense", report.best_practices.slack_presence) -%}
 

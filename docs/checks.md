@@ -16,7 +16,8 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Best practices / Artifact Hub badge
   - Best practices / CLA
   - Best practices / DCO
-  - Best practices / OpenSSF badge
+  - Best practices / OpenSSF best practices badge
+  - Best practices / OpenSSF Scorecard badge
   - Best practices / Recent release
   - Security / Binary artifacts
   - Security / Code review
@@ -405,7 +406,7 @@ This check passes if:
 - An `Artifact Hub` badge is found in the repository's `README` file. Regexps used:
 
 ```sh
-"https://artifacthub.io/badge/repository/.*
+"(https://artifacthub.io/packages/[^"'\)]+)"
 ```
 
 ### Contributor license agreement
@@ -472,7 +473,7 @@ This check passes if:
 
 - A discussion that is less than one year old is found on Github.
 
-### OpenSSF badge
+### OpenSSF best practices badge
 
 **ID**: `openssf_badge`
 
@@ -480,10 +481,24 @@ The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for 
 
 This check passes if:
 
-- An `OpenSSF` (CII) badge is found in the repository's `README` file. Regexps used:
+- An `OpenSSF` best practices badge is found in the repository's `README` file. Regexps used:
 
 ```sh
-"https://bestpractices.coreinfrastructure.org/projects/\d+"
+"(https://bestpractices.coreinfrastructure.org/projects/\d+)"
+```
+
+### OpenSSF Scorecard badge
+
+**ID**: `openssf_scorecard_badge`
+
+Scorecard assesses open source projects for security risks through a series of automated checks. For more information about the Scorecard badge please see <https://github.com/marketplace/actions/ossf-scorecard-action#scorecard-badge>.
+
+This check passes if:
+
+- An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used:
+
+```sh
+"(https://api.securityscorecards.dev/projects/github.com/[^/]+/[^/]+)/badge"
 ```
 
 ### Recent release

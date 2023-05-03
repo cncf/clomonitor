@@ -145,6 +145,7 @@ impl Linter for CoreLinter {
                 dco: run!(dco, &ci),
                 github_discussions: run!(github_discussions, &ci),
                 openssf_badge: run!(openssf_badge, &ci),
+                openssf_scorecard_badge: run!(openssf_scorecard_badge, &ci),
                 recent_release: run!(recent_release, &ci),
                 slack_presence: run!(slack_presence, &ci),
             },

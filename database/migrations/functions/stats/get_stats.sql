@@ -193,6 +193,7 @@ returns json as $$
                     'dco', repositories_passing_check(p_foundation, 'best_practices', 'dco'),
                     'github_discussions', repositories_passing_check(p_foundation, 'best_practices', 'github_discussions'),
                     'openssf_badge', repositories_passing_check(p_foundation, 'best_practices', 'openssf_badge'),
+                    'openssf_scorecard_badge', repositories_passing_check(p_foundation, 'best_practices', 'openssf_scorecard_badge'),
                     'recent_release', repositories_passing_check(p_foundation, 'best_practices', 'recent_release'),
                     'slack_presence', repositories_passing_check(p_foundation, 'best_practices', 'slack_presence')
                 ),

@@ -1,6 +1,6 @@
 import { ExternalLink, Foundation, Maturity, SampleQuery } from 'clo-ui';
 import { BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
-import { BsCalendar3 } from 'react-icons/bs';
+import { BsCalendar3, BsUiChecks } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
   FaBalanceScale,
@@ -362,14 +362,24 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   },
   [ReportOption.OpenSSFBadge]: {
     icon: <BiMedal />,
-    name: 'OpenSSF badge',
+    name: 'OpenSSF best practices badge',
+    shortName: 'OpenSSF best practices',
     legend: (
       <span>
         The Open Source Security Foundation (OpenSSF) Best Practices badge is a way for Free/Libre and Open Source
         Software (FLOSS) projects to show that they follow best practices
       </span>
     ),
-    reference: '/docs/topics/checks/#openssf-badge',
+    reference: '/docs/topics/checks/#openssf-best-practices-badge',
+  },
+  [ReportOption.OpenSSFScorecardBadge]: {
+    icon: <BsUiChecks />,
+    name: 'OpenSSF Scorecard badge',
+    shortName: 'OpenSSF Scorecard',
+    legend: (
+      <span>Scorecard assesses open source projects for security risks through a series of automated checks</span>
+    ),
+    reference: '/docs/topics/checks/#openssf-scorecard-badge',
   },
   [ReportOption.Readme]: {
     icon: <CgReadme />,
@@ -502,6 +512,7 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.DCO,
     ReportOption.GithubDiscussions,
     ReportOption.OpenSSFBadge,
+    ReportOption.OpenSSFScorecardBadge,
     ReportOption.RecentRelease,
     ReportOption.SlackPresence,
   ],

@@ -157,6 +157,7 @@ export enum ReportOption {
   Maintained = 'maintained',
   Maintainers = 'maintainers',
   OpenSSFBadge = 'openssf_badge',
+  OpenSSFScorecardBadge = 'openssf_scorecard_badge',
   Readme = 'readme',
   RecentRelease = 'recent_release',
   Roadmap = 'roadmap',

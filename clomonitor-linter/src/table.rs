@@ -164,8 +164,12 @@ pub(crate) fn display(
             cell_check(&report.best_practices.github_discussions),
         ])
         .add_row(vec![
-            cell_entry("Best practices / OpenSSF (CII) badge"),
+            cell_entry("Best practices / OpenSSF best practices badge"),
             cell_check(&report.best_practices.openssf_badge),
+        ])
+        .add_row(vec![
+            cell_entry("Best practices / OpenSSF Scorecard badge"),
+            cell_check(&report.best_practices.openssf_scorecard_badge),
         ])
         .add_row(vec![
             cell_entry("Best practices / Recent release"),
@@ -340,6 +344,7 @@ mod tests {
                 dco: Some(CheckOutput::passed()),
                 github_discussions: Some(CheckOutput::passed()),
                 openssf_badge: Some(CheckOutput::passed()),
+                openssf_scorecard_badge: Some(CheckOutput::passed()),
                 recent_release: Some(CheckOutput::passed()),
                 slack_presence: Some(CheckOutput::passed()),
             },

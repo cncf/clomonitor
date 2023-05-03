@@ -360,16 +360,16 @@ exports[`Checks creates snapshot 1`] = `
             <span
               class="d-inline-block d-md-none"
             >
-              OpenSSF badge
+              OpenSSF best practices
             </span>
             <span
               class="d-none d-md-inline-block"
             >
               <button
-                aria-label="Search projects with passed OpenSSF badge check"
+                aria-label="Search projects with passed OpenSSF best practices check"
                 class="btn btn-link p-0 btn"
               >
-                OpenSSF badge
+                OpenSSF best practices
               </button>
             </span>
           </div>

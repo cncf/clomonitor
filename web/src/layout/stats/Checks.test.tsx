@@ -43,7 +43,7 @@ describe('Checks', () => {
       expect(screen.getByText('43%')).toBeInTheDocument();
       expect(screen.getAllByText('DCO')).toHaveLength(2);
       expect(screen.getByText('83%')).toBeInTheDocument();
-      expect(screen.getAllByText('OpenSSF badge')).toHaveLength(2);
+      expect(screen.getAllByText('OpenSSF best practices')).toHaveLength(2);
       expect(screen.getByText('59%')).toBeInTheDocument();
       expect(screen.getAllByText('Recent release')).toHaveLength(2);
       expect(screen.getByText('81%')).toBeInTheDocument();

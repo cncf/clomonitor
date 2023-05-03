@@ -30,6 +30,7 @@ returns setof text as $$
             (rp.data->'best_practices'->'dco'->'passed')::boolean as dco,
             (rp.data->'best_practices'->'github_discussions'->'passed')::boolean as github_discussions,
             (rp.data->'best_practices'->'openssf_badge'->'passed')::boolean as openssf_badge,
+            (rp.data->'best_practices'->'openssf_scorecard_badge'->'passed')::boolean as openssf_scorecard_badge,
             (rp.data->'best_practices'->'recent_release'->'passed')::boolean as recent_release,
             (rp.data->'best_practices'->'slack_presence'->'passed')::boolean as slack_presence,
             (rp.data->'security'->'binary_artifacts'->'passed')::boolean as binary_artifacts,
@@ -47,7 +48,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

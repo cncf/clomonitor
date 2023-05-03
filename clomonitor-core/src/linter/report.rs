@@ -107,6 +107,7 @@ pub struct BestPractices {
     pub dco: Option<CheckOutput>,
     pub github_discussions: Option<CheckOutput>,
     pub openssf_badge: Option<CheckOutput>,
+    pub openssf_scorecard_badge: Option<CheckOutput>,
     pub recent_release: Option<CheckOutput>,
     pub slack_presence: Option<CheckOutput>,
 }
@@ -121,6 +122,7 @@ section_impl!(
     dco,
     github_discussions,
     openssf_badge,
+    openssf_scorecard_badge,
     recent_release,
     slack_presence
 );

@@ -23,6 +23,7 @@ pub(crate) mod license_spdx_id;
 pub(crate) mod maintained;
 pub(crate) mod maintainers;
 pub(crate) mod openssf_badge;
+pub(crate) mod openssf_scorecard_badge;
 pub(crate) mod readme;
 pub(crate) mod recent_release;
 pub(crate) mod roadmap;
@@ -84,6 +85,7 @@ lazy_static! {
         register_check!(maintained, "Maintained");
         register_check!(maintainers);
         register_check!(openssf_badge);
+        register_check!(openssf_scorecard_badge);
         register_check!(readme);
         register_check!(recent_release);
         register_check!(roadmap);

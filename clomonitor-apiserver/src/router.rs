@@ -636,6 +636,7 @@ mod tests {
                             dco: Some(CheckOutput::passed()),
                             github_discussions: Some(CheckOutput::passed()),
                             openssf_badge: Some(CheckOutput::passed()),
+                            openssf_scorecard_badge: Some(CheckOutput::passed()),
                             recent_release: Some(CheckOutput::passed()),
                             slack_presence: Some(CheckOutput::passed()),
                         },

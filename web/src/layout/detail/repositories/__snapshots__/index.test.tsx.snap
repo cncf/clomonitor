@@ -3257,7 +3257,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                               <small
                                 class="fw-bold text-truncate"
                               >
-                                OpenSSF badge
+                                OpenSSF best practices badge
                               </small>
                             </div>
                             <div
@@ -3276,7 +3276,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                                 <a
                                   aria-label="Open external link"
                                   class="link d-inline w-100 ms-1"
-                                  href="/docs/topics/checks/#openssf-badge"
+                                  href="/docs/topics/checks/#openssf-best-practices-badge"
                                   rel="noopener noreferrer"
                                   tabindex="-1"
                                   target="_blank"

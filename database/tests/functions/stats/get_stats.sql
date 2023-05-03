@@ -213,6 +213,10 @@ insert into report (
                 "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
                 "passed": true
             },
+            "openssf_scorecard_badge": {
+                "url": "https://api.securityscorecards.dev/projects/github.com/owner/repo",
+                "passed": true
+            },
             "recent_release": {
                 "url": "https://github.com/fluent/fluentd/releases/tag/v1.14.5",
                 "passed": true
@@ -344,6 +348,10 @@ insert into report (
                 "url": "https://bestpractices.coreinfrastructure.org/projects/1189",
                 "passed": true
             },
+            "openssf_scorecard_badge": {
+                "url": "https://api.securityscorecards.dev/projects/github.com/owner/repo",
+                "passed": true
+            },
             "recent_release": {
                 "url": "https://github.com/fluent/fluentd/releases/tag/v1.14.5",
                 "passed": true
@@ -463,6 +471,9 @@ insert into report (
             "openssf_badge": {
                 "passed": false
             },
+            "openssf_scorecard_badge": {
+                "passed": false
+            },
             "recent_release": {
                 "passed": false
             },
@@ -580,6 +591,7 @@ select is(
                     "analytics": 67,
                     "github_discussions": 67,
                     "openssf_badge": 67,
+                    "openssf_scorecard_badge": 67,
                     "recent_release": 67,
                     "slack_presence": 0
                 },

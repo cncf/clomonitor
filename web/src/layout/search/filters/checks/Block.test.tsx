@@ -50,12 +50,13 @@ describe('Block', () => {
       expect(screen.getByText('Developer Certificate of Origin')).toBeInTheDocument();
       expect(screen.getByText('DCO')).toBeInTheDocument();
       expect(screen.getAllByText('GitHub discussions')).toHaveLength(2);
-      expect(screen.getAllByText('OpenSSF badge')).toHaveLength(2);
+      expect(screen.getByText('OpenSSF best practices')).toBeInTheDocument();
+      expect(screen.getByText('OpenSSF best practices badge')).toBeInTheDocument();
       expect(screen.getAllByText('Recent release')).toHaveLength(2);
       expect(screen.getAllByText('Slack presence')).toHaveLength(2);
 
-      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(19);
-      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(19);
+      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(21);
+      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(21);
     });
 
     it('renders option Slack presence as passed', () => {

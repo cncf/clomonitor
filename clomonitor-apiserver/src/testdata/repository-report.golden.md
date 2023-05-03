@@ -46,7 +46,8 @@
   - [x] Community meeting ([_docs_](https://clomonitor.io/docs/topics/checks/#community-meeting))
   - [x] Developer Certificate of Origin ([_docs_](https://clomonitor.io/docs/topics/checks/#developer-certificate-of-origin))
   - [x] Github discussions ([_docs_](https://clomonitor.io/docs/topics/checks/#github-discussions))
-  - [x] OpenSSF badge ([_docs_](https://clomonitor.io/docs/topics/checks/#openssf-badge))
+  - [x] OpenSSF best practices badge ([_docs_](https://clomonitor.io/docs/topics/checks/#openssf-badge))
+  - [x] OpenSSF Scorecard badge ([_docs_](https://clomonitor.io/docs/topics/checks/#openssf-scorecard-badge))
   - [x] Recent release ([_docs_](https://clomonitor.io/docs/topics/checks/#recent-release))
   - [x] Slack precense ([_docs_](https://clomonitor.io/docs/topics/checks/#slack-presence))
   

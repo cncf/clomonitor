@@ -10,22 +10,16 @@
   margin-right: 0.35rem;
 }
 
-.isPassing {
+.isPassing,
+.isPassing:hover {
   background-color: var(--clo-green);
   color: #fff;
 }
 
-.isPassing:hover {
-  color: var(--bs-white);
-}
-
-.isNotPassing {
+.isNotPassing,
+.isNotPassing:hover {
   background-color: var(--clo-red);
   color: #fff;
-}
-
-.isNotPassing:hover {
-  color: var(--bs-white);
 }
 
 .iconTooltipArrow {

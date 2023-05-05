@@ -72,10 +72,10 @@
 }
 
 .global {
-  height: 2.5rem;
-  width: 2.5rem;
-  min-width: 2.5rem;
-  font-size: 1rem;
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  min-width: 2.5rem !important;
+  font-size: 1rem !important;
 }
 
 .tooltipMessage {
@@ -124,9 +124,9 @@
 
 @media only screen and (min-width: 768px) {
   .global {
-    height: 3rem;
-    width: 3rem;
-    min-width: 3rem;
-    font-size: 1.25rem;
+    height: 3rem !important;
+    width: 3rem !important;
+    min-width: 3rem !important;
+    font-size: 1.25rem !important;
   }
 }

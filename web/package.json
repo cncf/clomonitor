@@ -5,7 +5,7 @@
   "dependencies": {
     "apexcharts": "^3.40.0",
     "classnames": "^2.3.2",
-    "clo-ui": "https://github.com/cncf/clo-ui.git#0.1.7",
+    "clo-ui": "https://github.com/cncf/clo-ui.git#050d5fa4ddee4791df35e40a57603bd181e7b59e",
     "lodash": "^4.17.21",
     "minimatch": "^9.0.0",
     "moment": "^2.29.1",
@@ -54,7 +54,8 @@
   },
   "scripts": {
     "copy:static": "shx rm -rf src/static && shx mkdir src/static && shx cp -r public/static/* src",
-    "build": "yarn copy:static && INLINE_RUNTIME_CHUNK=false IMAGE_INLINE_SIZE_LIMIT=0 react-scripts build && shx cp -r build/static/* build && shx rm -rf build/static",
+    "copy:scorecard": "shx cp public/scorecard.html build",
+    "build": "yarn copy:static && INLINE_RUNTIME_CHUNK=false IMAGE_INLINE_SIZE_LIMIT=0 react-scripts build && shx cp -r build/static/* build && shx rm -rf build/static && yarn copy:scorecard",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "format:diff": "prettier --list-different \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",

@@ -25,6 +25,7 @@ interface Props {
   referenceUrl?: string;
   recommendedTemplates?: RecommendedTemplate[];
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
+  repoUrl?: string;
 }
 
 const Row = (props: Props) => {
@@ -74,6 +75,7 @@ const Row = (props: Props) => {
                     key={`${props.reportId}_${props.label}_${opt}_cell`}
                     label={opt as ReportOption}
                     check={props.data[opt]!}
+                    repoUrl={props.repoUrl}
                   />
                 );
               })}

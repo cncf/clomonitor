@@ -1010,6 +1010,26 @@
       url: https://github.com/knative/serving
       check_sets:
         - code
+    - name: test-infra
+      url: https://github.com/knative/test-infra
+      check_sets:
+        - code-lite
+    - name: func
+      url: https://github.com/knative/func
+      check_sets:
+        - code-lite
+    - name: operator
+      url: https://github.com/knative/operator
+      check_sets:
+        - code-lite
+    - name: pkg
+      url: https://github.com/knative/pkg
+      check_sets:
+        - code-lite
+    - name: networking
+      url: https://github.com/knative/networking
+      check_sets:
+        - code-lite
 - name: krator
   display_name: Krator
   description: Kubernetes Rust State Machine Operator

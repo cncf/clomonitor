@@ -209,6 +209,7 @@ const RepositoriesList = (props: Props) => {
                     score={!isUndefined(repo.score) ? repo.score.best_practices : undefined}
                     referenceUrl="/docs/topics/checks/#best-practices"
                     getAnchorLink={getAnchorLink}
+                    repoUrl={repo.url}
                   />
                   <Row
                     repoName={repo.name}

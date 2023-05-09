@@ -77,6 +77,12 @@
   white-space: pre-line;
 }
 
+.iframe {
+  width: 1000px;
+  max-width: 100%;
+  height: calc(100% + 1rem);
+}
+
 .detailsContent {
   font-size: 0.8rem;
 }

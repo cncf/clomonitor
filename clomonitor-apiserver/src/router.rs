@@ -12,7 +12,9 @@ use std::{path::Path, sync::Arc};
 use tera::Tera;
 use tower::ServiceBuilder;
 use tower_http::{
-    services::ServeDir, set_header::SetResponseHeader, trace::TraceLayer,
+    services::{ServeDir, ServeFile},
+    set_header::SetResponseHeader,
+    trace::TraceLayer,
     validate_request::ValidateRequestHeaderLayer,
 };
 
@@ -37,6 +39,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
     let docs_path = Path::new(&static_path).join("docs");
+    let scorecard_path = Path::new(&static_path).join("scorecard.html");
 
     // Setup templates
     let mut tmpl = Tera::default();
@@ -74,6 +77,7 @@ pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
             get(report_summary_png),
         )
         .route("/data/repositories.csv", get(repositories_checks))
+        .route("/scorecard", get_service(ServeFile::new(scorecard_path)))
         .nest("/api", api_routes)
         .nest_service(
             "/docs",

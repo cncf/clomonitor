@@ -1,12 +1,13 @@
 import { DropdownOnHover, ElementWithTooltip, ExternalLink } from 'clo-ui';
 import { isUndefined } from 'lodash';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
 
+import { AppContext } from '../../../context/AppContextProvider';
 import { REPORT_OPTIONS } from '../../../data';
 import { ReportCheck, ReportOption, ReportOptionData } from '../../../types';
 import styles from './OptionCell.module.css';
@@ -14,6 +15,7 @@ import styles from './OptionCell.module.css';
 interface Props {
   label: ReportOption;
   check: ReportCheck;
+  repoUrl?: string;
 }
 
 function getOptionInfo(key: ReportOption) {
@@ -21,6 +23,8 @@ function getOptionInfo(key: ReportOption) {
 }
 
 const OptionCell = (props: Props) => {
+  const { ctx } = useContext(AppContext);
+  const { effective } = ctx.prefs.theme;
   const details = useRef<HTMLDivElement | null>(null);
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
@@ -129,6 +133,26 @@ const OptionCell = (props: Props) => {
     );
   };
 
+  const getScorecardInfo = (name: string): JSX.Element | null => {
+    if (isUndefined(props.repoUrl)) return null;
+
+    const url = new URL(props.repoUrl);
+    const githubUrlParts = url.pathname.split('/');
+
+    return (
+      <ExternalLink
+        href={`${window.location.origin}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}`}
+        className="d-inline w-100"
+        label="Checks reference documentation"
+      >
+        <div className="d-flex flex-row align-items-center w-100">
+          <small className="fw-bold text-truncate">{name}</small>
+          <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
+        </div>
+      </ExternalLink>
+    );
+  };
+
   const getIconCheck = (): JSX.Element => {
     if (!isUndefined(props.check.exempt) && props.check.exempt) {
       return (
@@ -223,16 +247,26 @@ const OptionCell = (props: Props) => {
               <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
                 {!isUndefined(props.check.url) ? (
                   <div>
-                    <ExternalLink
-                      href={props.check.url}
-                      className="d-inline w-100"
-                      label="Checks reference documentation"
-                    >
-                      <div className="d-flex flex-row align-items-center w-100">
-                        <small className="fw-bold text-truncate">{getCheckValue()}</small>
-                        <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
-                      </div>
-                    </ExternalLink>
+                    {(() => {
+                      switch (props.label) {
+                        case ReportOption.OpenSSFScorecardBadge:
+                          return <>{getScorecardInfo(opt.name)}</>;
+
+                        default:
+                          return (
+                            <ExternalLink
+                              href={props.check.url}
+                              className="d-inline w-100"
+                              label="Checks reference documentation"
+                            >
+                              <div className="d-flex flex-row align-items-center w-100">
+                                <small className="fw-bold text-truncate">{getCheckValue()}</small>
+                                <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
+                              </div>
+                            </ExternalLink>
+                          );
+                      }
+                    })()}
                   </div>
                 ) : (
                   <>

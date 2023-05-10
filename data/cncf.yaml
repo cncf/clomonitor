@@ -1030,6 +1030,276 @@
       url: https://github.com/knative/networking
       check_sets:
         - code-lite
+    - name: knative-sandbox/eventing-kafka-broker
+      url: https://github.com/knative-sandbox/eventing-kafka-broker
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-istio
+      url: https://github.com/knative-sandbox/eventing-istio
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-github
+      url: https://github.com/knative-sandbox/eventing-github
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-autoscaler-keda
+      url: https://github.com/knative-sandbox/eventing-autoscaler-keda
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/sample-source
+      url: https://github.com/knative-sandbox/sample-source Public
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-kourier
+      url: https://github.com/knative-sandbox/net-kourier
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-rabbitmq
+      url: https://github.com/knative-sandbox/eventing-rabbitmq
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-natss
+      url: https://github.com/knative-sandbox/eventing-natss
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-source-kamelet
+      url: https://github.com/knative-sandbox/kn-plugin-source-kamelet
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-event
+      url: https://github.com/knative-sandbox/kn-plugin-event
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-redis
+      url: https://github.com/knative-sandbox/eventing-redis
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-kogito
+      url: https://github.com/knative-sandbox/eventing-kogito
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-kafka
+      url: https://github.com/knative-sandbox/eventing-kafka
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-ceph
+      url: https://github.com/knative-sandbox/eventing-ceph
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-gitlab
+      url: https://github.com/knative-sandbox/eventing-gitlab
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/security-guard
+      url: https://github.com/knative-sandbox/security-guard
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-operator
+      url: https://github.com/knative-sandbox/kn-plugin-operator
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-migration
+      url: https://github.com/knative-sandbox/kn-plugin-migration
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-admin
+      url: https://github.com/knative-sandbox/kn-plugin-admin
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-diag
+      url: https://github.com/knative-sandbox/kn-plugin-diag
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/control-protocol
+      url: https://github.com/knative-sandbox/control-protocol
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/reconciler-test
+      url: https://github.com/knative-sandbox/reconciler-test
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/func-go
+      url: https://github.com/knative-sandbox/func-go
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/knobots
+      url: https://github.com/knative-sandbox/knobots
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-quickstart
+      url: https://github.com/knative-sandbox/kn-plugin-quickstart
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-istio
+      url: https://github.com/knative-sandbox/net-istio
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/async-component
+      url: https://github.com/knative-sandbox/async-component
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-source-kafka
+      url: https://github.com/knative-sandbox/kn-plugin-source-kafka
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-gateway-api
+      url: https://github.com/knative-sandbox/net-gateway-api
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kperf
+      url: https://github.com/knative-sandbox/kperf
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-certmanager
+      url: https://github.com/knative-sandbox/net-certmanager
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-http01
+      url: https://github.com/knative-sandbox/net-http01
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/net-contour
+      url: https://github.com/knative-sandbox/net-contour
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/sample-controller
+      url: https://github.com/knative-sandbox/sample-controller
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/scaling-group
+      url: https://github.com/knative-sandbox/scaling-group
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-service-log
+      url: https://github.com/knative-sandbox/kn-plugin-service-log
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/func-tastic
+      url: https://github.com/knative-sandbox/func-tastic
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/kn-plugin-sample
+      url: https://github.com/knative-sandbox/kn-plugin-sample
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/homebrew-kn-plugins
+      url: https://github.com/knative-sandbox/homebrew-kn-plugins
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/monitoring
+      url: https://github.com/knative-sandbox/monitoring
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-couchdb
+      url: https://github.com/knative-sandbox/eventing-couchdb
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/discovery
+      url: https://github.com/knative-sandbox/discovery
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-awssqs
+      url: https://github.com/knative-sandbox/eventing-awssqs
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/eventing-prometheus
+      url: https://github.com/knative-sandbox/eventing-prometheus
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
+    - name: knative-sandbox/wg-repository
+      url: https://github.com/knative-sandbox/wg-repository
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
 - name: krator
   display_name: Krator
   description: Kubernetes Rust State Machine Operator

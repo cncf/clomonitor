@@ -12,3 +12,9 @@
       check_sets:
         - community
         - code
+    - name: blog
+      url: https://github.com/artifacthub/blog
+      check_sets:
+        - docs
+      exclude:
+        - clomonitor

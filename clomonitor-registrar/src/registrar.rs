@@ -51,6 +51,7 @@ pub(crate) struct Repository {
     pub name: String,
     pub url: String,
     pub check_sets: Vec<String>,
+    pub exclude: Option<Vec<String>>,
 }
 
 /// Process foundations registered in the database.
@@ -123,6 +124,14 @@ async fn process_foundation(
     let tmp: Vec<Project> = serde_yaml::from_str(&data)?;
     let mut projects_available: HashMap<String, Project> = HashMap::with_capacity(tmp.len());
     for mut project in tmp {
+        // Do not include repositories that have been excluded for this service
+        project.repositories.retain(|r| {
+            if let Some(exclude) = &r.exclude {
+                return !exclude.contains(&"clomonitor".to_string());
+            }
+            true
+        });
+
         project.set_digest()?;
         projects_available.insert(project.name.clone(), project);
     }
@@ -312,7 +321,7 @@ mod tests {
                 projects_registered.insert(
                     "artifact-hub".to_string(),
                     Some(
-                        "bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033"
+                        "ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340"
                             .to_string(),
                     ),
                 );
@@ -362,11 +371,12 @@ mod tests {
                     devstats_url: Some("https://artifacthub.devstats.cncf.io/".to_string()),
                     accepted_at: Some("2020-06-23".to_string()),
                     maturity: "sandbox".to_string(),
-                    digest: Some("bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033".to_string()),
+                    digest: Some("ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340".to_string()),
                     repositories: vec![Repository{
                         name: "artifact-hub".to_string(),
                         url: "https://github.com/artifacthub/hub".to_string(),
                         check_sets: vec!["community".to_string(), "code".to_string()],
+                        exclude: None,
                     }]
                 }),
             )
@@ -406,7 +416,7 @@ mod tests {
                 projects_registered.insert(
                     "artifact-hub".to_string(),
                     Some(
-                        "bd6368c9e4b7e90ede6c16453ece0e9e4eef8464636aa3224db4be48d8e0c033"
+                        "ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340"
                             .to_string(),
                     ),
                 );

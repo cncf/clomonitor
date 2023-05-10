@@ -56,7 +56,7 @@ serde_qs = "0.12.0"
 sha2 = "0.10.6"
 tempfile = "3.5.0"
 tera = { version = "1.18.1", default-features = false }
-time = { version = "0.3.20", features = [
+time = { version = "0.3.21", features = [
     "formatting",
     "macros",
     "parsing",

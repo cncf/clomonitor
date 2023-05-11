@@ -1,9 +1,9 @@
 import { DropdownOnHover, ElementWithTooltip, ExternalLink, FullScreenModal } from 'clo-ui';
 import { isUndefined } from 'lodash';
 import { useContext, useRef, useState } from 'react';
+import { BsWindowPlus } from 'react-icons/bs';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
-import { HiOutlinePlusCircle } from 'react-icons/hi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
@@ -26,6 +26,7 @@ function getOptionInfo(key: ReportOption) {
 const OptionCell = (props: Props) => {
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
+  const iframe = useRef<HTMLIFrameElement>(null);
   const [openScoreModalStatus, setOpenScoreModalStatus] = useState<boolean>(false);
   const details = useRef<HTMLDivElement | null>(null);
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
@@ -146,15 +147,20 @@ const OptionCell = (props: Props) => {
         <button className={`btn btn-link text-reset p-0 ${styles.btn}`} onClick={() => setOpenScoreModalStatus(true)}>
           <div className="d-flex flex-row align-items-center w-100">
             <small className="fw-bold text-truncate">{name}</small>
-            <HiOutlinePlusCircle className={`ms-2 ${styles.miniIcon}`} />
+            <BsWindowPlus className={`ms-2 ${styles.miniIcon}`} />
           </div>
         </button>
-        <FullScreenModal open={openScoreModalStatus} onClose={() => setOpenScoreModalStatus(false)}>
-          <div className={styles.iframeWrapper}>
+        <FullScreenModal
+          excludedRefs={[iframe]}
+          open={openScoreModalStatus}
+          onClose={() => setOpenScoreModalStatus(false)}
+        >
+          <div className={`h-100 w-100 mx-auto ${styles.iframeWrapper}`}>
             <iframe
+              ref={iframe}
               title="Scorecard details"
               src={`${window.location.origin}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}&embed=true`}
-              className={styles.iframe}
+              className={`w-100 ${styles.iframe}`}
             />
           </div>
         </FullScreenModal>

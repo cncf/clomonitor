@@ -1,8 +1,9 @@
-import { DropdownOnHover, ElementWithTooltip, ExternalLink } from 'clo-ui';
+import { DropdownOnHover, ElementWithTooltip, ExternalLink, FullScreenModal } from 'clo-ui';
 import { isUndefined } from 'lodash';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import { HiOutlinePlusCircle } from 'react-icons/hi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
@@ -25,6 +26,7 @@ function getOptionInfo(key: ReportOption) {
 const OptionCell = (props: Props) => {
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
+  const [openScoreModalStatus, setOpenScoreModalStatus] = useState<boolean>(false);
   const details = useRef<HTMLDivElement | null>(null);
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
   const successIcon = <FaRegCheckCircle data-testid="success-icon" className={`text-success ${styles.icon}`} />;
@@ -140,16 +142,23 @@ const OptionCell = (props: Props) => {
     const githubUrlParts = url.pathname.split('/');
 
     return (
-      <ExternalLink
-        href={`${window.location.origin}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}`}
-        className="d-inline w-100"
-        label="Checks reference documentation"
-      >
-        <div className="d-flex flex-row align-items-center w-100">
-          <small className="fw-bold text-truncate">{name}</small>
-          <FiExternalLink className={`ms-2 ${styles.miniIcon}`} />
-        </div>
-      </ExternalLink>
+      <>
+        <button className={`btn btn-link text-reset p-0 ${styles.btn}`} onClick={() => setOpenScoreModalStatus(true)}>
+          <div className="d-flex flex-row align-items-center w-100">
+            <small className="fw-bold text-truncate">{name}</small>
+            <HiOutlinePlusCircle className={`ms-2 ${styles.miniIcon}`} />
+          </div>
+        </button>
+        <FullScreenModal open={openScoreModalStatus} onClose={() => setOpenScoreModalStatus(false)}>
+          <div className={styles.iframeWrapper}>
+            <iframe
+              title="Scorecard details"
+              src={`${window.location.origin}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}&embed=true`}
+              className={styles.iframe}
+            />
+          </div>
+        </FullScreenModal>
+      </>
     );
   };
 

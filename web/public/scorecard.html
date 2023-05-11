@@ -26,6 +26,7 @@
         --color-yellow: #f9c74f;
         --color-orange: #f8961e;
         --color-red: #f94144;
+        --color-gray: rgba(0, 0, 0, 0.05);
 
         --color-level-1: #F4BD0C;
         --color-level-2: #F7860F;
@@ -42,6 +43,7 @@
         --muted: #6c757d;
         --color-black-5: rgba(0, 0, 0, 0.05);
         --color-black-10: rgba(0, 0, 0, 0.1);
+        --color-white-10: rgba(255, 255, 255, 0.5);
         --color-white: #fff;
         --color-primary: #2a0552;
         --color-secondary: #f0a;
@@ -56,6 +58,7 @@
         --muted: #a0a0a0;
         --color-black-5: rgba(255, 255, 255, 0.05);
         --color-black-10: rgba(255, 255, 255, 0.1);
+        --color-white-10: rgba(0, 0, 0, 0.5);
         --color-white: #000;
         --color-primary: #0f0e11;
         --color-secondary: #f0a;
@@ -101,6 +104,14 @@
 
       .d-none {
         display: none;
+      }
+
+      .position-relative {
+        position: relative;
+      }
+
+      .position-absolute {
+        position: absolute;
       }
 
       /* Flex */
@@ -277,6 +288,10 @@
         margin: 2.5rem auto;
       }
 
+      .loading-table .wave {
+        margin: 30% auto;
+      }
+
       .wave:before,
       .wave:after {
         content: '';
@@ -393,6 +408,19 @@
 
       .table td {
         padding: 1rem;
+      }
+
+      .loading-table {
+        z-index: 1;
+        height: calc(100% - 4.2rem);
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white-10);
+      }
+
+      tbody:has(.loading-table) > tr {
+        filter: grayscale();
+        opacity: 0.5;
       }
 
       .score-cell {
@@ -604,7 +632,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="scorecard-report">
       <div class="table-wrapper">
-        <table class="table">
+        <table class="table position-relative">
           <thead>
             <tr>
               <th colspan="2" class="title">
@@ -686,121 +714,265 @@
 
     <!-- OpenSSF scorecard report template -->
     <script id="scorecard-template" type="text/x-handlebars-template">
-        <tr>
-          <td class="score-cell">
-            <div class="chart">
-              <svg viewBox="0 0 36 36" class="d-block">
+      {{#if isPlaceholder}}<div class="position-absolute loading-table"><div class="wave" role="status"></div></div>{{/if}}
+      <tr>
+        <td class="score-cell">
+          <div class="chart">
+            <svg viewBox="0 0 36 36" class="d-block">
+              <path
+                class="circle-bg"
+                d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
                 <path
-                  class="circle-bg"
+                  class="circle"
+                  stroke-dasharray="{{mul data.score 10}}, 100"
+                  style="stroke: var(--color-{{getColorName data.score}});"
                   d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
                 />
-                  <path
-                    class="circle"
-                    stroke-dasharray="{{mul data.score 10}}, 100"
-                    style="stroke: var(--color-{{getColorName data.score}});"
-                    d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                <text x="18" y="23" class="value">
-                  {{scoreFormat data.score}}
-                </text>
-              </svg>
+              <text x="18" y="23" class="value">
+                {{scoreFormat data.score}}
+              </text>
+            </svg>
+          </div>
+        </td>
+        <td class="ps-0">
+          <div class="d-flex flex-column justify-content-between table-cell">
+            <div class="d-flex flex-row align-items-center main-title">
+              {{getRepoLogo}}
+              <div class="fw-semibold text-truncate">
+                <a class="btn-link repo-name" href="https://{{data.repo.name}}" target="_blank" rel="noopener noreferrer">
+                  {{data.repo.name}}
+                </a>
+                </div>
             </div>
-          </td>
-          <td class="ps-0">
-            <div class="d-flex flex-column justify-content-between table-cell">
-              <div class="d-flex flex-row align-items-center main-title">
-                {{getRepoLogo}}
-                <div class="fw-semibold text-truncate">
-                  <a class="btn-link repo-name" href="https://{{data.repo.name}}" target="_blank" rel="noopener noreferrer">
-                    {{data.repo.name}}
-                  </a>
-                  </div>
-              </div>
-              <div class="content text-truncate"><small class="fw-semibold">COMMIT:</small>
+            <div class="content text-truncate"><small class="fw-semibold">COMMIT:</small>
+              {{#if data.repo.commit}}
                 <span class="d-none d-md-inline-block text-muted">{{data.repo.commit}}</span>
                 <span class="d-inline-block d-md-none text-muted">{{shortCommit data.repo.commit}}</span>
+              {{else}}
+                <span class="text-muted">-</span>
+              {{/if}}
+            </div>
+            <div class="content"><small class="fw-semibold">GENERATED AT:</small>
+              {{#if data.date}}
+                <span class="text-muted">{{data.date}}</span>
+              {{else}}
+                <span class="text-muted">-</span>
+              {{/if}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      {{#each data.checks}}
+        <tr>
+          <td class="text-center top-aligment">
+            <div class="score-badge fw-semibold" style="border-bottom-color: var(--color-{{getColorName score}});">{{#if score includeZero=true}}{{score}}{{else}}-{{/if}}</div>
+          </td>
+          <td class="section ps-0 top-aligment" id="section-{{name}}" onclick="onClickSection('{{name}}')">
+            <div class="table-cell">
+              <div class="d-flex flex-row">
+                <div class="d-flex flex-column check-info">
+                  <div class="d-flex flex-row align-items-center check-title">
+                    <div class="fw-semibold text-truncate">{{replaceDashes name}}</div>
+                    {{#if (getRiskLevel name)}}
+                      <div class="severity-badge fw-semibold badge-{{getRiskLevel name}}">{{getRiskLevel name}}</div>
+                    {{/if}}
+                  </div>
+                  <div class="text-muted description text-truncate">{{documentation.short}}</div>
+                </div>
+                <div class="caret text-muted">
+                  <svg class="close" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
+                  </svg>
+                  <svg class="open" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"></path>
+                  </svg>
+                </div>
               </div>
-              <div class="content"><small class="fw-semibold">GENERATED AT:</small> <span class="text-muted">{{data.date}}</span></div>
+            </div>
+            <div class="details">
+              <div class="fw-semibold details-title">Reason</div>
+              <div class="text-muted">{{#if reason}}{{reason}}{{/if}}</div>
+              {{#if details}}
+                <div class="fw-semibold details-title">Details</div>
+                {{#each details}}
+                  <div class="text-muted detail-line">{{this}}</div>
+                {{/each}}
+              {{/if}}
+              <div class="link-wrapper">
+                <a class="btn-link fw-semibold" href="{{documentation.url}}" target="_blank" rel="noopener noreferrer">
+                  <div class="d-flex flex-row align-items-center justify-content-end">
+                    <div>Check documentation</div>
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="ms-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </div>
+                </a>
+              </div>
             </div>
           </td>
         </tr>
-        {{#each data.checks}}
-          <tr>
-            <td class="text-center top-aligment">
-              <div class="score-badge fw-semibold" style="border-bottom-color: var(--color-{{getColorName score}});">{{score}}</div>
-            </td>
-            <td class="section ps-0 top-aligment" id="section-{{name}}" onclick="onClickSection('{{name}}')">
-              <div class="table-cell">
-                <div class="d-flex flex-row">
-                  <div class="d-flex flex-column check-info">
-                    <div class="d-flex flex-row align-items-center check-title">
-                      <div class="fw-semibold text-truncate">{{replaceDashes name}}</div>
-                      {{#if (getRiskLevel name)}}
-                        <div class="severity-badge fw-semibold badge-{{getRiskLevel name}}">{{getRiskLevel name}}</div>
-                      {{/if}}
-                    </div>
-                    <div class="text-muted description text-truncate">{{documentation.short}}</div>
-                  </div>
-                  <div class="caret text-muted">
-                    <svg class="close" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
-                    </svg>
-                    <svg class="open" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="details">
-                <div class="fw-semibold details-title">Reason</div>
-                <div class="text-muted">{{reason}}</div>
-                {{#if details}}
-                  <div class="fw-semibold details-title">Details</div>
-                  {{#each details}}
-                    <div class="text-muted detail-line">{{this}}</div>
-                  {{/each}}
-                {{/if}}
-                <div class="link-wrapper">
-                  <a class="btn-link fw-semibold" href="{{documentation.url}}" target="_blank" rel="noopener noreferrer">
-                    <div class="d-flex flex-row align-items-center justify-content-end">
-                      <div>Check documentation</div>
-                      <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="ms-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        {{/each}}
+      {{/each}}
     </script>
 
     <script>
+      const scorecardTmpl = document.getElementById('scorecard-template').innerHTML;
       const errorTmpl = document.getElementById('error-template').innerHTML;
       let section_open;
 
-      const onClickSection = (section) => {
-        const element = document.getElementById(`section-${section}`);
-        if (section_open !== section) {
-          if (section_open) {
-            const currentActiveSection = document.getElementById(`section-${section_open}`);
-            currentActiveSection.classList.remove('active');
+      const PLACEHOLDER = {
+        "date": "",
+        "checks": [
+          {
+            "name": "Binary-Artifacts",
+            "documentation": {
+                "short": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#binary-artifacts"
+            }
+          },
+          {
+            "name": "Branch-Protection",
+            "documentation": {
+                "short": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#branch-protection"
+            }
+          },
+          {
+            "name": "CI-Tests",
+            "documentation": {
+                "short": "Determines if the project runs tests before pull requests are merged.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#ci-tests"
+            }
+          },
+          {
+            "name": "CII-Best-Practices",
+            "documentation": {
+                "short": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#cii-best-practices"
+            }
+          },
+          {
+            "name": "Code-Review",
+            "documentation": {
+                "short": "Determines if the project requires code review before pull requests (aka merge requests) are merged.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#code-review"
+            }
+          },
+          {
+            "name": "Contributors",
+            "documentation": {
+                "short": "Determines if the project has a set of contributors from multiple organizations (e.g., companies).",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#contributors"
+            }
+          },
+          {
+            "name": "Dangerous-Workflow",
+            "documentation": {
+                "short": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#dangerous-workflow"
+            }
+          },
+          {
+            "name": "Dependency-Update-Tool",
+            "documentation": {
+                "short": "Determines if the project uses a dependency update tool.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#dependency-update-tool"
+            }
+          },
+          {
+            "name": "Fuzzing",
+            "documentation": {
+                "short": "Determines if the project uses fuzzing.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#fuzzing"
+            }
+          },
+          {
+            "name": "License",
+            "documentation": {
+                "short": "Determines if the project has defined a license.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#license"
+            }
+          },
+          {
+            "name": "Maintained",
+            "documentation": {
+                "short": "Determines if the project is \"actively maintained\".",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#maintained"
+            }
+          },
+          {
+            "name": "Packaging",
+            "documentation": {
+                "short": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#packaging"
+            }
+          },
+          {
+            "name": "Pinned-Dependencies",
+            "documentation": {
+                "short": "Determines if the project has declared and pinned the dependencies of its build process.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#pinned-dependencies"
+            }
+          },
+          {
+            "name": "SAST",
+            "documentation": {
+                "short": "Determines if the project uses static code analysis.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#sast"
+            }
+          },
+          {
+            "name": "Security-Policy",
+            "documentation": {
+                "short": "Determines if the project has published a security policy.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#security-policy"
+            }
+          },
+          {
+            "name": "Signed-Releases",
+            "documentation": {
+                "short": "Determines if the project cryptographically signs release artifacts.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#signed-releases"
+            }
+          },
+          {
+            "name": "Token-Permissions",
+            "documentation": {
+                "short": "Determines if the project's workflows follow the principle of least privilege.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#token-permissions"
+            }
+          },
+          {
+            "name": "Vulnerabilities",
+            "documentation": {
+                "short": "Determines if the project has open, known unfixed vulnerabilities.",
+                "url": "https://github.com/ossf/scorecard/blob/27cfe92ed356fdb5a398c919ad480817ea907808/docs/checks.md#vulnerabilities"
+            }
           }
-          section_open = section;
-        } else {
-          section_open = undefined;
-        }
-        element.classList.toggle('active');
+        ]
+      };
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+
+      if (params.theme && ['light', 'dark'].includes(params.theme)) {
+        document.getElementsByTagName('html')[0].setAttribute('data-theme', params.theme);
+      }
+
+      if (params.embed && params.embed == 'true') {
+        document.getElementsByClassName('table-wrapper')[0].classList.add('embedded');
       }
 
       Handlebars.registerHelper('mul', (x, y) => {
+        if (x === undefined) return 0;
         return x * y <= 0 ? 1 : x * y;
       });
 
       Handlebars.registerHelper('scoreFormat', (x) => {
+        if (x === undefined) return '-';
         return x.toFixed(1);
       });
 
@@ -845,8 +1017,10 @@
           return 'orange';
         } else if (score >= 5 && score < 7.5) {
           return 'yellow';
+        } else if (score >= 7.5) {
+          return 'green';
         }
-        return 'green';
+        return 'gray';
       });
 
       Handlebars.registerHelper('getRepoLogo', () => {
@@ -867,6 +1041,20 @@
         }
         return new Handlebars.SafeString(icon);
       });
+
+      const onClickSection = (section) => {
+        const element = document.getElementById(`section-${section}`);
+        if (section_open !== section) {
+          if (section_open) {
+            const currentActiveSection = document.getElementById(`section-${section_open}`);
+            currentActiveSection.classList.remove('active');
+          }
+          section_open = section;
+        } else {
+          section_open = undefined;
+        }
+        element.classList.toggle('active');
+      }
 
       async function apiFetch(platform, org, repo, commit) {
         const response = await fetch(`https://api.securityscorecards.dev/projects/${platform}/${org}/${repo}${commit ? `?commit=${commit}` : ''}`);
@@ -889,24 +1077,15 @@
         }
       }
 
-      const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-
-      if (params.theme && ['light', 'dark'].includes(params.theme)) {
-        document.getElementsByTagName('html')[0].setAttribute('data-theme', params.theme);
-      }
-
-      if (params.embed && params.embed == 'true') {
-        document.getElementsByClassName('table-wrapper')[0].classList.add('embedded');
-      }
-
       if (params.platform && params.org && params.repo) {
+        // Load placeholder
+        const initialTmpl = Handlebars.compile(scorecardTmpl);
+        document.querySelector('#scorecard-content').innerHTML = initialTmpl({ data: {...PLACEHOLDER, repo: {name: `${params.platform}/${params.org}/${params.repo}`, commit: ""}}, isPlaceholder: true });
+
         apiFetch(params.platform, params.org, params.repo, params.commit)
           .then((data) => {
-            const scorecardTmpl = document.getElementById('scorecard-template').innerHTML;
             const template = Handlebars.compile(scorecardTmpl);
-            document.querySelector('#scorecard-content').innerHTML = template({ data: data });
+            document.querySelector('#scorecard-content').innerHTML = template({ data: data, isPlaceholder: false });
           })
           .catch((error) => {
             const template = Handlebars.compile(errorTmpl);
@@ -914,7 +1093,6 @@
               document.querySelector('#scorecard-content').innerHTML = template({ error: 'The Scorecard report requested was not found', alignment: 'center' });
             } else {
               let code;
-              console.log(error.content)
               if (error.content) {
                 code = `
                   <br /><br />

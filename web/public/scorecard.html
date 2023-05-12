@@ -11,6 +11,8 @@
     - repo (required): Name of the repository.
     - commit (optional): SHA1 commit hash expressed in hexadecimal format.
     - theme (optional): Theme to use (light/dark).
+    - sort_by (optional): Sort criteria (check-name/risk-level/check-score)
+    - sort_direction (optional): Sort direction (asc/desc)
     - embed (optional): Whether the rendered result would be embedded on another site (true/false).
 -->
 <!DOCTYPE html>
@@ -213,6 +215,41 @@
 
       .description {
         margin-top: 0.25rem;
+      }
+
+      .select-wrapper {
+        font-size: 0.75rem;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: -0.25rem;
+        padding-left: 1rem;
+      }
+
+      .select {
+        margin-left: 0.5rem;
+        display: block;
+        border-radius: 0;
+        border: 1px solid var(--default-border);
+        background-color: var(--color-white);
+        padding: .375rem 1.75rem .375rem .5rem;
+        min-width: 115px;
+        font-size: 0.75rem !important;
+        color: var(--color-font);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right .35rem center;
+        background-size: 16px 12px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      [data-theme='dark'] .select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23cbd3da' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      }
+
+      .select:focus-visible {
+        outline: none;
       }
 
       .details {
@@ -424,6 +461,7 @@
       }
 
       .score-cell {
+        padding: 1.25rem 1rem !important;
         width: 100px !important;
       }
 
@@ -435,8 +473,24 @@
         background-color: var(--bg-color);
         border-bottom: 3px solid transparent;
         width: 45px;
+        height: 35px;
         margin: 0.35rem auto;
-        line-height: 2;
+        line-height: 2.25;
+      }
+
+      .score-icon {
+        height: 14px;
+        width: 14px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        top: -4px;
+        left: -4px;
+        background-color: var(--bg-table);
+      }
+
+      .score-icon svg {
+        height: 12px;
+        width: 12px;
       }
 
       .check-title {
@@ -546,12 +600,18 @@
         }
       }
 
-      @media screen and (min-width: 576px) {
+      @media screen and (min-width: 768px) {
         .d-md-inline-block {
           display: inline-block !important;
         }
+      }
 
-        .d-md-none {
+      @media screen and (min-width: 576px) {
+        .d-sm-inline-block {
+          display: inline-block !important;
+        }
+
+        .d-sm-none {
           display: none !important;
         }
       }
@@ -740,29 +800,46 @@
           </div>
         </td>
         <td class="ps-0">
-          <div class="d-flex flex-column justify-content-between table-cell">
-            <div class="d-flex flex-row align-items-center main-title">
-              {{getRepoLogo}}
-              <div class="fw-semibold text-truncate">
-                <a class="btn-link repo-name" href="https://{{data.repo.name}}" target="_blank" rel="noopener noreferrer">
-                  {{data.repo.name}}
-                </a>
-                </div>
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-column justify-content-between table-cell">
+              <div class="d-flex flex-row align-items-center main-title">
+                {{getRepoLogo}}
+                <div class="fw-semibold text-truncate">
+                  <a class="btn-link repo-name" href="https://{{data.repo.name}}" target="_blank" rel="noopener noreferrer">
+                    {{data.repo.name}}
+                  </a>
+                  </div>
+              </div>
+              <div class="content text-truncate"><small class="fw-semibold">COMMIT:</small>
+                {{#if data.repo.commit}}
+                  <span class="d-none d-sm-inline-block text-muted">{{data.repo.commit}}</span>
+                  <span class="d-inline-block d-sm-none text-muted">{{shortCommit data.repo.commit}}</span>
+                {{else}}
+                  <span class="text-muted">-</span>
+                {{/if}}
+              </div>
+              <div class="content"><small class="fw-semibold">GENERATED AT:</small>
+                {{#if data.date}}
+                  <span class="text-muted">{{data.date}}</span>
+                {{else}}
+                  <span class="text-muted">-</span>
+                {{/if}}
+              </div>
             </div>
-            <div class="content text-truncate"><small class="fw-semibold">COMMIT:</small>
-              {{#if data.repo.commit}}
-                <span class="d-none d-md-inline-block text-muted">{{data.repo.commit}}</span>
-                <span class="d-inline-block d-md-none text-muted">{{shortCommit data.repo.commit}}</span>
-              {{else}}
-                <span class="text-muted">-</span>
-              {{/if}}
-            </div>
-            <div class="content"><small class="fw-semibold">GENERATED AT:</small>
-              {{#if data.date}}
-                <span class="text-muted">{{data.date}}</span>
-              {{else}}
-                <span class="text-muted">-</span>
-              {{/if}}
+            <div class="d-none d-md-inline-block select-wrapper">
+              <div class="d-flex flex-row align-items-center">
+                <small class="fw-semibold label">SORT:</small>
+                <select class="select" onchange="onSortChange(this.value)">
+                  {{#select sortBy sortDirection}}
+                    <option value="check-name_asc">Check name (a-z)</option>
+                    <option value="check-name_desc">Check name (z-a)</option>
+                    <option value="check-score_desc">Check score (desc)</option>
+                    <option value="check-score_asc">Check score (asc)</option>
+                    <option value="risk-level_desc">Risk level (desc)</option>
+                    <option value="risk-level_asc">Risk level (asc)</option>
+                  {{/select}}
+                </select>
+              </div>
             </div>
           </div>
         </td>
@@ -770,7 +847,14 @@
       {{#each data.checks}}
         <tr>
           <td class="text-center top-aligment">
-            <div class="score-badge fw-semibold" style="border-bottom-color: var(--color-{{getColorName score}});">{{#if score includeZero=true}}{{score}}{{else}}-{{/if}}</div>
+            <div title="Score obtained in this check (0-10, the higher the better)" class="score-badge fw-semibold position-relative" style="border-color: var(--color-{{getColorName score}});">
+              {{#if score includeZero=true}}
+                {{score}}
+                <div class="position-absolute d-flex align-items-center justify-content-center score-icon" style="border-color: var(--color-{{getColorName score}}); color: var(--color-{{getColorName score}});">{{getScoreIcon score}}</div>
+              {{else}}
+                -
+              {{/if}}
+            </div>
           </td>
           <td class="section ps-0 top-aligment" id="section-{{name}}" onclick="onClickSection('{{name}}')">
             <div class="table-cell">
@@ -779,7 +863,7 @@
                   <div class="d-flex flex-row align-items-center check-title">
                     <div class="fw-semibold text-truncate">{{replaceDashes name}}</div>
                     {{#if (getRiskLevel name)}}
-                      <div class="severity-badge fw-semibold badge-{{getRiskLevel name}}">{{getRiskLevel name}}</div>
+                      <div title="Risk level" class="severity-badge fw-semibold badge-{{getRiskLevel name}}">{{getRiskLevel name}}</div>
                     {{/if}}
                   </div>
                   <div class="text-muted description text-truncate">{{documentation.short}}</div>
@@ -821,6 +905,37 @@
       const scorecardTmpl = document.getElementById('scorecard-template').innerHTML;
       const errorTmpl = document.getElementById('error-template').innerHTML;
       let section_open;
+
+      const DEFAULT_SORT_BY = 'risk-level';
+      const DEFAULT_SORT_DIRECTTION = 'desc';
+      const RISK_LEVEL = {
+        'Binary-Artifacts': 'high',
+        'Branch-Protection': 'high',
+        'CI-Tests': 'low',
+        'CII-Best-Practices': 'low',
+        'Code-Review': 'high',
+        'Contributors': 'low',
+        'Dangerous-Workflow': 'critical',
+        'Dependency-Update-Tool': 'high',
+        'Fuzzing': 'medium',
+        'License': 'low',
+        'Maintained': 'high',
+        'Pinned-Dependencies': 'medium',
+        'Packaging': 'medium',
+        'Pinned-Dependencies': 'medium',
+        'SAST': 'medium',
+        'Security-Policy': 'medium',
+        'Signed-Releases': 'high',
+        'Token-Permissions': 'high',
+        'Vulnerabilities': 'high',
+        'Webhooks': 'high',
+      };
+      const RISK_LEVEL_VALUE = {
+        'low': 1,
+        'medium': 2,
+        'high': 3,
+        'critical': 4,
+      }
 
       const PLACEHOLDER = {
         "date": "",
@@ -966,6 +1081,10 @@
         document.getElementsByClassName('table-wrapper')[0].classList.add('embedded');
       }
 
+      let sortBy = params.sort_by || DEFAULT_SORT_BY;
+      let sortDirection = params.sort_direction || DEFAULT_SORT_DIRECTTION;
+      let scoreData;
+
       Handlebars.registerHelper('mul', (x, y) => {
         if (x === undefined) return 0;
         return x * y <= 0 ? 1 : x * y;
@@ -984,30 +1103,18 @@
         return x.slice(0, 7);
       });
 
+      Handlebars.registerHelper('select', (value1, value2, options) => {
+        return options.fn()
+          .split('\n')
+          .map((v) => {
+            const t = `value="${value1}_${value2}"`;
+            return RegExp(t).test(v) ? v.replace(t, `${t} selected="selected"`) : v;
+          })
+          .join('\n');
+      });
+
       Handlebars.registerHelper('getRiskLevel', (x) => {
-        const riskLevel = {
-          'Binary-Artifacts': 'high',
-          'Branch-Protection': 'high',
-          'CI-Tests': 'low',
-          'CII-Best-Practices': 'low',
-          'Code-Review': 'high',
-          'Contributors': 'low',
-          'Dangerous-Workflow': 'critical',
-          'Dependency-Update-Tool': 'high',
-          'Fuzzing': 'medium',
-          'License': 'low',
-          'Maintained': 'high',
-          'Pinned-Dependencies': 'medium',
-          'Packaging': 'medium',
-          'Pinned-Dependencies': 'medium',
-          'SAST': 'medium',
-          'Security-Policy': 'medium',
-          'Signed-Releases': 'high',
-          'Token-Permissions': 'high',
-          'Vulnerabilities': 'high',
-          'Webhooks': 'high',
-        }
-        return riskLevel[x];
+        return RISK_LEVEL[x];
       });
 
       Handlebars.registerHelper('getColorName', (score) => {
@@ -1021,6 +1128,16 @@
           return 'green';
         }
         return 'gray';
+      });
+
+      Handlebars.registerHelper('getScoreIcon', (score) => {
+        if (score < 2.5) {
+          return new Handlebars.SafeString('<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>');
+        } else if (score >= 2.5 && score < 7.5) {
+          return new Handlebars.SafeString('<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.553.553 0 0 1-1.1 0L7.1 4.995z"></path></svg>');
+        } else {
+          return new Handlebars.SafeString('<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path></svg>');
+        }
       });
 
       Handlebars.registerHelper('getRepoLogo', () => {
@@ -1043,6 +1160,11 @@
       });
 
       const onClickSection = (section) => {
+        const selection = window.getSelection();
+        // Prevent action to select text
+        if (selection.type && selection.type === 'Range') {
+          return;
+        }
         const element = document.getElementById(`section-${section}`);
         if (section_open !== section) {
           if (section_open) {
@@ -1054,6 +1176,54 @@
           section_open = undefined;
         }
         element.classList.toggle('active');
+      }
+
+      const onSortChange = (value) => {
+        const valueParts = value.split('_');
+        sortBy = valueParts[0];
+        sortDirection = valueParts[1];
+
+        const newSearch = new URLSearchParams(window.location.search);
+        newSearch.set('sort_by', sortBy);
+        newSearch.set('sort_direction', sortDirection);
+
+        // Replace url with new sort criteria
+        window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${newSearch}`));
+
+        renderDataTemplate({ data: {...scoreData, checks: sortChecks(scoreData.checks)}, isPlaceholder: false, sortBy: sortBy, sortDirection: sortDirection })
+      }
+
+      const getRiskLevelValue = (name) => {
+        return RISK_LEVEL_VALUE[RISK_LEVEL[name]];
+      }
+
+      const sortChecks = (checks) => {
+        switch(sortBy) {
+          case 'check-name':
+            if (sortDirection === 'asc') {
+              return checks.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+              return checks.sort((a, b) => b.name.localeCompare(a.name));
+            }
+          case 'check-score':
+            if (sortDirection === 'desc') {
+              return checks.sort((a, b) => parseFloat(b.score) - parseFloat(a.score) || a.name.localeCompare(b.name));
+            } else {
+              return checks.sort((a, b) => parseFloat(a.score) - parseFloat(b.score) || a.name.localeCompare(b.name));
+            }
+          case 'risk-level':
+            if (sortDirection === 'desc') {
+              return checks.sort((a, b) => getRiskLevelValue(b.name) - getRiskLevelValue(a.name) || parseFloat(a.score) - parseFloat(b.score));
+            } else {
+              return checks.sort((a, b) => getRiskLevelValue(a.name) - getRiskLevelValue(b.name) || parseFloat(a.score) - parseFloat(b.score));
+            }
+        }
+        return checks;
+      }
+
+      const renderDataTemplate = (data) => {
+        const template = Handlebars.compile(scorecardTmpl);
+        document.querySelector('#scorecard-content').innerHTML = template(data);
       }
 
       async function apiFetch(platform, org, repo, commit) {
@@ -1079,13 +1249,12 @@
 
       if (params.platform && params.org && params.repo) {
         // Load placeholder
-        const initialTmpl = Handlebars.compile(scorecardTmpl);
-        document.querySelector('#scorecard-content').innerHTML = initialTmpl({ data: {...PLACEHOLDER, repo: {name: `${params.platform}/${params.org}/${params.repo}`, commit: ""}}, isPlaceholder: true });
+        renderDataTemplate({ data: {...PLACEHOLDER, checks: sortChecks(PLACEHOLDER.checks), repo: {name: `${params.platform}/${params.org}/${params.repo}`, commit: ""}}, isPlaceholder: true, sortBy: sortBy, sortDirection: sortDirection });
 
         apiFetch(params.platform, params.org, params.repo, params.commit)
           .then((data) => {
-            const template = Handlebars.compile(scorecardTmpl);
-            document.querySelector('#scorecard-content').innerHTML = template({ data: data, isPlaceholder: false });
+            scoreData = data;
+            renderDataTemplate({ data: {...data, checks: sortChecks(data.checks)}, isPlaceholder: false, sortBy: sortBy, sortDirection: sortDirection });
           })
           .catch((error) => {
             const template = Handlebars.compile(errorTmpl);

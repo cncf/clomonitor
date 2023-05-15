@@ -849,8 +849,12 @@
           <td class="text-center top-aligment">
             <div title="Score obtained in this check (0-10, the higher the better)" class="score-badge fw-semibold position-relative" style="border-color: var(--color-{{getColorName score}});">
               {{#if score includeZero=true}}
-                {{score}}
-                <div class="position-absolute d-flex align-items-center justify-content-center score-icon" style="border-color: var(--color-{{getColorName score}}); color: var(--color-{{getColorName score}});">{{getScoreIcon score}}</div>
+                {{#if (eq score -1)}}
+                  ?
+                {{else}}
+                  {{score}}
+                  <div class="position-absolute d-flex align-items-center justify-content-center score-icon" style="border-color: var(--color-{{getColorName score}}); color: var(--color-{{getColorName score}});">{{getScoreIcon score}}</div>
+                {{/if}}
               {{else}}
                 -
               {{/if}}
@@ -1118,7 +1122,7 @@
       });
 
       Handlebars.registerHelper('getColorName', (score) => {
-        if (score < 2.5) {
+        if (score >= 0 && score < 2.5) {
           return 'red';
         } else if (score >= 2.5 && score < 5) {
           return 'orange';
@@ -1131,7 +1135,7 @@
       });
 
       Handlebars.registerHelper('getScoreIcon', (score) => {
-        if (score < 2.5) {
+        if (score >= 0 && score < 2.5) {
           return new Handlebars.SafeString('<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>');
         } else if (score >= 2.5 && score < 7.5) {
           return new Handlebars.SafeString('<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.553.553 0 0 1-1.1 0L7.1 4.995z"></path></svg>');
@@ -1157,6 +1161,10 @@
             break;
         }
         return new Handlebars.SafeString(icon);
+      });
+
+      Handlebars.registerHelper('eq', (v1, v2) => {
+        return v1 == v2;
       });
 
       const onClickSection = (section) => {
@@ -1198,24 +1206,37 @@
       }
 
       const sortChecks = (checks) => {
+        let CHECKS_WITH_VALUE = [];
+        let CHECKS_WITHOUT_VALUE = [];
+
+        checks.forEach(check => {
+          if (check.score === -1) {
+            CHECKS_WITHOUT_VALUE.push(check);
+          } else {
+            CHECKS_WITH_VALUE.push(check);
+          }
+        });
+
+        const sortedChecksWithoutValue = CHECKS_WITHOUT_VALUE.sort((a, b) => a.name.localeCompare(b.name));
+
         switch(sortBy) {
           case 'check-name':
             if (sortDirection === 'asc') {
-              return checks.sort((a, b) => a.name.localeCompare(b.name));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => a.name.localeCompare(b.name)), ...sortedChecksWithoutValue];
             } else {
-              return checks.sort((a, b) => b.name.localeCompare(a.name));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => b.name.localeCompare(a.name)), ...sortedChecksWithoutValue];
             }
           case 'check-score':
             if (sortDirection === 'desc') {
-              return checks.sort((a, b) => parseFloat(b.score) - parseFloat(a.score) || a.name.localeCompare(b.name));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => parseFloat(b.score) - parseFloat(a.score) || a.name.localeCompare(b.name)), ...sortedChecksWithoutValue];
             } else {
-              return checks.sort((a, b) => parseFloat(a.score) - parseFloat(b.score) || a.name.localeCompare(b.name));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => parseFloat(a.score) - parseFloat(b.score) || a.name.localeCompare(b.name)), ...sortedChecksWithoutValue];
             }
           case 'risk-level':
             if (sortDirection === 'desc') {
-              return checks.sort((a, b) => getRiskLevelValue(b.name) - getRiskLevelValue(a.name) || parseFloat(a.score) - parseFloat(b.score));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => getRiskLevelValue(b.name) - getRiskLevelValue(a.name) || parseFloat(a.score) - parseFloat(b.score)), ...sortedChecksWithoutValue];
             } else {
-              return checks.sort((a, b) => getRiskLevelValue(a.name) - getRiskLevelValue(b.name) || parseFloat(a.score) - parseFloat(b.score));
+              return [...CHECKS_WITH_VALUE.sort((a, b) => getRiskLevelValue(a.name) - getRiskLevelValue(b.name) || parseFloat(a.score) - parseFloat(b.score)), ...sortedChecksWithoutValue];
             }
         }
         return checks;

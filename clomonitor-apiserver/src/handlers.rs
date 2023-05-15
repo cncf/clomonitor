@@ -21,6 +21,7 @@ use clomonitor_core::{
 use config::Config;
 use lazy_static::lazy_static;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
+use resvg::FitTo;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
@@ -30,6 +31,7 @@ use time::{
     Date,
 };
 use tracing::error;
+use usvg::{fontdb, TreeParsing, TreeTextToPath};
 use uuid::Uuid;
 
 /// Index HTML document cache duration.
@@ -254,17 +256,19 @@ pub(crate) async fn report_summary_png(
         .map_err(internal_error)?;
 
     // Convert report summary SVG to PNG
-    let mut opt = usvg::Options {
+    let opt = usvg::Options {
         font_family: "Open Sans SemiBold".to_string(),
         ..Default::default()
     };
-    opt.fontdb.load_system_fonts();
-    let tree = usvg::Tree::from_data(svg.as_bytes(), &opt.to_ref()).map_err(internal_error)?;
+    let mut tree = usvg::Tree::from_data(svg.as_bytes(), &opt).map_err(internal_error)?;
+    let mut fontdb = fontdb::Database::new();
+    fontdb.load_system_fonts();
+    tree.convert_text(&fontdb);
     let mut pixmap = tiny_skia::Pixmap::new(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT)
         .expect("width or height defined in consts are not zero");
     resvg::render(
         &tree,
-        usvg::FitTo::Size(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT),
+        FitTo::Size(REPORT_SUMMARY_WIDTH, REPORT_SUMMARY_HEIGHT),
         tiny_skia::Transform::default(),
         pixmap.as_mut(),
     )

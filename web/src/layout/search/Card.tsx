@@ -78,7 +78,9 @@ const Card = (props: Props) => {
 
                   <div className="d-flex flex-row align-items-center my-2">
                     <FoundationBadge foundation={props.project.foundation} />
-                    <MaturityBadge maturityLevel={props.project.maturity} className="d-none d-md-flex ms-2" />
+                    {props.project.maturity && (
+                      <MaturityBadge maturityLevel={props.project.maturity} className="d-none d-md-flex ms-2" />
+                    )}
                   </div>
 
                   <div

@@ -204,8 +204,12 @@ const Detail = (props: Props) => {
 
                             <div className="d-flex flex-row align-items-center my-2">
                               <FoundationBadge foundation={detail.foundation} />
-                              <MaturityBadge maturityLevel={detail.maturity} className="d-none d-md-block ms-2" />
-                              <CategoryBadge category={detail.category} className="d-none d-md-block ms-2" />
+                              {detail.maturity && (
+                                <MaturityBadge maturityLevel={detail.maturity} className="d-none d-md-block ms-2" />
+                              )}
+                              {detail.category && (
+                                <CategoryBadge category={detail.category} className="d-none d-md-block ms-2" />
+                              )}
                             </div>
 
                             <div className={`d-none d-sm-flex flex-row align-items-center ${styles.info}`}>

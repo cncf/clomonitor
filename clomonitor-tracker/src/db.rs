@@ -56,6 +56,8 @@ impl DB for PgDB {
                 from repository r
                 join project p using (project_id)
                 join foundation f using (foundation_id)
+                where r.check_sets is not null
+                and cardinality(r.check_sets) > 0
                 ",
                 &[],
             )

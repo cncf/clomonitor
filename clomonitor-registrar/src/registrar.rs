@@ -23,16 +23,36 @@ pub(crate) struct Foundation {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub(crate) struct Project {
     pub name: String,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
+
     pub description: String,
-    pub category: String,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub home_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logo_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logo_dark_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub devstats_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub accepted_at: Option<String>,
-    pub maturity: String,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub maturity: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub digest: Option<String>,
+
     pub repositories: Vec<Repository>,
 }
 
@@ -50,7 +70,11 @@ impl Project {
 pub(crate) struct Repository {
     pub name: String,
     pub url: String,
-    pub check_sets: Vec<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub check_sets: Option<Vec<String>>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub exclude: Option<Vec<String>>,
 }
 
@@ -321,7 +345,7 @@ mod tests {
                 projects_registered.insert(
                     "artifact-hub".to_string(),
                     Some(
-                        "ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340"
+                        "c5ad3114e4e2c11afa4d981180954c63b71e5282890007d0d475d38278082dd1"
                             .to_string(),
                     ),
                 );
@@ -364,18 +388,18 @@ mod tests {
                     name: "artifact-hub".to_string(),
                     display_name: Some("Artifact Hub".to_string()),
                     description: "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects".to_string(),
-                    category: "app definition".to_string(),
+                    category: Some("app definition".to_string()),
                     home_url: None,
                     logo_url: Some("https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg".to_string()),
                     logo_dark_url: None,
                     devstats_url: Some("https://artifacthub.devstats.cncf.io/".to_string()),
                     accepted_at: Some("2020-06-23".to_string()),
-                    maturity: "sandbox".to_string(),
-                    digest: Some("ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340".to_string()),
+                    maturity: Some("sandbox".to_string()),
+                    digest: Some("c5ad3114e4e2c11afa4d981180954c63b71e5282890007d0d475d38278082dd1".to_string()),
                     repositories: vec![Repository{
                         name: "artifact-hub".to_string(),
                         url: "https://github.com/artifacthub/hub".to_string(),
-                        check_sets: vec!["community".to_string(), "code".to_string()],
+                        check_sets: Some(vec!["community".to_string(), "code".to_string()]),
                         exclude: None,
                     }]
                 }),
@@ -416,7 +440,7 @@ mod tests {
                 projects_registered.insert(
                     "artifact-hub".to_string(),
                     Some(
-                        "ee8c17885262dc623edaf6116e033a769046b068b8d8f81dadad6e43042a0340"
+                        "c5ad3114e4e2c11afa4d981180954c63b71e5282890007d0d475d38278082dd1"
                             .to_string(),
                     ),
                 );

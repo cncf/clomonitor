@@ -1055,7 +1055,7 @@
       exclude:
         - clomonitor
     - name: knative-sandbox/sample-source
-      url: https://github.com/knative-sandbox/sample-source Public
+      url: https://github.com/knative-sandbox/sample-source
       check_sets:
         - code-lite
       exclude:

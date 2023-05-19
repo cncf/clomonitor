@@ -4,6 +4,7 @@ returns void as $$
 declare
     v_project_id uuid;
     v_repository jsonb;
+    v_check_sets check_set[];
 begin
     -- Register project or update existing one
     insert into project (
@@ -50,6 +51,11 @@ begin
     -- Register repositories or update existing ones
     for v_repository in select * from jsonb_array_elements(p_project->'repositories')
     loop
+        if v_repository->'check_sets' is null then
+            v_check_sets = null;
+        else
+            v_check_sets = (select array(select jsonb_array_elements_text(v_repository->'check_sets')))::check_set[];
+        end if;
         insert into repository (
             name,
             url,
@@ -58,7 +64,7 @@ begin
         ) values (
             v_repository->>'name',
             v_repository->>'url',
-            (select array(select jsonb_array_elements_text(v_repository->'check_sets')))::check_set[],
+            v_check_sets,
             v_project_id
         )
         on conflict (project_id, url) do update

@@ -10,9 +10,9 @@ export interface BaseProject {
   logo_url?: string;
   logo_dark_url?: string;
   devstats_url?: string;
-  maturity: Maturity;
+  maturity?: Maturity;
   foundation: Foundation;
-  category: string;
+  category?: string;
   score: { [key in ScoreType]?: number };
   updated_at: number;
 }

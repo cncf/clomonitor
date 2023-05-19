@@ -23,7 +23,7 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
         }
     }
 
-    // Project's summary table info in landscape
+    // Check project's summary table info in landscape
     if let Some(landscape) = landscape {
         let project_name = &input.li.project.as_ref().unwrap().name;
         if let Some(summary_table) = landscape.get_summary_table_info(project_name) {

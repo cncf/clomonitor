@@ -8,7 +8,7 @@ use anyhow::Result;
 pub(crate) const ID: CheckId = "website";
 
 /// Check score weight.
-pub(crate) const WEIGHT: usize = 5;
+pub(crate) const WEIGHT: usize = 4;
 
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];

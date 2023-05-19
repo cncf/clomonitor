@@ -73,6 +73,10 @@ pub(crate) fn display(
             cell_check(&report.documentation.adopters),
         ])
         .add_row(vec![
+            cell_entry("Documentation / Annual review"),
+            cell_check(&report.documentation.annual_review),
+        ])
+        .add_row(vec![
             cell_entry("Documentation / Changelog"),
             cell_check(&report.documentation.changelog),
         ])
@@ -317,6 +321,7 @@ mod tests {
         let report = Report {
             documentation: Documentation {
                 adopters: Some(CheckOutput::passed()),
+                annual_review: Some(CheckOutput::passed()),
                 code_of_conduct: Some(CheckOutput::passed()),
                 contributing: Some(CheckOutput::passed()),
                 changelog: Some(CheckOutput::passed()),

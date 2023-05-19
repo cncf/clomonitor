@@ -170,6 +170,7 @@ returns json as $$
             'passing_check', json_build_object(
                 'documentation', json_build_object(
                     'adopters', repositories_passing_check(p_foundation, 'documentation', 'adopters'),
+                    'annual_review', repositories_passing_check(p_foundation, 'documentation', 'annual_review'),
                     'changelog', repositories_passing_check(p_foundation, 'documentation', 'changelog'),
                     'code_of_conduct', repositories_passing_check(p_foundation, 'documentation', 'code_of_conduct'),
                     'contributing', repositories_passing_check(p_foundation, 'documentation', 'contributing'),

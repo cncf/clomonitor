@@ -52,6 +52,9 @@ impl DB for PgDB {
                     to_json(r.check_sets) as check_sets,
                     r.updated_at,
                     p.name as project_name,
+                    p.accepted_at as project_accepted_at,
+                    p.maturity::text as project_maturity,
+                    f.foundation_id,
                     f.landscape_url as foundation_landscape_url
                 from repository r
                 join project p using (project_id)
@@ -73,7 +76,10 @@ impl DB for PgDB {
                     updated_at: row.get("updated_at"),
                     project: Project {
                         name: row.get("project_name"),
+                        accepted_at: row.get("project_accepted_at"),
+                        maturity: row.get("project_maturity"),
                         foundation: Foundation {
+                            foundation_id: row.get("foundation_id"),
                             landscape_url: row.get("foundation_landscape_url"),
                         },
                     },

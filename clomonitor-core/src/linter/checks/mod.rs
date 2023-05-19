@@ -4,6 +4,7 @@ use std::collections::HashMap;
 
 pub(crate) mod adopters;
 pub(crate) mod analytics;
+pub(crate) mod annual_review;
 pub(crate) mod artifacthub_badge;
 pub(crate) mod binary_artifacts;
 pub(crate) mod changelog;
@@ -66,6 +67,7 @@ lazy_static! {
 
         register_check!(adopters);
         register_check!(analytics);
+        register_check!(annual_review);
         register_check!(artifacthub_badge);
         register_check!(binary_artifacts, "Binary-Artifacts");
         register_check!(changelog);

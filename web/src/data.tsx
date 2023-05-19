@@ -25,6 +25,7 @@ import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { MdOutlineInventory, MdPreview } from 'react-icons/md';
 import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
+import { SiCodereview } from 'react-icons/si';
 
 import QualityDot from './layout/common/QualityDot';
 import {
@@ -215,6 +216,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Adopters',
     legend: <span>List of organizations using this project in production or at stages of testing</span>,
     reference: '/docs/topics/checks/#adopters',
+  },
+  [ReportOption.AnnualReview]: {
+    icon: <SiCodereview />,
+    name: 'Annual review',
+    legend: <span>Sandbox projects are subject to an annual review by the TOC</span>,
+    reference: '/docs/topics/checks/#annual-review',
   },
   [ReportOption.ApprovedLicense]: {
     icon: <FaCheckDouble />,
@@ -493,6 +500,7 @@ export const FOUNDATIONS = {
 export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
   [ScoreType.Documentation]: [
     ReportOption.Adopters,
+    ReportOption.AnnualReview,
     ReportOption.Changelog,
     ReportOption.CodeOfConduct,
     ReportOption.Contributing,

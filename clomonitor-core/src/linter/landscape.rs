@@ -1,7 +1,8 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
 use cached::proc_macro::cached;
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, fmt::Display};
+use time::{macros::format_description, Date};
 
 /// Key used in the extra section of the landscape yaml file for the project
 /// name in CLOMonitor.
@@ -40,26 +41,24 @@ pub(crate) async fn new(url: String) -> Result<Landscape> {
 }
 
 impl Landscape {
-    /// Return the project's summary table information if available.
-    pub(crate) fn get_summary_table_info(&self, project_name: &str) -> Option<SummaryTable> {
-        // Locate project's entry (item) in landscape
-        let mut project = None;
-        for category in &self.landscape {
-            for subcategory in &category.subcategories {
-                for item in &subcategory.items {
-                    if let Some(extra) = &item.extra {
-                        if let Some(clomonitor_name) = extra.get(CLOMONITOR_NAME_KEY) {
-                            if clomonitor_name == project_name {
-                                project = Some(item);
-                            }
-                        }
-                    }
-                }
-            }
+    /// Return the project's annual review information if available.
+    pub(crate) fn get_annual_review_info(
+        &self,
+        project_name: &str,
+    ) -> Result<Option<AnnualReview>> {
+        // Prepare project's annual review from available info (if any)
+        if let Some(project) = self.get_project(project_name) {
+            let annual_review = AnnualReview::from(project.extra.as_ref().unwrap())?;
+            return Ok(annual_review);
         }
 
+        Ok(None)
+    }
+
+    /// Return the project's summary table information if available.
+    pub(crate) fn get_summary_table_info(&self, project_name: &str) -> Option<SummaryTable> {
         // Prepare project's summary table from available info (if any)
-        if let Some(project) = project {
+        if let Some(project) = self.get_project(project_name) {
             let summary_table = SummaryTable::from(project.extra.as_ref().unwrap());
             if summary_table != SummaryTable::default() {
                 return Some(summary_table);
@@ -67,6 +66,50 @@ impl Landscape {
         }
 
         None
+    }
+
+    /// Return the requested project if available.
+    fn get_project(&self, project_name: &str) -> Option<&Item> {
+        for category in &self.landscape {
+            for subcategory in &category.subcategories {
+                for item in &subcategory.items {
+                    if let Some(extra) = &item.extra {
+                        if let Some(clomonitor_name) = extra.get(CLOMONITOR_NAME_KEY) {
+                            if clomonitor_name == project_name {
+                                return Some(item);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        None
+    }
+}
+
+/// Project's annual review information.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub(crate) struct AnnualReview {
+    pub date: Date,
+    pub url: String,
+}
+
+impl AnnualReview {
+    fn from(extra: &HashMap<String, String>) -> Result<Option<Self>> {
+        let Some(date) = extra.get("annual_review_date") else {
+            return Ok(None);
+        };
+        let Some(url) = extra.get("annual_review_url") else {
+            return Ok(None);
+        };
+
+        let format = format_description!("[year]-[month]-[day]");
+        let date = Date::parse(date, &format).context("invalid annual review date in landscape")?;
+
+        Ok(Some(AnnualReview {
+            date,
+            url: url.clone(),
+        }))
     }
 }
 

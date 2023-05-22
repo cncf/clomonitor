@@ -25,6 +25,7 @@
 ### Documentation [{{ value.round() }}%]
 
   {% call check("adopters", "Adopters", report.documentation.adopters) -%}
+  {% call check("annual-review", "Annual review", report.documentation.annual_review) -%}
   {% call check("changelog", "Changelog", report.documentation.changelog) -%}
   {% call check("code-of-conduct", "Code of conduct", report.documentation.code_of_conduct) -%}
   {% call check("contributing", "Contributing", report.documentation.contributing) -%}

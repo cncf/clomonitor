@@ -111,7 +111,7 @@ const OptionCell = (props: Props) => {
             onClose={scrollTop}
             tooltipStyle
           >
-            <div ref={details} className={`overflow-scroll ${styles.detailsWrapper} ${styles.visibleScroll}`}>
+            <div ref={details} className={`overflow-auto pb-1 ${styles.detailsWrapper} ${styles.visibleScroll}`}>
               <ReactMarkdown
                 className={styles.detailsContent}
                 children={props.check.details!}

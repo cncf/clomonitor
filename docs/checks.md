@@ -43,6 +43,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 - **community** (recommended for repositories with community content)
 
   - Documentation / Adopters
+  - Documentation / Annual Review
   - Documentation / Code of conduct
   - Documentation / Contributing
   - Documentation / Governance
@@ -101,6 +102,16 @@ CASE SENSITIVE: false
 "(?im)^adopters$"
 "(?i)\[.*adopters.*\]\(.*\)"
 ```
+
+### Annual Review
+
+**ID**: `annual_review`
+
+CNCF Sandbox projects are subject to an annual review by the TOC. This is intended to be a lightweight process to ensure that projects are on track, and getting the support they need.
+
+This check passes if:
+
+- An up to date annual review is found in the [CNCF Landscape configuration file](https://github.com/cncf/landscape/blob/master/landscape.yml) for the corresponding project. For more details please see the [annual review documentation](https://github.com/cncf/toc/blob/main/process/sandbox-annual-review.md).
 
 ### Changelog
 

@@ -10,6 +10,7 @@ use mockall::automock;
 use postgres_types::ToSql;
 use serde::{Deserialize, Serialize};
 use std::{fmt, path::PathBuf, sync::Arc};
+use time::Date;
 
 mod check;
 mod checks;
@@ -49,12 +50,15 @@ pub struct LinterInput {
 #[derive(Debug, Clone, Default)]
 pub struct Project {
     pub name: String,
+    pub accepted_at: Option<Date>,
+    pub maturity: Option<String>,
     pub foundation: Foundation,
 }
 
 /// Foundation's details
 #[derive(Debug, Clone, Default)]
 pub struct Foundation {
+    pub foundation_id: String,
     pub landscape_url: Option<String>,
 }
 
@@ -104,8 +108,9 @@ impl Linter for CoreLinter {
         let ci = CheckInput::new(li).await?;
 
         // Run some async checks concurrently
-        let (analytics, contributing, summary_table, trademark_disclaimer) = tokio::join!(
+        let (analytics, annual_review, contributing, summary_table, trademark_disclaimer) = tokio::join!(
             run_async!(analytics, &ci),
+            run_async!(annual_review, &ci),
             run_async!(contributing, &ci),
             run_async!(summary_table, &ci),
             run_async!(trademark_disclaimer, &ci),
@@ -122,6 +127,7 @@ impl Linter for CoreLinter {
         let mut report = Report {
             documentation: Documentation {
                 adopters: run!(adopters, &ci),
+                annual_review,
                 changelog: run!(changelog, &ci),
                 code_of_conduct: run!(code_of_conduct, &ci),
                 contributing,

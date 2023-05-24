@@ -29,6 +29,7 @@ db:
 # Credentials
 creds:
   githubTokens: []
+  notifierGithubToken: null
 
 # Log configuration
 log:
@@ -79,6 +80,15 @@ archiver:
     image:
       # Archiver image repository (without the tag)
       repository: clomonitor/archiver
+    resources: {}
+
+# Notifier configuration
+notifier:
+  enabled: false
+  cronjob:
+    image:
+      # Notifier image repository (without the tag)
+      repository: clomonitor/notifier
     resources: {}
 
 # Registrar configuration

@@ -7,6 +7,7 @@ COPY clomonitor-apiserver/Cargo.* clomonitor-apiserver
 COPY clomonitor-archiver/Cargo.* clomonitor-archiver
 COPY clomonitor-core/Cargo.* clomonitor-core
 COPY clomonitor-linter/Cargo.* clomonitor-linter
+COPY clomonitor-notifier/Cargo.* clomonitor-notifier
 COPY clomonitor-tracker/Cargo.* clomonitor-tracker
 COPY clomonitor-registrar clomonitor-registrar
 WORKDIR /clomonitor/clomonitor-registrar

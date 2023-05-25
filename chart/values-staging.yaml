@@ -38,6 +38,13 @@ archiver:
         cpu: 1
         memory: 100Mi
 
+notifier:
+  cronjob:
+    resources:
+      requests:
+        cpu: 1
+        memory: 100Mi
+
 registrar:
   cronjob:
     resources:

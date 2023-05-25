@@ -220,7 +220,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   [ReportOption.AnnualReview]: {
     icon: <SiCodereview />,
     name: 'Annual review',
-    legend: <span>Sandbox projects are subject to an annual review by the TOC</span>,
+    legend: <span>CNCF Sandbox projects are subject to an annual review by the TOC</span>,
     reference: '/docs/topics/checks/#annual-review',
   },
   [ReportOption.ApprovedLicense]: {

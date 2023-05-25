@@ -1,3 +1,4 @@
+{{ template "notifications/get_pending_annual_review_notifications.sql" }}
 {{ template "projects/get_project_by_id.sql" }}
 {{ template "projects/get_project_by_name.sql" }}
 {{ template "projects/get_project_checks.sql" }}

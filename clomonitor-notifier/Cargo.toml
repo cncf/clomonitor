@@ -1,6 +1,6 @@
 [package]
-name = "clomonitor-archiver"
-description = "A tool that creates snapshots of projects' data periodically"
+name = "clomonitor-notifier"
+description = "A tool that notifies projects about certain events"
 version.workspace = true
 license.workspace = true
 edition.workspace = true
@@ -8,14 +8,18 @@ rust-version.workspace = true
 
 [dependencies]
 anyhow = { workspace = true }
+askama = { workspace = true }
+askama_axum = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }
 config = { workspace = true }
+deadpool = { workspace = true }
 deadpool-postgres = { workspace = true }
+lazy_static = { workspace = true }
+octorust = { workspace = true }
 openssl = { workspace = true }
 postgres-openssl = { workspace = true }
-serde_json = { workspace = true }
-time = { workspace = true }
+regex = { workspace = true }
 tokio = { workspace = true }
 tokio-postgres = { workspace = true }
 tracing = { workspace = true }
@@ -24,5 +28,4 @@ uuid = { workspace = true }
 
 [dev-dependencies]
 futures = { workspace = true }
-lazy_static = { workspace = true }
 mockall = { workspace = true }

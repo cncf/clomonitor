@@ -6,7 +6,7 @@ use lazy_static::lazy_static;
 use regex::Regex;
 use std::time::Duration;
 use tokio::time::sleep;
-use tracing::{info, instrument};
+use tracing::{error, info, instrument};
 use uuid::Uuid;
 
 /// Process pending notifications.
@@ -66,31 +66,47 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
                 if n.issue_number.is_none() || is_issue_closed {
                     // Create new issue
                     let body = tmpl::AnnualReviewDue {}.render().unwrap();
-                    issue_number = Some(
-                        gh.create_issue(&owner, &repo, ANNUAL_REVIEW_DUE_TITLE, &body)
-                            .await?,
-                    );
-                    info!(
-                        ?owner,
-                        ?repo,
-                        ?issue_number,
-                        "annual review due notification sent"
-                    );
+                    match gh
+                        .create_issue(&owner, &repo, ANNUAL_REVIEW_DUE_TITLE, &body)
+                        .await
+                    {
+                        Ok(v) => {
+                            issue_number = Some(v);
+                            info!(
+                                ?owner,
+                                ?repo,
+                                ?issue_number,
+                                "annual review due notification sent"
+                            );
+                        }
+                        Err(err) => {
+                            error!(?err, ?owner, ?repo, "error creating issue");
+                            continue;
+                        }
+                    }
                 } else {
                     // Post comment in existing issue
                     issue_number = Some(n.issue_number.unwrap());
                     let body = tmpl::AnnualReviewDueReminder {}.render().unwrap();
-                    comment_id = Some(
-                        gh.create_comment(&owner, &repo, issue_number.unwrap(), &body)
-                            .await?,
-                    );
-                    info!(
-                        ?owner,
-                        ?repo,
-                        ?issue_number,
-                        ?comment_id,
-                        "annual review due reminder notification sent"
-                    );
+                    match gh
+                        .create_comment(&owner, &repo, issue_number.unwrap(), &body)
+                        .await
+                    {
+                        Ok(v) => {
+                            comment_id = Some(v);
+                            info!(
+                                ?owner,
+                                ?repo,
+                                ?issue_number,
+                                ?comment_id,
+                                "annual review due reminder notification sent"
+                            );
+                        }
+                        Err(err) => {
+                            error!(?err, ?owner, ?repo, ?issue_number, "error creating comment");
+                            continue;
+                        }
+                    }
                 }
 
                 // Update notification details in database

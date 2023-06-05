@@ -1,5 +1,5 @@
 # Build archiver
-FROM rust:1-alpine3.17 as builder
+FROM rust:1-alpine3.18 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -14,7 +14,7 @@ WORKDIR /clomonitor/clomonitor-archiver
 RUN cargo build --release
 
 # Final stage
-FROM alpine:3.17.3
+FROM alpine:3.18.0
 RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

@@ -2,6 +2,11 @@
   font-size: 0.9rem;
 }
 
+.table > :not(caption) > * > * {
+  background-color: transparent;
+  color: inherit;
+}
+
 .table th {
   color: var(--color-font);
   background-color: var(--bg-color);

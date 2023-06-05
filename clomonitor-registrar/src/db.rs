@@ -44,6 +44,7 @@ impl PgDB {
 
 #[async_trait]
 impl DB for PgDB {
+    /// #[DB::foundations]
     async fn foundations(&self) -> Result<Vec<Foundation>> {
         let db = self.pool.get().await?;
         let foundations = db
@@ -58,6 +59,7 @@ impl DB for PgDB {
         Ok(foundations)
     }
 
+    /// #[DB::foundation_projects]
     async fn foundation_projects(
         &self,
         foundation_id: &str,
@@ -75,6 +77,7 @@ impl DB for PgDB {
         Ok(projects)
     }
 
+    /// #[DB::register_project]
     async fn register_project(&self, foundation_id: &str, project: &Project) -> Result<()> {
         let db = self.pool.get().await?;
         db.execute(
@@ -85,6 +88,7 @@ impl DB for PgDB {
         Ok(())
     }
 
+    /// #[DB::unregister_project]
     async fn unregister_project(&self, foundation_id: &str, project_name: &str) -> Result<()> {
         let db = self.pool.get().await?;
         db.execute(

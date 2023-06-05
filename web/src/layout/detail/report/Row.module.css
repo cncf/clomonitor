@@ -32,6 +32,11 @@
   background-color: var(--body-bg);
 }
 
+.table > :not(caption) > * > * {
+  background-color: transparent;
+  color: inherit;
+}
+
 .reportContent {
   background-color: var(--bg-color);
 }

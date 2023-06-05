@@ -721,3 +721,16 @@
       check_sets:
         - code
         - community
+- name: lakesoul
+  display_name: LakeSoul
+  description: LakeSoul is a cloud-native Lakehouse framework developed by DMetaSoul team, and supports scalable metadata management, ACID transactions, efficient and flexible upsert operation, schema evolution, and unified streaming & batch processing
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/LakeSoul/icon/color/LakeSoul_Color_Icon.svg
+  accepted_at: "2023-05-04"
+  maturity: sandbox
+  repositories:
+    - name: LakeSoul
+      url: https://github.com/meta-soul/LakeSoul
+      check_sets:
+        - code
+        - community

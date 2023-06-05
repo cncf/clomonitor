@@ -1652,11 +1652,23 @@
   accepted_at: "2019-04-11"
   maturity: sandbox
   repositories:
-    - name: networkservicemesh
-      url: https://github.com/networkservicemesh/networkservicemesh
+    - name: site
+      url: https://github.com/networkservicemesh/site
       check_sets:
         - community
+        - docs
+    - name: api
+      url: https://github.com/networkservicemesh/api
+      check_sets:
         - code
+    - name: sdk
+      url: https://github.com/networkservicemesh/sdk
+      check_sets:
+        - code
+    - name: deployments-k8s
+      url: https://github.com/networkservicemesh/deployments-k8s
+      check_sets:
+        - code-lite
 - name: nocalhost
   display_name: Nocalhost
   description: Nocalhost is Cloud Native Development Environment
@@ -1858,7 +1870,7 @@
       check_sets:
         - code-lite
     - name: opensbs-docs
-      url: https://github.com/openebs/openebs-docs
+      url: https://github.com/openebs/website
       check_sets:
         - community
 - name: openelb
@@ -3058,3 +3070,75 @@
       url: https://github.com/cncf/tag-env-sustainability
       exclude:
         - clomonitor
+- name: kepler
+  display_name: Kepler
+  description: Kepler (Kubernetes-based Efficient Power Level Exporter) uses eBPF to probe energy related system stats and exports as Prometheus metrics
+  category: observability
+  logo_url: https://landscape.cncf.io/logos/kepler.svg
+  devstats_url: https://kepler.devstats.cncf.io
+  accepted_at: "2023-05-17"
+  maturity: sandbox
+  repositories:
+    - name: kepler
+      url: https://github.com/sustainable-computing-io/kepler
+      check_sets:
+        - community
+        - code
+- name: pipecd
+  display_name: PipeCD
+  description: GitOps style continuous delivery platform that provides consistent deployment and operations experience for any applications
+  category: app definition
+  logo_url: https://landscape.cncf.io/logos/pipe-cd.svg
+  devstats_url: https://pipecd.devstats.cncf.io
+  accepted_at: "2023-05-17"
+  maturity: sandbox
+  repositories:
+    - name: pipecd
+      url: https://github.com/pipe-cd/pipecd
+      check_sets:
+        - community
+        - code
+- name: slimtoolkit
+  display_name: SlimToolkit
+  description: Inspect, Optimize and Debug Your Containers
+  category: provisioning
+  logo_url: https://landscape.cncf.io/logos/slim-toolkit.svg
+  devstats_url: https://slimtoolkit.devstats.cncf.io/
+  accepted_at: "2023-05-17"
+  maturity: sandbox
+  repositories:
+    - name: slim
+      url: https://github.com/slimtoolkit/slim
+      check_sets:
+        - community
+        - code
+- name: headlamp
+  display_name: Headlamp
+  description: Headlamp is a feature-rich and extensible user interface for Kubernetes
+  logo_url: https://raw.githubusercontent.com/headlamp-k8s/headlamp/7284134d2ddd77321a4d3503729d7c0233762da3/docker-extension/headlamp.svg
+  logo_dark_url: https://raw.githubusercontent.com/headlamp-k8s/headlamp-website/main/static/media/footer-logo.svg
+  devstats_url: https://headlamp.devstats.cncf.io/
+  accepted_at: "2023-05-17"
+  maturity: sandbox
+  repositories:
+    - name: headlamp
+      url: https://github.com/headlamp-k8s/headlamp
+      check_sets:
+        - community
+        - code
+- name: sops
+  display_name: SOPS
+  description: SOPS, short for Secrets OPerationS, is an open-source text file editor that encrypts/decrypts files automagically
+  devstats_url: https://sops.devstats.cncf.io/
+  accepted_at: "2023-05-17"
+  maturity: sandbox
+  repositories:
+    - name: sops
+      url: https://github.com/mozilla/sops
+      check_sets:
+        - community
+        - code
+    - name: sotp
+      url: https://github.com/mozilla/sotp
+      check_sets:
+        - code-lite

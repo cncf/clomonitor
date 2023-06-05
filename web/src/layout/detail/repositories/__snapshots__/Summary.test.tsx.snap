@@ -229,7 +229,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"
@@ -328,7 +328,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"
@@ -427,7 +427,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"
@@ -526,7 +526,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"
@@ -625,7 +625,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"
@@ -718,7 +718,7 @@ exports[`Summary creates snapshot 1`] = `
               >
                 <div
                   class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
-                  data-testid="repo-kind-badge"
+                  data-testid="checkset-badge"
                 >
                   <div
                     class="d-flex flex-row align-items-center"

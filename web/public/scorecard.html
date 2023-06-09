@@ -861,12 +861,12 @@
               {{/if}}
             </div>
           </td>
-          <td class="section ps-0 top-aligment" id="section-{{name}}" onclick="onClickSection('{{name}}')">
+          <td class="section ps-0 top-aligment" id="section-{{name}}" data-section="{{name}}" onclick="onClickSection(this)">
             <div class="table-cell">
               <div class="d-flex flex-row">
                 <div class="d-flex flex-column check-info">
                   <div class="d-flex flex-row align-items-center check-title">
-                    <div class="fw-semibold text-truncate">{{replaceDashes name}}</div>
+                    <div class="fw-semibold text-truncate">{{name}}</div>
                     {{#if (getRiskLevel name)}}
                       <div title="Risk level" class="severity-badge fw-semibold badge-{{getRiskLevel name}}">{{getRiskLevel name}}</div>
                     {{/if}}
@@ -1100,10 +1100,6 @@
         return x.toFixed(1);
       });
 
-      Handlebars.registerHelper('replaceDashes', (x) => {
-        return x.replace(/-/g, ' ');
-      });
-
       Handlebars.registerHelper('shortCommit', (x) => {
         return x.slice(0, 7);
       });
@@ -1168,13 +1164,13 @@
         return v1 == v2;
       });
 
-      const onClickSection = (section) => {
+      const onClickSection = (element) => {
+        const section = element.dataset.section;
         const selection = window.getSelection();
         // Prevent action to select text
         if (selection.type && selection.type === 'Range') {
           return;
         }
-        const element = document.getElementById(`section-${section}`);
         if (section_open !== section) {
           if (section_open) {
             const currentActiveSection = document.getElementById(`section-${section_open}`);

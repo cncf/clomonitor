@@ -23,7 +23,7 @@ RUN yarn install --network-concurrency 1
 RUN yarn build
 
 # Build docs
-FROM klakegg/hugo:0.107.0 AS docs-builder
+FROM klakegg/hugo:0.111.3 AS docs-builder
 WORKDIR /
 COPY scripts scripts
 COPY docs docs

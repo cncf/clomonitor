@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useOutsideClick } from 'clo-ui';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
-import { GoThreeBars } from 'react-icons/go';
+import { VscThreeBars } from 'react-icons/vsc';
 
 import styles from './RepositoryDropdown.module.css';
 import RepositoryReportModal from './RepositoryReportModal';
@@ -38,7 +38,7 @@ const RepositoryDropdown = (props: Props) => {
             setVisibleDropdown(!visibleDropdown);
           }}
         >
-          <GoThreeBars />
+          <VscThreeBars />
         </button>
 
         <ul

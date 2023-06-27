@@ -2,7 +2,7 @@
   display_name: Aeraki Mesh
   description: Aeraki Mesh allows you to manage any layer-7 traffic in a service mesh
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/aerakimesh/icon/light/aerakimesh-icon-light.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/88d2fa4977a1446479b0c699331b8530b879213c/projects/aerakimesh/icon/color/AerakiMesh_icon-color.svg
   devstats_url: https://aerakimesh.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -2976,7 +2976,7 @@
   display_name: Inspektor gadget
   description: Introspecting and debugging Kubernetes applications using BPF "gadgets"
   category: runtime
-  logo_url: https://raw.githubusercontent.com/inspektor-gadget/website/89720a978e52e9200d14ab3c2c5f0349f8b1a663/static/media/brand-logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/88d2fa4977a1446479b0c699331b8530b879213c/projects/inspektor-gadget/icon/color/inspektor-gadget-icon-color.svg
   devstats_url: https://inspektorgadget.devstats.cncf.io
   accepted_at: "2023-03-07"
   maturity: sandbox
@@ -3088,7 +3088,7 @@
   display_name: PipeCD
   description: GitOps style continuous delivery platform that provides consistent deployment and operations experience for any applications
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/pipe-cd.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/f7f3c6ab74987da8dfba97526301865cd81cb645/projects/pipecd/icon/color/pipecd-icon-color.svg
   devstats_url: https://pipecd.devstats.cncf.io
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3115,8 +3115,8 @@
 - name: headlamp
   display_name: Headlamp
   description: Headlamp is a feature-rich and extensible user interface for Kubernetes
-  logo_url: https://raw.githubusercontent.com/headlamp-k8s/headlamp/7284134d2ddd77321a4d3503729d7c0233762da3/docker-extension/headlamp.svg
-  logo_dark_url: https://raw.githubusercontent.com/headlamp-k8s/headlamp-website/main/static/media/footer-logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/color/headlamp-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/white/headlamp-icon-white.svg
   devstats_url: https://headlamp.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Foundation, useOutsideClick } from 'clo-ui';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
-import { GoThreeBars } from 'react-icons/go';
+import { VscThreeBars } from 'react-icons/vsc';
 
 import BadgeModal from './BadgeModal';
 import styles from './ProjectDropdown.module.css';
@@ -46,7 +46,7 @@ const ProjectDropdown = (props: Props) => {
             setVisibleDropdown(!visibleDropdown);
           }}
         >
-          <GoThreeBars />
+          <VscThreeBars />
         </button>
 
         <ul

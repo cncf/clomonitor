@@ -15,7 +15,7 @@
     "react-dom": "^18.0.2",
     "react-icons": "^4.10.1",
     "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.14.0",
+    "react-router-dom": "^6.14.1",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {

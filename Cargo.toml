@@ -16,15 +16,15 @@ edition = "2021"
 rust-version = "1.65"
 
 [workspace.dependencies]
-anyhow = "1.0.71"
+anyhow = "1.0.72"
 askalono = "0.4.6"
 askama = "0.12.0"
 askama_axum = "0.3.0"
-async-trait = "0.1.68"
-axum = { version = "0.6.18", features = ["macros"] }
+async-trait = "0.1.71"
+axum = { version = "0.6.19", features = ["macros"] }
 bincode = "1.3.3"
 cached = "0.44.0"
-clap = { version = "4.3.9", features = ["derive"] }
+clap = { version = "4.3.15", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 comfy-table = "6.2.0"
 config = "0.13.3"
@@ -38,7 +38,7 @@ hex = "0.4.3"
 http = "0.2.9"
 hyper = "0.14.27"
 lazy_static = "1.4.0"
-metrics = "0.21.0"
+metrics = "0.21.1"
 metrics-exporter-prometheus = "0.12.1"
 mime = "0.3.17"
 mockall = "0.11.4"
@@ -48,24 +48,24 @@ openssl = { version = "0.10.55", features = ["vendored"] }
 postgres-openssl = "0.5.0"
 postgres-types = { version = "0.2.5", features = ["derive"] }
 predicates = "3.0.3"
-regex = "1.8.4"
+regex = "1.9.1"
 reqwest = "0.11.18"
 resvg = "0.27.0"
-serde = { version = "1.0.164", features = ["derive"] }
-serde_json = "1.0.99"
-serde_yaml = "0.9.22"
+serde = { version = "1.0.171", features = ["derive"] }
+serde_json = "1.0.103"
+serde_yaml = "0.9.24"
 serde_qs = "0.12.0"
 sha2 = "0.10.7"
 tempfile = "3.6.0"
 tera = { version = "1.19.0", default-features = false }
-time = { version = "0.3.22", features = [
+time = { version = "0.3.23", features = [
     "formatting",
     "macros",
     "parsing",
     "serde",
 ] }
 tiny-skia = "0.8.4"
-tokio = { version = "1.29.0", features = [
+tokio = { version = "1.29.1", features = [
     "macros",
     "process",
     "rt-multi-thread",
@@ -87,6 +87,6 @@ tower-http = { version = "0.4.1", features = [
 tracing = "=0.1.37"
 tracing-subscriber = { version = "0.3.17", features = ["env-filter", "json"] }
 usvg = "0.27.0"
-uuid = { version = "1.4.0", features = ["serde"] }
+uuid = { version = "1.4.1", features = ["serde"] }
 which = "4.4.0"
 wiremock = "0.5.19"

@@ -1,12 +1,8 @@
 use anyhow::{Context, Result};
 use cached::proc_macro::cached;
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, fmt::Display};
+use std::fmt::Display;
 use time::{macros::format_description, Date};
-
-/// Key used in the extra section of the landscape yaml file for the project
-/// name in CLOMonitor.
-const CLOMONITOR_NAME_KEY: &str = "clomonitor_name";
 
 /// Foundation Landscape information.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -29,7 +25,23 @@ pub(crate) struct SubCategory {
 /// Landscape item.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub(crate) struct Item {
-    extra: Option<HashMap<String, String>>,
+    extra: Option<ItemExtra>,
+}
+
+/// Extra information for a landscape item.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub(super) struct ItemExtra {
+    pub annual_review_date: Option<String>,
+    pub annual_review_url: Option<String>,
+    pub clomonitor_name: Option<String>,
+    pub summary_business_use_case: Option<String>,
+    pub summary_integration: Option<String>,
+    pub summary_integrations: Option<String>,
+    pub summary_intro_url: Option<String>,
+    pub summary_use_case: Option<String>,
+    pub summary_personas: Option<String>,
+    pub summary_release_rate: Option<String>,
+    pub summary_tags: Option<String>,
 }
 
 /// Create a new Landscape instance from the corresponding foundation
@@ -48,8 +60,10 @@ impl Landscape {
     ) -> Result<Option<AnnualReview>> {
         // Prepare project's annual review from available info (if any)
         if let Some(project) = self.get_project(project_name) {
-            let annual_review = AnnualReview::from(project.extra.as_ref().unwrap())?;
-            return Ok(annual_review);
+            if let Some(extra) = &project.extra {
+                let annual_review = AnnualReview::from(extra)?;
+                return Ok(annual_review);
+            }
         }
 
         Ok(None)
@@ -59,9 +73,11 @@ impl Landscape {
     pub(crate) fn get_summary_table_info(&self, project_name: &str) -> Option<SummaryTable> {
         // Prepare project's summary table from available info (if any)
         if let Some(project) = self.get_project(project_name) {
-            let summary_table = SummaryTable::from(project.extra.as_ref().unwrap());
-            if summary_table != SummaryTable::default() {
-                return Some(summary_table);
+            if let Some(extra) = &project.extra {
+                let summary_table = SummaryTable::from(extra);
+                if summary_table != SummaryTable::default() {
+                    return Some(summary_table);
+                }
             }
         }
 
@@ -74,7 +90,7 @@ impl Landscape {
             for subcategory in &category.subcategories {
                 for item in &subcategory.items {
                     if let Some(extra) = &item.extra {
-                        if let Some(clomonitor_name) = extra.get(CLOMONITOR_NAME_KEY) {
+                        if let Some(clomonitor_name) = &extra.clomonitor_name {
                             if clomonitor_name == project_name {
                                 return Some(item);
                             }
@@ -95,16 +111,17 @@ pub(crate) struct AnnualReview {
 }
 
 impl AnnualReview {
-    fn from(extra: &HashMap<String, String>) -> Result<Option<Self>> {
-        let Some(date) = extra.get("annual_review_date") else {
+    fn from(extra: &ItemExtra) -> Result<Option<Self>> {
+        let Some(date) = &extra.annual_review_date else {
             return Ok(None);
         };
-        let Some(url) = extra.get("annual_review_url") else {
+        let Some(url) = &extra.annual_review_url else {
             return Ok(None);
         };
 
         let format = format_description!("[year]-[month]-[day]");
-        let date = Date::parse(date, &format).context("invalid annual review date in landscape")?;
+        let date = Date::parse(date.as_str(), &format)
+            .context("invalid annual review date in landscape")?;
 
         Ok(Some(AnnualReview {
             date,
@@ -125,16 +142,16 @@ pub(crate) struct SummaryTable {
     intro_url: Option<String>,
 }
 
-impl From<&HashMap<String, String>> for SummaryTable {
-    fn from(extra: &HashMap<String, String>) -> Self {
+impl From<&ItemExtra> for SummaryTable {
+    fn from(extra: &ItemExtra) -> Self {
         SummaryTable {
-            personas: extra.get("summary_personas").cloned(),
-            tags: extra.get("summary_tags").cloned(),
-            use_case: extra.get("summary_use_case").cloned(),
-            business_use_case: extra.get("summary_business_use_case").cloned(),
-            release_date: extra.get("summary_release_rate").cloned(),
-            integrations: extra.get("summary_integrations").cloned(),
-            intro_url: extra.get("summary_intro_url").cloned(),
+            personas: extra.summary_personas.clone(),
+            tags: extra.summary_tags.clone(),
+            use_case: extra.summary_use_case.clone(),
+            business_use_case: extra.summary_business_use_case.clone(),
+            release_date: extra.summary_release_rate.clone(),
+            integrations: extra.summary_integrations.clone(),
+            intro_url: extra.summary_intro_url.clone(),
         }
     }
 }

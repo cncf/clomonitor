@@ -734,3 +734,41 @@
       check_sets:
         - code
         - community
+- name: isf
+  display_name: Intersectional Fairness
+  description: Intersectional Fairness (ISF) is a bias detection and mitigation technology for intersectional bias, which combinations of multiple protected attributes cause
+  category: trusted & responsible ai
+  logo_url: https://landscape.lfai.foundation/logos/inter-sectional-fairness.svg
+  accepted_at: "2023-06-15"
+  maturity: sandbox
+  repositories:
+    - name: isf
+      url: https://github.com/intersectional-fairness/isf
+      check_sets:
+        - code
+        - community
+- name: recommenders
+  display_name: Recommenders
+  description: Best Practices on Recommendation Systems
+  category: machine learning
+  logo_url: https://landscape.lfai.foundation/logos/recommenders.svg
+  accepted_at: "2023-06-29"
+  maturity: sandbox
+  repositories:
+    - name: recommenders
+      url: https://github.com/microsoft/recommenders
+      check_sets:
+        - code
+        - community
+- name: shadernn
+  display_name: ShaderNN
+  description: ShaderNN is a lightweight deep learning inference framework optimized for Convolutional Neural Networks on mobile platforms
+  category: deep learning
+  accepted_at: "2023-07-13"
+  maturity: sandbox
+  repositories:
+    - name: shadernn
+      url: https://github.com/inferenceengine/shadernn
+      check_sets:
+        - code
+        - community

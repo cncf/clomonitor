@@ -435,7 +435,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/crio/icon/color/crio-icon-color.svg
   devstats_url: https://crio.devstats.cncf.io/
   accepted_at: "2019-04-08"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: cri-o
       url: https://github.com/cri-o/cri-o
@@ -2784,7 +2784,7 @@
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/istio/icon/white/istio-icon-white.svg
   devstats_url: https://istio.devstats.cncf.io
   accepted_at: "2022-09-28"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: istio
       url: https://github.com/istio/istio
@@ -3115,6 +3115,7 @@
 - name: headlamp
   display_name: Headlamp
   description: Headlamp is a feature-rich and extensible user interface for Kubernetes
+  category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/color/headlamp-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/white/headlamp-icon-white.svg
   devstats_url: https://headlamp.devstats.cncf.io/
@@ -3128,7 +3129,8 @@
         - code
 - name: sops
   display_name: SOPS
-  description: SOPS, short for Secrets OPerationS, is an open-source text file editor that encrypts/decrypts files automagically
+  description: sops is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP
+  category: provisioning
   devstats_url: https://sops.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3142,3 +3144,106 @@
       url: https://github.com/mozilla/sotp
       check_sets:
         - code-lite
+- name: eraser
+  display_name: Eraser
+  description: Eraser helps Kubernetes admins remove a list of non-running images from all Kubernetes nodes in a cluster
+  category: orchestration
+  devstats_url: https://eraser.devstats.cncf.io/
+  accepted_at: "2023-06-21"
+  maturity: sandbox
+  repositories:
+    - name: eraser
+      url: https://github.com/Azure/eraser
+      check_sets:
+        - community
+        - code
+- name: xline
+  display_name: Xline
+  description: A geo-distributed KV store for metadata management
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/xline/icon/black/xline-icon-black.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/xline/icon/color/xline-icon-color.svg
+  devstats_url: https://xline.devstats.cncf.io/
+  accepted_at: "2023-06-21"
+  maturity: sandbox
+  repositories:
+    - name: Xline
+      url: https://github.com/xline-kv/Xline
+      check_sets:
+        - community
+        - code
+    - name: xline-operator
+      url: https://github.com/xline-kv/xline-operator
+      check_sets:
+        - code-lite
+- name: hwameistor
+  display_name: Hwameistor
+  description: Hwameistor is an HA local storage system for cloud-native stateful workloads
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-colorlight.svg
+  devstats_url: https://hwameistor.devstats.cncf.io/
+  accepted_at: "2023-06-21"
+  maturity: sandbox
+  repositories:
+    - name: hwameistor
+      url: https://github.com/hwameistor/hwameistor
+      check_sets:
+        - community
+        - code
+    - name: hwameistor-operator
+      url: https://github.com/hwameistor/hwameistor-operator
+      check_sets:
+        - code-lite
+- name: kpt
+  description: Automate Kubernetes Configuration Editing
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/kpt.svg
+  devstats_url: https://kpt.devstats.cncf.io/
+  accepted_at: "2023-06-21"
+  maturity: sandbox
+  repositories:
+    - name: kpt
+      url: https://github.com/GoogleContainerTools/kpt
+      check_sets:
+        - community
+        - code
+- name: microcks
+  display_name: Microcks
+  description: Kubernetes native tool for mocking and testing API and micro-services
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/microcks/icon/color/microcks-icon-color.svg
+  devstats_url: https://microcks.devstats.cncf.io/
+  accepted_at: "2023-06-22"
+  maturity: sandbox
+  repositories:
+    - name: microcks
+      url: https://github.com/microcks/microcks
+      check_sets:
+        - community
+        - code
+    - name: microcks.io
+      url: https://github.com/microcks/microcks.io
+      check_sets:
+        - docs
+- name: kubeclipper
+  display_name: KubeClipper
+  description: Manage kubernetes in the most light and convenient way
+  category: platform
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/0d2280df3afbdd618bdd3d9b933c7551eef79e69/cached_logos/kube-clipper.svg
+  devstats_url: https://kubeclipper.devstats.cncf.io/
+  accepted_at: "2023-06-29"
+  maturity: sandbox
+  repositories:
+    - name: kubeclipper
+      url: https://github.com/kubeclipper/kubeclipper
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/kubeclipper/community
+      check_sets:
+        - community
+    - name: kubeclipper.github.io
+      url: https://github.com/kubeclipper/kubeclipper.github.io
+      check_sets:
+        - docs

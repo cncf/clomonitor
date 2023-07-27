@@ -2698,6 +2698,10 @@
       url: https://github.com/openfga/python-sdk
       check_sets:
         - code-lite
+    - name: cli
+      url: https://github.com/openfga/cli
+      check_sets:
+        - code-lite
     - name: openfga.dev
       url: https://github.com/openfga/openfga.dev
       check_sets:

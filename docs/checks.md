@@ -70,7 +70,7 @@ For more details about how each of the checks are performed, please see the refe
 
 ## Exemptions
 
-Sometimes some of the checks may not be applicable to a repository (i.e. Artifact Hub badge in the Kubernetes project). In those cases, it's possible to declare an exemption in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
+Sometimes some of the checks may not be applicable to a repository (i.e. Artifact Hub badge in the Kubernetes project). In those cases, it's possible to declare an exemption in the [`.clomonitor.yml`](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
 
 Each of the exemptions declared must include a reason that justifies it. Exempt checks will be specially marked in the UI, and the provided justification will be displayed to let users know why the check was not required in this case.
 
@@ -664,3 +664,5 @@ This check passes if:
 "https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage"
 "The Linux Foundation.* has registered trademarks and uses trademarks"
 ```
+
+Note: This check currently only supports static web sites where the content is delivered in an HTML page to the browser. If you use a dynamic site (e.g., React, Angular), your repo may want to set an [exemption](#exemptions) for this check ID.

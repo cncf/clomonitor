@@ -14,7 +14,7 @@ WORKDIR /clomonitor/clomonitor-tracker
 RUN cargo build --release
 
 # Build OpenSSF scorecard
-FROM golang:1.20.7-alpine3.18 AS scorecard
+FROM golang:1.21.0-alpine3.18 AS scorecard
 WORKDIR /tmp
 RUN apk --no-cache add git make bash gcc musl-dev binutils-gold
 RUN git clone https://github.com/ossf/scorecard
@@ -24,7 +24,7 @@ RUN make install
 RUN make build
 
 # Final stage
-FROM alpine:3.18.2
+FROM alpine:3.18.3
 RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

@@ -53,7 +53,7 @@ const RepositoriesList = (props: Props) => {
   }, [props.repositories]);
 
   useEffect(() => {
-    let timer: NodeJS.Timer | undefined;
+    let timer: NodeJS.Timeout | undefined;
 
     const cleanInterval = () => {
       if (!isUndefined(timer)) {

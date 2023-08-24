@@ -53,6 +53,10 @@
   margin-left: 5px;
 }
 
+.reasonTooltipArrow {
+  margin-top: 7px;
+}
+
 .miniIcon {
   font-size: 0.75rem;
 }

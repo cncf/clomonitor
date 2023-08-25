@@ -191,7 +191,7 @@ pub fn merge(scores: &[Score]) -> Score {
 
 /// Return the score's rating (a, b, c or d).
 pub fn rating(score: f64) -> char {
-    match score as usize {
+    match score.round() as usize {
         75..=100 => 'a',
         50..=74 => 'b',
         25..=49 => 'c',

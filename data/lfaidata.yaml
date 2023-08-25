@@ -751,7 +751,7 @@
   display_name: Recommenders
   description: Best Practices on Recommendation Systems
   category: machine learning
-  logo_url: https://landscape.lfai.foundation/logos/recommenders.svg
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/recommenders/color/recommenders_color.svg
   accepted_at: "2023-06-29"
   maturity: sandbox
   repositories:
@@ -764,11 +764,24 @@
   display_name: ShaderNN
   description: ShaderNN is a lightweight deep learning inference framework optimized for Convolutional Neural Networks on mobile platforms
   category: deep learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/ShaderNN/color/ShaderNN-Color.svg
   accepted_at: "2023-07-13"
   maturity: sandbox
   repositories:
     - name: shadernn
       url: https://github.com/inferenceengine/shadernn
+      check_sets:
+        - code
+        - community
+- name: deepcausality
+  display_name: DeepCausality
+  description: Hyper-geometric computational causality library for Rust
+  category: machine learning
+  accepted_at: "2023-08-10"
+  maturity: sandbox
+  repositories:
+    - name: deep_causality
+      url: https://github.com/deepcausality-rs/deep_causality
       check_sets:
         - code
         - community

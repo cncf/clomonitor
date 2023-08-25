@@ -946,7 +946,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keda/icon/color/keda-icon-color.svg
   devstats_url: https://keda.devstats.cncf.io/
   accepted_at: "2020-03-09"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: keda
       url: https://github.com/kedacore/keda
@@ -3078,7 +3078,8 @@
   display_name: Kepler
   description: Kepler (Kubernetes-based Efficient Power Level Exporter) uses eBPF to probe energy related system stats and exports as Prometheus metrics
   category: observability
-  logo_url: https://landscape.cncf.io/logos/kepler.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kepler/icon/color/kepler-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kepler/icon/white/kepler-icon-white.svg
   devstats_url: https://kepler.devstats.cncf.io
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3135,6 +3136,7 @@
   display_name: SOPS
   description: sops is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP
   category: provisioning
+  logo_url: https://landscape.cncf.io/logos/sops.svg
   devstats_url: https://sops.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox

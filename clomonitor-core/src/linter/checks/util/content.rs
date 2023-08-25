@@ -102,17 +102,15 @@ mod tests {
 
     #[test]
     fn find_invalid_glob_pattern() {
-        assert!(matches!(
-            find(
-                &Globs {
-                    root: Path::new(TESTDATA_PATH),
-                    patterns: &["invalid***"],
-                    case_sensitive: true,
-                },
-                &[&Regex::new("pattern").unwrap()]
-            ),
-            Err(_)
-        ));
+        assert!(find(
+            &Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: true,
+            },
+            &[&Regex::new("pattern").unwrap()]
+        )
+        .is_err());
     }
 
     #[test]
@@ -156,17 +154,15 @@ mod tests {
 
     #[test]
     fn matches_invalid_glob_pattern() {
-        assert!(matches!(
-            matches(
-                &Globs {
-                    root: Path::new(TESTDATA_PATH),
-                    patterns: &["invalid***"],
-                    case_sensitive: true,
-                },
-                &RegexSet::new(["pattern"]).unwrap(),
-            ),
-            Err(_)
-        ));
+        assert!(matches(
+            &Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: true,
+            },
+            &RegexSet::new(["pattern"]).unwrap(),
+        )
+        .is_err());
     }
 
     #[tokio::test]
@@ -207,9 +203,10 @@ mod tests {
 
     #[tokio::test]
     async fn remote_matches_request_failed() {
-        assert!(matches!(
-            remote_matches("http://localhost:0", &RegexSet::new(["data"]).unwrap(),).await,
-            Err(_)
-        ));
+        assert!(
+            remote_matches("http://localhost:0", &RegexSet::new(["data"]).unwrap(),)
+                .await
+                .is_err()
+        );
     }
 }

@@ -84,9 +84,6 @@ mod tests {
     fn get_check_not_found() {
         let scorecard = Ok(Scorecard { checks: vec![] });
 
-        assert!(matches!(
-            get_check(&scorecard, code_review::ID).unwrap(),
-            None
-        ));
+        assert!(get_check(&scorecard, code_review::ID).unwrap().is_none());
     }
 }

@@ -74,9 +74,6 @@ mod tests {
 
     #[test]
     fn metadata_from_path_invalid_metadata_file() {
-        assert!(matches!(
-            Metadata::from(Path::new(TESTDATA_PATH).join(".clomonitor-invalid.yaml")),
-            Err(_)
-        ));
+        assert!(Metadata::from(Path::new(TESTDATA_PATH).join(".clomonitor-invalid.yaml")).is_err());
     }
 }

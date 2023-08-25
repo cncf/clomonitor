@@ -84,14 +84,12 @@ mod tests {
 
     #[test]
     fn find_invalid_glob_pattern() {
-        assert!(matches!(
-            find(&Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["invalid***"],
-                case_sensitive: false,
-            }),
-            Err(_)
-        ));
+        assert!(find(&Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: &["invalid***"],
+            case_sensitive: false,
+        })
+        .is_err());
     }
 
     #[test]
@@ -139,13 +137,11 @@ mod tests {
 
     #[test]
     fn matches_invalid_glob_pattern() {
-        assert!(matches!(
-            matches(&Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["invalid***"],
-                case_sensitive: true,
-            }),
-            Err(_)
-        ));
+        assert!(matches(&Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: &["invalid***"],
+            case_sensitive: true,
+        })
+        .is_err());
     }
 }

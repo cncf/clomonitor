@@ -92,39 +92,33 @@ mod tests {
 
     #[test]
     fn detect_not_identified() {
-        assert!(matches!(
-            detect(&Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["OWNERS"],
-                case_sensitive: true,
-            })
-            .unwrap(),
-            None
-        ));
+        assert!(detect(&Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: &["OWNERS"],
+            case_sensitive: true,
+        })
+        .unwrap()
+        .is_none());
     }
 
     #[test]
     fn detect_file_not_located() {
-        assert!(matches!(
-            detect(&Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["nonexisting"],
-                case_sensitive: true,
-            })
-            .unwrap(),
-            None
-        ));
+        assert!(detect(&Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: &["nonexisting"],
+            case_sensitive: true,
+        })
+        .unwrap()
+        .is_none());
     }
 
     #[test]
     fn detect_invalid_glob_pattern() {
-        assert!(matches!(
-            detect(&Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["invalid***"],
-                case_sensitive: true,
-            }),
-            Err(_)
-        ));
+        assert!(detect(&Globs {
+            root: Path::new(TESTDATA_PATH),
+            patterns: &["invalid***"],
+            case_sensitive: true,
+        })
+        .is_err());
     }
 }

@@ -253,7 +253,7 @@ pub(crate) use run;
 /// and the asynchronous check function.
 macro_rules! run_async {
     ($check:ident, $input:expr) => {
-        (|| async {
+        async {
             // Check if this check should be skipped
             if should_skip_check($check::ID, &$input.li.check_sets) {
                 return None;
@@ -270,7 +270,7 @@ macro_rules! run_async {
                 Err(err) => CheckOutput::failed().fail_reason(Some(format!("{:#}", err))),
             };
             Some(output)
-        })()
+        }
     };
 }
 pub(crate) use run_async;

@@ -86,6 +86,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB) -> Result<()> {
     // Process foundations
     let http_client = reqwest::Client::new();
     let foundations = db.foundations().await?;
+    #[allow(clippy::manual_try_fold)]
     let result = stream::iter(foundations)
         .map(|foundation| async {
             let foundation_id = foundation.foundation_id.clone();

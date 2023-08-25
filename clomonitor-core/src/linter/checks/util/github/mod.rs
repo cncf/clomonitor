@@ -389,7 +389,7 @@ mod tests {
 
     #[test]
     fn latest_release_not_found() {
-        assert!(matches!(latest_release(&MdRepository::default()), None));
+        assert!(latest_release(&MdRepository::default()).is_none());
     }
 
     #[test]
@@ -431,9 +431,6 @@ mod tests {
 
     #[test]
     fn get_owner_and_repo_invalid_url() {
-        assert!(matches!(
-            get_owner_and_repo("https://github.com/org"),
-            Err(_)
-        ));
+        assert!(get_owner_and_repo("https://github.com/org").is_err());
     }
 }

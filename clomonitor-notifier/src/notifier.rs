@@ -46,7 +46,9 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
                 info!(?n.project_id, ?n.community_repo_url, "processing pending annual review notification");
 
                 // Extract owner and repo from url
-                let Ok((owner, repo)) = get_owner_and_repo(&n.community_repo_url) else { continue };
+                let Ok((owner, repo)) = get_owner_and_repo(&n.community_repo_url) else {
+                    continue;
+                };
 
                 // Pre-register notification in database
                 // (to avoid sending multiple notifications if registration failed after sending)

@@ -53,6 +53,7 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
 
     // Track repositories
     info!("tracking repositories");
+    #[allow(clippy::manual_try_fold)]
     let result = stream::iter(repositories)
         .map(|repository| async {
             let db = db.clone();

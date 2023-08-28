@@ -3089,6 +3089,41 @@
       check_sets:
         - community
         - code
+    - name: kepler-model-server
+      url: https://github.com/sustainable-computing-io/kepler-model-server
+      check_sets:
+        - community
+        - code
+    - name: kepler-operator
+      url: https://github.com/sustainable-computing-io/kepler-operator
+      check_sets:
+        - community
+        - code
+    - name: kepler-helm-chart
+      url: https://github.com/sustainable-computing-io/kepler-helm-chart
+      check_sets:
+        - community
+        - code
+    - name: kepler-model-db
+      url: https://github.com/sustainable-computing-io/kepler-model-db
+      check_sets:
+        - community
+        - code
+    - name: kepler-action
+      url: https://github.com/sustainable-computing-io/kepler-action
+      check_sets:
+        - community
+        - code
+    - name: kepler-estimator
+      url: https://github.com/sustainable-computing-io/kepler-estimator
+      check_sets:
+        - community
+        - code
+    - name: kepler-doc
+      url: https://github.com/sustainable-computing-io/kepler-doc
+      check_sets:
+        - community
+        - code
 - name: pipecd
   display_name: PipeCD
   description: GitOps style continuous delivery platform that provides consistent deployment and operations experience for any applications

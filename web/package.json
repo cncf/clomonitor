@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "apexcharts": "^3.41.1",
+    "apexcharts": "^3.42.0",
     "classnames": "^2.3.2",
     "clo-ui": "https://github.com/cncf/clo-ui.git#v0.1.16",
     "lodash": "^4.17.21",

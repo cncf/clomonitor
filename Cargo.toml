@@ -51,7 +51,7 @@ predicates = "3.0.3"
 regex = "1.9.3"
 reqwest = "0.11.20"
 resvg = "0.27.0"
-serde = { version = "1.0.185", features = ["derive"] }
+serde = { version = "1.0.188", features = ["derive"] }
 serde_json = "1.0.105"
 serde_yaml = "0.9.25"
 serde_qs = "0.12.0"

@@ -1010,8 +1010,8 @@
       url: https://github.com/knative/serving
       check_sets:
         - code
-    - name: test-infra
-      url: https://github.com/knative/test-infra
+    - name: infra
+      url: https://github.com/knative/infra
       check_sets:
         - code-lite
     - name: func

@@ -181,10 +181,17 @@
   accepted_at: "2020-11-10"
   maturity: incubating
   repositories:
-    - name: cert-manager
-      url: https://github.com/jetstack/cert-manager
+    - name: community
+      url: https://github.com/cert-manager/community
       check_sets:
         - community
+    - name: website
+      url: https://github.com/cert-manager/website
+      check_sets:
+        - docs
+    - name: cert-manager
+      url: https://github.com/cert-manager/cert-manager
+      check_sets:
         - code
 - name: chaos-blade
   display_name: ChaosBlade

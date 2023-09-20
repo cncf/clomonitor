@@ -2693,6 +2693,10 @@
       url: https://github.com/openfga/go-sdk
       check_sets:
         - code-lite
+    - name: java-sdk
+      url: https://github.com/openfga/java-sdk
+      check_sets:
+        - code-lite
     - name: js-sdk
       url: https://github.com/openfga/js-sdk
       check_sets:

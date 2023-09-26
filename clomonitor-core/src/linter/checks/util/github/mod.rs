@@ -42,10 +42,10 @@ impl MdRepository {
             discussions: MdRepositoryDiscussions { nodes: None },
             homepage_url: None,
             license_info: None,
-            name: "".to_string(),
+            name: String::new(),
             pull_requests: MdRepositoryPullRequests { nodes: None },
             owner: MdRepositoryOwner {
-                login: "".to_string(),
+                login: String::new(),
                 on: MdRepositoryOwnerOn::Organization,
             },
             releases: MdRepositoryReleases { nodes: None },
@@ -60,7 +60,7 @@ pub(crate) async fn metadata(repo_url: &str, token: &str) -> Result<MdRepository
 
     // Do request to GraphQL API
     let http_client = setup_http_client(token)?;
-    let vars = md::Variables { owner, repo };
+    let vars = md::Variables { repo, owner };
     let req_body = &Md::build_query(vars);
     let resp = http_client
         .post(GITHUB_GRAPHQL_API)
@@ -110,17 +110,17 @@ pub(crate) fn default_branch(r: Option<&MdRepositoryDefaultBranchRef>) -> String
 
 /// Check if the repo has a check in the latest merged PR that matches any of
 /// the regular expressions provided.
-pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
+pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> bool {
     // Get latest PR head commit from metadata
     let latest_pr_head_commit = gh_md
         .pull_requests
         .nodes
         .as_ref()
         .and_then(|prs| prs.iter().next())
-        .and_then(|pr_opt| pr_opt.as_ref())
+        .and_then(Option::as_ref)
         .and_then(|pr| pr.commits.nodes.as_ref())
         .and_then(|commits| commits.iter().next())
-        .and_then(|commit_opt| commit_opt.as_ref())
+        .and_then(Option::as_ref)
         .map(|commit| &commit.commit);
 
     // Get check suites from commit obtained above
@@ -137,7 +137,7 @@ pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
             false
         })
     }) {
-        return Ok(true);
+        return true;
     }
 
     // Search in check suites check runs name
@@ -159,7 +159,7 @@ pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
             false
         })
     }) {
-        return Ok(true);
+        return true;
     }
 
     // Search in commit statuses context
@@ -167,10 +167,10 @@ pub(crate) fn has_check(gh_md: &MdRepository, re: &RegexSet) -> Result<bool> {
         .and_then(|commit| commit.status.as_ref())
         .map(|status| status.contexts.iter().any(|c| re.is_match(&c.context)))
     {
-        return Ok(true);
+        return true;
     }
 
-    Ok(false)
+    false
 }
 
 /// Check if the given default community health file is available in the
@@ -222,7 +222,8 @@ pub(crate) fn latest_release_description_matches(gh_md: &MdRepository, re: &Rege
     false
 }
 
-// Setup a new authenticated http client to interact with the GitHub API.
+/// Setup a new authenticated http client to interact with the GitHub API.
+#[allow(clippy::missing_panics_doc, clippy::missing_errors_doc)]
 pub fn setup_http_client(token: &str) -> Result<reqwest::Client, reqwest::Error> {
     reqwest::Client::builder()
         .user_agent("clomonitor")
@@ -304,7 +305,7 @@ mod tests {
             ..MdRepository::default()
         };
 
-        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()));
     }
 
     #[test]
@@ -336,7 +337,7 @@ mod tests {
             ..MdRepository::default()
         };
 
-        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()));
     }
 
     #[test]
@@ -363,7 +364,7 @@ mod tests {
             ..MdRepository::default()
         };
 
-        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()).unwrap());
+        assert!(has_check(&gh_md, &RegexSet::new(["dco"]).unwrap()));
     }
 
     #[test]

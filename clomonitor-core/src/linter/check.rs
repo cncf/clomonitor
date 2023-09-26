@@ -96,6 +96,7 @@ pub struct CheckOutput<T = ()> {
 
 impl<T> CheckOutput<T> {
     /// Create a new CheckOutput instance with the passed field set to true.
+    #[must_use]
     pub fn passed() -> Self {
         Self {
             passed: true,
@@ -104,6 +105,7 @@ impl<T> CheckOutput<T> {
     }
 
     /// Create a new CheckOutput instance with the passed field set to false.
+    #[must_use]
     pub fn not_passed() -> Self {
         Self {
             passed: false,
@@ -112,6 +114,7 @@ impl<T> CheckOutput<T> {
     }
 
     /// Create a new CheckOutput instance with the exempt field set to true.
+    #[must_use]
     pub fn exempt() -> Self {
         Self {
             exempt: true,
@@ -120,6 +123,7 @@ impl<T> CheckOutput<T> {
     }
 
     /// Create a new CheckOutput instance with the failed field set to true.
+    #[must_use]
     pub fn failed() -> Self {
         Self {
             failed: true,
@@ -128,30 +132,35 @@ impl<T> CheckOutput<T> {
     }
 
     /// Url field setter.
+    #[must_use]
     pub fn url(mut self, url: Option<String>) -> CheckOutput<T> {
         self.url = url;
         self
     }
 
     /// Value field setter.
+    #[must_use]
     pub fn value(mut self, value: Option<T>) -> CheckOutput<T> {
         self.value = value;
         self
     }
 
     /// Details field setter.
+    #[must_use]
     pub fn details(mut self, details: Option<String>) -> CheckOutput<T> {
         self.details = details;
         self
     }
 
     /// Exemption reason field setter.
+    #[must_use]
     pub fn exemption_reason(mut self, reason: Option<String>) -> CheckOutput<T> {
         self.exemption_reason = reason;
         self
     }
 
     /// Fail reason field setter.
+    #[must_use]
     pub fn fail_reason(mut self, reason: Option<String>) -> CheckOutput<T> {
         self.fail_reason = reason;
         self

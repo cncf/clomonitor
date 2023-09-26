@@ -28,6 +28,7 @@ lazy_static! {
 }
 
 /// Check main function.
+#[allow(clippy::unnecessary_wraps)]
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // DCO signature in commits
     if let Ok(passed) = commits_have_dco_signature(&input.li.root) {
@@ -37,7 +38,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // DCO check in Github
-    if github::has_check(&input.gh_md, &CHECK_REF)? {
+    if github::has_check(&input.gh_md, &CHECK_REF) {
         return Ok(CheckOutput::passed());
     }
 

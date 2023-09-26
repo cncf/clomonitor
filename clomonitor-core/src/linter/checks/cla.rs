@@ -28,9 +28,10 @@ lazy_static! {
 }
 
 /// Check main function.
+#[allow(clippy::unnecessary_wraps)]
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // CLA check in Github
-    if github::has_check(&input.gh_md, &CHECK_REF)? {
+    if github::has_check(&input.gh_md, &CHECK_REF) {
         return Ok(CheckOutput::passed());
     }
 

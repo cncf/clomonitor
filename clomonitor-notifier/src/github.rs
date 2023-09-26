@@ -96,7 +96,7 @@ impl GH for GHApi {
         body: &str,
     ) -> Result<IssueNumber> {
         let body = IssuesCreateRequest {
-            assignee: "".to_string(),
+            assignee: String::new(),
             assignees: vec![],
             body: body.to_string(),
             labels: vec![],

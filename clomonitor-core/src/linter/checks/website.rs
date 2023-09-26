@@ -14,6 +14,7 @@ pub(crate) const WEIGHT: usize = 4;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
 /// Check main function.
+#[allow(clippy::unnecessary_wraps)]
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // Website in Github
     if let Some(url) = &input.gh_md.homepage_url {

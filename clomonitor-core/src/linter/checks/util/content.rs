@@ -8,9 +8,9 @@ use std::fs;
 /// when there is a match. This function expects that the regular expressions
 /// provided contain one capture group.
 pub(crate) fn find(globs: &Globs, regexps: &[&Regex]) -> Result<Option<String>> {
-    for path in path::matches(globs)?.iter() {
+    for path in &path::matches(globs)? {
         if let Ok(content) = fs::read_to_string(path) {
-            for re in regexps.iter() {
+            for re in regexps {
                 if let Some(c) = re.captures(&content) {
                     if c.len() > 1 {
                         return Ok(Some(c[1].to_string()));

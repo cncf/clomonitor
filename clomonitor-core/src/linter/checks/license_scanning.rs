@@ -37,7 +37,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
         .and_then(|md| md.license_scanning.as_ref())
         .and_then(|ls| ls.url.as_ref())
     {
-        return Ok(CheckOutput::passed().url(Some(url.to_owned())));
+        return Ok(CheckOutput::passed().url(Some(url.clone())));
     }
 
     // Reference in README file

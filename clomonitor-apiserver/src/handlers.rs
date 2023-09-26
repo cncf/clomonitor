@@ -74,21 +74,18 @@ pub(crate) async fn badge(
     // Prepare badge configuration
     let message: String;
     let color: &str;
-    match rating {
-        Some(rating) => {
-            message = rating.to_uppercase();
-            color = match rating.as_ref() {
-                "a" => "green",
-                "b" => "yellow",
-                "c" => "orange",
-                "d" => "red",
-                _ => "grey",
-            };
-        }
-        None => {
-            message = "not processed yet".to_owned();
-            color = "grey";
-        }
+    if let Some(rating) = rating {
+        message = rating.to_uppercase();
+        color = match rating.as_ref() {
+            "a" => "green",
+            "b" => "yellow",
+            "c" => "orange",
+            "d" => "red",
+            _ => "grey",
+        };
+    } else {
+        message = "not processed yet".to_owned();
+        color = "grey";
     }
 
     // Return badge configuration as json
@@ -110,6 +107,7 @@ pub(crate) async fn badge(
 }
 
 /// Handler that returns the index HTML document with some metadata embedded.
+#[allow(clippy::unused_async)]
 pub(crate) async fn index(
     State(cfg): State<Arc<Config>>,
     State(tmpl): State<Arc<Tera>>,
@@ -138,6 +136,7 @@ pub(crate) async fn index(
 
 /// Handler that returns the index HTML document with some project specific
 /// metadata embedded.
+#[allow(clippy::unused_async)]
 pub(crate) async fn index_project(
     State(cfg): State<Arc<Config>>,
     State(tmpl): State<Arc<Tera>>,
@@ -375,7 +374,7 @@ pub(crate) async fn stats(
 ) -> impl IntoResponse {
     // Get stats from database
     let stats = db
-        .stats(params.get("foundation").map(|p| p.as_str()))
+        .stats(params.get("foundation").map(String::as_str))
         .await
         .map_err(internal_error)?;
 
@@ -394,7 +393,7 @@ pub(crate) async fn stats_snapshot(
     Query(params): Query<HashMap<String, String>>,
 ) -> impl IntoResponse {
     // Get stats snapshot from database
-    let foundation = params.get("foundation").map(|f| f.as_str());
+    let foundation = params.get("foundation").map(String::as_str);
     let date: Date =
         Date::parse(&date, &SNAPSHOT_DATE_FORMAT).map_err(|_| StatusCode::BAD_REQUEST)?;
     let stats = db
@@ -427,6 +426,7 @@ pub(crate) async fn track_view(
 }
 
 /// Helper for mapping any error into a `500 Internal Server Error` response.
+#[allow(clippy::needless_pass_by_value)]
 fn internal_error<E>(err: E) -> StatusCode
 where
     E: Into<Error> + Display,

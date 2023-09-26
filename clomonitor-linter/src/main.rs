@@ -1,3 +1,6 @@
+#![warn(clippy::all, clippy::pedantic)]
+#![allow(clippy::doc_markdown, clippy::wildcard_imports)]
+
 use anyhow::{format_err, Result};
 use clap::{Parser, ValueEnum};
 use clomonitor_core::{

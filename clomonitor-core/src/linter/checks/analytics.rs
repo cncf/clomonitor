@@ -47,19 +47,19 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<Stri
     // Check Google Analytics 3 (Universal Analytics) tracking ID
     if GA3.is_match(&content) {
         analytics_detected.push("GA3".to_string());
-        details.push_str("· Google Analytics 3 (Universal Analytics)\n")
+        details.push_str("· Google Analytics 3 (Universal Analytics)\n");
     }
 
     // Check Google Analytics 4 measurement ID
     if GA4.is_match(&content) {
         analytics_detected.push("GA4".to_string());
-        details.push_str("· Google Analytics 4\n")
+        details.push_str("· Google Analytics 4\n");
     }
 
     // Check HubSpot tracking code
     if HUBSPOT.is_match(&content) {
         analytics_detected.push("HubSpot".to_string());
-        details.push_str("· HubSpot\n")
+        details.push_str("· HubSpot\n");
     }
 
     // Return check output

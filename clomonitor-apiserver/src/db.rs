@@ -27,6 +27,7 @@ type Count = i64;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
+#[allow(clippy::ref_option_ref)]
 #[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get project's data in json format.

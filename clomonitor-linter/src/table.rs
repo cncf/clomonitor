@@ -14,6 +14,7 @@ const NOT_APPLICABLE_MSG: &str = "n/a";
 const EXEMPT_MSG: &str = "Exempt";
 
 /// Print the linter results provided.
+#[allow(clippy::too_many_lines)]
 pub(crate) fn display(
     report: &Report,
     score: &Score,
@@ -271,6 +272,7 @@ fn cell_entry(title: &str) -> Cell {
 /// Build a cell used for scores.
 fn cell_score(score: Option<f64>) -> Cell {
     let (content, color) = match score {
+        #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
         Some(v) => match v as usize {
             75..=100 => (v.round().to_string(), Color::Green),
             50..=74 => (v.round().to_string(), Color::Yellow),
@@ -369,7 +371,7 @@ mod tests {
             },
         };
         let score = Score {
-            global: 99.99999999999999,
+            global: 99.999_999_999_999_99,
             global_weight: 90,
             documentation: Some(100.0),
             documentation_weight: Some(30),

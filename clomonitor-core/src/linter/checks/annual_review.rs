@@ -34,7 +34,7 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
 
     // This check only applies to CNCF Sandbox projects
     if project.foundation.foundation_id != "cncf"
-        || project.maturity.as_ref().unwrap_or(&"".to_string()) != "sandbox"
+        || project.maturity.as_ref().unwrap_or(&String::new()) != "sandbox"
     {
         return Ok(CheckOutput::exempt().exemption_reason(Some(
             "This check only applies to CNCF Sandbox projects".to_string(),

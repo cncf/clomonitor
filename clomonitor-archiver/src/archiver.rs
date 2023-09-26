@@ -11,12 +11,12 @@ pub(crate) async fn run(db: DynDB) -> Result<()> {
     info!("started");
 
     debug!("processing projects");
-    for project_id in db.projects_ids().await?.iter() {
+    for project_id in &db.projects_ids().await? {
         process_project(db.clone(), project_id).await?;
     }
 
     debug!("processing stats");
-    for foundation in db.foundations().await?.iter() {
+    for foundation in &db.foundations().await? {
         process_stats(db.clone(), Some(foundation)).await?;
     }
     process_stats(db.clone(), None).await?; // All foundations
@@ -34,7 +34,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
         .project_snapshots(project_id)
         .await
         .context("error getting snapshots")?;
-    let latest_snapshot_date = snapshots.first().map(|d| d.to_owned());
+    let latest_snapshot_date = snapshots.first().map(ToOwned::to_owned);
 
     // Store new project's snapshot if needed
     let today = OffsetDateTime::now_utc().date();
@@ -53,7 +53,7 @@ async fn process_project(db: DynDB, project_id: &Uuid) -> Result<()> {
 
     // Delete snapshots no longer needed
     let snapshots_to_keep = get_snapshots_to_keep(today, snapshots.as_slice());
-    for snapshot in snapshots.iter() {
+    for snapshot in &snapshots {
         if !snapshots_to_keep.contains(snapshot) {
             db.delete_project_snapshot(project_id, snapshot)
                 .await
@@ -74,7 +74,7 @@ async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
         .stats_snapshots(foundation)
         .await
         .context("error getting snapshots")?;
-    let latest_snapshot_date = snapshots.first().map(|d| d.to_owned());
+    let latest_snapshot_date = snapshots.first().map(ToOwned::to_owned);
 
     // Store new stats snapshot if needed
     let today = OffsetDateTime::now_utc().date();
@@ -93,7 +93,7 @@ async fn process_stats(db: DynDB, foundation: Option<&str>) -> Result<()> {
 
     // Delete snapshots no longer needed
     let snapshots_to_keep = get_snapshots_to_keep(today, snapshots.as_slice());
-    for snapshot in snapshots.iter() {
+    for snapshot in &snapshots {
         if !snapshots_to_keep.contains(snapshot) {
             db.delete_stats_snapshot(foundation, snapshot)
                 .await
@@ -148,6 +148,7 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
 }
 
 #[cfg(test)]
+#[allow(clippy::redundant_closure_for_method_calls)]
 mod tests {
     use super::*;
     use crate::db::MockDB;

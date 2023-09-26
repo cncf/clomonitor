@@ -15,6 +15,7 @@ pub(crate) const WEIGHT: usize = 3;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 /// Check main function.
+#[allow(clippy::unnecessary_wraps)]
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     Ok(scorecard::get_check(&input.scorecard, ID).into())
 }

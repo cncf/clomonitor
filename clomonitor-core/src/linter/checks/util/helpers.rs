@@ -75,7 +75,7 @@ pub(crate) fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option
         })
     {
         if !exemption.reason.is_empty() {
-            return Some(exemption.to_owned());
+            return Some(exemption.clone());
         }
     }
 

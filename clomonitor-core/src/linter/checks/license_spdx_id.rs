@@ -41,7 +41,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
         .and_then(|l| l.spdx_id.as_ref())
     {
         if spdx_id != "NOASSERTION" {
-            return Ok(CheckOutput::passed().value(Some(spdx_id.to_owned())));
+            return Ok(CheckOutput::passed().value(Some(spdx_id.clone())));
         }
     }
 

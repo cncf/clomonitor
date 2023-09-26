@@ -40,17 +40,20 @@ pub struct Score {
 
 impl Score {
     /// Return the score's global value.
+    #[must_use]
     pub fn global(&self) -> f64 {
         self.global
     }
 
     /// Return the score's rating (a, b, c or d).
+    #[must_use]
     pub fn rating(&self) -> char {
         rating(self.global())
     }
 }
 
 /// Calculate score for the given linter report.
+#[must_use]
 pub fn calculate(report: &Report) -> Score {
     let mut score = Score::default();
 
@@ -125,6 +128,7 @@ fn calculate_section(
 }
 
 /// Merge the scores provided into a single score.
+#[must_use]
 pub fn merge(scores: &[Score]) -> Score {
     // Sum all scores weights for each of the sections. We'll use them to
     // calculate the coefficient we'll apply to each of the scores.
@@ -190,6 +194,7 @@ pub fn merge(scores: &[Score]) -> Score {
 }
 
 /// Return the score's rating (a, b, c or d).
+#[must_use]
 pub fn rating(score: f64) -> char {
     match score.round() as usize {
         75..=100 => 'a',
@@ -206,13 +211,15 @@ mod tests {
 
     #[test]
     fn score_global() {
-        assert_eq!(
-            Score {
+        assert!(
+            (Score {
                 global: 10.0,
                 ..Score::default()
             }
-            .global(),
-            10.0
+            .global()
+                - 10.0)
+                .abs()
+                < f64::EPSILON
         );
     }
 
@@ -293,9 +300,9 @@ mod tests {
                 },
             }),
             Score {
-                global: 99.99999999999999,
+                global: 99.999_999_999_999_99,
                 global_weight: 95,
-                documentation: Some(99.99999999999999),
+                documentation: Some(99.999_999_999_999_99),
                 documentation_weight: Some(30),
                 license: Some(100.0),
                 license_weight: Some(20),
@@ -479,19 +486,19 @@ mod tests {
                 }
             ]),
             Score {
-                global: 66.66666666666666,
+                global: 66.666_666_666_666_66,
                 global_weight: 0,
-                documentation: Some(66.66666666666666),
+                documentation: Some(66.666_666_666_666_66),
                 documentation_weight: None,
-                license: Some(66.66666666666666),
+                license: Some(66.666_666_666_666_66),
                 license_weight: None,
-                best_practices: Some(66.66666666666666),
+                best_practices: Some(66.666_666_666_666_66),
                 best_practices_weight: None,
                 security: Some(60.0),
                 security_weight: None,
                 legal: Some(100.0),
                 legal_weight: None,
             }
-        )
+        );
     }
 }

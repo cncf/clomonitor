@@ -38,7 +38,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 
     // File in Github (default community health file, for example)
     if let Some(url) = input.gh_md.security_policy_url.as_ref() {
-        return Ok(CheckOutput::passed().url(Some(url.to_owned())));
+        return Ok(CheckOutput::passed().url(Some(url.clone())));
     }
 
     Ok(CheckOutput::not_passed())

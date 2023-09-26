@@ -72,11 +72,11 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
                     Ok(result) => match result {
                         Ok(()) => {}
                         Err(err) => {
-                            error!(?err, url, "error tracking")
+                            error!(?err, url, "error tracking");
                         }
                     },
                     Err(err) => {
-                        warn!(?err, url, "timeout tracking")
+                        warn!(?err, url, "timeout tracking");
                     }
                 }
             })
@@ -504,7 +504,7 @@ mod tests {
                 "creds.githubTokens",
                 tokens
                     .iter()
-                    .map(|t| t.to_string())
+                    .map(ToString::to_string)
                     .collect::<Vec<String>>(),
             )
             .unwrap()

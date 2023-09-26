@@ -96,6 +96,7 @@ pub struct CoreLinter;
 #[allow(clippy::new_without_default)]
 impl CoreLinter {
     /// Create a new CoreLinter instance.
+    #[must_use]
     pub fn new() -> Self {
         Self
     }

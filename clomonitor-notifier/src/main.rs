@@ -1,3 +1,6 @@
+#![warn(clippy::all, clippy::pedantic)]
+#![allow(clippy::doc_markdown)]
+
 use crate::{db::PgDB, github::GHApi};
 use anyhow::{Context, Result};
 use clap::Parser;
@@ -34,7 +37,7 @@ async fn main() -> Result<()> {
 
     // Setup logging
     if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "clomonitor_notifier=debug")
+        std::env::set_var("RUST_LOG", "clomonitor_notifier=debug");
     }
     let s = tracing_subscriber::fmt().with_env_filter(EnvFilter::from_default_env());
     match cfg.get_string("log.format").as_deref() {

@@ -38,7 +38,7 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
             // If a list of allowed repositories is provided, filter out
             // notifications whose repository isn't listed on it
             if let Ok(allowed_repos) = cfg.get::<Vec<String>>("notifier.allowedRepositories") {
-                notifications.retain(|n| allowed_repos.contains(&n.community_repo_url))
+                notifications.retain(|n| allowed_repos.contains(&n.community_repo_url));
             };
 
             // Process pending notifications

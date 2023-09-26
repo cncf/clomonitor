@@ -34,7 +34,7 @@ struct RouterState {
 }
 
 /// Setup API server router.
-pub(crate) fn setup(cfg: Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
+pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     // Setup some paths
     let static_path = cfg.get_string("apiserver.staticPath")?;
     let index_path = Path::new(&static_path).join("index.html");
@@ -596,7 +596,7 @@ mod tests {
                     url: "https://github.com/artifacthub/hub".to_string(),
                     check_sets: vec![CheckSet::Code],
                     score: Some(Score {
-                        global: 99.99999999999999,
+                        global: 99.999_999_999_999_99,
                         global_weight: 95,
                         documentation: Some(100.0),
                         documentation_weight: Some(30),
@@ -938,7 +938,7 @@ mod tests {
 
     fn setup_test_router(db: MockDB, vt: MockViewsTracker) -> Router {
         let cfg = setup_test_config();
-        setup(Arc::new(cfg), Arc::new(db), Arc::new(RwLock::new(vt))).unwrap()
+        setup(&Arc::new(cfg), Arc::new(db), Arc::new(RwLock::new(vt))).unwrap()
     }
 
     fn setup_test_config() -> Config {

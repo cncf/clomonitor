@@ -17,6 +17,7 @@ pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]
+#[allow(clippy::ref_option_ref)]
 #[cfg_attr(test, automock)]
 pub(crate) trait DB {
     /// Get all repositories registered in the database.

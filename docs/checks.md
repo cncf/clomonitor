@@ -495,6 +495,7 @@ This check passes if:
 - An `OpenSSF` best practices badge is found in the repository's `README` file. Regexps used:
 
 ```sh
+"(https://www.bestpractices.dev/projects/\d+)"
 "(https://bestpractices.coreinfrastructure.org/projects/\d+)"
 ```
 

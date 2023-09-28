@@ -20,6 +20,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "octorust"
+      - dependency-name: "resvg"
+      - dependency-name: "tiny-skia"
+      - dependency-name: "usvg"
     groups:
       backend:
         patterns:

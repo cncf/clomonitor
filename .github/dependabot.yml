@@ -4,56 +4,73 @@ updates:
     directory: "/web"
     schedule:
       interval: "weekly"
-      day: "wednesday"
     ignore:
       - dependency-name: "bootstrap"
         versions: ["5.2.x"]
       - dependency-name: "postcss"
+    groups:
+      frontend:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+    groups:
+      backend:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-apiserver"
     schedule:
       interval: "weekly"
-      day: "wednesday"
     ignore:
       - dependency-name: "node"
         versions: ["18-alpine3.17", "19-alpine3.17", "20-alpine3.17"]
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-archiver"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-linter"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-notifier"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-registrar"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+
   - package-ecosystem: "docker"
     directory: "/clomonitor-tracker"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+
   - package-ecosystem: "docker"
     directory: "/database/migrations"
     schedule:
       interval: "weekly"
-      day: "wednesday"

@@ -1,4 +1,4 @@
-use super::util::scorecard;
+use super::datasource::scorecard;
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,

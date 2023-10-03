@@ -6,6 +6,10 @@
   font-size: 1.25rem;
 }
 
+.iconCheck path {
+  stroke: inherit;
+}
+
 .exemptIcon {
   font-size: 1.35rem;
 }

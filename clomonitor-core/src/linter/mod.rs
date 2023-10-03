@@ -14,7 +14,6 @@ use time::Date;
 
 mod check;
 mod checks;
-mod landscape;
 mod metadata;
 mod report;
 
@@ -22,7 +21,7 @@ pub use self::{
     check::{CheckId, CheckOutput},
     report::*,
 };
-pub use checks::util::github::setup_http_client as setup_github_http_client;
+pub use checks::datasource::github::setup_http_client as setup_github_http_client;
 pub(crate) use checks::*;
 
 /// Type alias to represent a Linter trait object.
@@ -160,10 +159,13 @@ impl Linter for CoreLinter {
                 binary_artifacts: run!(binary_artifacts, &ci),
                 code_review: run!(code_review, &ci),
                 dangerous_workflow: run!(dangerous_workflow, &ci),
+                dependencies_policy: run!(dependencies_policy, &ci),
                 dependency_update_tool: run!(dependency_update_tool, &ci),
                 maintained: run!(maintained, &ci),
                 sbom: run!(sbom, &ci),
+                security_insights: run!(security_insights, &ci),
                 security_policy: run!(security_policy, &ci),
+                self_assessment: run!(self_assessment, &ci),
                 signed_releases: run!(signed_releases, &ci),
                 token_permissions: run!(token_permissions, &ci),
             },

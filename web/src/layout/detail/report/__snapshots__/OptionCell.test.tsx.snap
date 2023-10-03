@@ -35,7 +35,7 @@ exports[`OptionCell creates snapshot 1`] = `
               class="d-flex flex-row align-items-baseline align-items-md-center"
             >
               <div
-                class="text-muted me-2"
+                class="text-muted me-2 iconCheck"
               >
                 <svg
                   fill="currentColor"

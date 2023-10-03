@@ -1,14 +1,11 @@
 use super::{
-    checks::{
-        signed_releases,
-        util::{
-            github,
-            scorecard::{Scorecard, ScorecardCheck},
-        },
-        CHECKS,
+    checks::{signed_releases, CHECKS},
+    datasource::{
+        github,
+        scorecard::{scorecard, Scorecard, ScorecardCheck},
+        security_insights::SecurityInsights,
     },
     metadata::{Exemption, Metadata, METADATA_FILE},
-    util::scorecard::scorecard,
     CheckSet, LinterInput,
 };
 use anyhow::{format_err, Context, Error, Result};
@@ -32,6 +29,7 @@ pub(crate) struct CheckInput<'a> {
     pub cm_md: Option<Metadata>,
     pub gh_md: github::md::MdRepository,
     pub scorecard: Result<Scorecard>,
+    pub security_insights: Result<Option<SecurityInsights>>,
 }
 
 impl<'a> CheckInput<'a> {
@@ -58,12 +56,16 @@ impl<'a> CheckInput<'a> {
             .await
             .context("error running scorecard command");
 
+        // Get OpenSSF security insights.
+        let security_insights = SecurityInsights::new(&li.root);
+
         // Prepare and return check input
         let ci = CheckInput {
             li,
             cm_md,
             gh_md,
             scorecard,
+            security_insights,
         };
         Ok(ci)
     }
@@ -287,7 +289,7 @@ pub(crate) use run_async;
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::linter::checks::util::scorecard::ScorecardCheckDocs;
+    use crate::linter::datasource::scorecard::ScorecardCheckDocs;
     use anyhow::{format_err, Result};
 
     #[test]

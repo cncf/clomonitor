@@ -1,6 +1,7 @@
+use super::datasource::landscape;
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
-    landscape, CheckSet,
+    CheckSet,
 };
 use anyhow::Result;
 

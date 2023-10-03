@@ -1,10 +1,11 @@
 use super::{
-    content, github,
+    content,
     path::{self, Globs},
 };
 use crate::linter::{
     check::{CheckInput, CheckOutput},
     checks::readme,
+    datasource::github,
     metadata::{Exemption, Metadata},
     CheckSet, CHECKS,
 };
@@ -100,9 +101,9 @@ pub(crate) fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool
 mod tests {
     use super::*;
     use crate::linter::{
-        adopters, sbom,
-        util::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
-        LinterInput,
+        adopters,
+        datasource::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
+        sbom, LinterInput,
     };
     use anyhow::format_err;
     use std::path::PathBuf;
@@ -128,6 +129,7 @@ mod tests {
                         ..MdRepository::default()
                     },
                     scorecard: Err(format_err!("no scorecard available")),
+                    security_insights: Ok(None),
                 },
                 &["README*"],
                 &RegexSet::new(["nothing"]).unwrap(),
@@ -151,6 +153,7 @@ mod tests {
                     cm_md: None,
                     gh_md: MdRepository::default(),
                     scorecard: Err(format_err!("no scorecard available")),
+                    security_insights: Ok(None),
                 },
                 &["ADOPTERS*"],
                 &RegexSet::new([r"(?im)^#+.*adopters.*$"]).unwrap(),
@@ -172,6 +175,7 @@ mod tests {
                     cm_md: None,
                     gh_md: MdRepository::default(),
                     scorecard: Err(format_err!("no scorecard available")),
+                    security_insights: Ok(None),
                 },
                 &["inexistent_file*"],
                 &RegexSet::new(["inexistent_ref"]).unwrap(),

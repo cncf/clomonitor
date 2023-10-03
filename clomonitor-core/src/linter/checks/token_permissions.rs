@@ -1,4 +1,4 @@
-use super::util::scorecard;
+use super::datasource::scorecard;
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
@@ -9,7 +9,7 @@ use anyhow::Result;
 pub(crate) const ID: CheckId = "token_permissions";
 
 /// Check score weight.
-pub(crate) const WEIGHT: usize = 2;
+pub(crate) const WEIGHT: usize = 1;
 
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];

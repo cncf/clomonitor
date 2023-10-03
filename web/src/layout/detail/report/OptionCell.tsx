@@ -258,7 +258,7 @@ const OptionCell = (props: Props) => {
       <td className="pe-2 pe-md-4">
         <div className={`d-table w-100 ${styles.contentCell}`}>
           <div className="d-flex flex-row align-items-baseline align-items-md-center">
-            <div className="text-muted me-2">{opt.icon}</div>
+            <div className={`text-muted me-2 ${styles.iconCheck}`}>{opt.icon}</div>
             <div className="d-flex flex-column align-items-start flex-grow-1 truncateWrapper">
               <div data-testid="opt-name" className={`d-flex flex-row align-items-center w-100 ${styles.name}`}>
                 {!isUndefined(props.check.url) ? (

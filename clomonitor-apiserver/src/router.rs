@@ -585,6 +585,7 @@ mod tests {
     }
 
     #[tokio::test]
+    #[allow(clippy::too_many_lines)]
     async fn repository_report_md_found() {
         let mut db = MockDB::new();
         db.expect_repository_report_md()
@@ -597,17 +598,17 @@ mod tests {
                     check_sets: vec![CheckSet::Code],
                     score: Some(Score {
                         global: 99.999_999_999_999_99,
-                        global_weight: 95,
+                        global_weight: 5,
                         documentation: Some(100.0),
-                        documentation_weight: Some(30),
+                        documentation_weight: Some(1),
                         license: Some(100.0),
-                        license_weight: Some(20),
+                        license_weight: Some(1),
                         best_practices: Some(100.0),
-                        best_practices_weight: Some(20),
+                        best_practices_weight: Some(1),
                         security: Some(100.0),
-                        security_weight: Some(20),
+                        security_weight: Some(1),
                         legal: Some(100.0),
-                        legal_weight: Some(5),
+                        legal_weight: Some(1),
                     }),
                     report: Some(Report {
                         documentation: Documentation {
@@ -649,10 +650,13 @@ mod tests {
                             binary_artifacts: Some(CheckOutput::passed()),
                             code_review: Some(CheckOutput::passed()),
                             dangerous_workflow: Some(CheckOutput::passed()),
+                            dependencies_policy: Some(CheckOutput::passed()),
                             dependency_update_tool: Some(CheckOutput::passed()),
                             maintained: Some(CheckOutput::passed()),
                             sbom: Some(CheckOutput::passed()),
+                            security_insights: Some(CheckOutput::passed()),
                             security_policy: Some(CheckOutput::passed()),
+                            self_assessment: Some(CheckOutput::passed()),
                             signed_releases: Some(CheckOutput::passed()),
                             token_permissions: Some(CheckOutput::passed()),
                         },

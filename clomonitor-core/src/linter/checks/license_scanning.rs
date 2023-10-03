@@ -52,8 +52,8 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 mod tests {
     use super::*;
     use crate::linter::{
+        datasource::github::md::MdRepository,
         metadata::{LicenseScanning, Metadata},
-        util::github::md::MdRepository,
         LinterInput,
     };
     use anyhow::format_err;
@@ -66,6 +66,7 @@ mod tests {
                 cm_md: None,
                 gh_md: MdRepository::default(),
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -83,6 +84,7 @@ mod tests {
                 }),
                 gh_md: MdRepository::default(),
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -102,6 +104,7 @@ mod tests {
                 }),
                 gh_md: MdRepository::default(),
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::passed().url(Some("license_scanning_url".to_string())),

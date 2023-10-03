@@ -25,8 +25,8 @@ type DateTime = String;
 /// Represents the GraphQL Github API metadata query.
 #[derive(Debug, Clone, GraphQLQuery)]
 #[graphql(
-    schema_path = "src/linter/checks/util/github/github_schema.graphql",
-    query_path = "src/linter/checks/util/github/md.graphql",
+    schema_path = "src/linter/checks/datasource/github/github_schema.graphql",
+    query_path = "src/linter/checks/datasource/github/md.graphql",
     response_derives = "Debug, PartialEq, Eq"
 )]
 pub struct Md;

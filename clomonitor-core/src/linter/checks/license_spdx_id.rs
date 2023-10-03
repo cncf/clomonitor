@@ -17,7 +17,7 @@ pub(crate) const WEIGHT: usize = 5;
 pub(crate) const CHECK_SETS: [CheckSet; 3] = [CheckSet::Code, CheckSet::CodeLite, CheckSet::Docs];
 
 /// SPDX licenses data. Used to detect license used by repositories.
-const LICENSES_DATA: &[u8] = include_bytes!("data/licenses.bin.zstd");
+const LICENSES_DATA: &[u8] = include_bytes!("licenses/licenses.bin.zstd");
 
 /// Patterns used to locate a file in the repository.
 pub(crate) const FILE_PATTERNS: [&str; 2] = ["LICENSE*", "COPYING*"];

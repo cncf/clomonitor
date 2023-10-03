@@ -135,10 +135,13 @@ pub struct Security {
     pub binary_artifacts: Option<CheckOutput>,
     pub code_review: Option<CheckOutput>,
     pub dangerous_workflow: Option<CheckOutput>,
+    pub dependencies_policy: Option<CheckOutput>,
     pub dependency_update_tool: Option<CheckOutput>,
     pub maintained: Option<CheckOutput>,
     pub sbom: Option<CheckOutput>,
+    pub security_insights: Option<CheckOutput>,
     pub security_policy: Option<CheckOutput>,
+    pub self_assessment: Option<CheckOutput>,
     pub signed_releases: Option<CheckOutput>,
     pub token_permissions: Option<CheckOutput>,
 }
@@ -149,10 +152,13 @@ section_impl!(
     binary_artifacts,
     code_review,
     dangerous_workflow,
+    dependencies_policy,
     dependency_update_tool,
     maintained,
     sbom,
+    security_insights,
     security_policy,
+    self_assessment,
     signed_releases,
     token_permissions
 );

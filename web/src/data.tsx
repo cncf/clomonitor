@@ -20,6 +20,7 @@ import {
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoCommentDiscussion, GoFileBinary, GoLaw } from 'react-icons/go';
+import { GrDocumentLocked, GrDocumentText, GrDocumentVerified } from 'react-icons/gr';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
@@ -217,6 +218,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>List of organizations using this project in production or at stages of testing</span>,
     reference: '/docs/topics/checks/#adopters',
   },
+  [ReportOption.Analytics]: {
+    icon: <FaChartBar />,
+    name: 'Analytics',
+    legend: <span>Projects websites should provide some web analytics</span>,
+    reference: '/docs/topics/checks/#analytics',
+  },
   [ReportOption.AnnualReview]: {
     icon: <SiCodereview />,
     name: 'Annual review',
@@ -306,6 +313,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>Whether the project's GitHub Action workflows has dangerous code patterns</span>,
     reference: '/docs/topics/checks/#dangerous-workflow-from-openssf-scorecard',
   },
+  [ReportOption.DependenciesPolicy]: {
+    icon: <GrDocumentText />,
+    name: 'Dependencies policy',
+    legend: <span>The project provides a policy that describes how dependencies are consumed and updated</span>,
+    reference: '/docs/topics/checks/#dependencies-policy',
+  },
   [ReportOption.DependencyUpdateTool]: {
     icon: <FaRobot />,
     name: 'Dependency update tool',
@@ -322,12 +335,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
     reference: '/docs/topics/checks/#developer-certificate-of-origin',
-  },
-  [ReportOption.Analytics]: {
-    icon: <FaChartBar />,
-    name: 'Analytics',
-    legend: <span>Projects websites should provide some web analytics</span>,
-    reference: '/docs/topics/checks/#analytics',
   },
   [ReportOption.GithubDiscussions]: {
     icon: <GoCommentDiscussion />,
@@ -420,11 +427,45 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>List of components in a piece of software, including licenses, versions, etc</span>,
     reference: '/docs/topics/checks/#software-bill-of-materials-sbom',
   },
+  [ReportOption.SecurityInsights]: {
+    icon: <GrDocumentLocked />,
+    name: 'Security insights',
+    legend: (
+      <span>
+        The project provides an{' '}
+        <ExternalLink
+          className="d-inline-block text-decoration-underline"
+          href="https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md"
+        >
+          OpenSSF Security Insights
+        </ExternalLink>{' '}
+        manifest file
+      </span>
+    ),
+    reference: '/docs/topics/checks/#security-insights',
+  },
   [ReportOption.SecurityPolicy]: {
     icon: <BiShieldQuarter />,
     name: 'Security policy',
     legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
     reference: '/docs/topics/checks/#security-policy',
+  },
+  [ReportOption.SelfAssessment]: {
+    icon: <GrDocumentVerified />,
+    name: 'Self-Assessment',
+    legend: (
+      <span>
+        The project provides a{' '}
+        <ExternalLink
+          className="d-inline-block text-decoration-underline"
+          href="https://github.com/cncf/tag-security/blob/main/assessments/guide/self-assessment.md"
+        >
+          TAG Security formatted
+        </ExternalLink>{' '}
+        Security Self-Assessment
+      </span>
+    ),
+    reference: '/docs/topics/checks/#self-assessment',
   },
   [ReportOption.SignedReleases]: {
     icon: <FaSignature />,
@@ -531,7 +572,9 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.DependencyUpdateTool,
     ReportOption.Maintained,
     ReportOption.SBOM,
+    ReportOption.SecurityInsights,
     ReportOption.SecurityPolicy,
+    ReportOption.SelfAssessment,
     ReportOption.SignedReleases,
     ReportOption.TokenPermissions,
   ],

@@ -1,4 +1,4 @@
-use super::util::github;
+use super::datasource::github;
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,

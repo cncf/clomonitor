@@ -288,10 +288,13 @@ mod tests {
                     binary_artifacts: Some(CheckOutput::passed()),
                     code_review: Some(CheckOutput::passed()),
                     dangerous_workflow: Some(CheckOutput::passed()),
+                    dependencies_policy: Some(CheckOutput::passed()),
                     dependency_update_tool: Some(CheckOutput::passed()),
                     maintained: Some(CheckOutput::passed()),
                     sbom: Some(CheckOutput::passed()),
+                    security_insights: Some(CheckOutput::passed()),
                     security_policy: Some(CheckOutput::passed()),
+                    self_assessment: Some(CheckOutput::passed()),
                     signed_releases: Some(CheckOutput::passed()),
                     token_permissions: Some(CheckOutput::passed()),
                 },
@@ -301,15 +304,15 @@ mod tests {
             }),
             Score {
                 global: 99.999_999_999_999_99,
-                global_weight: 95,
+                global_weight: 99,
                 documentation: Some(99.999_999_999_999_99),
                 documentation_weight: Some(30),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(20),
-                security: Some(100.0),
-                security_weight: Some(20),
+                security: Some(99.999_999_999_999_99),
+                security_weight: Some(24),
                 legal: Some(100.0),
                 legal_weight: Some(5),
             }
@@ -317,7 +320,7 @@ mod tests {
     }
 
     #[test]
-    fn calculate_report_with_no_checks_passed_got_min_score() {
+    fn calculate_report_with_all_checks_non_passed_got_min_score() {
         assert_eq!(
             calculate(&Report {
                 documentation: Documentation {
@@ -354,10 +357,13 @@ mod tests {
                     binary_artifacts: Some(CheckOutput::not_passed()),
                     code_review: Some(CheckOutput::not_passed()),
                     dangerous_workflow: Some(CheckOutput::not_passed()),
+                    dependencies_policy: Some(CheckOutput::not_passed()),
                     dependency_update_tool: Some(CheckOutput::not_passed()),
                     maintained: Some(CheckOutput::not_passed()),
                     sbom: Some(CheckOutput::not_passed()),
+                    security_insights: Some(CheckOutput::not_passed()),
                     security_policy: Some(CheckOutput::not_passed()),
+                    self_assessment: Some(CheckOutput::not_passed()),
                     signed_releases: Some(CheckOutput::not_passed()),
                     token_permissions: Some(CheckOutput::not_passed()),
                 },
@@ -367,7 +373,7 @@ mod tests {
             }),
             Score {
                 global: 0.0,
-                global_weight: 95,
+                global_weight: 99,
                 documentation: Some(0.0),
                 documentation_weight: Some(30),
                 license: Some(0.0),
@@ -375,7 +381,7 @@ mod tests {
                 best_practices: Some(0.0),
                 best_practices_weight: Some(20),
                 security: Some(0.0),
-                security_weight: Some(20),
+                security_weight: Some(24),
                 legal: Some(0.0),
                 legal_weight: Some(5),
             }
@@ -383,7 +389,7 @@ mod tests {
     }
 
     #[test]
-    fn calculate_report_with_all_checks_passed_but_some_missing_got_max_score() {
+    fn calculate_report_with_some_missing_checks_but_all_passed_got_max_score() {
         assert_eq!(
             calculate(&Report {
                 documentation: Documentation {
@@ -424,10 +430,13 @@ mod tests {
                     binary_artifacts: Some(CheckOutput::passed()),
                     code_review: Some(CheckOutput::passed()),
                     dangerous_workflow: Some(CheckOutput::passed()),
+                    dependencies_policy: Some(CheckOutput::passed()),
                     dependency_update_tool: Some(CheckOutput::passed()),
                     maintained: Some(CheckOutput::passed()),
                     sbom: Some(CheckOutput::passed()),
                     security_policy: Some(CheckOutput::passed()),
+                    security_insights: Some(CheckOutput::passed()),
+                    self_assessment: Some(CheckOutput::passed()),
                     signed_releases: Some(CheckOutput::passed()),
                     token_permissions: Some(CheckOutput::passed()),
                 },
@@ -437,15 +446,15 @@ mod tests {
             }),
             Score {
                 global: 100.0,
-                global_weight: 74,
+                global_weight: 78,
                 documentation: Some(100.0),
                 documentation_weight: Some(17),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),
                 best_practices_weight: Some(17),
-                security: Some(100.0),
-                security_weight: Some(20),
+                security: Some(99.999_999_999_999_99),
+                security_weight: Some(24),
                 legal: None,
                 legal_weight: None,
             }

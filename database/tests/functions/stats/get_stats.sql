@@ -130,8 +130,14 @@ insert into report (
             "sbom": {
                 "passed": false
             },
+            "security_insights": {
+                "passed": true
+            },
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
+                "passed": true
+            },
+            "self_assessment": {
                 "passed": true
             },
             "maintained": {
@@ -154,6 +160,9 @@ insert into report (
             },
             "dependency_update_tool": {
                 "passed": false
+            },
+            "dependencies_policy": {
+                "passed": true
             }
         },
         "documentation": {
@@ -268,8 +277,14 @@ insert into report (
             "sbom": {
                 "passed": false
             },
+            "security_insights": {
+                "passed": true
+            },
             "security_policy": {
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
+                "passed": true
+            },
+            "self_assessment": {
                 "passed": true
             },
             "maintained": {
@@ -292,6 +307,9 @@ insert into report (
             },
             "dependency_update_tool": {
                 "passed": false
+            },
+            "dependencies_policy": {
+                "passed": true
             }
         },
         "documentation": {
@@ -404,7 +422,13 @@ insert into report (
             "sbom": {
                 "passed": false
             },
+            "security_insights": {
+                "passed": false
+            },
             "security_policy": {
+                "passed": false
+            },
+            "self_assessment": {
                 "passed": false
             },
             "maintained": {
@@ -426,6 +450,9 @@ insert into report (
                 "passed": false
             },
             "dependency_update_tool": {
+                "passed": false
+            },
+            "dependencies_policy": {
                 "passed": false
             }
         },
@@ -609,10 +636,13 @@ select is(
                     "binary_artifacts": 67,
                     "code_review": 67,
                     "dangerous_workflow": 67,
+                    "dependencies_policy": 67,
                     "dependency_update_tool": 0,
                     "maintained": 67,
                     "sbom": 0,
+                    "security_insights": 67,
                     "security_policy": 67,
+                    "self_assessment": 67,
                     "signed_releases": 0,
                     "token_permissions": 0
                 },

@@ -2178,28 +2178,6 @@
       check_sets:
         - community
         - code
-- name: smi
-  display_name: Service Mesh Interface
-  description: A standard interface for service meshes on Kubernetes
-  category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/servicemeshinterface/icon/color/servicemeshinterface-icon-color.svg
-  devstats_url: https://smi.devstats.cncf.io/
-  accepted_at: "2020-03-16"
-  maturity: sandbox
-  repositories:
-    - name: smi-spec
-      url: https://github.com/servicemeshinterface/smi-spec
-      check_sets:
-        - community
-        - code
-    - name: smi-sdk-go
-      url: https://github.com/servicemeshinterface/smi-sdk-go
-      check_sets:
-        - code
-    - name: smi-metrics
-      url: https://github.com/servicemeshinterface/smi-metrics
-      check_sets:
-        - code
 - name: smp
   display_name: Service Mesh Performance
   description: Standardizing Service Mesh Value Measurement

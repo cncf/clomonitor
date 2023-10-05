@@ -197,6 +197,10 @@ pub(crate) fn display(
             cell_check(&report.security.dangerous_workflow),
         ])
         .add_row(vec![
+            cell_entry("Security / Dependencies policy"),
+            cell_check(&report.security.dependencies_policy),
+        ])
+        .add_row(vec![
             cell_entry("Security / Dependency update tool"),
             cell_check(&report.security.dependency_update_tool),
         ])
@@ -209,8 +213,16 @@ pub(crate) fn display(
             cell_check(&report.security.sbom),
         ])
         .add_row(vec![
+            cell_entry("Security / Security insights"),
+            cell_check(&report.security.security_insights),
+        ])
+        .add_row(vec![
             cell_entry("Security / Security policy"),
             cell_check(&report.security.security_policy),
+        ])
+        .add_row(vec![
+            cell_entry("Security / Self-Assessment"),
+            cell_check(&report.security.self_assessment),
         ])
         .add_row(vec![
             cell_entry("Security / Signed release"),
@@ -359,10 +371,13 @@ mod tests {
                 binary_artifacts: Some(CheckOutput::passed()),
                 code_review: Some(CheckOutput::passed()),
                 dangerous_workflow: Some(CheckOutput::passed()),
+                dependencies_policy: Some(CheckOutput::passed()),
                 dependency_update_tool: Some(CheckOutput::passed()),
                 maintained: Some(CheckOutput::passed()),
                 sbom: Some(CheckOutput::passed()),
+                security_insights: Some(CheckOutput::passed()),
                 security_policy: Some(CheckOutput::passed()),
+                self_assessment: Some(CheckOutput::passed()),
                 signed_releases: Some(CheckOutput::passed()),
                 token_permissions: Some(CheckOutput::passed()),
             },
@@ -372,17 +387,17 @@ mod tests {
         };
         let score = Score {
             global: 99.999_999_999_999_99,
-            global_weight: 90,
+            global_weight: 5,
             documentation: Some(100.0),
-            documentation_weight: Some(30),
+            documentation_weight: Some(1),
             license: Some(100.0),
-            license_weight: Some(20),
+            license_weight: Some(1),
             best_practices: Some(100.0),
-            best_practices_weight: Some(20),
+            best_practices_weight: Some(1),
             security: Some(100.0),
-            security_weight: Some(15),
+            security_weight: Some(1),
             legal: Some(100.0),
-            legal_weight: Some(5),
+            legal_weight: Some(1),
         };
         let args = Args {
             path: PathBuf::from_str("test-repo-path").unwrap(),

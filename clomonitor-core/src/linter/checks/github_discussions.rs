@@ -36,7 +36,9 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 mod tests {
     use super::*;
     use crate::linter::{
-        util::github::md::{MdRepository, MdRepositoryDiscussions, MdRepositoryDiscussionsNodes},
+        datasource::github::md::{
+            MdRepository, MdRepositoryDiscussions, MdRepositoryDiscussionsNodes,
+        },
         LinterInput,
     };
     use anyhow::format_err;
@@ -52,6 +54,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -78,6 +81,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -104,6 +108,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::passed().url(Some("discussion_url".to_string())),

@@ -3,11 +3,13 @@ use anyhow::{format_err, Error, Result};
 use serde::Deserialize;
 use tokio::process::Command;
 
+/// Scorecard report (list of checks).
 #[derive(Debug, Clone, Deserialize)]
 pub(crate) struct Scorecard {
     checks: Vec<ScorecardCheck>,
 }
 
+/// Scorecard check details.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub(crate) struct ScorecardCheck {
     pub name: String,
@@ -17,6 +19,7 @@ pub(crate) struct ScorecardCheck {
     pub documentation: ScorecardCheckDocs,
 }
 
+/// Scorecard check documentation.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub(crate) struct ScorecardCheckDocs {
     pub url: String,

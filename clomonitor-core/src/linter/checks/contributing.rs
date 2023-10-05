@@ -1,4 +1,4 @@
-use super::util::{github, helpers::find_file_or_readme_ref};
+use super::{datasource::github, util::helpers::find_file_or_readme_ref};
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
@@ -36,9 +36,9 @@ lazy_static! {
 /// Check main function.
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // File in repo or reference in README file
-    let r = find_file_or_readme_ref(input, &FILE_PATTERNS, &README_REF)?;
-    if r.passed {
-        return Ok(r);
+    let output = find_file_or_readme_ref(input, &FILE_PATTERNS, &README_REF)?;
+    if output.passed {
+        return Ok(output);
     }
 
     // File in .github repo

@@ -23,9 +23,11 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Security / Code review
   - Security / Dangerous workflow
   - Security / Dependency update tool
+  - Security / Insights
   - Security / Maintained
   - Security / SBOM
   - Security / Policy
+  - Security / Self-Assessment
   - Security / Signed releases
   - Security / Token permissions
 
@@ -566,6 +568,16 @@ This check determines whether the project's GitHub Action workflows has dangerou
 
 *This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dangerous-workflow) in the ossf/scorecard repository.*
 
+### Dependencies policy
+
+**ID**: `dependencies_policy`
+
+Project should provide a dependencies policy that describes how dependencies are consumed and updated.
+
+This check passes if:
+
+- The url of the dependencies policy is available in the `dependencies > env-dependencies-policy` section of the [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) *manifest file* (`SECURITY-INSIGHTS.yml`) that should be located at the root of the repository.
+
 ### Dependency update tool (from OpenSSF Scorecard)
 
 **ID**: `dependency_update_tool`
@@ -582,28 +594,15 @@ This check determines whether the project is actively maintained.
 
 *This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained) in the ossf/scorecard repository.*
 
-### Software bill of materials (SBOM)
+### Security insights
 
-**ID**: `sbom`
+**ID**: `security_insights`
 
-List of components in a piece of software, including licenses, versions, etc.
+Projects should provide an [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) manifest file.
 
 This check passes if:
 
-- The latest release on Github includes an asset which name contains *sbom*. Regexps used:
-
-```sh
-"(?i)sbom"
-```
-
-- The repository's `README` file contains a *SBOM* section that explains where they are published to, format used, etc. Regexps used to locate the *title header*:
-
-```sh
-"(?im)^#+.*sbom.*$"
-"(?im)^#+.*software bill of materials.*$"
-"(?im)^sbom$"
-"(?im)^software bill of materials$"
-```
+- A valid OpenSSF Security Insights *manifest file* (`SECURITY-INSIGHTS.yml`) is found at the root of the repository.
 
 ### Security policy
 
@@ -633,6 +632,16 @@ CASE SENSITIVE: false
 
 - A security policy *file* is found in Github (in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file), for example).
 
+### Self-Assessmemt
+
+**ID**: `self_assessment`
+
+Projects should provide a [TAG Security formatted](https://github.com/cncf/tag-security/blob/main/assessments/guide/self-assessment.md) Security Self-Assessment.
+
+This check passes if:
+
+- The details of the security self-assessment (including the evidence url) are available in the `security-artifacts > self-assessment` section of the [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) *manifest file* (`SECURITY-INSIGHTS.yml`) that should be located at the root of the repository.
+
 ### Signed releases (from OpenSSF Scorecard)
 
 **ID**: `signed_releases`
@@ -640,6 +649,29 @@ CASE SENSITIVE: false
 This check tries to determine if the project cryptographically signs release artifacts.
 
 *This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#signed-releases) in the ossf/scorecard repository.*
+
+### Software bill of materials (SBOM)
+
+**ID**: `sbom`
+
+List of components in a piece of software, including licenses, versions, etc.
+
+This check passes if:
+
+- The latest release on Github includes an asset which name contains *sbom*. Regexps used:
+
+```sh
+"(?i)sbom"
+```
+
+- The repository's `README` file contains a *SBOM* section that explains where they are published to, format used, etc. Regexps used to locate the *title header*:
+
+```sh
+"(?im)^#+.*sbom.*$"
+"(?im)^#+.*software bill of materials.*$"
+"(?im)^sbom$"
+"(?im)^software bill of materials$"
+```
 
 ### Token permissions (from OpenSSF Scorecard)
 

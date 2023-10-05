@@ -1,5 +1,8 @@
 /// Patterns used to locate a file in the repository.
-use super::util::{github, helpers::readme_globs, path};
+use super::{
+    datasource::github,
+    util::{helpers::readme_globs, path},
+};
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,

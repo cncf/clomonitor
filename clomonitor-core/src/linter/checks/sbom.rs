@@ -1,4 +1,4 @@
-use super::util::{github, helpers::readme_matches};
+use super::{datasource::github, util::helpers::readme_matches};
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
@@ -58,7 +58,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 mod tests {
     use super::*;
     use crate::linter::{
-        util::github::md::{
+        datasource::github::md::{
             MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
             MdRepositoryReleasesNodesReleaseAssets, MdRepositoryReleasesNodesReleaseAssetsNodes,
         },
@@ -76,6 +76,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -107,6 +108,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::not_passed(),
@@ -138,6 +140,7 @@ mod tests {
                     ..MdRepository::default()
                 },
                 scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
             })
             .unwrap(),
             CheckOutput::passed(),

@@ -66,10 +66,13 @@
   {% call check("binary-artifacts-from-openssf-scorecard", "Binary artifacts", report.security.binary_artifacts) -%}
   {% call check("code-review-from-openssf-scorecard", "Code review", report.security.code_review) -%}
   {% call check("dangerous-workflow-from-openssf-scorecard", "Dangerous workflow", report.security.dangerous_workflow) -%}
+  {% call check("dependencies-policy", "Dependencies policy", report.security.dependencies_policy) -%}
   {% call check("dependency-update-tool-from-openssf-scorecard", "Dependency update tool", report.security.dependency_update_tool) -%}
   {% call check("maintained-from-openssf-scorecard", "Maintained", report.security.maintained) -%}
   {% call check("software-bill-of-materials-sbom", "Software bill of materials (SBOM)", report.security.sbom) -%}
+  {% call check("security-insights", "Security insights", report.security.security_insights) -%}
   {% call check("security-policy", "Security policy", report.security.security_policy) -%}
+  {% call check("self-assessment", "Self-Assessment", report.security.self_assessment) -%}
   {% call check("signed-releases-from-openssf-scorecard", "Signed releases", report.security.signed_releases) -%}
   {% call check("token-permissions-from-openssf-scorecard", "Token permissions", report.security.token_permissions) -%}
 

@@ -9,7 +9,7 @@ use deadpool_postgres::Pool;
 #[cfg(test)]
 use mockall::automock;
 use serde::{Deserialize, Serialize};
-use std::sync::Arc;
+use std::{fmt::Write, sync::Arc};
 use time::Date;
 use tokio_postgres::types::Json;
 
@@ -176,8 +176,10 @@ impl DB for PgDB {
             .query("select get_repositories_with_checks()", &[])
             .await?
             .iter()
-            .map(|row| format!("{}\n", row.get::<_, String>(0)))
-            .collect();
+            .fold(String::new(), |mut output, row| {
+                let _ = writeln!(output, "{}", row.get::<_, String>(0));
+                output
+            });
         Ok(repos)
     }
 

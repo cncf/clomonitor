@@ -420,7 +420,7 @@ pub(crate) async fn track_view(
     Path(project_id): Path<Uuid>,
 ) -> impl IntoResponse {
     match vt.read().await.track_view(project_id).await {
-        Ok(_) => StatusCode::NO_CONTENT,
+        Ok(()) => StatusCode::NO_CONTENT,
         Err(err) => internal_error(err),
     }
 }

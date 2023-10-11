@@ -2851,6 +2851,26 @@
       check_sets:
         - community
         - code
+    - name: helm-charts
+      url: https://github.com/kubescape/helm-charts
+      check_sets:
+        - code-lite
+    - name: kubevuln
+      url: https://github.com/kubescape/kubevuln
+      check_sets:
+        - code
+    - name: node-agent
+      url: https://github.com/kubescape/node-agent
+      check_sets:
+        - code
+    - name: regolibrary
+      url: https://github.com/kubescape/regolibrary
+      check_sets:
+        - code-lite
+    - name: storage
+      url: https://github.com/kubescape/storage
+      check_sets:
+        - code
 - name: paralus
   display_name: Paralus
   description: Paralus is a free, open source tool that enables controlled, audited access to Kubernetes infrastructure and Zero trust Kubernetes with zero friction

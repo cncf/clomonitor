@@ -149,9 +149,6 @@ insert into report (
             "dco": {
                 "passed": true
             },
-            "analytics": {
-                "passed": true
-            },
             "github_discussions": {
                 "passed": true
             },
@@ -214,7 +211,6 @@ select results_eq(
     $$
         values ('{
             adopters,
-            analytics,
             binary_artifacts,
             changelog,
             cla,

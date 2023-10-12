@@ -96,9 +96,9 @@ describe('API', () => {
     describe('getRepositoriesCSV', () => {
       it('success', async () => {
         const csv: string = `
-Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer
-cncf,aeraki-mesh,https://github.com/aeraki-mesh/aeraki,"{community,code}",f,t,t,t,t,t,t,f,f,t,f,Apache-2.0,,f,f,t,t,f,f,t,t,t,f,t,f,t,f,t,f,f,f
-cncf,akri,https://github.com/project-akri/akri,"{community,code}",t,t,t,t,t,t,t,t,t,t,f,Apache-2.0,GA4,f,f,t,t,f,t,t,t,t,t,t,f,t,f,t,f,f,f
+Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Website,License Approved,License Scanning,License SPDX ID,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF Badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependency Update Tool,Maintained,SBOM,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer
+cncf,aeraki-mesh,https://github.com/aeraki-mesh/aeraki,"{community,code}",f,t,t,t,t,t,t,f,f,t,f,Apache-2.0,f,f,t,t,f,f,t,t,t,f,t,f,t,f,t,f,f,f
+cncf,akri,https://github.com/project-akri/akri,"{community,code}",t,t,t,t,t,t,t,t,t,t,f,Apache-2.0,f,f,t,t,f,t,t,t,t,t,t,f,t,f,t,f,f,f
 `;
 
         fetchMock.mockResponse(csv, {
@@ -160,7 +160,6 @@ cncf,akri,https://github.com/project-akri/akri,"{community,code}",t,t,t,t,t,t,t,
 
         ### Best Practices [95%]
 
-          - [ ] Analytics ([_docs_](https://clomonitor.io/docs/topics/checks/#analytics))
           - [x] [Artifact Hub badge](https://artifacthub.io/packages/helm/artifact-hub/artifact-hub) ([_docs_](https://clomonitor.io/docs/topics/checks/#artifact-hub-badge))
           - [x] Contributor License Agreement ([_docs_](https://clomonitor.io/docs/topics/checks/#contributor-license-agreement)) \`EXEMPT\`
           - [x] Community meeting ([_docs_](https://clomonitor.io/docs/topics/checks/#community-meeting))

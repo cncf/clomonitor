@@ -63,7 +63,6 @@ const reportSample = `
 
 ### Best Practices [95%]
 
-  - [ ] Analytics ([_docs_](https://clomonitor.io/docs/topics/checks/#analytics))
   - [x] [Artifact Hub badge](https://artifacthub.io/packages/helm/artifact-hub/artifact-hub) ([_docs_](https://clomonitor.io/docs/topics/checks/#artifact-hub-badge))
   - [x] Contributor License Agreement ([_docs_](https://clomonitor.io/docs/topics/checks/#contributor-license-agreement)) \`EXEMPT\`
   - [x] Community meeting ([_docs_](https://clomonitor.io/docs/topics/checks/#community-meeting))

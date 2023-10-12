@@ -108,8 +108,7 @@ impl Linter for CoreLinter {
         let ci = CheckInput::new(li).await?;
 
         // Run some async checks concurrently
-        let (analytics, annual_review, contributing, summary_table, trademark_disclaimer) = tokio::join!(
-            run_async!(analytics, &ci),
+        let (annual_review, contributing, summary_table, trademark_disclaimer) = tokio::join!(
             run_async!(annual_review, &ci),
             run_async!(contributing, &ci),
             run_async!(summary_table, &ci),
@@ -144,7 +143,6 @@ impl Linter for CoreLinter {
                 license_spdx_id: spdx_id,
             },
             best_practices: BestPractices {
-                analytics,
                 artifacthub_badge: run!(artifacthub_badge, &ci),
                 cla: run!(cla, &ci),
                 community_meeting: run!(community_meeting, &ci),

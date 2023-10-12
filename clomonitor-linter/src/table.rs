@@ -134,21 +134,6 @@ pub(crate) fn display(
             cell_check(&report.license.license_scanning),
         ])
         .add_row(vec![
-            cell_entry("Best practices / Analytics"),
-            if let Some(value) = report
-                .best_practices
-                .analytics
-                .as_ref()
-                .and_then(|analytics| analytics.value.as_ref())
-            {
-                Cell::new(value.join(" · "))
-                    .set_alignment(CellAlignment::Center)
-                    .add_attribute(Attribute::Bold)
-            } else {
-                cell_check(&report.best_practices.analytics)
-            },
-        ])
-        .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
             cell_check(&report.best_practices.artifacthub_badge),
         ])
@@ -354,9 +339,6 @@ mod tests {
                 license_spdx_id: Some(CheckOutput::passed().value(Some("Apache-2.0".to_string()))),
             },
             best_practices: BestPractices {
-                analytics: Some(
-                    CheckOutput::passed().value(Some(vec!["GA3".to_string(), "GA4".to_string()])),
-                ),
                 artifacthub_badge: Some(CheckOutput::exempt()),
                 cla: Some(CheckOutput::passed()),
                 community_meeting: Some(CheckOutput::passed()),

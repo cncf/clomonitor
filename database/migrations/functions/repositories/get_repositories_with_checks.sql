@@ -21,10 +21,6 @@ returns setof text as $$
             (rp.data->'license'->'license_approved'->'passed')::boolean as license_approved,
             (rp.data->'license'->'license_scanning'->'passed')::boolean as license_scanning,
             coalesce((rp.data->'license'->'license_spdx_id'->>'value')::text, 'Not detected') as license_spdx_id,
-            (
-                select string_agg(item #>> '{}', ' ')
-                from jsonb_array_elements(rp.data->'best_practices'->'analytics'->'value') as item
-            ) as analytics,
             (rp.data->'best_practices'->'artifacthub_badge'->'passed')::boolean as artifacthub_badge,
             (rp.data->'best_practices'->'cla'->'passed')::boolean as cla,
             (rp.data->'best_practices'->'community_meeting'->'passed')::boolean as community_meeting,
@@ -52,7 +48,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Annual Review,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Self-Assessment,Signed Releases,Token Permissions,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Annual Review,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Self-Assessment,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

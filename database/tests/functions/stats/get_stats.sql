@@ -215,9 +215,6 @@ insert into report (
             "dco": {
                 "passed": true
             },
-            "analytics": {
-                "passed": true
-            },
             "github_discussions": {
                 "passed": true
             },
@@ -362,9 +359,6 @@ insert into report (
             "dco": {
                 "passed": true
             },
-            "analytics": {
-                "passed": true
-            },
             "github_discussions": {
                 "passed": true
             },
@@ -498,9 +492,6 @@ insert into report (
             "dco": {
                 "passed": false
             },
-            "analytics": {
-                "passed": false
-            },
             "github_discussions": {
                 "passed": false
             },
@@ -625,7 +616,6 @@ select is(
                     "cla": 67,
                     "community_meeting": 0,
                     "dco": 67,
-                    "analytics": 67,
                     "github_discussions": 67,
                     "openssf_badge": 67,
                     "openssf_scorecard_badge": 67,

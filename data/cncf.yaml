@@ -243,7 +243,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cilium/icon/color/cilium_icon-color.svg
   devstats_url: https://cilium.devstats.cncf.io/
   accepted_at: "2021-10-13"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: ebpf
       url: https://github.com/cilium/ebpf
@@ -1439,7 +1439,7 @@
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/white/kubevela-icon-white.svg
   devstats_url: https://kubevela.devstats.cncf.io/
   accepted_at: "2021-04-05"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: kubevela
       url: https://github.com/oam-dev/kubevela
@@ -1993,20 +1993,6 @@
     - name: oras
       url: https://github.com/oras-project/oras
       check_sets:
-        - code
-- name: osm
-  display_name: Open Service Mesh
-  description: Open Service Mesh (OSM) is a lightweight, extensible, cloud native service mesh that allows users to uniformly manage, secure, and get out-of-the-box observability features for highly dynamic microservice environments
-  category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openservicemesh/icon/color/openservicemesh-icon-color.svg
-  devstats_url: https://openservicemesh.devstats.cncf.io/
-  accepted_at: "2020-09-08"
-  maturity: sandbox
-  repositories:
-    - name: osm
-      url: https://github.com/openservicemesh/osm
-      check_sets:
-        - community
         - code
 - name: parsec
   display_name: PARSEC
@@ -3191,6 +3177,7 @@
   display_name: Eraser
   description: Eraser helps Kubernetes admins remove a list of non-running images from all Kubernetes nodes in a cluster
   category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/e7e09686c20db6ddac06e482cf3338b0c8b2e22d/projects/eraser/icon/color/eraser-icon-color.svg
   devstats_url: https://eraser.devstats.cncf.io/
   accepted_at: "2023-06-21"
   maturity: sandbox
@@ -3290,3 +3277,97 @@
       url: https://github.com/kubeclipper/kubeclipper.github.io
       check_sets:
         - docs
+- name: kubeflow
+  display_name: Kubeflow
+  description: The Kubeflow project is dedicated to making deployments of machine learning workflows on Kubernetes simple, portable and scalable by providing a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures.
+  category: orchestration
+  logo_url: https://landscape.cncf.io/logos/kubeflow.svg
+  devstats_url: https://kubeflow.devstats.cncf.io/
+  accepted_at: "2023-07-25"
+  maturity: incubating
+  repositories:
+    - name: kubeflow
+      url: https://github.com/kubeflow/kubeflow
+      check_sets:
+        - code
+    - name: pipelines
+      url: https://github.com/kubeflow/pipelines
+      check_sets:
+        - code-lite
+    - name: community
+      url: https://github.com/kubeflow/community
+      check_sets:
+        - community
+- name: vscode-kubernetes-tools
+  display_name: Visual Studio Code Kubernetes Tools
+  description: The extension for developers building applications to run in Kubernetes clusters and for DevOps staff troubleshooting Kubernetes applications.
+  category: app definition
+  devstats_url: https://vscodek8stools.devstats.cncf.io/
+  accepted_at: "2021-11-09"
+  maturity: sandbox
+  repositories:
+    - name: vscode-kubernetes-tools
+      url: https://github.com/vscode-kubernetes-tools/vscode-kubernetes-tools
+      check_sets:
+        - code
+        - community
+- name: kcp
+  display_name: kcp
+  description: Kubernetes-like control planes for form-factors and use-cases beyond Kubernetes and container workloads.
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kcp/icon/color/kcp-icon-color.svg
+  devstats_url: https://kcp.devstats.cncf.io/
+  accepted_at: "2023-09-19"
+  maturity: sandbox
+  repositories:
+    - name: kcp
+      url: https://github.com/kcp-dev/kcp
+      check_sets:
+        - community
+        - code
+- name: metallb
+  display_name: MetalLB
+  description: A network load-balancer implementation for Kubernetes using standard routing protocols
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/metallb/icon/color/metallb-icon-color.svg
+  devstats_url: https://metallb.devstats.cncf.io/
+  accepted_at: "2021-09-14"
+  maturity: sandbox
+  repositories:
+    - name: metallb
+      url: https://github.com/metallb/metallb
+      check_sets:
+        - community
+        - code
+    - name: metallb-operator
+      url: https://github.com/metallb/metallb-operator
+      check_sets:
+        - code-lite
+- name: kube-vip
+  display_name: kube-vip
+  description: Kubernetes HA/Load Balancer
+  category: runtime
+  logo_url: https://landscape.cncf.io/logos/kube-vip.svg
+  devstats_url: https://kubevip.devstats.cncf.io/
+  accepted_at: "2021-06-26"
+  maturity: sandbox
+  repositories:
+    - name: kube-vip
+      url: https://github.com/kube-vip/kube-vip
+      check_sets:
+        - community
+        - code
+- name: kcl
+  display_name: KCL
+  description: A constraint-based record & functional language mainly used in configuration and policy scenarios.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kcl/icon/color/kcl-icon-color.svg
+  devstats_url: https://kcl.devstats.cncf.io/
+  accepted_at: "2023-09-20"
+  maturity: sandbox
+  repositories:
+    - name: kcl
+      url: https://github.com/kcl-lang/kcl
+      check_sets:
+        - community
+        - code

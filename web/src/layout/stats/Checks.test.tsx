@@ -4,7 +4,6 @@ import Checks from './Checks';
 
 const defaultProps = {
   data: {
-    analytics: 8,
     artifacthub_badge: 9,
     cla: 12,
     community_meeting: 43,

@@ -124,7 +124,7 @@ describe('Block', () => {
       const { rerender } = render(
         <Block
           {...defaultProps}
-          activePassingChecks={[ReportOption.Analytics, ReportOption.CLA]}
+          activePassingChecks={[ReportOption.CLA]}
           activeNotPassingChecks={[ReportOption.ArtifactHubBadge]}
         />
       );

@@ -2681,6 +2681,22 @@
       url: https://github.com/openfga/openfga.dev
       check_sets:
         - docs
+    - name: frontend-utils
+      url: https://github.com/openfga/frontend-utils
+      check_sets:
+        - code-lite
+    - name: helm-charts
+      url: https://github.com/openfga/helm-charts
+      check_sets:
+        - code-lite
+    - name: vscode-ext
+      url: https://github.com/openfga/vscode-ext
+      check_sets:
+        - code-lite
+    - name: sample-stores
+      url: https://github.com/openfga/sample-stores
+      check_sets:
+        - docs
 - name: carvel
   display_name: Carvel
   description: Carvel provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to

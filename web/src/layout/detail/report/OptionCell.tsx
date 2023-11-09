@@ -7,6 +7,7 @@ import { FiExternalLink } from 'react-icons/fi';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
+import rehypeExternalLinks from 'rehype-external-links';
 
 import { AppContext } from '../../../context/AppContextProvider';
 import { REPORT_OPTIONS } from '../../../data';
@@ -104,9 +105,9 @@ const OptionCell = (props: Props) => {
           >
             <div ref={details} className={`overflow-auto pb-1 ${styles.detailsWrapper} ${styles.visibleScroll}`}>
               <ReactMarkdown
+                rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
                 className={styles.detailsContent}
                 children={props.check.details!}
-                linkTarget="_blank"
                 components={{
                   h1: Heading,
                   h2: Heading,

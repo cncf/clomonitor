@@ -9,6 +9,7 @@ import Detail from './index';
 jest.mock('../../utils/updateMetaIndex');
 jest.mock('../../api');
 jest.mock('react-markdown', () => () => <div />);
+jest.mock('rehype-external-links', () => () => <></>);
 
 jest.mock('react-router-dom', () => ({
   ...(jest.requireActual('react-router-dom') as any),

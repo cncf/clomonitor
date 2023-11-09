@@ -5,6 +5,7 @@ import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
 import { Repository } from '../../../types';
 import RepositoriesList from './index';
 jest.mock('react-markdown', () => () => <div />);
+jest.mock('rehype-external-links', () => () => <></>);
 
 const mockUseNavigate = jest.fn();
 

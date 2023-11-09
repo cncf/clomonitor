@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { ScoreType } from '../../../types';
 import Row from './Row';
 jest.mock('react-markdown', () => () => <div />);
+jest.mock('rehype-external-links', () => () => <></>);
 
 const defaultProps = {
   repoName: 'repo',

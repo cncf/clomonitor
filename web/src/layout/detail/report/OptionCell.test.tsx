@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { ReportOption } from '../../../types';
 import OptionCell from './OptionCell';
 jest.mock('react-markdown', () => () => <div>markdown</div>);
+jest.mock('rehype-external-links', () => () => <></>);
 
 const defaultProps = {
   label: ReportOption.Adopters,

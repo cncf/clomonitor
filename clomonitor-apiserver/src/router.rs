@@ -613,7 +613,6 @@ mod tests {
                     report: Some(Report {
                         documentation: Documentation {
                             adopters: Some(CheckOutput::passed()),
-                            annual_review: Some(CheckOutput::passed()),
                             code_of_conduct: Some(CheckOutput::passed()),
                             contributing: Some(CheckOutput::passed()),
                             changelog: Some(CheckOutput::passed()),

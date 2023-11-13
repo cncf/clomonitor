@@ -55,7 +55,6 @@ impl Report {
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Documentation {
     pub adopters: Option<CheckOutput>,
-    pub annual_review: Option<CheckOutput>,
     pub changelog: Option<CheckOutput>,
     pub code_of_conduct: Option<CheckOutput>,
     pub contributing: Option<CheckOutput>,
@@ -71,7 +70,6 @@ pub struct Documentation {
 section_impl!(
     Documentation,
     adopters,
-    annual_review,
     changelog,
     code_of_conduct,
     contributing,

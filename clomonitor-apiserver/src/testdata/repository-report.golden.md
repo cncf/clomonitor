@@ -22,7 +22,6 @@
 ### Documentation [100%]
 
   - [x] Adopters ([_docs_](https://clomonitor.io/docs/topics/checks/#adopters))
-  - [x] Annual review ([_docs_](https://clomonitor.io/docs/topics/checks/#annual-review))
   - [x] Changelog ([_docs_](https://clomonitor.io/docs/topics/checks/#changelog))
   - [x] Code of conduct ([_docs_](https://clomonitor.io/docs/topics/checks/#code-of-conduct))
   - [x] Contributing ([_docs_](https://clomonitor.io/docs/topics/checks/#contributing))

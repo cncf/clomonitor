@@ -1,8 +1,8 @@
-use anyhow::{Context, Result};
+use anyhow::Result;
 use cached::proc_macro::cached;
 use serde::{Deserialize, Serialize};
 use std::fmt::Display;
-use time::{macros::format_description, Date};
+use time::Date;
 
 /// Foundation Landscape information.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -31,8 +31,6 @@ pub(crate) struct Item {
 /// Extra information for a landscape item.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub(super) struct ItemExtra {
-    pub annual_review_date: Option<String>,
-    pub annual_review_url: Option<String>,
     pub clomonitor_name: Option<String>,
     pub summary_business_use_case: Option<String>,
     pub summary_integration: Option<String>,
@@ -53,22 +51,6 @@ pub(crate) async fn new(url: String) -> Result<Landscape> {
 }
 
 impl Landscape {
-    /// Return the project's annual review information if available.
-    pub(crate) fn get_annual_review_info(
-        &self,
-        project_name: &str,
-    ) -> Result<Option<AnnualReview>> {
-        // Prepare project's annual review from available info (if any)
-        if let Some(project) = self.get_project(project_name) {
-            if let Some(extra) = &project.extra {
-                let annual_review = AnnualReview::from(extra)?;
-                return Ok(annual_review);
-            }
-        }
-
-        Ok(None)
-    }
-
     /// Return the project's summary table information if available.
     pub(crate) fn get_summary_table_info(&self, project_name: &str) -> Option<SummaryTable> {
         // Prepare project's summary table from available info (if any)
@@ -108,26 +90,6 @@ impl Landscape {
 pub(crate) struct AnnualReview {
     pub date: Date,
     pub url: String,
-}
-
-impl AnnualReview {
-    fn from(extra: &ItemExtra) -> Result<Option<Self>> {
-        let Some(date) = &extra.annual_review_date else {
-            return Ok(None);
-        };
-        let Some(url) = &extra.annual_review_url else {
-            return Ok(None);
-        };
-
-        let format = format_description!("[year]-[month]-[day]");
-        let date = Date::parse(date.as_str(), &format)
-            .context("invalid annual review date in landscape")?;
-
-        Ok(Some(AnnualReview {
-            date,
-            url: url.clone(),
-        }))
-    }
 }
 
 /// Project's summary table information.

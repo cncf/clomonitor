@@ -184,9 +184,6 @@ insert into report (
                 "url": "https://github.com/fluent/fluentd/blob/master/ADOPTERS.md",
                 "passed": true
             },
-            "annual_review": {
-                "passed": true
-            },
             "changelog": {
                 "url": "https://github.com/fluent/fluentd/blob/master/CHANGELOG.md",
                 "passed": true
@@ -328,9 +325,6 @@ insert into report (
                 "url": "https://github.com/fluent/fluentd/blob/master/ADOPTERS.md",
                 "passed": true
             },
-            "annual_review": {
-                "passed": true
-            },
             "changelog": {
                 "url": "https://github.com/fluent/fluentd/blob/master/CHANGELOG.md",
                 "passed": true
@@ -466,9 +460,6 @@ insert into report (
             "adopters": {
                 "passed": false
             },
-            "annual_review": {
-                "passed": false
-            },
             "changelog": {
                 "passed": false
             },
@@ -595,7 +586,6 @@ select is(
             "passing_check": {
                 "documentation": {
                     "adopters": 67,
-                    "annual_review": 67,
                     "changelog": 67,
                     "code_of_conduct": 67,
                     "contributing": 67,

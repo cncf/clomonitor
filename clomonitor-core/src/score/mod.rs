@@ -252,7 +252,6 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: Some(CheckOutput::passed()),
-                    annual_review: Some(CheckOutput::passed()),
                     code_of_conduct: Some(CheckOutput::passed()),
                     contributing: Some(CheckOutput::passed()),
                     changelog: Some(CheckOutput::passed()),
@@ -324,7 +323,6 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: Some(CheckOutput::not_passed()),
-                    annual_review: Some(CheckOutput::not_passed()),
                     code_of_conduct: Some(CheckOutput::not_passed()),
                     contributing: Some(CheckOutput::not_passed()),
                     changelog: Some(CheckOutput::not_passed()),
@@ -392,7 +390,6 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: None,
-                    annual_review: None,
                     code_of_conduct: None,
                     contributing: Some(CheckOutput::passed()),
                     changelog: Some(CheckOutput::passed()),
@@ -442,10 +439,10 @@ mod tests {
                 },
             }),
             Score {
-                global: 99.999_999_999_999_99,
-                global_weight: 77,
+                global: 100.0,
+                global_weight: 78,
                 documentation: Some(100.0),
-                documentation_weight: Some(17),
+                documentation_weight: Some(18),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(100.0),

@@ -13,7 +13,7 @@ use anyhow::Result;
 pub(crate) const ID: CheckId = "readme";
 
 /// Check score weight.
-pub(crate) const WEIGHT: usize = 9;
+pub(crate) const WEIGHT: usize = 10;
 
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 4] = [

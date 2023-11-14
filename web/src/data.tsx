@@ -19,7 +19,7 @@ import {
 import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoCommentDiscussion, GoFileBinary, GoLaw } from 'react-icons/go';
-import { GrDocumentLocked, GrDocumentText, GrDocumentVerified } from 'react-icons/gr';
+import { GrDocumentLocked, GrDocumentText } from 'react-icons/gr';
 import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
@@ -436,23 +436,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>Clearly documented security processes explaining how to report security issues to the project</span>,
     reference: '/docs/topics/checks/#security-policy',
   },
-  [ReportOption.SelfAssessment]: {
-    icon: <GrDocumentVerified />,
-    name: 'Self-Assessment',
-    legend: (
-      <span>
-        The project provides a{' '}
-        <ExternalLink
-          className="d-inline-block text-decoration-underline"
-          href="https://github.com/cncf/tag-security/blob/main/assessments/guide/self-assessment.md"
-        >
-          TAG Security formatted
-        </ExternalLink>{' '}
-        Security Self-Assessment
-      </span>
-    ),
-    reference: '/docs/topics/checks/#self-assessment',
-  },
   [ReportOption.SignedReleases]: {
     icon: <FaSignature />,
     name: 'Signed releases',
@@ -558,7 +541,6 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.SBOM,
     ReportOption.SecurityInsights,
     ReportOption.SecurityPolicy,
-    ReportOption.SelfAssessment,
     ReportOption.SignedReleases,
     ReportOption.TokenPermissions,
   ],

@@ -38,7 +38,6 @@ returns setof text as $$
             (rp.data->'security'->'sbom'->'passed')::boolean as sbom,
             (rp.data->'security'->'security_insights'->'passed')::boolean as security_insights,
             (rp.data->'security'->'security_policy'->'passed')::boolean as security_policy,
-            (rp.data->'security'->'self_assessment'->'passed')::boolean as self_assessment,
             (rp.data->'security'->'signed_releases'->'passed')::boolean as signed_releases,
             (rp.data->'security'->'token_permissions'->'passed')::boolean as token_permissions,
             (rp.data->'legal'->'trademark_disclaimer'->'passed')::boolean as trademark_disclaimer
@@ -47,7 +46,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Self-Assessment,Signed Releases,Token Permissions,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

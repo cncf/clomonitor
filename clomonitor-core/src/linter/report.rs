@@ -137,7 +137,6 @@ pub struct Security {
     pub sbom: Option<CheckOutput>,
     pub security_insights: Option<CheckOutput>,
     pub security_policy: Option<CheckOutput>,
-    pub self_assessment: Option<CheckOutput>,
     pub signed_releases: Option<CheckOutput>,
     pub token_permissions: Option<CheckOutput>,
 }
@@ -154,7 +153,6 @@ section_impl!(
     sbom,
     security_insights,
     security_policy,
-    self_assessment,
     signed_releases,
     token_permissions
 );

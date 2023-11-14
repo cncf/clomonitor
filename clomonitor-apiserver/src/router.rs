@@ -654,7 +654,6 @@ mod tests {
                             sbom: Some(CheckOutput::passed()),
                             security_insights: Some(CheckOutput::passed()),
                             security_policy: Some(CheckOutput::passed()),
-                            self_assessment: Some(CheckOutput::passed()),
                             signed_releases: Some(CheckOutput::passed()),
                             token_permissions: Some(CheckOutput::passed()),
                         },

@@ -61,7 +61,6 @@
   - [x] Software bill of materials (SBOM) ([_docs_](https://clomonitor.io/docs/topics/checks/#software-bill-of-materials-sbom))
   - [x] Security insights ([_docs_](https://clomonitor.io/docs/topics/checks/#security-insights))
   - [x] Security policy ([_docs_](https://clomonitor.io/docs/topics/checks/#security-policy))
-  - [x] Self-Assessment ([_docs_](https://clomonitor.io/docs/topics/checks/#self-assessment))
   - [x] Signed releases ([_docs_](https://clomonitor.io/docs/topics/checks/#signed-releases-from-openssf-scorecard))
   - [x] Token permissions ([_docs_](https://clomonitor.io/docs/topics/checks/#token-permissions-from-openssf-scorecard))
   

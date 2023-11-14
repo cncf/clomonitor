@@ -27,7 +27,6 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Security / Maintained
   - Security / SBOM
   - Security / Policy
-  - Security / Self-Assessment
   - Security / Signed releases
   - Security / Token permissions
 
@@ -593,16 +592,6 @@ CASE SENSITIVE: false
 ```
 
 - A security policy *file* is found in Github (in the [`.github` default community health files repository](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file), for example).
-
-### Self-Assessmemt
-
-**ID**: `self_assessment`
-
-Projects should provide a [TAG Security formatted](https://github.com/cncf/tag-security/blob/main/assessments/guide/self-assessment.md) Security Self-Assessment.
-
-This check passes if:
-
-- The details of the security self-assessment (including the evidence url) are available in the `security-artifacts > self-assessment` section of the [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) *manifest file* (`SECURITY-INSIGHTS.yml`) that should be located at the root of the repository.
 
 ### Signed releases (from OpenSSF Scorecard)
 

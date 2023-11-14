@@ -202,10 +202,6 @@ pub(crate) fn display(
             cell_check(&report.security.security_policy),
         ])
         .add_row(vec![
-            cell_entry("Security / Self-Assessment"),
-            cell_check(&report.security.self_assessment),
-        ])
-        .add_row(vec![
             cell_entry("Security / Signed release"),
             cell_check(&report.security.signed_releases),
         ])
@@ -354,7 +350,6 @@ mod tests {
                 sbom: Some(CheckOutput::passed()),
                 security_insights: Some(CheckOutput::passed()),
                 security_policy: Some(CheckOutput::passed()),
-                self_assessment: Some(CheckOutput::passed()),
                 signed_releases: Some(CheckOutput::passed()),
                 token_permissions: Some(CheckOutput::passed()),
             },

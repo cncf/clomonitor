@@ -161,7 +161,6 @@ impl Linter for CoreLinter {
                 sbom: run!(sbom, &ci),
                 security_insights: run!(security_insights, &ci),
                 security_policy: run!(security_policy, &ci),
-                self_assessment: run!(self_assessment, &ci),
                 signed_releases: run!(signed_releases, &ci),
                 token_permissions: run!(token_permissions, &ci),
             },

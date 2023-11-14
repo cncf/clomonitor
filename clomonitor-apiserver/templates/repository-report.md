@@ -70,7 +70,6 @@
   {% call check("software-bill-of-materials-sbom", "Software bill of materials (SBOM)", report.security.sbom) -%}
   {% call check("security-insights", "Security insights", report.security.security_insights) -%}
   {% call check("security-policy", "Security policy", report.security.security_policy) -%}
-  {% call check("self-assessment", "Self-Assessment", report.security.self_assessment) -%}
   {% call check("signed-releases-from-openssf-scorecard", "Signed releases", report.security.signed_releases) -%}
   {% call check("token-permissions-from-openssf-scorecard", "Token permissions", report.security.token_permissions) -%}
 

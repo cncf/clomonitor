@@ -164,7 +164,6 @@ export enum ReportOption {
   SBOM = 'sbom',
   SecurityInsights = 'security_insights',
   SecurityPolicy = 'security_policy',
-  SelfAssessment = 'self_assessment',
   SignedReleases = 'signed_releases',
   SlackPresence = 'slack_presence',
   SPDX = 'license_spdx_id',

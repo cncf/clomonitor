@@ -137,9 +137,6 @@ insert into report (
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
             },
-            "self_assessment": {
-                "passed": true
-            },
             "maintained": {
                 "passed": true
             },
@@ -278,9 +275,6 @@ insert into report (
                 "url": "https://github.com/fluent/fluentd/blob/master/SECURITY.md",
                 "passed": true
             },
-            "self_assessment": {
-                "passed": true
-            },
             "maintained": {
                 "passed": true
             },
@@ -414,9 +408,6 @@ insert into report (
                 "passed": false
             },
             "security_policy": {
-                "passed": false
-            },
-            "self_assessment": {
                 "passed": false
             },
             "maintained": {
@@ -622,7 +613,6 @@ select is(
                     "sbom": 0,
                     "security_insights": 67,
                     "security_policy": 67,
-                    "self_assessment": 67,
                     "signed_releases": 0,
                     "token_permissions": 0
                 },

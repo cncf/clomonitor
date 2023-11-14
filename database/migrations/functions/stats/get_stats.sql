@@ -206,7 +206,6 @@ returns json as $$
                     'sbom', repositories_passing_check(p_foundation, 'security', 'sbom'),
                     'security_insights', repositories_passing_check(p_foundation, 'security', 'security_insights'),
                     'security_policy', repositories_passing_check(p_foundation, 'security', 'security_policy'),
-                    'self_assessment', repositories_passing_check(p_foundation, 'security', 'self_assessment'),
                     'signed_releases', repositories_passing_check(p_foundation, 'security', 'signed_releases'),
                     'token_permissions', repositories_passing_check(p_foundation, 'security', 'token_permissions')
                 ),

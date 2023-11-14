@@ -31,7 +31,6 @@ pub(crate) mod roadmap;
 pub(crate) mod sbom;
 pub(crate) mod security_insights;
 pub(crate) mod security_policy;
-pub(crate) mod self_assessment;
 pub(crate) mod signed_releases;
 pub(crate) mod slack_presence;
 pub(crate) mod summary_table;
@@ -95,7 +94,6 @@ lazy_static! {
         register_check!(sbom);
         register_check!(security_insights);
         register_check!(security_policy);
-        register_check!(self_assessment);
         register_check!(signed_releases, "Signed-Releases");
         register_check!(slack_presence);
         register_check!(summary_table);

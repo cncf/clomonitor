@@ -1,7 +1,6 @@
 use super::path::{self, Globs};
 use anyhow::Result;
 use regex::{Regex, RegexSet};
-use std::fs;
 
 /// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given, returning the captured value
@@ -9,7 +8,7 @@ use std::fs;
 /// provided contain one capture group.
 pub(crate) fn find(globs: &Globs, regexps: &[&Regex]) -> Result<Option<String>> {
     for path in &path::matches(globs)? {
-        if let Ok(content) = fs::read_to_string(path) {
+        if let Ok(content) = super::fs::read_to_string(path) {
             for re in regexps {
                 if let Some(c) = re.captures(&content) {
                     if c.len() > 1 {
@@ -26,7 +25,7 @@ pub(crate) fn find(globs: &Globs, regexps: &[&Regex]) -> Result<Option<String>> 
 /// matches any of the regular expressions given.
 pub(crate) fn matches(globs: &Globs, re: &RegexSet) -> Result<bool> {
     Ok(path::matches(globs)?.iter().any(|path| {
-        if let Ok(content) = fs::read_to_string(path) {
+        if let Ok(content) = super::fs::read_to_string(path) {
             return re.is_match(&content);
         }
         false

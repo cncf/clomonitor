@@ -1,7 +1,7 @@
-use anyhow::Result;
+use super::util;
+use anyhow::{Context, Result};
 use serde::Deserialize;
 use std::ffi::OsStr;
-use std::fs;
 use std::path::Path;
 
 /// Metadata file name.
@@ -22,7 +22,8 @@ impl Metadata {
         if !Path::new(&path).exists() {
             return Ok(None);
         }
-        let content = fs::read_to_string(path.as_ref())?;
+        let content = util::fs::read_to_string(path.as_ref())
+            .context("error reading clomonitor metadata file")?;
         Ok(serde_yaml::from_str(&content)?)
     }
 }

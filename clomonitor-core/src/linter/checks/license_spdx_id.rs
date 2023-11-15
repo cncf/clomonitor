@@ -1,11 +1,10 @@
 use super::util::path::Globs;
 use crate::linter::check::{CheckId, CheckInput, CheckOutput};
 use crate::linter::checks::util::path;
-use crate::linter::CheckSet;
+use crate::linter::{util, CheckSet};
 use anyhow::Result;
 use askalono::*;
 use lazy_static::lazy_static;
-use std::fs;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "license_spdx_id";
@@ -56,7 +55,7 @@ pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
     }
     let mut spdx_id: Option<String> = None;
     path::matches(globs)?.iter().any(|path| {
-        if let Ok(content) = fs::read_to_string(path) {
+        if let Ok(content) = util::fs::read_to_string(path) {
             let m = LICENSES.analyze(&TextData::from(content));
             if m.score > 0.9 {
                 spdx_id = Some(m.name.to_string());

@@ -65,7 +65,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 
 Many checks rely on checking that certain files exists on a given path. Even though most of these checks support a number of variants, sometimes this won't work for some projects that may be using a different repository layout. In those cases, the recommended approach is to add a section to the `README` file of the repository pointing users to the document location. This will help users discovering this information and will make CLOMonitor happy :) At the moment we support detecting headers as well as links in `README` files that follow some patterns. Please see the reference below for more information on each case. Some projects have already proceeded this way successfully: [Kubernetes clomonitor PR](https://github.com/kubernetes/kubernetes/pull/108110), [KEDA clomonitor PR](https://github.com/kedacore/keda/pull/2704) and [Cilium clomonitor PR](https://github.com/cilium/cilium/pull/19037).
 
-For more details about how each of the checks are performed, please see the reference below. If you find that any of the checks isn't working as expected or you have ideas about how to improve them please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in Github.
+For more details about how each of the checks are performed, please see the reference below. Note that **CLOMonitor** does not follow symlinks when reading files content. If you find that any of the checks isn't working as expected or you have ideas about how to improve them please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in GitHub.
 
 ## Exemptions
 

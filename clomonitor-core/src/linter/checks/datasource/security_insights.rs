@@ -1,6 +1,7 @@
+use crate::linter::util;
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
-use std::{fs, path::Path};
+use std::path::Path;
 
 /// OpenSSF Security Insights manifest file name.
 pub(crate) const SECURITY_INSIGHTS_MANIFEST_FILE: &str = "SECURITY-INSIGHTS.yml";
@@ -33,7 +34,8 @@ impl SecurityInsights {
         if !Path::new(&manifest_path).exists() {
             return Ok(None);
         }
-        let content = fs::read_to_string(manifest_path)?;
+        let content = util::fs::read_to_string(manifest_path)
+            .context("error reading security insights manifest file")?;
         serde_yaml::from_str(&content).context("invalid security insights manifest")
     }
 }

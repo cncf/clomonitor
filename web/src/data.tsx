@@ -48,6 +48,7 @@ export const FILTERS: FiltersSection[] = [
     name: FilterKind.Foundation,
     title: 'Foundation',
     filters: [
+      { name: Foundation.cdf, label: 'CDF' },
       { name: Foundation.cncf, label: 'CNCF' },
       { name: Foundation.lfaidata, label: 'LF AI & Data' },
     ],
@@ -173,12 +174,18 @@ export const QUERIES: SampleQuery[] = [
       filters: { foundation: ['cncf'] },
     },
   },
-
   {
     name: 'Projects accepted by LF AI & Data',
     filters: {
       pageNumber: 1,
       filters: { category: ['lfaidata'] },
+    },
+  },
+  {
+    name: 'Projects accepted by CDF',
+    filters: {
+      pageNumber: 1,
+      filters: { category: ['cdf'] },
     },
   },
 ];
@@ -499,6 +506,9 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
 };
 
 export const FOUNDATIONS = {
+  [Foundation.cdf]: {
+    name: 'CDF',
+  },
   [Foundation.cncf]: {
     name: 'CNCF',
   },

@@ -852,8 +852,39 @@
     - name: in-toto
       url: https://github.com/in-toto/in-toto
       check_sets:
-        - community
         - code
+    - name: community
+      url: https://github.com/in-toto/community
+      check_sets:
+        - community
+    - name: in-toto-golang
+      url: https://github.com/in-toto/in-toto-golang
+      check_sets:
+        - code
+    - name: attestation
+      url: https://github.com/in-toto/attestation
+      check_sets:
+        - code-lite
+    - name: scai-demos
+      url: https://github.com/in-toto/scai-demos
+      check_sets:
+        - code-lite
+    - name: witness
+      url: https://github.com/in-toto/witness
+      check_sets:
+        - code
+    - name: go-witness
+      url: https://github.com/in-toto/go-witness
+      check_sets:
+        - code
+    - name: archivista
+      url: https://github.com/in-toto/archivista
+      check_sets:
+        - code
+    - name: docs
+      url: https://github.com/in-toto/docs
+      check_sets:
+        - docs
 - name: inclavare
   display_name: Inclavare Containers
   description: A novel container runtime, aka confidential container, for cloud-native confidential computing and enclave runtime ecosystem

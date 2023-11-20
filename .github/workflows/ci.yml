@@ -15,7 +15,7 @@ jobs:
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.74.0
           profile: minimal
           components: clippy, rustfmt
           override: true
@@ -64,7 +64,7 @@ jobs:
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.74.0
           profile: minimal
           override: true
       - name: Run backend tests

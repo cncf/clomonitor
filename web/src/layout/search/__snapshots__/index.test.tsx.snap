@@ -103,6 +103,37 @@ exports[`Project detail index creates snapshot 1`] = `
                             <input
                               aria-checked="false"
                               class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+                              id="mobile-foundation-cdf"
+                              name="foundation"
+                              tabindex="0"
+                              type="checkbox"
+                              value="cdf"
+                            />
+                            <label
+                              class="form-check-label mw-100"
+                              data-testid="checkboxLabel"
+                              for="mobile-foundation-cdf"
+                            >
+                              <div
+                                class="d-flex align-items-baseline mw-100"
+                              >
+                                <span
+                                  class="position-relative decorator"
+                                />
+                                <span
+                                  class="text-truncate"
+                                >
+                                  CDF
+                                </span>
+                              </div>
+                            </label>
+                          </div>
+                          <div
+                            class="form-check me-sm-2 mb-2 undefined"
+                          >
+                            <input
+                              aria-checked="false"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
                               id="mobile-foundation-cncf"
                               name="foundation"
                               tabindex="0"
@@ -2214,6 +2245,37 @@ exports[`Project detail index creates snapshot 1`] = `
         <div
           class="mt-2"
         >
+          <div
+            class="form-check me-sm-2 mb-2 undefined"
+          >
+            <input
+              aria-checked="false"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+              id="desktop-foundation-cdf"
+              name="foundation"
+              tabindex="0"
+              type="checkbox"
+              value="cdf"
+            />
+            <label
+              class="form-check-label mw-100"
+              data-testid="checkboxLabel"
+              for="desktop-foundation-cdf"
+            >
+              <div
+                class="d-flex align-items-baseline mw-100"
+              >
+                <span
+                  class="position-relative decorator"
+                />
+                <span
+                  class="text-truncate"
+                >
+                  CDF
+                </span>
+              </div>
+            </label>
+          </div>
           <div
             class="form-check me-sm-2 mb-2 undefined"
           >

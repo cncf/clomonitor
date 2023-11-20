@@ -59,6 +59,11 @@ exports[`StatsView creates snapshot 1`] = `
                   All
                 </option>
                 <option
+                  value="cdf"
+                >
+                  CDF
+                </option>
+                <option
                   value="cncf"
                 >
                   CNCF

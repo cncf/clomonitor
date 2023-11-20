@@ -1,0 +1,223 @@
+- name: tekton
+  display_name: Tekton
+  description: A cloud-native Pipeline resource
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/tekton/icon/color/tekton-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/tekton/icon/white/tekton-icon-white.svg
+  devstats_url: https://tekton.devstats.cd.foundation
+  maturity: graduated
+  repositories:
+    - name: community
+      url: https://github.com/tektoncd/community
+      check_sets:
+        - community
+    - name: pipeline
+      url: https://github.com/tektoncd/pipeline
+      check_sets:
+        - code
+    - name: cli
+      url: https://github.com/tektoncd/cli
+      check_sets:
+        - code-lite
+    - name: operator
+      url: https://github.com/tektoncd/operator
+      check_sets:
+        - code-lite
+    - name: website
+      url: https://github.com/tektoncd/website
+      check_sets:
+        - docs
+- name: jenkinsx
+  display_name: Jenkins X
+  description: Jenkins X provides automated CI+CD for Kubernetes with Preview Environments on Pull Requests using Cloud Native pipelines from Tekton
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/jenkinsx/icon/color/jenkinsx-icon-color.svg
+  devstats_url: https://jenkinsx.devstats.cd.foundation
+  maturity: incubating
+  repositories:
+    - name: jx-community
+      url: https://github.com/jenkins-x/jx-community
+      check_sets:
+        - community
+    - name: jx
+      url: https://github.com/jenkins-x/jx
+      check_sets:
+        - code
+    - name: jx-docs
+      url: https://github.com/jenkins-x/jx-docs
+      check_sets:
+        - docs
+    - name: lighthouse
+      url: https://github.com/jenkins-x/lighthouse
+      check_sets:
+        - code-lite
+- name: screwdriver
+  display_name: Screwdriver
+  description: An open source build platform designed for continuous delivery
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/screwdriver/icon/color/screwdriver-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/screwdriver/icon/white/screwdriver-icon-white.svg
+  devstats_url: https://screwdrivercd.devstats.cd.foundation
+  maturity: incubating
+  repositories:
+    - name: screwdriver
+      url: https://github.com/screwdriver-cd/screwdriver
+      check_sets:
+        - community
+        - code
+    - name: guide
+      url: https://github.com/screwdriver-cd/guide
+      check_sets:
+        - docs
+- name: spinnaker
+  display_name: Spinnaker
+  description: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/spinnaker/icon/color/spinnaker-icon-color.svg
+  devstats_url: https://spinnaker.devstats.cd.foundation
+  maturity: incubating
+  repositories:
+    - name: governance
+      url: https://github.com/spinnaker/governance
+      check_sets:
+        - community
+    - name: spinakker
+      url: https://github.com/spinnaker/spinnaker
+      check_sets:
+        - code
+    - name: clouddriver
+      url: https://github.com/spinnaker/clouddriver
+      check_sets:
+        - code-lite
+    - name: deck
+      url: https://github.com/spinnaker/deck
+      check_sets:
+        - docs
+    - name: igor
+      url: https://github.com/spinnaker/igor
+      check_sets:
+        - code-lite
+    - name: gate
+      url: https://github.com/spinnaker/gate
+      check_sets:
+        - code-lite
+- name: jenkins
+  display_name: Jenkins
+  description: Jenkins automation server
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/jenkins/icon/color/jenkins-icon-color.svg
+  devstats_url: https://jenkins.devstats.cd.foundation
+  maturity: graduated
+  repositories:
+    - name: jenkins
+      url: https://github.com/jenkinsci/jenkins
+      check_sets:
+        - community
+        - code
+    - name: docker
+      url: https://github.com/jenkinsci/docker
+      check_sets:
+        - code-lite
+    - name: helm-charts
+      url: https://github.com/jenkinsci/helm-charts
+      check_sets:
+        - code-lite
+    - name: configuration-as-code-plugin
+      url: https://github.com/jenkinsci/configuration-as-code-plugin
+      check_sets:
+        - code-lite
+- name: ortelius
+  display_name: Ortelius
+  description: Ortelius is a microservice catalog that centralizes supply chain and DevOps Intelligence into one location. Use Ortelius to expose microservice version drift across clusters, aggregate SBOMs to 'logical' applications and track microservice usage across teams and environments
+  category: Config & Library Management
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/ortelius/icon/color/ortelius-icon-color.svg
+  devstats_url: https://ortelius.devstats.cd.foundation
+  maturity: incubating
+  repositories:
+    - name: ortelius
+      url: https://github.com/ortelius/ortelius
+      check_sets:
+        - community
+        - code
+    - name: ortelius-charts
+      url: https://github.com/ortelius/ortelius-charts
+      check_sets:
+        - code-lite
+    - name: ortelius-docs
+      url: https://github.com/ortelius/ortelius-docs
+      check_sets:
+        - docs
+- name: pyrsia
+  display_name: Pyrsia
+  description: Decentralized Package Network
+  category: Config & Library Management
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/pyrsia/artwork/icon-pyrsia-torch-175.svg
+  devstats_url: https://pyrsia.devstats.cd.foundation/
+  maturity: incubating
+  repositories:
+    - name: pyrsia
+      url: https://github.com/pyrsia/pyrsia
+      check_sets:
+        - community
+        - code
+    - name: pyrsia.github.io
+      url: https://github.com/pyrsia/pyrsia.github.io
+      check_sets:
+        - docs
+    - name: killercoda
+      url: https://github.com/pyrsia/killercoda
+      check_sets:
+        - code-lite
+- name: shipwright
+  display_name: Shipwright
+  description: A framework for building container images on Kubernetes
+  category: Container Registry & Build
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/shipwright/icon/color/shipwright-icon-color.svg
+  devstats_url: https://shipwright.devstats.cd.foundation/
+  maturity: incubating
+  repositories:
+    - name: community
+      url: https://github.com/shipwright-io/community
+      check_sets:
+        - community
+    - name: build
+      url: https://github.com/shipwright-io/build
+      check_sets:
+        - code
+    - name: operator
+      url: https://github.com/shipwright-io/operator
+      check_sets:
+        - code-lite
+    - name: triggers
+      url: https://github.com/shipwright-io/triggers
+      check_sets:
+        - code-lite
+    - name: cli
+      url: https://github.com/shipwright-io/cli
+      check_sets:
+        - code-lite
+    - name: website
+      url: https://github.com/shipwright-io/website
+      check_sets:
+        - docs
+- name: cdevents
+  display_name: CDEvents
+  description: CDEvents are a common specification for Continuous Delivery events, enabling interoperability in the complete software production ecosystem
+  category: Observability and Analysis
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/cdevents/icon/color/cdevents_icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/cdevents/icon/white/cdevents_icon-white.svg
+  devstats_url: https://cdevents.devstats.cd.foundation/
+  maturity: incubating
+  repositories:
+    - name: community
+      url: https://github.com/cdevents/community
+      check_sets:
+        - community
+    - name: spec
+      url: https://github.com/cdevents/spec
+      check_sets:
+        - code
+    - name: cdevents.dev
+      url: https://github.com/cdevents/cdevents.dev
+      check_sets:
+        - docs

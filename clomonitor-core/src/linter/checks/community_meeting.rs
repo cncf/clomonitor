@@ -20,7 +20,7 @@ lazy_static! {
     #[rustfmt::skip]
     static ref README_REF: RegexSet = RegexSet::new([
         r"(?im)^#+.*meeting.*$",
-        r"(?i)(community|developer|development) \[?(call|event|meeting|session)",
+        r"(?i)(community|developer|development|working group) \[?(call|event|meeting|session)",
         r"(?i)(weekly|biweekly|monthly) \[?meeting",
         r"(?i)meeting minutes",
     ]).expect("exprs in README_REF to be valid");
@@ -50,5 +50,6 @@ mod tests {
         assert!(README_REF.is_match("community session"));
         assert!(README_REF.is_match("the meeting minutes below"));
         assert!(README_REF.is_match("Weekly meeting"));
+        assert!(README_REF.is_match("Working group meeting"));
     }
 }

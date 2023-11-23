@@ -414,7 +414,8 @@ This check passes if:
 - A *reference* to the community meeting is found in the repository's `README` file. Regexps used:
 
 ```sh
-"(?i)(community|developer|development) \[?(call|event|meeting|session)"
+"(?im)^#+.*meeting.*$"
+"(?i)(community|developer|development|working group) \[?(call|event|meeting|session)"
 "(?i)(weekly|biweekly|monthly) \[?meeting"
 "(?i)meeting minutes"
 ```

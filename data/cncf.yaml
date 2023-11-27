@@ -1734,7 +1734,6 @@
     - name: notation
       url: https://github.com/notaryproject/notation
       check_sets:
-        - code-lite
         - community
         - code
 - name: ocm

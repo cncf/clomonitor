@@ -1635,16 +1635,28 @@
   accepted_at: "2020-09-08"
   maturity: sandbox
   repositories:
+    - name: community
+      url: https://github.com/metal3-io/community
+      check_sets:
+        - community
     - name: metal3-docs
       url: https://github.com/metal3-io/metal3-docs
       check_sets:
-        - community
+        - docs
     - name: cluster-api-provider-metal3
       url: https://github.com/metal3-io/cluster-api-provider-metal3
       check_sets:
         - code
     - name: baremetal-operator
       url: https://github.com/metal3-io/baremetal-operator
+      check_sets:
+        - code
+    - name: ip-address-manager
+      url: https://github.com/metal3-io/ip-address-manager
+      check_sets:
+        - code
+    - name: ironic-image
+      url: https://github.com/metal3-io/ironic-image
       check_sets:
         - code-lite
 - name: nats

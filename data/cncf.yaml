@@ -771,6 +771,19 @@
       url: https://github.com/foniod/redbpf
       check_sets:
         - code
+- name: gateway-api
+  display_name: Kubernetes Gateway API
+  description: The Gateway API is a part of SIG Network, and this repository contains the specification and Custom Resource Definitions (CRDs).
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  devstats_url: 
+  accepted_at: "2019-11-02"
+  maturity: 
+  repositories:
+    - name: gateway-api
+      url: https://github.com/kubernetes-sigs/gateway-api
+      check_sets:
+        - code
 - name: grpc
   display_name: gRPC
   description: A high performance, open source universal RPC framework

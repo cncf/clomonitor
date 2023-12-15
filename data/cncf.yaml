@@ -3483,3 +3483,17 @@
       check_sets:
         - community
         - code
+- name: cloud-provider-aws
+  display_name: Cloud Provider AWS
+  description: Allows a Kubernetes cluster to provision, monitor and remove AWS resources necessary for operation of the cluster.
+  category: provisioning
+  logo_url: https://github.com/kubernetes/cloud-provider-aws/blob/master/docs/assets/images/kubernetes_icon.svg
+  devstats_url: https://cloud-provider-aws.sigs.k8s.io/
+  accepted_at: "2020-06-09"
+  maturity: sandbox
+  repositories:
+    - name: cloud-provider-aws
+      url: https://github.com/kubernetes/cloud-provider-aws.git
+      check_sets:
+        - community
+        - code

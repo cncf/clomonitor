@@ -3426,3 +3426,18 @@
       check_sets:
         - community
         - code
+        
+- name: kompose
+  display_name: Kompose
+  description: Kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. It takes a Docker Compose file and translates it into Kubernetes resources.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.png
+  devstats_url: 
+  accepted_at: "2016-06-27"
+  maturity: graduated
+  repositories:
+    - name: kompose
+      url: https://github.com/kubernetes/kompose
+      check_sets:
+        - community
+        - code

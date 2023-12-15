@@ -977,6 +977,20 @@
       check_sets:
         - community
         - code
+- name: karpenter
+  display_name: Karpenter
+  description: Karpenter is a Kubernetes Node Autoscaler built for flexibility, performance, and simplicity.
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png
+  devstats_url: https://k8s.devstats.cncf.io/
+  accepted_at: "2022-10-12"
+  maturity: graduated
+  repositories:
+    - name: karpenter
+      url: https://github.com/kubernetes-sigs/karpenter
+      check_sets:
+        - community
+        - code
 - name: keda
   display_name: KEDA
   description: KEDA is a Kubernetes-based Event Driven Autoscaling component. It provides event driven scale for any container running in Kubernetes

@@ -1419,6 +1419,19 @@
       check_sets:
         - community
         - code
+- name: kube-state-metrics
+  description: Add-on agent to generate and expose cluster-level metrics. 
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  devstats_url: https://kubestatemetrics.devstats.cncf.io/
+  accepted_at: "2023-12-15"
+  maturity: sandbox
+  repositories:
+    - name: kube-state-metrics
+      url: https://github.com/kubernetes/kube-state-metrics
+      check_sets:
+        - community
+        - code        
 - name: kubedl
   display_name: KubeDL
   description: Run your deep learning workloads on Kubernetes more easily and efficiently

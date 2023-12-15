@@ -522,7 +522,7 @@
     - name: library
       url: https://github.com/devfile/library
       check_sets:
-        - code-lite
+        - code
     - name: api
       url: https://github.com/devfile/api
       check_sets:

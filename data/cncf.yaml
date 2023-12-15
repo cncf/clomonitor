@@ -1420,6 +1420,7 @@
         - community
         - code
 - name: kube-state-metrics
+  display_name: Kube State Metrics
   description: Add-on agent to generate and expose cluster-level metrics. 
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg

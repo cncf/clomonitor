@@ -546,7 +546,7 @@
     - name: devworkspace-operator
       url: https://github.com/devfile/devworkspace-operator
       check_sets:
-        - code 
+        - code
     - name: developer-images
       url: https://github.com/devfile/developer-images
       check_sets:
@@ -1466,7 +1466,7 @@
         - code
 - name: kube-state-metrics
   display_name: Kube State Metrics
-  description: Add-on agent to generate and expose cluster-level metrics. 
+  description: Add-on agent to generate and expose cluster-level metrics
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
   repositories:
@@ -1474,7 +1474,7 @@
       url: https://github.com/kubernetes/kube-state-metrics
       check_sets:
         - community
-        - code        
+        - code
 - name: kubedl
   display_name: KubeDL
   description: Run your deep learning workloads on Kubernetes more easily and efficiently
@@ -3494,12 +3494,12 @@
       url: https://github.com/kubernetes-sigs/kueue
       check_sets:
         - community
-        - code  
+        - code
 - name: kompose
   display_name: Kompose
   description: Kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. It takes a Docker Compose file and translates it into Kubernetes resources.
   category: app definition
-  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.svg
+  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.png
   repositories:
     - name: kompose
       url: https://github.com/kubernetes/kompose
@@ -3513,7 +3513,7 @@
   logo_url: https://github.com/kubernetes/cloud-provider-aws/blob/master/docs/assets/images/kubernetes_icon.svg
   repositories:
     - name: cloud-provider-aws
-      url: https://github.com/kubernetes/cloud-provider-aws.git
+      url: https://github.com/kubernetes/cloud-provider-aws
       check_sets:
         - community
         - code

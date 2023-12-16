@@ -771,6 +771,16 @@
       url: https://github.com/foniod/redbpf
       check_sets:
         - code
+- name: gateway-api
+  display_name: Kubernetes Gateway API
+  description: The Gateway API is a part of SIG Network, and this repository contains the specification and Custom Resource Definitions (CRDs).
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  repositories:
+    - name: gateway-api
+      url: https://github.com/kubernetes-sigs/gateway-api
+      check_sets:
+        - code
 - name: grpc
   display_name: gRPC
   description: A high performance, open source universal RPC framework
@@ -974,6 +984,17 @@
   repositories:
     - name: karmada
       url: https://github.com/karmada-io/karmada
+      check_sets:
+        - community
+        - code
+- name: karpenter
+  display_name: Karpenter
+  description: Karpenter is a Kubernetes Node Autoscaler built for flexibility, performance, and simplicity.
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png
+  repositories:
+    - name: karpenter
+      url: https://github.com/kubernetes-sigs/karpenter
       check_sets:
         - community
         - code
@@ -1419,6 +1440,17 @@
       check_sets:
         - community
         - code
+- name: kube-state-metrics
+  display_name: Kube State Metrics
+  description: Add-on agent to generate and expose cluster-level metrics. 
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  repositories:
+    - name: kube-state-metrics
+      url: https://github.com/kubernetes/kube-state-metrics
+      check_sets:
+        - community
+        - code        
 - name: kubedl
   display_name: KubeDL
   description: Run your deep learning workloads on Kubernetes more easily and efficiently
@@ -2527,8 +2559,9 @@
         - code
 - name: kubearmor
   display_name: Kubearmor
-  description: Runtime protection for Kubernetes & other cloud Workloads. Kubearmor provides a observability and policy enforcement system to restrict any
-              unwanted, malicious behaviour of cloud-native workloads at runtime
+  description:
+    Runtime protection for Kubernetes & other cloud Workloads. Kubearmor provides a observability and policy enforcement system to restrict any
+    unwanted, malicious behaviour of cloud-native workloads at runtime
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubearmor/icon/color/kubearmor-icon-color.svg
   devstats_url: https://kubearmor.devstats.cncf.io/
@@ -2738,8 +2771,9 @@
         - docs
 - name: carvel
   display_name: Carvel
-  description: Carvel provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to
-              Kubernetes
+  description:
+    Carvel provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to
+    Kubernetes
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/landscape/1c28d1abf8b9ce1f375f474a21171bf8478e555d/cached_logos/carvel.svg
   devstats_url: https://carvel.devstats.cncf.io/
@@ -3426,3 +3460,47 @@
       check_sets:
         - community
         - code
+- name: kueue
+  display_name: kueue
+  description: Kubernetes-native Job Queueing.
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/kubernetes-sigs/kueue/main/site/static/images/logo.svg
+  repositories:
+    - name: kueue
+      url: https://github.com/kubernetes-sigs/kueue
+      check_sets:
+        - community
+        - code  
+- name: kompose
+  display_name: Kompose
+  description: Kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. It takes a Docker Compose file and translates it into Kubernetes resources.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.svg
+  repositories:
+    - name: kompose
+      url: https://github.com/kubernetes/kompose
+      check_sets:
+        - community
+        - code
+- name: cloud-provider-aws
+  display_name: Cloud Provider AWS
+  description: Allows a Kubernetes cluster to provision, monitor and remove AWS resources necessary for operation of the cluster.
+  category: provisioning
+  logo_url: https://github.com/kubernetes/cloud-provider-aws/blob/master/docs/assets/images/kubernetes_icon.svg
+  repositories:
+    - name: cloud-provider-aws
+      url: https://github.com/kubernetes/cloud-provider-aws.git
+      check_sets:
+        - community
+        - code
+- name: minikube
+  display_name: minikube
+  description: Run Kubernetes locally
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/kubernetes/minikube/master/images/logo/logo.svg
+  repositories:
+    - name: minikube
+      url: https://github.com/kubernetes/minikube
+      check_sets:
+        - code
+        - community

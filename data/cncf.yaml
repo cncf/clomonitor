@@ -776,9 +776,9 @@
   description: The Gateway API is a part of SIG Network, and this repository contains the specification and Custom Resource Definitions (CRDs).
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
-  devstats_url: 
+  devstats_url: https://kuberenetes.devstats.cncf.io/
   accepted_at: "2019-11-02"
-  maturity: 
+  maturity: graduated
   repositories:
     - name: gateway-api
       url: https://github.com/kubernetes-sigs/gateway-api

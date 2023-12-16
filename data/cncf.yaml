@@ -992,9 +992,6 @@
   description: Karpenter is a Kubernetes Node Autoscaler built for flexibility, performance, and simplicity.
   category: orchestration
   logo_url: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png
-  devstats_url: https://k8s.devstats.cncf.io/
-  accepted_at: "2022-10-12"
-  maturity: graduated
   repositories:
     - name: karpenter
       url: https://github.com/kubernetes-sigs/karpenter
@@ -1496,11 +1493,6 @@
       check_sets:
         - community
         - code
-    - name: minikube
-      url: https://github.com/kubernetes/minikube
-      check_sets:
-        - code
-        - community
 - name: kubevela
   display_name: KubeVela
   description: Make shipping applications more enjoyable
@@ -3501,3 +3493,14 @@
       check_sets:
         - community
         - code
+- name: minikube
+  display_name: minikube
+  description: Run Kubernetes locally
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/kubernetes/minikube/master/images/logo/logo.svg
+  repositories:
+    - name: minikube
+      url: https://github.com/kubernetes/minikube
+      check_sets:
+        - code
+        - community

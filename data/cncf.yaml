@@ -776,9 +776,6 @@
   description: The Gateway API is a part of SIG Network, and this repository contains the specification and Custom Resource Definitions (CRDs).
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
-  devstats_url: https://kuberenetes.devstats.cncf.io/
-  accepted_at: "2019-11-02"
-  maturity: graduated
   repositories:
     - name: gateway-api
       url: https://github.com/kubernetes-sigs/gateway-api
@@ -1437,9 +1434,6 @@
   description: Add-on agent to generate and expose cluster-level metrics. 
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
-  devstats_url: https://k8s.devstats.cncf.io/
-  accepted_at: "2016-05-06"
-  maturity: graduated
   repositories:
     - name: kube-state-metrics
       url: https://github.com/kubernetes/kube-state-metrics
@@ -3460,9 +3454,6 @@
   description: Kubernetes-native Job Queueing.
   category: runtime
   logo_url: https://raw.githubusercontent.com/kubernetes-sigs/kueue/main/site/static/images/logo.svg
-  devstats_url: https://kueue.devstats.cncf.io/
-  accepted_at: "2022-04-12"
-  maturity: graduated
   repositories:
     - name: kueue
       url: https://github.com/kubernetes-sigs/kueue
@@ -3473,10 +3464,7 @@
   display_name: Kompose
   description: Kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. It takes a Docker Compose file and translates it into Kubernetes resources.
   category: app definition
-  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.png
-  devstats_url: 
-  accepted_at: "2016-06-27"
-  maturity: graduated
+  logo_url: https://raw.githubusercontent.com/kubernetes/kompose/main/docs/assets/images/logo.svg
   repositories:
     - name: kompose
       url: https://github.com/kubernetes/kompose
@@ -3488,9 +3476,6 @@
   description: Allows a Kubernetes cluster to provision, monitor and remove AWS resources necessary for operation of the cluster.
   category: provisioning
   logo_url: https://github.com/kubernetes/cloud-provider-aws/blob/master/docs/assets/images/kubernetes_icon.svg
-  devstats_url: https://cloud-provider-aws.sigs.k8s.io/
-  accepted_at: "2020-06-09"
-  maturity: sandbox
   repositories:
     - name: cloud-provider-aws
       url: https://github.com/kubernetes/cloud-provider-aws.git

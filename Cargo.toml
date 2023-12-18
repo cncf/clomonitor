@@ -37,7 +37,7 @@ glob = "0.3.1"
 graphql_client = { version = "0.13.0", features = ["reqwest"] }
 hex = "0.4.3"
 http = "0.2.11"
-hyper = "0.14.27"
+hyper = "0.14.28"
 lazy_static = "1.4.0"
 metrics = "0.21.1"
 metrics-exporter-prometheus = "0.12.1"

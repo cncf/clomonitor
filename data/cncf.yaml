@@ -671,6 +671,17 @@
       url: https://github.com/etcd-io/zetcd
       check_sets:
         - code-lite
+- name: external-dns
+  display_name: ExternalDNS
+  description: Configure external DNS servers (AWS Route53, Google CloudDNS and others) for Kubernetes Ingresses and Services
+  category: orchestration
+  logo_url: https://github.com/kubernetes-sigs/external-dns/raw/master/docs/img/external-dns.png
+  repositories:
+    - name: external-dns
+      url: https://github.com/kubernetes-sigs/external-dns
+      check_sets:
+        - community
+        - code
 - name: fabedge
   display_name: FabEdge
   description: A Secure Edge Computing Container Networking Solution based on Kubernetes & KubeEdge

@@ -2816,7 +2816,7 @@
   maturity: sandbox
   repositories:
     - name: carvel
-      url: https://github.com/vmware-tanzu/carvel
+      url: https://github.com/carvel-dev/carvel
       check_sets:
         - community
     - name: carvel-kapp

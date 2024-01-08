@@ -151,7 +151,11 @@ const OptionCell = (props: Props) => {
             <iframe
               ref={iframe}
               title="Scorecard details"
-              src={`${window.location.origin}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}&embed=true`}
+              src={`${
+                process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : window.location.origin
+              }/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${
+                githubUrlParts[2]
+              }&theme=${effective}&embed=true`}
               className={`w-100 ${styles.iframe}`}
             />
           </div>

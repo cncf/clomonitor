@@ -1,5 +1,5 @@
 # Build apiserver
-FROM rust:1-alpine3.18 as builder
+FROM rust:1-alpine3.19 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -14,7 +14,7 @@ WORKDIR /clomonitor/clomonitor-apiserver
 RUN cargo build --release
 
 # Build frontend
-FROM node:18-alpine3.18 AS frontend-builder
+FROM node:18-alpine3.19 AS frontend-builder
 RUN apk --no-cache add git
 WORKDIR /web
 COPY web .
@@ -32,7 +32,7 @@ WORKDIR /docs/www
 RUN hugo
 
 # Final stage
-FROM alpine:3.18.5
+FROM alpine:3.19.0
 RUN apk --no-cache add ca-certificates ttf-opensans && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

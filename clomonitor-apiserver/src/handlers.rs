@@ -6,7 +6,7 @@ use crate::{
 use anyhow::Error;
 use askama_axum::Template;
 use axum::{
-    body::Full,
+    body::Body,
     extract::{Path, Query, RawQuery, State},
     http::{
         header::{CACHE_CONTROL, CONTENT_TYPE},
@@ -311,7 +311,7 @@ pub(crate) async fn repositories_checks(State(db): State<DynDB>) -> impl IntoRes
     Response::builder()
         .header(CACHE_CONTROL, "max-age=3600")
         .header(CONTENT_TYPE, CSV.as_ref())
-        .body(Full::from(repos))
+        .body(Body::from(repos))
         .map_err(internal_error)
 }
 
@@ -363,7 +363,7 @@ pub(crate) async fn search_projects(
         .header(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
         .header(PAGINATION_TOTAL_COUNT, count.to_string())
-        .body(Full::from(projects))
+        .body(Body::from(projects))
         .map_err(internal_error)
 }
 
@@ -382,7 +382,7 @@ pub(crate) async fn stats(
     Response::builder()
         .header(CACHE_CONTROL, "max-age=3600")
         .header(CONTENT_TYPE, APPLICATION_JSON.as_ref())
-        .body(Full::from(stats))
+        .body(Body::from(stats))
         .map_err(internal_error)
 }
 

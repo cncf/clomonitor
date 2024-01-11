@@ -1,9 +1,9 @@
 use self::md::*;
 use anyhow::{format_err, Context, Result};
 use graphql_client::{GraphQLQuery, Response};
-use http::StatusCode;
 use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
+use reqwest::StatusCode;
 use std::path::Path;
 
 /// GitHub GraphQL API URL.

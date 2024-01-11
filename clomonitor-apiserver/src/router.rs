@@ -126,7 +126,7 @@ mod tests {
         views::MockViewsTracker,
     };
     use axum::{
-        body::Body,
+        body::{to_bytes, Body},
         http::{
             header::{CACHE_CONTROL, CONTENT_TYPE},
             Request, StatusCode,
@@ -176,7 +176,7 @@ mod tests {
         );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             json!({
                 "labelColor": "3F1D63",
                 "namedLogo": "cncf",
@@ -233,7 +233,7 @@ mod tests {
             format!("max-age={DOCS_CACHE_MAX_AGE}")
         );
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             fs::read_to_string(Path::new(TESTDATA_PATH).join("docs").join("topics.html")).unwrap()
         );
     }
@@ -258,7 +258,7 @@ mod tests {
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             render_index(
                 INDEX_META_TITLE,
                 INDEX_META_DESCRIPTION,
@@ -287,7 +287,7 @@ mod tests {
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             render_index(
                 INDEX_META_TITLE,
                 INDEX_META_DESCRIPTION,
@@ -316,7 +316,7 @@ mod tests {
         );
         assert_eq!(response.headers()[CONTENT_TYPE], HTML.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             render_index(
                 PROJECT,
                 INDEX_META_DESCRIPTION_PROJECT,
@@ -355,7 +355,7 @@ mod tests {
         );
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             r#"{"project": "info"}"#.to_string(),
         );
     }
@@ -435,7 +435,7 @@ mod tests {
         assert_eq!(response.headers()[CACHE_CONTROL], "max-age=86400");
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             r#"{"snapshot": "data"}"#.to_string(),
         );
     }
@@ -526,7 +526,7 @@ mod tests {
             response.headers()[CACHE_CONTROL],
             format!("max-age={DEFAULT_API_MAX_AGE}")
         );
-        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         let golden_path = "src/testdata/project-report-summary.golden.svg";
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
         let golden = fs::read(golden_path).unwrap();
@@ -579,7 +579,7 @@ mod tests {
         assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
         assert_eq!(response.headers()[CONTENT_TYPE], CSV.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             "CSV data".to_string(),
         );
     }
@@ -683,7 +683,7 @@ mod tests {
             response.headers()[CACHE_CONTROL],
             format!("max-age={DEFAULT_API_MAX_AGE}")
         );
-        let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
+        let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
         let golden_path = "src/testdata/repository-report.golden.md";
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
         let golden = fs::read(golden_path).unwrap();
@@ -778,7 +778,7 @@ mod tests {
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(response.headers()[PAGINATION_TOTAL_COUNT], "1");
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             r#"[{"project": "info"}]"#.to_string(),
         );
     }
@@ -802,7 +802,7 @@ mod tests {
             format!("max-age={STATIC_CACHE_MAX_AGE}")
         );
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             fs::read_to_string(Path::new(TESTDATA_PATH).join("lib.js")).unwrap()
         );
     }
@@ -830,7 +830,7 @@ mod tests {
         assert_eq!(response.headers()[CACHE_CONTROL], "max-age=3600");
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             r#"{"some": "stats"}"#.to_string(),
         );
     }
@@ -885,7 +885,7 @@ mod tests {
         assert_eq!(response.headers()[CACHE_CONTROL], "max-age=86400");
         assert_eq!(response.headers()[CONTENT_TYPE], APPLICATION_JSON.as_ref());
         assert_eq!(
-            hyper::body::to_bytes(response.into_body()).await.unwrap(),
+            to_bytes(response.into_body(), usize::MAX).await.unwrap(),
             r#"{"some": "stats"}"#.to_string(),
         );
     }

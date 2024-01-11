@@ -20,6 +20,7 @@ const REPOSITORY_TRACK_TIMEOUT: u64 = 600;
 
 /// A project's repository.
 #[derive(Debug, Clone)]
+#[allow(clippy::struct_field_names)]
 pub(crate) struct Repository {
     pub repository_id: Uuid,
     pub url: String,

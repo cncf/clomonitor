@@ -92,6 +92,7 @@ pub(crate) struct Sbom {
 /// SBOM entry information.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
+#[allow(clippy::struct_field_names)]
 pub(crate) struct SbomEntry {
     pub sbom_creation: Option<String>,
     pub sbom_file: Option<String>,
@@ -109,6 +110,7 @@ pub(crate) struct SecurityArtifacts {
 /// Self-assessment information.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
+#[allow(clippy::struct_field_names)]
 pub(crate) struct SelfAssessment {
     pub comment: Option<String>,
     pub evidence_url: Option<Vec<String>>,

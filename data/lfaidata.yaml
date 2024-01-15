@@ -340,7 +340,7 @@
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/marquez/icon/color/marquez-icon-color.svg
   accepted_at: "2019-12-19"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: marquez
       url: https://github.com/MarquezProject/marquez
@@ -460,7 +460,7 @@
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/openlineage/horizontal/color/openlineage-horizontal-color.svg
   accepted_at: "2021-05-20"
-  maturity: sandbox
+  maturity: graduated
   repositories:
     - name: openlineage
       url: https://github.com/OpenLineage/OpenLineage
@@ -649,7 +649,7 @@
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/docarray/icon/color/docarray-icon-color.svg
   accepted_at: "2022-11-03"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: docarray
       url: https://github.com/docarray/docarray
@@ -738,7 +738,7 @@
   display_name: Intersectional Fairness
   description: Intersectional Fairness (ISF) is a bias detection and mitigation technology for intersectional bias, which combinations of multiple protected attributes cause
   category: trusted & responsible ai
-  logo_url: https://landscape.lfai.foundation/logos/inter-sectional-fairness.svg
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/isf/color/Intersectional_Fairness_logo_Color_Icon.svg
   accepted_at: "2023-06-15"
   maturity: sandbox
   repositories:
@@ -784,4 +784,77 @@
       url: https://github.com/deepcausality-rs/deep_causality
       check_sets:
         - code
+        - community
+- name: sapientml
+  display_name: SapientML
+  description: Generative AutoML for Tabular Data
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/sapientml/svg/SapientML_positive_icon.svg
+  accepted_at: "2023-08-24"
+  maturity: sandbox
+  repositories:
+    - name: sapientml
+      url: https://github.com/sapientml/sapientml
+      check_sets:
+        - code
+        - community
+    - name: docs
+      url: https://github.com/sapientml/docs
+      check_sets:
+        - docs
+- name: bitol
+  display_name: Bitol
+  description: Home of the Open Data Contract Standard (ODCS)
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/bitol/icon/color/Bitol_Logo_icon_color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/bitol/icon/white/Bitol_Logo_icon_white.svg
+  accepted_at: "2023-11-03"
+  maturity: sandbox
+  repositories:
+    - name: open-data-contract-standard
+      url: https://github.com/bitol-io/open-data-contract-standard
+      check_sets:
+        - code
+        - community
+- name: rwkv
+  display_name: RWKV
+  description: RWKV infctx trainer, for training arbitary context sizes, to 10k and beyond!
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/rwkv/llm/color/rwkv_language_color.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/rwkv/llm/white/rwkv_language_white.svg
+  accepted_at: "2023-12-01"
+  maturity: incubating
+  repositories:
+    - name: RWKV-infctx-trainer
+      url: https://github.com/RWKV/RWKV-infctx-trainer
+      check_sets:
+        - code
+        - community
+    - name: RWKV-wiki
+      url: https://github.com/RWKV/RWKV-wiki
+      check_sets:
+        - docs
+- name: open-voice-trustmark
+  display_name: Open Voice TrustMark
+  description: Open Voice TrustMark Initiative
+  category: trusted & responsible ai
+  logo_url: https://raw.githubusercontent.com/Open-Voice-Trustmark/artwork/main/icon/color/TrustMark_Logo_icon_color.svg
+  accepted_at: "2023-10-19"
+  maturity: incubating
+  repositories:
+    - name: docs
+      url: https://github.com/Open-Voice-Trustmark/docs
+      check_sets:
+        - community
+- name: open-voice-interoperability
+  display_name: Open Voice Interoperability
+  description: Official schemas for the interoperability specifications
+  category: distributed computing
+  logo_url: https://raw.githubusercontent.com/open-voice-interoperability/artwork/main/icon/color/Interoperability_Logo_icon_color.svg
+  accepted_at: "2023-10-19"
+  maturity: incubating
+  repositories:
+    - name: lib-interop
+      url: https://github.com/open-voice-interoperability/lib-interop
+      check_sets:
         - community

@@ -1728,6 +1728,17 @@
       url: https://github.com/metal3-io/ironic-image
       check_sets:
         - code-lite
+- name: metrics-server
+  display_name: metrics-server
+  description: Scalable and efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  repositories:
+    - name: metrics-server
+      url: https://github.com/kubernetes-sigs/metrics-server
+      check_sets:
+        - community
+        - code
 - name: nats
   display_name: NATS
   description: Connective Technology for Adaptive Edge & Distributed Systems

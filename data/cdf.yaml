@@ -221,3 +221,22 @@
       url: https://github.com/cdevents/cdevents.dev
       check_sets:
         - docs
+- name: nephio-project
+  display_name: Nephio
+  description: The Nephio project is building a Kubernetes-based automation platform for deploying and managing highly distributed, interconnected workloads such as 5G Network Functions, and the underlying infrastructure on which those workloads depend.
+  category: Config Automation
+  logo_url: https://raw.githubusercontent.com/nephio-project/docs/main/assets/icons/logo.svg
+  maturity: incubating
+  repositories: 
+    - name: nephio
+      url: https://github.com/nephio-project/nephio
+      check_sets:
+        - code
+    - name: api
+      url: https://github.com/nephio-project/api
+      check_sets:
+        - code
+    - name: docs
+      url: https://github.com/nephio-project/docs
+      check_sets:
+        - docs

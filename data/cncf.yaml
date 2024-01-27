@@ -2,7 +2,7 @@
   display_name: Aeraki Mesh
   description: Aeraki Mesh allows you to manage any layer-7 traffic in a service mesh
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/88d2fa4977a1446479b0c699331b8530b879213c/projects/aerakimesh/icon/color/AerakiMesh_icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/aerakimesh/icon/color/aerakimesh-icon-color.svg
   devstats_url: https://aerakimesh.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
@@ -16,7 +16,8 @@
   display_name: Akri
   description: A Kubernetes Resource Interface for the Edge
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/akri/icon/light/akri-icon-light.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/akri/icon/color/akri-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/akri/icon/white/akri-icon-white.svg
   devstats_url: https://akri.devstats.cncf.io/
   accepted_at: "2021-09-14"
   maturity: sandbox
@@ -1015,7 +1016,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/karmada/icon/color/karmada-icon-color.svg
   devstats_url: https://karmada.devstats.cncf.io/
   accepted_at: "2021-09-14"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: karmada
       url: https://github.com/karmada-io/karmada
@@ -1504,7 +1505,8 @@
   display_name: Kuberhealthy
   description: A Kubernetes operator for running synthetic checks as pods. Works great with Prometheus!
   category: observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kuberhealthy/icon/color/kuberhealthy-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuberhealthy/icon/color/kuberhealthy-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuberhealthy/icon/white/kuberhealthy-icon-white.svg
   devstats_url: https://kuberhealthy.devstats.cncf.io/
   accepted_at: "2021-03-30"
   maturity: sandbox
@@ -1726,6 +1728,17 @@
       url: https://github.com/metal3-io/ironic-image
       check_sets:
         - code-lite
+- name: metrics-server
+  display_name: metrics-server
+  description: Scalable and efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  repositories:
+    - name: metrics-server
+      url: https://github.com/kubernetes-sigs/metrics-server
+      check_sets:
+        - community
+        - code
 - name: nats
   display_name: NATS
   description: Connective Technology for Adaptive Edge & Distributed Systems
@@ -3057,7 +3070,7 @@
   display_name: Zot
   description: Zot is an OCI-native container registry for distributing container images and OCI artifacts
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/zot/icon/color/zot-color-icon.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/zot/icon/color/zot-color-icon.svg
   devstats_url: https://zot.devstats.cncf.io
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -3268,8 +3281,8 @@
   display_name: Headlamp
   description: Headlamp is a feature-rich and extensible user interface for Kubernetes
   category: observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/color/headlamp-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/d42e08c0d1d9902281fd6bccdeeb73627c851d2c/projects/headlamp/icon/white/headlamp-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/headlamp/icon/color/headlamp-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/headlamp/icon/white/headlamp-icon-white.svg
   devstats_url: https://headlamp.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3301,7 +3314,7 @@
   display_name: Eraser
   description: Eraser helps Kubernetes admins remove a list of non-running images from all Kubernetes nodes in a cluster
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/e7e09686c20db6ddac06e482cf3338b0c8b2e22d/projects/eraser/icon/color/eraser-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/eraser/icon/color/eraser-icon-color.svg
   devstats_url: https://eraser.devstats.cncf.io/
   accepted_at: "2023-06-21"
   maturity: sandbox
@@ -3539,3 +3552,115 @@
       check_sets:
         - code
         - community
+- name: kubestellar
+  display_name: KubeStellar
+  description: KubeStellar - a flexible solution for challenges associated with multi-cluster configuration management for edge, multi-cloud, and hybrid cloud
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubestellar/icon/color/kubestellar-icon-color.svg
+  devstats_url: https://kubestellar.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: kubestellar
+      url: https://github.com/kubestellar/kubestellar
+      check_sets:
+        - community
+        - code
+- name: easegress
+  display_name: Easegress
+  description: A Cloud Native traffic orchestration system
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/easegress/icon/color/easegress-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/easegress/icon/white/easegress-icon-white.svg
+  devstats_url: https://easegress.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: easegress
+      url: https://github.com/megaease/easegress
+      check_sets:
+        - community
+        - code
+    - name: easegress-portal
+      url: https://github.com/megaease/easegress-portal
+      check_sets:
+        - code-lite
+- name: kuasar
+  display_name: Kuasar
+  description: A multi-sandbox container runtime that provides cloud-native, all-scenario multiple sandbox container solutions.
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/kuasar-io/web/main/static/img/icon.png
+  devstats_url: https://kuasar.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: kuasar
+      url: https://github.com/kuasar-io/kuasar
+      check_sets:
+        - community
+        - code
+    - name: web
+      url: https://github.com/kuasar-io/web
+      check_sets:
+        - docs
+- name: spiderpool
+  display_name: Spiderpool
+  description: Spiderpool is the underlay and RDMA network solution of the Kubernetes, for bare metal, VM and public cloud
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/spiderpool/icon/color/spiderpool-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/spiderpool/icon/white/spiderpool-icon-white.svg
+  devstats_url: https://spiderpool.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: spiderpool
+      url: https://github.com/spidernet-io/spiderpool
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/spidernet-io/community
+      check_sets:
+        - community
+- name: copacetic
+  display_name: Copa
+  description: CLI tool for directly patching container images using reports from vulnerability scanners
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/copa/Icon/Color/copa-icon-color.svg
+  devstats_url: https://copacetic.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: copacetic
+      url: https://github.com/project-copacetic/copacetic
+      check_sets:
+        - community
+        - code
+- name: k8sgpt
+  display_name: K8sGPT
+  description: Giving Kubernetes Superpowers to everyone
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/k8sgpt/icon/color/k8sgpt-icon-color.svg
+  devstats_url: https://k8sgpt.devstats.cncf.io
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: k8sgpt
+      url: https://github.com/k8sgpt-ai/k8sgpt
+      check_sets:
+        - code
+    - name: k8sgpt
+      url: https://github.com/k8sgpt-ai/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/k8sgpt-ai/website
+      check_sets:
+        - docs
+    - name: docs
+      url: https://github.com/k8sgpt-ai/docs
+      check_sets:
+        - docs
+    - name: k8sgpt-operator
+      url: https://github.com/k8sgpt-ai/k8sgpt-operator
+      check_sets:
+        - code-lite

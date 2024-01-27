@@ -1,10 +1,14 @@
-use axum::{extract::MatchedPath, http::Request, middleware::Next, response::IntoResponse};
+use axum::{
+    extract::{MatchedPath, Request},
+    middleware::Next,
+    response::IntoResponse,
+};
 use lazy_static::lazy_static;
 use regex::RegexSet;
 use std::time::Instant;
 
 /// Middleware that collects some metrics about requests processed.
-pub(crate) async fn metrics_collector<B>(req: Request<B>, next: Next<B>) -> impl IntoResponse {
+pub(crate) async fn metrics_collector(req: Request, next: Next) -> impl IntoResponse {
     // Define the endpoints we'd like to monitor
     lazy_static! {
         static ref ENDPOINTS_TO_MONITOR: RegexSet = RegexSet::new([
@@ -36,11 +40,7 @@ pub(crate) async fn metrics_collector<B>(req: Request<B>, next: Next<B>) -> impl
             ("method", method.to_string()),
             ("path", path),
         ];
-        metrics::histogram!(
-            "clomonitor_apiserver_http_request_duration",
-            duration,
-            &labels
-        );
+        metrics::histogram!("clomonitor_apiserver_http_request_duration", &labels).record(duration);
     }
 
     response

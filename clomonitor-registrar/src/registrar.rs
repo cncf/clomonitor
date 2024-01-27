@@ -2,7 +2,7 @@ use crate::db::DynDB;
 use anyhow::{format_err, Context, Error, Result};
 use config::Config;
 use futures::stream::{self, StreamExt};
-use http::StatusCode;
+use reqwest::StatusCode;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{collections::HashMap, time::Duration};

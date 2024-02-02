@@ -1,0 +1,244 @@
+- name: open-shading-language-osl
+  display_name: Open Shading Language (OSL)
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-shading-language-osl.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-shading-language-osl.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-shading-language/trends
+  maturity: adopted
+  repositories:
+  - name: OpenShadingLanguage
+    url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+- name: open-color-io
+  display_name: OpenColorIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-color-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-color-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/opencolorio/trends
+  maturity: adopted
+  repositories:
+  - name: OpenColorIO
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO
+  - name: OpenColorIO-Config-ACES
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES
+- name: open-cue
+  display_name: OpenCue
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-cue.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-cue.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/opencue/trends
+  maturity: adopted
+  repositories:
+  - name: OpenCue
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+  - name: opencue.io
+    url: https://github.com/AcademySoftwareFoundation/opencue.io
+- name: open-exr
+  display_name: OpenEXR
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-exr.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-exr.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openexr/trends
+  maturity: adopted
+  repositories:
+  - name: openexr
+    url: https://github.com/AcademySoftwareFoundation/openexr
+  - name: Imath
+    url: https://github.com/AcademySoftwareFoundation/Imath
+  - name: openexr-images
+    url: https://github.com/AcademySoftwareFoundation/openexr-images
+  - name: openexr-examples
+    url: https://github.com/AcademySoftwareFoundation/openexr-examples
+  - name: openexr-website
+    url: https://github.com/AcademySoftwareFoundation/openexr-website
+- name: open-vdb
+  display_name: OpenVDB
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-vdb.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-vdb.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openvdb/trends
+  maturity: adopted
+  repositories:
+  - name: openvdb
+    url: https://github.com/AcademySoftwareFoundation/openvdb
+  - name: openvdb-website
+    url: https://github.com/AcademySoftwareFoundation/openvdb-website
+- name: digital-production-example-library-dpel
+  display_name: Digital Production Example Library (DPEL)
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/digital-production-example-library-dpel.svg
+  logo_url_dark: https://landscape.aswf.io/logos/digital-production-example-library-dpel.svg
+  devstats_url: None
+  maturity: incubating
+  repositories:
+  - name: dpel-website
+    url: https://github.com/AcademySoftwareFoundation/dpel-website
+- name: material-x
+  display_name: MaterialX
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/material-x.svg
+  logo_url_dark: https://landscape.aswf.io/logos/material-x.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/materialx/trends
+  maturity: incubating
+  repositories:
+  - name: MaterialX
+    url: https://github.com/AcademySoftwareFoundation/MaterialX
+  - name: OpenPBR
+    url: https://github.com/AcademySoftwareFoundation/OpenPBR
+  - name: materialx-website
+    url: https://github.com/AcademySoftwareFoundation/materialx-website
+- name: open-fx
+  display_name: OpenFX
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-fx.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-fx.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openfx/trends
+  maturity: incubating
+  repositories:
+  - name: openfx
+    url: https://github.com/AcademySoftwareFoundation/openfx
+- name: open-image-io
+  display_name: OpenImageIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-image-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-image-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openexr/trends
+  maturity: incubating
+  repositories:
+  - name: oiio
+    url: https://github.com/OpenImageIO/oiio
+  - name: OpenImageIO-images
+    url: https://github.com/AcademySoftwareFoundation/OpenImageIO-images
+- name: open-timeline-io
+  display_name: OpenTimelineIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-timeline-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-timeline-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-timeline-io/trends
+  maturity: incubating
+  repositories:
+  - name: OpenTimelineIO
+    url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+- name: raw-to-aces-utility
+  display_name: RAW to ACES Utility
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/raw-to-aces-utility.svg
+  logo_url_dark: https://landscape.aswf.io/logos/raw-to-aces-utility.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/rawtoaces/trends
+  maturity: incubating
+  repositories:
+  - name: rawtoaces
+    url: https://github.com/AcademySoftwareFoundation/rawtoaces
+- name: rez
+  display_name: Rez
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/rez.svg
+  logo_url_dark: https://landscape.aswf.io/logos/rez.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/rez/trends
+  maturity: incubating
+  repositories:
+  - name: rez
+    url: https://github.com/AcademySoftwareFoundation/rez
+- name: open-review-initiative
+  display_name: Open Review Initiative
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-review-initiative.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-review-initiative.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openreviewio/trends
+  maturity: sandbox
+  repositories:
+  - name: ori-shared-platform
+    url: https://github.com/AcademySoftwareFoundation/ori-shared-platform
+  - name: OpenRV
+    url: https://github.com/AcademySoftwareFoundation/OpenRV
+  - name: EncodingGuidelines
+    url: https://github.com/AcademySoftwareFoundation/EncodingGuidelines
+  - name: xstudio
+    url: https://github.com/AcademySoftwareFoundation/xstudio
+- name: open-asset-io
+  display_name: OpenAssetIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-asset-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-asset-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openassetio/trends
+  maturity: sandbox
+  repositories:
+  - name: OpenAssetIO
+    url: https://github.com/OpenAssetIO/OpenAssetIO
+  - name: usdOpenAssetIOResolver
+    url: https://github.com/OpenAssetIO/usdOpenAssetIOResolver
+  - name: otio-openassetio
+    url: https://github.com/OpenAssetIO/otio-openassetio
+  - name: OpenAssetIO-MediaCreation
+    url: https://github.com/OpenAssetIO/OpenAssetIO-MediaCreation
+  - name: OpenAssetIO-WG
+    url: https://github.com/OpenAssetIO/OpenAssetIO-WG
+  - name: OpenAssetIO-Manager-BAL
+    url: https://github.com/OpenAssetIO/OpenAssetIO-Manager-BAL
+  - name: OpenAssetIO-TraitGen
+    url: https://github.com/OpenAssetIO/OpenAssetIO-TraitGen
+  - name: Template-OpenAssetIO-Manager-Python
+    url: https://github.com/OpenAssetIO/Template-OpenAssetIO-Manager-Python
+  - name: openassetio.github.io
+    url: https://github.com/OpenAssetIO/openassetio.github.io
+  - name: OpenAssetIO-Test-CMake
+    url: https://github.com/OpenAssetIO/OpenAssetIO-Test-CMake
+  - name: conan-center-index
+    url: https://github.com/OpenAssetIO/conan-center-index
+- name: ci-working-group
+  display_name: CI Working Group
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/ci-working-group.svg
+  logo_url_dark: https://landscape.aswf.io/logos/ci-working-group.svg
+  devstats_url: null
+  maturity: working-group
+  repositories:
+  - name: wg-ci
+    url: https://github.com/AcademySoftwareFoundation/wg-ci
+- name: working-group-for-rust-bindings
+  display_name: Working Group for Rust Bindings
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
+  logo_url_dark: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
+  devstats_url: null
+  maturity: working-group
+  repositories:
+  - name: organization
+    url: https://github.com/vfx-rs/organization
+  - name: cppmm
+    url: https://github.com/vfx-rs/cppmm
+  - name: usd-bind
+    url: https://github.com/vfx-rs/usd-bind
+  - name: babble
+    url: https://github.com/vfx-rs/babble
+  - name: openexr-bind
+    url: https://github.com/vfx-rs/openexr-bind
+  - name: openexr-rs
+    url: https://github.com/vfx-rs/openexr-rs
+  - name: oiio-bind
+    url: https://github.com/vfx-rs/oiio-bind
+  - name: opentimelineio-bind
+    url: https://github.com/vfx-rs/opentimelineio-bind
+  - name: meeting-minutes
+    url: https://github.com/vfx-rs/meeting-minutes
+  - name: ptex-bind
+    url: https://github.com/vfx-rs/ptex-bind
+  - name: template-project
+    url: https://github.com/vfx-rs/template-project
+  - name: usd-rs
+    url: https://github.com/vfx-rs/usd-rs
+  - name: ocio-bind
+    url: https://github.com/vfx-rs/ocio-bind
+  - name: imath-traits
+    url: https://github.com/vfx-rs/imath-traits
+  - name: rfcs
+    url: https://github.com/vfx-rs/rfcs
+  - name: openexr-core-rs
+    url: https://github.com/vfx-rs/openexr-core-rs
+  - name: arewevfxyet
+    url: https://github.com/vfx-rs/arewevfxyet
+  - name: openexr-sys
+    url: https://github.com/vfx-rs/openexr-sys
+  - name: cppmm-build
+    url: https://github.com/vfx-rs/cppmm-build
+  - name: cppmm-refptr
+    url: https://github.com/vfx-rs/cppmm-refptr

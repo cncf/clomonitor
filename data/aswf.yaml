@@ -1,0 +1,360 @@
+- name: open-shading-language-osl
+  display_name: Open Shading Language (OSL)
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-shading-language-osl.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-shading-language-osl.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-shading-language/trends
+  maturity: adopted
+  repositories:
+  - name: OpenShadingLanguage
+    url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+    exclude:
+    - clomonitor
+- name: open-color-io
+  display_name: OpenColorIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-color-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-color-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/opencolorio/trends
+  maturity: adopted
+  repositories:
+  - name: OpenColorIO
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO
+    exclude:
+    - clomonitor
+  - name: OpenColorIO-Config-ACES
+    url: https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES
+    exclude:
+    - clomonitor
+- name: open-cue
+  display_name: OpenCue
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-cue.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-cue.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/opencue/trends
+  maturity: adopted
+  repositories:
+  - name: OpenCue
+    url: https://github.com/AcademySoftwareFoundation/OpenCue
+    exclude:
+    - clomonitor
+  - name: opencue.io
+    url: https://github.com/AcademySoftwareFoundation/opencue.io
+    exclude:
+    - clomonitor
+- name: open-exr
+  display_name: OpenEXR
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-exr.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-exr.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openexr/trends
+  maturity: adopted
+  repositories:
+  - name: openexr
+    url: https://github.com/AcademySoftwareFoundation/openexr
+    exclude:
+    - clomonitor
+  - name: Imath
+    url: https://github.com/AcademySoftwareFoundation/Imath
+    exclude:
+    - clomonitor
+  - name: openexr-images
+    url: https://github.com/AcademySoftwareFoundation/openexr-images
+    exclude:
+    - clomonitor
+  - name: openexr-examples
+    url: https://github.com/AcademySoftwareFoundation/openexr-examples
+    exclude:
+    - clomonitor
+  - name: openexr-website
+    url: https://github.com/AcademySoftwareFoundation/openexr-website
+    exclude:
+    - clomonitor
+- name: open-vdb
+  display_name: OpenVDB
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-vdb.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-vdb.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openvdb/trends
+  maturity: adopted
+  repositories:
+  - name: openvdb
+    url: https://github.com/AcademySoftwareFoundation/openvdb
+    exclude:
+    - clomonitor
+  - name: openvdb-website
+    url: https://github.com/AcademySoftwareFoundation/openvdb-website
+    exclude:
+    - clomonitor
+- name: digital-production-example-library-dpel
+  display_name: Digital Production Example Library (DPEL)
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/digital-production-example-library-dpel.svg
+  logo_url_dark: https://landscape.aswf.io/logos/digital-production-example-library-dpel.svg
+  devstats_url: None
+  maturity: incubating
+  repositories:
+  - name: dpel-website
+    url: https://github.com/AcademySoftwareFoundation/dpel-website
+    exclude:
+    - clomonitor
+- name: material-x
+  display_name: MaterialX
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/material-x.svg
+  logo_url_dark: https://landscape.aswf.io/logos/material-x.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/materialx/trends
+  maturity: incubating
+  repositories:
+  - name: MaterialX
+    url: https://github.com/AcademySoftwareFoundation/MaterialX
+    exclude:
+    - clomonitor
+  - name: OpenPBR
+    url: https://github.com/AcademySoftwareFoundation/OpenPBR
+    exclude:
+    - clomonitor
+  - name: materialx-website
+    url: https://github.com/AcademySoftwareFoundation/materialx-website
+    exclude:
+    - clomonitor
+- name: open-fx
+  display_name: OpenFX
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-fx.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-fx.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openfx/trends
+  maturity: incubating
+  repositories:
+  - name: openfx
+    url: https://github.com/AcademySoftwareFoundation/openfx
+    exclude:
+    - clomonitor
+- name: open-image-io
+  display_name: OpenImageIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-image-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-image-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openexr/trends
+  maturity: incubating
+  repositories:
+  - name: oiio
+    url: https://github.com/OpenImageIO/oiio
+    exclude:
+    - clomonitor
+  - name: OpenImageIO-images
+    url: https://github.com/AcademySoftwareFoundation/OpenImageIO-images
+    exclude:
+    - clomonitor
+- name: open-timeline-io
+  display_name: OpenTimelineIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-timeline-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-timeline-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-timeline-io/trends
+  maturity: incubating
+  repositories:
+  - name: OpenTimelineIO
+    url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+    exclude:
+    - clomonitor
+- name: raw-to-aces-utility
+  display_name: RAW to ACES Utility
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/raw-to-aces-utility.svg
+  logo_url_dark: https://landscape.aswf.io/logos/raw-to-aces-utility.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/rawtoaces/trends
+  maturity: incubating
+  repositories:
+  - name: rawtoaces
+    url: https://github.com/AcademySoftwareFoundation/rawtoaces
+    exclude:
+    - clomonitor
+- name: rez
+  display_name: Rez
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/rez.svg
+  logo_url_dark: https://landscape.aswf.io/logos/rez.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/rez/trends
+  maturity: incubating
+  repositories:
+  - name: rez
+    url: https://github.com/AcademySoftwareFoundation/rez
+    exclude:
+    - clomonitor
+- name: open-review-initiative
+  display_name: Open Review Initiative
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-review-initiative.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-review-initiative.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openreviewio/trends
+  maturity: sandbox
+  repositories:
+  - name: ori-shared-platform
+    url: https://github.com/AcademySoftwareFoundation/ori-shared-platform
+    exclude:
+    - clomonitor
+  - name: OpenRV
+    url: https://github.com/AcademySoftwareFoundation/OpenRV
+    exclude:
+    - clomonitor
+  - name: EncodingGuidelines
+    url: https://github.com/AcademySoftwareFoundation/EncodingGuidelines
+    exclude:
+    - clomonitor
+  - name: xstudio
+    url: https://github.com/AcademySoftwareFoundation/xstudio
+    exclude:
+    - clomonitor
+- name: open-asset-io
+  display_name: OpenAssetIO
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/open-asset-io.svg
+  logo_url_dark: https://landscape.aswf.io/logos/open-asset-io.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/openassetio/trends
+  maturity: sandbox
+  repositories:
+  - name: OpenAssetIO
+    url: https://github.com/OpenAssetIO/OpenAssetIO
+    exclude:
+    - clomonitor
+  - name: usdOpenAssetIOResolver
+    url: https://github.com/OpenAssetIO/usdOpenAssetIOResolver
+    exclude:
+    - clomonitor
+  - name: otio-openassetio
+    url: https://github.com/OpenAssetIO/otio-openassetio
+    exclude:
+    - clomonitor
+  - name: OpenAssetIO-MediaCreation
+    url: https://github.com/OpenAssetIO/OpenAssetIO-MediaCreation
+    exclude:
+    - clomonitor
+  - name: OpenAssetIO-WG
+    url: https://github.com/OpenAssetIO/OpenAssetIO-WG
+    exclude:
+    - clomonitor
+  - name: OpenAssetIO-Manager-BAL
+    url: https://github.com/OpenAssetIO/OpenAssetIO-Manager-BAL
+    exclude:
+    - clomonitor
+  - name: OpenAssetIO-TraitGen
+    url: https://github.com/OpenAssetIO/OpenAssetIO-TraitGen
+    exclude:
+    - clomonitor
+  - name: Template-OpenAssetIO-Manager-Python
+    url: https://github.com/OpenAssetIO/Template-OpenAssetIO-Manager-Python
+    exclude:
+    - clomonitor
+  - name: openassetio.github.io
+    url: https://github.com/OpenAssetIO/openassetio.github.io
+    exclude:
+    - clomonitor
+  - name: OpenAssetIO-Test-CMake
+    url: https://github.com/OpenAssetIO/OpenAssetIO-Test-CMake
+    exclude:
+    - clomonitor
+  - name: conan-center-index
+    url: https://github.com/OpenAssetIO/conan-center-index
+    exclude:
+    - clomonitor
+- name: ci-working-group
+  display_name: CI Working Group
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/ci-working-group.svg
+  logo_url_dark: https://landscape.aswf.io/logos/ci-working-group.svg
+  devstats_url: null
+  maturity: working-group
+  repositories:
+  - name: wg-ci
+    url: https://github.com/AcademySoftwareFoundation/wg-ci
+    exclude:
+    - clomonitor
+- name: working-group-for-rust-bindings
+  display_name: Working Group for Rust Bindings
+  category: Visual Effects and Computer Graphics
+  logo_url: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
+  logo_url_dark: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
+  devstats_url: null
+  maturity: working-group
+  repositories:
+  - name: organization
+    url: https://github.com/vfx-rs/organization
+    exclude:
+    - clomonitor
+  - name: cppmm
+    url: https://github.com/vfx-rs/cppmm
+    exclude:
+    - clomonitor
+  - name: usd-bind
+    url: https://github.com/vfx-rs/usd-bind
+    exclude:
+    - clomonitor
+  - name: babble
+    url: https://github.com/vfx-rs/babble
+    exclude:
+    - clomonitor
+  - name: openexr-bind
+    url: https://github.com/vfx-rs/openexr-bind
+    exclude:
+    - clomonitor
+  - name: openexr-rs
+    url: https://github.com/vfx-rs/openexr-rs
+    exclude:
+    - clomonitor
+  - name: oiio-bind
+    url: https://github.com/vfx-rs/oiio-bind
+    exclude:
+    - clomonitor
+  - name: opentimelineio-bind
+    url: https://github.com/vfx-rs/opentimelineio-bind
+    exclude:
+    - clomonitor
+  - name: meeting-minutes
+    url: https://github.com/vfx-rs/meeting-minutes
+    exclude:
+    - clomonitor
+  - name: ptex-bind
+    url: https://github.com/vfx-rs/ptex-bind
+    exclude:
+    - clomonitor
+  - name: template-project
+    url: https://github.com/vfx-rs/template-project
+    exclude:
+    - clomonitor
+  - name: usd-rs
+    url: https://github.com/vfx-rs/usd-rs
+    exclude:
+    - clomonitor
+  - name: ocio-bind
+    url: https://github.com/vfx-rs/ocio-bind
+    exclude:
+    - clomonitor
+  - name: imath-traits
+    url: https://github.com/vfx-rs/imath-traits
+    exclude:
+    - clomonitor
+  - name: rfcs
+    url: https://github.com/vfx-rs/rfcs
+    exclude:
+    - clomonitor
+  - name: arewevfxyet
+    url: https://github.com/vfx-rs/arewevfxyet
+    exclude:
+    - clomonitor
+  - name: openexr-core-rs
+    url: https://github.com/vfx-rs/openexr-core-rs
+    exclude:
+    - clomonitor
+  - name: openexr-sys
+    url: https://github.com/vfx-rs/openexr-sys
+    exclude:
+    - clomonitor
+  - name: cppmm-build
+    url: https://github.com/vfx-rs/cppmm-build
+    exclude:
+    - clomonitor
+  - name: cppmm-refptr
+    url: https://github.com/vfx-rs/cppmm-refptr
+    exclude:
+    - clomonitor

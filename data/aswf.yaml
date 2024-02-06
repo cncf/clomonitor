@@ -8,6 +8,8 @@
   repositories:
   - name: OpenShadingLanguage
     url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+  exclude:
+  - clomonitor
 - name: open-color-io
   display_name: OpenColorIO
   category: Visual Effects and Computer Graphics
@@ -20,6 +22,8 @@
     url: https://github.com/AcademySoftwareFoundation/OpenColorIO
   - name: OpenColorIO-Config-ACES
     url: https://github.com/AcademySoftwareFoundation/OpenColorIO-Config-ACES
+  exclude:
+  - clomonitor
 - name: open-cue
   display_name: OpenCue
   category: Visual Effects and Computer Graphics
@@ -32,6 +36,8 @@
     url: https://github.com/AcademySoftwareFoundation/OpenCue
   - name: opencue.io
     url: https://github.com/AcademySoftwareFoundation/opencue.io
+  exclude:
+  - clomonitor
 - name: open-exr
   display_name: OpenEXR
   category: Visual Effects and Computer Graphics
@@ -50,6 +56,8 @@
     url: https://github.com/AcademySoftwareFoundation/openexr-examples
   - name: openexr-website
     url: https://github.com/AcademySoftwareFoundation/openexr-website
+  exclude:
+  - clomonitor
 - name: open-vdb
   display_name: OpenVDB
   category: Visual Effects and Computer Graphics
@@ -62,6 +70,8 @@
     url: https://github.com/AcademySoftwareFoundation/openvdb
   - name: openvdb-website
     url: https://github.com/AcademySoftwareFoundation/openvdb-website
+  exclude:
+  - clomonitor
 - name: digital-production-example-library-dpel
   display_name: Digital Production Example Library (DPEL)
   category: Visual Effects and Computer Graphics
@@ -72,6 +82,8 @@
   repositories:
   - name: dpel-website
     url: https://github.com/AcademySoftwareFoundation/dpel-website
+  exclude:
+  - clomonitor
 - name: material-x
   display_name: MaterialX
   category: Visual Effects and Computer Graphics
@@ -86,6 +98,8 @@
     url: https://github.com/AcademySoftwareFoundation/OpenPBR
   - name: materialx-website
     url: https://github.com/AcademySoftwareFoundation/materialx-website
+  exclude:
+  - clomonitor
 - name: open-fx
   display_name: OpenFX
   category: Visual Effects and Computer Graphics
@@ -96,6 +110,8 @@
   repositories:
   - name: openfx
     url: https://github.com/AcademySoftwareFoundation/openfx
+  exclude:
+  - clomonitor
 - name: open-image-io
   display_name: OpenImageIO
   category: Visual Effects and Computer Graphics
@@ -108,6 +124,8 @@
     url: https://github.com/OpenImageIO/oiio
   - name: OpenImageIO-images
     url: https://github.com/AcademySoftwareFoundation/OpenImageIO-images
+  exclude:
+  - clomonitor
 - name: open-timeline-io
   display_name: OpenTimelineIO
   category: Visual Effects and Computer Graphics
@@ -118,6 +136,8 @@
   repositories:
   - name: OpenTimelineIO
     url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+  exclude:
+  - clomonitor
 - name: raw-to-aces-utility
   display_name: RAW to ACES Utility
   category: Visual Effects and Computer Graphics
@@ -128,6 +148,8 @@
   repositories:
   - name: rawtoaces
     url: https://github.com/AcademySoftwareFoundation/rawtoaces
+  exclude:
+  - clomonitor
 - name: rez
   display_name: Rez
   category: Visual Effects and Computer Graphics
@@ -138,6 +160,8 @@
   repositories:
   - name: rez
     url: https://github.com/AcademySoftwareFoundation/rez
+  exclude:
+  - clomonitor
 - name: open-review-initiative
   display_name: Open Review Initiative
   category: Visual Effects and Computer Graphics
@@ -154,6 +178,8 @@
     url: https://github.com/AcademySoftwareFoundation/EncodingGuidelines
   - name: xstudio
     url: https://github.com/AcademySoftwareFoundation/xstudio
+  exclude:
+  - clomonitor
 - name: open-asset-io
   display_name: OpenAssetIO
   category: Visual Effects and Computer Graphics
@@ -184,6 +210,8 @@
     url: https://github.com/OpenAssetIO/OpenAssetIO-Test-CMake
   - name: conan-center-index
     url: https://github.com/OpenAssetIO/conan-center-index
+  exclude:
+  - clomonitor
 - name: ci-working-group
   display_name: CI Working Group
   category: Visual Effects and Computer Graphics
@@ -194,6 +222,8 @@
   repositories:
   - name: wg-ci
     url: https://github.com/AcademySoftwareFoundation/wg-ci
+  exclude:
+  - clomonitor
 - name: working-group-for-rust-bindings
   display_name: Working Group for Rust Bindings
   category: Visual Effects and Computer Graphics
@@ -232,13 +262,15 @@
     url: https://github.com/vfx-rs/imath-traits
   - name: rfcs
     url: https://github.com/vfx-rs/rfcs
-  - name: openexr-core-rs
-    url: https://github.com/vfx-rs/openexr-core-rs
   - name: arewevfxyet
     url: https://github.com/vfx-rs/arewevfxyet
+  - name: openexr-core-rs
+    url: https://github.com/vfx-rs/openexr-core-rs
   - name: openexr-sys
     url: https://github.com/vfx-rs/openexr-sys
   - name: cppmm-build
     url: https://github.com/vfx-rs/cppmm-build
   - name: cppmm-refptr
     url: https://github.com/vfx-rs/cppmm-refptr
+  exclude:
+  - clomonitor

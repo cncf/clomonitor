@@ -1,5 +1,7 @@
 - name: e-verest
   display_name: EVerest
+  description: e-mobility powered by open source with EVerest, the charge point operating
+    system
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/e-verest.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/e-verest.svg
@@ -144,6 +146,10 @@
     - clomonitor
 - name: grid-e-xchange-fabric
   display_name: Grid eXchange Fabric
+  description: Control and Monitor Smart Devices. Grid eXchange Fabric (GXF) allows
+    you to monitor and control hardware in the public space. With several (generic)
+    functions ready to use, the main benefits of GXF are scalability & high availability,
+    high security, its generic design, and no vendor lock-in.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/grid-e-xchange-fabric.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/grid-e-xchange-fabric.svg
@@ -204,6 +210,9 @@
     - clomonitor
 - name: operator-fabric
   display_name: OperatorFabric
+  description: A Smart Assistant For System Operators. OperatorFabric is a modular,
+    extensible, industrial-strength and field-tested platform for use in electricity,
+    water, and other utility operations.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/operator-fabric.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/operator-fabric.svg
@@ -236,6 +245,9 @@
     - clomonitor
 - name: pow-sy-bl
   display_name: PowSyBl
+  description: A High-Performance Computing Framework For Grid Simulation and Planning.
+    PowSyBl provides the code building blocks for the simulations and analyses of
+    power systems, for horizons from real-time operation to investment planning.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/pow-sy-bl.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/pow-sy-bl.svg
@@ -428,6 +440,11 @@
     - clomonitor
 - name: seapath
   display_name: SEAPATH
+  description: "SEAPATH, Software Enabled Automation Platform and Artifacts (THerein),\
+    \ aims at developing a \u201Creference design\u201D and \u201Cindustrial grade\u201D\
+    \ open source real-time platform that can run virtualized automation and protection\
+    \ applications (for the power grid industry in the first place and potentially\
+    \ beyond). This platform is intended to host multi-provider applications."
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/seapath.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/seapath.svg
@@ -520,6 +537,8 @@
     - clomonitor
 - name: sogno
   display_name: SOGNO
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/sogno.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/sogno.svg
@@ -656,6 +675,11 @@
     - clomonitor
 - name: co-mpas
   display_name: CoMPAS
+  description: Configuration Modules for Power industry Automation Systems. The CoMPAS
+    project was formed to develop open source software components related to IEC 61850
+    model implementation (profile management) and configuration of a power industry
+    Protection Automation and Control System (PACS). CoMPAS is part of the Digital
+    Substation (DSAS) Initiative.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/co-mpas.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/co-mpas.svg
@@ -752,6 +776,8 @@
     - clomonitor
 - name: dyna-o
   display_name: "Dyna\u03C9o"
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/dyna-o.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/dyna-o.svg
@@ -792,6 +818,8 @@
     - clomonitor
 - name: fledge-power
   display_name: FledgePOWER
+  description: FledgePower - Power systems protocols translation gateway based on
+    Fledge
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/fledge-power.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/fledge-power.svg
@@ -900,6 +928,8 @@
     - clomonitor
 - name: flex-measures
   display_name: FlexMeasures
+  description: A platform for building energy flexibility services with forecasting
+    and scheduling, written in Python & offering a USEF-conform API.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/flex-measures.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/flex-measures.svg
@@ -944,6 +974,9 @@
     - clomonitor
 - name: hyphae
   display_name: Hyphae
+  description: By providing an Autonomous Power Interchange System (APIS), Hyphae
+    automatically and efficiently distributes locally-produced renewable energy over
+    a DC grid
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/hyphae.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/hyphae.svg
@@ -1008,6 +1041,10 @@
     - clomonitor
 - name: open-e-emeter
   display_name: OpenEEmeter
+  description: Consistent treatment of energy meter data for demand flexibility. Generates
+    consistent and replicable results by always using the same methods to determine
+    changes in energy consumption-there are no discretionary independent variables
+    that change from calculation to calculation.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/open-e-emeter.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/open-e-emeter.svg
@@ -1028,6 +1065,7 @@
     - clomonitor
 - name: open-leadr
   display_name: openLEADR
+  description: A friendly and compliant OpenADR implementation for Python 3
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/open-leadr.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/open-leadr.svg
@@ -1048,6 +1086,7 @@
     - clomonitor
 - name: open-stef
   display_name: OpenSTEF
+  description: Open Short Term Energy Forecaster project
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/open-stef.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/open-stef.svg
@@ -1076,6 +1115,8 @@
     - clomonitor
 - name: shapeshifter
   display_name: Shapeshifter
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/shapeshifter.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/shapeshifter.svg
@@ -1108,6 +1149,8 @@
     - clomonitor
 - name: arras
   display_name: Arras
+  description: Arras is an open-source simulation and analysis tool that models emerging
+    smart grid energy technologies.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/arras.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/arras.svg
@@ -1172,6 +1215,8 @@
     - clomonitor
 - name: citrine-os
   display_name: CitrineOS
+  description: CitrineOS, the first open-source OCPP 2.0.1 CSMS (charging station
+    management software)
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/citrine-os.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/citrine-os.svg
@@ -1192,6 +1237,12 @@
     - clomonitor
 - name: grid-capacity-map
   display_name: Grid Capacity Map
+  description: A map that gives customers and stakeholders public information about
+    grid capacity and grid connection cost in different locations. The purpose is
+    to give early indication to customers that want to connect to the grid. The aim
+    is to ensure customer and stakeholders expectations on grid connections are realistic
+    to give a better connection experience with fewer surprises for both grid owner
+    (DSO/TSO), grid customers and other stakeholders.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/grid-capacity-map.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/grid-capacity-map.svg
@@ -1220,6 +1271,8 @@
     - clomonitor
 - name: open-geh
   display_name: OpenGEH
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/open-geh.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/open-geh.svg
@@ -1232,6 +1285,7 @@
     - clomonitor
 - name: power-grid-model
   display_name: Power Grid Model
+  description: Steady-state distribution power system analysis
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/power-grid-model.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/power-grid-model.svg
@@ -1276,6 +1330,8 @@
     - clomonitor
 - name: real-time-data-ingestion-platform-rtdip
   display_name: Real Time Data Ingestion Platform (RTDIP)
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
   category: Energy Systems
   logo_url: https://landscape.lfenergy.org/logos/real-time-data-ingestion-platform-rtdip.svg
   logo_url_dark: https://landscape.lfenergy.org/logos/real-time-data-ingestion-platform-rtdip.svg

@@ -1395,6 +1395,12 @@
         - code-lite
       exclude:
         - clomonitor
+    - name: knative-extensions/backstage-plugins
+      url: https://github.com/knative-extensions/backstage-plugins
+      check_sets:
+        - code-lite
+      exclude:
+        - clomonitor
 - name: krator
   display_name: Krator
   description: Kubernetes Rust State Machine Operator

@@ -1,0 +1,816 @@
+- name: cobol-programming-course
+  display_name: COBOL Programming Course
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/cobol-programming-course.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-programming-course.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/cobol-programming-course/trends
+  maturity: active
+  repositories:
+  - name: cobol-programming-course
+    url: https://github.com/openmainframeproject/cobol-programming-course
+    exclude:
+    - clomonitor
+- name: geneva-ers
+  display_name: GenevaERS
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/geneva-ers.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/geneva-ers.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/genevaers/trends
+  maturity: active
+  repositories:
+  - name: Community
+    url: https://github.com/genevaers/Community
+    exclude:
+    - clomonitor
+  - name: Workbench
+    url: https://github.com/genevaers/Workbench
+    exclude:
+    - clomonitor
+  - name: Research-And-Development
+    url: https://github.com/genevaers/Research-And-Development
+    exclude:
+    - clomonitor
+  - name: Utilities
+    url: https://github.com/genevaers/Utilities
+    exclude:
+    - clomonitor
+  - name: Demo
+    url: https://github.com/genevaers/Demo
+    exclude:
+    - clomonitor
+  - name: User-Documentation
+    url: https://github.com/genevaers/User-Documentation
+    exclude:
+    - clomonitor
+  - name: Resources
+    url: https://github.com/genevaers/Resources
+    exclude:
+    - clomonitor
+  - name: Performance-Engine
+    url: https://github.com/genevaers/Performance-Engine
+    exclude:
+    - clomonitor
+  - name: Run-Control-Utilities-and-Test-Framework
+    url: https://github.com/genevaers/Run-Control-Utilities-and-Test-Framework
+    exclude:
+    - clomonitor
+  - name: test
+    url: https://github.com/genevaers/test
+    exclude:
+    - clomonitor
+  - name: Markdown-Test
+    url: https://github.com/genevaers/Markdown-Test
+    exclude:
+    - clomonitor
+- name: open-mainframe-education
+  display_name: Open Mainframe Education
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/open-mainframe-education.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/open-mainframe-education.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/mainframe-open-education/trends
+  maturity: active
+  repositories:
+  - name: omp-education
+    url: https://github.com/openmainframeproject/omp-education
+    exclude:
+    - clomonitor
+- name: zowe
+  display_name: Zowe
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/zowe.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/zowe.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/zowe/trends
+  maturity: active
+  repositories:
+  - name: api-layer
+    url: https://github.com/zowe/api-layer
+    exclude:
+    - clomonitor
+  - name: vscode-extension-for-zowe
+    url: https://github.com/zowe/vscode-extension-for-zowe
+    exclude:
+    - clomonitor
+  - name: zowe-cli
+    url: https://github.com/zowe/zowe-cli
+    exclude:
+    - clomonitor
+  - name: sample-node-api
+    url: https://github.com/zowe/sample-node-api
+    exclude:
+    - clomonitor
+  - name: docs-site
+    url: https://github.com/zowe/docs-site
+    exclude:
+    - clomonitor
+  - name: jenkins-library
+    url: https://github.com/zowe/jenkins-library
+    exclude:
+    - clomonitor
+  - name: zlux
+    url: https://github.com/zowe/zlux
+    exclude:
+    - clomonitor
+  - name: sample-spring-boot-api-service
+    url: https://github.com/zowe/sample-spring-boot-api-service
+    exclude:
+    - clomonitor
+  - name: zowe-install-packaging
+    url: https://github.com/zowe/zowe-install-packaging
+    exclude:
+    - clomonitor
+  - name: imperative
+    url: https://github.com/zowe/imperative
+    exclude:
+    - clomonitor
+  - name: zowe-client-python-sdk
+    url: https://github.com/zowe/zowe-client-python-sdk
+    exclude:
+    - clomonitor
+  - name: tn3270-ng2
+    url: https://github.com/zowe/tn3270-ng2
+    exclude:
+    - clomonitor
+  - name: zowe-cli-sample-scripts
+    url: https://github.com/zowe/zowe-cli-sample-scripts
+    exclude:
+    - clomonitor
+  - name: zowe-cli-ftp-plugin
+    url: https://github.com/zowe/zowe-cli-ftp-plugin
+    exclude:
+    - clomonitor
+  - name: zac
+    url: https://github.com/zowe/zac
+    exclude:
+    - clomonitor
+  - name: zowe.github.io
+    url: https://github.com/zowe/zowe.github.io
+    exclude:
+    - clomonitor
+  - name: zowe-cli-sample-plugin
+    url: https://github.com/zowe/zowe-cli-sample-plugin
+    exclude:
+    - clomonitor
+  - name: zlux-app-server
+    url: https://github.com/zowe/zlux-app-server
+    exclude:
+    - clomonitor
+  - name: zss
+    url: https://github.com/zowe/zss
+    exclude:
+    - clomonitor
+  - name: zowe-common-c
+    url: https://github.com/zowe/zowe-common-c
+    exclude:
+    - clomonitor
+  - name: ims-operations-api
+    url: https://github.com/zowe/ims-operations-api
+    exclude:
+    - clomonitor
+  - name: zowe-on-the-go
+    url: https://github.com/zowe/zowe-on-the-go
+    exclude:
+    - clomonitor
+  - name: zlux-app-manager
+    url: https://github.com/zowe/zlux-app-manager
+    exclude:
+    - clomonitor
+  - name: zowe-cli-scs-plugin
+    url: https://github.com/zowe/zowe-cli-scs-plugin
+    exclude:
+    - clomonitor
+  - name: zowe-cli-cics-plugin
+    url: https://github.com/zowe/zowe-cli-cics-plugin
+    exclude:
+    - clomonitor
+  - name: data-sets
+    url: https://github.com/zowe/data-sets
+    exclude:
+    - clomonitor
+  - name: zowe-cli-tasks-plugin
+    url: https://github.com/zowe/zowe-cli-tasks-plugin
+    exclude:
+    - clomonitor
+  - name: workshop-user-browser-app
+    url: https://github.com/zowe/workshop-user-browser-app
+    exclude:
+    - clomonitor
+  - name: zlux-server-framework
+    url: https://github.com/zowe/zlux-server-framework
+    exclude:
+    - clomonitor
+  - name: zlux-editor
+    url: https://github.com/zowe/zlux-editor
+    exclude:
+    - clomonitor
+  - name: zowe-cli-db2-plugin
+    url: https://github.com/zowe/zowe-cli-db2-plugin
+    exclude:
+    - clomonitor
+  - name: perf-timing
+    url: https://github.com/zowe/perf-timing
+    exclude:
+    - clomonitor
+  - name: zowe-cli-zos-make-plugin
+    url: https://github.com/zowe/zowe-cli-zos-make-plugin
+    exclude:
+    - clomonitor
+  - name: zowe-install-test
+    url: https://github.com/zowe/zowe-install-test
+    exclude:
+    - clomonitor
+  - name: explorer-api-common
+    url: https://github.com/zowe/explorer-api-common
+    exclude:
+    - clomonitor
+  - name: jenkins-slave-images
+    url: https://github.com/zowe/jenkins-slave-images
+    exclude:
+    - clomonitor
+  - name: zowe-cli-standalone-package
+    url: https://github.com/zowe/zowe-cli-standalone-package
+    exclude:
+    - clomonitor
+  - name: cpu_usage_sample
+    url: https://github.com/zowe/cpu_usage_sample
+    exclude:
+    - clomonitor
+  - name: zowe-smpe-packaging
+    url: https://github.com/zowe/zowe-smpe-packaging
+    exclude:
+    - clomonitor
+  - name: zowe-cli-mq-plugin
+    url: https://github.com/zowe/zowe-cli-mq-plugin
+    exclude:
+    - clomonitor
+  - name: sample-angular-app
+    url: https://github.com/zowe/sample-angular-app
+    exclude:
+    - clomonitor
+  - name: zlux-build
+    url: https://github.com/zowe/zlux-build
+    exclude:
+    - clomonitor
+  - name: jobs
+    url: https://github.com/zowe/jobs
+    exclude:
+    - clomonitor
+  - name: spring-boot-jzos-sample
+    url: https://github.com/zowe/spring-boot-jzos-sample
+    exclude:
+    - clomonitor
+  - name: zowe-cli-version-controller
+    url: https://github.com/zowe/zowe-cli-version-controller
+    exclude:
+    - clomonitor
+  - name: sample-trial-app
+    url: https://github.com/zowe/sample-trial-app
+    exclude:
+    - clomonitor
+  - name: zowe-dependency-scan-pipeline
+    url: https://github.com/zowe/zowe-dependency-scan-pipeline
+    exclude:
+    - clomonitor
+  - name: zowe-dockerfiles
+    url: https://github.com/zowe/zowe-dockerfiles
+    exclude:
+    - clomonitor
+  - name: explorer-server
+    url: https://github.com/zowe/explorer-server
+    exclude:
+    - clomonitor
+  - name: explorer-jes
+    url: https://github.com/zowe/explorer-jes
+    exclude:
+    - clomonitor
+  - name: vt-ng2
+    url: https://github.com/zowe/vt-ng2
+    exclude:
+    - clomonitor
+  - name: zlux-platform
+    url: https://github.com/zowe/zlux-platform
+    exclude:
+    - clomonitor
+  - name: zlux-shared
+    url: https://github.com/zowe/zlux-shared
+    exclude:
+    - clomonitor
+  - name: zss-auth
+    url: https://github.com/zowe/zss-auth
+    exclude:
+    - clomonitor
+  - name: zowe-promote-publish
+    url: https://github.com/zowe/zowe-promote-publish
+    exclude:
+    - clomonitor
+  - name: explorer-injector
+    url: https://github.com/zowe/explorer-injector
+    exclude:
+    - clomonitor
+  - name: jupyter-app
+    url: https://github.com/zowe/jupyter-app
+    exclude:
+    - clomonitor
+  - name: jenkins-library-fvt-gradle
+    url: https://github.com/zowe/jenkins-library-fvt-gradle
+    exclude:
+    - clomonitor
+  - name: keyring-utilities
+    url: https://github.com/zowe/keyring-utilities
+    exclude:
+    - clomonitor
+  - name: release-management
+    url: https://github.com/zowe/release-management
+    exclude:
+    - clomonitor
+  - name: explorer-model
+    url: https://github.com/zowe/explorer-model
+    exclude:
+    - clomonitor
+  - name: explorer-server-tests
+    url: https://github.com/zowe/explorer-server-tests
+    exclude:
+    - clomonitor
+  - name: explorer-utilities
+    url: https://github.com/zowe/explorer-utilities
+    exclude:
+    - clomonitor
+  - name: explorer-mvs
+    url: https://github.com/zowe/explorer-mvs
+    exclude:
+    - clomonitor
+  - name: explorer-server-auth
+    url: https://github.com/zowe/explorer-server-auth
+    exclude:
+    - clomonitor
+  - name: explorer-uss
+    url: https://github.com/zowe/explorer-uss
+    exclude:
+    - clomonitor
+  - name: orion-editor-component
+    url: https://github.com/zowe/orion-editor-component
+    exclude:
+    - clomonitor
+  - name: sample-iframe-app
+    url: https://github.com/zowe/sample-iframe-app
+    exclude:
+    - clomonitor
+  - name: workshop-starter-app
+    url: https://github.com/zowe/workshop-starter-app
+    exclude:
+    - clomonitor
+  - name: zlux-charts
+    url: https://github.com/zowe/zlux-charts
+    exclude:
+    - clomonitor
+  - name: zlux-file-explorer
+    url: https://github.com/zowe/zlux-file-explorer
+    exclude:
+    - clomonitor
+  - name: zlux-file-properties
+    url: https://github.com/zowe/zlux-file-properties
+    exclude:
+    - clomonitor
+  - name: zlux-grid
+    url: https://github.com/zowe/zlux-grid
+    exclude:
+    - clomonitor
+  - name: zlux-ng2
+    url: https://github.com/zowe/zlux-ng2
+    exclude:
+    - clomonitor
+  - name: zlux-widgets
+    url: https://github.com/zowe/zlux-widgets
+    exclude:
+    - clomonitor
+  - name: zlux-workflow
+    url: https://github.com/zowe/zlux-workflow
+    exclude:
+    - clomonitor
+  - name: zos-subsystems
+    url: https://github.com/zowe/zos-subsystems
+    exclude:
+    - clomonitor
+  - name: zosmf-auth
+    url: https://github.com/zowe/zosmf-auth
+    exclude:
+    - clomonitor
+  - name: webui-scenarios
+    url: https://github.com/zowe/webui-scenarios
+    exclude:
+    - clomonitor
+  - name: sample-react-app
+    url: https://github.com/zowe/sample-react-app
+    exclude:
+    - clomonitor
+  - name: blog
+    url: https://github.com/zowe/blog
+    exclude:
+    - clomonitor
+  - name: explorer-wlp-packaging
+    url: https://github.com/zowe/explorer-wlp-packaging
+    exclude:
+    - clomonitor
+  - name: zowe-cli-profile-migration
+    url: https://github.com/zowe/zowe-cli-profile-migration
+    exclude:
+    - clomonitor
+  - name: db-browser
+    url: https://github.com/zowe/db-browser
+    exclude:
+    - clomonitor
+  - name: db-browser-db2
+    url: https://github.com/zowe/db-browser-db2
+    exclude:
+    - clomonitor
+  - name: Onboarding-scripts
+    url: https://github.com/zowe/Onboarding-scripts
+    exclude:
+    - clomonitor
+  - name: explorer-jes-fvt
+    url: https://github.com/zowe/explorer-jes-fvt
+    exclude:
+    - clomonitor
+  - name: explorer-ui-server
+    url: https://github.com/zowe/explorer-ui-server
+    exclude:
+    - clomonitor
+  - name: ztrial-sample-cli-plugin
+    url: https://github.com/zowe/ztrial-sample-cli-plugin
+    exclude:
+    - clomonitor
+  - name: vscode-uss-extension-for-zowe
+    url: https://github.com/zowe/vscode-uss-extension-for-zowe
+    exclude:
+    - clomonitor
+  - name: jenkins-library-fvt-nodejs
+    url: https://github.com/zowe/jenkins-library-fvt-nodejs
+    exclude:
+    - clomonitor
+  - name: zowe-cli-ims-plugin
+    url: https://github.com/zowe/zowe-cli-ims-plugin
+    exclude:
+    - clomonitor
+  - name: ci-management
+    url: https://github.com/zowe/ci-management
+    exclude:
+    - clomonitor
+  - name: vtl-cli
+    url: https://github.com/zowe/vtl-cli
+    exclude:
+    - clomonitor
+  - name: explorer-fvt-utilities
+    url: https://github.com/zowe/explorer-fvt-utilities
+    exclude:
+    - clomonitor
+  - name: apiml-legacy-samples
+    url: https://github.com/zowe/apiml-legacy-samples
+    exclude:
+    - clomonitor
+- name: ambitus
+  display_name: Ambitus
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/ambitus.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/ambitus.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/ambitus/trends
+  maturity: incubating
+  repositories:
+  - name: ambitus
+    url: https://github.com/ambitus/ambitus
+    exclude:
+    - clomonitor
+  - name: pyzkiln
+    url: https://github.com/ambitus/pyzkiln
+    exclude:
+    - clomonitor
+  - name: zml
+    url: https://github.com/ambitus/zml
+    exclude:
+    - clomonitor
+  - name: linux-containers
+    url: https://github.com/ambitus/linux-containers
+    exclude:
+    - clomonitor
+  - name: cbexplorer
+    url: https://github.com/ambitus/cbexplorer
+    exclude:
+    - clomonitor
+  - name: glibc
+    url: https://github.com/ambitus/glibc
+    exclude:
+    - clomonitor
+  - name: sustainability-grafana-dashboard
+    url: https://github.com/ambitus/sustainability-grafana-dashboard
+    exclude:
+    - clomonitor
+  - name: gcc
+    url: https://github.com/ambitus/gcc
+    exclude:
+    - clomonitor
+  - name: zTron
+    url: https://github.com/ambitus/zTron
+    exclude:
+    - clomonitor
+  - name: zos-native
+    url: https://github.com/ambitus/zos-native
+    exclude:
+    - clomonitor
+  - name: binutils
+    url: https://github.com/ambitus/binutils
+    exclude:
+    - clomonitor
+  - name: artifactory-vault
+    url: https://github.com/ambitus/artifactory-vault
+    exclude:
+    - clomonitor
+  - name: zoau-samples
+    url: https://github.com/ambitus/zoau-samples
+    exclude:
+    - clomonitor
+- name: cobol-check
+  display_name: COBOL Check
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/cobol-check.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-check.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/cobol-check/trends
+  maturity: incubating
+  repositories:
+  - name: cobol-check
+    url: https://github.com/openmainframeproject/cobol-check
+    exclude:
+    - clomonitor
+- name: feilong
+  display_name: Feilong
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/feilong.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/feilong.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/feilong/trends
+  maturity: incubating
+  repositories:
+  - name: feilong
+    url: https://github.com/openmainframeproject/feilong
+    exclude:
+    - clomonitor
+- name: galasa
+  display_name: galasa
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/galasa.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/galasa.svg
+  devstats_url: null
+  maturity: incubating
+  repositories:
+  - name: framework
+    url: https://github.com/galasa-dev/framework
+    exclude:
+    - clomonitor
+  - name: galasa.dev
+    url: https://github.com/galasa-dev/galasa.dev
+    exclude:
+    - clomonitor
+  - name: managers
+    url: https://github.com/galasa-dev/managers
+    exclude:
+    - clomonitor
+  - name: projectmanagement
+    url: https://github.com/galasa-dev/projectmanagement
+    exclude:
+    - clomonitor
+  - name: simplatform
+    url: https://github.com/galasa-dev/simplatform
+    exclude:
+    - clomonitor
+  - name: extensions
+    url: https://github.com/galasa-dev/extensions
+    exclude:
+    - clomonitor
+  - name: eclipse
+    url: https://github.com/galasa-dev/eclipse
+    exclude:
+    - clomonitor
+  - name: playground
+    url: https://github.com/galasa-dev/playground
+    exclude:
+    - clomonitor
+  - name: maven
+    url: https://github.com/galasa-dev/maven
+    exclude:
+    - clomonitor
+  - name: integratedtests
+    url: https://github.com/galasa-dev/integratedtests
+    exclude:
+    - clomonitor
+  - name: wrapping
+    url: https://github.com/galasa-dev/wrapping
+    exclude:
+    - clomonitor
+  - name: gradle
+    url: https://github.com/galasa-dev/gradle
+    exclude:
+    - clomonitor
+  - name: obr
+    url: https://github.com/galasa-dev/obr
+    exclude:
+    - clomonitor
+  - name: isolated
+    url: https://github.com/galasa-dev/isolated
+    exclude:
+    - clomonitor
+  - name: cli
+    url: https://github.com/galasa-dev/cli
+    exclude:
+    - clomonitor
+  - name: githubapp-copyright
+    url: https://github.com/galasa-dev/githubapp-copyright
+    exclude:
+    - clomonitor
+  - name: buildutils
+    url: https://github.com/galasa-dev/buildutils
+    exclude:
+    - clomonitor
+  - name: argocd-ibmcloud
+    url: https://github.com/galasa-dev/argocd-ibmcloud
+    exclude:
+    - clomonitor
+  - name: helm
+    url: https://github.com/galasa-dev/helm
+    exclude:
+    - clomonitor
+  - name: test-release
+    url: https://github.com/galasa-dev/test-release
+    exclude:
+    - clomonitor
+  - name: automation
+    url: https://github.com/galasa-dev/automation
+    exclude:
+    - clomonitor
+  - name: webui
+    url: https://github.com/galasa-dev/webui
+    exclude:
+    - clomonitor
+  - name: TSC
+    url: https://github.com/galasa-dev/TSC
+    exclude:
+    - clomonitor
+- name: software-discovery-tool
+  display_name: Software Discovery Tool
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/software-discovery-tool.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/software-discovery-tool.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/software-discovery-tool/trends
+  maturity: incubating
+  repositories:
+  - name: software-discovery-tool
+    url: https://github.com/openmainframeproject/software-discovery-tool
+    exclude:
+    - clomonitor
+- name: tessia
+  display_name: tessia
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/tessia.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/tessia.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/tessia/trends
+  maturity: incubating
+  repositories:
+  - name: tessia
+    url: https://github.com/tessia-project/tessia
+    exclude:
+    - clomonitor
+  - name: tessia-baselib
+    url: https://github.com/tessia-project/tessia-baselib
+    exclude:
+    - clomonitor
+  - name: tessia-mesh
+    url: https://github.com/tessia-project/tessia-mesh
+    exclude:
+    - clomonitor
+- name: terse-decompress
+  display_name: TerseDecompress
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/terse-decompress.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/terse-decompress.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/tersedecompress/trends
+  maturity: sandbox
+  repositories:
+  - name: tersedecompress
+    url: https://github.com/openmainframeproject/tersedecompress
+    exclude:
+    - clomonitor
+  - name: tersedecompress-testdata
+    url: https://github.com/openmainframeproject/tersedecompress-testdata
+    exclude:
+    - clomonitor
+- name: ts-term
+  display_name: TSTerm
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/ts-term.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/ts-term.svg
+  devstats_url: none
+  maturity: sandbox
+  repositories:
+  - name: TSTerm
+    url: https://github.com/TSTerminal/TSTerm
+    exclude:
+    - clomonitor
+  - name: TSTerm4Zowe
+    url: https://github.com/TSTerminal/TSTerm4Zowe
+    exclude:
+    - clomonitor
+  - name: tspackager
+    url: https://github.com/TSTerminal/tspackager
+    exclude:
+    - clomonitor
+- name: z-vm-community-tools
+  display_name: z/VM Community Tools
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
+  devstats_url: none
+  maturity: sandbox
+  repositories:
+  - name: zvm-community-tools
+    url: https://github.com/openmainframeproject/zvm-community-tools
+    exclude:
+    - clomonitor
+- name: cobol-working-group
+  display_name: COBOL Working Group
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/cobol-working-group.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-working-group.svg
+  devstats_url: none
+  maturity: working-group
+  repositories:
+  - name: wg-cobol
+    url: https://github.com/openmainframeproject/wg-cobol
+    exclude:
+    - clomonitor
+- name: ade
+  display_name: ADE
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/ade.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/ade.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/ade/trends
+  maturity: emeritus
+  repositories:
+  - name: ade
+    url: https://github.com/openmainframeproject/ade
+    exclude:
+    - clomonitor
+- name: atom-language-syntax-highlighting-for-z-vm
+  display_name: Atom language syntax highlighting for z/VM
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/atom-language-syntax-highlighting-for-z-vm.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/atom-language-syntax-highlighting-for-z-vm.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/atom/trends
+  maturity: emeritus
+  repositories:
+  - name: atompkg-languages-zvm
+    url: https://github.com/openmainframeproject/atompkg-languages-zvm
+    exclude:
+    - clomonitor
+- name: console-z
+  display_name: ConsoleZ
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/console-z.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/console-z.svg
+  devstats_url: none
+  maturity: emeritus
+  repositories:
+  - name: consolez
+    url: https://github.com/openmainframeproject/consolez
+    exclude:
+    - clomonitor
+- name: open-z-os-enablement-working-group
+  display_name: Open z/OS Enablement Working Group
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/open-z-os-enablement-working-group.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/open-z-os-enablement-working-group.svg
+  devstats_url: null
+  maturity: emeritus
+  repositories:
+  - name: wg-open-zos-enablement
+    url: https://github.com/openmainframeproject/wg-open-zos-enablement
+    exclude:
+    - clomonitor
+- name: polycephaly
+  display_name: Polycephaly
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/polycephaly.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/polycephaly.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/polycephaly/trends
+  maturity: emeritus
+  repositories:
+  - name: polycephaly
+    url: https://github.com/openmainframeproject/polycephaly
+    exclude:
+    - clomonitor
+- name: zorow
+  display_name: Zorow
+  category: Mainframe
+  logo_url: https://landscape.openmainframeproject.org/logos/zorow.svg
+  logo_url_dark: https://landscape.openmainframeproject.org/logos/zorow.svg
+  devstats_url: https://insights-v2.lfx.linuxfoundation.org/zorow/trends
+  maturity: emeritus
+  repositories:
+  - name: zorow
+    url: https://github.com/openmainframeproject/zorow
+    exclude:
+    - clomonitor

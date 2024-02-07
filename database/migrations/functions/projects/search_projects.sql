@@ -68,7 +68,7 @@ begin
             p.foundation_id = any(v_foundation) else true end
         and
             case when cardinality(v_maturity) > 0 then
-            p.maturity::text = any(v_maturity) else true end
+            p.maturity = any(v_maturity) else true end
         and
             case when cardinality(v_rating) > 0 then
             p.rating = any(v_rating) else true end

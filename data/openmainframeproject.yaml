@@ -1,5 +1,7 @@
 - name: cobol-programming-course
   display_name: COBOL Programming Course
+  description: Training materials and labs for a "Getting Started" level course on
+    COBOL
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/cobol-programming-course.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-programming-course.svg
@@ -12,6 +14,7 @@
     - clomonitor
 - name: geneva-ers
   display_name: GenevaERS
+  description: GenevaERS is the single pass optimization scan engine
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/geneva-ers.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/geneva-ers.svg
@@ -64,6 +67,7 @@
     - clomonitor
 - name: open-mainframe-education
   display_name: Open Mainframe Education
+  description: Official repository for the Mainframe Open Education project
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/open-mainframe-education.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/open-mainframe-education.svg
@@ -76,6 +80,8 @@
     - clomonitor
 - name: zowe
   display_name: Zowe
+  description: Zowe is an open source framework for leveraging data and applications
+    in z/OS from modern applications and tools.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/zowe.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/zowe.svg
@@ -468,6 +474,8 @@
     - clomonitor
 - name: ambitus
   display_name: Ambitus
+  description: Ambitus project, hosted by the Open Mainframe Project at the Linux
+    Foundation
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/ambitus.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/ambitus.svg
@@ -528,6 +536,7 @@
     - clomonitor
 - name: cobol-check
   display_name: COBOL Check
+  description: A testing framework for Cobol applications
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/cobol-check.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-check.svg
@@ -540,6 +549,10 @@
     - clomonitor
 - name: feilong
   display_name: Feilong
+  description: Feilong is a open source z/VM cloud connector project under the Open
+    Mainframe Project umbrella that will accelerate the z/VM adoption, extending its
+    ecosystem and its user experience. It provides a set of APIs to operate z/VM including
+    guest, image, network, volume etc.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/feilong.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/feilong.svg
@@ -552,6 +565,8 @@
     - clomonitor
 - name: galasa
   display_name: galasa
+  description: 'Galasa is an open source deep integration test framework, To learn
+    more, take a look at https://galasa.dev '
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/galasa.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/galasa.svg
@@ -652,6 +667,7 @@
     - clomonitor
 - name: software-discovery-tool
   display_name: Software Discovery Tool
+  description: Software Discovery Tool
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/software-discovery-tool.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/software-discovery-tool.svg
@@ -664,6 +680,8 @@
     - clomonitor
 - name: tessia
   display_name: tessia
+  description: A tool to automate and simplify the installation/configuration/testing
+    of Linux systems running on the IBM Z platform
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/tessia.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/tessia.svg
@@ -684,6 +702,9 @@
     - clomonitor
 - name: terse-decompress
   display_name: TerseDecompress
+  description: TerseDecompress is a java program that can be used to decompress files
+    which have been previously compressed on an IBM Mainframe using the TERSE / AMATERSE
+    program (on IBM z/OS or IBM z/VM).
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/terse-decompress.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/terse-decompress.svg
@@ -700,6 +721,8 @@
     - clomonitor
 - name: ts-term
   display_name: TSTerm
+  description: The Open Mainframe Project intends to increase collaboration across
+    the mainframe community and to developed shared tool sets and resources.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/ts-term.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/ts-term.svg
@@ -720,6 +743,8 @@
     - clomonitor
 - name: z-vm-community-tools
   display_name: z/VM Community Tools
+  description: The Open Mainframe Project intends to increase collaboration across
+    the mainframe community and to developed shared tool sets and resources.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
@@ -732,6 +757,9 @@
     - clomonitor
 - name: cobol-working-group
   display_name: COBOL Working Group
+  description: The COBOL Working Group aims to promote the language by changing its
+    perception and making materials more accessible to help more developers and students
+    learn it on their mainframe journey.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/cobol-working-group.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/cobol-working-group.svg
@@ -744,6 +772,8 @@
     - clomonitor
 - name: ade
   display_name: ADE
+  description: 'ADE detects anomalous time slices and messages in Linux logs (either
+    RFC3164 or RFC5424 format) using statistical learning. '
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/ade.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/ade.svg
@@ -756,6 +786,8 @@
     - clomonitor
 - name: atom-language-syntax-highlighting-for-z-vm
   display_name: Atom language syntax highlighting for z/VM
+  description: Atom editor package that adds language syntax highlighting for z/VM
+    assembler language files.
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/atom-language-syntax-highlighting-for-z-vm.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/atom-language-syntax-highlighting-for-z-vm.svg
@@ -768,6 +800,8 @@
     - clomonitor
 - name: console-z
   display_name: ConsoleZ
+  description: 'consolez is a Web UI that works with z/VM console files and CP commands.
+    NOTICE: This project is in Emertius and no longer maintained.'
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/console-z.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/console-z.svg
@@ -780,6 +814,7 @@
     - clomonitor
 - name: open-z-os-enablement-working-group
   display_name: Open z/OS Enablement Working Group
+  description: Public Cloud z/OS enablement working group
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/open-z-os-enablement-working-group.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/open-z-os-enablement-working-group.svg
@@ -792,6 +827,7 @@
     - clomonitor
 - name: polycephaly
   display_name: Polycephaly
+  description: Groovy code to build z/OS source code files with Jenkins and Git
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/polycephaly.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/polycephaly.svg
@@ -804,6 +840,9 @@
     - clomonitor
 - name: zorow
   display_name: Zorow
+  description: z/OS Open Repository of Workflows (zorow), is an open source community
+    dedicated to contributing and collaborating on z/OSMF workflows. Hosted by Open
+    Mainframe Project
   category: Mainframe
   logo_url: https://landscape.openmainframeproject.org/logos/zorow.svg
   logo_url_dark: https://landscape.openmainframeproject.org/logos/zorow.svg

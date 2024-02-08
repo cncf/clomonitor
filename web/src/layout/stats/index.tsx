@@ -716,6 +716,7 @@ const StatsView = () => {
                 <option value="">All</option>
                 {Object.keys(FOUNDATIONS).map((f: string) => {
                   const fData = FOUNDATIONS[f as Foundation];
+                  if (isUndefined(fData)) return null;
                   return (
                     <option key={`f_${f}`} value={f}>
                       {fData.name}

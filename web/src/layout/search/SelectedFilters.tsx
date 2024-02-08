@@ -22,7 +22,8 @@ const SelectedFilters = (props: Props) => {
   const getFilterName = (type: FilterKind, filter: string): string => {
     switch (type) {
       case FilterKind.Foundation:
-        return FOUNDATIONS[filter as Foundation].name;
+        const name = !isUndefined(FOUNDATIONS[filter as Foundation]) ? FOUNDATIONS[filter as Foundation]!.name : filter;
+        return name;
 
       case FilterKind.Maturity:
         return filter;

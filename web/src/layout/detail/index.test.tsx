@@ -98,7 +98,7 @@ describe('Project detail index', () => {
           'Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.'
         )
       ).toBeInTheDocument();
-      expect(screen.getByText('sandbox')).toBeInTheDocument();
+      expect(screen.getByText('Sandbox')).toBeInTheDocument();
       expect(screen.getByText('app definition')).toBeInTheDocument();
       expect(screen.getByText('CNCF')).toBeInTheDocument();
       expect(await screen.findByRole('link', { name: 'Repository link' })).toBeInTheDocument();

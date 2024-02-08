@@ -83,7 +83,7 @@ describe('Card', () => {
 
       expect(screen.getByText('Artifact Hub')).toBeInTheDocument();
       expect(screen.getByTestId('maturity-badge')).toBeInTheDocument();
-      expect(screen.getByText('sandbox')).toBeInTheDocument();
+      expect(screen.getByText('Sandbox')).toBeInTheDocument();
       expect(screen.getByTestId('foundation-badge')).toBeInTheDocument();
       expect(screen.getByText('CNCF')).toBeInTheDocument();
 

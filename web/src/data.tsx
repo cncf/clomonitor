@@ -505,7 +505,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
   },
 };
 
-export const FOUNDATIONS = {
+export const FOUNDATIONS: FoundationInfo = {
   [Foundation.cdf]: {
     name: 'CDF',
   },
@@ -515,6 +515,12 @@ export const FOUNDATIONS = {
   [Foundation.lfaidata]: {
     name: 'LF AI & Data',
   },
+};
+
+export type FoundationInfo = {
+  [key in Foundation]?: {
+    name: string;
+  };
 };
 
 export const CHECKS_PER_CATEGORY: ChecksPerCategory = {

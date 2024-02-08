@@ -14,6 +14,6 @@ returns real as $$
         p.foundation_id = p_foundation else true end
     and
         case when p_maturity is not null then
-            p.maturity::text = p_maturity
+            p.maturity = p_maturity
         else true end;
 $$ language sql;

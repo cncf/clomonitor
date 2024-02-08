@@ -54,7 +54,7 @@ impl DB for PgDB {
                     r.updated_at,
                     p.name as project_name,
                     p.accepted_at as project_accepted_at,
-                    p.maturity::text as project_maturity,
+                    p.maturity as project_maturity,
                     f.foundation_id,
                     f.landscape_url as foundation_landscape_url
                 from repository r

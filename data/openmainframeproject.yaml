@@ -37,32 +37,32 @@
     url: https://github.com/genevaers/Utilities
     exclude:
     - clomonitor
-  - name: Demo
-    url: https://github.com/genevaers/Demo
-    exclude:
-    - clomonitor
   - name: User-Documentation
     url: https://github.com/genevaers/User-Documentation
-    exclude:
-    - clomonitor
-  - name: Resources
-    url: https://github.com/genevaers/Resources
     exclude:
     - clomonitor
   - name: Performance-Engine
     url: https://github.com/genevaers/Performance-Engine
     exclude:
     - clomonitor
-  - name: Run-Control-Utilities-and-Test-Framework
-    url: https://github.com/genevaers/Run-Control-Utilities-and-Test-Framework
+  - name: Demo
+    url: https://github.com/genevaers/Demo
     exclude:
     - clomonitor
-  - name: test
-    url: https://github.com/genevaers/test
+  - name: Run-Control-Apps
+    url: https://github.com/genevaers/Run-Control-Apps
     exclude:
     - clomonitor
   - name: Markdown-Test
     url: https://github.com/genevaers/Markdown-Test
+    exclude:
+    - clomonitor
+  - name: Grammar
+    url: https://github.com/genevaers/Grammar
+    exclude:
+    - clomonitor
+  - name: Performance-Engine-Extensions
+    url: https://github.com/genevaers/Performance-Engine-Extensions
     exclude:
     - clomonitor
 - name: open-mainframe-education
@@ -112,8 +112,16 @@
     url: https://github.com/zowe/jenkins-library
     exclude:
     - clomonitor
+  - name: community
+    url: https://github.com/zowe/community
+    exclude:
+    - clomonitor
   - name: zlux
     url: https://github.com/zowe/zlux
+    exclude:
+    - clomonitor
+  - name: zowe-client-python-sdk
+    url: https://github.com/zowe/zowe-client-python-sdk
     exclude:
     - clomonitor
   - name: sample-spring-boot-api-service
@@ -126,10 +134,6 @@
     - clomonitor
   - name: imperative
     url: https://github.com/zowe/imperative
-    exclude:
-    - clomonitor
-  - name: zowe-client-python-sdk
-    url: https://github.com/zowe/zowe-client-python-sdk
     exclude:
     - clomonitor
   - name: tn3270-ng2
@@ -152,10 +156,6 @@
     url: https://github.com/zowe/zowe.github.io
     exclude:
     - clomonitor
-  - name: zowe-cli-sample-plugin
-    url: https://github.com/zowe/zowe-cli-sample-plugin
-    exclude:
-    - clomonitor
   - name: zlux-app-server
     url: https://github.com/zowe/zlux-app-server
     exclude:
@@ -168,24 +168,36 @@
     url: https://github.com/zowe/zowe-common-c
     exclude:
     - clomonitor
-  - name: ims-operations-api
-    url: https://github.com/zowe/ims-operations-api
+  - name: zowe-cli-sample-plugin
+    url: https://github.com/zowe/zowe-cli-sample-plugin
     exclude:
     - clomonitor
-  - name: zowe-on-the-go
-    url: https://github.com/zowe/zowe-on-the-go
+  - name: zowe-cli-db2-plugin
+    url: https://github.com/zowe/zowe-cli-db2-plugin
+    exclude:
+    - clomonitor
+  - name: ims-operations-api
+    url: https://github.com/zowe/ims-operations-api
     exclude:
     - clomonitor
   - name: zlux-app-manager
     url: https://github.com/zowe/zlux-app-manager
     exclude:
     - clomonitor
+  - name: zowe-cli-cics-plugin
+    url: https://github.com/zowe/zowe-cli-cics-plugin
+    exclude:
+    - clomonitor
   - name: zowe-cli-scs-plugin
     url: https://github.com/zowe/zowe-cli-scs-plugin
     exclude:
     - clomonitor
-  - name: zowe-cli-cics-plugin
-    url: https://github.com/zowe/zowe-cli-cics-plugin
+  - name: zowe-on-the-go
+    url: https://github.com/zowe/zowe-on-the-go
+    exclude:
+    - clomonitor
+  - name: zlux-server-framework
+    url: https://github.com/zowe/zlux-server-framework
     exclude:
     - clomonitor
   - name: data-sets
@@ -200,16 +212,8 @@
     url: https://github.com/zowe/workshop-user-browser-app
     exclude:
     - clomonitor
-  - name: zlux-server-framework
-    url: https://github.com/zowe/zlux-server-framework
-    exclude:
-    - clomonitor
   - name: zlux-editor
     url: https://github.com/zowe/zlux-editor
-    exclude:
-    - clomonitor
-  - name: zowe-cli-db2-plugin
-    url: https://github.com/zowe/zowe-cli-db2-plugin
     exclude:
     - clomonitor
   - name: perf-timing
@@ -220,16 +224,16 @@
     url: https://github.com/zowe/zowe-cli-zos-make-plugin
     exclude:
     - clomonitor
-  - name: zowe-install-test
-    url: https://github.com/zowe/zowe-install-test
-    exclude:
-    - clomonitor
   - name: explorer-api-common
     url: https://github.com/zowe/explorer-api-common
     exclude:
     - clomonitor
   - name: jenkins-slave-images
     url: https://github.com/zowe/jenkins-slave-images
+    exclude:
+    - clomonitor
+  - name: zowe-install-test
+    url: https://github.com/zowe/zowe-install-test
     exclude:
     - clomonitor
   - name: zowe-cli-standalone-package
@@ -244,12 +248,12 @@
     url: https://github.com/zowe/zowe-smpe-packaging
     exclude:
     - clomonitor
-  - name: zowe-cli-mq-plugin
-    url: https://github.com/zowe/zowe-cli-mq-plugin
-    exclude:
-    - clomonitor
   - name: sample-angular-app
     url: https://github.com/zowe/sample-angular-app
+    exclude:
+    - clomonitor
+  - name: vt-ng2
+    url: https://github.com/zowe/vt-ng2
     exclude:
     - clomonitor
   - name: zlux-build
@@ -276,8 +280,16 @@
     url: https://github.com/zowe/zowe-dependency-scan-pipeline
     exclude:
     - clomonitor
-  - name: zowe-dockerfiles
-    url: https://github.com/zowe/zowe-dockerfiles
+  - name: zowe-cli-mq-plugin
+    url: https://github.com/zowe/zowe-cli-mq-plugin
+    exclude:
+    - clomonitor
+  - name: zowe-internal-dockerfiles
+    url: https://github.com/zowe/zowe-internal-dockerfiles
+    exclude:
+    - clomonitor
+  - name: keyring-utilities
+    url: https://github.com/zowe/keyring-utilities
     exclude:
     - clomonitor
   - name: explorer-server
@@ -288,16 +300,16 @@
     url: https://github.com/zowe/explorer-jes
     exclude:
     - clomonitor
-  - name: vt-ng2
-    url: https://github.com/zowe/vt-ng2
-    exclude:
-    - clomonitor
   - name: zlux-platform
     url: https://github.com/zowe/zlux-platform
     exclude:
     - clomonitor
   - name: zlux-shared
     url: https://github.com/zowe/zlux-shared
+    exclude:
+    - clomonitor
+  - name: zosmf-auth
+    url: https://github.com/zowe/zosmf-auth
     exclude:
     - clomonitor
   - name: zss-auth
@@ -318,10 +330,6 @@
     - clomonitor
   - name: jenkins-library-fvt-gradle
     url: https://github.com/zowe/jenkins-library-fvt-gradle
-    exclude:
-    - clomonitor
-  - name: keyring-utilities
-    url: https://github.com/zowe/keyring-utilities
     exclude:
     - clomonitor
   - name: release-management
@@ -396,12 +404,12 @@
     url: https://github.com/zowe/zos-subsystems
     exclude:
     - clomonitor
-  - name: zosmf-auth
-    url: https://github.com/zowe/zosmf-auth
-    exclude:
-    - clomonitor
   - name: webui-scenarios
     url: https://github.com/zowe/webui-scenarios
+    exclude:
+    - clomonitor
+  - name: file-transfer-app
+    url: https://github.com/zowe/file-transfer-app
     exclude:
     - clomonitor
   - name: sample-react-app
@@ -494,16 +502,20 @@
     url: https://github.com/ambitus/zml
     exclude:
     - clomonitor
-  - name: linux-containers
-    url: https://github.com/ambitus/linux-containers
-    exclude:
-    - clomonitor
   - name: cbexplorer
     url: https://github.com/ambitus/cbexplorer
     exclude:
     - clomonitor
+  - name: pyracf
+    url: https://github.com/ambitus/pyracf
+    exclude:
+    - clomonitor
   - name: glibc
     url: https://github.com/ambitus/glibc
+    exclude:
+    - clomonitor
+  - name: linux-containers
+    url: https://github.com/ambitus/linux-containers
     exclude:
     - clomonitor
   - name: sustainability-grafana-dashboard
@@ -514,16 +526,16 @@
     url: https://github.com/ambitus/gcc
     exclude:
     - clomonitor
+  - name: binutils
+    url: https://github.com/ambitus/binutils
+    exclude:
+    - clomonitor
   - name: zTron
     url: https://github.com/ambitus/zTron
     exclude:
     - clomonitor
   - name: zos-native
     url: https://github.com/ambitus/zos-native
-    exclude:
-    - clomonitor
-  - name: binutils
-    url: https://github.com/ambitus/binutils
     exclude:
     - clomonitor
   - name: artifactory-vault
@@ -601,6 +613,14 @@
     url: https://github.com/galasa-dev/eclipse
     exclude:
     - clomonitor
+  - name: cli
+    url: https://github.com/galasa-dev/cli
+    exclude:
+    - clomonitor
+  - name: TSC
+    url: https://github.com/galasa-dev/TSC
+    exclude:
+    - clomonitor
   - name: playground
     url: https://github.com/galasa-dev/playground
     exclude:
@@ -629,10 +649,6 @@
     url: https://github.com/galasa-dev/isolated
     exclude:
     - clomonitor
-  - name: cli
-    url: https://github.com/galasa-dev/cli
-    exclude:
-    - clomonitor
   - name: githubapp-copyright
     url: https://github.com/galasa-dev/githubapp-copyright
     exclude:
@@ -653,16 +669,8 @@
     url: https://github.com/galasa-dev/test-release
     exclude:
     - clomonitor
-  - name: automation
-    url: https://github.com/galasa-dev/automation
-    exclude:
-    - clomonitor
   - name: webui
     url: https://github.com/galasa-dev/webui
-    exclude:
-    - clomonitor
-  - name: TSC
-    url: https://github.com/galasa-dev/TSC
     exclude:
     - clomonitor
 - name: software-discovery-tool
@@ -739,6 +747,10 @@
     - clomonitor
   - name: tspackager
     url: https://github.com/TSTerminal/tspackager
+    exclude:
+    - clomonitor
+  - name: Term4Z
+    url: https://github.com/TSTerminal/Term4Z
     exclude:
     - clomonitor
 - name: z-vm-community-tools

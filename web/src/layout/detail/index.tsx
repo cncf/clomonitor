@@ -205,10 +205,18 @@ const Detail = (props: Props) => {
                             <div className="d-flex flex-row align-items-center my-2">
                               <FoundationBadge foundation={detail.foundation} />
                               {detail.maturity && (
-                                <MaturityBadge maturityLevel={detail.maturity} className="d-none d-md-block ms-2" />
+                                <MaturityBadge
+                                  maturityLevel={detail.maturity}
+                                  className="d-none d-md-block ms-2"
+                                  maxLength={25}
+                                />
                               )}
                               {detail.category && (
-                                <CategoryBadge category={detail.category} className="d-none d-md-block ms-2" />
+                                <CategoryBadge
+                                  category={detail.category}
+                                  className="d-none d-md-block ms-2"
+                                  maxLength={40}
+                                />
                               )}
                             </div>
 

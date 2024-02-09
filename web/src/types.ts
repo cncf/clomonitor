@@ -72,6 +72,10 @@ export interface FiltersSection {
   filters: Filter[];
 }
 
+export type MaturityFilters = {
+  [key in Foundation]?: FiltersSection;
+};
+
 export interface Filter {
   name: string;
   label: string;
@@ -207,22 +211,16 @@ export interface SearchData {
   not_passing_check?: string[];
 }
 
-export interface Stats {
+export type Stats = {
   generated_at?: number;
   snapshots?: string[];
   projects: {
     running_total?: any[];
     rating_distribution: {
-      all: { [key: string]: number }[];
-      graduated: { [key: string]: number }[];
-      incubating: { [key: string]: number }[];
-      sandbox: { [key: string]: number }[];
+      [key: string]: { [key: string]: number }[];
     };
     sections_average: {
-      all: { [key in ScoreType]: number };
-      graduated: { [key in ScoreType]: number };
-      incubating: { [key in ScoreType]: number };
-      sandbox: { [key in ScoreType]: number };
+      [key: string]: { [key in ScoreType]: number };
     };
     views_daily: number[][];
     views_monthly?: number[][];
@@ -235,7 +233,7 @@ export interface Stats {
       };
     };
   };
-}
+};
 
 export interface DistributionData {
   month: number;

@@ -1,9 +1,9 @@
-import { DateRangeFilter } from 'clo-ui';
+import { DateRangeFilter, Foundation } from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
-import { FILTERS } from '../../../data';
+import { FILTERS, MATURITY_FILTERS } from '../../../data';
 import { FilterKind, FiltersSection, ReportOption } from '../../../types';
 import Checks from './checks';
 import Section from './Section';
@@ -26,6 +26,19 @@ interface Props {
 }
 
 const Filters = (props: Props) => {
+  const [selectedFoundation, setSelectedFoundation] = useState<Foundation | null>(null);
+
+  useEffect(() => {
+    if (
+      !isUndefined(props.activeFilters[FilterKind.Foundation]) &&
+      props.activeFilters[FilterKind.Foundation].length === 1
+    ) {
+      setSelectedFoundation(props.activeFilters[FilterKind.Foundation][0] as Foundation);
+    } else {
+      setSelectedFoundation(null);
+    }
+  }, [props.activeFilters]);
+
   return (
     <>
       {props.visibleTitle && (
@@ -43,16 +56,28 @@ const Filters = (props: Props) => {
         </div>
       )}
 
-      {FILTERS.map((section: FiltersSection) => (
-        <React.Fragment key={`sec_${section.name}`}>
-          <Section
-            device={props.device}
-            activeFilters={props.activeFilters[section.name]}
-            section={section}
-            onChange={props.onChange}
-          />
-        </React.Fragment>
-      ))}
+      {FILTERS.map((section: FiltersSection) => {
+        return (
+          <React.Fragment key={`sec_${section.name}`}>
+            <Section
+              device={props.device}
+              activeFilters={props.activeFilters[section.name]}
+              section={section}
+              onChange={props.onChange}
+            />
+            {section.name === FilterKind.Foundation &&
+              selectedFoundation &&
+              !isUndefined(MATURITY_FILTERS[selectedFoundation]) && (
+                <Section
+                  device={props.device}
+                  activeFilters={props.activeFilters[FilterKind.Maturity]}
+                  section={MATURITY_FILTERS[selectedFoundation]!}
+                  onChange={props.onChange}
+                />
+              )}
+          </React.Fragment>
+        );
+      })}
 
       <div>
         <Checks

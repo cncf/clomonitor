@@ -21,7 +21,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import API from '../../api';
 import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
 import { QUERIES, SORT_OPTIONS } from '../../data';
-import { Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
+import { FilterKind, Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
 import Card from './Card';
@@ -121,15 +121,20 @@ const Search = (props: Props) => {
 
   const onFiltersChange = (name: string, value: string, checked: boolean): void => {
     const currentFilters = filters || {};
+    let additionalFilters = {};
     let newFilters = isUndefined(currentFilters[name]) ? [] : currentFilters[name].slice();
     if (checked) {
       newFilters.push(value);
+      // Remove selected maturity levels when selected foundations is different to only one
+      if (name === FilterKind.Foundation && newFilters.length !== 1) {
+        additionalFilters = { [FilterKind.Maturity]: [] };
+      }
     } else {
       newFilters = newFilters.filter((el) => el !== value);
     }
 
     updateCurrentPage({
-      filters: { ...currentFilters, [name]: newFilters },
+      filters: { ...currentFilters, [name]: newFilters, ...additionalFilters },
     });
   };
 

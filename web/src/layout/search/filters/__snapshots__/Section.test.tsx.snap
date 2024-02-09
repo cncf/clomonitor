@@ -6,7 +6,7 @@ exports[`Section creates snapshot 1`] = `
     class="fw-bold text-uppercase text-primary categoryTitle"
   >
     <small>
-      Maturity level
+      Rating
     </small>
   </div>
   <div
@@ -18,16 +18,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
-        id="test-maturity-graduated"
-        name="maturity"
+        id="test-rating-a"
+        name="rating"
         tabindex="0"
         type="checkbox"
-        value="graduated"
+        value="a"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-graduated"
+        for="test-rating-a"
       >
         <div
           class="d-flex align-items-baseline mw-100"
@@ -38,8 +38,13 @@ exports[`Section creates snapshot 1`] = `
           <span
             class="text-truncate"
           >
-            Graduated
+            A
           </span>
+          <small
+            class="ps-1"
+          >
+            [75-100]
+          </small>
         </div>
       </label>
     </div>
@@ -49,16 +54,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
-        id="test-maturity-incubating"
-        name="maturity"
+        id="test-rating-b"
+        name="rating"
         tabindex="0"
         type="checkbox"
-        value="incubating"
+        value="b"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-incubating"
+        for="test-rating-b"
       >
         <div
           class="d-flex align-items-baseline mw-100"
@@ -69,8 +74,13 @@ exports[`Section creates snapshot 1`] = `
           <span
             class="text-truncate"
           >
-            Incubating
+            B
           </span>
+          <small
+            class="ps-1"
+          >
+            [50-74]
+          </small>
         </div>
       </label>
     </div>
@@ -80,16 +90,16 @@ exports[`Section creates snapshot 1`] = `
       <input
         aria-checked="false"
         class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
-        id="test-maturity-sandbox"
-        name="maturity"
+        id="test-rating-c"
+        name="rating"
         tabindex="0"
         type="checkbox"
-        value="sandbox"
+        value="c"
       />
       <label
         class="form-check-label mw-100"
         data-testid="checkboxLabel"
-        for="test-maturity-sandbox"
+        for="test-rating-c"
       >
         <div
           class="d-flex align-items-baseline mw-100"
@@ -100,8 +110,49 @@ exports[`Section creates snapshot 1`] = `
           <span
             class="text-truncate"
           >
-            Sandbox
+            C
           </span>
+          <small
+            class="ps-1"
+          >
+            [25-49]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-rating-d"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="d"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-d"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            D
+          </span>
+          <small
+            class="ps-1"
+          >
+            [0-24]
+          </small>
         </div>
       </label>
     </div>

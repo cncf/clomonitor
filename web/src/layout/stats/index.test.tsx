@@ -86,7 +86,6 @@ describe('StatsView', () => {
       expect(screen.getByText('Projects')).toBeInTheDocument();
       expect(screen.getByText('Projects accepted')).toBeInTheDocument();
       expect(screen.getByText('Distribution of projects by rating')).toBeInTheDocument();
-      expect(screen.getAllByText('All')).toHaveLength(3);
       expect(screen.getAllByText('Graduated')).toHaveLength(2);
       expect(screen.getAllByText('Incubating')).toHaveLength(2);
       expect(screen.getAllByText('Sandbox')).toHaveLength(2);
@@ -122,7 +121,7 @@ describe('StatsView', () => {
       expect(mockUseNavigate).toHaveBeenCalledWith(
         {
           pathname: '/search',
-          search: '?passing_check=governance&page=1',
+          search: '?passing_check=governance&foundation=cncf&page=1',
         },
         { state: { resetScrollPosition: true } }
       );

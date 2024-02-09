@@ -47,11 +47,6 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'LF AI & Data' })).toBeInTheDocument();
 
-      expect(screen.getByText('Maturity level')).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Graduated' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Incubating' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeInTheDocument();
-
       expect(screen.getByText('Rating')).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeInTheDocument();
       expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeInTheDocument();
@@ -67,10 +62,24 @@ describe('Filters', () => {
       expect(screen.getByRole('button', { name: 'Open checks modal' })).toHaveTextContent('Add checks filters');
     });
 
-    it('renders Filters with selected options', () => {
-      render(<Filters {...defaultProps} activeFilters={{ maturity: ['sandbox'], rating: ['a', 'b'] }} />);
+    it('renders Filters', () => {
+      render(<Filters {...defaultProps} activeFilters={{ foundation: ['cncf'] }} />);
 
-      expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeChecked();
+      expect(screen.getByText('Filters')).toBeInTheDocument();
+
+      expect(screen.getByText('Foundation')).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeChecked();
+
+      expect(screen.getByText('Maturity level')).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'Graduated' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'Incubating' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'Sandbox' })).toBeInTheDocument();
+    });
+
+    it('renders Filters with selected options', () => {
+      render(<Filters {...defaultProps} activeFilters={{ foundation: ['cncf'], rating: ['a', 'b'] }} />);
+
+      expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeChecked();
       expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeChecked();
     });
@@ -78,14 +87,14 @@ describe('Filters', () => {
     it('calls onChange to click filter', async () => {
       render(<Filters {...defaultProps} />);
 
-      const check = screen.getByRole('checkbox', { name: 'Sandbox' });
+      const check = screen.getByRole('checkbox', { name: 'A [75-100]' });
 
       expect(check).not.toBeChecked();
 
       await userEvent.click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockOnChange).toHaveBeenCalledWith('maturity', 'sandbox', true);
+      expect(mockOnChange).toHaveBeenCalledWith('rating', 'a', true);
     });
   });
 });

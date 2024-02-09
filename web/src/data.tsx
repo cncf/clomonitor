@@ -31,6 +31,7 @@ import {
   ChecksPerCategory,
   FilterKind,
   FiltersSection,
+  MaturityFilters,
   Rating,
   ReportOption,
   ReportOptionInfo,
@@ -40,6 +41,20 @@ import {
   SortOption,
 } from './types';
 
+export const FOUNDATIONS: FoundationInfo = {
+  [Foundation.cdf]: {
+    name: 'CDF',
+  },
+  [Foundation.cncf]: {
+    name: 'CNCF',
+  },
+  [Foundation.lfaidata]: {
+    name: 'LF AI & Data',
+  },
+};
+
+export const DEFAULT_FOUNDATION = Foundation.cncf;
+
 export const DEFAULT_SORT_BY = SortBy.Name;
 export const DEFAULT_SORT_DIRECTION = SortDirection.ASC;
 
@@ -47,20 +62,9 @@ export const FILTERS: FiltersSection[] = [
   {
     name: FilterKind.Foundation,
     title: 'Foundation',
-    filters: [
-      { name: Foundation.cdf, label: 'CDF' },
-      { name: Foundation.cncf, label: 'CNCF' },
-      { name: Foundation.lfaidata, label: 'LF AI & Data' },
-    ],
-  },
-  {
-    name: FilterKind.Maturity,
-    title: 'Maturity level',
-    filters: [
-      { name: Maturity.graduated, label: 'Graduated' },
-      { name: Maturity.incubating, label: 'Incubating' },
-      { name: Maturity.sandbox, label: 'Sandbox' },
-    ],
+    filters: Object.keys(FOUNDATIONS).map((f: string) => {
+      return { name: f, label: FOUNDATIONS[f as Foundation]!.name };
+    }),
   },
   {
     name: FilterKind.Rating,
@@ -93,6 +97,35 @@ export const FILTERS: FiltersSection[] = [
     ],
   },
 ];
+
+export const MATURITY_FILTERS: MaturityFilters = {
+  [Foundation.cdf]: {
+    name: FilterKind.Maturity,
+    title: 'Maturity level',
+    filters: [
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+    ],
+  },
+  [Foundation.cncf]: {
+    name: FilterKind.Maturity,
+    title: 'Maturity level',
+    filters: [
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+      { name: Maturity.sandbox, label: 'Sandbox' },
+    ],
+  },
+  [Foundation.lfaidata]: {
+    name: FilterKind.Maturity,
+    title: 'Maturity level',
+    filters: [
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+      { name: Maturity.sandbox, label: 'Sandbox' },
+    ],
+  },
+};
 
 export const SORT_OPTIONS: SortOption[] = [
   {
@@ -502,18 +535,6 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Website',
     legend: <span>A url that users can visit to learn more about your project</span>,
     reference: '/docs/topics/checks/#website',
-  },
-};
-
-export const FOUNDATIONS: FoundationInfo = {
-  [Foundation.cdf]: {
-    name: 'CDF',
-  },
-  [Foundation.cncf]: {
-    name: 'CNCF',
-  },
-  [Foundation.lfaidata]: {
-    name: 'LF AI & Data',
   },
 };
 

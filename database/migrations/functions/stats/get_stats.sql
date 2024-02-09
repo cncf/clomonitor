@@ -7,9 +7,7 @@ returns json as $$
         select p.maturity, p.rating, count(*) as total
         from project p
         where p.rating is not null
-        and
-            case when p_foundation is not null then
-            p.foundation_id = p_foundation else true end
+        and p.foundation_id = p_foundation
         group by p.maturity, p.rating
     )
     select json_strip_nulls(json_build_object(
@@ -19,12 +17,7 @@ returns json as $$
             from (
                 select date
                 from stats_snapshot
-                where
-                    case when p_foundation is not null then
-                        foundation_id = p_foundation
-                    else
-                        foundation_id is null
-                    end
+                where foundation_id = p_foundation
                 order by date desc
             ) s
         ),
@@ -44,9 +37,7 @@ returns json as $$
                             count(*) as total
                         from project p
                         where p.accepted_at is not null
-                        and
-                            case when p_foundation is not null then
-                            p.foundation_id = p_foundation else true end
+                        and p.foundation_id = p_foundation
                         group by date_trunc('month', p.accepted_at)
                     ) mt
                 ) rt
@@ -60,82 +51,79 @@ returns json as $$
                         count(*) as total
                     from project p
                     where p.accepted_at is not null
-                    and
-                        case when p_foundation is not null then
-                        p.foundation_id = p_foundation else true end
+                    and p.foundation_id = p_foundation
                     group by
                         extract('year' from p.accepted_at),
                         extract('month' from p.accepted_at)
                     order by year desc, month desc
                 ) entry_count
             ),
-            'rating_distribution', json_build_object(
-                'all', (
-                    select json_agg(json_build_object(rating, total))
-                    from (
-                        select rating, sum(total) as total
-                        from ratings
-                        group by rating
-                        order by rating asc
-                    ) rg
-                ),
-                'graduated', (
-                    select json_agg(json_build_object(rating, total))
-                    from (
-                        select rating, sum(total) as total
-                        from ratings where maturity = 'graduated'
-                        group by rating
-                        order by rating asc
-                    ) rg
-                ),
-                'incubating', (
-                    select json_agg(json_build_object(rating, total))
-                    from (
-                        select rating, sum(total) as total
-                        from ratings where maturity = 'incubating'
-                        group by rating
-                        order by rating asc
-                    ) rg
-                ),
-                'sandbox', (
-                    select json_agg(json_build_object(rating, total))
-                    from (
-                        select rating, sum(total) as total
-                        from ratings where maturity = 'sandbox'
-                        group by rating
-                        order by rating asc
-                    ) rg
-                )
+            'rating_distribution', (
+                select json_object_agg(maturity, rating_totals)
+                from (
+                    (
+                        select
+                            'all' as maturity,
+                            jsonb_agg(jsonb_build_object(rating, total)) as rating_totals
+                        from (
+                            select rating, sum(total) as total
+                            from ratings
+                            where maturity is not null
+                            group by rating
+                            order by rating asc
+                        ) as all_rating_totals
+                    )
+                    union
+                    (
+                        select
+                            maturity,
+                            jsonb_agg(jsonb_build_object(rating, total)) as rating_totals
+                        from (
+                            select maturity, rating, sum(total) as total
+                            from ratings
+                            where maturity is not null
+                            group by maturity, rating
+                            order by maturity, rating asc
+                        ) as maturity_rating_totals
+                        group by maturity
+                        order by maturity asc
+                    )
+                ) as rating_distribution
             ),
-            'sections_average', json_build_object(
-                'all', json_build_object(
-                    'documentation', (average_section_score(p_foundation, 'documentation', null)),
-                    'license', (average_section_score(p_foundation, 'license', null)),
-                    'best_practices', (average_section_score(p_foundation, 'best_practices', null)),
-                    'security', (average_section_score(p_foundation, 'security', null)),
-                    'legal', (average_section_score(p_foundation, 'legal', null))
-                ),
-                'graduated', json_build_object(
-                    'documentation', (average_section_score(p_foundation, 'documentation', 'graduated')),
-                    'license', (average_section_score(p_foundation, 'license', 'graduated')),
-                    'best_practices', (average_section_score(p_foundation, 'best_practices', 'graduated')),
-                    'security', (average_section_score(p_foundation, 'security', 'graduated')),
-                    'legal', (average_section_score(p_foundation, 'legal', 'graduated'))
-                ),
-                'incubating', json_build_object(
-                    'documentation', (average_section_score(p_foundation, 'documentation', 'incubating')),
-                    'license', (average_section_score(p_foundation, 'license', 'incubating')),
-                    'best_practices', (average_section_score(p_foundation, 'best_practices', 'incubating')),
-                    'security', (average_section_score(p_foundation, 'security', 'incubating')),
-                    'legal', (average_section_score(p_foundation, 'legal', 'incubating'))
-                ),
-                'sandbox', json_build_object(
-                    'documentation', (average_section_score(p_foundation, 'documentation', 'sandbox')),
-                    'license', (average_section_score(p_foundation, 'license', 'sandbox')),
-                    'best_practices', (average_section_score(p_foundation, 'best_practices', 'sandbox')),
-                    'security', (average_section_score(p_foundation, 'security', 'sandbox')),
-                    'legal', (average_section_score(p_foundation, 'legal', 'sandbox'))
-                )
+            'sections_average', (
+                select json_object_agg(maturity, sections_average)
+                from (
+                    (
+                        select
+                            'all' as maturity,
+                            (
+                                select jsonb_build_object(
+                                    'documentation', (average_section_score(p_foundation, 'documentation', null)),
+                                    'license', (average_section_score(p_foundation, 'license', null)),
+                                    'best_practices', (average_section_score(p_foundation, 'best_practices', null)),
+                                    'security', (average_section_score(p_foundation, 'security', null)),
+                                    'legal', (average_section_score(p_foundation, 'legal', null))
+                                ) as sections_average
+                            )
+                        from project
+                    )
+                    union
+                    (
+                        select
+                            distinct maturity,
+                            (
+                                select jsonb_build_object(
+                                    'documentation', (average_section_score(p_foundation, 'documentation', maturity)),
+                                    'license', (average_section_score(p_foundation, 'license', maturity)),
+                                    'best_practices', (average_section_score(p_foundation, 'best_practices', maturity)),
+                                    'security', (average_section_score(p_foundation, 'security', maturity)),
+                                    'legal', (average_section_score(p_foundation, 'legal', maturity))
+                                ) as sections_average
+                            )
+                        from project
+                        where maturity is not null
+                    )
+                ) sections_average
             ),
             'views_daily', (
                 select json_agg(json_build_array(extract(epoch from day)*1000, total))
@@ -144,9 +132,7 @@ returns json as $$
                     from project_views pv
                     join project p using (project_id)
                     where pv.day >= current_date - '1 month'::interval
-                    and
-                        case when p_foundation is not null then
-                        p.foundation_id = p_foundation else true end
+                    and p.foundation_id = p_foundation
                     group by day
                     order by day asc
                 ) dt
@@ -158,9 +144,7 @@ returns json as $$
                     from project_views pv
                     join project p using (project_id)
                     where pv.day >= current_date - '2 year'::interval
-                    and
-                        case when p_foundation is not null then
-                        p.foundation_id = p_foundation else true end
+                    and p.foundation_id = p_foundation
                     group by month
                     order by month asc
                 ) mt

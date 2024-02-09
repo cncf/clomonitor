@@ -1,5 +1,15 @@
 import classNames from 'classnames';
-import { alertDispatcher, Foundation, Loading, Maturity, NoData, prettifyNumber, SubNavbar, Timeline } from 'clo-ui';
+import {
+  alertDispatcher,
+  Foundation,
+  Loading,
+  Maturity,
+  MaturityLabel,
+  NoData,
+  prettifyNumber,
+  SubNavbar,
+  Timeline,
+} from 'clo-ui';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
@@ -9,7 +19,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
-import { FOUNDATIONS } from '../../data';
+import { DEFAULT_FOUNDATION, FOUNDATIONS } from '../../data';
 import { DistributionData, FilterKind, Rating, RatingKind, ReportOption, Stats } from '../../types';
 import prepareQueryString from '../../utils/prepareQueryString';
 import AnchorHeader from './AnchorHeader';
@@ -34,6 +44,15 @@ interface SelectedRange {
 
 const FOUNDATION_QUERY = 'foundation';
 
+const removeEmptyValuesFromObject = (obj: { [key: string]: unknown }) => {
+  for (var propName in obj) {
+    if (obj[propName] === null || obj[propName] === undefined || isEmpty(obj[propName])) {
+      delete obj[propName];
+    }
+  }
+  return obj;
+};
+
 const StatsView = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,7 +64,7 @@ const StatsView = () => {
   const [emptyStats, setEmptyStats] = useState<boolean>(false);
   const [stats, setStats] = useState<Stats | null | undefined>();
   const [apiError, setApiError] = useState<string | null>(null);
-  const selectedFoundation = searchParams.get(FOUNDATION_QUERY);
+  const selectedFoundation = searchParams.get(FOUNDATION_QUERY) || DEFAULT_FOUNDATION;
   const [selectedPoint, setSelectedPoint] = useState<SelectedPoint | undefined>();
   const [selectedRange, setSelectedRange] = useState<SelectedRange | undefined>();
   const [downloadingCSV, setDownloadingCSV] = useState<boolean>(false);
@@ -709,11 +728,10 @@ const StatsView = () => {
               <label className="form-label me-2 mb-0 fw-bold">Foundation:</label>
               <select
                 className={`form-select rounded-0 cursorPointer foundation ${styles.select}`}
-                value={selectedFoundation || ''}
+                value={selectedFoundation || DEFAULT_FOUNDATION}
                 onChange={handleChange}
                 aria-label="Foundation options select"
               >
-                <option value="">All</option>
                 {Object.keys(FOUNDATIONS).map((f: string) => {
                   const fData = FOUNDATIONS[f as Foundation];
                   if (isUndefined(fData)) return null;
@@ -798,7 +816,7 @@ const StatsView = () => {
                     </>
                   )}
 
-                  {stats.projects.rating_distribution && (
+                  {!isEmpty(stats.projects.rating_distribution) && (
                     <>
                       <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
                         Distribution of projects by rating
@@ -806,32 +824,16 @@ const StatsView = () => {
 
                       <div className="py-4">
                         <div className="row g-4 g-xxl-5 justify-content-center">
-                          <div className="col-6 col-xl-3">
-                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                              <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                                All
-                              </div>
-                              <div className={`card-body ${styles.donutWrapper}`}>
-                                <ReactApexChart
-                                  options={getDonutChartConfig()}
-                                  series={prepareDonutData(stats.projects.rating_distribution.all)}
-                                  type="donut"
-                                  height={250}
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          {stats.projects.rating_distribution.graduated && (
+                          {!isUndefined(stats.projects.rating_distribution.all) && (
                             <div className="col-6 col-xl-3">
                               <div className={`card rounded-0 ${styles.chartWrapper}`}>
                                 <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                                  Graduated
+                                  All
                                 </div>
                                 <div className={`card-body ${styles.donutWrapper}`}>
                                   <ReactApexChart
-                                    options={getDonutChartConfig(Maturity.graduated)}
-                                    series={prepareDonutData(stats.projects.rating_distribution.graduated)}
+                                    options={getDonutChartConfig()}
+                                    series={prepareDonutData(stats.projects.rating_distribution.all)}
                                     type="donut"
                                     height={250}
                                   />
@@ -840,87 +842,68 @@ const StatsView = () => {
                             </div>
                           )}
 
-                          {stats.projects.rating_distribution.incubating && (
-                            <div className="col-6 col-xl-3">
-                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                                  Incubating
-                                </div>
-                                <div className={`card-body ${styles.donutWrapper}`}>
-                                  <ReactApexChart
-                                    options={getDonutChartConfig(Maturity.incubating)}
-                                    series={prepareDonutData(stats.projects.rating_distribution.incubating)}
-                                    type="donut"
-                                    height={250}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                          {stats.projects.rating_distribution.sandbox && (
-                            <div className="col-6 col-xl-3">
-                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>
-                                  Sandbox
-                                </div>
-                                <div className={`card-body ${styles.donutWrapper}`}>
-                                  <ReactApexChart
-                                    options={getDonutChartConfig(Maturity.sandbox)}
-                                    series={prepareDonutData(stats.projects.rating_distribution.sandbox)}
-                                    type="donut"
-                                    height={250}
-                                  />
+                          {Object.keys(stats.projects.rating_distribution).map((k: string) => {
+                            if (!Object.keys(Maturity).includes(k)) return null;
+                            const labelName = Object.keys(MaturityLabel).includes(k) ? MaturityLabel[k as Maturity] : k;
+                            return (
+                              <div key={`rating_${k}`} className="col-6 col-xl-3">
+                                <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                  <div
+                                    className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}
+                                  >
+                                    {labelName}
+                                  </div>
+                                  <div className={`card-body ${styles.donutWrapper}`}>
+                                    <ReactApexChart
+                                      options={getDonutChartConfig(k as Maturity)}
+                                      series={prepareDonutData(stats.projects.rating_distribution[k])}
+                                      type="donut"
+                                      height={250}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )}
+                            );
+                          })}
                         </div>
                       </div>
                     </>
                   )}
 
-                  {stats.projects.sections_average && (
-                    <>
-                      <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
-                        Projects average score per category
-                      </div>
-
-                      <div className="py-4">
-                        <div className="row g-4 g-xxl-5 justify-content-center">
-                          <div className="col-6 col-xl-3">
-                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                              <Average title="All" data={stats.projects.sections_average.all} />
-                            </div>
-                          </div>
-
-                          {!isEmpty(stats.projects.sections_average.graduated) && (
-                            <div className="col-6 col-xl-3">
-                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                <Average title="Graduated" data={stats.projects.sections_average.graduated} />
-                              </div>
-                            </div>
-                          )}
-
-                          {!isEmpty(stats.projects.sections_average.incubating) && (
-                            <div className="col-6 col-xl-3">
-                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                <Average title="Incubating" data={stats.projects.sections_average.incubating} />
-                              </div>
-                            </div>
-                          )}
-
-                          {!isEmpty(stats.projects.sections_average.sandbox) && (
-                            <div className="col-6 col-xl-3">
-                              <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                <Average title="Sandbox" data={stats.projects.sections_average.sandbox} />
-                              </div>
-                            </div>
-                          )}
+                  {stats.projects.sections_average &&
+                    !isEmpty(removeEmptyValuesFromObject(stats.projects.sections_average)) && (
+                      <>
+                        <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                          Projects average score per category
                         </div>
-                      </div>
-                    </>
-                  )}
+
+                        <div className="py-4">
+                          <div className="row g-4 g-xxl-5 justify-content-center">
+                            {!isEmpty(stats.projects.sections_average.all) && (
+                              <div className="col-6 col-xl-3">
+                                <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                  <Average title="All" data={stats.projects.sections_average.all} />
+                                </div>
+                              </div>
+                            )}
+
+                            {Object.keys(stats.projects.sections_average).map((k: string) => {
+                              if (k === 'all' || isEmpty(stats.projects.sections_average[k])) return null;
+                              const labelName = Object.keys(MaturityLabel).includes(k)
+                                ? MaturityLabel[k as Maturity]
+                                : k;
+                              return (
+                                <div key={`avg_${k}`} className="col-6 col-xl-3">
+                                  <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                    <Average title={labelName} data={stats.projects.sections_average[k]} />
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </>
+                    )}
 
                   {stats.repositories.passing_check && (
                     <>

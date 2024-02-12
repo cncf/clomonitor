@@ -1,0 +1,258 @@
+- name: anuket
+  description: |
+    A common model, standardized reference infrastructure
+    specifications, and conformance and performance frameworks for VNFs & CNFs.
+  display_name: Anuket
+  category: LF Networking Projects
+  home_url: https://anuket.io/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/anuket-01.svg
+  repositories:
+  - name: functest
+    url: https://github.com/opnfv/functest
+    check_sets:
+    - code
+  - name: functest-kubernetes
+    url: https://github.com/opnfv/functest-kubernetes
+    check_sets:
+    - code-lite
+  - name: functest-xtesting
+    url: https://github.com/opnfv/functest-xtesting
+    check_sets:
+    - code-lite
+  - name: cirv-sdv
+    url: https://github.com/opnfv/cirv-sdv
+    check_sets:
+    - code
+  - name: barometer
+    url: https://github.com/opnfv/barometer
+    check_sets:
+    - code
+- name: fd-io
+  description: |
+    Open Source high-performance IO services framework for dynamic computing environments.
+  display_name: FD.io
+  category: LF Networking Projects
+  home_url: https://fd.io/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/logo_fdio.svg
+  repositories:
+  - name: vpp
+    url: https://github.com/FDio/vpp
+    check_sets:
+    - community
+    - code
+  - name: govpp
+    url: https://github.com/FDio/govpp
+    check_sets:
+    - code-lite
+  - name: tldk
+    url: https://github.com/FDio/tldk
+    check_sets:
+    - code-lite
+  - name: hicn
+    url: https://github.com/FDio/hicn
+    check_sets:
+    - code-lite
+  - name: csit
+    url: https://github.com/FDio/csit
+    check_sets:
+    - code-lite
+  - name: site
+    url: https://github.com/FDio/site
+    check_sets:
+    - docs
+- name: odim
+  description: |
+    Open Distributed Infrastructure Manager. Multi-site, multi-vendor physical
+    infrastructure lifecycle management.
+  display_name: ODIM
+  category: LF Networking Projects
+  home_url: https://odim.io/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/odim-color-1.svg
+  repositories:
+  - name: BMCSimulator
+    url: https://github.com/ODIM-Project/BMCSimulator
+    check_sets:
+    - code-lite
+  - name: ODIM
+    url: https://github.com/ODIM-Project/ODIM
+    check_sets:
+    - code-lite
+  - name: PluginCiscoACI
+    url: https://github.com/ODIM-Project/PluginCiscoACI
+    check_sets:
+    - code-lite
+- name: onap
+  description: |
+    A comprehensive platform for orchestration, management, and automation
+    of network and edge computing services.
+  display_name: ONAP
+  category: LF Networking Projects
+  home_url: https://www.onap.org/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/onap_logo.svg
+  repositories:
+  - name: oom
+    url: https://github.com/onap/oom
+    check_sets:
+    - community
+    - code
+  - name: multicloud-k8s
+    url: https://github.com/onap/multicloud-k8s
+    check_sets:
+    - code-lite
+  - name: demo
+    url: https://github.com/onap/demo
+    check_sets:
+    - docs
+  - name: so
+    url: https://github.com/onap/so
+    check_sets:
+    - code-lite
+  - name: ccsdk-cds
+    url: https://github.com/onap/ccsdk-cds
+    check_sets:
+    - code-lite
+  - name: sdc
+    url: https://github.com/onap/sdc
+    check_sets:
+    - code-lite
+- name: opendaylight
+  description: |
+    Open source SDN Controller with largest ecosystem and deployment footprint.
+  display_name: Opendaylight
+  category: LF Networking Projects
+  home_url: https://www.opendaylight.org/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/opendaylight_logo.svg
+  repositories:
+  - name: controller
+    url: https://github.com/opendaylight/controller
+    check_sets:
+    - code
+  - name: yangtools
+    url: https://github.com/opendaylight/yangtools
+    check_sets:
+    - code-lite
+  - name: netconf
+    url: https://github.com/opendaylight/netconf
+    check_sets:
+    - code-lite
+  - name: openflowplugin
+    url: https://github.com/opendaylight/openflowplugin
+    check_sets:
+    - code-lite
+  - name: docs
+    url: https://github.com/opendaylight/docs
+    check_sets:
+    - docs
+  - name: ovsdb
+    url: https://github.com/opendaylight/ovsdb
+    check_sets:
+    - code-lite
+- name: nephio
+  description: |
+    The Nephio project is building a Kubernetes-based automation platform for deploying and managing highly distributed, interconnected workloads such as 5G Network Functions, and the underlying infrastructure on which those workloads depend.
+  display_name: Nephio
+  category: LF Networking Projects
+  home_url: https://nephio.org
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/Nephio_logo_colorblack_horizontal.svg
+  repositories:
+  - name: nephio
+    url: https://github.com/nephio-project/nephio
+    check_sets:
+    - code
+  - name: api
+    url: https://github.com/nephio-project/api
+    check_sets:
+    - code
+  - name: governance
+    url: https://github.com/nephio-project/governance
+    check_sets:
+    - community
+  - name: nephio-sdk
+    url: https://github.com/nephio-project/nephio-sdk
+    check_sets:
+    - code-lite
+  - name: docs
+    url: https://github.com/nephio-project/docs
+    check_sets:
+    - docs
+- name: xg-vela
+  description: |
+    An open source cloud native PaaS for applications and
+    telco network functions to enable new services.
+  display_name: XG Vela
+  category: LF Networking Projects
+  home_url: https://xgvela.org/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/xGVela_Logo_FNL_color-horizontal.svg
+  repositories:
+  - name: xgvela-builder
+    url: https://github.com/XGVela/xgvela-builder
+    check_sets:
+    - code
+  - name: XGVela
+    url: https://github.com/XGVela/XGVela
+    check_sets:
+    - docs
+  - name: cim
+    url: https://github.com/XGVela/cim
+    check_sets:
+    - code-lite
+  - name: cmaas
+    url: https://github.com/XGVela/cmaas
+    check_sets:
+    - code-lite
+  - name: fmaas
+    url: https://github.com/XGVela/fmaas
+    check_sets:
+    - code-lite
+  - name: tmaas
+    url: https://github.com/XGVela/tmaas
+    check_sets:
+    - code-lite
+  - name: vesgw
+    url: https://github.com/XGVela/vesgw
+    check_sets:
+    - code-lite
+- name: anuket-5g
+  description: |
+    A common model, standardized reference infrastructure
+    specifications, and conformance and performance frameworks for VNFs & CNFs.
+  display_name: Anuket (5G)
+  category: Cloud/Core
+  home_url: https://anuket.io/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/anuket-01.svg
+  maturity: lfn
+  repositories:
+  - name: functest
+    url: https://github.com/opnfv/functest
+    check_sets:
+    - code-lite
+  - name: functest-kubernetes
+    url: https://github.com/opnfv/functest-kubernetes
+    check_sets:
+    - code-lite
+  - name: functest-xtesting
+    url: https://github.com/opnfv/functest-xtesting
+    check_sets:
+    - code-lite
+  - name: cirv-sdv
+    url: https://github.com/opnfv/cirv-sdv
+    check_sets:
+    - code-lite
+  - name: barometer
+    url: https://github.com/opnfv/barometer
+    check_sets:
+    - code-lite
+- name: onap-5g
+  description: |
+    A comprehensive platform for orchestration, management, and automation
+    of network and edge computing services.
+  display_name: ONAP (5G)
+  category: Cloud/Core
+  home_url: https://www.onap.org/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/onap_logo.svg
+  maturity: lfn
+  repositories:
+  - name: aaf-authz
+    url: https://github.com/onap/aaf-authz
+    check_sets:
+    - code

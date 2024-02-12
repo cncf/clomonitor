@@ -51,6 +51,9 @@ export const FOUNDATIONS: FoundationInfo = {
   [Foundation.lfaidata]: {
     name: 'LF AI & Data',
   },
+  [Foundation.lfnetworking]: {
+    name: 'LF Networking',
+  },
 };
 
 export const DEFAULT_FOUNDATION = Foundation.cncf;
@@ -124,6 +127,11 @@ export const MATURITY_FILTERS: MaturityFilters = {
       { name: Maturity.incubating, label: 'Incubating' },
       { name: Maturity.sandbox, label: 'Sandbox' },
     ],
+  },
+  [Foundation.lfnetworking]: {
+    name: FilterKind.Maturity,
+    title: 'Maturity level',
+    filters: [{ name: Maturity.lfn, label: 'LFN' }],
   },
 };
 

@@ -68,6 +68,11 @@ exports[`StatsView creates snapshot 1`] = `
                 >
                   LF AI & Data
                 </option>
+                <option
+                  value="lfnetworking"
+                >
+                  LF Networking
+                </option>
               </select>
             </div>
           </div>

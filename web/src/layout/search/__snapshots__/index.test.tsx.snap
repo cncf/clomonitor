@@ -190,6 +190,37 @@ exports[`Project detail index creates snapshot 1`] = `
                               </div>
                             </label>
                           </div>
+                          <div
+                            class="form-check me-sm-2 mb-2 undefined"
+                          >
+                            <input
+                              aria-checked="false"
+                              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+                              id="mobile-foundation-lfnetworking"
+                              name="foundation"
+                              tabindex="0"
+                              type="checkbox"
+                              value="lfnetworking"
+                            />
+                            <label
+                              class="form-check-label mw-100"
+                              data-testid="checkboxLabel"
+                              for="mobile-foundation-lfnetworking"
+                            >
+                              <div
+                                class="d-flex align-items-baseline mw-100"
+                              >
+                                <span
+                                  class="position-relative decorator"
+                                />
+                                <span
+                                  class="text-truncate"
+                                >
+                                  LF Networking
+                                </span>
+                              </div>
+                            </label>
+                          </div>
                         </div>
                         <div
                           class="fw-bold text-uppercase text-primary categoryTitle"
@@ -2230,6 +2261,37 @@ exports[`Project detail index creates snapshot 1`] = `
                   class="text-truncate"
                 >
                   LF AI & Data
+                </span>
+              </div>
+            </label>
+          </div>
+          <div
+            class="form-check me-sm-2 mb-2 undefined"
+          >
+            <input
+              aria-checked="false"
+              class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+              id="desktop-foundation-lfnetworking"
+              name="foundation"
+              tabindex="0"
+              type="checkbox"
+              value="lfnetworking"
+            />
+            <label
+              class="form-check-label mw-100"
+              data-testid="checkboxLabel"
+              for="desktop-foundation-lfnetworking"
+            >
+              <div
+                class="d-flex align-items-baseline mw-100"
+              >
+                <span
+                  class="position-relative decorator"
+                />
+                <span
+                  class="text-truncate"
+                >
+                  LF Networking
                 </span>
               </div>
             </label>

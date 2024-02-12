@@ -68,7 +68,6 @@ returns json as $$
                         from (
                             select rating, sum(total) as total
                             from ratings
-                            where maturity is not null
                             group by rating
                             order by rating asc
                         ) as all_rating_totals

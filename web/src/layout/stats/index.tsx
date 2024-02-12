@@ -777,11 +777,15 @@ const StatsView = () => {
                 )}
 
                 <>
+                  {((stats.projects.running_total && stats.projects.accepted_distribution) ||
+                    !isEmpty(stats.projects.rating_distribution) ||
+                    (stats.projects.sections_average &&
+                      !isEmpty(removeEmptyValuesFromObject(stats.projects.sections_average)))) && (
+                    <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>Projects</div>
+                  )}
+
                   {stats.projects.running_total && stats.projects.accepted_distribution && (
                     <>
-                      <div className={`text-dark fw-bold text-uppercase text-center mb-4 ${styles.title}`}>
-                        Projects
-                      </div>
                       <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>Projects accepted</div>
 
                       <div className="py-4">
@@ -818,7 +822,11 @@ const StatsView = () => {
 
                   {!isEmpty(stats.projects.rating_distribution) && (
                     <>
-                      <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                      <div
+                        className={classNames('text-dark text-center fw-bold mb-3', styles.subtitle, {
+                          'mt-4': stats.projects.running_total && stats.projects.accepted_distribution,
+                        })}
+                      >
                         Distribution of projects by rating
                       </div>
 
@@ -877,7 +885,13 @@ const StatsView = () => {
                   {stats.projects.sections_average &&
                     !isEmpty(removeEmptyValuesFromObject(stats.projects.sections_average)) && (
                       <>
-                        <div className={`text-dark text-center fw-bold mt-4 mb-3 ${styles.subtitle}`}>
+                        <div
+                          className={classNames('text-dark text-center fw-bold mb-3', styles.subtitle, {
+                            'mt-4':
+                              (stats.projects.running_total && stats.projects.accepted_distribution) ||
+                              !isEmpty(stats.projects.rating_distribution),
+                          })}
+                        >
                           Projects average score per category
                         </div>
 

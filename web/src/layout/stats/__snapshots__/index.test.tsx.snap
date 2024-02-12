@@ -54,11 +54,6 @@ exports[`StatsView creates snapshot 1`] = `
                 class="form-select rounded-0 cursorPointer foundation select"
               >
                 <option
-                  value=""
-                >
-                  All
-                </option>
-                <option
                   value="cdf"
                 >
                   CDF

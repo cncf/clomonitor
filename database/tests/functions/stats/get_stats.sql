@@ -533,7 +533,7 @@ select is(
                 [1643673600000, 3]
             ],
             "rating_distribution": {
-                "all": [
+                 "all": [
                     {"a": 1},
                     {"b": 1},
                     {"c": 1}
@@ -557,19 +557,17 @@ select is(
                     "documentation": 73,
                     "best_practices": 70
                 },
-                "sandbox": {
-                    "license": 100,
-                    "security": 100,
-                    "documentation": 80,
-                    "best_practices": 100
-                },
                 "graduated": {
                     "license": 65,
                     "security": 60,
                     "documentation": 70,
                     "best_practices": 55
                 },
-                "incubating": {
+                "sandbox": {
+                    "license": 100,
+                    "security": 100,
+                    "documentation": 80,
+                    "best_practices": 100
                 }
             }
         },

@@ -133,7 +133,7 @@ exports[`StatsView creates snapshot 1`] = `
             </div>
           </div>
           <div
-            class="text-dark text-center fw-bold mt-4 mb-3 subtitle"
+            class="text-dark text-center fw-bold mb-3 subtitle mt-4"
           >
             Distribution of projects by rating
           </div>
@@ -226,7 +226,7 @@ exports[`StatsView creates snapshot 1`] = `
             </div>
           </div>
           <div
-            class="text-dark text-center fw-bold mt-4 mb-3 subtitle"
+            class="text-dark text-center fw-bold mb-3 subtitle mt-4"
           >
             Projects average score per category
           </div>

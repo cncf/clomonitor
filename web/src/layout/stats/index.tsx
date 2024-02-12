@@ -842,29 +842,33 @@ const StatsView = () => {
                             </div>
                           )}
 
-                          {Object.keys(stats.projects.rating_distribution).map((k: string) => {
-                            if (!Object.keys(Maturity).includes(k)) return null;
-                            const labelName = Object.keys(MaturityLabel).includes(k) ? MaturityLabel[k as Maturity] : k;
-                            return (
-                              <div key={`rating_${k}`} className="col-6 col-xl-3">
-                                <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                  <div
-                                    className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}
-                                  >
-                                    {labelName}
-                                  </div>
-                                  <div className={`card-body ${styles.donutWrapper}`}>
-                                    <ReactApexChart
-                                      options={getDonutChartConfig(k as Maturity)}
-                                      series={prepareDonutData(stats.projects.rating_distribution[k])}
-                                      type="donut"
-                                      height={250}
-                                    />
+                          {Object.keys(stats.projects.rating_distribution)
+                            .sort()
+                            .map((k: string) => {
+                              if (!Object.keys(Maturity).includes(k)) return null;
+                              const labelName = Object.keys(MaturityLabel).includes(k)
+                                ? MaturityLabel[k as Maturity]
+                                : k;
+                              return (
+                                <div key={`rating_${k}`} className="col-6 col-xl-3">
+                                  <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                    <div
+                                      className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}
+                                    >
+                                      {labelName}
+                                    </div>
+                                    <div className={`card-body ${styles.donutWrapper}`}>
+                                      <ReactApexChart
+                                        options={getDonutChartConfig(k as Maturity)}
+                                        series={prepareDonutData(stats.projects.rating_distribution[k])}
+                                        type="donut"
+                                        height={250}
+                                      />
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            );
-                          })}
+                              );
+                            })}
                         </div>
                       </div>
                     </>
@@ -887,19 +891,21 @@ const StatsView = () => {
                               </div>
                             )}
 
-                            {Object.keys(stats.projects.sections_average).map((k: string) => {
-                              if (k === 'all' || isEmpty(stats.projects.sections_average[k])) return null;
-                              const labelName = Object.keys(MaturityLabel).includes(k)
-                                ? MaturityLabel[k as Maturity]
-                                : k;
-                              return (
-                                <div key={`avg_${k}`} className="col-6 col-xl-3">
-                                  <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                                    <Average title={labelName} data={stats.projects.sections_average[k]} />
+                            {Object.keys(stats.projects.sections_average)
+                              .sort()
+                              .map((k: string) => {
+                                if (k === 'all' || isEmpty(stats.projects.sections_average[k])) return null;
+                                const labelName = Object.keys(MaturityLabel).includes(k)
+                                  ? MaturityLabel[k as Maturity]
+                                  : k;
+                                return (
+                                  <div key={`avg_${k}`} className="col-6 col-xl-3">
+                                    <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                      <Average title={labelName} data={stats.projects.sections_average[k]} />
+                                    </div>
                                   </div>
-                                </div>
-                              );
-                            })}
+                                );
+                              })}
                           </div>
                         </div>
                       </>

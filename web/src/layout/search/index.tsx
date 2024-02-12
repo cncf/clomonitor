@@ -125,12 +125,13 @@ const Search = (props: Props) => {
     let newFilters = isUndefined(currentFilters[name]) ? [] : currentFilters[name].slice();
     if (checked) {
       newFilters.push(value);
-      // Remove selected maturity levels when selected foundations is different to only one
-      if (name === FilterKind.Foundation && newFilters.length !== 1) {
-        additionalFilters = { [FilterKind.Maturity]: [] };
-      }
     } else {
       newFilters = newFilters.filter((el) => el !== value);
+    }
+
+    // Remove selected maturity levels when selected foundations is different to only one
+    if (name === FilterKind.Foundation && newFilters.length !== 1) {
+      additionalFilters = { [FilterKind.Maturity]: [] };
     }
 
     updateCurrentPage({

@@ -3,8 +3,8 @@
   description: e-mobility powered by open source with EVerest, the charge point operating
     system
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/e-verest.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/e-verest.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/everest-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/everest-horizontal-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -32,12 +32,12 @@
     url: https://github.com/EVerest/everest-utils
     exclude:
     - clomonitor
-  - name: everest-dev-environment
-    url: https://github.com/EVerest/everest-dev-environment
-    exclude:
-    - clomonitor
   - name: libmodbus
     url: https://github.com/EVerest/libmodbus
+    exclude:
+    - clomonitor
+  - name: everest-dev-environment
+    url: https://github.com/EVerest/everest-dev-environment
     exclude:
     - clomonitor
   - name: libsunspec
@@ -52,6 +52,14 @@
     url: https://github.com/EVerest/libtimer
     exclude:
     - clomonitor
+  - name: everest.github.io
+    url: https://github.com/EVerest/everest.github.io
+    exclude:
+    - clomonitor
+  - name: libevse-security
+    url: https://github.com/EVerest/libevse-security
+    exclude:
+    - clomonitor
   - name: liblog
     url: https://github.com/EVerest/liblog
     exclude:
@@ -60,24 +68,16 @@
     url: https://github.com/EVerest/libfsm
     exclude:
     - clomonitor
-  - name: everest.github.io
-    url: https://github.com/EVerest/everest.github.io
-    exclude:
-    - clomonitor
-  - name: ext-RISE-V2G
-    url: https://github.com/EVerest/ext-RISE-V2G
+  - name: libslac
+    url: https://github.com/EVerest/libslac
     exclude:
     - clomonitor
   - name: ext-switchev-iso15118
     url: https://github.com/EVerest/ext-switchev-iso15118
     exclude:
     - clomonitor
-  - name: libevse-security
-    url: https://github.com/EVerest/libevse-security
-    exclude:
-    - clomonitor
-  - name: libslac
-    url: https://github.com/EVerest/libslac
+  - name: ext-RISE-V2G
+    url: https://github.com/EVerest/ext-RISE-V2G
     exclude:
     - clomonitor
   - name: connector-serverless
@@ -90,6 +90,14 @@
     - clomonitor
   - name: libiso15118
     url: https://github.com/EVerest/libiso15118
+    exclude:
+    - clomonitor
+  - name: meta-everest
+    url: https://github.com/EVerest/meta-everest
+    exclude:
+    - clomonitor
+  - name: openv2g_parser
+    url: https://github.com/EVerest/openv2g_parser
     exclude:
     - clomonitor
   - name: everest-template
@@ -106,14 +114,6 @@
     - clomonitor
   - name: everest-cmake
     url: https://github.com/EVerest/everest-cmake
-    exclude:
-    - clomonitor
-  - name: meta-everest
-    url: https://github.com/EVerest/meta-everest
-    exclude:
-    - clomonitor
-  - name: openv2g_parser
-    url: https://github.com/EVerest/openv2g_parser
     exclude:
     - clomonitor
   - name: repo-manifests
@@ -136,6 +136,10 @@
     url: https://github.com/EVerest/everest-ci
     exclude:
     - clomonitor
+  - name: libcbv2g
+    url: https://github.com/EVerest/libcbv2g
+    exclude:
+    - clomonitor
   - name: run-clang-format
     url: https://github.com/EVerest/run-clang-format
     exclude:
@@ -151,8 +155,8 @@
     functions ready to use, the main benefits of GXF are scalability & high availability,
     high security, its generic design, and no vendor lock-in.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/grid-e-xchange-fabric.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/grid-e-xchange-fabric.svg
+  logo_url: https://artwork.lfenergy.org/abbrev/color/grid-exchange-fabric-abbrev-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/abbrev/color/grid-exchange-fabric-abbrev-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -214,8 +218,8 @@
     extensible, industrial-strength and field-tested platform for use in electricity,
     water, and other utility operations.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/operator-fabric.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/operator-fabric.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/operatorfabric-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/operatorfabric-horizontal-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -249,8 +253,8 @@
     PowSyBl provides the code building blocks for the simulations and analyses of
     power systems, for horizons from real-time operation to investment planning.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/pow-sy-bl.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/pow-sy-bl.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/powsysbl-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/powsysbl-horizontal-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -290,6 +294,14 @@
     url: https://github.com/powsybl/powsybl.github.io
     exclude:
     - clomonitor
+  - name: pypowsybl-notebooks
+    url: https://github.com/powsybl/pypowsybl-notebooks
+    exclude:
+    - clomonitor
+  - name: powsybl-dependencies
+    url: https://github.com/powsybl/powsybl-dependencies
+    exclude:
+    - clomonitor
   - name: powsybl-incubator
     url: https://github.com/powsybl/powsybl-incubator
     exclude:
@@ -302,12 +314,8 @@
     url: https://github.com/powsybl/powsybl-iidm4cpp
     exclude:
     - clomonitor
-  - name: pypowsybl-notebooks
-    url: https://github.com/powsybl/pypowsybl-notebooks
-    exclude:
-    - clomonitor
-  - name: powsybl-dependencies
-    url: https://github.com/powsybl/powsybl-dependencies
+  - name: powsybl-entsoe
+    url: https://github.com/powsybl/powsybl-entsoe
     exclude:
     - clomonitor
   - name: powsybl-dynawo
@@ -324,10 +332,6 @@
     - clomonitor
   - name: powsybl-afs
     url: https://github.com/powsybl/powsybl-afs
-    exclude:
-    - clomonitor
-  - name: powsybl-entsoe
-    url: https://github.com/powsybl/powsybl-entsoe
     exclude:
     - clomonitor
   - name: powsybl-hpc
@@ -348,6 +352,10 @@
     - clomonitor
   - name: powsybl-network-area-diagram
     url: https://github.com/powsybl/powsybl-network-area-diagram
+    exclude:
+    - clomonitor
+  - name: .github
+    url: https://github.com/powsybl/.github
     exclude:
     - clomonitor
   - name: powsybl-math-native
@@ -372,10 +380,6 @@
     - clomonitor
   - name: powsybl-diagram-viewer
     url: https://github.com/powsybl/powsybl-diagram-viewer
-    exclude:
-    - clomonitor
-  - name: .github
-    url: https://github.com/powsybl/.github
     exclude:
     - clomonitor
   - name: powsybl-cgmes-gl
@@ -446,8 +450,8 @@
     \ applications (for the power grid industry in the first place and potentially\
     \ beyond). This platform is intended to host multi-provider applications."
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/seapath.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/seapath.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/seapath-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/seapath-horizontal-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -540,8 +544,8 @@
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/sogno.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/sogno.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/sogno-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/sogno-horizontal-color.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -681,8 +685,8 @@
     Protection Automation and Control System (PACS). CoMPAS is part of the Digital
     Substation (DSAS) Initiative.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/co-mpas.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/co-mpas.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/compas-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/compas-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -779,8 +783,8 @@
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/dyna-o.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/dyna-o.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/dynawo-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/dynawo-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -821,8 +825,8 @@
   description: FledgePower - Power systems protocols translation gateway based on
     Fledge
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/fledge-power.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/fledge-power.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/fledgepower-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/fledgepower-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -838,16 +842,16 @@
     url: https://github.com/fledge-power/fledge-north-s2opcua
     exclude:
     - clomonitor
+  - name: fledge-south-iec61850
+    url: https://github.com/fledge-power/fledge-south-iec61850
+    exclude:
+    - clomonitor
   - name: fledge-south-iec104
     url: https://github.com/fledge-power/fledge-south-iec104
     exclude:
     - clomonitor
   - name: fledge-south-hnz
     url: https://github.com/fledge-power/fledge-south-hnz
-    exclude:
-    - clomonitor
-  - name: fledge-south-iec61850
-    url: https://github.com/fledge-power/fledge-south-iec61850
     exclude:
     - clomonitor
   - name: fledgepower-filter-opcuatopivot
@@ -931,8 +935,8 @@
   description: A platform for building energy flexibility services with forecasting
     and scheduling, written in Python & offering a USEF-conform API.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/flex-measures.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/flex-measures.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/flexmeasures-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/flexmeasures-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -978,8 +982,8 @@
     automatically and efficiently distributes locally-produced renewable energy over
     a DC grid
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/hyphae.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/hyphae.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/hyphae-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/hyphae-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1046,8 +1050,8 @@
     changes in energy consumption-there are no discretionary independent variables
     that change from calculation to calculation.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/open-e-emeter.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/open-e-emeter.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/openeemeter-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/openeemeter-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1067,8 +1071,8 @@
   display_name: openLEADR
   description: A friendly and compliant OpenADR implementation for Python 3
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/open-leadr.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/open-leadr.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/openleadr-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/openleadr-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1088,8 +1092,8 @@
   display_name: OpenSTEF
   description: Open Short Term Energy Forecaster project
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/open-stef.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/open-stef.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/openstef-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/openstef-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1113,13 +1117,62 @@
     url: https://github.com/OpenSTEF/.github
     exclude:
     - clomonitor
+  - name: openstef-workshop
+    url: https://github.com/OpenSTEF/openstef-workshop
+    exclude:
+    - clomonitor
+- name: power-grid-model
+  display_name: Power Grid Model
+  description: Steady-state distribution power system analysis
+  category: Energy Systems
+  logo_url: https://artwork.lfenergy.org/horizontal/color/powergridmodel-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/powergridmodel-horizontal-color.svg
+  devstats_url: null
+  maturity: incubation
+  repositories:
+  - name: power-grid-model
+    url: https://github.com/PowerGridModel/power-grid-model
+    exclude:
+    - clomonitor
+  - name: power-grid-model-workshop
+    url: https://github.com/PowerGridModel/power-grid-model-workshop
+    exclude:
+    - clomonitor
+  - name: power-grid-model-io
+    url: https://github.com/PowerGridModel/power-grid-model-io
+    exclude:
+    - clomonitor
+  - name: power-grid-model-benchmark
+    url: https://github.com/PowerGridModel/power-grid-model-benchmark
+    exclude:
+    - clomonitor
+  - name: IEC-CIM-conversion-services-beta
+    url: https://github.com/PowerGridModel/IEC-CIM-conversion-services-beta
+    exclude:
+    - clomonitor
+  - name: .github
+    url: https://github.com/PowerGridModel/.github
+    exclude:
+    - clomonitor
+  - name: msgpack-cxx-pypi
+    url: https://github.com/PowerGridModel/msgpack-cxx-pypi
+    exclude:
+    - clomonitor
+  - name: nlohmann-json-pypi
+    url: https://github.com/PowerGridModel/nlohmann-json-pypi
+    exclude:
+    - clomonitor
+  - name: benchmark-pgm-vision
+    url: https://github.com/PowerGridModel/benchmark-pgm-vision
+    exclude:
+    - clomonitor
 - name: shapeshifter
   display_name: Shapeshifter
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/shapeshifter.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/shapeshifter.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/shapeshifter-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/shapeshifter-horizontal-color.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1152,8 +1205,8 @@
   description: Arras is an open-source simulation and analysis tool that models emerging
     smart grid energy technologies.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/arras.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/arras.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/arras-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/arras-horizontal-color.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1213,13 +1266,27 @@
     url: https://github.com/arras-energy/arras-energy.github.io
     exclude:
     - clomonitor
+- name: battery-data-alliance
+  display_name: Battery Data Alliance
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
+  category: Energy Systems
+  logo_url: https://artwork.lfenergy.org/horizontal/color/BatteryDataAlliance-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/BatteryDataAlliance-horizontal-color.svg
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: battery-data-interface
+    url: https://github.com/BatteryDataAlliance/battery-data-interface
+    exclude:
+    - clomonitor
 - name: citrine-os
   display_name: CitrineOS
   description: CitrineOS, the first open-source OCPP 2.0.1 CSMS (charging station
     management software)
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/citrine-os.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/citrine-os.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/citrineos-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/citrineos-horizontal-color.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1244,8 +1311,8 @@
     to give a better connection experience with fewer surprises for both grid owner
     (DSO/TSO), grid customers and other stakeholders.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/grid-capacity-map.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/grid-capacity-map.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/gridcapacitymap-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/gridcapacitymap-horizontal-color.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1269,13 +1336,47 @@
     url: https://github.com/gridcapacitymap/splunk-grid-analysis
     exclude:
     - clomonitor
+- name: grip-grid-resilience-and-intelligence-platform
+  display_name: GRIP (Grid Resilience and Intelligence Platform)
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
+  category: Energy Systems
+  logo_url: https://artwork.lfenergy.org/horizontal/color/grip-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/grip-horizontal-color.svg
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: grip-integration
+    url: https://github.com/gripenergy/grip-integration
+    exclude:
+    - clomonitor
+  - name: omf
+    url: https://github.com/gripenergy/omf
+    exclude:
+    - clomonitor
+  - name: glm-plotter
+    url: https://github.com/gripenergy/glm-plotter
+    exclude:
+    - clomonitor
+  - name: grip-anticipation-pipeline
+    url: https://github.com/gripenergy/grip-anticipation-pipeline
+    exclude:
+    - clomonitor
+  - name: grip-absorption-pipeline
+    url: https://github.com/gripenergy/grip-absorption-pipeline
+    exclude:
+    - clomonitor
+  - name: grip-recovery-pipeline
+    url: https://github.com/gripenergy/grip-recovery-pipeline
+    exclude:
+    - clomonitor
 - name: open-geh
   display_name: OpenGEH
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/open-geh.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/open-geh.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/opengeh-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/opengeh-horizontal-color.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1283,58 +1384,13 @@
     url: https://github.com/opengeh/.github
     exclude:
     - clomonitor
-- name: power-grid-model
-  display_name: Power Grid Model
-  description: Steady-state distribution power system analysis
-  category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/power-grid-model.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/power-grid-model.svg
-  devstats_url: null
-  maturity: sandbox
-  repositories:
-  - name: power-grid-model
-    url: https://github.com/PowerGridModel/power-grid-model
-    exclude:
-    - clomonitor
-  - name: power-grid-model-workshop
-    url: https://github.com/PowerGridModel/power-grid-model-workshop
-    exclude:
-    - clomonitor
-  - name: power-grid-model-io
-    url: https://github.com/PowerGridModel/power-grid-model-io
-    exclude:
-    - clomonitor
-  - name: power-grid-model-benchmark
-    url: https://github.com/PowerGridModel/power-grid-model-benchmark
-    exclude:
-    - clomonitor
-  - name: IEC-CIM-conversion-services-beta
-    url: https://github.com/PowerGridModel/IEC-CIM-conversion-services-beta
-    exclude:
-    - clomonitor
-  - name: .github
-    url: https://github.com/PowerGridModel/.github
-    exclude:
-    - clomonitor
-  - name: msgpack-cxx-pypi
-    url: https://github.com/PowerGridModel/msgpack-cxx-pypi
-    exclude:
-    - clomonitor
-  - name: nlohmann-json-pypi
-    url: https://github.com/PowerGridModel/nlohmann-json-pypi
-    exclude:
-    - clomonitor
-  - name: benchmark-pgm-vision
-    url: https://github.com/PowerGridModel/benchmark-pgm-vision
-    exclude:
-    - clomonitor
 - name: real-time-data-ingestion-platform-rtdip
   display_name: Real Time Data Ingestion Platform (RTDIP)
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://landscape.lfenergy.org/logos/real-time-data-ingestion-platform-rtdip.svg
-  logo_url_dark: https://landscape.lfenergy.org/logos/real-time-data-ingestion-platform-rtdip.svg
+  logo_url: https://artwork.lfenergy.org/horizontal/color/rtdip-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/rtdip-horizontal-color.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1344,5 +1400,19 @@
     - clomonitor
   - name: samples
     url: https://github.com/rtdip/samples
+    exclude:
+    - clomonitor
+- name: trolie
+  display_name: TROLIE
+  description: Open Source will speed technological innovation and enable the energy
+    transition, globally.
+  category: Energy Systems
+  logo_url: https://artwork.lfenergy.org/horizontal/color/trolie-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/horizontal/color/trolie-horizontal-color.svg
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: spec
+    url: https://github.com/trolie/spec
     exclude:
     - clomonitor

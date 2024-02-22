@@ -112,6 +112,7 @@ const Card = (props: Props) => {
                         }
                         tooltipWidth={210}
                         tooltipClassName={styles.tooltipMessage}
+                        tooltipArrowClassName={styles.tooltipArrow}
                         tooltipMessage={
                           <div className="d-flex flex-column">
                             <div className="text-muted d-none d-lg-block">Accepted:</div>

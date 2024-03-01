@@ -285,13 +285,17 @@
   description: Managing multiple version builds, plus requirements for dependencies
     via the VFX Reference Platform.
   category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/ci-working-group.svg
-  logo_url_dark: https://landscape.aswf.io/logos/ci-working-group.svg
+  logo_url: https://artwork.aswf.io/working-groups/continuous-integration-wg/horizontal/color/continuous-integration-wg-horizontal-color.svg
+  logo_url_dark: https://artwork.aswf.io/working-groups/continuous-integration-wg/horizontal/color/continuous-integration-wg-horizontal-color.svg
   devstats_url: null
   maturity: working-group
   repositories:
   - name: wg-ci
     url: https://github.com/AcademySoftwareFoundation/wg-ci
+    exclude:
+    - clomonitor
+  - name: aswf-docker
+    url: https://github.com/AcademySoftwareFoundation/aswf-docker
     exclude:
     - clomonitor
 - name: working-group-for-rust-bindings
@@ -300,8 +304,8 @@
     for C and Rust bindings for C++ libraries used by the media and entertainment
     industry.
   category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
-  logo_url_dark: https://landscape.aswf.io/logos/working-group-for-rust-bindings.svg
+  logo_url: https://artwork.aswf.io/working-groups/working-group-for-rust-bindings/horizontal/color/working-group-for-rust-bindings-horizontal-color.svg
+  logo_url_dark: https://artwork.aswf.io/working-groups/working-group-for-rust-bindings/horizontal/color/working-group-for-rust-bindings-horizontal-color.svg
   devstats_url: null
   maturity: working-group
   repositories:

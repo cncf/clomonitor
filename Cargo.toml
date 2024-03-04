@@ -28,7 +28,7 @@ cached = { version = "0.49.2", features = ["async"] }
 clap = { version = "4.5.1", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 comfy-table = "7.1.0"
-config = "0.14.0"
+config = "0.13.4"
 deadpool = "0.10.0"
 deadpool-postgres = { version = "0.12.1", features = ["serde"] }
 futures = "0.3.30"

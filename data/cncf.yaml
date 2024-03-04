@@ -2987,11 +2987,19 @@
     - name: kubevuln
       url: https://github.com/kubescape/kubevuln
       check_sets:
-        - code
+        - code-lite
     - name: node-agent
       url: https://github.com/kubescape/node-agent
       check_sets:
-        - code
+        - code-lite
+    - name: operator
+      url: https://github.com/kubescape/operator
+      check_sets:
+        - code-lite
+    - name: prometheus-exporter
+      url: https://github.com/kubescape/prometheus-exporter
+      check_sets:
+        - code-lite
     - name: regolibrary
       url: https://github.com/kubescape/regolibrary
       check_sets:
@@ -2999,7 +3007,11 @@
     - name: storage
       url: https://github.com/kubescape/storage
       check_sets:
-        - code
+        - code-lite
+    - name: synchronizer
+      url: https://github.com/kubescape/synchronizer
+      check_sets:
+        - code-lite
 - name: paralus
   display_name: Paralus
   description: Paralus is a free, open source tool that enables controlled, audited access to Kubernetes infrastructure and Zero trust Kubernetes with zero friction

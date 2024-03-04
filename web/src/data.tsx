@@ -513,15 +513,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       <span>
         Projects should{' '}
         <ExternalLink
-          href="https://github.com/cncf/landscape/blob/master/readme_summary.md"
+          href="https://github.com/cncf/landscape/blob/master/docs/item_summary.md"
           className="text-decoration-underline"
         >
           provide some information
         </ExternalLink>{' '}
-        for the{' '}
-        <ExternalLink href="https://landscape.cncf.io/summary" className="text-decoration-underline">
-          Landscape Summary Table
-        </ExternalLink>
+        for the Landscape Summary Table
       </span>
     ),
     reference: '/docs/topics/checks/#summary-table',

@@ -290,11 +290,11 @@ CASE SENSITIVE: false
 
 **ID**: `summary_table`
 
-The [Projects Summary Table](https://landscape.cncf.io/summary) is a CNCF Business Value Subcommittee initiative to supplement the CNCF Landscape and include further information about CNCF projects for the wider Cloud Native community.
+The Projects Summary Table is a CNCF Business Value Subcommittee initiative to supplement the CNCF Landscape and include further information about CNCF projects for the wider Cloud Native community.
 
 This check passes if:
 
-- At least *one* of the [summary_* fields](https://github.com/cncf/landscape/blob/master/readme_summary.md#using-your-own-tooling) has been set in the project's *extra* section in the [Landscape yaml file](https://github.com/cncf/landscape/blob/master/landscape.yml).
+- At least *one* of the [summary_* fields](https://github.com/cncf/landscape/blob/master/docs/item_summary.md) has been set in the project's *extra* section in the [Landscape yaml file](https://github.com/cncf/landscape/blob/master/landscape.yml).
 
 ### Website
 

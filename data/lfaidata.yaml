@@ -776,6 +776,8 @@
 - name: deepcausality
   display_name: DeepCausality
   description: Hyper-geometric computational causality library for Rust
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/deepcausality/color/DeepCausality_logo_color_icon.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/deepcausality/white/DeepCausality_logo_white_icon.svg
   category: machine learning
   accepted_at: "2023-08-10"
   maturity: sandbox

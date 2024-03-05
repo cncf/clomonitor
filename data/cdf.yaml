@@ -147,27 +147,6 @@
       url: https://github.com/ortelius/ortelius-docs
       check_sets:
         - docs
-- name: pyrsia
-  display_name: Pyrsia
-  description: Decentralized Package Network
-  category: Config & Library Management
-  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/pyrsia/artwork/icon-pyrsia-torch-175.svg
-  devstats_url: https://pyrsia.devstats.cd.foundation/
-  maturity: incubating
-  repositories:
-    - name: pyrsia
-      url: https://github.com/pyrsia/pyrsia
-      check_sets:
-        - community
-        - code
-    - name: pyrsia.github.io
-      url: https://github.com/pyrsia/pyrsia.github.io
-      check_sets:
-        - docs
-    - name: killercoda
-      url: https://github.com/pyrsia/killercoda
-      check_sets:
-        - code-lite
 - name: shipwright
   display_name: Shipwright
   description: A framework for building container images on Kubernetes

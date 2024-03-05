@@ -1029,7 +1029,7 @@
         - code
 - name: keptn
   display_name: Keptn
-  description: Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications
+  description: Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keptn/icon/color/keptn-icon-color.svg
   devstats_url: https://keptn.devstats.cncf.io/
@@ -1037,7 +1037,7 @@
   maturity: incubating
   repositories:
     - name: keptn
-      url: https://github.com/keptn/keptn
+      url: https://github.com/keptn/lifecycle-toolkit
       check_sets:
         - community
         - code

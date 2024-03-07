@@ -2158,6 +2158,17 @@
       check_sets:
         - community
         - code
+- name: prometheus-adapter
+  display_name: prometheus-adapter
+  description: An implementation of the custom.metrics.k8s.io API using Prometheus 
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubernetes/icon/color/kubernetes-icon-color.svg
+  repositories:
+    - name: prometheus-adapter
+      url: https://github.com/kubernetes-sigs/prometheus-adapter
+      check_sets:
+        - community
+        - code
 - name: rook
   display_name: Rook
   description: Storage Orchestration for Kubernetes

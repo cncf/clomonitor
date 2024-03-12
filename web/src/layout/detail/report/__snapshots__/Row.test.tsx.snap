@@ -1154,24 +1154,14 @@ exports[`Row creates snapshot 1`] = `
                             <a
                               aria-label="Open external link"
                               class="link text-decoration-underline"
-                              href="https://github.com/cncf/landscape/blob/master/readme_summary.md"
+                              href="https://github.com/cncf/landscape/blob/master/docs/item_summary.md"
                               rel="noopener noreferrer"
                               tabindex="-1"
                               target="_blank"
                             >
                               provide some information
                             </a>
-                             for the 
-                            <a
-                              aria-label="Open external link"
-                              class="link text-decoration-underline"
-                              href="https://landscape.cncf.io/summary"
-                              rel="noopener noreferrer"
-                              tabindex="-1"
-                              target="_blank"
-                            >
-                              Landscape Summary Table
-                            </a>
+                             for the Landscape Summary Table
                           </span>
                         </div>
                         <div

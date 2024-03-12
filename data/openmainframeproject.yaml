@@ -3,8 +3,8 @@
   description: Training materials and labs for a "Getting Started" level course on
     COBOL
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/cobol-pc-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/cobol-pc-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/cobol-pc/horizontal/color/cobol-pc-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/cobol-pc/horizontal/color/cobol-pc-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/cobol-programming-course/trends
   maturity: active
   repositories:
@@ -16,8 +16,8 @@
   display_name: GenevaERS
   description: GenevaERS is the single pass optimization scan engine
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/genevaers-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/genevaers-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/genevaers/horizontal/color/genevaers-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/genevaers/horizontal/color/genevaers-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/genevaers/trends
   maturity: active
   repositories:
@@ -69,8 +69,8 @@
   display_name: Open Mainframe Education
   description: Official repository for the Mainframe Open Education project
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/mainframe-open-education-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/mainframe-open-education-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/mainframe-open-education/horizontal/color/mainframe-open-education-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/mainframe-open-education/horizontal/color/mainframe-open-education-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/mainframe-open-education/trends
   maturity: active
   repositories:
@@ -83,8 +83,8 @@
   description: Zowe is an open source framework for leveraging data and applications
     in z/OS from modern applications and tools.
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/zowe-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/zowe-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/zowe/horizontal/color/zowe-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/zowe/horizontal/color/zowe-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/zowe/trends
   maturity: active
   repositories:
@@ -485,8 +485,8 @@
   description: Ambitus project, hosted by the Open Mainframe Project at the Linux
     Foundation
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/ambitus-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/ambitus-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/ambitus/horizontal/color/ambitus-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/ambitus/horizontal/color/ambitus-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/ambitus/trends
   maturity: incubating
   repositories:
@@ -498,6 +498,10 @@
     url: https://github.com/ambitus/pyzkiln
     exclude:
     - clomonitor
+  - name: pyracf
+    url: https://github.com/ambitus/pyracf
+    exclude:
+    - clomonitor
   - name: zml
     url: https://github.com/ambitus/zml
     exclude:
@@ -506,16 +510,12 @@
     url: https://github.com/ambitus/cbexplorer
     exclude:
     - clomonitor
-  - name: pyracf
-    url: https://github.com/ambitus/pyracf
+  - name: linux-containers
+    url: https://github.com/ambitus/linux-containers
     exclude:
     - clomonitor
   - name: glibc
     url: https://github.com/ambitus/glibc
-    exclude:
-    - clomonitor
-  - name: linux-containers
-    url: https://github.com/ambitus/linux-containers
     exclude:
     - clomonitor
   - name: sustainability-grafana-dashboard
@@ -550,8 +550,8 @@
   display_name: COBOL Check
   description: A testing framework for Cobol applications
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/cobol-check-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/cobol-check-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/cobol-check/horizontal/color/cobol-check-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/cobol-check/horizontal/color/cobol-check-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/cobol-check/trends
   maturity: incubating
   repositories:
@@ -566,8 +566,8 @@
     ecosystem and its user experience. It provides a set of APIs to operate z/VM including
     guest, image, network, volume etc.
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/feilong-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/feilong-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/feilong/horizontal/color/feilong-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/feilong/horizontal/color/feilong-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/feilong/trends
   maturity: incubating
   repositories:
@@ -580,8 +580,8 @@
   description: 'Galasa is an open source deep integration test framework, To learn
     more, take a look at https://galasa.dev '
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/galasa-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/galasa-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/galasa/horizontal/color/galasa-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/galasa/horizontal/color/galasa-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/galasa/trends
   maturity: incubating
   repositories:
@@ -669,6 +669,10 @@
     url: https://github.com/galasa-dev/test-release
     exclude:
     - clomonitor
+  - name: automation
+    url: https://github.com/galasa-dev/automation
+    exclude:
+    - clomonitor
   - name: webui
     url: https://github.com/galasa-dev/webui
     exclude:
@@ -677,8 +681,8 @@
   display_name: Software Discovery Tool
   description: Software Discovery Tool
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/software-discovery-tool-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/software-discovery-tool-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/software-discovery-tool/horizontal/color/software-discovery-tool-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/software-discovery-tool/horizontal/color/software-discovery-tool-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/software-discovery-tool/trends
   maturity: incubating
   repositories:
@@ -691,8 +695,8 @@
   description: A tool to automate and simplify the installation/configuration/testing
     of Linux systems running on the IBM Z platform
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/tessia-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/tessia-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/tessia/horizontal/color/tessia-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/tessia/horizontal/color/tessia-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/tessia/trends
   maturity: incubating
   repositories:
@@ -714,8 +718,8 @@
     which have been previously compressed on an IBM Mainframe using the TERSE / AMATERSE
     program (on IBM z/OS or IBM z/VM).
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/tersedecompress-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/tersedecompress-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/tersedecompress/horizontal/color/tersedecompress-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/tersedecompress/horizontal/color/tersedecompress-horizontal-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/tersedecompress/trends
   maturity: sandbox
   repositories:
@@ -732,8 +736,8 @@
   description: The Open Mainframe Project intends to increase collaboration across
     the mainframe community and to developed shared tool sets and resources.
   category: Mainframe
-  logo_url: https://landscape.openmainframeproject.org/logos/ts-term.svg
-  logo_url_dark: https://landscape.openmainframeproject.org/logos/ts-term.svg
+  logo_url: https://artwork.openmainframeproject.org/projects/tsterm/horizontal/color/tsterm-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/tsterm/horizontal/color/tsterm-horizontal-color.svg
   devstats_url: none
   maturity: sandbox
   repositories:
@@ -758,9 +762,9 @@
   description: The Open Mainframe Project intends to increase collaboration across
     the mainframe community and to developed shared tool sets and resources.
   category: Mainframe
-  logo_url: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
-  logo_url_dark: https://landscape.openmainframeproject.org/logos/z-vm-community-tools.svg
-  devstats_url: none
+  logo_url: https://artwork.openmainframeproject.org/projects/zvm-community-tools/horizontal/color/zvm-community-tools-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/projects/zvm-community-tools/horizontal/color/zvm-community-tools-horizontal-color.svg
+  devstats_url: null
   maturity: sandbox
   repositories:
   - name: zvm-community-tools
@@ -773,8 +777,8 @@
     perception and making materials more accessible to help more developers and students
     learn it on their mainframe journey.
   category: Mainframe
-  logo_url: https://artwork.openmainframeproject.orghorizontal/color/cobol-wg-horizontal-color.svg
-  logo_url_dark: https://artwork.openmainframeproject.orghorizontal/color/cobol-wg-horizontal-color.svg
+  logo_url: https://artwork.openmainframeproject.org/working-groups/cobol-wg/horizontal/color/cobol-wg-horizontal-color.svg
+  logo_url_dark: https://artwork.openmainframeproject.org/working-groups/cobol-wg/horizontal/color/cobol-wg-horizontal-color.svg
   devstats_url: none
   maturity: working-group
   repositories:

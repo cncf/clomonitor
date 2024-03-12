@@ -284,7 +284,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudevents/icon/color/cloudevents-icon-color.svg
   devstats_url: https://cloudevents.devstats.cncf.io/
   accepted_at: "2018-05-22"
-  maturity: incubating
+  maturity: graduated
   repositories:
     ###
     # CloudEvents does not require a code checkset because the primary deliverable
@@ -346,7 +346,7 @@
   display_name: CNI-Genie
   description: CNI-Genie for choosing pod network of your choice during deployment time. Supported pod networks - Calico, Flannel, Romana, Weave
   category: runtime
-  logo_url: https://landscape.cncf.io/logos/cni-genie.svg
+  logo_url: https://landscape.cncf.io/logos/546205f25e890de432a8d8f807deb622de9ce62720c47b7a58791f6da4212f33.svg
   devstats_url: https://cnigenie.devstats.cncf.io/
   accepted_at: "2020-06-23"
   maturity: sandbox
@@ -708,7 +708,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/falco/icon/color/falco-icon-color.svg
   devstats_url: https://falco.devstats.cncf.io/
   accepted_at: "2018-10-10"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: falco
       url: https://github.com/falcosecurity/falco
@@ -784,27 +784,6 @@
         - community
     - name: flux2
       url: https://github.com/fluxcd/flux2
-      check_sets:
-        - code
-- name: fonio
-  display_name: foniod
-  description: Data first monitoring agent using (e)BPF, built on RedBPF
-  category: observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/fonio/icon/color/fonio-icon-color.svg
-  devstats_url: https://ingraind.devstats.cncf.io/
-  accepted_at: "2021-03-30"
-  maturity: sandbox
-  repositories:
-    - name: project
-      url: https://github.com/foniod/project
-      check_sets:
-        - community
-    - name: foniod
-      url: https://github.com/foniod/foniod
-      check_sets:
-        - code
-    - name: redbpf
-      url: https://github.com/foniod/redbpf
       check_sets:
         - code
 - name: gateway-api
@@ -1050,7 +1029,7 @@
         - code
 - name: keptn
   display_name: Keptn
-  description: Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications
+  description: Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keptn/icon/color/keptn-icon-color.svg
   devstats_url: https://keptn.devstats.cncf.io/
@@ -1058,7 +1037,7 @@
   maturity: incubating
   repositories:
     - name: keptn
-      url: https://github.com/keptn/keptn
+      url: https://github.com/keptn/lifecycle-toolkit
       check_sets:
         - community
         - code
@@ -1401,20 +1380,6 @@
         - code-lite
       exclude:
         - clomonitor
-- name: krator
-  display_name: Krator
-  description: Kubernetes Rust State Machine Operator
-  category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/krator/icon/color/krator-icon-color.svg
-  devstats_url: https://krator.devstats.cncf.io/
-  accepted_at: "2021-05-26"
-  maturity: sandbox
-  repositories:
-    - name: krator
-      url: https://github.com/krator-rs/krator
-      check_sets:
-        - community
-        - code
 - name: krustlet
   display_name: Krustlet
   description: Run WebAssembly workloads in your Kubernetes cluster
@@ -1980,36 +1945,11 @@
       check_sets:
         - community
         - code
-- name: openebs
-  display_name: OpenEBS
-  description: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes
-  category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openebs/icon/color/openebs-icon-color.svg
-  devstats_url: https://openebs.devstats.cncf.io/
-  accepted_at: "2019-05-14"
-  maturity: sandbox
-  repositories:
-    - name: openebs
-      url: https://github.com/openebs/openebs
-      check_sets:
-        - code
-    - name: zfs-localpv
-      url: https://github.com/openebs/zfs-localpv
-      check_sets:
-        - code-lite
-    - name: mayastor
-      url: https://github.com/openebs/mayastor
-      check_sets:
-        - code-lite
-    - name: opensbs-docs
-      url: https://github.com/openebs/website
-      check_sets:
-        - community
 - name: openelb
   display_name: OpenELB
   description: Load Balancer Implementation for Kubernetes in Bare-Metal, Edge, and Virtualization
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/open-elb.svg
+  logo_url: https://landscape.cncf.io/logos/e4227275b6dcf1428fa6ad3906b8d9fbf3d69ca7f4ba1433175e3cf55ea11cbc.svg
   devstats_url: https://openelb.devstats.cncf.io
   accepted_at: "2021-09-11"
   maturity: sandbox
@@ -2249,7 +2189,7 @@
 - name: sealer
   description: A tool to seal application's all dependencies and Kubernetes into CloudImage, distribute this application anywhere via CloudImage, and run it within any cluster in one command
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/sealer.svg
+  logo_url: https://landscape.cncf.io/logos/e6b0b05ccc4d6807f11c6d30f676048e2886ebe10ee919643692bb0341fd733b.svg
   devstats_url: https://sealer.devstats.cncf.io
   accepted_at: "2022-04-26"
   maturity: sandbox
@@ -2338,7 +2278,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/strimzi/icon/color/strimzi-icon-color.svg
   devstats_url: https://strimzi.devstats.cncf.io/
   accepted_at: "2019-08-28"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: strimzi-kafka-bridge
       url: https://github.com/strimzi/strimzi-kafka-bridge
@@ -2829,7 +2769,7 @@
     Carvel provides a set of reliable, single-purpose, composable tools that aid in your application building, configuration, and deployment to
     Kubernetes
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/1c28d1abf8b9ce1f375f474a21171bf8478e555d/cached_logos/carvel.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/carvel/icon/color/carvel-icon-color.svg
   devstats_url: https://carvel.devstats.cncf.io/
   accepted_at: "2022-09-13"
   maturity: sandbox
@@ -2942,7 +2882,7 @@
   display_name: DevSpace
   description: Client-Only Developer Tool for Cloud-Native Development with Kubernetes
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/cached_logos/dev-space.svg
+  logo_url: https://landscape.cncf.io/logos/bc17b5df55cbd2a4609896aa766ea2e39d1368858443b83357602c9802bcb9a3.svg
   devstats_url: https://devspace.devstats.cncf.io/
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -2987,11 +2927,19 @@
     - name: kubevuln
       url: https://github.com/kubescape/kubevuln
       check_sets:
-        - code
+        - code-lite
     - name: node-agent
       url: https://github.com/kubescape/node-agent
       check_sets:
-        - code
+        - code-lite
+    - name: operator
+      url: https://github.com/kubescape/operator
+      check_sets:
+        - code-lite
+    - name: prometheus-exporter
+      url: https://github.com/kubescape/prometheus-exporter
+      check_sets:
+        - code-lite
     - name: regolibrary
       url: https://github.com/kubescape/regolibrary
       check_sets:
@@ -2999,7 +2947,11 @@
     - name: storage
       url: https://github.com/kubescape/storage
       check_sets:
-        - code
+        - code-lite
+    - name: synchronizer
+      url: https://github.com/kubescape/synchronizer
+      check_sets:
+        - code-lite
 - name: paralus
   display_name: Paralus
   description: Paralus is a free, open source tool that enables controlled, audited access to Kubernetes infrastructure and Zero trust Kubernetes with zero friction
@@ -3031,7 +2983,7 @@
 - name: ko
   description: Build and deploy Go applications on Kubernetes
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/ko.svg
+  logo_url: https://landscape.cncf.io/logos/ed395cad4f0e1bde73fadd0a09fa8f9cc14c87ac9ff01f9fe277e409053b8593.svg
   devstats_url: https://ko.devstats.cncf.io
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -3058,7 +3010,7 @@
   display_name: Capsule
   description: Multi-tenancy and policy-based framework for Kubernetes
   category: orchestration
-  logo_url: https://landscape.cncf.io/logos/capsule.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/capsule/icon/color/capsule-icon-color.svg
   devstats_url: https://capsule.devstats.cncf.io
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -3273,7 +3225,7 @@
   display_name: SlimToolkit
   description: Inspect, Optimize and Debug Your Containers
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/slim-toolkit.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/slimtoolkit/icon/color/slimtoolkit-icon-color.svg
   devstats_url: https://slimtoolkit.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3302,7 +3254,7 @@
   display_name: SOPS
   description: sops is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/sops.svg
+  logo_url: https://landscape.cncf.io/logos/c66ce7dd7b0c311213090978cdfaafe1041dd7805a5b73bf5b3aca228594d68c.svg
   devstats_url: https://sops.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3371,7 +3323,7 @@
 - name: kpt
   description: Automate Kubernetes Configuration Editing
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/kpt.svg
+  logo_url: https://kpt.dev/static/images/logo.png
   devstats_url: https://kpt.devstats.cncf.io/
   accepted_at: "2023-06-21"
   maturity: sandbox
@@ -3403,7 +3355,7 @@
   display_name: KubeClipper
   description: Manage kubernetes in the most light and convenient way
   category: platform
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/0d2280df3afbdd618bdd3d9b933c7551eef79e69/cached_logos/kube-clipper.svg
+  logo_url: https://landscape.cncf.io/logos/773de8297c26e5c1d0e92762b076be894e56dd58d5a50cff50cde111c585fbb9.svg
   devstats_url: https://kubeclipper.devstats.cncf.io/
   accepted_at: "2023-06-29"
   maturity: sandbox
@@ -3424,7 +3376,7 @@
   display_name: Kubeflow
   description: The Kubeflow project is dedicated to making deployments of machine learning workflows on Kubernetes simple, portable and scalable by providing a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures.
   category: orchestration
-  logo_url: https://landscape.cncf.io/logos/kubeflow.svg
+  logo_url: https://landscape.cncf.io/logos/6bd2ba258422e9cbff82a02caeefa32d59fcad78565a92848b9e0064797b6aa8.svg
   devstats_url: https://kubeflow.devstats.cncf.io/
   accepted_at: "2023-07-25"
   maturity: incubating
@@ -3490,7 +3442,7 @@
   display_name: kube-vip
   description: Kubernetes HA/Load Balancer
   category: runtime
-  logo_url: https://landscape.cncf.io/logos/kube-vip.svg
+  logo_url: https://landscape.cncf.io/logos/88aae2525c7e7896f0932542a0ce3fcb957887ba94ecf3cf0cfbd60b34eedc56.svg
   devstats_url: https://kubevip.devstats.cncf.io/
   accepted_at: "2021-06-26"
   maturity: sandbox
@@ -3540,7 +3492,7 @@
   display_name: Cloud Provider AWS
   description: Allows a Kubernetes cluster to provision, monitor and remove AWS resources necessary for operation of the cluster.
   category: provisioning
-  logo_url: https://github.com/kubernetes/cloud-provider-aws/blob/master/docs/assets/images/kubernetes_icon.svg
+  logo_url: https://raw.githubusercontent.com/kubernetes/cloud-provider-aws/master/docs/assets/images/kubernetes_icon.svg
   repositories:
     - name: cloud-provider-aws
       url: https://github.com/kubernetes/cloud-provider-aws
@@ -3668,5 +3620,69 @@
         - docs
     - name: k8sgpt-operator
       url: https://github.com/k8sgpt-ai/k8sgpt-operator
+      check_sets:
+        - code-lite
+- name: kube-burner
+  description: Kubernetes performance and scale test orchestration framework written in golang
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kube-burner/icon/color/kube-burner-icon-color.svg
+  devstats_url: https://kubeburner.devstats.cncf.io
+  accepted_at: "2023-12-18"
+  maturity: sandbox
+  repositories:
+    - name: kube-burner
+      url: https://github.com/kube-burner/kube-burner
+      check_sets:
+        - community
+        - code
+    - name: kube-burner-ocp
+      url: https://github.com/kube-burner/kube-burner-ocp
+      check_sets:
+        - code-lite
+- name: krkn
+  description: Chaos testing tool for Kubernetes to identify bottlenecks and improve resilience and performance under failure conditions
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/krkn/icon/color/krkn-icon-color.svg
+  devstats_url: https://krknchaos.devstats.cncf.io/
+  accepted_at: "2023-12-19"
+  maturity: sandbox
+  repositories:
+    - name: krkn
+      url: https://github.com/krkn-chaos/krkn
+      check_sets:
+        - community
+        - code
+    - name: krkn-hub
+      url: https://github.com/krkn-chaos/krkn-hub
+      check_sets:
+        - code-lite
+    - name: krkn-lib
+      url: https://github.com/krkn-chaos/krkn-lib
+      check_sets:
+        - code-lite
+    - name: krkn-dashboard
+      url: https://github.com/krkn-chaos/krkn-dashboard
+      check_sets:
+        - code-lite
+- name: kube-logging
+  display_name: Logging Operator (Kube Logging)
+  description: Logging operator for Kubernetes
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/logging-operator/icon/color/logging-operator-icon-color.svg
+  devstats_url: https://loggingoperator.devstats.cncf.io/
+  accepted_at: "2023-09-19"
+  maturity: sandbox
+  repositories:
+    - name: logging-operator
+      url: https://github.com/kube-logging/logging-operator
+      check_sets:
+        - community
+        - code
+    - name: helm-charts
+      url: https://github.com/kube-logging/helm-charts
+      check_sets:
+        - code-lite
+    - name: telemetry-controller
+      url: https://github.com/kube-logging/telemetry-controller
       check_sets:
         - code-lite

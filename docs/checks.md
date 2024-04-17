@@ -2,7 +2,7 @@
 
 **CLOMonitor** runs sets of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
 
-Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment the following sets are supported: `code`, `code-lite`, `community` and `docs`. The set of checks run for each one are as follows:
+Checks are organized in `check sets`. Each `check set` defines a number of checks that will be run on the repository and one or more `check sets` can be applied to a single repository. At the moment, the following sets are supported: `code`, `code-lite`, `community` and `docs`. The set of checks run for each one are as follows:
 
 - **code** (recommended for projects' primary code repository)
 
@@ -65,7 +65,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 
 Many checks rely on checking that certain files exists on a given path. Even though most of these checks support a number of variants, sometimes this won't work for some projects that may be using a different repository layout. In those cases, the recommended approach is to add a section to the `README` file of the repository pointing users to the document location. This will help users discovering this information and will make CLOMonitor happy :) At the moment we support detecting headers as well as links in `README` files that follow some patterns. Please see the reference below for more information on each case. Some projects have already proceeded this way successfully: [Kubernetes clomonitor PR](https://github.com/kubernetes/kubernetes/pull/108110), [KEDA clomonitor PR](https://github.com/kedacore/keda/pull/2704) and [Cilium clomonitor PR](https://github.com/cilium/cilium/pull/19037).
 
-For more details about how each of the checks are performed, please see the reference below. Note that **CLOMonitor** does not follow symlinks when reading files content. If you find that any of the checks isn't working as expected or you have ideas about how to improve them please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in GitHub.
+For more details about how each of the checks are performed, please see the reference below. Note that **CLOMonitor** does not follow symlinks when reading files content. If you find that any of the checks isn't working as expected or you have ideas about how to improve them, please [file an issue](https://github.com/cncf/clomonitor/issues) or [open a discussion](https://github.com/cncf/clomonitor/discussions) in GitHub.
 
 ## Exemptions
 
@@ -467,7 +467,7 @@ This check passes if:
 
 **ID**: `openssf_scorecard_badge`
 
-Scorecard assesses open source projects for security risks through a series of automated checks. For more information about the Scorecard badge please see <https://github.com/marketplace/actions/ossf-scorecard-action#scorecard-badge>.
+Scorecard assesses open source projects for security risks through a series of automated checks. For more information about the Scorecard badge, please see <https://github.com/marketplace/actions/ossf-scorecard-action#scorecard-badge>.
 
 This check passes if:
 
@@ -512,7 +512,7 @@ This check passes if:
 
 This check determines whether the project has generated executable (binary) artifacts in the source repository.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#binary-artifacts) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#binary-artifacts) in the ossf/scorecard repository.*
 
 ### Code review (from OpenSSF Scorecard)
 
@@ -520,7 +520,7 @@ This check determines whether the project has generated executable (binary) arti
 
 This check determines whether the project requires code review before pull requests (merge requests) are merged.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#code-review) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#code-review) in the ossf/scorecard repository.*
 
 ### Dangerous workflow (from OpenSSF Scorecard)
 
@@ -528,7 +528,7 @@ This check determines whether the project requires code review before pull reque
 
 This check determines whether the project's GitHub Action workflows has dangerous code patterns.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dangerous-workflow) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dangerous-workflow) in the ossf/scorecard repository.*
 
 ### Dependencies policy
 
@@ -546,7 +546,7 @@ This check passes if:
 
 This check tries to determine if the project uses a dependency update tool, specifically [dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates) or [renovatebot](https://docs.renovatebot.com/configuration-options/).
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dependency-update-tool) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dependency-update-tool) in the ossf/scorecard repository.*
 
 ### Maintained (from OpenSSF Scorecard)
 
@@ -554,7 +554,7 @@ This check tries to determine if the project uses a dependency update tool, spec
 
 This check determines whether the project is actively maintained.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained) in the ossf/scorecard repository.*
 
 ### Security insights
 
@@ -600,7 +600,7 @@ CASE SENSITIVE: false
 
 This check tries to determine if the project cryptographically signs release artifacts.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#signed-releases) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#signed-releases) in the ossf/scorecard repository.*
 
 ### Software bill of materials (SBOM)
 
@@ -631,7 +631,7 @@ This check passes if:
 
 This check determines whether the project's automated workflows tokens are set to read-only by default.
 
-*This is an OpenSSF Scorecard check. For more details please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions) in the ossf/scorecard repository.*
+*This is an OpenSSF Scorecard check. For more details, please see the [check documentation](https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions) in the ossf/scorecard repository.*
 
 ## Legal
 

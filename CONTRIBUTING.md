@@ -4,13 +4,13 @@ The CLOMonitor project accepts contributions via [GitHub pull requests](https://
 
 ## Issues and discussions
 
-Feature requests, bug reports, and support requests all occur through GitHub issues and discussions. If you would like to file an issue, view existing issues, or comment on an issue please engage with issues at <https://github.com/cncf/clomonitor/issues>. You can create new discussions, view existing ones and comment on them at <https://github.com/cncf/clomonitor/discussions>.
+Feature requests, bug reports, and support requests all occur through GitHub issues and discussions. If you would like to file an issue, view existing issues, or comment on an issue, please engage with issues at <https://github.com/cncf/clomonitor/issues>. You can create new discussions, view existing ones and comment on them at <https://github.com/cncf/clomonitor/discussions>.
 
 ## Pull Requests
 
-All changes to the source code and documentation are made through [GitHub pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). If you would like to make a change to the source, documentation, or other component in the repository please open a pull request with the change.
+All changes to the source code and documentation are made through [GitHub pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). If you would like to make a change to the source, documentation, or other component in the repository, please open a pull request with the change.
 
-If you are unsure if the change will be welcome you may want to file an issue first. The issue can detail the change and you can get feedback from the maintainers prior to starting to make the change.
+If you are unsure if the change will be welcome, you may want to file an issue first. The issue can detail the change and you can get feedback from the maintainers prior to starting to make the change.
 
 You can find the existing pull requests at <https://github.com/cncf/clomonitor/pulls>.
 
@@ -88,6 +88,6 @@ Date:   Thu Feb 2 11:41:15 2018 -0800
     Signed-off-by: Joe Smith <joe.smith@example.com>
 ```
 
-Notice how the `Author` and `Signed-off-by` lines match. If they do not match the PR will be rejected by the automated DCO check.
+Notice how the `Author` and `Signed-off-by` lines match. If they do not match, the PR will be rejected by the automated DCO check.
 
-If more than one person contributed to a commit than there can be more than one `Signed-off-by` line where each line is a signoff from a different person who contributed to the commit.
+If more than one person contributed to a commit, then there can be more than one `Signed-off-by` line where each line is a signoff from a different person who contributed to the commit.

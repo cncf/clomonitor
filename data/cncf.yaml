@@ -3389,7 +3389,7 @@
       url: https://github.com/kubeflow/pipelines
       check_sets:
         - code-lite
-    - name: training operator
+    - name: training-operator
       url: https://github.com/kubeflow/training-operator
       check-sets:
         - code-lite

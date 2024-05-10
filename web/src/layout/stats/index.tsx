@@ -1005,6 +1005,7 @@ const StatsView = () => {
                         scrollIntoView={scrollIntoView}
                       />
 
+                      {/* Monthly views */}
                       {!isUndefined(stats.projects.views_monthly) && (
                         <>
                           <div className={`text-dark text-center mb-3 fw-bold ${styles.subtitle}`}>
@@ -1021,7 +1022,7 @@ const StatsView = () => {
                                         true,
                                         stats.projects.views_monthly.length,
                                         stats.projects.views_monthly.length > 0
-                                          ? stats.projects.views_daily.slice(-1)[0][0]
+                                          ? stats.projects.views_monthly.slice(-1)[0][0]
                                           : undefined
                                       )}
                                       series={[
@@ -1041,32 +1042,37 @@ const StatsView = () => {
                         </>
                       )}
 
-                      <div className={`text-dark text-center my-3 fw-bold ${styles.subtitle}`}>
-                        Projects daily views
-                      </div>
+                      {/* Daily views */}
+                      {!isUndefined(stats.projects.views_daily) && (
+                        <>
+                          <div className={`text-dark text-center my-3 fw-bold ${styles.subtitle}`}>
+                            Projects daily views
+                          </div>
 
-                      <div className="py-4">
-                        <div className="row g-4 g-xxl-5 justify-content-center">
-                          <div className="col-12">
-                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                              <div className={`card-body ${styles.reducedPaddingBottom}`}>
-                                <ReactApexChart
-                                  options={getBarChartConfig(
-                                    false,
-                                    stats.projects.views_daily.length,
-                                    stats.projects.views_daily.length > 0
-                                      ? stats.projects.views_daily.slice(-1)[0][0]
-                                      : undefined
-                                  )}
-                                  series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
-                                  type="bar"
-                                  height={250}
-                                />
+                          <div className="py-4">
+                            <div className="row g-4 g-xxl-5 justify-content-center">
+                              <div className="col-12">
+                                <div className={`card rounded-0 ${styles.chartWrapper}`}>
+                                  <div className={`card-body ${styles.reducedPaddingBottom}`}>
+                                    <ReactApexChart
+                                      options={getBarChartConfig(
+                                        false,
+                                        stats.projects.views_daily.length,
+                                        stats.projects.views_daily.length > 0
+                                          ? stats.projects.views_daily.slice(-1)[0][0]
+                                          : undefined
+                                      )}
+                                      series={[{ name: 'Daily views', data: stats.projects.views_daily }]}
+                                      type="bar"
+                                      height={250}
+                                    />
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        </>
+                      )}
                     </>
                   )}
                 </>

@@ -9,7 +9,7 @@ import RepositoryReportModal from './RepositoryReportModal';
 
 jest.mock('../../../api');
 jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
+  ...(jest.requireActual('react-router-dom') as object),
   useParams: jest.fn(),
   useLocation: jest.fn(),
 }));

@@ -17,8 +17,9 @@ const WebsiteSection = (props: Props) => {
   const isOnlyIcon = !isUndefined(props.onlyIcon) && props.onlyIcon;
 
   useEffect(() => {
-    let urls: string[] = [];
+    const urls: string[] = [];
     props.repositories.forEach((repo: BaseRepository | Repository) => {
+      // eslint-disable-next-line no-prototype-builtins
       if (repo.hasOwnProperty('report')) {
         const currentRepo = repo as Repository;
         if (
@@ -35,7 +36,7 @@ const WebsiteSection = (props: Props) => {
       }
     });
     setWebsites(urls);
-  }, [props.repositories]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [props.repositories]);
 
   if (websites.length === 0) return null;
 

@@ -13,6 +13,7 @@ const defaultPrefs: Prefs = {
 
 interface ApplyMigrationsTests {
   appliedMigration?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   input: any;
   output: PreferencesList;
 }

@@ -9,7 +9,7 @@ interface FetchOptions {
   headers?: {
     [key: string]: string;
   };
-  body?: any;
+  body?: string;
 }
 
 interface APIFetchProps {
@@ -24,9 +24,11 @@ class API_CLASS {
     pagination: 'Pagination-Total-Count',
   };
 
-  private getHeadersValue(res: any, params?: string[]): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private getHeadersValue(res: any, params?: string[]): { [key: string]: string } | null {
     if (!isUndefined(params) && params.length > 0) {
-      let headers: any = {};
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const headers: any = {};
       params.forEach((param: string) => {
         if (res.headers.has(param)) {
           headers[param] = res.headers.get(param);
@@ -37,8 +39,9 @@ class API_CLASS {
     return null;
   }
 
-  private async processFetchOptions(opts?: FetchOptions): Promise<FetchOptions | any> {
-    let options: FetchOptions | any = opts || {};
+  private async processFetchOptions(opts?: FetchOptions): Promise<FetchOptions | object> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const options: FetchOptions | any = opts || {};
     if (opts && ['DELETE', 'POST', 'PUT'].includes(opts.method)) {
       return {
         ...options,
@@ -50,13 +53,14 @@ class API_CLASS {
     return options;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async handleErrors(res: any) {
     if (!res.ok) {
       let error: Error;
       switch (res.status) {
         default:
           try {
-            let text = await res.json();
+            const text = await res.json();
             error = {
               kind: ErrorKind.Other,
               message: text.message !== '' ? text.message : undefined,
@@ -72,32 +76,36 @@ class API_CLASS {
     return res;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async handleContent(res: any, headers?: string[]) {
-    let response = res;
+    const response = res;
+    let content;
+    let tmpHeaders;
 
     switch (response.headers.get('Content-Type')) {
       case 'text/plain; charset=utf-8':
       case 'text/markdown':
       case 'csv':
-        const text = await response.text();
-        return text;
+        content = await response.text();
+        return content;
       case 'application/json':
-        let json = await response.json();
-        const tmpHeaders = this.getHeadersValue(res, headers);
+        content = await response.json();
+        tmpHeaders = this.getHeadersValue(res, headers);
         if (!isNull(tmpHeaders)) {
-          if (isArray(json)) {
-            json = { items: json };
+          if (isArray(content)) {
+            content = { items: content };
           }
-          json = { ...json, ...tmpHeaders };
+          content = { ...content, ...tmpHeaders };
         }
-        return json;
+        return content;
       default:
         return response;
     }
   }
 
   private async apiFetch(props: APIFetchProps) {
-    let options: FetchOptions | any = await this.processFetchOptions(props.opts);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const options: FetchOptions | any = await this.processFetchOptions(props.opts);
 
     return fetch(props.url, options)
       .then(this.handleErrors)

@@ -21,7 +21,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import API from '../../api';
 import { AppContext, updateLimit, updateSort } from '../../context/AppContextProvider';
 import { QUERIES, SORT_OPTIONS } from '../../data';
-import { FilterKind, Project, SearchFiltersURL, SortBy, SortDirection } from '../../types';
+import { FilterKind, Project, SearchFiltersURL, SortBy, SortDirection, SortOption } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
 import Card from './Card';
@@ -101,6 +101,7 @@ const Search = (props: Props) => {
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateCurrentPage = (searchChanges: any) => {
     props.setScrollPosition(0);
     navigate({
@@ -220,7 +221,7 @@ const Search = (props: Props) => {
       }
     }
     searchProjects();
-  }, [searchParams, limit, sort.by, sort.direction]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [searchParams, limit, sort.by, sort.direction]);
 
   const visibleFiltersLabels = !isEmpty(filters) || !isUndefined(acceptedFrom) || !isUndefined(acceptedTo);
 
@@ -298,7 +299,7 @@ const Search = (props: Props) => {
             </div>
             <div className="d-flex flex-wrap flex-row justify-content-sm-end mt-3 mt-sm-0 ms-0 ms-md-3 w-100">
               <SortOptions
-                options={SORT_OPTIONS as any[]}
+                options={SORT_OPTIONS as SortOption[]}
                 by={sort.by}
                 direction={sort.direction}
                 width={180}

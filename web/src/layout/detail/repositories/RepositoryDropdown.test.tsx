@@ -5,7 +5,7 @@ import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
 import RepositoryDropdown from './RepositoryDropdown';
 
 jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
+  ...(jest.requireActual('react-router-dom') as object),
   useParams: jest.fn(),
 }));
 

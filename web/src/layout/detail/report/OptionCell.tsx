@@ -37,10 +37,12 @@ const OptionCell = (props: Props) => {
 
   const opt: ReportOptionData = getOptionInfo(props.label);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Heading = (props: any) => (
     <div className="fs-6 border-bottom border-1 pb-2 fw-bold w-100">{props.children}</div>
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Link = (data: any) => {
     return (
       <a href={data.href} target={data.target} rel="noopener noreferrer" className="text-decoration-underline">
@@ -49,8 +51,9 @@ const OptionCell = (props: Props) => {
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Blockquote = (data: any) => {
-    const content = data.children.find((el: any) => el.type === 'p');
+    const content = data.children.find((el: { type: string }) => el.type === 'p');
     let el = data.children;
     if (content) {
       el = content.props.children;

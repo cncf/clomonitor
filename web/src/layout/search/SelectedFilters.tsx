@@ -13,16 +13,18 @@ interface Props {
   acceptedTo?: string;
   filters: { [key: string]: string[] };
   onChange: (name: string, value: string, checked: boolean) => void;
-  onAcceptedDateRangeChange: (dates: any) => void;
+  onAcceptedDateRangeChange: (dates: object) => void;
 }
 
 const SelectedFilters = (props: Props) => {
   if (isEmpty(props.filters) && isUndefined(props.acceptedFrom) && isUndefined(props.acceptedTo)) return null;
 
   const getFilterName = (type: FilterKind, filter: string): string => {
+    let name = '';
+    let ratings;
     switch (type) {
       case FilterKind.Foundation:
-        const name = !isUndefined(FOUNDATIONS[filter as Foundation]) ? FOUNDATIONS[filter as Foundation]!.name : filter;
+        name = !isUndefined(FOUNDATIONS[filter as Foundation]) ? FOUNDATIONS[filter as Foundation]!.name : filter;
         return name;
 
       case FilterKind.Maturity:
@@ -33,15 +35,14 @@ const SelectedFilters = (props: Props) => {
         return REPORT_OPTIONS[filter as ReportOption].shortName || REPORT_OPTIONS[filter as ReportOption].name;
 
       case FilterKind.Rating:
-        let ratingName: string = '';
-        const ratings = FILTERS.find((sec: FiltersSection) => sec.name === type);
+        ratings = FILTERS.find((sec: FiltersSection) => sec.name === type);
         if (ratings) {
           const rating = ratings.filters.find((f: Filter) => f.name === filter);
           if (rating) {
-            ratingName = `${rating.label} ${rating.legend}`;
+            name = `${rating.label} ${rating.legend}`;
           }
         }
-        return ratingName;
+        return name;
     }
   };
 

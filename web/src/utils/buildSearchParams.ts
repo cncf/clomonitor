@@ -15,7 +15,7 @@ const WHITELISTED_FILTER_KEYS = [
 ];
 
 const buildSearchParams = (p: URLSearchParams): SearchFiltersURL => {
-  let filters: F = {};
+  const filters: F = {};
 
   p.forEach((value, key) => {
     if (WHITELISTED_FILTER_KEYS.includes(key as FilterKind)) {

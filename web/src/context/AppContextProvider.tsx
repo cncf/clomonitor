@@ -25,6 +25,7 @@ type Action =
 
 export const AppContext = createContext<{
   ctx: AppState;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dispatch: Dispatch<any>;
 }>({
   ctx: initialState,
@@ -50,16 +51,16 @@ export function updateSort(by: SortBy, direction: SortDirection) {
 export function updateActiveStyleSheet(current: string) {
   const secondary = getMetaTag('secondaryColor');
   document.getElementsByTagName('html')[0].setAttribute('data-theme', current);
-  document
-    .querySelector(`meta[name='theme-color']`)!
-    .setAttribute('content', current === 'light' ? secondary : '#0f0e11');
+  const themeColor = current === 'light' ? (secondary as string) : '#0f0e11';
+  document.querySelector(`meta[name='theme-color']`)!.setAttribute('content', themeColor);
 }
 
 export function appReducer(state: AppState, action: Action) {
   let prefs;
+  let effective;
   switch (action.type) {
     case 'updateTheme':
-      const effective = action.theme === 'automatic' ? detectActiveThemeMode() : action.theme;
+      effective = action.theme === 'automatic' ? detectActiveThemeMode() : action.theme;
       prefs = {
         ...state.prefs,
         theme: {
@@ -140,7 +141,7 @@ function AppContextProvider(props: Props) {
         : activeProfilePrefs.theme.configured || activeProfilePrefs.theme.effective; // Use effective theme if configured is undefined
     updateActiveStyleSheet(theme);
     setActiveInitialTheme(theme);
-  }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, []);
 
   useSystemThemeMode(ctx.prefs.theme.configured === 'automatic', dispatch);
 

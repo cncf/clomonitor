@@ -19,7 +19,7 @@ const RepositorySection = (props: Props) => {
 
   useEffect(() => {
     setRepositories(sortRepos(props.repositories as Repository[]));
-  }, [props.repositories]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [props.repositories]);
 
   return (
     <>

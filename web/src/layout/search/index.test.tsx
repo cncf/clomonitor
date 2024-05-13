@@ -6,12 +6,9 @@ import API from '../../api';
 import { Project } from '../../types';
 import Search from './index';
 jest.mock('../../api');
-// jest.mock('clo-ui', () => ({
-//   ...(jest.requireActual('clo-ui') as any),
-//   SampleQueries: () => <div />,
-// }));
 
 const getMockSearch = (fixtureId: string): { items: Project[]; 'Pagination-Total-Count': string } => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(`./__fixtures__/index/${fixtureId}.json`) as { items: Project[]; 'Pagination-Total-Count': string };
 };
 
@@ -22,6 +19,7 @@ const defaultProps = {
 };
 
 describe('Project detail index', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let dateNowSpy: any;
 
   beforeEach(() => {

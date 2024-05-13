@@ -29,8 +29,8 @@ const migrations: Migration[] = [
     key: 1,
     description: 'Add sorting criteria',
     method: (lsActual: PreferencesList): PreferencesList => {
-      let lsUpdated: PreferencesList = { ...lsActual };
-      let guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
+      const lsUpdated: PreferencesList = { ...lsActual };
+      const guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
 
       if (isUndefined(guestPrefs.search.sort)) {
         guestPrefs.search = {
@@ -50,8 +50,8 @@ const migrations: Migration[] = [
     key: 3,
     description: 'Add configured theme',
     method: (lsActual: PreferencesList): PreferencesList => {
-      let lsUpdated: PreferencesList = { ...lsActual };
-      let guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
+      const lsUpdated: PreferencesList = { ...lsActual };
+      const guestPrefs: Prefs = lsUpdated.guest ? { ...lsUpdated.guest } : DEFAULT_PREFS;
 
       if (isUndefined(guestPrefs.theme.configured)) {
         guestPrefs.theme = {
@@ -124,7 +124,7 @@ export class LocalStoragePreferences {
   }
 
   public setPrefs(prefs: Prefs) {
-    let preferences = { ...this.savedPreferences, guest: prefs };
+    const preferences = { ...this.savedPreferences, guest: prefs };
     this.savedPreferences = preferences;
 
     try {
@@ -135,7 +135,7 @@ export class LocalStoragePreferences {
   }
 
   public getPrefs(): Prefs {
-    let prefs: Prefs = {
+    const prefs: Prefs = {
       ...DEFAULT_PREFS,
       ...this.savedPreferences.guest,
     };

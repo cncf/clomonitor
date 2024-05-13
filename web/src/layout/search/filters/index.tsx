@@ -1,4 +1,4 @@
-import { DateRangeFilter, Foundation } from 'clo-ui';
+import { DateRangeFilter, DateRangeOpts, Foundation } from 'clo-ui';
 import { isEmpty, isUndefined } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
@@ -20,7 +20,7 @@ interface Props {
   };
   onChange: (name: string, value: string, checked: boolean) => void;
   onChecksChange: (filters: FiltersProp) => void;
-  onAcceptedDateRangeChange: (dates: any) => void;
+  onAcceptedDateRangeChange: (dates: DateRangeOpts) => void;
   onResetFilters?: () => void;
   device: string;
 }

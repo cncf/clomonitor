@@ -41,6 +41,7 @@ export interface Repository extends BaseRepository {
 }
 
 export interface Report {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: CoreReport | any;
   check_sets?: CheckSet[];
   errors?: string | null;
@@ -215,7 +216,7 @@ export type Stats = {
   generated_at?: number;
   snapshots?: string[];
   projects: {
-    running_total?: any[];
+    running_total?: number[][];
     rating_distribution: {
       [key: string]: { [key: string]: number }[];
     };

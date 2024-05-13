@@ -2,9 +2,9 @@ import { isUndefined } from 'lodash';
 
 import { ReportOption } from '../types';
 
-const sortChecks = (opts?: any): ReportOption[] => {
+const sortChecks = (opts?: object): ReportOption[] => {
   if (isUndefined(opts)) return [];
-  let optNames: ReportOption[] = [];
+  const optNames: ReportOption[] = [];
   Object.keys(opts).forEach((opt: string) => {
     // we check that opt belongs to ReportOption enum
     if (Object.values(ReportOption).includes(opt as ReportOption)) {

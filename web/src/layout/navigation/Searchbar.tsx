@@ -57,6 +57,7 @@ const Searchbar = (props: Props) => {
         sort_direction: DEFAULT_SORT_DIRECTION,
       });
       return searchResults;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       return err;
     }

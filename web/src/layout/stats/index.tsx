@@ -45,7 +45,7 @@ interface SelectedRange {
 const FOUNDATION_QUERY = 'foundation';
 
 const removeEmptyValuesFromObject = (obj: { [key: string]: unknown }) => {
-  for (var propName in obj) {
+  for (const propName in obj) {
     if (obj[propName] === null || obj[propName] === undefined || isEmpty(obj[propName])) {
       delete obj[propName];
     }
@@ -84,7 +84,7 @@ const StatsView = () => {
         if (element) {
           element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
         }
-      } finally {
+      } catch {
         return;
       }
     },
@@ -104,6 +104,7 @@ const StatsView = () => {
   const checkCurrentStats = (currentStats: Stats | null) => {
     if (!isNull(currentStats)) {
       const notEmptyItems = Object.keys(currentStats).some((elem: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return elem !== 'generated_at' && !isEmpty((currentStats as any)[elem]);
       });
       setEmptyStats(!notEmptyItems);
@@ -143,7 +144,7 @@ const StatsView = () => {
   };
 
   const prepareMonthlyViewsData = (data: number[][]): number[][] => {
-    let finalData: number[][] = [...data];
+    const finalData: number[][] = [...data];
     if (data.length < 13 && data.length > 0) {
       const oldDate = data[0][0];
       range(1, 13 - data.length).forEach((x: number) => {
@@ -212,6 +213,7 @@ const StatsView = () => {
           },
         },
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           beforeZoom: (chartContext: any, opt: any) => {
             const minDate = chartContext.ctx.data.twoDSeriesX[0];
             const maxDate = chartContext.ctx.data.twoDSeriesX[chartContext.ctx.data.twoDSeriesX.length - 1];
@@ -288,6 +290,7 @@ const StatsView = () => {
         redrawOnWindowResize: true,
         redrawOnParentResize: true,
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           dataPointSelection: (event: any, chartContext: any, config: any) => {
             setSelectedPoint({
               rating: [Object.values(Rating)[config.dataPointIndex]],
@@ -349,6 +352,7 @@ const StatsView = () => {
           show: false,
         },
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           dataPointSelection: (event: any, chartContext: any, config: any) => {
             const value = config.w.globals.series[config.seriesIndex][config.dataPointIndex] - 10;
             if (value > 0) {
@@ -452,7 +456,7 @@ const StatsView = () => {
         const isCurrent = !isUndefined(lastBarDate)
           ? moment(moment.unix(lastBarDate / 1000)).isSame(moment(), monthlyFormatter ? 'month' : 'day')
           : false;
-        let colors = Array.from({ length: dataLength - 1 }, () => 'var(--clo-tertiary)');
+        const colors = Array.from({ length: dataLength - 1 }, () => 'var(--clo-tertiary)');
         if (isCurrent) {
           // Color for the last bar
           colors.push(effective === 'dark' ? '#cce7ff' : '#003666');
@@ -580,18 +584,14 @@ const StatsView = () => {
   };
 
   const prepareDonutData = (data: { [key: string]: number }[]): number[] => {
-    const tmpData: any = {};
+    const tmpData: { [key: string]: number } = {};
     data.forEach((item) => {
       Object.keys(item).forEach((k: string) => {
         tmpData[k] = item[k];
       });
     });
     return Object.values(RatingKind).map((x: string) => {
-      if (tmpData.hasOwnProperty(x)) {
-        return tmpData[x];
-      } else {
-        return 0;
-      }
+      return tmpData[x] | 0;
     });
   };
 
@@ -602,7 +602,7 @@ const StatsView = () => {
     // We use 10 by default and add 10 to the rest of values
     // due to a bug displaying proper bg color in heatmap
     Object.keys(groupedByYear).forEach((year: string) => {
-      let currentData = new Array(12).fill(10);
+      const currentData = new Array(12).fill(10);
       groupedByYear[year].forEach((i: DistributionData) => {
         currentData[i.month - 1] = i.total + 10;
       });
@@ -621,7 +621,7 @@ const StatsView = () => {
       checkCurrentStats(stats);
       setApiError(null);
       setIsLoading(false);
-    } catch (err: any) {
+    } catch {
       setIsLoading(false);
       setApiError('An error occurred getting CLOMonitor stats.');
       setSnapshots([]);
@@ -635,21 +635,21 @@ const StatsView = () => {
   useEffect(() => {
     setActiveDate(undefined);
     getStats();
-  }, [searchParams]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [searchParams]);
 
   // Link search page from donut charts
   useEffect(() => {
     if (!isUndefined(selectedPoint)) {
       loadSearchPage(selectedPoint);
     }
-  }, [selectedPoint]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [selectedPoint]);
 
   // Link search page from heat map
   useEffect(() => {
     if (!isUndefined(selectedRange)) {
       loadSearchPageWithAcceptedRange(selectedRange);
     }
-  }, [selectedRange]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [selectedRange]);
 
   useEffect(() => {
     async function fetchSnapshot() {
@@ -659,7 +659,7 @@ const StatsView = () => {
         setStats(stats);
         checkCurrentStats(stats);
         setIsLoading(false);
-      } catch (err: any) {
+      } catch {
         setStats(null);
         setIsLoading(false);
       }
@@ -672,7 +672,7 @@ const StatsView = () => {
         fetchSnapshot();
       }
     }
-  }, [activeDate]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [activeDate]);
 
   const downloadRepositoriesCSV = () => {
     async function getCSV() {

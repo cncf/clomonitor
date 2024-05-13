@@ -94,7 +94,7 @@ const ChecksFilter = (props: Props) => {
     let moreFilters = {};
     if (checked) {
       newFilters.push(value);
-      let oppositeName = name === FilterKind.PassingCheck ? FilterKind.NotPassingCheck : FilterKind.PassingCheck;
+      const oppositeName = name === FilterKind.PassingCheck ? FilterKind.NotPassingCheck : FilterKind.PassingCheck;
       moreFilters = { [oppositeName]: selectedChecks[oppositeName].filter((el) => el !== value) };
     } else {
       newFilters = newFilters.filter((el) => el !== value);
@@ -111,7 +111,7 @@ const ChecksFilter = (props: Props) => {
     const getSelectedChecks = (): JSX.Element | null => {
       const tmpChecks: Checks = {};
 
-      for (let cat of Object.keys(CHECKS_PER_CATEGORY)) {
+      for (const cat of Object.keys(CHECKS_PER_CATEGORY)) {
         (CHECKS_PER_CATEGORY[cat as ScoreType] as ReportOption[]).forEach((opt: ReportOption) => {
           const isInPassingCheck = props.activePassingChecks ? props.activePassingChecks.includes(opt) : false;
           const isInNotPassingCheck = props.activeNotPassingChecks ? props.activeNotPassingChecks.includes(opt) : false;
@@ -216,7 +216,7 @@ const ChecksFilter = (props: Props) => {
       [FilterKind.NotPassingCheck]: props.activeNotPassingChecks || [],
     });
     setChecks(getSelectedChecks());
-  }, [props.activePassingChecks, props.activeNotPassingChecks]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [props.activePassingChecks, props.activeNotPassingChecks]);
 
   return (
     <>

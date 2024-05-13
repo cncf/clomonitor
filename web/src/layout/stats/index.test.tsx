@@ -11,18 +11,19 @@ jest.mock('../../api');
 jest.mock('react-apexcharts', () => () => <div>Chart</div>);
 
 jest.mock('clo-ui', () => ({
-  ...(jest.requireActual('clo-ui') as any),
+  ...(jest.requireActual('clo-ui') as object),
   Timeline: () => <>Timeline</>,
 }));
 
 const getMockStats = (fixtureId: string): Stats => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;
 };
 
 const mockUseNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
+  ...(jest.requireActual('react-router-dom') as object),
   useNavigate: () => mockUseNavigate,
 }));
 

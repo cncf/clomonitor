@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Card from './Card';
 
 jest.mock('moment', () => ({
-  ...(jest.requireActual('moment') as {}),
+  ...(jest.requireActual('moment') as object),
   unix: () => ({
     fromNow: () => '3 days ago',
     format: () => '23rd June 2020',

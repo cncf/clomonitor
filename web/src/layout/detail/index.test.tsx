@@ -12,19 +12,19 @@ jest.mock('react-markdown', () => () => <div />);
 jest.mock('rehype-external-links', () => () => <></>);
 
 jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
+  ...(jest.requireActual('react-router-dom') as object),
   useParams: jest.fn(),
   useLocation: jest.fn(),
   useNavigate: () => mockUseNavigate,
 }));
 
 jest.mock('clo-ui', () => ({
-  ...(jest.requireActual('clo-ui') as any),
+  ...(jest.requireActual('clo-ui') as object),
   Timeline: () => <>Timeline</>,
 }));
 
 jest.mock('moment', () => ({
-  ...(jest.requireActual('moment') as {}),
+  ...(jest.requireActual('moment') as object),
   unix: () => ({
     fromNow: () => '3 days ago',
     format: () => '23rd June 2020',
@@ -34,10 +34,11 @@ jest.mock('moment', () => ({
 const mockUseNavigate = jest.fn();
 
 const getMockDetail = (fixtureId: string): ProjectDetail => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(`./__fixtures__/index/${fixtureId}.json`) as ProjectDetail;
 };
 
-let path = {
+const path = {
   pathname: '/projects/cncf/artifact-hub/artifact-hub',
   search: '',
   hash: '',

@@ -76,7 +76,7 @@ const RepositoriesList = (props: Props) => {
     return () => {
       cleanInterval();
     };
-  }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, []);
 
   if (repositories.length === 0) return null;
 

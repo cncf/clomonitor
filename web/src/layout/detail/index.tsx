@@ -56,7 +56,7 @@ const Detail = (props: Props) => {
     } else {
       scrollIntoView();
     }
-  }, [location]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [location]);
 
   const scrollIntoView = useCallback(
     (id?: string) => {
@@ -68,6 +68,7 @@ const Detail = (props: Props) => {
           element.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
         }
       } finally {
+        // eslint-disable-next-line no-unsafe-finally
         return;
       }
     },
@@ -94,7 +95,7 @@ const Detail = (props: Props) => {
       updateMetaIndex(projectDetail.display_name || projectDetail.name, projectDetail.description);
       setIsLoadingProject(false);
       props.setInvisibleFooter(false);
-    } catch (err: any) {
+    } catch {
       setDetail(null);
       setIsLoadingProject(false);
       props.setInvisibleFooter(false);
@@ -113,7 +114,7 @@ const Detail = (props: Props) => {
         fetchProjectDetail();
       }
     }
-  }, [project, foundation]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [project, foundation]);
 
   useEffect(() => {
     async function fetchSnapshot() {
@@ -124,7 +125,7 @@ const Detail = (props: Props) => {
         setDetail(projectDetail);
         setIsLoadingProject(false);
         props.setInvisibleFooter(false);
-      } catch (err: any) {
+      } catch {
         setDetail(null);
         setIsLoadingProject(false);
         props.setInvisibleFooter(false);
@@ -138,7 +139,7 @@ const Detail = (props: Props) => {
         fetchSnapshot();
       }
     }
-  }, [activeDate]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [activeDate]);
 
   return (
     <>

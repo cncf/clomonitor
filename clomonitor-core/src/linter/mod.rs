@@ -118,7 +118,7 @@ impl Linter for CoreLinter {
         let spdx_id = run!(license_spdx_id, &ci);
         let mut spdx_id_value: Option<String> = None;
         if let Some(r) = &spdx_id {
-            spdx_id_value = r.value.clone();
+            spdx_id_value.clone_from(&r.value);
         }
 
         // Run the remaining sync checks and build report

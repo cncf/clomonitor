@@ -1788,8 +1788,8 @@
   display_name: Notary
   description: Notary is a project that allows anyone to have trust over arbitrary collections of data
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/notary/icon/color/notary-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/notary/icon/white/notary-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/notary/icon/color/notary-project-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/notary/icon/white/notary-project-icon-white.svg
   devstats_url: https://notary.devstats.cncf.io/
   accepted_at: "2017-10-24"
   maturity: incubating
@@ -3694,3 +3694,96 @@
       url: https://github.com/kube-logging/telemetry-controller
       check_sets:
         - code-lite
+- name: kairos
+  display_name: Kairos
+  description: The immutable Linux meta-distribution for edge Kubernetes
+  category: wasm
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kairos/icon/color/kairos-icon-color.svg
+  devstats_url: https://kairos.devstats.cncf.io/
+  accepted_at: "2024-04-13"
+  maturity: sandbox
+  repositories:
+    - name: kairos
+      url: https://github.com/kairos-io/kairos
+      check_sets:
+        - community
+        - code
+    - name: provider-kairos
+      url: https://github.com/kairos-io/provider-kairos
+      check_sets:
+        - code-lite
+- name: kanister
+  display_name: Kanister
+  description: An extensible framework for application-level data management on Kubernetes
+  category: runtime
+  logo_url: https://avatars.githubusercontent.com/u/30535216?s=200&v=4
+  devstats_url: https://kanister.devstats.cncf.io/
+  accepted_at: "2023-09-20"
+  maturity: sandbox
+  repositories:
+    - name: kanister
+      url: https://github.com/kanisterio/kanister
+      check_sets:
+        - community
+        - code
+    - name: charts
+      url: https://github.com/kanisterio/charts
+      check_sets:
+        - code-lite
+    - name: web
+      url: https://github.com/kanisterio/website
+      check_sets:
+        - docs
+- name: kubean
+  display_name: Kubean
+  description: Kubean is a cluster lifecycle management tool based on kubespray
+  category: platform
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubean/icon/color/kubean-icon-colordark.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubean/icon/color/kubean-icon-colorlight.svg
+  devstats_url: https://kubean.devstats.cncf.io/
+  accepted_at: "2024-04-16"
+  maturity: sandbox
+  repositories:
+    - name: kubean
+      url: https://github.com/kubean-io/kubean
+      check_sets:
+        - community
+        - code
+    - name: website
+      url: https://github.com/kubean-io/website
+      check-sets:
+        - docs
+    - name: kubean-helm-chart
+      url: https://github.com/kubean-io/kubean-helm-chart
+      check_sets:
+        - code-lite
+    - name: kubean-api
+      url: https://github.com/kubean-io/kubean-api
+      check-sets:
+        - code-lite
+- name: radius
+  display_name: Radius
+  description: Radius is a cloud-native application platform that enables developers and the platform engineers that support them to collaborate on delivering and managing cloud-native applications that follow organizational best practices for cost, operations and security, by default
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/radius/icon/color/radius-icon-color.svg
+  devstats_url: https://radius.devstats.cncf.io/
+  accepted_at: "2024-04-16"
+  maturity: sandbox
+  repositories:
+    - name: radius
+      url: https://github.com/radius-project/radius
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/radius-project/community
+      check_sets:
+        - community
+    - name: docs
+      url: https://github.com/radius-project/docs
+      check-sets:
+        - docs
+
+
+
+
+

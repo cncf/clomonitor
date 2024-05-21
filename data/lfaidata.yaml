@@ -860,3 +860,36 @@
       url: https://github.com/open-voice-interoperability/lib-interop
       check_sets:
         - community
+- name: iree
+  display_name: IREE
+  description: A retargetable MLIR-based machine learning compiler and runtime toolkit
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/IREE/icon/color/IREE_Logo_Icon.svg
+  logo_dark_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/IREE/icon/white/IREE_Logo_Icon_White.svg
+  accepted_at: "2024-05-02"
+  maturity: sandbox
+  repositories:
+    - name: iree
+      url: https://github.com/iree-org/iree
+      check_sets:
+        - community
+        - code
+- name: opea
+  display_name: Open Platform for Enterprise AI (OPEA)
+  description: Generative AI Examples is a collection of GenAI examples such as ChatQnA, Copilot, which illustrate the pipeline capabilities of the Open Platform for Enterprise AI (OPEA) project
+  category: machine learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/opea/icon/color/opea-icon-color.svg
+  accepted_at: "2024-04-04"
+  maturity: sandbox
+  repositories:
+    - name: GenAIExamples
+      url: https://github.com/opea-project/GenAIExamples
+      check_sets:
+        - community
+        - code
+    - name: docs
+      url: https://github.com/opea-project/docs
+      check-sets:
+        - docs
+
+

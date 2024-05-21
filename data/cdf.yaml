@@ -81,7 +81,7 @@
       url: https://github.com/spinnaker/governance
       check_sets:
         - community
-    - name: spinakker
+    - name: spinnaker
       url: https://github.com/spinnaker/spinnaker
       check_sets:
         - code

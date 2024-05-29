@@ -1000,8 +1000,15 @@
     - name: karmada
       url: https://github.com/karmada-io/karmada
       check_sets:
-        - community
         - code
+    - name: community
+      url: https://github.com/karmada-io/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/karmada-io/website
+      check_sets:
+        - docs
 - name: karpenter
   display_name: Karpenter
   description: Karpenter is a Kubernetes Node Autoscaler built for flexibility, performance, and simplicity.

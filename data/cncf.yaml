@@ -89,7 +89,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg
   devstats_url: https://artifacthub.devstats.cncf.io/
   accepted_at: "2020-06-23"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: artifact-hub
       url: https://github.com/artifacthub/hub
@@ -3789,7 +3789,50 @@
       url: https://github.com/radius-project/docs
       check-sets:
         - docs
-
+- name: connect-rpc
+  display_name: Connect RPC
+  description: Connect is a family of libraries for building browser and gRPC-compatible HTTP APIs
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/connect-rpc.svg
+  devstats_url: https://connect.devstats.cncf.io
+  accepted_at: "2024-04-13"
+  maturity: sandbox
+  repositories:
+    - name: connect-go
+      url: https://github.com/connectrpc/connect-go
+      check_sets:
+        - code
+        - community
+- name: kubeslice
+  display_name: KubeSlice
+  description: Applications provided by Avesha Systems, ready to launch on Kubernetes using Kubernetes Helm
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubeslice/icon/color/kubeslice-icon-color.svg
+  devstats_url: https://kubeslice.devstats.cncf.io
+  accepted_at: "2024-04-16"
+  maturity: sandbox
+  repositories:
+    - name: kubeslice
+      url: https://github.com/kubeslice/kubeslice
+      check_sets:
+        - code
+        - community
+    - name: docs
+      url: https://github.com/kubeslice/docs
+      check_sets:
+        - docs
+    - name: kubeslice-controller
+      url: https://github.com/kubeslice/kubeslice-controller
+      check_sets:
+        - code-lite
+    - name: worker-operator
+      url: https://github.com/kubeslice/worker-operator
+      check_sets:
+        - code-lite
+    - name: kubeslice-cli
+      url: https://github.com/kubeslice/kubeslice-cli
+      check_sets:
+        - code-lite
 
 
 

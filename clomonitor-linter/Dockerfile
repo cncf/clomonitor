@@ -14,7 +14,7 @@ WORKDIR /clomonitor/clomonitor-linter
 RUN cargo build --release
 
 # Build OpenSSF scorecard
-FROM golang:1.22.3-alpine3.19 AS scorecard
+FROM golang:1.22.4-alpine3.19 AS scorecard
 WORKDIR /tmp
 RUN apk --no-cache add git make bash gcc musl-dev binutils-gold
 RUN git clone https://github.com/ossf/scorecard

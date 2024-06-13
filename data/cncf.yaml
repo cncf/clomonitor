@@ -1690,6 +1690,10 @@
       url: https://github.com/metal3-io/metal3-docs
       check_sets:
         - docs
+    - name: metal3-io.github.io
+      url: https://github.com/metal3-io/metal3-io.github.io
+      check_sets:
+        - docs
     - name: cluster-api-provider-metal3
       url: https://github.com/metal3-io/cluster-api-provider-metal3
       check_sets:
@@ -1704,6 +1708,10 @@
         - code
     - name: ironic-image
       url: https://github.com/metal3-io/ironic-image
+      check_sets:
+        - code-lite
+    - name: mariadb-image
+      url: https://github.com/metal3-io/mariadb-image
       check_sets:
         - code-lite
 - name: metrics-server

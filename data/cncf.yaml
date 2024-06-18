@@ -672,6 +672,10 @@
       url: https://github.com/etcd-io/zetcd
       check_sets:
         - code-lite
+    - name: website
+      url: https://github.com/etcd-io/website
+      check_sets:
+        - docs
 - name: external-dns
   display_name: ExternalDNS
   description: Configure external DNS servers (AWS Route53, Google CloudDNS and others) for Kubernetes Ingresses and Services

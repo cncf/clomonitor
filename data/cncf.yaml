@@ -1042,6 +1042,10 @@
       check_sets:
         - community
         - code
+    - name: keda-docs
+      url: https://github.com/kedacore/keda-docs
+      check_sets:
+        - docs
 - name: keptn
   display_name: Keptn
   description: Cloud-native application life-cycle orchestration. Keptn automates your SLO-driven multi-stage delivery and operations & remediation of your applications.

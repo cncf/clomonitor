@@ -910,8 +910,12 @@
       url: https://github.com/in-toto/archivista
       check_sets:
         - code
-    - name: docs
-      url: https://github.com/in-toto/docs
+    - name: specification
+      url: https://github.com/in-toto/specification
+      check_sets:
+        - docs
+    - name: in-toto.io
+      url: https://github.com/in-toto/in-toto.io
       check_sets:
         - docs
 - name: inclavare

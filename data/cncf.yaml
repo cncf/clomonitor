@@ -124,6 +124,7 @@
       check_sets:
         - community
         - code
+        - docs
 - name: bfe
   display_name: Beyond Front End
   description: Open-source layer 7 load balancer derived from proprietary Baidu FrontEnd

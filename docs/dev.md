@@ -19,7 +19,7 @@ clomonitor_db_init
 clomonitor_db_server
 ```
 
-Once the database server is up an running, we can create the `clomonitor` database and we'll be ready to go:
+Once the database server is up and running, we can create the `clomonitor` database and we'll be ready to go:
 
 ```sh
 clomonitor_db_create
@@ -47,7 +47,7 @@ clomonitor_db_migrate
 
 ### Database tests
 
-If you plan to do some work on the database layer, some extra setup is needed to be able to run the database tests. [Schema and database functions are tested](https://github.com/cncf/clomonitor/tree/main/database/tests) using the unit testing framework [pgTap](https://pgtap.org), so you need to [install](https://pgtap.org/documentation.html#installation) the pgTap PostgreSQL extension on your machine. To run the tests you will also need to install a perl tool called [pg_prove](https://pgtap.org/pg_prove.html) from CPAN (`cpan TAP::Parser::SourceHandler::pgTAP`).
+If you plan to do some work on the database layer, some extra setup is needed to be able to run the database tests. [Schema and database functions are tested](https://github.com/cncf/clomonitor/tree/main/database/tests) using the unit testing framework [pgTap](https://pgtap.org), so you need to [install](https://pgtap.org/documentation.html#installation) the pgTap PostgreSQL extension on your machine. To run the tests, you will also need to install a perl tool called [pg_prove](https://pgtap.org/pg_prove.html) from CPAN (`cpan TAP::Parser::SourceHandler::pgTAP`).
 
 Similarly to what we did during our initial database setup, we'll create a configuration file for Tern for the tests database in the same folder (`~/.config/clomonitor`), called `tern-tests.conf` with the following content (please adjust if needed):
 
@@ -81,7 +81,7 @@ insert into foundation values ('cncf', 'CNCF', 'https://raw.githubusercontent.co
 
 The `registrar` component will process the foundations' data files and register the projects available.
 
-At this point our database is ready to launch our local instance of CLOMonitor and start doing some work on it.
+At this point, our database is ready to launch our local instance of CLOMonitor and start doing some work on it.
 
 ## Backend
 
@@ -122,7 +122,7 @@ Now you can run the `apiserver`:
 clomonitor_apiserver
 ```
 
-The `apiserver` process launches an http server that serves the web application and the API that powers it. Once it is up and running, you can point your browser to [http://localhost:8000](http://localhost:8000) and you should see the CLOMonitor web application. Initially there won't be any projects listed on it, but we'll take care of that in the next section.
+The `apiserver` process launches an http server that serves the web application and the API that powers it. Once it is up and running, you can point your browser to [http://localhost:8000](http://localhost:8000) and you should see the CLOMonitor web application. Initially, there won't be any projects listed on it, but we'll take care of that in the next section.
 
 ### Registrar
 
@@ -181,7 +181,7 @@ Depending on the speed of your Internet connection and machine, this may take on
 
 ### Linter CLI
 
-In the section above we saw how the `tracker` is able to lint all repositories registered in the database. But sometimes it may be desirable to lint a single repository manually in an isolated way, maybe to quickly test some checks or to integrate with some other processes, like continuous integration or deployment tools. The `linter CLI` tool is designed to help in those scenarios.
+In the section above, we saw how the `tracker` is able to lint all repositories registered in the database. But sometimes, it may be desirable to lint a single repository manually in an isolated way, maybe to quickly test some checks or to integrate with some other processes, like continuous integration or deployment tools. The `linter CLI` tool is designed to help in those scenarios.
 
 CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github GraphQL API for some checks, which requires authentication. A Github token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
 
@@ -205,7 +205,7 @@ cargo test
 
 The CLOMonitor frontend is a single page application written in [TypeScript](https://www.typescriptlang.org) using [React](https://reactjs.org).
 
-In the backend section we mentioned how to install the frontend dependencies and build it. That should be enough if you are only going to work on the backend. However, if you are planning to do some work on the frontend, it's better to launch an additional server which will rebuild the web application as needed whenever a file is modified.
+In the backend section, we mentioned how to install the frontend dependencies and build it. That should be enough if you are only going to work on the backend. However, if you are planning to do some work on the frontend, it's better to launch an additional server which will rebuild the web application as needed whenever a file is modified.
 
 The frontend development server can be launched using the following command:
 

@@ -19,7 +19,7 @@ The **entrypoint** for the check must be a function named `check`, with the foll
 * Sync check: `pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<T>>`
 * Async check: `pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<T>>`
 
-In the [clomonitor-core/src/linter/checks/util](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks/util) directory there are some helpers that can be useful when writing new checks.
+In the [clomonitor-core/src/linter/checks/util](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks/util) directory, there are some helpers that can be useful when writing new checks.
 
 ### 2. Register the new check
 

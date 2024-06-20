@@ -296,6 +296,14 @@ This check passes if:
 
 - At least *one* of the [summary_* fields](https://github.com/cncf/landscape/blob/master/docs/item_summary.md) has been set in the project's *extra* section in the [Landscape yaml file](https://github.com/cncf/landscape/blob/master/landscape.yml).
 
+Please note that the clomonitor_name field is **mandatory** for this check to pass:
+```sh
+extra:
+clomonitor_name: project-name
+```
+
+The project-name used in the clomonitor_name field must match exactly the project's name used in the corresponding CLOMonitor [data file](https://github.com/cncf/landscape2/blob/e45368319bf44b5894039f6b49c6468bdff67112/docs/config/data.yml#L140-L144).
+
 ### Website
 
 **ID**: `website`

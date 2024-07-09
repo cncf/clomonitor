@@ -1887,20 +1887,6 @@
       check_sets:
         - community
         - code
-- name: open-metrics
-  display_name: OpenMetrics
-  description: Evolving the Prometheus exposition format into a standard
-  category: observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openmetrics/icon/color/openmetrics-icon-color.svg
-  devstats_url: https://openmetrics.devstats.cncf.io/
-  accepted_at: "2018-08-10"
-  maturity: incubating
-  repositories:
-    - name: openmetrics
-      url: https://github.com/OpenObservability/OpenMetrics
-      check_sets:
-        - community
-        - code
 - name: open-telemetry
   display_name: OpenTelemetry
   description: High-quality, ubiquitous, and portable telemetry to enable effective observability

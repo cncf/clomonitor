@@ -464,20 +464,6 @@
       check_sets:
         - community
         - code
-- name: curiefense
-  display_name: Curiefense
-  description: Curiefense is a unified, open source platform protecting cloud native applications
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/curiefense/icon/color/curiefense-icon-color.svg
-  devstats_url: https://curiefense.devstats.cncf.io/
-  accepted_at: "2021-01-26"
-  maturity: sandbox
-  repositories:
-    - name: curiefense
-      url: https://github.com/curiefense/curiefense
-      check_sets:
-        - community
-        - code
 - name: curve
   display_name: Curve
   description: Curve is a high-performance, lightweight-operation, cloud-native open source distributed storage system

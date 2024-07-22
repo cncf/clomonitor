@@ -24,7 +24,7 @@ RUN make install
 RUN make build
 
 # Final stage
-FROM alpine:3.20.1
+FROM alpine:3.20.2
 RUN addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

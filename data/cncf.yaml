@@ -1966,10 +1966,6 @@
       url: https://github.com/open-telemetry/opentelemetry-erlang
       check_sets:
         - code
-    - name: opentelemetry-erlang-api
-      url: https://github.com/open-telemetry/opentelemetry-erlang-api
-      check_sets:
-        - code
     - name: opentelemetry-erlang-contrib
       url: https://github.com/open-telemetry/opentelemetry-erlang-contrib
       check_sets:
@@ -2010,10 +2006,6 @@
       url: https://github.com/open-telemetry/opentelemetry-js
       check_sets:
         - code
-    - name: opentelemetry-js-api
-      url: https://github.com/open-telemetry/opentelemetry-js-api
-      check_sets:
-        - code
     - name: opentelemetry-js-contrib
       url: https://github.com/open-telemetry/opentelemetry-js-contrib
       check_sets:
@@ -2042,10 +2034,6 @@
       url: https://github.com/open-telemetry/opentelemetry-php-instrumentation
       check_sets:
         - code-lite
-    - name: opentelemetry-profiling
-      url: https://github.com/open-telemetry/opentelemetry-profiling
-      check_sets:
-        - code
     - name: opentelemetry-proto
       url: https://github.com/open-telemetry/opentelemetry-proto
       check_sets:
@@ -2086,10 +2074,6 @@
       url: https://github.com/open-telemetry/opentelemetry-specification
       check_sets:
         - docs
-    - name: opentelemetry-sqlcommenter
-      url: https://github.com/open-telemetry/opentelemetry-sqlcommenter
-      check_sets:
-        - code
     - name: opentelemetry-swift
       url: https://github.com/open-telemetry/opentelemetry-swift
       check_sets:

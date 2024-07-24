@@ -1902,10 +1902,6 @@
       url: https://github.com/open-telemetry/community
       check_sets:
         - community
-    - name: cpp-build-tools
-      url: https://github.com/open-telemetry/cpp-build-tools
-      check_sets:
-        - code
     - name: opamp-go
       url: https://github.com/open-telemetry/opamp-go
       check_sets:
@@ -2066,10 +2062,6 @@
       url: https://github.com/open-telemetry/opentelemetry-rust-contrib
       check_sets:
         - code-lite
-    - name: opentelemetry-sandbox-web-js
-      url: https://github.com/open-telemetry/opentelemetry-sandbox-web-js
-      check_sets:
-        - code
     - name: opentelemetry-specification
       url: https://github.com/open-telemetry/opentelemetry-specification
       check_sets:

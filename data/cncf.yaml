@@ -1904,14 +1904,6 @@
       url: https://github.com/open-telemetry/cpp-build-tools
       check_sets:
         - code-lite
-    - name: docs-cn
-      url: https://github.com/open-telemetry/docs-cn
-      check_sets:
-        - docs
-    - name: docs-ja
-      url: https://github.com/open-telemetry/docs-ja
-      check_sets:
-        - docs
     - name: opamp-go
       url: https://github.com/open-telemetry/opamp-go
       check_sets:

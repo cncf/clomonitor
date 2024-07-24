@@ -1896,6 +1896,118 @@
   accepted_at: "2019-05-07"
   maturity: incubating
   repositories:
+    - name: community
+      url: https://github.com/open-telemetry/community
+      check_sets:
+        - community
+    - name: cpp-build-tools
+      url: https://github.com/open-telemetry/cpp-build-tools
+      check_sets:
+        - code-lite
+    - name: docs-cn
+      url: https://github.com/open-telemetry/docs-cn
+      check_sets:
+        - docs
+    - name: docs-ja
+      url: https://github.com/open-telemetry/docs-ja
+      check_sets:
+        - docs
+    - name: opamp-go
+      url: https://github.com/open-telemetry/opamp-go
+      check_sets:
+        - code-lite
+    - name: opamp-spec
+      url: https://github.com/open-telemetry/opamp-spec
+      check_sets:
+        - docs
+    - name: opentelemetry-android
+      url: https://github.com/open-telemetry/opentelemetry-android
+      check_sets:
+        - code-lite
+    - name: opentelemetry-collector
+      url: https://github.com/open-telemetry/opentelemetry-collector
+      check_sets:
+        - code
+    - name: opentelemetry-collector-builder
+      url: https://github.com/open-telemetry/opentelemetry-collector-builder
+      check_sets:
+        - code
+    - name: opentelemetry-collector-contrib
+      url: https://github.com/open-telemetry/opentelemetry-collector-contrib
+      check_sets:
+        - code
+    - name: opentelemetry-collector-releases
+      url: https://github.com/open-telemetry/opentelemetry-collector-releases
+      check_sets:
+        - code
+    - name: opentelemetry-configuration
+      url: https://github.com/open-telemetry/opentelemetry-configuration
+      check_sets:
+        - code-lite
+    - name: opentelemetry-cpp
+      url: https://github.com/open-telemetry/opentelemetry-cpp
+      check_sets:
+        - code-lite
+    - name: opentelemetry-cpp-contrib
+      url: https://github.com/open-telemetry/opentelemetry-cpp-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-demo
+      url: https://github.com/open-telemetry/opentelemetry-demo
+      check_sets:
+        - code-lite
+    - name: opentelemetry-dotnet
+      url: https://github.com/open-telemetry/opentelemetry-dotnet
+      check_sets:
+        - code-lite
+    - name: opentelemetry-dotnet-contrib
+      url: https://github.com/open-telemetry/opentelemetry-dotnet-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-dotnet-instrumentation
+      url: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation
+      check_sets:
+        - code-lite
+    - name: opentelemetry-erlang
+      url: https://github.com/open-telemetry/opentelemetry-erlang
+      check_sets:
+        - code-lite
+    - name: opentelemetry-erlang-api
+      url: https://github.com/open-telemetry/opentelemetry-erlang-api
+      check_sets:
+        - code-lite
+    - name: opentelemetry-erlang-contrib
+      url: https://github.com/open-telemetry/opentelemetry-erlang-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-go
+      url: https://github.com/open-telemetry/opentelemetry-go
+      check_sets:
+        - code-lite
+    - name: opentelemetry-go-contrib
+      url: https://github.com/open-telemetry/opentelemetry-go-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-go-instrumentation
+      url: https://github.com/open-telemetry/opentelemetry-go-instrumentation
+      check_sets:
+        - code-lite
+    - name: opentelemetry-helm-charts
+      url: https://github.com/open-telemetry/opentelemetry-helm-charts
+      check_sets:
+        - code-lite
+    - name: opentelemetry-java
+      url: https://github.com/open-telemetry/opentelemetry-java
+      check_sets:
+        - code-lite
+    - name: opentelemetry-java-contrib
+      url: https://github.com/open-telemetry/opentelemetry-java-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-java-examples
+      url: https://github.com/open-telemetry/opentelemetry-java-examples
+      check_sets:
+        - code-lite
     - name: opentelemetry-java-instrumentation
       url: https://github.com/open-telemetry/opentelemetry-java-instrumentation
       check_sets:
@@ -1904,30 +2016,122 @@
       url: https://github.com/open-telemetry/opentelemetry-js
       check_sets:
         - code-lite
-    - name: opentelemetry.io
-      url: https://github.com/open-telemetry/opentelemetry.io
+    - name: opentelemetry-js-api
+      url: https://github.com/open-telemetry/opentelemetry-js-api
       check_sets:
-        - docs
+        - code-lite
+    - name: opentelemetry-js-contrib
+      url: https://github.com/open-telemetry/opentelemetry-js-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-lambda
+      url: https://github.com/open-telemetry/opentelemetry-lambda
+      check_sets:
+        - code-lite
+    - name: opentelemetry-network
+      url: https://github.com/open-telemetry/opentelemetry-network
+      check_sets:
+        - code-lite
+    - name: opentelemetry-operator
+      url: https://github.com/open-telemetry/opentelemetry-operator
+      check_sets:
+        - code-lite
+    - name: opentelemetry-php
+      url: https://github.com/open-telemetry/opentelemetry-php
+      check_sets:
+        - code-lite
+    - name: opentelemetry-php-contrib
+      url: https://github.com/open-telemetry/opentelemetry-php-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-php-instrumentation
+      url: https://github.com/open-telemetry/opentelemetry-php-instrumentation
+      check_sets:
+        - code-lite
+    - name: opentelemetry-profiling
+      url: https://github.com/open-telemetry/opentelemetry-profiling
+      check_sets:
+        - code-lite
+    - name: opentelemetry-proto
+      url: https://github.com/open-telemetry/opentelemetry-proto
+      check_sets:
+        - code-lite
+    - name: opentelemetry-proto-java
+      url: https://github.com/open-telemetry/opentelemetry-proto-java
+      check_sets:
+        - code-lite
+    - name: opentelemetry-python
+      url: https://github.com/open-telemetry/opentelemetry-python
+      check_sets:
+        - code-lite
+    - name: opentelemetry-python-contrib
+      url: https://github.com/open-telemetry/opentelemetry-python-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-ruby
+      url: https://github.com/open-telemetry/opentelemetry-ruby
+      check_sets:
+        - code-lite
+    - name: opentelemetry-ruby-contrib
+      url: https://github.com/open-telemetry/opentelemetry-ruby-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-rust
+      url: https://github.com/open-telemetry/opentelemetry-rust
+      check_sets:
+        - code-lite
+    - name: opentelemetry-rust-contrib
+      url: https://github.com/open-telemetry/opentelemetry-rust-contrib
+      check_sets:
+        - code-lite
+    - name: opentelemetry-sandbox-web-js
+      url: https://github.com/open-telemetry/opentelemetry-sandbox-web-js
+      check_sets:
+        - code-lite
     - name: opentelemetry-specification
       url: https://github.com/open-telemetry/opentelemetry-specification
       check_sets:
         - docs
-    - name: community
-      url: https://github.com/open-telemetry/community
-      check_sets:
-        - community
-    - name: opentelemetry-dotnet
-      url: https://github.com/open-telemetry/opentelemetry-dotnet
+    - name: opentelemetry-sqlcommenter
+      url: https://github.com/open-telemetry/opentelemetry-sqlcommenter
       check_sets:
         - code-lite
-    - name: opentelemetry-dotnet-instrumentation
-      url: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation
+    - name: opentelemetry-swift
+      url: https://github.com/open-telemetry/opentelemetry-swift
       check_sets:
         - code-lite
-    - name: opentelemetry-collector
-      url: https://github.com/open-telemetry/opentelemetry-collector
+    - name: opentelemetry.io
+      url: https://github.com/open-telemetry/opentelemetry.io
+      check_sets:
+        - docs
+    - name: otel-arrow
+      url: https://github.com/open-telemetry/otel-arrow
+      check_sets:
+        - code-lite
+    - name: otel-arrow-collector
+      url: https://github.com/open-telemetry/otel-arrow-collector
       check_sets:
         - code
+    - name: oteps
+      url: https://github.com/open-telemetry/oteps
+      check_sets:
+        - code-lite
+    - name: semantic-conventions
+      url: https://github.com/open-telemetry/semantic-conventions
+      check_sets:
+        - docs
+    - name: sig-mainframe
+      url: https://github.com/open-telemetry/sig-mainframe
+      check_sets:
+        - code-lite
+    - name: sig-security
+      url: https://github.com/open-telemetry/sig-security
+      check_sets:
+        - code-lite
+    - name: weaver
+      url: https://github.com/open-telemetry/weaver
+      check_sets:
+        - code-lite
 - name: opencost
   display_name: OpenCost
   description: OpenCost provides visibility into current and historical Kubernetes spend and resource allocation
@@ -3825,7 +4029,3 @@
       url: https://github.com/kubeslice/kubeslice-cli
       check_sets:
         - code-lite
-
-
-
-

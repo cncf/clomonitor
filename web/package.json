@@ -47,7 +47,7 @@
     "sass": "^1.77.8",
     "shx": "^0.3.4",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.17.0"
+    "typescript-eslint": "^7.18.0"
   },
   "resolutions": {
     "react-scripts/**/core-js-pure": "3.37.1",

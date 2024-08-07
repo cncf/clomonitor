@@ -40,7 +40,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.9.0",
     "jest-fetch-mock": "^3.0.3",
-    "minimatch": "^9.0.4",
+    "minimatch": "^10.0.1",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3",
     "react-scripts": "5.0.1",

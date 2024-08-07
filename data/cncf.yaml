@@ -1571,6 +1571,10 @@
       url: https://github.com/kubewarden/kwctl
       check_sets:
         - code
+    - name: audit-scanner
+      url: https://github.com/kubewarden/audit-scanner
+      check_sets:
+        - code
 - name: kudo
   display_name: KUDO
   description: Kubernetes Universal Declarative Operator

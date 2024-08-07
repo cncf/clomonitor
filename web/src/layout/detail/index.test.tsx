@@ -34,7 +34,7 @@ jest.mock('moment', () => ({
 const mockUseNavigate = jest.fn();
 
 const getMockDetail = (fixtureId: string): ProjectDetail => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as ProjectDetail;
 };
 

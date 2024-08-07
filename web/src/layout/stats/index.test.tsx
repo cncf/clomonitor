@@ -16,7 +16,7 @@ jest.mock('clo-ui', () => ({
 }));
 
 const getMockStats = (fixtureId: string): Stats => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;
 };
 

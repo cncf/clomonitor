@@ -1551,6 +1551,10 @@
   accepted_at: "2022-06-14"
   maturity: sandbox
   repositories:
+    - name: community
+      url: https://github.com/kubewarden/community
+      check_sets:
+        - community
     - name: docs
       url: https://github.com/kubewarden/docs
       check_sets:
@@ -1562,7 +1566,6 @@
     - name: kubewarden-controller
       url: https://github.com/kubewarden/kubewarden-controller
       check_sets:
-        - community
         - code
     - name: kwctl
       url: https://github.com/kubewarden/kwctl

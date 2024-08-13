@@ -18,15 +18,22 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 lazy_static! {
     #[rustfmt::skip]
-    static ref OPENSSF_SCORECARD_URL: Regex = Regex::new(
+    static ref OPENSSF_SCORECARD_URL_OLD: Regex = Regex::new(
         r"(https://api.securityscorecards.dev/projects/github.com/[^/]+/[^/]+)/badge",
+    ).expect("exprs in OPENSSF_SCORECARD_URL_OLD to be valid");
+    #[rustfmt::skip]
+    static ref OPENSSF_SCORECARD_URL: Regex = Regex::new(
+        r"(https://api.scorecard.dev/projects/github.com/[^/]+/[^/]+)/badge",
     ).expect("exprs in OPENSSF_SCORECARD_URL to be valid");
 }
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
-    if let Some(url) = readme_capture(&input.li.root, &[&OPENSSF_SCORECARD_URL])? {
+    if let Some(url) = readme_capture(
+        &input.li.root,
+        &[&OPENSSF_SCORECARD_URL, &OPENSSF_SCORECARD_URL_OLD],
+    )? {
         return Ok(CheckOutput::passed().url(Some(url)));
     }
 
@@ -38,10 +45,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn openssf_scorecard_url_extract() {
+    fn old_openssf_scorecard_url_extract() {
         assert_eq!(
-            OPENSSF_SCORECARD_URL.captures("[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/owner/repo/badge)](https://api.securityscorecards.dev/projects/github.com/owner/repo)").unwrap()[1].to_string(),
+            OPENSSF_SCORECARD_URL_OLD.captures("[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/owner/repo/badge)](https://api.securityscorecards.dev/projects/github.com/owner/repo)").unwrap()[1].to_string(),
             "https://api.securityscorecards.dev/projects/github.com/owner/repo"
+        );
+    }
+    #[test]
+    fn new_old_openssf_scorecard_url_extract() {
+        assert_eq!(
+            OPENSSF_SCORECARD_URL.captures("[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/owner/repo/badge)](https://scorecard.dev/viewer/?uri=github.com/owner/repo)").unwrap()[1].to_string(),
+            "https://api.scorecard.dev/projects/github.com/owner/repo"
         );
     }
 }

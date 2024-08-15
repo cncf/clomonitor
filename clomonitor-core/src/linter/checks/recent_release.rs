@@ -73,6 +73,7 @@ mod tests {
                         nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                             created_at: two_years_ago,
                             description: None,
+                            is_latest: true,
                             is_prerelease: false,
                             release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                             url: "release_url".to_string(),
@@ -103,6 +104,7 @@ mod tests {
                         nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                             created_at: one_week_ago,
                             description: None,
+                            is_latest: true,
                             is_prerelease: false,
                             release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                             url: "release_url".to_string(),

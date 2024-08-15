@@ -205,6 +205,17 @@ pub(crate) async fn has_community_health_file(
 
 /// Get the repository's latest release from the metadata provided.
 pub(crate) fn latest_release(gh_md: &MdRepository) -> Option<&MdRepositoryReleasesNodes> {
+    // Return the latest release if it's not a prerelease
+    if let Some(latest_release) = gh_md.releases.nodes.as_ref().and_then(|nodes| {
+        nodes
+            .iter()
+            .flatten()
+            .find(|release| release.is_latest && !release.is_prerelease)
+    }) {
+        return Some(latest_release);
+    }
+
+    // Otherwise, return the first non-prerelease found as the latest
     gh_md.releases.nodes.as_ref().and_then(|nodes| {
         nodes
             .iter()
@@ -374,6 +385,7 @@ mod tests {
                 nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                     created_at: "created_at_date".to_string(),
                     description: None,
+                    is_latest: true,
                     is_prerelease: false,
                     release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                     url: "release_url".to_string(),
@@ -389,6 +401,38 @@ mod tests {
     }
 
     #[test]
+    fn latest_release_found_latest_is_a_prerelease() {
+        let gh_md = MdRepository {
+            releases: MdRepositoryReleases {
+                nodes: Some(vec![
+                    Some(MdRepositoryReleasesNodes {
+                        created_at: "created_at_date".to_string(),
+                        description: None,
+                        is_latest: true,
+                        is_prerelease: true,
+                        release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                        url: "release_url".to_string(),
+                    }),
+                    Some(MdRepositoryReleasesNodes {
+                        created_at: "created_at_date".to_string(),
+                        description: None,
+                        is_latest: false,
+                        is_prerelease: false,
+                        release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
+                        url: "release_url".to_string(),
+                    }),
+                ]),
+            },
+            ..MdRepository::default()
+        };
+
+        assert_eq!(
+            latest_release(&gh_md),
+            gh_md.releases.nodes.as_ref().unwrap()[1].as_ref()
+        );
+    }
+
+    #[test]
     fn latest_release_not_found() {
         assert!(latest_release(&MdRepository::default()).is_none());
     }
@@ -400,6 +444,7 @@ mod tests {
                 nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                     created_at: "created_at_date".to_string(),
                     description: Some("description".to_string()),
+                    is_latest: false,
                     is_prerelease: false,
                     release_assets: MdRepositoryReleasesNodesReleaseAssets { nodes: None },
                     url: "release_url".to_string(),

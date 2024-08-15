@@ -52,6 +52,7 @@ query Md($repo: String!, $owner: String!) {
             nodes {
                 createdAt
                 description
+                isLatest
                 isPrerelease
                 releaseAssets (first: 100) {
                     nodes {

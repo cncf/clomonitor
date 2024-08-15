@@ -94,6 +94,7 @@ mod tests {
                         nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                             created_at: "created_at_date".to_string(),
                             description: None,
+                            is_latest: true,
                             is_prerelease: false,
                             release_assets: MdRepositoryReleasesNodesReleaseAssets {
                                 nodes: Some(vec![Some(
@@ -126,6 +127,7 @@ mod tests {
                         nodes: Some(vec![Some(MdRepositoryReleasesNodes {
                             created_at: "created_at_date".to_string(),
                             description: None,
+                            is_latest: true,
                             is_prerelease: false,
                             release_assets: MdRepositoryReleasesNodesReleaseAssets {
                                 nodes: Some(vec![Some(

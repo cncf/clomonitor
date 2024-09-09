@@ -3515,22 +3515,111 @@
         - code
 - name: microcks
   display_name: Microcks
-  description: Kubernetes native tool for mocking and testing API and micro-services
+  description: The open source, cloud native tool for API Mocking and Testing
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/microcks/icon/color/microcks-icon-color.svg
   devstats_url: https://microcks.devstats.cncf.io/
   accepted_at: "2023-06-22"
   maturity: sandbox
   repositories:
+    # Microcks, Delivered components, ref: https://github.com/microcks/.github/issues/16
+    # CLOMonitor check sets: community and code.
     - name: microcks
       url: https://github.com/microcks/microcks
       check_sets:
         - community
         - code
+    - name: microcks-cli
+      url: https://github.com/microcks/microcks-cli
+      check_sets:
+        - community
+        - code
+    - name: microcks-operator
+      url: https://github.com/microcks/microcks-operator
+      check_sets:
+        - community
+        - code
+    - name: microcks-ansible-operator
+      url: https://github.com/microcks/microcks-ansible-operator
+      check_sets:
+        - community
+        - code
+    - name: microcks-postman-runtime
+      url: https://github.com/microcks/microcks-postman-runtime
+      check_sets:
+        - community
+        - code
+    - name: microcks-testcontainers-java
+      url: https://github.com/microcks/microcks-testcontainers-java
+      check_sets:
+        - community
+        - code
+    - name: microcks-testcontainers-go
+      url: https://github.com/microcks/microcks-testcontainers-go
+      check_sets:
+        - community
+        - code
+    - name: microcks-testcontainers-node
+      url: https://github.com/microcks/microcks-testcontainers-node
+      check_sets:
+        - community
+        - code
+    - name: microcks-quarkus
+      url: https://github.com/microcks/microcks-quarkus
+      check_sets:
+        - community
+        - code
+    - name: microcks-java-client
+      url: https://github.com/microcks/microcks-java-client
+      check_sets:
+        - community
+        - code
+    - name: microcks-go-client
+      url: https://github.com/microcks/microcks-go-client
+      check_sets:
+        - community
+        - code
+    - name: microcks-docker-desktop-extension
+      url: https://github.com/microcks/microcks-docker-desktop-extension
+      check_sets:
+        - community
+        - code
+    - name: microcks-backstage-provider
+      url: https://github.com/microcks/microcks-backstage-provider
+      check_sets:
+        - community
+        - code
+    - name: microcks-jenkins-plugin
+      url: https://github.com/microcks/microcks-jenkins-plugin
+      check_sets:
+        - community
+        - code
+    - name: microcks-spectral-ruleset
+      url: https://github.com/microcks/microcks-spectral-ruleset
+      check_sets:
+        - community
+        - code
+    - name: import-github-action
+      url: https://github.com/microcks/import-github-action
+      check_sets:
+        - community
+        - code
+    - name: test-github-action
+      url: https://github.com/microcks/test-github-action
+      check_sets:
+        - community
+        - code
+    - name: hub.microcks.io
+      url: https://github.com/microcks/hub.microcks.io
+      check_sets:
+        - community
+        - code
+    # Microcks, Documentation, ref: https://github.com/microcks/.github/issues/16
+    # CLOMonitor check sets: docs
     - name: microcks.io
       url: https://github.com/microcks/microcks.io
       check_sets:
-        - docs
+        - docs  
 - name: kubeclipper
   display_name: KubeClipper
   description: Manage kubernetes in the most light and convenient way

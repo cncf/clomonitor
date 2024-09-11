@@ -2,8 +2,8 @@
   display_name: Open Shading Language (OSL)
   description: Advanced shading language for production GI renderers
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openshadinglanguage/LargeStack/color/openshadinglanguage-LargeStack-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openshadinglanguage/LargeStack/color/openshadinglanguage-LargeStack-color.svg
+  logo_url: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
+  logo_url_dark: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-shading-language/trends
   maturity: adopted
   repositories:
@@ -164,8 +164,8 @@
   display_name: OpenTimelineIO
   description: Open Source API and interchange format for editorial timeline information.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/opentimelineio/stacked/color/opentimelineio-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/opentimelineio/stacked/color/opentimelineio-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
+  logo_url_dark: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
   devstats_url: https://insights-v2.lfx.linuxfoundation.org/open-timeline-io/trends
   maturity: incubating
   repositories:

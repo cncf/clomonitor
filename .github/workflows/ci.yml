@@ -15,7 +15,7 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.76.0
+          toolchain: 1.81.0
           components: clippy, rustfmt
       - name: Run clippy
         run: cargo clippy --all-targets --all-features -- --deny warnings
@@ -56,7 +56,7 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.75.0
+          toolchain: 1.81.0
       - name: Run backend tests
         run: cargo test
 

@@ -1,10 +1,10 @@
 # Build tern
-FROM golang:1.22.5-alpine3.20 AS tern
+FROM golang:1.23.1-alpine3.20 AS tern
 RUN apk --no-cache add git
 RUN go install github.com/jackc/tern@latest
 
 # Build final image
-FROM alpine:3.20.2
+FROM alpine:3.20.3
 RUN addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

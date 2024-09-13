@@ -60,27 +60,6 @@
     url: https://github.com/FDio/site
     check_sets:
     - docs
-- name: odim
-  description: |
-    Open Distributed Infrastructure Manager. Multi-site, multi-vendor physical
-    infrastructure lifecycle management.
-  display_name: ODIM
-  category: LF Networking Projects
-  home_url: https://odim.io/
-  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/odim-color-1.svg
-  repositories:
-  - name: BMCSimulator
-    url: https://github.com/ODIM-Project/BMCSimulator
-    check_sets:
-    - code-lite
-  - name: ODIM
-    url: https://github.com/ODIM-Project/ODIM
-    check_sets:
-    - code-lite
-  - name: PluginCiscoACI
-    url: https://github.com/ODIM-Project/PluginCiscoACI
-    check_sets:
-    - code-lite
 - name: onap
   description: |
     A comprehensive platform for orchestration, management, and automation
@@ -255,4 +234,17 @@
   - name: aaf-authz
     url: https://github.com/onap/aaf-authz
     check_sets:
+    - code
+- name: paraglider
+  display_name: Paraglider
+  description: |
+    Paraglider is a cross-cloud control plane for configuring cloud networks
+  category: LF Networking Projects
+  home_url: https://paragliderproject.io/
+  logo_url: https://raw.githubusercontent.com/lfnetworking/member_landscape/main/hosted_logos/paraglider-logo.svg
+  repositories:
+  - name: paraglider
+    url: https://github.com/paraglider-project/paraglider
+    check_sets:
+    - community
     - code

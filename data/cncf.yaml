@@ -4095,3 +4095,274 @@
       url: https://github.com/kubeslice/kubeslice-cli
       check_sets:
         - code-lite
+- name: atlantis
+  display_name: Atlantis
+  description: Terraform Pull Request Automation for Teams
+  category: provisioning
+  logo_url: https://www.runatlantis.io/hero.png
+  devstats_url: https://atlantis.devstats.cncf.io
+  accepted_at: "2024-06-18"
+  maturity: sandbox
+  repositories:
+    - name: atlantis
+      url: https://github.com/runatlantis/atlantis
+      check_sets:
+        - code
+        - community
+- name: koordinator
+  display_name: Koordinator
+  description: QoS based scheduling system for hybrid orchestration workloads on Kubernetes, bringing workloads the best layout and status.
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/koordinator/icon/color/koordinator-icon-color.svg
+  devstats_url: https://koordinator.devstats.cncf.io
+  accepted_at: "2024-04-16"
+  maturity: sandbox
+  repositories:
+    - name: koordinator
+      url: https://github.com/koordinator-sh/koordinator
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/koordinator-sh/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/koordinator-sh/website
+      check_sets:
+        - docs
+- name: bpfman
+  description: An eBPF Manager for Linux and Kubernetes
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/bpfman/icon/color/bpfman-icon-color.svg
+  devstats_url: https://bpfman.devstats.cncf.io/
+  accepted_at: "2024-06-19"
+  maturity: sandbox
+  repositories:
+    - name: bpfman
+      url: https://github.com/bpfman/bpfman
+      check_sets:
+        - code
+        - community
+    - name: bpfman
+      url: https://github.com/bpfman/bpfman-operator
+      check_sets:
+        - code-lite
+- name: kuadrant
+  display_name: Kuadrant
+  description: Kuadrant combines Gateway API and Istio-based gateway controllers to enhance application connectivity. It enables platform engineers and application developers to easily connect, secure, and protect their services and infrastructure across multiple clusters with policies for TLS, DNS, application authentication & authorization, and rate limiting
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/kuadrant/icon/color/kuadrant-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/kuadrant/icon/white/kuadrant-icon-white.svg
+  devstats_url: https://kuadrant.devstats.cncf.io/
+  accepted_at: "2024-06-19"
+  maturity: sandbox
+  repositories:
+    - name: kuadrant-operator
+      url: https://github.com/kuadrant/kuadrant-operator
+      check_sets:
+        - code
+        - community
+- name: opengemini
+  display_name: openGemini
+  description: openGemini is an open source distributed time series DBMS with high concurrency, high performance, and high scalability, focusing on the storage and analysis of massive observability data.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/openGemini/icon/color/openGemini_icon_color.svg
+  devstats_url: https://opengemini.devstats.cncf.io/
+  accepted_at: "2024-07-09"
+  maturity: sandbox
+  repositories:
+    - name: openGemini
+      url: https://github.com/openGemini/openGemini
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/openGemini/community
+      check_sets:
+        - community
+    - name: openGemini-operator
+      url: https://github.com/openGemini/openGemini-operator
+      check_sets:
+        - code-lite
+    - name: openGemini.github.io
+      url: https://github.com/openGemini/openGemini.github.io
+      check_sets:
+        - docs
+- name: oscal-compass
+  display_name: OSCAL COMPASS
+  description: The OSCAL COMPASS project is set of tools that enable the creation, validation, and governance of documentation artifacts for compliance needs. It leverages NIST's OSCAL (Open Security Controls Assessment Language) as a standard data format for interchange between tools and people, and provides an opinionated approach to OSCAL SDK and adoption by policy engines.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/oscal-compass/icon/color/oscal-compass-color.svg
+  devstats_url: https://trestlegrc.devstats.cncf.io/
+  accepted_at: "2024-07-09"
+  maturity: sandbox
+  repositories:
+    - name: compliance-trestle
+      url: https://github.com/oscal-compass/compliance-trestle
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/oscal-compass/community
+      check_sets:
+        - community
+    - name: compliance-to-policy
+      url: https://github.com/oscal-compass/compliance-to-policy
+      check_sets:
+        - code-lite
+    - name: compliance-trestle-agile-authoring
+      url: https://github.com/oscal-compass/compliance-trestle-agile-authoring
+      check_sets:
+        - code-lite
+    - name: compliance-trestle-demos
+      url: https://github.com/oscal-compass/compliance-trestle-demos
+      check_sets:
+        - code-lite
+- name: perses
+  display_name: Perses
+  description: Perses is a dashboard tool to visualize observability data from Prometheus/Thanos/Jaeger
+  category: observability
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/perses/icon/color/perses-icon-color.svg
+  devstats_url: https://perses.devstats.cncf.io/
+  accepted_at: "2024-08-29"
+  maturity: sandbox
+  repositories:
+    - name: perses
+      url: https://github.com/perses/perses
+      check_sets:
+        - code
+        - community
+    - name: website
+      url: https://github.com/perses/website
+      check_sets:
+        - docs
+- name: score
+  display_name: Score
+  description: Score is an open-source workload specification designed to simplify development for cloud-native developers.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/score/icon/color/score-icon-color.svg
+  devstats_url: https://score.devstats.cncf.io/
+  accepted_at: "2024-07-08"
+  maturity: sandbox
+  repositories:
+    - name: spec
+      url: https://github.com/score-spec/spec
+      check_sets:
+        - code
+        - community
+    - name: score-compose
+      url: https://github.com/score-spec/score-compose
+      check_sets:
+        - code-lite
+    - name: score-helm
+      url: https://github.com/score-spec/score-helm
+      check_sets:
+        - code-lite
+- name: hami
+  display_name: HAMi
+  description: Heterogeneous AI Computing Virtualization Middleware
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/hami/icon/color/hami-icon-color.svg
+  devstats_url: https://hami.devstats.cncf.io/
+  accepted_at: "2024-08-29"
+  maturity: sandbox
+  repositories:
+    - name: HAMi
+      url: https://github.com/Project-HAMi/HAMi
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/Project-HAMi/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/Project-HAMi/website
+      check_sets:
+        - docs
+- name: shipwright
+  display_name: Shipwright
+  description: Community documentation for Shipwright
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/shipwright.svg
+  devstats_url: https://shipwright.devstats.cncf.io/
+  accepted_at: "2024-08-29"
+  maturity: sandbox
+  repositories:
+    - name: community
+      url: https://github.com/shipwright-io/community
+      check_sets:
+        - community
+- name: loxilb
+  display_name: LoxiLB
+  description: eBPF based cloud-native load-balancer for K8s|Edge|Telco|IoT|XaaS
+  category: orchestration
+  logo_url: https://github.com/loxilb-io/loxilbdocs/raw/main/docs/photos/loxilb-logo.png
+  devstats_url: https://loxilb.devstats.cncf.io
+  accepted_at: "2024-08-30"
+  maturity: sandbox
+  repositories:
+    - name: loxilb
+      url: https://github.com/loxilb-io/loxilb
+      check_sets:
+        - code
+        - community
+    - name: loxilbdocs
+      url: https://github.com/loxilb-io/loxilbdocs
+      check_sets:
+        - docs
+- name: ratify
+  display_name: Ratify
+  description: Ratify is a verification engine as a binary executable and on Kubernetes which enables verification of artifact security metadata and admits for deployment only those that comply with policies you create
+  category: provisioning
+  logo_url: https://ratify.dev/img/ratify-logo.svg
+  devstats_url: https://ratify.devstats.cncf.io
+  accepted_at: "2024-08-30"
+  maturity: sandbox
+  repositories:
+    - name: ratify
+      url: https://github.com/ratify-project/ratify
+      check_sets:
+        - code
+        - community
+    - name: ratify-web
+      url: https://github.com/ratify-project/ratify-web
+      check_sets:
+        - code-lite
+- name: cartography
+  display_name: Cartography
+  description: Cartography is a Python tool that consolidates infrastructure assets and the relationships between them in an intuitive graph view powered by a Neo4j database
+  logo_url: https://raw.githubusercontent.com/lyft/cartography/master/docs/root/images/logo-horizontal.png
+  devstats_url: https://cartography.devstats.cncf.io
+  accepted_at: "2024-08-30"
+  maturity: sandbox
+  repositories:
+    - name: cartography
+      url: https://github.com/lyft/cartography
+      check_sets:
+        - code
+        - community
+- name: bank-vaults
+  display_name: Bank-Vaults
+  description: Bank-Vaults is a set of tools covering many aspects of secret management in the Cloud Native ecosystem
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/bank-vaults/icon/color/bank-vaults-icon-color.svg
+  devstats_url: https://bankvaults.devstats.cncf.io
+  accepted_at: "2024-07-08"
+  maturity: sandbox
+  repositories:
+    - name: bank-vaults
+      url: https://github.com/bank-vaults/bank-vaults
+      check_sets:
+        - code
+        - community
+- name: stacker
+  display_name: Stacker
+  description: Stacker is a tool for building OCI images and related artifacts such as SBOMs natively via a declarative yaml format
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/9c5fba1c8e0c48604cf62bfdee8cf30d3ba238bd/hosted_logos/stacker.svg
+  devstats_url: https://stacker.devstats.cncf.io
+  accepted_at: "2024-07-08"
+  maturity: sandbox
+  repositories:
+    - name: stacker
+      url: https://github.com/project-stacker/stacker
+      check_sets:
+        - code
+        - community

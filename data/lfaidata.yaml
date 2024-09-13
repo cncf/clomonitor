@@ -649,7 +649,7 @@
   category: data
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/docarray/icon/color/docarray-icon-color.svg
   accepted_at: "2022-11-03"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: docarray
       url: https://github.com/docarray/docarray
@@ -891,5 +891,45 @@
       url: https://github.com/opea-project/docs
       check-sets:
         - docs
-
+- name: ryoma
+  display_name: Ryoma
+  description: Common AI agent framework solving your data problems
+  category: deep learning
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/ryoma/icon/color/ryoma-icon-color.svg
+  accepted_at: "2024-07-25"
+  maturity: sandbox
+  repositories:
+    - name: ryoma
+      url: https://github.com/project-ryoma/ryoma
+      check_sets:
+        - community
+        - code
+- name: unitycatalog
+  display_name: Unity Catalog
+  description: Open, Multi-modal Catalog for Data & AI
+  category: data
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/unity_catalog/icon/color/SVG/uc_icon_color.svg
+  maturity: sandbox
+  repositories:
+    - name: unitycatalog
+      url: https://github.com/unitycatalog/unitycatalog
+      check_sets:
+        - community
+        - code
+    - name: unitycatalog.io
+      url: https://github.com/unitycatalog/unitycatalog-ui
+      check_sets:
+        - docs
+- name: monocle
+  display_name: Monocle AI
+  description: The goal of the open source Monocle project is to help GenAI developers trace their applications
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/unity_catalog/icon/color/SVG/uc_icon_color.svg
+  accepted_at: "2024-06-27"
+  maturity: sandbox
+  repositories:
+    - name: monocle
+      url: https://github.com/monocle2ai/monocle
+      check_sets:
+        - community
+        - code
 

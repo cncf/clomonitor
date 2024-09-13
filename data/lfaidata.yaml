@@ -923,7 +923,7 @@
 - name: monocle
   display_name: Monocle AI
   description: The goal of the open source Monocle project is to help GenAI developers trace their applications
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/unity_catalog/icon/color/SVG/uc_icon_color.svg
+  logo_url: https://raw.githubusercontent.com/monocle2ai/artwork/main/horizontal/color/Monocle-Logo-Color.svg
   accepted_at: "2024-06-27"
   maturity: sandbox
   repositories:

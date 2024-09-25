@@ -3660,7 +3660,7 @@
         - code-lite
     - name: training-operator
       url: https://github.com/kubeflow/training-operator
-      check-sets:
+      check_sets:
         - code-lite
     - name: katib
       url: https://github.com/kubeflow/katib

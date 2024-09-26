@@ -889,7 +889,7 @@
         - code
     - name: docs
       url: https://github.com/opea-project/docs
-      check-sets:
+      check_sets:
         - docs
 - name: ryoma
   display_name: Ryoma

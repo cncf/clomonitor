@@ -3619,7 +3619,7 @@
     - name: microcks.io
       url: https://github.com/microcks/microcks.io
       check_sets:
-        - docs  
+        - docs
 - name: kubeclipper
   display_name: KubeClipper
   description: Manage kubernetes in the most light and convenient way
@@ -4020,7 +4020,7 @@
         - code
     - name: website
       url: https://github.com/kubean-io/website
-      check-sets:
+      check_sets:
         - docs
     - name: kubean-helm-chart
       url: https://github.com/kubean-io/kubean-helm-chart
@@ -4028,7 +4028,7 @@
         - code-lite
     - name: kubean-api
       url: https://github.com/kubean-io/kubean-api
-      check-sets:
+      check_sets:
         - code-lite
 - name: radius
   display_name: Radius
@@ -4049,7 +4049,7 @@
         - community
     - name: docs
       url: https://github.com/radius-project/docs
-      check-sets:
+      check_sets:
         - docs
 - name: connect-rpc
   display_name: Connect RPC

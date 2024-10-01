@@ -4252,8 +4252,8 @@
       url: https://github.com/score-spec/score-compose
       check_sets:
         - code-lite
-    - name: score-helm
-      url: https://github.com/score-spec/score-helm
+    - name: score-k8s
+      url: https://github.com/score-spec/score-k8s
       check_sets:
         - code-lite
 - name: hami

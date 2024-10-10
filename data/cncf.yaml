@@ -4248,14 +4248,29 @@
       check_sets:
         - code
         - community
+    - name: score-go
+      url: https://github.com/score-spec/score-go
+      check_sets:
+        - code
     - name: score-compose
       url: https://github.com/score-spec/score-compose
       check_sets:
-        - code-lite
+        - code
     - name: score-k8s
       url: https://github.com/score-spec/score-k8s
       check_sets:
+        - code
+    - name: docs
+      url: https://github.com/score-spec/docs
+      check_sets:
+        - docs
         - code-lite
+        - community
+    - name: website
+      url: https://github.com/score-spec/docs
+      check_sets:
+        - docs
+        - community
 - name: hami
   display_name: HAMi
   description: Heterogeneous AI Computing Virtualization Middleware

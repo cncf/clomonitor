@@ -4267,9 +4267,10 @@
         - code-lite
         - community
     - name: website
-      url: https://github.com/score-spec/docs
+      url: https://github.com/score-spec/score.dev
       check_sets:
         - docs
+        - code-lite
         - community
 - name: hami
   display_name: HAMi

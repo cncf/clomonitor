@@ -3670,6 +3670,10 @@
       url: https://github.com/kubeflow/community
       check_sets:
         - community
+    - name: website
+      url: https://github.com/kubeflow/website
+      check_sets:
+        - docs
 - name: vscode-kubernetes-tools
   display_name: Visual Studio Code Kubernetes Tools
   description: The extension for developers building applications to run in Kubernetes clusters and for DevOps staff troubleshooting Kubernetes applications.

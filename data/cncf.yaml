@@ -180,7 +180,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cert-manager/icon/color/cert-manager-icon-color.svg
   devstats_url: https://certmanager.devstats.cncf.io/
   accepted_at: "2020-11-10"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: community
       url: https://github.com/cert-manager/community
@@ -1385,20 +1385,6 @@
         - code-lite
       exclude:
         - clomonitor
-- name: krustlet
-  display_name: Krustlet
-  description: Run WebAssembly workloads in your Kubernetes cluster
-  category: serverless
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/krustlet/icon/color/krustlet-icon-color.svg
-  devstats_url: https://krustlet.devstats.cncf.io/
-  accepted_at: "2021-05-24"
-  maturity: sandbox
-  repositories:
-    - name: krustlet
-      url: https://github.com/krustlet/krustlet
-      check_sets:
-        - community
-        - code
 - name: kube-edge
   display_name: KubeEdge
   description: A Kubernetes Native Edge Computing Framework
@@ -1406,7 +1392,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubeedge/icon/color/kubeedge-icon-color.svg
   devstats_url: https://kubeedge.devstats.cncf.io/
   accepted_at: "2019-03-18"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: sedna
       url: https://github.com/kubeedge/sedna
@@ -4386,3 +4372,72 @@
       check_sets:
         - code
         - community
+- name: flatcar
+  display_name: Flatcar
+  description: Flatcar project repository for issue tracking, project documentation, etc.
+  category: wasm
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/flatcar.svg
+  devstats_url: https://flatcar.devstats.cncf.io
+  accepted_at: "2024-08-02"
+  maturity: incubating
+  repositories:
+    - name: Flatcar
+      url: https://github.com/flatcar/Flatcar
+      check_sets:
+        - code
+        - community
+    - name: flatcar-website
+      url: https://github.com/flatcar/flatcar-website
+      check_sets:
+        - docs
+- name: youki
+  description: A container runtime written in Rust
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/youki.svg
+  devstats_url: https://youki.devstats.cncf.io
+  accepted_at: "2024-10-17"
+  maturity: sandbox
+  repositories:
+    - name: youki
+      url: https://github.com/containers/youki
+      check_sets:
+        - code
+        - community
+- name: kmesh
+  display_name: Kmesh
+  description: Kmesh is a high-performance and low overhead service mesh data plane based on eBPF and programmable kernel. Kmesh brings traffic management, security and monitoring to service communication without needing application code changes. It is natively sidecarless, zero intrusion and without adding any resource cost to application container
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/kmesh.svg
+  accepted_at: "2024-10-17"
+  maturity: sandbox
+  repositories:
+    - name: kmesh
+      url: https://github.com/kmesh-net/kmesh
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/kmesh-net/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/kmesh-net/website
+      check_sets:
+        - docs
+- name: kusionstack
+  display_name: KusionStack
+  description: Declarative Intent Driven Platform Orchestrator for Internal Developer Platform (IDP)
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kusionstack/icon/color/kusionstack-icon-color.svg
+  devstats_url: https://kusionstack.devstats.cncf.io
+  accepted_at: "2024-10-17"
+  maturity: sandbox
+  repositories:
+    - name: kusion
+      url: https://github.com/KusionStack/kusion
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/KusionStack/community
+      check_sets:
+        - community        - community
+        - community        

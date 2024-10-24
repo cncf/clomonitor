@@ -147,38 +147,6 @@
       url: https://github.com/ortelius/ortelius-docs
       check_sets:
         - docs
-- name: shipwright
-  display_name: Shipwright
-  description: A framework for building container images on Kubernetes
-  category: Container Registry & Build
-  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/shipwright/icon/color/shipwright-icon-color.svg
-  devstats_url: https://shipwright.devstats.cd.foundation/
-  maturity: incubating
-  repositories:
-    - name: community
-      url: https://github.com/shipwright-io/community
-      check_sets:
-        - community
-    - name: build
-      url: https://github.com/shipwright-io/build
-      check_sets:
-        - code
-    - name: operator
-      url: https://github.com/shipwright-io/operator
-      check_sets:
-        - code-lite
-    - name: triggers
-      url: https://github.com/shipwright-io/triggers
-      check_sets:
-        - code-lite
-    - name: cli
-      url: https://github.com/shipwright-io/cli
-      check_sets:
-        - code-lite
-    - name: website
-      url: https://github.com/shipwright-io/website
-      check_sets:
-        - docs
 - name: cdevents
   display_name: CDEvents
   description: CDEvents are a common specification for Continuous Delivery events, enabling interoperability in the complete software production ecosystem

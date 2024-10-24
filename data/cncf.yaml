@@ -2382,19 +2382,6 @@
       check_sets:
         - community
         - code
-- name: skooner
-  display_name: Skooner
-  description: Simple Kubernetes real-time dashboard and management
-  category: observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/skooner/icon/color/Skooner-icon-color.svg
-  devstats_url: https://k8dash.devstats.cncf.io/
-  maturity: sandbox
-  repositories:
-    - name: skooner
-      url: https://github.com/skooner-k8s/skooner
-      check_sets:
-        - community
-        - code
 - name: smp
   display_name: Service Mesh Performance
   description: Standardizing Service Mesh Value Measurement
@@ -4439,5 +4426,4 @@
     - name: community
       url: https://github.com/KusionStack/community
       check_sets:
-        - community        - community
-        - community        
+        - community

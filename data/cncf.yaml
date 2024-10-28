@@ -1545,6 +1545,10 @@
       url: https://github.com/kubewarden/docs
       check_sets:
         - docs
+    - name: kubewarden.io
+      url: https://github.com/kubewarden/kubewarden.io
+      check_sets:
+        - docs
     - name: policy-server
       url: https://github.com/kubewarden/policy-server
       check_sets:

@@ -3164,7 +3164,7 @@
         - community
         - code
 - name: capsule
-  display_name: Capsule
+  display_name: Project Capsule
   description: Multi-tenancy and policy-based framework for Kubernetes
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/capsule/icon/color/capsule-icon-color.svg
@@ -3173,14 +3173,22 @@
   maturity: sandbox
   repositories:
     - name: capsule
-      url: https://github.com/clastix/capsule
+      url: https://github.com/projectcapsule/capsule
       check_sets:
         - community
         - code
     - name: capsule-proxy
-      url: https://github.com/clastix/capsule-proxy
+      url: https://github.com/projectcapsule/capsule-proxy
       check_sets:
         - code-lite
+    - name: website
+      url: https://github.com/projectcapsule/website
+      check_sets:
+        - docs
+    - name: capsule-community
+      url: https://github.com/projectcapsule/capsule-community
+      check_sets:
+        - community
 - name: zot
   display_name: Zot
   description: Zot is an OCI-native container registry for distributing container images and OCI artifacts

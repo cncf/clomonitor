@@ -4267,7 +4267,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/hami/icon/color/hami-icon-color.svg
   devstats_url: https://hami.devstats.cncf.io/
-  accepted_at: "2024-08-29"
+  accepted_at: "2024-08-21"
   maturity: sandbox
   repositories:
     - name: HAMi
@@ -4288,7 +4288,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/shipwright.svg
   devstats_url: https://shipwright.devstats.cncf.io/
-  accepted_at: "2024-08-29"
+  accepted_at: "2024-08-30"
   maturity: sandbox
   repositories:
     - name: community
@@ -4334,9 +4334,10 @@
 - name: cartography
   display_name: Cartography
   description: Cartography is a Python tool that consolidates infrastructure assets and the relationships between them in an intuitive graph view powered by a Neo4j database
-  logo_url: https://raw.githubusercontent.com/lyft/cartography/master/docs/root/images/logo-horizontal.png
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/c21682fee7a5d667be7e5f7c3347c3094b1188cb/projects/cartography/icon/color/cartography-icon-color.png
   devstats_url: https://cartography.devstats.cncf.io
-  accepted_at: "2024-08-30"
+  accepted_at: "2024-08-23"
   maturity: sandbox
   repositories:
     - name: cartography
@@ -4346,10 +4347,11 @@
         - community
 - name: bank-vaults
   display_name: Bank-Vaults
-  description: Bank-Vaults is a set of tools covering many aspects of secret management in the Cloud Native ecosystem
+  description: "Bank-Vaults is a Vault swiss-army knife: a K8s operator, Go client with automatic token renewal, automatic configuration, multiple unseal options and more. A CLI tool to init, unseal and configure Vault (auth methods, secret engines). Direct secret injection into Pods."
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/bank-vaults/icon/color/bank-vaults-icon-color.svg
   devstats_url: https://bankvaults.devstats.cncf.io
-  accepted_at: "2024-07-08"
+  accepted_at: "2024-06-18"
   maturity: sandbox
   repositories:
     - name: bank-vaults
@@ -4363,7 +4365,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/landscape/9c5fba1c8e0c48604cf62bfdee8cf30d3ba238bd/hosted_logos/stacker.svg
   devstats_url: https://stacker.devstats.cncf.io
-  accepted_at: "2024-07-08"
+  accepted_at: "2024-06-19"
   maturity: sandbox
   repositories:
     - name: stacker
@@ -4439,3 +4441,49 @@
       url: https://github.com/KusionStack/community
       check_sets:
         - community
+- name: openebs
+  display_name: OpenEBS
+  description: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openebs/icon/color/openebs-icon-color.svg
+  devstats_url: https://openebs.devstats.cncf.io/
+  accepted_at: "2024-10-10"
+  maturity: sandbox
+  repositories:
+    - name: openebs
+      url: https://github.com/openebs/openebs
+      check_sets:
+        - code
+    - name: zfs-localpv
+      url: https://github.com/openebs/zfs-localpv
+      check_sets:
+        - code-lite
+    - name: mayastor
+      url: https://github.com/openebs/mayastor
+      check_sets:
+        - code-lite
+    - name: opensbs-docs
+      url: https://github.com/openebs/website
+      check_sets:
+        - community
+- name: sermant
+  display_name: Sermant
+  description: Sermant a proxyless service mesh solution based on Javaagent.
+  category: orchestration
+  logo_url: https://sermant.io/img/sermant-logo.png
+  accepted_at: "2024-10-09"
+  maturity: sandbox
+  repositories:
+    - name: Sermant
+      url: https://github.com/sermant-io/Sermant
+      check_sets:
+        - code
+        - community
+    - name: Sermant-website
+      url: https://github.com/sermant-io/Sermant-website
+      check_sets:
+        - docs
+    - name: Sermant-examples
+      url: https://github.com/sermant-io/Sermant-examples
+      check_sets:
+        - code-lite

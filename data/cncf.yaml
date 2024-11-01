@@ -1492,6 +1492,14 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/kubernetes/website
+      check_sets:
+        - docs
+    - name: community
+      url: https://github.com/kubernetes/community
+      check_sets:
+        - community
 - name: kubevela
   display_name: KubeVela
   description: Make shipping applications more enjoyable

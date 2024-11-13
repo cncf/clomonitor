@@ -3645,7 +3645,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                     <a
                       aria-label="Recommended template: SECURITY.md"
                       class="link d-inline-block"
-                      href="https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md"
+                      href="https://github.com/cncf/tag-security/blob/main/community/resources/project-resources/templates/SECURITY.md"
                       rel="noopener noreferrer"
                       tabindex="-1"
                       target="_blank"

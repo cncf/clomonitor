@@ -223,7 +223,7 @@ const RepositoriesList = (props: Props) => {
                     recommendedTemplates={[
                       {
                         name: 'SECURITY.md',
-                        url: 'https://github.com/cncf/tag-security/blob/main/project-resources/templates/SECURITY.md',
+                        url: 'https://github.com/cncf/tag-security/blob/main/community/resources/project-resources/templates/SECURITY.md',
                       },
                     ]}
                     getAnchorLink={getAnchorLink}

@@ -2656,6 +2656,10 @@
       url: https://github.com/volcano-sh/volcano
       check_sets:
         - code
+    - name: website
+      url: https://github.com/volcano-sh/website
+      check_sets:
+        - docs
 - name: wasm-cloud
   display_name: wasmCloud
   description: wasmCloud allows for simple, secure, distributed application development using WebAssembly actors and capability providers

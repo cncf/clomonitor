@@ -3529,6 +3529,11 @@
       check_sets:
         - community
         - code
+    - name: microcks-testcontainers-dotnet
+      url: https://github.com/microcks/microcks-testcontainers-dotnet
+      check_sets:
+        - community
+        - code
     - name: microcks-quarkus
       url: https://github.com/microcks/microcks-quarkus
       check_sets:

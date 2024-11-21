@@ -4221,6 +4221,7 @@
       url: https://github.com/score-spec/spec
       check_sets:
         - code-lite
+        - community
     - name: score-go
       url: https://github.com/score-spec/score-go
       check_sets:

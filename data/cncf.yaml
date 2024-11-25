@@ -4435,18 +4435,46 @@
       url: https://github.com/openebs/openebs
       check_sets:
         - code
+    - name: openebs-community
+      url: https://github.com/openebs/community
+      check_sets:
+        - community
+    - name: localpv-provisioner
+      url: https://github.com/openebs/dynamic-localpv-provisioner
+      check_sets:
+        - code
+    - name: lvm-localpv
+      url: https://github.com/openebs/lvm-localpv
+      check_sets:
+        - code
     - name: zfs-localpv
       url: https://github.com/openebs/zfs-localpv
       check_sets:
-        - code-lite
+        - code
     - name: mayastor
       url: https://github.com/openebs/mayastor
       check_sets:
+        - code
+    - name: mayastor-control-plane
+      url: https://github.com/openebs/mayastor-control-plane
+      check_sets:
+        - code
+    - name: mayastor-extensions
+      url: https://github.com/openebs/mayastor-extensions
+      check_sets:
+        - code
+    - name: mayastor-dependencies
+      url: https://github.com/openebs/mayastor-dependencies
+      check_sets:
         - code-lite
-    - name: opensbs-docs
+    - name: spdk-rs
+      url: https://github.com/openebs/spdk-rs
+      check_sets:
+        - code-lite
+    - name: openebs.io
       url: https://github.com/openebs/website
       check_sets:
-        - community
+        - docs
 - name: sermant
   display_name: Sermant
   description: Sermant a proxyless service mesh solution based on Javaagent.

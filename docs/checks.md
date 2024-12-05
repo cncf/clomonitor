@@ -479,10 +479,16 @@ Scorecard assesses open source projects for security risks through a series of a
 
 This check passes if:
 
-- An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used:
+- An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used (old):
 
 ```sh
 "(https://api.securityscorecards.dev/projects/github.com/[^/]+/[^/]+)/badge"
+```
+
+- An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used (new):
+
+```sh
+"(https://api.scorecard.dev/projects/github.com/[^/]+/[^/]+)/badge"
 ```
 
 ### Recent release

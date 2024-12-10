@@ -7,7 +7,7 @@ pub(crate) fn rating(score: &f64) -> askama::Result<char> {
 
 /// Template filter that returns the rating letter corresponding to the score
 /// value provided.
-#[allow(clippy::unnecessary_wraps)]
+#[allow(clippy::unnecessary_wraps, clippy::ref_option)]
 pub(crate) fn rating_opt(score: &Option<f64>) -> askama::Result<String> {
     Ok(match score {
         Some(v) => clomonitor_core::score::rating(*v).to_string(),
@@ -28,7 +28,7 @@ pub(crate) fn round(v: &f64) -> askama::Result<usize> {
 }
 
 /// Template filter that returns the width of the section score bar.
-#[allow(clippy::unnecessary_wraps)]
+#[allow(clippy::unnecessary_wraps, clippy::ref_option)]
 pub(crate) fn rs_section_score_width(score: &Option<f64>) -> askama::Result<f64> {
     Ok(match score {
         Some(v) => {
@@ -53,6 +53,7 @@ pub(crate) fn stroke(v: &f64) -> askama::Result<f64> {
 /// provided as a string. "n/a" is returned when the value is none.
 #[allow(
     clippy::unnecessary_wraps,
+    clippy::ref_option,
     clippy::cast_sign_loss,
     clippy::cast_possible_truncation
 )]

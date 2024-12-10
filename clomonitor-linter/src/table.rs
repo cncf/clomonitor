@@ -71,43 +71,43 @@ pub(crate) fn display(
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Adopters"),
-            cell_check(&report.documentation.adopters),
+            cell_check(report.documentation.adopters.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Changelog"),
-            cell_check(&report.documentation.changelog),
+            cell_check(report.documentation.changelog.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Code of conduct"),
-            cell_check(&report.documentation.code_of_conduct),
+            cell_check(report.documentation.code_of_conduct.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Contributing"),
-            cell_check(&report.documentation.contributing),
+            cell_check(report.documentation.contributing.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Governance"),
-            cell_check(&report.documentation.governance),
+            cell_check(report.documentation.governance.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Maintainers"),
-            cell_check(&report.documentation.maintainers),
+            cell_check(report.documentation.maintainers.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Readme"),
-            cell_check(&report.documentation.readme),
+            cell_check(report.documentation.readme.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Roadmap"),
-            cell_check(&report.documentation.roadmap),
+            cell_check(report.documentation.roadmap.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Summary table"),
-            cell_check(&report.documentation.summary_table),
+            cell_check(report.documentation.summary_table.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Documentation / Website"),
-            cell_check(&report.documentation.website),
+            cell_check(report.documentation.website.as_ref()),
         ])
         .add_row(vec![
             cell_entry("License"),
@@ -123,95 +123,95 @@ pub(crate) fn display(
         ])
         .add_row(vec![
             cell_entry("License / Approved"),
-            cell_check(&report.license.license_approved),
+            cell_check(report.license.license_approved.as_ref()),
         ])
         .add_row(vec![
             cell_entry("License / Scanning"),
-            cell_check(&report.license.license_scanning),
+            cell_check(report.license.license_scanning.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / Artifact Hub badge"),
-            cell_check(&report.best_practices.artifacthub_badge),
+            cell_check(report.best_practices.artifacthub_badge.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / CLA"),
-            cell_check(&report.best_practices.cla),
+            cell_check(report.best_practices.cla.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / Community meeting"),
-            cell_check(&report.best_practices.community_meeting),
+            cell_check(report.best_practices.community_meeting.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / DCO"),
-            cell_check(&report.best_practices.dco),
+            cell_check(report.best_practices.dco.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / GitHub discussions"),
-            cell_check(&report.best_practices.github_discussions),
+            cell_check(report.best_practices.github_discussions.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF best practices badge"),
-            cell_check(&report.best_practices.openssf_badge),
+            cell_check(report.best_practices.openssf_badge.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / OpenSSF Scorecard badge"),
-            cell_check(&report.best_practices.openssf_scorecard_badge),
+            cell_check(report.best_practices.openssf_scorecard_badge.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / Recent release"),
-            cell_check(&report.best_practices.recent_release),
+            cell_check(report.best_practices.recent_release.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Best practices / Slack presence"),
-            cell_check(&report.best_practices.slack_presence),
+            cell_check(report.best_practices.slack_presence.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Binary artifacts"),
-            cell_check(&report.security.binary_artifacts),
+            cell_check(report.security.binary_artifacts.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Code review"),
-            cell_check(&report.security.code_review),
+            cell_check(report.security.code_review.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Dangerous workflow"),
-            cell_check(&report.security.dangerous_workflow),
+            cell_check(report.security.dangerous_workflow.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Dependencies policy"),
-            cell_check(&report.security.dependencies_policy),
+            cell_check(report.security.dependencies_policy.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Dependency update tool"),
-            cell_check(&report.security.dependency_update_tool),
+            cell_check(report.security.dependency_update_tool.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Maintained"),
-            cell_check(&report.security.maintained),
+            cell_check(report.security.maintained.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / SBOM"),
-            cell_check(&report.security.sbom),
+            cell_check(report.security.sbom.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Security insights"),
-            cell_check(&report.security.security_insights),
+            cell_check(report.security.security_insights.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Security policy"),
-            cell_check(&report.security.security_policy),
+            cell_check(report.security.security_policy.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Signed release"),
-            cell_check(&report.security.signed_releases),
+            cell_check(report.security.signed_releases.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Security / Token permissions"),
-            cell_check(&report.security.token_permissions),
+            cell_check(report.security.token_permissions.as_ref()),
         ])
         .add_row(vec![
             cell_entry("Legal / Trademark disclaimer"),
-            cell_check(&report.legal.trademark_disclaimer),
+            cell_check(report.legal.trademark_disclaimer.as_ref()),
         ]);
     writeln!(w, "{checks_summary}\n")?;
 
@@ -278,7 +278,7 @@ fn cell_score(score: Option<f64>) -> Cell {
 }
 
 /// Build a cell used for checks output.
-fn cell_check<T>(output: &Option<CheckOutput<T>>) -> Cell {
+fn cell_check<T>(output: Option<&CheckOutput<T>>) -> Cell {
     let (content, color) = match output {
         Some(r) => match (r.passed, r.exempt, r.failed) {
             (true, _, _) => (SUCCESS_SYMBOL.to_string(), Color::Green),

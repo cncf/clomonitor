@@ -1,5 +1,5 @@
 # Build linter
-FROM rust:1-alpine3.20 as builder
+FROM rust:1-alpine3.21 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -14,7 +14,7 @@ WORKDIR /clomonitor/clomonitor-linter
 RUN cargo build --release
 
 # Build OpenSSF scorecard
-FROM golang:1.23.3-alpine3.20 AS scorecard
+FROM golang:1.23.4-alpine3.21 AS scorecard
 WORKDIR /tmp
 RUN apk --no-cache add git make bash gcc musl-dev binutils-gold
 RUN git clone https://github.com/ossf/scorecard
@@ -24,7 +24,7 @@ RUN make install
 RUN make build
 
 # Final stage
-FROM alpine:3.20.3
+FROM alpine:3.21.0
 RUN addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

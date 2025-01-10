@@ -415,10 +415,6 @@
     url: https://github.com/AcademySoftwareFoundation/rawtoaces
     exclude:
     - clomonitor
-  - name: rawtoaces-data
-    url: https://github.com/AcademySoftwareFoundation/rawtoaces-data
-    exclude:
-    - clomonitor
 - name: rez
   display_name: Rez
   description: 'Rez is a cross-platform package manager. Using Rez you can create

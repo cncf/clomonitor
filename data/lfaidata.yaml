@@ -280,7 +280,7 @@
   category: model
   logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/kedro/icon/color/kedro-icon-color.svg
   accepted_at: "2021-09-09"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: kedro-viz
       url: https://github.com/kedro-org/kedro-viz
@@ -954,6 +954,43 @@
   repositories:
     - name: delta
       url: https://github.com/delta-io/delta
+      check_sets:
+        - community
+        - code
+- name: deepspeed
+  display_name: DeepSpeed
+  description: DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
+  category: model
+  logo_url: https://raw.githubusercontent.com/lfai/lfai-landscape/refs/heads/main/hosted_logos/deepspeed.svg
+  accepted_at: "2024-10-14"
+  maturity: incubating
+  repositories:
+    - name: DeepSpeed
+      url: https://github.com/microsoft/DeepSpeed
+      check_sets:
+        - community
+        - code
+- name: vllm
+  display_name: vLLM
+  description: A high-throughput and memory-efficient inference and serving engine for LLMs
+  category: generative ai
+  logo_url: https://raw.githubusercontent.com/lfai/lfai-landscape/refs/heads/main/hosted_logos/vllm.svg
+  maturity: incubating
+  repositories:
+    - name: vllm
+      url: https://github.com/vllm-project/vllm
+      check_sets:
+        - community
+        - code
+- name: open-model-initiative
+  display_name: Open Model Initiative
+  description: A repository for establishing and maintaining standardized model formats across the open-source media ecosystem.
+  category: generative ai
+  logo_url: https://raw.githubusercontent.com/lfai/artwork/refs/heads/main/projects/omi/icon/color/OpenModelInitiative_icon-color.png
+  maturity: sandbox
+  repositories:
+    - name: OMI-Model-Standards
+      url: https://github.com/Open-Model-Initiative/OMI-Model-Standards
       check_sets:
         - community
         - code

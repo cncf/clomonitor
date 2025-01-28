@@ -3504,11 +3504,6 @@
       check_sets:
         - community
         - code
-    - name: microcks-ansible-operator
-      url: https://github.com/microcks/microcks-ansible-operator
-      check_sets:
-        - community
-        - code
     - name: microcks-postman-runtime
       url: https://github.com/microcks/microcks-postman-runtime
       check_sets:

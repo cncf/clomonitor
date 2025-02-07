@@ -2063,6 +2063,10 @@
       url: https://github.com/open-telemetry/semantic-conventions
       check_sets:
         - docs
+    - name: semantic-conventions-java
+      url: https://github.com/open-telemetry/semantic-conventions-java
+      check_sets:
+        - code
     - name: sig-mainframe
       url: https://github.com/open-telemetry/sig-mainframe
       check_sets:

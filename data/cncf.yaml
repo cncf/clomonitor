@@ -2074,7 +2074,7 @@
     - name: sig-security
       url: https://github.com/open-telemetry/sig-security
       check_sets:
-        - code-lite
+        - docs
     - name: weaver
       url: https://github.com/open-telemetry/weaver
       check_sets:

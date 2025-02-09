@@ -2070,7 +2070,7 @@
     - name: sig-mainframe
       url: https://github.com/open-telemetry/sig-mainframe
       check_sets:
-        - code-lite
+        - docs
     - name: sig-security
       url: https://github.com/open-telemetry/sig-security
       check_sets:

@@ -1906,7 +1906,7 @@
     - name: opentelemetry-configuration
       url: https://github.com/open-telemetry/opentelemetry-configuration
       check_sets:
-        - code
+        - docs
     - name: opentelemetry-cpp
       url: https://github.com/open-telemetry/opentelemetry-cpp
       check_sets:

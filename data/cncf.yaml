@@ -1891,10 +1891,6 @@
       url: https://github.com/open-telemetry/opentelemetry-collector
       check_sets:
         - code
-    - name: opentelemetry-collector-builder
-      url: https://github.com/open-telemetry/opentelemetry-collector-builder
-      check_sets:
-        - code
     - name: opentelemetry-collector-contrib
       url: https://github.com/open-telemetry/opentelemetry-collector-contrib
       check_sets:
@@ -2049,14 +2045,6 @@
         - docs
     - name: otel-arrow
       url: https://github.com/open-telemetry/otel-arrow
-      check_sets:
-        - code
-    - name: otel-arrow-collector
-      url: https://github.com/open-telemetry/otel-arrow-collector
-      check_sets:
-        - code
-    - name: oteps
-      url: https://github.com/open-telemetry/oteps
       check_sets:
         - code
     - name: semantic-conventions

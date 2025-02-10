@@ -1891,10 +1891,6 @@
       url: https://github.com/open-telemetry/opentelemetry-collector
       check_sets:
         - code
-    - name: opentelemetry-collector-builder
-      url: https://github.com/open-telemetry/opentelemetry-collector-builder
-      check_sets:
-        - code
     - name: opentelemetry-collector-contrib
       url: https://github.com/open-telemetry/opentelemetry-collector-contrib
       check_sets:
@@ -1906,7 +1902,7 @@
     - name: opentelemetry-configuration
       url: https://github.com/open-telemetry/opentelemetry-configuration
       check_sets:
-        - code
+        - docs
     - name: opentelemetry-cpp
       url: https://github.com/open-telemetry/opentelemetry-cpp
       check_sets:
@@ -1966,7 +1962,7 @@
     - name: opentelemetry-java-examples
       url: https://github.com/open-telemetry/opentelemetry-java-examples
       check_sets:
-        - code-lite
+        - docs
     - name: opentelemetry-java-instrumentation
       url: https://github.com/open-telemetry/opentelemetry-java-instrumentation
       check_sets:
@@ -2006,7 +2002,7 @@
     - name: opentelemetry-proto
       url: https://github.com/open-telemetry/opentelemetry-proto
       check_sets:
-        - code
+        - docs
     - name: opentelemetry-proto-java
       url: https://github.com/open-telemetry/opentelemetry-proto-java
       check_sets:
@@ -2051,14 +2047,6 @@
       url: https://github.com/open-telemetry/otel-arrow
       check_sets:
         - code
-    - name: otel-arrow-collector
-      url: https://github.com/open-telemetry/otel-arrow-collector
-      check_sets:
-        - code
-    - name: oteps
-      url: https://github.com/open-telemetry/oteps
-      check_sets:
-        - code
     - name: semantic-conventions
       url: https://github.com/open-telemetry/semantic-conventions
       check_sets:
@@ -2070,7 +2058,7 @@
     - name: sig-mainframe
       url: https://github.com/open-telemetry/sig-mainframe
       check_sets:
-        - code-lite
+        - docs
     - name: sig-security
       url: https://github.com/open-telemetry/sig-security
       check_sets:

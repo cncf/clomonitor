@@ -2002,7 +2002,7 @@
     - name: opentelemetry-proto
       url: https://github.com/open-telemetry/opentelemetry-proto
       check_sets:
-        - code
+        - docs
     - name: opentelemetry-proto-java
       url: https://github.com/open-telemetry/opentelemetry-proto-java
       check_sets:

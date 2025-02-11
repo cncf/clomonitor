@@ -2006,7 +2006,7 @@
     - name: opentelemetry-proto-java
       url: https://github.com/open-telemetry/opentelemetry-proto-java
       check_sets:
-        - code
+        - code-lite
     - name: opentelemetry-python
       url: https://github.com/open-telemetry/opentelemetry-python
       check_sets:

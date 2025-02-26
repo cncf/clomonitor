@@ -4,7 +4,6 @@ use crate::{
     views::DynVT,
 };
 use anyhow::Error;
-use askama_axum::Template;
 use axum::{
     body::Body,
     extract::{Path, Query, RawQuery, State},
@@ -21,6 +20,7 @@ use clomonitor_core::{
 use config::Config;
 use lazy_static::lazy_static;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
+use rinja::Template;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{collections::HashMap, fmt::Display, sync::Arc};
@@ -292,9 +292,17 @@ pub(crate) async fn report_summary_svg(
     // Render report summary SVG and return it if the score was found
     match score {
         Some(score) => {
-            let headers = [(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))];
+            let headers = [
+                (CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}")),
+                (CONTENT_TYPE, "image/svg+xml".to_string()),
+            ];
             let theme = params.get("theme").cloned();
-            Ok((headers, ReportSummaryTemplate::new(score, theme)))
+            Ok((
+                headers,
+                ReportSummaryTemplate::new(score, theme)
+                    .render()
+                    .map_err(internal_error)?,
+            ))
         }
         None => Err(StatusCode::NOT_FOUND),
     }
@@ -341,7 +349,7 @@ pub(crate) async fn repository_report_md(
     match report_md {
         Some(report_md) => {
             let headers = [(CACHE_CONTROL, format!("max-age={DEFAULT_API_MAX_AGE}"))];
-            Ok((headers, report_md))
+            Ok((headers, report_md.render().map_err(internal_error)?))
         }
         None => Err(StatusCode::NOT_FOUND),
     }

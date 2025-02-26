@@ -1,9 +1,9 @@
 use crate::{db::DynDB, github::DynGH, tmpl};
 use anyhow::{format_err, Result};
-use askama::Template;
 use config::Config;
 use lazy_static::lazy_static;
 use regex::Regex;
+use rinja::Template;
 use std::time::Duration;
 use tokio::time::sleep;
 use tracing::{error, info, instrument};

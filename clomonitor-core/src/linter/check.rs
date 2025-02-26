@@ -32,7 +32,7 @@ pub(crate) struct CheckInput<'a> {
     pub security_insights: Result<Option<SecurityInsights>>,
 }
 
-impl<'a> CheckInput<'a> {
+impl CheckInput<'_> {
     pub(crate) async fn new(li: &LinterInput) -> Result<CheckInput> {
         // Check if required external tools are available
         if which("scorecard").is_err() {

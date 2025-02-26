@@ -42,7 +42,7 @@ pub(crate) fn check(input: &CheckInput, spdx_id: Option<String>) -> Option<Check
     }
 
     // SPDX id in list of approved licenses
-    if spdx_id.map_or(false, |spdx_id| is_approved(&spdx_id)) {
+    if spdx_id.is_some_and(|spdx_id| is_approved(&spdx_id)) {
         return Some(CheckOutput::passed());
     }
 

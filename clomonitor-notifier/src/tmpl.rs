@@ -1,4 +1,4 @@
-use askama::Template;
+use rinja::Template;
 
 /// Template for the annual review due comment.
 #[derive(Template)]

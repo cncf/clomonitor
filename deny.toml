@@ -16,6 +16,6 @@ unknown-registry = "deny"
 unknown-git = "deny"
 required-git-spec = "tag"
 allow-git = [
-    "https://github.com/djc/askama.git",
     "https://github.com/graphql-rust/graphql-client.git"
+    "https://github.com/rinja-rs/rinja",
 ]

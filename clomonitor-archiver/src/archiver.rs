@@ -118,7 +118,7 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
 
         // Include latest snapshot for each week in the last month
         if ref_date - snapshot <= 30.days()
-            && snapshots_to_keep.last().map_or(true, |last_snapshot_kept| {
+            && snapshots_to_keep.last().is_none_or(|last_snapshot_kept| {
                 last_snapshot_kept.iso_week() > snapshot.iso_week()
             })
         {
@@ -128,7 +128,7 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
 
         // Include latest snapshot for each month in the last 2 years
         if ref_date - snapshot <= (2 * 365).days()
-            && snapshots_to_keep.last().map_or(true, |last_snapshot_kept| {
+            && snapshots_to_keep.last().is_none_or(|last_snapshot_kept| {
                 last_snapshot_kept.month() as u8 > snapshot.month() as u8
             })
         {
@@ -137,9 +137,10 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
         }
 
         // Include latest snapshot of the year for the rest of the years
-        if snapshots_to_keep.last().map_or(true, |last_snapshot_kept| {
-            last_snapshot_kept.year() > snapshot.year()
-        }) {
+        if snapshots_to_keep
+            .last()
+            .is_none_or(|last_snapshot_kept| last_snapshot_kept.year() > snapshot.year())
+        {
             snapshots_to_keep.push(snapshot);
         }
     }

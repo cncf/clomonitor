@@ -50,30 +50,30 @@ pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     // Setup API routes
     let api_routes = Router::new()
         .route("/projects/search", get(search_projects))
-        .route("/projects/views/:project_id", post(track_view))
-        .route("/projects/:foundation/:project", get(project))
-        .route("/projects/:foundation/:project/badge", get(badge))
+        .route("/projects/views/{project_id}", post(track_view))
+        .route("/projects/{foundation}/{project}", get(project))
+        .route("/projects/{foundation}/{project}/badge", get(badge))
         .route(
-            "/projects/:foundation/:project/report-summary",
+            "/projects/{foundation}/{project}/report-summary",
             get(report_summary_svg),
         )
         .route(
-            "/projects/:foundation/:project/:repository/report.md",
+            "/projects/{foundation}/{project}/{repository}/report.md",
             get(repository_report_md),
         )
         .route(
-            "/projects/:foundation/:project/snapshots/:date",
+            "/projects/{foundation}/{project}/snapshots/{date}",
             get(project_snapshot),
         )
         .route("/stats", get(stats))
-        .route("/stats/snapshots/:date", get(stats_snapshot));
+        .route("/stats/snapshots/{date}", get(stats_snapshot));
 
     // Setup router
     let mut router = Router::new()
         .route("/", get(index))
-        .route("/projects/:foundation/:project", get(index_project))
+        .route("/projects/{foundation}/{project}", get(index_project))
         .route(
-            "/projects/:foundation/:project/report-summary.png",
+            "/projects/{foundation}/{project}/report-summary.png",
             get(report_summary_png),
         )
         .route("/data/repositories.csv", get(repositories_checks))

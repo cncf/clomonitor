@@ -4411,9 +4411,9 @@
         - community
 - name: openebs
   display_name: OpenEBS
-  description: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes
+  description: Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes
   category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openebs/icon/color/openebs-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/openebs/icon/color/openebs-icon-color.svg
   devstats_url: https://openebs.devstats.cncf.io/
   accepted_at: "2024-10-10"
   maturity: sandbox
@@ -4438,6 +4438,10 @@
       url: https://github.com/openebs/zfs-localpv
       check_sets:
         - code
+    - name: rawfile-localpv
+      url: https://github.com/openebs/rawfile-localpv
+      check_sets:
+        - code
     - name: mayastor
       url: https://github.com/openebs/mayastor
       check_sets:
@@ -4445,7 +4449,7 @@
     - name: mayastor-control-plane
       url: https://github.com/openebs/mayastor-control-plane
       check_sets:
-        - code
+        - code-lite
     - name: mayastor-extensions
       url: https://github.com/openebs/mayastor-extensions
       check_sets:

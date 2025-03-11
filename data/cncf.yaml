@@ -2152,7 +2152,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openyurt/icon/color/openyurt-icon-color.svg
   devstats_url: https://openyurt.devstats.cncf.io/
   accepted_at: "2020-09-08"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: openyurt
       url: https://github.com/openyurtio/openyurt
@@ -2659,7 +2659,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/wasmcloud/icon/color/wasmcloud.icon_green.svg
   devstats_url: https://wasmcloud.devstats.cncf.io/
   accepted_at: "2021-07-12"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: wasmcloud
       url: https://github.com/wasmCloud/wasmCloud
@@ -4470,7 +4470,7 @@
   display_name: Sermant
   description: Sermant a proxyless service mesh solution based on Javaagent.
   category: orchestration
-  logo_url: https://sermant.io/img/sermant-logo.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/sermant/stacked/color/sermant-stacked-color.svg
   devstats_url: https://sermant.devstats.cncf.io
   accepted_at: "2024-10-09"
   maturity: sandbox
@@ -4488,3 +4488,152 @@
       url: https://github.com/sermant-io/Sermant-examples
       check_sets:
         - code-lite
+- name: interlink
+  display_name: InterLink
+  description: InterLink aims to provide an abstraction for the execution of a Kubernetes pod on any remote resource capable of managing a Container execution lifecycle. It allows you to extend your cloud environment anywhere by running Kubernetes workloads on various infrastructures, creating a seamless cloud-native experience across diverse environments.
+  category: provisioning
+  logo_url: https://intertwin-eu.github.io/interLink/img/interlink_logo.png
+  devstats_url: https://interlink.devstats.cncf.io
+  accepted_at: "2025-03-04"
+  maturity: sandbox
+  repositories:
+    - name: interLink
+      url: https://github.com/interTwin-eu/interLink
+      check_sets:
+        - code
+        - community
+- name: cozystack
+  display_name: CozyStack
+  description: Cozystack is a free PaaS platform and framework for building clouds.
+  category: platform
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/cozystack.svg
+  devstats_url: https://cozystack.devstats.cncf.io
+  accepted_at: "2025-03-04"
+  maturity: sandbox
+  repositories:
+    - name: cozystack
+      url: https://github.com/cozystack/cozystack
+      check_sets:
+        - code
+        - community
+    - name: website
+      url: https://github.com/cozystack/website
+      check_sets:
+        - docs
+- name: kgateway
+  display_name: KGateway
+  description: An Envoy-powered, Kubernetes-native API Gateway that integrates Kubernetes Gateway API with a control plane for API connectivity in any cloud environment.
+  category: provisioning
+  logo_url: https://avatars.githubusercontent.com/u/186092512?s=200&v=4
+  devstats_url: https://kgateway.devstats.cncf.io
+  accepted_at: "2025-03-04"
+  maturity: sandbox
+  repositories:
+    - name: kgateway
+      url: https://github.com/kgateway-dev/kgateway
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/kgateway-dev/community
+      check_sets:
+        - community
+    - name: kgateway.dev
+      url: https://github.com/kgateway-dev/kgateway.dev
+      check_sets:
+        - docs
+- name: kitops
+  display_name: KitOps
+  description: An open standard for packaging, managing, and deploying ML models and artifacts across different systems.
+  category: provisioning
+  logo_url: https://kitops.org/logo.svg
+  devstats_url: https://kitops.devstats.cncf.io
+  accepted_at: "2025-03-04"
+  maturity: sandbox
+  repositories:
+    - name: kitops
+      url: https://github.com/jozu-ai/kitops
+      check_sets:
+        - code
+        - community
+    - name: pykitops
+      url: https://github.com/jozu-ai/pykitops
+      check_sets:
+        - code-lite
+- name: hyperlight
+  display_name: Hyperlight
+  description: A lightweight, secure container runtime solution designed for modern cloud-native workloads.
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/hyperlight-dev/hyperlight/refs/heads/main/docs/assets/hyperlight-logo.png
+  devstats_url: https://hyperlight.devstats.cncf.io
+  accepted_at: "2025-03-04"
+  maturity: sandbox
+  repositories:
+    - name: hyperlight
+      url: https://github.com/hyperlight-dev/hyperlight
+      check_sets:
+        - code
+        - community
+- name: ovn-kubernetes
+  display_name: OVN-Kubernetes
+  description: A robust Kubernetes networking platform
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/ovn-kubernetes/icon/color/ovn-kubernetes-icon-color.svg
+  devstats_url: https://ovn-kubernetes.devstats.cncf.io
+  accepted_at: "2024-10-17"
+  maturity: sandbox
+  repositories:
+    - name: ovn-kubernetes
+      url: https://github.com/ovn-kubernetes/ovn-kubernetes
+      check_sets:
+        - code
+        - community
+- name: tokenetes
+  display_name: Tokenetes
+  description: Tokenetes is a Kubernetes-native framework designed to facilitate the adoption of TraTs in existing applications to secure their call chains.
+  logo_url: https://raw.githubusercontent.com/tokenetes/tokenetes/refs/heads/main/docs/images/tokenetes%20-%20preview%20-%20transparent-02.png
+  devstats_url: https://tratteria.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: tokenetes
+      url: https://github.com/tokenetes/tokenetes
+      check_sets:
+        - code
+        - community
+    - name: website
+      url: https://github.com/tokenetes/website
+      check_sets:
+        - docs
+- name: kaito
+  display_name: Kubernetes AI Toolchain Operator (KAITO)
+  description: Kaito is an operator that automates the AI/ML model inference or tuning workload in a Kubernetes cluster.
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kaito/icon/color/kaito-icon.svg
+  devstats_url: https://kaito.devstats.cncf.io
+  accepted_at: "2024-10-11"
+  maturity: sandbox
+  repositories:
+    - name: kaito
+      url: https://github.com/Azure/kaito
+      check_sets:
+        - code
+        - community
+- name: drasi
+  display_name: Drasi
+  description: Drasi is a change data processing platform that automates real-time detection, evaluation, and meaningful reaction to events in complex, event-driven systems.
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/drasi/icon/color/drasi-icon-color.svg
+  devstats_url: https://drasi.devstats.cncf.io/
+  accepted_at: "2025-01-24"
+  maturity: sandbox
+  repositories:
+    - name: drasi-platform
+      url: https://github.com/drasi-project/drasi-platform
+      check_sets:
+        - code
+    - name: docs
+      url: https://github.com/drasi-project/docs
+      check_sets:
+        - docs
+    - name: community
+      url: https://github.com/drasi-project/community
+      check_sets:
+        - community

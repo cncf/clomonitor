@@ -44,7 +44,7 @@ pub(super) struct ItemExtra {
 
 /// Create a new Landscape instance from the corresponding foundation
 /// landscape.yml file.
-#[cached(time = 1800, sync_writes = true, result = true)]
+#[cached(time = 1800, sync_writes = "default", result = true)]
 pub(crate) async fn new(url: String) -> Result<Landscape> {
     let content = reqwest::get(url).await?.text().await?;
     Ok(serde_yaml::from_str(&content)?)

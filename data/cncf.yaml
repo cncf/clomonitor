@@ -4777,7 +4777,7 @@
 - name: slimfaas
   display_name: SlimFaaS
   description: SlimFaas act as a very small proxy to add into your Kubernetes namespace.
-  logo_url: https://private-user-images.githubusercontent.com/52236059/359893468-6acc9296-fa7a-45d0-8521-a1542e773f70.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIyNDA2NTIsIm5iZiI6MTc0MjI0MDM1MiwicGF0aCI6Ii81MjIzNjA1OS8zNTk4OTM0NjgtNmFjYzkyOTYtZmE3YS00NWQwLTg1MjEtYTE1NDJlNzczZjcwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE3VDE5MzkxMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJhM2I3NjNlODk1YTYyYTdiMGRjYzRhMDRiMThmNTFjNGQ3NmM1ODIxMzE3MjAwNDc3MjMyN2FmMDQ0NDY0NDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.bAHjPd7ztt-B87-WPUxiLumD23q6WaYgVl1ltTshjU0
+  logo_url: https://raw.githubusercontent.com/SlimPlanet/SlimFaas/refs/heads/main/documentation/SlimFaas.png
   devstats_url: https://slimfaas.devstats.cncf.io
   accepted_at: "2025-01-16"
   maturity: sandbox

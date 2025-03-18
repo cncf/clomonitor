@@ -4637,3 +4637,184 @@
       url: https://github.com/drasi-project/community
       check_sets:
         - community
+- name: composefs
+  display_name: composefs
+  description: The composefs project combines several underlying Linux features to provide a very flexible mechanism to support read-only mountable filesystem trees, stacking on top of an underlying "lower" Linux filesystem.
+  devstats_url: https://composefs.devstats.cncf.io/
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: composefs
+      url: https://github.com/composefs/composefs
+      check_sets:
+        - code
+        - community
+- name: bootc
+  display_name: Bootc
+  description: The bootc provides transactional, in-place operating system images and updates using OCI/Docker container images.
+  logo_url: https://raw.githubusercontent.com/containers/common/main/logos/bootc-logo-full-vert.png
+  devstats_url: https://bootc.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: bootc
+      url: https://github.com/bootc-dev/bootc
+      check_sets:
+        - code
+        - community
+    - name: bootc-dev.github.io
+      url: https://github.com/bootc-dev/bootc-dev.github.io
+      check_sets:
+        - docs
+- name: podman-container-tools
+  display_name: Podman Container Tools
+  description: The Podman Container Tools project consists of Podman (the Pod Manager), Buildah, Skopeo as well as a number of smaller tools which are used to manage containers and images, volumes mounted into those containers, and pods made from groups of containers.
+  logo_url: https://raw.githubusercontent.com/containers/common/main/logos/podman-logo-full-vert.png
+  devstats_url: https://podmancontainertools.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: podman
+      url: https://github.com/containers/podman
+      check_sets:
+        - code
+        - community
+- name: podman-desktop
+  display_name: Podman Desktop
+  description: Podman Desktop is an open-source tool for developers to work with containers and Kubernetes with intuitive and user-friendly interface to effortlessly build, manage, and deploy containers and Kubernetes — all from the desktop.
+  logo_url: https://github.com/containers/common/raw/main/logos/logo_circle_podmandesktop.png
+  devstats_url: https://podmandesktop.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: podman-desktop
+      url: https://github.com/podman-desktop/podman-desktop
+      check_sets:
+        - code
+        - community
+- name: kubefleet
+  display_name: KubeFleet
+  description: KubeFleet is a multi-cluster solution that enables users to effectively manage their applications running in multiple Kubernetes clusters.
+  devstats_url: https://kubefleet.devstats.cncf.io
+  accepted_at: "2025-01-15"
+  maturity: sandbox
+  repositories:
+    - name: fleet
+      url: https://github.com/Azure/fleet
+      check_sets:
+        - code
+        - community
+- name: cloudnative-pg
+  display_name: CloudNativePG
+  description: CloudNativePG is a Kubernetes native database platform for PostgreSQL
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/cloudnative-pg.svg
+  devstats_url: https://cloudnativepg.devstats.cncf.io
+  accepted_at: "2025-01-15"
+  maturity: sandbox
+  repositories:
+    - name: cloudnative-pg
+      url: https://github.com/cloudnative-pg/cloudnative-pg
+      check_sets:
+        - code
+        - community
+    - name: cnpg-i
+      url: https://github.com/cloudnative-pg/cnpg-i
+      check_sets:
+        - code-lite
+    - name: cnpg-i-machinery
+      url: https://github.com/cloudnative-pg/cnpg-i-machinery
+      check_sets:
+        - code-lite
+- name: runme-notebooks
+  display_name: Runme Notebooks
+  description: Runme is a toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.
+  logo_url: https://runme.dev/runme_logo.svg
+  devstats_url: https://runme-notebooks.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: runme
+      url: https://github.com/runmedev/runme
+      check_sets:
+        - code
+        - community
+    - name: docs.runme.dev
+      url: https://github.com/runmedev/docs.runme.dev
+      check_sets:
+        - docs
+- name: k0s
+  display_name: k0s
+  description: k0s is a CNCF-certified lightweight, Kubernetes distribution with zero dependencies and zero opinion.
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/k0s.svg
+  devstats_url: https://k0s.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: k0s
+      url: https://github.com/k0sproject/k0s
+      check_sets:
+        - code
+        - community
+    - name: k0sctl
+      url: https://github.com/k0sproject/k0sctl
+      check_sets:
+        - code-lite
+- name: container2wasm
+  display_name: Container2Wasm
+  description: A tool to run containers on Wasm-enabled environments.
+  category: wasm
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/wasm.svg
+  devstats_url: https://container2wasm.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: container2wasm
+      url: https://github.com/container2wasm/container2wasm
+      check_sets:
+        - code
+        - community
+- name: slimfaas
+  display_name: SlimFaaS
+  description: SlimFaas act as a very small proxy to add into your Kubernetes namespace.
+  logo_url: https://raw.githubusercontent.com/SlimPlanet/SlimFaas/refs/heads/main/documentation/SlimFaas.png
+  devstats_url: https://slimfaas.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: SlimFaas
+      url: https://github.com/AxaFrance/SlimFaas
+      check_sets:
+        - code
+        - community
+- name: spin
+  display_name: Spin
+  description: Spin is an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly.
+  category: wasm
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/spin/icon/color/spin-icon-color.svg
+  devstats_url: https://spin.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: spin
+      url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/spin.svg
+      check_sets:
+        - code
+        - community
+- name: spinkube
+  display_name: SpinKube
+  description: SpinKube is an open source platform for efficiently running (containerless) Spin-based WebAssembly (Wasm) applications on Kubernetes.
+  category: wasm
+  logo_url: https://avatars.githubusercontent.com/u/157650797?s=200&v=4
+  devstats_url: https://spinkube.devstats.cncf.io
+  accepted_at: "2025-01-16"
+  maturity: sandbox
+  repositories:
+    - name: documentation
+      url: https://github.com/spinkube/documentation
+      check_sets:
+        - docs
+    - name: community
+      url: https://github.com/spinkube/community
+      check_sets:
+        - community

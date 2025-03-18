@@ -4791,13 +4791,13 @@
   display_name: Spin
   description: Spin is an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly.
   category: wasm
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/spin/icon/color/spin-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/spin.svg
   devstats_url: https://spin.devstats.cncf.io
   accepted_at: "2025-01-16"
   maturity: sandbox
   repositories:
     - name: spin
-      url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/spin.svg
+      url: https://github.com/spinframework/spin
       check_sets:
         - code
         - community

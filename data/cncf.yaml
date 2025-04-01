@@ -2726,6 +2726,10 @@
       url: https://github.com/konveyor/community
       check_sets:
         - community
+    - name: konveyor.github.io
+      url: https://github.com/konveyor/konveyor.github.io
+      check_sets:
+        - docs
 - name: external-secrets
   display_name: External Secrets
   description: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets

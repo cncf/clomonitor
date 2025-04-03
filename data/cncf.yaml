@@ -4181,6 +4181,16 @@
       url: https://github.com/oscal-compass/compliance-trestle-demos
       check_sets:
         - code-lite
+    - name: oscal-sdk-go
+      url: https://github.com/oscal-compass/oscal-sdk-go
+      check_sets:
+        - code-lite
+    - name: compliance-to-policy-go
+      url: https://github.com/oscal-compass/compliance-to-policy
+      check_sets:
+        - code-lite
+
+
 - name: perses
   display_name: Perses
   description: Perses is a dashboard tool to visualize observability data from Prometheus/Thanos/Jaeger

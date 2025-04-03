@@ -4186,7 +4186,7 @@
       check_sets:
         - code-lite
     - name: compliance-to-policy-go
-      url: https://github.com/oscal-compass/compliance-to-policy
+      url: https://github.com/oscal-compass/compliance-to-policy-go
       check_sets:
         - code-lite
 

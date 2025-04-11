@@ -132,3 +132,48 @@ pub(crate) struct SecurityContact {
 pub(crate) struct VulnerabilityReporting {
     accepts_vulnerability_reports: bool,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const TESTDATA_PATH: &str = "src/testdata/security-insights-v1";
+
+    #[test]
+    fn new_returns_none_when_file_does_not_exist() {
+        let result = SecurityInsights::new(&Path::new(TESTDATA_PATH).join("not-found")).unwrap();
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn new_returns_error_when_file_is_invalid() {
+        let result = SecurityInsights::new(&Path::new(TESTDATA_PATH).join("invalid"));
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn new_parses_valid_manifest() {
+        let result = SecurityInsights::new(Path::new(TESTDATA_PATH)).unwrap();
+        assert!(result.is_some());
+        let insights = result.unwrap();
+
+        assert_eq!(insights.header.expiration_date, "2024-09-28T01:00:00.000Z");
+        assert_eq!(
+            insights.header.project_url,
+            "https://github.com/ossf/security-insights-spec"
+        );
+        assert_eq!(insights.header.schema_version, "1.0.0");
+        assert!(insights.contribution_policy.accepts_automated_pull_requests);
+        assert!(insights.contribution_policy.accepts_pull_requests);
+        assert!(!insights.project_lifecycle.bug_fixes_only);
+        assert_eq!(insights.project_lifecycle.status, "active");
+        assert!(
+            insights
+                .vulnerability_reporting
+                .accepts_vulnerability_reports
+        );
+        assert_eq!(insights.security_contacts.len(), 1);
+        assert_eq!(insights.security_contacts[0].kind, "email");
+        assert_eq!(insights.security_contacts[0].value, "security@openssf.org");
+    }
+}

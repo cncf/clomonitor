@@ -4832,3 +4832,20 @@
       url: https://github.com/spinkube/community
       check_sets:
         - community
+- name: opentofu
+  display_name: OpenTofu
+  description: OpenTofu is an open source infrastructure as code tool that enables users to safely and predictably provision and manage cloud and on-prem infrastructure. It's a community-driven fork of Terraform that maintains backward compatibility while offering enhanced features, stability.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/opentofu/opentofu.org/refs/heads/main/static/img/logo.svg
+  accepted_at: "2025-04-23"
+  maturity: sandbox
+  repositories:
+    - name: opentofu
+      url:  https://github.com/opentofu/opentofu
+      check_sets:
+        - code
+        - community
+    - name: opentofu.org
+      url: https://github.com/opentofu/opentofu.org
+      check_sets:
+        - docs

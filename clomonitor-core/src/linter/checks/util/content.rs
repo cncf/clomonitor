@@ -1,6 +1,7 @@
-use super::path::{self, Globs};
 use anyhow::Result;
 use regex::{Regex, RegexSet};
+
+use super::path::{self, Globs};
 
 /// Check if the content of any of the files that match the globs provided
 /// matches any of the regular expressions given, returning the captured value
@@ -41,12 +42,14 @@ pub(crate) async fn remote_matches(url: &str, re: &RegexSet) -> Result<bool> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use std::path::Path;
+
     use wiremock::{
         matchers::{method, path},
         Mock, MockServer, ResponseTemplate,
     };
+
+    use super::*;
 
     const TESTDATA_PATH: &str = "src/testdata";
 

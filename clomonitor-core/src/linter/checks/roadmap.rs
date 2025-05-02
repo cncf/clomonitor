@@ -1,11 +1,14 @@
-use super::util::helpers::find_file_or_readme_ref;
+use anyhow::Result;
+use regex::RegexSet;
+
+use std::sync::LazyLock;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::util::helpers::find_file_or_readme_ref;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "roadmap";
@@ -19,14 +22,14 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 /// Patterns used to locate a file in the repository.
 const FILE_PATTERNS: [&str; 1] = ["roadmap*"];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new([
+static README_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?im)^#+.*roadmap.*$",
         r"(?im)^roadmap$",
         r"(?i)\[.*roadmap.*\]\(.*\)",
-    ]).expect("exprs in README_REF to be valid");
-}
+    ])
+    .expect("exprs in README_REF to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

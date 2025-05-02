@@ -1,19 +1,19 @@
-use self::md::*;
+use std::{path::Path, sync::LazyLock};
+
 use anyhow::{format_err, Context, Result};
 use graphql_client::{GraphQLQuery, Response};
-use lazy_static::lazy_static;
 use regex::{Regex, RegexSet};
 use reqwest::StatusCode;
-use std::path::Path;
+
+use self::md::*;
 
 /// GitHub GraphQL API URL.
 const GITHUB_GRAPHQL_API: &str = "https://api.github.com/graphql";
 
-lazy_static! {
-    static ref GITHUB_REPO_URL: Regex =
-        Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$")
-            .expect("exprs in GITHUB_REPO_URL to be valid");
-}
+static GITHUB_REPO_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new("^https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/?$")
+        .expect("exprs in GITHUB_REPO_URL to be valid")
+});
 
 /// Type alias for GraphQL URI scalar type.
 #[allow(clippy::upper_case_acronyms)]

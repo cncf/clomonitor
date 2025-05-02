@@ -13,7 +13,6 @@ clap = { workspace = true }
 config = { workspace = true }
 deadpool = { workspace = true }
 deadpool-postgres = { workspace = true }
-lazy_static = { workspace = true }
 octorust = { workspace = true }
 openssl = { workspace = true }
 postgres-openssl = { workspace = true }

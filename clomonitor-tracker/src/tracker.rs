@@ -1,4 +1,5 @@
-use crate::{db::DynDB, git::DynGit};
+use std::time::{Duration, Instant};
+
 use anyhow::{format_err, Error, Result};
 #[cfg(not(test))]
 use clomonitor_core::linter::setup_github_http_client;
@@ -8,12 +9,13 @@ use deadpool::unmanaged::{Object, Pool};
 use futures::stream::{self, StreamExt};
 #[cfg(not(test))]
 use serde_json::Value;
-use std::time::{Duration, Instant};
 use tempfile::Builder;
 use time::{self, OffsetDateTime};
 use tokio::{task::JoinError, time::timeout};
 use tracing::{debug, error, info, instrument, warn};
 use uuid::Uuid;
+
+use crate::{db::DynDB, git::DynGit};
 
 /// Maximum time that can take tracking a single repository.
 const REPOSITORY_TRACK_TIMEOUT: u64 = 600;
@@ -183,13 +185,18 @@ async fn track_repository(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::{db::MockDB, git::MockGit};
+    use std::{
+        path::Path,
+        sync::{Arc, LazyLock},
+    };
+
     use clomonitor_core::linter::{MockLinter, Report};
     use futures::future;
-    use lazy_static::lazy_static;
     use predicates::prelude::{predicate::*, *};
-    use std::{path::Path, sync::Arc};
+
+    use crate::{db::MockDB, git::MockGit};
+
+    use super::*;
 
     const TOKEN1: &str = "0001";
     const TOKEN2: &str = "0002";
@@ -199,12 +206,10 @@ mod tests {
     const REPOSITORY2_DIGEST: &str = "repo2_digest";
     const FAKE_ERROR: &str = "fake error";
 
-    lazy_static! {
-        static ref REPOSITORY1_ID: Uuid =
-            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
-        static ref REPOSITORY2_ID: Uuid =
-            Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap();
-    }
+    static REPOSITORY1_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap());
+    static REPOSITORY2_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap());
 
     #[tokio::test]
     async fn error_getting_github_tokens() {

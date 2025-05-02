@@ -1,13 +1,16 @@
-/// Patterns used to locate a file in the repository.
-use super::{
-    datasource::github,
-    util::{helpers::readme_globs, path},
-};
+//! Patterns used to locate a file in the repository.
+
+use anyhow::Result;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
+
+use super::{
+    datasource::github,
+    util::{helpers::readme_globs, path},
+};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "readme";

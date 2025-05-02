@@ -1,11 +1,13 @@
-use crate::registrar::{Foundation, Project};
+use std::{collections::HashMap, sync::Arc};
+
 use anyhow::Result;
 use async_trait::async_trait;
 use deadpool_postgres::Pool;
 #[cfg(test)]
 use mockall::automock;
-use std::{collections::HashMap, sync::Arc};
 use tokio_postgres::types::Json;
+
+use crate::registrar::{Foundation, Project};
 
 /// Type alias to represent a DB trait object.
 pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;

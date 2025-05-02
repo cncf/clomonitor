@@ -1,9 +1,11 @@
-use super::datasource::scorecard;
+use anyhow::Result;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
+
+use super::datasource::scorecard;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "dependency_update_tool";

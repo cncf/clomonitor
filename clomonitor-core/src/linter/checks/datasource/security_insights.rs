@@ -1,7 +1,9 @@
-use crate::linter::util;
+use std::path::Path;
+
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
-use std::path::Path;
+
+use crate::linter::util;
 
 /// OpenSSF Security Insights manifest file name.
 pub(crate) const SECURITY_INSIGHTS_MANIFEST_FILE: &str = "SECURITY-INSIGHTS.yml";

@@ -1,11 +1,14 @@
-use super::{datasource::github, util::helpers::find_file_or_readme_ref};
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::{datasource::github, util::helpers::find_file_or_readme_ref};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "changelog";
@@ -19,20 +22,18 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 /// Patterns used to locate a file in the repository.
 pub(crate) static FILE_PATTERNS: [&str; 1] = ["changelog*"];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new([
+static README_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?im)^#+.*changelog.*$",
         r"(?im)^changelog$",
         r"(?i)\[.*changelog.*\]\(.*\)",
-    ]).expect("exprs in README_REF to be valid");
+    ])
+    .expect("exprs in README_REF to be valid")
+});
 
-    #[rustfmt::skip]
-    static ref RELEASE_REF: RegexSet = RegexSet::new([
-        r"(?i)changelog",
-        r"(?i)changes",
-    ]).expect("exprs in RELEASE_REF to be valid");
-}
+static RELEASE_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([r"(?i)changelog", r"(?i)changes"]).expect("exprs in RELEASE_REF to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

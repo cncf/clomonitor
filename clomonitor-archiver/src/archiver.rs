@@ -1,8 +1,9 @@
-use crate::db::DynDB;
 use anyhow::{Context, Result};
 use time::{ext::NumericalDuration, Date, OffsetDateTime};
 use tracing::{debug, info, instrument};
 use uuid::Uuid;
+
+use crate::db::DynDB;
 
 /// Process projects and stats, generating snapshots when needed and removing
 /// the ones that are no longer needed.
@@ -151,27 +152,27 @@ fn get_snapshots_to_keep(ref_date: Date, snapshots: &[Date]) -> Vec<Date> {
 #[cfg(test)]
 #[allow(clippy::redundant_closure_for_method_calls)]
 mod tests {
-    use super::*;
-    use crate::db::MockDB;
+    use std::sync::{Arc, LazyLock};
+
     use anyhow::format_err;
     use futures::future;
-    use lazy_static::lazy_static;
     use mockall::predicate::eq;
     use serde_json::{json, Value};
-    use std::sync::Arc;
     use time::{macros::date, Month};
+
+    use crate::db::MockDB;
+
+    use super::*;
 
     const FAKE_ERROR: &str = "fake error";
 
-    lazy_static! {
-        static ref PROJECT_ID: Uuid =
-            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
-        static ref SNAPSHOT_DATA: Value = json!({"some": "data"});
-        static ref SNAPSHOT_1980_12: Date =
-            Date::from_calendar_date(1980, Month::December, 1).unwrap();
-        static ref SNAPSHOT_1980_11: Date =
-            Date::from_calendar_date(1980, Month::November, 1).unwrap();
-    }
+    static PROJECT_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap());
+    static SNAPSHOT_DATA: LazyLock<Value> = LazyLock::new(|| json!({"some": "data"}));
+    static SNAPSHOT_1980_12: LazyLock<Date> =
+        LazyLock::new(|| Date::from_calendar_date(1980, Month::December, 1).unwrap());
+    static SNAPSHOT_1980_11: LazyLock<Date> =
+        LazyLock::new(|| Date::from_calendar_date(1980, Month::November, 1).unwrap());
 
     #[tokio::test]
     async fn error_getting_projects() {

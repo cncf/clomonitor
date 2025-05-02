@@ -1,9 +1,10 @@
-use anyhow::Result;
-use glob::{glob_with, MatchOptions, PatternError};
 use std::{
     ffi::OsStr,
     path::{Path, PathBuf},
 };
+
+use anyhow::Result;
+use glob::{glob_with, MatchOptions, PatternError};
 
 /// Glob matching configuration.
 #[derive(Debug, Clone)]

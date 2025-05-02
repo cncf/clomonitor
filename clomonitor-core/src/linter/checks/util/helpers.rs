@@ -1,7 +1,8 @@
-use super::{
-    content,
-    path::{self, Globs},
-};
+use std::path::Path;
+
+use anyhow::Result;
+use regex::{Regex, RegexSet};
+
 use crate::linter::{
     check::{CheckInput, CheckOutput},
     checks::readme,
@@ -9,9 +10,11 @@ use crate::linter::{
     metadata::{Exemption, Metadata},
     CheckSet, CHECKS,
 };
-use anyhow::Result;
-use regex::{Regex, RegexSet};
-use std::path::Path;
+
+use super::{
+    content,
+    path::{self, Globs},
+};
 
 /// Check if a file matching the patterns provided is found in the repo or if
 /// any of the regular expressions provided matches the README file content.
@@ -99,14 +102,17 @@ pub(crate) fn should_skip_check(check_id: &str, check_sets: &[CheckSet]) -> bool
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use std::path::PathBuf;
+
+    use anyhow::format_err;
+
     use crate::linter::{
         adopters,
         datasource::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
         sbom, LinterInput,
     };
-    use anyhow::format_err;
-    use std::path::PathBuf;
+
+    use super::*;
 
     const TESTDATA_PATH: &str = "src/testdata";
 

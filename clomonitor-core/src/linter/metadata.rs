@@ -1,8 +1,10 @@
-use super::util;
-use anyhow::{Context, Result};
-use serde::Deserialize;
 use std::ffi::OsStr;
 use std::path::Path;
+
+use anyhow::{Context, Result};
+use serde::Deserialize;
+
+use super::util;
 
 /// Metadata file name.
 pub(crate) const METADATA_FILE: &str = ".clomonitor.yml";

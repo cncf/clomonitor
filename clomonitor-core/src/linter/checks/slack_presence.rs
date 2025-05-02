@@ -1,11 +1,14 @@
-use super::util::helpers::readme_matches;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::util::helpers::readme_matches;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "slack_presence";
@@ -16,15 +19,15 @@ pub(crate) const WEIGHT: usize = 0;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new([
+static README_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?i)https?://cloud-native.slack.com",
         r"(?i)https?://slack.cncf.io",
         r"(?i)https?://kubernetes.slack.com",
         r"(?i)https?://slack.k8s.io",
-    ]).expect("exprs in README_REF to be valid");
-}
+    ])
+    .expect("exprs in README_REF to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

@@ -1,10 +1,12 @@
-use super::datasource::github;
+use anyhow::Result;
+use time::{format_description::well_known::Rfc3339, Duration, OffsetDateTime};
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use time::{format_description::well_known::Rfc3339, Duration, OffsetDateTime};
+
+use super::datasource::github;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "recent_release";
@@ -31,7 +33,8 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use anyhow::format_err;
+
     use crate::linter::{
         datasource::github::md::{
             MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
@@ -39,7 +42,8 @@ mod tests {
         },
         LinterInput,
     };
-    use anyhow::format_err;
+
+    use super::*;
 
     #[test]
     fn not_passed_no_release_found() {

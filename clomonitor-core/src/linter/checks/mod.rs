@@ -1,6 +1,6 @@
+use std::{collections::HashMap, sync::LazyLock};
+
 use crate::linter::check::{CheckConfig, CheckId};
-use lazy_static::lazy_static;
-use std::collections::HashMap;
 
 pub(crate) mod adopters;
 pub(crate) mod artifacthub_badge;
@@ -39,68 +39,66 @@ pub(crate) mod trademark_disclaimer;
 pub(crate) mod util;
 pub(crate) mod website;
 
-lazy_static! {
-    pub(crate) static ref CHECKS: HashMap<CheckId, CheckConfig> = {
-        let mut checks = HashMap::new();
+pub(crate) static CHECKS: LazyLock<HashMap<CheckId, CheckConfig>> = LazyLock::new(|| {
+    let mut checks = HashMap::new();
 
-        macro_rules! register_check {
-            ($check:ident) => {
-                checks.insert(
-                    $check::ID,
-                    CheckConfig {
-                        weight: $check::WEIGHT,
-                        check_sets: $check::CHECK_SETS.to_vec(),
-                        scorecard_name: None,
-                    },
-                );
-            };
-            ($check:ident, $scorecard_name:expr) => {
-                checks.insert(
-                    $check::ID,
-                    CheckConfig {
-                        weight: $check::WEIGHT,
-                        check_sets: $check::CHECK_SETS.to_vec(),
-                        scorecard_name: Some($scorecard_name.to_string()),
-                    },
-                );
-            };
-        }
+    macro_rules! register_check {
+        ($check:ident) => {
+            checks.insert(
+                $check::ID,
+                CheckConfig {
+                    weight: $check::WEIGHT,
+                    check_sets: $check::CHECK_SETS.to_vec(),
+                    scorecard_name: None,
+                },
+            );
+        };
+        ($check:ident, $scorecard_name:expr) => {
+            checks.insert(
+                $check::ID,
+                CheckConfig {
+                    weight: $check::WEIGHT,
+                    check_sets: $check::CHECK_SETS.to_vec(),
+                    scorecard_name: Some($scorecard_name.to_string()),
+                },
+            );
+        };
+    }
 
-        register_check!(adopters);
-        register_check!(artifacthub_badge);
-        register_check!(binary_artifacts, "Binary-Artifacts");
-        register_check!(changelog);
-        register_check!(cla);
-        register_check!(code_of_conduct);
-        register_check!(code_review, "Code-Review");
-        register_check!(community_meeting);
-        register_check!(contributing);
-        register_check!(dangerous_workflow, "Dangerous-Workflow");
-        register_check!(dco);
-        register_check!(dependencies_policy);
-        register_check!(dependency_update_tool, "Dependency-Update-Tool");
-        register_check!(github_discussions);
-        register_check!(governance);
-        register_check!(license_approved);
-        register_check!(license_scanning);
-        register_check!(license_spdx_id);
-        register_check!(maintained, "Maintained");
-        register_check!(maintainers);
-        register_check!(openssf_badge);
-        register_check!(openssf_scorecard_badge);
-        register_check!(readme);
-        register_check!(recent_release);
-        register_check!(roadmap);
-        register_check!(sbom);
-        register_check!(security_insights);
-        register_check!(security_policy);
-        register_check!(signed_releases, "Signed-Releases");
-        register_check!(slack_presence);
-        register_check!(summary_table);
-        register_check!(token_permissions, "Token-Permissions");
-        register_check!(trademark_disclaimer);
-        register_check!(website);
+    register_check!(adopters);
+    register_check!(artifacthub_badge);
+    register_check!(binary_artifacts, "Binary-Artifacts");
+    register_check!(changelog);
+    register_check!(cla);
+    register_check!(code_of_conduct);
+    register_check!(code_review, "Code-Review");
+    register_check!(community_meeting);
+    register_check!(contributing);
+    register_check!(dangerous_workflow, "Dangerous-Workflow");
+    register_check!(dco);
+    register_check!(dependencies_policy);
+    register_check!(dependency_update_tool, "Dependency-Update-Tool");
+    register_check!(github_discussions);
+    register_check!(governance);
+    register_check!(license_approved);
+    register_check!(license_scanning);
+    register_check!(license_spdx_id);
+    register_check!(maintained, "Maintained");
+    register_check!(maintainers);
+    register_check!(openssf_badge);
+    register_check!(openssf_scorecard_badge);
+    register_check!(readme);
+    register_check!(recent_release);
+    register_check!(roadmap);
+    register_check!(sbom);
+    register_check!(security_insights);
+    register_check!(security_policy);
+    register_check!(signed_releases, "Signed-Releases");
+    register_check!(slack_presence);
+    register_check!(summary_table);
+    register_check!(token_permissions, "Token-Permissions");
+    register_check!(trademark_disclaimer);
+    register_check!(website);
 
-        checks
-    };
-}
+    checks
+});

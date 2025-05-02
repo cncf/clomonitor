@@ -1,7 +1,5 @@
-use self::{
-    check::*,
-    checks::util::helpers::{find_exemption, should_skip_check},
-};
+use std::{fmt, path::PathBuf, sync::Arc};
+
 use anyhow::Result;
 use async_trait::async_trait;
 use clap::ValueEnum;
@@ -9,8 +7,12 @@ use clap::ValueEnum;
 use mockall::automock;
 use postgres_types::ToSql;
 use serde::{Deserialize, Serialize};
-use std::{fmt, path::PathBuf, sync::Arc};
 use time::Date;
+
+use self::{
+    check::*,
+    checks::util::helpers::{find_exemption, should_skip_check},
+};
 
 mod check;
 mod checks;

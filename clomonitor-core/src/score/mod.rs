@@ -1,5 +1,6 @@
-use crate::linter::*;
 use serde::{Deserialize, Serialize};
+
+use crate::linter::*;
 
 /// Score information.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]

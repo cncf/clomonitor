@@ -24,5 +24,4 @@ uuid = { workspace = true }
 
 [dev-dependencies]
 futures = { workspace = true }
-lazy_static = { workspace = true }
 mockall = { workspace = true }

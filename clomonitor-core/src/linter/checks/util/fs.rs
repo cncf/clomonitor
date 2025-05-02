@@ -1,5 +1,6 @@
-use anyhow::{format_err, Result};
 use std::{fs, path::Path};
+
+use anyhow::{format_err, Result};
 
 /// Wrapper around fs::read_to_string that does not follow symlinks.
 pub(crate) fn read_to_string<P: AsRef<Path>>(path: P) -> Result<String> {

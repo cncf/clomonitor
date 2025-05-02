@@ -1,4 +1,5 @@
-use crate::tracker::Repository;
+use std::sync::Arc;
+
 use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::{
@@ -8,9 +9,10 @@ use clomonitor_core::{
 use deadpool_postgres::{Pool, Transaction};
 #[cfg(test)]
 use mockall::automock;
-use std::sync::Arc;
 use tokio_postgres::types::Json;
 use uuid::Uuid;
+
+use crate::tracker::Repository;
 
 /// Type alias to represent a DB trait object.
 pub(crate) type DynDB = Arc<dyn DB + Send + Sync>;

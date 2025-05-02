@@ -1,11 +1,14 @@
-use super::util::content;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::util::content;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "trademark_disclaimer";
@@ -16,13 +19,13 @@ pub(crate) const WEIGHT: usize = 5;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
-lazy_static! {
-    #[rustfmt::skip]
-    pub(crate) static ref TRADEMARK_DISCLAIMER: RegexSet = RegexSet::new([
+pub(crate) static TRADEMARK_DISCLAIMER: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
-    ]).expect("exprs in TRADEMARK_DISCLAIMER to be valid");
-}
+    ])
+    .expect("exprs in TRADEMARK_DISCLAIMER to be valid")
+});
 
 /// Check main function.
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {

@@ -1,4 +1,5 @@
-use crate::{db::DynDB, handlers::*, middleware::metrics_collector, views::DynVT};
+use std::{path::Path, sync::Arc};
+
 use anyhow::Result;
 use axum::{
     extract::FromRef,
@@ -8,7 +9,6 @@ use axum::{
     Router,
 };
 use config::Config;
-use std::{path::Path, sync::Arc};
 use tera::Tera;
 use tower::ServiceBuilder;
 use tower_http::{
@@ -17,6 +17,8 @@ use tower_http::{
     trace::TraceLayer,
     validate_request::ValidateRequestHeaderLayer,
 };
+
+use crate::{db::DynDB, handlers::*, middleware::metrics_collector, views::DynVT};
 
 /// Static files cache duration.
 pub const STATIC_CACHE_MAX_AGE: usize = 365 * 24 * 60 * 60;
@@ -120,11 +122,8 @@ pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::{
-        db::{MockDB, SearchProjectsInput},
-        views::MockViewsTracker,
-    };
+    use std::{fs, future, sync::Arc};
+
     use axum::{
         body::{to_bytes, Body},
         http::{
@@ -136,12 +135,18 @@ mod tests {
     use mime::{APPLICATION_JSON, CSV, HTML};
     use mockall::predicate::*;
     use serde_json::json;
-    use std::{fs, future, sync::Arc};
     use tera::Context;
     use time::Date;
     use tokio::sync::RwLock;
     use tower::ServiceExt;
     use uuid::Uuid;
+
+    use crate::{
+        db::{MockDB, SearchProjectsInput},
+        views::MockViewsTracker,
+    };
+
+    use super::*;
 
     const TESTDATA_PATH: &str = "src/testdata";
     const FOUNDATION: &str = "cncf";

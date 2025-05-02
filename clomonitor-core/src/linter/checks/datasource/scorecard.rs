@@ -1,7 +1,8 @@
-use crate::linter::checks::CHECKS;
 use anyhow::{format_err, Error, Result};
 use serde::Deserialize;
 use tokio::process::Command;
+
+use crate::linter::checks::CHECKS;
 
 /// Scorecard report (list of checks).
 #[derive(Debug, Clone, Deserialize)]
@@ -60,8 +61,9 @@ pub(crate) fn get_check<'a>(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use crate::linter::checks::code_review;
+
+    use super::*;
 
     #[test]
     fn get_check_found() {

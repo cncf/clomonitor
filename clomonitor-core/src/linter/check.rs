@@ -1,3 +1,7 @@
+use anyhow::{format_err, Context, Error, Result};
+use serde::{Deserialize, Serialize};
+use which::which;
+
 use super::{
     checks::{signed_releases, CHECKS},
     datasource::{
@@ -8,9 +12,6 @@ use super::{
     metadata::{Exemption, Metadata, METADATA_FILE},
     CheckSet, LinterInput,
 };
-use anyhow::{format_err, Context, Error, Result};
-use serde::{Deserialize, Serialize};
-use which::which;
 
 /// Type alias to represent a check identifier.
 pub type CheckId = &'static str;

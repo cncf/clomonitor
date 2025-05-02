@@ -1,8 +1,9 @@
+use std::{path::Path, sync::Arc};
+
 use anyhow::{format_err, Result};
 use async_trait::async_trait;
 #[cfg(test)]
 use mockall::automock;
-use std::{path::Path, sync::Arc};
 use tokio::process::Command;
 use which::which;
 

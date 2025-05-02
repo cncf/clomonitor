@@ -1,7 +1,8 @@
 #![warn(clippy::all, clippy::pedantic)]
 #![allow(clippy::doc_markdown)]
 
-use crate::{db::PgDB, git::GitCLI};
+use std::{path::PathBuf, sync::Arc};
+
 use anyhow::{Context, Result};
 use clap::Parser;
 use clomonitor_core::linter::CoreLinter;
@@ -9,9 +10,10 @@ use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
-use std::{path::PathBuf, sync::Arc};
 use tracing::debug;
 use tracing_subscriber::EnvFilter;
+
+use crate::{db::PgDB, git::GitCLI};
 
 mod db;
 mod git;
@@ -44,7 +46,7 @@ async fn main() -> Result<()> {
     match cfg.get_string("log.format").as_deref() {
         Ok("json") => s.json().init(),
         _ => s.init(),
-    };
+    }
 
     // Setup database
     debug!("setting up database");

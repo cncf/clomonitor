@@ -1,11 +1,14 @@
-use super::util::{content, helpers::readme_globs};
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::Regex;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::Regex;
+
+use super::util::{content, helpers::readme_globs};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "license_scanning";
@@ -16,17 +19,15 @@ pub(crate) const WEIGHT: usize = 5;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
-lazy_static! {
-    #[rustfmt::skip]
-    pub(crate) static ref FOSSA_URL: Regex = Regex::new(
-        r#"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"#
-    ).expect("exprs in FOSSA_URL to be valid");
+pub(crate) static FOSSA_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r#"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"#)
+        .expect("exprs in FOSSA_URL to be valid")
+});
 
-    #[rustfmt::skip]
-    pub(crate) static ref SNYK_URL: Regex = Regex::new(
-        r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#
-    ).expect("exprs in SNYK_URL to be valid");
-}
+pub(crate) static SNYK_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#)
+        .expect("exprs in SNYK_URL to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
@@ -43,20 +44,22 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // Reference in README file
     if let Some(url) = content::find(&readme_globs(&input.li.root), &[&FOSSA_URL, &SNYK_URL])? {
         return Ok(CheckOutput::passed().url(Some(url)));
-    };
+    }
 
     Ok(CheckOutput::not_passed())
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use anyhow::format_err;
+
     use crate::linter::{
         datasource::github::md::MdRepository,
         metadata::{LicenseScanning, Metadata},
         LinterInput,
     };
-    use anyhow::format_err;
+
+    use super::*;
 
     #[test]
     fn not_passed_no_md_found() {

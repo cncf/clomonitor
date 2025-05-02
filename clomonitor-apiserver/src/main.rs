@@ -1,7 +1,10 @@
 #![warn(clippy::all, clippy::pedantic)]
 #![allow(clippy::doc_markdown, clippy::wildcard_imports)]
 
-use crate::{db::PgDB, views::ViewsTrackerDB};
+use std::net::SocketAddr;
+use std::path::PathBuf;
+use std::sync::Arc;
+
 use anyhow::{Context, Result};
 use clap::Parser;
 use config::{Config, File};
@@ -9,12 +12,11 @@ use deadpool_postgres::{Config as DbConfig, Runtime};
 use metrics_exporter_prometheus::{Matcher, PrometheusBuilder};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
-use std::net::SocketAddr;
-use std::path::PathBuf;
-use std::sync::Arc;
 use tokio::{net::TcpListener, signal, sync::RwLock};
 use tracing::{debug, info};
 use tracing_subscriber::EnvFilter;
+
+use crate::{db::PgDB, views::ViewsTrackerDB};
 
 mod db;
 mod filters;
@@ -52,7 +54,7 @@ async fn main() -> Result<()> {
     match cfg.get_string("log.format").as_deref() {
         Ok("json") => s.json().init(),
         _ => s.init(),
-    };
+    }
 
     // Setup database
     debug!("setting up database");

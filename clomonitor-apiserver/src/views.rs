@@ -1,10 +1,9 @@
-use crate::db::DynDB;
+use std::{collections::HashMap, sync::Arc, sync::LazyLock, time::Duration};
+
 use anyhow::Result;
 use async_trait::async_trait;
-use lazy_static::lazy_static;
 #[cfg(test)]
 use mockall::automock;
-use std::{collections::HashMap, sync::Arc, time::Duration};
 use time::{
     format_description::{self, FormatItem},
     OffsetDateTime,
@@ -16,6 +15,8 @@ use tokio::{
 };
 use tracing::error;
 use uuid::Uuid;
+
+use crate::db::DynDB;
 
 /// How often projects views will be written to the database.
 #[cfg(not(test))]
@@ -38,10 +39,9 @@ pub(crate) type Total = u32;
 /// Type alias to represent a views batch.
 type Batch = HashMap<String, Total>;
 
-lazy_static! {
-    static ref DATE_FORMAT: Vec<FormatItem<'static>> =
-        format_description::parse("[year]-[month]-[day]").expect("format to be valid");
-}
+static DATE_FORMAT: LazyLock<Vec<FormatItem<'static>>> = LazyLock::new(|| {
+    format_description::parse("[year]-[month]-[day]").expect("format to be valid")
+});
 
 /// Trait that defines some operations a ViewsTracker implementation must
 /// support.
@@ -168,18 +168,18 @@ fn parse_key(key: &str) -> (ProjectId, Day) {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::db::MockDB;
     use futures::future;
     use mockall::predicate::eq;
     use tokio::time::{sleep, Duration};
 
-    lazy_static! {
-        static ref PROJECT1_ID: Uuid =
-            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
-        static ref PROJECT2_ID: Uuid =
-            Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap();
-    }
+    use crate::db::MockDB;
+
+    use super::*;
+
+    static PROJECT1_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap());
+    static PROJECT2_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0002-0000-0000-000000000000").unwrap());
 
     #[tokio::test]
     async fn no_views_tracked_nothing_to_flush() {

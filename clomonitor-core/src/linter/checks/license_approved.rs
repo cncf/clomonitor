@@ -1,8 +1,9 @@
-use super::util::helpers::{find_exemption, should_skip_check};
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
+
+use super::util::helpers::{find_exemption, should_skip_check};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "license_approved";

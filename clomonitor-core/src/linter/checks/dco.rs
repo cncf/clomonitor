@@ -1,12 +1,14 @@
-use super::datasource::github;
+use std::{path::Path, sync::LazyLock};
+
+use anyhow::Result;
+use regex::{Regex, RegexSet};
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::{Regex, RegexSet};
-use std::path::Path;
+
+use super::datasource::github;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "dco";
@@ -20,12 +22,8 @@ pub(crate) const CHECK_SETS: [CheckSet; 2] = [CheckSet::Code, CheckSet::CodeLite
 /// Maximum number of commits used to check if the repository requires DCO.
 const DCO_MAX_COMMITS: usize = 20;
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref CHECK_REF: RegexSet = RegexSet::new([
-        r"(?i)dco",
-    ]).expect("exprs in CHECK_REF to be valid");
-}
+static CHECK_REF: LazyLock<RegexSet> =
+    LazyLock::new(|| RegexSet::new([r"(?i)dco"]).expect("exprs in CHECK_REF to be valid"));
 
 /// Check main function.
 #[allow(clippy::unnecessary_wraps)]
@@ -48,14 +46,12 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 /// Check if the last commits on the git repository located in the path
 /// provided have the DCO signature.
 fn commits_have_dco_signature(path: &Path) -> Result<bool, git2::Error> {
-    lazy_static! {
-        static ref MERGE_PR_RE: Regex =
-            Regex::new(r"^Merge pull request ").expect("valid expression");
-        static ref MERGE_BRANCH_RE: Regex =
-            Regex::new(r"^Merge branch ").expect("valid expression");
-        static ref DCO_SIGNATURE_RE: Regex =
-            Regex::new(r"(?m)^Signed-off-by: ").expect("valid expression");
-    }
+    static MERGE_PR_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"^Merge pull request ").expect("valid expression"));
+    static MERGE_BRANCH_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"^Merge branch ").expect("valid expression"));
+    static DCO_SIGNATURE_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"(?m)^Signed-off-by: ").expect("valid expression"));
 
     let repo = git2::Repository::open(path)?;
     let mut revwalk = repo.revwalk()?;

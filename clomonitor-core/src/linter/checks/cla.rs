@@ -1,11 +1,14 @@
-use super::datasource::github;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::datasource::github;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "cla";
@@ -16,16 +19,16 @@ pub(crate) const WEIGHT: usize = 1;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 2] = [CheckSet::Code, CheckSet::CodeLite];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref CHECK_REF: RegexSet = RegexSet::new([
+static CHECK_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?i)cncf-cla",
         r"(?i)cla/linuxfoundation",
         r"(?i)easycla",
         r"(?i)license/cla",
         r"(?i)cla/google",
-    ]).expect("exprs in CHECK_REF to be valid");
-}
+    ])
+    .expect("exprs in CHECK_REF to be valid")
+});
 
 /// Check main function.
 #[allow(clippy::unnecessary_wraps)]

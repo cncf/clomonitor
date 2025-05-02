@@ -1,11 +1,13 @@
-use crate::Args;
+use std::{fs, io};
+
 use anyhow::Result;
 use clomonitor_core::{
     linter::{CheckOutput, Report},
     score::Score,
 };
 use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
-use std::{fs, io};
+
+use crate::Args;
 
 const SUCCESS_SYMBOL: char = '✓';
 const FAILURE_SYMBOL: char = '✗';
@@ -296,15 +298,18 @@ fn cell_check<T>(output: Option<&CheckOutput<T>>) -> Cell {
 
 #[cfg(test)]
 mod tests {
-    use super::display;
-    use crate::{Args, Format};
+    use std::{fs, path::PathBuf, str, str::FromStr};
+
     use clomonitor_core::{
         linter::{
             BestPractices, CheckOutput, CheckSet, Documentation, Legal, License, Report, Security,
         },
         score::Score,
     };
-    use std::{fs, path::PathBuf, str, str::FromStr};
+
+    use crate::{Args, Format};
+
+    use super::display;
 
     #[test]
     fn display_prints_results() {

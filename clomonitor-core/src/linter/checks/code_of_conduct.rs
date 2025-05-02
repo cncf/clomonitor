@@ -1,11 +1,14 @@
-use super::util::helpers::find_file_or_readme_ref;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::util::helpers::find_file_or_readme_ref;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "code_of_conduct";
@@ -23,14 +26,14 @@ pub(crate) static FILE_PATTERNS: [&str; 3] = [
     "docs/code*of*conduct*",
 ];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new([
+static README_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?im)^#+.*code of conduct.*$",
         r"(?im)^code of conduct$",
         r"(?i)\[.*code of conduct.*\]\(.*\)",
-    ]).expect("exprs in README_REF to be valid");
-}
+    ])
+    .expect("exprs in README_REF to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

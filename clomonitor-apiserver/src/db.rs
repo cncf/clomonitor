@@ -1,7 +1,5 @@
-use crate::{
-    handlers::RepositoryReportMDTemplate,
-    views::{Day, ProjectId, Total},
-};
+use std::{fmt::Write, sync::Arc};
+
 use anyhow::Result;
 use async_trait::async_trait;
 use clomonitor_core::score::Score;
@@ -9,9 +7,13 @@ use deadpool_postgres::Pool;
 #[cfg(test)]
 use mockall::automock;
 use serde::{Deserialize, Serialize};
-use std::{fmt::Write, sync::Arc};
 use time::Date;
 use tokio_postgres::types::Json;
+
+use crate::{
+    handlers::RepositoryReportMDTemplate,
+    views::{Day, ProjectId, Total},
+};
 
 // Lock key used when updating the projects views in the database.
 const LOCK_KEY_UPDATE_PROJECTS_VIEWS: i64 = 1;

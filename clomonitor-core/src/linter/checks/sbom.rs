@@ -1,11 +1,14 @@
-use super::{datasource::github, util::helpers::readme_matches};
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::RegexSet;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::RegexSet;
+
+use super::{datasource::github, util::helpers::readme_matches};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "sbom";
@@ -16,20 +19,18 @@ pub(crate) const WEIGHT: usize = 1;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref README_REF: RegexSet = RegexSet::new([
+static README_REF: LazyLock<RegexSet> = LazyLock::new(|| {
+    RegexSet::new([
         r"(?im)^#+.*sbom.*$",
         r"(?im)^#+.*software bill of materials.*$",
         r"(?im)^sbom$",
         r"(?im)^software bill of materials$",
-    ]).expect("exprs in README_REF to be valid");
+    ])
+    .expect("exprs in README_REF to be valid")
+});
 
-    #[rustfmt::skip]
-    static ref RELEASE_REF: RegexSet = RegexSet::new([
-        r"(?i)sbom",
-    ]).expect("exprs in RELEASE_REF to be valid");
-}
+static RELEASE_REF: LazyLock<RegexSet> =
+    LazyLock::new(|| RegexSet::new([r"(?i)sbom"]).expect("exprs in RELEASE_REF to be valid"));
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
@@ -56,7 +57,8 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use anyhow::format_err;
+
     use crate::linter::{
         datasource::github::md::{
             MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
@@ -64,7 +66,8 @@ mod tests {
         },
         LinterInput,
     };
-    use anyhow::format_err;
+
+    use super::*;
 
     #[test]
     fn not_passed_no_release_found() {

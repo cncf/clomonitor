@@ -1,10 +1,11 @@
+use std::sync::Arc;
+
 use anyhow::Result;
 use async_trait::async_trait;
 use deadpool_postgres::Pool;
 #[cfg(test)]
 use mockall::automock;
 use serde_json::Value;
-use std::sync::Arc;
 use time::Date;
 use uuid::Uuid;
 

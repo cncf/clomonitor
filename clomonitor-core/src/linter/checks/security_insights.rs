@@ -1,7 +1,10 @@
-use super::datasource::{github, security_insights::SECURITY_INSIGHTS_MANIFEST_FILE};
-use crate::linter::{check::CheckInput, CheckId, CheckOutput, CheckSet};
-use anyhow::{format_err, Result};
 use std::path::Path;
+
+use anyhow::{format_err, Result};
+
+use crate::linter::{check::CheckInput, CheckId, CheckOutput, CheckSet};
+
+use super::datasource::{github, security_insights::SECURITY_INSIGHTS_MANIFEST_FILE};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "security_insights";

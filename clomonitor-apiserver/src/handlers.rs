@@ -1,8 +1,9 @@
-use super::filters;
-use crate::{
-    db::{DynDB, SearchProjectsInput},
-    views::DynVT,
+use std::{
+    collections::HashMap,
+    fmt::Display,
+    sync::{Arc, LazyLock},
 };
+
 use anyhow::Error;
 use axum::{
     body::Body,
@@ -18,12 +19,10 @@ use clomonitor_core::{
     score::Score,
 };
 use config::Config;
-use lazy_static::lazy_static;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
 use rinja::Template;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use std::{collections::HashMap, fmt::Display, sync::Arc};
 use tera::{Context, Tera};
 use time::{
     format_description::{self, FormatItem},
@@ -31,6 +30,13 @@ use time::{
 };
 use tracing::error;
 use uuid::Uuid;
+
+use crate::{
+    db::{DynDB, SearchProjectsInput},
+    views::DynVT,
+};
+
+use super::filters;
 
 /// Index HTML document cache duration.
 pub const INDEX_CACHE_MAX_AGE: usize = 300;
@@ -50,12 +56,10 @@ pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
 pub const REPORT_SUMMARY_WIDTH: u32 = 900;
 pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 
-lazy_static! {
-    /// Format used in snapshots dates.
-    pub static ref SNAPSHOT_DATE_FORMAT: Vec<FormatItem<'static>> =
-        format_description::parse("[year]-[month]-[day]")
-        .expect("format to be valid");
-}
+/// Format used in snapshots dates.
+pub static SNAPSHOT_DATE_FORMAT: LazyLock<Vec<FormatItem<'static>>> = LazyLock::new(|| {
+    format_description::parse("[year]-[month]-[day]").expect("format to be valid")
+});
 
 /// Handler that returns the information needed to render the project's badge.
 pub(crate) async fn badge(

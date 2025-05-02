@@ -1,7 +1,8 @@
+use std::fmt::Display;
+
 use anyhow::Result;
 use cached::proc_macro::cached;
 use serde::{Deserialize, Serialize};
-use std::fmt::Display;
 use time::Date;
 
 /// Foundation Landscape information.

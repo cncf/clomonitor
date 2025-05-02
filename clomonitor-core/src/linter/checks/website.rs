@@ -1,8 +1,9 @@
+use anyhow::Result;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "website";

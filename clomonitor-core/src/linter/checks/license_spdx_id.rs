@@ -1,10 +1,13 @@
-use super::util::path::Globs;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use askalono::*;
+
 use crate::linter::check::{CheckId, CheckInput, CheckOutput};
 use crate::linter::checks::util::path;
 use crate::linter::{util, CheckSet};
-use anyhow::Result;
-use askalono::*;
-use lazy_static::lazy_static;
+
+use super::util::path::Globs;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "license_spdx_id";
@@ -49,10 +52,10 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
 
 /// Detect repository's license and return its SPDX id if possible.
 pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
-    lazy_static! {
-        static ref LICENSES: Store =
-            Store::from_cache(LICENSES_DATA).expect("valid licenses data file present");
-    }
+    static LICENSES: LazyLock<Store> = LazyLock::new(|| {
+        Store::from_cache(LICENSES_DATA).expect("valid licenses data file present")
+    });
+
     let mut spdx_id: Option<String> = None;
     path::matches(globs)?.iter().any(|path| {
         if let Ok(content) = util::fs::read_to_string(path) {
@@ -69,9 +72,11 @@ pub(crate) fn detect(globs: &Globs) -> Result<Option<String>> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::linter::checks::license_spdx_id;
     use std::path::Path;
+
+    use crate::linter::checks::license_spdx_id;
+
+    use super::*;
 
     const TESTDATA_PATH: &str = "src/testdata";
 

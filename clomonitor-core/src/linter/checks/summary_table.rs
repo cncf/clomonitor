@@ -1,9 +1,11 @@
-use super::datasource::landscape;
+use anyhow::Result;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
+
+use super::datasource::landscape;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "summary_table";

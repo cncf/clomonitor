@@ -1,11 +1,14 @@
-use super::util::helpers::readme_capture;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::Regex;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::Regex;
+
+use super::util::helpers::readme_capture;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "artifacthub_badge";
@@ -16,12 +19,10 @@ pub(crate) const WEIGHT: usize = 1;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref ARTIFACTHUB_URL: Regex = Regex::new(
-        r#"(https://artifacthub.io/packages/[^"'\)]+)"#
-    ).expect("exprs in ARTIFACTHUB_URL to be valid");
-}
+static ARTIFACTHUB_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r#"(https://artifacthub.io/packages/[^"'\)]+)"#)
+        .expect("exprs in ARTIFACTHUB_URL to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

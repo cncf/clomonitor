@@ -1,10 +1,11 @@
-use crate::notifier::AnnualReviewNotification;
 use anyhow::Result;
 use async_trait::async_trait;
 use deadpool_postgres::Pool;
 #[cfg(test)]
 use mockall::automock;
 use uuid::Uuid;
+
+use crate::notifier::AnnualReviewNotification;
 
 /// Trait that defines some operations a DB implementation must support.
 #[async_trait]

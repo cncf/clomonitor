@@ -1,22 +1,22 @@
+use std::{sync::LazyLock, time::Instant};
+
 use axum::{
     extract::{MatchedPath, Request},
     middleware::Next,
     response::IntoResponse,
 };
-use lazy_static::lazy_static;
 use regex::RegexSet;
-use std::time::Instant;
 
 /// Middleware that collects some metrics about requests processed.
 pub(crate) async fn metrics_collector(req: Request, next: Next) -> impl IntoResponse {
     // Define the endpoints we'd like to monitor
-    lazy_static! {
-        static ref ENDPOINTS_TO_MONITOR: RegexSet = RegexSet::new([
+    static ENDPOINTS_TO_MONITOR: LazyLock<RegexSet> = LazyLock::new(|| {
+        RegexSet::new([
             r"^/api/.*$",
             r"^/projects/:foundation/:org/:project/report-summary.png$",
         ])
-        .expect("exprs in ENDPOINTS_TO_MONITOR to be valid");
-    }
+        .expect("exprs in ENDPOINTS_TO_MONITOR to be valid")
+    });
 
     let start = Instant::now();
 

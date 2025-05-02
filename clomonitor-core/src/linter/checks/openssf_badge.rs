@@ -1,11 +1,14 @@
-use super::util::helpers::readme_capture;
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::Regex;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::Regex;
+
+use super::util::helpers::readme_capture;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "openssf_badge";
@@ -16,17 +19,15 @@ pub(crate) const WEIGHT: usize = 5;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref OPENSSF_URL: Regex = Regex::new(
-        r"(https://www.bestpractices.dev/projects/\d+)",
-    ).expect("exprs in OPENSSF_URL to be valid");
+static OPENSSF_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"(https://www.bestpractices.dev/projects/\d+)")
+        .expect("exprs in OPENSSF_URL to be valid")
+});
 
-    #[rustfmt::skip]
-    static ref OPENSSF_URL_LEGACY: Regex = Regex::new(
-        r"(https://bestpractices.coreinfrastructure.org/projects/\d+)",
-    ).expect("exprs in OPENSSF_URL_LEGACY to be valid");
-}
+static OPENSSF_URL_LEGACY: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"(https://bestpractices.coreinfrastructure.org/projects/\d+)")
+        .expect("exprs in OPENSSF_URL_LEGACY to be valid")
+});
 
 /// Check main function.
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {

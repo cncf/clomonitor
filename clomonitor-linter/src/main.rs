@@ -1,6 +1,8 @@
 #![warn(clippy::all, clippy::pedantic)]
 #![allow(clippy::doc_markdown, clippy::wildcard_imports)]
 
+use std::{env, io, path::PathBuf};
+
 use anyhow::{format_err, Result};
 use clap::{Parser, ValueEnum};
 use clomonitor_core::{
@@ -8,7 +10,6 @@ use clomonitor_core::{
     score,
 };
 use serde_json::json;
-use std::{env, io, path::PathBuf};
 
 mod table;
 

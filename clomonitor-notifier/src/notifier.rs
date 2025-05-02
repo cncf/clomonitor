@@ -1,13 +1,14 @@
-use crate::{db::DynDB, github::DynGH, tmpl};
+use std::{sync::LazyLock, time::Duration};
+
 use anyhow::{format_err, Result};
 use config::Config;
-use lazy_static::lazy_static;
 use regex::Regex;
 use rinja::Template;
-use std::time::Duration;
 use tokio::time::sleep;
 use tracing::{error, info, instrument};
 use uuid::Uuid;
+
+use crate::{db::DynDB, github::DynGH, tmpl};
 
 /// Process pending notifications.
 #[instrument(skip_all, err)]
@@ -39,7 +40,7 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
             // notifications whose repository isn't listed on it
             if let Ok(allowed_repos) = cfg.get::<Vec<String>>("notifier.allowedRepositories") {
                 notifications.retain(|n| allowed_repos.contains(&n.community_repo_url));
-            };
+            }
 
             // Process pending notifications
             for (i, n) in notifications.iter().enumerate() {
@@ -129,11 +130,10 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
     }
 }
 
-lazy_static! {
-    static ref GITHUB_REPO_URL: Regex =
-        Regex::new("^https://github.com/(?P<owner>[^/]+)/(?P<repo>[^/]+)/?$")
-            .expect("exprs in GITHUB_REPO_URL to be valid");
-}
+static GITHUB_REPO_URL: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new("^https://github.com/(?P<owner>[^/]+)/(?P<repo>[^/]+)/?$")
+        .expect("exprs in GITHUB_REPO_URL to be valid")
+});
 
 /// Extract the owner and repository from the repository url provided.
 fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
@@ -145,10 +145,12 @@ fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::{db::MockDB, github::MockGH};
     use futures::future;
     use mockall::predicate::eq;
+
+    use crate::{db::MockDB, github::MockGH};
+
+    use super::*;
 
     const FAKE_ERROR: &str = "fake error";
     const REPO1_URL: &str = "https://github.com/owner/repo1";
@@ -156,12 +158,10 @@ mod tests {
     const ISSUE_NUMBER: i64 = 1;
     const COMMENT_ID: i64 = 1234;
 
-    lazy_static! {
-        static ref PROJECT_ID: Uuid =
-            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
-        static ref NOTIFICATION_ID: Uuid =
-            Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap();
-    }
+    static PROJECT_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap());
+    static NOTIFICATION_ID: LazyLock<Uuid> =
+        LazyLock::new(|| Uuid::parse_str("00000000-0001-0000-0000-000000000000").unwrap());
 
     #[tokio::test]
     async fn error_getting_pending_annual_review_notifications() {

@@ -2525,7 +2525,7 @@
         - code-lite
 - name: tinkerbell
   display_name: Tinkerbell
-  description: A workflow engine for provisioning bare metal
+  description: Bare metal provisioning engine, supporting network and ISO booting, BMC interactions, metadata service, and workflow engine.
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/tinkerbell/icon/color-light/tinkerbell-icon-color-light.svg
   devstats_url: https://tinkerbell.devstats.cncf.io/
@@ -2533,7 +2533,7 @@
   maturity: sandbox
   repositories:
     - name: tink
-      url: https://github.com/tinkerbell/tink
+      url: https://github.com/tinkerbell/tinkerbell
       check_sets:
         - community
         - code

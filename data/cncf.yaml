@@ -524,20 +524,6 @@
       url: https://github.com/devfile/developer-images
       check_sets:
         - code-lite
-- name: devstream
-  display_name: DevStream
-  description: "DevStream: the open-source DevOps toolchain manager (DTM)"
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/devstream/icon/color/devstream-icon-color.svg
-  devstats_url: https://devstream.teststats.cncf.io/
-  accepted_at: "2022-06-14"
-  maturity: sandbox
-  repositories:
-    - name: devstream
-      url: https://github.com/devstream-io/devstream
-      check_sets:
-        - community
-        - code
 - name: dex
   display_name: Dex
   description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable connectors
@@ -1417,20 +1403,6 @@
       check_sets:
         - community
         - code
-- name: kubedl
-  display_name: KubeDL
-  description: Run your deep learning workloads on Kubernetes more easily and efficiently
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubedl/icon/color/kubedl-icon-color.svg
-  devstats_url: https://kubedl.devstats.cncf.io/
-  accepted_at: "2021-05-14"
-  maturity: sandbox
-  repositories:
-    - name: kubedl
-      url: https://github.com/kubedl-io/kubedl
-      check_sets:
-        - community
-        - code
 - name: kuberhealthy
   display_name: Kuberhealthy
   description: A Kubernetes operator for running synthetic checks as pods. Works great with Prometheus!
@@ -1756,20 +1728,6 @@
       url: https://github.com/networkservicemesh/deployments-k8s
       check_sets:
         - code-lite
-- name: nocalhost
-  display_name: Nocalhost
-  description: Nocalhost is Cloud Native Development Environment
-  category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/nocalhost/icon/color/nocalhost-icon-color.svg
-  devstats_url: https://nocalhost.devstats.cncf.io/
-  accepted_at: "2021-11-16"
-  maturity: sandbox
-  repositories:
-    - name: nocalhost
-      url: https://github.com/nocalhost/nocalhost
-      check_sets:
-        - community
-        - code
 - name: notary
   display_name: Notary
   description: Notary is a project that allows anyone to have trust over arbitrary collections of data
@@ -2083,20 +2041,6 @@
       check_sets:
         - community
         - code
-- name: openelb
-  display_name: OpenELB
-  description: Load Balancer Implementation for Kubernetes in Bare-Metal, Edge, and Virtualization
-  category: provisioning
-  logo_url: https://landscape.cncf.io/logos/e4227275b6dcf1428fa6ad3906b8d9fbf3d69ca7f4ba1433175e3cf55ea11cbc.svg
-  devstats_url: https://openelb.devstats.cncf.io
-  accepted_at: "2021-09-11"
-  maturity: sandbox
-  repositories:
-    - name: openelb
-      url: https://github.com/openelb/openelb
-      check_sets:
-        - community
-        - code
 - name: openfeature
   display_name: OpenFeature
   description: Standardizing Feature Flagging for Everyone
@@ -2324,22 +2268,6 @@
       check_sets:
         - community
         - code
-- name: sealer
-  description: A tool to seal application's all dependencies and Kubernetes into CloudImage, distribute this application anywhere via CloudImage, and run it within any cluster in one command
-  category: app definition
-  logo_url: https://landscape.cncf.io/logos/e6b0b05ccc4d6807f11c6d30f676048e2886ebe10ee919643692bb0341fd733b.svg
-  devstats_url: https://sealer.devstats.cncf.io
-  accepted_at: "2022-04-26"
-  maturity: sandbox
-  repositories:
-    - name: sealer
-      url: https://github.com/sealerio/sealer
-      check_sets:
-        - code
-    - name: community
-      url: https://github.com/sealerio/community
-      check_sets:
-        - community
 - name: serverless-workflow
   display_name: Serverless Workflow
   description: Standards-based DSL and open-source dev tools and runtimes are at the heart of the Serverless Workflow project
@@ -2432,20 +2360,6 @@
       check_sets:
         - community
         - code
-- name: superedge
-  display_name: SuperEdge
-  description: An edge-native container management system for edge computing
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/superedge/icon/color/superedge-icon-color.svg
-  devstats_url: https://superedge.devstats.cncf.io/
-  accepted_at: "2021-09-14"
-  maturity: sandbox
-  repositories:
-    - name: superedge
-      url: https://github.com/superedge/superedge
-      check_sets:
-        - community
-        - code
 - name: telepresence
   display_name: Telepresence
   description: Local development against a remote Kubernetes or OpenShift cluster
@@ -2457,20 +2371,6 @@
   repositories:
     - name: telepresence
       url: https://github.com/telepresenceio/telepresence
-      check_sets:
-        - community
-        - code
-- name: teller
-  display_name: Teller
-  description: A secrets management tool for developers built in Go - never leave your command line for secrets
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/teller/icon/color/teller-icon-color.svg
-  devstats_url: https://teller.devstats.cncf.io
-  accepted_at: "2022-04-26"
-  maturity: sandbox
-  repositories:
-    - name: teller
-      url: https://github.com/SpectralOps/teller
       check_sets:
         - community
         - code
@@ -2997,20 +2897,6 @@
       url: https://github.com/istio/proxy
       check_sets:
         - code-lite
-- name: merbridge
-  display_name: Merbridge
-  description: Use eBPF to speed up your Service Mesh like crossing an Einstein-Rosen Bridge
-  category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/merbridge/icon/color/merbridge-icon-color.svg
-  devstats_url: https://merbridge.devstats.cncf.io/
-  accepted_at: "2022-12-13"
-  maturity: sandbox
-  repositories:
-    - name: merbridge
-      url: https://github.com/merbridge/merbridge
-      check_sets:
-        - community
-        - code
 - name: devspace
   display_name: DevSpace
   description: Client-Only Developer Tool for Cloud-Native Development with Kubernetes
@@ -4654,8 +4540,9 @@
 - name: composefs
   display_name: composefs
   description: The composefs project combines several underlying Linux features to provide a very flexible mechanism to support read-only mountable filesystem trees, stacking on top of an underlying "lower" Linux filesystem.
+  category: runtime
   devstats_url: https://composefs.devstats.cncf.io/
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: composefs
@@ -4665,10 +4552,11 @@
         - community
 - name: bootc
   display_name: Bootc
-  description: The bootc provides transactional, in-place operating system images and updates using OCI/Docker container images.
+  description: The bootc provides transactional, in-place operating system images and updates using OCI/Docker container images. This project applies the Docker container layering model to bootable host systems, using standard OCI/Docker containers as a transport and delivery format for base operating system updates.
+  category: runtime
   logo_url: https://raw.githubusercontent.com/containers/common/main/logos/bootc-logo-full-vert.png
   devstats_url: https://bootc.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: bootc
@@ -4683,9 +4571,10 @@
 - name: podman-container-tools
   display_name: Podman Container Tools
   description: The Podman Container Tools project consists of Podman (the Pod Manager), Buildah, Skopeo as well as a number of smaller tools which are used to manage containers and images, volumes mounted into those containers, and pods made from groups of containers.
-  logo_url: https://raw.githubusercontent.com/containers/common/main/logos/podman-logo-full-vert.png
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/podman.svg
   devstats_url: https://podmancontainertools.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: podman
@@ -4696,9 +4585,10 @@
 - name: podman-desktop
   display_name: Podman Desktop
   description: Podman Desktop is an open-source tool for developers to work with containers and Kubernetes with intuitive and user-friendly interface to effortlessly build, manage, and deploy containers and Kubernetes — all from the desktop.
-  logo_url: https://github.com/containers/common/raw/main/logos/logo_circle_podmandesktop.png
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/podman-desktop.svg
   devstats_url: https://podmandesktop.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: podman-desktop
@@ -4709,8 +4599,9 @@
 - name: kubefleet
   display_name: KubeFleet
   description: KubeFleet is a multi-cluster solution that enables users to effectively manage their applications running in multiple Kubernetes clusters.
+  category: orchestration
   devstats_url: https://kubefleet.devstats.cncf.io
-  accepted_at: "2025-01-15"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: fleet
@@ -4720,11 +4611,12 @@
         - community
 - name: cloudnative-pg
   display_name: CloudNativePG
-  description: CloudNativePG is a Kubernetes native database platform for PostgreSQL
+  description: CloudNativePG is a comprehensive platform designed to seamlessly manage PostgreSQL databases within Kubernetes environments, covering the entire operational lifecycle from initial deployment to ongoing maintenance.
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/cloudnative-pg.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cloudnativepg/icon/color/cloudnativepg-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cloudnativepg/icon/white/cloudnativepg-icon-white.svg
   devstats_url: https://cloudnativepg.devstats.cncf.io
-  accepted_at: "2025-01-15"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: cloudnative-pg
@@ -4742,10 +4634,11 @@
         - code-lite
 - name: runme-notebooks
   display_name: Runme Notebooks
-  description: Runme is a toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.
-  logo_url: https://runme.dev/runme_logo.svg
+  description: A toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/runme/icon/color/runme-icon-color.svg
   devstats_url: https://runme-notebooks.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: runme
@@ -4760,9 +4653,10 @@
 - name: k0s
   display_name: k0s
   description: k0s is a CNCF-certified lightweight, Kubernetes distribution with zero dependencies and zero opinion.
+  category: platform
   logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/k0s.svg
   devstats_url: https://k0s.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: k0s
@@ -4780,7 +4674,7 @@
   category: wasm
   logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/wasm.svg
   devstats_url: https://container2wasm.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: container2wasm
@@ -4790,10 +4684,12 @@
         - community
 - name: slimfaas
   display_name: SlimFaaS
-  description: SlimFaas act as a very small proxy to add into your Kubernetes namespace.
-  logo_url: https://raw.githubusercontent.com/SlimPlanet/SlimFaas/refs/heads/main/documentation/SlimFaas.png
+  description: The slimest and simplest Function As A Service.
+  category: serverless
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/slimfaas/icon/color/slimfaas-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/slimfaas/icon/white/slimfaas-icon-white.svg
   devstats_url: https://slimfaas.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: SlimFaas
@@ -4805,9 +4701,10 @@
   display_name: Spin
   description: Spin is an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly.
   category: wasm
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/spin.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/spin/icon/color/spin-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/spin/icon/white/spin-icon-white.svg
   devstats_url: https://spin.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: spin
@@ -4819,9 +4716,9 @@
   display_name: SpinKube
   description: SpinKube is an open source platform for efficiently running (containerless) Spin-based WebAssembly (Wasm) applications on Kubernetes.
   category: wasm
-  logo_url: https://avatars.githubusercontent.com/u/157650797?s=200&v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/spinkube/icon/color/spinkube-icon-color.svg
   devstats_url: https://spinkube.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: documentation
@@ -4836,7 +4733,8 @@
   display_name: OpenTofu
   description: OpenTofu is an open source infrastructure as code tool that enables users to safely and predictably provision and manage cloud and on-prem infrastructure. It's a community-driven fork of Terraform that maintains backward compatibility while offering enhanced features, stability.
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/opentofu/opentofu.org/refs/heads/main/static/img/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/opentofu/icon/color/opentofu-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/opentofu/icon/white/opentofu-icon-white.svg
   accepted_at: "2025-04-23"
   maturity: sandbox
   repositories:

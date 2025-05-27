@@ -12,11 +12,9 @@
       check_sets:
         - community
         - code
-        - docs
     - name: website
       url: https://github.com/aeraki-mesh/website
       check_sets:
-        - community
         - docs
 - name: akri
   display_name: Akri
@@ -51,12 +49,10 @@
       check_sets:
         - community
         - code
-        - docs
     - name: website
       url: https://github.com/antrea-io/website
       check_sets:
         - docs
-        - community
 - name: argo
   display_name: Argo
   description: Open source tools for Kubernetes to run workflows, manage clusters, and do GitOps right
@@ -122,11 +118,10 @@
       check_sets:
         - community
         - code
-        - docs
     - name: website
       url: https://github.com/AthenZ/website
       check_sets:
-        - community
+        - docs
 - name: backstage
   display_name: Backstage
   description: Backstage is an open platform for building developer portals
@@ -141,11 +136,10 @@
       check_sets:
         - community
         - code
-        - docs
     - name: community
       url: https://github.com/backstage/community
       check_sets:
-        - community
+        - docs
 - name: bfe
   display_name: Beyond Front End
   description: Open-source layer 7 load balancer derived from proprietary Baidu FrontEnd
@@ -160,7 +154,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: buildpacks
   display_name: Buildpacks
   description: Cloud Native Buildpacks transform your application source code into images that can run on any cloud
@@ -191,7 +184,6 @@
       check_sets:
         - community
         - code
-        - docs
     - name: cdk8s-plus
       url: https://github.com/cdk8s-team/cdk8s-plus
       check_sets:
@@ -232,7 +224,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: chaos-mesh
   display_name: Chaos Mesh
   description: A Chaos Engineering Platform for Kubernetes
@@ -248,11 +239,10 @@
       check_sets:
         - community
         - code
-        - docs
     - name: website
       url: https://github.com/chaos-mesh/website
       check_sets:
-        - community
+        - docs
 - name: chubao-fs
   display_name: CubeFS
   description: CubeFS (formerly ChubaoFS) is a cloud native distributed file system and object store
@@ -267,7 +257,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: cilium
   display_name: Cilium
   description: eBPF-based Networking, Observability, and Security
@@ -281,23 +270,19 @@
       url: https://github.com/cilium/ebpf
       check_sets:
         - code-lite
-        - docs
     - name: cilium
       url: https://github.com/cilium/cilium
       check_sets:
         - community
         - code
-        - docs
     - name: hubble
       url: https://github.com/cilium/hubble
       check_sets:
         - code-lite
-        - docs
     - name: tetragon
       url: https://github.com/cilium/tetragon
       check_sets:
         - code-lite
-        - docs
 - name: cloud-custodian
   display_name: Cloud Custodian
   description: Rules engine for cloud security, cost optimization, and governance, DSL in yaml for policies to query, filter, and take actions on resources
@@ -312,7 +297,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: cloudevents
   display_name: CloudEvents
   description: A specification for describing event data in a common way
@@ -330,32 +314,26 @@
       url: https://github.com/cloudevents/spec
       check_sets:
         - community
-        - docs
     - name: sdk-go
       url: https://github.com/cloudevents/sdk-go
       check_sets:
         - code-lite
-        - docs
     - name: sdk-javascript
       url: https://github.com/cloudevents/sdk-javascript
       check_sets:
         - code-lite
-        - docs
     - name: sdk-csharp
       url: https://github.com/cloudevents/sdk-csharp
       check_sets:
         - code-lite
-        - docs
     - name: sdk-python
       url: https://github.com/cloudevents/sdk-python
       check_sets:
         - code-lite
-        - docs
     - name: sdk-java
       url: https://github.com/cloudevents/sdk-java
       check_sets:
         - code-lite
-        - docs
 - name: clusterpedia
   display_name: Clusterpedia
   description: Clusterpedia is used for complex resources search across multiple clusters, support simultaneous search of a single kind of resource or multiple kinds of resources existing in multiple clusters
@@ -370,7 +348,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: cni
   display_name: Container Network Interface
   description: Container Network Interface - networking for Linux containers
@@ -2720,7 +2697,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: distribution
   display_name: Distribution
   description: The toolkit to pack, ship, store, and deliver container content
@@ -2856,8 +2832,7 @@
       check_sets:
         - community
         - code
-        - docs
-    - name: carvel-kapp
+\    - name: carvel-kapp
       url: https://github.com/vmware-tanzu/carvel-kapp
       check_sets:
         - code
@@ -3045,7 +3020,6 @@
       check_sets:
         - code
         - community
-        - docs
 - name: ko
   description: Build and deploy Go applications on Kubernetes
   category: app definition
@@ -3140,7 +3114,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: inspektor-gadget
   display_name: Inspektor gadget
   description: Introspecting and debugging Kubernetes applications using BPF "gadgets"
@@ -3675,7 +3648,6 @@
       check_sets:
         - community
         - code
-        - docs
 - name: minikube
   display_name: minikube
   description: Run Kubernetes locally
@@ -4009,7 +3981,6 @@
       check_sets:
         - code
         - community
-        - docs
 - name: koordinator
   display_name: Koordinator
   description: QoS based scheduling system for hybrid orchestration workloads on Kubernetes, bringing workloads the best layout and status.
@@ -4044,7 +4015,6 @@
       check_sets:
         - code
         - community
-        - docs
     - name: bpfman
       url: https://github.com/bpfman/bpfman-operator
       check_sets:
@@ -4213,6 +4183,15 @@
     - name: community
       url: https://github.com/shipwright-io/community
       check_sets:
+        - docs
+    - name: website
+      url: https://github.com/shipwright-io/website
+      check_sets:
+        - docs
+    - name: build
+      url: https://github.com/shipwright-io/build
+      check_sets:
+        - code
         - community
 - name: loxilb
   display_name: LoxiLB
@@ -4264,7 +4243,6 @@
       check_sets:
         - code
         - community
-        - docs
 - name: bank-vaults
   display_name: Bank-Vaults
   description: "Bank-Vaults is a Vault swiss-army knife: a K8s operator, Go client with automatic token renewal, automatic configuration, multiple unseal options and more. A CLI tool to init, unseal and configure Vault (auth methods, secret engines). Direct secret injection into Pods."
@@ -4283,7 +4261,6 @@
       url: https://github.com/bank-vaults/bank-vaults.dev
       check_sets:
         - docs
-        - community
 - name: stacker
   display_name: Stacker
   description: Stacker is a tool for building OCI images and related artifacts such as SBOMs natively via a declarative yaml format
@@ -4681,17 +4658,14 @@
       check_sets:
         - code
         - community
-        - docs
     - name: cnpg-i
       url: https://github.com/cloudnative-pg/cnpg-i
       check_sets:
         - code-lite
-        - docs
     - name: cnpg-i-machinery
       url: https://github.com/cloudnative-pg/cnpg-i-machinery
       check_sets:
         - code-lite
-        - docs
 - name: runme-notebooks
   display_name: Runme Notebooks
   description: A toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.

@@ -2831,8 +2831,8 @@
       url: https://github.com/carvel-dev/carvel
       check_sets:
         - community
-        - code
-\    - name: carvel-kapp
+        - docs
+    - name: carvel-kapp
       url: https://github.com/vmware-tanzu/carvel-kapp
       check_sets:
         - code

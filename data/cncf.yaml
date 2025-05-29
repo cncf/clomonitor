@@ -12,6 +12,10 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/aeraki-mesh/website
+      check_sets:
+        - docs
 - name: akri
   display_name: Akri
   description: A Kubernetes Resource Interface for the Edge
@@ -45,6 +49,10 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/antrea-io/website
+      check_sets:
+        - docs
 - name: argo
   display_name: Argo
   description: Open source tools for Kubernetes to run workflows, manage clusters, and do GitOps right
@@ -110,6 +118,10 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/AthenZ/website
+      check_sets:
+        - docs
 - name: backstage
   display_name: Backstage
   description: Backstage is an open platform for building developer portals
@@ -124,6 +136,10 @@
       check_sets:
         - community
         - code
+    - name: community
+      url: https://github.com/backstage/community
+      check_sets:
+        - docs
 - name: bfe
   display_name: Beyond Front End
   description: Open-source layer 7 load balancer derived from proprietary Baidu FrontEnd
@@ -223,6 +239,10 @@
       check_sets:
         - community
         - code
+    - name: website
+      url: https://github.com/chaos-mesh/website
+      check_sets:
+        - docs
 - name: chubao-fs
   display_name: CubeFS
   description: CubeFS (formerly ChubaoFS) is a cloud native distributed file system and object store
@@ -2673,7 +2693,7 @@
   maturity: sandbox
   repositories:
     - name: armada
-      url: https://github.com/G-Research/armada
+      url: https://github.com/armadaproject/armada
       check_sets:
         - community
         - code
@@ -2811,6 +2831,7 @@
       url: https://github.com/carvel-dev/carvel
       check_sets:
         - community
+        - docs
     - name: carvel-kapp
       url: https://github.com/vmware-tanzu/carvel-kapp
       check_sets:
@@ -4162,6 +4183,15 @@
     - name: community
       url: https://github.com/shipwright-io/community
       check_sets:
+        - docs
+    - name: website
+      url: https://github.com/shipwright-io/website
+      check_sets:
+        - docs
+    - name: build
+      url: https://github.com/shipwright-io/build
+      check_sets:
+        - code
         - community
 - name: loxilb
   display_name: LoxiLB
@@ -4227,6 +4257,10 @@
       check_sets:
         - code
         - community
+    - name: bank-vaults.dev
+      url: https://github.com/bank-vaults/bank-vaults.dev
+      check_sets:
+        - docs
 - name: stacker
   display_name: Stacker
   description: Stacker is a tool for building OCI images and related artifacts such as SBOMs natively via a declarative yaml format

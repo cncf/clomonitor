@@ -2452,7 +2452,7 @@
   accepted_at: "2020-11-10"
   maturity: sandbox
   repositories:
-    - name: tink
+    - name: tinkerbell
       url: https://github.com/tinkerbell/tinkerbell
       check_sets:
         - community
@@ -4779,5 +4779,61 @@
         - community
     - name: opentofu.org
       url: https://github.com/opentofu/opentofu.org
+      check_sets:
+        - docs
+- name: urunc
+  display_name: urunc
+  description: A CRI-compatible runtime for running unikernels and application kernels as containers. urunc bridges the gap between unikernels and containerized environments, enabling seamless integration with cloud-native architectures while maintaining OCI compatibility.
+  category: runtime
+  logo_url: https://raw.githubusercontent.com/urunc-dev/urunc/refs/heads/main/docs/assets/images/urunc-logo-light.svg
+  logo_dark_url: https://raw.githubusercontent.com/urunc-dev/urunc/refs/heads/main/docs/assets/images/urunc-logo-dark.svg
+  devstats_url: https://urunc.devstats.cncf.io
+  accepted_at: "2025-05-22"
+  maturity: sandbox
+  repositories:
+    - name: urunc
+      url:  https://github.com/urunc-dev/urunc
+      check_sets:
+        - code
+        - community
+- name: kagent
+  display_name: kagent
+  description: Bringing Agentic AI to cloud native. An open-source framework for DevOps and platform engineers to run AI agents in Kubernetes, automating complex operations and troubleshooting tasks.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/kagent-dev/kagent/refs/heads/main/img/icon-light.svg
+  logo_dark_url: https://raw.githubusercontent.com/kagent-dev/kagent/refs/heads/main/img/icon-dark.svg
+  devstats_url: https://kagent.devstats.cncf.io/
+  accepted_at: "2025-05-22"
+  maturity: sandbox
+  repositories:
+    - name: kagent
+      url:  https://github.com/kagent-dev/kagent
+      check_sets:
+        - code
+    - name: community
+      url: https://github.com/kagent.dev/community
+      check_sets:
+        - community
+    - name: website
+      url: https://github.com/kagent-dev/website
+      check_sets:
+        - docs
+- name: cadence
+  display_name: Cadence
+  description: Cadence is a native code based workflow orchestration engine that addresses challenges around building and operating complex distributed products, ensuring their durability, availability, and scalability with maximum flexibility for developers.
+  category: orchestration
+  logo_url: https://raw.githubusercontent.com/cadence-workflow/cadence-web/refs/heads/master/src/assets/cadence-logo.svg
+  logo_dark_url: https://raw.githubusercontent.com/cadence-workflow/cadence-web/refs/heads/master/src/assets/cadence-logo-black.svg
+  devstats_url: https://cadence.devstats.cncf.io/
+  accepted_at: "2025-05-22"
+  maturity: sandbox
+  repositories:
+    - name: cadence
+      url:  https://github.com/cadence-workflow/cadence
+      check_sets:
+        - code
+        - community
+    - name: cadence-web
+      url: https://github.com/cadence-workflow/cadence-web
       check_sets:
         - docs

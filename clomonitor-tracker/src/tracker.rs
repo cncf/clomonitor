@@ -155,7 +155,7 @@ async fn track_repository(
     let mut errors: Option<String> = None;
     let input = LinterInput {
         project: Some(repository.project),
-        root: tmp_dir.into_path(),
+        root: tmp_dir.keep(),
         url: repository.url.clone(),
         check_sets: repository.check_sets.clone(),
         github_token: github_token.to_owned(),

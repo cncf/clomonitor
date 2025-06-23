@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "apexcharts": "3.49.0",
+    "apexcharts": "4.7.0",
     "classnames": "^2.5.1",
     "clo-ui": "https://github.com/cncf/clo-ui.git#v0.4.4",
     "lodash": "^4.17.21",

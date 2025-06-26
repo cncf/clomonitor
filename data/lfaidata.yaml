@@ -856,8 +856,8 @@
   accepted_at: "2023-10-19"
   maturity: incubating
   repositories:
-    - name: lib-interop
-      url: https://github.com/open-voice-interoperability/lib-interop
+    - name: open-voice-sandbox
+      url: https://github.com/open-voice-interoperability/open-voice-sandbox
       check_sets:
         - community
 - name: iree

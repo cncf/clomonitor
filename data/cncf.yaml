@@ -4150,6 +4150,14 @@
       url: https://github.com/score-spec/score.dev
       check_sets:
         - docs
+    - name: community-provisioners
+      url: https://github.com/score-spec/community-provisioners
+      check_sets:
+        - code-lite
+    - name: community-patchers
+      url: https://github.com/score-spec/community-patchers
+      check_sets:
+        - code-lite
 - name: hami
   display_name: HAMi
   description: Heterogeneous AI Computing Virtualization Middleware

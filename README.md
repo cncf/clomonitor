@@ -50,7 +50,7 @@ $ export GITHUB_TOKEN=<your token>
 $ docker run -it \
   --volume $PWD:/repo \
   --env GITHUB_TOKEN=$GITHUB_TOKEN \
-  ghcr.io/clomonitor/linter clomonitor-linter \
+  ghcr.io/cncf/clomonitor/linter clomonitor-linter \
     --path /repo \
     --url https://github.com/<org>/<repo>
 ```

@@ -4870,3 +4870,18 @@
       url: https://github.com/xregistry/xregistry.github.io
       check_sets:
         - docs
+- name: modelpack
+  display_name: ModelPack
+  description: ModelPack project is a vendor-neutral, open source specification standard to package, distribute and run AI models in a cloud native environments.
+  devstats_url: https://modelpack.devstats.cncf.io/
+  accepted_at: "2025-06-03"
+  maturity: sandbox
+  repositories:
+    - name: model-spec
+      url: https://github.com/modelpack/model-spec
+      check_sets:
+        - community
+    - name: modctl
+      url: https://github.com/modelpack/modctl
+      check_sets:
+        - code-lite

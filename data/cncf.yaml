@@ -4845,3 +4845,28 @@
       url: https://github.com/cadence-workflow/cadence-web
       check_sets:
         - docs
+- name: xregistry
+  display_name: xRegistry
+  description: The xRegistry project (short for "extensible registry") defines an abstract model for how to manage metadata about resources and provides a REST-based interface for creating, modifying, deleting and discovering of those resources.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/xregistry/horizontal/color/xregistry-horizontal-color.svg
+  devstats_url: https://xregistry.devstats.cncf.io/
+  accepted_at: "2025-06-03"
+  maturity: sandbox
+  repositories:
+    - name: spec
+      url: https://github.com/xregistry/spec
+      check_sets:
+        - community
+    - name: server
+      url: https://github.com/xregistry/server
+      check_sets:
+        - code-lite
+    - name: tools
+      url: https://github.com/xregistry/tools
+      check_sets:
+        - code-lite
+    - name: xregistry.github.io
+      url: https://github.com/xregistry/xregistry.github.io
+      check_sets:
+        - docs

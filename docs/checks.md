@@ -662,6 +662,7 @@ This check passes if:
 ```sh
 "https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage"
 "The Linux Foundation.* has registered trademarks and uses trademarks"
+"Copyright © .+ a Series of LF Projects, LLC"
 ```
 
 Note: This check currently only supports static web sites where the content is delivered in an HTML page to the browser. If you use a dynamic site (e.g., React, Angular), your repo may want to set an [exemption](#exemptions) for this check ID.

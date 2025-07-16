@@ -66,12 +66,13 @@ const OptionCell = (props: Props) => {
   };
 
   const getCheckValue = (): string | JSX.Element => {
+    let values;
     switch (props.label) {
       case ReportOption.SPDX:
         return <>{isUndefined(props.check.value) ? 'Not detected' : (props.check.value as string)}</>;
 
       case ReportOption.Analytics:
-        const values = isUndefined(props.check.value) ? [] : (props.check.value as string[]);
+        values = isUndefined(props.check.value) ? [] : (props.check.value as string[]);
         return (
           <>
             {opt.name}

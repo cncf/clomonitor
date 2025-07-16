@@ -4,6 +4,7 @@ import Checks from './Checks';
 
 const defaultProps = {
   data: {
+    analytics: 8,
     artifacthub_badge: 9,
     cla: 12,
     community_meeting: 43,
@@ -32,6 +33,8 @@ describe('Checks', () => {
       render(<Checks {...defaultProps} />);
 
       expect(screen.getByText('Best Practices')).toBeInTheDocument();
+      expect(screen.getAllByText('Analytics')).toHaveLength(2);
+      expect(screen.getByText('8%')).toBeInTheDocument();
       expect(screen.getAllByText('Artifact Hub badge')).toHaveLength(2);
       expect(screen.getByText('9%')).toBeInTheDocument();
       expect(screen.getAllByText('CLA')).toHaveLength(2);
@@ -47,7 +50,7 @@ describe('Checks', () => {
       expect(screen.getAllByText('Slack presence')).toHaveLength(2);
       expect(screen.getByText('33%')).toBeInTheDocument();
 
-      expect(screen.getAllByRole('progressbar')).toHaveLength(7);
+      expect(screen.getAllByRole('progressbar')).toHaveLength(8);
     });
 
     it('renders checks properly sorted', () => {

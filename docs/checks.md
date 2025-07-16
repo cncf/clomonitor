@@ -51,6 +51,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Roadmap
   - Documentation / Summary table
   - Documentation / Website
+  - Best practices / Analytics
   - Best practices / Community meeting
   - Best practices / GitHub discussions
   - Best practices / Slack presence
@@ -376,6 +377,44 @@ This check passes if:
 - A *link* pointing to the license scanning results is provided in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
 
 ## Best practices
+
+### Analytics
+
+**ID**: `analytics`
+
+Projects websites should provide some web analytics.
+
+This check passes if any of the following analytics providers are detected:
+
+- A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"\bG-[A-Z0-9]{10}\b"
+```
+
+- A Google Tag Manager **Container ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"\bGTM-[A-Z0-9]{4,8}\b"
+```
+
+- The HubSpot **tracking code** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"(?:js\.hs-scripts\.com|js-[a-z0-9]+\.hs-scripts\.com)/\d{6,10}\.js"
+```
+
+- A Plausible Analytics **script** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"plausible\.io/js/script(?:\.[a-z-]+)*\.js"
+```
+
+- A Scarf Analytics **pixel tracker** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"static\.scarf\.sh/a\.png\?x-pxid=[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
+```
 
 ### Artifact Hub badge
 

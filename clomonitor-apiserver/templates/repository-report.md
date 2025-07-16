@@ -47,6 +47,7 @@
 {%- if let Some(value) = score.best_practices %}
 ### Best Practices [{{ value.round() }}%]
 
+  {% call check("analytics", "Analytics", report.best_practices.analytics) -%}
   {% call check("artifact-hub-badge", "Artifact Hub badge", report.best_practices.artifacthub_badge) -%}
   {% call check("contributor-license-agreement", "Contributor License Agreement", report.best_practices.cla) -%}
   {% call check("community-meeting", "Community meeting", report.best_practices.community_meeting) -%}

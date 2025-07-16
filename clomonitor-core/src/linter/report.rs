@@ -101,6 +101,7 @@ section_impl!(
 /// BestPractices section of the report.
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BestPractices {
+    pub analytics: Option<CheckOutput<Vec<String>>>,
     pub artifacthub_badge: Option<CheckOutput>,
     pub cla: Option<CheckOutput>,
     pub community_meeting: Option<CheckOutput>,
@@ -115,6 +116,7 @@ pub struct BestPractices {
 #[rustfmt::skip]
 section_impl!(
     BestPractices,
+    analytics,
     artifacthub_badge,
     cla,
     community_meeting,

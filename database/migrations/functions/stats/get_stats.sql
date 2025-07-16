@@ -169,6 +169,7 @@ returns json as $$
                     'license_spdx_id', repositories_passing_check(p_foundation, 'license', 'license_spdx_id')
                 ),
                 'best_practices', json_build_object(
+                    'analytics', repositories_passing_check(p_foundation, 'best_practices', 'analytics'),
                     'artifacthub_badge', repositories_passing_check(p_foundation, 'best_practices', 'artifacthub_badge'),
                     'cla', repositories_passing_check(p_foundation, 'best_practices', 'cla'),
                     'community_meeting', repositories_passing_check(p_foundation, 'best_practices', 'community_meeting'),

@@ -40,6 +40,7 @@
   
 ### Best Practices [100%]
 
+  - [x] Analytics ([_docs_](https://clomonitor.io/docs/topics/checks/#analytics))
   - [x] Artifact Hub badge ([_docs_](https://clomonitor.io/docs/topics/checks/#artifact-hub-badge)) `EXEMPT`
   - [x] Contributor License Agreement ([_docs_](https://clomonitor.io/docs/topics/checks/#contributor-license-agreement))
   - [x] Community meeting ([_docs_](https://clomonitor.io/docs/topics/checks/#community-meeting))

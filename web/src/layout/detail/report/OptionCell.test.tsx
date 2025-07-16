@@ -69,6 +69,26 @@ describe('OptionCell', () => {
       expect(screen.getByText('LICENSE')).toBeInTheDocument();
     });
 
+    it('renders special Analytics option', () => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              label={ReportOption.Analytics}
+              check={{
+                passed: true,
+                value: ['GA4'],
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      expect(screen.getByText(/GA4/)).toBeInTheDocument();
+      expect(screen.getByText(/Projects websites should provide some web analytics/)).toBeInTheDocument();
+      expect(screen.getByText('Analytics')).toBeInTheDocument();
+    });
+
     it('renders option with url', () => {
       render(
         <table>

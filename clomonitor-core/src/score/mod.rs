@@ -273,6 +273,7 @@ mod tests {
                     ),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(CheckOutput::passed()),
                     artifacthub_badge: Some(CheckOutput::exempt()),
                     cla: Some(CheckOutput::passed()),
                     community_meeting: Some(CheckOutput::passed()),
@@ -339,6 +340,7 @@ mod tests {
                     license_spdx_id: Some(CheckOutput::not_passed()),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(CheckOutput::not_passed()),
                     artifacthub_badge: Some(CheckOutput::not_passed()),
                     cla: Some(CheckOutput::not_passed()),
                     community_meeting: Some(CheckOutput::not_passed()),
@@ -409,6 +411,7 @@ mod tests {
                     ),
                 },
                 best_practices: BestPractices {
+                    analytics: Some(CheckOutput::passed()),
                     artifacthub_badge: Some(CheckOutput::exempt()),
                     cla: Some(CheckOutput::passed()),
                     community_meeting: None,
@@ -485,7 +488,7 @@ mod tests {
                     legal: None,
                     legal_weight: None,
                 }
-            ]),
+            ],),
             Score {
                 global: 66.666_666_666_666_66,
                 global_weight: 0,

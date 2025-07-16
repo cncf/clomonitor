@@ -70,6 +70,15 @@ const OptionCell = (props: Props) => {
       case ReportOption.SPDX:
         return <>{isUndefined(props.check.value) ? 'Not detected' : (props.check.value as string)}</>;
 
+      case ReportOption.Analytics:
+        const values = isUndefined(props.check.value) ? [] : (props.check.value as string[]);
+        return (
+          <>
+            {opt.name}
+            {values.length > 0 && <span className="ms-2">({values.join(' · ')})</span>}
+          </>
+        );
+
       default:
         return opt.name;
     }

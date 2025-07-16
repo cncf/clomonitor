@@ -149,6 +149,9 @@ insert into report (
             "dco": {
                 "passed": true
             },
+            "analytics": {
+                "passed": true
+            },
             "github_discussions": {
                 "passed": true
             },
@@ -234,6 +237,7 @@ select results_eq(
             ('00000000-0000-0001-0000-000000000000'::uuid, 'documentation', 'code_of_conduct', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'cla', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'dco', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'analytics', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'openssf_badge', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'recent_release', true),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'slack_presence', false),

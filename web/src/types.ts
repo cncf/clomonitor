@@ -143,6 +143,7 @@ export enum SortBy {
 
 export enum ReportOption {
   Adopters = 'adopters',
+  Analytics = 'analytics',
   ApprovedLicense = 'license_approved',
   ArtifactHubBadge = 'artifacthub_badge',
   BinaryArtifacts = 'binary_artifacts',

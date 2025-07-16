@@ -4,6 +4,7 @@ import { BsCalendar3, BsUiChecks } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
   FaBalanceScale,
+  FaChartBar,
   FaCheckDouble,
   FaExclamationTriangle,
   FaFileContract,
@@ -263,6 +264,12 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Adopters',
     legend: <span>List of organizations using this project in production or at stages of testing</span>,
     reference: '/docs/topics/checks/#adopters',
+  },
+  [ReportOption.Analytics]: {
+    icon: <FaChartBar />,
+    name: 'Analytics',
+    legend: <span>Projects websites should provide some web analytics</span>,
+    reference: '/docs/topics/checks/#analytics',
   },
   [ReportOption.ApprovedLicense]: {
     icon: <FaCheckDouble />,
@@ -564,6 +571,7 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
   ],
   [ScoreType.License]: [ReportOption.SPDX, ReportOption.ApprovedLicense, ReportOption.LicenseScanning],
   [ScoreType.BestPractices]: [
+    ReportOption.Analytics,
     ReportOption.ArtifactHubBadge,
     ReportOption.CLA,
     ReportOption.CommunityMeeting,

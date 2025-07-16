@@ -42,6 +42,7 @@ describe('Block', () => {
         screen.getByRole('button', { name: 'Mark all checks in Best Practices category as not passed' })
       ).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Reset checks in Best Practices category' })).toBeInTheDocument();
+      expect(screen.getAllByText('Analytics')).toHaveLength(2);
       expect(screen.getAllByText('Artifact Hub badge')).toHaveLength(2);
       expect(screen.getByText('Contributor License Agreement')).toBeInTheDocument();
       expect(screen.getByText('CLA')).toBeInTheDocument();
@@ -54,8 +55,8 @@ describe('Block', () => {
       expect(screen.getAllByText('Recent release')).toHaveLength(2);
       expect(screen.getAllByText('Slack presence')).toHaveLength(2);
 
-      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(19);
-      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(19);
+      expect(screen.getAllByRole('button', { name: /as passed/ })).toHaveLength(21);
+      expect(screen.getAllByRole('button', { name: /as not passed/ })).toHaveLength(21);
     });
 
     it('renders option Slack presence as passed', () => {

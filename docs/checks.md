@@ -51,6 +51,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Documentation / Roadmap
   - Documentation / Summary table
   - Documentation / Website
+  - Best practices / Analytics
   - Best practices / Community meeting
   - Best practices / GitHub discussions
   - Best practices / Slack presence
@@ -376,6 +377,32 @@ This check passes if:
 - A *link* pointing to the license scanning results is provided in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
 
 ## Best practices
+
+### Analytics
+
+**ID**: `analytics`
+
+Projects websites should provide some web analytics.
+
+This check passes if:
+
+- A Google Analytics 3 (Universal Analytics) **Tracking ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"UA-[0-9]+-[0-9]+"
+```
+
+- A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"G-[A-Z0-9]+"
+```
+
+- The HubSpot **tracking code** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"//js.hs-scripts.com/.+\.js"
+```
 
 ### Artifact Hub badge
 

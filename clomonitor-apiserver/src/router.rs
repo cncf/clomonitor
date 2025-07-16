@@ -639,6 +639,7 @@ mod tests {
                             ),
                         },
                         best_practices: BestPractices {
+                            analytics: Some(CheckOutput::passed()),
                             artifacthub_badge: Some(CheckOutput::exempt()),
                             cla: Some(CheckOutput::passed()),
                             community_meeting: Some(CheckOutput::passed()),

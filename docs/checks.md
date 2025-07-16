@@ -384,24 +384,36 @@ This check passes if:
 
 Projects websites should provide some web analytics.
 
-This check passes if:
-
-- A Google Analytics 3 (Universal Analytics) **Tracking ID** is found in the source of the website configured in Github. Regexps used:
-
-```sh
-"UA-[0-9]+-[0-9]+"
-```
+This check passes if any of the following analytics providers are detected:
 
 - A Google Analytics 4 **Measurement ID** is found in the source of the website configured in Github. Regexps used:
 
 ```sh
-"G-[A-Z0-9]+"
+"\bG-[A-Z0-9]{10}\b"
+```
+
+- A Google Tag Manager **Container ID** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"\bGTM-[A-Z0-9]{4,8}\b"
 ```
 
 - The HubSpot **tracking code** is found in the source of the website configured in Github. Regexps used:
 
 ```sh
-"//js.hs-scripts.com/.+\.js"
+"(?:js\.hs-scripts\.com|js-[a-z0-9]+\.hs-scripts\.com)/\d{6,10}\.js"
+```
+
+- A Plausible Analytics **script** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"plausible\.io/js/script(?:\.[a-z-]+)*\.js"
+```
+
+- A Scarf Analytics **pixel tracker** is found in the source of the website configured in Github. Regexps used:
+
+```sh
+"static\.scarf\.sh/a\.png\?x-pxid=[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
 ```
 
 ### Artifact Hub badge

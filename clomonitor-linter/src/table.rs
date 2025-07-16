@@ -143,7 +143,7 @@ pub(crate) fn display(
                     .set_alignment(CellAlignment::Center)
                     .add_attribute(Attribute::Bold)
             } else {
-                cell_check(&report.best_practices.analytics)
+                cell_check(report.best_practices.analytics.as_ref())
             },
         ])
         .add_row(vec![

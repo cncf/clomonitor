@@ -1,10 +1,12 @@
+use std::sync::LazyLock;
+
+use anyhow::Result;
+use regex::Regex;
+
 use crate::linter::{
     check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
 };
-use anyhow::Result;
-use lazy_static::lazy_static;
-use regex::Regex;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "analytics";
@@ -15,22 +17,14 @@ pub(crate) const WEIGHT: usize = 1;
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
-lazy_static! {
-    #[rustfmt::skip]
-    static ref GA3: Regex = Regex::new(
-        "UA-[0-9]+-[0-9]+",
-    ).expect("exprs in GA3 to be valid");
-
-    #[rustfmt::skip]
-    static ref GA4: Regex = Regex::new(
-        "G-[A-Z0-9]+",
-    ).expect("exprs in GA4 to be valid");
-
-    #[rustfmt::skip]
-    static ref HUBSPOT: Regex = Regex::new(
-        r"//js.hs-scripts.com/.+\.js",
-    ).expect("exprs in HUBSPOT to be valid");
-}
+/// Regular expressions for different analytics providers.
+static GA3: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new("UA-[0-9]+-[0-9]+").expect("exprs in GA3 to be valid"));
+static GA4: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new("G-[A-Z0-9]+").expect("exprs in GA4 to be valid"));
+static HUBSPOT: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"//js.hs-scripts.com/.+\.js").expect("exprs in HUBSPOT to be valid")
+});
 
 /// Check main function.
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<String>>> {

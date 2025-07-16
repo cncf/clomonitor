@@ -95,7 +95,6 @@ pub(crate) static CHECKS: LazyLock<HashMap<CheckId, CheckConfig>> = LazyLock::ne
     register_check!(sbom);
     register_check!(security_insights);
     register_check!(security_policy);
-    register_check!(self_assessment);
     register_check!(signed_releases, "Signed-Releases");
     register_check!(slack_presence);
     register_check!(summary_table);

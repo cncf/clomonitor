@@ -77,14 +77,14 @@ describe('OptionCell', () => {
               label={ReportOption.Analytics}
               check={{
                 passed: true,
-                value: ['GA3', 'GA4'],
+                value: ['GA4'],
               }}
             />
           </tbody>
         </table>
       );
 
-      expect(screen.getByText(/GA3 | GA4/)).toBeInTheDocument();
+      expect(screen.getByText(/GA4/)).toBeInTheDocument();
       expect(screen.getByText(/Projects websites should provide some web analytics/)).toBeInTheDocument();
       expect(screen.getByText('Analytics')).toBeInTheDocument();
     });

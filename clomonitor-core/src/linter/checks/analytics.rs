@@ -18,8 +18,6 @@ pub(crate) const WEIGHT: usize = 1;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 
 /// Regular expressions for different analytics providers.
-static GA3: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new("UA-[0-9]+-[0-9]+").expect("exprs in GA3 to be valid"));
 static GA4: LazyLock<Regex> =
     LazyLock::new(|| Regex::new("G-[A-Z0-9]+").expect("exprs in GA4 to be valid"));
 static HUBSPOT: LazyLock<Regex> = LazyLock::new(|| {
@@ -37,12 +35,6 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<Stri
     let mut analytics_detected: Vec<String> = Vec::new();
     let mut details: String =
         "# Analytics providers detected in project's website \n\n".to_string();
-
-    // Check Google Analytics 3 (Universal Analytics) tracking ID
-    if GA3.is_match(&content) {
-        analytics_detected.push("GA3".to_string());
-        details.push_str("· Google Analytics 3 (Universal Analytics)\n");
-    }
 
     // Check Google Analytics 4 measurement ID
     if GA4.is_match(&content) {
@@ -69,12 +61,6 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<Vec<Stri
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn ga3_match() {
-        assert!(GA3.is_match("UA-123456-0"));
-        assert!(GA3.is_match("UA-12345678-90"));
-    }
 
     #[test]
     fn ga4_match() {

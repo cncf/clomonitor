@@ -12,7 +12,7 @@ use crate::linter::{
 pub(crate) const ID: CheckId = "analytics";
 
 /// Check score weight.
-pub(crate) const WEIGHT: usize = 1;
+pub(crate) const WEIGHT: usize = 0;
 
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];

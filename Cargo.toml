@@ -14,7 +14,7 @@ members = [
 version = "1.0.0"
 license = "Apache-2.0"
 edition = "2021"
-rust-version = "1.87"
+rust-version = "1.88"
 
 [workspace.dependencies]
 anyhow = "1.0.98"
@@ -23,10 +23,10 @@ async-trait = "0.1.88"
 axum = { version = "0.8.4", features = ["macros"] }
 bincode = { version = "2.0.1", features = ["serde"] }
 cached = { version = "0.55.1", features = ["async"] }
-clap = { version = "4.5.40", features = ["derive"] }
+clap = { version = "4.5.41", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 comfy-table = "7.1.4"
-config = "0.15.11"
+config = "0.15.13"
 deadpool = "0.12.2"
 deadpool-postgres = { version = "0.14.1", features = ["serde"] }
 futures = "0.3.31"
@@ -37,7 +37,7 @@ hex = "0.4.3"
 http = "1.3.1"
 hyper = "1.6.0"
 metrics = "0.24.2"
-metrics-exporter-prometheus = "0.17.0"
+metrics-exporter-prometheus = "0.17.2"
 mime = "0.3.17"
 mockall = "0.13.1"
 mockito = "1.7.0"
@@ -47,7 +47,7 @@ postgres-openssl = "0.5.1"
 postgres-types = { version = "0.2.9", features = ["derive"] }
 predicates = "3.1.3"
 regex = "1.11.1"
-reqwest = { version = "0.12.20", features = ["json"] }
+reqwest = { version = "0.12.22", features = ["json"] }
 resvg = "0.27.0" # do-not-upgrade
 rinja = { git = "https://github.com/rinja-rs/rinja", rev = "535df5e", features = ["serde_json"] }
 serde = { version = "1.0.219", features = ["derive"] }
@@ -65,7 +65,7 @@ time = { version = "0.3.41", features = [
     "serde",
 ] }
 tiny-skia = "0.8.4" # do-not-upgrade
-tokio = { version = "1.45.1", features = [
+tokio = { version = "1.46.1", features = [
     "macros",
     "process",
     "rt-multi-thread",
@@ -88,5 +88,5 @@ tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter", "json"] }
 usvg = "0.27.0" # do-not-upgrade
 uuid = { version = "1.17.0", features = ["serde"] }
-which = "7.0.3"
-wiremock = "0.6.3"
+which = "8.0.0"
+wiremock = "0.6.4"

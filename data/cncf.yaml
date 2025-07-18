@@ -4819,7 +4819,7 @@
       check_sets:
         - code
     - name: community
-      url: https://github.com/kagent.dev/community
+      url: https://github.com/kagent-dev/community
       check_sets:
         - community
     - name: website

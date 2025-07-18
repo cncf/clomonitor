@@ -362,20 +362,6 @@
       check_sets:
         - community
         - code
-- name: cni-genie
-  display_name: CNI-Genie
-  description: CNI-Genie for choosing pod network of your choice during deployment time. Supported pod networks - Calico, Flannel, Romana, Weave
-  category: runtime
-  logo_url: https://landscape.cncf.io/logos/546205f25e890de432a8d8f807deb622de9ce62720c47b7a58791f6da4212f33.svg
-  devstats_url: https://cnigenie.devstats.cncf.io/
-  accepted_at: "2020-06-23"
-  maturity: sandbox
-  repositories:
-    - name: cni-genie
-      url: https://github.com/cni-genie/CNI-Genie
-      check_sets:
-        - community
-        - code
 - name: confidential-containers
   display_name: Confidential Containers
   description: Confidential Containers is an open source community working to enable cloud native confidential computing by leveraging Trusted Execution Environments to protect containers and data

@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, time::Duration};
 
 use anyhow::Result;
 use cached::proc_macro::cached;
@@ -55,12 +55,12 @@ impl Landscape {
     /// Return the project's summary table information if available.
     pub(crate) fn get_summary_table_info(&self, project_name: &str) -> Option<SummaryTable> {
         // Prepare project's summary table from available info (if any)
-        if let Some(project) = self.get_project(project_name) {
-            if let Some(extra) = &project.extra {
-                let summary_table = SummaryTable::from(extra);
-                if summary_table != SummaryTable::default() {
-                    return Some(summary_table);
-                }
+        if let Some(project) = self.get_project(project_name)
+            && let Some(extra) = &project.extra
+        {
+            let summary_table = SummaryTable::from(extra);
+            if summary_table != SummaryTable::default() {
+                return Some(summary_table);
             }
         }
 
@@ -72,12 +72,11 @@ impl Landscape {
         for category in &self.landscape {
             for subcategory in &category.subcategories {
                 for item in &subcategory.items {
-                    if let Some(extra) = &item.extra {
-                        if let Some(clomonitor_name) = &extra.clomonitor_name {
-                            if clomonitor_name == project_name {
-                                return Some(item);
-                            }
-                        }
+                    if let Some(extra) = &item.extra
+                        && let Some(clomonitor_name) = &extra.clomonitor_name
+                        && clomonitor_name == project_name
+                    {
+                        return Some(item);
                     }
                 }
             }

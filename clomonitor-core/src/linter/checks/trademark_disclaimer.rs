@@ -31,10 +31,11 @@ pub(crate) static TRADEMARK_DISCLAIMER: LazyLock<RegexSet> = LazyLock::new(|| {
 /// Check main function.
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // Trademark disclaimer in website setup in Github
-    if let Some(url) = &input.gh_md.homepage_url {
-        if !url.is_empty() && content::remote_matches(url, &TRADEMARK_DISCLAIMER).await? {
-            return Ok(CheckOutput::passed());
-        }
+    if let Some(url) = &input.gh_md.homepage_url
+        && !url.is_empty()
+        && content::remote_matches(url, &TRADEMARK_DISCLAIMER).await?
+    {
+        return Ok(CheckOutput::passed());
     }
 
     Ok(CheckOutput::not_passed())

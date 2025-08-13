@@ -59,7 +59,7 @@ pub(crate) fn readme_capture(root: &Path, regexps: &[&Regex]) -> Result<Option<S
 }
 
 // Returns a Globs instance used to locate the README file.
-pub(crate) fn readme_globs(root: &Path) -> Globs {
+pub(crate) fn readme_globs(root: &Path) -> Globs<'_> {
     Globs {
         root,
         patterns: &readme::FILE_PATTERNS,
@@ -77,10 +77,9 @@ pub(crate) fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option
                 .iter()
                 .find(|exemption| exemption.check == check_id)
         })
+        && !exemption.reason.is_empty()
     {
-        if !exemption.reason.is_empty() {
-            return Some(exemption.clone());
-        }
+        return Some(exemption.clone());
     }
 
     None

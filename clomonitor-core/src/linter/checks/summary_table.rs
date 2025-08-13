@@ -20,10 +20,10 @@ pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];
 pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
     // Get landscape (if necessary info is available)
     let mut landscape = None;
-    if let Some(project) = &input.li.project.as_ref() {
-        if let Some(url) = project.foundation.landscape_url.as_ref() {
-            landscape = Some(landscape::new(url.clone()).await?);
-        }
+    if let Some(project) = &input.li.project.as_ref()
+        && let Some(url) = project.foundation.landscape_url.as_ref()
+    {
+        landscape = Some(landscape::new(url.clone()).await?);
     }
 
     // Check project's summary table info in landscape

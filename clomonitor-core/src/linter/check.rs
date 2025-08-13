@@ -34,7 +34,7 @@ pub(crate) struct CheckInput<'a> {
 }
 
 impl CheckInput<'_> {
-    pub(crate) async fn new(li: &LinterInput) -> Result<CheckInput> {
+    pub(crate) async fn new(li: &LinterInput) -> Result<CheckInput<'_>> {
         // Check if required external tools are available
         if which("scorecard").is_err() {
             return Err(format_err!(

@@ -44,10 +44,10 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     }
 
     // File in Github (default community health file, for example)
-    if let Some(coc) = &input.gh_md.code_of_conduct {
-        if coc.url.is_some() {
-            return Ok(CheckOutput::passed().url(coc.url.clone()));
-        }
+    if let Some(coc) = &input.gh_md.code_of_conduct
+        && coc.url.is_some()
+    {
+        return Ok(CheckOutput::passed().url(coc.url.clone()));
     }
 
     Ok(CheckOutput::not_passed())

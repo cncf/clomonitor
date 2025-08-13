@@ -41,10 +41,9 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
         .license_info
         .as_ref()
         .and_then(|l| l.spdx_id.as_ref())
+        && spdx_id != "NOASSERTION"
     {
-        if spdx_id != "NOASSERTION" {
-            return Ok(CheckOutput::passed().value(Some(spdx_id.clone())));
-        }
+        return Ok(CheckOutput::passed().value(Some(spdx_id.clone())));
     }
 
     Ok(CheckOutput::not_passed())

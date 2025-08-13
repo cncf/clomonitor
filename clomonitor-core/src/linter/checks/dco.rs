@@ -29,10 +29,10 @@ static CHECK_REF: LazyLock<RegexSet> =
 #[allow(clippy::unnecessary_wraps)]
 pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     // DCO signature in commits
-    if let Ok(passed) = commits_have_dco_signature(&input.li.root) {
-        if passed {
-            return Ok(CheckOutput::passed());
-        }
+    if let Ok(passed) = commits_have_dco_signature(&input.li.root)
+        && passed
+    {
+        return Ok(CheckOutput::passed());
     }
 
     // DCO check in Github

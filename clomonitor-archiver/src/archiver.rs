@@ -1,5 +1,5 @@
 use anyhow::{Context, Result};
-use time::{ext::NumericalDuration, Date, OffsetDateTime};
+use time::{Date, OffsetDateTime, ext::NumericalDuration};
 use tracing::{debug, info, instrument};
 use uuid::Uuid;
 
@@ -157,8 +157,8 @@ mod tests {
     use anyhow::format_err;
     use futures::future;
     use mockall::predicate::eq;
-    use serde_json::{json, Value};
-    use time::{macros::date, Month};
+    use serde_json::{Value, json};
+    use time::{Month, macros::date};
 
     use crate::db::MockDB;
 

@@ -9,8 +9,8 @@ use axum::{
     body::Body,
     extract::{Path, Query, RawQuery, State},
     http::{
-        header::{CACHE_CONTROL, CONTENT_TYPE},
         Response, StatusCode,
+        header::{CACHE_CONTROL, CONTENT_TYPE},
     },
     response::{self, IntoResponse},
 };
@@ -25,8 +25,8 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use tera::{Context, Tera};
 use time::{
-    format_description::{self, FormatItem},
     Date,
+    format_description::{self, FormatItem},
 };
 use tracing::error;
 use uuid::Uuid;

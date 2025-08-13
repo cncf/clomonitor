@@ -5,7 +5,7 @@ use askalono::*;
 
 use crate::linter::check::{CheckId, CheckInput, CheckOutput};
 use crate::linter::checks::util::path;
-use crate::linter::{util, CheckSet};
+use crate::linter::{CheckSet, util};
 
 use super::util::path::Globs;
 
@@ -41,10 +41,9 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
         .license_info
         .as_ref()
         .and_then(|l| l.spdx_id.as_ref())
+        && spdx_id != "NOASSERTION"
     {
-        if spdx_id != "NOASSERTION" {
-            return Ok(CheckOutput::passed().value(Some(spdx_id.clone())));
-        }
+        return Ok(CheckOutput::passed().value(Some(spdx_id.clone())));
     }
 
     Ok(CheckOutput::not_passed())
@@ -96,33 +95,39 @@ mod tests {
 
     #[test]
     fn detect_not_identified() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["OWNERS"],
-            case_sensitive: true,
-        })
-        .unwrap()
-        .is_none());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["OWNERS"],
+                case_sensitive: true,
+            })
+            .unwrap()
+            .is_none()
+        );
     }
 
     #[test]
     fn detect_file_not_located() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["nonexisting"],
-            case_sensitive: true,
-        })
-        .unwrap()
-        .is_none());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["nonexisting"],
+                case_sensitive: true,
+            })
+            .unwrap()
+            .is_none()
+        );
     }
 
     #[test]
     fn detect_invalid_glob_pattern() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["invalid***"],
-            case_sensitive: true,
-        })
-        .is_err());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: true,
+            })
+            .is_err()
+        );
     }
 }

@@ -4,9 +4,9 @@ use config::Config;
 #[cfg(test)]
 use mockall::automock;
 use octorust::{
+    Client,
     auth::Credentials,
     types::{IssuesCreateRequest, PullsUpdateReviewRequest, TitleOneOf},
-    Client,
 };
 
 /// Trait that defines some operations a GH implementation must support.

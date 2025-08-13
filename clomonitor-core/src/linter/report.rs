@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use super::{check::CheckId, checks::*, CheckOutput};
+use super::{CheckOutput, check::CheckId, checks::*};
 
 /// Linter report.
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]

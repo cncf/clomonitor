@@ -3,7 +3,7 @@
 
 use std::{env, io, path::PathBuf};
 
-use anyhow::{format_err, Result};
+use anyhow::{Result, format_err};
 use clap::{Parser, ValueEnum};
 use clomonitor_core::{
     linter::{CheckSet, CoreLinter, Linter, LinterInput},
@@ -68,9 +68,8 @@ async fn main() -> Result<()> {
     let args = Args::parse();
 
     // Check if required Github token is present in environment
-    let github_token = match env::var(GITHUB_TOKEN) {
-        Err(_) => return Err(format_err!("{} not found in environment", GITHUB_TOKEN)),
-        Ok(token) => token,
+    let Ok(github_token) = env::var(GITHUB_TOKEN) else {
+        return Err(format_err!("{} not found in environment", GITHUB_TOKEN));
     };
 
     // Lint repository provided

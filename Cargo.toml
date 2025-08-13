@@ -13,25 +13,25 @@ members = [
 [workspace.package]
 version = "1.0.0"
 license = "Apache-2.0"
-edition = "2021"
-rust-version = "1.88"
+edition = "2024"
+rust-version = "1.89"
 
 [workspace.dependencies]
-anyhow = "1.0.98"
+anyhow = "1.0.99"
 askalono = "0.5.0"
 async-trait = "0.1.88"
 axum = { version = "0.8.4", features = ["macros"] }
 bincode = { version = "2.0.1", features = ["serde"] }
-cached = { version = "0.55.1", features = ["async"] }
-clap = { version = "4.5.41", features = ["derive"] }
+cached = { version = "0.56.0", features = ["async"] }
+clap = { version = "4.5.45", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
 comfy-table = "7.1.4"
-config = "0.15.13"
+config = "0.15.14"
 deadpool = "0.12.2"
 deadpool-postgres = { version = "0.14.1", features = ["serde"] }
 futures = "0.3.31"
 git2 = "0.20.2"
-glob = "0.3.2"
+glob = "0.3.3"
 graphql_client = { version = "0.14.0", features = ["reqwest"] }
 hex = "0.4.3"
 http = "1.3.1"
@@ -47,11 +47,11 @@ postgres-openssl = "0.5.1"
 postgres-types = { version = "0.2.9", features = ["derive"] }
 predicates = "3.1.3"
 regex = "1.11.1"
-reqwest = { version = "0.12.22", features = ["json"] }
+reqwest = { version = "0.12.23", features = ["json"] }
 resvg = "0.27.0" # do-not-upgrade
 rinja = { git = "https://github.com/rinja-rs/rinja", rev = "535df5e", features = ["serde_json"] }
 serde = { version = "1.0.219", features = ["derive"] }
-serde_json = "1.0.140"
+serde_json = "1.0.142"
 serde_yaml = "0.9.34"
 serde_qs = "0.15.0"
 sha2 = "0.10.9"
@@ -65,7 +65,7 @@ time = { version = "0.3.41", features = [
     "serde",
 ] }
 tiny-skia = "0.8.4" # do-not-upgrade
-tokio = { version = "1.46.1", features = [
+tokio = { version = "1.47.1", features = [
     "macros",
     "process",
     "rt-multi-thread",
@@ -87,6 +87,6 @@ tower-http = { version = "0.6.6", features = [
 tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter", "json"] }
 usvg = "0.27.0" # do-not-upgrade
-uuid = { version = "1.17.0", features = ["serde"] }
+uuid = { version = "1.18.0", features = ["serde"] }
 which = "8.0.0"
 wiremock = "0.6.4"

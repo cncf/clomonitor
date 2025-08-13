@@ -5,7 +5,7 @@ use clomonitor_core::{
     linter::{CheckOutput, Report},
     score::Score,
 };
-use comfy_table::{modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, Table, *};
+use comfy_table::{Table, modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, *};
 
 use crate::Args;
 

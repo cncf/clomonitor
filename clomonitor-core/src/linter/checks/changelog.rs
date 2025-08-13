@@ -4,8 +4,8 @@ use anyhow::Result;
 use regex::RegexSet;
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::{datasource::github, util::helpers::find_file_or_readme_ref};

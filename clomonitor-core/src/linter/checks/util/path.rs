@@ -4,7 +4,7 @@ use std::{
 };
 
 use anyhow::Result;
-use glob::{glob_with, MatchOptions, PatternError};
+use glob::{MatchOptions, PatternError, glob_with};
 
 /// Glob matching configuration.
 #[derive(Debug, Clone)]
@@ -85,12 +85,14 @@ mod tests {
 
     #[test]
     fn find_invalid_glob_pattern() {
-        assert!(find(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["invalid***"],
-            case_sensitive: false,
-        })
-        .is_err());
+        assert!(
+            find(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: false,
+            })
+            .is_err()
+        );
     }
 
     #[test]
@@ -138,11 +140,13 @@ mod tests {
 
     #[test]
     fn matches_invalid_glob_pattern() {
-        assert!(matches(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["invalid***"],
-            case_sensitive: true,
-        })
-        .is_err());
+        assert!(
+            matches(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: true,
+            })
+            .is_err()
+        );
     }
 }

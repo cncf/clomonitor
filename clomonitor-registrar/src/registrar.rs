@@ -1,12 +1,12 @@
 use std::{collections::HashMap, time::Duration};
 
-use anyhow::{format_err, Context, Error, Result};
+use anyhow::{Context, Error, Result, format_err};
 use config::Config;
 use futures::stream::{self, StreamExt};
 use reqwest::StatusCode;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use tokio::time::{timeout, Instant};
+use tokio::time::{Instant, timeout};
 use tracing::{debug, error, info, instrument};
 
 use crate::db::DynDB;
@@ -170,10 +170,10 @@ async fn process_foundation(
     // Register or update available projects as needed
     for (name, project) in &projects_available {
         // Check if the project is already registered
-        if let Some(registered_digest) = projects_registered.get(name) {
-            if registered_digest == &project.digest {
-                continue;
-            }
+        if let Some(registered_digest) = projects_registered.get(name)
+            && registered_digest == &project.digest
+        {
+            continue;
         }
 
         // Register project
@@ -190,7 +190,7 @@ async fn process_foundation(
                 debug!(project = name, "unregistering");
                 if let Err(err) = db.unregister_project(foundation_id, name).await {
                     error!(?err, project = name, "error unregistering");
-                };
+                }
             }
         }
     }

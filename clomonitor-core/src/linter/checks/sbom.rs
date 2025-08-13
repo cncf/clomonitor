@@ -4,8 +4,8 @@ use anyhow::Result;
 use regex::RegexSet;
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::{datasource::github, util::helpers::readme_matches};
@@ -60,11 +60,11 @@ mod tests {
     use anyhow::format_err;
 
     use crate::linter::{
+        LinterInput,
         datasource::github::md::{
             MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
             MdRepositoryReleasesNodesReleaseAssets, MdRepositoryReleasesNodesReleaseAssetsNodes,
         },
-        LinterInput,
     };
 
     use super::*;

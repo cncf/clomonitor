@@ -4,11 +4,11 @@ use anyhow::Result;
 use regex::{Regex, RegexSet};
 
 use crate::linter::{
+    CHECKS, CheckSet,
     check::{CheckInput, CheckOutput},
     checks::readme,
     datasource::github,
     metadata::{Exemption, Metadata},
-    CheckSet, CHECKS,
 };
 
 use super::{
@@ -59,7 +59,7 @@ pub(crate) fn readme_capture(root: &Path, regexps: &[&Regex]) -> Result<Option<S
 }
 
 // Returns a Globs instance used to locate the README file.
-pub(crate) fn readme_globs(root: &Path) -> Globs {
+pub(crate) fn readme_globs(root: &Path) -> Globs<'_> {
     Globs {
         root,
         patterns: &readme::FILE_PATTERNS,
@@ -77,10 +77,9 @@ pub(crate) fn find_exemption(check_id: &str, cm_md: Option<&Metadata>) -> Option
                 .iter()
                 .find(|exemption| exemption.check == check_id)
         })
+        && !exemption.reason.is_empty()
     {
-        if !exemption.reason.is_empty() {
-            return Some(exemption.clone());
-        }
+        return Some(exemption.clone());
     }
 
     None
@@ -107,9 +106,9 @@ mod tests {
     use anyhow::format_err;
 
     use crate::linter::{
-        adopters,
+        LinterInput, adopters,
         datasource::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
-        sbom, LinterInput,
+        sbom,
     };
 
     use super::*;

@@ -45,8 +45,8 @@ mod tests {
     use std::path::Path;
 
     use wiremock::{
-        matchers::{method, path},
         Mock, MockServer, ResponseTemplate,
+        matchers::{method, path},
     };
 
     use super::*;
@@ -104,67 +104,77 @@ mod tests {
 
     #[test]
     fn find_invalid_glob_pattern() {
-        assert!(find(
-            &Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["invalid***"],
-                case_sensitive: true,
-            },
-            &[&Regex::new("pattern").unwrap()]
-        )
-        .is_err());
+        assert!(
+            find(
+                &Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: &["invalid***"],
+                    case_sensitive: true,
+                },
+                &[&Regex::new("pattern").unwrap()]
+            )
+            .is_err()
+        );
     }
 
     #[test]
     fn matches_match() {
-        assert!(matches(
-            &Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["README*"],
-                case_sensitive: true,
-            },
-            &RegexSet::new([r"(?im)^#+.*adopters.*$"]).unwrap(),
-        )
-        .unwrap());
+        assert!(
+            matches(
+                &Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: &["README*"],
+                    case_sensitive: true,
+                },
+                &RegexSet::new([r"(?im)^#+.*adopters.*$"]).unwrap(),
+            )
+            .unwrap()
+        );
     }
 
     #[test]
     fn matches_no_match() {
-        assert!(!matches(
-            &Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["README*"],
-                case_sensitive: true,
-            },
-            &RegexSet::new(["non-existing pattern"]).unwrap(),
-        )
-        .unwrap());
+        assert!(
+            !matches(
+                &Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: &["README*"],
+                    case_sensitive: true,
+                },
+                &RegexSet::new(["non-existing pattern"]).unwrap(),
+            )
+            .unwrap()
+        );
     }
 
     #[test]
     fn matches_file_not_found() {
-        assert!(!matches(
-            &Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["nonexisting"],
-                case_sensitive: true,
-            },
-            &RegexSet::new(["pattern"]).unwrap(),
-        )
-        .unwrap());
+        assert!(
+            !matches(
+                &Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: &["nonexisting"],
+                    case_sensitive: true,
+                },
+                &RegexSet::new(["pattern"]).unwrap(),
+            )
+            .unwrap()
+        );
     }
 
     #[test]
     fn matches_invalid_glob_pattern() {
-        assert!(matches(
-            &Globs {
-                root: Path::new(TESTDATA_PATH),
-                patterns: &["invalid***"],
-                case_sensitive: true,
-            },
-            &RegexSet::new(["pattern"]).unwrap(),
-        )
-        .is_err());
+        assert!(
+            matches(
+                &Globs {
+                    root: Path::new(TESTDATA_PATH),
+                    patterns: &["invalid***"],
+                    case_sensitive: true,
+                },
+                &RegexSet::new(["pattern"]).unwrap(),
+            )
+            .is_err()
+        );
     }
 
     #[tokio::test]

@@ -3,7 +3,7 @@
 
 use std::{env, io, path::PathBuf};
 
-use anyhow::{format_err, Result};
+use anyhow::{Result, format_err};
 use clap::{Parser, ValueEnum};
 use clomonitor_core::{
     linter::{CheckSet, CoreLinter, Linter, LinterInput},

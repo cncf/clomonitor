@@ -3,8 +3,8 @@
 use anyhow::Result;
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::{

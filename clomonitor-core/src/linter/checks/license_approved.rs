@@ -1,6 +1,6 @@
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::util::helpers::{find_exemption, should_skip_check};

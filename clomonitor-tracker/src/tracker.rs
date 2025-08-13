@@ -1,6 +1,6 @@
 use std::time::{Duration, Instant};
 
-use anyhow::{format_err, Error, Result};
+use anyhow::{Error, Result, format_err};
 #[cfg(not(test))]
 use clomonitor_core::linter::setup_github_http_client;
 use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput, Project};

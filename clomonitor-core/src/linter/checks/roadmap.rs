@@ -4,8 +4,8 @@ use regex::RegexSet;
 use std::sync::LazyLock;
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::util::helpers::find_file_or_readme_ref;

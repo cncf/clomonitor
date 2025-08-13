@@ -1,6 +1,6 @@
-use anyhow::{format_err, Result};
+use anyhow::{Result, format_err};
 
-use crate::linter::{check::CheckInput, CheckId, CheckOutput, CheckSet};
+use crate::linter::{CheckId, CheckOutput, CheckSet, check::CheckInput};
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "dependencies_policy";

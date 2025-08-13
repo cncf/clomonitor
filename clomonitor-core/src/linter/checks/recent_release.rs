@@ -1,9 +1,9 @@
 use anyhow::Result;
-use time::{format_description::well_known::Rfc3339, Duration, OffsetDateTime};
+use time::{Duration, OffsetDateTime, format_description::well_known::Rfc3339};
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 use super::datasource::github;
@@ -36,11 +36,11 @@ mod tests {
     use anyhow::format_err;
 
     use crate::linter::{
+        LinterInput,
         datasource::github::md::{
             MdRepository, MdRepositoryReleases, MdRepositoryReleasesNodes,
             MdRepositoryReleasesNodesReleaseAssets,
         },
-        LinterInput,
     };
 
     use super::*;

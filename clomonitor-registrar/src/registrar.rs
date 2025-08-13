@@ -1,12 +1,12 @@
 use std::{collections::HashMap, time::Duration};
 
-use anyhow::{format_err, Context, Error, Result};
+use anyhow::{Context, Error, Result, format_err};
 use config::Config;
 use futures::stream::{self, StreamExt};
 use reqwest::StatusCode;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use tokio::time::{timeout, Instant};
+use tokio::time::{Instant, timeout};
 use tracing::{debug, error, info, instrument};
 
 use crate::db::DynDB;

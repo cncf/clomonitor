@@ -1,6 +1,6 @@
 use std::{sync::LazyLock, time::Duration};
 
-use anyhow::{format_err, Result};
+use anyhow::{Result, format_err};
 use config::Config;
 use regex::Regex;
 use rinja::Template;

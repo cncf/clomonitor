@@ -5,7 +5,7 @@ use askalono::*;
 
 use crate::linter::check::{CheckId, CheckInput, CheckOutput};
 use crate::linter::checks::util::path;
-use crate::linter::{util, CheckSet};
+use crate::linter::{CheckSet, util};
 
 use super::util::path::Globs;
 
@@ -95,33 +95,39 @@ mod tests {
 
     #[test]
     fn detect_not_identified() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["OWNERS"],
-            case_sensitive: true,
-        })
-        .unwrap()
-        .is_none());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["OWNERS"],
+                case_sensitive: true,
+            })
+            .unwrap()
+            .is_none()
+        );
     }
 
     #[test]
     fn detect_file_not_located() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["nonexisting"],
-            case_sensitive: true,
-        })
-        .unwrap()
-        .is_none());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["nonexisting"],
+                case_sensitive: true,
+            })
+            .unwrap()
+            .is_none()
+        );
     }
 
     #[test]
     fn detect_invalid_glob_pattern() {
-        assert!(detect(&Globs {
-            root: Path::new(TESTDATA_PATH),
-            patterns: &["invalid***"],
-            case_sensitive: true,
-        })
-        .is_err());
+        assert!(
+            detect(&Globs {
+                root: Path::new(TESTDATA_PATH),
+                patterns: &["invalid***"],
+                case_sensitive: true,
+            })
+            .is_err()
+        );
     }
 }

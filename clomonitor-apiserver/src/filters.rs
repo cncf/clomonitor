@@ -33,11 +33,7 @@ pub(crate) fn rs_section_score_width(score: &Option<f64>) -> rinja::Result<f64> 
     Ok(match score {
         Some(v) => {
             let width = (v * 1.06).round();
-            if width < 2.0 {
-                2.0
-            } else {
-                width
-            }
+            if width < 2.0 { 2.0 } else { width }
         }
         None => 0.0,
     })

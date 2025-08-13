@@ -2,11 +2,11 @@ use std::{path::Path, sync::Arc};
 
 use anyhow::Result;
 use axum::{
+    Router,
     extract::FromRef,
-    http::{header::CACHE_CONTROL, HeaderValue},
+    http::{HeaderValue, header::CACHE_CONTROL},
     middleware,
     routing::{get, get_service, post},
-    Router,
 };
 use config::Config;
 use tera::Tera;
@@ -125,10 +125,10 @@ mod tests {
     use std::{fs, future, sync::Arc};
 
     use axum::{
-        body::{to_bytes, Body},
+        body::{Body, to_bytes},
         http::{
-            header::{CACHE_CONTROL, CONTENT_TYPE},
             Request, StatusCode,
+            header::{CACHE_CONTROL, CONTENT_TYPE},
         },
     };
     use clomonitor_core::{linter::*, score::Score};

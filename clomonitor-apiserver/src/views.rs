@@ -5,11 +5,11 @@ use async_trait::async_trait;
 #[cfg(test)]
 use mockall::automock;
 use time::{
-    format_description::{self, FormatItem},
     OffsetDateTime,
+    format_description::{self, FormatItem},
 };
 use tokio::{
-    sync::{broadcast, mpsc, RwLock},
+    sync::{RwLock, broadcast, mpsc},
     task::JoinSet,
     time::Instant,
 };
@@ -170,7 +170,7 @@ fn parse_key(key: &str) -> (ProjectId, Day) {
 mod tests {
     use futures::future;
     use mockall::predicate::eq;
-    use tokio::time::{sleep, Duration};
+    use tokio::time::{Duration, sleep};
 
     use crate::db::MockDB;
 

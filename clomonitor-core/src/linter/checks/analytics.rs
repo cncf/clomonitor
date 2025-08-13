@@ -4,8 +4,8 @@ use anyhow::Result;
 use regex::RegexSet;
 
 use crate::linter::{
-    check::{CheckId, CheckInput, CheckOutput},
     CheckSet,
+    check::{CheckId, CheckInput, CheckOutput},
 };
 
 /// Check identifier.
@@ -144,21 +144,32 @@ mod tests {
     fn plausible_match() {
         assert!(PLAUSIBLE.is_match("https://plausible.io/js/script.js"));
         assert!(PLAUSIBLE.is_match("https://plausible.io/js/script.outbound-links.js"));
-        assert!(PLAUSIBLE
-            .is_match("data-domain=\"example.com\" src=\"https://plausible.io/js/script.js\""));
+        assert!(
+            PLAUSIBLE
+                .is_match("data-domain=\"example.com\" src=\"https://plausible.io/js/script.js\"")
+        );
     }
 
     #[test]
     fn scarf_match() {
-        assert!(SCARF
-            .is_match("https://static.scarf.sh/a.png?x-pxid=a1b2c3d4-e5f6-7890-abcd-ef1234567890"));
-        assert!(SCARF
-            .is_match("http://static.scarf.sh/a.png?x-pxid=12345678-1234-1234-1234-123456789012"));
+        assert!(
+            SCARF.is_match(
+                "https://static.scarf.sh/a.png?x-pxid=a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+            )
+        );
+        assert!(
+            SCARF.is_match(
+                "http://static.scarf.sh/a.png?x-pxid=12345678-1234-1234-1234-123456789012"
+            )
+        );
 
         assert!(!SCARF.is_match("http://static.scarf.sh/a.png?x-pxid=1234")); // Too short pxid
         assert!(!SCARF.is_match("http://static.scarf.sh/a.png?x-pxid=not-a-valid-uuid")); // Invalid UUID format
-        assert!(!SCARF
-            .is_match("http://static.scarf.sh/a.png?x-pxid=12345678-1234-1234-1234-12345678901"));
+        assert!(
+            !SCARF.is_match(
+                "http://static.scarf.sh/a.png?x-pxid=12345678-1234-1234-1234-12345678901"
+            )
+        );
         // Wrong segment lengths
     }
 }

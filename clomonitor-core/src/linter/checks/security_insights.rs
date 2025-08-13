@@ -1,8 +1,8 @@
 use std::path::Path;
 
-use anyhow::{format_err, Result};
+use anyhow::{Result, format_err};
 
-use crate::linter::{check::CheckInput, CheckId, CheckOutput, CheckSet};
+use crate::linter::{CheckId, CheckOutput, CheckSet, check::CheckInput};
 
 use super::datasource::{github, security_insights::SECURITY_INSIGHTS_MANIFEST_FILE};
 

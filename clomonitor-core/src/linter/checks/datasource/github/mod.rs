@@ -1,6 +1,6 @@
 use std::{path::Path, sync::LazyLock};
 
-use anyhow::{format_err, Context, Result};
+use anyhow::{Context, Result, format_err};
 use graphql_client::{GraphQLQuery, Response};
 use regex::{Regex, RegexSet};
 use reqwest::StatusCode;

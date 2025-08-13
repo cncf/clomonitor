@@ -4,11 +4,11 @@ use anyhow::Result;
 use regex::{Regex, RegexSet};
 
 use crate::linter::{
+    CHECKS, CheckSet,
     check::{CheckInput, CheckOutput},
     checks::readme,
     datasource::github,
     metadata::{Exemption, Metadata},
-    CheckSet, CHECKS,
 };
 
 use super::{
@@ -106,9 +106,9 @@ mod tests {
     use anyhow::format_err;
 
     use crate::linter::{
-        adopters,
+        LinterInput, adopters,
         datasource::github::md::{MdRepository, MdRepositoryOwner, MdRepositoryOwnerOn},
-        sbom, LinterInput,
+        sbom,
     };
 
     use super::*;

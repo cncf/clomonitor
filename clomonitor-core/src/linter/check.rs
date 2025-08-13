@@ -1,16 +1,16 @@
-use anyhow::{format_err, Context, Error, Result};
+use anyhow::{Context, Error, Result, format_err};
 use serde::{Deserialize, Serialize};
 use which::which;
 
 use super::{
-    checks::{signed_releases, CHECKS},
+    CheckSet, LinterInput,
+    checks::{CHECKS, signed_releases},
     datasource::{
         github,
-        scorecard::{scorecard, Scorecard, ScorecardCheck},
+        scorecard::{Scorecard, ScorecardCheck, scorecard},
         security_insights::SecurityInsights,
     },
-    metadata::{Exemption, Metadata, METADATA_FILE},
-    CheckSet, LinterInput,
+    metadata::{Exemption, METADATA_FILE, Metadata},
 };
 
 /// Type alias to represent a check identifier.
@@ -291,7 +291,7 @@ pub(crate) use run_async;
 mod tests {
     use super::*;
     use crate::linter::datasource::scorecard::ScorecardCheckDocs;
-    use anyhow::{format_err, Result};
+    use anyhow::{Result, format_err};
 
     #[test]
     fn check_output_from_exemption() {

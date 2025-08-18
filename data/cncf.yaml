@@ -3117,8 +3117,8 @@
 - name: cncf-tag-contributor-strategy
   display_name: TAG Contributor Strategy
   description: CNCF Technical Advisory Group on Contributor Strategy -- maintainer relations, building up contributors, governance, graduation, and more.
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-contributor-strategy/icon/color/tag-contributor-strategy-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-contributor-strategy/icon/white/tag-contributor-strategy-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-contributor-strategy/icon/color/tag-contributor-strategy-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-contributor-strategy/icon/white/tag-contributor-strategy-icon-white.svg
   repositories:
     - name: tag-contributor-strategy
       url: https://github.com/cncf/tag-contributor-strategy
@@ -3131,8 +3131,7 @@
 - name: cncf-tag-security
   display_name: TAG Security
   description: CNCF Security Technical Advisory Group -- secure access, policy control, privacy, auditing, explainability and more!
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/sig-security/icon/color/sig-security-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/sig-security/icon/white/sig-security-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/archived/tag-security/icon/color/tag-security-icon-color.svg
   repositories:
     - name: tag-security
       url: https://github.com/cncf/tag-security
@@ -3141,8 +3140,8 @@
 - name: cncf-tag-storage
   display_name: TAG Storage
   description: CNCF Technical Advisory Group for Storage
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-storage/icon/color/tag-storage-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-storage/icon/white/tag-storage-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-storage/icon/color/tag-storage-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-storage/icon/white/tag-storage-icon-white.svg
   repositories:
     - name: tag-storage
       url: https://github.com/cncf/tag-storage
@@ -3151,8 +3150,8 @@
 - name: cncf-tag-app-delivery
   display_name: TAG App Delivery
   description: CNCF Technical Advisory Group for App Delivery
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-app-delivery/icon/color/tag-app-delivery-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-app-delivery/icon/white/tag-app-delivery-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-app-delivery/icon/color/tag-app-delivery-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-app-delivery/icon/white/tag-app-delivery-icon-white.svg
   repositories:
     - name: tag-app-delivery
       url: https://github.com/cncf/tag-app-delivery
@@ -3161,8 +3160,8 @@
 - name: cncf-tag-network
   display_name: TAG Network
   description: CNCF Technical Advisory Group for Network
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-network/icon/color/tag-network_icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-network/icon/white/tag-network_icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-network/icon/color/tag-network_icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-network/icon/white/tag-network_icon-white.svg
   repositories:
     - name: tag-network
       url: https://github.com/cncf/tag-network
@@ -3171,8 +3170,8 @@
 - name: cncf-tag-runtime
   display_name: TAG Runtime
   description: CNCF Technical Advisory Group for Runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-runtime/icon/color/tag-runtime_icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-runtime/icon/white/tag-runtime_icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-runtime/icon/color/tag-runtime_icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-runtime/icon/white/tag-runtime_icon-white.svg
   repositories:
     - name: tag-runtime
       url: https://github.com/cncf/tag-runtime
@@ -3181,8 +3180,8 @@
 - name: cncf-tag-observability
   display_name: TAG Observability
   description: CNCF Technical Advisory Group for Observability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-observability/icon/color/tag-observability_icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-observability/icon/white/tag-observability_icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-observability/icon/color/tag-observability_icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/archived/tag-observability/icon/white/tag-observability_icon-white.svg
   repositories:
     - name: tag-observability
       url: https://github.com/cncf/tag-observability
@@ -3191,8 +3190,8 @@
 - name: cncf-tag-env-sustainability
   display_name: TAG Environmental Sustainability
   description: CNCF Technical Advisory Group for Environmental Sustainability
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-environmental-sustainability/color/tag-environmental-sustainability_color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/other/tag-environmental-sustainability/white/tag-environmental-sustainability_white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/archived/tag-environmental-sustainability/icon/color/tag-environmental-sustainability-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/archived/tag-environmental-sustainability/icon/white/tag-environmental-sustainability-icon-white.svg
   repositories:
     - name: tag-env-sustainability
       url: https://github.com/cncf/tag-env-sustainability
@@ -3340,7 +3339,7 @@
   description: Hwameistor is an HA local storage system for cloud-native stateful workloads
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-colorlight.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color-light.svg
   devstats_url: https://hwameistor.devstats.cncf.io/
   accepted_at: "2023-06-21"
   maturity: sandbox
@@ -4420,7 +4419,7 @@
   display_name: InterLink
   description: InterLink aims to provide an abstraction for the execution of a Kubernetes pod on any remote resource capable of managing a Container execution lifecycle. It allows you to extend your cloud environment anywhere by running Kubernetes workloads on various infrastructures, creating a seamless cloud-native experience across diverse environments.
   category: provisioning
-  logo_url: https://intertwin-eu.github.io/interLink/img/interlink_logo.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/interlink/stacked/color/interlink-stacked-color.svg
   devstats_url: https://interlink.devstats.cncf.io
   accepted_at: "2025-03-04"
   maturity: sandbox

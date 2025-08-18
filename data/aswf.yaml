@@ -92,7 +92,7 @@
     \ needed to improve best practices and address the unique challenges we face."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
+  logo_dark_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
   devstats_url: null
   maturity: working-group
   repositories:

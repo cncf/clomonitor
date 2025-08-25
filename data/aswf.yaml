@@ -125,6 +125,18 @@
     url: https://github.com/AcademySoftwareFoundation/dpel-website
     exclude:
     - clomonitor
+  - name: ALab
+    url: https://github.com/DigitalProductionExampleLibrary/ALab
+    exclude:
+    - clomonitor
+  - name: OpenPBRShaderPlayground
+    url: https://github.com/DigitalProductionExampleLibrary/OpenPBRShaderPlayground
+    exclude:
+    - clomonitor
+  - name: SoleMates
+    url: https://github.com/DigitalProductionExampleLibrary/SoleMates
+    exclude:
+    - clomonitor
 - name: aswf-diversity-inclusion-wg
   display_name: Diversity & Inclusion Working Group
   description: The purpose of this Working Group is to create a cross-industry effort

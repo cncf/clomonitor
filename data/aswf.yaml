@@ -1,88 +1,16 @@
-- name: aswf-language-interop-project
-  display_name: ASWF Language Interop Project
-  description: The mission of the Project is to enable interoperability between various
-    programming languages across each of the libraries used by the media and entertainment
-    industry.
+- name: aces
+  display_name: Academy Color Encoding System (ACES)
+  description: The mission of the project is to develop a global standard for interchanging
+    digital image files, managing color workflows, and creating masters for delivery
+    and archiving.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/aswf-language-interop-project/horizontal/color/aswf-language-interop-project-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/aswf-language-interop-project/horizontal/color_wt/aswf-language-interop-project-horizontal-color_wt.svg
+  logo_url: https://artwork.aswf.io/projects/aces/full/color/aces-full-color.svg
+  logo_url_dark: https://artwork.aswf.io/projects/aces/full/color/aces-full-color.svg
   devstats_url: null
-  maturity: working-group
+  maturity: incubating
   repositories:
-  - name: organization
-    url: https://github.com/vfx-rs/organization
-    exclude:
-    - clomonitor
-  - name: arewevfxyet
-    url: https://github.com/vfx-rs/arewevfxyet
-    exclude:
-    - clomonitor
-  - name: babble
-    url: https://github.com/vfx-rs/babble
-    exclude:
-    - clomonitor
-  - name: cppmm
-    url: https://github.com/vfx-rs/cppmm
-    exclude:
-    - clomonitor
-  - name: cppmm-build
-    url: https://github.com/vfx-rs/cppmm-build
-    exclude:
-    - clomonitor
-  - name: cppmm-refptr
-    url: https://github.com/vfx-rs/cppmm-refptr
-    exclude:
-    - clomonitor
-  - name: imath-traits
-    url: https://github.com/vfx-rs/imath-traits
-    exclude:
-    - clomonitor
-  - name: meeting-minutes
-    url: https://github.com/vfx-rs/meeting-minutes
-    exclude:
-    - clomonitor
-  - name: ocio-bind
-    url: https://github.com/vfx-rs/ocio-bind
-    exclude:
-    - clomonitor
-  - name: oiio-bind
-    url: https://github.com/vfx-rs/oiio-bind
-    exclude:
-    - clomonitor
-  - name: openexr-bind
-    url: https://github.com/vfx-rs/openexr-bind
-    exclude:
-    - clomonitor
-  - name: openexr-core-rs
-    url: https://github.com/vfx-rs/openexr-core-rs
-    exclude:
-    - clomonitor
-  - name: openexr-rs
-    url: https://github.com/vfx-rs/openexr-rs
-    exclude:
-    - clomonitor
-  - name: openexr-sys
-    url: https://github.com/vfx-rs/openexr-sys
-    exclude:
-    - clomonitor
-  - name: opentimelineio-bind
-    url: https://github.com/vfx-rs/opentimelineio-bind
-    exclude:
-    - clomonitor
-  - name: ptex-bind
-    url: https://github.com/vfx-rs/ptex-bind
-    exclude:
-    - clomonitor
-  - name: rfcs
-    url: https://github.com/vfx-rs/rfcs
-    exclude:
-    - clomonitor
-  - name: template-project
-    url: https://github.com/vfx-rs/template-project
-    exclude:
-    - clomonitor
-  - name: usd-bind
-    url: https://github.com/vfx-rs/usd-bind
+  - name: aces
+    url: https://github.com/ampas/aces
     exclude:
     - clomonitor
 - name: aswf-continuous-integration-wg
@@ -92,7 +20,7 @@
     \ needed to improve best practices and address the unique challenges we face."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
-  logo_dark_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
+  logo_url_dark: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/horizontal/color/aswf-continuous-integration-wg-horizontal-color.svg
   devstats_url: null
   maturity: working-group
   repositories:
@@ -102,6 +30,21 @@
     - clomonitor
   - name: aswf-docker
     url: https://github.com/AcademySoftwareFoundation/aswf-docker
+    exclude:
+    - clomonitor
+- name: dailies-transcription-notes-taking-tool
+  display_name: Dailies Notes Assistant
+  description: The mission of the Project is to develop a tool designed to transcribe
+    dailies meetings, analyze the content using an LLM, and provide a plugin system
+    to integrate into production tracking software.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/dailies-transcription-notes-taking-tool/None
+  logo_url_dark: https://artwork.aswf.io/projects/dailies-transcription-notes-taking-tool/None
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: dna
+    url: https://github.com/AcademySoftwareFoundation/dna
     exclude:
     - clomonitor
 - name: dpel
@@ -117,7 +60,7 @@
     \ volumetric data, animation rigs, edit decision lists, etc."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/dpel/stacked/black/dpel-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/dpel/stacked/white/dpel-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/dpel/stacked/black/dpel-stacked-black.svg
   devstats_url: null
   maturity: graduated
   repositories:
@@ -137,23 +80,6 @@
     url: https://github.com/DigitalProductionExampleLibrary/SoleMates
     exclude:
     - clomonitor
-- name: aswf-diversity-inclusion-wg
-  display_name: Diversity & Inclusion Working Group
-  description: The purpose of this Working Group is to create a cross-industry effort
-    to encourage diversity and inclusion across the open source software ecosystem
-    for vfx and animation. The WG will bring together software engineers/developers,
-    marketing/communications professionals, HR, and anyone else passionate about D&I
-    within vfx and animation.
-  category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/aswf-diversity-inclusion-wg/horizontal/color/aswf-diversity-inclusion-wg-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/aswf-diversity-inclusion-wg/horizontal/color/aswf-diversity-inclusion-wg-horizontal-color.svg
-  devstats_url: null
-  maturity: working-group
-  repositories:
-  - name: wg-diversity-inclusion
-    url: https://github.com/chaoss/wg-diversity-inclusion
-    exclude:
-    - clomonitor
 - name: materialx
   display_name: MaterialX
   description: MaterialX addresses the need for a common, open standard to represent
@@ -168,7 +94,7 @@
   maturity: graduated
   repositories:
   - name: MaterialX
-    url: https://github.com/materialx/MaterialX
+    url: https://github.com/AcademySoftwareFoundation/MaterialX
     exclude:
     - clomonitor
   - name: OpenPBR
@@ -214,10 +140,24 @@
   logo_url: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
   logo_url_dark: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
   devstats_url: null
-  maturity: incubating
+  maturity: graduated
   repositories:
-  - name: openshadinglanguage
-    url: https://github.com/imageworks/openshadinglanguage
+  - name: OpenShadingLanguage
+    url: https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+    exclude:
+    - clomonitor
+- name: openapv
+  display_name: OpenAPV
+  description: The mission of the Project is to develop a royalty-free, open-source,
+    open standard video codec for professional video capturing and post-production.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/openapv/horizontal/black/openapv-horizontal-black.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openapv/horizontal/black/openapv-horizontal-black.svg
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: openapv
+    url: https://github.com/AcademySoftwareFoundation/openapv
     exclude:
     - clomonitor
 - name: openassetio
@@ -226,7 +166,7 @@
     standard for tools and content management systems used in media production.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openassetio/horizontal/black/openassetio-horizontal-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openassetio/horizontal/white/openassetio-horizontal-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openassetio/horizontal/black/openassetio-horizontal-black.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -234,40 +174,16 @@
     url: https://github.com/OpenAssetIO/OpenAssetIO
     exclude:
     - clomonitor
-  - name: OpenAssetIO-Manager-BAL
-    url: https://github.com/OpenAssetIO/OpenAssetIO-Manager-BAL
-    exclude:
-    - clomonitor
   - name: OpenAssetIO-MediaCreation
     url: https://github.com/OpenAssetIO/OpenAssetIO-MediaCreation
-    exclude:
-    - clomonitor
-  - name: OpenAssetIO-Test-CMake
-    url: https://github.com/OpenAssetIO/OpenAssetIO-Test-CMake
     exclude:
     - clomonitor
   - name: OpenAssetIO-TraitGen
     url: https://github.com/OpenAssetIO/OpenAssetIO-TraitGen
     exclude:
     - clomonitor
-  - name: OpenAssetIO-WG
-    url: https://github.com/OpenAssetIO/OpenAssetIO-WG
-    exclude:
-    - clomonitor
   - name: Template-OpenAssetIO-Manager-Python
     url: https://github.com/OpenAssetIO/Template-OpenAssetIO-Manager-Python
-    exclude:
-    - clomonitor
-  - name: openassetio.github.io
-    url: https://github.com/OpenAssetIO/openassetio.github.io
-    exclude:
-    - clomonitor
-  - name: otio-openassetio
-    url: https://github.com/OpenAssetIO/otio-openassetio
-    exclude:
-    - clomonitor
-  - name: usdOpenAssetIOResolver
-    url: https://github.com/OpenAssetIO/usdOpenAssetIOResolver
     exclude:
     - clomonitor
 - name: opencolorio
@@ -277,7 +193,7 @@
     digital content creation applications and pipelines.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/opencolorio/stacked/color/opencolorio-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/opencolorio/stacked/white/opencolorio-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/opencolorio/stacked/color/opencolorio-stacked-color.svg
   devstats_url: null
   maturity: graduated
   repositories:
@@ -297,7 +213,7 @@
     necessary computational resources.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/opencue/stacked/black/opencue-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/opencue/stacked/white/opencue-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/opencue/stacked/black/opencue-stacked-black.svg
   devstats_url: null
   maturity: graduated
   repositories:
@@ -316,7 +232,7 @@
     content creation.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openexr/stacked/color/openexr-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openexr/stacked/white/openexr-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openexr/stacked/color/openexr-stacked-color.svg
   devstats_url: null
   maturity: graduated
   repositories:
@@ -346,7 +262,7 @@
     processing plug-in standard.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openfx/stacked/color/openfx-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openfx/stacked/white/openfx-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openfx/stacked/color/openfx-stacked-color.svg
   devstats_url: null
   maturity: incubating
   repositories:
@@ -361,10 +277,10 @@
     a format- agnostic API, with a feature set, scalability, and robustness needed
     for production.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openimageio/acronym/color/openimageio-acronym-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openimageio/acronym/white/openimageio-acronym-white.svg
+  logo_url: https://artwork.aswf.io/projects/openimageio/stacked/color/openimageio-stacked-color.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openimageio/stacked/color/openimageio-stacked-color.svg
   devstats_url: null
-  maturity: incubating
+  maturity: graduated
   repositories:
   - name: OpenImageIO
     url: https://github.com/AcademySoftwareFoundation/OpenImageIO
@@ -383,7 +299,7 @@
     as well as a plugin system for linking to proprietary media storage schemas.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/open-timeline-io/stacked/white/open-timeline-io-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
   devstats_url: null
   maturity: incubating
   repositories:
@@ -399,7 +315,7 @@
     tools for its efficient traversal and manipulation.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openvdb/stacked/color/openvdb-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openvdb/stacked/white/openvdb-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/openvdb/stacked/color/openvdb-stacked-color.svg
   devstats_url: null
   maturity: graduated
   repositories:
@@ -419,7 +335,7 @@
     data to enable this framework.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/rawtoaces/horizontal/color/rawtoaces-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/rawtoaces/horizontal/white/rawtoaces-horizontal-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/rawtoaces/horizontal/color/rawtoaces-horizontal-color.svg
   devstats_url: null
   maturity: incubating
   repositories:
@@ -435,12 +351,26 @@
     configured for a given set of packages.'
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/rez/stacked/black/rez-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/rez/stacked/white/rez-stacked-white.svg
+  logo_url_dark: https://artwork.aswf.io/projects/rez/stacked/black/rez-stacked-black.svg
   devstats_url: null
   maturity: incubating
   repositories:
   - name: rez
     url: https://github.com/AcademySoftwareFoundation/rez
+    exclude:
+    - clomonitor
+- name: rongotai-model-train-club-rmtc
+  display_name: Rongotai Model Train Club (RMTC)
+  description: RMTC is a VFX-specific framework for simplifying the production and
+    deployment of AI/ML models using well-tracked and rights-cleared datasets.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/rongotai-model-train-club-rmtc/None
+  logo_url_dark: https://artwork.aswf.io/projects/rongotai-model-train-club-rmtc/None
+  devstats_url: null
+  maturity: sandbox
+  repositories:
+  - name: rmtc
+    url: https://github.com/AcademySoftwareFoundation/rmtc
     exclude:
     - clomonitor
 - name: aswf-usd-wg
@@ -454,7 +384,7 @@
   logo_url: https://artwork.aswf.io/projects/aswf-usd-wg/horizontal/color/aswf-usd-wg-horizontal-color.svg
   logo_url_dark: https://artwork.aswf.io/projects/aswf-usd-wg/horizontal/color/aswf-usd-wg-horizontal-color.svg
   devstats_url: null
-  maturity: working-group
+  maturity: long-term-working-group
   repositories:
   - name: wg-usd
     url: https://github.com/AcademySoftwareFoundation/wg-usd

@@ -1,0 +1,760 @@
+- name: anoncreds
+  description:
+    Hyperledger AnonCreds – short for “Anonymous Credentials” - is the
+    most commonly used Verifiable Credential (VC) format in the world.
+    Ledger agnostic and with a formal open specification, AnonCreds is
+    a VC format that adds important privacy-protecting ZKP
+    (zero-knowledge proof) capabilities to the core VC assurances.
+  display_name: Hyperledger AnonCreds
+  category: decentralized identity
+  home_url: https://www.hyperledger.org/projects/anoncreds
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Anon_Creds.png
+  accepted_at: "2022-10-20"
+  maturity: incubating
+  repositories:
+  - name: anoncreds-clsignatures-rs
+    url: https://github.com/hyperledger/anoncreds-clsignatures-rs
+    checksets:
+    - code
+  - name: anoncreds-methods-registry
+    url: https://github.com/hyperledger/anoncreds-methods-registry
+    checksets:
+    - code
+  - name: anoncreds-revocation
+    url: https://github.com/hyperledger/anoncreds-revocation
+    checksets:
+    - code
+  - name: anoncreds-rs
+    url: https://github.com/hyperledger/anoncreds-rs
+    checksets:
+    - code
+  - name: anoncreds-spec
+    url: https://github.com/hyperledger/anoncreds-spec
+    checksets:
+    - docs
+  - name: anoncreds-spec-v2
+    url: https://github.com/hyperledger/anoncreds-spec-v2
+    checksets:
+    - docs
+  - name: anoncreds-tex
+    url: https://github.com/hyperledger/anoncreds-tex
+    checksets:
+    - docs
+  - name: anoncreds-v2-rs
+    url: https://github.com/hyperledger/anoncreds-v2-rs
+    checksets:
+    - code
+- name: aries
+  description: |
+    Hyperledger Aries is your complete toolkit for decentralized identity solutions
+    and digital trust. Issue, store and present verifiable credentials with maximum
+    privacy preservation, and establish confidential, ongoing communication channels
+    for rich interactions. It supports multiple protocols, credential types, ledgers
+    and registries. It has frameworks in multiple development languages, and
+    interoperability tools and profiles to help everything work together seamlessly.
+  display_name: Hyperledger Aries
+  category: decentralized identity
+  home_url: https://www.hyperledger.org/projects/aries
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Aries.svg
+  accepted_at: "2019-05-02"
+  maturity: graduated
+  repositories:
+  - name: aries
+    url: https://github.com/hyperledger/aries
+    checksets:
+    - docs
+  - name: aries-acapy-controllers
+    url: https://github.com/hyperledger/aries-acapy-controllers
+    checksets:
+    - code
+  - name: aries-acapy-docs
+    url: https://github.com/hyperledger/aries-acapy-docs
+    check_sets:
+    - docs
+  - name: aries-acapy-plugins
+    url: https://github.com/hyperledger/aries-acapy-plugins
+    check_sets:
+    - code
+  - name: aries-acapy-tools
+    url: https://github.com/hyperledger/aries-acapy-tools
+    checksets:
+    - code
+  - name: aries-agent-test-harness
+    url: https://github.com/hyperledger/aries-agent-test-harness
+    checksets:
+    - code
+  - name: aries-akrida
+    url: https://github.com/hyperledger/aries-akrida
+    checksets:
+    - code
+  - name: aries-askar
+    url: https://github.com/hyperledger/aries-askar
+    checksets:
+    - code
+  - name: aries-bbs-go 
+    url: https://github.com/hyperledger/aries-bbs-go
+    checksets:
+    - code
+  - name: aries-bbssignatures-rs
+    url: https://github.com/hyperledger/aries-bbssignatures-rs
+    checksets:
+    - code
+  - name: aries-builder-images
+    url: https://github.com/hyperledger/aries-builder-images
+    checksets:
+    - code
+  - name: aries-cloudagent-python
+    url: https://github.com/hyperledger/aries-cloudagent-python
+    check_sets:
+    - code
+  - name: aries-framework-kotlin
+    url: https://github.com/hyperledger/aries-framework-kotlin
+    checksets:
+    - code
+  - name: aries-framework-swift
+    url: https://github.com/hyperledger/aries-framework-swift
+    checksets:
+    - code
+  - name: aries-mediator-service
+    url: https://github.com/hyperledger/aries-mediator-service
+    checksets:
+    - code
+  - name: aries-rfcs
+    url: https://github.com/hyperledger/aries-rfcs
+    check_sets:
+    - docs
+  - name: aries-socketdock
+    url: https://github.com/hyperledger/aries-socketdock
+    checksets:
+    - code
+  - name: aries-staticagent-python
+    url: https://github.com/hyperledger/aries-staticagent-python
+    checksets:
+    - code
+  - name: aries-uniffi-wrappers
+    url: https://github.com/hyperledger/aries-uniffi-wrappers
+    checksets:
+    - code
+  - name: aries-vcx
+    url: https://github.com/hyperledger/aries-vcx
+    checksets:
+    - code
+- name: besu
+  description: |
+    Hyperledger Besu is an Ethereum client designed to be enterprise-friendly for both
+    public and private permissioned network use cases, with an extractable EVM
+    implementation. It can also be run on test networks such as Sepolia and Görli.
+    Hyperledger Besu includes several consensus algorithms including Proof of Stake,
+    Proof of Work, and Proof of Authority (IBFT 2.0, QBFT, and Clique). Its
+    comprehensive permissioning schemes are designed specifically for use in a
+    consortium environment.
+  display_name: Hyperledger Besu
+  category: general-purpose DLT
+  home_url: https://www.hyperledger.org/projects/besu
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Besu.svg
+  accepted_at: "2019-08-29"
+  maturity: graduated
+  repositories:
+  - name: besu
+    url: https://github.com/hyperledger/besu
+    checksets:
+    - code
+  - name: besu-docs
+    url: https://github.com/hyperledger/besu-docs
+    checksets:
+    - docs
+  - name: besu-errorprone-checks
+    url: https://github.com/hyperledger/besu-errorprone-checks
+    checksets:
+    - code
+  - name: besu-native
+    url: https://github.com/hyperledger/besu-native
+    checksets:
+    - code
+  - name: besu-verkle-trie
+    url: https://github.com/hyperledger/besu-verkle-trie
+    checksets:
+    - code
+  - name: homebrew-besu
+    url: https://github.com/hyperledger/homebrew-besu
+    checksets:
+    - code
+- name: bevel
+  description:
+    Hyperledger Bevel is an accelerator that helps developers rapidly set-up and
+    deploy secure, scalable and production ready DLT network(s) that also allows
+    new organizations to be easily onboarded on the network. Bevel accelerates DLT
+    network deployment and lets developers focus on building blockchain applications
+    without having to waste precious time standing up the environment or worrying
+    whether the network will scale and meet production requirements. Bevel
+    facilitates a safe and secure way of deploying and operating different DLT platforms.
+  display_name: Hyperledger Bevel
+  category: deployment automation
+  home_url: https://www.hyperledger.org/projects/bevel
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Bevel.svg
+  accepted_at: "2021-11-04"
+  maturity: incubating
+  repositories:
+  - name: bevel
+    url: https://github.com/hyperledger/bevel
+    checksets:
+    - code
+  - name: bevel-operator-fabric
+    url: https://github.com/hyperledger/bevel-operator-fabric
+    checksets:
+    - code
+  - name: bevel-samples
+    url: https://github.com/hyperledger/bevel-samples
+    checksets:
+    - code
+- name: cacti
+  description:
+    Hyperledger Cacti is a plugin-based framework which aims to provide developers
+    with an abstraction over protocol specific implementations and enabling
+    interoperability.  This enables solutions to adapt to new protocols and make
+    transactions involving multiple public and/or permissioned ledgers more easily. 
+  display_name: Hyperledger Cacti
+  category: cross-chain interoperability
+  home_url: https://www.hyperledger.org/projects/cacti
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Cacti.svg
+  accepted_at: "2020-04-30"
+  maturity: graduated
+  repositories:
+  - name: cacti
+    url: https://github.com/hyperledger/cacti
+    checksets:
+    - code
+- name: caliper
+  description:
+    Hyperledger Caliper is a blockchain benchmark tool, it allows users to
+    measure the performance of a blockchain implementation with a set of
+    predefined use cases. Hyperledger Caliper will produce reports containing
+    a number of performance indicators to serve as a reference when using the
+    following blockchain solutions - Hyperledger Besu, Ethereum and Hyperledger
+    Fabric.
+  display_name: Hyperledger Caliper
+  category: performance benchmarking
+  home_url: https://www.hyperledger.org/projects/caliper
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Caliper.svg
+  accepted_at: "2018-03-15"
+  maturity: incubating
+  repositories:
+  - name: caliper
+    url: https://github.com/hyperledger/caliper
+    checksets:
+    - code
+  - name: caliper-benchmarks
+    url: https://github.com/hyperledger/caliper-benchmarks
+    checksets:
+    - code
+- name: cello
+  description:
+    Hyperledger Cello aims to serve as the operational dashboard for Blockchain,
+    which reduces the effort required for creating, managing and using
+    blockchains. Besides, it can also be used to facilitate creating Blockchain
+    as a Service. Cello provides an operational console for managing blockchain’s
+    efficiently and running on top of various infrastructures, e.g., baremetal,
+    virtual machine, and various container platforms.
+  display_name: Hyperledger Cello
+  category: deployment automation
+  home_url: https://www.hyperledger.org/projects/cello
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Cello.svg
+  accepted_at: "2017-01-05"
+  maturity: incubating
+  repositories:
+  - name: cello
+    url: https://github.com/hyperledger/cello
+    checksets:
+    - code
+- name: fabric
+  description:
+    Hyperledger Fabric serves as the foundation for developing applications or solutions
+    with a modular architecture. It allows interchangeable components, including
+    consensus and membership services, enabling a plug-and-play environment.  Hyperledger
+    Fabric is designed to meet diverse industry needs. Additionally, it offers a unique
+    approach to consensus that facilitates scalable performance while maintaining privacy.
+  display_name: Hyperledger Fabric
+  category: general-purpose DLT
+  home_url: https://www.hyperledger.org/projects/fabric
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Fabric.svg
+  accepted_at: "2016-03-31"
+  maturity: graduated
+  repositories:
+  - name: fabric
+    url: https://github.com/hyperledger/fabric
+    checksets:
+    - code
+  - name: fabric-admin-sdk
+    url: https://github.com/hyperledger/fabric-admin-sdk
+    checksets:
+    - code
+  - name: fabric-amcl
+    url: https://github.com/hyperledger/fabric-amcl
+    checksets:
+    - code
+  - name: fabric-ca
+    url: https://github.com/hyperledger/fabric-ca
+    checksets:
+    - code
+  - name: fabric-chaincode-go
+    url: https://github.com/hyperledger/fabric-chaincode-go
+    checksets:
+    - code
+  - name: fabric-chaincode-java
+    url: https://github.com/hyperledger/fabric-chaincode-java
+    checksets:
+    - code
+  - name: fabric-chaincode-node
+    url: https://github.com/hyperledger/fabric-chaincode-node
+    checksets:
+    - code
+  - name: fabric-cli
+    url: https://github.com/hyperledger/fabric-cli
+    checksets:
+    - code
+  - name: fabric-config
+    url: https://github.com/hyperledger/fabric-config
+    checksets:
+    - code
+  - name: fabric-contract-api-go
+    url: https://github.com/hyperledger/fabric-contract-api-go
+    checksets:
+    - code
+  - name: fabric-docs-i18n
+    url: https://github.com/hyperledger/fabric-docs-i18n
+    checksets:
+    - docs
+  - name: fabric-gateway
+    url: https://github.com/hyperledger/fabric-gateway
+    checksets:
+    - code
+  - name: fabric-gateway-java
+    url: https://github.com/hyperledger/fabric-gateway-java
+    checksets:
+    - code
+  - name: fabric-lib-go
+    url: https://github.com/hyperledger/fabric-lib-go
+    checksets:
+    - code
+  - name: fabric-private-chaincode
+    url: https://github.com/hyperledger/fabric-private-chaincode
+    checksets:
+    - code
+  - name: fabric-protos
+    url: https://github.com/hyperledger/fabric-protos
+    checksets:
+    - code
+  - name: fabric-protos-go
+    url: https://github.com/hyperledger/fabric-protos-go
+    checksets:
+    - code
+  - name: fabric-protos-go-apiv2
+    url: https://github.com/hyperledger/fabric-protos-go-apiv2
+    checksets:
+    - code
+  - name: fabric-rfcs
+    url: https://github.com/hyperledger/fabric-rfcs
+    checksets:
+    - docs
+  - name: fabric-samples
+    url: https://github.com/hyperledger/fabric-samples
+    checksets:
+    - code-lite
+  - name: fabric-sdk-java
+    url: https://github.com/hyperledger/fabric-sdk-java
+    checksets:
+    - code
+  - name: fabric-sdk-go
+    url: https://github.com/hyperledger/fabric-sdk-go
+    checksets:
+    - code
+  - name: fabric-sdk-node
+    url: https://github.com/hyperledger/fabric-sdk-node
+    checksets:
+    - code
+  - name: fabric-sdk-py
+    url: https://github.com/hyperledger/fabric-sdk-py
+    checksets:
+    - code
+  - name: fabric-test
+    url: https://github.com/hyperledger/fabric-test
+    checksets:
+    - code
+- name: firefly
+  description:
+    Hyperledger FireFly is the first open source Supernode -- a complete stack for
+    enterprises to build and scale secure Web3 applications. The FireFly API for
+    digital assets, data flows, and blockchain transactions makes it radically
+    faster to build production-ready apps on popular chains and protocols.
+  display_name: Hyperledger FireFly
+  category: connectivity/integration gateway
+  home_url: https://www.hyperledger.org/projects/firefly
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Firefly.svg
+  accepted_at: "2021-09-23"
+  maturity: graduated
+  repositories:
+  - name: firefly
+    url: https://github.com/hyperledger/firefly
+    checksets:
+    - code
+  - name: firefly-cli
+    url: https://github.com/hyperledger/firefly-cli
+    checksets:
+    - code
+  - name: firefly-common
+    url: https://github.com/hyperledger/firefly-common
+    checksets:
+    - code
+  - name: firefly-cordaconnect
+    url: https://github.com/hyperledger/firefly-cordaconnect
+    checksets:
+    - code
+  - name: firefly-dataexchange-https
+    url: https://github.com/hyperledger/firefly-dataexchange-https
+    checksets:
+    - code
+  - name: firefly-ethconnect
+    url: https://github.com/hyperledger/firefly-ethconnect
+    checksets:
+    - code
+  - name: firefly-evmconnect
+    url: https://github.com/hyperledger/firefly-evmconnect
+    checksets:
+    - code
+  - name: firefly-fabconnect
+    url: https://github.com/hyperledger/firefly-fabconnect
+    checksets:
+    - code
+  - name: firefly-fir
+    url: https://github.com/hyperledger/firefly-fir
+    checksets:
+    - docs
+  - name: firefly-helm-charts
+    url: https://github.com/hyperledger/firefly-helm-charts
+    checksets:
+    - code
+  - name: firefly-perf-cli
+    url: https://github.com/hyperledger/firefly-perf-cli
+    checksets:
+    - code
+  - name: firefly-samples
+    url: https://github.com/hyperledger/firefly-samples
+    checksets:
+    - code
+  - name: firefly-sandbox
+    url: https://github.com/hyperledger/firefly-sandbox
+    checksets:
+    - code
+  - name: firefly-sdk-nodejs
+    url: https://github.com/hyperledger/firefly-sdk-nodejs
+    checksets:
+    - code
+  - name: firefly-signer
+    url: https://github.com/hyperledger/firefly-signer
+    checksets:
+    - code
+  - name: firefly-tezosconnect
+    url: https://github.com/hyperledger/firefly-tezosconnect
+    checksets:
+    - code
+  - name: firefly-tokens-erc1155
+    url: https://github.com/hyperledger/firefly-tokens-erc1155
+    checksets:
+    - code
+  - name: firefly-tokens-erc20-erc721
+    url: https://github.com/hyperledger/firefly-tokens-erc20-erc721
+    checksets:
+    - code
+  - name: firefly-transaction-manager
+    url: https://github.com/hyperledger/firefly-transaction-manager
+    checksets:
+    - code
+  - name: firefly-ui
+    url: https://github.com/hyperledger/firefly-ui
+    checksets:
+    - code
+- name: indentus
+  description:
+    Hyperledger Identus provides components to develop decentralized identity
+    solutions that adhere to widely recognized self-sovereign identity (SSI)
+    standards. It offers complete DID and verifiable credential functionality
+    and simplifies the complexities of adopting a decentralized identity
+    solution into existing and new workflows.
+  display_name: Hyperledger Identus
+  category: decentralized identity
+  home_url: https://www.hyperledger.org/projects/identus
+  logo_url: https://www.hyperledger.org/hubfs/Identus%20Logo%20Final%20Horz%20Light%20240520.svg
+  accepted_at: "2024-04-04"
+  maturity: incubating
+  repositories:
+  - name: identus
+    url: https://github.com/hyperledger/identus
+    checksets:
+    - code
+  - name: identus-apollo
+    url: https://github.com/hyperledger/identus-apollo
+    checksets:
+    - code
+  - name: identus-cloud-agent
+    url: https://github.com/hyperledger/identus-cloud-agent
+    checksets:
+    - code
+  - name: identus-docs
+    url: https://github.com/hyperledger/identus-docs
+    checksets:
+    - docs
+  - name: identus-edge-agent-sdk-kmp
+    url: https://github.com/hyperledger/identus-edge-agent-sdk-kmp
+    checksets:
+    - code
+  - name: identus-edge-agent-sdk-swift
+    url: https://github.com/hyperledger/identus-edge-agent-sdk-swift
+    checksets:
+    - code
+  - name: identus-infrastructure
+    url: https://github.com/hyperledger/identus-infrastructure
+    checksets:
+    - code
+  - name: identus-keycloak-plugins
+    url: https://github.com/hyperledger/identus-keycloak-plugins
+    checksets:
+    - code
+  - name: identus-mediator
+    url: https://github.com/hyperledger/identus-mediator
+    checksets:
+    - code
+- name: indy
+  description:
+    Hyperledger Indy provides tools, libraries, and reusable components for
+    providing digital identities rooted on blockchains or other distributed
+    ledgers so that they are interoperable across administrative domains,
+    applications, and any other silo. Indy is interoperable with other
+    blockchains or can be used standalone powering the decentralization of
+    identity.
+  display_name: Hyperledger Indy
+  category: verifiable data registry DLT
+  home_url: https://www.hyperledger.org/projects/hyperledger-indy
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Indy.svg
+  accepted_at: "2017-03-30"
+  maturity: graduated
+  repositories:
+  - name: indy-besu
+    url: https://github.com/hyperledger/indy-besu
+    checksets:
+    - code
+  - name: indy-bls-wrapper-python
+    url: https://github.com/hyperledger/indy-bls-wrapper-python
+    checksets:
+    - code
+  - name: indy-blssignatures-rs
+    url: https://github.com/hyperledger/indy-blssignatures-rs
+    checksets:
+    - code
+  - name: indy-cli-rs
+    url: https://github.com/hyperledger/indy-cli-rs
+    checksets:
+    - code
+  - name: indy-did-method
+    url: https://github.com/hyperledger/indy-did-method
+    checksets:
+    - code
+  - name: indy-did-networks
+    url: https://github.com/hyperledger/indy-did-networks
+    checksets:
+    - code
+  - name: indy-docs
+    url: https://github.com/hyperledger/indy-docs
+    checksets:
+    - docs
+  - name: indy-hipe
+    url: https://github.com/hyperledger/indy-hipe
+    checksets:
+    - docs
+  - name: indy-node
+    url: https://github.com/hyperledger/indy-node
+    checksets:
+    - code
+  - name: indy-node-container
+    url: https://github.com/hyperledger/indy-node-container
+    checksets:
+    - code
+  - name: indy-node-monitor
+    url: https://github.com/hyperledger/indy-node-monitor
+    checksets:
+    - code
+  - name: indy-plenum
+    url: https://github.com/hyperledger/indy-plenum
+    checksets:
+    - code
+  - name: indy-shared-gha
+    url: https://github.com/hyperledger/indy-shared-gha
+    checksets:
+    - code
+  - name: indy-shared-rs
+    url: https://github.com/hyperledger/indy-shared-rs
+    checksets:
+    - code
+  - name: indy-test-automation
+    url: https://github.com/hyperledger/indy-test-automation
+    checksets:
+    - code
+  - name: indy-vdr
+    url: https://github.com/hyperledger/indy-vdr
+    checksets:
+    - code
+- name: iroha
+  description:
+    Hyperledger Iroha is a simple and efficient blockchain ledger based on the
+    distributed ledger technology (DLT). Its design principles are inspired by
+    the Japanese Kaizen principle of eliminating excesses (muri). Hyperledger
+    Iroha can help you manage your accounts, assets, on-chain data storage with
+    efficient smart contracts, while being Byzantine- and crash-fault tolerant.
+  display_name: Hyperledger Iroha
+  category: general-purpose DLT
+  home_url: https://www.hyperledger.org/projects/iroha
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Iroha.svg
+  accepted_at: "2016-10-13"
+  maturity: graduated
+  repositories:
+  - name: iroha
+    url: https://github.com/hyperledger/iroha
+    checksets:
+    - code
+  - name: iroha-2-docs
+    url: https://github.com/hyperledger/iroha-2-docs
+    checksets:
+    - docs
+  - name: iroha-2-examples
+    url: https://github.com/hyperledger/iroha-2-examples
+    checksets:
+    - code
+  - name: iroha-deploy
+    url: https://github.com/hyperledger/iroha-deploy
+    checksets:
+    - code
+  - name: iroha-ed25519
+    url: https://github.com/hyperledger/iroha-ed25519
+    checksets:
+    - code
+  - name: iroha-ios
+    url: https://github.com/hyperledger/iroha-ios
+    checksets:
+    - code
+  - name: iroha-java
+    url: https://github.com/hyperledger/iroha-java
+    checksets:
+    - code
+  - name: iroha-javascript
+    url: https://github.com/hyperledger/iroha-javascript
+    checksets:
+    - code
+  - name: iroha-news
+    url: https://github.com/hyperledger/iroha-news
+    checksets:
+    - docs
+  - name: iroha-python
+    url: https://github.com/hyperledger/iroha-python
+    checksets:
+    - code
+  - name: iroha-rfcs
+    url: https://github.com/hyperledger/iroha-rfcs
+    checksets:
+    - docs
+- name: solang
+  description:
+    Hyperledger Solang is a Solidity compiler written in rust which
+    uses llvm as the compiler backend. Solang can compile Solidity
+    for Solana and Substrate.
+  display_name: Hyperledger Solang
+  category: compiler
+  home_url: https://www.hyperledger.org/projects/solang
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Project%20Logos_Master_Hyperledger_Solang.svg
+  accepted_at: "2022-08-18"
+  maturity: incubating
+  repositories:
+  - name: homebrew-solang
+    url: https://github.com/hyperledger/homebrew-solang
+    checksets:
+    - code
+  - name: solang
+    url: https://github.com/hyperledger/solang
+    checksets:
+    - code
+  - name: solang-aqd
+    url: https://github.com/hyperledger/solang-aqd
+    checksets:
+    - code
+  - name: solang-llvm
+    url: https://github.com/hyperledger/solang-llvm
+    checksets:
+    - code
+  - name: solang-substrate-ci
+    url: https://github.com/hyperledger/solang-substrate-ci
+    checksets:
+    - code
+- name: web3j
+  description:
+    Web3j is a highly modular, reactive, type safe Java and Android
+    library for working with Smart Contracts and integrating with clients
+    (nodes) on the Ethereum network. This allows you to work with the
+    Ethereum blockchain, without the additional overhead of having to
+    write your own integration code for the platform.
+  display_name: Hyperledger Web3j
+  category: ethereum integration library
+  home_url: https://www.hyperledger.org/projects/web3j
+  logo_url: https://www.hyperledger.org/hubfs/Hyperledger_Web3j.svg
+  accepted_at: "2024-01-11"
+  maturity: incubating
+  repositories:
+  - name: web3j
+    url: https://github.com/hyperledger/web3j
+    checksets:
+    - code
+  - name: web3j-build-tools
+    url: https://github.com/hyperledger/web3j-build-tools
+    checksets:
+    - code
+  - name: web3j-cli
+    url: https://github.com/hyperledger/web3j-cli
+    checksets:
+    - code
+  - name: web3j-docs
+    url: https://github.com/hyperledger/web3j-docs
+    checksets:
+    - docs
+  - name: web3j-evm
+    url: https://github.com/hyperledger/web3j-evm
+    checksets:
+    - code
+  - name: web3j-gradle-plugin
+    url: https://github.com/hyperledger/web3j-gradle-plugin
+    checksets:
+    - code
+  - name: web3j-installer
+    url: https://github.com/hyperledger/web3j-installer
+    checksets:
+    - code
+  - name: web3j-maven-plugin
+    url: https://github.com/hyperledger/web3j-maven-plugin
+    checksets:
+    - code
+  - name: web3j-openapi
+    url: https://github.com/hyperledger/web3j-openapi
+    checksets:
+    - code
+  - name: web3j-openapi-gradle-plugin
+    url: https://github.com/hyperledger/web3j-openapi-gradle-plugin
+    checksets:
+    - code
+  - name: web3j-sokt
+    url: https://github.com/hyperledger/web3j-sokt
+    checksets:
+    - code
+  - name: web3j-solidity-gradle-plugin
+    url: https://github.com/hyperledger/web3j-solidity-gradle-plugin
+    checksets:
+    - code
+  - name: web3j-unit
+    url: https://github.com/hyperledger/web3j-unit
+    checksets:
+    - code

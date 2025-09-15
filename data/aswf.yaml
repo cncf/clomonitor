@@ -65,6 +65,10 @@
     url: https://github.com/AcademySoftwareFoundation/dpel-website
     exclude:
     - clomonitor
+  - name: Assets
+    url: https://github.com/DigitalProductionExampleLibrary/Assets
+    exclude:
+    - clomonitor
   - name: ALab
     url: https://github.com/DigitalProductionExampleLibrary/ALab
     exclude:

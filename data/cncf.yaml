@@ -2274,20 +2274,6 @@
       check_sets:
         - community
         - code
-- name: smp
-  display_name: Service Mesh Performance
-  description: Standardizing Service Mesh Value Measurement
-  category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/servicemeshperformance/icon/smp-dark.svg
-  devstats_url: https://servicemeshperformance.devstats.cncf.io/
-  accepted_at: "2021-06-21"
-  maturity: sandbox
-  repositories:
-    - name: service-mesh-performance
-      url: https://github.com/service-mesh-performance/service-mesh-performance
-      check_sets:
-        - community
-        - code
 - name: spiffe
   display_name: SPIFFE
   description: A universal identity control plane for distributed systems

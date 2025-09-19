@@ -3287,25 +3287,6 @@
       check_sets:
         - community
         - code
-- name: xline
-  display_name: Xline
-  description: A geo-distributed KV store for metadata management
-  category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/xline/icon/black/xline-icon-black.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/xline/icon/color/xline-icon-color.svg
-  devstats_url: https://xline.devstats.cncf.io/
-  accepted_at: "2023-06-21"
-  maturity: sandbox
-  repositories:
-    - name: Xline
-      url: https://github.com/xline-kv/Xline
-      check_sets:
-        - community
-        - code
-    - name: xline-operator
-      url: https://github.com/xline-kv/xline-operator
-      check_sets:
-        - code-lite
 - name: hwameistor
   display_name: Hwameistor
   description: Hwameistor is an HA local storage system for cloud-native stateful workloads

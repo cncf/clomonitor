@@ -86,6 +86,7 @@ impl Landscape {
 }
 
 /// Project's annual review information.
+#[allow(dead_code)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub(crate) struct AnnualReview {
     pub date: Date,

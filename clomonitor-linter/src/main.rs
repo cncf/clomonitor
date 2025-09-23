@@ -69,7 +69,7 @@ async fn main() -> Result<()> {
 
     // Check if required Github token is present in environment
     let Ok(github_token) = env::var(GITHUB_TOKEN) else {
-        return Err(format_err!("{} not found in environment", GITHUB_TOKEN));
+        return Err(format_err!("{GITHUB_TOKEN} not found in environment"));
     };
 
     // Lint repository provided

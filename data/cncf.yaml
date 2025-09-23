@@ -2192,20 +2192,6 @@
       check_sets:
         - community
         - code
-- name: pravega
-  display_name: Pravega
-  description: Streaming as a new software defined storage primitive
-  category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/pravega/icon/color/pravega-icon-color.svg
-  devstats_url: https://pravega.devstats.cncf.io/
-  accepted_at: "2020-11-10"
-  maturity: sandbox
-  repositories:
-    - name: pravega
-      url: https://github.com/pravega/pravega
-      check_sets:
-        - community
-        - code
 - name: prometheus
   display_name: Prometheus
   description: The Prometheus monitoring system and time series database

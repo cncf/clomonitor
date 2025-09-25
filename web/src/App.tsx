@@ -23,7 +23,7 @@ function App() {
 
   return (
     <AppContextProvider>
-      <Router>
+      <Router future={{ v7_startTransition: true }}>
         <AlertController />
         <Routes>
           <Route path="/" element={<Layout invisibleFooter={invisibleFooter} setScrollPosition={setScrollPosition} />}>

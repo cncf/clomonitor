@@ -6,9 +6,11 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+const tsRecommended = tseslint.plugin.configs['flat/recommended'];
+
 const config = [
   js.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tsRecommended,
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',

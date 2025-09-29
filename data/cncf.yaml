@@ -1389,18 +1389,21 @@
   description: Serverless Inferencing on Kubernetes
   category: model
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kserve/icon/color/k-serve-icon-color.svg
-  accepted_at: "2021-11-18"
+  accepted_at: "2025-09-28"
   maturity: incubating
   repositories:
     - name: kserve
       url: https://github.com/kserve/kserve
       check_sets:
-        - community
         - code
     - name: modelmesh-serving
       url: https://github.com/kserve/modelmesh-serving
       check_sets:
         - code-lite
+    - name: kserve
+      url: https://github.com/kserve/community
+      check_sets:
+        - community
 - name: kube-state-metrics
   display_name: Kube State Metrics
   description: Add-on agent to generate and expose cluster-level metrics

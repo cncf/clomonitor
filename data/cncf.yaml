@@ -1400,7 +1400,7 @@
       url: https://github.com/kserve/modelmesh-serving
       check_sets:
         - code-lite
-    - name: kserve
+    - name: community
       url: https://github.com/kserve/community
       check_sets:
         - community

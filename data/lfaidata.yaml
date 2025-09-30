@@ -304,23 +304,6 @@
       check_sets:
         - community
         - code
-- name: kserve
-  display_name: KServe
-  description: Serverless Inferencing on Kubernetes
-  category: model
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/kserve/icon/color/k-serve-icon-color.svg
-  accepted_at: "2021-11-18"
-  maturity: incubating
-  repositories:
-    - name: kserve
-      url: https://github.com/kserve/kserve
-      check_sets:
-        - community
-        - code
-    - name: modelmesh-serving
-      url: https://github.com/kserve/modelmesh-serving
-      check_sets:
-        - code-lite
 - name: ludwig
   display_name: Ludwig
   description: Ludwig is a toolbox that allows to train and evaluate deep learning models without the need to write code

@@ -55,6 +55,9 @@ export const FOUNDATIONS: FoundationInfo = {
   [Foundation.lfnetworking]: {
     name: 'LF Networking',
   },
+  [Foundation.hyperledger]: {
+    name: 'Hyperledger',
+  },
 };
 
 export const DEFAULT_FOUNDATION = Foundation.cncf;
@@ -133,6 +136,14 @@ export const MATURITY_FILTERS: MaturityFilters = {
     name: FilterKind.Maturity,
     title: 'Maturity level',
     filters: [{ name: Maturity.lfn, label: 'LFN' }],
+  },
+  [Foundation.hyperledger]: {
+    name: FilterKind.Maturity,
+    title: 'Maturity level',
+    filters: [
+      { name: Maturity.graduated, label: 'Graduated' },
+      { name: Maturity.incubating, label: 'Incubating' },
+    ],
   },
 };
 

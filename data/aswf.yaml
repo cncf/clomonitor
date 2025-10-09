@@ -295,8 +295,88 @@
   devstats_url: null
   maturity: incubating
   repositories:
-  - name: OpenTimelineIO
+  - name: OpenTimelineIO Core
     url: https://github.com/AcademySoftwareFoundation/OpenTimelineIO
+    exclude:
+    - clomonitor
+  - name: otio-fcp-adapter
+    url: https://github.com/OpenTimelineIO/otio-fcp-adapter
+    exclude:
+    - clomonitor
+  - name: otioview
+    url: https://github.com/OpenTimelineIO/otioview
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-Swift-Bindings
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-Swift-Bindings
+    exclude:
+    - clomonitor
+  - name: toucan
+    url: https://github.com/OpenTimelineIO/toucan
+    exclude:
+    - clomonitor
+  - name: raven
+    url: https://github.com/OpenTimelineIO/raven
+    exclude:
+    - clomonitor
+  - name: otio-aaf-adapter
+    url: https://github.com/OpenTimelineIO/otio-aaf-adapter
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-Unreal-plugin
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-Unreal-Plugin
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-Specification
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-Specification
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-AVFoundation
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-AVFoundation
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-C-Bindings
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-C-Bindings
+    exclude:
+    - clomonitor
+  - name: otio-cmx3600-adapter
+    url: https://github.com/OpenTimelineIO/otio-cmx3600-adapter
+    exclude:
+    - clomonitor
+  - name: otio-ale-adapter
+    url: https://github.com/OpenTimelineIO/otio-ale-adapter
+    exclude:
+    - clomonitor
+  - name: otio-burnins-adapter
+    url: https://github.com/OpenTimelineIO/otio-burnins-adapter
+    exclude:
+    - clomonitor
+  - name: otio-xges-adapter
+    url: https://github.com/OpenTimelineIO/otio-xges-adapter
+    exclude:
+    - clomonitor
+  - name: otio-hls-playlist-adapter
+    url: https://github.com/OpenTimelineIO/otio-hls-playlist-adapter
+    exclude:
+    - clomonitor
+  - name: otio-fcpx-xml-adapter
+    url: https://github.com/OpenTimelineIO/otio-fcpx-xml-adapter
+    exclude:
+    - clomonitor
+  - name: otio-maya-sequencer-adapter
+    url: https://github.com/OpenTimelineIO/otio-maya-sequencer-adapter
+    exclude:
+    - clomonitor
+  - name: otio-svg-adapter
+    url: https://github.com/OpenTimelineIO/otio-svg-adapter
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-Plugins
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-Plugins
+    exclude:
+    - clomonitor
+  - name: OpenTimelineIO-Java-Bindings
+    url: https://github.com/OpenTimelineIO/OpenTimelineIO-Java-Bindings
     exclude:
     - clomonitor
 - name: openvdb

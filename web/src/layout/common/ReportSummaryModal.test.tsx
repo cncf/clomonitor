@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Foundation } from 'clo-ui';
+import { Foundation } from 'clo-ui/components/Foundation';
 
 import ReportSummaryModal from './ReportSummaryModal';
 

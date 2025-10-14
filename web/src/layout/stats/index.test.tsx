@@ -10,8 +10,7 @@ import StatsView from './index';
 jest.mock('../../api');
 jest.mock('react-apexcharts', () => () => <div>Chart</div>);
 
-jest.mock('clo-ui', () => ({
-  ...(jest.requireActual('clo-ui') as object),
+jest.mock('clo-ui/components/Timeline', () => ({
   Timeline: () => <>Timeline</>,
 }));
 

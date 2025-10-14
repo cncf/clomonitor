@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useOutsideClick } from 'clo-ui';
+import { useOutsideClick } from 'clo-ui/hooks/useOutsideClick';
 import { useRef, useState } from 'react';
 import { FaCog } from 'react-icons/fa';
 

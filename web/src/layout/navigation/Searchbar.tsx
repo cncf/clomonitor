@@ -1,4 +1,4 @@
-import { SearchbarWithDropdown } from 'clo-ui';
+import { SearchbarWithDropdown } from 'clo-ui/components/SearchbarWithDropdown';
 import { Dispatch, SetStateAction, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 

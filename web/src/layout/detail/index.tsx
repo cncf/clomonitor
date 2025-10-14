@@ -1,18 +1,16 @@
 import classNames from 'classnames';
-import {
-  CategoryBadge,
-  ExternalLink,
-  FoundationBadge,
-  Image,
-  Loading,
-  MaturityBadge,
-  NoData,
-  RoundScore,
-  scrollToTop,
-  SubNavbar,
-  Timeline,
-  useScrollRestorationFix,
-} from 'clo-ui';
+import { CategoryBadge } from 'clo-ui/components/CategoryBadge';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { FoundationBadge } from 'clo-ui/components/FoundationBadge';
+import { Image } from 'clo-ui/components/Image';
+import { Loading } from 'clo-ui/components/Loading';
+import { MaturityBadge } from 'clo-ui/components/MaturityBadge';
+import { NoData } from 'clo-ui/components/NoData';
+import { RoundScore } from 'clo-ui/components/RoundScore';
+import { SubNavbar } from 'clo-ui/components/SubNavbar';
+import { Timeline } from 'clo-ui/components/Timeline';
+import { useScrollRestorationFix } from 'clo-ui/hooks/useScrollRestorationFix';
+import { scrollToTop } from 'clo-ui/utils/scrollToTop';
 import { isNull, isUndefined } from 'lodash';
 import moment from 'moment';
 import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from 'react';

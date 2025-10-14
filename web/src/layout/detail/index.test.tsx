@@ -18,8 +18,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
-jest.mock('clo-ui', () => ({
-  ...(jest.requireActual('clo-ui') as object),
+jest.mock('clo-ui/components/Timeline', () => ({
   Timeline: () => <>Timeline</>,
 }));
 

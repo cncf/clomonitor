@@ -1,4 +1,6 @@
-import { detectActiveThemeMode, getMetaTag, useSystemThemeMode } from 'clo-ui';
+import { useSystemThemeMode } from 'clo-ui/hooks/useSystemThemeMode';
+import { detectActiveThemeMode } from 'clo-ui/utils/detectActiveThemeMode';
+import { getMetaTag } from 'clo-ui/utils/getMetaTag';
 import { isNull } from 'lodash';
 import { createContext, Dispatch, useContext, useEffect, useReducer, useState } from 'react';
 

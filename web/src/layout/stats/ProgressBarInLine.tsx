@@ -1,4 +1,4 @@
-import { getCategoryColor } from 'clo-ui';
+import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 
 import { ReportOption } from '../../types';
 import styles from './ProgressBarInLine.module.css';

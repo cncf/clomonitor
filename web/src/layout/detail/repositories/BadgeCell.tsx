@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { getCategoryColor, roundScoreValue } from 'clo-ui';
+import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
+import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
 import { isUndefined } from 'lodash';
 
 import styles from './BadgeCell.module.css';

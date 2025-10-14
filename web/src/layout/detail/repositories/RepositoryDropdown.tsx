@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useOutsideClick } from 'clo-ui';
+import { useOutsideClick } from 'clo-ui/hooks/useOutsideClick';
 import { MouseEvent as ReactMouseEvent, useRef, useState } from 'react';
 import { VscThreeBars } from 'react-icons/vsc';
 

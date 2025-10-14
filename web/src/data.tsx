@@ -1,4 +1,7 @@
-import { ExternalLink, Foundation, Maturity, SampleQuery } from 'clo-ui';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { Maturity } from 'clo-ui/components/Maturity';
+import { SampleQuery } from 'clo-ui/components/SampleQueries';
 import { BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3, BsUiChecks } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';

@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { CheckSet, Foundation, Maturity } from 'clo-ui';
+import { CheckSet } from 'clo-ui/components/CheckSetBadge';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { Maturity } from 'clo-ui/components/Maturity';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Card from './Card';

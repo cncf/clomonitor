@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ElementWithTooltip } from 'clo-ui';
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
 import { isUndefined } from 'lodash';
 import { GoCheck, GoX } from 'react-icons/go';
 

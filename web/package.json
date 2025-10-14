@@ -6,7 +6,7 @@
   "dependencies": {
     "apexcharts": "3.49.0",
     "classnames": "^2.5.1",
-    "clo-ui": "https://github.com/cncf/clo-ui.git#v0.4.5",
+    "clo-ui": "https://github.com/cncf/clo-ui.git#8711a22fe128000b6eed28f411e1c254337897a8",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "nth-check": "^2.0.1",
@@ -61,7 +61,8 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/fileMock.js"
+      "^clo-ui/(components|hooks|utils)/(.*)$": "<rootDir>/node_modules/clo-ui/dist/cjs/index.js",
+      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/fileMock.js"
     }
   },
   "scripts": {

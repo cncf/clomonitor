@@ -1,17 +1,15 @@
 import classNames from 'classnames';
-import {
-  DateRangeOpts,
-  Loading,
-  NoData,
-  Pagination,
-  PaginationLimitOptions,
-  SampleQueries,
-  scrollToTop,
-  Sidebar,
-  SortOptions,
-  SubNavbar,
-  useScrollRestorationFix,
-} from 'clo-ui';
+import { DateRangeOpts } from 'clo-ui/components/DateRangeFilter';
+import { Loading } from 'clo-ui/components/Loading';
+import { NoData } from 'clo-ui/components/NoData';
+import { Pagination } from 'clo-ui/components/Pagination';
+import { PaginationLimitOptions } from 'clo-ui/components/PaginationLimitOptions';
+import { SampleQueries } from 'clo-ui/components/SampleQueries';
+import { Sidebar } from 'clo-ui/components/Sidebar';
+import { SortOptions } from 'clo-ui/components/SortOptions';
+import { SubNavbar } from 'clo-ui/components/SubNavbar';
+import { useScrollRestorationFix } from 'clo-ui/hooks/useScrollRestorationFix';
+import { scrollToTop } from 'clo-ui/utils/scrollToTop';
 import { isEmpty, isUndefined } from 'lodash';
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';

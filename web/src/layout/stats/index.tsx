@@ -1,15 +1,13 @@
 import classNames from 'classnames';
-import {
-  alertDispatcher,
-  Foundation,
-  Loading,
-  Maturity,
-  MaturityLabel,
-  NoData,
-  prettifyNumber,
-  SubNavbar,
-  Timeline,
-} from 'clo-ui';
+import { alertDispatcher } from 'clo-ui/components/AlertController';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { Loading } from 'clo-ui/components/Loading';
+import { Maturity } from 'clo-ui/components/Maturity';
+import { MaturityLabel } from 'clo-ui/components/MaturityLabel';
+import { NoData } from 'clo-ui/components/NoData';
+import { SubNavbar } from 'clo-ui/components/SubNavbar';
+import { Timeline } from 'clo-ui/components/Timeline';
+import { prettifyNumber } from 'clo-ui/utils/prettifyNumber';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
 import moment from 'moment';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';

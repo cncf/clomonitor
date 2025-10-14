@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { ExternalLink, useOutsideClick } from 'clo-ui';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { useOutsideClick } from 'clo-ui/hooks/useOutsideClick';
 import { useRef, useState } from 'react';
 import { BsList } from 'react-icons/bs';
 import { FaChartPie, FaFileAlt } from 'react-icons/fa';

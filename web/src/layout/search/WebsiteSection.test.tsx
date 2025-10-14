@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CheckSet } from 'clo-ui';
+import { CheckSet } from 'clo-ui/components/CheckSetBadge';
 
 import WebsiteSection from './WebsiteSection';
 

@@ -1,4 +1,6 @@
-import { BlockCodeButtons, Loading, Modal } from 'clo-ui';
+import { BlockCodeButtons } from 'clo-ui/components/BlockCodeButtons';
+import { Loading } from 'clo-ui/components/Loading';
+import { Modal } from 'clo-ui/components/Modal';
 import { isUndefined } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

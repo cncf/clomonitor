@@ -1,4 +1,4 @@
-import { CheckSet } from 'clo-ui';
+import { CheckSet } from 'clo-ui/components/CheckSetBadge';
 import { orderBy } from 'lodash';
 
 import { Repository } from '../types';

@@ -1,6 +1,6 @@
-import 'clo-ui/dist/styles/xxxl_grid.scss';
+import 'clo-ui/styles/xxxl_grid.scss';
 
-import { AlertController } from 'clo-ui';
+import { AlertController } from 'clo-ui/components/AlertController';
 import { useState } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom';
 

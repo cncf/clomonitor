@@ -1,4 +1,4 @@
-import { CheckBox } from 'clo-ui';
+import { CheckBox } from 'clo-ui/components/Checkbox';
 import { isUndefined } from 'lodash';
 import { ChangeEvent } from 'react';
 

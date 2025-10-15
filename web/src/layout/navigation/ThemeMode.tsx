@@ -1,4 +1,4 @@
-import { ThemeMode as ThemeModeForm } from 'clo-ui';
+import { ThemeMode as ThemeModeForm } from 'clo-ui/components/ThemeMode';
 import { isUndefined } from 'lodash';
 import { useContext } from 'react';
 

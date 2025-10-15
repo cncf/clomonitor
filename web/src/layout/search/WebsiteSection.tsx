@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { DropdownOnHover, ExternalLink } from 'clo-ui';
+import { DropdownOnHover } from 'clo-ui/components/DropdownOnHover';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
 import { IoGlobeOutline } from 'react-icons/io5';

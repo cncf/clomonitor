@@ -1,4 +1,4 @@
-import { CheckSetBadge } from 'clo-ui';
+import { CheckSetBadge } from 'clo-ui/components/CheckSetBadge';
 import { isUndefined } from 'lodash';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';

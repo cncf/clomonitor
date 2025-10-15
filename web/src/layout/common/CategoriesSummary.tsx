@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { RoundScore } from 'clo-ui';
+import { RoundScore } from 'clo-ui/components/RoundScore';
 import { isUndefined } from 'lodash';
 
 import { CATEGORY_ICONS } from '../../data';

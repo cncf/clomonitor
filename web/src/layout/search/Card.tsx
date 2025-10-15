@@ -1,12 +1,10 @@
-import {
-  Card as CardWrapper,
-  ElementWithTooltip,
-  ExternalLink,
-  FoundationBadge,
-  Image,
-  MaturityBadge,
-  RoundScore,
-} from 'clo-ui';
+import { Card as CardWrapper } from 'clo-ui/components/Card';
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { FoundationBadge } from 'clo-ui/components/FoundationBadge';
+import { Image } from 'clo-ui/components/Image';
+import { MaturityBadge } from 'clo-ui/components/MaturityBadge';
+import { RoundScore } from 'clo-ui/components/RoundScore';
 import { isUndefined } from 'lodash';
 import moment from 'moment';
 import { useContext } from 'react';

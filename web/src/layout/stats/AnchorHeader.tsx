@@ -1,4 +1,4 @@
-import { getAnchorValue } from 'clo-ui';
+import { getAnchorValue } from 'clo-ui/utils/getAnchorValue';
 import { ElementType } from 'react';
 import { GoLink } from 'react-icons/go';
 import { useLocation, useNavigate } from 'react-router-dom';

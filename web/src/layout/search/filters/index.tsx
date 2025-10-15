@@ -1,4 +1,5 @@
-import { DateRangeFilter, DateRangeOpts, Foundation } from 'clo-ui';
+import { DateRangeFilter, DateRangeOpts } from 'clo-ui/components/DateRangeFilter';
+import { Foundation } from 'clo-ui/components/Foundation';
 import { isEmpty, isUndefined } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';

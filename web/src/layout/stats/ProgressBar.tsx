@@ -1,4 +1,4 @@
-import { getCategoryColor } from 'clo-ui';
+import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 
 import styles from './ProgressBar.module.css';
 

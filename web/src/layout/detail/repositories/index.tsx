@@ -1,5 +1,7 @@
-import { CheckSet, CheckSetBadge, ExternalLink, RoundScore } from 'clo-ui';
-import { scrollToTop } from 'clo-ui';
+import { CheckSet, CheckSetBadge } from 'clo-ui/components/CheckSetBadge';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { RoundScore } from 'clo-ui/components/RoundScore';
+import { scrollToTop } from 'clo-ui/utils/scrollToTop';
 import { isUndefined } from 'lodash';
 import moment from 'moment';
 import { useEffect, useRef, useState } from 'react';

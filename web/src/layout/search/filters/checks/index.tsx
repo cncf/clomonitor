@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { ElementWithTooltip, Modal } from 'clo-ui';
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
+import { Modal } from 'clo-ui/components/Modal';
 import { difference, isEmpty, isUndefined, union } from 'lodash';
 import { useEffect, useState } from 'react';
 import { BsCheckAll } from 'react-icons/bs';

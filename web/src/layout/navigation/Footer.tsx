@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { ExternalLink, Footer as FooterWrapper } from 'clo-ui';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { Footer as FooterWrapper } from 'clo-ui/components/Footer';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';

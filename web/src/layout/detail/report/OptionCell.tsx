@@ -1,4 +1,7 @@
-import { DropdownOnHover, ElementWithTooltip, ExternalLink, FullScreenModal } from 'clo-ui';
+import { DropdownOnHover } from 'clo-ui/components/DropdownOnHover';
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { FullScreenModal } from 'clo-ui/components/FullScreenModal';
 import { isUndefined } from 'lodash';
 import { useContext, useRef, useState } from 'react';
 import { BsWindowPlus } from 'react-icons/bs';

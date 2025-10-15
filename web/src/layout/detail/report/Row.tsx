@@ -1,5 +1,6 @@
-import { ExternalLink } from 'clo-ui';
-import { getCategoryColor, roundScoreValue } from 'clo-ui';
+import { ExternalLink } from 'clo-ui/components/ExternalLink';
+import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
+import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
 import { isUndefined } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';

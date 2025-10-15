@@ -1,4 +1,6 @@
-import { CheckSet, Foundation, Maturity } from 'clo-ui';
+import { CheckSet } from 'clo-ui/components/CheckSetBadge';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { Maturity } from 'clo-ui/components/Maturity';
 
 export interface BaseProject {
   id: string;

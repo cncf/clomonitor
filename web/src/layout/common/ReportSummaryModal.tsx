@@ -1,4 +1,8 @@
-import { CodeBlock, Foundation, Loading, Modal, Tabs } from 'clo-ui';
+import { CodeBlock } from 'clo-ui/components/CodeBlock';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { Loading } from 'clo-ui/components/Loading';
+import { Modal } from 'clo-ui/components/Modal';
+import { Tabs } from 'clo-ui/components/Tabs';
 import { useContext, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 

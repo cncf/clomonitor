@@ -1,4 +1,6 @@
-import { capitalizeFirstLetter, Foundation, SelectedFilterBadge } from 'clo-ui';
+import { Foundation } from 'clo-ui/components/Foundation';
+import { SelectedFilterBadge } from 'clo-ui/components/SelectedFilterBadge';
+import { capitalizeFirstLetter } from 'clo-ui/utils/capitalizeFirstLetter';
 import { isEmpty, isUndefined } from 'lodash';
 import moment from 'moment';
 import { Fragment } from 'react';

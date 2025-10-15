@@ -6,7 +6,7 @@
   "dependencies": {
     "apexcharts": "3.49.0",
     "classnames": "^2.5.1",
-    "clo-ui": "https://github.com/cncf/clo-ui.git#e3a78f410a0e51ce84c3dad89beb72cf984f4a67",
+    "clo-ui": "https://github.com/cncf/clo-ui.git#v0.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "nth-check": "^2.0.1",

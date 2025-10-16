@@ -221,7 +221,7 @@ mod tests {
         let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
         assert_eq!(
             result.unwrap_err().root_cause().to_string(),
-            r#"configuration property "creds.githubTokens" not found"#
+            r#"missing configuration field "creds.githubTokens""#
         );
     }
 

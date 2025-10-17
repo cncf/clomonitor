@@ -32,7 +32,9 @@ spec:
         - {{- include "chart.checkDbIsReadyInitContainer" . | nindent 10 }}
         {{- if .Release.IsInstall }}
         - name: check-dbmigrator-run
-          image: "bitnami/kubectl:{{ template "chart.KubernetesVersion" . }}"
+          {{ $kubeVersion := include "chart.KubernetesVersion" . }}
+          {{ $kubectlImageVersion := ternary "1.33" $kubeVersion (semverCompare ">=1.34.0-0" (printf "%s.0" $kubeVersion)) }}
+          image: "docker.io/bitnamilegacy/kubectl:{{ $kubectlImageVersion }}"
           imagePullPolicy: IfNotPresent
           command: ['kubectl', 'wait', '--namespace={{ .Release.Namespace }}', '--for=condition=complete', 'job/{{ include "chart.resourceNamePrefix" . }}dbmigrator-install', '--timeout=60s']
         {{- end }}

@@ -73,6 +73,11 @@ exports[`StatsView creates snapshot 1`] = `
                 >
                   LF Networking
                 </option>
+                <option
+                  value="hyperledger"
+                >
+                  Hyperledger
+                </option>
               </select>
             </div>
           </div>

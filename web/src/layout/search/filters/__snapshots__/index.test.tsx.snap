@@ -145,6 +145,37 @@ exports[`Filters creates snapshot 1`] = `
         </div>
       </label>
     </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-foundation-hyperledger"
+        name="foundation"
+        tabindex="0"
+        type="checkbox"
+        value="hyperledger"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-foundation-hyperledger"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative decorator"
+          />
+          <span
+            class="text-truncate"
+          >
+            Hyperledger
+          </span>
+        </div>
+      </label>
+    </div>
   </div>
   <div
     class="fw-bold text-uppercase text-primary categoryTitle"

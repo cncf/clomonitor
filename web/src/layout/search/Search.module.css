@@ -24,6 +24,18 @@ main {
   width: 2rem;
 }
 
+.btnMobileFiltersActive::after {
+  content: '';
+  position: absolute;
+  top: -0.15rem;
+  right: -0.1rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--clo-secondary);
+  border: 2px solid var(--bs-body-bg);
+}
+
 .closeSidebar {
   min-width: 135px;
 }

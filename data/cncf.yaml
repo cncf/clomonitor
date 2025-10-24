@@ -4829,3 +4829,95 @@
       url: https://github.com/modelpack/modctl
       check_sets:
         - code-lite
+- name: oauth2-proxy
+  display_name: OAuth2 Proxy
+  description: A generic reverse proxy that provides authentication with Google, Azure, OpenID Connect and many more identity providers.
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/oauth2-proxy/icon/color/oauth2-proxy-icon-color.svg
+  devstats_url: https://oauth2proxy.devstats.cncf.io/
+  accepted_at: "2025-10-02"
+  maturity: sandbox
+  repositories:
+    - name: oauth2-proxy
+      url: https://github.com/oauth2-proxy/oauth2-proxy
+      check_sets:
+        - code
+        - community
+    - name: manifests
+      url: https://github.com/oauth2-proxy/manifests
+      check_sets:
+        - docs
+- name: oxia
+  display_name: Oxia
+  description: Oxia is a scalable metadata store and coordination system
+  category: orchestration
+  logo_url: https://oxia-db.github.io/oxia-logo.svg
+  devstats_url: https://oxia.devstats.cncf.io/
+  accepted_at: "2025-10-06"
+  maturity: sandbox
+  repositories:
+    - name: oxia
+      url: https://github.com/oxia-db/oxia
+      check_sets:
+        - code
+        - community
+    - name: oxia-db.github.io
+      url: https://github.com/oxia-db/oxia-db.github.io
+      check_sets:
+        - docs
+    - name: oxia-client-java
+      url: https://github.com/oxia-db/oxia-client-java
+      check_sets:
+        - code-lite
+    - name: oxia-client-python
+      url: https://github.com/oxia-db/oxia-client-python
+      check_sets:
+        - code-lite
+- name: dalec
+  display_name: Dalec
+  description: Dalec provides a declarative format for building system packages and containers from those packages in a secure way for supply chain security
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/project-dalec/dalec/refs/heads/main/website/static/img/logo.svg
+  devstats_url: https://dalec.devstats.cncf.io/
+  accepted_at: "2025-10-08"
+  maturity: sandbox
+  repositories:
+    - name: dalec
+      url: https://github.com/project-dalec/dalec
+      check_sets:
+        - code
+        - community
+- name: holmesgpt
+  display_name: HolmesGPT
+  description: HolmesGPT is an AI agent that automates cloud-native troubleshooting, bridging knowledge gaps by investigating alerts, executing runbooks, and correlating observability data in cloud-native platforms
+  logo_url: https://raw.githubusercontent.com/robusta-dev/holmesgpt/refs/heads/master/images/logo.png
+  devstats_url: https://holmesgpt.devstats.cncf.io/
+  accepted_at: "2025-10-10"
+  maturity: sandbox
+  repositories:
+    - name: holmesgpt
+      url: https://github.com/robusta-dev/holmesgpt
+      check_sets:
+        - code
+        - community
+- name: cedar-policy
+  display_name: Cedar Policy
+  description: Cedar is a language for defining permissions as policies, and a specification for evaluating those policies. Use Cedar to define who is authorized to do what within your application
+  logo_url: https://raw.githubusercontent.com/cedar-policy/cedar/main/logo.svg
+  devstats_url: https://cedarpolicy.devstats.cncf.io/
+  accepted_at: "2025-10-10"
+  maturity: sandbox
+  repositories:
+    - name: cedar
+      url: https://github.com/cedar-policy/cedar
+      check_sets:
+        - code
+        - community
+    - name: cedar-docs
+      url: https://github.com/cedar-policy/cedar-docs
+      check_sets:
+        - docs
+    - name: cedar-spec
+      url: https://github.com/cedar-policy/cedar-spec
+      check_sets:
+        - docs

@@ -9,9 +9,8 @@ import { Sidebar } from 'clo-ui/components/Sidebar';
 import { SortOptions } from 'clo-ui/components/SortOptions';
 import { SubNavbar } from 'clo-ui/components/SubNavbar';
 import { useScrollRestorationFix } from 'clo-ui/hooks/useScrollRestorationFix';
-import { scrollToTop } from 'clo-ui/utils/scrollToTop';
 import { isEmpty, isUndefined } from 'lodash';
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
@@ -22,6 +21,7 @@ import { QUERIES, SORT_OPTIONS } from '../../data';
 import { FilterKind, Project, SearchFiltersURL, SortBy, SortDirection, SortOption } from '../../types';
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
+import scrollToPosition from '../../utils/scrollToPosition';
 import Card from './Card';
 import Filters from './filters';
 import styles from './Search.module.css';
@@ -40,9 +40,12 @@ interface Props {
 const Search = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const currentState = location.state as { resetScrollPosition?: boolean };
+  const resetScrollPosition = currentState?.resetScrollPosition;
   const { ctx, dispatch } = useContext(AppContext);
   const { limit, sort } = ctx.prefs.search;
   const [searchParams] = useSearchParams();
+  const hasRestoredRef = useRef(false);
   const [text, setText] = useState<string | undefined>();
   const [acceptedFrom, setAcceptedFrom] = useState<string | undefined>();
   const [acceptedTo, setAcceptedTo] = useState<string | undefined>();
@@ -52,9 +55,12 @@ const Search = (props: Props) => {
   const [projects, setProjects] = useState<Project[] | null | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [apiError, setApiError] = useState<string | null>(null);
-  const currentState = location.state as { resetScrollPosition?: boolean };
 
   useScrollRestorationFix();
+
+  useEffect(() => {
+    hasRestoredRef.current = false;
+  }, [props.scrollPosition, resetScrollPosition]);
 
   const saveScrollPosition = () => {
     props.setScrollPosition(window.scrollY);
@@ -196,7 +202,8 @@ const Search = (props: Props) => {
           offset: calculateOffset(formattedParams.pageNumber),
           limit: limit,
         });
-        setTotal(parseInt(newSearchResults['Pagination-Total-Count']));
+        const newTotal = parseInt(newSearchResults['Pagination-Total-Count']);
+        setTotal(newTotal);
         setProjects(newSearchResults.items);
       } catch {
         // TODO - error
@@ -204,22 +211,32 @@ const Search = (props: Props) => {
       } finally {
         setIsLoading(false);
         props.setInvisibleFooter(false);
-        let currentScrollPosition = props.scrollPosition || 0;
-        if (currentState && currentState.resetScrollPosition) {
-          currentScrollPosition = 0;
-        }
-        // Update scroll position
-        if (currentScrollPosition !== 0) {
-          setTimeout(() => {
-            scrollToTop(currentScrollPosition);
-          }, 200);
-        } else {
-          scrollToTop();
+        if (resetScrollPosition) {
+          props.setScrollPosition(0);
+          scrollToPosition();
+        } else if (isUndefined(props.scrollPosition) || props.scrollPosition === 0) {
+          scrollToPosition();
         }
       }
     }
     searchProjects();
-  }, [searchParams, limit, sort.by, sort.direction]);
+  }, [searchParams, limit, sort.by, sort.direction, resetScrollPosition]);
+
+  useLayoutEffect(() => {
+    if (
+      isUndefined(projects) ||
+      projects === null ||
+      isUndefined(props.scrollPosition) ||
+      props.scrollPosition === 0 ||
+      resetScrollPosition ||
+      hasRestoredRef.current
+    ) {
+      return;
+    }
+
+    scrollToPosition(props.scrollPosition as number);
+    hasRestoredRef.current = true;
+  }, [projects, props.scrollPosition, resetScrollPosition]);
 
   const visibleFiltersLabels = !isEmpty(filters) || !isUndefined(acceptedFrom) || !isUndefined(acceptedTo);
 

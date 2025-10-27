@@ -137,7 +137,7 @@ describe('OptionCell', () => {
       const icons = screen.getAllByTestId('error-icon');
       expect(icons).toHaveLength(2);
 
-      const dropdown = screen.getByRole('complementary');
+      const dropdown = screen.getByRole('complementary', { hidden: true });
 
       expect(dropdown).not.toHaveClass('show');
 

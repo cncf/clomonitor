@@ -6,6 +6,9 @@ exports[`ProjectDropdown creates snapshot 1`] = `
     class="ms-auto position-relative"
   >
     <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      aria-label="Open project options for proj"
       class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
       data-testid="dropdown-btn"
       type="button"

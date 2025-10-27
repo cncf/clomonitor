@@ -73,7 +73,7 @@ describe('WebsiteSection', () => {
 
       const content = screen.getByText('Websites');
       expect(content).toBeInTheDocument();
-      const dropdown = screen.getByRole('complementary');
+      const dropdown = screen.getByRole('complementary', { hidden: true });
 
       expect(dropdown).not.toHaveClass('show');
 

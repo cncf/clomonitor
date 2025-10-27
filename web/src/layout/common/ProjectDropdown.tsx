@@ -46,6 +46,9 @@ const ProjectDropdown = (props: Props) => {
             e.stopPropagation();
             setVisibleDropdown(!visibleDropdown);
           }}
+          aria-label={`Open project options for ${props.projectDisplayName || props.projectName}`}
+          aria-expanded={visibleDropdown}
+          aria-haspopup="true"
         >
           <VscThreeBars />
         </button>

@@ -1009,6 +1009,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -1118,6 +1119,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for spec"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="60"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 60%;"
@@ -2510,6 +2515,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for spec"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="80"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 80%;"
@@ -2904,6 +2913,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Best Practices score for spec"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="25"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 25%;"
@@ -3437,6 +3450,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Security score for spec"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="0"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 1%;"
@@ -3898,6 +3915,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -4007,6 +4025,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for sdk-go"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="90"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 90%;"
@@ -4539,6 +4561,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for sdk-go"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="100"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
@@ -5072,6 +5098,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -5181,6 +5208,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for sdk-javascript"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="90"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 90%;"
@@ -5713,6 +5744,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for sdk-javascript"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="100"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
@@ -6246,6 +6281,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -6355,6 +6391,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for sdk-csharp"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="70"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
@@ -6887,6 +6927,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for sdk-csharp"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="100"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
@@ -7420,6 +7464,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -7529,6 +7574,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for sdk-java"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="70"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
@@ -8061,6 +8110,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for sdk-java"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="100"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"
@@ -8594,6 +8647,7 @@ exports[`RepositoriesList creates snapshot 1`] = `
                 class="ms-auto position-relative"
               >
                 <button
+                  aria-label="Open dropdown menu"
                   class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
                   data-testid="dropdown-btn"
                   type="button"
@@ -8703,6 +8757,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="Documentation score for sdk-python"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="70"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 70%;"
@@ -9235,6 +9293,10 @@ exports[`RepositoriesList creates snapshot 1`] = `
                   class="progress rounded-0 progress"
                 >
                   <div
+                    aria-label="License score for sdk-python"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="100"
                     class="progress-bar progressbar"
                     role="progressbar"
                     style="width: 100%;"

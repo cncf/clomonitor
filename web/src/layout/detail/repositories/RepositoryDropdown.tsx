@@ -31,6 +31,7 @@ const RepositoryDropdown = (props: Props) => {
         <button
           data-testid="dropdown-btn"
           type="button"
+          aria-label="Open dropdown menu"
           className={`btn btn-sm btn-primary text-white rounded-0 lh-1 ${styles.btn}`}
           onClick={(e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();

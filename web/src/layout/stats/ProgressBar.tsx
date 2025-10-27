@@ -10,6 +10,8 @@ interface Props {
 
 const ProgressBar = (props: Props) => {
   const color = getCategoryColor(props.value);
+  const clampedValue = Math.max(0, Math.min(100, props.value));
+  const barWidth = clampedValue === 0 ? 1 : clampedValue;
 
   return (
     <div className="d-flex flex-column">
@@ -23,7 +25,11 @@ const ProgressBar = (props: Props) => {
             <div
               className={`progress-bar ${styles.progressbar}`}
               role="progressbar"
-              style={{ width: `${props.value || 1}%`, backgroundColor: `var(--clo-${color})` }}
+              style={{ width: `${barWidth}%`, backgroundColor: `var(--clo-${color})` }}
+              aria-valuenow={clampedValue}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`${props.title} passed checks percentage`}
             />
           </div>
         </div>

@@ -33,6 +33,9 @@ const Row = (props: Props) => {
   const color = getCategoryColor(props.score);
   const [options, setOptions] = useState<ReportOption[]>([]);
   const tmplsNumber = props.recommendedTemplates ? props.recommendedTemplates.length : 0;
+  const scoreValue = props.score ?? 0;
+  const clampedScore = Math.max(0, Math.min(100, scoreValue));
+  const barWidth = clampedScore === 0 ? 1 : clampedScore;
 
   useEffect(() => {
     setOptions(sortChecks(props.data));
@@ -58,7 +61,11 @@ const Row = (props: Props) => {
               <div
                 className={`progress-bar ${styles.progressbar}`}
                 role="progressbar"
-                style={{ width: `${props.score || 1}%`, backgroundColor: `var(--clo-${color})` }}
+                style={{ width: `${barWidth}%`, backgroundColor: `var(--clo-${color})` }}
+                aria-valuenow={clampedScore}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${props.label} score for ${props.repoName}`}
               />
             </div>
           </div>

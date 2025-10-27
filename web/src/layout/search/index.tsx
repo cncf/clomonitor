@@ -250,11 +250,9 @@ const Search = (props: Props) => {
                 label="Filters"
                 className="d-inline-block d-md-none me-2"
                 wrapperClassName="d-inline-block px-4"
-                buttonType={classNames(
-                  'btn-primary btn-sm rounded-circle position-relative',
-                  styles.btnMobileFilters,
-                  { [styles.btnMobileFiltersActive]: visibleFiltersLabels }
-                )}
+                buttonType={classNames('btn-primary btn-sm rounded-circle position-relative', styles.btnMobileFilters, {
+                  [styles.btnMobileFiltersActive]: visibleFiltersLabels,
+                })}
                 buttonIcon={<FaFilter />}
                 closeButtonClassName={styles.closeSidebar}
                 closeButton={

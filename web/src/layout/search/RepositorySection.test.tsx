@@ -70,7 +70,7 @@ describe('RepositorySection', () => {
 
       const content = screen.getByText('Repositories');
       expect(content).toBeInTheDocument();
-      const dropdown = screen.getByRole('complementary');
+      const dropdown = screen.getByRole('complementary', { hidden: true });
 
       expect(dropdown).not.toHaveClass('show');
 

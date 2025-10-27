@@ -295,6 +295,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Documentation passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="85"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 85%;"
@@ -349,6 +353,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="License passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="79"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 79%;"
@@ -403,6 +411,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Best Practices passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="61"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 61%;"
@@ -457,6 +469,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Security passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="55"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 55%;"
@@ -511,6 +527,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Legal passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="40"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 40%;"
@@ -585,6 +605,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Documentation passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="87"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 87%;"
@@ -639,6 +663,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="License passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="77"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 77%;"
@@ -693,6 +721,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Best Practices passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="74"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 74%;"
@@ -747,6 +779,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Security passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="56"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 56%;"
@@ -801,6 +837,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Legal passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="48"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 48%;"
@@ -875,6 +915,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Documentation passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="83"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 83%;"
@@ -929,6 +973,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="License passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="80"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 80%;"
@@ -983,6 +1031,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Best Practices passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="59"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 59%;"
@@ -1037,6 +1089,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Security passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="56"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 56%;"
@@ -1091,6 +1147,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Legal passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="36"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 36%;"
@@ -1165,6 +1225,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Documentation passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="85"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 85%;"
@@ -1219,6 +1283,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="License passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="79"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 79%;"
@@ -1273,6 +1341,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Best Practices passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="59"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 59%;"
@@ -1327,6 +1399,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Security passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="53"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 53%;"
@@ -1381,6 +1457,10 @@ exports[`StatsView creates snapshot 1`] = `
                             class="progress rounded-0 progress"
                           >
                             <div
+                              aria-label="Legal passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="40"
                               class="progress-bar progressbar"
                               role="progressbar"
                               style="width: 40%;"
@@ -1531,6 +1611,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Adopters passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="36"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 36%;"
@@ -1608,6 +1692,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Changelog passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="77"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 77%;"
@@ -1670,6 +1758,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Code of conduct passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="88"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 88%;"
@@ -1735,6 +1827,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Contributing passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="83"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 83%;"
@@ -1797,6 +1893,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Governance passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="59"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 59%;"
@@ -1859,6 +1959,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Maintainers passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="83"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 83%;"
@@ -1924,6 +2028,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Readme passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="98"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 98%;"
@@ -1986,6 +2094,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Roadmap passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="37"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 37%;"
@@ -2048,6 +2160,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Website passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="80"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 80%;"
@@ -2123,6 +2239,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="License found passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="94"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 94%;"
@@ -2185,6 +2305,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Approved license passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="93"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 93%;"
@@ -2247,6 +2371,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="License scanning passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="22"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 22%;"
@@ -2324,6 +2452,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Artifact Hub badge passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="9"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 9%;"
@@ -2386,6 +2518,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="CLA passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="8"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 8%;"
@@ -2451,6 +2587,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Community meeting passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="43"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 43%;"
@@ -2513,6 +2653,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="DCO passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="81"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 81%;"
@@ -2578,6 +2722,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="OpenSSF best practices passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="59"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 59%;"
@@ -2643,6 +2791,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Recent release passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="81"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 81%;"
@@ -2705,6 +2857,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Slack presence passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="33"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 33%;"
@@ -2783,6 +2939,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Binary artifacts passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="99"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 99%;"
@@ -2849,6 +3009,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Code review passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="82"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 82%;"
@@ -2911,6 +3075,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Dangerous workflow passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="61"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 61%;"
@@ -2973,6 +3141,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Dependency update tool passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="26"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 26%;"
@@ -3035,6 +3207,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Maintained passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="87"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 87%;"
@@ -3104,6 +3280,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="SBOM passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="4"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 4%;"
@@ -3166,6 +3346,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Security policy passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="57"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 57%;"
@@ -3228,6 +3412,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Signed releases passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="5"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 5%;"
@@ -3290,6 +3478,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Token permissions passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="18"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 18%;"
@@ -3365,6 +3557,10 @@ exports[`StatsView creates snapshot 1`] = `
                                   class="progress rounded-0 progress"
                                 >
                                   <div
+                                    aria-label="Trademark disclaimer passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="40"
                                     class="progress-bar progressbar"
                                     role="progressbar"
                                     style="width: 40%;"

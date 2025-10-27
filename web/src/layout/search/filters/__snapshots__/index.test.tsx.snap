@@ -360,13 +360,13 @@ exports[`Filters creates snapshot 1`] = `
     >
       <label
         class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-        for="from"
+        for="r0-from"
       >
         From:
       </label>
       <input
         class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-        id="from"
+        id="r0-from"
         max="2022-03-24"
         min="2016-01-01"
         type="date"
@@ -376,13 +376,13 @@ exports[`Filters creates snapshot 1`] = `
     <div>
       <label
         class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-        for="to"
+        for="r0-to"
       >
         To:
       </label>
       <input
         class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-        id="to"
+        id="r0-to"
         max="2022-03-24"
         min="2016-01-01"
         type="date"

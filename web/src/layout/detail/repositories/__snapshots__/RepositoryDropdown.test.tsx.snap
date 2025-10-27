@@ -6,6 +6,7 @@ exports[`RepositoryDropdown creates snapshot 1`] = `
     class="ms-auto position-relative"
   >
     <button
+      aria-label="Open dropdown menu"
       class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
       data-testid="dropdown-btn"
       type="button"

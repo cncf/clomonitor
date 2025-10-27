@@ -50,6 +50,10 @@ exports[`Average creates snapshot 1`] = `
             class="progress rounded-0 progress"
           >
             <div
+              aria-label="Documentation passed checks percentage"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="85"
               class="progress-bar progressbar"
               role="progressbar"
               style="width: 85%;"
@@ -104,6 +108,10 @@ exports[`Average creates snapshot 1`] = `
             class="progress rounded-0 progress"
           >
             <div
+              aria-label="License passed checks percentage"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="79"
               class="progress-bar progressbar"
               role="progressbar"
               style="width: 79%;"
@@ -158,6 +166,10 @@ exports[`Average creates snapshot 1`] = `
             class="progress rounded-0 progress"
           >
             <div
+              aria-label="Best Practices passed checks percentage"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="57"
               class="progress-bar progressbar"
               role="progressbar"
               style="width: 57%;"
@@ -212,6 +224,10 @@ exports[`Average creates snapshot 1`] = `
             class="progress rounded-0 progress"
           >
             <div
+              aria-label="Security passed checks percentage"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="53"
               class="progress-bar progressbar"
               role="progressbar"
               style="width: 53%;"
@@ -266,6 +282,10 @@ exports[`Average creates snapshot 1`] = `
             class="progress rounded-0 progress"
           >
             <div
+              aria-label="Legal passed checks percentage"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="40"
               class="progress-bar progressbar"
               role="progressbar"
               style="width: 40%;"

@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+env:
+  OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+  OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+  OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+  OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+  OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+
 jobs:
   build-dbmigrator-image:
     if: github.ref == 'refs/heads/main'
@@ -21,12 +28,30 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor dbmigrator OCIR repository
+        id: get-ocir-repository-dbmigrator
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/dbmigrator
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push dbmigrator image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-dbmigrator.outputs.repo_path }}
         run: |
-          docker build -f database/migrations/Dockerfile -t $ECR_REGISTRY/dbmigrator:$GITHUB_SHA .
+          docker build \
+            -f database/migrations/Dockerfile \
+            -t $ECR_REGISTRY/dbmigrator:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/dbmigrator:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-apiserver-image:
     if: github.ref == 'refs/heads/main'
@@ -43,12 +68,30 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor apiserver OCIR repository
+        id: get-ocir-repository-apiserver
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/apiserver
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push apiserver image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-apiserver.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-apiserver/Dockerfile -t $ECR_REGISTRY/apiserver:$GITHUB_SHA .
+          docker build \
+            -f clomonitor-apiserver/Dockerfile \
+            -t $ECR_REGISTRY/apiserver:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/apiserver:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-archiver-image:
     if: github.ref == 'refs/heads/main'
@@ -65,12 +108,30 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor archiver OCIR repository
+        id: get-ocir-repository-archiver
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/archiver
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-archiver.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-archiver/Dockerfile -t $ECR_REGISTRY/archiver:$GITHUB_SHA .
+          docker build \
+            -f clomonitor-archiver/Dockerfile \
+            -t $ECR_REGISTRY/archiver:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/archiver:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-linter-image:
     if: github.ref == 'refs/heads/main'
@@ -84,10 +145,29 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor linter OCIR repository
+        id: get-ocir-repository-linter
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/linter
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
+        env:
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-linter.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-linter/Dockerfile -t ghcr.io/${{ github.repository }}/linter:latest .
+          docker build \
+            -f clomonitor-linter/Dockerfile \
+            -t ghcr.io/${{ github.repository }}/linter:latest \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push ghcr.io/${{ github.repository }}/linter:latest
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-notifier-image:
     if: github.ref == 'refs/heads/main'
@@ -104,12 +184,30 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor notifier OCIR repository
+        id: get-ocir-repository-notifier
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/notifier
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-notifier.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-notifier/Dockerfile -t $ECR_REGISTRY/notifier:$GITHUB_SHA .
+          docker build \
+            -f clomonitor-notifier/Dockerfile \
+            -t $ECR_REGISTRY/notifier:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/notifier:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-registrar-image:
     if: github.ref == 'refs/heads/main'
@@ -126,12 +224,30 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor registrar OCIR repository
+        id: get-ocir-repository-registrar
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/registrar
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-registrar.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-registrar/Dockerfile -t $ECR_REGISTRY/registrar:$GITHUB_SHA .
+          docker build \
+            -f clomonitor-registrar/Dockerfile \
+            -t $ECR_REGISTRY/registrar:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/registrar:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-tracker-image:
     if: github.ref == 'refs/heads/main'
@@ -148,9 +264,27 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor tracker OCIR repository
+        id: get-ocir-repository-tracker
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/tracker
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-tracker.outputs.repo_path }}
         run: |
-          docker build -f clomonitor-tracker/Dockerfile -t $ECR_REGISTRY/tracker:$GITHUB_SHA .
+          docker build \
+            -f clomonitor-tracker/Dockerfile \
+            -t $ECR_REGISTRY/tracker:$GITHUB_SHA \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
           docker push $ECR_REGISTRY/tracker:$GITHUB_SHA
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA

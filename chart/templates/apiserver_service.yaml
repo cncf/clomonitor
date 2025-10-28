@@ -5,13 +5,15 @@ metadata:
   labels:
     app.kubernetes.io/component: apiserver
     {{- include "chart.labels" . | nindent 4 }}
+  {{- with .Values.apiserver.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
+  allocateLoadBalancerNodePorts: {{ .Values.apiserver.service.allocateLoadBalancerNodePorts }}
   type: {{ .Values.apiserver.service.type }}
   ports:
-    - port: {{ .Values.apiserver.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+    {{- toYaml .Values.apiserver.service.ports | nindent 4 }}
   selector:
     app.kubernetes.io/component: apiserver
     {{- include "chart.selectorLabels" . | nindent 4 }}

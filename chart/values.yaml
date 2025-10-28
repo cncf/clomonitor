@@ -18,6 +18,10 @@ fullnameOverride: ""
 # Directory path where the configuration files should be mounted
 configDir: "/home/clomonitor/.config/clomonitor"
 
+# Check database readiness init container configuration
+checkDbIsReadyInitContainer:
+  securityContext: {}
+
 # Database configuration
 db:
   host: ""
@@ -39,9 +43,11 @@ log:
 # Database migrator configuration
 dbmigrator:
   job:
+    containerSecurityContext: {}
     image:
       # Database migrator image repository (without the tag)
       repository: clomonitor/dbmigrator
+    podSecurityContext: {}
 
 # API server configuration
 apiserver:
@@ -62,41 +68,60 @@ apiserver:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: nginx
+    backendServicePort: 80
     rules: []
     tls: []
   service:
+    allocateLoadBalancerNodePorts: true
+    annotations: {}
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 8000
     type: NodePort
-    port: 80
   deploy:
-    replicaCount: 1
+    containerSecurityContext: {}
     image:
       # API server image repository (without the tag)
       repository: clomonitor/apiserver
+    podSecurityContext: {}
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 8000
+    replicaCount: 1
     resources: {}
 
 # Archiver configuration
 archiver:
   cronjob:
+    containerSecurityContext: {}
     image:
       # Archiver image repository (without the tag)
       repository: clomonitor/archiver
+    podSecurityContext: {}
     resources: {}
 
 # Notifier configuration
 notifier:
   enabled: false
   cronjob:
+    containerSecurityContext: {}
     image:
       # Notifier image repository (without the tag)
       repository: clomonitor/notifier
+    podSecurityContext: {}
     resources: {}
 
 # Registrar configuration
 registrar:
   cronjob:
+    containerSecurityContext: {}
     image:
       # Registrar image repository (without the tag)
       repository: clomonitor/registrar
+    podSecurityContext: {}
     resources: {}
   # Number of foundations to process concurrently
   concurrency: 1
@@ -104,9 +129,11 @@ registrar:
 # Tracker configuration
 tracker:
   cronjob:
+    containerSecurityContext: {}
     image:
       # Tracker image repository (without the tag)
       repository: clomonitor/tracker
+    podSecurityContext: {}
     resources: {}
   # Number of repositories to process concurrently
   # The number of tokens defined in creds.githubTokens must be equal or greater
@@ -117,12 +144,22 @@ tracker:
 # Values for postgresql chart dependency
 postgresql:
   enabled: true
+  auth:
+    database: clomonitor
+    password: postgres
+    username: postgres
+  global:
+    security:
+      allowInsecureImages: true
   image:
-    repository: artifacthub/postgres
+    repository: docker.io/artifacthub/postgres
     tag: latest
   persistence:
     mountPath: /data
-  postgresqlUsername: postgres
-  postgresqlPassword: postgres
-  postgresqlDatabase: clomonitor
-  postgresqlDataDir: /data/pgdata
+  primary:
+    extraVolumes:
+      - name: run
+        emptyDir: {}
+    extraVolumeMounts:
+      - name: run
+        mountPath: /var/run/postgresql

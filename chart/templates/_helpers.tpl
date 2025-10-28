@@ -79,8 +79,13 @@ longest resource name ("dbmigrator-install" = 18 chars).
 Provide an init container to verify the database is accessible
 */}}
 {{- define "chart.checkDbIsReadyInitContainer" -}}
+{{- $securityContext := default (dict) .Values.checkDbIsReadyInitContainer.securityContext }}
 name: check-db-ready
+{{ if .Values.postgresql.image.registry -}}
+image: {{ .Values.postgresql.image.registry }}/{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
+{{- else }}
 image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
+{{- end }}
 imagePullPolicy: {{ .Values.pullPolicy }}
 env:
   - name: PGHOST
@@ -89,5 +94,10 @@ env:
     value: "{{ .Values.db.port }}"
   - name: PGUSER
     value: "{{ .Values.db.user }}"
+{{- if $securityContext }}
+securityContext:{{- toYaml $securityContext | nindent 2 }}
+{{- else }}
+securityContext: {}
+{{- end }}
 command: ['sh', '-c', 'until pg_isready; do echo waiting for database; sleep 2; done;']
 {{- end -}}

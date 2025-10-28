@@ -16,6 +16,10 @@ spec:
     spec:
       template:
         spec:
+        {{- with .Values.notifier.cronjob.podSecurityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
         {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
@@ -27,6 +31,10 @@ spec:
             - name: notifier
               image: {{ .Values.notifier.cronjob.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
               imagePullPolicy: {{ .Values.pullPolicy }}
+              {{- with .Values.notifier.cronjob.containerSecurityContext }}
+              securityContext:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
               resources:
                 {{- toYaml .Values.notifier.cronjob.resources | nindent 16 }}
               volumeMounts:

@@ -2,7 +2,7 @@ apiVersion: v2
 name: clomonitor
 description: CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet certain project health best practices
 type: application
-version: 1.0.0
+version: 1.0.1-1
 appVersion: 1.0.0
 kubeVersion: ">= 1.19.0-0"
 keywords:
@@ -15,6 +15,6 @@ maintainers:
     email: cynthiasg@icloud.com
 dependencies:
   - name: postgresql
-    version: 8.2.1
-    repository: https://charts.helm.sh/stable
+    version: 18.0.15
+    repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled

@@ -21,6 +21,10 @@ spec:
         app.kubernetes.io/component: apiserver
         {{- include "chart.selectorLabels" . | nindent 8 }}
     spec:
+    {{- with .Values.apiserver.deploy.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -36,12 +40,20 @@ spec:
           {{ $kubectlImageVersion := ternary "1.33" $kubeVersion (semverCompare ">=1.34.0-0" (printf "%s.0" $kubeVersion)) }}
           image: "docker.io/bitnamilegacy/kubectl:{{ $kubectlImageVersion }}"
           imagePullPolicy: IfNotPresent
+          {{- with .Values.checkDbIsReadyInitContainer.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           command: ['kubectl', 'wait', '--namespace={{ .Release.Namespace }}', '--for=condition=complete', 'job/{{ include "chart.resourceNamePrefix" . }}dbmigrator-install', '--timeout=60s']
         {{- end }}
       containers:
         - name: apiserver
           image: {{ .Values.apiserver.deploy.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
           imagePullPolicy: {{ .Values.pullPolicy }}
+          {{- with .Values.apiserver.deploy.containerSecurityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: apiserver-config
               mountPath: {{ .Values.configDir | quote }}

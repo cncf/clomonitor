@@ -13,6 +13,10 @@ metadata:
 spec:
   template:
     spec:
+    {{- with .Values.dbmigrator.job.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -24,6 +28,10 @@ spec:
         - name: dbmigrator
           image: {{ .Values.dbmigrator.job.image.repository }}:{{ .Values.imageTag | default (printf "v%s" .Chart.AppVersion) }}
           imagePullPolicy: {{ .Values.pullPolicy }}
+          {{- with .Values.dbmigrator.job.containerSecurityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           env:
             - name: TERN_CONF
               value: {{ .Values.configDir }}/tern.conf

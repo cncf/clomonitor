@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2020",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,8 +14,13 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "vitest",
+      "jest"
+    ],
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"

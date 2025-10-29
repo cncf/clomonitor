@@ -2,7 +2,7 @@ apiVersion: v2
 name: clomonitor
 description: CLOMonitor is a tool that periodically checks open source projects repositories to verify they meet certain project health best practices
 type: application
-version: 1.0.1-2
+version: 1.0.1-3
 appVersion: 1.0.0
 kubeVersion: ">= 1.19.0-0"
 keywords:

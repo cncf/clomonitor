@@ -152,6 +152,7 @@ postgresql:
     security:
       allowInsecureImages: true
   image:
+    registry: docker.io
     repository: artifacthub/postgres
     tag: latest
   persistence:

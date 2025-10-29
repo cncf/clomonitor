@@ -1,4 +1,584 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar > creates snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="navbar Navbar-module_navbar__Ey25T _navbar_0b28b6"
+  >
+    <div
+      class="container-lg"
+    >
+      <div
+        class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100"
+      >
+        <div
+          class="me-0 me-md-4 mt-2 mt-md-0 _line_0b28b6"
+        >
+          <div
+            class="d-flex flex-row align-items-start"
+          >
+            <a
+              class="cursorPointer"
+              data-discover="true"
+              href="/"
+            >
+              <img
+                alt="CLOMonitor logo"
+                class="_logo_0b28b6"
+                src="/src/media/clomonitor.svg"
+              />
+            </a>
+            <div
+              class="d-flex d-md-none ms-auto position-relative"
+            >
+              <button
+                aria-expanded="false"
+                aria-label="Mobile settings button"
+                class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 _btn_b738b3"
+                type="button"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 16 16"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div
+                class="dropdown-menu rounded-0 _dropdown_b738b3"
+                role="menu"
+              >
+                <div
+                  class="px-3 py-2 lightText text-secondary text-uppercase fw-bold"
+                >
+                  Theme
+                </div>
+                <div
+                  class="dropdown-item"
+                >
+                  <div
+                    class="form-check"
+                  >
+                    <input
+                      aria-checked="true"
+                      checked=""
+                      class="form-check-input ThemeMode-module_input__iMfv3"
+                      id="theme-mobile-automatic"
+                      name="automatic"
+                      tabindex="-1"
+                      type="radio"
+                      value="automatic"
+                    />
+                    <label
+                      class="form-check-label w-100"
+                      for="theme-mobile-automatic"
+                    >
+                      <svg
+                        class="mx-1 position-relative"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0 3.75C0 2.784.784 2 1.75 2h20.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 22.25 22H1.75A1.75 1.75 0 0 1 0 20.25ZM22.5 7h-21v13.25c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25Zm-10-3.5v2h10V3.75a.25.25 0 0 0-.25-.25ZM7 3.5v2h4v-2Zm-5.25 0a.25.25 0 0 0-.25.25V5.5h4v-2Z"
+                        />
+                      </svg>
+                      Automatic
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="dropdown-item"
+                >
+                  <div
+                    class="form-check"
+                  >
+                    <input
+                      aria-checked="false"
+                      class="form-check-input ThemeMode-module_input__iMfv3"
+                      id="theme-mobile-light"
+                      name="light"
+                      tabindex="-1"
+                      type="radio"
+                      value="light"
+                    />
+                    <label
+                      class="form-check-label w-100"
+                      for="theme-mobile-light"
+                    >
+                      <svg
+                        class="mx-1 position-relative"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="5"
+                        />
+                        <line
+                          x1="12"
+                          x2="12"
+                          y1="1"
+                          y2="3"
+                        />
+                        <line
+                          x1="12"
+                          x2="12"
+                          y1="21"
+                          y2="23"
+                        />
+                        <line
+                          x1="4.22"
+                          x2="5.64"
+                          y1="4.22"
+                          y2="5.64"
+                        />
+                        <line
+                          x1="18.36"
+                          x2="19.78"
+                          y1="18.36"
+                          y2="19.78"
+                        />
+                        <line
+                          x1="1"
+                          x2="3"
+                          y1="12"
+                          y2="12"
+                        />
+                        <line
+                          x1="21"
+                          x2="23"
+                          y1="12"
+                          y2="12"
+                        />
+                        <line
+                          x1="4.22"
+                          x2="5.64"
+                          y1="19.78"
+                          y2="18.36"
+                        />
+                        <line
+                          x1="18.36"
+                          x2="19.78"
+                          y1="5.64"
+                          y2="4.22"
+                        />
+                      </svg>
+                      Light
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="dropdown-item"
+                >
+                  <div
+                    class="form-check"
+                  >
+                    <input
+                      aria-checked="false"
+                      class="form-check-input ThemeMode-module_input__iMfv3"
+                      id="theme-mobile-dark"
+                      name="dark"
+                      tabindex="-1"
+                      type="radio"
+                      value="dark"
+                    />
+                    <label
+                      class="form-check-label w-100"
+                      for="theme-mobile-dark"
+                    >
+                      <svg
+                        class="mx-1 position-relative"
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        />
+                      </svg>
+                      Dark
+                    </label>
+                  </div>
+                </div>
+                <hr />
+                <div
+                  class="dropdown-item mb-2"
+                >
+                  <a
+                    aria-label="Open documentation"
+                    class="link text-decoration-none fw-bold d-inline-block w-100"
+                    href="/docs"
+                    rel="noopener noreferrer"
+                    tabindex="-1"
+                    target="_self"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center py-1"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 384 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"
+                        />
+                      </svg>
+                      <div
+                        class="ms-2"
+                      >
+                        Documentation
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="dropdown-item mb-2"
+                >
+                  <a
+                    class="text-decoration-none fw-bold d-inline-block w-100"
+                    data-discover="true"
+                    href="/stats"
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center py-1"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 544 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+                        />
+                      </svg>
+                      <div
+                        class="ms-2"
+                      >
+                        Statistics
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="position-relative my-3 _line_0b28b6"
+        >
+          <div
+            class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto SearchbarWithDropdown-module_searchBar__gq6Pz search"
+          >
+            <input
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
+              class="flex-grow-1 ps-2 ps-md-3 border-0 shadow-none bg-transparent lh-base undefined"
+              data-testid="search-bar"
+              placeholder="Search projects"
+              spellcheck="false"
+              type="text"
+              value=""
+            />
+            <button
+              aria-label="Search text"
+              class="btn btn-link lh-1 px-2 SearchbarWithDropdown-module_btnIcon__Yu56a"
+            >
+              <div
+                class="SearchbarWithDropdown-module_iconWrapper__pRj6N lightIcon"
+              >
+                <svg
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="8"
+                  />
+                  <line
+                    x1="21"
+                    x2="16.65"
+                    y1="21"
+                    y2="16.65"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          class="d-none d-md-flex flex-row align-items-center ms-auto _searchWrapper_0b28b6"
+        >
+          <a
+            aria-label="Open documentation"
+            class="link position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none _link_0b28b6 navbarLink"
+            href="/docs"
+            rel="noopener noreferrer"
+            tabindex="-1"
+            target="_self"
+          >
+            Docs
+          </a>
+          <a
+            class="position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none _link_0b28b6 navbarLink"
+            data-discover="true"
+            href="/stats"
+          >
+            Stats
+          </a>
+          <div
+            class="ms-2 position-relative"
+          >
+            <button
+              aria-expanded="false"
+              aria-label="Settings button"
+              class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 _btn_6ca852"
+              type="button"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"
+                />
+              </svg>
+            </button>
+            <div
+              class="dropdown-menu rounded-0 _dropdown_6ca852"
+              role="menu"
+            >
+              <div
+                class="dropdown-arrow undefined"
+              />
+              <div
+                class="px-3 py-2 lightText text-secondary text-uppercase fw-bold"
+              >
+                Theme
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="true"
+                    checked=""
+                    class="form-check-input ThemeMode-module_input__iMfv3"
+                    id="theme-desktop-automatic"
+                    name="automatic"
+                    tabindex="-1"
+                    type="radio"
+                    value="automatic"
+                  />
+                  <label
+                    class="form-check-label w-100"
+                    for="theme-desktop-automatic"
+                  >
+                    <svg
+                      class="mx-1 position-relative"
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 3.75C0 2.784.784 2 1.75 2h20.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 22.25 22H1.75A1.75 1.75 0 0 1 0 20.25ZM22.5 7h-21v13.25c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25Zm-10-3.5v2h10V3.75a.25.25 0 0 0-.25-.25ZM7 3.5v2h4v-2Zm-5.25 0a.25.25 0 0 0-.25.25V5.5h4v-2Z"
+                      />
+                    </svg>
+                    Automatic
+                  </label>
+                </div>
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="false"
+                    class="form-check-input ThemeMode-module_input__iMfv3"
+                    id="theme-desktop-light"
+                    name="light"
+                    tabindex="-1"
+                    type="radio"
+                    value="light"
+                  />
+                  <label
+                    class="form-check-label w-100"
+                    for="theme-desktop-light"
+                  >
+                    <svg
+                      class="mx-1 position-relative"
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="5"
+                      />
+                      <line
+                        x1="12"
+                        x2="12"
+                        y1="1"
+                        y2="3"
+                      />
+                      <line
+                        x1="12"
+                        x2="12"
+                        y1="21"
+                        y2="23"
+                      />
+                      <line
+                        x1="4.22"
+                        x2="5.64"
+                        y1="4.22"
+                        y2="5.64"
+                      />
+                      <line
+                        x1="18.36"
+                        x2="19.78"
+                        y1="18.36"
+                        y2="19.78"
+                      />
+                      <line
+                        x1="1"
+                        x2="3"
+                        y1="12"
+                        y2="12"
+                      />
+                      <line
+                        x1="21"
+                        x2="23"
+                        y1="12"
+                        y2="12"
+                      />
+                      <line
+                        x1="4.22"
+                        x2="5.64"
+                        y1="19.78"
+                        y2="18.36"
+                      />
+                      <line
+                        x1="18.36"
+                        x2="19.78"
+                        y1="5.64"
+                        y2="4.22"
+                      />
+                    </svg>
+                    Light
+                  </label>
+                </div>
+              </div>
+              <div
+                class="dropdown-item"
+              >
+                <div
+                  class="form-check"
+                >
+                  <input
+                    aria-checked="false"
+                    class="form-check-input ThemeMode-module_input__iMfv3"
+                    id="theme-desktop-dark"
+                    name="dark"
+                    tabindex="-1"
+                    type="radio"
+                    value="dark"
+                  />
+                  <label
+                    class="form-check-label w-100"
+                    for="theme-desktop-dark"
+                  >
+                    <svg
+                      class="mx-1 position-relative"
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                      />
+                    </svg>
+                    Dark
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
 
 exports[`Navbar creates snapshot 1`] = `
 <DocumentFragment>

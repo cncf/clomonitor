@@ -1,4 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > creates snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+          role="button"
+        >
+          <div
+            class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+            style="border-bottom-color: var(--clo-green);"
+          >
+            80
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
 
 exports[`Badge creates snapshot 1`] = `
 <DocumentFragment>

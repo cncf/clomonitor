@@ -1,4 +1,822 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Summary > creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="pt-2 mb-4 mb-md-5"
+  >
+    <table
+      class="table table-bordered mb-0 w-100 _table_2617a4"
+      data-testid="repositories-summary"
+    >
+      <thead>
+        <tr>
+          <th
+            class="text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="me-2 position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+                />
+              </svg>
+            </small>
+            <span>
+              Repository
+            </span>
+          </th>
+          <th
+            class="text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 4h-3V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v1H3a1 1 0 0 0-1 1v3c0 4.31 1.799 6.91 4.819 7.012A6.001 6.001 0 0 0 11 17.91V20H9v2h6v-2h-2v-2.09a6.01 6.01 0 0 0 4.181-2.898C20.201 14.91 22 12.31 22 8V5a1 1 0 0 0-1-1zM4 8V6h2v6.83C4.216 12.078 4 9.299 4 8zm8 8c-2.206 0-4-1.794-4-4V4h8v8c0 2.206-1.794 4-4 4zm6-3.17V6h2v2c0 1.299-.216 4.078-2 4.83z"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-inline-block d-md-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              Global
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              Documentation
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 32c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 32 256 32zm0 208c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80zM193.7 307.4c-19.1-8.1-36.2-19.6-50.8-34.3-1.4-1.4-2.8-2.8-4.1-4.3L64 400h96l48 80 48-105.8 25.5-56.2c-8.4 1.3-16.9 2-25.5 2-21.6 0-42.5-4.2-62.3-12.6zM373.3 268.9c-1.3 1.4-2.7 2.9-4.1 4.3-14.6 14.6-31.7 26.2-50.7 34.2L294 361.2l-21.9 48.4L304 480l48-80h96l-74.7-131.1z"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              License
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879L5 4.60434ZM3.78307 2.82598L12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598ZM12 13.5L9.06107 15.0451L9.62236 11.7725L7.24472 9.45492L10.5305 8.97746L12 6L13.4695 8.97746L16.7553 9.45492L14.3776 11.7725L14.9389 15.0451L12 13.5Z"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              Best Practices
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2C9.243 2 7 4.243 7 7v2H6c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-9c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v2H9V7zm9.002 13H13v-2.278c.595-.347 1-.985 1-1.722 0-1.103-.897-2-2-2s-2 .897-2 2c0 .736.405 1.375 1 1.722V20H6v-9h12l.002 9z"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              Security
+            </span>
+          </th>
+          <th
+            class="d-none d-md-table-cell text-center text-nowrap"
+            scope="col"
+          >
+            <small
+              class="position-relative _icon_2617a4"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.75 2.75V4.5h1.975c.351 0 .694.106.984.303l1.697 1.154c.041.028.09.043.14.043h4.102a.75.75 0 0 1 0 1.5H20.07l3.366 7.68a.749.749 0 0 1-.23.896c-.1.074-.203.143-.31.206a6.296 6.296 0 0 1-.79.399 7.349 7.349 0 0 1-2.856.569 7.343 7.343 0 0 1-2.855-.568 6.205 6.205 0 0 1-.79-.4 3.205 3.205 0 0 1-.307-.202l-.005-.004a.749.749 0 0 1-.23-.896l3.368-7.68h-.886c-.351 0-.694-.106-.984-.303l-1.697-1.154a.246.246 0 0 0-.14-.043H12.75v14.5h4.487a.75.75 0 0 1 0 1.5H6.763a.75.75 0 0 1 0-1.5h4.487V6H9.275a.249.249 0 0 0-.14.043L7.439 7.197c-.29.197-.633.303-.984.303h-.886l3.368 7.68a.75.75 0 0 1-.209.878c-.08.065-.16.126-.31.223a6.077 6.077 0 0 1-.792.433 6.924 6.924 0 0 1-2.876.62 6.913 6.913 0 0 1-2.876-.62 6.077 6.077 0 0 1-.792-.433 3.483 3.483 0 0 1-.309-.221.762.762 0 0 1-.21-.88L3.93 7.5H2.353a.75.75 0 0 1 0-1.5h4.102c.05 0 .099-.015.141-.043l1.695-1.154c.29-.198.634-.303.985-.303h1.974V2.75a.75.75 0 0 1 1.5 0ZM2.193 15.198a5.414 5.414 0 0 0 2.557.635 5.414 5.414 0 0 0 2.557-.635L4.75 9.368Zm14.51-.024c.082.04.174.083.275.126.53.223 1.305.45 2.272.45a5.847 5.847 0 0 0 2.547-.576L19.25 9.367Z"
+                />
+              </svg>
+            </small>
+            <span
+              class="d-none d-xl-inline-block ms-1 ms-xl-2"
+            >
+              Legal
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: sdk-go"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                sdk-go
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              95
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              90
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              100
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: sdk-javascript"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                sdk-javascript
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              95
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              90
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              100
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: sdk-csharp"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                sdk-csharp
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              85
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
+            >
+              70
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              100
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: sdk-python"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                sdk-python
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              85
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
+            >
+              70
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              100
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: spec"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                spec
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    community
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-orange);"
+            >
+              44
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
+            >
+              60
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              80
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-orange);"
+            >
+              35
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-red);"
+            >
+              0
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
+          >
+            <div
+              class="d-flex flex-row align-items-center px-2"
+            >
+              <button
+                aria-label="Go from summary to section: sdk-java"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
+              >
+                sdk-java
+              </button>
+              <div
+                class="d-inline-flex d-none d-xl-inline-flex"
+              >
+                <div
+                  class="badge text-secondary border border-secondary rounded-0 position-relative text-uppercase CheckSetBadge-module_badge__kB9Lk"
+                  data-testid="checkset-badge"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              85
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
+            >
+              70
+            </div>
+          </td>
+          <td
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+            role="button"
+          >
+            <div
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
+            >
+              100
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+          <td
+            class="d-none d-md-table-cell align-middle"
+          >
+            <div
+              class="mx-auto px-2 text-center"
+            >
+              <span
+                class="text-muted"
+              >
+                n/a
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
 
 exports[`Summary creates snapshot 1`] = `
 <DocumentFragment>

@@ -1,4 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Title > creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-row align-items-center undefined"
+  >
+    icon
+    <div
+      class="ms-2 fw-bold"
+    >
+      title
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
 exports[`Title creates snapshot 1`] = `
 <DocumentFragment>

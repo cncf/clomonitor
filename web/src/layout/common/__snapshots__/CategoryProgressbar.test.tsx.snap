@@ -1,4 +1,40 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CategoryProgressbar > creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="_wrapper_e29e1e col-12"
+  >
+    <div
+      class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
+    >
+      <div
+        class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
+      >
+        <span
+          class="text-truncate"
+        >
+          Documentation
+        </span>
+      </div>
+      <div
+        class="text-center fw-bold font-monospace _value_e29e1e "
+      >
+        80
+      </div>
+      <div
+        class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
+      >
+        <div
+          class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
+          data-testid="line"
+          style="width: 80%; background-color: var(--clo-green);"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
 exports[`CategoryProgressbar creates snapshot 1`] = `
 <DocumentFragment>

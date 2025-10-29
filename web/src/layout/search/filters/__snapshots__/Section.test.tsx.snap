@@ -1,4 +1,164 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Section > creates snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="fw-bold text-uppercase text-primary _categoryTitle_bcd004"
+  >
+    <small>
+      Rating
+    </small>
+  </div>
+  <div
+    class="mt-2"
+  >
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-rating-a"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="a"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-a"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative _decorator_bcd004"
+          />
+          <span
+            class="text-truncate"
+          >
+            A
+          </span>
+          <small
+            class="ps-1"
+          >
+            [75-100]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-rating-b"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="b"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-b"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative _decorator_bcd004"
+          />
+          <span
+            class="text-truncate"
+          >
+            B
+          </span>
+          <small
+            class="ps-1"
+          >
+            [50-74]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-rating-c"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="c"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-c"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative _decorator_bcd004"
+          />
+          <span
+            class="text-truncate"
+          >
+            C
+          </span>
+          <small
+            class="ps-1"
+          >
+            [25-49]
+          </small>
+        </div>
+      </label>
+    </div>
+    <div
+      class="form-check me-sm-2 mb-2 undefined"
+    >
+      <input
+        aria-checked="false"
+        class="form-check-input rounded-0 Checkbox-module_checkbox__lSeQj"
+        id="test-rating-d"
+        name="rating"
+        tabindex="0"
+        type="checkbox"
+        value="d"
+      />
+      <label
+        class="form-check-label mw-100"
+        data-testid="checkboxLabel"
+        for="test-rating-d"
+      >
+        <div
+          class="d-flex align-items-baseline mw-100"
+        >
+          <span
+            class="position-relative _decorator_bcd004"
+          />
+          <span
+            class="text-truncate"
+          >
+            D
+          </span>
+          <small
+            class="ps-1"
+          >
+            [0-24]
+          </small>
+        </div>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
 exports[`Section creates snapshot 1`] = `
 <DocumentFragment>

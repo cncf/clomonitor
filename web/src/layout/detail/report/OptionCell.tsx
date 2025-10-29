@@ -120,22 +120,23 @@ const OptionCell = (props: Props) => {
             tooltipStyle
           >
             <div ref={details} className={`overflow-auto pb-1 ${styles.detailsWrapper} ${styles.visibleScroll}`}>
-              <ReactMarkdown
-                rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
-                className={styles.detailsContent}
-                children={props.check.details!}
-                components={{
-                  h1: Heading,
-                  h2: Heading,
-                  h3: Heading,
-                  h4: Heading,
-                  h5: Heading,
-                  h6: Heading,
-                  a: Link,
-                  blockquote: Blockquote,
-                }}
-                skipHtml
-              />
+              <div className={styles.detailsContent}>
+                <ReactMarkdown
+                  rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
+                  children={props.check.details!}
+                  components={{
+                    h1: Heading,
+                    h2: Heading,
+                    h3: Heading,
+                    h4: Heading,
+                    h5: Heading,
+                    h6: Heading,
+                    a: Link,
+                    blockquote: Blockquote,
+                  }}
+                  skipHtml
+                />
+              </div>
             </div>
           </DropdownOnHover>
         </div>

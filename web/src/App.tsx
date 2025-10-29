@@ -1,7 +1,7 @@
 import 'clo-ui/styles/xxxl_grid.scss';
 
 import { AlertController } from 'clo-ui/components/AlertController';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes, useParams } from 'react-router-dom';
 
 import { AppContextProvider } from './context/AppContextProvider';
@@ -9,7 +9,8 @@ import Layout from './layout';
 import Detail from './layout/detail';
 import NotFound from './layout/notFound';
 import Search from './layout/search';
-import StatsView from './layout/stats';
+
+const StatsView = lazy(() => import('./layout/stats'));
 
 // Old path without :foundation is redirected to CNCF foundation by default
 const ProjectsRedirection = () => {
@@ -40,7 +41,14 @@ function App() {
             />
             <Route path="projects/:project" element={<ProjectsRedirection />} />
             <Route path="projects/:foundation/:project" element={<Detail setInvisibleFooter={setInvisibleFooter} />} />
-            <Route path="stats" element={<StatsView />} />
+            <Route
+              path="stats"
+              element={
+                <Suspense fallback={null}>
+                  <StatsView />
+                </Suspense>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import BadgeCell from './BadgeCell';
 
-const mockOnClick = jest.fn();
+const mockOnClick = vi.fn();
 
 const defaultProps = {
   onClick: mockOnClick,
@@ -11,7 +12,7 @@ const defaultProps = {
 
 describe('Badge', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

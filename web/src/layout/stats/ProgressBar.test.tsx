@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import ProgressBar from './ProgressBar';
 
@@ -10,7 +11,7 @@ const defaultProps = {
 
 describe('ProgressBar', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

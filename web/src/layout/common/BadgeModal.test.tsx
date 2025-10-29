@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Foundation } from 'clo-ui/components/Foundation';
+import { vi } from 'vitest';
 
 import BadgeModal from './BadgeModal';
 
-const mockOnCloseModal = jest.fn();
+const mockOnCloseModal = vi.fn();
 
 const defaultProps = {
   foundation: Foundation.cncf,
@@ -15,7 +16,7 @@ const defaultProps = {
 
 describe('BadgeModal', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -33,14 +34,12 @@ describe('BadgeModal', () => {
 
       const badge = screen.getByAltText('CLOMonitor badge');
       expect(badge).toBeInTheDocument();
-      expect(badge).toHaveProperty(
-        'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge'
-      );
+      const endpointUrl = `https://img.shields.io/endpoint?url=${window.location.origin}/api/projects/cncf/proj/badge`;
+      expect(badge).toHaveProperty('src', endpointUrl);
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        '[![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge)](http://localhost/projects/cncf/proj)'
+        `[![CLOMonitor](${endpointUrl})](${window.location.origin}/projects/cncf/proj)`
       );
     });
 
@@ -54,14 +53,12 @@ describe('BadgeModal', () => {
 
       const badge = screen.getByAltText('CLOMonitor badge');
       expect(badge).toBeInTheDocument();
-      expect(badge).toHaveProperty(
-        'src',
-        'https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge'
-      );
+      const endpointUrl = `https://img.shields.io/endpoint?url=${window.location.origin}/api/projects/cncf/proj/badge`;
+      expect(badge).toHaveProperty('src', endpointUrl);
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
       expect(code).toHaveTextContent(
-        'http://localhost/projects/cncf/proj[image:https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge[CLOMonitor]]'
+        `${window.location.origin}/projects/cncf/proj[image:${endpointUrl}[CLOMonitor]]`
       );
     });
   });

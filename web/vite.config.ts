@@ -3,6 +3,8 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+const isTest = Boolean(process.env.VITEST);
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -11,6 +13,9 @@ export default defineConfig({
     },
   },
   css: {
+    modules: {
+      generateScopedName: isTest ? '[local]' : undefined,
+    },
     preprocessorOptions: {
       scss: {
         quietDeps: true,

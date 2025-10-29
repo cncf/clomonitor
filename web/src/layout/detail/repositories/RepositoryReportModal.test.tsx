@@ -1,18 +1,25 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { mocked } from 'jest-mock';
-import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import API from '../../../api';
 import { AppContext } from '../../../context/AppContextProvider';
 import { SortBy, SortDirection } from '../../../types';
 import RepositoryReportModal from './RepositoryReportModal';
 
-jest.mock('../../../api');
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useParams: jest.fn(),
-  useLocation: jest.fn(),
+const { mockUseParams, mockUseLocation } = vi.hoisted(() => ({
+  mockUseParams: vi.fn(),
+  mockUseLocation: vi.fn(),
 }));
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useParams: mockUseParams,
+    useLocation: mockUseLocation,
+  };
+});
 
 const mockCtx = {
   prefs: {
@@ -92,7 +99,7 @@ const reportSample = `
 For more information about the checks sets available and how each of the checks work, please see the [CLOMonitor's documentation](https://clomonitor.io/docs/topics/checks/).
 `;
 
-const mockOnCloseModal = jest.fn();
+const mockOnCloseModal = vi.fn();
 
 const defaultProps = {
   repoName: 'repo',
@@ -101,9 +108,11 @@ const defaultProps = {
 };
 
 describe('RepositoryReportModal', () => {
+  const getRepositoryReportMDMock = vi.spyOn(API, 'getRepositoryReportMD');
+
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
-    jest.spyOn(ReactRouter, 'useLocation').mockReturnValue({
+    mockUseParams.mockReturnValue({ project: 'proj', foundation: 'cncf' });
+    mockUseLocation.mockReturnValue({
       pathname: '/projects/cncf/artifact-hub/artifact-hub',
       search: '',
       hash: '',
@@ -113,13 +122,15 @@ describe('RepositoryReportModal', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    getRepositoryReportMDMock.mockReset();
+    mockUseParams.mockReset();
+    mockUseLocation.mockReset();
   });
 
   it('creates snapshot', async () => {
-    mocked(API).getRepositoryReportMD.mockResolvedValue(reportSample);
+    getRepositoryReportMDMock.mockResolvedValue(reportSample);
     const { asFragment } = render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <RepositoryReportModal {...defaultProps} />
         </Router>
@@ -137,9 +148,9 @@ describe('RepositoryReportModal', () => {
 
   describe('Render', () => {
     it('renders proper content', async () => {
-      mocked(API).getRepositoryReportMD.mockResolvedValue(reportSample);
+      getRepositoryReportMDMock.mockResolvedValue(reportSample);
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <RepositoryReportModal {...defaultProps} />
           </Router>
@@ -156,10 +167,10 @@ describe('RepositoryReportModal', () => {
     });
 
     it('displays loading while getting markdown', async () => {
-      mocked(API).getRepositoryReportMD.mockResolvedValue(reportSample);
+      getRepositoryReportMDMock.mockResolvedValue(reportSample);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <RepositoryReportModal {...defaultProps} />
           </Router>

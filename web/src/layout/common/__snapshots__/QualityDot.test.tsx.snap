@@ -8,12 +8,3 @@ exports[`QualityDot > creates snapshot 1`] = `
   />
 </DocumentFragment>
 `;
-
-exports[`QualityDot creates snapshot 1`] = `
-<DocumentFragment>
-  <div
-    class="me-2 border border-1 rounded-pill position-relative quality level1 undefined"
-    data-testid="quality-dot"
-  />
-</DocumentFragment>
-`;

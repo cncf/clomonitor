@@ -1,23 +1,30 @@
+import { createRequire } from 'module';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import { Repository } from '../../../types';
 import Summary from './Summary';
 
-const mockUseNavigate = jest.fn();
+const mockUseNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useNavigate: () => mockUseNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockUseNavigate,
+  };
+});
+
+const require = createRequire(import.meta.url);
 
 const getRepositories = (fixtureId: string): Repository[] => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/Summary/${fixtureId}.json`) as Repository[];
 };
 
-const mockScrollIntoView = jest.fn();
+const mockScrollIntoView = vi.fn();
 
 const defaultProps = {
   scrollIntoView: mockScrollIntoView,
@@ -25,7 +32,7 @@ const defaultProps = {
 
 describe('Summary', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

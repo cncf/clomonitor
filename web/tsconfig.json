@@ -17,9 +17,10 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": [
+      "node",
       "vite/client",
       "vitest",
-      "jest"
+      "@testing-library/jest-dom"
     ],
     "isolatedModules": true,
     "noEmit": true,

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ProjectDropdown creates snapshot 1`] = `
+exports[`ProjectDropdown > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ms-auto position-relative"
@@ -9,7 +9,7 @@ exports[`ProjectDropdown creates snapshot 1`] = `
       aria-expanded="false"
       aria-haspopup="true"
       aria-label="Open project options for proj"
-      class="btn btn-sm btn-primary text-white rounded-0 lh-1 btn"
+      class="btn btn-sm btn-primary text-white rounded-0 lh-1 _btn_9ac90e"
       data-testid="dropdown-btn"
       type="button"
     >
@@ -30,7 +30,7 @@ exports[`ProjectDropdown creates snapshot 1`] = `
       </svg>
     </button>
     <ul
-      class="dropdown-menu rounded-0 dropdown"
+      class="dropdown-menu rounded-0 _dropdown_9ac90e"
       role="complementary"
     >
       <li>

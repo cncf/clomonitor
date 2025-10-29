@@ -39,6 +39,7 @@ const OptionCell = (props: Props) => {
   const failedIcon = <RiErrorWarningLine data-testid="failed-icon" className={styles.failedIcon} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
+  const scorecardBaseUrl = import.meta.env.DEV ? 'http://localhost:8000' : window.location.origin;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Heading = (props: any) => (
@@ -168,11 +169,7 @@ const OptionCell = (props: Props) => {
             <iframe
               ref={iframe}
               title="Scorecard details"
-              src={`${
-                process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : window.location.origin
-              }/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${
-                githubUrlParts[2]
-              }&theme=${effective}&embed=true`}
+              src={`${scorecardBaseUrl}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}&embed=true`}
               className={`w-100 ${styles.iframe}`}
             />
           </div>

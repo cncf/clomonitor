@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ReportSummaryModal creates snapshot 1`] = `
+exports[`ReportSummaryModal > creates snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -39,7 +39,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
               class="w-100 position-relative"
             >
               <label
-                class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 label"
+                class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 _label_83762e"
                 for="theme"
               >
                 Theme
@@ -187,7 +187,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                 class="mt-4"
               >
                 <label
-                  class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 label"
+                  class="w-100 text-primary text-uppercase fw-bold border-bottom border-1 mb-3 _label_83762e"
                 >
                   Code
                 </label>
@@ -266,7 +266,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                       data-label="Copy report summary markdown link to clipboard"
                       data-testid="code"
                     >
-                      [![CLOMonitor report summary](http://localhost/api/projects/cncf/proj/report-summary?theme=light)](http://localhost/projects/cncf/proj)
+                      [![CLOMonitor report summary](http://localhost:3000/api/projects/cncf/proj/report-summary?theme=light)](http://localhost:3000/projects/cncf/proj)
                       <button
                         aria-label="Copy report summary markdown link to clipboard"
                         type="button"
@@ -281,12 +281,12 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                 class="mt-4 d-flex flex-column"
               >
                 <label
-                  class="text-primary text-uppercase fw-bold border-bottom border-1 mb-4 label"
+                  class="text-primary text-uppercase fw-bold border-bottom border-1 mb-4 _label_83762e"
                 >
                   Preview
                 </label>
                 <div
-                  class="text-center mx-auto my-3 position-relative w-100 imgWrapper"
+                  class="text-center mx-auto my-3 position-relative w-100 _imgWrapper_83762e"
                 >
                   <div
                     class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute Loading-module_wrapper__ezyxl"
@@ -309,7 +309,7 @@ exports[`ReportSummaryModal creates snapshot 1`] = `
                   <img
                     alt="CLOMonitor report summary"
                     class="border border-1"
-                    src="http://localhost/api/projects/cncf/proj/report-summary?theme=light"
+                    src="http://localhost:3000/api/projects/cncf/proj/report-summary?theme=light"
                   />
                 </div>
               </div>

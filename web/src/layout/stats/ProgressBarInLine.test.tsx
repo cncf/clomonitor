@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { ReportOption } from '../../types';
 import ProgressBarInLine from './ProgressBarInLine';
@@ -8,12 +9,12 @@ const defaultProps = {
   icon: <>icon</>,
   value: 75,
   name: ReportOption.Governance,
-  onSelectCheck: jest.fn(),
+  onSelectCheck: vi.fn(),
 };
 
 describe('ProgressBarInLine', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

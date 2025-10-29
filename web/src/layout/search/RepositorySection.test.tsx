@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CheckSet } from 'clo-ui/components/CheckSetBadge';
+import { vi } from 'vitest';
 
 import RepositorySection from './RepositorySection';
 
@@ -53,7 +54,7 @@ const defaultPropsRepos = {
 
 describe('RepositorySection', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -64,7 +65,7 @@ describe('RepositorySection', () => {
 
   describe('Render', () => {
     it('renders with more than one repo', async () => {
-      jest.useFakeTimers();
+      vi.useFakeTimers();
 
       render(<RepositorySection {...defaultPropsRepos} />);
 
@@ -77,7 +78,7 @@ describe('RepositorySection', () => {
       await user.hover(content);
 
       act(() => {
-        jest.advanceTimersByTime(100);
+        vi.advanceTimersByTime(100);
       });
 
       expect(dropdown).toHaveClass('show');

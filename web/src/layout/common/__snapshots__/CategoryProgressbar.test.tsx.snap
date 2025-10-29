@@ -35,39 +35,3 @@ exports[`CategoryProgressbar > creates snapshot 1`] = `
   </div>
 </DocumentFragment>
 `;
-
-exports[`CategoryProgressbar creates snapshot 1`] = `
-<DocumentFragment>
-  <div
-    class="wrapper col-12"
-  >
-    <div
-      class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
-    >
-      <div
-        class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
-      >
-        <span
-          class="text-truncate"
-        >
-          Documentation
-        </span>
-      </div>
-      <div
-        class="text-center fw-bold font-monospace value "
-      >
-        80
-      </div>
-      <div
-        class="flex-grow-1 position-relative mx-2 progressWrapper  "
-      >
-        <div
-          class="position-absolute start-0 top-0 bottom-0 line"
-          data-testid="line"
-          style="width: 80%;"
-        />
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;

@@ -1,10 +1,17 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { ReportOption } from '../../../types';
 import OptionCell from './OptionCell';
-jest.mock('react-markdown', () => () => <div>markdown</div>);
-jest.mock('rehype-external-links', () => () => <></>);
+vi.mock('react-markdown', () => ({
+  __esModule: true,
+  default: () => <div>markdown</div>,
+}));
+vi.mock('rehype-external-links', () => ({
+  __esModule: true,
+  default: () => <></>,
+}));
 
 const defaultProps = {
   label: ReportOption.Adopters,
@@ -17,7 +24,7 @@ const user = userEvent.setup({ delay: null });
 
 describe('OptionCell', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -115,7 +122,7 @@ describe('OptionCell', () => {
     });
 
     it('renders option with details', async () => {
-      jest.useFakeTimers();
+      vi.useFakeTimers();
 
       render(
         <table>
@@ -144,13 +151,13 @@ describe('OptionCell', () => {
       await user.hover(icons[0]);
 
       act(() => {
-        jest.advanceTimersByTime(100);
+        vi.advanceTimersByTime(100);
       });
 
       expect(dropdown).toHaveClass('show');
       expect(screen.getByText('markdown')).toBeInTheDocument();
 
-      jest.useRealTimers();
+      vi.useRealTimers();
     });
 
     describe('passed', () => {
@@ -210,7 +217,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        jest.useFakeTimers();
+        vi.useFakeTimers();
 
         render(
           <table>
@@ -235,7 +242,7 @@ describe('OptionCell', () => {
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        jest.useRealTimers();
+        vi.useRealTimers();
       });
     });
 
@@ -263,7 +270,7 @@ describe('OptionCell', () => {
       });
 
       it('displays reason tooltip', async () => {
-        jest.useFakeTimers();
+        vi.useFakeTimers();
 
         render(
           <table>
@@ -288,7 +295,7 @@ describe('OptionCell', () => {
         expect(screen.getByText('Reason:')).toBeInTheDocument();
         expect(screen.getByText(/this is a sample reason/)).toBeInTheDocument();
 
-        jest.useRealTimers();
+        vi.useRealTimers();
       });
     });
   });

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RepositoryReportModal creates snapshot 1`] = `
+exports[`RepositoryReportModal > creates snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -13,10 +13,10 @@ exports[`RepositoryReportModal creates snapshot 1`] = `
       role="dialog"
     >
       <div
-        class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modalDialog"
+        class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable _modalDialog_b40873"
       >
         <div
-          class="modal-content rounded-0 border border-3 mx-auto Modal-module_content__dWO-B modalContent"
+          class="modal-content rounded-0 border border-3 mx-auto Modal-module_content__dWO-B _modalContent_b40873"
         >
           <div
             class="modal-header rounded-0 d-flex flex-row align-items-center Modal-module_header__ILG9i"
@@ -39,7 +39,7 @@ exports[`RepositoryReportModal creates snapshot 1`] = `
               class="border border-1 overflow-auto h-100 mw-100"
             >
               <div
-                class="position-relative h-100 mh-100 syntaxWrapper"
+                class="position-relative h-100 mh-100 _syntaxWrapper_b40873"
               >
                 <div
                   class="position-absolute d-flex flex-row BlockCodeButtons-module_wrapper__LQNzn mt-2"
@@ -84,7 +84,7 @@ exports[`RepositoryReportModal creates snapshot 1`] = `
                   </div>
                 </div>
                 <pre
-                  style="display: block; overflow-x: auto; padding: 1rem; background: rgb(248, 248, 255); margin-bottom: 0px; font-size: 0.8rem; height: 100%;"
+                  style="display: block; overflow-x: auto; padding: 1rem; color: var(--color-font); background-image: none; background-position: 0% 0%; background-size: auto; background-repeat: repeat; background-origin: padding-box; background-clip: border-box; background-attachment: scroll; background-color: var(--bg-code); margin-bottom: 0px; font-size: 0.8rem; height: 100%;"
                 >
                   <code
                     class="language-markdown"

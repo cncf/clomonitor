@@ -1,25 +1,42 @@
+import { createRequire } from 'module';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import { Repository } from '../../../types';
 import RepositoriesList from './index';
-jest.mock('react-markdown', () => () => <div />);
-jest.mock('rehype-external-links', () => () => <></>);
-
-const mockUseNavigate = jest.fn();
-
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useNavigate: () => mockUseNavigate,
+vi.mock('react-markdown', () => ({
+  __esModule: true,
+  default: () => <div />,
+}));
+vi.mock('rehype-external-links', () => ({
+  __esModule: true,
+  default: () => <></>,
 }));
 
+const { mockUseNavigate, mockUseParams } = vi.hoisted(() => ({
+  mockUseNavigate: vi.fn(),
+  mockUseParams: vi.fn(),
+}));
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockUseNavigate,
+    useParams: mockUseParams,
+  };
+});
+
+const require = createRequire(import.meta.url);
+
 const getRepositories = (fixtureId: string): Repository[] => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as Repository[];
 };
 
-const mockScrollIntoView = jest.fn();
+const mockScrollIntoView = vi.fn();
 
 const defaultProps = {
   isSnapshotVisible: false,
@@ -28,11 +45,13 @@ const defaultProps = {
 
 describe('RepositoriesList', () => {
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
+    mockUseParams.mockReturnValue({ project: 'proj', foundation: 'cncf' });
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    mockUseNavigate.mockReset();
+    mockUseParams.mockReset();
+    vi.clearAllMocks();
   });
 
   it('creates snapshot', () => {

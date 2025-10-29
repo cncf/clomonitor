@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/vitest';
 
-import { createRequire } from 'node:module';
+import { createRequire } from 'module';
 
+import { createElement, type ReactNode } from 'react';
 import { vi } from 'vitest';
 
 const require = createRequire(import.meta.url);
@@ -11,8 +12,6 @@ Object.defineProperty(window, 'scrollTo', { value: noop, writable: true });
 
 class ResizeObserverMock {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(private callback: any) {}
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   observe(_target: Element) {}
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unobserve(_target: Element) {}
@@ -33,11 +32,38 @@ Object.defineProperty(globalThis, 'jest', {
   configurable: true,
 });
 
-vi.mock('clo-ui/components/CodeBlock', () => {
-  return require('./__mocks__/clo-ui/components/CodeBlock');
-});
+vi.mock('clo-ui/components/CodeBlock', () => ({
+  __esModule: true,
+  CodeBlock: ({
+    content,
+    label,
+    withCopyBtn,
+  }: {
+    content: ReactNode;
+    label?: string;
+    withCopyBtn?: boolean;
+  }) =>
+    createElement(
+      'div',
+      { 'data-testid': 'code', 'data-label': label },
+      content,
+      withCopyBtn && label
+        ? createElement('button', { 'aria-label': label, type: 'button' }, label)
+        : null
+    ),
+}));
 
 vi.mock('react-apexcharts', () => ({
   __esModule: true,
   default: vi.fn(() => 'Chart'),
 }));
+
+const fetchMock = vi.fn(
+  async () =>
+    new Response(null, {
+      status: 200,
+      statusText: 'OK',
+    })
+);
+
+vi.stubGlobal('fetch', fetchMock);

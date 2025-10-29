@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BadgeModal creates snapshot 1`] = `
+exports[`BadgeModal > creates snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -93,14 +93,14 @@ exports[`BadgeModal creates snapshot 1`] = `
                   >
                     <img
                       alt="CLOMonitor badge"
-                      src="https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge"
+                      src="https://img.shields.io/endpoint?url=http://localhost:3000/api/projects/cncf/proj/badge"
                     />
                   </div>
                   <div
                     data-label="Copy badge markdown link to clipboard"
                     data-testid="code"
                   >
-                    [![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost/api/projects/cncf/proj/badge)](http://localhost/projects/cncf/proj)
+                    [![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost:3000/api/projects/cncf/proj/badge)](http://localhost:3000/projects/cncf/proj)
                     <button
                       aria-label="Copy badge markdown link to clipboard"
                       type="button"

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Foundation } from 'clo-ui/components/Foundation';
+import { vi } from 'vitest';
 
 import ProjectDropdown from './ProjectDropdown';
 
@@ -10,7 +11,7 @@ const defaultProps = {
 
 describe('ProjectDropdown', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

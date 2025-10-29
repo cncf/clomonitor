@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Project detail index creates snapshot 1`] = `
+exports[`Project detail index > creates snapshot 1`] = `
 <DocumentFragment>
   <nav
     class="navbar navbar-expand-sm SubNavbar-module_navbar__wuZcB"
@@ -25,7 +25,7 @@ exports[`Project detail index creates snapshot 1`] = `
               <button
                 aria-expanded="false"
                 aria-label="Open sidebar"
-                class="fw-bold text-uppercase position-relative btn btn-primary btn-sm rounded-circle position-relative btnMobileFilters"
+                class="fw-bold text-uppercase position-relative btn btn-primary btn-sm rounded-circle position-relative _btnMobileFilters_0eca66"
                 type="button"
               >
                 <div
@@ -88,7 +88,7 @@ exports[`Project detail index creates snapshot 1`] = `
                         role="menu"
                       >
                         <div
-                          class="fw-bold text-uppercase text-primary categoryTitle"
+                          class="fw-bold text-uppercase text-primary _categoryTitle_bcd004"
                         >
                           <small>
                             Foundation
@@ -118,7 +118,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 />
                                 <span
                                   class="text-truncate"
@@ -149,7 +149,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 />
                                 <span
                                   class="text-truncate"
@@ -180,7 +180,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 />
                                 <span
                                   class="text-truncate"
@@ -211,7 +211,7 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 />
                                 <span
                                   class="text-truncate"
@@ -223,7 +223,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           </div>
                         </div>
                         <div
-                          class="fw-bold text-uppercase text-primary categoryTitle"
+                          class="fw-bold text-uppercase text-primary _categoryTitle_bcd004"
                         >
                           <small>
                             Rating
@@ -253,10 +253,10 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 >
                                   <div
-                                    class="me-2 border border-1 rounded-pill position-relative quality level1 undefined"
+                                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level1_d52a11 undefined"
                                     data-testid="quality-dot"
                                   />
                                 </span>
@@ -294,10 +294,10 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 >
                                   <div
-                                    class="me-2 border border-1 rounded-pill position-relative quality level2 undefined"
+                                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level2_d52a11 undefined"
                                     data-testid="quality-dot"
                                   />
                                 </span>
@@ -335,10 +335,10 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 >
                                   <div
-                                    class="me-2 border border-1 rounded-pill position-relative quality level3 undefined"
+                                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level3_d52a11 undefined"
                                     data-testid="quality-dot"
                                   />
                                 </span>
@@ -376,10 +376,10 @@ exports[`Project detail index creates snapshot 1`] = `
                                 class="d-flex align-items-baseline mw-100"
                               >
                                 <span
-                                  class="position-relative decorator"
+                                  class="position-relative _decorator_bcd004"
                                 >
                                   <div
-                                    class="me-2 border border-1 rounded-pill position-relative quality level4 undefined"
+                                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level4_d52a11 undefined"
                                     data-testid="quality-dot"
                                   />
                                 </span>
@@ -399,7 +399,7 @@ exports[`Project detail index creates snapshot 1`] = `
                         </div>
                         <div>
                           <div
-                            class="d-flex flex-row align-items-center text-primary categoryTitle"
+                            class="d-flex flex-row align-items-center text-primary _categoryTitle_512c5a"
                           >
                             <div
                               class="fw-bold text-uppercase"
@@ -412,7 +412,7 @@ exports[`Project detail index creates snapshot 1`] = `
                           <div>
                             <button
                               aria-label="Open checks modal"
-                              class="btn btn-outline-secondary btn-sm rounded-0 btn mt-3"
+                              class="btn btn-outline-secondary btn-sm rounded-0 _btn_512c5a mt-3"
                               type="button"
                             >
                               <span>
@@ -436,13 +436,13 @@ exports[`Project detail index creates snapshot 1`] = `
                           >
                             <label
                               class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-                              for="r0-from"
+                              for="_r_0_-from"
                             >
                               From:
                             </label>
                             <input
                               class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-                              id="r0-from"
+                              id="_r_0_-from"
                               max="2021-10-23"
                               min="2016-01-01"
                               type="date"
@@ -452,13 +452,13 @@ exports[`Project detail index creates snapshot 1`] = `
                           <div>
                             <label
                               class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-                              for="r0-to"
+                              for="_r_0_-to"
                             >
                               To:
                             </label>
                             <input
                               class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-                              id="r0-to"
+                              id="_r_0_-to"
                               max="2021-10-23"
                               min="2016-01-01"
                               type="date"
@@ -2015,11 +2015,11 @@ exports[`Project detail index creates snapshot 1`] = `
                     >
                       <button
                         aria-label="Close"
-                        class="ms-auto btn btn-sm btn-secondary rounded-0 lightText text-uppercase closeSidebar"
+                        class="ms-auto btn btn-sm btn-secondary rounded-0 lightText text-uppercase _closeSidebar_0eca66"
                         type="button"
                       >
                         <div
-                          class="Loading-module_wave__h1voE Loading-module_miniWave__Tc14v spinner"
+                          class="Loading-module_wave__h1voE Loading-module_miniWave__Tc14v _spinner_0eca66"
                           role="status"
                         >
                           <span
@@ -2040,7 +2040,7 @@ exports[`Project detail index creates snapshot 1`] = `
               </div>
             </aside>
             <div
-              class="text-truncate fw-bold w-100 searchResults"
+              class="text-truncate fw-bold w-100 _searchResults_0eca66"
               role="status"
             >
               0
@@ -2129,7 +2129,7 @@ exports[`Project detail index creates snapshot 1`] = `
     role="main"
   >
     <div
-      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF loading"
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-fixed Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF _loading_0eca66"
     >
       <div
         class="d-flex flex-row align-items-center justify-content-center w-100 h-100"
@@ -2151,7 +2151,7 @@ exports[`Project detail index creates snapshot 1`] = `
     >
       <aside
         aria-label="Filters"
-        class="d-none d-md-block position-relative p-3 rounded-0 border border-1 mb-3 mb-lg-4 sidebar"
+        class="d-none d-md-block position-relative p-3 rounded-0 border border-1 mb-3 mb-lg-4 _sidebar_0eca66"
       >
         <div
           class="d-flex flex-row align-items-center justify-content-between pb-2 mb-4 border-bottom border-1"
@@ -2163,7 +2163,7 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="fw-bold text-uppercase text-primary categoryTitle"
+          class="fw-bold text-uppercase text-primary _categoryTitle_bcd004"
         >
           <small>
             Foundation
@@ -2193,7 +2193,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 />
                 <span
                   class="text-truncate"
@@ -2224,7 +2224,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 />
                 <span
                   class="text-truncate"
@@ -2255,7 +2255,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 />
                 <span
                   class="text-truncate"
@@ -2286,7 +2286,7 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 />
                 <span
                   class="text-truncate"
@@ -2298,7 +2298,7 @@ exports[`Project detail index creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="fw-bold text-uppercase text-primary categoryTitle"
+          class="fw-bold text-uppercase text-primary _categoryTitle_bcd004"
         >
           <small>
             Rating
@@ -2328,10 +2328,10 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 >
                   <div
-                    class="me-2 border border-1 rounded-pill position-relative quality level1 undefined"
+                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level1_d52a11 undefined"
                     data-testid="quality-dot"
                   />
                 </span>
@@ -2369,10 +2369,10 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 >
                   <div
-                    class="me-2 border border-1 rounded-pill position-relative quality level2 undefined"
+                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level2_d52a11 undefined"
                     data-testid="quality-dot"
                   />
                 </span>
@@ -2410,10 +2410,10 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 >
                   <div
-                    class="me-2 border border-1 rounded-pill position-relative quality level3 undefined"
+                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level3_d52a11 undefined"
                     data-testid="quality-dot"
                   />
                 </span>
@@ -2451,10 +2451,10 @@ exports[`Project detail index creates snapshot 1`] = `
                 class="d-flex align-items-baseline mw-100"
               >
                 <span
-                  class="position-relative decorator"
+                  class="position-relative _decorator_bcd004"
                 >
                   <div
-                    class="me-2 border border-1 rounded-pill position-relative quality level4 undefined"
+                    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level4_d52a11 undefined"
                     data-testid="quality-dot"
                   />
                 </span>
@@ -2474,7 +2474,7 @@ exports[`Project detail index creates snapshot 1`] = `
         </div>
         <div>
           <div
-            class="d-flex flex-row align-items-center text-primary categoryTitle"
+            class="d-flex flex-row align-items-center text-primary _categoryTitle_512c5a"
           >
             <div
               class="fw-bold text-uppercase"
@@ -2487,7 +2487,7 @@ exports[`Project detail index creates snapshot 1`] = `
           <div>
             <button
               aria-label="Open checks modal"
-              class="btn btn-outline-secondary btn-sm rounded-0 btn mt-3"
+              class="btn btn-outline-secondary btn-sm rounded-0 _btn_512c5a mt-3"
               type="button"
             >
               <span>
@@ -2511,13 +2511,13 @@ exports[`Project detail index creates snapshot 1`] = `
           >
             <label
               class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-              for="r1-from"
+              for="_r_1_-from"
             >
               From:
             </label>
             <input
               class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-              id="r1-from"
+              id="_r_1_-from"
               max="2021-10-23"
               min="2016-01-01"
               type="date"
@@ -2527,13 +2527,13 @@ exports[`Project detail index creates snapshot 1`] = `
           <div>
             <label
               class="form-label text-uppercase text-muted DateRangeFilter-module_label__MJJpZ"
-              for="r1-to"
+              for="_r_1_-to"
             >
               To:
             </label>
             <input
               class="form-control form-control-sm rounded-0 DateRangeFilter-module_input__OoL3X"
-              id="r1-to"
+              id="_r_1_-to"
               max="2021-10-23"
               min="2016-01-01"
               type="date"
@@ -4081,7 +4081,7 @@ exports[`Project detail index creates snapshot 1`] = `
         </div>
       </aside>
       <div
-        class="d-flex flex-column flex-grow-1 mt-2 mt-md-3 contentWrapper"
+        class="d-flex flex-column flex-grow-1 mt-2 mt-md-3 _contentWrapper_0eca66"
       >
         <div
           class="mt-auto mx-auto"

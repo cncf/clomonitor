@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import { AppContext } from '../../context/AppContextProvider';
 import { SortBy, SortDirection } from '../../types';
@@ -13,16 +14,16 @@ const mockCtx = {
   },
 };
 
-const mockDispatch = jest.fn();
+const mockDispatch = vi.fn();
 
 describe('MobileSettings', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
     const { asFragment } = render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <MobileSettings />
         </Router>
@@ -33,7 +34,7 @@ describe('MobileSettings', () => {
 
   it('renders proper content', () => {
     render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <MobileSettings />
         </Router>
@@ -45,7 +46,7 @@ describe('MobileSettings', () => {
 
   it('opens dropdown', async () => {
     render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <MobileSettings />
         </Router>
@@ -72,7 +73,7 @@ describe('MobileSettings', () => {
 
   it('opens dropdown and closes it using Settings button', async () => {
     render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <MobileSettings />
         </Router>

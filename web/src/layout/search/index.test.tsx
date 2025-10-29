@@ -1,29 +1,33 @@
+import { createRequire } from 'module';
+
 import { render, screen, waitFor } from '@testing-library/react';
-import { mocked } from 'jest-mock';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import API from '../../api';
 import { Project } from '../../types';
 import Search from './index';
-jest.mock('../../api');
+
+const require = createRequire(import.meta.url);
 
 const getMockSearch = (fixtureId: string): { items: Project[]; 'Pagination-Total-Count': string } => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as { items: Project[]; 'Pagination-Total-Count': string };
 };
 
 const defaultProps = {
   scrollPosition: 0,
-  setScrollPosition: jest.fn(),
-  setInvisibleFooter: jest.fn(),
+  setScrollPosition: vi.fn(),
+  setInvisibleFooter: vi.fn(),
 };
+
+const searchProjectsMock = vi.spyOn(API, 'searchProjects');
 
 describe('Project detail index', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let dateNowSpy: any;
 
   beforeEach(() => {
-    dateNowSpy = jest.spyOn(Date, 'now').mockImplementation(() => 1634968825000);
+    dateNowSpy = vi.spyOn(Date, 'now').mockImplementation(() => 1634968825000);
   });
 
   afterAll(() => {
@@ -31,12 +35,13 @@ describe('Project detail index', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    searchProjectsMock.mockReset();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', async () => {
     const mockSearch = getMockSearch('1');
-    mocked(API).searchProjects.mockResolvedValue(mockSearch);
+    searchProjectsMock.mockResolvedValue(mockSearch);
 
     const { asFragment } = render(
       <Router>
@@ -53,7 +58,7 @@ describe('Project detail index', () => {
   describe('Render', () => {
     it('renders component', async () => {
       const mockSearch = getMockSearch('1');
-      mocked(API).searchProjects.mockResolvedValue(mockSearch);
+      searchProjectsMock.mockResolvedValue(mockSearch);
 
       render(
         <Router>
@@ -78,7 +83,7 @@ describe('Project detail index', () => {
 
     it('renders placeholder when list is empty', async () => {
       const mockSearch = getMockSearch('2');
-      mocked(API).searchProjects.mockResolvedValue(mockSearch);
+      searchProjectsMock.mockResolvedValue(mockSearch);
 
       render(
         <Router>

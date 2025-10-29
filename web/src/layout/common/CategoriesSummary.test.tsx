@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import { ScoreType } from '../../types';
 import CategoriesSummary from './CategoriesSummary';
+import styles from './CategoriesSummary.module.css';
 
 const defaultProps = {
   score: {
@@ -18,7 +20,7 @@ const defaultProps = {
 
 describe('CategoriesSummary', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -56,10 +58,10 @@ describe('CategoriesSummary', () => {
         </Router>
       );
 
-      expect(container.children[0]).toHaveClass('bigSize');
+      expect(container.children[0]).toHaveClass(styles.bigSize);
       expect(container.children[0].children[1]).toHaveClass('px-0 px-sm-3');
       expect(container.children[0].children[1].children[0]).toHaveClass('gx-4 gx-md-5');
-      expect(screen.getByText('85')).toHaveClass('bigSize');
+      expect(screen.getByText('85').className).toContain('bigSize');
     });
   });
 });

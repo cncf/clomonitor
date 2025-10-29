@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import SelectedFilters from './SelectedFilters';
 
-const mockOnChange = jest.fn();
-const mockOnAcceptedDateRangeChange = jest.fn();
+const mockOnChange = vi.fn();
+const mockOnAcceptedDateRangeChange = vi.fn();
 
 const defaultProps = {
   filters: { maturity: ['sandbox'], rating: ['a', 'b'], foundation: ['cncf'] },
@@ -15,7 +16,7 @@ const defaultProps = {
 
 describe('SelectedFilters', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

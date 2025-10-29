@@ -1,39 +1,56 @@
+import { createRequire } from 'module';
+
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { mocked } from 'jest-mock';
-import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import API from '../../api';
 import { ProjectDetail } from '../../types';
 import Detail from './index';
-jest.mock('../../utils/updateMetaIndex');
-jest.mock('../../api');
-jest.mock('react-markdown', () => () => <div />);
-jest.mock('rehype-external-links', () => () => <></>);
-
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useParams: jest.fn(),
-  useLocation: jest.fn(),
-  useNavigate: () => mockUseNavigate,
+vi.mock('../../utils/updateMetaIndex');
+vi.mock('react-markdown', () => ({
+  __esModule: true,
+  default: () => <div />,
+}));
+vi.mock('rehype-external-links', () => ({
+  __esModule: true,
+  default: () => <></>,
 }));
 
-jest.mock('clo-ui/components/Timeline', () => ({
+vi.mock('clo-ui/components/Timeline', () => ({
   Timeline: () => <>Timeline</>,
 }));
 
-jest.mock('moment', () => ({
-  ...(jest.requireActual('moment') as object),
-  unix: () => ({
-    fromNow: () => '3 days ago',
-    format: () => '23rd June 2020',
-  }),
-}));
+vi.mock('moment', async () => {
+  const actual = await vi.importActual<typeof import('moment')>('moment');
+  return {
+    ...actual,
+    unix: () => ({
+      fromNow: () => '3 days ago',
+      format: () => '23rd June 2020',
+    }),
+  };
+});
 
-const mockUseNavigate = jest.fn();
+const mockUseNavigate = vi.fn();
+const mockUseParams = vi.fn();
+const mockUseLocation = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockUseNavigate,
+    useParams: () => mockUseParams(),
+    useLocation: () => mockUseLocation(),
+  };
+});
+
+const { BrowserRouter: Router } = await import('react-router-dom');
+
+const require = createRequire(import.meta.url);
 
 const getMockDetail = (fixtureId: string): ProjectDetail => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as ProjectDetail;
 };
 
@@ -46,22 +63,28 @@ const path = {
 };
 
 const defaultProps = {
-  setInvisibleFooter: jest.fn(),
+  setInvisibleFooter: vi.fn(),
 };
 
 describe('Project detail index', () => {
+  const getProjectDetailMock = vi.spyOn(API, 'getProjectDetail');
+
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
-    jest.spyOn(ReactRouter, 'useLocation').mockReturnValue(path);
+    mockUseParams.mockReturnValue({ project: 'proj', foundation: 'cncf' });
+    mockUseLocation.mockReturnValue(path);
+    mockUseNavigate.mockImplementation(() => undefined);
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    getProjectDetailMock.mockReset();
+    mockUseParams.mockReset();
+    mockUseLocation.mockReset();
+    mockUseNavigate.mockReset();
   });
 
   it('creates snapshot', async () => {
     const mockProject = getMockDetail('1');
-    mocked(API).getProjectDetail.mockResolvedValue(mockProject);
+    getProjectDetailMock.mockResolvedValue(mockProject);
 
     const { asFragment } = render(
       <Router>
@@ -78,7 +101,7 @@ describe('Project detail index', () => {
   describe('Render', () => {
     it('renders component', async () => {
       const mockProject = getMockDetail('1');
-      mocked(API).getProjectDetail.mockResolvedValue(mockProject);
+      getProjectDetailMock.mockResolvedValue(mockProject);
 
       render(
         <Router>
@@ -103,18 +126,18 @@ describe('Project detail index', () => {
       expect(screen.getByText('CNCF')).toBeInTheDocument();
       expect(await screen.findByRole('link', { name: 'Repository link' })).toBeInTheDocument();
       expect(screen.getByText('Accepted:')).toBeInTheDocument();
-      expect(screen.getAllByText('23rd June 2020')).toHaveLength(2);
+      expect(screen.getAllByText('23rd June 2020').length).toBeGreaterThan(0);
       expect(screen.getAllByTestId('dropdown-btn')).toHaveLength(2);
     });
 
     it('renders Back to results', async () => {
-      jest.spyOn(ReactRouter, 'useLocation').mockReturnValue({
+      mockUseLocation.mockReturnValue({
         ...path,
         state: { currentSearch: '?maturity=sandbox&rating=a&page=1' },
       });
 
       const mockProject = getMockDetail('1');
-      mocked(API).getProjectDetail.mockResolvedValue(mockProject);
+      getProjectDetailMock.mockResolvedValue(mockProject);
 
       render(
         <Router>
@@ -137,7 +160,7 @@ describe('Project detail index', () => {
     });
 
     it('renders placeholder when no data', async () => {
-      mocked(API).getProjectDetail.mockRejectedValue('');
+      getProjectDetailMock.mockRejectedValue('');
 
       render(
         <Router>

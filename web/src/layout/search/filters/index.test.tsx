@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import Filters from './index';
 
-const mockOnChange = jest.fn();
-const mockOnChecksChange = jest.fn();
-const mockOnAcceptedDateRangeChange = jest.fn();
+const mockOnChange = vi.fn();
+const mockOnChecksChange = vi.fn();
+const mockOnAcceptedDateRangeChange = vi.fn();
 
 const defaultProps = {
   visibleTitle: true,
@@ -21,7 +22,7 @@ describe('Filters', () => {
   let dateNowSpy: any;
 
   beforeEach(() => {
-    dateNowSpy = jest.spyOn(Date, 'now').mockImplementation(() => 1648154630000);
+    dateNowSpy = vi.spyOn(Date, 'now').mockImplementation(() => 1648154630000);
   });
 
   afterAll(() => {
@@ -29,7 +30,7 @@ describe('Filters', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -49,10 +50,10 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'LF AI & Data' })).toBeInTheDocument();
 
       expect(screen.getByText('Rating')).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /A\s?\[75-100]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /B\s?\[50-74]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /C\s?\[25-49]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /D\s?\[0-24]/i })).toBeInTheDocument();
 
       expect(screen.getAllByText('From:')).toHaveLength(2);
       expect(screen.getAllByText('To:')).toHaveLength(2);
@@ -81,14 +82,14 @@ describe('Filters', () => {
       render(<Filters {...defaultProps} activeFilters={{ foundation: ['cncf'], rating: ['a', 'b'] }} />);
 
       expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeChecked();
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeChecked();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /A\s?\[75-100]/i })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /B\s?\[50-74]/i })).toBeChecked();
     });
 
     it('calls onChange to click filter', async () => {
       render(<Filters {...defaultProps} />);
 
-      const check = screen.getByRole('checkbox', { name: 'A [75-100]' });
+      const check = screen.getByRole('checkbox', { name: /A\s?\[75-100]/i });
 
       expect(check).not.toBeChecked();
 

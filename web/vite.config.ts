@@ -63,6 +63,11 @@ export default defineConfig({
     assetsDir: 'static',
     emptyOutDir: true,
     sourcemap: true,
+    modulePreload: {
+      resolveDependencies: (_filename, deps) => {
+        return deps.filter((dep) => !dep.includes('vendor-apexcharts'));
+      },
+    },
     rollupOptions: {
       output: {
         entryFileNames: (chunkInfo) =>

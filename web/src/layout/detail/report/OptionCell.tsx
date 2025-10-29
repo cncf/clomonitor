@@ -230,6 +230,7 @@ const OptionCell = (props: Props) => {
                 }
                 tooltipWidth={500}
                 tooltipClassName={styles.reasonTooltipMessage}
+                tooltipArrowClassName={styles.reasonTooltipArrow}
                 tooltipMessage={
                   <div className="text-start p-2">
                     <div className="border-bottom border-1 pb-2 mb-3 fw-bold">

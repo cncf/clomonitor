@@ -1,8 +1,6 @@
-import { createRequire } from 'module';
-
-import { vi } from 'vitest';
-
 import fetchMock, { enableFetchMocks } from 'jest-fetch-mock';
+import { createRequire } from 'module';
+import { vi } from 'vitest';
 
 import { ErrorKind, Project, ProjectDetail, SortBy, SortDirection } from '../types';
 import API from './index';

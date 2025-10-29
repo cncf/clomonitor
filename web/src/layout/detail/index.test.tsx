@@ -1,7 +1,6 @@
-import { createRequire } from 'module';
-
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createRequire } from 'module';
 import { vi } from 'vitest';
 
 import API from '../../api';
@@ -21,14 +20,11 @@ vi.mock('clo-ui/components/Timeline', () => ({
   Timeline: () => <>Timeline</>,
 }));
 
-vi.mock('moment', async () => {
-  const actual = await vi.importActual<typeof import('moment')>('moment');
+vi.mock('date-fns', async () => {
+  const actual = await vi.importActual<typeof import('date-fns')>('date-fns');
   return {
     ...actual,
-    unix: () => ({
-      fromNow: () => '3 days ago',
-      format: () => '23rd June 2020',
-    }),
+    formatDistanceToNowStrict: () => '4 years ago',
   };
 });
 

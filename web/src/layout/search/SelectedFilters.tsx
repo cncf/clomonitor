@@ -1,8 +1,8 @@
 import { Foundation } from 'clo-ui/components/Foundation';
 import { SelectedFilterBadge } from 'clo-ui/components/SelectedFilterBadge';
 import { capitalizeFirstLetter } from 'clo-ui/utils/capitalizeFirstLetter';
+import { format, parseISO } from 'date-fns';
 import { isEmpty, isUndefined } from 'lodash';
-import moment from 'moment';
 import { Fragment } from 'react';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
@@ -50,7 +50,7 @@ const SelectedFilters = (props: Props) => {
 
   const getFormatDate = (date?: string): string => {
     if (isUndefined(date)) return '';
-    return moment(date).format('MMM D, YYYY');
+    return format(parseISO(date), 'MMM d, yyyy');
   };
 
   const compoundAcceptedFilter = (): string => {

@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom/vitest';
 
 import { createRequire } from 'module';
-
 import { createElement, type ReactNode } from 'react';
 import { vi } from 'vitest';
 
@@ -11,7 +10,7 @@ const noop = () => {};
 Object.defineProperty(window, 'scrollTo', { value: noop, writable: true });
 
 class ResizeObserverMock {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   observe(_target: Element) {}
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unobserve(_target: Element) {}

@@ -7,14 +7,11 @@ import { vi } from 'vitest';
 
 import Card from './Card';
 
-vi.mock('moment', async () => {
-  const actual = await vi.importActual<typeof import('moment')>('moment');
+vi.mock('date-fns', async () => {
+  const actual = await vi.importActual<typeof import('date-fns')>('date-fns');
   return {
     ...actual,
-    unix: () => ({
-      fromNow: () => '3 days ago',
-      format: () => '23rd June 2020',
-    }),
+    formatDistanceToNowStrict: () => '4 years ago',
   };
 });
 

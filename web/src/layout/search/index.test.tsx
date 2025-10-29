@@ -1,6 +1,5 @@
-import { createRequire } from 'module';
-
 import { render, screen, waitFor } from '@testing-library/react';
+import { createRequire } from 'module';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { vi } from 'vitest';
 

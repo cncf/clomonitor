@@ -73,8 +73,8 @@ export default defineConfig({
             if (id.includes('lodash')) {
               return 'vendor-lodash';
             }
-            if (id.includes('moment')) {
-              return 'vendor-moment';
+            if (id.includes('date-fns')) {
+              return 'vendor-datefns';
             }
             if (id.includes('apexcharts') || id.includes('react-apexcharts')) {
               return 'vendor-apexcharts';

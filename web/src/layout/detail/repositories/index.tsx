@@ -2,8 +2,8 @@ import { CheckSet, CheckSetBadge } from 'clo-ui/components/CheckSetBadge';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { RoundScore } from 'clo-ui/components/RoundScore';
 import { scrollToTop } from 'clo-ui/utils/scrollToTop';
+import { formatDistanceToNowStrict, fromUnixTime } from 'date-fns';
 import { isUndefined } from 'lodash';
-import moment from 'moment';
 import { useEffect, useRef, useState } from 'react';
 import { GoLink } from 'react-icons/go';
 import { HiExclamation } from 'react-icons/hi';
@@ -156,7 +156,8 @@ const RepositoriesList = (props: Props) => {
                     <div className="alert-heading mb-3">
                       <HiExclamation className="me-2" />
                       <span className="fw-bold">
-                        Something went wrong processing this repository {moment.unix(repo.report.updated_at).fromNow()}
+                        Something went wrong processing this repository{' '}
+                        {formatDistanceToNowStrict(fromUnixTime(repo.report.updated_at), { addSuffix: true })}
                       </span>
                     </div>
                     <pre className={`d-block p-3 mb-0 w-100 overflow-auto ${styles.error}`}>{repo.report.errors}</pre>

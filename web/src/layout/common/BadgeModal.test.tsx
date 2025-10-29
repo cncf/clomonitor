@@ -38,9 +38,7 @@ describe('BadgeModal', () => {
       expect(badge).toHaveProperty('src', endpointUrl);
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
-      expect(code).toHaveTextContent(
-        `[![CLOMonitor](${endpointUrl})](${window.location.origin}/projects/cncf/proj)`
-      );
+      expect(code).toHaveTextContent(`[![CLOMonitor](${endpointUrl})](${window.location.origin}/projects/cncf/proj)`);
     });
 
     it('renders ascii tab', async () => {
@@ -57,9 +55,7 @@ describe('BadgeModal', () => {
       expect(badge).toHaveProperty('src', endpointUrl);
       const code = screen.getByTestId('code');
       expect(code).toBeInTheDocument();
-      expect(code).toHaveTextContent(
-        `${window.location.origin}/projects/cncf/proj[image:${endpointUrl}[CLOMonitor]]`
-      );
+      expect(code).toHaveTextContent(`${window.location.origin}/projects/cncf/proj[image:${endpointUrl}[CLOMonitor]]`);
     });
   });
 });

@@ -55,10 +55,7 @@ describe('updateMetaIndex', () => {
 
   it('renders default meta tags values', () => {
     updateMetaIndex();
-    expect(document.head.querySelector(`meta[name='description']`)).toHaveAttribute(
-      'content',
-      placeholder.description
-    );
+    expect(document.head.querySelector(`meta[name='description']`)).toHaveAttribute('content', placeholder.description);
     expect(document.head.querySelector(`meta[property='og:description']`)).toHaveAttribute(
       'content',
       placeholder.description

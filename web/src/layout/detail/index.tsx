@@ -271,11 +271,16 @@ const Detail = (props: Props) => {
                         </p>
                         <div className={`text-muted fst-italic mx-3 mx-md-0 mb-2 mb-md-3 ${styles.updated}`}>
                           {isUndefined(activeDate) ? (
-                            <>Updated {formatDistanceToNowStrict(fromUnixTime(detail.updated_at), { addSuffix: true })}</>
+                            <>
+                              Updated {formatDistanceToNowStrict(fromUnixTime(detail.updated_at), { addSuffix: true })}
+                            </>
                           ) : (
                             <>
                               This is a snapshot of the project taken on{' '}
-                              <span className="fw-bold">{format(parse(activeDate, 'yyyy-MM-dd', new Date()), "do MMM ''yy")}</span>.
+                              <span className="fw-bold">
+                                {format(parse(activeDate, 'yyyy-MM-dd', new Date()), "do MMM ''yy")}
+                              </span>
+                              .
                             </>
                           )}
                         </div>

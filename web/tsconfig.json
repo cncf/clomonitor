@@ -20,7 +20,8 @@
       "node",
       "vite/client",
       "vitest",
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "react"
     ],
     "isolatedModules": true,
     "noEmit": true,

@@ -17,9 +17,7 @@ describe('scrollToPosition', () => {
     const scrollingElement = document.documentElement;
     scrollingElement.style.scrollBehavior = 'smooth';
     const scrollSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
-    vi
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((callback: FrameRequestCallback) => (callback(0), 1));
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback: FrameRequestCallback) => (callback(0), 1));
 
     scrollToPosition(240);
 

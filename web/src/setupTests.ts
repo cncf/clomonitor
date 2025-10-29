@@ -33,22 +33,12 @@ Object.defineProperty(globalThis, 'jest', {
 
 vi.mock('clo-ui/components/CodeBlock', () => ({
   __esModule: true,
-  CodeBlock: ({
-    content,
-    label,
-    withCopyBtn,
-  }: {
-    content: ReactNode;
-    label?: string;
-    withCopyBtn?: boolean;
-  }) =>
+  CodeBlock: ({ content, label, withCopyBtn }: { content: ReactNode; label?: string; withCopyBtn?: boolean }) =>
     createElement(
       'div',
       { 'data-testid': 'code', 'data-label': label },
       content,
-      withCopyBtn && label
-        ? createElement('button', { 'aria-label': label, type: 'button' }, label)
-        : null
+      withCopyBtn && label ? createElement('button', { 'aria-label': label, type: 'button' }, label) : null
     ),
 }));
 

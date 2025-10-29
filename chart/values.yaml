@@ -27,8 +27,8 @@ db:
   host: ""
   port: "5432"
   dbname: clomonitor
-  user: postgres
-  password: postgres
+  user: clomonitor
+  password: clomonitor
 
 # Credentials
 creds:
@@ -146,13 +146,13 @@ postgresql:
   enabled: true
   auth:
     database: clomonitor
-    password: postgres
-    username: postgres
+    password: clomonitor
+    username: clomonitor
   global:
     security:
       allowInsecureImages: true
   image:
-    repository: docker.io/artifacthub/postgres
+    repository: artifacthub/postgres
     tag: latest
   persistence:
     mountPath: /data

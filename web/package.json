@@ -64,7 +64,6 @@
     "isready": "yarn format && yarn lint && yarn test --passWithNoTests && yarn build",
     "lint": "eslint src --max-warnings 0",
     "lint:fix": "eslint src --max-warnings 0 --fix",
-    "preview": "vite preview",
     "start": "yarn copy:static && vite --host",
     "test": "vitest run --passWithNoTests",
     "test:coverage": "vitest run --passWithNoTests --coverage"

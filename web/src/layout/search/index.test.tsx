@@ -21,19 +21,45 @@ const defaultProps = {
 
 const searchProjectsMock = vi.spyOn(API, 'searchProjects');
 
+const realDate = Date;
+
+const freezeDate = (isoDate: string) => {
+  const fixedDate = new realDate(isoDate);
+
+  const MockDate = class extends realDate {
+    constructor(value?: number | string | Date) {
+      if (arguments.length === 0) {
+        return new realDate(fixedDate);
+      }
+      return new realDate(value as number | string | Date);
+    }
+
+    static now(): number {
+      return fixedDate.getTime();
+    }
+
+    static parse(dateString: string): number {
+      return realDate.parse(dateString);
+    }
+
+    static UTC(...args: Parameters<typeof realDate.UTC>): number {
+      return realDate.UTC(...args);
+    }
+  };
+
+  Object.setPrototypeOf(MockDate, realDate);
+  // @ts-expect-error overriding global Date for tests
+  global.Date = MockDate as unknown as DateConstructor;
+};
+
 describe('Project detail index', () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let dateNowSpy: any;
-
   beforeEach(() => {
-    dateNowSpy = vi.spyOn(Date, 'now').mockImplementation(() => 1634968825000);
-  });
-
-  afterAll(() => {
-    dateNowSpy.mockRestore();
+    freezeDate('2021-10-23T00:00:00.000Z');
   });
 
   afterEach(() => {
+    // @ts-expect-error restoring original Date
+    global.Date = realDate;
     searchProjectsMock.mockReset();
     vi.resetAllMocks();
   });

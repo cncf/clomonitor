@@ -6,6 +6,26 @@ import { vi } from 'vitest';
 
 process.env.TZ = 'UTC';
 
+const urlPathnameDescriptor = Object.getOwnPropertyDescriptor(URL.prototype, 'pathname');
+if (urlPathnameDescriptor?.get) {
+  Object.defineProperty(URL.prototype, 'pathname', {
+    configurable: true,
+    enumerable: urlPathnameDescriptor.enumerable ?? true,
+    get() {
+      const value = urlPathnameDescriptor.get!.call(this);
+      if (typeof value === 'string' && value.startsWith('/media/')) {
+        return `/src${value}`;
+      }
+      return value;
+    },
+    set(newValue) {
+      if (urlPathnameDescriptor.set) {
+        urlPathnameDescriptor.set.call(this, newValue);
+      }
+    },
+  });
+}
+
 const require = createRequire(import.meta.url);
 
 const noop = () => {};

@@ -25,7 +25,7 @@ exports[`Navbar > creates snapshot 1`] = `
               <img
                 alt="CLOMonitor logo"
                 class="_logo_0b28b6"
-                src="/src/media/clomonitor.svg"
+                src="http://localhost:3000/src/media/clomonitor.svg"
               />
             </a>
             <div

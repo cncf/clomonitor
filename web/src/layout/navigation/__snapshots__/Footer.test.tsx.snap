@@ -147,7 +147,7 @@ exports[`Footer > creates snapshot 1`] = `
           <img
             alt="Logo"
             class="_logo_f39205"
-            src="/src/media/clomonitor.svg"
+            src="http://localhost:3000/src/media/clomonitor.svg"
           />
         </div>
       </div>

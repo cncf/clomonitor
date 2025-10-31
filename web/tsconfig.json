@@ -21,7 +21,8 @@
       "vite/client",
       "vitest",
       "@testing-library/jest-dom",
-      "react"
+      "react",
+      "react-syntax-highlighter"
     ],
     "isolatedModules": true,
     "noEmit": true,

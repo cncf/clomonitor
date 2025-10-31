@@ -3,7 +3,7 @@ import { Navbar as NavbarWrapper } from 'clo-ui/components/Navbar';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../media/clomonitor.svg';
+import logo from '../../media/clomonitor.svg?url';
 import MobileSettings from './MobileSettings';
 import styles from './Navbar.module.css';
 import Searchbar from './Searchbar';

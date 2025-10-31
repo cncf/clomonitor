@@ -97,16 +97,53 @@ exports[`BadgeModal > creates snapshot 1`] = `
                     />
                   </div>
                   <div
-                    data-label="Copy badge markdown link to clipboard"
+                    class="d-flex flex-row align-items-center pb-2 _codeBlock_c6e1ed"
                     data-testid="code"
                   >
-                    [![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost:3000/api/projects/cncf/proj/badge)](http://localhost:3000/projects/cncf/proj)
-                    <button
-                      aria-label="Copy badge markdown link to clipboard"
-                      type="button"
+                    <pre
+                      class="mb-0 flex-grow-1"
+                      style="background-color: var(--bg-code); color: var(--color-font); padding: 1rem; margin-bottom: 0px; flex: 1 1 auto; white-space: pre-wrap; word-break: break-word; overscroll-behavior: contain; width: calc(100% + (-1 * (32px + 1rem)));"
                     >
-                      Copy badge markdown link to clipboard
-                    </button>
+                      [![CLOMonitor](https://img.shields.io/endpoint?url=http://localhost:3000/api/projects/cncf/proj/badge)](http://localhost:3000/projects/cncf/proj)
+                    </pre>
+                    <div
+                      class="position-relative ms-3"
+                    >
+                      <button
+                        aria-label="Copy badge markdown link to clipboard"
+                        class="btn btn-sm btn-primary rounded-0 ButtonCopyToClipboard-module_btn__kHG6G"
+                        type="button"
+                      >
+                        <div
+                          aria-hidden="true"
+                          class="d-flex flex-row align-items-center"
+                        >
+                          <svg
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              height="13"
+                              rx="2"
+                              ry="2"
+                              width="13"
+                              x="9"
+                              y="9"
+                            />
+                            <path
+                              d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            />
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

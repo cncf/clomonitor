@@ -4,12 +4,10 @@ import { Modal } from 'clo-ui/components/Modal';
 import { isUndefined } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import { tomorrowNight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import API from '../../../api';
 import { AppContext } from '../../../context/AppContextProvider';
+import { CodeBlock } from '../../common/CodeBlock';
 import styles from './RepositoryReportModal.module.css';
 
 interface Props {
@@ -63,20 +61,16 @@ const RepositoryReportModal = (props: Props) => {
                 hiddenDownloadBtn
               />
 
-              <SyntaxHighlighter
+              <CodeBlock
                 language="markdown"
-                style={effective === 'dark' ? tomorrowNight : docco}
-                customStyle={{
-                  backgroundColor: 'var(--bg-code)',
-                  color: 'var(--color-font)',
-                  padding: '1rem',
-                  marginBottom: 0,
-                  fontSize: '0.8rem',
+                content={report || ''}
+                withCopyBtn={false}
+                style={{
                   height: '100%',
+                  fontSize: '0.8rem',
                 }}
-              >
-                {report || ''}
-              </SyntaxHighlighter>
+                effective_theme={effective}
+              />
             </div>
           </div>
         </Modal>

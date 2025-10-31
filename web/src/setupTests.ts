@@ -1,8 +1,8 @@
+import '@testing-library/jest-dom/vitest';
+
 import { createRequire } from 'module';
 import { createElement, useEffect, useMemo } from 'react';
 import { vi } from 'vitest';
-
-import '@testing-library/jest-dom/vitest';
 
 process.env.TZ = 'UTC';
 

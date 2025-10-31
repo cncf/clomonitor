@@ -32,7 +32,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push dbmigrator image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-dbmigrator.outputs.repo_path }}
         run: |
           docker build \
@@ -60,7 +59,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push apiserver image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-apiserver.outputs.repo_path }}
         run: |
           docker build \
@@ -88,7 +86,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-archiver.outputs.repo_path }}
         run: |
           docker build \
@@ -122,7 +119,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-linter.outputs.repo_path }}
         run: |
           docker build \
@@ -152,7 +148,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-notifier.outputs.repo_path }}
         run: |
           docker build \
@@ -180,7 +175,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-registrar.outputs.repo_path }}
         run: |
           docker build \

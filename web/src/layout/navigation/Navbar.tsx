@@ -2,6 +2,7 @@ import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { Navbar as NavbarWrapper } from 'clo-ui/components/Navbar';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
+
 import MobileSettings from './MobileSettings';
 import styles from './Navbar.module.css';
 import Searchbar from './Searchbar';

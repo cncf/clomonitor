@@ -1,20 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ProgressBarInLine creates snapshot 1`] = `
+exports[`ProgressBarInLine > creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="d-flex flex-column wrapper"
+    class="d-flex flex-column _wrapper_8ab6ee"
   >
     <div
-      class="d-flex flex-row align-items-center progressWrapper"
+      class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
     >
       <div
-        class="me-1 me-md-2 position-relative icon"
+        class="me-1 me-md-2 position-relative _icon_8ab6ee"
       >
         icon
       </div>
       <div
-        class="progressTitle"
+        class="_progressTitle_8ab6ee"
       >
         <span
           class="d-inline-block d-md-none"
@@ -26,7 +26,7 @@ exports[`ProgressBarInLine creates snapshot 1`] = `
         >
           <button
             aria-label="Search projects with passed Governance check"
-            class="btn btn-link p-0 btn"
+            class="btn btn-link p-0 _btn_8ab6ee"
           >
             Governance
           </button>
@@ -36,21 +36,21 @@ exports[`ProgressBarInLine creates snapshot 1`] = `
         class="flex-grow-1 ms-2"
       >
         <div
-          class="progress rounded-0 progress"
+          class="progress rounded-0 _progress_8ab6ee"
         >
           <div
             aria-label="Governance passed checks percentage"
             aria-valuemax="100"
             aria-valuemin="0"
             aria-valuenow="75"
-            class="progress-bar progressbar"
+            class="progress-bar _progressbar_8ab6ee"
             role="progressbar"
-            style="width: 75%;"
+            style="width: 75%; background-color: var(--clo-green);"
           />
         </div>
       </div>
       <div
-        class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+        class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
       >
         75%
       </div>

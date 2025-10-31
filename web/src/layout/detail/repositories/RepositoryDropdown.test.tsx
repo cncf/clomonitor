@@ -1,13 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ReactRouter, { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import RepositoryDropdown from './RepositoryDropdown';
 
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useParams: jest.fn(),
+const { mockUseParams } = vi.hoisted(() => ({
+  mockUseParams: vi.fn(),
 }));
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useParams: mockUseParams,
+  };
+});
 
 const defaultProps = {
   repoName: 'repo',
@@ -15,11 +23,11 @@ const defaultProps = {
 
 describe('RepositoryDropdown', () => {
   beforeEach(() => {
-    jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ project: 'proj', foundation: 'cncf' });
+    mockUseParams.mockReturnValue({ project: 'proj', foundation: 'cncf' });
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    mockUseParams.mockReset();
   });
 
   it('creates snapshot', () => {

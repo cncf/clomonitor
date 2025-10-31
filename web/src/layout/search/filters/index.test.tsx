@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import Filters from './index';
 
-const mockOnChange = jest.fn();
-const mockOnChecksChange = jest.fn();
-const mockOnAcceptedDateRangeChange = jest.fn();
+const mockOnChange = vi.fn();
+const mockOnChecksChange = vi.fn();
+const mockOnAcceptedDateRangeChange = vi.fn();
 
 const defaultProps = {
   visibleTitle: true,
@@ -16,20 +17,47 @@ const defaultProps = {
   device: 'test',
 };
 
+const realDate = Date;
+
+const freezeDate = (isoDate: string) => {
+  const fixedDate = new realDate(isoDate);
+
+  const MockDate = class extends realDate {
+    constructor(...args: ConstructorParameters<typeof realDate>) {
+      if (args.length === 0) {
+        super(fixedDate.getTime());
+        return;
+      }
+      super(...args);
+    }
+
+    static now(): number {
+      return fixedDate.getTime();
+    }
+
+    static parse(dateString: string): number {
+      return realDate.parse(dateString);
+    }
+
+    static UTC(...args: Parameters<typeof realDate.UTC>): number {
+      return realDate.UTC(...args);
+    }
+  };
+
+  Object.setPrototypeOf(MockDate, realDate);
+  // @ts-expect-error overriding global Date for tests
+  global.Date = MockDate as unknown as DateConstructor;
+};
+
 describe('Filters', () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let dateNowSpy: any;
-
   beforeEach(() => {
-    dateNowSpy = jest.spyOn(Date, 'now').mockImplementation(() => 1648154630000);
-  });
-
-  afterAll(() => {
-    dateNowSpy.mockRestore();
+    freezeDate('2022-03-24T00:00:00.000Z');
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    // @ts-expect-error restoring original Date
+    global.Date = realDate;
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -49,15 +77,15 @@ describe('Filters', () => {
       expect(screen.getByRole('checkbox', { name: 'LF AI & Data' })).toBeInTheDocument();
 
       expect(screen.getByText('Rating')).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /A\s?\[75-100]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /B\s?\[50-74]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /C\s?\[25-49]/i })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /D\s?\[0-24]/i })).toBeInTheDocument();
 
       expect(screen.getAllByText('From:')).toHaveLength(2);
       expect(screen.getAllByText('To:')).toHaveLength(2);
-      expect(screen.getByText('Jan 1, 2016')).toBeInTheDocument();
-      expect(screen.getByText('Mar 24, 2022')).toBeInTheDocument();
+      expect(screen.getAllByText('Jan 1, 2016')).toHaveLength(2);
+      expect(screen.getAllByText('Mar 24, 2022')).toHaveLength(2);
 
       expect(screen.getByText('Checks')).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Open checks modal' })).toHaveTextContent('Add checks filters');
@@ -81,14 +109,14 @@ describe('Filters', () => {
       render(<Filters {...defaultProps} activeFilters={{ foundation: ['cncf'], rating: ['a', 'b'] }} />);
 
       expect(screen.getByRole('checkbox', { name: 'CNCF' })).toBeChecked();
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeChecked();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /A\s?\[75-100]/i })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /B\s?\[50-74]/i })).toBeChecked();
     });
 
     it('calls onChange to click filter', async () => {
       render(<Filters {...defaultProps} />);
 
-      const check = screen.getByRole('checkbox', { name: 'A [75-100]' });
+      const check = screen.getByRole('checkbox', { name: /A\s?\[75-100]/i });
 
       expect(check).not.toBeChecked();
 

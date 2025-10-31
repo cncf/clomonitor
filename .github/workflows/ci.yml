@@ -85,4 +85,4 @@ jobs:
         run: yarn lint
       - name: Run frontend tests
         working-directory: ./web
-        run: yarn test --watchAll=false --passWithNoTests --verbose --maxWorkers=4
+        run: yarn test --reporter verbose --maxWorkers 4

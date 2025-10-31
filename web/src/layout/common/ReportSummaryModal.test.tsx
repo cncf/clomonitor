@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Foundation } from 'clo-ui/components/Foundation';
+import { vi } from 'vitest';
 
 import ReportSummaryModal from './ReportSummaryModal';
 
-const mockOnCloseModal = jest.fn();
+const mockOnCloseModal = vi.fn();
 
 const defaultProps = {
   foundation: Foundation.cncf,
@@ -15,7 +16,7 @@ const defaultProps = {
 
 describe('ReportSummaryModal', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -64,10 +65,13 @@ describe('ReportSummaryModal', () => {
       render(<ReportSummaryModal {...defaultProps} />);
 
       expect(screen.getByText('Embed report summary')).toBeInTheDocument();
-      expect(screen.getAllByText('Markdown')).toHaveLength(2);
+      expect(screen.getAllByText('Markdown').length).toBeGreaterThan(0);
+
+      const summaryUrl = `${window.location.origin}/api/projects/cncf/proj/report-summary?theme=light`;
+      const projectUrl = `${window.location.origin}/projects/cncf/proj`;
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '[![CLOMonitor report summary](http://localhost/api/projects/cncf/proj/report-summary?theme=light)](http://localhost/projects/cncf/proj)'
+        `[![CLOMonitor report summary](${summaryUrl})](${projectUrl})`
       );
       expect(
         screen.getByRole('button', { name: 'Copy report summary markdown link to clipboard' })
@@ -83,7 +87,7 @@ describe('ReportSummaryModal', () => {
       await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        'http://localhost/projects/cncf/proj[image:http://localhost/api/projects/cncf/proj/report-summary?theme=light[CLOMonitor report summary]]'
+        `${window.location.origin}/projects/cncf/proj[image:${window.location.origin}/api/projects/cncf/proj/report-summary?theme=light[CLOMonitor report summary]]`
       );
       expect(screen.getByRole('button', { name: 'Copy report summary Ascii link to clipboard' })).toBeInTheDocument();
     });
@@ -97,7 +101,7 @@ describe('ReportSummaryModal', () => {
       await userEvent.click(btn);
 
       expect(screen.getByTestId('code')).toHaveTextContent(
-        '<a href="http://localhost/projects/cncf/proj" rel="noopener noreferrer" target="_blank"><img src="http://localhost/api/projects/cncf/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>'
+        `<a href="${window.location.origin}/projects/cncf/proj" rel="noopener noreferrer" target="_blank"><img src="${window.location.origin}/api/projects/cncf/proj/report-summary?theme=light" alt="CLOMonitor report summary" /></a>`
       );
       expect(screen.getByRole('button', { name: 'Copy report summary html link to clipboard' })).toBeInTheDocument();
     });

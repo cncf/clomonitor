@@ -1,30 +1,33 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { mocked } from 'jest-mock';
+import { createRequire } from 'module';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
 import { SortBy, SortDirection, Stats } from '../../types';
 import StatsView from './index';
-jest.mock('../../api');
-jest.mock('react-apexcharts', () => () => <div>Chart</div>);
 
-jest.mock('clo-ui/components/Timeline', () => ({
+vi.mock('clo-ui/components/Timeline', () => ({
   Timeline: () => <>Timeline</>,
 }));
 
+const require = createRequire(import.meta.url);
+
 const getMockStats = (fixtureId: string): Stats => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as Stats;
 };
 
-const mockUseNavigate = jest.fn();
+const mockUseNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as object),
-  useNavigate: () => mockUseNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockUseNavigate,
+  };
+});
 
 const mockCtx = {
   prefs: {
@@ -33,17 +36,22 @@ const mockCtx = {
   },
 };
 
+const getStatsMock = vi.spyOn(API, 'getStats');
+const getRepositoriesCsvMock = vi.spyOn(API, 'getRepositoriesCSV');
+
 describe('StatsView', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    getStatsMock.mockReset();
+    getRepositoriesCsvMock.mockReset();
+    vi.clearAllMocks();
   });
 
   it('creates snapshot', async () => {
     const mockStats = getMockStats('1');
-    mocked(API).getStats.mockResolvedValue(mockStats);
+    getStatsMock.mockResolvedValue(mockStats);
 
     const { asFragment } = render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <StatsView />
         </Router>
@@ -64,10 +72,10 @@ describe('StatsView', () => {
   describe('Render', () => {
     it('renders component', async () => {
       const mockStats = getMockStats('1');
-      mocked(API).getStats.mockResolvedValue(mockStats);
+      getStatsMock.mockResolvedValue(mockStats);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>
@@ -96,10 +104,10 @@ describe('StatsView', () => {
 
     it('loads search page with correct parameters', async () => {
       const mockStats = getMockStats('1');
-      mocked(API).getStats.mockResolvedValue(mockStats);
+      getStatsMock.mockResolvedValue(mockStats);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>
@@ -129,10 +137,10 @@ describe('StatsView', () => {
 
     it('loads search page with selected foundation', async () => {
       const mockStats = getMockStats('1');
-      mocked(API).getStats.mockResolvedValue(mockStats);
+      getStatsMock.mockResolvedValue(mockStats);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>
@@ -169,10 +177,10 @@ describe('StatsView', () => {
 
     it('renders component with empty stats', async () => {
       const mockStats = getMockStats('2');
-      mocked(API).getStats.mockResolvedValue(mockStats);
+      getStatsMock.mockResolvedValue(mockStats);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>
@@ -190,10 +198,10 @@ describe('StatsView', () => {
 
     it('renders component with Usage stats', async () => {
       const mockStats = getMockStats('3');
-      mocked(API).getStats.mockResolvedValue(mockStats);
+      getStatsMock.mockResolvedValue(mockStats);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>
@@ -212,11 +220,11 @@ describe('StatsView', () => {
 
   it('downloads repositories csv', async () => {
     const mockStats = getMockStats('1');
-    mocked(API).getStats.mockResolvedValue(mockStats);
-    mocked(API).getStats.mockResolvedValue(mockStats);
+    getStatsMock.mockResolvedValue(mockStats);
+    getRepositoriesCsvMock.mockResolvedValue('mock-csv');
 
     render(
-      <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+      <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
         <Router>
           <StatsView />
         </Router>
@@ -241,10 +249,10 @@ describe('StatsView', () => {
 
   describe('when getStats call fails', () => {
     it('renders error message', async () => {
-      mocked(API).getStats.mockRejectedValue(null);
+      getStatsMock.mockRejectedValue(null);
 
       render(
-        <AppContext.Provider value={{ ctx: mockCtx, dispatch: jest.fn() }}>
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
           <Router>
             <StatsView />
           </Router>

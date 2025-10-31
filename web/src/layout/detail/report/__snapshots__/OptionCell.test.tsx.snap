@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`OptionCell creates snapshot 1`] = `
+exports[`OptionCell > creates snapshot 1`] = `
 <DocumentFragment>
   <table>
     <tbody>
       <tr>
         <td
-          class="text-center iconCell"
+          class="text-center _iconCell_19cbf0"
         >
            
           <svg
-            class="text-success icon"
+            class="text-success _icon_19cbf0"
             data-testid="success-icon"
             fill="currentColor"
             height="1em"
@@ -29,13 +29,13 @@ exports[`OptionCell creates snapshot 1`] = `
           class="pe-2 pe-md-4"
         >
           <div
-            class="d-table w-100 contentCell"
+            class="d-table w-100 _contentCell_19cbf0"
           >
             <div
               class="d-flex flex-row align-items-baseline align-items-md-center"
             >
               <div
-                class="text-muted me-2 iconCheck"
+                class="text-muted me-2 _iconCheck_19cbf0"
               >
                 <svg
                   fill="currentColor"
@@ -56,7 +56,7 @@ exports[`OptionCell creates snapshot 1`] = `
                 class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
               >
                 <div
-                  class="d-flex flex-row align-items-center w-100 name"
+                  class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                   data-testid="opt-name"
                 >
                   <small
@@ -66,7 +66,7 @@ exports[`OptionCell creates snapshot 1`] = `
                   </small>
                 </div>
                 <div
-                  class="d-none d-md-flex flex-row text-muted w-100 legend"
+                  class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                 >
                   <div
                     class="text-truncate"
@@ -93,7 +93,7 @@ exports[`OptionCell creates snapshot 1`] = `
                           [check docs
                         </div>
                         <svg
-                          class="ms-1 extraMiniIcon"
+                          class="ms-1 _extraMiniIcon_19cbf0"
                           fill="none"
                           height="1em"
                           stroke="currentColor"

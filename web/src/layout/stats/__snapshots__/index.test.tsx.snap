@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`StatsView creates snapshot 1`] = `
+exports[`StatsView > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="d-flex flex-column flex-grow-1 position-relative"
@@ -39,7 +39,7 @@ exports[`StatsView creates snapshot 1`] = `
             </small>
           </div>
           <div
-            class="selectWrapper"
+            class="_selectWrapper_b0dee2"
           >
             <div
               class="d-flex flex-column ms-0 ms-sm-3 mt-3 mt-sm-0 px-4 px-sm-0"
@@ -51,7 +51,7 @@ exports[`StatsView creates snapshot 1`] = `
               </label>
               <select
                 aria-label="Foundation options select"
-                class="form-select rounded-0 cursorPointer foundation select"
+                class="form-select rounded-0 cursorPointer foundation _select_b0dee2"
               >
                 <option
                   value="cdf"
@@ -87,15 +87,15 @@ exports[`StatsView creates snapshot 1`] = `
         class="d-flex flex-row"
       >
         <div
-          class="d-flex flex-column position-relative statsWrapper w-100"
+          class="d-flex flex-column position-relative _statsWrapper_b0dee2 w-100"
         >
           <div
-            class="text-dark fw-bold text-uppercase text-center mb-4 title"
+            class="text-dark fw-bold text-uppercase text-center mb-4 _title_b0dee2"
           >
             Projects
           </div>
           <div
-            class="text-dark text-center mb-3 fw-bold subtitle"
+            class="text-dark text-center mb-3 fw-bold _subtitle_b0dee2"
           >
             Projects accepted
           </div>
@@ -109,14 +109,12 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-12 col-md-6 col-xl-8"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-body reducedPaddingBottom"
+                    class="card-body _reducedPaddingBottom_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
@@ -124,21 +122,19 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-12 col-md-6 col-xl-4"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-body reducedPaddingBottom"
+                    class="card-body _reducedPaddingBottom_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="text-dark text-center fw-bold mb-3 subtitle mt-4"
+            class="text-dark text-center fw-bold mb-3 _subtitle_b0dee2 mt-4"
           >
             Distribution of projects by rating
           </div>
@@ -152,19 +148,17 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_b0dee2"
                   >
                     All
                   </div>
                   <div
-                    class="card-body donutWrapper"
+                    class="card-body _donutWrapper_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
@@ -172,19 +166,17 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_b0dee2"
                   >
                     Graduated
                   </div>
                   <div
-                    class="card-body donutWrapper"
+                    class="card-body _donutWrapper_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
@@ -192,19 +184,17 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_b0dee2"
                   >
                     Incubating
                   </div>
                   <div
-                    class="card-body donutWrapper"
+                    class="card-body _donutWrapper_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
@@ -212,26 +202,24 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_b0dee2"
                   >
                     Sandbox
                   </div>
                   <div
-                    class="card-body donutWrapper"
+                    class="card-body _donutWrapper_b0dee2"
                   >
-                    <div>
-                      Chart
-                    </div>
+                    Chart
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="text-dark text-center fw-bold mb-3 subtitle mt-4"
+            class="text-dark text-center fw-bold mb-3 _subtitle_b0dee2 mt-4"
           >
             Projects average score per category
           </div>
@@ -245,10 +233,10 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_dfd8fe"
                   >
                     All
                   </div>
@@ -259,10 +247,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             aria-hidden="true"
@@ -289,24 +277,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Documentation passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="85"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 85%;"
+                              style="width: 85%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -320,10 +308,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -347,24 +335,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="License passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="79"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 79%;"
+                              style="width: 79%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -378,10 +366,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -405,24 +393,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Best Practices passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="61"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 61%;"
+                              style="width: 61%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -436,10 +424,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -463,24 +451,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Security passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="55"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 55%;"
+                              style="width: 55%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -494,10 +482,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -521,24 +509,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Legal passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="40"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 40%;"
+                              style="width: 40%; background-color: var(--clo-orange);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -555,10 +543,10 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_dfd8fe"
                   >
                     Graduated
                   </div>
@@ -569,10 +557,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             aria-hidden="true"
@@ -599,24 +587,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Documentation passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="87"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 87%;"
+                              style="width: 87%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -630,10 +618,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -657,24 +645,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="License passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="77"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 77%;"
+                              style="width: 77%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -688,10 +676,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -715,24 +703,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Best Practices passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="74"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 74%;"
+                              style="width: 74%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -746,10 +734,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -773,24 +761,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Security passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="56"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 56%;"
+                              style="width: 56%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -804,10 +792,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -831,24 +819,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Legal passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="48"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 48%;"
+                              style="width: 48%; background-color: var(--clo-orange);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -865,10 +853,10 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_dfd8fe"
                   >
                     Incubating
                   </div>
@@ -879,10 +867,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             aria-hidden="true"
@@ -909,24 +897,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Documentation passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="83"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 83%;"
+                              style="width: 83%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -940,10 +928,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -967,24 +955,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="License passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="80"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 80%;"
+                              style="width: 80%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -998,10 +986,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1025,24 +1013,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Best Practices passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="59"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 59%;"
+                              style="width: 59%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1056,10 +1044,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1083,24 +1071,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Security passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="56"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 56%;"
+                              style="width: 56%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1114,10 +1102,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1141,24 +1129,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Legal passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="36"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 36%;"
+                              style="width: 36%; background-color: var(--clo-orange);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1175,10 +1163,10 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-6 col-xl-3"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-header fw-bold text-uppercase text-center cardHeader"
+                    class="card-header fw-bold text-uppercase text-center _cardHeader_dfd8fe"
                   >
                     Sandbox
                   </div>
@@ -1189,10 +1177,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             aria-hidden="true"
@@ -1219,24 +1207,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Documentation passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="85"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 85%;"
+                              style="width: 85%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1250,10 +1238,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1277,24 +1265,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="License passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="79"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 79%;"
+                              style="width: 79%; background-color: var(--clo-green);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1308,10 +1296,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1335,24 +1323,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Best Practices passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="59"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 59%;"
+                              style="width: 59%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1366,10 +1354,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1393,24 +1381,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Security passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="53"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 53%;"
+                              style="width: 53%; background-color: var(--clo-yellow);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1424,10 +1412,10 @@ exports[`StatsView creates snapshot 1`] = `
                       class="d-flex flex-column"
                     >
                       <div
-                        class="d-flex flex-row align-items-center mb-1 mb-md-0 progressTitle"
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
                       >
                         <div
-                          class="me-2 position-relative icon"
+                          class="me-2 position-relative _icon_e0c5a0"
                         >
                           <svg
                             fill="currentColor"
@@ -1451,24 +1439,24 @@ exports[`StatsView creates snapshot 1`] = `
                         class="d-flex flex-row mb-3 align-items-center"
                       >
                         <div
-                          class="flex-grow-1 progressbarWrapper"
+                          class="flex-grow-1 undefined"
                         >
                           <div
-                            class="progress rounded-0 progress"
+                            class="progress rounded-0 _progress_e0c5a0"
                           >
                             <div
                               aria-label="Legal passed checks percentage"
                               aria-valuemax="100"
                               aria-valuemin="0"
                               aria-valuenow="40"
-                              class="progress-bar progressbar"
+                              class="progress-bar _progressbar_e0c5a0"
                               role="progressbar"
-                              style="width: 40%;"
+                              style="width: 40%; background-color: var(--clo-orange);"
                             />
                           </div>
                         </div>
                         <div
-                          class="ps-1 ps-md-3 lh-1 text-end scoreWrapper"
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
                         >
                           <small
                             class="fw-bold lightText"
@@ -1484,7 +1472,7 @@ exports[`StatsView creates snapshot 1`] = `
             </div>
           </div>
           <div
-            class="text-dark text-center fw-bold text-uppercase my-4 title"
+            class="text-dark text-center fw-bold text-uppercase my-4 _title_b0dee2"
           >
             Repositories
           </div>
@@ -1492,13 +1480,13 @@ exports[`StatsView creates snapshot 1`] = `
             class="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3"
           >
             <div
-              class="text-dark fw-bold mx-auto mx-md-0 subtitle"
+              class="text-dark fw-bold mx-auto mx-md-0 _subtitle_b0dee2"
             >
               Percentage of repositories passing each check
             </div>
             <button
               aria-label="Download repositories CSV file"
-              class="btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 downloadBtn"
+              class="btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 _downloadBtn_b0dee2"
             >
               <div
                 class="d-flex flex-row align-items-baseline position-relative"
@@ -1510,7 +1498,7 @@ exports[`StatsView creates snapshot 1`] = `
                   class="me-1"
                 >
                   <svg
-                    class="position-relative downloadIcon"
+                    class="position-relative _downloadIcon_b0dee2"
                     fill="currentColor"
                     height="1em"
                     stroke="currentColor"
@@ -1542,10 +1530,10 @@ exports[`StatsView creates snapshot 1`] = `
                 class="col-12"
               >
                 <div
-                  class="card rounded-0 chartWrapper"
+                  class="card rounded-0 _chartWrapper_b0dee2"
                 >
                   <div
-                    class="card-body checksBody"
+                    class="card-body _checksBody_b0dee2"
                   >
                     <div
                       class="row g-4 justify-content-center"
@@ -1562,13 +1550,13 @@ exports[`StatsView creates snapshot 1`] = `
                           class="mx-1 pt-1"
                         >
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -1586,7 +1574,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1598,7 +1586,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Adopters check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Adopters
                                   </button>
@@ -1608,34 +1596,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Adopters passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="36"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 36%;"
+                                    style="width: 36%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 36%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="none"
@@ -1667,7 +1655,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1679,7 +1667,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Changelog check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Changelog
                                   </button>
@@ -1689,34 +1677,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Changelog passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="77"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 77%;"
+                                    style="width: 77%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 77%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -1733,7 +1721,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1745,7 +1733,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Code of conduct check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Code of conduct
                                   </button>
@@ -1755,34 +1743,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Code of conduct passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="88"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 88%;"
+                                    style="width: 88%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 88%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   aria-hidden="true"
@@ -1802,7 +1790,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1814,7 +1802,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Contributing check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Contributing
                                   </button>
@@ -1824,34 +1812,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Contributing passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="83"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 83%;"
+                                    style="width: 83%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 83%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -1868,7 +1856,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1880,7 +1868,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Governance check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Governance
                                   </button>
@@ -1890,34 +1878,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Governance passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="59"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 59%;"
+                                    style="width: 59%; background-color: var(--clo-yellow);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 59%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -1934,7 +1922,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -1946,7 +1934,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Maintainers check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Maintainers
                                   </button>
@@ -1956,34 +1944,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Maintainers passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="83"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 83%;"
+                                    style="width: 83%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 83%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="none"
@@ -2003,7 +1991,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2015,7 +2003,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Readme check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Readme
                                   </button>
@@ -2025,34 +2013,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Readme passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="98"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 98%;"
+                                    style="width: 98%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 98%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2069,7 +2057,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2081,7 +2069,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Roadmap check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Roadmap
                                   </button>
@@ -2091,34 +2079,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Roadmap passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="37"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 37%;"
+                                    style="width: 37%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 37%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2135,7 +2123,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2147,7 +2135,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Website check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Website
                                   </button>
@@ -2157,21 +2145,21 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Website passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="80"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 80%;"
+                                    style="width: 80%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 80%
                               </div>
@@ -2191,13 +2179,13 @@ exports[`StatsView creates snapshot 1`] = `
                           class="mx-1 pt-1"
                         >
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2214,7 +2202,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2226,7 +2214,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed License found check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     License found
                                   </button>
@@ -2236,34 +2224,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="License found passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="94"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 94%;"
+                                    style="width: 94%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 94%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2280,7 +2268,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2292,7 +2280,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Approved license check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Approved license
                                   </button>
@@ -2302,34 +2290,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Approved license passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="93"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 93%;"
+                                    style="width: 93%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 93%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2346,7 +2334,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2358,7 +2346,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed License scanning check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     License scanning
                                   </button>
@@ -2368,21 +2356,21 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="License scanning passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="22"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 22%;"
+                                    style="width: 22%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 22%
                               </div>
@@ -2402,13 +2390,13 @@ exports[`StatsView creates snapshot 1`] = `
                           class="mx-1 pt-1"
                         >
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="none"
@@ -2427,7 +2415,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2439,7 +2427,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Artifact Hub badge check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Artifact Hub badge
                                   </button>
@@ -2449,34 +2437,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Artifact Hub badge passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="9"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 9%;"
+                                    style="width: 9%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 9%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2493,7 +2481,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2505,7 +2493,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed CLA check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     CLA
                                   </button>
@@ -2515,34 +2503,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="CLA passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="8"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 8%;"
+                                    style="width: 8%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 8%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2562,7 +2550,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2574,7 +2562,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Community meeting check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Community meeting
                                   </button>
@@ -2584,34 +2572,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Community meeting passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="43"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 43%;"
+                                    style="width: 43%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 43%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2628,7 +2616,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2640,7 +2628,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed DCO check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     DCO
                                   </button>
@@ -2650,34 +2638,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="DCO passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="81"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 81%;"
+                                    style="width: 81%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 81%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2697,7 +2685,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2709,7 +2697,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed OpenSSF best practices check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     OpenSSF best practices
                                   </button>
@@ -2719,34 +2707,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="OpenSSF best practices passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="59"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 59%;"
+                                    style="width: 59%; background-color: var(--clo-yellow);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 59%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2766,7 +2754,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2778,7 +2766,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Recent release check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Recent release
                                   </button>
@@ -2788,34 +2776,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Recent release passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="81"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 81%;"
+                                    style="width: 81%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 81%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2832,7 +2820,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2844,7 +2832,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Slack presence check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Slack presence
                                   </button>
@@ -2854,21 +2842,21 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Slack presence passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="33"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 33%;"
+                                    style="width: 33%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 33%
                               </div>
@@ -2888,13 +2876,13 @@ exports[`StatsView creates snapshot 1`] = `
                           class="mx-1 pt-1"
                         >
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2914,7 +2902,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2926,7 +2914,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Binary artifacts check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Binary artifacts
                                   </button>
@@ -2936,34 +2924,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Binary artifacts passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="99"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 99%;"
+                                    style="width: 99%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 99%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -2984,7 +2972,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -2996,7 +2984,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Code review check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Code review
                                   </button>
@@ -3006,34 +2994,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Code review passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="82"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 82%;"
+                                    style="width: 82%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 82%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3050,7 +3038,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3062,7 +3050,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Dangerous workflow check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Dangerous workflow
                                   </button>
@@ -3072,34 +3060,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Dangerous workflow passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="61"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 61%;"
+                                    style="width: 61%; background-color: var(--clo-yellow);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 61%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3116,7 +3104,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3128,7 +3116,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Dependency update tool check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Dependency update tool
                                   </button>
@@ -3138,34 +3126,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Dependency update tool passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="26"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 26%;"
+                                    style="width: 26%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 26%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3182,7 +3170,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3194,7 +3182,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Maintained check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Maintained
                                   </button>
@@ -3204,34 +3192,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Maintained passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="87"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 87%;"
+                                    style="width: 87%; background-color: var(--clo-green);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 87%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3255,7 +3243,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3267,7 +3255,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed SBOM check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     SBOM
                                   </button>
@@ -3277,34 +3265,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="SBOM passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="4"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 4%;"
+                                    style="width: 4%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 4%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3321,7 +3309,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3333,7 +3321,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Security policy check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Security policy
                                   </button>
@@ -3343,34 +3331,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Security policy passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="57"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 57%;"
+                                    style="width: 57%; background-color: var(--clo-yellow);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 57%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3387,7 +3375,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3399,7 +3387,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Signed releases check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Signed releases
                                   </button>
@@ -3409,34 +3397,34 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Signed releases passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="5"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 5%;"
+                                    style="width: 5%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 5%
                               </div>
                             </div>
                           </div>
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3453,7 +3441,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3465,7 +3453,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Token permissions check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Token permissions
                                   </button>
@@ -3475,21 +3463,21 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Token permissions passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="18"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 18%;"
+                                    style="width: 18%; background-color: var(--clo-red);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 18%
                               </div>
@@ -3509,13 +3497,13 @@ exports[`StatsView creates snapshot 1`] = `
                           class="mx-1 pt-1"
                         >
                           <div
-                            class="d-flex flex-column wrapper"
+                            class="d-flex flex-column _wrapper_8ab6ee"
                           >
                             <div
-                              class="d-flex flex-row align-items-center progressWrapper"
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
                             >
                               <div
-                                class="me-1 me-md-2 position-relative icon"
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
                               >
                                 <svg
                                   fill="currentColor"
@@ -3532,7 +3520,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 </svg>
                               </div>
                               <div
-                                class="progressTitle"
+                                class="_progressTitle_8ab6ee"
                               >
                                 <span
                                   class="d-inline-block d-md-none"
@@ -3544,7 +3532,7 @@ exports[`StatsView creates snapshot 1`] = `
                                 >
                                   <button
                                     aria-label="Search projects with passed Trademark disclaimer check"
-                                    class="btn btn-link p-0 btn"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
                                   >
                                     Trademark disclaimer
                                   </button>
@@ -3554,21 +3542,21 @@ exports[`StatsView creates snapshot 1`] = `
                                 class="flex-grow-1 ms-2"
                               >
                                 <div
-                                  class="progress rounded-0 progress"
+                                  class="progress rounded-0 _progress_8ab6ee"
                                 >
                                   <div
                                     aria-label="Trademark disclaimer passed checks percentage"
                                     aria-valuemax="100"
                                     aria-valuemin="0"
                                     aria-valuenow="40"
-                                    class="progress-bar progressbar"
+                                    class="progress-bar _progressbar_8ab6ee"
                                     role="progressbar"
-                                    style="width: 40%;"
+                                    style="width: 40%; background-color: var(--clo-orange);"
                                   />
                                 </div>
                               </div>
                               <div
-                                class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
                               >
                                 40%
                               </div>

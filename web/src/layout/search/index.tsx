@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { DateRangeOpts } from 'clo-ui/components/DateRangeFilter';
 import { Loading } from 'clo-ui/components/Loading';
 import { NoData } from 'clo-ui/components/NoData';
 import { Pagination } from 'clo-ui/components/Pagination';
@@ -22,6 +21,7 @@ import { FilterKind, Project, SearchFiltersURL, SortBy, SortDirection, SortOptio
 import buildSearchParams from '../../utils/buildSearchParams';
 import prepareQueryString from '../../utils/prepareQueryString';
 import scrollToPosition from '../../utils/scrollToPosition';
+import { DateRangeOpts } from '../common/DateRangeFilter';
 import Card from './Card';
 import Filters from './filters';
 import styles from './Search.module.css';

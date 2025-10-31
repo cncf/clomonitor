@@ -11,8 +11,8 @@ import { SubNavbar } from 'clo-ui/components/SubNavbar';
 import { Timeline } from 'clo-ui/components/Timeline';
 import { useScrollRestorationFix } from 'clo-ui/hooks/useScrollRestorationFix';
 import { scrollToTop } from 'clo-ui/utils/scrollToTop';
+import { format, formatDistanceToNowStrict, fromUnixTime, parse } from 'date-fns';
 import { isNull, isUndefined } from 'lodash';
-import moment from 'moment';
 import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from 'react';
 import { GoCalendar } from 'react-icons/go';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -241,10 +241,10 @@ const Detail = (props: Props) => {
                                   <div className="d-flex flex-row">
                                     <span className="text-muted d-none d-lg-block me-1">Accepted:</span>
                                     <span className="d-none d-md-block">
-                                      {moment.unix(detail.accepted_at!).format('Do MMMM YYYY')}
+                                      {format(fromUnixTime(detail.accepted_at!), 'do MMMM yyyy')}
                                     </span>
                                     <span className="d-block d-md-none">
-                                      {moment.unix(detail.accepted_at!).format('YYYY')}
+                                      {format(fromUnixTime(detail.accepted_at!), 'yyyy')}
                                     </span>
                                   </div>
                                 </div>
@@ -271,11 +271,16 @@ const Detail = (props: Props) => {
                         </p>
                         <div className={`text-muted fst-italic mx-3 mx-md-0 mb-2 mb-md-3 ${styles.updated}`}>
                           {isUndefined(activeDate) ? (
-                            <>Updated {moment.unix(detail.updated_at).fromNow()}</>
+                            <>
+                              Updated {formatDistanceToNowStrict(fromUnixTime(detail.updated_at), { addSuffix: true })}
+                            </>
                           ) : (
                             <>
                               This is a snapshot of the project taken on{' '}
-                              <span className="fw-bold">{moment(activeDate, 'YYYY-MM-DD').format("Do MMM 'YY")}</span>.
+                              <span className="fw-bold">
+                                {format(parse(activeDate, 'yyyy-MM-dd', new Date()), "do MMM ''yy")}
+                              </span>
+                              .
                             </>
                           )}
                         </div>

@@ -1,29 +1,55 @@
+import { createRequire } from 'node:module';
+
 import { render, screen, waitFor } from '@testing-library/react';
-import { mocked } from 'jest-mock';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import API from '../../api';
 import { Project } from '../../types';
+
+const filtersRenderSpy = vi.fn();
+
+vi.mock('./filters', () => ({
+  __esModule: true,
+  default: (props: {
+    onChange: (name: string, value: string, checked: boolean) => void;
+    onAcceptedDateRangeChange: (range: { from?: string; to?: string }) => void;
+  }) => {
+    filtersRenderSpy(props);
+    return (
+      <div data-testid="filters-mock">
+        <button type="button" onClick={() => props.onChange('rating', 'a', true)}>
+          add-rating-filter
+        </button>
+        <button type="button" onClick={() => props.onAcceptedDateRangeChange({ from: '2020-01-01' })}>
+          change-date-range
+        </button>
+      </div>
+    );
+  },
+}));
+
 import Search from './index';
-jest.mock('../../api');
+
+const require = createRequire(import.meta.url);
 
 const getMockSearch = (fixtureId: string): { items: Project[]; 'Pagination-Total-Count': string } => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as { items: Project[]; 'Pagination-Total-Count': string };
 };
 
 const defaultProps = {
   scrollPosition: 0,
-  setScrollPosition: jest.fn(),
-  setInvisibleFooter: jest.fn(),
+  setScrollPosition: vi.fn(),
+  setInvisibleFooter: vi.fn(),
 };
 
 describe('Project detail index', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let dateNowSpy: any;
+  const searchProjectsMock = vi.spyOn(API, 'searchProjects');
 
   beforeEach(() => {
-    dateNowSpy = jest.spyOn(Date, 'now').mockImplementation(() => 1634968825000);
+    dateNowSpy = vi.spyOn(Date, 'now').mockImplementation(() => 1634968825000);
   });
 
   afterAll(() => {
@@ -31,12 +57,14 @@ describe('Project detail index', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    searchProjectsMock.mockReset();
+    filtersRenderSpy.mockReset();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', async () => {
     const mockSearch = getMockSearch('1');
-    mocked(API).searchProjects.mockResolvedValue(mockSearch);
+    searchProjectsMock.mockResolvedValue(mockSearch);
 
     const { asFragment } = render(
       <Router>
@@ -44,16 +72,15 @@ describe('Project detail index', () => {
       </Router>
     );
 
-    await waitFor(() => {
-      expect(API.searchProjects).toHaveBeenCalledTimes(1);
-      expect(asFragment()).toMatchSnapshot();
-    });
+    await screen.findAllByRole('listitem');
+    expect(API.searchProjects).toHaveBeenCalledTimes(1);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   describe('Render', () => {
     it('renders component', async () => {
       const mockSearch = getMockSearch('1');
-      mocked(API).searchProjects.mockResolvedValue(mockSearch);
+      searchProjectsMock.mockResolvedValue(mockSearch);
 
       render(
         <Router>
@@ -78,7 +105,7 @@ describe('Project detail index', () => {
 
     it('renders placeholder when list is empty', async () => {
       const mockSearch = getMockSearch('2');
-      mocked(API).searchProjects.mockResolvedValue(mockSearch);
+      searchProjectsMock.mockResolvedValue(mockSearch);
 
       render(
         <Router>

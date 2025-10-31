@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Project detail index creates snapshot 1`] = `
+exports[`Project detail index > creates snapshot 1`] = `
 <DocumentFragment>
   <nav
     class="navbar navbar-expand-sm SubNavbar-module_navbar__wuZcB"
@@ -11,7 +11,7 @@ exports[`Project detail index creates snapshot 1`] = `
     >
       <button
         aria-label="Back to results"
-        class="btn btn-link p-0 text-reset backBtn"
+        class="btn btn-link p-0 text-reset _backBtn_249801"
       >
         <div
           class="d-flex flex-row align-items-center"
@@ -41,7 +41,7 @@ exports[`Project detail index creates snapshot 1`] = `
     class="container-lg flex-grow-1 mb-0 mb-md-4"
   >
     <div
-      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF loading loadingWithBackBar"
+      class="position-absolute top-0 bottom-0 start-0 end-0 p-5 position-absolute Loading-module_wrapper__ezyxl Loading-module_transparentBg__qw5dF _loading_249801 _loadingWithBackBar_249801"
     >
       <div
         class="d-flex flex-row align-items-center justify-content-center w-100 h-100"

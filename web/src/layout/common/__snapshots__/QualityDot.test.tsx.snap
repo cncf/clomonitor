@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`QualityDot creates snapshot 1`] = `
+exports[`QualityDot > creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="me-2 border border-1 rounded-pill position-relative quality level1 undefined"
+    class="me-2 border border-1 rounded-pill position-relative _quality_d52a11 _level1_d52a11 undefined"
     data-testid="quality-dot"
   />
 </DocumentFragment>

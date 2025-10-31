@@ -1,10 +1,10 @@
-import { CodeBlock } from 'clo-ui/components/CodeBlock';
 import { Foundation } from 'clo-ui/components/Foundation';
 import { Modal } from 'clo-ui/components/Modal';
 import { Tabs } from 'clo-ui/components/Tabs';
 import { useContext } from 'react';
 
 import { AppContext } from '../../context/AppContextProvider';
+import { CodeBlock } from './CodeBlock';
 
 interface OpenModalStatus {
   status: boolean;

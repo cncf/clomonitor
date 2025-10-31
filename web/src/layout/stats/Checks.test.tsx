@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import Checks from './Checks';
 
@@ -14,12 +15,12 @@ const defaultProps = {
     slack_presence: 33,
   },
   title: 'Best Practices',
-  onSelectCheck: jest.fn(),
+  onSelectCheck: vi.fn(),
 };
 
 describe('Checks', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -58,7 +59,7 @@ describe('Checks', () => {
         <Checks
           data={{ license_approved: 93, license_scanning: 22, license_spdx_id: 94 }}
           title="License"
-          onSelectCheck={jest.fn()}
+          onSelectCheck={vi.fn()}
         />
       );
 

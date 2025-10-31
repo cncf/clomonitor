@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { ReportOption } from '../../../../types';
 import Checks from './index';
 
-const mockOnChecksChange = jest.fn();
-const mockOnChange = jest.fn();
+const mockOnChecksChange = vi.fn();
+const mockOnChange = vi.fn();
 
 const defaultProps = {
   activePassingChecks: [],
@@ -16,7 +17,7 @@ const defaultProps = {
 
 describe('Checks', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -82,9 +83,10 @@ describe('Checks', () => {
 
       await userEvent.click(btn);
 
-      expect(await screen.findByRole('dialog')).toBeInTheDocument();
+      const dialog = await screen.findByRole('dialog');
+      expect(dialog).toBeInTheDocument();
 
-      const removeBtn = screen.getByRole('button', { name: 'Remove passing Adopters check' });
+      const removeBtn = (await screen.findAllByLabelText(/Remove passing Adopters check/i))[0];
 
       await userEvent.click(removeBtn);
 

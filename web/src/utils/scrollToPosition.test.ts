@@ -1,3 +1,5 @@
+import { vi } from 'vitest';
+
 import scrollToPosition from './scrollToPosition';
 
 describe('scrollToPosition', () => {
@@ -5,19 +7,17 @@ describe('scrollToPosition', () => {
   const originalRequestAnimationFrame = window.requestAnimationFrame;
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
     document.documentElement.style.scrollBehavior = originalScrollBehavior;
     window.requestAnimationFrame = originalRequestAnimationFrame;
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('restores previous scroll behavior when requestAnimationFrame runs', () => {
     const scrollingElement = document.documentElement;
     scrollingElement.style.scrollBehavior = 'smooth';
-    const scrollSpy = jest.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
-    jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((callback: FrameRequestCallback) => (callback(0), 1));
+    const scrollSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback: FrameRequestCallback) => (callback(0), 1));
 
     scrollToPosition(240);
 
@@ -26,10 +26,10 @@ describe('scrollToPosition', () => {
   });
 
   it('falls back to setTimeout when requestAnimationFrame is not available', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const scrollingElement = document.documentElement;
     scrollingElement.style.removeProperty('scroll-behavior');
-    const scrollSpy = jest.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
+    const scrollSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
     // @ts-expect-error - intentionally unset for test
     window.requestAnimationFrame = undefined;
 
@@ -37,7 +37,7 @@ describe('scrollToPosition', () => {
 
     expect(scrollSpy).toHaveBeenCalledWith(expect.objectContaining({ top: 120, left: 0, behavior: 'auto' }));
     expect(scrollingElement.style.scrollBehavior).toBe('auto');
-    jest.runAllTimers();
+    vi.runAllTimers();
     expect(scrollingElement.style.scrollBehavior).toBe('');
   });
 });

@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Summary creates snapshot 1`] = `
+exports[`Summary > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="pt-2 mb-4 mb-md-5"
   >
     <table
-      class="table table-bordered mb-0 w-100 table"
+      class="table table-bordered mb-0 w-100 _table_2617a4"
       data-testid="repositories-summary"
     >
       <thead>
@@ -16,7 +16,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="me-2 position-relative icon"
+              class="me-2 position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -41,7 +41,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -68,7 +68,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 aria-hidden="true"
@@ -98,7 +98,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -125,7 +125,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -152,7 +152,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -179,7 +179,7 @@ exports[`Summary creates snapshot 1`] = `
             scope="col"
           >
             <small
-              class="position-relative icon"
+              class="position-relative _icon_2617a4"
             >
               <svg
                 fill="currentColor"
@@ -206,14 +206,14 @@ exports[`Summary creates snapshot 1`] = `
       <tbody>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-go"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 sdk-go
               </button>
@@ -234,31 +234,34 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               95
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               90
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               100
             </div>
@@ -305,14 +308,14 @@ exports[`Summary creates snapshot 1`] = `
         </tr>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-javascript"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 sdk-javascript
               </button>
@@ -333,31 +336,34 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               95
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               90
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               100
             </div>
@@ -404,14 +410,14 @@ exports[`Summary creates snapshot 1`] = `
         </tr>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-csharp"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 sdk-csharp
               </button>
@@ -432,31 +438,34 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               85
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
             >
               70
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               100
             </div>
@@ -503,14 +512,14 @@ exports[`Summary creates snapshot 1`] = `
         </tr>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-python"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 sdk-python
               </button>
@@ -531,31 +540,34 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               85
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
             >
               70
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               100
             </div>
@@ -602,14 +614,14 @@ exports[`Summary creates snapshot 1`] = `
         </tr>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: spec"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 spec
               </button>
@@ -630,51 +642,56 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-orange);"
             >
               44
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
             >
               60
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               80
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-orange);"
             >
               35
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-red);"
             >
               0
             </div>
@@ -695,14 +712,14 @@ exports[`Summary creates snapshot 1`] = `
         </tr>
         <tr>
           <td
-            class="align-middle repoCell darkBgCell"
+            class="align-middle _repoCell_2617a4 _darkBgCell_2617a4"
           >
             <div
               class="d-flex flex-row align-items-center px-2"
             >
               <button
                 aria-label="Go from summary to section: sdk-java"
-                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 repoBtn"
+                class="btn btn-link text-dark text-start text-truncate fw-bold ps-0 pe-2 py-0 py-xl-1 _repoBtn_2617a4"
               >
                 sdk-java
               </button>
@@ -723,31 +740,34 @@ exports[`Summary creates snapshot 1`] = `
             </div>
           </td>
           <td
-            class="hoverableCell align-middle"
+            class="_hoverableCell_42a19a align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               85
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-yellow);"
             >
               70
             </div>
           </td>
           <td
-            class="hoverableCell d-none d-md-table-cell align-middle"
+            class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
             role="button"
           >
             <div
-              class="mx-auto px-2 text-center text-dark fw-bold badge"
+              class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+              style="border-bottom-color: var(--clo-green);"
             >
               100
             </div>

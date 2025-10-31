@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SelectedFilters creates snapshot 1`] = `
+exports[`SelectedFilters > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="d-none d-md-block mt-2"
@@ -14,18 +14,18 @@ exports[`SelectedFilters creates snapshot 1`] = `
         Filters:
       </div>
       <div
-        class="position-relative badges"
+        class="position-relative _badges_450994"
         role="list"
       >
         <span
-          class="badge bg-secondary rounded-0 text-light me-3 my-1 badge lightBorder"
+          class="badge bg-secondary rounded-0 text-light me-3 my-1 _badge_450994 lightBorder"
           role="listitem"
         >
           <div
             class="d-flex flex-row align-items-baseline"
           >
             <div
-              class="content"
+              class="_content_450994"
             >
               <small
                 class="text-uppercase fw-normal me-2"
@@ -36,7 +36,7 @@ exports[`SelectedFilters creates snapshot 1`] = `
             </div>
             <button
               aria-label="Remove accepted filter"
-              class="btn btn-link btn-sm lh-1 btn"
+              class="btn btn-link btn-sm lh-1 _btn_450994"
             >
               <svg
                 fill="currentColor"

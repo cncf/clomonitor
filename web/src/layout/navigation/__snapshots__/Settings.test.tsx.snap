@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Settings creates snapshot 1`] = `
+exports[`Settings > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ms-2 position-relative"
@@ -8,7 +8,7 @@ exports[`Settings creates snapshot 1`] = `
     <button
       aria-expanded="false"
       aria-label="Settings button"
-      class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 btn"
+      class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 _btn_6ca852"
       type="button"
     >
       <svg
@@ -26,11 +26,11 @@ exports[`Settings creates snapshot 1`] = `
       </svg>
     </button>
     <div
-      class="dropdown-menu rounded-0 dropdown"
+      class="dropdown-menu rounded-0 _dropdown_6ca852"
       role="menu"
     >
       <div
-        class="dropdown-arrow arrow"
+        class="dropdown-arrow undefined"
       />
       <div
         class="px-3 py-2 lightText text-secondary text-uppercase fw-bold"

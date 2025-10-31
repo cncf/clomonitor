@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Checks creates snapshot 1`] = `
+exports[`Checks > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="col-12"
@@ -14,13 +14,13 @@ exports[`Checks creates snapshot 1`] = `
       class="mx-1 pt-1"
     >
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -37,7 +37,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -49,7 +49,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed Analytics check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 Analytics
               </button>
@@ -59,34 +59,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="Analytics passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="8"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 8%;"
+                style="width: 8%; background-color: var(--clo-red);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             8%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="none"
@@ -105,7 +105,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -117,7 +117,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed Artifact Hub badge check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 Artifact Hub badge
               </button>
@@ -127,34 +127,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="Artifact Hub badge passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="9"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 9%;"
+                style="width: 9%; background-color: var(--clo-red);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             9%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -171,7 +171,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -183,7 +183,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed CLA check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 CLA
               </button>
@@ -193,34 +193,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="CLA passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="12"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 12%;"
+                style="width: 12%; background-color: var(--clo-red);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             12%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -240,7 +240,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -252,7 +252,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed Community meeting check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 Community meeting
               </button>
@@ -262,34 +262,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="Community meeting passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="43"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 43%;"
+                style="width: 43%; background-color: var(--clo-orange);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             43%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -306,7 +306,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -318,7 +318,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed DCO check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 DCO
               </button>
@@ -328,34 +328,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="DCO passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="83"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 83%;"
+                style="width: 83%; background-color: var(--clo-green);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             83%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -375,7 +375,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -387,7 +387,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed OpenSSF best practices check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 OpenSSF best practices
               </button>
@@ -397,34 +397,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="OpenSSF best practices passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="59"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 59%;"
+                style="width: 59%; background-color: var(--clo-yellow);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             59%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -444,7 +444,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -456,7 +456,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed Recent release check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 Recent release
               </button>
@@ -466,34 +466,34 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="Recent release passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="81"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 81%;"
+                style="width: 81%; background-color: var(--clo-green);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             81%
           </div>
         </div>
       </div>
       <div
-        class="d-flex flex-column wrapper"
+        class="d-flex flex-column _wrapper_8ab6ee"
       >
         <div
-          class="d-flex flex-row align-items-center progressWrapper"
+          class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
         >
           <div
-            class="me-1 me-md-2 position-relative icon"
+            class="me-1 me-md-2 position-relative _icon_8ab6ee"
           >
             <svg
               fill="currentColor"
@@ -510,7 +510,7 @@ exports[`Checks creates snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="progressTitle"
+            class="_progressTitle_8ab6ee"
           >
             <span
               class="d-inline-block d-md-none"
@@ -522,7 +522,7 @@ exports[`Checks creates snapshot 1`] = `
             >
               <button
                 aria-label="Search projects with passed Slack presence check"
-                class="btn btn-link p-0 btn"
+                class="btn btn-link p-0 _btn_8ab6ee"
               >
                 Slack presence
               </button>
@@ -532,21 +532,21 @@ exports[`Checks creates snapshot 1`] = `
             class="flex-grow-1 ms-2"
           >
             <div
-              class="progress rounded-0 progress"
+              class="progress rounded-0 _progress_8ab6ee"
             >
               <div
                 aria-label="Slack presence passed checks percentage"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="33"
-                class="progress-bar progressbar"
+                class="progress-bar _progressbar_8ab6ee"
                 role="progressbar"
-                style="width: 33%;"
+                style="width: 33%; background-color: var(--clo-orange);"
               />
             </div>
           </div>
           <div
-            class="ps-2 lh-1 text-end fw-bold lightText scoreWrapper"
+            class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
           >
             33%
           </div>

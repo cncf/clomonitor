@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CheckSet } from 'clo-ui/components/CheckSetBadge';
+import { vi } from 'vitest';
 
 import WebsiteSection from './WebsiteSection';
 
@@ -56,7 +57,7 @@ const defaultPropsRepos = {
 
 describe('WebsiteSection', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -67,7 +68,7 @@ describe('WebsiteSection', () => {
 
   describe('Render', () => {
     it('renders with more than one website url', async () => {
-      jest.useFakeTimers();
+      vi.useFakeTimers();
 
       render(<WebsiteSection {...defaultPropsRepos} />);
 
@@ -80,7 +81,7 @@ describe('WebsiteSection', () => {
       await user.hover(content);
 
       act(() => {
-        jest.advanceTimersByTime(100);
+        vi.advanceTimersByTime(100);
       });
 
       expect(dropdown).toHaveClass('show');

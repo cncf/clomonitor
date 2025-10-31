@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Block creates snapshot 1`] = `
+exports[`Block > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="mb-4"
@@ -18,7 +18,7 @@ exports[`Block creates snapshot 1`] = `
       >
         <button
           aria-label="Mark all checks in Best Practices category as passed"
-          class="btn btn-link btn-sm p-0 btn"
+          class="btn btn-link btn-sm p-0 _btn_85ee8a"
         >
           All passed
         </button>
@@ -38,7 +38,7 @@ exports[`Block creates snapshot 1`] = `
         </svg>
         <button
           aria-label="Mark all checks in Best Practices category as not passed"
-          class="btn btn-link btn-sm p-0 btn"
+          class="btn btn-link btn-sm p-0 _btn_85ee8a"
         >
           None passed
         </button>
@@ -58,7 +58,7 @@ exports[`Block creates snapshot 1`] = `
         </svg>
         <button
           aria-label="Reset checks in Best Practices category"
-          class="btn btn-link btn-sm p-0 btn"
+          class="btn btn-link btn-sm p-0 _btn_85ee8a"
         >
           Reset
         </button>
@@ -69,7 +69,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -84,7 +84,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Analytics as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -116,7 +116,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Analytics as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -145,7 +145,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Analytics as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -168,7 +168,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Analytics as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -209,7 +209,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -229,7 +229,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -244,7 +244,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Artifact Hub badge as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -276,7 +276,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Artifact Hub badge as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -305,7 +305,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -328,7 +328,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Artifact Hub badge as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -371,7 +371,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -391,7 +391,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -406,7 +406,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Contributor License Agreement as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -438,7 +438,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Contributor License Agreement as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -467,7 +467,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Contributor License Agreement as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -490,7 +490,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Contributor License Agreement as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -531,7 +531,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -551,7 +551,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -566,7 +566,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Community meeting as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -598,7 +598,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Community meeting as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -627,7 +627,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Community meeting as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -650,7 +650,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Community meeting as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -694,7 +694,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -714,7 +714,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -729,7 +729,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Developer Certificate of Origin as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -761,7 +761,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Developer Certificate of Origin as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -790,7 +790,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Developer Certificate of Origin as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -813,7 +813,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Developer Certificate of Origin as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -854,7 +854,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -874,7 +874,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -889,7 +889,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select GitHub discussions as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -921,7 +921,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select GitHub discussions as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -950,7 +950,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select GitHub discussions as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -973,7 +973,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select GitHub discussions as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -1017,7 +1017,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -1037,7 +1037,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -1052,7 +1052,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF best practices badge as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -1084,7 +1084,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF best practices badge as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -1113,7 +1113,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select OpenSSF best practices badge as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -1136,7 +1136,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select OpenSSF best practices badge as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -1180,7 +1180,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -1200,7 +1200,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -1215,7 +1215,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF Scorecard badge as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -1247,7 +1247,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select OpenSSF Scorecard badge as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -1276,7 +1276,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select OpenSSF Scorecard badge as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -1299,7 +1299,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select OpenSSF Scorecard badge as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -1340,7 +1340,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -1360,7 +1360,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -1375,7 +1375,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Recent release as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -1407,7 +1407,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Recent release as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -1436,7 +1436,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Recent release as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -1459,7 +1459,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Recent release as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -1503,7 +1503,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"
@@ -1523,7 +1523,7 @@ exports[`Block creates snapshot 1`] = `
         class="d-flex flex-row align-items-center my-1"
       >
         <div
-          class="btn-group me-2 me-sm-4 btns"
+          class="btn-group me-2 me-sm-4 _btns_7a7935"
           role="group"
         >
           <div
@@ -1538,7 +1538,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Slack presence as passed"
-                  class="btn rounded-0 border border-1 p-0 btn passingBtn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
                   type="button"
                 >
                   <div
@@ -1570,7 +1570,7 @@ exports[`Block creates snapshot 1`] = `
               >
                 <button
                   aria-label="Select Slack presence as not passed"
-                  class="btn rounded-0 border border-1 p-0 btn"
+                  class="btn rounded-0 border border-1 p-0 _btn_7a7935"
                   type="button"
                 >
                   <div
@@ -1599,7 +1599,7 @@ exports[`Block creates snapshot 1`] = `
           >
             <button
               aria-label="Select Slack presence as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -1622,7 +1622,7 @@ exports[`Block creates snapshot 1`] = `
             </button>
             <button
               aria-label="Select Slack presence as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -1663,7 +1663,7 @@ exports[`Block creates snapshot 1`] = `
           </svg>
         </small>
         <div
-          class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+          class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
         >
           <span
             class="d-none d-sm-block text-truncate"

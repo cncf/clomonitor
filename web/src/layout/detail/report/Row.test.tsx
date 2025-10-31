@@ -1,9 +1,16 @@
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { ScoreType } from '../../../types';
 import Row from './Row';
-jest.mock('react-markdown', () => () => <div />);
-jest.mock('rehype-external-links', () => () => <></>);
+vi.mock('react-markdown', () => ({
+  __esModule: true,
+  default: () => <div />,
+}));
+vi.mock('rehype-external-links', () => ({
+  __esModule: true,
+  default: () => <></>,
+}));
 
 const defaultProps = {
   repoName: 'repo',
@@ -25,7 +32,7 @@ const defaultProps = {
   },
   score: 90,
   referenceUrl: 'http://reference.com',
-  getAnchorLink: jest.fn(),
+  getAnchorLink: vi.fn(),
 };
 
 const incompleteData = {
@@ -48,12 +55,12 @@ const incompleteData = {
   },
   score: 90,
   referenceUrl: 'http://reference.com',
-  getAnchorLink: jest.fn(),
+  getAnchorLink: vi.fn(),
 };
 
 describe('Row', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

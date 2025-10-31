@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { vi } from 'vitest';
 
 import Navbar from './Navbar';
 
-const mockSetScrollPosition = jest.fn();
+const mockSetScrollPosition = vi.fn();
 
 const defaultProps = {
   setScrollPosition: mockSetScrollPosition,
@@ -12,7 +13,7 @@ const defaultProps = {
 
 describe('Navbar', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

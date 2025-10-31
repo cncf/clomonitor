@@ -5,8 +5,8 @@ import { FoundationBadge } from 'clo-ui/components/FoundationBadge';
 import { Image } from 'clo-ui/components/Image';
 import { MaturityBadge } from 'clo-ui/components/MaturityBadge';
 import { RoundScore } from 'clo-ui/components/RoundScore';
+import { format, formatDistanceToNowStrict, fromUnixTime } from 'date-fns';
 import { isUndefined } from 'lodash';
-import moment from 'moment';
 import { useContext } from 'react';
 import { FaChartBar } from 'react-icons/fa';
 import { GoCalendar } from 'react-icons/go';
@@ -105,7 +105,7 @@ const Card = (props: Props) => {
                             className={`d-flex flex-row align-items-center ms-3 ${styles.subtitle} ${styles.wrapperCalendar}`}
                           >
                             <GoCalendar className={`me-1 text-muted ${styles.calendarIcon}`} />
-                            <div>{moment.unix(props.project.accepted_at!).format('YYYY')}</div>
+                            <div>{format(fromUnixTime(props.project.accepted_at!), 'yyyy')}</div>
                           </div>
                         }
                         tooltipWidth={210}
@@ -115,7 +115,7 @@ const Card = (props: Props) => {
                           <div className="d-flex flex-column">
                             <div className="text-muted d-none d-lg-block">Accepted:</div>
                             <div className="lightText">
-                              {moment.unix(props.project.accepted_at!).format('Do MMMM YYYY')}
+                              {format(fromUnixTime(props.project.accepted_at!), 'do MMMM yyyy')}
                             </div>
                           </div>
                         }
@@ -140,7 +140,7 @@ const Card = (props: Props) => {
           <CategoriesSummary score={props.project.score} bigSize={false} />
         </div>
         <div className={`d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 ${styles.legend}`}>
-          Updated {moment.unix(props.project.updated_at).fromNow()}
+          Updated {formatDistanceToNowStrict(fromUnixTime(props.project.updated_at), { addSuffix: true })}
         </div>
       </>
     </CardWrapper>

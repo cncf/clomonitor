@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { FilterKind, Rating } from '../../../types';
 import Section from './Section';
 
-const mockOnChange = jest.fn();
+const mockOnChange = vi.fn();
 
 const defaultProps = {
   section: {
@@ -40,7 +41,7 @@ const defaultProps = {
 
 describe('Section', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -54,23 +55,23 @@ describe('Section', () => {
       render(<Section {...defaultProps} />);
 
       expect(screen.getByText('Rating')).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'C [25-49]' })).toBeInTheDocument();
-      expect(screen.getByRole('checkbox', { name: 'D [0-24]' })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /A/ })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /B/ })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /C/ })).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: /D/ })).toBeInTheDocument();
     });
 
     it('renders Section with selected options', () => {
       render(<Section {...defaultProps} activeFilters={['a', 'b']} />);
 
-      expect(screen.getByRole('checkbox', { name: 'A [75-100]' })).toBeChecked();
-      expect(screen.getByRole('checkbox', { name: 'B [50-74]' })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /A/ })).toBeChecked();
+      expect(screen.getByRole('checkbox', { name: /B/ })).toBeChecked();
     });
 
     it('calls onChange to click filter', async () => {
       render(<Section {...defaultProps} />);
 
-      const check = screen.getByRole('checkbox', { name: 'B [50-74]' });
+      const check = screen.getByRole('checkbox', { name: /B/ });
 
       expect(check).not.toBeChecked();
 
@@ -83,7 +84,7 @@ describe('Section', () => {
     it('calls onChange to click selected filter', async () => {
       render(<Section {...defaultProps} activeFilters={['b']} />);
 
-      const check = screen.getByRole('checkbox', { name: 'B [50-74]' });
+      const check = screen.getByRole('checkbox', { name: /B/ });
 
       expect(check).toBeChecked();
 

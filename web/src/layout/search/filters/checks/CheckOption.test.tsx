@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { ReportOption, ScoreType } from '../../../../types';
 import CheckOption from './CheckOption';
+import styles from './CheckOption.module.css';
 
-const mockOnChange = jest.fn();
+const mockOnChange = vi.fn();
 
 const defaultProps = {
   type: ScoreType.BestPractices,
@@ -16,7 +18,7 @@ const defaultProps = {
 
 describe('CheckOption', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {
@@ -41,7 +43,7 @@ describe('CheckOption', () => {
       expect(screen.getAllByRole('button', { name: 'Unselect Artifact Hub badge as passed' })).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as not passed' })).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: 'Unselect Artifact Hub badge as passed' })[0]).toHaveClass(
-        'isPassing'
+        styles.isPassing
       );
     });
 
@@ -51,7 +53,7 @@ describe('CheckOption', () => {
       expect(screen.getAllByRole('button', { name: 'Select Artifact Hub badge as passed' })).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: 'Unselect Artifact Hub badge as not passed' })[0]).toHaveClass(
-        'isNotPassing'
+        styles.isNotPassing
       );
     });
 

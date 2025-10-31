@@ -8,8 +8,20 @@ import { NoData } from 'clo-ui/components/NoData';
 import { SubNavbar } from 'clo-ui/components/SubNavbar';
 import { Timeline } from 'clo-ui/components/Timeline';
 import { prettifyNumber } from 'clo-ui/utils/prettifyNumber';
+import {
+  addWeeks,
+  endOfMonth,
+  format,
+  isAfter,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  parse,
+  subDays,
+  subMonths,
+  subWeeks,
+} from 'date-fns';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
-import moment from 'moment';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { GrDocumentCsv } from 'react-icons/gr';
@@ -146,13 +158,8 @@ const StatsView = () => {
     if (data.length < 13 && data.length > 0) {
       const oldDate = data[0][0];
       range(1, 13 - data.length).forEach((x: number) => {
-        finalData.unshift([
-          moment
-            .unix(oldDate / 1000)
-            .subtract(x, 'month')
-            .unix() * 1000,
-          0,
-        ]);
+        const previousDate = subMonths(new Date(oldDate), x).getTime();
+        finalData.unshift([previousDate, 0]);
       });
     }
     return finalData;
@@ -215,12 +222,15 @@ const StatsView = () => {
             let newMaxDate = parseInt(opt.xaxis.max);
             // Min range 1 week
             if (newMinDate > chartContext.minX) {
-              const maxRange = moment(newMinDate).add(1, 'w').valueOf();
-              if (moment(newMaxDate).isBefore(maxRange) && moment(maxRange).isBefore(maxDate)) {
+              const maxRange = addWeeks(new Date(newMinDate), 1).getTime();
+              if (
+                isBefore(new Date(newMaxDate), new Date(maxRange)) &&
+                isBefore(new Date(maxRange), new Date(maxDate))
+              ) {
                 newMaxDate = maxRange;
               } else {
-                const minRange = moment(newMaxDate).subtract(1, 'w').valueOf();
-                if (moment(newMinDate).isAfter(minRange)) {
+                const minRange = subWeeks(new Date(newMaxDate), 1).getTime();
+                if (isAfter(new Date(newMinDate), new Date(minRange))) {
                   newMinDate = minRange;
                 }
               }
@@ -353,9 +363,10 @@ const StatsView = () => {
               const selectedMonth = config.w.globals.labels[config.dataPointIndex];
               const selectedYear = config.w.globals.seriesNames[config.seriesIndex];
               const initialDay = `${selectedYear}-${selectedMonth}-01`;
+              const parsedDate = parse(initialDay, 'yyyy-MMM-dd', new Date());
               setSelectedRange({
-                from: moment(initialDay, 'YYYY-MMM-DD').format('YYYY-MM-DD'),
-                to: moment(initialDay, 'YYYY-MMM-DD').endOf('month').format('YYYY-MM-DD'),
+                from: format(parsedDate, 'yyyy-MM-dd'),
+                to: format(endOfMonth(parsedDate), 'yyyy-MM-dd'),
               });
             }
           },
@@ -448,7 +459,9 @@ const StatsView = () => {
     const getBarColors = (): string[] => {
       if (dataLength > 0) {
         const isCurrent = !isUndefined(lastBarDate)
-          ? moment(moment.unix(lastBarDate / 1000)).isSame(moment(), monthlyFormatter ? 'month' : 'day')
+          ? monthlyFormatter
+            ? isSameMonth(new Date(lastBarDate), new Date())
+            : isSameDay(new Date(lastBarDate), new Date())
           : false;
         const colors = Array.from({ length: dataLength - 1 }, () => 'var(--clo-tertiary)');
         if (isCurrent) {
@@ -504,7 +517,7 @@ const StatsView = () => {
       colors: getBarColors(),
       xaxis: {
         type: 'datetime',
-        min: monthlyFormatter ? undefined : moment().subtract(30, 'days').unix() * 1000,
+        min: monthlyFormatter ? undefined : subDays(new Date(), 30).getTime(),
         labels: {
           style: {
             colors: 'var(--color-font)',
@@ -523,7 +536,7 @@ const StatsView = () => {
       tooltip: {
         x: {
           formatter: (val: number): string => {
-            return monthlyFormatter ? moment(val).format('MM/YY') : moment(val).format('DD MMM YY');
+            return format(new Date(val), monthlyFormatter ? 'MM/yy' : 'dd MMM yy');
           },
         },
       },
@@ -705,7 +718,7 @@ const StatsView = () => {
               <small className="d-flex flex-row justify-content-center justify-content-md-start">
                 <span className="d-none d-md-block me-2">Report generated at:</span>
                 {stats && !isUndefined(stats.generated_at) ? (
-                  <span className="fw-bold">{moment(stats.generated_at).format('YYYY/MM/DD HH:mm:ss (Z)')}</span>
+                  <span className="fw-bold">{format(new Date(stats.generated_at), 'yyyy/MM/dd HH:mm:ss (xxx)')}</span>
                 ) : (
                   <div className="d-flex flex-row mt-1" role="status">
                     <div className={`${styles.dot} ${styles.dot1} dot`} />

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotFound creates snapshot 1`] = `
+exports[`NotFound > creates snapshot 1`] = `
 <DocumentFragment>
   <main
     class="container-lg flex-grow-1 p-5 d-flex flex-column align-items-center justify-content-center"
@@ -8,7 +8,7 @@ exports[`NotFound creates snapshot 1`] = `
   >
     <svg
       baseProfile="tiny"
-      class="m-3 icon"
+      class="m-3 _icon_e48d6b"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -42,6 +42,7 @@ exports[`NotFound creates snapshot 1`] = `
     </div>
     <a
       class="btn btn-primary rounded-0 text-white btn-lg text-decoration-none"
+      data-discover="true"
       href="/search?page=1"
     >
       Back Search

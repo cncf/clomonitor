@@ -3,11 +3,12 @@ import { Navbar as NavbarWrapper } from 'clo-ui/components/Navbar';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../media/clomonitor.svg';
 import MobileSettings from './MobileSettings';
 import styles from './Navbar.module.css';
 import Searchbar from './Searchbar';
 import Settings from './Settings';
+
+const logo = new URL('../../media/clomonitor.svg', import.meta.url).pathname;
 
 interface Props {
   setScrollPosition: Dispatch<SetStateAction<number | undefined>>;

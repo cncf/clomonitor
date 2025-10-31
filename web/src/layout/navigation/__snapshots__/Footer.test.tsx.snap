@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer creates snapshot 1`] = `
+exports[`Footer > creates snapshot 1`] = `
 <DocumentFragment>
   <footer
     class="py-5 Footer-module_footer__A76NF py-5"
@@ -12,7 +12,7 @@ exports[`Footer creates snapshot 1`] = `
         class="d-flex flex-row flex-wrap align-items-stretch justify-content-between text-light"
       >
         <div
-          class="footerCol"
+          class="_footerCol_f39205"
         >
           <div
             class="h6 fw-bold text-uppercase"
@@ -34,6 +34,7 @@ exports[`Footer creates snapshot 1`] = `
             </a>
             <a
               class="mb-1 opacity-75"
+              data-discover="true"
               href="/stats"
             >
               Statistics
@@ -41,7 +42,7 @@ exports[`Footer creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="footerCol"
+          class="_footerCol_f39205"
         >
           <div
             class="h6 fw-bold text-uppercase"
@@ -82,7 +83,7 @@ exports[`Footer creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="footerCol"
+          class="_footerCol_f39205"
         >
           <div
             class="h6 fw-bold text-uppercase"
@@ -90,7 +91,7 @@ exports[`Footer creates snapshot 1`] = `
             About
           </div>
           <div
-            class="opacity-75 license"
+            class="opacity-75 _license_f39205"
           >
             CLOMonitor is an 
             <b
@@ -112,7 +113,7 @@ exports[`Footer creates snapshot 1`] = `
               >
                 Apache License 2.0
                 <svg
-                  class="ms-1 miniIcon"
+                  class="ms-1 _miniIcon_f39205"
                   fill="none"
                   height="1em"
                   stroke="currentColor"
@@ -145,8 +146,8 @@ exports[`Footer creates snapshot 1`] = `
         >
           <img
             alt="Logo"
-            class="logo"
-            src=""
+            class="_logo_f39205"
+            src="/src/media/clomonitor.svg"
           />
         </div>
       </div>

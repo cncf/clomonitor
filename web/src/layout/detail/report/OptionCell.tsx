@@ -39,6 +39,7 @@ const OptionCell = (props: Props) => {
   const failedIcon = <RiErrorWarningLine data-testid="failed-icon" className={styles.failedIcon} />;
 
   const opt: ReportOptionData = getOptionInfo(props.label);
+  const scorecardBaseUrl = import.meta.env.DEV ? 'http://localhost:8000' : window.location.origin;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Heading = (props: any) => (
@@ -120,22 +121,23 @@ const OptionCell = (props: Props) => {
             tooltipStyle
           >
             <div ref={details} className={`overflow-auto pb-1 ${styles.detailsWrapper} ${styles.visibleScroll}`}>
-              <ReactMarkdown
-                rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
-                className={styles.detailsContent}
-                children={props.check.details!}
-                components={{
-                  h1: Heading,
-                  h2: Heading,
-                  h3: Heading,
-                  h4: Heading,
-                  h5: Heading,
-                  h6: Heading,
-                  a: Link,
-                  blockquote: Blockquote,
-                }}
-                skipHtml
-              />
+              <div className={styles.detailsContent}>
+                <ReactMarkdown
+                  rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
+                  children={props.check.details!}
+                  components={{
+                    h1: Heading,
+                    h2: Heading,
+                    h3: Heading,
+                    h4: Heading,
+                    h5: Heading,
+                    h6: Heading,
+                    a: Link,
+                    blockquote: Blockquote,
+                  }}
+                  skipHtml
+                />
+              </div>
             </div>
           </DropdownOnHover>
         </div>
@@ -167,11 +169,7 @@ const OptionCell = (props: Props) => {
             <iframe
               ref={iframe}
               title="Scorecard details"
-              src={`${
-                process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : window.location.origin
-              }/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${
-                githubUrlParts[2]
-              }&theme=${effective}&embed=true`}
+              src={`${scorecardBaseUrl}/scorecard?platform=${url.hostname}&org=${githubUrlParts[1]}&repo=${githubUrlParts[2]}&theme=${effective}&embed=true`}
               className={`w-100 ${styles.iframe}`}
             />
           </div>
@@ -232,6 +230,7 @@ const OptionCell = (props: Props) => {
                 }
                 tooltipWidth={500}
                 tooltipClassName={styles.reasonTooltipMessage}
+                tooltipArrowClassName={styles.reasonTooltipArrow}
                 tooltipMessage={
                   <div className="text-start p-2">
                     <div className="border-bottom border-1 pb-2 mb-3 fw-bold">

@@ -1,6 +1,7 @@
 import { CheckSet } from 'clo-ui/components/CheckSetBadge';
 import { Foundation } from 'clo-ui/components/Foundation';
 import { Maturity } from 'clo-ui/components/Maturity';
+import type { ReactElement } from 'react';
 
 export interface BaseProject {
   id: string;
@@ -83,7 +84,7 @@ export interface Filter {
   name: string;
   label: string;
   legend?: string;
-  decorator?: JSX.Element;
+  decorator?: ReactElement;
 }
 
 export interface Issue {
@@ -102,10 +103,10 @@ export interface ThemePrefs {
 }
 
 export interface ReportOptionData {
-  icon: JSX.Element;
+  icon: ReactElement;
   name: string;
   shortName?: string;
-  legend: JSX.Element;
+  legend: ReactElement;
   reference?: string;
 }
 

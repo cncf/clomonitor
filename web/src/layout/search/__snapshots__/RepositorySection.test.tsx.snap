@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RepositorySection creates snapshot 1`] = `
+exports[`RepositorySection > creates snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -10,7 +10,7 @@ exports[`RepositorySection creates snapshot 1`] = `
         <div
           aria-hidden="true"
           class="dropdown-menu rounded-0 text-wrap DropdownOnHover-module_dropdown__huQ9u"
-          id=":r0:"
+          id="_r_0_"
           role="complementary"
           style="width: 250px;"
         >
@@ -18,10 +18,10 @@ exports[`RepositorySection creates snapshot 1`] = `
             class="ps-3 pe-2 pt-1"
           >
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -39,7 +39,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/spec"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -83,10 +83,10 @@ exports[`RepositorySection creates snapshot 1`] = `
               </div>
             </div>
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -104,7 +104,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/sdk-csharp"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -148,10 +148,10 @@ exports[`RepositorySection creates snapshot 1`] = `
               </div>
             </div>
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -169,7 +169,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/sdk-go"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -213,10 +213,10 @@ exports[`RepositorySection creates snapshot 1`] = `
               </div>
             </div>
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -234,7 +234,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/sdk-java"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -278,10 +278,10 @@ exports[`RepositorySection creates snapshot 1`] = `
               </div>
             </div>
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -299,7 +299,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/sdk-javascript"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -343,10 +343,10 @@ exports[`RepositorySection creates snapshot 1`] = `
               </div>
             </div>
             <div
-              class="d-flex flex-row align-items-center my-1 link"
+              class="d-flex flex-row align-items-center my-1 _link_b8ead1"
             >
               <svg
-                class="me-2 position-relative miniIcon"
+                class="me-2 position-relative _miniIcon_b8ead1"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -364,7 +364,7 @@ exports[`RepositorySection creates snapshot 1`] = `
               >
                 <a
                   aria-label="Repository link"
-                  class="link d-block text-truncate text-dark link"
+                  class="link d-block text-truncate text-dark _link_b8ead1"
                   href="https://github.com/cloudevents/sdk-python"
                   rel="noopener noreferrer"
                   tabindex="-1"
@@ -412,7 +412,7 @@ exports[`RepositorySection creates snapshot 1`] = `
       </div>
     </div>
     <div
-      aria-controls=":r0:"
+      aria-controls="_r_0_"
       aria-expanded="false"
       aria-haspopup="true"
       aria-label="Toggle dropdown"
@@ -420,10 +420,10 @@ exports[`RepositorySection creates snapshot 1`] = `
       role="button"
     >
       <div
-        class="d-flex flex-row align-items-center link"
+        class="d-flex flex-row align-items-center _link_b8ead1"
       >
         <svg
-          class="icon"
+          class="_icon_b8ead1"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

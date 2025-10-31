@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Navbar creates snapshot 1`] = `
+exports[`Navbar > creates snapshot 1`] = `
 <DocumentFragment>
   <nav
-    class="navbar Navbar-module_navbar__Ey25T navbar"
+    class="navbar Navbar-module_navbar__Ey25T _navbar_0b28b6"
   >
     <div
       class="container-lg"
@@ -12,19 +12,20 @@ exports[`Navbar creates snapshot 1`] = `
         class="d-flex flex-column flex-md-row align-items-center justify-content-between w-100"
       >
         <div
-          class="me-0 me-md-4 mt-2 mt-md-0 line"
+          class="me-0 me-md-4 mt-2 mt-md-0 _line_0b28b6"
         >
           <div
             class="d-flex flex-row align-items-start"
           >
             <a
               class="cursorPointer"
+              data-discover="true"
               href="/"
             >
               <img
                 alt="CLOMonitor logo"
-                class="logo"
-                src=""
+                class="_logo_0b28b6"
+                src="/src/media/clomonitor.svg"
               />
             </a>
             <div
@@ -33,7 +34,7 @@ exports[`Navbar creates snapshot 1`] = `
               <button
                 aria-expanded="false"
                 aria-label="Mobile settings button"
-                class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 btn"
+                class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 _btn_b738b3"
                 type="button"
               >
                 <svg
@@ -52,7 +53,7 @@ exports[`Navbar creates snapshot 1`] = `
                 </svg>
               </button>
               <div
-                class="dropdown-menu rounded-0 dropdown"
+                class="dropdown-menu rounded-0 _dropdown_b738b3"
                 role="menu"
               >
                 <div
@@ -267,6 +268,7 @@ exports[`Navbar creates snapshot 1`] = `
                 >
                   <a
                     class="text-decoration-none fw-bold d-inline-block w-100"
+                    data-discover="true"
                     href="/stats"
                   >
                     <div
@@ -298,7 +300,7 @@ exports[`Navbar creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="position-relative my-3 line"
+          class="position-relative my-3 _line_0b28b6"
         >
           <div
             class="d-flex align-items-center overflow-hidden searchBar lh-base bg-white mx-auto SearchbarWithDropdown-module_searchBar__gq6Pz search"
@@ -349,11 +351,11 @@ exports[`Navbar creates snapshot 1`] = `
           </div>
         </div>
         <div
-          class="d-none d-md-flex flex-row align-items-center ms-auto searchWrapper"
+          class="d-none d-md-flex flex-row align-items-center ms-auto _searchWrapper_0b28b6"
         >
           <a
             aria-label="Open documentation"
-            class="link position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
+            class="link position-relative ms-3 text-light text-uppercase fw-bold text-decoration-none _link_0b28b6 navbarLink"
             href="/docs"
             rel="noopener noreferrer"
             tabindex="-1"
@@ -362,7 +364,8 @@ exports[`Navbar creates snapshot 1`] = `
             Docs
           </a>
           <a
-            class="position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none link navbarLink"
+            class="position-relative ms-4 text-light text-uppercase fw-bold text-decoration-none _link_0b28b6 navbarLink"
+            data-discover="true"
             href="/stats"
           >
             Stats
@@ -373,7 +376,7 @@ exports[`Navbar creates snapshot 1`] = `
             <button
               aria-expanded="false"
               aria-label="Settings button"
-              class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 btn"
+              class="btn btn-sm btn-link text-white rounded-0 lh-1 ms-3 _btn_6ca852"
               type="button"
             >
               <svg
@@ -391,11 +394,11 @@ exports[`Navbar creates snapshot 1`] = `
               </svg>
             </button>
             <div
-              class="dropdown-menu rounded-0 dropdown"
+              class="dropdown-menu rounded-0 _dropdown_6ca852"
               role="menu"
             >
               <div
-                class="dropdown-arrow arrow"
+                class="dropdown-arrow undefined"
               />
               <div
                 class="px-3 py-2 lightText text-secondary text-uppercase fw-bold"

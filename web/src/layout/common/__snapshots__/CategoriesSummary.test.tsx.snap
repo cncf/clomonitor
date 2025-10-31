@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CategoriesSummary creates snapshot 1`] = `
+exports[`CategoriesSummary > creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="align-items-center d-flex flex-column flex-md-row summary flex-lg-column flex-xl-row"
+    class="align-items-center d-flex flex-column flex-md-row _summary_a838a2 flex-lg-column flex-xl-row"
   >
     <div
       class="d-none d-md-block d-lg-none d-xl-block d-lg-none d-xl-block"
@@ -55,16 +55,16 @@ exports[`CategoriesSummary creates snapshot 1`] = `
         class="row"
       >
         <div
-          class="wrapper col-12"
+          class="_wrapper_e29e1e col-12"
         >
           <div
             class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
           >
             <div
-              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
             >
               <span
-                class="pe-1 d-inline-block position-relative icon"
+                class="pe-1 d-inline-block position-relative _icon_e29e1e"
               >
                 <svg
                   aria-hidden="true"
@@ -90,32 +90,32 @@ exports[`CategoriesSummary creates snapshot 1`] = `
               </span>
             </div>
             <div
-              class="text-center fw-bold font-monospace value "
+              class="text-center fw-bold font-monospace _value_e29e1e "
             >
               85
             </div>
             <div
-              class="flex-grow-1 position-relative mx-2 progressWrapper  "
+              class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
             >
               <div
-                class="position-absolute start-0 top-0 bottom-0 line"
+                class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                 data-testid="line"
-                style="width: 85%;"
+                style="width: 85%; background-color: var(--clo-green);"
               />
             </div>
           </div>
         </div>
         <div
-          class="wrapper col-12"
+          class="_wrapper_e29e1e col-12"
         >
           <div
             class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
           >
             <div
-              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
             >
               <span
-                class="pe-1 d-inline-block position-relative icon"
+                class="pe-1 d-inline-block position-relative _icon_e29e1e"
               >
                 <svg
                   fill="currentColor"
@@ -138,32 +138,32 @@ exports[`CategoriesSummary creates snapshot 1`] = `
               </span>
             </div>
             <div
-              class="text-center fw-bold font-monospace value "
+              class="text-center fw-bold font-monospace _value_e29e1e "
             >
               80
             </div>
             <div
-              class="flex-grow-1 position-relative mx-2 progressWrapper  "
+              class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
             >
               <div
-                class="position-absolute start-0 top-0 bottom-0 line"
+                class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                 data-testid="line"
-                style="width: 80%;"
+                style="width: 80%; background-color: var(--clo-green);"
               />
             </div>
           </div>
         </div>
         <div
-          class="wrapper col-12"
+          class="_wrapper_e29e1e col-12"
         >
           <div
             class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
           >
             <div
-              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
             >
               <span
-                class="pe-1 d-inline-block position-relative icon"
+                class="pe-1 d-inline-block position-relative _icon_e29e1e"
               >
                 <svg
                   fill="currentColor"
@@ -186,32 +186,32 @@ exports[`CategoriesSummary creates snapshot 1`] = `
               </span>
             </div>
             <div
-              class="text-center fw-bold font-monospace value "
+              class="text-center fw-bold font-monospace _value_e29e1e "
             >
               95
             </div>
             <div
-              class="flex-grow-1 position-relative mx-2 progressWrapper  "
+              class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
             >
               <div
-                class="position-absolute start-0 top-0 bottom-0 line"
+                class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                 data-testid="line"
-                style="width: 95%;"
+                style="width: 95%; background-color: var(--clo-green);"
               />
             </div>
           </div>
         </div>
         <div
-          class="wrapper col-12"
+          class="_wrapper_e29e1e col-12"
         >
           <div
             class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
           >
             <div
-              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
             >
               <span
-                class="pe-1 d-inline-block position-relative icon"
+                class="pe-1 d-inline-block position-relative _icon_e29e1e"
               >
                 <svg
                   fill="currentColor"
@@ -234,32 +234,32 @@ exports[`CategoriesSummary creates snapshot 1`] = `
               </span>
             </div>
             <div
-              class="text-center fw-bold font-monospace value "
+              class="text-center fw-bold font-monospace _value_e29e1e "
             >
               0
             </div>
             <div
-              class="flex-grow-1 position-relative mx-2 progressWrapper  "
+              class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
             >
               <div
-                class="position-absolute start-0 top-0 bottom-0 line"
+                class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                 data-testid="line"
-                style="width: 1%;"
+                style="width: 1%; background-color: var(--clo-red);"
               />
             </div>
           </div>
         </div>
         <div
-          class="wrapper col-12"
+          class="_wrapper_e29e1e col-12"
         >
           <div
             class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
           >
             <div
-              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+              class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
             >
               <span
-                class="pe-1 d-inline-block position-relative icon"
+                class="pe-1 d-inline-block position-relative _icon_e29e1e"
               >
                 <svg
                   fill="currentColor"
@@ -282,17 +282,17 @@ exports[`CategoriesSummary creates snapshot 1`] = `
               </span>
             </div>
             <div
-              class="text-center fw-bold font-monospace value "
+              class="text-center fw-bold font-monospace _value_e29e1e "
             >
               75
             </div>
             <div
-              class="flex-grow-1 position-relative mx-2 progressWrapper  "
+              class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
             >
               <div
-                class="position-absolute start-0 top-0 bottom-0 line"
+                class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                 data-testid="line"
-                style="width: 75%;"
+                style="width: 75%; background-color: var(--clo-green);"
               />
             </div>
           </div>

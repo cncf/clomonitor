@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MobileSettings creates snapshot 1`] = `
+exports[`MobileSettings > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="d-flex d-md-none ms-auto position-relative"
@@ -8,7 +8,7 @@ exports[`MobileSettings creates snapshot 1`] = `
     <button
       aria-expanded="false"
       aria-label="Mobile settings button"
-      class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 btn"
+      class="btn btn-sm btn-link text-white rounded-0 lh-1 fs-5 ms-3 _btn_b738b3"
       type="button"
     >
       <svg
@@ -27,7 +27,7 @@ exports[`MobileSettings creates snapshot 1`] = `
       </svg>
     </button>
     <div
-      class="dropdown-menu rounded-0 dropdown"
+      class="dropdown-menu rounded-0 _dropdown_b738b3"
       role="menu"
     >
       <div
@@ -242,6 +242,7 @@ exports[`MobileSettings creates snapshot 1`] = `
       >
         <a
           class="text-decoration-none fw-bold d-inline-block w-100"
+          data-discover="true"
           href="/stats"
         >
           <div

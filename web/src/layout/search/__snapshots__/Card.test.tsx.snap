@@ -1,20 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Card creates snapshot 1`] = `
+exports[`Card > creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 cardWrapper"
+    class="col-12 col-sm-6 col-md-12 col-lg-6 col-xxxl-4 _cardWrapper_49c158"
     role="listitem"
   >
     <div
-      class="card rounded-0 p-0 h-100 mw-100 d-flex text-reset text-decoration-none p-md-3 p-lg-0 p-xl-3 card card Card-module_hoverable__aGYcW"
+      class="card rounded-0 p-0 h-100 mw-100 d-flex text-reset text-decoration-none p-md-3 p-lg-0 p-xl-3 _card_49c158 card Card-module_hoverable__aGYcW"
       role="button"
     >
       <div
         class="d-flex flex-column flex-sm-row align-items-center"
       >
         <div
-          class="d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center imageWrapper"
+          class="d-none d-md-flex d-lg-none d-xl-flex align-items-center justify-content-center _imageWrapper_49c158"
         >
           <img
             alt="Artifact Hub logo"
@@ -26,13 +26,13 @@ exports[`Card creates snapshot 1`] = `
           class="flex-grow-1 ms-0 ms-md-3 ms-lg-0 ms-xl-3 w-100 truncateWrapper"
         >
           <div
-            class="p-2 p-md-3 p-lg-2 p-xl-3 content"
+            class="p-2 p-md-3 p-lg-2 p-xl-3 _content_49c158"
           >
             <div
               class="d-flex flex-row align-items-center"
             >
               <div
-                class="d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-3 miniImageWrapper"
+                class="d-flex d-md-none d-lg-flex d-xl-none align-items-center justify-content-center me-3 _miniImageWrapper_49c158"
               >
                 <img
                   alt="Artifact Hub logo"
@@ -47,7 +47,7 @@ exports[`Card creates snapshot 1`] = `
                   class="d-flex flex-row justify-content-between align-items-end"
                 >
                   <span
-                    class="text-truncate fw-bold mb-0 title"
+                    class="text-truncate fw-bold mb-0 _title_49c158"
                   >
                     Artifact Hub
                   </span>
@@ -77,7 +77,7 @@ exports[`Card creates snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="d-none d-md-flex d-lg-none d-xl-flex flex-row mt-0 mt-md-1 mt-lg-0 mt-xl-1 align-items-center info"
+                  class="d-none d-md-flex d-lg-none d-xl-flex flex-row mt-0 mt-md-1 mt-lg-0 mt-xl-1 align-items-center undefined"
                 >
                   <a
                     aria-label="Repository link"
@@ -88,10 +88,10 @@ exports[`Card creates snapshot 1`] = `
                     target="_blank"
                   >
                     <div
-                      class="d-flex flex-row align-items-center link text-muted onlyIcon"
+                      class="d-flex flex-row align-items-center _link_b8ead1 text-muted _onlyIcon_b8ead1"
                     >
                       <svg
-                        class="icon"
+                        class="_icon_b8ead1"
                         fill="currentColor"
                         height="1em"
                         stroke="currentColor"
@@ -118,10 +118,10 @@ exports[`Card creates snapshot 1`] = `
                       target="_blank"
                     >
                       <div
-                        class="d-flex flex-row align-items-center link text-muted onlyIcon"
+                        class="d-flex flex-row align-items-center _link_044595 text-muted _onlyIcon_044595"
                       >
                         <svg
-                          class="icon"
+                          class="_icon_044595"
                           fill="currentColor"
                           height="1em"
                           stroke="currentColor"
@@ -168,10 +168,10 @@ exports[`Card creates snapshot 1`] = `
                     target="_blank"
                   >
                     <div
-                      class="d-flex flex-row align-items-center text-muted link"
+                      class="d-flex flex-row align-items-center text-muted _link_49c158"
                     >
                       <svg
-                        class="statsIcon"
+                        class="_statsIcon_49c158"
                         fill="currentColor"
                         height="1em"
                         stroke="currentColor"
@@ -194,10 +194,10 @@ exports[`Card creates snapshot 1`] = `
                       data-testid="elementWithTooltip"
                     >
                       <div
-                        class="d-flex flex-row align-items-center ms-3 subtitle wrapperCalendar"
+                        class="d-flex flex-row align-items-center ms-3 _subtitle_49c158 _wrapperCalendar_49c158"
                       >
                         <svg
-                          class="me-1 text-muted calendarIcon"
+                          class="me-1 text-muted _calendarIcon_49c158"
                           fill="currentColor"
                           height="1em"
                           stroke="currentColor"
@@ -211,7 +211,7 @@ exports[`Card creates snapshot 1`] = `
                           />
                         </svg>
                         <div>
-                          23rd June 2020
+                          2020
                         </div>
                       </div>
                     </div>
@@ -222,7 +222,7 @@ exports[`Card creates snapshot 1`] = `
                 class="d-flex d-md-none d-lg-flex d-xl-none"
               >
                 <div
-                  class="d-flex align-items-center justify-content-center rounded-pill RoundScore-module_score__AbYPP ms-2 global"
+                  class="d-flex align-items-center justify-content-center rounded-pill RoundScore-module_score__AbYPP ms-2 _global_49c158"
                   data-testid="global-score"
                 >
                   <div
@@ -262,7 +262,7 @@ exports[`Card creates snapshot 1`] = `
         </div>
       </div>
       <p
-        class="text-muted mx-3 my-3 my-md-4 description"
+        class="text-muted mx-3 my-3 my-md-4 _description_49c158"
       >
         Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.
       </p>
@@ -270,7 +270,7 @@ exports[`Card creates snapshot 1`] = `
         class="mt-auto"
       >
         <div
-          class="align-items-center d-flex flex-column flex-md-row summary flex-lg-column flex-xl-row"
+          class="align-items-center d-flex flex-column flex-md-row _summary_a838a2 flex-lg-column flex-xl-row"
         >
           <div
             class="d-none d-md-block d-lg-none d-xl-block d-lg-none d-xl-block"
@@ -322,16 +322,16 @@ exports[`Card creates snapshot 1`] = `
               class="row"
             >
               <div
-                class="wrapper col-12"
+                class="_wrapper_e29e1e col-12"
               >
                 <div
                   class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
                 >
                   <div
-                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
                   >
                     <span
-                      class="pe-1 d-inline-block position-relative icon"
+                      class="pe-1 d-inline-block position-relative _icon_e29e1e"
                     >
                       <svg
                         aria-hidden="true"
@@ -357,32 +357,32 @@ exports[`Card creates snapshot 1`] = `
                     </span>
                   </div>
                   <div
-                    class="text-center fw-bold font-monospace value "
+                    class="text-center fw-bold font-monospace _value_e29e1e "
                   >
                     75
                   </div>
                   <div
-                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
+                    class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
                   >
                     <div
-                      class="position-absolute start-0 top-0 bottom-0 line"
+                      class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                       data-testid="line"
-                      style="width: 75%;"
+                      style="width: 75%; background-color: var(--clo-green);"
                     />
                   </div>
                 </div>
               </div>
               <div
-                class="wrapper col-12"
+                class="_wrapper_e29e1e col-12"
               >
                 <div
                   class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
                 >
                   <div
-                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
                   >
                     <span
-                      class="pe-1 d-inline-block position-relative icon"
+                      class="pe-1 d-inline-block position-relative _icon_e29e1e"
                     >
                       <svg
                         fill="currentColor"
@@ -405,32 +405,32 @@ exports[`Card creates snapshot 1`] = `
                     </span>
                   </div>
                   <div
-                    class="text-center fw-bold font-monospace value "
+                    class="text-center fw-bold font-monospace _value_e29e1e "
                   >
                     80
                   </div>
                   <div
-                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
+                    class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
                   >
                     <div
-                      class="position-absolute start-0 top-0 bottom-0 line"
+                      class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                       data-testid="line"
-                      style="width: 80%;"
+                      style="width: 80%; background-color: var(--clo-green);"
                     />
                   </div>
                 </div>
               </div>
               <div
-                class="wrapper col-12"
+                class="_wrapper_e29e1e col-12"
               >
                 <div
                   class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
                 >
                   <div
-                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
                   >
                     <span
-                      class="pe-1 d-inline-block position-relative icon"
+                      class="pe-1 d-inline-block position-relative _icon_e29e1e"
                     >
                       <svg
                         fill="currentColor"
@@ -453,32 +453,32 @@ exports[`Card creates snapshot 1`] = `
                     </span>
                   </div>
                   <div
-                    class="text-center fw-bold font-monospace value "
+                    class="text-center fw-bold font-monospace _value_e29e1e "
                   >
                     100
                   </div>
                   <div
-                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
+                    class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
                   >
                     <div
-                      class="position-absolute start-0 top-0 bottom-0 line"
+                      class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                       data-testid="line"
-                      style="width: 100%;"
+                      style="width: 100%; background-color: var(--clo-green);"
                     />
                   </div>
                 </div>
               </div>
               <div
-                class="wrapper col-12"
+                class="_wrapper_e29e1e col-12"
               >
                 <div
                   class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
                 >
                   <div
-                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
                   >
                     <span
-                      class="pe-1 d-inline-block position-relative icon"
+                      class="pe-1 d-inline-block position-relative _icon_e29e1e"
                     >
                       <svg
                         fill="currentColor"
@@ -501,32 +501,32 @@ exports[`Card creates snapshot 1`] = `
                     </span>
                   </div>
                   <div
-                    class="text-center fw-bold font-monospace value "
+                    class="text-center fw-bold font-monospace _value_e29e1e "
                   >
                     100
                   </div>
                   <div
-                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
+                    class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
                   >
                     <div
-                      class="position-absolute start-0 top-0 bottom-0 line"
+                      class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                       data-testid="line"
-                      style="width: 100%;"
+                      style="width: 100%; background-color: var(--clo-green);"
                     />
                   </div>
                 </div>
               </div>
               <div
-                class="wrapper col-12"
+                class="_wrapper_e29e1e col-12"
               >
                 <div
                   class="d-flex flex-row bg-white position-relative border border-1 overflow-hidden"
                 >
                   <div
-                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto title"
+                    class="d-flex flex-row align-items-center text-muted fw-bold flex-nowrap px-1 my-auto _title_e29e1e"
                   >
                     <span
-                      class="pe-1 d-inline-block position-relative icon"
+                      class="pe-1 d-inline-block position-relative _icon_e29e1e"
                     >
                       <svg
                         fill="currentColor"
@@ -549,17 +549,17 @@ exports[`Card creates snapshot 1`] = `
                     </span>
                   </div>
                   <div
-                    class="text-center fw-bold font-monospace value "
+                    class="text-center fw-bold font-monospace _value_e29e1e "
                   >
                     75
                   </div>
                   <div
-                    class="flex-grow-1 position-relative mx-2 progressWrapper  "
+                    class="flex-grow-1 position-relative mx-2 _progressWrapper_e29e1e  "
                   >
                     <div
-                      class="position-absolute start-0 top-0 bottom-0 line"
+                      class="position-absolute start-0 top-0 bottom-0 _line_e29e1e"
                       data-testid="line"
-                      style="width: 75%;"
+                      style="width: 75%; background-color: var(--clo-green);"
                     />
                   </div>
                 </div>
@@ -569,9 +569,9 @@ exports[`Card creates snapshot 1`] = `
         </div>
       </div>
       <div
-        class="d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 legend"
+        class="d-none d-md-block d-lg-none d-xl-block text-end text-muted fst-italic mt-2 _legend_49c158"
       >
-        Updated 3 days ago
+        Updated 4 years ago
       </div>
     </div>
   </div>

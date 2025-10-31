@@ -1,13 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 
 import { ReportOption, ScoreType } from '../../../../types';
 import Block from './Block';
 
-const mockOnChange = jest.fn();
-const mockResetChecksPerCategory = jest.fn();
-const mockMarkAllAsPassedPerCategory = jest.fn();
-const mockMarkAllAsNotPassedPerCategory = jest.fn();
+const mockOnChange = vi.fn();
+const mockResetChecksPerCategory = vi.fn();
+const mockMarkAllAsPassedPerCategory = vi.fn();
+const mockMarkAllAsNotPassedPerCategory = vi.fn();
 
 const defaultProps = {
   type: ScoreType.BestPractices,
@@ -21,7 +22,7 @@ const defaultProps = {
 
 describe('Block', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('creates snapshot', () => {

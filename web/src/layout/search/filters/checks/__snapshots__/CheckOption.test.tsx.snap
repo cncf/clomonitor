@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CheckOption creates snapshot 1`] = `
+exports[`CheckOption > creates snapshot 1`] = `
 <DocumentFragment>
   <div
     class="d-flex flex-row align-items-center my-1"
   >
     <div
-      class="btn-group me-2 me-sm-4 btns"
+      class="btn-group me-2 me-sm-4 _btns_7a7935"
       role="group"
     >
       <div
@@ -21,7 +21,7 @@ exports[`CheckOption creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as passed"
-              class="btn rounded-0 border border-1 p-0 btn passingBtn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
               type="button"
             >
               <div
@@ -53,7 +53,7 @@ exports[`CheckOption creates snapshot 1`] = `
           >
             <button
               aria-label="Select Artifact Hub badge as not passed"
-              class="btn rounded-0 border border-1 p-0 btn"
+              class="btn rounded-0 border border-1 p-0 _btn_7a7935"
               type="button"
             >
               <div
@@ -82,7 +82,7 @@ exports[`CheckOption creates snapshot 1`] = `
       >
         <button
           aria-label="Select Artifact Hub badge as passed"
-          class="btn rounded-0 border border-1 p-0 btn passingBtn"
+          class="btn rounded-0 border border-1 p-0 _btn_7a7935 _passingBtn_7a7935"
           type="button"
         >
           <div
@@ -105,7 +105,7 @@ exports[`CheckOption creates snapshot 1`] = `
         </button>
         <button
           aria-label="Select Artifact Hub badge as not passed"
-          class="btn rounded-0 border border-1 p-0 btn"
+          class="btn rounded-0 border border-1 p-0 _btn_7a7935"
           type="button"
         >
           <div
@@ -148,7 +148,7 @@ exports[`CheckOption creates snapshot 1`] = `
       </svg>
     </small>
     <div
-      class="me-0 me-sm-2 text-truncate flex-grow-1 label"
+      class="me-0 me-sm-2 text-truncate flex-grow-1 _label_7a7935"
     >
       <span
         class="d-none d-sm-block text-truncate"

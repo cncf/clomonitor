@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Row creates snapshot 1`] = `
+exports[`Row > creates snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="p-3 p-md-4 border border-1 mb-2 reportContent"
+    class="p-3 p-md-4 border border-1 mb-2 _reportContent_6a25e0"
   >
     <div
       class="mx-0 mx-md-1"
@@ -12,11 +12,11 @@ exports[`Row creates snapshot 1`] = `
         class="d-flex flex-row position-relative"
       >
         <div
-          class="position-absolute headerAnchor"
+          class="position-absolute _headerAnchor_6a25e0"
           id="repo_documentation"
         />
         <div
-          class="d-flex flex-row align-items-center titleWrapper"
+          class="d-flex flex-row align-items-center _titleWrapper_6a25e0"
         >
           icon
           <div
@@ -30,24 +30,24 @@ exports[`Row creates snapshot 1`] = `
         class="d-flex flex-row mt-2 mb-4 align-items-center"
       >
         <div
-          class="flex-grow-1 progressbarWrapper"
+          class="flex-grow-1 _progressbarWrapper_6a25e0"
         >
           <div
-            class="progress rounded-0 progress"
+            class="progress rounded-0 _progress_6a25e0"
           >
             <div
               aria-label="label score for repo"
               aria-valuemax="100"
               aria-valuemin="0"
               aria-valuenow="90"
-              class="progress-bar progressbar"
+              class="progress-bar _progressbar_6a25e0"
               role="progressbar"
-              style="width: 90%;"
+              style="width: 90%; background-color: var(--clo-green);"
             />
           </div>
         </div>
         <div
-          class="ps-3 lh-1 scoreWrapper"
+          class="ps-3 lh-1 _scoreWrapper_6a25e0"
         >
           <small
             class="fw-bold"
@@ -58,16 +58,16 @@ exports[`Row creates snapshot 1`] = `
       </div>
       <div>
         <table
-          class="table align-middle w-100 border table"
+          class="table align-middle w-100 border _table_6a25e0"
         >
           <tbody>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-danger icon"
+                  class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
                   fill="currentColor"
                   height="1em"
@@ -86,13 +86,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -113,7 +113,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -123,7 +123,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -150,7 +150,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -188,11 +188,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -211,13 +211,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="none"
@@ -252,7 +252,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -262,7 +262,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -289,7 +289,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -327,11 +327,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -350,13 +350,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -376,7 +376,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -386,7 +386,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -413,7 +413,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -451,11 +451,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -474,13 +474,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         aria-hidden="true"
@@ -503,7 +503,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -513,7 +513,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -544,7 +544,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -582,11 +582,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-danger icon"
+                  class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
                   fill="currentColor"
                   height="1em"
@@ -605,13 +605,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -631,7 +631,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -641,7 +641,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -668,7 +668,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -706,11 +706,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -729,13 +729,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -755,7 +755,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -765,7 +765,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -796,7 +796,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -834,11 +834,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -857,13 +857,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="none"
@@ -886,7 +886,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -896,7 +896,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -927,7 +927,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -965,11 +965,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-danger icon"
+                  class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
                   fill="currentColor"
                   height="1em"
@@ -988,13 +988,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -1014,7 +1014,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -1024,7 +1024,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -1051,7 +1051,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -1089,11 +1089,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-danger icon"
+                  class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
                   fill="currentColor"
                   height="1em"
@@ -1112,13 +1112,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -1138,7 +1138,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -1148,7 +1148,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -1186,7 +1186,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -1224,11 +1224,11 @@ exports[`Row creates snapshot 1`] = `
             </tr>
             <tr>
               <td
-                class="text-center iconCell"
+                class="text-center _iconCell_19cbf0"
               >
                  
                 <svg
-                  class="text-success icon"
+                  class="text-success _icon_19cbf0"
                   data-testid="success-icon"
                   fill="currentColor"
                   height="1em"
@@ -1247,13 +1247,13 @@ exports[`Row creates snapshot 1`] = `
                 class="pe-2 pe-md-4"
               >
                 <div
-                  class="d-table w-100 contentCell"
+                  class="d-table w-100 _contentCell_19cbf0"
                 >
                   <div
                     class="d-flex flex-row align-items-baseline align-items-md-center"
                   >
                     <div
-                      class="text-muted me-2 iconCheck"
+                      class="text-muted me-2 _iconCheck_19cbf0"
                     >
                       <svg
                         fill="currentColor"
@@ -1273,7 +1273,7 @@ exports[`Row creates snapshot 1`] = `
                       class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
                     >
                       <div
-                        class="d-flex flex-row align-items-center w-100 name"
+                        class="d-flex flex-row align-items-center w-100 _name_19cbf0"
                         data-testid="opt-name"
                       >
                         <small
@@ -1283,7 +1283,7 @@ exports[`Row creates snapshot 1`] = `
                         </small>
                       </div>
                       <div
-                        class="d-none d-md-flex flex-row text-muted w-100 legend"
+                        class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
                       >
                         <div
                           class="text-truncate"
@@ -1310,7 +1310,7 @@ exports[`Row creates snapshot 1`] = `
                                 [check docs
                               </div>
                               <svg
-                                class="ms-1 extraMiniIcon"
+                                class="ms-1 _extraMiniIcon_19cbf0"
                                 fill="none"
                                 height="1em"
                                 stroke="currentColor"
@@ -1350,7 +1350,7 @@ exports[`Row creates snapshot 1`] = `
         </table>
       </div>
       <ul
-        class="d-none d-md-block mb-0 linksList"
+        class="d-none d-md-block mb-0 _linksList_6a25e0"
       >
         <li
           class="pt-2"
@@ -1370,7 +1370,7 @@ exports[`Row creates snapshot 1`] = `
                 Checks reference documentation
               </div>
               <svg
-                class="ms-1 ms-md-2 position-relative extIcon"
+                class="ms-1 ms-md-2 position-relative _extIcon_6a25e0"
                 fill="none"
                 height="1em"
                 stroke="currentColor"

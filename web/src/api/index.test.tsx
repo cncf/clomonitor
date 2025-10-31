@@ -1,17 +1,20 @@
 import fetchMock, { enableFetchMocks } from 'jest-fetch-mock';
+import { createRequire } from 'module';
+import { vi } from 'vitest';
 
 import { ErrorKind, Project, ProjectDetail, SortBy, SortDirection } from '../types';
 import API from './index';
+const require = createRequire(import.meta.url);
+
 enableFetchMocks();
 
 const getData = (fixtureId: string): object => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   return require(`./__fixtures__/index/${fixtureId}.json`) as object;
 };
 
 describe('API', () => {
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   describe('API', () => {

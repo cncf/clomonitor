@@ -6,7 +6,7 @@
   "dependencies": {
     "apexcharts": "3.49.0",
     "classnames": "^2.5.1",
-    "clo-ui": "https://github.com/cncf/clo-ui.git#3e216b23cb9a9151e799fe2ea8e0e128cd40f85a",
+    "clo-ui": "https://github.com/cncf/clo-ui.git#v0.5.5",
     "date-fns": "^4.1.0",
     "lodash": "^4.17.21",
     "nth-check": "^2.0.1",
@@ -59,8 +59,9 @@
   "scripts": {
     "copy:static": "shx rm -rf src/static && shx mkdir src/static && shx cp -r public/static/* src",
     "copy:scorecard": "shx cp public/scorecard.html build",
+    "copy:manifest": "shx cp public/manifest.json build",
     "analyze": "source-map-explorer --no-border-checks 'build/js/*.js'",
-    "build": "yarn copy:static && vite build && shx cp -r build/static/* build && shx rm -rf build/static && yarn copy:scorecard",
+    "build": "yarn copy:static && vite build && shx cp -r build/static/* build && shx rm -rf build/static && yarn copy:scorecard && yarn copy:manifest",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "format:diff": "prettier --list-different \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "isready": "yarn format && yarn lint && yarn test --passWithNoTests && yarn build",
@@ -69,6 +70,9 @@
     "start": "yarn copy:static && vite --host",
     "test": "vitest run --passWithNoTests",
     "test:coverage": "vitest run --passWithNoTests --coverage"
+  },
+  "resolutions": {
+    "react-date-range/date-fns": "2.30.0"
   },
   "browserslist": {
     "production": [

@@ -1,4 +1,3 @@
-import { DateRangeFilter, DateRangeOpts } from 'clo-ui/components/DateRangeFilter';
 import { Foundation } from 'clo-ui/components/Foundation';
 import { isEmpty, isUndefined } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -6,6 +5,7 @@ import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 import { FILTERS, MATURITY_FILTERS } from '../../../data';
 import { FilterKind, FiltersSection, ReportOption } from '../../../types';
+import DateRangeFilter, { DateRangeOpts } from '../../common/DateRangeFilter';
 import Checks from './checks';
 import Section from './Section';
 interface FiltersProp {

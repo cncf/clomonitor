@@ -23,11 +23,12 @@ const freezeDate = (isoDate: string) => {
   const fixedDate = new realDate(isoDate);
 
   const MockDate = class extends realDate {
-    constructor(value?: number | string | Date) {
-      if (arguments.length === 0) {
-        return new realDate(fixedDate);
+    constructor(...args: ConstructorParameters<typeof realDate>) {
+      if (args.length === 0) {
+        super(fixedDate.getTime());
+        return;
       }
-      return new realDate(value as number | string | Date);
+      super(...args);
     }
 
     static now(): number {
@@ -83,8 +84,8 @@ describe('Filters', () => {
 
       expect(screen.getAllByText('From:')).toHaveLength(2);
       expect(screen.getAllByText('To:')).toHaveLength(2);
-      expect(screen.getByText('Jan 1, 2016')).toBeInTheDocument();
-      expect(screen.getByText('Mar 24, 2022')).toBeInTheDocument();
+      expect(screen.getAllByText('Jan 1, 2016')).toHaveLength(2);
+      expect(screen.getAllByText('Mar 24, 2022')).toHaveLength(2);
 
       expect(screen.getByText('Checks')).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Open checks modal' })).toHaveTextContent('Add checks filters');

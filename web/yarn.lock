@@ -1545,9 +1545,9 @@ cliui@^7.0.2:
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
 
-"clo-ui@https://github.com/cncf/clo-ui.git#3e216b23cb9a9151e799fe2ea8e0e128cd40f85a":
+"clo-ui@https://github.com/cncf/clo-ui.git#v0.5.5":
   version "0.5.5"
-  resolved "https://github.com/cncf/clo-ui.git#3e216b23cb9a9151e799fe2ea8e0e128cd40f85a"
+  resolved "https://github.com/cncf/clo-ui.git#0aafcc2ceeed61c40fc68e5d3fdf23dd84a35013"
   dependencies:
     bootstrap "^5.3.8"
     classnames "^2.5.1"
@@ -1654,7 +1654,7 @@ data-urls@^6.0.0:
     whatwg-mimetype "^4.0.0"
     whatwg-url "^15.0.0"
 
-date-fns@^2.16.1:
+date-fns@2.30.0, date-fns@^2.16.1:
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
   integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==

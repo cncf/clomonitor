@@ -6,11 +6,6 @@ import { vi } from 'vitest';
 
 process.env.TZ = 'UTC';
 
-vi.mock('/src/media/clomonitor.svg?url', () => ({
-  __esModule: true,
-  default: '/src/media/clomonitor.svg',
-}));
-
 const require = createRequire(import.meta.url);
 
 const noop = () => {};

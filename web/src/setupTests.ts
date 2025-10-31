@@ -1,10 +1,15 @@
+import { createRequire } from 'module';
+import { createElement, useEffect, useMemo } from 'react';
+import { vi } from 'vitest';
+
 import '@testing-library/jest-dom/vitest';
 
 process.env.TZ = 'UTC';
 
-import { createRequire } from 'module';
-import { createElement, useEffect, useMemo } from 'react';
-import { vi } from 'vitest';
+vi.mock('/src/media/clomonitor.svg', () => ({
+  __esModule: true,
+  default: '/src/media/clomonitor.svg',
+}));
 
 const require = createRequire(import.meta.url);
 

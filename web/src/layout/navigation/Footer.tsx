@@ -5,7 +5,7 @@ import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-const logo = new URL('../../media/clomonitor.svg', import.meta.url).href;
+import logo from '../../media/clomonitor.svg';
 import styles from './Footer.module.css';
 
 interface Props {

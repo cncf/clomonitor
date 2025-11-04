@@ -1616,7 +1616,7 @@
         - code
 - name: meshery
   display_name: Meshery
-  description: The service mesh management plane
+  description: Infrastructure by Design
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/meshery/icon/meshery-logo-light.svg
   devstats_url: https://meshery.devstats.cncf.io/

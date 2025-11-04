@@ -19,15 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -41,16 +32,12 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push dbmigrator image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-dbmigrator.outputs.repo_path }}
         run: |
           docker build \
             -f database/migrations/Dockerfile \
-            -t $ECR_REGISTRY/dbmigrator:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/dbmigrator:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-apiserver-image:
@@ -59,15 +46,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -81,16 +59,12 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push apiserver image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-apiserver.outputs.repo_path }}
         run: |
           docker build \
             -f clomonitor-apiserver/Dockerfile \
-            -t $ECR_REGISTRY/apiserver:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/apiserver:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-archiver-image:
@@ -99,15 +73,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -121,16 +86,12 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-archiver.outputs.repo_path }}
         run: |
           docker build \
             -f clomonitor-archiver/Dockerfile \
-            -t $ECR_REGISTRY/archiver:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/archiver:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-linter-image:
@@ -158,7 +119,6 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-linter.outputs.repo_path }}
         run: |
           docker build \
@@ -175,15 +135,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -197,16 +148,12 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-notifier.outputs.repo_path }}
         run: |
           docker build \
             -f clomonitor-notifier/Dockerfile \
-            -t $ECR_REGISTRY/notifier:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/notifier:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-registrar-image:
@@ -215,15 +162,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -237,16 +175,12 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-registrar.outputs.repo_path }}
         run: |
           docker build \
             -f clomonitor-registrar/Dockerfile \
-            -t $ECR_REGISTRY/registrar:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/registrar:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA
 
   build-tracker-image:
@@ -255,15 +189,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
       - name: Login to OCI Registry
         id: login-ocir
         uses: oracle-actions/login-ocir@v1.3.0
@@ -277,14 +202,10 @@ jobs:
           compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
       - name: Build and push image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          OCIR_REGISTRY: ${{ steps.login-ocir.outputs.ocir_endpoint }}
           OCIR_REPOSITORY: ${{ steps.get-ocir-repository-tracker.outputs.repo_path }}
         run: |
           docker build \
             -f clomonitor-tracker/Dockerfile \
-            -t $ECR_REGISTRY/tracker:$GITHUB_SHA \
             -t $OCIR_REPOSITORY:$GITHUB_SHA \
             .
-          docker push $ECR_REGISTRY/tracker:$GITHUB_SHA
           docker push $OCIR_REPOSITORY:$GITHUB_SHA

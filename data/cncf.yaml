@@ -463,7 +463,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/crossplane/icon/color/crossplane-icon-color.svg
   devstats_url: https://crossplane.devstats.cncf.io/
   accepted_at: "2020-06-23"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: crossplane
       url: https://github.com/crossplane/crossplane
@@ -551,7 +551,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/dragonfly/icon/color/dragonfly-icon-color.svg
   devstats_url: https://dragonfly.devstats.cncf.io/
   accepted_at: "2018-11-15"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: dragonfly2
       url: https://github.com/dragonflyoss/Dragonfly2
@@ -2726,7 +2726,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfga/icon/color/openfga-icon-color.svg
   devstats_url: https://openfga.devstats.cncf.io/
   accepted_at: "2022-09-13"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: openfga
       url: https://github.com/openfga/openfga

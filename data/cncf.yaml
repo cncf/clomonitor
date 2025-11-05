@@ -822,7 +822,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/in-toto/icon/color/in-toto-icon-color.svg
   devstats_url: https://intoto.devstats.cncf.io/
   accepted_at: "2019-08-21"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: in-toto
       url: https://github.com/in-toto/in-toto
@@ -1013,7 +1013,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/knative/icon/color/knative-icon-color.svg
   devstats_url: https://knative.devstats.cncf.io/
   accepted_at: "2022-03-02"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: docs
       url: https://github.com/knative/docs/
@@ -2917,7 +2917,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/icon/color/kubescape-icon-color.svg
   devstats_url: https://kubescape.devstats.cncf.io/
   accepted_at: "2022-12-13"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: kubescape
       url: https://github.com/kubescape/kubescape

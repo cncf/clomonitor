@@ -2827,7 +2827,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/lima/horizontal/color/lima-horizontal-color.svg
   devstats_url: https://lima.devstats.cncf.io/
   accepted_at: "2022-09-13"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: lima
       url: https://github.com/lima-vm/lima

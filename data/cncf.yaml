@@ -4135,7 +4135,7 @@
     - name: community
       url: https://github.com/shipwright-io/community
       check_sets:
-        - docs
+        - community
     - name: website
       url: https://github.com/shipwright-io/website
       check_sets:
@@ -4144,7 +4144,14 @@
       url: https://github.com/shipwright-io/build
       check_sets:
         - code
-        - community
+    - name: cli
+      url: https://github.com/shipwright-io/cli
+      check_sets:
+        - code
+    - name: operator
+      url: https://github.com/shipwright-io/operator
+      check_sets:
+        - code
 - name: loxilb
   display_name: LoxiLB
   description: eBPF based cloud-native load-balancer for K8s|Edge|Telco|IoT|XaaS

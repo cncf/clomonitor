@@ -3356,6 +3356,11 @@
       check_sets:
         - community
         - code
+    - name: microcks-aspire
+      url: https://github.com/microcks/microcks-aspire
+      check_sets:
+        - community
+        - code
     - name: microcks-testcontainers-java
       url: https://github.com/microcks/microcks-testcontainers-java
       check_sets:

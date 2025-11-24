@@ -442,19 +442,3 @@
     url: https://github.com/AcademySoftwareFoundation/rmtc
     exclude:
     - clomonitor
-- name: aswf-usd-wg
-  display_name: Universal Scene Description Working Group
-  description: The purpose of the USD working group is to support the USD project
-    as it is adopted and deployed. Strong industry-wide interest in USD is beyond
-    the capacity of Pixar alone to support. The aim of this working group is to assist
-    adoption efforts through consolidation and sharing of best practices and helping
-    with issues raised in various USD support channels where possible.
-  category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/aswf-usd-wg/horizontal/color/aswf-usd-wg-horizontal-color.svg
-  devstats_url: null
-  maturity: working-group
-  repositories:
-  - name: wg-usd
-    url: https://github.com/AcademySoftwareFoundation/wg-usd
-    exclude:
-    - clomonitor

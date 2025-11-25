@@ -798,6 +798,22 @@
       url: https://github.com/goharbor/community
       check_sets:
         - community
+    - name: harbor-cli
+      url: https://github.com/goharbor/harbor-cli
+      check_sets:
+        - code
+    - name: harbor-helm
+      url: https://github.com/goharbor/harbor-helm
+      check_sets:
+        - code-lite
+    - name: terraform-provider-harbor
+      url: https://github.com/goharbor/terraform-provider-harbor
+      check_sets:
+        - code-lite
+    - name: website
+      url: https://github.com/goharbor/website
+      check_sets:
+        - code-lite
 - name: helm
   display_name: Helm
   description: The Kubernetes Package Manager

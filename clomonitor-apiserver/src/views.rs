@@ -110,8 +110,8 @@ async fn aggregator(
             // Send batch to flusher every FLUSH_FREQUENCY
             _ = flush_interval.tick() => {
                 if !batch.is_empty() {
-                    _ = batches_tx.send(batch.clone()).await;
-                    batch.clear();
+                    let to_send = std::mem::take(&mut batch);
+                    _ = batches_tx.send(to_send).await;
                 }
             }
 

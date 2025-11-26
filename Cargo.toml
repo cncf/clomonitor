@@ -24,7 +24,7 @@ axum = { version = "0.8.6", features = ["macros"] }
 bincode = { version = "2.0.1", features = ["serde"] }
 cached = { version = "0.56.0", features = ["async"] }
 clap = { version = "4.5.49", features = ["derive"] }
-clomonitor-core = { path = "../clomonitor-core" }
+clomonitor-core = { path = "clomonitor-core" }
 comfy-table = "7.2.1"
 config = "0.15.18"
 deadpool = "0.12.3"

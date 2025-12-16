@@ -1651,7 +1651,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/metal3/icon/color/metal3-icon-color.svg
   devstats_url: https://metal3.devstats.cncf.io/
   accepted_at: "2020-09-08"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: community
       url: https://github.com/metal3-io/community
@@ -1681,6 +1681,10 @@
       url: https://github.com/metal3-io/ironic-image
       check_sets:
         - code-lite
+    - name: ironic-standalone-operator
+      url: https://github.com/metal3-io/ironic-standalone-operator
+      check_sets:
+        - code
     - name: mariadb-image
       url: https://github.com/metal3-io/mariadb-image
       check_sets:

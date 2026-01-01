@@ -24,7 +24,7 @@ RUN make install
 RUN make build
 
 # Final stage
-FROM alpine:3.22.2
+FROM alpine:3.23.2
 RUN apk --no-cache add ca-certificates git && addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

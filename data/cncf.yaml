@@ -712,7 +712,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluid/icon/color/fluid-icon-color.svg
   devstats_url: https://fluid.devstats.cncf.io/
   accepted_at: "2021-04-27"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: fluid
       url: https://github.com/fluid-cloudnative/fluid

@@ -2906,7 +2906,7 @@
   display_name: DevSpace
   description: Client-Only Developer Tool for Cloud-Native Development with Kubernetes
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/bc17b5df55cbd2a4609896aa766ea2e39d1368858443b83357602c9802bcb9a3.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/devspace/icon/color/devspace-icon-color.svg
   devstats_url: https://devspace.devstats.cncf.io/
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -3007,7 +3007,7 @@
 - name: ko
   description: Build and deploy Go applications on Kubernetes
   category: app definition
-  logo_url: https://landscape.cncf.io/logos/ed395cad4f0e1bde73fadd0a09fa8f9cc14c87ac9ff01f9fe277e409053b8593.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/ko/icon/color/ko-icon-color.svg
   devstats_url: https://ko.devstats.cncf.io
   accepted_at: "2022-12-13"
   maturity: sandbox
@@ -3074,7 +3074,8 @@
   display_name: Keycloak
   description: Keycloak is an open-source identity and access management solution for modern applications and services, built on top of industry security standard protocols
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/keycloak/keycloak/d9025db5366c9be08648b0e145adba7df8ae70f6/js/apps/admin-ui/public/icon.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/keycloak/icon/color/keycloak-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/keycloak/icon/white/keycloak-icon-white.svg
   devstats_url: https://keycloak.devstats.cncf.io
   accepted_at: "2023-04-11"
   maturity: incubating
@@ -3285,7 +3286,7 @@
   display_name: SOPS
   description: sops is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault, age, and PGP
   category: provisioning
-  logo_url: https://landscape.cncf.io/logos/c66ce7dd7b0c311213090978cdfaafe1041dd7805a5b73bf5b3aca228594d68c.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/sops/icon/color/sops-icon-color.svg
   devstats_url: https://sops.devstats.cncf.io/
   accepted_at: "2023-05-17"
   maturity: sandbox
@@ -3335,7 +3336,8 @@
 - name: kpt
   description: Automate Kubernetes Configuration Editing
   category: provisioning
-  logo_url: https://kpt.dev/static/images/logo.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kpt/icon/color/kpt_icon_color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kpt/icon/white/kpt_icon_white.svg
   devstats_url: https://kpt.devstats.cncf.io/
   accepted_at: "2023-06-21"
   maturity: sandbox
@@ -3482,7 +3484,8 @@
   display_name: Kubeflow
   description: The Kubeflow project is dedicated to making deployments of machine learning workflows on Kubernetes simple, portable and scalable by providing a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures.
   category: orchestration
-  logo_url: https://landscape.cncf.io/logos/6bd2ba258422e9cbff82a02caeefa32d59fcad78565a92848b9e0064797b6aa8.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubeflow/icon/color/kubeflow-icon.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubeflow/icon/white/kubeflow-icon-white.svg
   devstats_url: https://kubeflow.devstats.cncf.io/
   accepted_at: "2023-07-25"
   maturity: incubating
@@ -3665,7 +3668,8 @@
   display_name: Kuasar
   description: A multi-sandbox container runtime that provides cloud-native, all-scenario multiple sandbox container solutions.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/kuasar-io/web/main/static/img/icon.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuasar/icon/color/kuasar-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuasar/icon/white/kuasar-icon-white.svg
   devstats_url: https://kuasar.devstats.cncf.io
   accepted_at: "2023-12-19"
   maturity: sandbox
@@ -3896,7 +3900,8 @@
   display_name: Connect RPC
   description: Connect is a family of libraries for building browser and gRPC-compatible HTTP APIs
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/connect-rpc.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/connect-rpc/icon/color/connect-rpc-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/connect-rpc/icon/white/connect-rpc-white.svg
   devstats_url: https://connect.devstats.cncf.io
   accepted_at: "2024-04-13"
   maturity: sandbox
@@ -4152,7 +4157,8 @@
   display_name: Shipwright
   description: Community documentation for Shipwright
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/shipwright.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/color/shipwright-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/white/shipwright-icon-white.svg
   devstats_url: https://shipwright.devstats.cncf.io/
   accepted_at: "2024-08-30"
   maturity: sandbox
@@ -4181,7 +4187,8 @@
   display_name: LoxiLB
   description: eBPF based cloud-native load-balancer for K8s|Edge|Telco|IoT|XaaS
   category: orchestration
-  logo_url: https://github.com/loxilb-io/loxilbdocs/raw/main/docs/photos/loxilb-logo.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/loxilb/icon/color/loxilb-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/loxilb/icon/white/loxilb-icon-white.svg
   devstats_url: https://loxilb.devstats.cncf.io
   accepted_at: "2024-08-30"
   maturity: sandbox
@@ -4199,7 +4206,8 @@
   display_name: Ratify
   description: Ratify is a verification engine as a binary executable and on Kubernetes which enables verification of artifact security metadata and admits for deployment only those that comply with policies you create
   category: provisioning
-  logo_url: https://ratify.dev/img/ratify-logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/ratify/icon/color/ratify-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/ratify/icon/white/ratify-icon-white.svg
   devstats_url: https://ratify.devstats.cncf.io
   accepted_at: "2024-08-30"
   maturity: sandbox
@@ -4249,7 +4257,7 @@
   display_name: Stacker
   description: Stacker is a tool for building OCI images and related artifacts such as SBOMs natively via a declarative yaml format
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/9c5fba1c8e0c48604cf62bfdee8cf30d3ba238bd/hosted_logos/stacker.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/stacker/icon/color/stacker-icon-color.svg
   devstats_url: https://stacker.devstats.cncf.io
   accepted_at: "2024-06-19"
   maturity: sandbox
@@ -4263,7 +4271,8 @@
   display_name: Flatcar
   description: Flatcar project repository for issue tracking, project documentation, etc.
   category: wasm
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/flatcar.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/flatcar/icon/color/flatcar-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/flatcar/icon/white/flatcar-icon-white.svg
   devstats_url: https://flatcar.devstats.cncf.io
   accepted_at: "2024-08-02"
   maturity: incubating
@@ -4280,7 +4289,8 @@
 - name: youki
   description: A container runtime written in Rust
   category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/youki.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/youki/icon/color/youki-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/youki/icon/white/youki-icon-white.svg
   devstats_url: https://youki.devstats.cncf.io
   accepted_at: "2024-10-17"
   maturity: sandbox
@@ -4294,7 +4304,8 @@
   display_name: Kmesh
   description: Kmesh is a high-performance and low overhead service mesh data plane based on eBPF and programmable kernel. Kmesh brings traffic management, security and monitoring to service communication without needing application code changes. It is natively sidecarless, zero intrusion and without adding any resource cost to application container
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/kmesh.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kmesh/icon/color/KMESH-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kmesh/icon/white/KMESH-icon-white.svg
   accepted_at: "2024-10-17"
   maturity: sandbox
   repositories:
@@ -4424,7 +4435,8 @@
   display_name: CozyStack
   description: Cozystack is a free PaaS platform and framework for building clouds.
   category: platform
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/cozystack.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cozystack/icon/color/cozystack-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cozystack/icon/white/cozystack-icon-white.svg
   devstats_url: https://cozystack.devstats.cncf.io
   accepted_at: "2025-03-04"
   maturity: sandbox
@@ -4442,7 +4454,8 @@
   display_name: KGateway
   description: An Envoy-powered, Kubernetes-native API Gateway that integrates Kubernetes Gateway API with a control plane for API connectivity in any cloud environment.
   category: provisioning
-  logo_url: https://avatars.githubusercontent.com/u/186092512?s=200&v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kgateway/icon/color/kgateway-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kgateway/icon/white/kgateway-icon-white.svg
   devstats_url: https://kgateway.devstats.cncf.io
   accepted_at: "2025-03-04"
   maturity: sandbox
@@ -4463,7 +4476,8 @@
   display_name: KitOps
   description: An open standard for packaging, managing, and deploying ML models and artifacts across different systems.
   category: provisioning
-  logo_url: https://kitops.org/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kitops/icon/color/kitops-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kitops/icon/white/kitops-icon-white.svg
   devstats_url: https://kitops.devstats.cncf.io
   accepted_at: "2025-03-04"
   maturity: sandbox
@@ -4481,7 +4495,8 @@
   display_name: Hyperlight
   description: A lightweight, secure container runtime solution designed for modern cloud-native workloads.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/hyperlight-dev/hyperlight/refs/heads/main/docs/assets/hyperlight-logo.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/hyperlight/icon/color/hyperlight-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kitops/icon/gold-and-white/kitops-icon-gold-and-white.svg
   devstats_url: https://hyperlight.devstats.cncf.io
   accepted_at: "2025-03-04"
   maturity: sandbox
@@ -4508,7 +4523,9 @@
 - name: tokenetes
   display_name: Tokenetes
   description: Tokenetes is a Kubernetes-native framework designed to facilitate the adoption of TraTs in existing applications to secure their call chains.
-  logo_url: https://raw.githubusercontent.com/tokenetes/tokenetes/refs/heads/main/docs/images/tokenetes%20-%20preview%20-%20transparent-02.png
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/tokenetes/icon/color/tokenetes-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/tokenetes/icon/white/tokenetes-icon-white.svg
   devstats_url: https://tratteria.devstats.cncf.io
   accepted_at: "2025-01-16"
   maturity: sandbox
@@ -4525,6 +4542,7 @@
 - name: kaito
   display_name: Kubernetes AI Toolchain Operator (KAITO)
   description: Kaito is an operator that automates the AI/ML model inference or tuning workload in a Kubernetes cluster.
+  category: CNAI
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kaito/icon/color/kaito-icon.svg
   devstats_url: https://kaito.devstats.cncf.io
   accepted_at: "2024-10-11"
@@ -4538,6 +4556,7 @@
 - name: drasi
   display_name: Drasi
   description: Drasi is a change data processing platform that automates real-time detection, evaluation, and meaningful reaction to events in complex, event-driven systems.
+  category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/drasi/icon/color/drasi-icon-color.svg
   devstats_url: https://drasi.devstats.cncf.io/
   accepted_at: "2025-01-24"
@@ -4572,7 +4591,8 @@
   display_name: Bootc
   description: The bootc provides transactional, in-place operating system images and updates using OCI/Docker container images. This project applies the Docker container layering model to bootable host systems, using standard OCI/Docker containers as a transport and delivery format for base operating system updates.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/containers/common/main/logos/bootc-logo-full-vert.png
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/bootc/icon/color/bootc-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/bootc/icon/white/bootc-icon-white.svg
   devstats_url: https://bootc.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4590,7 +4610,8 @@
   display_name: Podman Container Tools
   description: The Podman Container Tools project consists of Podman (the Pod Manager), Buildah, Skopeo as well as a number of smaller tools which are used to manage containers and images, volumes mounted into those containers, and pods made from groups of containers.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/podman.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman/icon/color/podman-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman/icon/white/podman-icon-white.svg
   devstats_url: https://podmancontainertools.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4604,7 +4625,8 @@
   display_name: Podman Desktop
   description: Podman Desktop is an open-source tool for developers to work with containers and Kubernetes with intuitive and user-friendly interface to effortlessly build, manage, and deploy containers and Kubernetes — all from the desktop.
   category: app definition
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/podman-desktop.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman-desktop/icon/color/podman-desktop-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman-desktop/icon/white/podman-desktop-icon-white.svg
   devstats_url: https://podmandesktop.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4618,6 +4640,8 @@
   display_name: KubeFleet
   description: KubeFleet is a multi-cluster solution that enables users to effectively manage their applications running in multiple Kubernetes clusters.
   category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kubefleet/icon/color/kubefleet-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kubefleet/icon/white/kubefleet-icon-white.svg
   devstats_url: https://kubefleet.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4672,7 +4696,8 @@
   display_name: k0s
   description: k0s is a CNCF-certified lightweight, Kubernetes distribution with zero dependencies and zero opinion.
   category: platform
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/k0s.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/k0s/icon/color/k0s-logo-2025-icon.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/k0s/icon/white/k0s-logo-2025-white-icon.svg
   devstats_url: https://k0s.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4690,7 +4715,8 @@
   display_name: Container2Wasm
   description: A tool to run containers on Wasm-enabled environments.
   category: wasm
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/refs/heads/master/hosted_logos/wasm.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/container2wasm/icon/color/container2wasm-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/container2wasm/icon/white/container2wasm-icon-white.svg
   devstats_url: https://container2wasm.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4769,8 +4795,8 @@
   display_name: urunc
   description: A CRI-compatible runtime for running unikernels and application kernels as containers. urunc bridges the gap between unikernels and containerized environments, enabling seamless integration with cloud-native architectures while maintaining OCI compatibility.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/urunc-dev/urunc/refs/heads/main/docs/assets/images/urunc-logo-light.svg
-  logo_dark_url: https://raw.githubusercontent.com/urunc-dev/urunc/refs/heads/main/docs/assets/images/urunc-logo-dark.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/urunc/icon/color/urunc-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/urunc/icon/white/urunc-icon-white.svg
   devstats_url: https://urunc.devstats.cncf.io
   accepted_at: "2025-05-22"
   maturity: sandbox
@@ -4784,8 +4810,8 @@
   display_name: kagent
   description: Bringing Agentic AI to cloud native. An open-source framework for DevOps and platform engineers to run AI agents in Kubernetes, automating complex operations and troubleshooting tasks.
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/kagent-dev/kagent/refs/heads/main/img/icon-light.svg
-  logo_dark_url: https://raw.githubusercontent.com/kagent-dev/kagent/refs/heads/main/img/icon-dark.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kagent/icon/color/kagent-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kagent/icon/white/kagent-icon-white.svg
   devstats_url: https://kagent.devstats.cncf.io/
   accepted_at: "2025-05-22"
   maturity: sandbox
@@ -4806,8 +4832,8 @@
   display_name: Cadence
   description: Cadence is a native code based workflow orchestration engine that addresses challenges around building and operating complex distributed products, ensuring their durability, availability, and scalability with maximum flexibility for developers.
   category: orchestration
-  logo_url: https://raw.githubusercontent.com/cadence-workflow/cadence-web/refs/heads/master/src/assets/cadence-logo.svg
-  logo_dark_url: https://raw.githubusercontent.com/cadence-workflow/cadence-web/refs/heads/master/src/assets/cadence-logo-black.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cadence/icon/color/cadence-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cadence/icon/white/cadence-icon-white.svg
   devstats_url: https://cadence.devstats.cncf.io/
   accepted_at: "2025-05-22"
   maturity: sandbox
@@ -4849,6 +4875,9 @@
 - name: modelpack
   display_name: ModelPack
   description: ModelPack project is a vendor-neutral, open source specification standard to package, distribute and run AI models in a cloud native environments.
+  category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/modelpack/icon/color/ModelPack_Logo_Icon_Color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/modelpack/icon/white/ModelPack_Logo_Icon_White.svg
   devstats_url: https://modelpack.devstats.cncf.io/
   accepted_at: "2025-06-03"
   maturity: sandbox
@@ -4909,7 +4938,8 @@
   display_name: Dalec
   description: Dalec provides a declarative format for building system packages and containers from those packages in a secure way for supply chain security
   category: app definition
-  logo_url: https://raw.githubusercontent.com/project-dalec/dalec/refs/heads/main/website/static/img/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/dalec/icon/color/dalec-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/dalec/icon/white/dalec-icon-white.svg
   devstats_url: https://dalec.devstats.cncf.io/
   accepted_at: "2025-10-08"
   maturity: sandbox
@@ -4922,7 +4952,9 @@
 - name: holmesgpt
   display_name: HolmesGPT
   description: HolmesGPT is an AI agent that automates cloud-native troubleshooting, bridging knowledge gaps by investigating alerts, executing runbooks, and correlating observability data in cloud-native platforms
-  logo_url: https://raw.githubusercontent.com/robusta-dev/holmesgpt/refs/heads/master/images/logo.png
+  category: provisioning
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/color/holmesgpt-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/white/holmesgpt-icon-white.svg
   devstats_url: https://holmesgpt.devstats.cncf.io/
   accepted_at: "2025-10-10"
   maturity: sandbox
@@ -4935,6 +4967,7 @@
 - name: cedar-policy
   display_name: Cedar Policy
   description: Cedar is a language for defining permissions as policies, and a specification for evaluating those policies. Use Cedar to define who is authorized to do what within your application
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cedar-policy/cedar/main/logo.svg
   devstats_url: https://cedarpolicy.devstats.cncf.io/
   accepted_at: "2025-10-10"
@@ -4951,5 +4984,33 @@
         - docs
     - name: cedar-spec
       url: https://github.com/cedar-policy/cedar-spec
+      check_sets:
+        - docs
+- name: cohdi
+  display_name: CoHDI
+  description: The objective is to cultivate a community-driven, standards-based ecosystem for next-generation architectures built on Composable Hardware in Disaggregated Infrastructure.
+  logo_url: https://avatars.githubusercontent.com/u/217262880?s=200&v=4
+  accepted_at: "2025-12-19"
+  maturity: sandbox
+  repositories:
+    - name: composable-resource-operator
+      url: https://github.com/CoHDI/composable-resource-operator
+      check_sets:
+        - code
+        - community
+- name: openchoreo
+  display_name: OpenChoreo
+  description: OpenChoreo is an open-source internal developer platform (IDP).
+  logo_url: https://openchoreo.dev/img/openchoreo-logo.svg
+  accepted_at: "2026-01-06"
+  maturity: sandbox
+  repositories:
+    - name: openchoreo
+      url: https://github.com/openchoreo/openchoreo
+      check_sets:
+        - code
+        - community
+    - name: openchoreo.github.io
+      url: https://github.com/openchoreo/openchoreo.github.io
       check_sets:
         - docs

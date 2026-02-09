@@ -2191,7 +2191,7 @@
       check_sets:
         - code
 - name: piraeus
-  display_name: Piraeus
+  display_name: Piraeus-Datastore
   description: High Available Datastore for Kubernetes
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/piraeus/icon/color/piraeus-icon-color.svg
@@ -2571,7 +2571,7 @@
         - community
         - code
 - name: wasm-edge
-  display_name: WasmEdge
+  display_name: WasmEdge Runtime
   description: WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime for cloud native, edge, and decentralized applications. It powers serverless apps, embedded functions, microservices, smart contracts, and IoT devices
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/wasm-edge-runtime/icon/color/wasm-edge-runtime-icon-color.svg
@@ -2649,7 +2649,7 @@
         - community
         - code
 - name: hexapolicyorchestrator
-  display_name: Hexa Policy Orchestrator
+  display_name: Hexa
   description: Hexa Policy Orchestrator enables you to manage all of your policies consistently across software providers so that you can unify access policy management.
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hexa/icon/hexa-icon-color.svg

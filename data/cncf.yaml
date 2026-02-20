@@ -4997,6 +4997,29 @@
       url: https://github.com/CoHDI/composable-resource-operator
       check_sets:
         - code
+    - name: composable-dra-driver
+      url: https://github.com/CoHDI/composable-dra-driver
+      check_sets:
+        - code
+    - name: dynamic-device-scaler
+      url: https://github.com/CoHDI/dynamic-device-scaler
+      check_sets:
+        - code
+    - name: chodi-chart
+      url: https://github.com/CoHDI/cohdi-chart
+      check_sets:
+        - code-lite
+      - name: cohdi-manager-mock
+      url: https://github.com/CoHDI/cohdi-manager-mock
+      check_sets:
+        - code-lite
+      - name: cohdi-ci-mock
+      url: https://github.com/CoHDI/cohdi-ci-mock
+      check_sets:
+        - code-lite
+      - name: .github
+      url: https://github.com/CoHDI/.github
+      check_sets:
         - community
 - name: openchoreo
   display_name: OpenChoreo

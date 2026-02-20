@@ -5009,15 +5009,15 @@
       url: https://github.com/CoHDI/cohdi-chart
       check_sets:
         - code-lite
-      - name: cohdi-manager-mock
+    - name: cohdi-manager-mock
       url: https://github.com/CoHDI/cohdi-manager-mock
       check_sets:
         - code-lite
-      - name: cohdi-ci-mock
+    - name: cohdi-ci-mock
       url: https://github.com/CoHDI/cohdi-ci-mock
       check_sets:
         - code-lite
-      - name: .github
+    - name: .github
       url: https://github.com/CoHDI/.github
       check_sets:
         - community

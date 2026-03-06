@@ -36,60 +36,60 @@ exports[`RepositoryReportModal > creates snapshot 1`] = `
             class="modal-body p-4 h-100 d-flex flex-column"
           >
             <div
-              class="border border-1 overflow-auto h-100 mw-100"
+              class="border border-1 flex-grow-1 overflow-hidden position-relative"
             >
               <div
-                class="position-relative h-100 mh-100 _syntaxWrapper_b40873"
+                class="position-absolute d-flex flex-row BlockCodeButtons-module_wrapper__LQNzn mt-0"
               >
                 <div
-                  class="position-absolute d-flex flex-row BlockCodeButtons-module_wrapper__LQNzn mt-2"
+                  class="position-relative me-2"
                 >
-                  <div
-                    class="position-relative me-2"
+                  <button
+                    aria-label="Copy to clipboard"
+                    class="btn btn-sm btn-primary rounded-0 ButtonCopyToClipboard-module_btn__kHG6G"
+                    type="button"
                   >
-                    <button
-                      aria-label="Copy to clipboard"
-                      class="btn btn-sm btn-primary rounded-0 ButtonCopyToClipboard-module_btn__kHG6G"
-                      type="button"
+                    <div
+                      aria-hidden="true"
+                      class="d-flex flex-row align-items-center"
                     >
-                      <div
-                        aria-hidden="true"
-                        class="d-flex flex-row align-items-center"
+                      <svg
+                        fill="none"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <svg
-                          fill="none"
-                          height="1em"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            height="13"
-                            rx="2"
-                            ry="2"
-                            width="13"
-                            x="9"
-                            y="9"
-                          />
-                          <path
-                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                          />
-                        </svg>
-                      </div>
-                    </button>
-                  </div>
+                        <rect
+                          height="13"
+                          rx="2"
+                          ry="2"
+                          width="13"
+                          x="9"
+                          y="9"
+                        />
+                        <path
+                          d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        />
+                      </svg>
+                    </div>
+                  </button>
                 </div>
+              </div>
+              <div
+                class="h-100 mh-100 mw-100 p-3 overflow-auto _syntaxWrapper_b40873"
+              >
                 <div
                   class="d-flex flex-row align-items-center pb-2 _codeBlock_c6e1ed"
                   data-testid="code"
                 >
                   <pre
                     class="mb-0 flex-grow-1"
-                    style="background-color: var(--bg-code); color: var(--color-font); padding: 1rem; margin-bottom: 0px; flex: 1 1 auto; white-space: pre-wrap; word-break: break-word; overscroll-behavior: contain; width: 100%; height: 100%; font-size: 0.8rem;"
+                    style="background-color: transparent; color: var(--color-font); padding: 1rem; margin-bottom: 0px; flex: 1 1 auto; white-space: pre; word-break: normal; overscroll-behavior: auto; width: max-content; font-size: 0.8rem; display: block; overflow: visible;"
                   >
                     ## CLOMonitor report
 

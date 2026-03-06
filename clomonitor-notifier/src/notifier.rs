@@ -1,9 +1,9 @@
 use std::{sync::LazyLock, time::Duration};
 
 use anyhow::{Result, format_err};
+use askama::Template;
 use config::Config;
 use regex::Regex;
-use rinja::Template;
 use tokio::time::sleep;
 use tracing::{error, info, instrument};
 use uuid::Uuid;
@@ -66,7 +66,32 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
                 // Send notification
                 let issue_number;
                 let mut comment_id = None;
-                if n.issue_number.is_none() || is_issue_closed {
+                if let Some(existing_issue_number) = n.issue_number
+                    && !is_issue_closed
+                {
+                    // Post comment in existing issue
+                    issue_number = Some(existing_issue_number);
+                    let body = tmpl::AnnualReviewDueReminder {}.render().unwrap();
+                    match gh
+                        .create_comment(&owner, &repo, existing_issue_number, &body)
+                        .await
+                    {
+                        Ok(v) => {
+                            comment_id = Some(v);
+                            info!(
+                                ?owner,
+                                ?repo,
+                                ?issue_number,
+                                ?comment_id,
+                                "annual review due reminder notification sent"
+                            );
+                        }
+                        Err(err) => {
+                            error!(?err, ?owner, ?repo, ?issue_number, "error creating comment");
+                            continue;
+                        }
+                    }
+                } else {
                     // Create new issue
                     let body = tmpl::AnnualReviewDue {}.render().unwrap();
                     match gh
@@ -84,29 +109,6 @@ async fn process_annual_review_notifications(cfg: &Config, db: DynDB, gh: DynGH)
                         }
                         Err(err) => {
                             error!(?err, ?owner, ?repo, "error creating issue");
-                            continue;
-                        }
-                    }
-                } else {
-                    // Post comment in existing issue
-                    issue_number = Some(n.issue_number.unwrap());
-                    let body = tmpl::AnnualReviewDueReminder {}.render().unwrap();
-                    match gh
-                        .create_comment(&owner, &repo, issue_number.unwrap(), &body)
-                        .await
-                    {
-                        Ok(v) => {
-                            comment_id = Some(v);
-                            info!(
-                                ?owner,
-                                ?repo,
-                                ?issue_number,
-                                ?comment_id,
-                                "annual review due reminder notification sent"
-                            );
-                        }
-                        Err(err) => {
-                            error!(?err, ?owner, ?repo, ?issue_number, "error creating comment");
                             continue;
                         }
                     }

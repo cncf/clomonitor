@@ -21,7 +21,7 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
     if let Some(url) = &input.gh_md.homepage_url
         && !url.is_empty()
     {
-        return Ok(CheckOutput::passed().url(Some(url.to_string())));
+        return Ok(CheckOutput::passed().url(Some(url.clone())));
     }
 
     Ok(CheckOutput::not_passed())

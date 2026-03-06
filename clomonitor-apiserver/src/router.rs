@@ -3,12 +3,18 @@ use std::{path::Path, sync::Arc};
 use anyhow::Result;
 use axum::{
     Router,
+    body::Body,
     extract::FromRef,
-    http::{HeaderValue, header::CACHE_CONTROL},
+    http::{
+        HeaderValue, Request, StatusCode,
+        header::{AUTHORIZATION, CACHE_CONTROL},
+    },
     middleware,
+    response::Response,
     routing::{get, get_service, post},
 };
 use config::Config;
+use openssl::base64::encode_block;
 use tera::Tera;
 use tower::ServiceBuilder;
 use tower_http::{
@@ -114,7 +120,22 @@ pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     if cfg.get_bool("apiserver.basicAuth.enabled").unwrap_or(false) {
         let username = cfg.get_string("apiserver.basicAuth.username")?;
         let password = cfg.get_string("apiserver.basicAuth.password")?;
-        router = router.layer(ValidateRequestHeaderLayer::basic(&username, &password));
+        let credentials = format!(
+            "Basic {}",
+            encode_block(format!("{username}:{password}").as_bytes())
+        );
+        let expected_header_value = HeaderValue::try_from(credentials)?;
+
+        router = router.layer(ValidateRequestHeaderLayer::custom(
+            move |request: &mut Request<Body>| match request.headers().get(AUTHORIZATION) {
+                Some(header_value) if header_value == expected_header_value => Ok(()),
+                _ => {
+                    let mut response = Response::new(Body::default());
+                    *response.status_mut() = StatusCode::UNAUTHORIZED;
+                    Err(response)
+                }
+            },
+        ));
     }
 
     Ok(router)

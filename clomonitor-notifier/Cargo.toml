@@ -8,6 +8,7 @@ rust-version.workspace = true
 
 [dependencies]
 anyhow = { workspace = true }
+askama = { workspace = true }
 async-trait = { workspace = true }
 clap = { workspace = true }
 config = { workspace = true }
@@ -17,7 +18,6 @@ octorust = { workspace = true }
 openssl = { workspace = true }
 postgres-openssl = { workspace = true }
 regex = { workspace = true }
-rinja = { workspace = true }
 tokio = { workspace = true }
 tokio-postgres = { workspace = true }
 tracing = { workspace = true }

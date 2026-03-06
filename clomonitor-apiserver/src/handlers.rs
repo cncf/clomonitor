@@ -5,6 +5,7 @@ use std::{
 };
 
 use anyhow::Error;
+use askama::Template;
 use axum::{
     body::Body,
     extract::{Path, Query, RawQuery, State},
@@ -20,7 +21,6 @@ use clomonitor_core::{
 };
 use config::Config;
 use mime::{APPLICATION_JSON, CSV, HTML, PNG};
-use rinja::Template;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use tera::{Context, Tera};

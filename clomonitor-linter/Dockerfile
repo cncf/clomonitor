@@ -1,5 +1,5 @@
 # Build linter
-FROM rust:1-alpine3.22 as builder
+FROM rust:1-alpine3.23 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -24,7 +24,7 @@ RUN make install
 RUN make build
 
 # Final stage
-FROM alpine:3.22.2
+FROM alpine:3.23.3
 RUN addgroup -S clomonitor && adduser -S clomonitor -G clomonitor
 USER clomonitor
 WORKDIR /home/clomonitor

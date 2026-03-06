@@ -14,79 +14,79 @@ members = [
 version = "1.0.0"
 license = "Apache-2.0"
 edition = "2024"
-rust-version = "1.90.0"
+rust-version = "1.93.1"
 
 [workspace.dependencies]
-anyhow = "1.0.100"
+anyhow = "1.0.102"
 askalono = "0.5.0"
+askama = { version = "0.15.4", features = ["serde_json"] }
 async-trait = "0.1.89"
-axum = { version = "0.8.6", features = ["macros"] }
-bincode = { version = "2.0.1", features = ["serde"] }
+axum = { version = "0.8.8", features = ["macros"] }
+bincode = { version = "2.0.1", features = ["serde"] } # do-not-upgrade
 cached = { version = "0.56.0", features = ["async"] }
-clap = { version = "4.5.49", features = ["derive"] }
+clap = { version = "4.5.60", features = ["derive"] }
 clomonitor-core = { path = "../clomonitor-core" }
-comfy-table = "7.2.1"
-config = "0.15.18"
-deadpool = "0.12.3"
+comfy-table = "7.2.2"
+config = "0.15.19"
+deadpool = "0.13.0"
 deadpool-postgres = { version = "0.14.1", features = ["serde"] }
-futures = "0.3.31"
-git2 = "0.20.2"
+futures = "0.3.32"
+git2 = "0.20.4"
 glob = "0.3.3"
-graphql_client = { version = "0.14.0", features = ["reqwest"] }
+graphql_client = { version = "0.16.0", features = ["reqwest"] }
 hex = "0.4.3"
-http = "1.3.1"
-hyper = "1.7.0"
-metrics = "0.24.2"
-metrics-exporter-prometheus = "0.17.2"
+http = "1.4.0"
+hyper = "1.8.1"
+metrics = "0.24.3"
+metrics-exporter-prometheus = { version = "0.18.1", default-features = false, features = ["http-listener"] }
 mime = "0.3.17"
-mockall = "0.13.1"
-mockito = "1.7.0"
+mockall = "0.14.0"
+mockito = "1.7.2"
 octorust = "0.3.2" # do-not-upgrade
-openssl = { version = "0.10.74", features = ["vendored"] }
+openssl = { version = "0.10.75", features = ["vendored"] }
 postgres-openssl = "0.5.2"
-postgres-types = { version = "0.2.11", features = ["derive"] }
-predicates = "3.1.3"
-regex = "1.12.2"
-reqwest = { version = "0.12.24", features = ["json"] }
+postgres-types = { version = "0.2.12", features = ["derive"] }
+predicates = "3.1.4"
+regex = "1.12.3"
+reqwest = { version = "0.13.2", features = ["json"] }
 resvg = "0.27.0" # do-not-upgrade
-rinja = { git = "https://github.com/rinja-rs/rinja", rev = "535df5e", features = ["serde_json"] }
 serde = { version = "1.0.228", features = ["derive"] }
-serde_json = "1.0.145"
+serde_json = "1.0.149"
 serde_yaml = "0.9.34"
-serde_qs = "0.15.0"
+serde_qs = "1.0.0"
 sha2 = "0.10.9"
-tempfile = "3.23.0"
-tera = { version = "1.20.0", default-features = false }
-thiserror = "2.0.17"
-time = { version = "0.3.44", features = [
+tempfile = "3.26.0"
+tera = { version = "1.20.1", default-features = false }
+thiserror = "2.0.18"
+time = { version = "0.3.47", features = [
     "formatting",
     "macros",
     "parsing",
     "serde",
 ] }
 tiny-skia = "0.8.4" # do-not-upgrade
-tokio = { version = "1.48.0", features = [
+tokio = { version = "1.50.0", features = [
     "macros",
     "process",
     "rt-multi-thread",
     "signal",
     "time",
 ] }
-tokio-postgres = { version = "0.7.15", features = [
+tokio-postgres = { version = "0.7.16", features = [
     "with-time-0_3",
     "with-serde_json-1",
     "with-uuid-1",
 ] }
-tower = { version = "0.5.1", features = ["util"] }
-tower-http = { version = "0.6.6", features = [
+tower = { version = "0.5.3", features = ["util"] }
+tower-http = { version = "0.6.8", features = [
     "auth",
     "fs",
     "set-header",
     "trace",
 ] }
-tracing = "0.1.41"
-tracing-subscriber = { version = "0.3.20", features = ["env-filter", "json"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["env-filter", "json"] }
 usvg = "0.27.0" # do-not-upgrade
-uuid = { version = "1.18.1", features = ["serde"] }
-which = "8.0.0"
+uuid = { version = "1.22.0", features = ["serde"] }
+which = "8.0.1"
 wiremock = "0.6.5"

@@ -51,23 +51,29 @@ const RepositoryReportModal = (props: Props) => {
           onClose={props.onCloseModal}
           open={props.openStatus}
         >
-          <div className="border border-1 overflow-auto h-100 mw-100">
-            <div className={`position-relative h-100 mh-100 ${styles.syntaxWrapper}`}>
-              {isGettingMd && <Loading />}
-              <BlockCodeButtons
-                filename={`${props.repoName}-report.md`}
-                content={report || ''}
-                className="mt-2"
-                hiddenDownloadBtn
-              />
+          <div className="border border-1 flex-grow-1 overflow-hidden position-relative">
+            {isGettingMd && <Loading />}
+            <BlockCodeButtons
+              filename={`${props.repoName}-report.md`}
+              content={report || ''}
+              className="mt-0"
+              hiddenDownloadBtn
+            />
 
+            <div className={`h-100 mh-100 mw-100 p-3 overflow-auto ${styles.syntaxWrapper}`}>
               <CodeBlock
                 language="markdown"
                 content={report || ''}
                 withCopyBtn={false}
                 style={{
-                  height: '100%',
                   fontSize: '0.8rem',
+                  display: 'block',
+                  width: 'max-content',
+                  whiteSpace: 'pre',
+                  wordBreak: 'normal',
+                  overflow: 'visible',
+                  overscrollBehavior: 'auto',
+                  backgroundColor: 'transparent',
                 }}
                 effective_theme={effective}
               />

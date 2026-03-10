@@ -20,12 +20,12 @@ pub(crate) const WEIGHT: usize = 5;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 pub(crate) static FOSSA_URL: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r#"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"#)
+    Regex::new(r#"(https://app.fossa.(?:io|com)/projects/[^"'\)\s]+)"#)
         .expect("exprs in FOSSA_URL to be valid")
 });
 
 pub(crate) static SNYK_URL: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#)
+    Regex::new(r#"(https://snyk.io/test/github/[^/\s]+/[^/"\s]+)"#)
         .expect("exprs in SNYK_URL to be valid")
 });
 
@@ -127,6 +127,32 @@ mod tests {
     }
 
     #[test]
+    fn fossa_url_extract_md_ref() {
+        assert_eq!(
+            FOSSA_URL
+                .captures(
+                    "[fossa]: https://app.fossa.io/projects/git%2Bgithub.com%2Fjaegertracing%2Fjaeger?ref=badge_shield\n[openssf]:",
+                )
+                .unwrap()[1]
+                .to_string(),
+            "https://app.fossa.io/projects/git%2Bgithub.com%2Fjaegertracing%2Fjaeger?ref=badge_shield"
+        );
+    }
+
+    #[test]
+    fn fossa_url_extract_rst() {
+        assert_eq!(
+            FOSSA_URL
+                .captures(
+                    "    :target: https://app.fossa.com/projects/custom%2B162%2Fgit%40github.com%3Acilium%2Fcilium.git?ref=badge_shield\n\n.. |gateway-api|",
+                )
+                .unwrap()[1]
+                .to_string(),
+            "https://app.fossa.com/projects/custom%2B162%2Fgit%40github.com%3Acilium%2Fcilium.git?ref=badge_shield"
+        );
+    }
+
+    #[test]
     fn snyk_url_extract() {
         assert_eq!(
             SNYK_URL.captures("[![Known Vulnerabilities](https://snyk.io/test/github/{username}/{repo}/badge.svg)](https://snyk.io/test/github/{username}/{repo})").unwrap()[1].to_string(),
@@ -138,6 +164,17 @@ mod tests {
                 .unwrap()[1]
                 .to_string(),
             "https://snyk.io/test/github/{username}/{repo}"
+        );
+    }
+
+    #[test]
+    fn snyk_url_extract_md_ref() {
+        assert_eq!(
+            SNYK_URL
+                .captures("[snyk]: https://snyk.io/test/github/username/repo\n[next-badge]:",)
+                .unwrap()[1]
+                .to_string(),
+            "https://snyk.io/test/github/username/repo"
         );
     }
 }

@@ -370,8 +370,8 @@ This check passes if:
 - A `FOSSA` or `Snyk` link is found in the repository's `README` file. Regexps used:
 
 ```sh
-"(https://app.fossa.(?:io|com)/projects/[^"'\)]+)"
-"(https://snyk.io/test/github/[^/]+/[^/"]+)"
+"(https://app.fossa.(?:io|com)/projects/[^"'\)\s]+)"
+"(https://snyk.io/test/github/[^/\s]+/[^/"\s]+)"
 ```
 
 - A *link* pointing to the license scanning results is provided in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
@@ -427,7 +427,7 @@ This check passes if:
 - An `Artifact Hub` badge is found in the repository's `README` file. Regexps used:
 
 ```sh
-"(https://artifacthub.io/packages/[^"'\)]+)"
+"(https://artifacthub.io/packages/[^"'\)\s]+)"
 ```
 
 ### Contributor license agreement
@@ -521,13 +521,13 @@ This check passes if:
 - An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used (old):
 
 ```sh
-"(https://api.securityscorecards.dev/projects/github.com/[^/]+/[^/]+)/badge"
+"(https://api.securityscorecards.dev/projects/github.com/[^/\s]+/[^/\s]+)/badge"
 ```
 
 - An `OpenSSF` Scorecard badge is found in the repository's `README` file. Regexps used (new):
 
 ```sh
-"(https://api.scorecard.dev/projects/github.com/[^/]+/[^/]+)/badge"
+"(https://api.scorecard.dev/projects/github.com/[^/\s]+/[^/\s]+)/badge"
 ```
 
 ### Recent release

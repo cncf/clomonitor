@@ -20,12 +20,12 @@ pub(crate) const WEIGHT: usize = 5;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 static OPENSSF_SCORECARD_URL_OLD: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(https://api.securityscorecards.dev/projects/github.com/[^/]+/[^/]+)/badge")
+    Regex::new(r"(https://api.securityscorecards.dev/projects/github.com/[^/\s]+/[^/\s]+)/badge")
         .expect("exprs in OPENSSF_SCORECARD_URL_OLD to be valid")
 });
 
 static OPENSSF_SCORECARD_URL: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(https://api.scorecard.dev/projects/github.com/[^/]+/[^/]+)/badge")
+    Regex::new(r"(https://api.scorecard.dev/projects/github.com/[^/\s]+/[^/\s]+)/badge")
         .expect("exprs in OPENSSF_SCORECARD_URL to be valid")
 });
 
@@ -57,6 +57,32 @@ mod tests {
     fn new_old_openssf_scorecard_url_extract() {
         assert_eq!(
             OPENSSF_SCORECARD_URL.captures("[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/owner/repo/badge)](https://scorecard.dev/viewer/?uri=github.com/owner/repo)").unwrap()[1].to_string(),
+            "https://api.scorecard.dev/projects/github.com/owner/repo"
+        );
+    }
+
+    #[test]
+    fn old_openssf_scorecard_url_extract_md_ref() {
+        assert_eq!(
+            OPENSSF_SCORECARD_URL_OLD
+                .captures(
+                    "[openssf-img]: https://api.securityscorecards.dev/projects/github.com/owner/repo/badge\n[openssf]:",
+                )
+                .unwrap()[1]
+                .to_string(),
+            "https://api.securityscorecards.dev/projects/github.com/owner/repo"
+        );
+    }
+
+    #[test]
+    fn new_openssf_scorecard_url_extract_md_ref() {
+        assert_eq!(
+            OPENSSF_SCORECARD_URL
+                .captures(
+                    "[openssf-img]: https://api.scorecard.dev/projects/github.com/owner/repo/badge\n[openssf]:",
+                )
+                .unwrap()[1]
+                .to_string(),
             "https://api.scorecard.dev/projects/github.com/owner/repo"
         );
     }

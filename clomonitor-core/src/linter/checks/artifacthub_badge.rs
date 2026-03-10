@@ -20,7 +20,7 @@ pub(crate) const WEIGHT: usize = 1;
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Code];
 
 static ARTIFACTHUB_URL: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r#"(https://artifacthub.io/packages/[^"'\)]+)"#)
+    Regex::new(r#"(https://artifacthub.io/packages/[^"'\)\s]+)"#)
         .expect("exprs in ARTIFACTHUB_URL to be valid")
 });
 
@@ -44,6 +44,32 @@ mod tests {
         assert_eq!(
             ARTIFACTHUB_URL.captures(r#"[![Artifact HUB]("https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/artifact-hub)](https://artifacthub.io/packages/helm/artifact-hub/artifact-hub)"#).unwrap()[1].to_string(),
             "https://artifacthub.io/packages/helm/artifact-hub/artifact-hub"
+        );
+    }
+
+    #[test]
+    fn artifacthub_url_extract_md_ref() {
+        assert_eq!(
+            ARTIFACTHUB_URL
+                .captures(
+                    "[artifacthub]: https://artifacthub.io/packages/search?repo=jaegertracing\n\n[community-badge]:",
+                )
+                .unwrap()[1]
+                .to_string(),
+            "https://artifacthub.io/packages/search?repo=jaegertracing"
+        );
+    }
+
+    #[test]
+    fn artifacthub_url_extract_rst() {
+        assert_eq!(
+            ARTIFACTHUB_URL
+                .captures(
+                    "    :target: https://artifacthub.io/packages/helm/cilium/cilium\n\n.. |fossa|",
+                )
+                .unwrap()[1]
+                .to_string(),
+            "https://artifacthub.io/packages/helm/cilium/cilium"
         );
     }
 }

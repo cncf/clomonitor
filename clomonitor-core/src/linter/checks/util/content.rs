@@ -62,7 +62,7 @@ mod tests {
                     patterns: &["README*"],
                     case_sensitive: true,
                 },
-                &[&Regex::new(r#"(https://snyk.io/test/github/[^/]+/[^/"]+)"#).unwrap()]
+                &[&Regex::new(r#"(https://snyk.io/test/github/[^/\s]+/[^/"\s]+)"#).unwrap()]
             )
             .unwrap()
             .unwrap(),

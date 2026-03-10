@@ -4418,8 +4418,8 @@
       check_sets:
         - code-lite
 - name: interlink
-  display_name: InterLink
-  description: InterLink aims to provide an abstraction for the execution of a Kubernetes pod on any remote resource capable of managing a Container execution lifecycle. It allows you to extend your cloud environment anywhere by running Kubernetes workloads on various infrastructures, creating a seamless cloud-native experience across diverse environments.
+  display_name: interLink
+  description: interLink aims to provide an abstraction for executing a Kubernetes pod on any remote resource capable of managing the Container execution lifecycle. It allows you to extend your cloud environment anywhere by running Kubernetes workloads on various infrastructures, creating a seamless cloud-native experience across diverse environments.
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/interlink/stacked/color/interlink-stacked-color.svg
   devstats_url: https://interlink.devstats.cncf.io
@@ -4427,7 +4427,7 @@
   maturity: sandbox
   repositories:
     - name: interLink
-      url: https://github.com/interTwin-eu/interLink
+      url: https://github.com/interlink-hq/interLink
       check_sets:
         - code
         - community

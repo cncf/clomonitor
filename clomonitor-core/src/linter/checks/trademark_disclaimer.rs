@@ -23,7 +23,7 @@ pub(crate) static TRADEMARK_DISCLAIMER: LazyLock<RegexSet> = LazyLock::new(|| {
     RegexSet::new([
         r"https://(?:w{3}\.)?linuxfoundation.org/(?:legal/)?trademark-usage",
         r"The Linux Foundation.* has registered trademarks and uses trademarks",
-        r"Copyright © .+ a Series of LF Projects, LLC",
+        r"Copyright .+ a Series of LF Projects, LLC",
     ])
     .expect("exprs in TRADEMARK_DISCLAIMER to be valid")
 });

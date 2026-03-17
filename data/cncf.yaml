@@ -1577,7 +1577,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kyverno/icon/color/kyverno-icon-color.svg
   devstats_url: https://kyverno.devstats.cncf.io/
   accepted_at: "2020-11-10"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: kyverno
       url: https://github.com/kyverno/kyverno

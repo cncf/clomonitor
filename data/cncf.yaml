@@ -5037,3 +5037,97 @@
       url: https://github.com/openchoreo/openchoreo.github.io
       check_sets:
         - docs
+- name: kai-scheduler
+  display_name: KAI Scheduler
+  description: A robust, efficient, and scalable Kubernetes scheduler that optimizes GPU resource allocation for AI workloads in large-scale clusters
+  category: orchestration
+  accepted_at: "2026-02-08"
+  maturity: sandbox
+  repositories:
+    - name: kai-scheduler
+      url: https://github.com/NVIDIA/KAI-Scheduler
+      check_sets:
+        - community
+        - code
+- name: kubeelasti
+  display_name: KubeElasti
+  description: Auto scale-to-zero pods when idle and scale up pods when traffic arrives, without losing any requests
+  category: serverless
+  accepted_at: "2026-01-30"
+  maturity: sandbox
+  repositories:
+    - name: kubeelasti
+      url: https://github.com/truefoundry/KubeElasti
+      check_sets:
+        - community
+        - code
+- name: agones
+  display_name: Agones
+  description: Dedicated game server hosting and scaling for multiplayer games on Kubernetes
+  home_url: https://agones.dev
+  logo_url: https://github.com/agones-dev/agones/blob/main/docs/agones.png?raw=true
+  devstats_url: https://agones.devstats.cncf.io/
+  accepted_at: "2026-03-12"
+  maturity: sandbox
+  repositories:
+    - name: agones
+      url: https://github.com/agones-dev/agones
+      check_sets:
+        - community
+        - code
+- name: velero
+  display_name: Velero
+  description: Backup and migrate Kubernetes applications and their persistent volumes
+  category: runtime
+  home_url: https://velero.io/
+  logo_url: https://camo.githubusercontent.com/1c59cb7971a81cbeb389792e42d22364b562eb7f0a64b46e967ac1135bb0ba91/68747470733a2f2f76656c65726f2e696f2f646f63732f6d61696e2f696d672f76656c65726f2e706e67
+  devstats_url: https://velero.devstats.cncf.io/
+  accepted_at: "2026-03-17"
+  maturity: sandbox
+  repositories:
+    - name: velero
+      url: https://github.com/vmware-tanzu/velero
+      check_sets:
+        - community
+        - code
+    - name: velero-plugin-for-aws
+      url: https://github.com/vmware-tanzu/velero-plugin-for-aws
+      check_sets:
+        - code-lite
+    - name: velero-plugin-for-gcp
+      url: https://github.com/vmware-tanzu/velero-plugin-for-gcp
+      check_sets:
+        - code-lite
+    - name: velero-plugin-for-microsoft-azure
+      url: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
+      check_sets:
+        - code-lite
+    - name: velero-plugin-example
+      url: https://github.com/vmware-tanzu/velero-plugin-example
+      check_sets:
+        - code-lite
+- name: nmstate
+  display_name: NMstate
+  description: NMstate manages host networking in a declarative manner
+  home_url: https://nmstate.io
+  logo_url: https://avatars.githubusercontent.com/u/39068239?s=200&v=4
+  accepted_at: "2026-03-23"
+  maturity: sandbox
+  repositories:
+    - name: nmstate
+      url: https://github.com/nmstate/nmstate
+      check_sets:
+        - community
+        - code
+    - name: kubernetes-nmstate
+      url: https://github.com/nmstate/kubernetes-nmstate
+      check_sets:
+        - code
+    - name: nmstate.github.io
+      url: https://github.com/nmstate/nmstate.github.io
+      check_sets:
+        - docs
+    - name: test-env
+      url: https://github.com/nmstate/test-env
+      check_sets:
+        - code-lite

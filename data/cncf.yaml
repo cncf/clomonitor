@@ -1912,11 +1912,11 @@
     - name: opentelemetry-dotnet-contrib
       url: https://github.com/open-telemetry/opentelemetry-dotnet-contrib
       check_sets:
-        - code-lite
+        - code
     - name: opentelemetry-dotnet-instrumentation
       url: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation
       check_sets:
-        - code-lite
+        - code
     - name: opentelemetry-erlang
       url: https://github.com/open-telemetry/opentelemetry-erlang
       check_sets:

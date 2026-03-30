@@ -5131,3 +5131,24 @@
       url: https://github.com/nmstate/test-env
       check_sets:
         - code-lite
+- name: openeverest
+  display_name: OpenEverest
+  description: Open-source platform for running, managing, and scaling data workloads on Kubernetes
+  category: app definition
+  home_url: https://openeverest.io
+  accepted_at: "2026-03-19"
+  maturity: sandbox
+  repositories:
+    - name: openeverest
+      url: https://github.com/openeverest/openeverest
+      check_sets:
+        - community
+        - code
+    - name: everest-doc
+      url: https://github.com/openeverest/everest-doc
+      check_sets:
+        - docs
+    - name: openeverest.github.io
+      url: https://github.com/openeverest/openeverest.github.io
+      check_sets:
+        - docs

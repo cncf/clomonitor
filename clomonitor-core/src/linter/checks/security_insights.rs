@@ -1,10 +1,8 @@
-use std::path::Path;
-
 use anyhow::{Result, format_err};
 
 use crate::linter::{CheckId, CheckOutput, CheckSet, check::CheckInput};
 
-use super::datasource::{github, security_insights::SECURITY_INSIGHTS_MANIFEST_FILE};
+use super::datasource::github;
 
 /// Check identifier.
 pub(crate) const ID: CheckId = "security_insights";
@@ -23,9 +21,9 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
         .as_ref()
         .map_err(|e| format_err!("{e:?}"))?
     {
-        Some(_) => {
+        Some(si) => {
             let url = github::build_url(
-                Path::new(SECURITY_INSIGHTS_MANIFEST_FILE),
+                &si.manifest_path,
                 &input.gh_md.owner.login,
                 &input.gh_md.name,
                 &github::default_branch(input.gh_md.default_branch_ref.as_ref()),

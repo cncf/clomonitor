@@ -18,11 +18,9 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
         .as_ref()
         .map_err(|e| format_err!("{e:?}"))?
         .as_ref()
-        .and_then(|si| si.dependencies.as_ref())
-        .and_then(|de| de.env_dependencies_policy.as_ref())
-        .and_then(|dp| dp.policy_url.as_ref())
+        .and_then(|si| si.dependency_policy_url())
     {
-        return Ok(CheckOutput::passed().url(Some(policy_url.clone())));
+        return Ok(CheckOutput::passed().url(Some(policy_url.to_owned())));
     }
     Ok(CheckOutput::not_passed())
 }

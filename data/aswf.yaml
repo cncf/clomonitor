@@ -5,7 +5,6 @@
     and archiving.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/aces/full/color/aces-full-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/aces/full/color/aces-full-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/aces
   maturity: incubating
   repositories:
@@ -20,9 +19,8 @@
     \ needed to improve best practices and address the unique challenges we face."
   category: Visual Effects and Computer Graphics
   logo_url: https://landscape.aswf.io/logos/e3646d4d46048efef0dd2f0c720a88f07035663c9c9e6f3024ab58503a20389f.svg
-  logo_url_dark: https://landscape.aswf.io/logos/e3646d4d46048efef0dd2f0c720a88f07035663c9c9e6f3024ab58503a20389f.svg
   devstats_url: https://insights.linuxfoundation.org/project/aswf-continuous-integration-wg
-  maturity: long-term-working-group
+  maturity: working-group
   repositories:
   - name: wg-ci
     url: https://github.com/AcademySoftwareFoundation/wg-ci
@@ -39,7 +37,6 @@
     to integrate into production tracking software.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/dailies-transcription-notes-taking-tool/horizontal/color/dailies-transcription-notes-taking-tool-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/dailies-transcription-notes-taking-tool/horizontal/color/dailies-transcription-notes-taking-tool-horizontal-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/dailies-transcription-notes-taking-tool
   maturity: sandbox
   repositories:
@@ -60,7 +57,6 @@
     \ volumetric data, animation rigs, edit decision lists, etc."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/dpel/stacked/black/dpel-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/dpel/stacked/black/dpel-stacked-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/dpel
   maturity: graduated
   repositories:
@@ -89,7 +85,6 @@
     geometric assignments.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/materialx/stacked/color/materialx-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/materialx/stacked/color/materialx-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/materialx
   maturity: graduated
   repositories:
@@ -109,8 +104,7 @@
   display_name: MoonRay
   description: develop a state-of-the-art production MCRT renderer
   category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/b72953d2502ca3ed4e84eda6da7bf521d3bfd0d32a54e3942fbb647312d872cf.svg
-  logo_url_dark: https://landscape.aswf.io/logos/b72953d2502ca3ed4e84eda6da7bf521d3bfd0d32a54e3942fbb647312d872cf.svg
+  logo_url: https://artwork.aswf.io/projects/moonray/rgb/color/moonray-rgb-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/moonray
   maturity: sandbox
   repositories:
@@ -128,7 +122,6 @@
     performance.
   category: Visual Effects and Computer Graphics
   logo_url: https://landscape.aswf.io/logos/e05550d27ea321a5931c8c5c435fe050913ae1d58e677b608a74152cb31b7692.svg
-  logo_url_dark: https://landscape.aswf.io/logos/e05550d27ea321a5931c8c5c435fe050913ae1d58e677b608a74152cb31b7692.svg
   devstats_url: https://insights.linuxfoundation.org/project/openpgl
   maturity: sandbox
   repositories:
@@ -142,7 +135,6 @@
     picture and related professional media.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/open-review-initiative/stacked/color/open-review-initiative-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/open-review-initiative/stacked/color/open-review-initiative-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-review-initiative
   maturity: sandbox
   repositories:
@@ -169,7 +161,6 @@
     lights, displacement, and pattern generation.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-shading-language
   maturity: graduated
   repositories:
@@ -183,7 +174,6 @@
     open standard video codec for professional video capturing and post-production.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openapv/horizontal/black/openapv-horizontal-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openapv/horizontal/black/openapv-horizontal-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/openapv
   maturity: sandbox
   repositories:
@@ -197,7 +187,6 @@
     standard for tools and content management systems used in media production.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openassetio/horizontal/black/openassetio-horizontal-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openassetio/horizontal/black/openassetio-horizontal-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/openassetio
   maturity: sandbox
   repositories:
@@ -224,7 +213,6 @@
     digital content creation applications and pipelines.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/opencolorio/stacked/color/opencolorio-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/opencolorio/stacked/color/opencolorio-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/opencolorio
   maturity: graduated
   repositories:
@@ -244,7 +232,6 @@
     necessary computational resources.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/opencue/stacked/black/opencue-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/opencue/stacked/black/opencue-stacked-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/opencue
   maturity: graduated
   repositories:
@@ -263,7 +250,6 @@
     content creation.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openexr/stacked/color/openexr-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openexr/stacked/color/openexr-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openexr
   maturity: graduated
   repositories:
@@ -293,7 +279,6 @@
     processing plug-in standard.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openfx/stacked/color/openfx-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openfx/stacked/color/openfx-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openfx
   maturity: incubating
   repositories:
@@ -309,7 +294,6 @@
     for production.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openimageio/stacked/color/openimageio-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openimageio/stacked/color/openimageio-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openimageio
   maturity: graduated
   repositories:
@@ -327,7 +311,6 @@
     QMC sample points.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openqmc/horizontal/black/openqmc-horizontal-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openqmc/horizontal/black/openqmc-horizontal-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/openqmc
   maturity: sandbox
   repositories:
@@ -344,7 +327,6 @@
     as well as a plugin system for linking to proprietary media storage schemas.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-timeline-io
   maturity: incubating
   repositories:
@@ -360,7 +342,6 @@
     tools for its efficient traversal and manipulation.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openvdb/stacked/color/openvdb-stacked-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/openvdb/stacked/color/openvdb-stacked-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openvdb
   maturity: graduated
   repositories:
@@ -380,7 +361,6 @@
     data to enable this framework.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/rawtoaces/horizontal/color/rawtoaces-horizontal-color.svg
-  logo_url_dark: https://artwork.aswf.io/projects/rawtoaces/horizontal/color/rawtoaces-horizontal-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/rawtoaces
   maturity: incubating
   repositories:
@@ -396,7 +376,6 @@
     configured for a given set of packages.'
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/rez/stacked/black/rez-stacked-black.svg
-  logo_url_dark: https://artwork.aswf.io/projects/rez/stacked/black/rez-stacked-black.svg
   devstats_url: https://insights.linuxfoundation.org/project/rez
   maturity: incubating
   repositories:
@@ -410,7 +389,6 @@
     deployment of AI/ML models using well-tracked and rights-cleared datasets.
   category: Visual Effects and Computer Graphics
   logo_url: https://landscape.aswf.io/logos/204848697627322ae981ef0f2ddad62b6d58a747c796667964af7c8b3cd68d4b.svg
-  logo_url_dark: https://landscape.aswf.io/logos/204848697627322ae981ef0f2ddad62b6d58a747c796667964af7c8b3cd68d4b.svg
   devstats_url: https://insights.linuxfoundation.org/project/rongotai-model-train-club-rmtc
   maturity: sandbox
   repositories:
@@ -427,9 +405,8 @@
     with issues raised in various USD support channels where possible.
   category: Visual Effects and Computer Graphics
   logo_url: https://landscape.aswf.io/logos/53bcc35048007a4bb20f370f463653504d057936a091ed96dee11558e45c64a1.svg
-  logo_url_dark: https://landscape.aswf.io/logos/53bcc35048007a4bb20f370f463653504d057936a091ed96dee11558e45c64a1.svg
   devstats_url: https://insights.linuxfoundation.org/project/aswf-usd-wg
-  maturity: long-term-working-group
+  maturity: working-group
   repositories:
   - name: wg-usd
     url: https://github.com/AcademySoftwareFoundation/wg-usd

@@ -591,7 +591,11 @@ Project should provide a dependencies policy that describes how dependencies are
 
 This check passes if:
 
-- The url of the dependencies policy is available in the `dependencies > env-dependencies-policy` section of the [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) *manifest file* (`SECURITY-INSIGHTS.yml`) that should be located at the root of the repository.
+- The url of the dependencies policy is provided in the [OpenSSF Security Insights](https://github.com/ossf/security-insights) *manifest file*. Both v1 and v2 of the specification are supported:
+  - **v2** (`security-insights.yml`): available in `repository > documentation > dependency-management-policy`
+  - **v1** (`SECURITY-INSIGHTS.yml`): available in `dependencies > env-dependencies-policy > policy-url`
+
+  The manifest file is searched for in the following locations (first match wins): `security-insights.yml` (root), `.github/security-insights.yml`, `.gitlab/security-insights.yml`, `SECURITY-INSIGHTS.yml` (root).
 
 ### Dependency update tool (from OpenSSF Scorecard)
 
@@ -613,11 +617,18 @@ This check determines whether the project is actively maintained.
 
 **ID**: `security_insights`
 
-Projects should provide an [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) manifest file.
+Projects should provide an [OpenSSF Security Insights](https://github.com/ossf/security-insights) manifest file. Both v1 and v2 of the specification are supported.
 
 This check passes if:
 
-- A valid OpenSSF Security Insights *manifest file* (`SECURITY-INSIGHTS.yml`) is found at the root of the repository.
+- A valid OpenSSF Security Insights *manifest file* is found. The following locations are searched in order (first match wins):
+
+```sh
+"security-insights.yml"            # v2 (root)
+".github/security-insights.yml"    # v2 (.github)
+".gitlab/security-insights.yml"    # v2 (.gitlab)
+"SECURITY-INSIGHTS.yml"            # v1 (root)
+```
 
 ### Security policy
 

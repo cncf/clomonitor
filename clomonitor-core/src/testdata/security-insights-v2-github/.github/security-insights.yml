@@ -1,0 +1,42 @@
+header:
+  schema-version: 2.0.0
+  last-updated: '2025-03-01'
+  last-reviewed: '2025-04-01'
+  url: https://example.com/foo/bar/raw/branch/main/.github/security-insights.yml
+
+project:
+  name: FooBar
+  administrators:
+    - name: Joe Dohn
+      affiliation: Foo
+      email: joe.bob@example.com
+      social: https://social.example.com/joebob
+      primary: true
+  repositories:
+    - name: Foo
+      url: https://example.com/foobar/foo
+      comment: |
+        Foo is the core repo for FooBar.
+  vulnerability-reporting:
+    reports-accepted: true
+    bug-bounty-available: false
+
+repository:
+  url: https://example.com/foobar/foo
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: true
+  core-team:
+    - name: Alice White
+      affiliation: Foo Bar
+      email: alicewhite@example.com
+      social: https://social.example.com/alicewhite
+      primary: true
+  license:
+    url: https://example.com/LICENSE
+    expression: MIT
+  security:
+    assessments:
+      self:
+        comment: |
+          Self assessment has not yet been completed.

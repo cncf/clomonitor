@@ -8,6 +8,14 @@ const defaultProps = {
   invisibleFooter: false,
 };
 
+const normalizeLogoPath = (fragment: DocumentFragment) => {
+  fragment.querySelectorAll('img').forEach((image) => {
+    if (image.getAttribute('src')?.endsWith('clomonitor.svg')) {
+      image.setAttribute('src', '/media/clomonitor.svg');
+    }
+  });
+};
+
 describe('Footer', () => {
   afterEach(() => {
     vi.resetAllMocks();
@@ -19,7 +27,9 @@ describe('Footer', () => {
         <Footer {...defaultProps} />
       </Router>
     );
-    expect(asFragment()).toMatchSnapshot();
+    const fragment = asFragment();
+    normalizeLogoPath(fragment);
+    expect(fragment).toMatchSnapshot();
   });
 
   it('renders proper content', () => {

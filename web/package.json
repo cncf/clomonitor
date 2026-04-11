@@ -60,7 +60,7 @@
     "copy:scorecard": "shx cp public/scorecard.html build",
     "copy:manifest": "shx cp public/manifest.json build",
     "analyze": "source-map-explorer --no-border-checks 'build/js/*.js'",
-    "build": "yarn copy:static && vite build && shx cp -r build/static/* build && shx rm -rf build/static && yarn copy:scorecard && yarn copy:manifest",
+    "build": "yarn copy:static && vite build && shx cp -r build/static/* build && yarn copy:scorecard && yarn copy:manifest",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "format:diff": "prettier --list-different \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "isready": "yarn format && yarn lint && yarn test --passWithNoTests && yarn build",

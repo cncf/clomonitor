@@ -1509,7 +1509,7 @@
   description: Kubewarden is a policy engine for Kubernetes. It helps with keeping your Kubernetes clusters secure and compliant
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubewarden/icon/color/kubewarden.icon.svg
-  devstats_url: https://kubewarden.teststats.cncf.io/
+  devstats_url: https://kubewarden.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: sandbox
   repositories:
@@ -2064,7 +2064,7 @@
   home_url: https://www.opencost.io
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/color/Opencost_Icon_Color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/white/Opencost_Icon_White.svg
-  devstats_url: https://opencost.teststats.cncf.io/
+  devstats_url: https://opencost.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: incubating
   repositories:
@@ -2079,7 +2079,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/black/openfeature-stacked-black.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/white/openfeature-stacked-white.svg
-  devstats_url: https://openfeature.teststats.cncf.io/
+  devstats_url: https://openfeature.devstats.cncf.io/
   accepted_at: "2022-06-14"
   maturity: incubating
   repositories:
@@ -2639,7 +2639,7 @@
   description: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/external-secrets-operator/icon/color/eso-icon-color.svg
-  devstats_url: https://external-secrets.devstats.cncf.io/
+  devstats_url: https://externalsecretsoperator.devstats.cncf.io/
   accepted_at: "2022-07-26"
   maturity: sandbox
   repositories:
@@ -4159,7 +4159,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/color/shipwright-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/white/shipwright-icon-white.svg
-  devstats_url: https://shipwright.devstats.cncf.io/
+  devstats_url: https://shipwrightcncf.devstats.cncf.io/
   accepted_at: "2024-08-30"
   maturity: sandbox
   repositories:
@@ -4511,7 +4511,7 @@
   description: A robust Kubernetes networking platform
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/ovn-kubernetes/icon/color/ovn-kubernetes-icon-color.svg
-  devstats_url: https://ovn-kubernetes.devstats.cncf.io
+  devstats_url: https://ovnkubernetes.devstats.cncf.io/
   accepted_at: "2024-10-17"
   maturity: sandbox
   repositories:
@@ -4679,7 +4679,7 @@
   description: A toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/runme/icon/color/runme-icon-color.svg
-  devstats_url: https://runme-notebooks.devstats.cncf.io
+  devstats_url: https://runmenotebooks.devstats.cncf.io/
   accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:

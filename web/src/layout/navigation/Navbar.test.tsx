@@ -11,6 +11,14 @@ const defaultProps = {
   setScrollPosition: mockSetScrollPosition,
 };
 
+const normalizeLogoPath = (fragment: DocumentFragment) => {
+  fragment.querySelectorAll('img').forEach((image) => {
+    if (image.getAttribute('src')?.endsWith('clomonitor.svg')) {
+      image.setAttribute('src', '/media/clomonitor.svg');
+    }
+  });
+};
+
 describe('Navbar', () => {
   afterEach(() => {
     vi.resetAllMocks();
@@ -22,7 +30,9 @@ describe('Navbar', () => {
         <Navbar {...defaultProps} />
       </Router>
     );
-    expect(asFragment()).toMatchSnapshot();
+    const fragment = asFragment();
+    normalizeLogoPath(fragment);
+    expect(fragment).toMatchSnapshot();
   });
 
   it('renders proper content', () => {

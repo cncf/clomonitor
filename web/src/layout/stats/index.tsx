@@ -23,7 +23,7 @@ import {
 } from 'date-fns';
 import { groupBy, isEmpty, isNull, isNumber, isUndefined, range } from 'lodash';
 import { ChangeEvent, useCallback, useContext, useEffect, useState } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import ReactApexChartImport from 'react-apexcharts';
 import { GrDocumentCsv } from 'react-icons/gr';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -53,6 +53,13 @@ interface SelectedRange {
 }
 
 const FOUNDATION_QUERY = 'foundation';
+
+const ReactApexChart =
+  (
+    ReactApexChartImport as typeof ReactApexChartImport & {
+      default?: typeof ReactApexChartImport;
+    }
+  ).default ?? ReactApexChartImport;
 
 const removeEmptyValuesFromObject = (obj: { [key: string]: unknown }) => {
   for (const propName in obj) {

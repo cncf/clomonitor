@@ -72,11 +72,13 @@ export const CodeBlock = (props: CodeBlockProps) => {
 
     let isMounted = true;
 
-    loadHighlighterBundle().then((loadedBundle) => {
-      if (isMounted) {
-        setBundle(loadedBundle);
-      }
-    });
+    void loadHighlighterBundle()
+      .then((loadedBundle) => {
+        if (isMounted) {
+          setBundle(loadedBundle);
+        }
+      })
+      .catch(() => undefined);
 
     return () => {
       isMounted = false;

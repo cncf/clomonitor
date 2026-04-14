@@ -4,7 +4,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/aerakimesh/icon/color/aerakimesh-icon-color.svg
   devstats_url: https://aerakimesh.devstats.cncf.io/
-  accepted_at: "2022-06-14"
+  accepted_at: "2022-06-17"
   maturity: sandbox
   repositories:
     - name: aeraki
@@ -41,7 +41,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/antrea/icon/color/antrea-icon-color.svg
   devstats_url: https://antrea.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: sandbox
   repositories:
     - name: antrea
@@ -59,7 +59,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/argo/icon/color/argo-icon-color.svg
   devstats_url: https://argo.devstats.cncf.io/
-  accepted_at: "2020-04-07"
+  accepted_at: "2020-03-26"
   maturity: graduated
   repositories:
     - name: argo-cd
@@ -96,7 +96,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg
   devstats_url: https://artifacthub.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: incubating
   repositories:
     - name: artifact-hub
@@ -146,7 +146,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/bfe/icon/color/bfe-icon-color.svg
   devstats_url: https://bfe.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: sandbox
   repositories:
     - name: bfe
@@ -216,7 +216,7 @@
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/chaosblade/icon/color/chaosblade-icon-color.svg
   devstats_url: https://chaosblade.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: sandbox
   repositories:
     - name: chaosblade
@@ -249,7 +249,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/chubaofs/icon/color/chubaofs-icon-color.svg
   devstats_url: https://chubaofs.devstats.cncf.io/
-  accepted_at: "2019-12-17"
+  accepted_at: "2019-12-16"
   maturity: graduated
   repositories:
     - name: chubaofs
@@ -289,7 +289,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudcustodian/icon/color/cloudcustodian-icon-color.svg
   devstats_url: https://cloudcustodian.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: incubating
   repositories:
     - name: cloud-custodian
@@ -303,7 +303,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cloudevents/icon/color/cloudevents-icon-color.svg
   devstats_url: https://cloudevents.devstats.cncf.io/
-  accepted_at: "2018-05-22"
+  accepted_at: "2018-05-15"
   maturity: graduated
   repositories:
     ###
@@ -340,7 +340,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/clusterpedia/icon/color/clusterpedia-icon-color.svg
   devstats_url: https://clusterpedia.devstats.cncf.io
-  accepted_at: "2022-06-14"
+  accepted_at: "2022-06-17"
   maturity: sandbox
   repositories:
     - name: clusterpedia
@@ -462,7 +462,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/crossplane/icon/color/crossplane-icon-color.svg
   devstats_url: https://crossplane.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: graduated
   repositories:
     - name: crossplane
@@ -491,7 +491,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/color/devfile-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/devfile/icon/white/devfile-icon-white.svg
   devstats_url: https://devfile.devstats.cncf.io/
-  accepted_at: "2021-01-11"
+  accepted_at: "2022-01-11"
   maturity: sandbox
   repositories:
     - name: registry
@@ -536,7 +536,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/dex/icon/color/dex-icon-color.svg
   devstats_url: https://dex.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: sandbox
   repositories:
     - name: dex
@@ -550,7 +550,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/dragonfly/icon/color/dragonfly-icon-color.svg
   devstats_url: https://dragonfly.devstats.cncf.io/
-  accepted_at: "2018-11-15"
+  accepted_at: "2018-11-13"
   maturity: graduated
   repositories:
     - name: dragonfly2
@@ -565,7 +565,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/emissary-ingress/icon/color/emissary-ingress-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/emissary-ingress/icon/white/emissary-ingress-icon-white.svg
   devstats_url: https://emissaryingress.devstats.cncf.io/
-  accepted_at: "2021-04-14"
+  accepted_at: "2021-04-13"
   maturity: incubating
   repositories:
     - name: emissary
@@ -711,7 +711,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluid/icon/color/fluid-icon-color.svg
   devstats_url: https://fluid.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: incubating
   repositories:
     - name: fluid
@@ -837,7 +837,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/in-toto/icon/color/in-toto-icon-color.svg
   devstats_url: https://intoto.devstats.cncf.io/
-  accepted_at: "2019-08-21"
+  accepted_at: "2019-08-14"
   maturity: graduated
   repositories:
     - name: in-toto
@@ -996,7 +996,7 @@
   category: serverless
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keda/icon/color/keda-icon-color.svg
   devstats_url: https://keda.devstats.cncf.io/
-  accepted_at: "2020-03-09"
+  accepted_at: "2020-03-12"
   maturity: graduated
   repositories:
     - name: keda
@@ -1405,7 +1405,8 @@
   description: Standardized Distributed Generative and Predictive AI Inference Platform for Scalable, Multi-Framework Deployment on Kubernetes
   category: model
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kserve/icon/color/k-serve-icon-color.svg
-  accepted_at: "2025-09-28"
+  devstats_url: https://kserve.devstats.cncf.io/
+  accepted_at: "2025-09-29"
   maturity: incubating
   repositories:
     - name: kserve
@@ -1476,7 +1477,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/color/kubevela-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevela/icon/white/kubevela-icon-white.svg
   devstats_url: https://kubevela.devstats.cncf.io/
-  accepted_at: "2021-04-05"
+  accepted_at: "2021-06-22"
   maturity: incubating
   repositories:
     - name: kubevela
@@ -1493,7 +1494,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevirt/icon/color/kubevirt-icon-color.svg
   devstats_url: https://kubevirt.devstats.cncf.io/
-  accepted_at: "2019-09-09"
+  accepted_at: "2019-09-06"
   maturity: incubating
   repositories:
     - name: kubevirt
@@ -1510,7 +1511,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubewarden/icon/color/kubewarden.icon.svg
   devstats_url: https://kubewarden.devstats.cncf.io/
-  accepted_at: "2022-06-14"
+  accepted_at: "2022-06-17"
   maturity: sandbox
   repositories:
     - name: community
@@ -1547,7 +1548,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kudo/icon/color/kudo-icon-color.svg
   devstats_url: https://kudo.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: sandbox
   repositories:
     - name: kudo
@@ -1562,7 +1563,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kuma/icon/color/kuma-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kuma/icon/white/kuma-icon-white.svg
   devstats_url: https://kuma.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: sandbox
   repositories:
     - name: kuma
@@ -1636,7 +1637,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/meshery/icon/meshery-logo-light.svg
   devstats_url: https://meshery.devstats.cncf.io/
-  accepted_at: "2021-06-21"
+  accepted_at: "2021-06-22"
   maturity: sandbox
   repositories:
     - name: meshery
@@ -2065,7 +2066,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/color/Opencost_Icon_Color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opencost/icon/white/Opencost_Icon_White.svg
   devstats_url: https://opencost.devstats.cncf.io/
-  accepted_at: "2022-06-14"
+  accepted_at: "2022-06-17"
   maturity: incubating
   repositories:
     - name: opencost
@@ -2080,7 +2081,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/black/openfeature-stacked-black.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/white/openfeature-stacked-white.svg
   devstats_url: https://openfeature.devstats.cncf.io/
-  accepted_at: "2022-06-14"
+  accepted_at: "2022-06-17"
   maturity: incubating
   repositories:
     - name: spec
@@ -2109,7 +2110,7 @@
   category: serverless
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfunction/icon/color/openfunction-icon-color.svg
   devstats_url: https://openfunction.devstats.cncf.io
-  accepted_at: "2021-11-09"
+  accepted_at: "2022-04-26"
   maturity: sandbox
   repositories:
     - name: openfunction
@@ -2162,7 +2163,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/oras/horizontal/color/oras-horizontal-color.svg
   devstats_url: https://oras.devstats.cncf.io/
-  accepted_at: "2021-06-02"
+  accepted_at: "2021-07-13"
   maturity: sandbox
   repositories:
     - name: community
@@ -2179,7 +2180,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/parsec/icon/color/parsec-icon-color.svg
   devstats_url: https://parsec.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: sandbox
   repositories:
     - name: community
@@ -2194,7 +2195,7 @@
   display_name: Piraeus-Datastore
   description: High Available Datastore for Kubernetes
   category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/piraeus/icon/color/piraeus-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/piraeus-datastore/icon/color/piraeus-icon-color.svg
   devstats_url: https://piraeus.devstats.cncf.io/
   accepted_at: "2021-01-26"
   maturity: sandbox
@@ -2210,7 +2211,7 @@
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/pixie/icon/color/pixie-icon-color.svg
   devstats_url: https://pixie.devstats.cncf.io/
-  accepted_at: "2021-06-15"
+  accepted_at: "2021-06-22"
   maturity: sandbox
   repositories:
     - name: pixie
@@ -2356,7 +2357,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/submariner/icon/color/submariner-icon-color.svg
   devstats_url: https://submariner.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: sandbox
   repositories:
     - name: submariner
@@ -2370,7 +2371,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/telepresence/icon/color/telepresence-icon-color.svg
   devstats_url: https://telepresence.devstats.cncf.io/
-  accepted_at: "2018-05-22"
+  accepted_at: "2018-05-15"
   maturity: sandbox
   repositories:
     - name: telepresence
@@ -2384,7 +2385,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/thanos/icon/color/thanos-icon-color.svg
   devstats_url: https://thanos.devstats.cncf.io/
-  accepted_at: "2019-07-20"
+  accepted_at: "2019-07-14"
   maturity: incubating
   repositories:
     - name: thanos
@@ -2494,7 +2495,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/vineyard/icon/color/vineyard-icon-color.svg
   devstats_url: https://vineyard.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: sandbox
   repositories:
     - name: v6d
@@ -2541,7 +2542,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/volcano/icon/color/volcano-icon-color.svg
   devstats_url: https://volcano.devstats.cncf.io/
-  accepted_at: "2020-04-10"
+  accepted_at: "2020-04-09"
   maturity: incubating
   repositories:
     - name: community
@@ -2562,7 +2563,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/wasmcloud/icon/color/wasmcloud.icon_green.svg
   devstats_url: https://wasmcloud.devstats.cncf.io/
-  accepted_at: "2021-07-12"
+  accepted_at: "2021-07-13"
   maturity: incubating
   repositories:
     - name: wasmcloud
@@ -2576,7 +2577,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/wasm-edge-runtime/icon/color/wasm-edge-runtime-icon-color.svg
   devstats_url: https://wasmedge.devstats.cncf.io/
-  accepted_at: "2021-04-27"
+  accepted_at: "2021-04-28"
   maturity: sandbox
   repositories:
     - name: wasmedge
@@ -2701,7 +2702,7 @@
   category: serverless
   logo_url: https://raw.githubusercontent.com/cncf/artwork/a7624ce326be3dd2a596120454956237410076e0/projects/serverless-devs/icon/color/serverless-devs-icon-color.svg
   devstats_url: https://serverlessdevs.devstats.cncf.io/
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: sandbox
   repositories:
     - name: serverless-devs
@@ -2723,7 +2724,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/containerssh/icon/containerssh-icon-light.svg
   devstats_url: https://containerssh.devstats.cncf.io
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: sandbox
   repositories:
     - name: ContainerSSH
@@ -2745,7 +2746,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfga/icon/color/openfga-icon-color.svg
   devstats_url: https://openfga.devstats.cncf.io/
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: incubating
   repositories:
     - name: openfga
@@ -2808,7 +2809,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/carvel/icon/color/carvel-icon-color.svg
   devstats_url: https://carvel.devstats.cncf.io/
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: sandbox
   repositories:
     - name: carvel
@@ -2846,7 +2847,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/lima/horizontal/color/lima-horizontal-color.svg
   devstats_url: https://lima.devstats.cncf.io/
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: incubating
   repositories:
     - name: lima
@@ -2860,7 +2861,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kured/icon/color/kured-icon-color.svg
   devstats_url: https://kured.devstats.cncf.io/
-  accepted_at: "2022-09-13"
+  accepted_at: "2022-09-14"
   maturity: sandbox
   repositories:
     - name: kured
@@ -2883,7 +2884,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/istio/icon/color/istio-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/istio/icon/white/istio-icon-white.svg
   devstats_url: https://istio.devstats.cncf.io
-  accepted_at: "2022-09-28"
+  accepted_at: "2022-09-30"
   maturity: graduated
   repositories:
     - name: istio
@@ -2908,7 +2909,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/devspace/icon/color/devspace-icon-color.svg
   devstats_url: https://devspace.devstats.cncf.io/
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: sandbox
   repositories:
     - name: devspace
@@ -2922,7 +2923,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opcr/icon/color/opcr-icon-color.svg
   devstats_url: https://opcr.devstats.cncf.io
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: sandbox
   repositories:
     - name: policy
@@ -2936,7 +2937,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/icon/color/kubescape-icon-color.svg
   devstats_url: https://kubescape.devstats.cncf.io/
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: incubating
   repositories:
     - name: kubescape
@@ -3077,7 +3078,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/keycloak/icon/color/keycloak-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/keycloak/icon/white/keycloak-icon-white.svg
   devstats_url: https://keycloak.devstats.cncf.io
-  accepted_at: "2023-04-11"
+  accepted_at: "2023-04-10"
   maturity: incubating
   repositories:
     - name: keycloak
@@ -3306,7 +3307,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/eraser/icon/color/eraser-icon-color.svg
   devstats_url: https://eraser.devstats.cncf.io/
-  accepted_at: "2023-06-21"
+  accepted_at: "2023-06-30"
   maturity: sandbox
   repositories:
     - name: eraser
@@ -3321,7 +3322,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color-light.svg
   devstats_url: https://hwameistor.devstats.cncf.io/
-  accepted_at: "2023-06-21"
+  accepted_at: "2023-06-22"
   maturity: sandbox
   repositories:
     - name: hwameistor
@@ -3339,7 +3340,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kpt/icon/color/kpt_icon_color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kpt/icon/white/kpt_icon_white.svg
   devstats_url: https://kpt.devstats.cncf.io/
-  accepted_at: "2023-06-21"
+  accepted_at: "2023-06-30"
   maturity: sandbox
   repositories:
     - name: kpt
@@ -3465,7 +3466,7 @@
   category: platform
   logo_url: https://landscape.cncf.io/logos/773de8297c26e5c1d0e92762b076be894e56dd58d5a50cff50cde111c585fbb9.svg
   devstats_url: https://kubeclipper.devstats.cncf.io/
-  accepted_at: "2023-06-29"
+  accepted_at: "2023-06-30"
   maturity: sandbox
   repositories:
     - name: kubeclipper
@@ -3518,6 +3519,7 @@
   display_name: Visual Studio Code Kubernetes Tools
   description: The extension for developers building applications to run in Kubernetes clusters and for DevOps staff troubleshooting Kubernetes applications.
   category: app definition
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/vs-code-kubernetes-tools/icon/color/kefvsc-icon-color.svg
   devstats_url: https://vscodek8stools.devstats.cncf.io/
   accepted_at: "2021-11-09"
   maturity: sandbox
@@ -3637,7 +3639,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubestellar/icon/color/kubestellar-icon-color.svg
   devstats_url: https://kubestellar.devstats.cncf.io
-  accepted_at: "2023-12-19"
+  accepted_at: "2023-09-19"
   maturity: sandbox
   repositories:
     - name: kubestellar
@@ -4014,7 +4016,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/openGemini/icon/color/openGemini_icon_color.svg
   devstats_url: https://opengemini.devstats.cncf.io/
-  accepted_at: "2024-07-09"
+  accepted_at: "2024-06-21"
   maturity: sandbox
   repositories:
     - name: openGemini
@@ -4160,7 +4162,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/color/shipwright-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/shipwright/icon/white/shipwright-icon-white.svg
   devstats_url: https://shipwrightcncf.devstats.cncf.io/
-  accepted_at: "2024-08-30"
+  accepted_at: "2024-08-19"
   maturity: sandbox
   repositories:
     - name: community
@@ -4306,6 +4308,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kmesh/icon/color/KMESH-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kmesh/icon/white/KMESH-icon-white.svg
+  devstats_url: https://kmesh.devstats.cncf.io/
   accepted_at: "2024-10-17"
   maturity: sandbox
   repositories:
@@ -4327,7 +4330,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kusionstack/icon/color/kusionstack-icon-color.svg
   devstats_url: https://kusionstack.devstats.cncf.io
-  accepted_at: "2024-10-17"
+  accepted_at: "2024-09-12"
   maturity: sandbox
   repositories:
     - name: kusion
@@ -4527,7 +4530,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/tokenetes/icon/color/tokenetes-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/tokenetes/icon/white/tokenetes-icon-white.svg
   devstats_url: https://tratteria.devstats.cncf.io
-  accepted_at: "2025-01-16"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: tokenetes
@@ -4545,7 +4548,7 @@
   category: CNAI
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kaito/icon/color/kaito-icon.svg
   devstats_url: https://kaito.devstats.cncf.io
-  accepted_at: "2024-10-11"
+  accepted_at: "2024-10-17"
   maturity: sandbox
   repositories:
     - name: kaito
@@ -4559,7 +4562,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/drasi/icon/color/drasi-icon-color.svg
   devstats_url: https://drasi.devstats.cncf.io/
-  accepted_at: "2025-01-24"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: drasi-platform
@@ -4579,7 +4582,7 @@
   description: The composefs project combines several underlying Linux features to provide a very flexible mechanism to support read-only mountable filesystem trees, stacking on top of an underlying "lower" Linux filesystem.
   category: runtime
   devstats_url: https://composefs.devstats.cncf.io/
-  accepted_at: "2025-01-21"
+  accepted_at: "2025-01-19"
   maturity: sandbox
   repositories:
     - name: composefs
@@ -4779,6 +4782,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/opentofu/icon/color/opentofu-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/opentofu/icon/white/opentofu-icon-white.svg
+  devstats_url: https://opentofu.devstats.cncf.io/
   accepted_at: "2025-04-23"
   maturity: sandbox
   repositories:
@@ -4853,7 +4857,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/xregistry/horizontal/color/xregistry-horizontal-color.svg
   devstats_url: https://xregistry.devstats.cncf.io/
-  accepted_at: "2025-06-03"
+  accepted_at: "2025-06-05"
   maturity: sandbox
   repositories:
     - name: spec
@@ -4879,7 +4883,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/modelpack/icon/color/ModelPack_Logo_Icon_Color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/modelpack/icon/white/ModelPack_Logo_Icon_White.svg
   devstats_url: https://modelpack.devstats.cncf.io/
-  accepted_at: "2025-06-03"
+  accepted_at: "2025-05-13"
   maturity: sandbox
   repositories:
     - name: model-spec
@@ -4956,7 +4960,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/color/holmesgpt-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/white/holmesgpt-icon-white.svg
   devstats_url: https://holmesgpt.devstats.cncf.io/
-  accepted_at: "2025-10-10"
+  accepted_at: "2025-10-08"
   maturity: sandbox
   repositories:
     - name: holmesgpt
@@ -4970,7 +4974,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cedar-policy/cedar/main/logo.svg
   devstats_url: https://cedarpolicy.devstats.cncf.io/
-  accepted_at: "2025-10-10"
+  accepted_at: "2025-10-08"
   maturity: sandbox
   repositories:
     - name: cedar
@@ -4989,7 +4993,9 @@
 - name: cohdi
   display_name: CoHDI
   description: The objective is to cultivate a community-driven, standards-based ecosystem for next-generation architectures built on Composable Hardware in Disaggregated Infrastructure.
-  logo_url: https://avatars.githubusercontent.com/u/217262880?s=200&v=4
+  category: orchestration
+  logo_url: https://avatars.githubusercontent.com/u/217262880?v=4
+  devstats_url: https://cohdi.devstats.cncf.io/
   accepted_at: "2025-12-19"
   maturity: sandbox
   repositories:
@@ -5024,7 +5030,9 @@
 - name: openchoreo
   display_name: OpenChoreo
   description: OpenChoreo is an open-source internal developer platform (IDP).
+  category: app definition
   logo_url: https://openchoreo.dev/img/openchoreo-logo.svg
+  devstats_url: https://openchoreo.devstats.cncf.io/
   accepted_at: "2026-01-06"
   maturity: sandbox
   repositories:
@@ -5041,7 +5049,8 @@
   display_name: KAI Scheduler
   description: A robust, efficient, and scalable Kubernetes scheduler that optimizes GPU resource allocation for AI workloads in large-scale clusters
   category: orchestration
-  accepted_at: "2026-02-08"
+  devstats_url: https://kaischeduler.devstats.cncf.io/
+  accepted_at: "2025-12-21"
   maturity: sandbox
   repositories:
     - name: kai-scheduler
@@ -5053,7 +5062,9 @@
   display_name: KubeElasti
   description: Auto scale-to-zero pods when idle and scale up pods when traffic arrives, without losing any requests
   category: serverless
-  accepted_at: "2026-01-30"
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubeelasti/icon/color/kubeelasti-icon-color.svg
+  devstats_url: https://kubeelasti.devstats.cncf.io/
+  accepted_at: "2026-01-03"
   maturity: sandbox
   repositories:
     - name: kubeelasti
@@ -5064,10 +5075,11 @@
 - name: agones
   display_name: Agones
   description: Dedicated game server hosting and scaling for multiplayer games on Kubernetes
+  category: orchestration
   home_url: https://agones.dev
   logo_url: https://github.com/agones-dev/agones/blob/main/docs/agones.png?raw=true
   devstats_url: https://agones.devstats.cncf.io/
-  accepted_at: "2026-03-12"
+  accepted_at: "2025-12-21"
   maturity: sandbox
   repositories:
     - name: agones
@@ -5109,9 +5121,11 @@
 - name: nmstate
   display_name: NMstate
   description: NMstate manages host networking in a declarative manner
+  category: provisioning
   home_url: https://nmstate.io
   logo_url: https://avatars.githubusercontent.com/u/39068239?s=200&v=4
-  accepted_at: "2026-03-23"
+  devstats_url: https://nmstate.devstats.cncf.io/
+  accepted_at: "2026-03-12"
   maturity: sandbox
   repositories:
     - name: nmstate
@@ -5136,7 +5150,8 @@
   description: Open-source platform for running, managing, and scaling data workloads on Kubernetes
   category: app definition
   home_url: https://openeverest.io
-  accepted_at: "2026-03-19"
+  devstats_url: https://openeverest.devstats.cncf.io/
+  accepted_at: "2026-03-15"
   maturity: sandbox
   repositories:
     - name: openeverest

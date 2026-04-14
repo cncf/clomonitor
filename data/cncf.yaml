@@ -2624,7 +2624,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/konveyor/icon/color/konveyor-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/konveyor/icon/white/konveyor-icon-white-text.svg
   devstats_url: https://konveyor.devstats.cncf.io
-  accepted_at: "2022-07-25"
+  accepted_at: "2022-07-26"
   maturity: sandbox
   repositories:
     - name: community

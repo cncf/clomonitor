@@ -4649,8 +4649,8 @@
   accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
-    - name: fleet
-      url: https://github.com/Azure/fleet
+    - name: kubefleet
+      url: https://github.com/kubefleet-dev/kubefleet
       check_sets:
         - code
         - community

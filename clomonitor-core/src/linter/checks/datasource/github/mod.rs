@@ -95,7 +95,7 @@ pub(crate) fn build_url(path: &Path, owner: &str, repo: &str, branch: &str) -> S
         owner,
         repo,
         branch,
-        path.to_string_lossy(),
+        path_to_url(path),
     )
 }
 
@@ -257,6 +257,17 @@ fn get_owner_and_repo(repo_url: &str) -> Result<(String, String)> {
     Ok((c["org"].to_string(), c["repo"].to_string()))
 }
 
+/// Serialize a repository path using URL separators.
+fn path_to_url(path: &Path) -> String {
+    path.components()
+        .filter_map(|component| match component {
+            std::path::Component::Normal(part) => Some(part.to_string_lossy()),
+            _ => None,
+        })
+        .collect::<Vec<_>>()
+        .join("/")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -272,6 +283,19 @@ mod tests {
         assert_eq!(
             build_url(Path::new("path/test.md"), "owner", "repo", "main"),
             "https://github.com/owner/repo/blob/main/path/test.md".to_string()
+        );
+    }
+
+    #[test]
+    fn build_url_works_with_nested_paths() {
+        assert_eq!(
+            build_url(
+                Path::new(".github").join("security-insights.yml").as_path(),
+                "owner",
+                "repo",
+                "main"
+            ),
+            "https://github.com/owner/repo/blob/main/.github/security-insights.yml".to_string()
         );
     }
 

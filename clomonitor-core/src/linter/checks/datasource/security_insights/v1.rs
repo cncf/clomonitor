@@ -1,14 +1,7 @@
-use std::path::Path;
-
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 
-use crate::linter::util;
-
-/// OpenSSF Security Insights manifest file name.
-pub(crate) const SECURITY_INSIGHTS_MANIFEST_FILE: &str = "SECURITY-INSIGHTS.yml";
-
-/// OpenSSF Security Insights manifest.
+/// OpenSSF Security Insights v1 manifest.
 ///
 /// Note: the types defined below do not contain *all* the fields available in
 /// the specification, just the ones needed by CLOMonitor.
@@ -29,16 +22,9 @@ pub(crate) struct SecurityInsights {
 }
 
 impl SecurityInsights {
-    /// Create a new SecurityInsights instance from the manifest file located
-    /// at the path provided.
-    pub(crate) fn new(path: &Path) -> Result<Option<Self>> {
-        let manifest_path = path.join(SECURITY_INSIGHTS_MANIFEST_FILE);
-        if !Path::new(&manifest_path).exists() {
-            return Ok(None);
-        }
-        let content = util::fs::read_to_string(manifest_path)
-            .context("error reading security insights manifest file")?;
-        serde_yaml::from_str(&content).context("invalid security insights manifest")
+    /// Parse a v1 Security Insights manifest from the content provided.
+    pub(super) fn parse_content(content: &str) -> Result<Self> {
+        serde_yaml::from_str(content).context("invalid security insights manifest")
     }
 }
 
@@ -132,50 +118,5 @@ pub(crate) struct SecurityContact {
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub(crate) struct VulnerabilityReporting {
-    accepts_vulnerability_reports: bool,
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    const TESTDATA_PATH: &str = "src/testdata/security-insights-v1";
-
-    #[test]
-    fn new_returns_none_when_file_does_not_exist() {
-        let result = SecurityInsights::new(&Path::new(TESTDATA_PATH).join("not-found")).unwrap();
-        assert!(result.is_none());
-    }
-
-    #[test]
-    fn new_returns_error_when_file_is_invalid() {
-        let result = SecurityInsights::new(&Path::new(TESTDATA_PATH).join("invalid"));
-        assert!(result.is_err());
-    }
-
-    #[test]
-    fn new_parses_valid_manifest() {
-        let result = SecurityInsights::new(Path::new(TESTDATA_PATH)).unwrap();
-        assert!(result.is_some());
-        let insights = result.unwrap();
-
-        assert_eq!(insights.header.expiration_date, "2024-09-28T01:00:00.000Z");
-        assert_eq!(
-            insights.header.project_url,
-            "https://github.com/ossf/security-insights-spec"
-        );
-        assert_eq!(insights.header.schema_version, "1.0.0");
-        assert!(insights.contribution_policy.accepts_automated_pull_requests);
-        assert!(insights.contribution_policy.accepts_pull_requests);
-        assert!(!insights.project_lifecycle.bug_fixes_only);
-        assert_eq!(insights.project_lifecycle.status, "active");
-        assert!(
-            insights
-                .vulnerability_reporting
-                .accepts_vulnerability_reports
-        );
-        assert_eq!(insights.security_contacts.len(), 1);
-        assert_eq!(insights.security_contacts[0].kind, "email");
-        assert_eq!(insights.security_contacts[0].value, "security@openssf.org");
-    }
+    pub accepts_vulnerability_reports: bool,
 }

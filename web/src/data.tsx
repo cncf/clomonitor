@@ -479,7 +479,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
         The project provides an{' '}
         <ExternalLink
           className="d-inline-block text-decoration-underline"
-          href="https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md"
+          href="https://security-insights.openssf.org/"
         >
           OpenSSF Security Insights
         </ExternalLink>{' '}

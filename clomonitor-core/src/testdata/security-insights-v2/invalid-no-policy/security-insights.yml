@@ -1,0 +1,20 @@
+header:
+  schema-version: 2.0.0
+  last-reviewed: '2025-04-01'
+  last-updated: '2025-03-01'
+  url: https://example.com/raw/main/security-insights.yml
+repository:
+  url: https://github.com/example/project
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: true
+  core-team:
+    - name: Example maintainer
+      primary: true
+  license:
+    url: https://example.com/LICENSE
+    expression: Apache-2.0
+  security:
+    assessments:
+      self:
+        comment: Self assessment

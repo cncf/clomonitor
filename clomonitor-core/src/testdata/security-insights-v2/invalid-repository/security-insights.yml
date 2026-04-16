@@ -1,0 +1,8 @@
+header:
+  schema-version: 2.0.0
+  last-reviewed: '2025-04-01'
+  last-updated: '2025-03-01'
+  url: https://example.com/raw/main/security-insights.yml
+repository:
+  url: https://github.com/example/project
+  status: active

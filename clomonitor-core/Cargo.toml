@@ -33,4 +33,5 @@ tracing = { workspace = true }
 which = { workspace = true }
 
 [dev-dependencies]
+tempfile = { workspace = true }
 wiremock = { workspace = true }

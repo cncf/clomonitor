@@ -9,34 +9,34 @@ project-lifecycle:
   status: active
   bug-fixes-only: false
   core-maintainers:
-  - github:luigigubello
-  - github:eddie-knight
+    - github:luigigubello
+    - github:eddie-knight
 contribution-policy:
   accepts-pull-requests: true
   accepts-automated-pull-requests: true
   code-of-conduct: https://openssf.org/community/code-of-conduct
 documentation:
-- https://github.com/ossf/security-insights-spec/blob/main/specification.md
+  - https://github.com/ossf/security-insights-spec/blob/main/specification.md
 distribution-points:
-- https://github.com/ossf/security-insights-spec
+  - https://github.com/ossf/security-insights-spec
 security-artifacts:
   threat-model:
     threat-model-created: true
     evidence-url:
-    - https://github.com/ossf/security-insights-spec/blob/main/docs/threat-model.md
+      - https://github.com/ossf/security-insights-spec/blob/main/docs/threat-model.md
 security-testing:
-- tool-type: sca
-  tool-name: Dependabot
-  tool-version: latest
-  integration:
-    ad-hoc: false
-    ci: true
-    before-release: true
-  comment: |
-    Dependabot is enabled for this repo.
+  - tool-type: sca
+    tool-name: Dependabot
+    tool-version: latest
+    integration:
+      ad-hoc: false
+      ci: true
+      before-release: true
+    comment: |
+      Dependabot is enabled for this repo.
 security-contacts:
-- type: email
-  value: security@openssf.org
+  - type: email
+    value: security@openssf.org
 vulnerability-reporting:
   accepts-vulnerability-reports: true
   security-policy: https://github.com/ossf/security-insights-spec/security/policy
@@ -44,6 +44,8 @@ vulnerability-reporting:
   comment: |
     The first and best way to report a vulnerability is by using private security issues in GitHub.
 dependencies:
+  env-dependencies-policy:
+    policy-url: https://example.com/v1/dependencies-policy
   third-party-packages: true
   dependencies-lists:
-  - https://github.com/ossf/security-insights-spec/blob/main/validators/python/requirements.txt
+    - https://github.com/ossf/security-insights-spec/blob/main/validators/python/requirements.txt

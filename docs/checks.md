@@ -587,11 +587,39 @@ This check determines whether the project's GitHub Action workflows has dangerou
 
 **ID**: `dependencies_policy`
 
-Project should provide a dependencies policy that describes how dependencies are consumed and updated.
+Projects should provide a dependencies policy that describes how
+dependencies are consumed and updated.
 
 This check passes if:
 
-- The url of the dependencies policy is available in the `dependencies > env-dependencies-policy` section of the [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) *manifest file* (`SECURITY-INSIGHTS.yml`) that should be located at the root of the repository.
+- The URL of the dependencies policy is available in a valid
+  [OpenSSF Security Insights](https://security-insights.openssf.org/)
+  *manifest file*:
+- In v1 manifests, from `dependencies > env-dependencies-policy >
+  policy-url`.
+- In v2 manifests, from `repository > documentation >
+  dependency-management-policy`.
+
+Note that:
+
+- When multiple supported manifests are present, CLOMonitor inspects them in
+  this order:
+
+  - `security-insights.yml`
+  - `.github/security-insights.yml`
+  - `SECURITY-INSIGHTS.yml`.
+
+- CLOMonitor determines each manifest version using the `header >
+  schema-version` field.
+
+- CLOMonitor selects the first v2 manifest found during that scan.
+
+- If no v2 manifest is found, CLOMonitor falls back to the first v1 manifest
+  found during that scan.
+
+- CLOMonitor does not fall back to a lower-priority manifest when a
+  selected manifest is invalid or when the selected manifest does not
+  include the dependencies policy URL.
 
 ### Dependency update tool (from OpenSSF Scorecard)
 
@@ -613,11 +641,32 @@ This check determines whether the project is actively maintained.
 
 **ID**: `security_insights`
 
-Projects should provide an [OpenSSF Security Insights](https://github.com/ossf/security-insights-spec/blob/v1.0.0/specification.md) manifest file.
+Projects should provide an [OpenSSF Security Insights](https://security-insights.openssf.org/) manifest file.
 
 This check passes if:
 
-- A valid OpenSSF Security Insights *manifest file* (`SECURITY-INSIGHTS.yml`) is found at the root of the repository.
+- A valid OpenSSF Security Insights v1 or v2 *manifest file*
+  is found in one of CLOMonitor's supported manifest locations.
+
+Note that:
+
+- When multiple supported manifests are present, CLOMonitor inspects them in
+  this order:
+
+  - `security-insights.yml`
+  - `.github/security-insights.yml`
+  - `SECURITY-INSIGHTS.yml`.
+
+- CLOMonitor determines each manifest version using the `header >
+  schema-version` field.
+
+- CLOMonitor selects the first v2 manifest found during that scan.
+
+- If no v2 manifest is found, CLOMonitor falls back to the first v1 manifest
+  found during that scan.
+
+- CLOMonitor does not fall back to a lower-priority manifest when a
+  selected manifest is invalid.
 
 ### Security policy
 

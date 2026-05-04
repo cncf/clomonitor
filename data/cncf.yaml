@@ -1469,6 +1469,45 @@
       url: https://github.com/kubernetes/community
       check_sets:
         - community
+    - name: reference-docs
+      url: https://github.com/kubernetes-sigs/reference-docs
+      check_sets:
+        - code
+        - docs
+    - name: contributor-site
+      url: https://github.com/kubernetes/contributor-site
+      check_sets:
+        - docs
+    - name: org
+      url: https://github.com/kubernetes/org
+      check_sets:
+        - community
+        - code
+    - name: kubernetes-template-project
+      url: https://github.com/kubernetes/kubernetes-template-project
+      check_sets:
+        - code
+    - name: contributor-playground
+      url: https://github.com/kubernetes-sigs/contributor-playground
+      check_sets:
+        - community
+    - name: discuss-theme
+      url: https://github.com/kubernetes-sigs/discuss-theme
+      check_sets:
+        - code
+    - name: lwkd
+      url: https://github.com/kubernetes-sigs/lwkd
+      check_sets:
+        - community
+        - docs
+    - name: slack-infra
+      url: https://github.com/kubernetes-sigs/slack-infra
+      check_sets:
+        - code
+    - name: maintainers
+      url: https://github.com/kubernetes-sigs/maintainers
+      check_sets:
+        - community
 - name: kubevela
   display_name: KubeVela
   description: Make shipping applications more enjoyable

@@ -3355,7 +3355,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/microcks/icon/color/microcks-icon-color.svg
   devstats_url: https://microcks.devstats.cncf.io/
   accepted_at: "2023-06-22"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     # Microcks, Delivered components, ref: https://github.com/microcks/.github/issues/16
     # CLOMonitor check sets: community and code.

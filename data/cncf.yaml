@@ -1848,7 +1848,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opentelemetry/icon/color/opentelemetry-icon-color.svg
   devstats_url: https://opentelemetry.devstats.cncf.io/
   accepted_at: "2019-05-07"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: community
       url: https://github.com/open-telemetry/community

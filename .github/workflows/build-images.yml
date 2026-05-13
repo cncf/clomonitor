@@ -12,6 +12,11 @@ env:
   OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
   OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
 
+# OCIR push uses OCI_AUTH_TOKEN + OCI_CLI_* secrets; default GITHUB_TOKEN
+# only needs read for the checkout.
+permissions:
+  contents: read
+
 jobs:
   build-dbmigrator-image:
     if: github.ref == 'refs/heads/main'

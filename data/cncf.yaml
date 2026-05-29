@@ -5155,3 +5155,32 @@
       url: https://github.com/openeverest/openeverest.github.io
       check_sets:
         - docs
+- name: tekton
+  display_name: Tekton
+  description: A cloud-native Pipeline resource
+  category: CI & Pipeline Orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/color/tekton-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/white/tekton-icon-white.svg
+  devstats_url: https://tekton.devstats.cd.foundation
+  maturity: incubating
+  repositories:
+    - name: community
+      url: https://github.com/tektoncd/community
+      check_sets:
+        - community
+    - name: pipeline
+      url: https://github.com/tektoncd/pipeline
+      check_sets:
+        - code
+    - name: cli
+      url: https://github.com/tektoncd/cli
+      check_sets:
+        - code-lite
+    - name: operator
+      url: https://github.com/tektoncd/operator
+      check_sets:
+        - code-lite
+    - name: website
+      url: https://github.com/tektoncd/website
+      check_sets:
+        - docs

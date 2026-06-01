@@ -5158,7 +5158,7 @@
 - name: tekton
   display_name: Tekton
   description: A cloud-native Pipeline resource
-  category: CI & Pipeline Orchestration
+  category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/color/tekton-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/white/tekton-icon-white.svg
   devstats_url: https://tekton.devstats.cd.foundation

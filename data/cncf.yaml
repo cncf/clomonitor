@@ -5161,7 +5161,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/color/tekton-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/white/tekton-icon-white.svg
-  devstats_url: https://tekton.devstats.cd.foundation
+  devstats_url: https://tekton.devstats.cncf.io
   maturity: incubating
   repositories:
     - name: community

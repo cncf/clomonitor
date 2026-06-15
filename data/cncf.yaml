@@ -2637,24 +2637,6 @@
       check_sets:
         - community
         - code
-- name: hexapolicyorchestrator
-  display_name: Hexa
-  description: Hexa Policy Orchestrator enables you to manage all of your policies consistently across software providers so that you can unify access policy management.
-  category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hexa/icon/hexa-icon-color.svg
-  devstats_url: https://hexapolicyorchestrator.devstats.cncf.io
-  accepted_at: "2022-07-26"
-  maturity: sandbox
-  repositories:
-    - name: policy-orchestrator
-      url: https://github.com/hexa-org/policy-orchestrator
-      check_sets:
-        - community
-        - code
-    - name: policy
-      url: https://github.com/hexa-org/policy
-      check_sets:
-        - code-lite
 - name: armada
   display_name: Armada
   description: Armada is a multi-Kubernetes cluster batch job scheduler

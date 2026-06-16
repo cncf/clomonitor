@@ -3434,7 +3434,7 @@
   display_name: KubeClipper
   description: Manage kubernetes in the most light and convenient way
   category: platform
-  logo_url: https://landscape.cncf.io/logos/773de8297c26e5c1d0e92762b076be894e56dd58d5a50cff50cde111c585fbb9.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubeclipper/stacked/color/kubeclipper-stacked-color.svg
   devstats_url: https://kubeclipper.devstats.cncf.io/
   accepted_at: "2023-06-30"
   maturity: sandbox
@@ -3563,7 +3563,8 @@
   display_name: kueue
   description: Kubernetes-native Job Queueing.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/kubernetes-sigs/kueue/main/site/static/images/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/sub-projects/kueue/icon/color/kueue-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/sub-projects/kueue/icon/white/kueue-icon-white.svg
   repositories:
     - name: kueue
       url: https://github.com/kubernetes-sigs/kueue
@@ -3802,7 +3803,7 @@
   display_name: Kanister
   description: An extensible framework for application-level data management on Kubernetes
   category: runtime
-  logo_url: https://avatars.githubusercontent.com/u/30535216?s=200&v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kanister/stacked/color/kanister-stacked-color.svg
   devstats_url: https://kanister.devstats.cncf.io/
   accepted_at: "2023-09-20"
   maturity: sandbox
@@ -4964,7 +4965,8 @@
   display_name: CoHDI
   description: The objective is to cultivate a community-driven, standards-based ecosystem for next-generation architectures built on Composable Hardware in Disaggregated Infrastructure.
   category: orchestration
-  logo_url: https://avatars.githubusercontent.com/u/217262880?v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/cohdi/icon/color/cohdi-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/cohdi/icon/white/cohdi-icon-white.svg
   devstats_url: https://cohdi.devstats.cncf.io/
   accepted_at: "2025-12-19"
   maturity: sandbox
@@ -5001,7 +5003,8 @@
   display_name: OpenChoreo
   description: OpenChoreo is an open-source internal developer platform (IDP).
   category: app definition
-  logo_url: https://openchoreo.dev/img/openchoreo-logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/openchoreo/icon/color/openchoreo-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/openchoreo/icon/white/openchoreo-icon-white.svg
   devstats_url: https://openchoreo.devstats.cncf.io/
   accepted_at: "2026-01-06"
   maturity: sandbox
@@ -5062,7 +5065,8 @@
   description: Backup and migrate Kubernetes applications and their persistent volumes
   category: runtime
   home_url: https://velero.io/
-  logo_url: https://camo.githubusercontent.com/1c59cb7971a81cbeb389792e42d22364b562eb7f0a64b46e967ac1135bb0ba91/68747470733a2f2f76656c65726f2e696f2f646f63732f6d61696e2f696d672f76656c65726f2e706e67
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/velero/icon/color/velero-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/velero/icon/white/velero-icon-white.svg
   devstats_url: https://velero.devstats.cncf.io/
   accepted_at: "2026-03-17"
   maturity: sandbox
@@ -5093,7 +5097,8 @@
   description: NMstate manages host networking in a declarative manner
   category: provisioning
   home_url: https://nmstate.io
-  logo_url: https://avatars.githubusercontent.com/u/39068239?s=200&v=4
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/nmstate/icon/color/nmstate-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/nmstate/icon/white/nmstate-icon-white.svg
   devstats_url: https://nmstate.devstats.cncf.io/
   accepted_at: "2026-03-12"
   maturity: sandbox
@@ -5166,3 +5171,77 @@
       url: https://github.com/tektoncd/website
       check_sets:
         - docs
+- name: higress
+  display_name: Higress
+  description: An AI-native API gateway built on Envoy for ingress, microservice, and LLM traffic
+  category: orchestration
+  home_url: https://higress.io
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/higress/icon/color/higress-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/higress/icon/white/higress-icon-white.svg
+  devstats_url: https://higress.devstats.cncf.io/
+  accepted_at: "2026-03-15"
+  maturity: sandbox
+  repositories:
+    - name: higress
+      url: https://github.com/higress-group/higress
+      check_sets:
+        - community
+        - code
+    - name: higress-console
+      url: https://github.com/higress-group/higress-console
+      check_sets:
+        - code-lite
+    - name: wasm-go
+      url: https://github.com/higress-group/wasm-go
+      check_sets:
+        - code-lite
+    - name: higress-group.github.io
+      url: https://github.com/higress-group/higress-group.github.io
+      check_sets:
+        - docs
+- name: apicurio-registry
+  display_name: Apicurio Registry
+  description: An API and schema registry for governing schemas, API definitions, and AI agent artifacts in cloud-native environments
+  category: app definition
+  home_url: https://www.apicur.io/registry/
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/apicurio-registry.svg
+  devstats_url: https://apicurioregistry.devstats.cncf.io/
+  accepted_at: "2026-03-12"
+  maturity: sandbox
+  repositories:
+    - name: apicurio-registry
+      url: https://github.com/Apicurio/apicurio-registry
+      check_sets:
+        - community
+        - code
+    - name: apicurio.github.io
+      url: https://github.com/Apicurio/apicurio.github.io
+      check_sets:
+        - docs
+- name: llm-d
+  display_name: llm-d
+  description: A Kubernetes-native high-performance distributed LLM inference framework
+  category: CNAI
+  home_url: https://llm-d.ai
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/llm-d.svg
+  devstats_url: https://llmd.devstats.cncf.io/
+  accepted_at: "2026-03-12"
+  maturity: sandbox
+  repositories:
+    - name: llm-d
+      url: https://github.com/llm-d/llm-d
+      check_sets:
+        - community
+        - code
+    - name: llm-d-router
+      url: https://github.com/llm-d/llm-d-router
+      check_sets:
+        - code-lite
+    - name: llm-d-kv-cache
+      url: https://github.com/llm-d/llm-d-kv-cache
+      check_sets:
+        - code-lite
+    - name: llm-d-benchmark
+      url: https://github.com/llm-d/llm-d-benchmark
+      check_sets:
+        - code-lite

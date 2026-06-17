@@ -1674,8 +1674,8 @@
       url: https://github.com/metal3-io/ironic-standalone-operator
       check_sets:
         - code
-    - name: mariadb-image
-      url: https://github.com/metal3-io/mariadb-image
+    - name: utility-images
+      url: https://github.com/metal3-io/utility-images
       check_sets:
         - code-lite
 - name: metrics-server

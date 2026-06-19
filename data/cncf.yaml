@@ -5251,6 +5251,7 @@
   category: orchestration
   home_url: https://kube-bind.io
   logo_url: https://docs.kube-bind.io/main/logo.png
+  devstats: https://kbind.devstats.cncf.io/
   devstats_url: https://kbind.devstats.cncf.io/
   accepted_at: "2026-03-12"
   maturity: sandbox

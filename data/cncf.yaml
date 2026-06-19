@@ -1637,7 +1637,7 @@
   display_name: Metal3
   description: Bare metal host provisioning for Kubernetes
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/metal3/icon/color/metal3-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/metal3-io/icon/color/metal3-icon-color.svg
   devstats_url: https://metal3.devstats.cncf.io/
   accepted_at: "2020-09-08"
   maturity: incubating
@@ -1793,7 +1793,7 @@
   display_name: Open Policy Agent
   description: An open source, general-purpose policy engine
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opa/icon/color/opa-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/open-policy-agent/icon/color/opa-icon-color.svg
   devstats_url: https://opa.devstats.cncf.io/
   accepted_at: "2018-03-29"
   maturity: graduated
@@ -2656,7 +2656,7 @@
   display_name: Distribution
   description: The toolkit to pack, ship, store, and deliver container content
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cncf-distribution/icon/color/cncf-distribution-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/distribution/icon/color/cncf-distribution-icon-color.svg
   devstats_url: https://distribution.devstats.cncf.io
   accepted_at: "2021-01-26"
   maturity: sandbox
@@ -4584,8 +4584,8 @@
   display_name: Podman Container Tools
   description: The Podman Container Tools project consists of Podman (the Pod Manager), Buildah, Skopeo as well as a number of smaller tools which are used to manage containers and images, volumes mounted into those containers, and pods made from groups of containers.
   category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman/icon/color/podman-icon-color.svg
-  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/podman/icon/white/podman-icon-white.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/podman-container-tools/icon/color/podman-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/podman-container-tools/icon/white/podman-icon-white.svg
   devstats_url: https://podmancontainertools.devstats.cncf.io
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -4652,7 +4652,7 @@
   display_name: Runme Notebooks
   description: A toolchain that turns Markdown into interactive, cloud-native, runnable Notebook experiences for DevOps.
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/runme/icon/color/runme-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/runme-notebooks/icon/color/runme-icon-color.svg
   devstats_url: https://runmenotebooks.devstats.cncf.io/
   accepted_at: "2025-01-21"
   maturity: sandbox
@@ -5245,3 +5245,18 @@
       url: https://github.com/llm-d/llm-d-benchmark
       check_sets:
         - code-lite
+- name: kbind
+  display_name: kbind
+  description: An open source project that aims to provide better support for service providers and consumers that reside in distinct Kubernetes clusters
+  category: orchestration
+  home_url: https://kube-bind.io
+  logo_url: https://docs.kube-bind.io/main/logo.png
+  devstats_url: https://kbind.devstats.cncf.io/
+  accepted_at: "2026-03-12"
+  maturity: sandbox
+  repositories:
+    - name: kube-bind
+      url: https://github.com/kube-bind/kube-bind
+      check_sets:
+        - community
+        - code

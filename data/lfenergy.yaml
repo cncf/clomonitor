@@ -218,8 +218,8 @@
     extensible, industrial-strength and field-tested platform for use in electricity,
     water, and other utility operations.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/operatorfabric/horizontal/color/operatorfabric-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/operatorfabric/horizontal/color/operatorfabric-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/operator-fabric/horizontal/color/operator-fabric-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/operator-fabric/horizontal/white/operator-fabric-horizontal-white.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -253,8 +253,8 @@
     PowSyBl provides the code building blocks for the simulations and analyses of
     power systems, for horizons from real-time operation to investment planning.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/powsysbl/horizontal/color/powsysbl-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/powsysbl/horizontal/color/powsysbl-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/powsybl/horizontal/color/powsybl-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/powsybl/horizontal/white/powsybl-horizontal-white.svg
   devstats_url: null
   maturity: earlyadoption
   repositories:
@@ -1125,8 +1125,8 @@
   display_name: Power Grid Model
   description: Steady-state distribution power system analysis
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/PowerGridModel/horizontal/color/powergridmodel-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/PowerGridModel/horizontal/color/powergridmodel-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/powergridmodel/horizontal/color/powergridmodel-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/powergridmodel/horizontal/white/powergridmodel-horizontal-white.svg
   devstats_url: null
   maturity: incubation
   repositories:
@@ -1271,8 +1271,8 @@
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/BatteryDataAlliance/horizontal/color/BatteryDataAlliance-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/BatteryDataAlliance/horizontal/color/BatteryDataAlliance-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/battery-data-alliance/horizontal/color/battery-data-alliance-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/battery-data-alliance/horizontal/white/battery-data-alliance-horizontal-white.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1285,8 +1285,8 @@
   description: CitrineOS, the first open-source OCPP 2.0.1 CSMS (charging station
     management software)
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/CitrineOS/horizontal/color/citrineos-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/CitrineOS/horizontal/color/citrineos-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/citrineos/horizontal/color/citrineos-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/citrineos/horizontal/white/citrineos-horizontal-white.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1311,8 +1311,8 @@
     to give a better connection experience with fewer surprises for both grid owner
     (DSO/TSO), grid customers and other stakeholders.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/gridcapacitymap/horizontal/color/gridcapacitymap-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/gridcapacitymap/horizontal/color/gridcapacitymap-horizontal-color.svg
+  logo_url: https://artwork.lfenergy.org/projects/grid-capacity-map/horizontal/color/grid-capacity-map-horizontal-color.svg
+  logo_url_dark: https://artwork.lfenergy.org/projects/grid-capacity-map/horizontal/white/grid-capacity-map-horizontal-white.svg
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1341,8 +1341,7 @@
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/GRIP/horizontal/color/grip-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/GRIP/horizontal/color/grip-horizontal-color.svg
+  logo_url: https://lfenergy.org/wp-content/uploads/sites/18/2024/01/gridvantage-horizontal-color-scaled.png
   devstats_url: null
   maturity: sandbox
   repositories:
@@ -1407,8 +1406,7 @@
   description: Open Source will speed technological innovation and enable the energy
     transition, globally.
   category: Energy Systems
-  logo_url: https://artwork.lfenergy.org/projects/TROLIE/horizontal/color/trolie-horizontal-color.svg
-  logo_url_dark: https://artwork.lfenergy.org/projects/TROLIE/horizontal/color/trolie-horizontal-color.svg
+  logo_url: https://trolie.energy/images/TROLIE-icon-color.png
   devstats_url: null
   maturity: sandbox
   repositories:

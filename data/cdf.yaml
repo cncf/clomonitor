@@ -2,7 +2,7 @@
   display_name: Jenkins X
   description: Jenkins X provides automated CI+CD for Kubernetes with Preview Environments on Pull Requests using Cloud Native pipelines from Tekton
   category: CI & Pipeline Orchestration
-  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/jenkinsx/icon/color/jenkinsx-icon-color.svg
+  logo_url: https://raw.githubusercontent.com/cdfoundation/artwork/main/former_project_logos/jenkinsx/icon/color/jenkinsx-icon-color.svg
   devstats_url: https://jenkinsx.devstats.cd.foundation
   maturity: incubating
   repositories:

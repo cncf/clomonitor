@@ -4112,7 +4112,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/hami/icon/color/hami-icon-color.svg
   devstats_url: https://hami.devstats.cncf.io/
   accepted_at: "2024-08-21"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: HAMi
       url: https://github.com/Project-HAMi/HAMi

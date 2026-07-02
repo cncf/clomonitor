@@ -6,7 +6,7 @@ use async_trait::async_trait;
 use mockall::automock;
 use time::{
     OffsetDateTime,
-    format_description::{self, FormatItem},
+    format_description::{self, FormatDescriptionV3},
 };
 use tokio::{
     sync::{RwLock, broadcast, mpsc},
@@ -20,7 +20,7 @@ use crate::db::DynDB;
 
 /// How often projects views will be written to the database.
 #[cfg(not(test))]
-const FLUSH_FREQUENCY: Duration = Duration::from_secs(300);
+const FLUSH_FREQUENCY: Duration = Duration::from_mins(5);
 #[cfg(test)]
 const FLUSH_FREQUENCY: Duration = Duration::from_millis(100);
 
@@ -39,8 +39,8 @@ pub(crate) type Total = u32;
 /// Type alias to represent a views batch.
 type Batch = HashMap<String, Total>;
 
-static DATE_FORMAT: LazyLock<Vec<FormatItem<'static>>> = LazyLock::new(|| {
-    format_description::parse("[year]-[month]-[day]").expect("format to be valid")
+static DATE_FORMAT: LazyLock<FormatDescriptionV3<'static>> = LazyLock::new(|| {
+    format_description::parse_borrowed::<3>("[year]-[month]-[day]").expect("format to be valid")
 });
 
 /// Trait that defines some operations a ViewsTracker implementation must

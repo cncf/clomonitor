@@ -7,21 +7,21 @@ use axum::{
     extract::FromRef,
     http::{
         HeaderValue, Request, StatusCode,
-        header::{AUTHORIZATION, CACHE_CONTROL},
+        header::{AUTHORIZATION, CACHE_CONTROL, WWW_AUTHENTICATE},
     },
     middleware,
     response::Response,
     routing::{get, get_service, post},
 };
 use config::Config;
-use openssl::base64::encode_block;
+use openssl::base64::decode_block;
 use tera::Tera;
 use tower::ServiceBuilder;
 use tower_http::{
     services::{ServeDir, ServeFile},
     set_header::SetResponseHeader,
     trace::TraceLayer,
-    validate_request::ValidateRequestHeaderLayer,
+    validate_request::{ValidateRequest, ValidateRequestHeaderLayer},
 };
 
 use crate::{db::DynDB, handlers::*, middleware::metrics_collector, views::DynVT};
@@ -120,25 +120,82 @@ pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
     if cfg.get_bool("apiserver.basicAuth.enabled").unwrap_or(false) {
         let username = cfg.get_string("apiserver.basicAuth.username")?;
         let password = cfg.get_string("apiserver.basicAuth.password")?;
-        let credentials = format!(
-            "Basic {}",
-            encode_block(format!("{username}:{password}").as_bytes())
-        );
-        let expected_header_value = HeaderValue::try_from(credentials)?;
 
-        router = router.layer(ValidateRequestHeaderLayer::custom(
-            move |request: &mut Request<Body>| match request.headers().get(AUTHORIZATION) {
-                Some(header_value) if header_value == expected_header_value => Ok(()),
-                _ => {
-                    let mut response = Response::new(Body::default());
-                    *response.status_mut() = StatusCode::UNAUTHORIZED;
-                    Err(response)
-                }
-            },
-        ));
+        router = router.layer(ValidateRequestHeaderLayer::custom(BasicAuth::new(
+            username, password,
+        )));
     }
 
     Ok(router)
+}
+
+/// Validates HTTP basic auth headers against configured credentials.
+#[derive(Clone, Debug)]
+struct BasicAuth {
+    /// Expected basic auth password.
+    password: String,
+    /// Expected basic auth username.
+    username: String,
+}
+
+impl BasicAuth {
+    /// Creates a new `BasicAuth` instance with the given username and password.
+    fn new(username: impl Into<String>, password: impl Into<String>) -> Self {
+        Self {
+            password: password.into(),
+            username: username.into(),
+        }
+    }
+
+    /// Generates an unauthorized HTTP response.
+    fn unauthorized_response() -> Response<Body> {
+        let mut response = Response::new(Body::empty());
+        *response.status_mut() = StatusCode::UNAUTHORIZED;
+        response
+            .headers_mut()
+            .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Basic"));
+        response
+    }
+
+    /// Checks if the header value matches the configured credentials.
+    fn valid_header(&self, header: &HeaderValue) -> bool {
+        let Ok(header) = header.to_str() else {
+            return false;
+        };
+        let Some(credentials) = header.strip_prefix("Basic ") else {
+            return false;
+        };
+        let Ok(decoded) = decode_block(credentials) else {
+            return false;
+        };
+        let Ok(decoded) = String::from_utf8(decoded) else {
+            return false;
+        };
+
+        match decoded.split_once(':') {
+            Some((username, password)) => username == self.username && password == self.password,
+            None => false,
+        }
+    }
+}
+
+impl<B> ValidateRequest<B> for BasicAuth {
+    type ResponseBody = Body;
+
+    #[allow(clippy::result_large_err)]
+    fn validate(&mut self, request: &mut Request<B>) -> Result<(), Response<Self::ResponseBody>> {
+        // Reject requests without valid basic auth credentials
+        if request
+            .headers()
+            .get_all(AUTHORIZATION)
+            .iter()
+            .any(|header| self.valid_header(header))
+        {
+            Ok(())
+        } else {
+            Err(Self::unauthorized_response())
+        }
+    }
 }
 
 #[cfg(test)]
@@ -149,7 +206,7 @@ mod tests {
         body::{Body, to_bytes},
         http::{
             Request, StatusCode,
-            header::{CACHE_CONTROL, CONTENT_TYPE},
+            header::{AUTHORIZATION, CACHE_CONTROL, CONTENT_TYPE},
         },
     };
     use clomonitor_core::{linter::*, score::Score};
@@ -238,6 +295,48 @@ mod tests {
             .unwrap();
 
         assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    }
+
+    #[tokio::test]
+    async fn basic_auth_valid_credentials() {
+        let response = setup_test_router_with_config(
+            MockDB::new(),
+            MockViewsTracker::new(),
+            setup_test_basic_auth_config(),
+        )
+        .oneshot(
+            Request::builder()
+                .method("GET")
+                .uri("/")
+                .header(AUTHORIZATION, "Basic dXNlcjpwYXNz")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+    }
+
+    #[tokio::test]
+    async fn basic_auth_without_credentials() {
+        let response = setup_test_router_with_config(
+            MockDB::new(),
+            MockViewsTracker::new(),
+            setup_test_basic_auth_config(),
+        )
+        .oneshot(
+            Request::builder()
+                .method("GET")
+                .uri("/")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+        assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+        assert_eq!(response.headers()[WWW_AUTHENTICATE], "Basic");
     }
 
     #[tokio::test]
@@ -964,9 +1063,31 @@ mod tests {
         assert_eq!(response.status(), StatusCode::NO_CONTENT);
     }
 
-    fn setup_test_router(db: MockDB, vt: MockViewsTracker) -> Router {
-        let cfg = setup_test_config();
-        setup(&Arc::new(cfg), Arc::new(db), Arc::new(RwLock::new(vt))).unwrap()
+    // Helpers.
+
+    fn render_index(title: &str, description: &str, image: &str) -> String {
+        let mut ctx = Context::new();
+        ctx.insert("title", title);
+        ctx.insert("description", description);
+        ctx.insert("image", image);
+        let input = fs::read_to_string(Path::new(TESTDATA_PATH).join("index.html")).unwrap();
+        Tera::one_off(&input, &ctx, false).unwrap()
+    }
+
+    fn setup_test_basic_auth_config() -> Config {
+        Config::builder()
+            .set_default("apiserver.baseURL", "http://localhost:8000")
+            .unwrap()
+            .set_default("apiserver.staticPath", TESTDATA_PATH)
+            .unwrap()
+            .set_default("apiserver.basicAuth.enabled", true)
+            .unwrap()
+            .set_default("apiserver.basicAuth.username", "user")
+            .unwrap()
+            .set_default("apiserver.basicAuth.password", "pass")
+            .unwrap()
+            .build()
+            .unwrap()
     }
 
     fn setup_test_config() -> Config {
@@ -981,12 +1102,11 @@ mod tests {
             .unwrap()
     }
 
-    fn render_index(title: &str, description: &str, image: &str) -> String {
-        let mut ctx = Context::new();
-        ctx.insert("title", title);
-        ctx.insert("description", description);
-        ctx.insert("image", image);
-        let input = fs::read_to_string(Path::new(TESTDATA_PATH).join("index.html")).unwrap();
-        Tera::one_off(&input, &ctx, false).unwrap()
+    fn setup_test_router(db: MockDB, vt: MockViewsTracker) -> Router {
+        setup_test_router_with_config(db, vt, setup_test_config())
+    }
+
+    fn setup_test_router_with_config(db: MockDB, vt: MockViewsTracker, cfg: Config) -> Router {
+        setup(&Arc::new(cfg), Arc::new(db), Arc::new(RwLock::new(vt))).unwrap()
     }
 }

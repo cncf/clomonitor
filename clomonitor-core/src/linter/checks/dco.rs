@@ -64,7 +64,7 @@ fn commits_have_dco_signature(path: &Path) -> Result<bool, git2::Error> {
         }
         let commit = repo.find_commit(oid.expect("checked if is an error above"))?;
         processed += 1;
-        if let Some(msg) = commit.message() {
+        if let Ok(msg) = commit.message() {
             if MERGE_PR_RE.is_match(msg) || MERGE_BRANCH_RE.is_match(msg) {
                 merge += 1;
                 continue;

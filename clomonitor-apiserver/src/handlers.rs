@@ -26,7 +26,7 @@ use serde_json::json;
 use tera::{Context, Tera};
 use time::{
     Date,
-    format_description::{self, FormatItem},
+    format_description::{self, FormatDescriptionV3},
 };
 use tracing::error;
 use uuid::Uuid;
@@ -57,8 +57,8 @@ pub const REPORT_SUMMARY_WIDTH: u32 = 900;
 pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
 
 /// Format used in snapshots dates.
-pub static SNAPSHOT_DATE_FORMAT: LazyLock<Vec<FormatItem<'static>>> = LazyLock::new(|| {
-    format_description::parse("[year]-[month]-[day]").expect("format to be valid")
+pub static SNAPSHOT_DATE_FORMAT: LazyLock<FormatDescriptionV3<'static>> = LazyLock::new(|| {
+    format_description::parse_borrowed::<3>("[year]-[month]-[day]").expect("format to be valid")
 });
 
 /// Handler that returns the information needed to render the project's badge.

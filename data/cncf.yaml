@@ -369,7 +369,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/confidential-containers/icon/color/confidential-containers-icon.svg
   devstats_url: https://confidentialcontainers.devstats.cncf.io/
   accepted_at: "2022-03-08"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: documentation
       url: https://github.com/confidential-containers/documentation

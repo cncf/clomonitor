@@ -3610,7 +3610,7 @@
   category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubestellar/icon/color/kubestellar-icon-color.svg
   devstats_url: https://kubestellar.devstats.cncf.io
-  accepted_at: "2023-09-19"
+  accepted_at: "2023-12-19"
   maturity: sandbox
   repositories:
     - name: kubestellar
@@ -3680,7 +3680,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/copa/Icon/Color/copa-icon-color.svg
   devstats_url: https://copacetic.devstats.cncf.io
-  accepted_at: "2023-12-19"
+  accepted_at: "2023-09-19"
   maturity: sandbox
   repositories:
     - name: copacetic

@@ -2477,20 +2477,6 @@
       check_sets:
         - community
         - code
-- name: vineyard
-  display_name: Vineyard
-  description: Vineyard (v6d) is an in-memory immutable data manager
-  category: runtime
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/vineyard/icon/color/vineyard-icon-color.svg
-  devstats_url: https://vineyard.devstats.cncf.io/
-  accepted_at: "2021-04-28"
-  maturity: sandbox
-  repositories:
-    - name: v6d
-      url: https://github.com/v6d-io/v6d
-      check_sets:
-        - community
-        - code
 - name: virtual-kubelet
   display_name: Virtual Kubelet
   description: Virtual Kubelet is an open source Kubernetes kubelet implementation

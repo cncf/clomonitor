@@ -937,7 +937,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/k8gb/icon/color/k8gb-icon-color.svg
   devstats_url: https://k8gb.devstats.cncf.io/
   accepted_at: "2021-03-30"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: k8gb
       url: https://github.com/k8gb-io/k8gb

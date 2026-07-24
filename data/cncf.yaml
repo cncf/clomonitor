@@ -172,6 +172,7 @@
       check_sets:
         - code
 - name: cdk8s
+  display_name: CDK for Kubernetes (CDK8s)
   description: Cloud Development Kit for Kubernetes
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/cdk8s/icon/color/cdk8s-icon-color.svg
@@ -366,7 +367,7 @@
   display_name: Confidential Containers
   description: Confidential Containers is an open source community working to enable cloud native confidential computing by leveraging Trusted Execution Environments to protect containers and data
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/confidential-containers/icon/color/confidential-containers-icon.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/confidential-containers/icon/color/confidential-containers-icon-color.svg
   devstats_url: https://confidentialcontainers.devstats.cncf.io/
   accepted_at: "2022-03-08"
   maturity: incubating
@@ -473,10 +474,10 @@
 - name: dapr
   display_name: Distributed Application Runtime
   description: Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge
-  category: serverless
+  category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/dapr/icon/color/dapr-icon-color.svg
   devstats_url: https://dapr.devstats.cncf.io/
-  accepted_at: "2021-11-03"
+  accepted_at: "2021-11-09"
   maturity: graduated
   repositories:
     - name: dapr
@@ -982,7 +983,7 @@
 - name: karpenter
   display_name: Karpenter
   description: Karpenter is a Kubernetes Node Autoscaler built for flexibility, performance, and simplicity.
-  category: orchestration
+  category: observability
   logo_url: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png
   repositories:
     - name: karpenter
@@ -993,7 +994,7 @@
 - name: keda
   display_name: KEDA
   description: KEDA is a Kubernetes-based Event Driven Autoscaling component. It provides event driven scale for any container running in Kubernetes
-  category: serverless
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/keda/icon/color/keda-icon-color.svg
   devstats_url: https://keda.devstats.cncf.io/
   accepted_at: "2020-03-12"
@@ -1025,7 +1026,7 @@
 - name: knative
   display_name: Knative
   description: Kubernetes-based platform to build, deploy, and manage modern serverless workloads
-  category: serverless
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/knative/icon/color/knative-icon-color.svg
   devstats_url: https://knative.devstats.cncf.io/
   accepted_at: "2022-03-02"
@@ -1403,7 +1404,7 @@
 - name: kserve
   display_name: KServe
   description: Standardized Distributed Generative and Predictive AI Inference Platform for Scalable, Multi-Framework Deployment on Kubernetes
-  category: model
+  category: inference
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kserve/icon/color/k-serve-icon-color.svg
   devstats_url: https://kserve.devstats.cncf.io/
   accepted_at: "2025-09-29"
@@ -1597,7 +1598,7 @@
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/litmus/icon/color/litmus-icon-color.svg
   devstats_url: https://litmuschaos.devstats.cncf.io/
-  accepted_at: "2020-06-23"
+  accepted_at: "2020-06-25"
   maturity: incubating
   repositories:
     - name: litmus
@@ -1622,7 +1623,7 @@
 - name: meshery
   display_name: Meshery
   description: Infrastructure by Design
-  category: orchestration
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/meshery/icon/meshery-logo-light.svg
   devstats_url: https://meshery.devstats.cncf.io/
   accepted_at: "2021-06-22"
@@ -2065,7 +2066,7 @@
 - name: openfeature
   display_name: OpenFeature
   description: Standardizing Feature Flagging for Everyone
-  category: app definition
+  category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/black/openfeature-stacked-black.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfeature/stacked/white/openfeature-stacked-white.svg
   devstats_url: https://openfeature.devstats.cncf.io/
@@ -2095,7 +2096,7 @@
 - name: openfunction
   display_name: Open Function
   description: Cloud Native Function-as-a-Service Platform
-  category: serverless
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/openfunction/icon/color/openfunction-icon-color.svg
   devstats_url: https://openfunction.devstats.cncf.io
   accepted_at: "2022-04-26"
@@ -2148,7 +2149,7 @@
 - name: oras
   display_name: ORAS
   description: ORAS is the tool for working with OCI Artifacts
-  category: runtime
+  category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/oras/horizontal/color/oras-horizontal-color.svg
   devstats_url: https://oras.devstats.cncf.io/
   accepted_at: "2021-07-13"
@@ -2370,7 +2371,7 @@
 - name: thanos
   display_name: Thanos
   description: Open source, highly available Prometheus setup with long term storage capabilities
-  category: app definition
+  category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/thanos/icon/color/thanos-icon-color.svg
   devstats_url: https://thanos.devstats.cncf.io/
   accepted_at: "2019-07-14"
@@ -2480,7 +2481,7 @@
 - name: virtual-kubelet
   display_name: Virtual Kubelet
   description: Virtual Kubelet is an open source Kubernetes kubelet implementation
-  category: serverless
+  category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/virtualkubelet/icon/color/virtualkubelet-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/virtualkubelet/icon/white/virtualkubelet-icon-white.svg
   devstats_url: https://virtualkubelet.devstats.cncf.io/
@@ -2630,7 +2631,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/icon/color/armada-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/armada/icon/white/armada-icon-white.svg
   devstats_url: https://armada.devstats.cncf.io
-  accepted_at: "2022-07-26"
+  accepted_at: "2022-07-25"
   maturity: sandbox
   repositories:
     - name: armada
@@ -2655,7 +2656,7 @@
 - name: serverless-devs
   display_name: Serverless devs
   description: Serverless Devs developer tool ( Serverless Devs 开发者工具 )
-  category: serverless
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/a7624ce326be3dd2a596120454956237410076e0/projects/serverless-devs/icon/color/serverless-devs-icon-color.svg
   devstats_url: https://serverlessdevs.devstats.cncf.io/
   accepted_at: "2022-09-14"
@@ -2865,7 +2866,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/devspace/icon/color/devspace-icon-color.svg
   devstats_url: https://devspace.devstats.cncf.io/
-  accepted_at: "2022-12-14"
+  accepted_at: "2022-12-13"
   maturity: sandbox
   repositories:
     - name: devspace
@@ -2879,7 +2880,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/opcr/icon/color/opcr-icon-color.svg
   devstats_url: https://opcr.devstats.cncf.io
-  accepted_at: "2022-12-14"
+  accepted_at: "2022-12-13"
   maturity: sandbox
   repositories:
     - name: policy
@@ -2893,7 +2894,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubescape/icon/color/kubescape-icon-color.svg
   devstats_url: https://kubescape.devstats.cncf.io/
-  accepted_at: "2022-12-14"
+  accepted_at: "2022-12-13"
   maturity: incubating
   repositories:
     - name: kubescape
@@ -2939,7 +2940,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/paralus/icon/color/paralus-icon-color.svg
   devstats_url: https://paralus.devstats.cncf.io
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: sandbox
   repositories:
     - name: paralus
@@ -2953,7 +2954,7 @@
   category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/carina/icon/color/carina-icon-color.svg
   devstats_url: https://carina.devstats.cncf.io
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: sandbox
   repositories:
     - name: carina
@@ -2966,7 +2967,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/ko/icon/color/ko-icon-color.svg
   devstats_url: https://ko.devstats.cncf.io
-  accepted_at: "2022-12-13"
+  accepted_at: "2022-12-14"
   maturity: sandbox
   repositories:
     - name: ko
@@ -3059,7 +3060,7 @@
 - name: inspektor-gadget
   display_name: Inspektor gadget
   description: Introspecting and debugging Kubernetes applications using BPF "gadgets"
-  category: runtime
+  category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/88d2fa4977a1446479b0c699331b8530b879213c/projects/inspektor-gadget/icon/color/inspektor-gadget-icon-color.svg
   devstats_url: https://inspektorgadget.devstats.cncf.io
   accepted_at: "2023-03-07"
@@ -3274,7 +3275,7 @@
 - name: hwameistor
   display_name: Hwameistor
   description: Hwameistor is an HA local storage system for cloud-native stateful workloads
-  category: app definition
+  category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/hwameistor/icon/color/hwameistor-icon-color-light.svg
   devstats_url: https://hwameistor.devstats.cncf.io/
@@ -3582,7 +3583,7 @@
 - name: minikube
   display_name: minikube
   description: Run Kubernetes locally
-  category: orchestration
+  category: platform
   logo_url: https://raw.githubusercontent.com/kubernetes/minikube/master/images/logo/logo.svg
   repositories:
     - name: minikube
@@ -3704,6 +3705,7 @@
       check_sets:
         - code-lite
 - name: kube-burner
+  display_name: Kube-burner
   description: Kubernetes performance and scale test orchestration framework written in golang
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kube-burner/icon/color/kube-burner-icon-color.svg
@@ -3721,6 +3723,7 @@
       check_sets:
         - code-lite
 - name: krkn
+  display_name: Krkn
   description: Chaos testing tool for Kubernetes to identify bottlenecks and improve resilience and performance under failure conditions
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/krkn/icon/color/krkn-icon-color.svg
@@ -3770,7 +3773,7 @@
 - name: kairos
   display_name: Kairos
   description: The immutable Linux meta-distribution for edge Kubernetes
-  category: wasm
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kairos/icon/color/kairos-icon-color.svg
   devstats_url: https://kairos.devstats.cncf.io/
   accepted_at: "2024-04-13"
@@ -3810,7 +3813,7 @@
 - name: kubean
   display_name: Kubean
   description: Kubean is a cluster lifecycle management tool based on kubespray
-  category: platform
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubean/icon/color/kubean-icon-colordark.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubean/icon/color/kubean-icon-colorlight.svg
   devstats_url: https://kubean.devstats.cncf.io/
@@ -3973,7 +3976,7 @@
   category: app definition
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/openGemini/icon/color/openGemini_icon_color.svg
   devstats_url: https://opengemini.devstats.cncf.io/
-  accepted_at: "2024-06-21"
+  accepted_at: "2024-07-09"
   maturity: sandbox
   repositories:
     - name: openGemini
@@ -3998,7 +4001,7 @@
   category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/80327a8cf7a4182b5fa66b7d5e890ac2ce3e6b4e/projects/oscal-compass/icon/color/oscal-compass-color.svg
   devstats_url: https://trestlegrc.devstats.cncf.io/
-  accepted_at: "2024-07-09"
+  accepted_at: "2024-06-21"
   maturity: sandbox
   repositories:
     - name: compliance-trestle
@@ -4229,7 +4232,7 @@
 - name: flatcar
   display_name: Flatcar
   description: Flatcar project repository for issue tracking, project documentation, etc.
-  category: wasm
+  category: platform
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/flatcar/icon/color/flatcar-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/flatcar/icon/white/flatcar-icon-white.svg
   devstats_url: https://flatcar.devstats.cncf.io
@@ -4380,7 +4383,7 @@
 - name: interlink
   display_name: interLink
   description: interLink aims to provide an abstraction for executing a Kubernetes pod on any remote resource capable of managing the Container execution lifecycle. It allows you to extend your cloud environment anywhere by running Kubernetes workloads on various infrastructures, creating a seamless cloud-native experience across diverse environments.
-  category: provisioning
+  category: runtime
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/interlink/stacked/color/interlink-stacked-color.svg
   devstats_url: https://interlink.devstats.cncf.io
   accepted_at: "2025-03-04"
@@ -4394,7 +4397,7 @@
 - name: cozystack
   display_name: CozyStack
   description: Cozystack is a free PaaS platform and framework for building clouds.
-  category: platform
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cozystack/icon/color/cozystack-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cozystack/icon/white/cozystack-icon-white.svg
   devstats_url: https://cozystack.devstats.cncf.io
@@ -4413,7 +4416,7 @@
 - name: kgateway
   display_name: KGateway
   description: An Envoy-powered, Kubernetes-native API Gateway that integrates Kubernetes Gateway API with a control plane for API connectivity in any cloud environment.
-  category: provisioning
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kgateway/icon/color/kgateway-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kgateway/icon/white/kgateway-icon-white.svg
   devstats_url: https://kgateway.devstats.cncf.io
@@ -4502,7 +4505,7 @@
 - name: kaito
   display_name: Kubernetes AI Toolchain Operator (KAITO)
   description: Kaito is an operator that automates the AI/ML model inference or tuning workload in a Kubernetes cluster.
-  category: CNAI
+  category: inference
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/kaito/icon/color/kaito-icon.svg
   devstats_url: https://kaito.devstats.cncf.io
   accepted_at: "2024-10-17"
@@ -4539,7 +4542,7 @@
   description: The composefs project combines several underlying Linux features to provide a very flexible mechanism to support read-only mountable filesystem trees, stacking on top of an underlying "lower" Linux filesystem.
   category: runtime
   devstats_url: https://composefs.devstats.cncf.io/
-  accepted_at: "2025-01-19"
+  accepted_at: "2025-01-21"
   maturity: sandbox
   repositories:
     - name: composefs
@@ -4655,11 +4658,11 @@
 - name: k0s
   display_name: k0s
   description: k0s is a CNCF-certified lightweight, Kubernetes distribution with zero dependencies and zero opinion.
-  category: platform
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/k0s/icon/color/k0s-logo-2025-icon.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/k0s/icon/white/k0s-logo-2025-white-icon.svg
   devstats_url: https://k0s.devstats.cncf.io
-  accepted_at: "2025-01-21"
+  accepted_at: "2025-01-19"
   maturity: sandbox
   repositories:
     - name: k0s
@@ -4792,7 +4795,7 @@
 - name: cadence
   display_name: Cadence
   description: Cadence is a native code based workflow orchestration engine that addresses challenges around building and operating complex distributed products, ensuring their durability, availability, and scalability with maximum flexibility for developers.
-  category: orchestration
+  category: provisioning
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cadence/icon/color/cadence-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/cadence/icon/white/cadence-icon-white.svg
   devstats_url: https://cadence.devstats.cncf.io/
@@ -4913,7 +4916,7 @@
 - name: holmesgpt
   display_name: HolmesGPT
   description: HolmesGPT is an AI agent that automates cloud-native troubleshooting, bridging knowledge gaps by investigating alerts, executing runbooks, and correlating observability data in cloud-native platforms
-  category: provisioning
+  category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/color/holmesgpt-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/holmesgpt/icon/white/holmesgpt-icon-white.svg
   devstats_url: https://holmesgpt.devstats.cncf.io/
@@ -5008,6 +5011,7 @@
   display_name: KAI Scheduler
   description: A robust, efficient, and scalable Kubernetes scheduler that optimizes GPU resource allocation for AI workloads in large-scale clusters
   category: orchestration
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kai-scheduler/icon/color/kai-scheduler-icon-color.svg
   devstats_url: https://kaischeduler.devstats.cncf.io/
   accepted_at: "2025-12-21"
   maturity: sandbox
@@ -5054,7 +5058,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/velero/icon/color/velero-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/velero/icon/white/velero-icon-white.svg
   devstats_url: https://velero.devstats.cncf.io/
-  accepted_at: "2026-03-17"
+  accepted_at: "2026-03-11"
   maturity: sandbox
   repositories:
     - name: velero
@@ -5135,6 +5139,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/color/tekton-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/tekton/icon/white/tekton-icon-white.svg
   devstats_url: https://tekton.devstats.cncf.io
+  accepted_at: "2026-03-13"
   maturity: incubating
   repositories:
     - name: community
@@ -5190,7 +5195,7 @@
   description: An API and schema registry for governing schemas, API definitions, and AI agent artifacts in cloud-native environments
   category: app definition
   home_url: https://www.apicur.io/registry/
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/apicurio-registry.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/apicurio-registry/icon/color/apicurio-registry-icon-color.svg
   devstats_url: https://apicurioregistry.devstats.cncf.io/
   accepted_at: "2026-03-12"
   maturity: sandbox
@@ -5207,9 +5212,9 @@
 - name: llm-d
   display_name: llm-d
   description: A Kubernetes-native high-performance distributed LLM inference framework
-  category: CNAI
+  category: inference
   home_url: https://llm-d.ai
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/llm-d.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/llm-d/icon/color/llm-d-icon-color.svg
   devstats_url: https://llmd.devstats.cncf.io/
   accepted_at: "2026-03-12"
   maturity: sandbox
@@ -5236,8 +5241,7 @@
   description: An open source project that aims to provide better support for service providers and consumers that reside in distinct Kubernetes clusters
   category: orchestration
   home_url: https://kube-bind.io
-  logo_url: https://docs.kube-bind.io/main/logo.png
-  devstats: https://kbind.devstats.cncf.io/
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kbind/icon/color/kbind-icon-color.svg
   devstats_url: https://kbind.devstats.cncf.io/
   accepted_at: "2026-03-12"
   maturity: sandbox
@@ -5253,6 +5257,7 @@
   category: runtime
   home_url: https://curvineio.github.io/
   logo_url: https://raw.githubusercontent.com/CurvineIO/curvine-doc/main/static/img/curvine_logo.svg
+  devstats_url: https://curvine.devstats.cncf.io/
   accepted_at: "2026-01-06"
   maturity: sandbox
   repositories:

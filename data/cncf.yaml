@@ -2276,17 +2276,18 @@
       check_sets:
         - community
         - code
-- name: serverless-workflow
-  display_name: Serverless Workflow
-  description: Standards-based DSL and open-source dev tools and runtimes are at the heart of the Serverless Workflow project
+- name: openworkflow
+  display_name: Open Workflow Specification
+  description: Standards-based DSL and open-source dev tools and runtimes are at the heart of the Open Workflow Specification project
   category: app definition
+  home_url: https://open-workflow-specification.org
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/serverlessworkflow/icon/color/serverlessworkflow-icon-color.svg
-  devstats_url: https://serverlessworkflow.devstats.cncf.io/
+  devstats_url: https://openworkflow.devstats.cncf.io/
   accepted_at: "2020-07-14"
   maturity: sandbox
   repositories:
     - name: specification
-      url: https://github.com/serverlessworkflow/specification
+      url: https://github.com/open-workflow-specification/specification
       check_sets:
         - community
         - code

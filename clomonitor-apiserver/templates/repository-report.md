@@ -25,6 +25,7 @@
 ### Documentation [{{ value.round() }}%]
 
   {{ check("adopters", "Adopters", report.documentation.adopters) -}}
+  {{ check("agent-readiness", "Agent readiness", report.documentation.agent_readiness) -}}
   {{ check("changelog", "Changelog", report.documentation.changelog) -}}
   {{ check("code-of-conduct", "Code of conduct", report.documentation.code_of_conduct) -}}
   {{ check("contributing", "Contributing", report.documentation.contributing) -}}

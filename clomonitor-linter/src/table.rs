@@ -76,6 +76,10 @@ pub(crate) fn display(
             cell_check(report.documentation.adopters.as_ref()),
         ])
         .add_row(vec![
+            cell_entry("Documentation / Agent readiness"),
+            cell_check(report.documentation.agent_readiness.as_ref()),
+        ])
+        .add_row(vec![
             cell_entry("Documentation / Changelog"),
             cell_check(report.documentation.changelog.as_ref()),
         ])
@@ -332,6 +336,7 @@ mod tests {
         let report = Report {
             documentation: Documentation {
                 adopters: Some(CheckOutput::passed()),
+                agent_readiness: Some(CheckOutput::passed()),
                 code_of_conduct: Some(CheckOutput::passed()),
                 contributing: Some(CheckOutput::passed()),
                 changelog: Some(CheckOutput::passed()),

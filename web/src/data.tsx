@@ -28,7 +28,7 @@ import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { MdOutlineInventory, MdPreview } from 'react-icons/md';
-import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
+import { RiRoadMapLine, RiRobot2Line, RiShieldStarLine } from 'react-icons/ri';
 
 import QualityDot from './layout/common/QualityDot';
 import {
@@ -267,6 +267,20 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Adopters',
     legend: <span>List of organizations using this project in production or at stages of testing</span>,
     reference: '/docs/topics/checks/#adopters',
+  },
+  [ReportOption.AgentReadiness]: {
+    icon: <RiRobot2Line />,
+    name: 'Agent readiness',
+    legend: (
+      <span>
+        Projects documentation should provide an{' '}
+        <ExternalLink className="d-inline-block text-decoration-underline" href="https://llmstxt.org">
+          llms.txt
+        </ExternalLink>{' '}
+        index so AI agents can discover and consume it
+      </span>
+    ),
+    reference: '/docs/topics/checks/#agent-readiness',
   },
   [ReportOption.Analytics]: {
     icon: <FaChartBar />,
@@ -562,6 +576,7 @@ export type FoundationInfo = {
 export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
   [ScoreType.Documentation]: [
     ReportOption.Adopters,
+    ReportOption.AgentReadiness,
     ReportOption.Changelog,
     ReportOption.CodeOfConduct,
     ReportOption.Contributing,

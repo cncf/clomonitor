@@ -22,6 +22,7 @@
 ### Documentation [100%]
 
   - [x] Adopters ([_docs_](https://clomonitor.io/docs/topics/checks/#adopters))
+  - [x] Agent readiness ([_docs_](https://clomonitor.io/docs/topics/checks/#agent-readiness))
   - [x] Changelog ([_docs_](https://clomonitor.io/docs/topics/checks/#changelog))
   - [x] Code of conduct ([_docs_](https://clomonitor.io/docs/topics/checks/#code-of-conduct))
   - [x] Contributing ([_docs_](https://clomonitor.io/docs/topics/checks/#contributing))

@@ -253,6 +253,7 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: Some(CheckOutput::passed()),
+                    agent_readiness: Some(CheckOutput::passed()),
                     code_of_conduct: Some(CheckOutput::passed()),
                     contributing: Some(CheckOutput::passed()),
                     changelog: Some(CheckOutput::passed()),
@@ -302,10 +303,10 @@ mod tests {
                 },
             }),
             Score {
-                global: 100.0,
-                global_weight: 96,
+                global: 99.999_999_999_999_99,
+                global_weight: 97,
                 documentation: Some(99.999_999_999_999_99),
-                documentation_weight: Some(30),
+                documentation_weight: Some(31),
                 license: Some(100.0),
                 license_weight: Some(20),
                 best_practices: Some(99.999_999_999_999_99),
@@ -324,6 +325,7 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: Some(CheckOutput::not_passed()),
+                    agent_readiness: Some(CheckOutput::not_passed()),
                     code_of_conduct: Some(CheckOutput::not_passed()),
                     contributing: Some(CheckOutput::not_passed()),
                     changelog: Some(CheckOutput::not_passed()),
@@ -370,9 +372,9 @@ mod tests {
             }),
             Score {
                 global: 0.0,
-                global_weight: 96,
+                global_weight: 97,
                 documentation: Some(0.0),
-                documentation_weight: Some(30),
+                documentation_weight: Some(31),
                 license: Some(0.0),
                 license_weight: Some(20),
                 best_practices: Some(0.0),
@@ -391,6 +393,7 @@ mod tests {
             calculate(&Report {
                 documentation: Documentation {
                     adopters: None,
+                    agent_readiness: None,
                     code_of_conduct: None,
                     contributing: Some(CheckOutput::passed()),
                     changelog: Some(CheckOutput::passed()),

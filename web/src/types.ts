@@ -146,6 +146,7 @@ export enum SortBy {
 
 export enum ReportOption {
   Adopters = 'adopters',
+  AgentReadiness = 'agent_readiness',
   Analytics = 'analytics',
   ApprovedLicense = 'license_approved',
   ArtifactHubBadge = 'artifacthub_badge',

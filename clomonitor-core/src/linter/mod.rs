@@ -110,7 +110,8 @@ impl Linter for CoreLinter {
         let ci = CheckInput::new(li).await?;
 
         // Run some async checks concurrently
-        let (analytics, contributing, summary_table, trademark_disclaimer) = tokio::join!(
+        let (agent_readiness, analytics, contributing, summary_table, trademark_disclaimer) = tokio::join!(
+            run_async!(agent_readiness, &ci),
             run_async!(analytics, &ci),
             run_async!(contributing, &ci),
             run_async!(summary_table, &ci),
@@ -128,6 +129,7 @@ impl Linter for CoreLinter {
         let mut report = Report {
             documentation: Documentation {
                 adopters: run!(adopters, &ci),
+                agent_readiness,
                 changelog: run!(changelog, &ci),
                 code_of_conduct: run!(code_of_conduct, &ci),
                 contributing,

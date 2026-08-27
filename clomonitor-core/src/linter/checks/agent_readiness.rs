@@ -69,15 +69,12 @@ pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput> {
 /// Check if the content provided looks like an llms.txt file. Some websites
 /// return an HTML page (e.g. a SPA fallback page) with a 200 status code for
 /// any path requested, so we make sure the content isn't an HTML document.
+/// llms.txt files are markdown documents (the spec expects them to begin with
+/// a heading), so any content starting with an HTML tag or comment is
+/// rejected.
 fn is_llms_txt_content(content: &str) -> bool {
-    const HTML_MARKERS: [&str; 4] = ["<!doctype", "<html", "<head", "<body"];
-
-    let content = content.trim();
-    if content.is_empty() {
-        return false;
-    }
-    let start: String = content.chars().take(16).collect::<String>().to_lowercase();
-    !HTML_MARKERS.iter().any(|marker| start.starts_with(marker))
+    let content = content.trim_start();
+    !content.is_empty() && !content.starts_with('<')
 }
 
 #[cfg(test)]
@@ -152,6 +149,12 @@ mod tests {
             "<head><title>Not found</title></head>"
         ));
         assert!(!is_llms_txt_content("<body>fallback</body>"));
+        assert!(!is_llms_txt_content(
+            "<!-- built with love --><html><body>app</body></html>"
+        ));
+        assert!(!is_llms_txt_content("<div id=\"app\"></div>"));
+        assert!(!is_llms_txt_content("<meta charset=\"utf-8\">"));
+        assert!(!is_llms_txt_content("<script>window.SPA=1</script>"));
     }
 
     #[tokio::test]

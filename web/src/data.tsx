@@ -273,7 +273,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Agent readiness',
     legend: (
       <span>
-        Projects documentation should provide an{' '}
+        The project's documentation should provide an{' '}
         <ExternalLink className="d-inline-block text-decoration-underline" href="https://llmstxt.org">
           llms.txt
         </ExternalLink>{' '}

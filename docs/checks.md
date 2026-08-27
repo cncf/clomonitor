@@ -115,7 +115,7 @@ AI coding agents read project documentation in real time while helping developer
 
 This check passes if:
 
-- An llms.txt *file* is served from the project's *website*. The website used will be the one configured in the Github repository. URLs checked (responses containing an HTML document, like SPA fallback pages, are not considered valid):
+- An llms.txt *file* is served from the project's *website*. The website used will be the one configured in the GitHub repository. URLs checked (responses containing an HTML document, like SPA fallback pages, are not considered valid):
 
 ```sh
 "<website>/llms.txt"

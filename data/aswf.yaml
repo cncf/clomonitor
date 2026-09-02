@@ -4,7 +4,7 @@
     digital image files, managing color workflows, and creating masters for delivery
     and archiving.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/aces/full/color/aces-full-color.svg
+  logo_url: https://artwork.aswf.io/projects/aces/primary/color/aces-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/aces
   maturity: incubating
   repositories:
@@ -18,7 +18,7 @@
     \ the industry\u2019s open source software community with the solid foundation\
     \ needed to improve best practices and address the unique challenges we face."
   category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/e3646d4d46048efef0dd2f0c720a88f07035663c9c9e6f3024ab58503a20389f.svg
+  logo_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/primary/color/aswf-continuous-integration-wg-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/aswf-continuous-integration-wg
   maturity: working-group
   repositories:
@@ -30,14 +30,14 @@
     url: https://github.com/AcademySoftwareFoundation/aswf-docker
     exclude:
     - clomonitor
-- name: dailies-transcription-notes-taking-tool
+- name: dailies-notes-assistant
   display_name: Dailies Notes Assistant
   description: The mission of the Project is to develop a tool designed to transcribe
     dailies meetings, analyze the content using an LLM, and provide a plugin system
     to integrate into production tracking software.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/dailies-transcription-notes-taking-tool/horizontal/color/dailies-transcription-notes-taking-tool-horizontal-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/dailies-transcription-notes-taking-tool
+  logo_url: https://artwork.aswf.io/projects/dailies-notes-assistant/primary/color/dailies-notes-assistant-primary-color.svg
+  devstats_url: https://insights.linuxfoundation.org/project/dailies-notes-assistant
   maturity: sandbox
   repositories:
   - name: dna
@@ -56,7 +56,7 @@
     \ but in addition to 3D scene data, assets could also be images, image sequences,\
     \ volumetric data, animation rigs, edit decision lists, etc."
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/dpel/stacked/black/dpel-stacked-black.svg
+  logo_url: https://artwork.aswf.io/projects/dpel/primary/color/dpel-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/dpel
   maturity: graduated
   repositories:
@@ -64,10 +64,6 @@
     url: https://github.com/AcademySoftwareFoundation/dpel-website
     exclude:
     - clomonitor
-  - name: Assets
-    url: https://github.com/DigitalProductionExampleLibrary/Assets
-    exclude:
-    - clomonitor    
   - name: ALab
     url: https://github.com/DigitalProductionExampleLibrary/ALab
     exclude:
@@ -88,7 +84,7 @@
     including shading networks, patterns and texturing, complex nested materials and
     geometric assignments.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/materialx/stacked/color/materialx-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/materialx/primary/color/materialx-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/materialx
   maturity: graduated
   repositories:
@@ -108,24 +104,23 @@
   display_name: MoonRay
   description: develop a state-of-the-art production MCRT renderer
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/moonray/rgb/color/moonray-rgb-color.svg
+  logo_url: https://artwork.aswf.io/projects/moonray/primary/color/moonray-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/moonray
   maturity: sandbox
   repositories:
   - name: openmoonray
-    url: https://github.com/OpenMoonRay/openmoonray
+    url: https://github.com/dreamworksanimation/openmoonray
     exclude:
     - clomonitor
 - name: openpgl
-  display_name: 'Open Path Guiding Library (OpenPGL) '
+  display_name: Open Path Guiding Library (OpenPGL)
   description: Open Path Guiding Library (OpenPGL) is an open-source library, that
     improves the rendering efficiency of a renderer by providing easy to integrate
     and production-ready implementations of state-of-the-art path guiding algorithms.
     Especially in challenging illumination setups (complex indirect illumination,
     volumetric multi scattering) these algorithms significantly improve rendering
     performance.
-  category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/e05550d27ea321a5931c8c5c435fe050913ae1d58e677b608a74152cb31b7692.svg
+  logo_url: https://landscape.aswf.io/logos/41c4f0c83005a519a70730e29916d81106b8a7339242d736277e2a96906fa697.svg
   devstats_url: https://insights.linuxfoundation.org/project/openpgl
   maturity: sandbox
   repositories:
@@ -138,9 +133,9 @@
   description: Unified open source toolset for playback, review, and approval of motion
     picture and related professional media.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/open-review-initiative/stacked/color/open-review-initiative-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/open-review-initiative/primary/color/open-review-initiative-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-review-initiative
-  maturity: sandbox
+  maturity: working-group
   repositories:
   - name: ori-shared-platform
     url: https://github.com/AcademySoftwareFoundation/ori-shared-platform
@@ -158,13 +153,26 @@
     url: https://github.com/AcademySoftwareFoundation/xstudio
     exclude:
     - clomonitor
+- name: openrv
+  display_name: Open RV
+  description: Open RV is an image and sequence viewer for VFX and animation artists.
+    Open RV is high-performant, hardware accelerated, and pipeline-friendly.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/openrv/primary/color/openrv-primary-color.svg
+  devstats_url: https://insights.linuxfoundation.org/project/openrv
+  maturity: sandbox
+  repositories:
+  - name: OpenRV
+    url: https://github.com/AcademySoftwareFoundation/OpenRV
+    exclude:
+    - clomonitor
 - name: open-shading-language
   display_name: Open Shading Language
   description: Open Shading Language (OSL) is a small but rich language for programmable
     shading in advanced renderers and other applications, ideal for describing materials,
     lights, displacement, and pattern generation.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/open-shading-language/largestack/color/open-shading-language-largestack-color.svg
+  logo_url: https://artwork.aswf.io/projects/open-shading-language/primary/color/open-shading-language-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-shading-language
   maturity: graduated
   repositories:
@@ -177,7 +185,7 @@
   description: The mission of the Project is to develop a royalty-free, open-source,
     open standard video codec for professional video capturing and post-production.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openapv/horizontal/black/openapv-horizontal-black.svg
+  logo_url: https://artwork.aswf.io/projects/openapv/primary/color/openapv-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openapv
   maturity: sandbox
   repositories:
@@ -190,7 +198,7 @@
   description: The mission of the Project is to develop an open-source interoperability
     standard for tools and content management systems used in media production.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openassetio/horizontal/black/openassetio-horizontal-black.svg
+  logo_url: https://artwork.aswf.io/projects/openassetio/primary/color/openassetio-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openassetio
   maturity: sandbox
   repositories:
@@ -216,7 +224,7 @@
     solution for highly precise, performant, and consistent color management across
     digital content creation applications and pipelines.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/opencolorio/stacked/color/opencolorio-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/opencolorio/primary/color/opencolorio-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/opencolorio
   maturity: graduated
   repositories:
@@ -235,7 +243,7 @@
     tasks. You can submit jobs to a configurable dispatch queue that allocates the
     necessary computational resources.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/opencue/stacked/black/opencue-stacked-black.svg
+  logo_url: https://artwork.aswf.io/projects/opencue/primary/color/opencue-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/opencue
   maturity: graduated
   repositories:
@@ -253,7 +261,7 @@
     modern and to maintain its place as the preferred image format for entertainment
     content creation.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openexr/stacked/color/openexr-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/openexr/primary/color/openexr-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openexr
   maturity: graduated
   repositories:
@@ -282,7 +290,7 @@
   description: The mission of the OpenFX Project is to promote and develop an image
     processing plug-in standard.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openfx/stacked/color/openfx-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/openfx/primary/color/openfx-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openfx
   maturity: incubating
   repositories:
@@ -297,7 +305,7 @@
     a format- agnostic API, with a feature set, scalability, and robustness needed
     for production.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openimageio/stacked/color/openimageio-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/openimageio/primary/color/openimageio-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openimageio
   maturity: graduated
   repositories:
@@ -314,7 +322,7 @@
   description: The mission of the Project is to provide an API to deliver high quality
     QMC sample points.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openqmc/horizontal/black/openqmc-horizontal-black.svg
+  logo_url: https://artwork.aswf.io/projects/openqmc/primary/color/openqmc-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openqmc
   maturity: sandbox
   repositories:
@@ -330,7 +338,7 @@
     also includes a plugin system for translating to/from existing editorial formats
     as well as a plugin system for linking to proprietary media storage schemas.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/open-timeline-io/stacked/color/open-timeline-io-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/open-timeline-io/primary/color/open-timeline-io-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/open-timeline-io
   maturity: incubating
   repositories:
@@ -345,7 +353,7 @@
     and maintaining both the hierarchical VDB data structure and the large suite of
     tools for its efficient traversal and manipulation.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/openvdb/stacked/color/openvdb-stacked-color.svg
+  logo_url: https://artwork.aswf.io/projects/openvdb/primary/color/openvdb-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/openvdb
   maturity: graduated
   repositories:
@@ -364,7 +372,7 @@
     scene referred format, along with establishing a database of camera and related
     data to enable this framework.
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/rawtoaces/horizontal/color/rawtoaces-horizontal-color.svg
+  logo_url: https://artwork.aswf.io/projects/rawtoaces/primary/color/rawtoaces-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/rawtoaces
   maturity: incubating
   repositories:
@@ -379,7 +387,7 @@
 
     configured for a given set of packages.'
   category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/rez/stacked/black/rez-stacked-black.svg
+  logo_url: https://artwork.aswf.io/projects/rez/primary/color/rez-primary-color.svg
   devstats_url: https://insights.linuxfoundation.org/project/rez
   maturity: incubating
   repositories:
@@ -391,12 +399,43 @@
   display_name: Rongotai Model Train Club (RMTC)
   description: RMTC is a VFX-specific framework for simplifying the production and
     deployment of AI/ML models using well-tracked and rights-cleared datasets.
-  category: Visual Effects and Computer Graphics
-  logo_url: https://landscape.aswf.io/logos/204848697627322ae981ef0f2ddad62b6d58a747c796667964af7c8b3cd68d4b.svg
+  logo_url: https://landscape.aswf.io/logos/d933727dd384d813b4d3050cae507432ae6b195509df713267376064a237e093.svg
   devstats_url: https://insights.linuxfoundation.org/project/rongotai-model-train-club-rmtc
   maturity: sandbox
   repositories:
   - name: rmtc
     url: https://github.com/AcademySoftwareFoundation/rmtc
+    exclude:
+    - clomonitor
+- name: aswf-usd-wg
+  display_name: Universal Scene Description Working Group
+  description: The purpose of the USD working group is to support the USD project
+    as it is adopted and deployed. Strong industry-wide interest in USD is beyond
+    the capacity of Pixar alone to support. The aim of this working group is to assist
+    adoption efforts through consolidation and sharing of best practices and helping
+    with issues raised in various USD support channels where possible.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/aswf-usd-wg/primary/color/aswf-usd-wg-primary-color.svg
+  devstats_url: https://insights.linuxfoundation.org/project/aswf-usd-wg
+  maturity: working-group
+  repositories:
+  - name: wg-usd
+    url: https://github.com/AcademySoftwareFoundation/wg-usd
+    exclude:
+    - clomonitor
+- name: xstudio
+  display_name: xStudio
+  description: xSTUDIO is a media playback and review application designed for professionals
+    working in the film and TV post production industries, particularly the Visual
+    Effects and Feature Animation sectors. xSTUDIO is focused on providing an intuitive,
+    easy to use interface with a high performance playback engine at its core and
+    C++ and Python APIs for pipeline integration and customisation for total flexibility.
+  category: Visual Effects and Computer Graphics
+  logo_url: https://artwork.aswf.io/projects/xstudio/primary/color/xstudio-primary-color.svg
+  devstats_url: https://insights.linuxfoundation.org/project/xstudio
+  maturity: sandbox
+  repositories:
+  - name: xstudio
+    url: https://github.com/AcademySoftwareFoundation/xstudio
     exclude:
     - clomonitor

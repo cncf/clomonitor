@@ -109,7 +109,7 @@
   maturity: sandbox
   repositories:
   - name: openmoonray
-    url: https://github.com/dreamworksanimation/openmoonray
+    url: https://github.com/OpenMoonRay/openmoonray
     exclude:
     - clomonitor
 - name: openpgl

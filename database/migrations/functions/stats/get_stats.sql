@@ -153,6 +153,7 @@ returns json as $$
             'passing_check', json_build_object(
                 'documentation', json_build_object(
                     'adopters', repositories_passing_check(p_foundation, 'documentation', 'adopters'),
+                    'agent_readiness', repositories_passing_check(p_foundation, 'documentation', 'agent_readiness'),
                     'changelog', repositories_passing_check(p_foundation, 'documentation', 'changelog'),
                     'code_of_conduct', repositories_passing_check(p_foundation, 'documentation', 'code_of_conduct'),
                     'contributing', repositories_passing_check(p_foundation, 'documentation', 'contributing'),

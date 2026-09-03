@@ -738,6 +738,7 @@ mod tests {
                     report: Some(Report {
                         documentation: Documentation {
                             adopters: Some(CheckOutput::passed()),
+                            agent_readiness: Some(CheckOutput::passed()),
                             code_of_conduct: Some(CheckOutput::passed()),
                             contributing: Some(CheckOutput::passed()),
                             changelog: Some(CheckOutput::passed()),

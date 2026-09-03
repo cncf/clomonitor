@@ -1,0 +1,8 @@
+# Sample project
+
+> Sample project documentation index for AI agents.
+
+## Docs
+
+- [Getting started](https://example.test/docs/getting-started.md): quick start guide
+- [Reference](https://example.test/docs/reference.md): API reference

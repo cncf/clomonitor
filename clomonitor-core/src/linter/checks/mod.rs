@@ -3,6 +3,7 @@ use std::{collections::HashMap, sync::LazyLock};
 use crate::linter::check::{CheckConfig, CheckId};
 
 pub(crate) mod adopters;
+pub(crate) mod agent_readiness;
 pub(crate) mod analytics;
 pub(crate) mod artifacthub_badge;
 pub(crate) mod binary_artifacts;
@@ -67,6 +68,7 @@ pub(crate) static CHECKS: LazyLock<HashMap<CheckId, CheckConfig>> = LazyLock::ne
     }
 
     register_check!(adopters);
+    register_check!(agent_readiness);
     register_check!(analytics);
     register_check!(artifacthub_badge);
     register_check!(binary_artifacts, "Binary-Artifacts");

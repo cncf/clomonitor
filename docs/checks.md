@@ -44,6 +44,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 - **community** (recommended for repositories with community content)
 
   - Documentation / Adopters
+  - Documentation / Agent readiness
   - Documentation / Code of conduct
   - Documentation / Contributing
   - Documentation / Governance
@@ -60,6 +61,7 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
 
 - **docs** (recommended for other documentation repositories)
 
+  - Documentation / Agent readiness
   - Documentation / Readme
   - License
   - License / Approved
@@ -102,6 +104,36 @@ CASE SENSITIVE: false
 "(?im)^adopters$"
 "(?i)\[.*adopters.*\]\(.*\)"
 ```
+
+### Agent readiness
+
+**ID**: `agent_readiness`
+
+Whether the project's documentation provides an [llms.txt](https://llmstxt.org) index so AI agents can discover and consume it.
+
+AI coding agents read project documentation in real time while helping developers. An `llms.txt` file at the website's root gives them a curated index of the documentation available. The `llms-full.txt` variant, which inlines the full documentation content, is also accepted.
+
+This check passes if:
+
+- An llms.txt *file* is served from the project's *website*. The website used will be the one configured in the GitHub repository. URLs checked (responses containing an HTML document, like SPA fallback pages, are not considered valid):
+
+```sh
+"<website>/llms.txt"
+"<website>/llms-full.txt"
+```
+
+- An llms.txt *file* is found in the repository. Globs used:
+
+```sh
+"llms.txt"
+"llms-full.txt"
+"docs/llms.txt"
+"docs/llms-full.txt"
+
+CASE SENSITIVE: false
+```
+
+For a deeper audit of how well AI agents can consume your documentation, see the [Agent-Friendly Documentation Spec](https://agentdocsspec.com) and the [AFDocs](https://afdocs.dev) tool.
 
 ### Changelog
 

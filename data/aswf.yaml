@@ -19,7 +19,6 @@
     \ needed to improve best practices and address the unique challenges we face."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/aswf-continuous-integration-wg/primary/color/aswf-continuous-integration-wg-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/aswf-continuous-integration-wg
   maturity: working-group
   repositories:
   - name: wg-ci
@@ -37,7 +36,6 @@
     to integrate into production tracking software.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/dailies-notes-assistant/primary/color/dailies-notes-assistant-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/dailies-notes-assistant
   maturity: sandbox
   repositories:
   - name: dna
@@ -57,7 +55,6 @@
     \ volumetric data, animation rigs, edit decision lists, etc."
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/dpel/primary/color/dpel-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/dpel
   maturity: graduated
   repositories:
   - name: dpel-website
@@ -105,7 +102,6 @@
   description: develop a state-of-the-art production MCRT renderer
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/moonray/primary/color/moonray-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/moonray
   maturity: sandbox
   repositories:
   - name: openmoonray
@@ -121,7 +117,6 @@
     volumetric multi scattering) these algorithms significantly improve rendering
     performance.
   logo_url: https://landscape.aswf.io/logos/41c4f0c83005a519a70730e29916d81106b8a7339242d736277e2a96906fa697.svg
-  devstats_url: https://insights.linuxfoundation.org/project/openpgl
   maturity: sandbox
   repositories:
   - name: openpgl
@@ -134,23 +129,14 @@
     picture and related professional media.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/open-review-initiative/primary/color/open-review-initiative-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/open-review-initiative
   maturity: working-group
   repositories:
   - name: ori-shared-platform
     url: https://github.com/AcademySoftwareFoundation/ori-shared-platform
     exclude:
     - clomonitor
-  - name: OpenRV
-    url: https://github.com/AcademySoftwareFoundation/OpenRV
-    exclude:
-    - clomonitor
   - name: EncodingGuidelines
     url: https://github.com/AcademySoftwareFoundation/EncodingGuidelines
-    exclude:
-    - clomonitor
-  - name: xstudio
-    url: https://github.com/AcademySoftwareFoundation/xstudio
     exclude:
     - clomonitor
 - name: openrv
@@ -159,7 +145,6 @@
     Open RV is high-performant, hardware accelerated, and pipeline-friendly.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/openrv/primary/color/openrv-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/openrv
   maturity: sandbox
   repositories:
   - name: OpenRV
@@ -400,27 +385,10 @@
   description: RMTC is a VFX-specific framework for simplifying the production and
     deployment of AI/ML models using well-tracked and rights-cleared datasets.
   logo_url: https://landscape.aswf.io/logos/d933727dd384d813b4d3050cae507432ae6b195509df713267376064a237e093.svg
-  devstats_url: https://insights.linuxfoundation.org/project/rongotai-model-train-club-rmtc
   maturity: sandbox
   repositories:
   - name: rmtc
     url: https://github.com/AcademySoftwareFoundation/rmtc
-    exclude:
-    - clomonitor
-- name: aswf-usd-wg
-  display_name: Universal Scene Description Working Group
-  description: The purpose of the USD working group is to support the USD project
-    as it is adopted and deployed. Strong industry-wide interest in USD is beyond
-    the capacity of Pixar alone to support. The aim of this working group is to assist
-    adoption efforts through consolidation and sharing of best practices and helping
-    with issues raised in various USD support channels where possible.
-  category: Visual Effects and Computer Graphics
-  logo_url: https://artwork.aswf.io/projects/aswf-usd-wg/primary/color/aswf-usd-wg-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/aswf-usd-wg
-  maturity: working-group
-  repositories:
-  - name: wg-usd
-    url: https://github.com/AcademySoftwareFoundation/wg-usd
     exclude:
     - clomonitor
 - name: xstudio
@@ -432,7 +400,6 @@
     C++ and Python APIs for pipeline integration and customisation for total flexibility.
   category: Visual Effects and Computer Graphics
   logo_url: https://artwork.aswf.io/projects/xstudio/primary/color/xstudio-primary-color.svg
-  devstats_url: https://insights.linuxfoundation.org/project/xstudio
   maturity: sandbox
   repositories:
   - name: xstudio

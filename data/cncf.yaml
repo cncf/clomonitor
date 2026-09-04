@@ -966,7 +966,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/karmada/icon/color/karmada-icon-color.svg
   devstats_url: https://karmada.devstats.cncf.io/
   accepted_at: "2021-09-14"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: karmada
       url: https://github.com/karmada-io/karmada

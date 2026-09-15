@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(2);
+select plan(3);
 
 -- Non existing project
 select is(
@@ -37,9 +37,34 @@ insert into project (
     'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
     'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/white/artifacthub-icon-white.svg',
     'https://artifacthub.devstats.cncf.io/',
-    '{"k": "v"}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 49}',
     'a',
     '2021-01-01',
+    '2022-02-24 09:40:42.695654+01',
+    'sandbox',
+    'cncf'
+);
+insert into project (
+    project_id,
+    name,
+    description,
+    category,
+    home_url,
+    score,
+    rating,
+    accepted_at,
+    updated_at,
+    maturity,
+    foundation_id
+) values (
+    '00000000-0002-0000-0000-000000000000',
+    'artifact-hub-minimal',
+    'Artifact Hub project with only required fields.',
+    'category1',
+    'https://minimal.artifacthub.io',
+    '{"k": "v"}',
+    'b',
+    '2021-01-02',
     '2022-02-24 09:40:42.695654+01',
     'sandbox',
     'cncf'
@@ -58,8 +83,25 @@ insert into repository (
     'https://github.com/artifacthub/hub',
     '{code, community}',
     '653b5219d16a2e5be274a7fb765916789ae68fbb',
-    '{"k": "v"}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 49}',
     '00000000-0001-0000-0000-000000000000'
+);
+insert into repository (
+    repository_id,
+    name,
+    url,
+    check_sets,
+    digest,
+    score,
+    project_id
+) values (
+    '00000000-0000-0002-0000-000000000000',
+    'artifact-hub-minimal',
+    'https://github.com/artifacthub/minimal',
+    '{code, community}',
+    '753b5219d16a2e5be274a7fb765916789ae68fbb',
+    '{"k": "v"}',
+    '00000000-0002-0000-0000-000000000000'
 );
 insert into report (
     report_id,
@@ -70,9 +112,29 @@ insert into report (
 ) values (
     '5133b909-a5b3-4c24-87b1-16b02a955ffa',
     '{code, community}',
-    '{"k": "v"}',
+    '{
+        "agent_readiness": {
+            "content_discoverability": {
+                "passed": true
+            }
+        },
+        "k": "v"
+    }',
     '2022-02-24 09:40:42.695654+01',
     '00000000-0000-0001-0000-000000000000'
+);
+insert into report (
+    report_id,
+    check_sets,
+    data,
+    updated_at,
+    repository_id
+) values (
+    '6133b909-a5b3-4c24-87b1-16b02a955ffa',
+    '{code, community}',
+    '{"k": "v"}',
+    '2022-02-24 09:40:42.695654+01',
+    '00000000-0000-0002-0000-000000000000'
 );
 insert into project_snapshot (
     project_id,
@@ -116,15 +178,30 @@ select is(
                 "report": {
                     "report_id": "5133b909-a5b3-4c24-87b1-16b02a955ffa",
                     "check_sets": ["code", "community"],
-                    "data": {"k": "v"},
+                    "data": {
+                        "agent_readiness": {
+                            "content_discoverability": {
+                                "passed": true
+                            }
+                        },
+                        "k": "v"
+                    },
                     "updated_at": 1645692042
                 },
                 "repository_id": "00000000-0000-0001-0000-000000000000",
-                "score": {"k": "v"},
+                "score": {
+                    "k": "v",
+                    "agent_readiness": 86.0,
+                    "agent_readiness_weight": 49
+                },
                 "url": "https://github.com/artifacthub/hub"
             }
         ],
-        "score": {"k": "v"},
+        "score": {
+            "k": "v",
+            "agent_readiness": 86.0,
+            "agent_readiness_weight": 49
+        },
         "snapshots": [
             "2022-01-02",
             "2022-01-01"
@@ -134,6 +211,42 @@ select is(
         "foundation": "cncf"
     }'::jsonb,
     'Project returned as a json object'
+);
+
+-- Project with only required fields and no snapshots (null fields stripped,
+-- repositories and snapshots filtered by project)
+select is(
+    get_project_by_id('00000000-0002-0000-0000-000000000000')::jsonb,
+    '{
+        "category": "category1",
+        "description": "Artifact Hub project with only required fields.",
+        "home_url": "https://minimal.artifacthub.io",
+        "id": "00000000-0002-0000-0000-000000000000",
+        "maturity": "sandbox",
+        "name": "artifact-hub-minimal",
+        "rating": "b",
+        "repositories": [
+            {
+                "digest": "753b5219d16a2e5be274a7fb765916789ae68fbb",
+                "check_sets": ["code", "community"],
+                "name": "artifact-hub-minimal",
+                "report": {
+                    "report_id": "6133b909-a5b3-4c24-87b1-16b02a955ffa",
+                    "check_sets": ["code", "community"],
+                    "data": {"k": "v"},
+                    "updated_at": 1645692042
+                },
+                "repository_id": "00000000-0000-0002-0000-000000000000",
+                "score": {"k": "v"},
+                "url": "https://github.com/artifacthub/minimal"
+            }
+        ],
+        "score": {"k": "v"},
+        "accepted_at": 1609545600,
+        "updated_at": 1645692042,
+        "foundation": "cncf"
+    }'::jsonb,
+    'Project with only required fields returned as a json object without null fields or snapshots'
 );
 
 -- Finish tests and rollback transaction

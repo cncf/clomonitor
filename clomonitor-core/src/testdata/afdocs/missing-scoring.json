@@ -1,0 +1,182 @@
+{
+  "url": "https://docs.example.org/",
+  "timestamp": "2026-09-14T10:15:30.000Z",
+  "specUrl": "https://afdocs.dev/spec/v0.6.0",
+  "testedPages": 3,
+  "samplingStrategy": "deterministic",
+  "discoverySources": [
+    "llms.txt",
+    "sitemap.xml"
+  ],
+  "summary": {
+    "total": 23,
+    "pass": 10,
+    "warn": 4,
+    "fail": 2,
+    "skip": 5,
+    "error": 2
+  },
+  "results": [
+    {
+      "id": "llms-txt-exists",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "llms.txt found at https://docs.example.org/llms.txt"
+    },
+    {
+      "id": "llms-txt-valid",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "llms.txt follows the specification"
+    },
+    {
+      "id": "llms-txt-size",
+      "category": "content-discoverability",
+      "status": "warn",
+      "message": "llms.txt is 45 KB, consider keeping it under 30 KB",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "llms-txt-links-resolve",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "All 20 sampled links resolved"
+    },
+    {
+      "id": "llms-txt-links-markdown",
+      "category": "content-discoverability",
+      "status": "warn",
+      "message": "12 of 20 sampled links serve markdown",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "llms-txt-directive-html",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "HTML pages advertise llms.txt"
+    },
+    {
+      "id": "llms-txt-directive-md",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "Markdown pages advertise llms.txt"
+    },
+    {
+      "id": "markdown-url-support",
+      "category": "markdown-availability",
+      "status": "fail",
+      "message": "No .md variant found for 18 of 20 sampled pages"
+    },
+    {
+      "id": "content-negotiation",
+      "category": "markdown-availability",
+      "status": "warn",
+      "message": "Accept: text/markdown ignored on 10 of 20 pages",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "rendering-strategy",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "page-size-markdown",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "page-size-html",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "content-start-position",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "tabbed-content-serialization",
+      "category": "content-structure",
+      "status": "pass",
+      "message": "Tabbed content serialises correctly"
+    },
+    {
+      "id": "section-header-quality",
+      "category": "content-structure",
+      "status": "error",
+      "message": "Unexpected token < in JSON at position 0"
+    },
+    {
+      "id": "markdown-code-fence-validity",
+      "category": "content-structure",
+      "status": "warn",
+      "message": "2 of 20 pages contain unbalanced code fences",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "http-status-codes",
+      "category": "url-stability",
+      "status": "fail",
+      "message": "6 of 20 sampled pages returned 404"
+    },
+    {
+      "id": "redirect-behavior",
+      "category": "url-stability",
+      "status": "error",
+      "message": "fetch failed: ECONNRESET"
+    },
+    {
+      "id": "llms-txt-coverage",
+      "category": "observability",
+      "status": "pass",
+      "message": "llms.txt covers 100% of sitemap urls"
+    },
+    {
+      "id": "markdown-content-parity",
+      "category": "observability",
+      "status": "pass",
+      "message": "Markdown and HTML content match on all sampled pages"
+    },
+    {
+      "id": "cache-header-hygiene",
+      "category": "observability",
+      "status": "pass",
+      "message": "Cache headers present on all sampled pages"
+    },
+    {
+      "id": "auth-gate-detection",
+      "category": "authentication",
+      "status": "pass",
+      "message": "No authentication gate detected"
+    },
+    {
+      "id": "auth-alternative-access",
+      "category": "authentication",
+      "status": "skip",
+      "message": "Not needed: no authentication gate detected",
+      "dependsOn": [
+        "auth-gate-detection"
+      ]
+    }
+  ],
+  "afdocsVersion": "0.20.0",
+  "options": {
+    "maxLinksToTest": 20,
+    "samplingStrategy": "deterministic",
+    "maxConcurrency": 3,
+    "requestDelay": 200,
+    "requestTimeout": 15000
+  }
+}

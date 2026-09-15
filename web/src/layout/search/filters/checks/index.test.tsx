@@ -55,6 +55,8 @@ describe('Checks', () => {
       expect(screen.getByRole('button', { name: 'Reset checks filters' })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: 'Reset checks filters' })).toBeDisabled();
       expect(screen.getByRole('button', { name: 'Apply filters' })).toBeInTheDocument();
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+      expect(screen.getByText('Content discoverability')).toBeInTheDocument();
     });
 
     it('calls onChecksChange to close modal filter', async () => {

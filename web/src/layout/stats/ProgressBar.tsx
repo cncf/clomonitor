@@ -17,7 +17,9 @@ const ProgressBar = (props: Props) => {
     <div className="d-flex flex-column">
       <div className={`d-flex flex-row align-items-center mb-1 mb-md-0 ${styles.progressTitle}`}>
         <div className={`me-2 position-relative ${styles.icon}`}>{props.icon}</div>
-        <div>{props.title}</div>
+        <div className="d-flex flex-row align-items-center text-truncate">
+          <span className="text-truncate">{props.title}</span>
+        </div>
       </div>
       <div className="d-flex flex-row mb-3 align-items-center">
         <div className={`flex-grow-1 ${styles.progressbarWrapper}`}>

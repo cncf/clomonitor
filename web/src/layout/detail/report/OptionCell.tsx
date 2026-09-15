@@ -31,6 +31,7 @@ const OptionCell = (props: Props) => {
   const { ctx } = useContext(AppContext);
   const { effective } = ctx.prefs.theme;
   const iframe = useRef<HTMLIFrameElement>(null);
+  const [openDetailsModalStatus, setOpenDetailsModalStatus] = useState<boolean>(false);
   const [openScoreModalStatus, setOpenScoreModalStatus] = useState<boolean>(false);
   const details = useRef<HTMLDivElement | null>(null);
   const errorIcon = <FaRegTimesCircle data-testid="error-icon" className={`text-danger ${styles.icon}`} />;
@@ -95,6 +96,26 @@ const OptionCell = (props: Props) => {
     }
   };
 
+  const getDetailsContent = (): JSX.Element => (
+    <div className={styles.detailsContent}>
+      <ReactMarkdown
+        rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
+        children={props.check.details!}
+        components={{
+          h1: Heading,
+          h2: Heading,
+          h3: Heading,
+          h4: Heading,
+          h5: Heading,
+          h6: Heading,
+          a: Link,
+          blockquote: Blockquote,
+        }}
+        skipHtml
+      />
+    </div>
+  );
+
   const getDetailsInfo = (): JSX.Element => {
     return (
       <>
@@ -121,27 +142,23 @@ const OptionCell = (props: Props) => {
             tooltipStyle
           >
             <div ref={details} className={`overflow-auto pb-1 ${styles.detailsWrapper} ${styles.visibleScroll}`}>
-              <div className={styles.detailsContent}>
-                <ReactMarkdown
-                  rehypePlugins={[[rehypeExternalLinks, { rel: ['nofollow noreferrer noopener'], target: '_blank' }]]}
-                  children={props.check.details!}
-                  components={{
-                    h1: Heading,
-                    h2: Heading,
-                    h3: Heading,
-                    h4: Heading,
-                    h5: Heading,
-                    h6: Heading,
-                    a: Link,
-                    blockquote: Blockquote,
-                  }}
-                  skipHtml
-                />
-              </div>
+              {getDetailsContent()}
             </div>
           </DropdownOnHover>
         </div>
-        <span className="d-block d-lg-none">{props.check.passed ? successIcon : errorIcon}</span>
+        <button
+          type="button"
+          className={`btn btn-link d-block d-lg-none p-0 text-reset ${styles.detailsBtn}`}
+          onClick={() => setOpenDetailsModalStatus(true)}
+          aria-label={`Show check details for ${opt.name}`}
+        >
+          {props.check.passed ? successIcon : errorIcon}
+        </button>
+        <FullScreenModal open={openDetailsModalStatus} onClose={() => setOpenDetailsModalStatus(false)}>
+          <div className={`h-100 w-100 mx-auto p-4 ${styles.detailsModalWrapper}`}>
+            <div className={`h-100 overflow-auto ${styles.visibleScroll}`}>{getDetailsContent()}</div>
+          </div>
+        </FullScreenModal>
       </>
     );
   };
@@ -257,9 +274,7 @@ const OptionCell = (props: Props) => {
         </>
       );
     } else {
-      return (
-        <>{props.check.details ? <> {getDetailsInfo()}</> : <> {props.check.passed ? successIcon : errorIcon}</>}</>
-      );
+      return props.check.details ? getDetailsInfo() : <>{props.check.passed ? successIcon : errorIcon}</>;
     }
   };
 

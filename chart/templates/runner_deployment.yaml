@@ -1,0 +1,73 @@
+{{- $root := . -}}
+{{- $profiles := list (dict "name" "afdocs" "config" .Values.runner.afdocs "terminationGracePeriodSeconds" 260) (dict "name" "scorecard" "config" .Values.runner.scorecard "terminationGracePeriodSeconds" 500) -}}
+{{- range $profile := $profiles }}
+{{- $name := index $profile "name" -}}
+{{- $config := index $profile "config" -}}
+{{- if $config.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.resourceNamePrefix" $root }}runner-{{ $name }}
+  labels:
+    app.kubernetes.io/component: runner-{{ $name }}
+    {{- include "chart.labels" $root | nindent 4 }}
+spec:
+  replicas: {{ $config.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: runner-{{ $name }}
+      {{- include "chart.selectorLabels" $root | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: runner-{{ $name }}
+        {{- include "chart.selectorLabels" $root | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      {{- with $root.Values.runner.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $root.Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      terminationGracePeriodSeconds: {{ index $profile "terminationGracePeriodSeconds" }}
+      containers:
+        - name: runner
+          image: {{ $root.Values.runner.image.repository }}:{{ $root.Values.imageTag | default (printf "v%s" $root.Chart.AppVersion) }}
+          imagePullPolicy: {{ $root.Values.pullPolicy }}
+          {{- with $root.Values.runner.containerSecurityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: runner-config
+              mountPath: {{ $root.Values.configDir | quote }}
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+          ports:
+            - name: http
+              containerPort: {{ $config.service.port }}
+              protocol: TCP
+          resources:
+            {{- toYaml $config.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          command: ['clomonitor-runner', '-c', '{{ $root.Values.configDir }}/runner.yaml']
+      volumes:
+        - name: runner-config
+          secret:
+            secretName: {{ include "chart.resourceNamePrefix" $root }}runner-{{ $name }}
+        - name: tmp
+          emptyDir: {}
+{{- end }}
+{{- end }}

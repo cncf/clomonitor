@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD014 MD033 MD045 -->
+
 # CLOMonitor
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cncf/clomonitor)
@@ -38,7 +40,14 @@ The CLOMonitor's linter can also be run locally or from CI workflows. This can b
 
 CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard). When building from the source, you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. The container image already includes the `scorecard` binary, so if you opt for using it you are ready to go.
 
-Both CLOMonitor and Scorecard use the GitHub GraphQL API for some checks, which requires authentication. A GitHub token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
+CLOMonitor delegates the agent readiness checks to [AFDocs](https://afdocs.dev). When building from the source, you'll need to [install it](https://afdocs.dev) before running `clomonitor-linter` locally. The container image already includes the `afdocs` binary.
+
+Both CLOMonitor and Scorecard use the GitHub GraphQL API for some checks, which
+requires authentication. A GitHub token (with `public_repo` scope) **must** be
+provided via the `GITHUB_TOKEN` environment variable to authenticate those
+requests. When runners are used, the token is sent only to the Scorecard runner
+profile and is injected only into the scorecard subprocess. AFDocs does not
+receive a GitHub token and does not consume authenticated GitHub API quota.
 
 ### Using Docker
 

@@ -56,6 +56,7 @@ mod tests {
                     discussions: MdRepositoryDiscussions { nodes: None },
                     ..MdRepository::default()
                 },
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })
@@ -83,6 +84,7 @@ mod tests {
                     },
                     ..MdRepository::default()
                 },
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })
@@ -110,6 +112,7 @@ mod tests {
                     },
                     ..MdRepository::default()
                 },
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })

@@ -1,11 +1,11 @@
-import { CATEGORY_ICONS } from '../../data';
-import { ScoreType } from '../../types';
+import { SECTIONS } from '../../data';
+import { ScoreType, SectionInfo } from '../../types';
 import styles from './Average.module.css';
 import ProgressBar from './ProgressBar';
 
 interface Props {
   title: string;
-  data: { [key in ScoreType]: number };
+  data: { [key in ScoreType]?: number | null };
 }
 
 const Average = (props: Props) => {
@@ -13,19 +13,11 @@ const Average = (props: Props) => {
     <>
       <div className={`card-header fw-bold text-uppercase text-center ${styles.cardHeader}`}>{props.title}</div>
       <div className="card-body pt-2 pt-md-3 px-3 px-md-4 pb-0">
-        <ProgressBar
-          title="Documentation"
-          icon={CATEGORY_ICONS[ScoreType.Documentation]}
-          value={props.data.documentation}
-        />
-        <ProgressBar title="License" icon={CATEGORY_ICONS[ScoreType.License]} value={props.data.license} />
-        <ProgressBar
-          title="Best Practices"
-          icon={CATEGORY_ICONS[ScoreType.BestPractices]}
-          value={props.data.best_practices}
-        />
-        <ProgressBar title="Security" icon={CATEGORY_ICONS[ScoreType.Security]} value={props.data.security} />
-        <ProgressBar title="Legal" icon={CATEGORY_ICONS[ScoreType.Legal]} value={props.data.legal} />
+        {SECTIONS.map((section: SectionInfo) => {
+          const value = props.data[section.type];
+          if (value === undefined || value === null) return null;
+          return <ProgressBar key={`average_${section.type}`} title={section.name} icon={section.icon} value={value} />;
+        })}
       </div>
     </>
   );

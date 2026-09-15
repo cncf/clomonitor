@@ -1,3 +1,4 @@
+pub(crate) mod afdocs;
 pub(crate) mod github;
 pub(crate) mod landscape;
 pub(crate) mod scorecard;

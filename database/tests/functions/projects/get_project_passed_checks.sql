@@ -57,6 +57,29 @@ insert into report (
 ) values (
     '00000000-0000-0000-0001-000000000000',
     '{
+        "agent_readiness": {
+            "authentication": {
+                "passed": true
+            },
+            "content_discoverability": {
+                "passed": true
+            },
+            "content_structure": {
+                "passed": false
+            },
+            "markdown_availability": {
+                "passed": true
+            },
+            "observability": {
+                "passed": false
+            },
+            "page_size": {
+                "passed": true
+            },
+            "url_stability": {
+                "passed": true
+            }
+        },
         "legal": {
             "trademark_disclaimer": {
                 "passed": false
@@ -215,11 +238,13 @@ select results_eq(
         values ('{
             adopters,
             analytics,
+            authentication,
             binary_artifacts,
             changelog,
             cla,
             code_of_conduct,
             code_review,
+            content_discoverability,
             contributing,
             dangerous_workflow,
             dco,
@@ -229,9 +254,12 @@ select results_eq(
             license_spdx_id,
             maintained,
             maintainers,
+            markdown_availability,
             openssf_badge,
+            page_size,
             recent_release,
             security_policy,
+            url_stability,
             website
         }'::text[])
     $$,

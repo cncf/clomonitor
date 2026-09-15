@@ -37,5 +37,17 @@ describe('Average', () => {
 
       expect(screen.getAllByRole('progressbar')).toHaveLength(5);
     });
+
+    it('renders Agent Readiness only when its average is defined', () => {
+      const { rerender } = render(<Average {...defaultProps} />);
+
+      expect(screen.queryByText('Agent Readiness')).toBeNull();
+
+      rerender(<Average {...defaultProps} data={{ ...defaultProps.data, agent_readiness: 0 }} />);
+
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+      expect(screen.getByText('0%')).toBeInTheDocument();
+      expect(screen.getAllByRole('progressbar')).toHaveLength(6);
+    });
   });
 });

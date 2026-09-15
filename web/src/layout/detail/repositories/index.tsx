@@ -1,4 +1,4 @@
-import { CheckSet, CheckSetBadge } from 'clo-ui/components/CheckSetBadge';
+import { CheckSetBadge } from 'clo-ui/components/CheckSetBadge';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { RoundScore } from 'clo-ui/components/RoundScore';
 import { scrollToTop } from 'clo-ui/utils/scrollToTop';
@@ -10,8 +10,8 @@ import { HiExclamation } from 'react-icons/hi';
 import { VscGithub } from 'react-icons/vsc';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { CATEGORY_ICONS } from '../../../data';
-import { Repository, ScoreType } from '../../../types';
+import { SECTIONS } from '../../../data';
+import { Repository, SectionInfo } from '../../../types';
 import getCheckSets from '../../../utils/getCheckSets';
 import sortRepos from '../../../utils/sortRepos';
 import Row from '../report/Row';
@@ -95,6 +95,7 @@ const RepositoriesList = (props: Props) => {
 
       {repositories.map((repo: Repository) => {
         if (isUndefined(repo.report)) return null;
+        const report = repo.report;
         const checkSets = getCheckSets(repo);
         return (
           <div
@@ -134,10 +135,7 @@ const RepositoriesList = (props: Props) => {
                     </div>
                   </div>
                   <div className="ms-3 ms-md-0 me-0 me-md-3">
-                    <RoundScore
-                      score={!isUndefined(repo.score) ? repo.score.global : undefined}
-                      className={styles.global}
-                    />
+                    <RoundScore score={repo.score?.global ?? undefined} className={styles.global} />
                   </div>
                 </div>
                 {!props.isSnapshotVisible && (
@@ -150,98 +148,42 @@ const RepositoriesList = (props: Props) => {
               </div>
             </div>
             <div>
-              {repo.report.errors && repo.report.errors !== '' && (
+              {report.errors && report.errors !== '' && (
                 <div className="my-2">
                   <div className={`alert alert-warning mb-0 rounded-0 ${styles.alert}`} role="alert">
                     <div className="alert-heading mb-3">
                       <HiExclamation className="me-2" />
                       <span className="fw-bold">
                         Something went wrong processing this repository{' '}
-                        {formatDistanceToNowStrict(fromUnixTime(repo.report.updated_at), { addSuffix: true })}
+                        {formatDistanceToNowStrict(fromUnixTime(report.updated_at), { addSuffix: true })}
                       </span>
                     </div>
-                    <pre className={`d-block p-3 mb-0 w-100 overflow-auto ${styles.error}`}>{repo.report.errors}</pre>
+                    <pre className={`d-block p-3 mb-0 w-100 overflow-auto ${styles.error}`}>{report.errors}</pre>
                   </div>
                 </div>
               )}
-              {repo.report.data && (
+              {report.data && (
                 <>
-                  <Row
-                    repoName={repo.name}
-                    reportId={repo.report.report_id}
-                    name={ScoreType.Documentation}
-                    label="Documentation"
-                    data={repo.report.data.documentation}
-                    icon={CATEGORY_ICONS[ScoreType.Documentation]}
-                    score={!isUndefined(repo.score) ? repo.score.documentation : undefined}
-                    referenceUrl="/docs/topics/checks/#documentation"
-                    recommendedTemplates={
-                      checkSets.includes(CheckSet.Community)
-                        ? [
-                            {
-                              name: 'CONTRIBUTING.md',
-                              url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
-                            },
-                            {
-                              name: 'GOVERNANCE.md',
-                              url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
-                            },
-                          ]
-                        : undefined
-                    }
-                    getAnchorLink={getAnchorLink}
-                  />
-                  <Row
-                    repoName={repo.name}
-                    reportId={repo.report.report_id}
-                    name={ScoreType.License}
-                    label="License"
-                    data={repo.report.data.license}
-                    icon={CATEGORY_ICONS[ScoreType.License]}
-                    score={!isUndefined(repo.score) ? repo.score.license : undefined}
-                    referenceUrl="/docs/topics/checks/#license"
-                    getAnchorLink={getAnchorLink}
-                  />
-                  <Row
-                    repoName={repo.name}
-                    reportId={repo.report.report_id}
-                    name={ScoreType.BestPractices}
-                    label="Best Practices"
-                    data={repo.report.data.best_practices}
-                    icon={CATEGORY_ICONS[ScoreType.BestPractices]}
-                    score={!isUndefined(repo.score) ? repo.score.best_practices : undefined}
-                    referenceUrl="/docs/topics/checks/#best-practices"
-                    getAnchorLink={getAnchorLink}
-                    repoUrl={repo.url}
-                  />
-                  <Row
-                    repoName={repo.name}
-                    reportId={repo.report.report_id}
-                    name={ScoreType.Security}
-                    label="Security"
-                    data={repo.report.data.security}
-                    icon={CATEGORY_ICONS[ScoreType.Security]}
-                    score={!isUndefined(repo.score) ? repo.score.security : undefined}
-                    referenceUrl="/docs/topics/checks/#security"
-                    recommendedTemplates={[
-                      {
-                        name: 'SECURITY.md',
-                        url: 'https://github.com/cncf/tag-security/blob/main/community/resources/project-resources/templates/SECURITY.md',
-                      },
-                    ]}
-                    getAnchorLink={getAnchorLink}
-                  />
-                  <Row
-                    repoName={repo.name}
-                    reportId={repo.report.report_id}
-                    name={ScoreType.Legal}
-                    label="Legal"
-                    data={repo.report.data.legal}
-                    icon={CATEGORY_ICONS[ScoreType.Legal]}
-                    score={!isUndefined(repo.score) ? repo.score.legal : undefined}
-                    referenceUrl="/docs/topics/checks/#legal"
-                    getAnchorLink={getAnchorLink}
-                  />
+                  {SECTIONS.map((section: SectionInfo) => {
+                    const data = report.data[section.type];
+                    if (isUndefined(data) || data === null) return null;
+                    return (
+                      <Row
+                        key={`${report.report_id}_${section.type}`}
+                        repoName={repo.name}
+                        reportId={report.report_id}
+                        name={section.type}
+                        label={section.name}
+                        data={data}
+                        icon={section.icon}
+                        score={!isUndefined(repo.score) ? repo.score[section.type] : undefined}
+                        referenceUrl={section.referenceUrl}
+                        recommendedTemplates={section.recommendedTemplates?.(checkSets)}
+                        getAnchorLink={getAnchorLink}
+                        repoUrl={section.showRepoUrl ? repo.url : undefined}
+                      />
+                    );
+                  })}
                 </>
               )}
             </div>

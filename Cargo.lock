@@ -641,6 +641,7 @@ dependencies = [
  "postgres-types",
  "regex",
  "reqwest 0.13.4",
+ "rustix 1.1.4",
  "serde",
  "serde_json",
  "serde_yaml",
@@ -713,6 +714,25 @@ dependencies = [
  "sha2 0.10.9",
  "tokio",
  "tokio-postgres",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "clomonitor-runner"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "clap",
+ "clomonitor-core",
+ "config",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tokio",
+ "tower",
+ "tower-http 0.7.0",
  "tracing",
  "tracing-subscriber",
 ]

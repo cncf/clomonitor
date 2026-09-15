@@ -5,12 +5,12 @@ use std::{path::PathBuf, sync::Arc};
 
 use anyhow::{Context, Result};
 use clap::Parser;
-use clomonitor_core::linter::CoreLinter;
+use clomonitor_core::linter::{CoreLinter, ToolMode, ToolsConfig};
 use config::{Config, File};
 use deadpool_postgres::{Config as DbConfig, Runtime};
 use openssl::ssl::{SslConnector, SslMethod, SslVerifyMode};
 use postgres_openssl::MakeTlsConnector;
-use tracing::debug;
+use tracing::{debug, warn};
 use tracing_subscriber::EnvFilter;
 
 use crate::{db::PgDB, git::GitCLI};
@@ -50,6 +50,20 @@ async fn main() -> Result<()> {
         _ => s.init(),
     }
 
+    // Setup external tools execution modes (the tracker does not run the
+    // tools' binaries itself, it delegates to a runner service when one is
+    // configured)
+    let tools = ToolsConfig {
+        afdocs: tool_mode(&cfg, "runner.afdocsUrl", ToolMode::Disabled)?,
+        scorecard: tool_mode(&cfg, "runner.scorecardUrl", ToolMode::Disabled)?,
+    };
+    if tools.afdocs == ToolMode::Disabled {
+        warn!("runner.afdocsUrl not set: agent readiness checks will be reported as failed");
+    }
+    if tools.scorecard == ToolMode::Disabled {
+        warn!("runner.scorecardUrl not set: scorecard backed checks will be reported as failed");
+    }
+
     // Setup database
     debug!("setting up database");
     let mut builder = SslConnector::builder(SslMethod::tls())?;
@@ -62,5 +76,15 @@ async fn main() -> Result<()> {
     // Run tracker
     let git = Arc::new(GitCLI::new()?);
     let linter = Arc::new(CoreLinter::new());
-    tracker::run(&cfg, db, git, linter).await
+    tracker::run(&cfg, db, git, linter, tools).await
+}
+
+/// Get the execution mode of an external tool from the runner url set in the
+/// configuration key provided, using the default mode when it is not set.
+fn tool_mode(cfg: &Config, key: &str, default: ToolMode) -> Result<ToolMode> {
+    match cfg.get_string(key) {
+        Ok(url) => ToolMode::runner(&url).context("error setting up configuration"),
+        Err(config::ConfigError::NotFound(_)) => Ok(default),
+        Err(err) => Err(err).context("error setting up configuration"),
+    }
 }

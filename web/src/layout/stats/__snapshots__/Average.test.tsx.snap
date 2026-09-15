@@ -36,8 +36,14 @@ exports[`Average > creates snapshot 1`] = `
             />
           </svg>
         </div>
-        <div>
-          Documentation
+        <div
+          class="d-flex flex-row align-items-center text-truncate"
+        >
+          <span
+            class="text-truncate"
+          >
+            Documentation
+          </span>
         </div>
       </div>
       <div
@@ -94,8 +100,14 @@ exports[`Average > creates snapshot 1`] = `
             />
           </svg>
         </div>
-        <div>
-          License
+        <div
+          class="d-flex flex-row align-items-center text-truncate"
+        >
+          <span
+            class="text-truncate"
+          >
+            License
+          </span>
         </div>
       </div>
       <div
@@ -152,8 +164,14 @@ exports[`Average > creates snapshot 1`] = `
             />
           </svg>
         </div>
-        <div>
-          Best Practices
+        <div
+          class="d-flex flex-row align-items-center text-truncate"
+        >
+          <span
+            class="text-truncate"
+          >
+            Best Practices
+          </span>
         </div>
       </div>
       <div
@@ -210,8 +228,14 @@ exports[`Average > creates snapshot 1`] = `
             />
           </svg>
         </div>
-        <div>
-          Security
+        <div
+          class="d-flex flex-row align-items-center text-truncate"
+        >
+          <span
+            class="text-truncate"
+          >
+            Security
+          </span>
         </div>
       </div>
       <div
@@ -268,8 +292,14 @@ exports[`Average > creates snapshot 1`] = `
             />
           </svg>
         </div>
-        <div>
-          Legal
+        <div
+          class="d-flex flex-row align-items-center text-truncate"
+        >
+          <span
+            class="text-truncate"
+          >
+            Legal
+          </span>
         </div>
       </div>
       <div

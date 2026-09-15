@@ -89,6 +89,14 @@
   font-size: 0.8rem;
 }
 
+.detailsBtn {
+  line-height: 1;
+}
+
+.detailsModalWrapper {
+  max-width: 1000px;
+}
+
 .detailsContent p {
   margin-bottom: 0px;
 }

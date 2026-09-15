@@ -211,6 +211,33 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 Legal
               </span>
             </th>
+            <th
+              class="d-none d-md-table-cell text-center text-nowrap"
+              scope="col"
+            >
+              <small
+                class="position-relative _icon_2617a4"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                  />
+                </svg>
+              </small>
+              <span
+                class="d-none d-xl-inline-block ms-1 ms-xl-2"
+              >
+                Agent Readiness
+              </span>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -311,6 +338,17 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 </span>
               </div>
             </td>
+            <td
+              class="_hoverableCell_42a19a d-none d-md-table-cell align-middle"
+              role="button"
+            >
+              <div
+                class="mx-auto px-2 text-center text-dark fw-bold _badge_42a19a"
+                style="border-bottom-color: var(--clo-yellow);"
+              >
+                57
+              </div>
+            </td>
           </tr>
           <tr>
             <td
@@ -372,6 +410,19 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 style="border-bottom-color: var(--clo-green);"
               >
                 100
+              </div>
+            </td>
+            <td
+              class="d-none d-md-table-cell align-middle"
+            >
+              <div
+                class="mx-auto px-2 text-center"
+              >
+                <span
+                  class="text-muted"
+                >
+                  n/a
+                </span>
               </div>
             </td>
             <td
@@ -515,6 +566,19 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 </span>
               </div>
             </td>
+            <td
+              class="d-none d-md-table-cell align-middle"
+            >
+              <div
+                class="mx-auto px-2 text-center"
+              >
+                <span
+                  class="text-muted"
+                >
+                  n/a
+                </span>
+              </div>
+            </td>
           </tr>
           <tr>
             <td
@@ -576,6 +640,19 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 style="border-bottom-color: var(--clo-green);"
               >
                 100
+              </div>
+            </td>
+            <td
+              class="d-none d-md-table-cell align-middle"
+            >
+              <div
+                class="mx-auto px-2 text-center"
+              >
+                <span
+                  class="text-muted"
+                >
+                  n/a
+                </span>
               </div>
             </td>
             <td
@@ -719,6 +796,19 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 </span>
               </div>
             </td>
+            <td
+              class="d-none d-md-table-cell align-middle"
+            >
+              <div
+                class="mx-auto px-2 text-center"
+              >
+                <span
+                  class="text-muted"
+                >
+                  n/a
+                </span>
+              </div>
+            </td>
           </tr>
           <tr>
             <td
@@ -780,6 +870,19 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                 style="border-bottom-color: var(--clo-green);"
               >
                 100
+              </div>
+            </td>
+            <td
+              class="d-none d-md-table-cell align-middle"
+            >
+              <div
+                class="mx-auto px-2 text-center"
+              >
+                <span
+                  class="text-muted"
+                >
+                  n/a
+                </span>
               </div>
             </td>
             <td
@@ -1168,7 +1271,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1293,7 +1395,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1432,7 +1533,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1556,7 +1656,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1687,7 +1786,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1811,7 +1909,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -1939,7 +2036,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -2070,7 +2166,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -2194,7 +2289,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -2564,7 +2658,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -2692,7 +2785,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -2962,7 +3054,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -3099,7 +3190,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -3226,7 +3316,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -3499,7 +3588,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -3725,6 +3813,1453 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     .
                   </div>
                 </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="p-3 p-md-4 border border-1 mb-2 _reportContent_6a25e0"
+        >
+          <div
+            class="mx-0 mx-md-1"
+          >
+            <div
+              class="d-flex flex-row position-relative"
+            >
+              <div
+                class="position-absolute _headerAnchor_6a25e0"
+                id="spec_agent_readiness"
+              />
+              <div
+                class="d-flex flex-row align-items-center _titleWrapper_6a25e0"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                  />
+                </svg>
+                <div
+                  class="ms-2 fw-bold"
+                >
+                  Agent Readiness
+                </div>
+                <button
+                  aria-label="Link to anchor spec_agent_readiness"
+                  class="btn btn-link text-reset text-center lh-1 _headingLink_fe56fd _headingLink_6a25e0"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.78 3.653a3.936 3.936 0 1 1 5.567 5.567l-3.627 3.627a3.936 3.936 0 0 1-5.88-.353.75.75 0 0 0-1.18.928 5.436 5.436 0 0 0 8.12.486l3.628-3.628a5.436 5.436 0 1 0-7.688-7.688l-3 3a.75.75 0 0 0 1.06 1.061l3-3Z"
+                    />
+                    <path
+                      d="M7.28 11.153a3.936 3.936 0 0 1 5.88.353.75.75 0 0 0 1.18-.928 5.436 5.436 0 0 0-8.12-.486L2.592 13.72a5.436 5.436 0 1 0 7.688 7.688l3-3a.75.75 0 1 0-1.06-1.06l-3 3a3.936 3.936 0 0 1-5.567-5.568l3.627-3.627Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-flex flex-row mt-2 mb-4 align-items-center"
+            >
+              <div
+                class="flex-grow-1 _progressbarWrapper_6a25e0"
+              >
+                <div
+                  class="progress rounded-0 _progress_6a25e0"
+                >
+                  <div
+                    aria-label="Agent Readiness score for spec"
+                    aria-valuemax="100"
+                    aria-valuemin="0"
+                    aria-valuenow="57.14285714285714"
+                    class="progress-bar _progressbar_6a25e0"
+                    role="progressbar"
+                    style="width: 57.14285714285714%; background-color: var(--clo-yellow);"
+                  />
+                </div>
+              </div>
+              <div
+                class="ps-3 lh-1 _scoreWrapper_6a25e0"
+              >
+                <small
+                  class="fw-bold"
+                >
+                  57%
+                </small>
+              </div>
+            </div>
+            <div>
+              <table
+                class="table align-middle w-100 border _table_6a25e0"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <div
+                        class="d-none d-md-block position-relative undefined"
+                      >
+                        <div
+                          class="cursorDefault"
+                          data-testid="elementWithTooltip"
+                        >
+                          <div
+                            class="position-relative"
+                          >
+                            <svg
+                              class="text-muted _exemptIcon_19cbf0"
+                              data-testid="exempt-icon"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              />
+                              <path
+                                d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                              />
+                            </svg>
+                            <div
+                              class="position-absolute bg-muted rounded-circle _dot_19cbf0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <span
+                        class="d-block d-md-none"
+                      >
+                        <svg
+                          class="text-muted _exemptIcon_19cbf0"
+                          data-testid="exempt-icon"
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 24 24"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0 0h24v24H0z"
+                            fill="none"
+                          />
+                          <path
+                            d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                          />
+                        </svg>
+                      </span>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M7 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C14.7405 2 17.1131 3.5748 18.2624 5.86882L16.4731 6.76344C15.6522 5.12486 13.9575 4 12 4C9.23858 4 7 6.23858 7 9V10ZM5 12V20H19V12H5ZM10 15H14V17H10V15Z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <small
+                                class="fw-bold text-truncate"
+                              >
+                                Authentication and access
+                              </small>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation is accessible without unnecessary authentication barriers
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#authentication-and-access"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <div
+                        class="d-none d-lg-block"
+                      >
+                        <div>
+                          <div
+                            class="position-absolute"
+                          >
+                            <div>
+                              <div
+                                aria-hidden="true"
+                                class="dropdown-menu rounded-0 text-wrap DropdownOnHover-module_dropdown__huQ9u _detailsDropdown_19cbf0 tooltipDropdown DropdownOnHover-module_tooltip__7UcTO"
+                                id="_r_0_"
+                                role="complementary"
+                                style="width: 700px;"
+                              >
+                                <div
+                                  class="arrow DropdownOnHover-module_arrow__8TEGG undefined"
+                                  data-testid="dropdown-arrow"
+                                />
+                                <div
+                                  class="ps-3 pe-2 pt-1"
+                                >
+                                  <div
+                                    class="overflow-auto pb-1 _detailsWrapper_19cbf0 _visibleScroll_19cbf0"
+                                  >
+                                    <div
+                                      class="_detailsContent_19cbf0"
+                                    >
+                                      <div />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            aria-controls="_r_0_"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            aria-label="Toggle dropdown"
+                            class="cursorDefault"
+                            role="button"
+                          >
+                            <div
+                              class="position-relative"
+                            >
+                              <svg
+                                class="text-success _icon_19cbf0"
+                                data-testid="success-icon"
+                                fill="currentColor"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-width="0"
+                                viewBox="0 0 512 512"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                                />
+                              </svg>
+                              <div
+                                class="position-absolute bg-success rounded-circle _dot_19cbf0"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        aria-label="Show check details for Content discoverability"
+                        class="btn btn-link d-block d-lg-none p-0 text-reset _detailsBtn_19cbf0"
+                        type="button"
+                      >
+                        <svg
+                          class="text-success _icon_19cbf0"
+                          data-testid="success-icon"
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                          />
+                        </svg>
+                      </button>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="none"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5"
+                              />
+                              <path
+                                d="M9 4v13"
+                              />
+                              <path
+                                d="M15 7v5"
+                              />
+                              <path
+                                d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"
+                              />
+                              <path
+                                d="M20.2 20.2l1.8 1.8"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <div>
+                                <a
+                                  aria-label="Checks reference documentation"
+                                  class="link d-inline w-100"
+                                  href="https://cloudevents.io"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <small
+                                      class="fw-bold text-truncate"
+                                    >
+                                      Content discoverability
+                                    </small>
+                                    <svg
+                                      class="ms-2 _miniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether agents can discover the most important documentation content from the project website
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#content-discoverability"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <div
+                        class="d-none d-lg-block"
+                      >
+                        <div>
+                          <div
+                            class="position-absolute"
+                          >
+                            <div>
+                              <div
+                                aria-hidden="true"
+                                class="dropdown-menu rounded-0 text-wrap DropdownOnHover-module_dropdown__huQ9u _detailsDropdown_19cbf0 tooltipDropdown DropdownOnHover-module_tooltip__7UcTO"
+                                id="_r_1_"
+                                role="complementary"
+                                style="width: 700px;"
+                              >
+                                <div
+                                  class="arrow DropdownOnHover-module_arrow__8TEGG undefined"
+                                  data-testid="dropdown-arrow"
+                                />
+                                <div
+                                  class="ps-3 pe-2 pt-1"
+                                >
+                                  <div
+                                    class="overflow-auto pb-1 _detailsWrapper_19cbf0 _visibleScroll_19cbf0"
+                                  >
+                                    <div
+                                      class="_detailsContent_19cbf0"
+                                    >
+                                      <div />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            aria-controls="_r_1_"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            aria-label="Toggle dropdown"
+                            class="cursorDefault"
+                            role="button"
+                          >
+                            <div
+                              class="position-relative"
+                            >
+                              <svg
+                                class="text-danger _icon_19cbf0"
+                                data-testid="error-icon"
+                                fill="currentColor"
+                                height="1em"
+                                stroke="currentColor"
+                                stroke-width="0"
+                                viewBox="0 0 512 512"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                                />
+                              </svg>
+                              <div
+                                class="position-absolute bg-danger rounded-circle _dot_19cbf0"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        aria-label="Show check details for Content structure"
+                        class="btn btn-link d-block d-lg-none p-0 text-reset _detailsBtn_19cbf0"
+                        type="button"
+                      >
+                        <svg
+                          class="text-danger _icon_19cbf0"
+                          data-testid="error-icon"
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                          />
+                        </svg>
+                      </button>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M20 13.01h-7V10h1c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v4c0 1.103.897 2 2 2h1v3.01H4V18H3v4h4v-4H6v-2.99h5V18h-1v4h4v-4h-1v-2.99h5V18h-1v4h4v-4h-1v-4.99zM10 8V4h4l.002 4H10z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <div>
+                                <a
+                                  aria-label="Checks reference documentation"
+                                  class="link d-inline w-100"
+                                  href="https://cloudevents.io"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <small
+                                      class="fw-bold text-truncate"
+                                    >
+                                      Content structure
+                                    </small>
+                                    <svg
+                                      class="ms-2 _miniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation content is organized with a clear structure for agents and users
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#content-structure"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <svg
+                        class="text-success _icon_19cbf0"
+                        data-testid="success-icon"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                        />
+                      </svg>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 640 512"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <div>
+                                <a
+                                  aria-label="Checks reference documentation"
+                                  class="link d-inline w-100"
+                                  href="https://cloudevents.io"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <small
+                                      class="fw-bold text-truncate"
+                                    >
+                                      Markdown availability
+                                    </small>
+                                    <svg
+                                      class="ms-2 _miniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation content is available in Markdown or agent-friendly text formats
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#markdown-availability"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <div
+                        class="d-none d-md-block position-relative undefined"
+                      >
+                        <div
+                          class="cursorDefault"
+                          data-testid="elementWithTooltip"
+                        >
+                          <div
+                            class="position-relative"
+                          >
+                            <svg
+                              class="_failedIcon_19cbf0"
+                              data-testid="failed-icon"
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"
+                              />
+                            </svg>
+                            <div
+                              class="position-absolute bg-orange rounded-circle _dot_19cbf0"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <span
+                        class="d-block d-md-none"
+                      >
+                        <svg
+                          class="_failedIcon_19cbf0"
+                          data-testid="failed-icon"
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          viewBox="0 0 24 24"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"
+                          />
+                        </svg>
+                      </span>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M9 7.53861L15 21.5386L18.6594 13H23V11H17.3406L15 16.4614L9 2.46143L5.3406 11H1V13H6.6594L9 7.53861Z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <small
+                                class="fw-bold text-truncate"
+                              >
+                                Observability and content health
+                              </small>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation exposes signals that help agents detect current and healthy content
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#observability-and-content-health"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <svg
+                        class="text-danger _icon_19cbf0"
+                        data-testid="error-icon"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"
+                        />
+                      </svg>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 16 16"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M14 4.5V9h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v7H2V2a2 2 0 0 1 2-2h5.5zM13 12h1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2h1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <div>
+                                <a
+                                  aria-label="Checks reference documentation"
+                                  class="link d-inline w-100"
+                                  href="https://cloudevents.io"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <small
+                                      class="fw-bold text-truncate"
+                                    >
+                                      Page size and truncation risk
+                                    </small>
+                                    <svg
+                                      class="ms-2 _miniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation pages are sized to reduce truncation risk for agents
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#page-size-and-truncation-risk"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center _iconCell_19cbf0"
+                    >
+                      <svg
+                        class="text-success _icon_19cbf0"
+                        data-testid="success-icon"
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                        />
+                      </svg>
+                    </td>
+                    <td
+                      class="pe-2 pe-md-4"
+                    >
+                      <div
+                        class="d-table w-100 _contentCell_19cbf0"
+                      >
+                        <div
+                          class="d-flex flex-row align-items-baseline align-items-md-center"
+                        >
+                          <div
+                            class="text-muted me-2 _iconCheck_19cbf0"
+                          >
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-width="0"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M13.0607 8.11097L14.4749 9.52518C17.2086 12.2589 17.2086 16.691 14.4749 19.4247L14.1214 19.7782C11.3877 22.5119 6.95555 22.5119 4.22188 19.7782C1.48821 17.0446 1.48821 12.6124 4.22188 9.87874L5.6361 11.293C3.68348 13.2456 3.68348 16.4114 5.6361 18.364C7.58872 20.3166 10.7545 20.3166 12.7072 18.364L13.0607 18.0105C15.0133 16.0578 15.0133 12.892 13.0607 10.9394L11.6465 9.52518L13.0607 8.11097ZM19.7782 14.1214L18.364 12.7072C20.3166 10.7545 20.3166 7.58872 18.364 5.6361C16.4114 3.68348 13.2456 3.68348 11.293 5.6361L10.9394 5.98965C8.98678 7.94227 8.98678 11.1081 10.9394 13.0607L12.3536 14.4749L10.9394 15.8891L9.52518 14.4749C6.79151 11.7413 6.79151 7.30911 9.52518 4.57544L9.87874 4.22188C12.6124 1.48821 17.0446 1.48821 19.7782 4.22188C22.5119 6.95555 22.5119 11.3877 19.7782 14.1214Z"
+                              />
+                            </svg>
+                          </div>
+                          <div
+                            class="d-flex flex-column align-items-start flex-grow-1 truncateWrapper"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center w-100 _name_19cbf0"
+                              data-testid="opt-name"
+                            >
+                              <div>
+                                <a
+                                  aria-label="Checks reference documentation"
+                                  class="link d-inline w-100"
+                                  href="https://cloudevents.io"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <small
+                                      class="fw-bold text-truncate"
+                                    >
+                                      URL stability and redirects
+                                    </small>
+                                    <svg
+                                      class="ms-2 _miniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div
+                              class="d-none d-md-flex flex-row text-muted w-100 _legend_19cbf0"
+                            >
+                              <div
+                                class="text-truncate"
+                              >
+                                <span>
+                                  Whether documentation URLs are stable and avoid redirect chains that complicate agent access
+                                </span>
+                              </div>
+                              <div
+                                class="d-none d-lg-flex text-nowrap"
+                              >
+                                <a
+                                  aria-label="Open external link"
+                                  class="link d-inline w-100 ms-1"
+                                  href="/docs/topics/checks/#url-stability-and-redirects"
+                                  rel="noopener noreferrer"
+                                  tabindex="-1"
+                                  target="_blank"
+                                >
+                                  <div
+                                    class="d-flex flex-row align-items-center w-100"
+                                  >
+                                    <div>
+                                      [check docs
+                                    </div>
+                                    <svg
+                                      class="ms-1 _extraMiniIcon_19cbf0"
+                                      fill="none"
+                                      height="1em"
+                                      stroke="currentColor"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      viewBox="0 0 24 24"
+                                      width="1em"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                      />
+                                      <polyline
+                                        points="15 3 21 3 21 9"
+                                      />
+                                      <line
+                                        x1="10"
+                                        x2="21"
+                                        y1="14"
+                                        y2="3"
+                                      />
+                                    </svg>
+                                    <div>
+                                      ]
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul
+              class="d-none d-md-block mb-0 _linksList_6a25e0"
+            >
+              <li
+                class="pt-2"
+              >
+                <a
+                  aria-label="Checks reference documentation for Agent Readiness category"
+                  class="link d-inline-block"
+                  href="/docs/topics/checks/#agent-readiness"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  target="_blank"
+                >
+                  <div
+                    class="d-flex flex-row align-items-center"
+                  >
+                    <div>
+                      Checks reference documentation
+                    </div>
+                    <svg
+                      class="ms-1 ms-md-2 position-relative _extIcon_6a25e0"
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      />
+                      <polyline
+                        points="15 3 21 3 21 9"
+                      />
+                      <line
+                        x1="10"
+                        x2="21"
+                        y1="14"
+                        y2="3"
+                      />
+                    </svg>
+                  </div>
+                </a>
               </li>
             </ul>
           </div>
@@ -4074,7 +5609,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -4205,7 +5739,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -4333,7 +5866,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -4610,7 +6142,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -4738,7 +6269,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -5257,7 +6787,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -5388,7 +6917,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -5516,7 +7044,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -5793,7 +7320,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -5921,7 +7447,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -6440,7 +7965,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -6571,7 +8095,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -6699,7 +8222,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -6976,7 +8498,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -7104,7 +8625,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -7623,7 +9143,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -7754,7 +9273,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -7882,7 +9400,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -8159,7 +9676,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -8287,7 +9803,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -8806,7 +10321,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -8937,7 +10451,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -9065,7 +10578,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -9342,7 +10854,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"
@@ -9470,7 +10981,6 @@ exports[`RepositoriesList > creates snapshot 1`] = `
                     <td
                       class="text-center _iconCell_19cbf0"
                     >
-                       
                       <svg
                         class="text-danger _icon_19cbf0"
                         data-testid="error-icon"

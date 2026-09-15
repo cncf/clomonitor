@@ -1,13 +1,13 @@
 import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
-import { isUndefined } from 'lodash';
+import { isNil, isUndefined } from 'lodash';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './CategoryProgressbar.module.css';
 
 interface Props {
   icon?: JSX.Element;
-  value?: number;
+  value?: number | null;
   name: string;
   bigSize?: boolean;
   linkTo?: string;
@@ -17,7 +17,7 @@ interface Props {
 const CategoryProgressbar = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const color = getCategoryColor(props.value);
+  const color = getCategoryColor(props.value ?? undefined);
 
   return (
     <div className={`${styles.wrapper} ${props.bigSize ? 'col-12 col-lg-9 col-xxxl-8' : 'col-12'}`}>
@@ -28,7 +28,7 @@ const CategoryProgressbar = (props: Props) => {
           {props.icon && <span className={`pe-1 d-inline-block position-relative ${styles.icon}`}>{props.icon}</span>}
           {!isUndefined(props.linkTo) ? (
             <button
-              className={`btn btn-link text-truncate text-muted fw-bold p-0 text-decoration-none ${styles.btn}`}
+              className={`btn btn-link d-inline-flex align-items-center text-muted fw-bold p-0 text-decoration-none ${styles.btn}`}
               onClick={() => {
                 if (props.scrollIntoView) {
                   props.scrollIntoView(`#${props.linkTo}`);
@@ -43,21 +43,21 @@ const CategoryProgressbar = (props: Props) => {
               }}
               aria-label={`Go from summary to section: ${props.linkTo}`}
             >
-              {props.name}
+              <span className="text-truncate">{props.name}</span>
             </button>
           ) : (
             <span className="text-truncate">{props.name}</span>
           )}
         </div>
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>
-          {isUndefined(props.value) ? 'n/a' : roundScoreValue(props.value)}
+          {isNil(props.value) ? 'n/a' : roundScoreValue(props.value)}
         </div>
         <div
           className={`flex-grow-1 position-relative mx-2 ${styles.progressWrapper}  ${
             props.bigSize ? styles.progressBigWrapper : ''
           }`}
         >
-          {!isUndefined(props.value) && (
+          {!isNil(props.value) && (
             <div
               data-testid="line"
               className={`position-absolute start-0 top-0 bottom-0 ${styles.line}`}

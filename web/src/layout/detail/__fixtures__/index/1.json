@@ -17,6 +17,45 @@
       "name": "artifact-hub",
       "report": {
         "data": {
+          "agent_readiness": {
+            "authentication": {
+              "exempt": true,
+              "exemption_reason": "Public documentation is mirrored elsewhere for agent access",
+              "passed": false
+            },
+            "content_discoverability": {
+              "details": "# Content discoverability AFDocs category\n\n**Score**: 82/100 (B) - check passes with score >= 70\n\n**Checks**:\n\n- PASS `sitemap-found`: sitemap discovered\n\n[AFDocs category docs](https://afdocs.dev/categories/content-discoverability)",
+              "exempt": false,
+              "passed": true,
+              "url": "https://artifacthub.io/docs"
+            },
+            "content_structure": {
+              "details": "# Content structure AFDocs category\n\n**Score**: 45/100 (D) - check passes with score >= 70\n\n**Checks**:\n\n- FAIL `heading-order`: skipped heading level detected",
+              "exempt": false,
+              "passed": false,
+              "url": "https://artifacthub.io/docs"
+            },
+            "markdown_availability": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://artifacthub.io/docs"
+            },
+            "observability": {
+              "failed": true,
+              "fail_reason": "AFDocs service timed out before collecting observability signals",
+              "passed": false
+            },
+            "page_size": {
+              "exempt": false,
+              "passed": false,
+              "url": "https://artifacthub.io/docs"
+            },
+            "url_stability": {
+              "exempt": false,
+              "passed": true,
+              "url": "https://artifacthub.io/docs"
+            }
+          },
           "best_practices": {
             "artifacthub_badge": {
               "exempt": false,
@@ -134,6 +173,8 @@
       },
       "repository_id": "00000000-0000-0001-0000-000000000000",
       "score": {
+        "agent_readiness": 57.14285714285714,
+        "agent_readiness_weight": 49,
         "best_practices": 100,
         "best_practices_weight": 20,
         "documentation": 83.33333333333331,
@@ -151,6 +192,7 @@
     }
   ],
   "score": {
+    "agent_readiness": 57.14285714285714,
     "best_practices": 100,
     "documentation": 83.33333333333331,
     "global": 86.66666666666666,

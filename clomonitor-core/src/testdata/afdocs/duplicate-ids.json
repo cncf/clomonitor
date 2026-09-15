@@ -1,0 +1,446 @@
+{
+  "url": "https://docs.example.org/",
+  "timestamp": "2026-09-14T10:15:30.000Z",
+  "specUrl": "https://afdocs.dev/spec/v0.6.0",
+  "testedPages": 3,
+  "samplingStrategy": "deterministic",
+  "discoverySources": [
+    "llms.txt",
+    "sitemap.xml"
+  ],
+  "summary": {
+    "total": 23,
+    "pass": 10,
+    "warn": 4,
+    "fail": 2,
+    "skip": 5,
+    "error": 2
+  },
+  "results": [
+    {
+      "id": "llms-txt-exists",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "llms.txt found at https://docs.example.org/llms.txt"
+    },
+    {
+      "id": "llms-txt-valid",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "llms.txt follows the specification"
+    },
+    {
+      "id": "llms-txt-size",
+      "category": "content-discoverability",
+      "status": "warn",
+      "message": "llms.txt is 45 KB, consider keeping it under 30 KB",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "llms-txt-links-resolve",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "All 20 sampled links resolved"
+    },
+    {
+      "id": "llms-txt-links-markdown",
+      "category": "content-discoverability",
+      "status": "warn",
+      "message": "12 of 20 sampled links serve markdown",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "llms-txt-directive-html",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "HTML pages advertise llms.txt"
+    },
+    {
+      "id": "llms-txt-directive-md",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "Markdown pages advertise llms.txt"
+    },
+    {
+      "id": "markdown-url-support",
+      "category": "markdown-availability",
+      "status": "fail",
+      "message": "No .md variant found for 18 of 20 sampled pages"
+    },
+    {
+      "id": "content-negotiation",
+      "category": "markdown-availability",
+      "status": "warn",
+      "message": "Accept: text/markdown ignored on 10 of 20 pages",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "rendering-strategy",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "page-size-markdown",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "page-size-html",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "content-start-position",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Not applicable: fewer than 5 pages discovered"
+    },
+    {
+      "id": "tabbed-content-serialization",
+      "category": "content-structure",
+      "status": "pass",
+      "message": "Tabbed content serialises correctly"
+    },
+    {
+      "id": "section-header-quality",
+      "category": "content-structure",
+      "status": "error",
+      "message": "Unexpected token < in JSON at position 0"
+    },
+    {
+      "id": "markdown-code-fence-validity",
+      "category": "content-structure",
+      "status": "warn",
+      "message": "2 of 20 pages contain unbalanced code fences",
+      "details": [
+        "sampled pages: 20"
+      ]
+    },
+    {
+      "id": "http-status-codes",
+      "category": "url-stability",
+      "status": "fail",
+      "message": "6 of 20 sampled pages returned 404"
+    },
+    {
+      "id": "redirect-behavior",
+      "category": "url-stability",
+      "status": "error",
+      "message": "fetch failed: ECONNRESET"
+    },
+    {
+      "id": "llms-txt-coverage",
+      "category": "observability",
+      "status": "pass",
+      "message": "llms.txt covers 100% of sitemap urls"
+    },
+    {
+      "id": "markdown-content-parity",
+      "category": "observability",
+      "status": "pass",
+      "message": "Markdown and HTML content match on all sampled pages"
+    },
+    {
+      "id": "cache-header-hygiene",
+      "category": "observability",
+      "status": "pass",
+      "message": "Cache headers present on all sampled pages"
+    },
+    {
+      "id": "auth-gate-detection",
+      "category": "authentication",
+      "status": "pass",
+      "message": "No authentication gate detected"
+    },
+    {
+      "id": "auth-alternative-access",
+      "category": "authentication",
+      "status": "skip",
+      "message": "Not needed: no authentication gate detected",
+      "dependsOn": [
+        "auth-gate-detection"
+      ]
+    },
+    {
+      "id": "llms-txt-exists",
+      "category": "content-discoverability",
+      "status": "pass",
+      "message": "llms.txt found at https://docs.example.org/llms.txt"
+    }
+  ],
+  "scoring": {
+    "overall": 59,
+    "grade": "F",
+    "cap": {
+      "value": 59,
+      "reason": "Fewer than 5 pages discovered"
+    },
+    "categoryScores": {
+      "content-discoverability": {
+        "score": 82,
+        "grade": "B"
+      },
+      "markdown-availability": {
+        "score": 45,
+        "grade": "F"
+      },
+      "page-size": {
+        "score": null,
+        "grade": null
+      },
+      "content-structure": {
+        "score": 80,
+        "grade": "B"
+      },
+      "url-stability": {
+        "score": 40,
+        "grade": "F"
+      },
+      "observability": {
+        "score": 100,
+        "grade": "A+"
+      },
+      "authentication": {
+        "score": 100,
+        "grade": "A+"
+      }
+    },
+    "checkScores": {
+      "llms-txt-exists": {
+        "baseWeight": 10,
+        "coefficient": 1,
+        "effectiveWeight": 10,
+        "proportion": 1,
+        "earnedScore": 10,
+        "maxScore": 10,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-valid": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-size": {
+        "baseWeight": 7,
+        "coefficient": 0.5,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 3.5,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-links-resolve": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 7,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-links-markdown": {
+        "baseWeight": 7,
+        "coefficient": 0.5,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 3.5,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-directive-html": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 7,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-directive-md": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "markdown-url-support": {
+        "baseWeight": 7,
+        "coefficient": 0,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "content-negotiation": {
+        "baseWeight": 4,
+        "coefficient": 0.5,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 2.0,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "rendering-strategy": {
+        "baseWeight": 10,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 10,
+        "scoreDisplayMode": "excluded"
+      },
+      "page-size-markdown": {
+        "baseWeight": 7,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "excluded"
+      },
+      "page-size-html": {
+        "baseWeight": 7,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "excluded"
+      },
+      "content-start-position": {
+        "baseWeight": 4,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 4,
+        "scoreDisplayMode": "excluded"
+      },
+      "tabbed-content-serialization": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "section-header-quality": {
+        "baseWeight": 2,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 2,
+        "scoreDisplayMode": "excluded"
+      },
+      "markdown-code-fence-validity": {
+        "baseWeight": 4,
+        "coefficient": 0.5,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 2.0,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "http-status-codes": {
+        "baseWeight": 7,
+        "coefficient": 0,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "numeric"
+      },
+      "redirect-behavior": {
+        "baseWeight": 4,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 4,
+        "scoreDisplayMode": "excluded"
+      },
+      "llms-txt-coverage": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "markdown-content-parity": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "numeric"
+      },
+      "cache-header-hygiene": {
+        "baseWeight": 2,
+        "coefficient": 1,
+        "effectiveWeight": 2,
+        "proportion": 1,
+        "earnedScore": 2,
+        "maxScore": 2,
+        "scoreDisplayMode": "numeric"
+      },
+      "auth-gate-detection": {
+        "baseWeight": 10,
+        "coefficient": 1,
+        "effectiveWeight": 10,
+        "proportion": 1,
+        "earnedScore": 10,
+        "maxScore": 10,
+        "scoreDisplayMode": "numeric"
+      },
+      "auth-alternative-access": {
+        "baseWeight": 4,
+        "coefficient": 0,
+        "effectiveWeight": 0,
+        "proportion": 1,
+        "earnedScore": 0,
+        "maxScore": 4,
+        "scoreDisplayMode": "excluded"
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "few-pages",
+        "message": "Only 3 pages discovered; page-level checks are not applicable"
+      }
+    ],
+    "resolutions": {
+      "llms-txt-size": "Split llms.txt into llms.txt and llms-full.txt to keep the index small.",
+      "markdown-url-support": "Serve a markdown version of every page at <url>.md or via content negotiation.",
+      "http-status-codes": "Fix or redirect the urls listed in llms.txt that return 404."
+    }
+  },
+  "afdocsVersion": "0.20.0",
+  "options": {
+    "maxLinksToTest": 20,
+    "samplingStrategy": "deterministic",
+    "maxConcurrency": 3,
+    "requestDelay": 200,
+    "requestTimeout": 15000
+  }
+}

@@ -29,8 +29,8 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
-import { DEFAULT_FOUNDATION, FOUNDATIONS } from '../../data';
-import { DistributionData, FilterKind, Rating, RatingKind, ReportOption, Stats } from '../../types';
+import { DEFAULT_FOUNDATION, FOUNDATIONS, SECTIONS } from '../../data';
+import { DistributionData, FilterKind, Rating, RatingKind, ReportOption, SectionInfo, Stats } from '../../types';
 import prepareQueryString from '../../utils/prepareQueryString';
 import AnchorHeader from './AnchorHeader';
 import Average from './Average';
@@ -715,6 +715,59 @@ const StatsView = () => {
     getCSV();
   };
 
+  const getPassingChecks = (passingCheck: NonNullable<Stats['repositories']['passing_check']>) => (
+    <>
+      <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>Repositories</div>
+      <div className="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3">
+        <div className={`text-dark fw-bold mx-auto mx-md-0 ${styles.subtitle}`}>
+          Percentage of repositories passing each check
+        </div>
+        <button
+          className={`btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 ${styles.downloadBtn}`}
+          onClick={downloadRepositoriesCSV}
+          aria-label="Download repositories CSV file"
+        >
+          <div className="d-flex flex-row align-items-baseline position-relative">
+            <div>(</div>
+            <div className="me-1">
+              <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
+            </div>
+            <div>Download CSV file)</div>
+            {downloadingCSV && (
+              <div className={`position-absolute ${styles.downloadSpinner}`}>
+                <Loading spinnerClassName={`position-relative ${styles.miniSpinner}`} noWrapper smallSize />
+              </div>
+            )}
+          </div>
+        </button>
+      </div>
+      <div className="py-4">
+        <div className="row no-gutters justify-content-center">
+          <div className="col-12">
+            <div className={`card rounded-0 ${styles.chartWrapper}`}>
+              <div className={`card-body ${styles.checksBody}`}>
+                <div className="row g-4 justify-content-center">
+                  {SECTIONS.map((section: SectionInfo) => {
+                    const data = passingCheck[section.type];
+                    if (isUndefined(data) || isEmpty(data)) return null;
+                    return (
+                      <Checks
+                        key={`passing_checks_${section.type}`}
+                        title={section.name}
+                        data={data}
+                        onSelectCheck={selectCheck}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <div className="d-flex flex-column flex-grow-1 position-relative">
       <SubNavbar>
@@ -939,77 +992,9 @@ const StatsView = () => {
                       </>
                     )}
 
-                  {stats.repositories.passing_check && (
-                    <>
-                      <div className={`text-dark text-center fw-bold text-uppercase my-4 ${styles.title}`}>
-                        Repositories
-                      </div>
-                      <div className="d-flex flex-column flex-md-row align-items-baseline justify-content-center mb-3">
-                        <div className={`text-dark fw-bold mx-auto mx-md-0 ${styles.subtitle}`}>
-                          Percentage of repositories passing each check
-                        </div>
-                        <button
-                          className={`btn btn-link mt-2 mt-md-0 p-0 ps-0 ps-md-3 mx-auto mx-md-0 ${styles.downloadBtn}`}
-                          onClick={downloadRepositoriesCSV}
-                          aria-label="Download repositories CSV file"
-                        >
-                          <div className="d-flex flex-row align-items-baseline position-relative">
-                            <div>(</div>
-                            <div className="me-1">
-                              <GrDocumentCsv className={`position-relative ${styles.downloadIcon}`} />
-                            </div>
-                            <div>Download CSV file)</div>
-                            {downloadingCSV && (
-                              <div className={`position-absolute ${styles.downloadSpinner}`}>
-                                <Loading
-                                  spinnerClassName={`position-relative ${styles.miniSpinner}`}
-                                  noWrapper
-                                  smallSize
-                                />
-                              </div>
-                            )}
-                          </div>
-                        </button>
-                      </div>
-                      <div className="py-4">
-                        <div className="row no-gutters justify-content-center">
-                          <div className="col-12">
-                            <div className={`card rounded-0 ${styles.chartWrapper}`}>
-                              <div className={`card-body ${styles.checksBody}`}>
-                                <div className="row g-4 justify-content-center">
-                                  <Checks
-                                    title="Documentation"
-                                    data={stats.repositories.passing_check.documentation}
-                                    onSelectCheck={selectCheck}
-                                  />
-                                  <Checks
-                                    title="License"
-                                    data={stats.repositories.passing_check.license}
-                                    onSelectCheck={selectCheck}
-                                  />
-                                  <Checks
-                                    title="Best Practices"
-                                    data={stats.repositories.passing_check.best_practices}
-                                    onSelectCheck={selectCheck}
-                                  />
-                                  <Checks
-                                    title="Security"
-                                    data={stats.repositories.passing_check.security}
-                                    onSelectCheck={selectCheck}
-                                  />
-                                  <Checks
-                                    title="Legal"
-                                    data={stats.repositories.passing_check.legal}
-                                    onSelectCheck={selectCheck}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                  {stats.repositories.passing_check &&
+                    !isEmpty(stats.repositories.passing_check) &&
+                    getPassingChecks(stats.repositories.passing_check)}
 
                   {(stats.projects.views_daily || stats.projects.views_monthly) && (
                     <>

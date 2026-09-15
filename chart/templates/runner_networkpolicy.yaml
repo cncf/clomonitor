@@ -1,0 +1,75 @@
+{{- $root := . -}}
+{{- $profiles := list (dict "name" "afdocs" "config" .Values.runner.afdocs "ports" (list 80 443)) (dict "name" "scorecard" "config" .Values.runner.scorecard "ports" (list 443)) -}}
+{{- range $profile := $profiles }}
+{{- $name := index $profile "name" -}}
+{{- $config := index $profile "config" -}}
+{{- if and $config.enabled $config.networkPolicy.enabled }}
+{{- $deniedV4 := list "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" "169.254.0.0/16" "100.64.0.0/10" "127.0.0.0/8" -}}
+{{- $deniedV6 := list "fc00::/7" "fe80::/10" "::1/128" -}}
+{{- range $config.networkPolicy.deniedCidrs }}
+{{- if contains ":" . }}
+{{- $deniedV6 = append $deniedV6 . }}
+{{- else }}
+{{- $deniedV4 = append $deniedV4 . }}
+{{- end }}
+{{- end }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "chart.resourceNamePrefix" $root }}runner-{{ $name }}
+  labels:
+    app.kubernetes.io/component: runner-{{ $name }}
+    {{- include "chart.labels" $root | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/component: runner-{{ $name }}
+      {{- include "chart.selectorLabels" $root | nindent 6 }}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: tracker
+              {{- include "chart.selectorLabels" $root | nindent 14 }}
+      ports:
+        - port: {{ $config.service.port }}
+          protocol: TCP
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ $config.networkPolicy.dnsNamespace | quote }}
+          podSelector:
+            matchLabels:
+              {{- toYaml $config.networkPolicy.dnsPodSelector | nindent 14 }}
+      ports:
+        - port: 53
+          protocol: UDP
+        - port: 53
+          protocol: TCP
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              {{- toYaml $deniedV4 | nindent 14 }}
+      ports:
+        {{- range index $profile "ports" }}
+        - port: {{ . }}
+          protocol: TCP
+        {{- end }}
+    - to:
+        - ipBlock:
+            cidr: ::/0
+            except:
+              {{- toYaml $deniedV6 | nindent 14 }}
+      ports:
+        {{- range index $profile "ports" }}
+        - port: {{ . }}
+          protocol: TCP
+        {{- end }}
+{{- end }}
+{{- end }}

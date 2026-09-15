@@ -1,58 +1,141 @@
 # New check
 
-Adding a new check to CLOMonitor involves a number of steps. This document tries to summarize the process by providing some information about each of those steps.
+Adding a new check to CLOMonitor involves updating each surface that defines,
+runs, scores, displays, stores, filters, and documents check results.
 
-*NOTE: if you are unsure if the new check is aligned with CLOMonitor's goals you may want to file an issue first. The issue can detail the new check and you can get feedback from the maintainers prior to starting to work on it.*
+*NOTE: if you are unsure if the new check is aligned with CLOMonitor's goals
+you may want to file an issue first. The issue can detail the new check and you
+can get feedback from the maintainers prior to starting to work on it.*
 
 ## Steps to add a new check
 
-### 1. Create a new file for the check in the checks directory
+### 1. Create a new check module
 
-The check's file, which must be located in [clomonitor-core/src/linter/checks](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks), must declare the following information:
+The check's file must be located in
+[clomonitor-core/src/linter/checks](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks).
+It declares the following information:
 
-* `ID`: check identifier
-* `WEIGHT`: weight of this check, used to calculate scores
-* `CHECK_SETS`: check sets this new check belongs to
+- `ID`: check identifier.
+- `WEIGHT`: weight of this check, used to calculate scores.
+- `CHECK_SETS`: check sets this check belongs to.
 
-The **entrypoint** for the check must be a function named `check`, with the following signature:
+The **entrypoint** for the check must be a function named `check`, with one of
+the following signatures:
 
-* Sync check: `pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<T>>`
-* Async check: `pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<T>>`
+- Sync check: `pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<T>>`
+- Async check:
+  `pub(crate) async fn check(input: &CheckInput<'_>) -> Result<CheckOutput<T>>`
 
-In the [clomonitor-core/src/linter/checks/util](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks/util) directory, there are some helpers that can be useful when writing new checks.
+Helpers for implementing checks are available in
+[clomonitor-core/src/linter/checks/util](https://github.com/cncf/clomonitor/tree/main/clomonitor-core/src/linter/checks/util).
 
-### 2. Register the new check
+### 2. Register the check and datasource
 
-The new check must be registered in the [checks module](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/checks/mod.rs) file: its module must be declared and the `register_check!` macro called, passing to it the module name.
+The check module must be declared in
+[clomonitor-core/src/linter/checks/mod.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/checks/mod.rs).
+The `register_check!` macro registers the module and, when needed, the external
+datasource used by the check:
 
-### 3. Extend the report with the new check
+- CLOMonitor-only check: `register_check!(module_name)`
+- OpenSSF Scorecard-backed check:
+  `register_check!(module_name, scorecard = "Scorecard-Check-Name")`
+- AFDocs-backed check:
+  `register_check!(module_name, afdocs = "afdocs-category-id")`
 
-A field for the new check must be added to the corresponding report section structure (*documentation*, *license*, *best practices*, *security* or *legal*) in the [clomonitor-core/src/linter/report.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/report.rs) file. The new check's module should also be added to the corresponding `section_impl!` macro call in the same file.
+### 3. Extend the report section
 
-The report struct is used in a few places across the codebase, so after adding the new check's field we'll need to include it in a few places, including some tests (`cargo check` may be of help guiding you in this process). One of those places will be the [clomonitor-core/src/linter/mod.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/mod.rs), where the new check is called when building the report.
+A field for the check must be added to the corresponding report section
+structure in
+[clomonitor-core/src/linter/report.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/report.rs).
+The check's module must also be listed in the matching `section_impl!` macro.
 
-### 4. Add the new check to the linter CLI tool
+The linter report is built in
+[clomonitor-core/src/linter/mod.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/mod.rs),
+so the new check must be called there when the report section is assembled.
 
-The linter CLI tools supports displaying a report as a table. When adding a new check, a new row must be added to the [output table](https://github.com/cncf/clomonitor/blob/main/clomonitor-linter/src/table.rs) and the [display.golden test file](https://github.com/cncf/clomonitor/blob/main/clomonitor-linter/src/testdata/display.golden) must be updated accordingly.
+### 4. Update scoring coverage
 
-### 5. Add the new check to the report's markdown version
+Scores are calculated in
+[clomonitor-core/src/score/mod.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/score/mod.rs).
+The score tests in that module should cover the new check's weight, pass/fail
+behavior, missing-check behavior, merged scores, and any affected section or
+global score expectations.
 
-The report's markdown version is generated from a [template](https://github.com/cncf/clomonitor/blob/main/clomonitor-apiserver/templates/repository-report.md) that needs to be updated with the new check.
+### 5. Add the check to the linter CLI output
 
-### 6. Update database functions
+The linter CLI displays reports as a table. The check must be added to
+[clomonitor-linter/src/table.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-linter/src/table.rs),
+and the
+[display.golden](https://github.com/cncf/clomonitor/blob/main/clomonitor-linter/src/testdata/display.golden)
+test fixture must match the rendered output.
 
-The following database functions (and their corresponding tests) must be updated to include the new check:
+### 6. Add the check to generated reports
 
-* [get_repositories_with_checks.sql](https://github.com/cncf/clomonitor/blob/main/database/migrations/functions/repositories/get_repositories_with_checks.sql)
-* [get_stats.sql](https://github.com/cncf/clomonitor/blob/main/database/migrations/functions/stats/get_stats.sql)
+The API server renders markdown and visual report summaries. Check-level
+changes require updating:
 
-### 7. Prepare UI to display the new check
+- [clomonitor-apiserver/templates/repository-report.md](https://github.com/cncf/clomonitor/blob/main/clomonitor-apiserver/templates/repository-report.md)
+- The corresponding repository report golden fixture.
 
-The new check must also be registered in the UI so that we can display it in reports and other views. This involves:
+Section-level changes also require updating:
 
-* Register it in the [web/src/types.ts](https://github.com/cncf/clomonitor/blob/main/web/src/types.ts) file (in `ReportOption`).
-* Define some information about the check and include it in the corresponding section in `CHECKS_PER_CATEGORY` in the [web/src/data.tsx](https://github.com/cncf/clomonitor/blob/main/web/src/data.tsx) file. This includes picking up an icon for it, which should come from [React Icons](https://react-icons.github.io/react-icons).
+- [clomonitor-apiserver/templates/report-summary.svg](https://github.com/cncf/clomonitor/blob/main/clomonitor-apiserver/templates/report-summary.svg)
+- The corresponding report summary SVG golden fixture.
 
-### 8. Document the new check
+### 7. Update database functions
 
-The new check must be documented in the [checks.md](https://github.com/cncf/clomonitor/blob/main/docs/checks.md) file. This includes adding a new entry in the [documentation section](https://github.com/cncf/clomonitor/blob/main/docs/checks.md#documentation) of the file, as well as listing the new check in the corresponding check sets.
+The database stores reports as JSONB and exposes projected check information for
+CSV exports, statistics, and search filters. The following database functions
+and their pgTAP tests must be kept in sync with the new check:
+
+- [database/migrations/functions/repositories/get_repositories_with_checks.sql](https://github.com/cncf/clomonitor/blob/main/database/migrations/functions/repositories/get_repositories_with_checks.sql)
+- [database/migrations/functions/stats/get_stats.sql](https://github.com/cncf/clomonitor/blob/main/database/migrations/functions/stats/get_stats.sql)
+- [database/tests/functions](https://github.com/cncf/clomonitor/tree/main/database/tests/functions)
+
+When a check identifier participates in project `passed_checks`, pgTAP coverage
+should also prove that project check aggregation and `passed_checks` filtering
+work with the identifier.
+
+### 8. Prepare the UI to display the check
+
+The web application needs type and display metadata for each check. Update:
+
+- [web/src/types.ts](https://github.com/cncf/clomonitor/blob/main/web/src/types.ts):
+  `ReportOption`.
+- [web/src/data.tsx](https://github.com/cncf/clomonitor/blob/main/web/src/data.tsx):
+  `SECTIONS`, `REPORT_OPTIONS`, and `CHECKS_PER_CATEGORY`.
+- [web/src/data.test.tsx](https://github.com/cncf/clomonitor/blob/main/web/src/data.test.tsx):
+  coverage for section/check metadata and category membership.
+
+The check metadata includes its display name, optional short name, icon,
+reference URL, and category membership.
+
+### 9. Document the check
+
+The check must be documented in
+[docs/checks.md](https://github.com/cncf/clomonitor/blob/main/docs/checks.md).
+The documentation includes the check set list entry, check identifier, behavior,
+and external datasource reference when applicable.
+
+## Adding a new section
+
+A new report section requires all check-level touch points plus the section
+contract in every scoring and display surface:
+
+- Add the report section structure in
+  [clomonitor-core/src/linter/report.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/linter/report.rs),
+  include it in `Report` with `#[serde(default)]` for legacy stored reports, and
+  register its checks with `section_impl!`.
+- Add `Score` fields for the section score and section weight in
+  [clomonitor-core/src/score/mod.rs](https://github.com/cncf/clomonitor/blob/main/clomonitor-core/src/score/mod.rs).
+- Add the section to the `SECTIONS` table in `score/mod.rs` and set
+  `counts_toward_global` to match the intended global-score semantics.
+- Extend SQL statistics averages in
+  [database/migrations/functions/stats/get_stats.sql](https://github.com/cncf/clomonitor/blob/main/database/migrations/functions/stats/get_stats.sql)
+  and the corresponding pgTAP expectations.
+- Add the section row to `report-summary.svg`, adjust the SVG height and
+  positioning, and update the report-summary golden fixture.
+- Add the section to the markdown repository report template and golden
+  fixture.
+- Add the section to the frontend `SECTIONS` metadata so summaries, filters,
+  detail views, and statistics can render it consistently.

@@ -24,14 +24,15 @@ mockall = { workspace = true }
 postgres-types = { workspace = true }
 regex = { workspace = true }
 reqwest = { workspace = true }
+rustix = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 serde_yaml = { workspace = true }
+tempfile = { workspace = true }
 time = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }
 which = { workspace = true }
 
 [dev-dependencies]
-tempfile = { workspace = true }
 wiremock = { workspace = true }

@@ -1,18 +1,18 @@
 import classNames from 'classnames';
 import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
-import { isUndefined } from 'lodash';
+import { isNil, isUndefined } from 'lodash';
 
 import styles from './BadgeCell.module.css';
 
 interface Props {
-  value?: number;
+  value?: number | null;
   cellClassName?: string;
   onClick: () => void;
 }
 
 const BadgeCell = (props: Props) => {
-  if (isUndefined(props.value))
+  if (isNil(props.value))
     return (
       <td className={props.cellClassName || 'd-none d-md-table-cell align-middle'}>
         <div className="mx-auto px-2 text-center">

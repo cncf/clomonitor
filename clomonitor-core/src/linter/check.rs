@@ -1,13 +1,18 @@
-use anyhow::{Context, Error, Result, format_err};
+use anyhow::{Context, Result, format_err};
 use serde::{Deserialize, Serialize};
-use which::which;
+
+use crate::tools::Tool;
 
 use super::{
-    CheckSet, LinterInput,
-    checks::{CHECKS, signed_releases},
+    CheckSet, LinterInput, ToolMode,
+    checks::{
+        CHECKS,
+        util::helpers::{find_exemption, should_skip_check},
+    },
     datasource::{
+        afdocs::{self, AfdocsReport},
         github,
-        scorecard::{Scorecard, ScorecardCheck, scorecard},
+        scorecard::{Scorecard, scorecard},
         security_insights::SecurityInsights,
     },
     metadata::{Exemption, METADATA_FILE, Metadata},
@@ -20,7 +25,7 @@ pub type CheckId = &'static str;
 pub(crate) struct CheckConfig {
     pub weight: usize,
     pub check_sets: Vec<CheckSet>,
-    pub scorecard_name: Option<String>,
+    pub datasource: Option<Datasource>,
 }
 
 /// Input used by checks to perform their operations.
@@ -29,33 +34,62 @@ pub(crate) struct CheckInput<'a> {
     pub li: &'a LinterInput,
     pub cm_md: Option<Metadata>,
     pub gh_md: github::md::MdRepository,
+    pub afdocs: Option<Result<AfdocsReport>>,
     pub scorecard: Result<Scorecard>,
     pub security_insights: Result<Option<SecurityInsights>>,
 }
 
 impl CheckInput<'_> {
     pub(crate) async fn new(li: &LinterInput) -> Result<CheckInput<'_>> {
-        // Check if required external tools are available
-        if which("scorecard").is_err() {
-            return Err(format_err!(
-                "scorecard not found in PATH (https://github.com/ossf/scorecard#installation)"
-            ));
-        }
-
         // Get CLOMonitor metadata
         let cm_md = Metadata::from(li.root.join(METADATA_FILE))?;
 
-        // The next both actions (get GitHub metadata and get scorecard) make use
-        // of the GitHub token, which when used concurrently, may trigger some
-        // GitHub secondary rate limits. So they should not be run concurrently.
+        // Check if required external tools are available (local mode only)
+        let scorecard_needed = datasource_needed(li, cm_md.as_ref(), |ds| {
+            matches!(ds, Datasource::Scorecard { .. })
+        });
+        if scorecard_needed && li.tools.scorecard == ToolMode::Local {
+            Tool::Scorecard.locate()?;
+        }
 
-        // Get GitHub metadata
+        // Get GitHub metadata. This must complete before fetching the scorecard:
+        // both use the GitHub token, and using it concurrently may trigger
+        // GitHub secondary rate limits.
         let gh_md = github::metadata(&li.url, &li.github_token).await?;
 
-        // Get OpenSSF scorecard
-        let scorecard = scorecard(&li.url, &li.github_token)
-            .await
-            .context("error running scorecard command");
+        // Resolve the AFDocs target url (only when an AFDocs backed check will run)
+        let afdocs_target = if datasource_needed(li, cm_md.as_ref(), |ds| {
+            matches!(ds, Datasource::Afdocs { .. })
+        }) {
+            afdocs_target_url(cm_md.as_ref(), &gh_md)
+        } else {
+            None
+        };
+
+        // Get OpenSSF scorecard and AFDocs report concurrently (AFDocs does not
+        // use the GitHub token)
+        let scorecard_fut = async {
+            if scorecard_needed {
+                Box::pin(scorecard(&li.url, &li.github_token, &li.tools.scorecard))
+                    .await
+                    .context("error getting scorecard")
+            } else {
+                Err(format_err!(
+                    "scorecard not needed for the check sets provided"
+                ))
+            }
+        };
+        let afdocs_fut = async {
+            match &afdocs_target {
+                Some(target) => Some(
+                    Box::pin(afdocs::afdocs(target, &li.tools.afdocs))
+                        .await
+                        .context("error getting AFDocs report"),
+                ),
+                None => None,
+            }
+        };
+        let (scorecard, afdocs) = tokio::join!(scorecard_fut, afdocs_fut);
 
         // Get OpenSSF security insights.
         let security_insights = SecurityInsights::new(&li.root);
@@ -65,6 +99,7 @@ impl CheckInput<'_> {
             li,
             cm_md,
             gh_md,
+            afdocs,
             scorecard,
             security_insights,
         };
@@ -191,48 +226,59 @@ impl<T> From<Exemption> for CheckOutput<T> {
     }
 }
 
-impl<T> From<Result<Option<&ScorecardCheck>, &Error>> for CheckOutput<T> {
-    fn from(sc_check: Result<Option<&ScorecardCheck>, &Error>) -> Self {
-        match sc_check {
-            Ok(sc_check) => match sc_check {
-                Some(sc_check) => {
-                    let signed_releases =
-                        CHECKS[signed_releases::ID].scorecard_name.as_ref().unwrap();
-                    let mut output = CheckOutput::default();
-                    let pass_threshold = match &sc_check.name {
-                        n if n == signed_releases => 1.0,
-                        _ => 5.0,
-                    };
-                    if sc_check.score >= pass_threshold {
-                        output.passed = true;
-                    }
-                    output.details = Some(format!(
-                        r"# {} OpenSSF Scorecard check
+/// External datasource a check relies on.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub(crate) enum Datasource {
+    /// AFDocs category the check maps to.
+    Afdocs { category: &'static str },
+    /// OpenSSF Scorecard check name.
+    Scorecard { name: String },
+}
 
-**Score**: {} (check passes with score >= {})
-
-**Reason**: {}
-
-**Details**: {}
-
-**Please see the [check documentation]({}) in the ossf/scorecard repository for more details**",
-                        sc_check.name,
-                        sc_check.score,
-                        pass_threshold,
-                        sc_check.reason,
-                        match &sc_check.details {
-                            Some(details) => format!("\n\n>{}", details.join("\n")),
-                            None => "-".to_string(),
-                        },
-                        sc_check.documentation.url,
-                    ));
-                    output
-                }
-                None => CheckOutput::not_passed(),
-            },
-            Err(err) => CheckOutput::failed().fail_reason(Some(format!("{err:#}"))),
+impl Datasource {
+    /// Return the AFDocs category identifier when this is an AFDocs datasource.
+    pub(crate) fn afdocs_category(&self) -> Option<&'static str> {
+        match self {
+            Self::Afdocs { category } => Some(category),
+            Self::Scorecard { .. } => None,
         }
     }
+
+    /// Return the scorecard check name when this is a scorecard datasource.
+    pub(crate) fn scorecard_name(&self) -> Option<&str> {
+        match self {
+            Self::Scorecard { name } => Some(name),
+            Self::Afdocs { .. } => None,
+        }
+    }
+}
+
+/// Check if any of the checks backed by a datasource matching the predicate
+/// provided is enabled for the check sets requested and not exempt.
+pub(crate) fn datasource_needed(
+    li: &LinterInput,
+    cm_md: Option<&Metadata>,
+    matches_datasource: impl Fn(&Datasource) -> bool,
+) -> bool {
+    CHECKS.iter().any(|(check_id, config)| {
+        config.datasource.as_ref().is_some_and(&matches_datasource)
+            && !should_skip_check(check_id, &li.check_sets)
+            && find_exemption(check_id, cm_md).is_none()
+    })
+}
+
+/// Resolve the url AFDocs should analyse: the `agentReadiness.url` override
+/// in the CLOMonitor metadata file or the repository homepage url in GitHub.
+pub(crate) fn afdocs_target_url(
+    cm_md: Option<&Metadata>,
+    gh_md: &github::md::MdRepository,
+) -> Option<String> {
+    let non_empty = |url: &String| (!url.trim().is_empty()).then(|| url.trim().to_string());
+    cm_md
+        .and_then(|md| md.agent_readiness.as_ref())
+        .and_then(|ar| ar.url.as_ref())
+        .and_then(non_empty)
+        .or_else(|| gh_md.homepage_url.as_ref().and_then(non_empty))
 }
 
 /// Wrapper macro that takes care of running some common pre-check operations
@@ -289,9 +335,13 @@ pub(crate) use run_async;
 
 #[cfg(test)]
 mod tests {
+    use crate::linter::{
+        checks::{code_review, content_discoverability},
+        datasource::github::md::MdRepository,
+        metadata::AgentReadiness,
+    };
+
     use super::*;
-    use crate::linter::datasource::scorecard::ScorecardCheckDocs;
-    use anyhow::{Result, format_err};
 
     #[test]
     fn check_output_from_exemption() {
@@ -311,72 +361,128 @@ mod tests {
     }
 
     #[test]
-    fn check_output_from_scorecard_check_passed() {
-        let sc_check = ScorecardCheck {
-            name: "Code-Review".to_string(),
-            reason: "reason".to_string(),
-            details: Some(vec!["details".to_string()]),
-            score: 8.0,
-            documentation: ScorecardCheckDocs {
-                url: "https://test.url".to_string(),
-            },
+    fn datasource_needed_depends_on_check_sets() {
+        let is_scorecard = |ds: &Datasource| matches!(ds, Datasource::Scorecard { .. });
+        let is_afdocs = |ds: &Datasource| matches!(ds, Datasource::Afdocs { .. });
+
+        let code = LinterInput {
+            check_sets: vec![CheckSet::Code],
+            ..LinterInput::default()
+        };
+        assert!(datasource_needed(&code, None, is_scorecard));
+        assert!(!datasource_needed(&code, None, is_afdocs));
+
+        let community = LinterInput {
+            check_sets: vec![CheckSet::Community],
+            ..LinterInput::default()
+        };
+        assert!(!datasource_needed(&community, None, is_scorecard));
+        assert!(datasource_needed(&community, None, is_afdocs));
+
+        let none = LinterInput::default();
+        assert!(!datasource_needed(&none, None, is_scorecard));
+        assert!(!datasource_needed(&none, None, is_afdocs));
+    }
+
+    #[test]
+    fn datasource_needed_ignores_exempt_checks() {
+        let is_afdocs = |ds: &Datasource| matches!(ds, Datasource::Afdocs { .. });
+        let community = LinterInput {
+            check_sets: vec![CheckSet::Community],
+            ..LinterInput::default()
         };
 
-        assert_eq!(
-            CheckOutput::<()>::from(Ok(Some(&sc_check))),
-            CheckOutput {
-                passed: true,
-                details: Some("# Code-Review OpenSSF Scorecard check\n\n**Score**: 8 (check passes with score >= 5)\n\n**Reason**: reason\n\n**Details**: \n\n>details\n\n**Please see the [check documentation](https://test.url) in the ossf/scorecard repository for more details**".to_string()),
-                ..Default::default()
-            }
-        );
-    }
-
-    #[test]
-    fn check_output_from_scorecard_check_not_passed() {
-        let sc_check = ScorecardCheck {
-            name: "Code-Review".to_string(),
-            reason: "reason".to_string(),
-            details: Some(vec!["details".to_string()]),
-            score: 4.0,
-            documentation: ScorecardCheckDocs {
-                url: "https://test.url".to_string(),
-            },
+        // Exempting a single AFDocs check keeps the datasource needed
+        let md = Metadata {
+            exemptions: Some(vec![Exemption {
+                check: content_discoverability::ID.to_string(),
+                reason: "reason".to_string(),
+            }]),
+            ..Metadata::default()
         };
+        assert!(datasource_needed(&community, Some(&md), is_afdocs));
 
+        // Exempting all AFDocs checks makes the datasource unneeded
+        let md = Metadata {
+            exemptions: Some(
+                CHECKS
+                    .iter()
+                    .filter(|(_, c)| c.datasource.as_ref().is_some_and(is_afdocs))
+                    .map(|(id, _)| Exemption {
+                        check: (*id).to_string(),
+                        reason: "reason".to_string(),
+                    })
+                    .collect(),
+            ),
+            ..Metadata::default()
+        };
+        assert!(!datasource_needed(&community, Some(&md), is_afdocs));
+
+        // Exempting a scorecard check does not affect AFDocs
+        let code = LinterInput {
+            check_sets: vec![CheckSet::Code],
+            ..LinterInput::default()
+        };
+        let md = Metadata {
+            exemptions: Some(vec![Exemption {
+                check: code_review::ID.to_string(),
+                reason: "reason".to_string(),
+            }]),
+            ..Metadata::default()
+        };
+        assert!(datasource_needed(&code, Some(&md), |ds| matches!(
+            ds,
+            Datasource::Scorecard { .. }
+        )));
+    }
+
+    #[test]
+    fn afdocs_target_url_prefers_metadata_override() {
+        let md = Metadata {
+            agent_readiness: Some(AgentReadiness {
+                url: Some(" https://docs.example.org/ ".to_string()),
+            }),
+            ..Metadata::default()
+        };
+        let gh_md = MdRepository {
+            homepage_url: Some("https://example.org".to_string()),
+            ..MdRepository::default()
+        };
         assert_eq!(
-            CheckOutput::<()>::from(Ok(Some(&sc_check))),
-            CheckOutput {
-                passed: false,
-                details: Some("# Code-Review OpenSSF Scorecard check\n\n**Score**: 4 (check passes with score >= 5)\n\n**Reason**: reason\n\n**Details**: \n\n>details\n\n**Please see the [check documentation](https://test.url) in the ossf/scorecard repository for more details**".to_string()),
-                ..Default::default()
-            }
+            afdocs_target_url(Some(&md), &gh_md),
+            Some("https://docs.example.org/".to_string())
         );
     }
 
     #[test]
-    fn check_output_from_scorecard_check_not_available() {
+    fn afdocs_target_url_falls_back_to_homepage() {
+        let md = Metadata {
+            agent_readiness: Some(AgentReadiness {
+                url: Some(String::new()),
+            }),
+            ..Metadata::default()
+        };
+        let gh_md = MdRepository {
+            homepage_url: Some("https://example.org".to_string()),
+            ..MdRepository::default()
+        };
         assert_eq!(
-            CheckOutput::<()>::from(Ok(None)),
-            CheckOutput {
-                passed: false,
-                ..Default::default()
-            }
+            afdocs_target_url(Some(&md), &gh_md),
+            Some("https://example.org".to_string())
+        );
+        assert_eq!(
+            afdocs_target_url(None, &gh_md),
+            Some("https://example.org".to_string())
         );
     }
 
     #[test]
-    fn check_output_from_scorecard_check_failed() {
-        let err = format_err!("fake error");
-        let sc_check: Result<Option<&ScorecardCheck>, &Error> = Err(&err);
-
-        assert_eq!(
-            CheckOutput::<()>::from(sc_check),
-            CheckOutput {
-                failed: true,
-                fail_reason: Some("fake error".to_string()),
-                ..Default::default()
-            }
-        );
+    fn afdocs_target_url_none_when_unavailable() {
+        let gh_md = MdRepository {
+            homepage_url: Some("  ".to_string()),
+            ..MdRepository::default()
+        };
+        assert_eq!(afdocs_target_url(None, &gh_md), None);
+        assert_eq!(afdocs_target_url(None, &MdRepository::default()), None);
     }
 }

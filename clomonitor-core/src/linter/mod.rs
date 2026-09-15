@@ -1,6 +1,6 @@
 use std::{fmt, path::PathBuf, sync::Arc};
 
-use anyhow::Result;
+use anyhow::{Result, format_err};
 use async_trait::async_trait;
 use clap::ValueEnum;
 #[cfg(feature = "mocks")]
@@ -45,6 +45,57 @@ pub struct LinterInput {
     pub url: String,
     pub check_sets: Vec<CheckSet>,
     pub github_token: String,
+    pub tools: ToolsConfig,
+}
+
+/// How the external tools some checks rely on should be executed.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ToolsConfig {
+    /// AFDocs (agent readiness checks). Disabled by default.
+    pub afdocs: ToolMode,
+    /// OpenSSF Scorecard (scorecard backed security checks). Local by default.
+    pub scorecard: ToolMode,
+}
+
+impl Default for ToolsConfig {
+    fn default() -> Self {
+        Self {
+            afdocs: ToolMode::Disabled,
+            scorecard: ToolMode::Local,
+        }
+    }
+}
+
+/// Execution mode of an external tool.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ToolMode {
+    /// The tool is not available: the checks relying on it are reported as
+    /// failed.
+    Disabled,
+    /// Run the tool binary found in PATH.
+    Local,
+    /// Use the CLOMonitor runner service at the base url provided.
+    Runner { url: String },
+}
+
+impl ToolMode {
+    /// Create a runner mode instance validating the base url provided.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error when the url is not a valid http(s) url with a host.
+    pub fn runner(url: &str) -> Result<Self> {
+        let parsed = reqwest::Url::parse(url.trim())
+            .map_err(|err| format_err!("invalid runner url {url:?}: {err}"))?;
+        if !matches!(parsed.scheme(), "http" | "https") || parsed.host_str().is_none() {
+            return Err(format_err!(
+                "invalid runner url {url:?}: expected an http(s) url with a host"
+            ));
+        }
+        Ok(Self::Runner {
+            url: parsed.to_string().trim_end_matches('/').to_string(),
+        })
+    }
 }
 
 /// Project's details
@@ -171,9 +222,58 @@ impl Linter for CoreLinter {
             legal: Legal {
                 trademark_disclaimer,
             },
+            agent_readiness: AgentReadiness {
+                authentication: run!(authentication, &ci),
+                content_discoverability: run!(content_discoverability, &ci),
+                content_structure: run!(content_structure, &ci),
+                markdown_availability: run!(markdown_availability, &ci),
+                observability: run!(observability, &ci),
+                page_size: run!(page_size, &ci),
+                url_stability: run!(url_stability, &ci),
+            },
         };
         report.apply_exemptions();
 
         Ok(report)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tool_mode_runner_valid_url() {
+        assert_eq!(
+            ToolMode::runner(" http://clomonitor-runner:8080/ ").unwrap(),
+            ToolMode::Runner {
+                url: "http://clomonitor-runner:8080".to_string()
+            }
+        );
+        assert_eq!(
+            ToolMode::runner("https://runner.example.org/base").unwrap(),
+            ToolMode::Runner {
+                url: "https://runner.example.org/base".to_string()
+            }
+        );
+    }
+
+    #[test]
+    fn tool_mode_runner_invalid_url() {
+        assert!(ToolMode::runner("").is_err());
+        assert!(ToolMode::runner("not a url").is_err());
+        assert!(ToolMode::runner("ftp://host/").is_err());
+        assert!(ToolMode::runner("http://").is_err());
+    }
+
+    #[test]
+    fn tools_config_defaults() {
+        assert_eq!(
+            ToolsConfig::default(),
+            ToolsConfig {
+                afdocs: ToolMode::Disabled,
+                scorecard: ToolMode::Local,
+            }
+        );
     }
 }

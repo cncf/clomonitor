@@ -13,8 +13,14 @@ exports[`ProgressBar > creates snapshot 1`] = `
       >
         icon
       </div>
-      <div>
-        Security
+      <div
+        class="d-flex flex-row align-items-center text-truncate"
+      >
+        <span
+          class="text-truncate"
+        >
+          Security
+        </span>
       </div>
     </div>
     <div

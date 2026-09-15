@@ -1,0 +1,627 @@
+{
+  "url": "https://clomonitor.io/docs/",
+  "timestamp": "2026-09-15T10:40:43.062Z",
+  "specUrl": "https://agentdocsspec.com/spec/",
+  "results": [
+    {
+      "id": "llms-txt-exists",
+      "category": "content-discoverability",
+      "status": "fail",
+      "message": "No llms.txt found at any candidate location (https://clomonitor.io/docs/llms.txt, https://clomonitor.io/llms.txt)",
+      "details": {
+        "candidateUrls": [
+          {
+            "url": "https://clomonitor.io/docs/llms.txt",
+            "status": 404,
+            "redirected": false
+          },
+          {
+            "url": "https://clomonitor.io/llms.txt",
+            "status": 200,
+            "redirected": false
+          }
+        ],
+        "discoveredFiles": [],
+        "fetchErrors": 0,
+        "rateLimited": 0
+      }
+    },
+    {
+      "id": "llms-txt-valid",
+      "category": "content-discoverability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "llms-txt-exists"
+      ]
+    },
+    {
+      "id": "llms-txt-size",
+      "category": "content-discoverability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "llms-txt-exists"
+      ]
+    },
+    {
+      "id": "llms-txt-links-resolve",
+      "category": "content-discoverability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "llms-txt-exists"
+      ]
+    },
+    {
+      "id": "llms-txt-links-markdown",
+      "category": "content-discoverability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "llms-txt-exists"
+      ]
+    },
+    {
+      "id": "llms-txt-directive-html",
+      "category": "content-discoverability",
+      "status": "fail",
+      "message": "No llms.txt directive found in HTML of any of 1 pages",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "foundCount": 0,
+        "notFoundCount": 1,
+        "nearTopCount": 0,
+        "buriedCount": 0,
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "found": false
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "llms-txt-directive-md",
+      "category": "content-discoverability",
+      "status": "fail",
+      "message": "Could not fetch markdown for any of 1 pages; 1 had no markdown version",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "fetchErrors": 1,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "found": false,
+            "error": "No markdown version available"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "markdown-url-support",
+      "category": "markdown-availability",
+      "status": "fail",
+      "message": "No pages support .md URLs (0/1 tested)",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "skippedPages": 0,
+        "sampled": false,
+        "mdSupported": 0,
+        "mdUnsupported": 1,
+        "supportRate": 0,
+        "fetchErrors": 0,
+        "rateLimited": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "mdUrl": "https://clomonitor.io/docs.md",
+            "supported": false,
+            "alreadyMd": false,
+            "status": 0
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "content-negotiation",
+      "category": "markdown-availability",
+      "status": "fail",
+      "message": "Server ignores Accept: text/markdown header (0/1 pages return markdown)",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "skippedPages": 0,
+        "normalizedMdUrls": 0,
+        "softErrorPages": 0,
+        "sampled": false,
+        "markdownWithCorrectType": 0,
+        "markdownWithWrongType": 0,
+        "htmlOnly": 1,
+        "negotiationRate": 0,
+        "fetchErrors": 0,
+        "rateLimited": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "classification": "html",
+            "contentType": "text/html",
+            "status": 200
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "rendering-strategy",
+      "category": "page-size",
+      "status": "pass",
+      "message": "All 1 pages contain server-rendered content",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "serverRendered": 1,
+        "sparseContent": 0,
+        "spaShells": 0,
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "status": "pass",
+            "analysis": {
+              "hasContent": true,
+              "hasSpaMarkers": false,
+              "spaMarker": null,
+              "contentHeadings": 1,
+              "contentParagraphs": 2,
+              "codeBlocks": 0,
+              "hasMainContent": true,
+              "visibleTextLength": 728,
+              "htmlLength": 14167
+            }
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "page-size-markdown",
+      "category": "page-size",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "markdown-url-support",
+        "content-negotiation"
+      ]
+    },
+    {
+      "id": "page-size-html",
+      "category": "page-size",
+      "status": "pass",
+      "message": "All 1 pages under 50K chars (median 14K HTML → 1K markdown (91% boilerplate))",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "median": 1260,
+        "max": 1260,
+        "avgBoilerplatePercent": 91,
+        "passBucket": 1,
+        "warnBucket": 0,
+        "failBucket": 0,
+        "fetchErrors": 0,
+        "rateLimited": 0,
+        "thresholds": {
+          "pass": 50000,
+          "fail": 100000
+        },
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "htmlCharacters": 14167,
+            "convertedCharacters": 1260,
+            "conversionRatio": 91,
+            "status": "pass"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "content-start-position",
+      "category": "page-size",
+      "status": "warn",
+      "message": "1 of 1 pages have content starting at 10–50% (worst 28%)",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "medianPercent": 28,
+        "maxPercent": 28,
+        "passBucket": 0,
+        "warnBucket": 1,
+        "failBucket": 0,
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "contentStartChar": 348,
+            "totalChars": 1260,
+            "contentStartPercent": 28,
+            "status": "warn"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "tabbed-content-serialization",
+      "category": "content-structure",
+      "status": "pass",
+      "message": "No tabbed content detected across 1 pages",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "pagesWithTabs": 0,
+        "totalGroupsFound": 0,
+        "fetchErrors": 0,
+        "tabbedPages": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "tabGroups": [],
+            "totalTabbedChars": 0,
+            "status": "pass",
+            "source": "html"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "section-header-quality",
+      "category": "content-structure",
+      "status": "pass",
+      "message": "No tabbed content found; header quality check not applicable"
+    },
+    {
+      "id": "markdown-code-fence-validity",
+      "category": "content-structure",
+      "status": "skip",
+      "message": "Site does not serve markdown content; nothing to analyze"
+    },
+    {
+      "id": "http-status-codes",
+      "category": "url-stability",
+      "status": "fail",
+      "message": "1 of 1 pages return 200 for non-existent URLs (soft 404)",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "soft404Count": 1,
+        "correctErrorCount": 0,
+        "indeterminateCount": 0,
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "testUrl": "https://clomonitor.io/docs-afdocs-nonexistent-8f3a",
+            "status": 200,
+            "classification": "soft-404",
+            "redirected": false
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "redirect-behavior",
+      "category": "url-stability",
+      "status": "pass",
+      "message": "No redirects detected across 1 pages",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "noRedirectCount": 1,
+        "sameHostCount": 0,
+        "crossHostCount": 0,
+        "jsRedirectCount": 0,
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "status": 200,
+            "classification": "no-redirect"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "llms-txt-coverage",
+      "category": "observability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "llms-txt-exists"
+      ]
+    },
+    {
+      "id": "markdown-content-parity",
+      "category": "observability",
+      "status": "skip",
+      "message": "Skipped: dependency check did not pass",
+      "dependsOn": [
+        "markdown-url-support",
+        "content-negotiation"
+      ]
+    },
+    {
+      "id": "cache-header-hygiene",
+      "category": "observability",
+      "status": "pass",
+      "message": "All 1 endpoints have appropriate cache headers",
+      "details": {
+        "totalPages": 1,
+        "testedEndpoints": 1,
+        "sampled": false,
+        "passBucket": 1,
+        "warnBucket": 0,
+        "failBucket": 0,
+        "fetchErrors": 0,
+        "endpointResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "cacheControl": "max-age=300",
+            "maxAge": 300,
+            "sMaxAge": null,
+            "mustRevalidate": false,
+            "noCache": false,
+            "noStore": false,
+            "etag": "\"6a4771ca.00000000-3758\"",
+            "lastModified": "Fri, 03 Jul 2026 08:24:42 GMT",
+            "expires": null,
+            "effectiveMaxAge": 300,
+            "status": "pass"
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "auth-gate-detection",
+      "category": "authentication",
+      "status": "pass",
+      "message": "All 1 pages are publicly accessible",
+      "details": {
+        "totalPages": 1,
+        "testedPages": 1,
+        "sampled": false,
+        "accessible": 1,
+        "authRequired": 0,
+        "softAuthGate": 0,
+        "authRedirect": 0,
+        "ssoDomains": [],
+        "fetchErrors": 0,
+        "pageResults": [
+          {
+            "url": "https://clomonitor.io/docs",
+            "classification": "accessible",
+            "status": 200
+          }
+        ],
+        "discoveryWarnings": []
+      }
+    },
+    {
+      "id": "auth-alternative-access",
+      "category": "authentication",
+      "status": "skip",
+      "message": "All docs pages are publicly accessible; no alternative access paths needed"
+    }
+  ],
+  "summary": {
+    "total": 23,
+    "pass": 7,
+    "warn": 1,
+    "fail": 6,
+    "skip": 9,
+    "error": 0
+  },
+  "discoverySources": [
+    "fallback"
+  ],
+  "testedPages": 1,
+  "samplingStrategy": "deterministic",
+  "scoring": {
+    "overall": 0,
+    "grade": "F",
+    "categoryScores": {
+      "content-discoverability": {
+        "score": 0,
+        "grade": "F"
+      },
+      "markdown-availability": {
+        "score": null,
+        "grade": null
+      },
+      "page-size": {
+        "score": null,
+        "grade": null
+      },
+      "content-structure": {
+        "score": null,
+        "grade": null
+      },
+      "url-stability": {
+        "score": null,
+        "grade": null
+      },
+      "observability": {
+        "score": null,
+        "grade": null
+      },
+      "authentication": {
+        "score": null,
+        "grade": null
+      }
+    },
+    "checkScores": {
+      "llms-txt-exists": {
+        "baseWeight": 10,
+        "coefficient": 1,
+        "effectiveWeight": 10,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 10,
+        "scoreDisplayMode": "numeric"
+      },
+      "llms-txt-directive-html": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "llms-txt-directive-md": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 4,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "markdown-url-support": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "content-negotiation": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 4,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "rendering-strategy": {
+        "baseWeight": 10,
+        "coefficient": 1,
+        "effectiveWeight": 10,
+        "proportion": 1,
+        "earnedScore": 10,
+        "maxScore": 10,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "page-size-html": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 1,
+        "earnedScore": 7,
+        "maxScore": 7,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "content-start-position": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 0.5,
+        "earnedScore": 2,
+        "maxScore": 4,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "tabbed-content-serialization": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "section-header-quality": {
+        "baseWeight": 2,
+        "coefficient": 1,
+        "effectiveWeight": 2,
+        "proportion": 1,
+        "earnedScore": 2,
+        "maxScore": 2,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "http-status-codes": {
+        "baseWeight": 7,
+        "coefficient": 1,
+        "effectiveWeight": 7,
+        "proportion": 0,
+        "earnedScore": 0,
+        "maxScore": 7,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "redirect-behavior": {
+        "baseWeight": 4,
+        "coefficient": 1,
+        "effectiveWeight": 4,
+        "proportion": 1,
+        "earnedScore": 4,
+        "maxScore": 4,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "cache-header-hygiene": {
+        "baseWeight": 2,
+        "coefficient": 1,
+        "effectiveWeight": 2,
+        "proportion": 1,
+        "earnedScore": 2,
+        "maxScore": 2,
+        "scoreDisplayMode": "notApplicable"
+      },
+      "auth-gate-detection": {
+        "baseWeight": 10,
+        "coefficient": 1,
+        "effectiveWeight": 10,
+        "proportion": 1,
+        "earnedScore": 10,
+        "maxScore": 10,
+        "scoreDisplayMode": "notApplicable"
+      }
+    },
+    "diagnostics": [
+      {
+        "id": "single-page-sample",
+        "severity": "warning",
+        "message": "Only 1 page was discovered and tested (minimum 5 needed for reliable scoring). Page-level category scores (page size, content structure, URL stability, etc.) may not represent the site. These categories are marked as N/A in the score.",
+        "resolution": "If your site has an llms.txt, ensure it contains working links so the tool can discover more pages. If testing a preview deployment, use --canonical-origin to rewrite cross-origin llms.txt links. You can also provide specific pages with --urls."
+      }
+    ],
+    "resolutions": {
+      "llms-txt-exists": "Create an llms.txt file at your site root containing an H1 title, a blockquote summary, and markdown links to your key documentation pages. This is the single highest-impact improvement for agent access to your docs.",
+      "llms-txt-directive-html": "No agent-facing directive pointing to llms.txt was detected in the HTML of any tested page. Add a visually-hidden element near the top of each page (e.g., a div with CSS clip-rect) containing a link to your llms.txt. If your site serves markdown versions of pages, mention that in the directive too so agents know to request it.",
+      "llms-txt-directive-md": "No llms.txt directive was detected in the markdown of any tested page. Add a blockquote near the top of each markdown page (e.g., \"> For the complete documentation index, see [llms.txt](/llms.txt)\").",
+      "markdown-url-support": "Your pages don't return markdown when .md is appended to the URL. Configure your docs platform to serve .md variants for all documentation pages.",
+      "content-negotiation": "Your server ignores Accept: text/markdown and returns HTML. Some agents (Claude Code, Cursor, OpenCode) request markdown this way. Configure your server to honor content negotiation.",
+      "content-start-position": "1 of 1 pages have documentation content starting 10-50% into the converted output. Reduce navigation, breadcrumb, and sidebar markup that precedes the content area.",
+      "http-status-codes": "Your site returns 200 for non-existent pages (soft 404). Agents try to extract information from the error page content instead of recognizing the page is missing. Configure your server to return 404 for pages that don't exist."
+    }
+  }
+}

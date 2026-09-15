@@ -1,0 +1,24 @@
+[package]
+name = "clomonitor-runner"
+description = "Service that runs external tools (AFDocs, OpenSSF Scorecard) on request for the CLOMonitor tracker"
+version.workspace = true
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+axum = { workspace = true }
+clap = { workspace = true }
+clomonitor-core = { path = "../clomonitor-core" }
+config = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tower = { workspace = true }

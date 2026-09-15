@@ -10,6 +10,8 @@ pub struct Report {
     pub best_practices: BestPractices,
     pub security: Security,
     pub legal: Legal,
+    #[serde(default)]
+    pub agent_readiness: AgentReadiness,
 }
 
 impl Report {
@@ -172,6 +174,31 @@ section_impl!(
     trademark_disclaimer
 );
 
+/// Agent readiness section of the report (advisory, not part of the global
+/// score). Checks are backed by the AFDocs categories.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct AgentReadiness {
+    pub authentication: Option<CheckOutput>,
+    pub content_discoverability: Option<CheckOutput>,
+    pub content_structure: Option<CheckOutput>,
+    pub markdown_availability: Option<CheckOutput>,
+    pub observability: Option<CheckOutput>,
+    pub page_size: Option<CheckOutput>,
+    pub url_stability: Option<CheckOutput>,
+}
+
+#[rustfmt::skip]
+section_impl!(
+    AgentReadiness,
+    authentication,
+    content_discoverability,
+    content_structure,
+    markdown_availability,
+    observability,
+    page_size,
+    url_stability
+);
+
 /// Prepare the implementation for a section in the report.
 macro_rules! section_impl {
     ( $section:ident, $( $check:ident ),* ) => {
@@ -310,5 +337,19 @@ mod tests {
                 ..Default::default()
             }
         );
+    }
+
+    #[test]
+    fn report_deserializes_without_agent_readiness_section() {
+        let legacy = r#"{
+            "documentation": {"readme": {"passed": true, "exempt": false, "failed": false}},
+            "license": {},
+            "best_practices": {},
+            "security": {},
+            "legal": {}
+        }"#;
+
+        let report: Report = serde_json::from_str(legacy).unwrap();
+        assert_eq!(report.agent_readiness, AgentReadiness::default());
     }
 }

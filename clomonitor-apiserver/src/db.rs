@@ -275,3 +275,80 @@ pub(crate) struct SearchProjectsInput {
     pub passing_check: Option<Vec<String>>,
     pub not_passing_check: Option<Vec<String>>,
 }
+
+#[cfg(test)]
+mod tests {
+    use clomonitor_core::linter::{AgentReadiness, CheckSet, Report};
+
+    use super::*;
+
+    #[test]
+    fn repository_report_md_deserializes_with_agent_readiness() {
+        // Shape produced by get_repository_report (json_strip_nulls applied)
+        let data = r#"{
+            "name": "repo",
+            "url": "https://github.com/org/repo",
+            "check_sets": ["community"],
+            "score": {
+                "global": 80.0,
+                "global_weight": 10,
+                "documentation": 80.0,
+                "documentation_weight": 10,
+                "agent_readiness": 40.0,
+                "agent_readiness_weight": 49
+            },
+            "report": {
+                "documentation": {"readme": {"passed": true, "exempt": false, "failed": false}},
+                "license": {},
+                "best_practices": {},
+                "security": {},
+                "legal": {},
+                "agent_readiness": {
+                    "page_size": {"passed": true, "exempt": false, "failed": false, "url": "https://docs.example.org/"},
+                    "authentication": {"passed": false, "exempt": false, "failed": true, "fail_reason": "AFDocs is not configured"}
+                }
+            }
+        }"#;
+
+        let template: RepositoryReportMDTemplate = serde_json::from_str(data).unwrap();
+        assert_eq!(template.check_sets, vec![CheckSet::Community]);
+        let score = template.score.unwrap();
+        assert_eq!(score.agent_readiness, Some(40.0));
+        assert_eq!(score.agent_readiness_weight, Some(49));
+        let report = template.report.unwrap();
+        assert!(report.agent_readiness.page_size.unwrap().passed);
+        assert!(report.agent_readiness.authentication.unwrap().failed);
+        assert!(report.agent_readiness.url_stability.is_none());
+    }
+
+    #[test]
+    fn repository_report_md_deserializes_without_agent_readiness() {
+        // Legacy rows stored before the section existed
+        let data = r#"{
+            "name": "repo",
+            "url": "https://github.com/org/repo",
+            "check_sets": ["code"],
+            "score": {
+                "global": 80.0,
+                "global_weight": 10,
+                "documentation": 80.0,
+                "documentation_weight": 10
+            },
+            "report": {
+                "documentation": {"readme": {"passed": true, "exempt": false, "failed": false}},
+                "license": {},
+                "best_practices": {},
+                "security": {},
+                "legal": {}
+            }
+        }"#;
+
+        let template: RepositoryReportMDTemplate = serde_json::from_str(data).unwrap();
+        let score = template.score.unwrap();
+        assert_eq!(score.agent_readiness, None);
+        assert_eq!(score.agent_readiness_weight, None);
+        let report = template.report.unwrap();
+        assert_eq!(report.agent_readiness, AgentReadiness::default());
+        assert!(matches!(report, Report { .. }));
+    }
+}

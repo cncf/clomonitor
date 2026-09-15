@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD059 -->
+
 # Development environment setup
 
 This document will help you setup your development environment so that you can build, test and run CLOMonitor locally from source.
@@ -165,11 +167,22 @@ db:
 creds:
   githubTokens:
     - <YOUR_GITHUB_TOKEN>
+runner:
+  afdocsUrl: http://127.0.0.1:8080
+  scorecardUrl: http://127.0.0.1:8081
 tracker:
   concurrency: 10
 ```
 
-Some checks use the Github GraphQL API, which requires authentication, so you'll need to add your own Github token to the `tracker` configuration file.
+Some checks use the Github GraphQL API, which requires authentication, so you'll
+need to add your own Github token to the `tracker` configuration file. The
+tracker can use `clomonitor-runner` to execute external tools through
+`runner.afdocsUrl` and `runner.scorecardUrl`. The Github token is sent only to
+the Scorecard runner profile, and AFDocs does not receive a Github token or
+consume authenticated Github API quota. The tracker never runs the tools
+locally: when `runner.scorecardUrl` is absent, scorecard backed checks are
+reported as failed, and when `runner.afdocsUrl` is absent, agent readiness
+checks are reported as failed (a warning is logged at startup in both cases).
 
 Once the configuration file is ready, it's time to launch the `tracker` for the first time:
 
@@ -184,6 +197,21 @@ Depending on the speed of your Internet connection and machine, this may take on
 In the section above, we saw how the `tracker` is able to lint all repositories registered in the database. But sometimes, it may be desirable to lint a single repository manually in an isolated way, maybe to quickly test some checks or to integrate with some other processes, like continuous integration or deployment tools. The `linter CLI` tool is designed to help in those scenarios.
 
 CLOMonitor delegates some of the security checks to [OpenSSF Scorecard](https://github.com/ossf/scorecard), so you'll need to [install it](https://github.com/ossf/scorecard#installation) before running `clomonitor-linter` locally. Both CLOMonitor and [OpenSSF Scorecard](https://github.com/ossf/scorecard) use the Github GraphQL API for some checks, which requires authentication. A Github token (with `public_repo` scope) **must** be provided via the `GITHUB_TOKEN` environment variable to authenticate those requests.
+
+CLOMonitor delegates the agent readiness checks to
+[AFDocs](https://afdocs.dev). The linter's default `--afdocs local` mode
+requires Node.js >= 22 and the `afdocs` binary in your `PATH`:
+
+```sh
+npm install -g afdocs@0.20.0
+```
+
+The linter runs both tools locally by default. Either tool can be skipped
+with `--afdocs disabled` or `--scorecard disabled` (the checks relying on it
+are then reported as failed). AFDocs runs without a Github token.
+
+Agent readiness has its own section score and does not affect the global score
+or rating.
 
 If you are using the aliases provided below, you can run it this way:
 

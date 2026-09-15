@@ -1,6 +1,16 @@
 # CLOMonitor metadata file
 # This file must be located at the root of the repository
 
+
+# Agent readiness information
+agentReadiness:
+  # URL of the documentation site to analyze with AFDocs
+  #
+  # CLOMonitor uses the repository's GitHub homepage URL by default. If the
+  # documentation that agents should read is hosted elsewhere, this url can be
+  # set to run the agent readiness checks against that location.
+  url: https://docs.example.org/
+
 # Checks exemptions
 exemptions:
   - check: artifacthub_badge # Check identifier (see https://github.com/cncf/clomonitor/blob/main/docs/checks.md#exemptions)

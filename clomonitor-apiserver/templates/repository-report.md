@@ -11,13 +11,14 @@
 
 ### Checks passed per category
 
-| Category       |                                           Score |
-| :------------- | ----------------------------------------------: |
-| Documentation  |  {{ category_score(score.documentation) }} |
-| License        |        {{ category_score(score.license) }} |
-| Best Practices | {{ category_score(score.best_practices) }} |
-| Security       |       {{ category_score(score.security) }} |
-| Legal          |          {{ category_score(score.legal) }} |
+| Category        |                                            Score |
+| :-------------- | -----------------------------------------------: |
+| Documentation   |   {{ category_score(score.documentation) }} |
+| License         |         {{ category_score(score.license) }} |
+| Best Practices  |  {{ category_score(score.best_practices) }} |
+| Security        |        {{ category_score(score.security) }} |
+| Legal           |           {{ category_score(score.legal) }} |
+| Agent Readiness | {{ category_score(score.agent_readiness) }} |
 
 ## Checks
 
@@ -79,6 +80,18 @@
 ### Legal [{{ value.round() }}%]
 
   {{ check("trademark-disclaimer", "Trademark disclaimer", report.legal.trademark_disclaimer) -}}
+
+{%- endif %}
+{%- if let Some(value) = score.agent_readiness %}
+### Agent Readiness [{{ value.round() }}%]
+
+  {{ check("authentication-and-access", "Authentication and access", report.agent_readiness.authentication) -}}
+  {{ check("content-discoverability", "Content discoverability", report.agent_readiness.content_discoverability) -}}
+  {{ check("content-structure", "Content structure", report.agent_readiness.content_structure) -}}
+  {{ check("markdown-availability", "Markdown availability", report.agent_readiness.markdown_availability) -}}
+  {{ check("observability-and-content-health", "Observability and content health", report.agent_readiness.observability) -}}
+  {{ check("page-size-and-truncation-risk", "Page size and truncation risk", report.agent_readiness.page_size) -}}
+  {{ check("url-stability-and-redirects", "URL stability and redirects", report.agent_readiness.url_stability) -}}
 
 {%- endif %}
 For more information about the checks sets available and how each of the checks work, please see the [CLOMonitor's documentation](https://clomonitor.io/docs/topics/checks/).

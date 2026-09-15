@@ -72,5 +72,33 @@ describe('Checks', () => {
       expect(progressbar[1]).toHaveStyle({ width: '93%' });
       expect(progressbar[2]).toHaveStyle({ width: '22%' });
     });
+
+    it('renders Agent Readiness checks with compact names', () => {
+      render(
+        <Checks
+          data={{
+            authentication: 52,
+            content_discoverability: 71,
+            content_structure: 48,
+            markdown_availability: 66,
+            observability: 41,
+            page_size: 38,
+            url_stability: 64,
+          }}
+          title="Agent Readiness"
+          onSelectCheck={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+      expect(screen.getAllByText('Authentication')).toHaveLength(2);
+      expect(screen.getAllByText('Content structure')).toHaveLength(2);
+      expect(screen.getAllByText('Discoverability')).toHaveLength(2);
+      expect(screen.getAllByText('Markdown')).toHaveLength(2);
+      expect(screen.getAllByText('Observability')).toHaveLength(2);
+      expect(screen.getAllByText('Page size')).toHaveLength(2);
+      expect(screen.getAllByText('URL stability')).toHaveLength(2);
+      expect(screen.getAllByRole('progressbar')).toHaveLength(7);
+    });
   });
 });

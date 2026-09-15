@@ -97,6 +97,7 @@ returns json as $$
                             'all' as maturity,
                             (
                                 select jsonb_build_object(
+                                    'agent_readiness', (average_section_score(p_foundation, 'agent_readiness', null)),
                                     'documentation', (average_section_score(p_foundation, 'documentation', null)),
                                     'license', (average_section_score(p_foundation, 'license', null)),
                                     'best_practices', (average_section_score(p_foundation, 'best_practices', null)),
@@ -112,6 +113,7 @@ returns json as $$
                             distinct maturity,
                             (
                                 select jsonb_build_object(
+                                    'agent_readiness', (average_section_score(p_foundation, 'agent_readiness', maturity)),
                                     'documentation', (average_section_score(p_foundation, 'documentation', maturity)),
                                     'license', (average_section_score(p_foundation, 'license', maturity)),
                                     'best_practices', (average_section_score(p_foundation, 'best_practices', maturity)),
@@ -119,8 +121,9 @@ returns json as $$
                                     'legal', (average_section_score(p_foundation, 'legal', maturity))
                                 ) as sections_average
                             )
-                        from project
-                        where maturity is not null
+                        from project p
+                        where p.maturity is not null
+                        and p.foundation_id = p_foundation
                     )
                 ) sections_average
             ),
@@ -151,6 +154,15 @@ returns json as $$
         ),
         'repositories', json_build_object(
             'passing_check', json_build_object(
+                'agent_readiness', json_build_object(
+                    'authentication', repositories_passing_check(p_foundation, 'agent_readiness', 'authentication'),
+                    'content_discoverability', repositories_passing_check(p_foundation, 'agent_readiness', 'content_discoverability'),
+                    'content_structure', repositories_passing_check(p_foundation, 'agent_readiness', 'content_structure'),
+                    'markdown_availability', repositories_passing_check(p_foundation, 'agent_readiness', 'markdown_availability'),
+                    'observability', repositories_passing_check(p_foundation, 'agent_readiness', 'observability'),
+                    'page_size', repositories_passing_check(p_foundation, 'agent_readiness', 'page_size'),
+                    'url_stability', repositories_passing_check(p_foundation, 'agent_readiness', 'url_stability')
+                ),
                 'documentation', json_build_object(
                     'adopters', repositories_passing_check(p_foundation, 'documentation', 'adopters'),
                     'changelog', repositories_passing_check(p_foundation, 'documentation', 'changelog'),

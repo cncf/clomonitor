@@ -68,6 +68,7 @@ mod tests {
                 li: &LinterInput::default(),
                 cm_md: None,
                 gh_md: MdRepository::default(),
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })
@@ -82,10 +83,12 @@ mod tests {
             check(&CheckInput {
                 li: &LinterInput::default(),
                 cm_md: Some(Metadata {
+                    agent_readiness: None,
                     exemptions: None,
                     license_scanning: None,
                 }),
                 gh_md: MdRepository::default(),
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })
@@ -100,12 +103,14 @@ mod tests {
             check(&CheckInput {
                 li: &LinterInput::default(),
                 cm_md: Some(Metadata {
+                    agent_readiness: None,
                     exemptions: None,
                     license_scanning: Some(LicenseScanning {
                         url: Some("license_scanning_url".to_string()),
                     }),
                 }),
                 gh_md: MdRepository::default(),
+                afdocs: None,
                 scorecard: Err(format_err!("no scorecard available")),
                 security_insights: Ok(None),
             })

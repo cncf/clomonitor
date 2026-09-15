@@ -101,7 +101,7 @@ describe('Card', () => {
 
       const globalScores = screen.getAllByTestId('global-score');
       expect(globalScores.length).toBeGreaterThan(0);
-      expect(globalScores.at(-1)).toHaveTextContent('89');
+      expect(globalScores[globalScores.length - 1]).toHaveTextContent('89');
     });
   });
 });

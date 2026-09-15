@@ -150,6 +150,45 @@
     "name": "spec",
     "report": {
       "data": {
+        "agent_readiness": {
+          "authentication": {
+            "exempt": true,
+            "exemption_reason": "Public documentation is mirrored elsewhere for agent access",
+            "passed": false
+          },
+          "content_discoverability": {
+            "details": "# Content discoverability AFDocs category\n\n**Score**: 82/100 (B) - check passes with score >= 70\n\n**Checks**:\n\n- PASS `sitemap-found`: sitemap discovered\n\n[AFDocs category docs](https://afdocs.dev/categories/content-discoverability)",
+            "exempt": false,
+            "passed": true,
+            "url": "https://cloudevents.io"
+          },
+          "content_structure": {
+            "details": "# Content structure AFDocs category\n\n**Score**: 45/100 (D) - check passes with score >= 70\n\n**Checks**:\n\n- FAIL `heading-order`: skipped heading level detected",
+            "exempt": false,
+            "passed": false,
+            "url": "https://cloudevents.io"
+          },
+          "markdown_availability": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://cloudevents.io"
+          },
+          "observability": {
+            "failed": true,
+            "fail_reason": "AFDocs service timed out before collecting observability signals",
+            "passed": false
+          },
+          "page_size": {
+            "exempt": false,
+            "passed": false,
+            "url": "https://cloudevents.io"
+          },
+          "url_stability": {
+            "exempt": false,
+            "passed": true,
+            "url": "https://cloudevents.io"
+          }
+        },
         "best_practices": {
           "artifacthub_badge": false,
           "community_meeting": true,
@@ -183,6 +222,7 @@
     },
     "repository_id": "00000000-0000-0041-0000-000000000000",
     "score": {
+      "agent_readiness": 57.14285714285714,
       "best_practices": 25,
       "documentation": 60,
       "global": 41,

@@ -73,19 +73,20 @@ describe('RepositoriesList', () => {
       );
 
       expect(screen.getByText('Repositories')).toBeInTheDocument();
+      expect(screen.getAllByText('Agent Readiness').length).toBeGreaterThan(0);
       expect(screen.getByTestId('repositories-summary')).toBeInTheDocument();
       expect(screen.getAllByTestId('repository-info')).toHaveLength(6);
       expect(screen.getAllByTestId('dropdown-btn')).toHaveLength(6);
       const anchorBtns = screen.getAllByRole('button', { name: /Link to anchor/i });
-      expect(anchorBtns).toHaveLength(26);
+      expect(anchorBtns).toHaveLength(27);
 
       // Sorted repos
       expect(anchorBtns[0]).toHaveAttribute('aria-label', 'Link to anchor spec');
-      expect(anchorBtns[6]).toHaveAttribute('aria-label', 'Link to anchor sdk-go');
-      expect(anchorBtns[10]).toHaveAttribute('aria-label', 'Link to anchor sdk-javascript');
-      expect(anchorBtns[14]).toHaveAttribute('aria-label', 'Link to anchor sdk-csharp');
-      expect(anchorBtns[18]).toHaveAttribute('aria-label', 'Link to anchor sdk-java');
-      expect(anchorBtns[22]).toHaveAttribute('aria-label', 'Link to anchor sdk-python');
+      expect(anchorBtns[7]).toHaveAttribute('aria-label', 'Link to anchor sdk-go');
+      expect(anchorBtns[11]).toHaveAttribute('aria-label', 'Link to anchor sdk-javascript');
+      expect(anchorBtns[15]).toHaveAttribute('aria-label', 'Link to anchor sdk-csharp');
+      expect(anchorBtns[19]).toHaveAttribute('aria-label', 'Link to anchor sdk-java');
+      expect(anchorBtns[23]).toHaveAttribute('aria-label', 'Link to anchor sdk-python');
     });
 
     it('renders component when one repo fails', () => {

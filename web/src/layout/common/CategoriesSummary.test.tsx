@@ -8,6 +8,7 @@ import styles from './CategoriesSummary.module.css';
 
 const defaultProps = {
   score: {
+    [ScoreType.AgentReadiness]: 57,
     [ScoreType.BestPractices]: 95,
     [ScoreType.Documentation]: 85,
     [ScoreType.Global]: 65,
@@ -46,8 +47,24 @@ describe('CategoriesSummary', () => {
       expect(screen.getByText('Best Practices')).toBeInTheDocument();
       expect(screen.getByText('Security')).toBeInTheDocument();
       expect(screen.getByText('Legal')).toBeInTheDocument();
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
 
       expect(screen.getByTestId('global-score')).toBeInTheDocument();
+      expect(screen.getAllByTestId('line')).toHaveLength(6);
+    });
+
+    it('shows n/a for missing Agent Readiness scores', () => {
+      render(
+        <Router>
+          <CategoriesSummary
+            {...defaultProps}
+            score={{ ...defaultProps.score, [ScoreType.AgentReadiness]: undefined }}
+          />
+        </Router>
+      );
+
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+      expect(screen.getByText('n/a')).toBeInTheDocument();
       expect(screen.getAllByTestId('line')).toHaveLength(5);
     });
 

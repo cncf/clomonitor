@@ -30,9 +30,14 @@ docker build \
     -t clomonitor/registrar \
 .
 
+# runner
+docker build \
+    -f clomonitor-runner/Dockerfile \
+    -t clomonitor/runner \
+.
+
 # tracker
 docker build \
     -f clomonitor-tracker/Dockerfile \
     -t clomonitor/tracker \
 .
-

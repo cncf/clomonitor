@@ -17,46 +17,14 @@ const defaultProps = {
   device: 'test',
 };
 
-const realDate = Date;
-
-const freezeDate = (isoDate: string) => {
-  const fixedDate = new realDate(isoDate);
-
-  const MockDate = class extends realDate {
-    constructor(...args: ConstructorParameters<typeof realDate>) {
-      if (args.length === 0) {
-        super(fixedDate.getTime());
-        return;
-      }
-      super(...args);
-    }
-
-    static now(): number {
-      return fixedDate.getTime();
-    }
-
-    static parse(dateString: string): number {
-      return realDate.parse(dateString);
-    }
-
-    static UTC(...args: Parameters<typeof realDate.UTC>): number {
-      return realDate.UTC(...args);
-    }
-  };
-
-  Object.setPrototypeOf(MockDate, realDate);
-  // @ts-expect-error overriding global Date for tests
-  global.Date = MockDate as unknown as DateConstructor;
-};
-
 describe('Filters', () => {
   beforeEach(() => {
-    freezeDate('2022-03-24T00:00:00.000Z');
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2022-03-24T00:00:00.000Z'));
   });
 
   afterEach(() => {
-    // @ts-expect-error restoring original Date
-    global.Date = realDate;
+    vi.useRealTimers();
     vi.resetAllMocks();
   });
 
@@ -120,7 +88,7 @@ describe('Filters', () => {
 
       expect(check).not.toBeChecked();
 
-      await userEvent.click(check);
+      await userEvent.setup({ advanceTimers: vi.advanceTimersByTime }).click(check);
 
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockOnChange).toHaveBeenCalledWith('rating', 'a', true);

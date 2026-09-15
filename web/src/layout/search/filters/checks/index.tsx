@@ -7,8 +7,8 @@ import { BsCheckAll } from 'react-icons/bs';
 import { GoCheck, GoX } from 'react-icons/go';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
-import { CATEGORY_NAMES, CHECKS_PER_CATEGORY, REPORT_OPTIONS } from '../../../../data';
-import { FilterKind, ReportOption, ScoreType } from '../../../../types';
+import { CATEGORY_NAMES, CHECKS_PER_CATEGORY, REPORT_OPTIONS, SECTIONS } from '../../../../data';
+import { FilterKind, ReportOption, ScoreType, SectionInfo } from '../../../../types';
 import Block from './Block';
 import styles from './Checks.module.css';
 
@@ -112,8 +112,9 @@ const ChecksFilter = (props: Props) => {
     const getSelectedChecks = (): JSX.Element | null => {
       const tmpChecks: Checks = {};
 
-      for (const cat of Object.keys(CHECKS_PER_CATEGORY)) {
-        (CHECKS_PER_CATEGORY[cat as ScoreType] as ReportOption[]).forEach((opt: ReportOption) => {
+      for (const section of SECTIONS) {
+        const cat = section.type;
+        CHECKS_PER_CATEGORY[cat]?.forEach((opt: ReportOption) => {
           const isInPassingCheck = props.activePassingChecks ? props.activePassingChecks.includes(opt) : false;
           const isInNotPassingCheck = props.activeNotPassingChecks ? props.activeNotPassingChecks.includes(opt) : false;
           if (isInPassingCheck || isInNotPassingCheck) {
@@ -295,11 +296,11 @@ const ChecksFilter = (props: Props) => {
               </p>
             </div>
 
-            {Object.keys(CHECKS_PER_CATEGORY).map((cat: string) => {
+            {SECTIONS.map((section: SectionInfo) => {
               return (
-                <span key={`block_${cat}`}>
+                <span key={`block_${section.type}`}>
                   <Block
-                    type={cat as ScoreType}
+                    type={section.type}
                     activePassingChecks={selectedChecks[FilterKind.PassingCheck]}
                     activeNotPassingChecks={selectedChecks[FilterKind.NotPassingCheck]}
                     onChange={onCheckChange}

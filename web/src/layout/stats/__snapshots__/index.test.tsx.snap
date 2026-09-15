@@ -269,8 +269,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Documentation
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Documentation
+                          </span>
                         </div>
                       </div>
                       <div
@@ -327,8 +333,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          License
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            License
+                          </span>
                         </div>
                       </div>
                       <div
@@ -385,8 +397,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Best Practices
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Best Practices
+                          </span>
                         </div>
                       </div>
                       <div
@@ -443,8 +461,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Security
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Security
+                          </span>
                         </div>
                       </div>
                       <div
@@ -501,8 +525,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Legal
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Legal
+                          </span>
                         </div>
                       </div>
                       <div
@@ -532,6 +562,70 @@ exports[`StatsView > creates snapshot 1`] = `
                             class="fw-bold lightText"
                           >
                             40%
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex flex-column"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
+                      >
+                        <div
+                          class="me-2 position-relative _icon_e0c5a0"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Agent Readiness
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex flex-row mb-3 align-items-center"
+                      >
+                        <div
+                          class="flex-grow-1 undefined"
+                        >
+                          <div
+                            class="progress rounded-0 _progress_e0c5a0"
+                          >
+                            <div
+                              aria-label="Agent Readiness passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="58"
+                              class="progress-bar _progressbar_e0c5a0"
+                              role="progressbar"
+                              style="width: 58%; background-color: var(--clo-yellow);"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
+                        >
+                          <small
+                            class="fw-bold lightText"
+                          >
+                            58%
                           </small>
                         </div>
                       </div>
@@ -579,8 +673,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Documentation
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Documentation
+                          </span>
                         </div>
                       </div>
                       <div
@@ -637,8 +737,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          License
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            License
+                          </span>
                         </div>
                       </div>
                       <div
@@ -695,8 +801,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Best Practices
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Best Practices
+                          </span>
                         </div>
                       </div>
                       <div
@@ -753,8 +865,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Security
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Security
+                          </span>
                         </div>
                       </div>
                       <div
@@ -811,8 +929,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Legal
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Legal
+                          </span>
                         </div>
                       </div>
                       <div
@@ -842,6 +966,70 @@ exports[`StatsView > creates snapshot 1`] = `
                             class="fw-bold lightText"
                           >
                             48%
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex flex-column"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
+                      >
+                        <div
+                          class="me-2 position-relative _icon_e0c5a0"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Agent Readiness
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex flex-row mb-3 align-items-center"
+                      >
+                        <div
+                          class="flex-grow-1 undefined"
+                        >
+                          <div
+                            class="progress rounded-0 _progress_e0c5a0"
+                          >
+                            <div
+                              aria-label="Agent Readiness passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="62"
+                              class="progress-bar _progressbar_e0c5a0"
+                              role="progressbar"
+                              style="width: 62%; background-color: var(--clo-yellow);"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
+                        >
+                          <small
+                            class="fw-bold lightText"
+                          >
+                            62%
                           </small>
                         </div>
                       </div>
@@ -889,8 +1077,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Documentation
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Documentation
+                          </span>
                         </div>
                       </div>
                       <div
@@ -947,8 +1141,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          License
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            License
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1005,8 +1205,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Best Practices
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Best Practices
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1063,8 +1269,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Security
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Security
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1121,8 +1333,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Legal
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Legal
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1152,6 +1370,70 @@ exports[`StatsView > creates snapshot 1`] = `
                             class="fw-bold lightText"
                           >
                             36%
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex flex-column"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
+                      >
+                        <div
+                          class="me-2 position-relative _icon_e0c5a0"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Agent Readiness
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex flex-row mb-3 align-items-center"
+                      >
+                        <div
+                          class="flex-grow-1 undefined"
+                        >
+                          <div
+                            class="progress rounded-0 _progress_e0c5a0"
+                          >
+                            <div
+                              aria-label="Agent Readiness passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="55"
+                              class="progress-bar _progressbar_e0c5a0"
+                              role="progressbar"
+                              style="width: 55%; background-color: var(--clo-yellow);"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
+                        >
+                          <small
+                            class="fw-bold lightText"
+                          >
+                            55%
                           </small>
                         </div>
                       </div>
@@ -1199,8 +1481,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Documentation
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Documentation
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1257,8 +1545,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          License
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            License
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1315,8 +1609,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Best Practices
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Best Practices
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1373,8 +1673,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Security
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Security
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1431,8 +1737,14 @@ exports[`StatsView > creates snapshot 1`] = `
                             />
                           </svg>
                         </div>
-                        <div>
-                          Legal
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Legal
+                          </span>
                         </div>
                       </div>
                       <div
@@ -1462,6 +1774,70 @@ exports[`StatsView > creates snapshot 1`] = `
                             class="fw-bold lightText"
                           >
                             40%
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex flex-column"
+                    >
+                      <div
+                        class="d-flex flex-row align-items-center mb-1 mb-md-0 _progressTitle_e0c5a0"
+                      >
+                        <div
+                          class="me-2 position-relative _icon_e0c5a0"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13.5 2C13.5 2.44425 13.3069 2.84339 13 3.11805V5H18C19.6569 5 21 6.34315 21 8V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V8C3 6.34315 4.34315 5 6 5H11V3.11805C10.6931 2.84339 10.5 2.44425 10.5 2C10.5 1.17157 11.1716 0.5 12 0.5C12.8284 0.5 13.5 1.17157 13.5 2ZM6 7C5.44772 7 5 7.44772 5 8V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V8C19 7.44772 18.5523 7 18 7H13H11H6ZM2 10H0V16H2V10ZM22 10H24V16H22V10ZM9 14.5C9.82843 14.5 10.5 13.8284 10.5 13C10.5 12.1716 9.82843 11.5 9 11.5C8.17157 11.5 7.5 12.1716 7.5 13C7.5 13.8284 8.17157 14.5 9 14.5ZM15 14.5C15.8284 14.5 16.5 13.8284 16.5 13C16.5 12.1716 15.8284 11.5 15 11.5C14.1716 11.5 13.5 12.1716 13.5 13C13.5 13.8284 14.1716 14.5 15 14.5Z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="d-flex flex-row align-items-center text-truncate"
+                        >
+                          <span
+                            class="text-truncate"
+                          >
+                            Agent Readiness
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="d-flex flex-row mb-3 align-items-center"
+                      >
+                        <div
+                          class="flex-grow-1 undefined"
+                        >
+                          <div
+                            class="progress rounded-0 _progress_e0c5a0"
+                          >
+                            <div
+                              aria-label="Agent Readiness passed checks percentage"
+                              aria-valuemax="100"
+                              aria-valuemin="0"
+                              aria-valuenow="57"
+                              class="progress-bar _progressbar_e0c5a0"
+                              role="progressbar"
+                              style="width: 57%; background-color: var(--clo-yellow);"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="ps-1 ps-md-3 lh-1 text-end _scoreWrapper_e0c5a0"
+                        >
+                          <small
+                            class="fw-bold lightText"
+                          >
+                            57%
                           </small>
                         </div>
                       </div>
@@ -3564,6 +3940,495 @@ exports[`StatsView > creates snapshot 1`] = `
                           </div>
                         </div>
                       </div>
+                      <div
+                        class="col-12"
+                      >
+                        <div
+                          class="fw-bold border-bottom border-1 pb-2 mb-3 lightText"
+                        >
+                          Agent Readiness
+                        </div>
+                        <div
+                          class="mx-1 pt-1"
+                        >
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M7 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C14.7405 2 17.1131 3.5748 18.2624 5.86882L16.4731 6.76344C15.6522 5.12486 13.9575 4 12 4C9.23858 4 7 6.23858 7 9V10ZM5 12V20H19V12H5ZM10 15H14V17H10V15Z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Authentication
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Authentication check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Authentication
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Authentication passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="52"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 52%; background-color: var(--clo-yellow);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                52%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="none"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5"
+                                  />
+                                  <path
+                                    d="M9 4v13"
+                                  />
+                                  <path
+                                    d="M15 7v5"
+                                  />
+                                  <path
+                                    d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"
+                                  />
+                                  <path
+                                    d="M20.2 20.2l1.8 1.8"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Discoverability
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Discoverability check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Discoverability
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Discoverability passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="71"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 71%; background-color: var(--clo-yellow);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                71%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M20 13.01h-7V10h1c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v4c0 1.103.897 2 2 2h1v3.01H4V18H3v4h4v-4H6v-2.99h5V18h-1v4h4v-4h-1v-2.99h5V18h-1v4h4v-4h-1v-4.99zM10 8V4h4l.002 4H10z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Content structure
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Content structure check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Content structure
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Content structure passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="48"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 48%; background-color: var(--clo-orange);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                48%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 640 512"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Markdown
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Markdown check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Markdown
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Markdown passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="66"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 66%; background-color: var(--clo-yellow);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                66%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M9 7.53861L15 21.5386L18.6594 13H23V11H17.3406L15 16.4614L9 2.46143L5.3406 11H1V13H6.6594L9 7.53861Z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Observability
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Observability check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Observability
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Observability passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="41"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 41%; background-color: var(--clo-orange);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                41%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 16 16"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M14 4.5V9h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v7H2V2a2 2 0 0 1 2-2h5.5zM13 12h1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2h1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  Page size
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed Page size check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    Page size
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="Page size passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="38"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 38%; background-color: var(--clo-orange);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                38%
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="d-flex flex-column _wrapper_8ab6ee"
+                          >
+                            <div
+                              class="d-flex flex-row align-items-center _progressWrapper_8ab6ee"
+                            >
+                              <div
+                                class="me-1 me-md-2 position-relative _icon_8ab6ee"
+                              >
+                                <svg
+                                  fill="currentColor"
+                                  height="1em"
+                                  stroke="currentColor"
+                                  stroke-width="0"
+                                  viewBox="0 0 24 24"
+                                  width="1em"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M13.0607 8.11097L14.4749 9.52518C17.2086 12.2589 17.2086 16.691 14.4749 19.4247L14.1214 19.7782C11.3877 22.5119 6.95555 22.5119 4.22188 19.7782C1.48821 17.0446 1.48821 12.6124 4.22188 9.87874L5.6361 11.293C3.68348 13.2456 3.68348 16.4114 5.6361 18.364C7.58872 20.3166 10.7545 20.3166 12.7072 18.364L13.0607 18.0105C15.0133 16.0578 15.0133 12.892 13.0607 10.9394L11.6465 9.52518L13.0607 8.11097ZM19.7782 14.1214L18.364 12.7072C20.3166 10.7545 20.3166 7.58872 18.364 5.6361C16.4114 3.68348 13.2456 3.68348 11.293 5.6361L10.9394 5.98965C8.98678 7.94227 8.98678 11.1081 10.9394 13.0607L12.3536 14.4749L10.9394 15.8891L9.52518 14.4749C6.79151 11.7413 6.79151 7.30911 9.52518 4.57544L9.87874 4.22188C12.6124 1.48821 17.0446 1.48821 19.7782 4.22188C22.5119 6.95555 22.5119 11.3877 19.7782 14.1214Z"
+                                  />
+                                </svg>
+                              </div>
+                              <div
+                                class="_progressTitle_8ab6ee"
+                              >
+                                <span
+                                  class="d-inline-block d-md-none"
+                                >
+                                  URL stability
+                                </span>
+                                <span
+                                  class="d-none d-md-inline-block"
+                                >
+                                  <button
+                                    aria-label="Search projects with passed URL stability check"
+                                    class="btn btn-link p-0 _btn_8ab6ee"
+                                  >
+                                    URL stability
+                                  </button>
+                                </span>
+                              </div>
+                              <div
+                                class="flex-grow-1 ms-2"
+                              >
+                                <div
+                                  class="progress rounded-0 _progress_8ab6ee"
+                                >
+                                  <div
+                                    aria-label="URL stability passed checks percentage"
+                                    aria-valuemax="100"
+                                    aria-valuemin="0"
+                                    aria-valuenow="64"
+                                    class="progress-bar _progressbar_8ab6ee"
+                                    role="progressbar"
+                                    style="width: 64%; background-color: var(--clo-yellow);"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="ps-2 lh-1 text-end fw-bold lightText _scoreWrapper_8ab6ee"
+                              >
+                                64%
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -3571,7 +4436,16 @@ exports[`StatsView > creates snapshot 1`] = `
             </div>
           </div>
         </div>
-        Timeline
+        <button
+          type="button"
+        >
+          Load historical stats snapshot
+        </button>
+        <button
+          type="button"
+        >
+          Load current stats
+        </button>
       </div>
     </main>
   </div>

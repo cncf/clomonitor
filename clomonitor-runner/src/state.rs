@@ -82,6 +82,13 @@ impl State {
         }
     }
 
+    /// Number of runs currently in flight.
+    pub(crate) fn running(&self) -> usize {
+        self.config
+            .max_concurrent_runs
+            .saturating_sub(self.slots.available_permits())
+    }
+
     /// Get the entry of the tool provided, if enabled.
     pub(crate) fn tool(&self, tool: Tool) -> Option<&ToolEntry> {
         self.tools.get(&tool)
@@ -94,8 +101,7 @@ impl State {
         tools
     }
 
-    /// Number of requests currently waiting for a slot (for tests/metrics).
-    #[cfg(test)]
+    /// Number of requests currently waiting for a slot.
     pub(crate) fn waiting(&self) -> usize {
         self.waiting.load(Ordering::SeqCst)
     }
@@ -185,6 +191,19 @@ mod tests {
         )
         .expect_err("zero concurrency to be rejected");
         assert!(err.to_string().contains("maxConcurrentRuns"), "{err}");
+    }
+
+    #[tokio::test]
+    async fn running_tracks_acquired_slots() {
+        // Setup state with a single run slot
+        let state = Arc::new(State::new(vec![], config(1)).unwrap());
+        assert_eq!(state.running(), 0);
+
+        // Check acquiring and releasing the slot is reflected
+        let permit = state.acquire_slot().await;
+        assert_eq!(state.running(), 1);
+        drop(permit);
+        assert_eq!(state.running(), 0);
     }
 
     // Helpers.

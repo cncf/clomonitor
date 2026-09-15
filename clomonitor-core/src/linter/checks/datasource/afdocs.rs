@@ -40,6 +40,9 @@ No website URL found for this repository, so the AFDocs analysis could not be ru
 
 Set the repository homepage in GitHub or add an `agentReadiness.url` entry to the `.clomonitor.yml` metadata file (see <https://clomonitor.io/docs/topics/checks/#agent-readiness>) to point at the documentation site that should be analysed.";
 
+/// Valid AFDocs check result statuses.
+const STATUSES: [&str; 5] = ["pass", "warn", "fail", "skip", "error"];
+
 // AFDocs category identifiers.
 pub(crate) const AUTHENTICATION: &str = "authentication";
 pub(crate) const CONTENT_DISCOVERABILITY: &str = "content-discoverability";
@@ -49,26 +52,9 @@ pub(crate) const OBSERVABILITY: &str = "observability";
 pub(crate) const PAGE_SIZE: &str = "page-size";
 pub(crate) const URL_STABILITY: &str = "url-stability";
 
-/// AFDocs check category.
-#[derive(Debug, PartialEq, Eq)]
-pub(crate) struct AfdocsCategory {
-    pub id: &'static str,
-    pub name: &'static str,
-    pub checks: &'static [&'static str],
-}
-
-impl AfdocsCategory {
-    /// Return the AFDocs documentation url for this category.
-    pub(crate) fn docs_url(&self) -> String {
-        format!("https://afdocs.dev/checks/{}", self.id)
-    }
-}
-
 /// AFDocs categories and the checks they contain (AFDocs 0.20).
 pub(crate) const CATEGORIES: [AfdocsCategory; 7] = [
     AfdocsCategory {
-        id: CONTENT_DISCOVERABILITY,
-        name: "Content Discoverability",
         checks: &[
             "llms-txt-exists",
             "llms-txt-valid",
@@ -78,107 +64,86 @@ pub(crate) const CATEGORIES: [AfdocsCategory; 7] = [
             "llms-txt-directive-html",
             "llms-txt-directive-md",
         ],
+        id: CONTENT_DISCOVERABILITY,
+        name: "Content Discoverability",
     },
     AfdocsCategory {
+        checks: &["markdown-url-support", "content-negotiation"],
         id: MARKDOWN_AVAILABILITY,
         name: "Markdown Availability",
-        checks: &["markdown-url-support", "content-negotiation"],
     },
     AfdocsCategory {
-        id: PAGE_SIZE,
-        name: "Page Size and Truncation Risk",
         checks: &[
             "rendering-strategy",
             "page-size-markdown",
             "page-size-html",
             "content-start-position",
         ],
+        id: PAGE_SIZE,
+        name: "Page Size and Truncation Risk",
     },
     AfdocsCategory {
-        id: CONTENT_STRUCTURE,
-        name: "Content Structure",
         checks: &[
             "tabbed-content-serialization",
             "section-header-quality",
             "markdown-code-fence-validity",
         ],
+        id: CONTENT_STRUCTURE,
+        name: "Content Structure",
     },
     AfdocsCategory {
+        checks: &["http-status-codes", "redirect-behavior"],
         id: URL_STABILITY,
         name: "URL Stability and Redirects",
-        checks: &["http-status-codes", "redirect-behavior"],
     },
     AfdocsCategory {
-        id: OBSERVABILITY,
-        name: "Observability and Content Health",
         checks: &[
             "llms-txt-coverage",
             "markdown-content-parity",
             "cache-header-hygiene",
         ],
+        id: OBSERVABILITY,
+        name: "Observability and Content Health",
     },
     AfdocsCategory {
+        checks: &["auth-gate-detection", "auth-alternative-access"],
         id: AUTHENTICATION,
         name: "Authentication and Access",
-        checks: &["auth-gate-detection", "auth-alternative-access"],
     },
 ];
-
-/// Valid AFDocs check result statuses.
-const STATUSES: [&str; 5] = ["pass", "warn", "fail", "skip", "error"];
-
-/// Return the category with the id provided, if known.
-pub(crate) fn category(id: &str) -> Option<&'static AfdocsCategory> {
-    CATEGORIES.iter().find(|c| c.id == id)
-}
-
-/// Transport used to obtain an AFDocs report.
-#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
-pub(crate) enum AfdocsTransport {
-    #[default]
-    Unknown,
-    Local,
-    Runner,
-}
-
-impl AfdocsTransport {
-    fn label(self) -> &'static str {
-        match self {
-            Self::Unknown => "unknown transport",
-            Self::Local => "local binary",
-            Self::Runner => "CLOMonitor runner",
-        }
-    }
-}
 
 /// AFDocs report (`afdocs check <url> --format json --score`).
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub(crate) struct AfdocsReport {
-    pub url: String,
-    pub timestamp: String,
+    /// Results of every check run.
     pub results: Vec<AfdocsResult>,
+    /// Time the analysis was run at (RFC 3339).
+    pub timestamp: String,
+    /// Website url analysed.
+    pub url: String,
+
+    /// Version of the AFDocs tool that produced the report.
     #[serde(default)]
     pub afdocs_version: Option<String>,
+    /// Page sampling strategy used.
     #[serde(default)]
     pub sampling_strategy: Option<String>,
+    /// Category scores and suggested fixes.
     #[serde(default)]
     pub scoring: Option<AfdocsScoring>,
+    /// Where the target url came from (set by CLOMonitor, not by AFDocs).
+    #[serde(default, skip_deserializing)]
+    pub target_source: Option<AfdocsTargetSource>,
+    /// Number of pages tested.
     #[serde(default)]
     pub tested_pages: Option<u64>,
+    /// Transport used to obtain the report (set by CLOMonitor, not by AFDocs).
     #[serde(default, skip_deserializing)]
     pub transport: AfdocsTransport,
 }
 
 impl AfdocsReport {
-    /// Build and validate an AFDocs report from its JSON value.
-    pub(crate) fn from_value(value: serde_json::Value) -> Result<Self> {
-        let report: Self = serde_json::from_value(value)
-            .map_err(|err| format_err!("AFDocs output contract violation: invalid JSON ({err})"))?;
-        report.validate()?;
-        Ok(report)
-    }
-
     /// Build a validated AFDocs report from the output of a tool run.
     pub(crate) fn from_run_output(run: RunOutput, transport: AfdocsTransport) -> Result<Self> {
         if run.tool != Tool::Afdocs {
@@ -188,6 +153,31 @@ impl AfdocsReport {
         report.afdocs_version = Some(run.tool_version);
         report.transport = transport;
         Ok(report)
+    }
+
+    /// Build and validate an AFDocs report from its JSON value.
+    pub(crate) fn from_value(value: serde_json::Value) -> Result<Self> {
+        let report: Self = serde_json::from_value(value)
+            .map_err(|err| format_err!("AFDocs output contract violation: invalid JSON ({err})"))?;
+        report.validate()?;
+        Ok(report)
+    }
+
+    /// Return the results that belong to the category provided.
+    fn results_in(&self, category_id: &str) -> impl Iterator<Item = &AfdocsResult> {
+        self.results
+            .iter()
+            .filter(move |r| r.category == category_id)
+    }
+
+    /// Describe how many pages were tested, for messages explaining that a
+    /// category could not be scored.
+    fn tested_pages_summary(&self) -> String {
+        match self.tested_pages {
+            Some(1) => "only 1 page was tested".to_string(),
+            Some(n) => format!("only {n} pages were tested"),
+            None => "too few pages were tested".to_string(),
+        }
     }
 
     /// Validate the report against the expected AFDocs contract.
@@ -262,21 +252,64 @@ impl AfdocsReport {
 
         Ok(())
     }
+}
 
-    /// Return the results that belong to the category provided.
-    fn results_in(&self, category_id: &str) -> impl Iterator<Item = &AfdocsResult> {
-        self.results
-            .iter()
-            .filter(move |r| r.category == category_id)
+/// AFDocs check category.
+#[derive(Debug, PartialEq, Eq)]
+pub(crate) struct AfdocsCategory {
+    /// Identifiers of the AFDocs checks in the category.
+    pub checks: &'static [&'static str],
+    /// Category identifier.
+    pub id: &'static str,
+    /// Human readable category name.
+    pub name: &'static str,
+}
+
+impl AfdocsCategory {
+    /// Return the AFDocs documentation url for this category.
+    pub(crate) fn docs_url(&self) -> String {
+        format!("https://afdocs.dev/checks/{}", self.id)
     }
+}
+
+/// AFDocs category result for a check.
+#[derive(Debug)]
+pub(crate) enum AfdocsCategoryResult<'a> {
+    /// The category results in a valid AFDocs report.
+    Available {
+        /// Category the check is backed by.
+        category: &'static AfdocsCategory,
+        /// Report the category was taken from.
+        report: &'a AfdocsReport,
+        /// Score of the category in the report.
+        score: AfdocsCategoryScore,
+    },
+    /// The AFDocs report could not be obtained.
+    Failed(&'a Error),
+    /// No website url is available for the repository.
+    NoTarget,
+}
+
+/// AFDocs category score (null when there was not enough data).
+#[derive(Debug, Clone, Default, Deserialize)]
+pub(crate) struct AfdocsCategoryScore {
+    /// Letter grade derived from the score.
+    pub grade: Option<String>,
+    /// Score in the 0-100 range.
+    pub score: Option<f64>,
 }
 
 /// AFDocs check result.
 #[derive(Debug, Clone, Deserialize)]
 pub(crate) struct AfdocsResult {
-    pub id: String,
+    /// Identifier of the category the check belongs to.
     pub category: String,
+    /// Check identifier.
+    pub id: String,
+    /// Result status (pass, warn, fail, skip or error).
     pub status: String,
+
+    /// Human readable result message.
     #[serde(default)]
     pub message: String,
 }
@@ -285,53 +318,144 @@ pub(crate) struct AfdocsResult {
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub(crate) struct AfdocsScoring {
+    /// Scores indexed by category identifier.
     pub category_scores: HashMap<String, AfdocsCategoryScore>,
+
+    /// Suggested fixes indexed by check identifier.
     #[serde(default)]
     pub resolutions: HashMap<String, String>,
 }
 
-/// AFDocs category score (null when there was not enough data).
-#[derive(Debug, Clone, Default, Deserialize)]
-pub(crate) struct AfdocsCategoryScore {
-    pub score: Option<f64>,
-    pub grade: Option<String>,
+/// Website analysed by AFDocs for a repository.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub(crate) struct AfdocsTarget {
+    /// Where the url was obtained from.
+    pub source: AfdocsTargetSource,
+    /// Website url.
+    pub url: String,
 }
 
-/// Get the AFDocs report for the target url provided using the mode requested.
-pub(crate) async fn afdocs(target: &str, mode: &ToolMode) -> Result<AfdocsReport> {
-    let request = ToolRequest::Afdocs(AfdocsRequest {
-        url: target.to_string(),
-        max_links: AFDOCS_MAX_LINKS,
-    });
-    match mode {
-        ToolMode::Disabled => Err(format_err!("AFDocs is not configured")),
-        ToolMode::Local => {
-            let tool = LocalTool::locate(Tool::Afdocs).await?;
-            let run = tools::run_local(&request, &tool, None, Tool::Afdocs.deadline()).await?;
-            AfdocsReport::from_run_output(run, AfdocsTransport::Local)
+/// Origin of the website url analysed by AFDocs.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum AfdocsTargetSource {
+    /// Repository homepage configured in GitHub.
+    GithubHomepage,
+    /// `agentReadiness.url` entry in the `.clomonitor.yml` metadata file.
+    Metadata,
+}
+
+impl AfdocsTargetSource {
+    /// Plain text explanation of the source, including how to override it.
+    fn hint(self) -> &'static str {
+        match self {
+            Self::GithubHomepage => {
+                "The target is the repository homepage configured in GitHub; set agentReadiness.url in the .clomonitor.yml metadata file to analyse a different site."
+            }
+            Self::Metadata => {
+                "The target is the agentReadiness.url entry in the .clomonitor.yml metadata file."
+            }
         }
-        ToolMode::Runner { url } => {
-            let run = RunnerClient::new(url)?.run(&request, None).await?;
-            AfdocsReport::from_run_output(run, AfdocsTransport::Runner)
+    }
+
+    /// Markdown explanation of the source, including how to override it.
+    fn hint_md(self) -> &'static str {
+        match self {
+            Self::GithubHomepage => {
+                "from the repository homepage configured in GitHub; set `agentReadiness.url` in the `.clomonitor.yml` metadata file to analyse a different site"
+            }
+            Self::Metadata => "from `agentReadiness.url` in the `.clomonitor.yml` metadata file",
         }
     }
 }
 
-// Check output conversion
+/// Transport used to obtain an AFDocs report.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub(crate) enum AfdocsTransport {
+    /// The `afdocs` binary found in PATH.
+    Local,
+    /// The CLOMonitor runner service.
+    Runner,
+    /// The transport was not recorded.
+    #[default]
+    Unknown,
+}
 
-/// AFDocs category result for a check.
-#[derive(Debug)]
-pub(crate) enum AfdocsCategoryResult<'a> {
-    /// No website url is available for the repository.
-    NoTarget,
-    /// The AFDocs report could not be obtained.
-    Failed(&'a Error),
-    /// The category results in a valid AFDocs report.
-    Available {
-        report: &'a AfdocsReport,
-        category: &'static AfdocsCategory,
-        score: AfdocsCategoryScore,
-    },
+impl AfdocsTransport {
+    /// Human readable transport name used in the checks details.
+    fn label(self) -> &'static str {
+        match self {
+            Self::Local => "local binary",
+            Self::Runner => "CLOMonitor runner",
+            Self::Unknown => "unknown transport",
+        }
+    }
+}
+
+impl<T> From<AfdocsCategoryResult<'_>> for CheckOutput<T> {
+    fn from(result: AfdocsCategoryResult<'_>) -> Self {
+        match result {
+            AfdocsCategoryResult::Available {
+                category,
+                report,
+                score,
+            } => {
+                // A null score means the site could not be analysed, which is
+                // reported as a failure (not as a low score)
+                let Some(value) = score.score else {
+                    return CheckOutput::failed()
+                        .url(Some(report.url.clone()))
+                        .details(Some(details(report, category, &score)))
+                        .fail_reason(Some(insufficient_data_reason(report, category)));
+                };
+
+                // Compare the category score against the pass threshold
+                let mut output = if value >= AFDOCS_PASS_THRESHOLD {
+                    CheckOutput::passed()
+                } else {
+                    CheckOutput::not_passed()
+                };
+                output.url = Some(report.url.clone());
+                output.details = Some(details(report, category, &score));
+                output
+            }
+            AfdocsCategoryResult::Failed(err) => {
+                CheckOutput::failed().fail_reason(Some(format!("{err:#}")))
+            }
+            AfdocsCategoryResult::NoTarget => {
+                CheckOutput::not_passed().details(Some(NO_TARGET_DETAILS.to_string()))
+            }
+        }
+    }
+}
+
+/// Get the AFDocs report for the target provided using the mode requested.
+pub(crate) async fn afdocs(target: &AfdocsTarget, mode: &ToolMode) -> Result<AfdocsReport> {
+    // Run the tool using the transport configured
+    let request = ToolRequest::Afdocs(AfdocsRequest {
+        url: target.url.clone(),
+        max_links: AFDOCS_MAX_LINKS,
+    });
+    let mut report = match mode {
+        ToolMode::Disabled => return Err(format_err!("AFDocs is not configured")),
+        ToolMode::Local => {
+            let tool = LocalTool::locate(Tool::Afdocs).await?;
+            let run = tools::run_local(&request, &tool, None, Tool::Afdocs.deadline()).await?;
+            AfdocsReport::from_run_output(run, AfdocsTransport::Local)?
+        }
+        ToolMode::Runner { url } => {
+            let run = RunnerClient::new(url)?.run(&request, None).await?;
+            AfdocsReport::from_run_output(run, AfdocsTransport::Runner)?
+        }
+    };
+
+    // Record where the target url came from so checks can explain it
+    report.target_source = Some(target.source);
+    Ok(report)
+}
+
+/// Return the category with the id provided, if known.
+pub(crate) fn category(id: &str) -> Option<&'static AfdocsCategory> {
+    CATEGORIES.iter().find(|c| c.id == id)
 }
 
 /// Get the AFDocs category result backing the check provided.
@@ -356,40 +480,21 @@ pub(crate) fn get_category<'a>(
                 .cloned()
                 .unwrap_or_default();
             AfdocsCategoryResult::Available {
-                report,
                 category,
+                report,
                 score,
             }
         }
     }
 }
 
-impl<T> From<AfdocsCategoryResult<'_>> for CheckOutput<T> {
-    fn from(result: AfdocsCategoryResult<'_>) -> Self {
-        match result {
-            AfdocsCategoryResult::NoTarget => {
-                CheckOutput::not_passed().details(Some(NO_TARGET_DETAILS.to_string()))
-            }
-            AfdocsCategoryResult::Failed(err) => {
-                CheckOutput::failed().fail_reason(Some(format!("{err:#}")))
-            }
-            AfdocsCategoryResult::Available {
-                report,
-                category,
-                score,
-            } => {
-                let passed = score.score.is_some_and(|s| s >= AFDOCS_PASS_THRESHOLD);
-                let mut output = if passed {
-                    CheckOutput::passed()
-                } else {
-                    CheckOutput::not_passed()
-                };
-                output.url = Some(report.url.clone());
-                output.details = Some(details(report, category, &score));
-                output
-            }
-        }
-    }
+// Helpers.
+
+/// Sanitize an identifier so it can be safely rendered inside inline code.
+fn code(text: &str) -> String {
+    text.chars()
+        .filter(|c| !matches!(c, '`' | '\n' | '\r'))
+        .collect()
 }
 
 /// Build the markdown details for a category result.
@@ -400,6 +505,13 @@ fn details(
     score: &AfdocsCategoryScore,
 ) -> String {
     let mut md = format!("# {} AFDocs category\n\n", category.name);
+
+    // Target
+    let source = report
+        .target_source
+        .map(|s| format!(" ({})", s.hint_md()))
+        .unwrap_or_default();
+    let _ = writeln!(md, "**Target**: {}{source}\n", escape_md(&report.url));
 
     // Score
     match score.score {
@@ -416,9 +528,13 @@ fn details(
                 AFDOCS_PASS_THRESHOLD as u64
             );
         }
-        None => md.push_str(
-            "**Score**: n/a (insufficient data: fewer than 5 pages were discovered, so the checks in this category were not applicable and the check does not pass)\n\n",
-        ),
+        None => {
+            let _ = writeln!(
+                md,
+                "**Score**: n/a (not enough data: {}, so the site could not be analysed and the check is reported as failed)\n",
+                report.tested_pages_summary()
+            );
+        }
     }
 
     // Errors
@@ -463,7 +579,7 @@ fn details(
     // Run information
     let _ = writeln!(
         md,
-        "**Run**: AFDocs {}, {}, {} sampling, max {} pages, {} pages tested, {}, target {}\n",
+        "**Run**: AFDocs {}, {}, {} sampling, max {} pages, {} pages tested, {}\n",
         escape_md(
             report
                 .afdocs_version
@@ -482,7 +598,6 @@ fn details(
             .tested_pages
             .map_or_else(|| "n/a".to_string(), |p| p.to_string()),
         escape_md(&report.timestamp),
-        escape_md(&report.url),
     );
 
     let _ = write!(
@@ -514,11 +629,20 @@ fn escape_md(text: &str) -> String {
     escaped
 }
 
-/// Sanitize an identifier so it can be safely rendered inside inline code.
-fn code(text: &str) -> String {
-    text.chars()
-        .filter(|c| !matches!(c, '`' | '\n' | '\r'))
-        .collect()
+/// Build the plain text reason shown when AFDocs did not have enough data to
+/// score the category provided.
+fn insufficient_data_reason(report: &AfdocsReport, category: &AfdocsCategory) -> String {
+    let mut reason = format!(
+        "AFDocs could not score {} for {}: {}, so there is not enough data (the site may be rendered client-side, the target may not be a documentation site, or it may be unreachable).",
+        category.name,
+        report.url,
+        report.tested_pages_summary()
+    );
+    if let Some(source) = report.target_source {
+        reason.push(' ');
+        reason.push_str(source.hint());
+    }
+    reason
 }
 
 #[cfg(test)]
@@ -547,6 +671,7 @@ mod tests {
 
     fn report() -> AfdocsReport {
         let mut report = parse(&fixture("report")).unwrap();
+        report.target_source = Some(AfdocsTargetSource::GithubHomepage);
         report.transport = AfdocsTransport::Runner;
         report
     }
@@ -585,9 +710,17 @@ mod tests {
         let afdocs = Some(Ok(report));
         let output: CheckOutput = get_category(afdocs.as_ref(), content_discoverability::ID).into();
         assert!(!output.passed && !output.failed);
-        assert!(output.details.unwrap().contains("**Score**: 0/100 (F)"));
+        let details = output.details.unwrap();
+        assert!(details.contains("**Target**: https://clomonitor.io/docs/\n"));
+        assert!(details.contains("**Score**: 0/100 (F)"));
         let output: CheckOutput = get_category(afdocs.as_ref(), page_size::ID).into();
-        assert!(!output.passed && !output.failed);
+        assert!(!output.passed && output.failed);
+        assert!(
+            output
+                .fail_reason
+                .unwrap()
+                .contains("only 1 page was tested")
+        );
         assert!(output.details.unwrap().contains("**Score**: n/a"));
     }
 
@@ -619,12 +752,14 @@ mod tests {
         assert_eq!(output.url.as_deref(), Some("https://docs.example.org/"));
         let details = output.details.unwrap();
         assert!(details.starts_with("# Content Discoverability AFDocs category\n\n"));
-        assert!(details.contains("**Score**: 82/100 (B) (check passes with score >= 70)"));
+        assert!(details.contains(
+            "**Target**: https://docs.example.org/ (from the repository homepage configured in GitHub; set `agentReadiness.url` in the `.clomonitor.yml` metadata file to analyse a different site)\n\n**Score**: 82/100 (B) (check passes with score >= 70)"
+        ));
         assert!(details.contains("- `PASS` `llms-txt-exists`: llms.txt found at"));
         assert!(details.contains("- `WARN` `llms-txt-size`:"));
         assert!(details.contains("**Suggested fixes**:\n\n- `llms-txt-size`: Split llms.txt"));
         assert!(details.contains(
-            "**Run**: AFDocs 0.20.0, CLOMonitor runner, deterministic sampling, max 20 pages, 3 pages tested, 2026-09-14T10:15:30.000Z, target https://docs.example.org/"
+            "**Run**: AFDocs 0.20.0, CLOMonitor runner, deterministic sampling, max 20 pages, 3 pages tested, 2026-09-14T10:15:30.000Z\n"
         ));
         assert!(details.contains("(https://afdocs.dev/checks/content-discoverability)"));
         assert!(!details.to_lowercase().contains("advisory"));
@@ -643,14 +778,56 @@ mod tests {
     }
 
     #[test]
-    fn check_output_null_score_not_passed() {
+    fn check_output_null_score_failed() {
+        // Homepage target: the reason explains how to override it
         let afdocs = Some(Ok(report()));
         let output: CheckOutput = get_category(afdocs.as_ref(), page_size::ID).into();
         assert!(!output.passed);
-        assert!(!output.failed);
+        assert!(output.failed);
+        assert_eq!(output.url.as_deref(), Some("https://docs.example.org/"));
+        assert_eq!(
+            output.fail_reason.as_deref(),
+            Some(
+                "AFDocs could not score Page Size and Truncation Risk for https://docs.example.org/: only 3 pages were tested, so there is not enough data (the site may be rendered client-side, the target may not be a documentation site, or it may be unreachable). The target is the repository homepage configured in GitHub; set agentReadiness.url in the .clomonitor.yml metadata file to analyse a different site."
+            )
+        );
         let details = output.details.unwrap();
-        assert!(details.contains("**Score**: n/a (insufficient data"));
+        assert!(details.contains("**Score**: n/a (not enough data: only 3 pages were tested"));
+        assert!(details.contains("reported as failed"));
         assert!(details.contains("- `SKIP` `rendering-strategy`"));
+
+        // Metadata target: the reason points at the metadata entry
+        let mut metadata_report = report();
+        metadata_report.target_source = Some(AfdocsTargetSource::Metadata);
+        let afdocs = Some(Ok(metadata_report));
+        let output: CheckOutput = get_category(afdocs.as_ref(), page_size::ID).into();
+        assert!(output.failed);
+        let reason = output.fail_reason.unwrap();
+        assert!(reason.ends_with(
+            "The target is the agentReadiness.url entry in the .clomonitor.yml metadata file."
+        ));
+        assert!(output.details.unwrap().contains(
+            "**Target**: https://docs.example.org/ (from `agentReadiness.url` in the `.clomonitor.yml` metadata file)\n"
+        ));
+
+        // Unknown target source and page count: no hint, generic wording
+        let mut unknown_source_report = report();
+        unknown_source_report.target_source = None;
+        unknown_source_report.tested_pages = None;
+        let afdocs = Some(Ok(unknown_source_report));
+        let output: CheckOutput = get_category(afdocs.as_ref(), page_size::ID).into();
+        let reason = output.fail_reason.unwrap();
+        assert!(
+            reason.contains(": too few pages were tested, so"),
+            "{reason}"
+        );
+        assert!(reason.ends_with("or it may be unreachable)."), "{reason}");
+        assert!(
+            output
+                .details
+                .unwrap()
+                .contains("**Target**: https://docs.example.org/\n\n")
+        );
     }
 
     #[test]
@@ -762,7 +939,11 @@ mod tests {
 
     #[tokio::test]
     async fn afdocs_disabled() {
-        let err = afdocs("https://docs.example.org/", &ToolMode::Disabled)
+        let target = AfdocsTarget {
+            source: AfdocsTargetSource::Metadata,
+            url: "https://docs.example.org/".to_string(),
+        };
+        let err = afdocs(&target, &ToolMode::Disabled)
             .await
             .unwrap_err()
             .to_string();

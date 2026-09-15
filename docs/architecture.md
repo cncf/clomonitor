@@ -164,7 +164,9 @@ different trust boundaries:
 - `runner-scorecard` runs OpenSSF Scorecard. The tracker sends a GitHub token
   only to this profile in the `Authorization: Bearer` header, and the runner
   injects it as `GITHUB_TOKEN` only into the scorecard subprocess. Its egress is
-  limited to DNS and GitHub over HTTPS.
+  limited to DNS and public destinations on TCP 443 (the network policy cannot
+  pin it to GitHub because GitHub IP ranges change), so the token is protected
+  from the cluster and private networks, not from other public hosts.
 
 Runner pods use the same hardening baseline: service account token automounting
 is disabled, they run as non-root numeric users, the root filesystem is

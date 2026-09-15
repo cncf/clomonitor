@@ -780,11 +780,20 @@ agentReadiness:
   url: https://docs.example.org/
 ```
 
+Each check's details start with the target URL analysed and where it came from
+(the GitHub homepage or the metadata override), so maintainers can tell when a
+homepage that is not a documentation site is being analysed and point the
+checks at the right one.
+
 Each CLOMonitor check maps to one AFDocs category. The check passes when that
 category score is `>= 70`. A category score below `70` does not pass. A `null`
-category score, which AFDocs uses when it has insufficient data such as fewer
-than five discovered pages, also does not pass. Native AFDocs errors are shown
-in the details but do not change the result.
+category score means AFDocs did not have enough data to score the category: it
+tested too few pages, which usually happens with sites rendered client-side
+(single page applications), homepages that are not documentation sites, or
+unreachable sites. In that case the check is reported as failed with a reason
+that includes the number of pages tested and how to override the target, rather
+than as a low score. Native AFDocs errors are shown in the details but do not
+change the result.
 
 If AFDocs is disabled, the runner is unavailable or times out, or AFDocs returns
 malformed or incomplete output, all seven agent readiness checks are marked as
@@ -793,10 +802,10 @@ produced.
 
 CLOMonitor uses deterministic AFDocs sampling with at most 20 links/pages, 3
 concurrent requests, a 200 ms request delay, and a 240 s deadline. Each check's
-details include provenance for the AFDocs version, transport, sampling mode,
-maximum links, tested pages, timestamp, and target URL. AFDocs runs without a
-GitHub token, so it does not consume CLOMonitor's authenticated GitHub API
-quota.
+details include provenance for the target URL and its source, AFDocs version,
+transport, sampling mode, maximum links, tested pages, and timestamp. AFDocs
+runs without a GitHub token, so it does not consume CLOMonitor's authenticated
+GitHub API quota.
 
 Only one target URL is analyzed for a repository. Documentation sites for
 sub-projects hosted on separate code, code-lite, or docs repositories are not

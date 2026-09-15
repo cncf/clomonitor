@@ -10,7 +10,7 @@ use super::{
         util::helpers::{find_exemption, should_skip_check},
     },
     datasource::{
-        afdocs::{self, AfdocsReport},
+        afdocs::{self, AfdocsReport, AfdocsTarget, AfdocsTargetSource},
         github,
         scorecard::{Scorecard, scorecard},
         security_insights::SecurityInsights,
@@ -57,11 +57,11 @@ impl CheckInput<'_> {
         // GitHub secondary rate limits.
         let gh_md = github::metadata(&li.url, &li.github_token).await?;
 
-        // Resolve the AFDocs target url (only when an AFDocs backed check will run)
+        // Resolve the AFDocs target (only when an AFDocs backed check will run)
         let afdocs_target = if datasource_needed(li, cm_md.as_ref(), |ds| {
             matches!(ds, Datasource::Afdocs { .. })
         }) {
-            afdocs_target_url(cm_md.as_ref(), &gh_md)
+            afdocs_target(cm_md.as_ref(), &gh_md)
         } else {
             None
         };
@@ -267,18 +267,36 @@ pub(crate) fn datasource_needed(
     })
 }
 
-/// Resolve the url AFDocs should analyse: the `agentReadiness.url` override
-/// in the CLOMonitor metadata file or the repository homepage url in GitHub.
-pub(crate) fn afdocs_target_url(
+/// Resolve the website AFDocs should analyse: the `agentReadiness.url`
+/// override in the CLOMonitor metadata file or the repository homepage url in
+/// GitHub.
+pub(crate) fn afdocs_target(
     cm_md: Option<&Metadata>,
     gh_md: &github::md::MdRepository,
-) -> Option<String> {
+) -> Option<AfdocsTarget> {
     let non_empty = |url: &String| (!url.trim().is_empty()).then(|| url.trim().to_string());
-    cm_md
+
+    // Prefer the metadata override when set
+    if let Some(url) = cm_md
         .and_then(|md| md.agent_readiness.as_ref())
         .and_then(|ar| ar.url.as_ref())
         .and_then(non_empty)
-        .or_else(|| gh_md.homepage_url.as_ref().and_then(non_empty))
+    {
+        return Some(AfdocsTarget {
+            source: AfdocsTargetSource::Metadata,
+            url,
+        });
+    }
+
+    // Fall back to the repository homepage configured in GitHub
+    gh_md
+        .homepage_url
+        .as_ref()
+        .and_then(non_empty)
+        .map(|url| AfdocsTarget {
+            source: AfdocsTargetSource::GithubHomepage,
+            url,
+        })
 }
 
 /// Wrapper macro that takes care of running some common pre-check operations
@@ -437,7 +455,7 @@ mod tests {
     }
 
     #[test]
-    fn afdocs_target_url_prefers_metadata_override() {
+    fn afdocs_target_prefers_metadata_override() {
         let md = Metadata {
             agent_readiness: Some(AgentReadiness {
                 url: Some(" https://docs.example.org/ ".to_string()),
@@ -449,13 +467,16 @@ mod tests {
             ..MdRepository::default()
         };
         assert_eq!(
-            afdocs_target_url(Some(&md), &gh_md),
-            Some("https://docs.example.org/".to_string())
+            afdocs_target(Some(&md), &gh_md),
+            Some(AfdocsTarget {
+                source: AfdocsTargetSource::Metadata,
+                url: "https://docs.example.org/".to_string(),
+            })
         );
     }
 
     #[test]
-    fn afdocs_target_url_falls_back_to_homepage() {
+    fn afdocs_target_falls_back_to_homepage() {
         let md = Metadata {
             agent_readiness: Some(AgentReadiness {
                 url: Some(String::new()),
@@ -466,23 +487,21 @@ mod tests {
             homepage_url: Some("https://example.org".to_string()),
             ..MdRepository::default()
         };
-        assert_eq!(
-            afdocs_target_url(Some(&md), &gh_md),
-            Some("https://example.org".to_string())
-        );
-        assert_eq!(
-            afdocs_target_url(None, &gh_md),
-            Some("https://example.org".to_string())
-        );
+        let expected = Some(AfdocsTarget {
+            source: AfdocsTargetSource::GithubHomepage,
+            url: "https://example.org".to_string(),
+        });
+        assert_eq!(afdocs_target(Some(&md), &gh_md), expected);
+        assert_eq!(afdocs_target(None, &gh_md), expected);
     }
 
     #[test]
-    fn afdocs_target_url_none_when_unavailable() {
+    fn afdocs_target_none_when_unavailable() {
         let gh_md = MdRepository {
             homepage_url: Some("  ".to_string()),
             ..MdRepository::default()
         };
-        assert_eq!(afdocs_target_url(None, &gh_md), None);
-        assert_eq!(afdocs_target_url(None, &MdRepository::default()), None);
+        assert_eq!(afdocs_target(None, &gh_md), None);
+        assert_eq!(afdocs_target(None, &MdRepository::default()), None);
     }
 }

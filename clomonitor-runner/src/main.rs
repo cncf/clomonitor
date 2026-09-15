@@ -84,21 +84,22 @@ async fn main() -> Result<()> {
             min_budget: Duration::from_millis(cfg.get::<u64>("runner.minBudgetMs")?),
         },
     )?);
-    let router = router::setup(state);
+    let router = router::setup(state.clone());
     let addr: SocketAddr = cfg.get_string("runner.addr")?.parse()?;
     let listener = TcpListener::bind(addr).await?;
     info!("runner started");
     info!(%addr, tools = ?tool_ids, "listening");
     axum::serve(listener, router)
-        .with_graceful_shutdown(shutdown_signal())
+        .with_graceful_shutdown(shutdown_signal(state))
         .await?;
 
     info!("runner stopped");
     Ok(())
 }
 
-/// Wait for a shutdown signal (ctrl+c or, on unix, SIGTERM).
-async fn shutdown_signal() {
+/// Wait for a shutdown signal (ctrl+c or, on unix, SIGTERM) and log the work
+/// left to drain once it arrives.
+async fn shutdown_signal(state: Arc<State>) {
     // Setup signal handlers
     let ctrl_c = async {
         signal::ctrl_c()
@@ -122,4 +123,12 @@ async fn shutdown_signal() {
         () = ctrl_c => {},
         () = terminate => {},
     }
+
+    // Make the drain observable: the server stops accepting connections and
+    // waits for the requests below to complete
+    info!(
+        running = state.running(),
+        queued = state.waiting(),
+        "shutdown signal received, draining in-flight runs"
+    );
 }

@@ -174,10 +174,9 @@ describe('Project detail index', () => {
         expect(API.getProjectDetail).toHaveBeenCalledTimes(2);
       });
       expect((await screen.findAllByText('Agent Readiness')).length).toBeGreaterThan(0);
-      expect(screen.getByRole('progressbar', { name: 'Agent Readiness score for artifact-hub' })).toHaveAttribute(
-        'aria-valuenow',
-        '0'
-      );
+      expect(
+        await screen.findByRole('progressbar', { name: 'Agent Readiness score for artifact-hub' })
+      ).toHaveAttribute('aria-valuenow', '0');
     });
 
     it('renders Back to results', async () => {

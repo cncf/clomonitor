@@ -155,8 +155,8 @@ pub(crate) async fn index_project(
             "{}/projects/{}/{}/report-summary.png",
             cfg.get_string("apiserver.baseURL")
                 .expect("base url to be set"),
-            &foundation,
-            &project
+            foundation,
+            project
         ),
     );
 

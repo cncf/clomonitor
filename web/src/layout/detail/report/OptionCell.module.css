@@ -27,6 +27,11 @@
   border: 2px solid var(--body-bg);
 }
 
+.dotSmall {
+  top: -3px;
+  right: -7px;
+}
+
 .reason {
   font-size: 0.8rem;
 }
@@ -93,8 +98,12 @@
   line-height: 1;
 }
 
-.detailsModalWrapper {
+.detailsModal {
   max-width: 1000px;
+  margin: 4rem auto;
+  height: calc(100% - 8rem);
+  background-color: var(--body-bg);
+  color: var(--color-font);
 }
 
 .detailsContent p {

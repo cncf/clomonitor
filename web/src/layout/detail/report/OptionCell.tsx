@@ -125,27 +125,30 @@ const OptionCell = (props: Props) => {
   );
 
   const getDetailsInfo = (): JSX.Element => {
+    // On small screens the dot is anchored to the icon, as the cell is narrower
+    const iconWithDot = (small?: boolean) => {
+      const wrapperClassName = small ? 'position-relative d-inline-block lh-1' : 'position-relative';
+      const dotClassName = `position-absolute rounded-circle ${styles.dot} ${small ? styles.dotSmall : ''}`;
+      return props.check.passed ? (
+        <div className={wrapperClassName}>
+          {successIcon}
+          <div className={`bg-success ${dotClassName}`} />
+        </div>
+      ) : (
+        <div className={wrapperClassName}>
+          {errorIcon}
+          <div className={`bg-danger ${dotClassName}`} />
+        </div>
+      );
+    };
+
     return (
       <>
         <div className="d-none d-lg-block">
           <DropdownOnHover
             width={700}
             dropdownClassName={styles.detailsDropdown}
-            linkContent={
-              <>
-                {props.check.passed ? (
-                  <div className="position-relative">
-                    {successIcon}
-                    <div className={`position-absolute bg-success rounded-circle ${styles.dot}`} />
-                  </div>
-                ) : (
-                  <div className="position-relative">
-                    {errorIcon}
-                    <div className={`position-absolute bg-danger rounded-circle ${styles.dot}`} />
-                  </div>
-                )}
-              </>
-            }
+            linkContent={iconWithDot()}
             onClose={scrollTop}
             tooltipStyle
           >
@@ -156,15 +159,15 @@ const OptionCell = (props: Props) => {
         </div>
         <button
           type="button"
-          className={`btn btn-link d-block d-lg-none p-0 text-reset ${styles.detailsBtn}`}
+          className={`btn btn-link d-block d-lg-none w-100 p-0 text-reset ${styles.detailsBtn}`}
           onClick={() => setOpenDetailsModalStatus(true)}
           aria-label={`Show check details for ${opt.name}`}
         >
-          {props.check.passed ? successIcon : errorIcon}
+          {iconWithDot(true)}
         </button>
         <FullScreenModal open={openDetailsModalStatus} onClose={() => setOpenDetailsModalStatus(false)}>
-          <div className={`h-100 w-100 mx-auto p-4 ${styles.detailsModalWrapper}`}>
-            <div className={`h-100 overflow-auto ${styles.visibleScroll}`}>{getDetailsContent()}</div>
+          <div className={`w-100 mx-auto p-4 text-start overflow-auto ${styles.detailsModal} ${styles.visibleScroll}`}>
+            {getDetailsContent()}
           </div>
         </FullScreenModal>
       </>

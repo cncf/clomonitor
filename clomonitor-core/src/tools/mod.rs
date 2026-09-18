@@ -155,8 +155,8 @@ impl Tool {
     #[must_use]
     pub fn deadline(self) -> Duration {
         match self {
-            Self::Afdocs => Duration::from_secs(240),
-            Self::Scorecard => Duration::from_secs(480),
+            Self::Afdocs => Duration::from_mins(4),
+            Self::Scorecard => Duration::from_mins(8),
         }
     }
 
@@ -889,7 +889,7 @@ mod tests {
                 ],
                 bin: &bin,
                 cwd: dir.path(),
-                deadline: Duration::from_secs(60),
+                deadline: Duration::from_mins(1),
                 env: vec![],
                 stderr_cap: MAX_STDERR_BYTES,
                 stdout_cap: MAX_OUTPUT_BYTES,

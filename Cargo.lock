@@ -727,6 +727,7 @@ dependencies = [
  "clap",
  "clomonitor-core",
  "config",
+ "openssl",
  "serde",
  "serde_json",
  "tempfile",

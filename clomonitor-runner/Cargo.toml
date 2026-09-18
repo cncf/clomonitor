@@ -12,6 +12,7 @@ axum = { workspace = true }
 clap = { workspace = true }
 clomonitor-core = { path = "../clomonitor-core" }
 config = { workspace = true }
+openssl = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 tokio = { workspace = true }

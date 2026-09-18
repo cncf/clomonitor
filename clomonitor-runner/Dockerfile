@@ -1,5 +1,5 @@
 # Build runner
-FROM rust:1.96.1-alpine3.24 as builder
+FROM rust:1.98.0-alpine3.24 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -15,7 +15,7 @@ WORKDIR /clomonitor/clomonitor-runner
 RUN cargo build --release --locked
 
 # Build OpenSSF scorecard
-FROM golang:1.24.7-alpine3.22 AS scorecard
+FROM golang:1.26.4-alpine3.22 AS scorecard
 WORKDIR /tmp
 RUN apk --no-cache add git make bash gcc musl-dev binutils-gold
 RUN git clone https://github.com/ossf/scorecard

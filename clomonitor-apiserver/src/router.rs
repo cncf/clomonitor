@@ -832,7 +832,7 @@ mod tests {
                         legal: Some(100.0),
                         legal_weight: Some(1),
                         agent_readiness: Some(60.0),
-                        agent_readiness_weight: Some(49),
+                        agent_readiness_weight: Some(14),
                     }),
                     report: Some(Report {
                         documentation: Documentation {

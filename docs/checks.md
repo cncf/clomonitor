@@ -816,7 +816,7 @@ the community repository at one URL only.
 
 **ID**: `authentication`
 
-**Weight**: 10
+**Weight**: 3
 
 **Check set**: `community`
 
@@ -831,7 +831,7 @@ measures:
 
 **ID**: `content_discoverability`
 
-**Weight**: 10
+**Weight**: 3
 
 **Check set**: `community`
 
@@ -851,7 +851,7 @@ It measures:
 
 **ID**: `content_structure`
 
-**Weight**: 4
+**Weight**: 1
 
 **Check set**: `community`
 
@@ -867,7 +867,7 @@ It measures:
 
 **ID**: `markdown_availability`
 
-**Weight**: 7
+**Weight**: 2
 
 **Check set**: `community`
 
@@ -882,7 +882,7 @@ It measures:
 
 **ID**: `observability`
 
-**Weight**: 4
+**Weight**: 1
 
 **Check set**: `community`
 
@@ -898,7 +898,7 @@ measures:
 
 **ID**: `page_size`
 
-**Weight**: 10
+**Weight**: 3
 
 **Check set**: `community`
 
@@ -914,7 +914,7 @@ This check uses the
 
 **ID**: `url_stability`
 
-**Weight**: 4
+**Weight**: 1
 
 **Check set**: `community`
 

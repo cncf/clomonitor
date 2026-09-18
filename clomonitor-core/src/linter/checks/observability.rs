@@ -11,7 +11,7 @@ use super::datasource::afdocs;
 pub(crate) const ID: CheckId = "observability";
 
 /// Check score weight.
-pub(crate) const WEIGHT: usize = 4;
+pub(crate) const WEIGHT: usize = 1;
 
 /// Check sets this check belongs to.
 pub(crate) const CHECK_SETS: [CheckSet; 1] = [CheckSet::Community];

@@ -37,7 +37,7 @@ insert into project (
     'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg',
     'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/white/artifacthub-icon-white.svg',
     'https://artifacthub.devstats.cncf.io/',
-    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 49}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 14}',
     'a',
     '2021-01-01',
     '2022-02-24 09:40:42.695654+01',
@@ -83,7 +83,7 @@ insert into repository (
     'https://github.com/artifacthub/hub',
     '{code, community}',
     '653b5219d16a2e5be274a7fb765916789ae68fbb',
-    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 49}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 14}',
     '00000000-0001-0000-0000-000000000000'
 );
 insert into repository (
@@ -192,7 +192,7 @@ select is(
                 "score": {
                     "k": "v",
                     "agent_readiness": 86.0,
-                    "agent_readiness_weight": 49
+                    "agent_readiness_weight": 14
                 },
                 "url": "https://github.com/artifacthub/hub"
             }
@@ -200,7 +200,7 @@ select is(
         "score": {
             "k": "v",
             "agent_readiness": 86.0,
-            "agent_readiness_weight": 49
+            "agent_readiness_weight": 14
         },
         "snapshots": [
             "2022-01-02",

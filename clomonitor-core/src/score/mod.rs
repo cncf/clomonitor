@@ -349,7 +349,7 @@ mod tests {
                 legal: Some(100.0),
                 legal_weight: Some(5),
                 agent_readiness: Some(100.0),
-                agent_readiness_weight: Some(49),
+                agent_readiness_weight: Some(14),
             }
         );
     }
@@ -427,7 +427,7 @@ mod tests {
                 legal: Some(0.0),
                 legal_weight: Some(5),
                 agent_readiness: Some(0.0),
-                agent_readiness_weight: Some(49),
+                agent_readiness_weight: Some(14),
             }
         );
     }
@@ -524,7 +524,7 @@ mod tests {
                     legal: Some(100.0),
                     legal_weight: Some(5),
                     agent_readiness: Some(100.0),
-                    agent_readiness_weight: Some(49),
+                    agent_readiness_weight: Some(14),
                 },
                 Score {
                     global: 0.0,
@@ -614,8 +614,8 @@ mod tests {
 
         assert_eq!(without.agent_readiness, None);
         assert_eq!(without.agent_readiness_weight, None);
-        assert_eq!(with.agent_readiness_weight, Some(49));
-        // authentication (10) + content_structure (4) + page_size (10) + url_stability (4) = 28/49
+        assert_eq!(with.agent_readiness_weight, Some(14));
+        // authentication (3) + content_structure (1) + page_size (3) + url_stability (1) = 8/14
         assert_eq!(with.agent_readiness, Some(57.14));
         assert_eq!(with.global.to_bits(), without.global.to_bits());
         assert_eq!(with.global_weight, without.global_weight);
@@ -644,7 +644,7 @@ mod tests {
         assert!(score.global.abs() < f64::EPSILON);
         assert_eq!(score.global_weight, 0);
         assert_eq!(score.agent_readiness, Some(100.0));
-        assert_eq!(score.agent_readiness_weight, Some(10));
+        assert_eq!(score.agent_readiness_weight, Some(3));
         assert_eq!(score.rating(), 'd');
     }
 
@@ -673,7 +673,7 @@ mod tests {
                 documentation: Some(40.0),
                 documentation_weight: Some(50),
                 agent_readiness: Some(30.0),
-                agent_readiness_weight: Some(49),
+                agent_readiness_weight: Some(14),
                 ..Score::default()
             },
         ]);

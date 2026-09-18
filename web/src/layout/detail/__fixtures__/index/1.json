@@ -174,7 +174,7 @@
       "repository_id": "00000000-0000-0001-0000-000000000000",
       "score": {
         "agent_readiness": 57.14285714285714,
-        "agent_readiness_weight": 49,
+        "agent_readiness_weight": 14,
         "best_practices": 100,
         "best_practices_weight": 20,
         "documentation": 83.33333333333331,

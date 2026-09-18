@@ -56,7 +56,7 @@ insert into repository (
     'https://github.com/artifacthub/hub',
     '{code, community}',
     '653b5219d16a2e5be274a7fb765916789ae68fbb',
-    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 49}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 14}',
     '00000000-0001-0000-0000-000000000000'
 );
 insert into report (
@@ -90,7 +90,7 @@ select is(
         "score": {
             "k": "v",
             "agent_readiness": 86.0,
-            "agent_readiness_weight": 49
+            "agent_readiness_weight": 14
         },
         "report": {
             "agent_readiness": {

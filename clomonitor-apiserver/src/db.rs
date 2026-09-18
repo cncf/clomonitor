@@ -295,7 +295,7 @@ mod tests {
                 "documentation": 80.0,
                 "documentation_weight": 10,
                 "agent_readiness": 40.0,
-                "agent_readiness_weight": 49
+                "agent_readiness_weight": 14
             },
             "report": {
                 "documentation": {"readme": {"passed": true, "exempt": false, "failed": false}},
@@ -314,7 +314,7 @@ mod tests {
         assert_eq!(template.check_sets, vec![CheckSet::Community]);
         let score = template.score.unwrap();
         assert_eq!(score.agent_readiness, Some(40.0));
-        assert_eq!(score.agent_readiness_weight, Some(49));
+        assert_eq!(score.agent_readiness_weight, Some(14));
         let report = template.report.unwrap();
         assert!(report.agent_readiness.page_size.unwrap().passed);
         assert!(report.agent_readiness.authentication.unwrap().failed);

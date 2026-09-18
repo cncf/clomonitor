@@ -1,5 +1,5 @@
 # Build notifier
-FROM rust:1.96.1-alpine3.24 as builder
+FROM rust:1.98.0-alpine3.24 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./

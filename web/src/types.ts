@@ -16,7 +16,7 @@ export interface BaseProject {
   maturity?: Maturity;
   foundation: Foundation;
   category?: string;
-  score: { [key in ScoreType]?: number };
+  score: { [key in ScoreType]?: number | null };
   updated_at: number;
 }
 
@@ -39,7 +39,7 @@ export interface BaseRepository {
 export interface Repository extends BaseRepository {
   digest?: string;
   repository_id: string;
-  score?: { [key in ScoreType]?: number };
+  score?: { [key in ScoreType]?: number | null };
   report?: Report;
 }
 
@@ -126,6 +126,7 @@ export enum FilterKind {
 }
 
 export enum ScoreType {
+  AgentReadiness = 'agent_readiness',
   BestPractices = 'best_practices',
   Documentation = 'documentation',
   Global = 'global',
@@ -148,6 +149,7 @@ export enum ReportOption {
   Adopters = 'adopters',
   Analytics = 'analytics',
   ApprovedLicense = 'license_approved',
+  Authentication = 'authentication',
   ArtifactHubBadge = 'artifacthub_badge',
   BinaryArtifacts = 'binary_artifacts',
   Changelog = 'changelog',
@@ -155,6 +157,8 @@ export enum ReportOption {
   CodeOfConduct = 'code_of_conduct',
   CodeReview = 'code_review',
   CommunityMeeting = 'community_meeting',
+  ContentDiscoverability = 'content_discoverability',
+  ContentStructure = 'content_structure',
   Contributing = 'contributing',
   DangerousWorkflow = 'dangerous_workflow',
   DependenciesPolicy = 'dependencies_policy',
@@ -165,8 +169,11 @@ export enum ReportOption {
   LicenseScanning = 'license_scanning',
   Maintained = 'maintained',
   Maintainers = 'maintainers',
+  MarkdownAvailability = 'markdown_availability',
+  Observability = 'observability',
   OpenSSFBadge = 'openssf_badge',
   OpenSSFScorecardBadge = 'openssf_scorecard_badge',
+  PageSize = 'page_size',
   Readme = 'readme',
   RecentRelease = 'recent_release',
   Roadmap = 'roadmap',
@@ -179,6 +186,7 @@ export enum ReportOption {
   SummaryTable = 'summary_table',
   TokenPermissions = 'token_permissions',
   TrademarkDisclaimer = 'trademark_disclaimer',
+  UrlStability = 'url_stability',
   Website = 'website',
 }
 
@@ -225,15 +233,15 @@ export type Stats = {
       [key: string]: { [key: string]: number }[];
     };
     sections_average: {
-      [key: string]: { [key in ScoreType]: number };
+      [key: string]: { [key in ScoreType]?: number | null };
     };
     views_daily: number[][];
     views_monthly?: number[][];
     accepted_distribution: DistributionData[];
   };
   repositories: {
-    passing_check: {
-      [key in ScoreType]: {
+    passing_check?: {
+      [key in ScoreType]?: {
         [key in ReportOption]?: number;
       };
     };
@@ -270,6 +278,17 @@ export type ReportOptionInfo = {
 export interface RecommendedTemplate {
   name: string;
   url: string;
+}
+
+export interface SectionInfo {
+  type: ScoreType;
+  name: string;
+  shortName?: string;
+  icon: ReactElement;
+  advisory?: boolean;
+  referenceUrl?: string;
+  recommendedTemplates?: (checkSets: CheckSet[]) => RecommendedTemplate[] | undefined;
+  showRepoUrl?: boolean;
 }
 
 export enum AcceptedRangeKind {

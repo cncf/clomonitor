@@ -126,6 +126,89 @@ registrar:
   # Number of foundations to process concurrently
   concurrency: 1
 
+# Runner configuration (runs external tools - AFDocs, OpenSSF Scorecard - on
+# request for the tracker).
+#
+# The same image is deployed as two isolated profiles with different trust
+# boundaries. NetworkPolicy requires a CNI that enforces it; verify production
+# CNI behavior because some environments allow node-local or host-network
+# traffic outside policy enforcement. The GitHub token only ever reaches the
+# scorecard profile.
+runner:
+  image:
+    # Runner image repository (without the tag)
+    repository: clomonitor/runner
+  # Maximum number of tool runs executed concurrently by each replica. Each run
+  # is capped to 256Mi (Node.js heap for AFDocs, Go memory limit for
+  # scorecard), so a single run cannot take the pod down as long as
+  # limits.memory covers maxConcurrentRuns x 256Mi plus some headroom for the
+  # runner itself; lower maxConcurrentRuns or raise the limit accordingly.
+  # Requests beyond this value queue (see maxQueue), so tracker.concurrency may
+  # be higher.
+  maxConcurrentRuns: 6
+  # Maximum number of requests waiting for a run slot before rejecting with 503.
+  maxQueue: 20
+  # Minimum budget (ms) a queued request must have left to start a run.
+  minBudgetMs: 60000
+  podSecurityContext:
+    fsGroup: 10001
+    runAsGroup: 10001
+    runAsNonRoot: true
+    runAsUser: 10001
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+  # AFDocs profile: no secrets, no GitHub token, egress to public 80/443 only.
+  # When disabled, the tracker reports the agent readiness checks as failed.
+  afdocs:
+    enabled: true
+    replicas: 1
+    # Sized for maxConcurrentRuns runs capped to 256Mi each (see above)
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    service:
+      port: 8080
+    networkPolicy:
+      enabled: true
+      # Cluster CIDRs (pods, services, nodes) the runner must not reach; add yours.
+      deniedCidrs: []
+      dnsNamespace: kube-system
+      dnsPodSelector:
+        k8s-app: kube-dns
+  # Scorecard profile: receives the GitHub token per request from the tracker,
+  # egress to public 443 only because GitHub IP ranges change. When disabled,
+  # the tracker reports the scorecard backed checks as failed.
+  scorecard:
+    enabled: true
+    replicas: 1
+    # Sized for maxConcurrentRuns runs capped to 256Mi each (see above)
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    service:
+      port: 8080
+    networkPolicy:
+      enabled: true
+      # Cluster CIDRs (pods, services, nodes) the runner must not reach; add yours.
+      deniedCidrs: []
+      dnsNamespace: kube-system
+      dnsPodSelector:
+        k8s-app: kube-dns
+
 # Tracker configuration
 tracker:
   cronjob:

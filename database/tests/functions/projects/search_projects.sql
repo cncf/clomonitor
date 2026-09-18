@@ -1,6 +1,6 @@
 -- Start transaction and plan tests
 begin;
-select plan(4);
+select plan(5);
 
 -- No projects yet
 select results_eq(
@@ -26,6 +26,7 @@ insert into project (
     logo_dark_url,
     devstats_url,
     score,
+    passed_checks,
     rating,
     accepted_at,
     updated_at,
@@ -42,6 +43,7 @@ insert into project (
     'https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/white/artifacthub-icon-white.svg',
     'https://artifacthub.devstats.cncf.io/',
     '{"k": "v"}',
+    '{content_discoverability,readme}',
     'a',
     '2020-01-01',
     '2022-02-25 12:54:17.80674+01',
@@ -257,6 +259,46 @@ select results_eq(
             3)
     $$,
     'Search projects with no filters'
+);
+
+-- Agent readiness passed check filter
+select results_eq(
+    $$
+        select projects::jsonb, total_count::integer
+        from search_projects('{"passing_check": ["content_discoverability"]}')
+    $$,
+    $$
+        values (
+            '[
+                {
+                    "category": "category1",
+                    "description": "Artifact Hub is a web-based application that enables finding, installing, and publishing packages and configurations for CNCF projects.",
+                    "devstats_url": "https://artifacthub.devstats.cncf.io/",
+                    "display_name": "Artifact Hub",
+                    "id": "00000000-0001-0000-0000-000000000000",
+                    "home_url": "https://artifacthub.io",
+                    "logo_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/color/artifacthub-icon-color.svg",
+                    "logo_dark_url": "https://raw.githubusercontent.com/cncf/artwork/master/projects/artifacthub/icon/white/artifacthub-icon-white.svg",
+                    "maturity": "sandbox",
+                    "name": "artifact-hub",
+                    "rating": "a",
+                    "repositories": [
+                        {
+                            "check_sets": ["code", "community"],
+                            "name": "artifact-hub",
+                            "url": "https://github.com/artifacthub/hub",
+                            "website_url": "https://test.url"
+                        }
+                    ],
+                    "score": {"k": "v"},
+                    "accepted_at": 1577836800,
+                    "updated_at": 1645790057,
+                    "foundation": "cncf"
+                }
+            ]'::jsonb,
+            1)
+    $$,
+    'Search projects with an agent readiness passed check filter'
 );
 
 -- Text filter

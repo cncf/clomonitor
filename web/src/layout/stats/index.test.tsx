@@ -6,11 +6,20 @@ import { vi } from 'vitest';
 
 import API from '../../api';
 import { AppContext } from '../../context/AppContextProvider';
-import { SortBy, SortDirection, Stats } from '../../types';
+import { ScoreType, SortBy, SortDirection, Stats } from '../../types';
 import StatsView from './index';
 
 vi.mock('clo-ui/components/Timeline', () => ({
-  Timeline: () => <>Timeline</>,
+  Timeline: ({ setActiveDate }: { setActiveDate: (date?: string) => void }) => (
+    <>
+      <button type="button" onClick={() => setActiveDate('2023-02-08')}>
+        Load historical stats snapshot
+      </button>
+      <button type="button" onClick={() => setActiveDate(undefined)}>
+        Load current stats
+      </button>
+    </>
+  ),
 }));
 
 const require = createRequire(import.meta.url);
@@ -37,11 +46,13 @@ const mockCtx = {
 };
 
 const getStatsMock = vi.spyOn(API, 'getStats');
+const getStatsSnapshotMock = vi.spyOn(API, 'getStatsSnapshot');
 const getRepositoriesCsvMock = vi.spyOn(API, 'getRepositoriesCSV');
 
 describe('StatsView', () => {
   afterEach(() => {
     getStatsMock.mockReset();
+    getStatsSnapshotMock.mockReset();
     getRepositoriesCsvMock.mockReset();
     vi.clearAllMocks();
   });
@@ -100,6 +111,52 @@ describe('StatsView', () => {
       expect(screen.getByText('Projects average score per category')).toBeInTheDocument();
       expect(screen.getByText('Repositories')).toBeInTheDocument();
       expect(screen.getByText('Percentage of repositories passing each check')).toBeInTheDocument();
+      expect(screen.getAllByText('Agent Readiness').length).toBeGreaterThan(0);
+    });
+
+    it('renders current, historical, and current stats with missing, null, and zero Agent Readiness values', async () => {
+      const currentStats = getMockStats('1');
+      const historicalStats = structuredClone(currentStats);
+      Object.values(historicalStats.projects.sections_average).forEach((average) => {
+        delete average.agent_readiness;
+      });
+      delete historicalStats.repositories.passing_check![ScoreType.AgentReadiness];
+
+      const currentStatsWithPartialValues = structuredClone(currentStats);
+      currentStatsWithPartialValues.projects.sections_average.all.agent_readiness = 0;
+      currentStatsWithPartialValues.projects.sections_average.sandbox.agent_readiness = null;
+
+      getStatsMock.mockResolvedValueOnce(currentStats).mockResolvedValueOnce(currentStatsWithPartialValues);
+      getStatsSnapshotMock.mockResolvedValueOnce(historicalStats);
+
+      render(
+        <AppContext.Provider value={{ ctx: mockCtx, dispatch: vi.fn() }}>
+          <Router>
+            <StatsView />
+          </Router>
+        </AppContext.Provider>
+      );
+
+      expect((await screen.findAllByText('Agent Readiness')).length).toBeGreaterThan(0);
+
+      await userEvent.click(screen.getByRole('button', { name: 'Load historical stats snapshot' }));
+
+      await waitFor(() => {
+        expect(API.getStatsSnapshot).toHaveBeenCalledWith('2023-02-08', 'cncf');
+      });
+      expect(screen.queryAllByText('Agent Readiness')).toHaveLength(0);
+
+      await userEvent.click(screen.getByRole('button', { name: 'Load current stats' }));
+
+      await waitFor(() => {
+        expect(API.getStats).toHaveBeenCalledTimes(2);
+      });
+      expect(screen.getAllByText('Agent Readiness').length).toBeGreaterThan(0);
+      expect(
+        screen
+          .getAllByRole('progressbar', { name: 'Agent Readiness passed checks percentage' })
+          .some((progressbar) => progressbar.getAttribute('aria-valuenow') === '0')
+      ).toBe(true);
     });
 
     it('loads search page with correct parameters', async () => {

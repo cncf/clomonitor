@@ -44,6 +44,7 @@ mod tests {
             li: &LinterInput::default(),
             cm_md: None,
             gh_md: MdRepository::default(),
+            afdocs: None,
             scorecard: Err(format_err!("no scorecard available")),
             security_insights: SecurityInsights::new(
                 &Path::new("src/testdata/security-insights-v2/invalid-no-policy")
@@ -62,6 +63,7 @@ mod tests {
             li: &LinterInput::default(),
             cm_md: None,
             gh_md: MdRepository::default(),
+            afdocs: None,
             scorecard: Err(format_err!("no scorecard available")),
             security_insights: SecurityInsights::new(
                 &Path::new("src/testdata/security-insights-v1/root")
@@ -85,6 +87,7 @@ mod tests {
             li: &LinterInput::default(),
             cm_md: None,
             gh_md: MdRepository::default(),
+            afdocs: None,
             scorecard: Err(format_err!("no scorecard available")),
             security_insights: SecurityInsights::new(
                 &Path::new("src/testdata/security-insights-v2/root")

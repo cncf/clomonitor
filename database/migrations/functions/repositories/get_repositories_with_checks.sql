@@ -44,13 +44,20 @@ returns setof text as $$
             (rp.data->'security'->'security_policy'->'passed')::boolean as security_policy,
             (rp.data->'security'->'signed_releases'->'passed')::boolean as signed_releases,
             (rp.data->'security'->'token_permissions'->'passed')::boolean as token_permissions,
-            (rp.data->'legal'->'trademark_disclaimer'->'passed')::boolean as trademark_disclaimer
+            (rp.data->'legal'->'trademark_disclaimer'->'passed')::boolean as trademark_disclaimer,
+            (rp.data->'agent_readiness'->'authentication'->'passed')::boolean as authentication,
+            (rp.data->'agent_readiness'->'content_discoverability'->'passed')::boolean as content_discoverability,
+            (rp.data->'agent_readiness'->'content_structure'->'passed')::boolean as content_structure,
+            (rp.data->'agent_readiness'->'markdown_availability'->'passed')::boolean as markdown_availability,
+            (rp.data->'agent_readiness'->'observability'->'passed')::boolean as observability,
+            (rp.data->'agent_readiness'->'page_size'->'passed')::boolean as page_size,
+            (rp.data->'agent_readiness'->'url_stability'->'passed')::boolean as url_stability
         from project p
         join repository r using (project_id)
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer,Authentication,Content Discoverability,Content Structure,Markdown Availability,Observability,Page Size,URL Stability'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

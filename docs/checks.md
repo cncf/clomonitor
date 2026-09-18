@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 -->
+
 # Checks
 
 **CLOMonitor** runs sets of checks periodically on all the repositories registered in the database. These checks are run *every hour*, provided the repository has changed since the last time it was checked. In the case of repositories that don't change often, we make sure that they are checked at least *once a day* anyway. This way we keep reports up to date with the latest checks additions and improvements.
@@ -57,6 +59,13 @@ Checks are organized in `check sets`. Each `check set` defines a number of check
   - Best practices / Slack presence
   - Security / Policy
   - Legal / Trademark disclaimer
+  - Agent readiness / Authentication and access
+  - Agent readiness / Content discoverability
+  - Agent readiness / Content structure
+  - Agent readiness / Markdown availability
+  - Agent readiness / Observability and content health
+  - Agent readiness / Page size and truncation risk
+  - Agent readiness / URL stability and redirects
 
 - **docs** (recommended for other documentation repositories)
 
@@ -298,6 +307,7 @@ This check passes if:
 - At least *one* of the [summary_* fields](https://github.com/cncf/landscape/blob/master/docs/item_summary.md) has been set in the project's *extra* section in the [Landscape yaml file](https://github.com/cncf/landscape/blob/master/landscape.yml).
 
 Please note that the clomonitor_name field is **mandatory** for this check to pass:
+
 ```sh
 extra:
 clomonitor_name: project-name
@@ -754,3 +764,163 @@ This check passes if:
 ```
 
 Note: This check currently only supports static web sites where the content is delivered in an HTML page to the browser. If you use a dynamic site (e.g., React, Angular), your repo may want to set an [exemption](#exemptions) for this check ID.
+
+## Agent readiness
+
+Agent readiness checks are advisory. They produce their own section score, but
+that score is not included in the global project score or rating.
+
+These checks use [AFDocs](https://afdocs.dev) to measure whether a project's
+documentation is ready for AI agents and other automated readers. CLOMonitor
+runs AFDocs against the repository's GitHub homepage URL. A repository can use
+the `.clomonitor.yml` metadata file to override that target:
+
+```yaml
+agentReadiness:
+  url: https://docs.example.org/
+```
+
+Each check's details start with the target URL analysed and where it came from
+(the GitHub homepage or the metadata override), so maintainers can tell when a
+homepage that is not a documentation site is being analysed and point the
+checks at the right one.
+
+Each CLOMonitor check maps to one AFDocs category. The check passes when that
+category score is `>= 70`. A category score below `70` does not pass. A `null`
+category score means AFDocs did not have enough data to score the category: it
+tested too few pages, which usually happens with sites rendered client-side
+(single page applications), homepages that are not documentation sites, or
+unreachable sites. In that case the check is reported as failed with a reason
+that includes the number of pages tested and how to override the target, rather
+than as a low score. Native AFDocs errors are shown in the details but do not
+change the result.
+
+If AFDocs is disabled, the runner is unavailable or times out, or AFDocs returns
+malformed or incomplete output, all seven agent readiness checks are marked as
+failed with a failure reason and the rest of the CLOMonitor report is still
+produced.
+
+CLOMonitor uses deterministic AFDocs sampling with at most 20 links/pages, 3
+concurrent requests, a 200 ms request delay, and a 240 s deadline. Each check's
+details include provenance for the target URL and its source, AFDocs version,
+transport, sampling mode, maximum links, tested pages, and timestamp. AFDocs
+runs without a GitHub token, so it does not consume CLOMonitor's authenticated
+GitHub API quota.
+
+Only one target URL is analyzed for a repository. Documentation sites for
+sub-projects hosted on separate code, code-lite, or docs repositories are not
+covered by the same community repository report. The metadata override can point
+the community repository at one URL only.
+
+### Authentication and access
+
+**ID**: `authentication`
+
+**Weight**: 3
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs authentication category](https://afdocs.dev/checks/authentication). It
+measures:
+
+- `auth-gate-detection`
+- `auth-alternative-access`
+
+### Content discoverability
+
+**ID**: `content_discoverability`
+
+**Weight**: 3
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs content-discoverability category](https://afdocs.dev/checks/content-discoverability).
+It measures:
+
+- `llms-txt-exists`
+- `llms-txt-valid`
+- `llms-txt-size`
+- `llms-txt-links-resolve`
+- `llms-txt-links-markdown`
+- `llms-txt-directive-html`
+- `llms-txt-directive-md`
+
+### Content structure
+
+**ID**: `content_structure`
+
+**Weight**: 1
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs content-structure category](https://afdocs.dev/checks/content-structure).
+It measures:
+
+- `tabbed-content-serialization`
+- `section-header-quality`
+- `markdown-code-fence-validity`
+
+### Markdown availability
+
+**ID**: `markdown_availability`
+
+**Weight**: 2
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs markdown-availability category](https://afdocs.dev/checks/markdown-availability).
+It measures:
+
+- `markdown-url-support`
+- `content-negotiation`
+
+### Observability and content health
+
+**ID**: `observability`
+
+**Weight**: 1
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs observability category](https://afdocs.dev/checks/observability). It
+measures:
+
+- `llms-txt-coverage`
+- `markdown-content-parity`
+- `cache-header-hygiene`
+
+### Page size and truncation risk
+
+**ID**: `page_size`
+
+**Weight**: 3
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs page-size category](https://afdocs.dev/checks/page-size). It measures:
+
+- `rendering-strategy`
+- `page-size-markdown`
+- `page-size-html`
+- `content-start-position`
+
+### URL stability and redirects
+
+**ID**: `url_stability`
+
+**Weight**: 1
+
+**Check set**: `community`
+
+This check uses the
+[AFDocs url-stability category](https://afdocs.dev/checks/url-stability). It
+measures:
+
+- `http-status-codes`
+- `redirect-behavior`

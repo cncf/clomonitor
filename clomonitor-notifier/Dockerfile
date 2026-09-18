@@ -9,6 +9,7 @@ COPY clomonitor-core clomonitor-core
 COPY clomonitor-linter clomonitor-linter
 COPY clomonitor-notifier clomonitor-notifier
 COPY clomonitor-registrar clomonitor-registrar
+COPY clomonitor-runner clomonitor-runner
 COPY clomonitor-tracker clomonitor-tracker
 WORKDIR /clomonitor/clomonitor-notifier
 RUN cargo build --release --locked

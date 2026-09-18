@@ -59,6 +59,9 @@ describe('Summary', () => {
       expect(screen.getByText('License')).toBeInTheDocument();
       expect(screen.getByText('Best Practices')).toBeInTheDocument();
       expect(screen.getByText('Security')).toBeInTheDocument();
+      expect(screen.getByText('Legal')).toBeInTheDocument();
+      expect(screen.getByText('Agent Readiness')).toHaveClass('d-xxxl-inline-block');
+      expect(screen.getByText('Agents')).toHaveClass('d-xl-inline-block', 'd-xxxl-none');
 
       expect(screen.getByText('spec')).toBeInTheDocument();
       expect(screen.getByText('sdk-go')).toBeInTheDocument();
@@ -74,6 +77,7 @@ describe('Summary', () => {
       expect(screen.getByText('60')).toBeInTheDocument();
       expect(screen.getByText('80')).toBeInTheDocument();
       expect(screen.getByText('35')).toBeInTheDocument();
+      expect(screen.getByText('57')).toBeInTheDocument();
       expect(screen.getByText('0')).toBeInTheDocument();
 
       expect(screen.getAllByText('95')).toHaveLength(2);
@@ -81,7 +85,7 @@ describe('Summary', () => {
       expect(screen.getAllByText('100')).toHaveLength(5);
       expect(screen.getAllByText('85')).toHaveLength(3);
       expect(screen.getAllByText('70')).toHaveLength(3);
-      expect(screen.getAllByText('n/a')).toHaveLength(16);
+      expect(screen.getAllByText('n/a')).toHaveLength(21);
     });
   });
 
@@ -99,6 +103,8 @@ describe('Summary', () => {
     expect(screen.getByText('License')).toBeInTheDocument();
     expect(screen.getByText('Best Practices')).toBeInTheDocument();
     expect(screen.getByText('Security')).toBeInTheDocument();
+    expect(screen.getByText('Legal')).toBeInTheDocument();
+    expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
 
     expect(screen.getByText('go-control-panel')).toBeInTheDocument();
     expect(screen.getByText('envoy')).toBeInTheDocument();
@@ -111,7 +117,7 @@ describe('Summary', () => {
 
     expect(screen.getAllByText('90')).toHaveLength(2);
     expect(screen.getAllByText('87')).toHaveLength(2);
-    expect(screen.getAllByText('n/a')).toHaveLength(6);
+    expect(screen.getAllByText('n/a')).toHaveLength(8);
   });
 
   it('renders component', async () => {

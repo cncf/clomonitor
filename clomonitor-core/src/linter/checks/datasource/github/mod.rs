@@ -182,7 +182,7 @@ pub(crate) async fn has_community_health_file(
     // Check if the file is in the repo
     let file_raw_url = format!(
         "https://raw.githubusercontent.com/{}/.github/HEAD/{}",
-        &gh_md.owner.login, file
+        gh_md.owner.login, file
     );
     let http_client = reqwest::Client::new();
     match http_client
@@ -190,8 +190,7 @@ pub(crate) async fn has_community_health_file(
         .send()
         .await
         .context(format!(
-            "error checking community health file {}",
-            &file_raw_url
+            "error checking community health file {file_raw_url}"
         ))?
         .status()
     {

@@ -210,7 +210,7 @@ mod tests {
         },
     };
     use clomonitor_core::{linter::*, score::Score};
-    use mime::{APPLICATION_JSON, CSV, HTML};
+    use mime::{APPLICATION_JSON, CSV, HTML, PNG};
     use mockall::predicate::*;
     use serde_json::json;
     use tera::Context;
@@ -221,6 +221,7 @@ mod tests {
 
     use crate::{
         db::{MockDB, SearchProjectsInput},
+        handlers::{REPORT_SUMMARY_HEIGHT, REPORT_SUMMARY_WIDTH},
         views::MockViewsTracker,
     };
 
@@ -618,6 +619,49 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn report_summary_png_found() {
+        let mut db = MockDB::new();
+        db.expect_project_score()
+            .with(eq(FOUNDATION), eq(PROJECT))
+            .times(1)
+            .returning(|_: &str, _: &str| {
+                let score = Score {
+                    global: 80.0,
+                    documentation: Some(80.0),
+                    license: Some(50.0),
+                    agent_readiness: Some(35.0),
+                    ..Score::default()
+                };
+                Box::pin(future::ready(Ok(Some(score))))
+            });
+
+        let response = setup_test_router(db, MockViewsTracker::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/projects/{FOUNDATION}/{PROJECT}/report-summary.png"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            response.headers()[CACHE_CONTROL],
+            format!("max-age={DEFAULT_API_MAX_AGE}")
+        );
+        assert_eq!(response.headers()[CONTENT_TYPE], PNG.as_ref());
+        let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
+        let pixmap = tiny_skia::Pixmap::decode_png(&body).unwrap();
+        assert_eq!(pixmap.width(), REPORT_SUMMARY_WIDTH);
+        assert_eq!(pixmap.height(), REPORT_SUMMARY_HEIGHT);
+        assert_eq!((pixmap.width(), pixmap.height()), (900, 522));
+    }
+
+    #[tokio::test]
     async fn report_summary_svg_found() {
         let mut db = MockDB::new();
         db.expect_project_score()
@@ -656,6 +700,59 @@ mod tests {
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
         let golden = fs::read(golden_path).unwrap();
         assert_eq!(body, golden);
+    }
+
+    #[tokio::test]
+    async fn report_summary_svg_agent_readiness_variants() {
+        for (theme, agent_readiness, expected_value, expected_bar) in [
+            ("light", None, "n/a", "bar-na"),
+            ("dark", None, "n/a", "bar-na"),
+            ("light", Some(0.0), ">0<", "bar-d"),
+            ("dark", Some(0.0), ">0<", "bar-d"),
+            ("light", Some(82.4), ">82<", "bar-a"),
+            ("dark", Some(82.4), ">82<", "bar-a"),
+        ] {
+            let mut db = MockDB::new();
+            db.expect_project_score()
+                .with(eq(FOUNDATION), eq(PROJECT))
+                .times(1)
+                .returning(move |_: &str, _: &str| {
+                    let score = Score {
+                        global: 80.0,
+                        documentation: Some(80.0),
+                        license: Some(50.0),
+                        agent_readiness,
+                        ..Score::default()
+                    };
+                    Box::pin(future::ready(Ok(Some(score))))
+                });
+
+            let response = setup_test_router(db, MockViewsTracker::new())
+                .oneshot(
+                    Request::builder()
+                        .method("GET")
+                        .uri(format!(
+                            "/api/projects/{FOUNDATION}/{PROJECT}/report-summary?theme={theme}"
+                        ))
+                        .body(Body::empty())
+                        .unwrap(),
+                )
+                .await
+                .unwrap();
+
+            assert_eq!(response.status(), StatusCode::OK);
+            let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
+            let svg = std::str::from_utf8(&body).unwrap();
+            assert!(svg.contains(&format!("class=\"{theme}\"")), "{theme}");
+            assert!(svg.contains("height=\"261\""));
+            assert!(svg.contains(">Agent Readiness<"));
+            assert!(!svg.to_lowercase().contains("advisory"));
+            // The global score is not affected by the agent readiness section
+            assert!(svg.contains(">80<"));
+            let row = svg.split("<!-- Agent readiness -->").nth(1).unwrap();
+            assert!(row.contains(expected_value), "{theme} {agent_readiness:?}");
+            assert!(row.contains(expected_bar), "{theme} {agent_readiness:?}");
+        }
     }
 
     #[tokio::test]
@@ -722,7 +819,7 @@ mod tests {
                     url: "https://github.com/artifacthub/hub".to_string(),
                     check_sets: vec![CheckSet::Code],
                     score: Some(Score {
-                        global: 99.999_999_999_999_99,
+                        global: 99.99,
                         global_weight: 5,
                         documentation: Some(100.0),
                         documentation_weight: Some(1),
@@ -734,6 +831,8 @@ mod tests {
                         security_weight: Some(1),
                         legal: Some(100.0),
                         legal_weight: Some(1),
+                        agent_readiness: Some(60.0),
+                        agent_readiness_weight: Some(14),
                     }),
                     report: Some(Report {
                         documentation: Documentation {
@@ -786,6 +885,21 @@ mod tests {
                         legal: Legal {
                             trademark_disclaimer: Some(CheckOutput::passed()),
                         },
+                        agent_readiness: AgentReadiness {
+                            authentication: Some(CheckOutput::passed()),
+                            content_discoverability: Some(
+                                CheckOutput::not_passed()
+                                    .url(Some("https://docs.example.org/".to_string())),
+                            ),
+                            content_structure: Some(CheckOutput::exempt()),
+                            markdown_availability: Some(CheckOutput::failed()),
+                            observability: Some(CheckOutput::passed()),
+                            page_size: Some(
+                                CheckOutput::passed()
+                                    .url(Some("https://docs.example.org/".to_string())),
+                            ),
+                            url_stability: None,
+                        },
                     }),
                 };
                 Box::pin(future::ready(Ok(Some(report_md))))
@@ -814,6 +928,58 @@ mod tests {
         // fs::write(golden_path, &body).unwrap(); // Uncomment to update golden file
         let golden = fs::read(golden_path).unwrap();
         assert_eq!(body, golden);
+    }
+
+    #[tokio::test]
+    async fn repository_report_md_found_without_agent_readiness() {
+        // Reports stored before the agent readiness section existed
+        let mut db = MockDB::new();
+        db.expect_repository_report_md()
+            .with(eq(FOUNDATION), eq(PROJECT), eq(REPOSITORY))
+            .times(1)
+            .returning(|_: &str, _: &str, _: &str| {
+                let report_md = RepositoryReportMDTemplate {
+                    name: "artifact-hub".to_string(),
+                    url: "https://github.com/artifacthub/hub".to_string(),
+                    check_sets: vec![CheckSet::Code],
+                    score: Some(Score {
+                        global: 100.0,
+                        global_weight: 1,
+                        legal: Some(100.0),
+                        legal_weight: Some(1),
+                        ..Score::default()
+                    }),
+                    report: Some(Report {
+                        legal: Legal {
+                            trademark_disclaimer: Some(CheckOutput::passed()),
+                        },
+                        ..Report::default()
+                    }),
+                };
+                Box::pin(future::ready(Ok(Some(report_md))))
+            });
+
+        let response = setup_test_router(db, MockViewsTracker::new())
+            .oneshot(
+                Request::builder()
+                    .method("GET")
+                    .uri(format!(
+                        "/api/projects/{FOUNDATION}/{PROJECT}/{REPOSITORY}/report.md"
+                    ))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(response.status(), StatusCode::OK);
+        let body = to_bytes(response.into_body(), usize::MAX).await.unwrap();
+        let md = std::str::from_utf8(&body).unwrap();
+        assert!(md.contains("| Agent Readiness |"));
+        assert!(md.contains("n/a"));
+        assert!(md.contains("### Legal [100%]"));
+        assert!(!md.contains("### Agent Readiness"));
+        assert!(!md.to_lowercase().contains("advisory"));
     }
 
     #[tokio::test]

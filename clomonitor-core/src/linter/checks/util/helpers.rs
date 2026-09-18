@@ -133,6 +133,7 @@ mod tests {
                         },
                         ..MdRepository::default()
                     },
+                    afdocs: None,
                     scorecard: Err(format_err!("no scorecard available")),
                     security_insights: Ok(None),
                 },
@@ -157,6 +158,7 @@ mod tests {
                     },
                     cm_md: None,
                     gh_md: MdRepository::default(),
+                    afdocs: None,
                     scorecard: Err(format_err!("no scorecard available")),
                     security_insights: Ok(None),
                 },
@@ -179,6 +181,7 @@ mod tests {
                     },
                     cm_md: None,
                     gh_md: MdRepository::default(),
+                    afdocs: None,
                     scorecard: Err(format_err!("no scorecard available")),
                     security_insights: Ok(None),
                 },
@@ -196,6 +199,7 @@ mod tests {
             find_exemption(
                 "check-id",
                 Some(&Metadata {
+                    agent_readiness: None,
                     exemptions: Some(vec![Exemption {
                         check: "check-id".to_string(),
                         reason: "sample reason".to_string(),
@@ -216,6 +220,7 @@ mod tests {
             find_exemption(
                 "not-found",
                 Some(&Metadata {
+                    agent_readiness: None,
                     exemptions: Some(vec![Exemption {
                         check: "check-id".to_string(),
                         reason: "sample reason".to_string(),
@@ -233,6 +238,7 @@ mod tests {
             find_exemption(
                 "check-id",
                 Some(&Metadata {
+                    agent_readiness: None,
                     exemptions: None,
                     license_scanning: None
                 })

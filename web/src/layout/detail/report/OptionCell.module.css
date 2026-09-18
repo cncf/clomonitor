@@ -27,6 +27,11 @@
   border: 2px solid var(--body-bg);
 }
 
+.dotSmall {
+  top: -3px;
+  right: -7px;
+}
+
 .reason {
   font-size: 0.8rem;
 }
@@ -89,8 +94,28 @@
   font-size: 0.8rem;
 }
 
+.detailsBtn {
+  line-height: 1;
+}
+
+.detailsModal {
+  max-width: 1000px;
+  margin: 4rem auto;
+  height: calc(100% - 8rem);
+  background-color: var(--body-bg);
+  color: var(--color-font);
+}
+
 .detailsContent p {
   margin-bottom: 0px;
+}
+
+.detailsList {
+  white-space: normal;
+}
+
+.detailsList li + li {
+  margin-top: 0.15rem;
 }
 
 .codeContent {

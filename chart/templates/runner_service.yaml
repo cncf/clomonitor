@@ -1,0 +1,26 @@
+{{- $root := . -}}
+{{- $profiles := list (dict "name" "afdocs" "config" .Values.runner.afdocs) (dict "name" "scorecard" "config" .Values.runner.scorecard) -}}
+{{- range $profile := $profiles }}
+{{- $name := index $profile "name" -}}
+{{- $config := index $profile "config" -}}
+{{- if $config.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "chart.resourceNamePrefix" $root }}runner-{{ $name }}
+  labels:
+    app.kubernetes.io/component: runner-{{ $name }}
+    {{- include "chart.labels" $root | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: {{ $config.service.port }}
+      protocol: TCP
+      targetPort: http
+  selector:
+    app.kubernetes.io/component: runner-{{ $name }}
+    {{- include "chart.selectorLabels" $root | nindent 4 }}
+{{- end }}
+{{- end }}

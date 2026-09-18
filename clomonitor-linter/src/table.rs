@@ -61,7 +61,11 @@ pub(crate) fn display(
             cell_score(score.best_practices),
         ])
         .add_row(vec![cell_entry("Security"), cell_score(score.security)])
-        .add_row(vec![cell_entry("Legal"), cell_score(score.legal)]);
+        .add_row(vec![cell_entry("Legal"), cell_score(score.legal)])
+        .add_row(vec![
+            cell_entry("Agent readiness"),
+            cell_score(score.agent_readiness),
+        ]);
     writeln!(w, "{score_summary}\n")?;
 
     // Checks table
@@ -229,6 +233,34 @@ pub(crate) fn display(
         .add_row(vec![
             cell_entry("Legal / Trademark disclaimer"),
             cell_check(report.legal.trademark_disclaimer.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Authentication and access"),
+            cell_check(report.agent_readiness.authentication.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Content discoverability"),
+            cell_check(report.agent_readiness.content_discoverability.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Content structure"),
+            cell_check(report.agent_readiness.content_structure.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Markdown availability"),
+            cell_check(report.agent_readiness.markdown_availability.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Observability and content health"),
+            cell_check(report.agent_readiness.observability.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / Page size and truncation risk"),
+            cell_check(report.agent_readiness.page_size.as_ref()),
+        ])
+        .add_row(vec![
+            cell_entry("Agent readiness / URL stability and redirects"),
+            cell_check(report.agent_readiness.url_stability.as_ref()),
         ]);
     writeln!(w, "{checks_summary}\n")?;
 
@@ -317,12 +349,13 @@ mod tests {
 
     use clomonitor_core::{
         linter::{
-            BestPractices, CheckOutput, CheckSet, Documentation, Legal, License, Report, Security,
+            AgentReadiness, BestPractices, CheckOutput, CheckSet, Documentation, Legal, License,
+            Report, Security,
         },
         score::Score,
     };
 
-    use crate::{Args, Format};
+    use crate::{Args, Format, ToolExecution};
 
     use super::display;
 
@@ -377,9 +410,18 @@ mod tests {
             legal: Legal {
                 trademark_disclaimer: Some(CheckOutput::passed()),
             },
+            agent_readiness: AgentReadiness {
+                authentication: Some(CheckOutput::passed()),
+                content_discoverability: Some(CheckOutput::not_passed()),
+                content_structure: Some(CheckOutput::exempt()),
+                markdown_availability: Some(CheckOutput::failed()),
+                observability: Some(CheckOutput::passed()),
+                page_size: Some(CheckOutput::not_passed()),
+                url_stability: None,
+            },
         };
         let score = Score {
-            global: 99.999_999_999_999_99,
+            global: 99.99,
             global_weight: 5,
             documentation: Some(100.0),
             documentation_weight: Some(1),
@@ -391,6 +433,8 @@ mod tests {
             security_weight: Some(1),
             legal: Some(100.0),
             legal_weight: Some(1),
+            agent_readiness: Some(40.0),
+            agent_readiness_weight: Some(45),
         };
         let args = Args {
             path: PathBuf::from_str("test-repo-path").unwrap(),
@@ -398,6 +442,8 @@ mod tests {
             check_set: vec![CheckSet::Code, CheckSet::Community],
             pass_score: 80.0,
             format: Format::Table,
+            afdocs: ToolExecution::Local,
+            scorecard: ToolExecution::Local,
         };
 
         // Display linter results using a vector as output

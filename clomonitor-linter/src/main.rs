@@ -6,10 +6,11 @@ use std::{env, io, path::PathBuf};
 use anyhow::{Result, format_err};
 use clap::{Parser, ValueEnum};
 use clomonitor_core::{
-    linter::{CheckSet, CoreLinter, Linter, LinterInput},
+    linter::{CheckSet, CoreLinter, Linter, LinterInput, ToolMode, ToolsConfig},
     score,
 };
 use serde_json::json;
+use tokio::signal;
 
 mod table;
 
@@ -21,6 +22,24 @@ const GITHUB_TOKEN: &str = "GITHUB_TOKEN";
 pub enum Format {
     Json,
     Table,
+}
+
+/// External tool execution options.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+pub enum ToolExecution {
+    /// Run the tool binary available in PATH
+    Local,
+    /// Do not run the tool (checks relying on it are reported as failed)
+    Disabled,
+}
+
+impl From<ToolExecution> for ToolMode {
+    fn from(execution: ToolExecution) -> Self {
+        match execution {
+            ToolExecution::Local => ToolMode::Local,
+            ToolExecution::Disabled => ToolMode::Disabled,
+        }
+    }
 }
 
 #[derive(Debug, Parser)]
@@ -39,7 +58,12 @@ provided, or non-zero otherwise.
 
 This tool uses the Github GraphQL API for some checks, which requires
 authentication. Please make sure you provide a Github token (with public_repo
-scope) by setting the GITHUB_TOKEN environment variable."
+scope) by setting the GITHUB_TOKEN environment variable.
+
+Some checks rely on external tools: OpenSSF Scorecard (security checks) and
+AFDocs (agent readiness checks, https://afdocs.dev). The scorecard and afdocs
+binaries available in PATH are used, but a tool can be disabled (--scorecard
+disabled / --afdocs disabled). AFDocs never receives the GitHub token."
 )]
 struct Args {
     /// Repository local path (used for checks that can be done locally)
@@ -61,6 +85,14 @@ struct Args {
     /// Output format
     #[clap(value_enum, long, default_value = "table")]
     format: Format,
+
+    /// AFDocs execution mode (agent readiness checks, requires afdocs 0.20.x)
+    #[clap(value_enum, long, default_value = "local")]
+    afdocs: ToolExecution,
+
+    /// OpenSSF Scorecard execution mode (scorecard backed security checks)
+    #[clap(value_enum, long, default_value = "local")]
+    scorecard: ToolExecution,
 }
 
 #[tokio::main]
@@ -72,15 +104,35 @@ async fn main() -> Result<()> {
         return Err(format_err!("{GITHUB_TOKEN} not found in environment"));
     };
 
-    // Lint repository provided
+    // Setup external tools execution modes
+    let tools = ToolsConfig {
+        afdocs: args.afdocs.into(),
+        scorecard: args.scorecard.into(),
+    };
+    if tools.afdocs == ToolMode::Disabled {
+        eprintln!("warning: afdocs disabled, agent readiness checks will be reported as failed");
+    }
+    if tools.scorecard == ToolMode::Disabled {
+        eprintln!(
+            "warning: scorecard disabled, scorecard backed checks will be reported as failed"
+        );
+    }
+
+    // Lint repository provided. Tools run in their own process group, so the
+    // run must be dropped explicitly on Ctrl-C for them to be killed
     let input = LinterInput {
         project: None,
         root: args.path.clone(),
         url: args.url.clone(),
         check_sets: args.check_set.clone(),
         github_token,
+        tools,
     };
-    let report = CoreLinter::new().lint(&input).await?;
+    let linter = CoreLinter::new();
+    let report = tokio::select! {
+        report = linter.lint(&input) => report?,
+        _ = signal::ctrl_c() => return Err(format_err!("interrupted")),
+    };
     let score = score::calculate(&report);
 
     // Display results using the requested format

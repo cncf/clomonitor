@@ -56,7 +56,7 @@ insert into repository (
     'https://github.com/artifacthub/hub',
     '{code, community}',
     '653b5219d16a2e5be274a7fb765916789ae68fbb',
-    '{"k": "v"}',
+    '{"k": "v", "agent_readiness": 86.0, "agent_readiness_weight": 14}',
     '00000000-0001-0000-0000-000000000000'
 );
 insert into report (
@@ -68,7 +68,14 @@ insert into report (
 ) values (
     '5133b909-a5b3-4c24-87b1-16b02a955ffa',
     '{code, community}',
-    '{"k": "v"}',
+    '{
+        "agent_readiness": {
+            "content_discoverability": {
+                "passed": true
+            }
+        },
+        "k": "v"
+    }',
     '2022-02-24 09:40:42.695654+01',
     '00000000-0000-0001-0000-000000000000'
 );
@@ -80,8 +87,19 @@ select is(
         "name": "artifact-hub",
         "url": "https://github.com/artifacthub/hub",
         "check_sets": ["code", "community"],
-        "score": {"k": "v"},
-        "report": {"k": "v"}
+        "score": {
+            "k": "v",
+            "agent_readiness": 86.0,
+            "agent_readiness_weight": 14
+        },
+        "report": {
+            "agent_readiness": {
+                "content_discoverability": {
+                    "passed": true
+                }
+            },
+            "k": "v"
+        }
     }'::jsonb,
     'Repository report returned as a json object'
 );

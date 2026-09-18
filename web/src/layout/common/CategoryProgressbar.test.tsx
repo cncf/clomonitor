@@ -36,4 +36,27 @@ describe('CategoryProgressbar', () => {
     expect(line).toBeInTheDocument();
     expect(line).toHaveStyle('width: 80%');
   });
+
+  it('renders short and full names when a short name is provided', () => {
+    render(
+      <Router>
+        <CategoryProgressbar {...defaultProps} name="Agent Readiness" shortName="Agents" />
+      </Router>
+    );
+
+    expect(screen.getByText('Agents')).toHaveClass('d-none', 'd-lg-block', 'd-xxl-none');
+    expect(screen.getByText('Agent Readiness')).toHaveClass('d-lg-none', 'd-xxl-block');
+  });
+
+  it('renders short and full names inside the section link', () => {
+    render(
+      <Router>
+        <CategoryProgressbar {...defaultProps} name="Agent Readiness" shortName="Agents" linkTo="repo_agent" />
+      </Router>
+    );
+
+    const link = screen.getByRole('button', { name: 'Go from summary to section: repo_agent' });
+    expect(link).toHaveTextContent('Agents');
+    expect(link).toHaveTextContent('Agent Readiness');
+  });
 });

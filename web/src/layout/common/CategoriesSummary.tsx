@@ -2,13 +2,13 @@ import classNames from 'classnames';
 import { RoundScore } from 'clo-ui/components/RoundScore';
 import { isUndefined } from 'lodash';
 
-import { CATEGORY_ICONS } from '../../data';
-import { ScoreType } from '../../types';
+import { SECTIONS } from '../../data';
+import { ScoreType, SectionInfo } from '../../types';
 import styles from './CategoriesSummary.module.css';
 import CategoryProgressbar from './CategoryProgressbar';
 
 interface Props {
-  score: { [key in ScoreType]?: number };
+  score: { [key in ScoreType]?: number | null };
   bigSize: boolean;
   repoName?: string;
   withLinks?: boolean;
@@ -47,46 +47,18 @@ const CategoriesSummary = (props: Props) => {
         })}
       >
         <div className={classNames('row', { 'gx-4 gx-md-5': props.bigSize })}>
-          <CategoryProgressbar
-            name="Documentation"
-            value={props.score.documentation}
-            icon={CATEGORY_ICONS[ScoreType.Documentation]}
-            bigSize={props.bigSize}
-            linkTo={activeLink ? `${props.repoName}_${ScoreType.Documentation}` : undefined}
-            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
-          />
-          <CategoryProgressbar
-            name="License"
-            value={props.score.license}
-            icon={CATEGORY_ICONS[ScoreType.License]}
-            bigSize={props.bigSize}
-            linkTo={activeLink ? `${props.repoName}_${ScoreType.License}` : undefined}
-            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
-          />
-          <CategoryProgressbar
-            name="Best Practices"
-            value={props.score.best_practices}
-            icon={CATEGORY_ICONS[ScoreType.BestPractices]}
-            bigSize={props.bigSize}
-            linkTo={activeLink ? `${props.repoName}_${ScoreType.BestPractices}` : undefined}
-            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
-          />
-          <CategoryProgressbar
-            name="Security"
-            value={props.score.security}
-            icon={CATEGORY_ICONS[ScoreType.Security]}
-            bigSize={props.bigSize}
-            linkTo={activeLink ? `${props.repoName}_${ScoreType.Security}` : undefined}
-            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
-          />
-          <CategoryProgressbar
-            name="Legal"
-            value={props.score.legal}
-            icon={CATEGORY_ICONS[ScoreType.Legal]}
-            bigSize={props.bigSize}
-            linkTo={activeLink ? `${props.repoName}_${ScoreType.Legal}` : undefined}
-            scrollIntoView={activeLink ? props.scrollIntoView : undefined}
-          />
+          {SECTIONS.map((section: SectionInfo) => (
+            <CategoryProgressbar
+              key={`category_${section.type}`}
+              name={section.name}
+              shortName={props.bigSize ? undefined : section.shortName}
+              value={props.score[section.type]}
+              icon={section.icon}
+              bigSize={props.bigSize}
+              linkTo={activeLink ? `${props.repoName}_${section.type}` : undefined}
+              scrollIntoView={activeLink ? props.scrollIntoView : undefined}
+            />
+          ))}
         </div>
       </div>
     </div>

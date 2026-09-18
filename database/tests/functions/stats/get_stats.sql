@@ -1,9 +1,10 @@
 -- Start transaction and plan tests
 begin;
-select plan(1);
+select plan(2);
 
 -- Seed some data
 insert into foundation values ('cncf', 'CNCF', 'http://127.0.0.1:8080/cncf.yaml');
+insert into foundation values ('legacy', 'Legacy', 'http://127.0.0.1:8080/legacy.yaml');
 insert into project (
     project_id,
     name,
@@ -17,7 +18,7 @@ insert into project (
     '00000000-0001-0000-0000-000000000000',
     'project1',
     'category1',
-    '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0}',
+    '{"global": 95.0, "license": 100.0, "security": 100.0, "documentation": 80.0, "best_practices": 100.0, "agent_readiness": 80.0}',
     'a',
     '2022-02-25',
     'sandbox',
@@ -55,11 +56,30 @@ insert into project (
     '00000000-0003-0000-0000-000000000000',
     'project3',
     'category2',
-    '{"global": 55.0, "license": 50.0, "security": 60.0, "documentation": 70.0, "best_practices": 40.0}',
+    '{"global": 55.0, "license": 50.0, "security": 60.0, "documentation": 70.0, "best_practices": 40.0, "agent_readiness": 40.0}',
     'c',
     '2021-02-25',
     'graduated',
     'cncf'
+);
+insert into project (
+    project_id,
+    name,
+    category,
+    score,
+    rating,
+    accepted_at,
+    maturity,
+    foundation_id
+) values (
+    '00000000-0004-0000-0000-000000000000',
+    'project4',
+    'category3',
+    '{"global": 60.0, "license": 60.0, "security": 60.0, "documentation": 60.0, "best_practices": 60.0}',
+    'c',
+    '2021-02-26',
+    'sandbox',
+    'legacy'
 );
 insert into repository (
     repository_id,
@@ -108,6 +128,29 @@ insert into report (
 ) values (
     '00000000-0000-0000-0001-000000000000',
     '{
+        "agent_readiness": {
+            "authentication": {
+                "passed": true
+            },
+            "content_discoverability": {
+                "passed": true
+            },
+            "content_structure": {
+                "passed": false
+            },
+            "markdown_availability": {
+                "passed": true
+            },
+            "observability": {
+                "passed": false
+            },
+            "page_size": {
+                "passed": true
+            },
+            "url_stability": {
+                "passed": true
+            }
+        },
         "legal": {
             "trademark_disclaimer": {
                 "passed": false
@@ -249,6 +292,31 @@ insert into report (
 ) values (
     '00000000-0000-0000-0002-000000000000',
     '{
+        "agent_readiness": {
+            "authentication": {
+                "passed": false,
+                "failed": true,
+                "fail_reason": "AFDocs unavailable"
+            },
+            "content_discoverability": {
+                "passed": false
+            },
+            "content_structure": {
+                "passed": false
+            },
+            "markdown_availability": {
+                "passed": false
+            },
+            "observability": {
+                "passed": false
+            },
+            "page_size": {
+                "passed": false
+            },
+            "url_stability": {
+                "passed": false
+            }
+        },
         "legal": {
             "trademark_disclaimer": {
                 "passed": false
@@ -561,18 +629,21 @@ select is(
             ],
             "sections_average": {
                 "all": {
+                    "agent_readiness": 60,
                     "license": 77,
                     "security": 73,
                     "documentation": 73,
                     "best_practices": 70
                 },
                 "graduated": {
+                    "agent_readiness": 40,
                     "license": 65,
                     "security": 60,
                     "documentation": 70,
                     "best_practices": 55
                 },
                 "sandbox": {
+                    "agent_readiness": 80,
                     "license": 100,
                     "security": 100,
                     "documentation": 80,
@@ -582,6 +653,15 @@ select is(
         },
         "repositories": {
             "passing_check": {
+                "agent_readiness": {
+                    "authentication": 50,
+                    "content_discoverability": 50,
+                    "content_structure": 0,
+                    "markdown_availability": 50,
+                    "observability": 0,
+                    "page_size": 50,
+                    "url_stability": 50
+                },
                 "documentation": {
                     "adopters": 67,
                     "changelog": 67,
@@ -631,6 +711,27 @@ select is(
         }
     }'::jsonb,
     'Stats returned as a json object'
+);
+
+-- Foundation whose projects were scored before the agent readiness section
+-- existed: the section average is omitted while the others are still returned
+select is(
+    get_stats('legacy')::jsonb #> '{projects,sections_average}',
+    '{
+        "all": {
+            "license": 60,
+            "security": 60,
+            "documentation": 60,
+            "best_practices": 60
+        },
+        "sandbox": {
+            "license": 60,
+            "security": 60,
+            "documentation": 60,
+            "best_practices": 60
+        }
+    }'::jsonb,
+    'Sections average omits agent readiness when no project score includes it'
 );
 
 -- Finish tests and rollback transaction

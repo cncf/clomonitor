@@ -4,6 +4,9 @@
 #[allow(clippy::module_name_repetitions)]
 pub mod linter;
 
+#[allow(clippy::module_name_repetitions)]
+pub mod tools;
+
 #[allow(
     clippy::cast_precision_loss,
     clippy::cast_possible_truncation,

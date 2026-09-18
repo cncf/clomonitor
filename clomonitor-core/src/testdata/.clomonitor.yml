@@ -1,3 +1,6 @@
+agentReadiness:
+  url: https://docs.project.url
+
 exemptions:
   - check: artifacthub_badge
     reason: this is a sample reason

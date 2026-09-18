@@ -365,6 +365,7 @@
     },
     "sections_average": {
       "all": {
+        "agent_readiness": 58,
         "documentation": 85,
         "license": 79,
         "best_practices": 61,
@@ -372,6 +373,7 @@
         "legal": 40
       },
       "graduated": {
+        "agent_readiness": 62,
         "documentation": 87,
         "license": 77,
         "best_practices": 74,
@@ -379,6 +381,7 @@
         "legal": 48
       },
       "incubating": {
+        "agent_readiness": 55,
         "documentation": 83,
         "license": 80,
         "best_practices": 59,
@@ -386,6 +389,7 @@
         "legal": 36
       },
       "sandbox": {
+        "agent_readiness": 57,
         "documentation": 85,
         "license": 79,
         "best_practices": 59,
@@ -396,6 +400,15 @@
   },
   "repositories": {
     "passing_check": {
+      "agent_readiness": {
+        "authentication": 52,
+        "content_discoverability": 71,
+        "content_structure": 48,
+        "markdown_availability": 66,
+        "observability": 41,
+        "page_size": 38,
+        "url_stability": 64
+      },
       "documentation": {
         "adopters": 36,
         "changelog": 77,

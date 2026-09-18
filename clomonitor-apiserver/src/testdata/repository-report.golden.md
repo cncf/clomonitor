@@ -9,13 +9,14 @@
 
 ### Checks passed per category
 
-| Category       |                                           Score |
-| :------------- | ----------------------------------------------: |
-| Documentation  |  100% |
-| License        |        100% |
-| Best Practices | 100% |
-| Security       |       100% |
-| Legal          |          100% |
+| Category        |                                            Score |
+| :-------------- | -----------------------------------------------: |
+| Documentation   |   100% |
+| License         |         100% |
+| Best Practices  |  100% |
+| Security        |        100% |
+| Legal           |           100% |
+| Agent Readiness | 60% |
 
 ## Checks
 
@@ -68,6 +69,15 @@
 ### Legal [100%]
 
   - [x] Trademark disclaimer ([_docs_](https://clomonitor.io/docs/topics/checks/#trademark-disclaimer))
+  
+### Agent Readiness [60%]
+
+  - [x] Authentication and access ([_docs_](https://clomonitor.io/docs/topics/checks/#authentication-and-access))
+  - [ ] [Content discoverability](https://docs.example.org/) ([_docs_](https://clomonitor.io/docs/topics/checks/#content-discoverability))
+  - [x] Content structure ([_docs_](https://clomonitor.io/docs/topics/checks/#content-structure)) `EXEMPT`
+  - [ ] Markdown availability ([_docs_](https://clomonitor.io/docs/topics/checks/#markdown-availability)) `CHECK FAILED`
+  - [x] Observability and content health ([_docs_](https://clomonitor.io/docs/topics/checks/#observability-and-content-health))
+  - [x] [Page size and truncation risk](https://docs.example.org/) ([_docs_](https://clomonitor.io/docs/topics/checks/#page-size-and-truncation-risk))
   
 For more information about the checks sets available and how each of the checks work, please see the [CLOMonitor's documentation](https://clomonitor.io/docs/topics/checks/).
 

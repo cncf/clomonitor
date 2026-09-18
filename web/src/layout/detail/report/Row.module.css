@@ -28,6 +28,19 @@
   font-size: 0.8rem;
 }
 
+.advisoryIcon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.tooltipMessage {
+  margin-left: 10px;
+}
+
+.tooltipArrow {
+  margin-top: 7px;
+}
+
 .table {
   background-color: var(--body-bg);
 }

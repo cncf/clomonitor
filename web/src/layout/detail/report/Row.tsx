@@ -1,9 +1,11 @@
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
-import { isUndefined } from 'lodash';
+import { isNil, isUndefined } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
+import { IoInformationCircleOutline } from 'react-icons/io5';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import sortChecks from '../../../utils/sortChecks';
@@ -22,7 +24,8 @@ interface Props {
   label: string;
   icon: JSX.Element;
   data: OptData;
-  score?: number;
+  score?: number | null;
+  advisory?: boolean;
   referenceUrl?: string;
   recommendedTemplates?: RecommendedTemplate[];
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
@@ -30,7 +33,7 @@ interface Props {
 }
 
 const Row = (props: Props) => {
-  const color = getCategoryColor(props.score);
+  const color = getCategoryColor(props.score ?? undefined);
   const [options, setOptions] = useState<ReportOption[]>([]);
   const tmplsNumber = props.recommendedTemplates ? props.recommendedTemplates.length : 0;
   const scoreValue = props.score ?? 0;
@@ -41,7 +44,30 @@ const Row = (props: Props) => {
     setOptions(sortChecks(props.data));
   }, [props.data]);
 
-  if (options.length === 0 || isUndefined(props.score)) return null;
+  if (options.length === 0 || isNil(props.score)) return null;
+
+  const advisoryIcon = props.advisory ? (
+    <ElementWithTooltip
+      element={
+        <span
+          data-testid="advisory-badge"
+          className={`d-inline-flex align-items-center text-muted ms-2 ${styles.advisoryIcon}`}
+          role="img"
+          aria-label="Advisory section: it does not affect the global score"
+        >
+          <IoInformationCircleOutline aria-hidden="true" />
+        </span>
+      }
+      tooltipWidth={260}
+      tooltipClassName={styles.tooltipMessage}
+      tooltipArrowClassName={styles.tooltipArrow}
+      tooltipMessage={
+        <div className="text-start p-2">This section has its own score but does not affect the global score.</div>
+      }
+      visibleTooltip
+      active
+    />
+  ) : undefined;
 
   return (
     <div className={`p-3 p-md-4 border border-1 mb-2 ${styles.reportContent}`}>
@@ -52,6 +78,7 @@ const Row = (props: Props) => {
             title={props.label}
             icon={props.icon}
             className={styles.titleWrapper}
+            extra={advisoryIcon}
             anchor={props.getAnchorLink(`${props.repoName}_${props.name}`, styles.headingLink)}
           />
         </div>

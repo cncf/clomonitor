@@ -3,7 +3,7 @@ use std::time::{Duration, Instant};
 use anyhow::{Error, Result, format_err};
 #[cfg(not(test))]
 use clomonitor_core::linter::setup_github_http_client;
-use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput, Project};
+use clomonitor_core::linter::{CheckSet, DynLinter, LinterInput, Project, ToolsConfig};
 use config::Config;
 use deadpool::unmanaged::{Object, Pool};
 use futures::stream::{self, StreamExt};
@@ -34,7 +34,13 @@ pub(crate) struct Repository {
 
 /// Track all repositories registered in the database.
 #[instrument(skip_all, err)]
-pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter) -> Result<()> {
+pub(crate) async fn run(
+    cfg: &Config,
+    db: DynDB,
+    git: DynGit,
+    linter: DynLinter,
+    tools: ToolsConfig,
+) -> Result<()> {
     info!("started");
 
     // Setup GitHub tokens pool
@@ -64,11 +70,12 @@ pub(crate) async fn run(cfg: &Config, db: DynDB, git: DynGit, linter: DynLinter)
             let linter = linter.clone();
             let github_token = gh_tokens_pool.get().await.expect("token -when available-");
             let url = repository.url.clone();
+            let tools = tools.clone();
 
             tokio::spawn(async move {
                 match timeout(
                     Duration::from_secs(REPOSITORY_TRACK_TIMEOUT),
-                    track_repository(db, git, linter, github_token, repository),
+                    track_repository(db, git, linter, github_token, tools, repository),
                 )
                 .await
                 {
@@ -130,6 +137,7 @@ async fn track_repository(
     git: DynGit,
     linter: DynLinter,
     github_token: Object<String>,
+    tools: ToolsConfig,
     repository: Repository,
 ) -> Result<()> {
     let start = Instant::now();
@@ -146,7 +154,8 @@ async fn track_repository(
 
     debug!("started");
 
-    // Clone repository
+    // Clone repository (the temporary directory is removed when the guard is
+    // dropped at the end of this function)
     let tmp_dir = Builder::new().prefix("clomonitor").tempdir()?;
     git.clone_repository(&repository.url, tmp_dir.path())
         .await?;
@@ -155,10 +164,11 @@ async fn track_repository(
     let mut errors: Option<String> = None;
     let input = LinterInput {
         project: Some(repository.project),
-        root: tmp_dir.keep(),
+        root: tmp_dir.path().to_path_buf(),
         url: repository.url.clone(),
         check_sets: repository.check_sets.clone(),
         github_token: github_token.to_owned(),
+        tools,
     };
     let report = match linter.lint(&input).await {
         Ok(report) => Some(report),
@@ -179,6 +189,10 @@ async fn track_repository(
     )
     .await?;
 
+    // Remove cloned repository
+    drop(github_token);
+    tmp_dir.close()?;
+
     debug!(duration_secs = start.elapsed().as_secs(), "completed");
     Ok(())
 }
@@ -186,11 +200,11 @@ async fn track_repository(
 #[cfg(test)]
 mod tests {
     use std::{
-        path::Path,
-        sync::{Arc, LazyLock},
+        path::{Path, PathBuf},
+        sync::{Arc, LazyLock, Mutex},
     };
 
-    use clomonitor_core::linter::{MockLinter, Report};
+    use clomonitor_core::linter::{MockLinter, Report, ToolMode};
     use futures::future;
     use predicates::prelude::{predicate::*, *};
 
@@ -218,7 +232,14 @@ mod tests {
         let git = MockGit::new();
         let linter = MockLinter::new();
 
-        let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
+        let result = run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await;
         assert_eq!(
             result.unwrap_err().root_cause().to_string(),
             r#"missing configuration field "creds.githubTokens""#
@@ -232,7 +253,14 @@ mod tests {
         let git = MockGit::new();
         let linter = MockLinter::new();
 
-        let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
+        let result = run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await;
         assert_eq!(
             result.unwrap_err().root_cause().to_string(),
             "GitHub tokens not found in config file (creds.githubTokens)"
@@ -250,7 +278,14 @@ mod tests {
             .times(1)
             .returning(|| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
-        let result = run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter)).await;
+        let result = run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await;
         assert_eq!(result.unwrap_err().root_cause().to_string(), FAKE_ERROR);
     }
 
@@ -265,9 +300,15 @@ mod tests {
             .times(1)
             .returning(|| Box::pin(future::ready(Ok(vec![]))));
 
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
-            .await
-            .unwrap();
+        run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await
+        .unwrap();
     }
 
     #[tokio::test]
@@ -292,9 +333,15 @@ mod tests {
             .times(1)
             .returning(|_: &str| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
-            .await
-            .unwrap();
+        run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await
+        .unwrap();
     }
 
     #[tokio::test]
@@ -319,9 +366,15 @@ mod tests {
             .times(1)
             .returning(|_: &str| Box::pin(future::ready(Ok(REPOSITORY1_DIGEST.to_string()))));
 
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
-            .await
-            .unwrap();
+        run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await
+        .unwrap();
     }
 
     #[tokio::test]
@@ -350,9 +403,15 @@ mod tests {
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
 
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
-            .await
-            .unwrap();
+        run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await
+        .unwrap();
     }
 
     #[tokio::test]
@@ -391,20 +450,38 @@ mod tests {
             .times(1)
             .returning(|_: &LinterInput| panic!("fake panic"));
 
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
-            .await
-            .unwrap_err();
+        run(
+            &cfg,
+            Arc::new(db),
+            Arc::new(git),
+            Arc::new(linter),
+            ToolsConfig::default(),
+        )
+        .await
+        .unwrap_err();
     }
 
     #[tokio::test]
+    #[allow(clippy::too_many_lines)]
     async fn two_repos_tracked_successfully() {
         // Setup config
         let cfg = setup_test_config(2, &[TOKEN1, TOKEN2]);
+        let tools = ToolsConfig {
+            afdocs: ToolMode::Runner {
+                url: "http://runner-afdocs:8080".to_string(),
+            },
+            scorecard: ToolMode::Runner {
+                url: "http://runner-scorecard:8080".to_string(),
+            },
+        };
 
         // Setup mocks and expectations
         let mut db = MockDB::new();
         let mut git = MockGit::new();
         let mut linter = MockLinter::new();
+
+        // Cloned repositories paths (to check they are removed afterwards)
+        let roots: Arc<Mutex<Vec<PathBuf>>> = Arc::new(Mutex::new(vec![]));
 
         // Get repositories
         db.expect_repositories().times(1).returning(|| {
@@ -437,13 +514,19 @@ mod tests {
             .with(eq(REPOSITORY1_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Ok(()))));
+        let roots1 = roots.clone();
+        let tools1 = tools.clone();
         linter
             .expect_lint()
             .withf(move |input: &LinterInput| {
+                if input.url == REPOSITORY1_URL {
+                    roots1.lock().unwrap().push(input.root.clone());
+                }
                 path::exists().and(path::is_dir()).eval(&input.root)
                     && input.url == REPOSITORY1_URL
                     && input.check_sets == vec![CheckSet::Code]
                     && [TOKEN1, TOKEN2].contains(&&input.github_token[..])
+                    && input.tools == tools1
             })
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Ok(Report::default()))));
@@ -471,13 +554,19 @@ mod tests {
             .with(eq(REPOSITORY2_URL), path::exists().and(path::is_dir()))
             .times(1)
             .returning(|_: &str, _: &Path| Box::pin(future::ready(Ok(()))));
+        let roots2 = roots.clone();
+        let tools2 = tools.clone();
         linter
             .expect_lint()
             .withf(move |input: &LinterInput| {
+                if input.url == REPOSITORY2_URL {
+                    roots2.lock().unwrap().push(input.root.clone());
+                }
                 path::exists().and(path::is_dir()).eval(&input.root)
                     && input.url == REPOSITORY2_URL
                     && input.check_sets == vec![CheckSet::Code]
                     && [TOKEN1, TOKEN2].contains(&&input.github_token[..])
+                    && input.tools == tools2
             })
             .times(1)
             .returning(|_: &LinterInput| Box::pin(future::ready(Err(format_err!(FAKE_ERROR)))));
@@ -497,9 +586,17 @@ mod tests {
             );
 
         // Run tracker
-        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter))
+        run(&cfg, Arc::new(db), Arc::new(git), Arc::new(linter), tools)
             .await
             .unwrap();
+
+        // Cloned repositories must have been removed (after a successful lint
+        // and after a lint error)
+        let roots = roots.lock().unwrap();
+        assert_eq!(roots.len(), 2);
+        for root in roots.iter() {
+            assert!(!root.exists(), "{} was not removed", root.display());
+        }
     }
 
     fn setup_test_config(concurrency: u8, tokens: &[&str]) -> Config {

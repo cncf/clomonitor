@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 -->
+
 # Architecture
 
 This document describes the architecture of **CLOMonitor**, detailing each of the components, what they do and where they are located in the source repository.
@@ -15,6 +17,7 @@ clomonitor
 ├── clomonitor-core
 ├── clomonitor-linter
 ├── clomonitor-registrar
+├── clomonitor-runner
 ├── clomonitor-tracker
 ├── database
 ├── docs
@@ -35,6 +38,8 @@ clomonitor
 
 - **clomonitor-registrar:** contains the source code of the `registrar` backend component.
 
+- **clomonitor-runner:** contains the source code of the external tool runner.
+
 - **clomonitor-tracker:** contains the source code of the `tracker` backend component.
 
 - **database:** contains all code related to the database layer, such as the schema migrations, functions and tests.
@@ -52,6 +57,8 @@ CLOMonitor is structured in multiple layers, each of them providing a set of ser
 - **Core library:** this layer represents a set of Rust APIs that allow performing core operations supported by CLOMonitor, such as linting a repository or calculating scores. Please see the [core library](#core-library) section for more details.
 
 - **Backend applications:** this layer represents the applications that form the backend: `apiserver`, `registrar` and `tracker`. These applications rely on the `database` and `core library` layers to perform their tasks. Please see the [backend applications](#backend-applications) section for more details.
+
+- **Runner:** this layer executes external tools for tracker runs. Please see the [runner](#runner) section for more details.
 
 - **Linter CLI:** this layer represents a CLI tool that allows projects to lint their repositories locally or from their CI workflows. Please see the [linter CLI](#linter-cli) section for more details.
 
@@ -85,6 +92,9 @@ It's composed of two modules:
 
 - **score:** this module is in charge of scoring reports produced by the linter. The linter will produce different reports for each of the kinds supported, and each of the reports will be scored differently as well. In addition to the reports' scoring functionality, this module provides some score related features as well, like rating a given score or merging multiple scores.
 
+The Agent Readiness section has its own score, but it does not count toward the
+global project score or rating.
+
 ## Backend applications
 
 The backend applications are `apiserver`, `archiver`, `registrar` and `tracker`. They are located in the `clomonitor-apiserver`, `clomonitor-archiver`, `clomonitor-registrar` and `clomonitor-tracker` directories respectively. Each of the applications' directory contains a `Dockerfile` that will be used to build the corresponding Docker image.
@@ -104,6 +114,10 @@ The backend applications are `apiserver`, `archiver`, `registrar` and `tracker`.
 │   ├── Cargo.toml
 │   ├── Dockerfile
 │   └── src
+├── clomonitor-runner
+│   ├── Cargo.toml
+│   ├── Dockerfile
+│   └── src
 └── clomonitor-tracker
     ├── Cargo.toml
     ├── Dockerfile
@@ -117,6 +131,63 @@ The backend applications are `apiserver`, `archiver`, `registrar` and `tracker`.
 - **registrar:** this component is in charge of registering the projects available on each foundation's data file in the database. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/registrar_cronjob.yaml).
 
 - **tracker:** this component is in charge of linting and scoring all projects and repositories registered in the database. It's launched periodically from a Kubernetes [cronjob](https://github.com/cncf/clomonitor/blob/main/chart/templates/tracker_cronjob.yaml).
+
+## Runner
+
+The `clomonitor-runner` component is a small Axum HTTP service that executes
+external tools for the tracker. It exposes `POST /run/{tool}` and returns the
+tool name, detected tool version, duration, and the tool's JSON output:
+
+```json
+{
+  "tool": "afdocs",
+  "tool_version": "0.20.0",
+  "duration_ms": 1234,
+  "output": {}
+}
+```
+
+The runner supports `afdocs` and `scorecard`. Each request is executed as a
+supervised subprocess with a scrubbed environment, a per-run temporary working
+directory, a per-run memory cap (a 256 MiB Node.js heap for AFDocs, a 256 MiB
+Go memory limit for scorecard), output caps, admission control, and a
+request-wide deadline that includes queue time. A full bounded queue returns
+`503` with a `Retry-After` header. Each subprocess leads its own process group;
+timed out or disconnected requests kill and reap the whole group, so processes
+spawned by the tool do not outlive the run.
+
+The same `clomonitor/runner` image is deployed as two separate profiles with
+different trust boundaries:
+
+- `runner-afdocs` runs AFDocs. It has no secrets, receives no GitHub token, and
+  can only egress to DNS and public HTTP/HTTPS destinations.
+- `runner-scorecard` runs OpenSSF Scorecard. The tracker sends a GitHub token
+  only to this profile in the `Authorization: Bearer` header, and the runner
+  injects it as `GITHUB_TOKEN` only into the scorecard subprocess. Its egress is
+  limited to DNS and public destinations on TCP 443 (the network policy cannot
+  pin it to GitHub because GitHub IP ranges change), so the token is protected
+  from the cluster and private networks, not from other public hosts.
+
+Runner pods use the same hardening baseline: service account token automounting
+is disabled, they run as non-root numeric users, the root filesystem is
+read-only, privilege escalation is disabled, Linux capabilities are dropped, and
+the RuntimeDefault seccomp profile is used.
+
+AFDocs requests have a 240 s runner deadline and a 270 s tracker client timeout.
+Scorecard requests have a 480 s runner deadline and a 510 s tracker client
+timeout. The tracker uses bounded retries only for connection errors, `429`, and
+`503`.
+
+The tracker uses `runner.afdocsUrl` and `runner.scorecardUrl` to reach the two
+profiles and never runs the tools locally (its image does not ship them). If
+`runner.afdocsUrl` is absent, the agent readiness checks are reported as
+failed. If `runner.scorecardUrl` is absent, the scorecard backed checks are
+reported as failed. External tool failures are soft failures for the affected
+checks, so the rest of the report is still stored.
+
+The runner rejects AFDocs targets whose host is a `localhost` name or a
+loopback, link-local, private, shared or unspecified IP literal before running
+the tool, as a defence in depth measure independent of the network policy.
 
 ## Linter CLI
 
@@ -133,6 +204,9 @@ USAGE:
     clomonitor-linter [OPTIONS] --path <PATH> --url <URL>
 
 OPTIONS:
+        --afdocs <AFDOCS>            AFDocs execution mode (agent readiness checks, requires
+                                     afdocs 0.20.x) [default: local] [possible values: local,
+                                     disabled]
         --check-set <CHECK_SET>      Sets of checks to run [default: code community] [possible
                                      values: code, code-lite, community, docs]
         --format <FORMAT>            Output format [default: table] [possible values: json, table]
@@ -140,6 +214,9 @@ OPTIONS:
         --pass-score <PASS_SCORE>    Linter pass score [default: 75]
         --path <PATH>                Repository local path (used for checks that can be done
                                      locally)
+        --scorecard <SCORECARD>      OpenSSF Scorecard execution mode (scorecard backed
+                                     security checks) [default: local] [possible values: local,
+                                     disabled]
         --url <URL>                  Repository url [https://github.com/org/repo] (used for some
                                      GitHub remote checks)
     -V, --version                    Print version information

@@ -1,0 +1,10 @@
+{
+  "name": "clomonitor-runner-afdocs",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "afdocs": "0.20.0"
+  }
+}

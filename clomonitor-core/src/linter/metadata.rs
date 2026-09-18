@@ -10,9 +10,10 @@ use super::util;
 pub(crate) const METADATA_FILE: &str = ".clomonitor.yml";
 
 /// CLOMonitor metadata.
-#[derive(Debug, Clone, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Default, Deserialize, PartialEq)]
 #[serde(rename_all = "camelCase")]
 pub(crate) struct Metadata {
+    pub agent_readiness: Option<AgentReadiness>,
     pub exemptions: Option<Vec<Exemption>>,
     pub license_scanning: Option<LicenseScanning>,
 }
@@ -28,6 +29,12 @@ impl Metadata {
             .context("error reading clomonitor metadata file")?;
         Ok(serde_yaml::from_str(&content)?)
     }
+}
+
+/// Agent readiness section of the metadata.
+#[derive(Debug, Clone, Deserialize, PartialEq)]
+pub(crate) struct AgentReadiness {
+    pub url: Option<String>,
 }
 
 /// Metadata check exemption entry.
@@ -56,13 +63,16 @@ mod tests {
                 .unwrap()
                 .unwrap(),
             Metadata {
-                license_scanning: Some(LicenseScanning {
-                    url: Some("https://license-scanning-results.url".to_string()),
+                agent_readiness: Some(AgentReadiness {
+                    url: Some("https://docs.project.url".to_string()),
                 }),
                 exemptions: Some(vec![Exemption {
                     check: "artifacthub_badge".to_string(),
                     reason: "this is a sample reason".to_string(),
-                }])
+                }]),
+                license_scanning: Some(LicenseScanning {
+                    url: Some("https://license-scanning-results.url".to_string()),
+                }),
             },
         );
     }

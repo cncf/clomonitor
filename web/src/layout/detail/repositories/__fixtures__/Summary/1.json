@@ -22,6 +22,7 @@
     },
     "repository_id": "00000000-0000-0178-0000-000000000000",
     "score": {
+      "agent_readiness": 57.14285714285714,
       "documentation": 90,
       "global": 95,
       "license": 100

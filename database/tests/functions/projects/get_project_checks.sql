@@ -57,6 +57,29 @@ insert into report (
 ) values (
     '00000000-0000-0000-0001-000000000000',
     '{
+        "agent_readiness": {
+            "authentication": {
+                "passed": true
+            },
+            "content_discoverability": {
+                "passed": true
+            },
+            "content_structure": {
+                "passed": false
+            },
+            "markdown_availability": {
+                "passed": true
+            },
+            "observability": {
+                "passed": false
+            },
+            "page_size": {
+                "passed": true
+            },
+            "url_stability": {
+                "passed": true
+            }
+        },
         "legal": {
             "trademark_disclaimer": {
                 "passed": false
@@ -244,6 +267,13 @@ select results_eq(
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'artifacthub_badge', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'community_meeting', false),
             ('00000000-0000-0001-0000-000000000000'::uuid, 'best_practices', 'github_discussions', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'page_size', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'observability', false),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'url_stability', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'authentication', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'content_structure', false),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'markdown_availability', true),
+            ('00000000-0000-0001-0000-000000000000'::uuid, 'agent_readiness', 'content_discoverability', true),
             ('00000000-0000-0002-0000-000000000000'::uuid, 'license', 'license_spdx_id', true),
             ('00000000-0000-0002-0000-000000000000'::uuid, 'license', 'license_approved', true),
             ('00000000-0000-0002-0000-000000000000'::uuid, 'documentation', 'readme', true)

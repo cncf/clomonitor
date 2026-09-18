@@ -65,7 +65,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
@@ -190,7 +189,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"
@@ -329,7 +327,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"
@@ -453,7 +450,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"
@@ -584,7 +580,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
@@ -708,7 +703,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"
@@ -836,7 +830,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"
@@ -967,7 +960,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
@@ -1091,7 +1083,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-danger _icon_19cbf0"
                   data-testid="error-icon"
@@ -1226,7 +1217,6 @@ exports[`Row > creates snapshot 1`] = `
               <td
                 class="text-center _iconCell_19cbf0"
               >
-                 
                 <svg
                   class="text-success _icon_19cbf0"
                   data-testid="success-icon"

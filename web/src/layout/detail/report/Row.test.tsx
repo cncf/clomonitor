@@ -82,6 +82,15 @@ describe('Row', () => {
       expect(
         screen.getByRole('link', { name: 'Checks reference documentation for label category' })
       ).toBeInTheDocument();
+      expect(screen.queryByTestId('advisory-badge')).toBeNull();
+    });
+
+    it('renders advisory badge for advisory sections', () => {
+      render(<Row {...defaultProps} advisory />);
+
+      expect(screen.getByTestId('advisory-badge')).toHaveAccessibleName(
+        'Advisory section: it does not affect the global score'
+      );
     });
 
     it('renders options in correct order', () => {

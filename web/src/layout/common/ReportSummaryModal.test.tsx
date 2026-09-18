@@ -4,6 +4,7 @@ import { Foundation } from 'clo-ui/components/Foundation';
 import { vi } from 'vitest';
 
 import ReportSummaryModal from './ReportSummaryModal';
+import styles from './ReportSummaryModal.module.css';
 
 const mockOnCloseModal = vi.fn();
 
@@ -38,6 +39,7 @@ describe('ReportSummaryModal', () => {
       expect(screen.getByRole('button', { name: 'Open tab html' })).toBeInTheDocument();
       expect(screen.getByText('Preview')).toBeInTheDocument();
       expect(screen.getByAltText('CLOMonitor report summary')).toBeInTheDocument();
+      expect(screen.getByAltText('CLOMonitor report summary').parentElement).toHaveClass(styles.imgWrapper);
     });
 
     it('displays loading while image is loading', async () => {

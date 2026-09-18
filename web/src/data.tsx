@@ -1,8 +1,9 @@
+import { CheckSet } from 'clo-ui/components/CheckSetBadge';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { Foundation } from 'clo-ui/components/Foundation';
 import { Maturity } from 'clo-ui/components/Maturity';
 import { SampleQuery } from 'clo-ui/components/SampleQueries';
-import { BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BiDirections, BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
 import { BsCalendar3, BsUiChecks } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
@@ -24,11 +25,12 @@ import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoCommentDiscussion, GoFileBinary, GoLaw } from 'react-icons/go';
 import { GrDocumentLocked, GrDocumentText } from 'react-icons/gr';
-import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
+import { HiOutlineLockOpen, HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { MdOutlineInventory, MdPreview } from 'react-icons/md';
-import { RiRoadMapLine, RiShieldStarLine } from 'react-icons/ri';
+import { RiNodeTree, RiPulseLine, RiRoadMapLine, RiRobot2Line, RiShieldStarLine } from 'react-icons/ri';
+import { TbBinoculars, TbMarkdown, TbPageBreak } from 'react-icons/tb';
 
 import QualityDot from './layout/common/QualityDot';
 import {
@@ -40,6 +42,7 @@ import {
   ReportOption,
   ReportOptionInfo,
   ScoreType,
+  SectionInfo,
   SortBy,
   SortDirection,
   SortOption,
@@ -236,6 +239,7 @@ export const QUERIES: SampleQuery[] = [
 ];
 
 export const CATEGORY_ICONS = {
+  [ScoreType.AgentReadiness]: <RiRobot2Line />,
   [ScoreType.BestPractices]: <RiShieldStarLine />,
   [ScoreType.Documentation]: <HiOutlinePencilAlt />,
   [ScoreType.Global]: <BiTrophy />,
@@ -245,6 +249,7 @@ export const CATEGORY_ICONS = {
 };
 
 export const CATEGORY_NAMES = {
+  [ScoreType.AgentReadiness]: 'Agent Readiness',
   [ScoreType.BestPractices]: 'Best Practices',
   [ScoreType.Documentation]: 'Documentation',
   [ScoreType.Global]: 'Global',
@@ -252,6 +257,67 @@ export const CATEGORY_NAMES = {
   [ScoreType.License]: 'License',
   [ScoreType.Security]: 'Security',
 };
+
+export const SECTIONS: SectionInfo[] = [
+  {
+    type: ScoreType.Documentation,
+    name: CATEGORY_NAMES[ScoreType.Documentation],
+    icon: CATEGORY_ICONS[ScoreType.Documentation],
+    referenceUrl: '/docs/topics/checks/#documentation',
+    recommendedTemplates: (checkSets) =>
+      checkSets.includes(CheckSet.Community)
+        ? [
+            {
+              name: 'CONTRIBUTING.md',
+              url: 'https://github.com/cncf/project-template/blob/main/CONTRIBUTING.md',
+            },
+            {
+              name: 'GOVERNANCE.md',
+              url: 'https://github.com/cncf/project-template/blob/main/GOVERNANCE.md',
+            },
+          ]
+        : undefined,
+  },
+  {
+    type: ScoreType.AgentReadiness,
+    name: CATEGORY_NAMES[ScoreType.AgentReadiness],
+    shortName: 'Agents',
+    icon: CATEGORY_ICONS[ScoreType.AgentReadiness],
+    advisory: true,
+    referenceUrl: '/docs/topics/checks/#agent-readiness',
+  },
+  {
+    type: ScoreType.License,
+    name: CATEGORY_NAMES[ScoreType.License],
+    icon: CATEGORY_ICONS[ScoreType.License],
+    referenceUrl: '/docs/topics/checks/#license',
+  },
+  {
+    type: ScoreType.BestPractices,
+    name: CATEGORY_NAMES[ScoreType.BestPractices],
+    icon: CATEGORY_ICONS[ScoreType.BestPractices],
+    referenceUrl: '/docs/topics/checks/#best-practices',
+    showRepoUrl: true,
+  },
+  {
+    type: ScoreType.Security,
+    name: CATEGORY_NAMES[ScoreType.Security],
+    icon: CATEGORY_ICONS[ScoreType.Security],
+    referenceUrl: '/docs/topics/checks/#security',
+    recommendedTemplates: () => [
+      {
+        name: 'SECURITY.md',
+        url: 'https://github.com/cncf/tag-security/blob/main/community/resources/project-resources/templates/SECURITY.md',
+      },
+    ],
+  },
+  {
+    type: ScoreType.Legal,
+    name: CATEGORY_NAMES[ScoreType.Legal],
+    icon: CATEGORY_ICONS[ScoreType.Legal],
+    referenceUrl: '/docs/topics/checks/#legal',
+  },
+];
 
 export const FILTER_CATEGORY_NAMES = {
   [FilterKind.Foundation]: 'Foundation',
@@ -279,6 +345,13 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     name: 'Approved license',
     legend: <span>Whether the repository uses an approved license or not</span>,
     reference: '/docs/topics/checks/#approved-license',
+  },
+  [ReportOption.Authentication]: {
+    icon: <HiOutlineLockOpen />,
+    name: 'Authentication and access',
+    shortName: 'Authentication',
+    legend: <span>Whether documentation is accessible without unnecessary authentication barriers</span>,
+    reference: '/docs/topics/checks/#authentication-and-access',
   },
   [ReportOption.ArtifactHubBadge]: {
     icon: <FiHexagon />,
@@ -339,6 +412,19 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       </span>
     ),
     reference: '/docs/topics/checks/#community-meeting',
+  },
+  [ReportOption.ContentDiscoverability]: {
+    icon: <TbBinoculars />,
+    name: 'Content discoverability',
+    shortName: 'Discoverability',
+    legend: <span>Whether agents can discover the most important documentation content from the project website</span>,
+    reference: '/docs/topics/checks/#content-discoverability',
+  },
+  [ReportOption.ContentStructure]: {
+    icon: <RiNodeTree />,
+    name: 'Content structure',
+    legend: <span>Whether documentation content is organized with a clear structure for agents and users</span>,
+    reference: '/docs/topics/checks/#content-structure',
   },
   [ReportOption.Contributing]: {
     icon: <HiTerminal />,
@@ -418,6 +504,20 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     ),
     reference: '/docs/topics/checks/#maintainers',
   },
+  [ReportOption.MarkdownAvailability]: {
+    icon: <TbMarkdown />,
+    name: 'Markdown availability',
+    shortName: 'Markdown',
+    legend: <span>Whether documentation content is available in Markdown or agent-friendly text formats</span>,
+    reference: '/docs/topics/checks/#markdown-availability',
+  },
+  [ReportOption.Observability]: {
+    icon: <RiPulseLine />,
+    name: 'Observability and content health',
+    shortName: 'Observability',
+    legend: <span>Whether documentation exposes signals that help agents detect current and healthy content</span>,
+    reference: '/docs/topics/checks/#observability-and-content-health',
+  },
   [ReportOption.OpenSSFBadge]: {
     icon: <BiMedal />,
     name: 'OpenSSF best practices badge',
@@ -438,6 +538,13 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
       <span>Scorecard assesses open source projects for security risks through a series of automated checks</span>
     ),
     reference: '/docs/topics/checks/#openssf-scorecard-badge',
+  },
+  [ReportOption.PageSize]: {
+    icon: <TbPageBreak />,
+    name: 'Page size and truncation risk',
+    shortName: 'Page size',
+    legend: <span>Whether documentation pages are sized to reduce truncation risk for agents</span>,
+    reference: '/docs/topics/checks/#page-size-and-truncation-risk',
   },
   [ReportOption.Readme]: {
     icon: <CgReadme />,
@@ -545,6 +652,13 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     legend: <span>Projects sites should have the Linux Foundation trademark disclaimer</span>,
     reference: '/docs/topics/checks/#trademark-disclaimer',
   },
+  [ReportOption.UrlStability]: {
+    icon: <BiDirections />,
+    name: 'URL stability and redirects',
+    shortName: 'URL stability',
+    legend: <span>Whether documentation URLs are stable and avoid redirect chains that complicate agent access</span>,
+    reference: '/docs/topics/checks/#url-stability-and-redirects',
+  },
   [ReportOption.Website]: {
     icon: <BiWorld />,
     name: 'Website',
@@ -589,6 +703,7 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.BinaryArtifacts,
     ReportOption.CodeReview,
     ReportOption.DangerousWorkflow,
+    ReportOption.DependenciesPolicy,
     ReportOption.DependencyUpdateTool,
     ReportOption.Maintained,
     ReportOption.SBOM,
@@ -598,4 +713,13 @@ export const CHECKS_PER_CATEGORY: ChecksPerCategory = {
     ReportOption.TokenPermissions,
   ],
   [ScoreType.Legal]: [ReportOption.TrademarkDisclaimer],
+  [ScoreType.AgentReadiness]: [
+    ReportOption.Authentication,
+    ReportOption.ContentDiscoverability,
+    ReportOption.ContentStructure,
+    ReportOption.MarkdownAvailability,
+    ReportOption.Observability,
+    ReportOption.PageSize,
+    ReportOption.UrlStability,
+  ],
 };

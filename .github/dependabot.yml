@@ -66,6 +66,12 @@ updates:
       - "*"
 
   - package-ecosystem: "docker"
+    directory: "/clomonitor-runner"
+    multi-ecosystem-group: "infra"
+    patterns:
+      - "*"
+
+  - package-ecosystem: "docker"
     directory: "/clomonitor-tracker"
     multi-ecosystem-group: "infra"
     patterns:
@@ -80,6 +86,12 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     multi-ecosystem-group: "infra"
+    patterns:
+      - "*"
+
+  - package-ecosystem: "npm"
+    directory: "/clomonitor-runner/afdocs"
+    multi-ecosystem-group: "backend"
     patterns:
       - "*"
 

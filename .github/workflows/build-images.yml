@@ -13,6 +13,33 @@ env:
   OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
 
 jobs:
+  build-runner-image:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Login to OCI Registry
+        id: login-ocir
+        uses: oracle-actions/login-ocir@v1.3.0
+        with:
+          auth_token: ${{ secrets.OCI_AUTH_TOKEN }}
+      - name: Get clomonitor runner OCIR repository
+        id: get-ocir-repository-runner
+        uses: oracle-actions/get-ocir-repository@v1.3.0
+        with:
+          name: clomonitor/runner
+          compartment: ${{ secrets.OCI_COMPARTMENT_OCID }}
+      - name: Build and push runner image
+        env:
+          OCIR_REPOSITORY: ${{ steps.get-ocir-repository-runner.outputs.repo_path }}
+        run: |
+          docker build \
+            -f clomonitor-runner/Dockerfile \
+            -t $OCIR_REPOSITORY:$GITHUB_SHA \
+            .
+          docker push $OCIR_REPOSITORY:$GITHUB_SHA
+
   build-dbmigrator-image:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

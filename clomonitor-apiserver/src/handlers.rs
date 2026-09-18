@@ -54,7 +54,7 @@ pub const INDEX_META_DESCRIPTION_PROJECT: &str = "CLOMonitor report summary";
 
 /// Report summary image dimensions.
 pub const REPORT_SUMMARY_WIDTH: u32 = 900;
-pub const REPORT_SUMMARY_HEIGHT: u32 = 470;
+pub const REPORT_SUMMARY_HEIGHT: u32 = 522;
 
 /// Format used in snapshots dates.
 pub static SNAPSHOT_DATE_FORMAT: LazyLock<FormatDescriptionV3<'static>> = LazyLock::new(|| {
@@ -155,8 +155,8 @@ pub(crate) async fn index_project(
             "{}/projects/{}/{}/report-summary.png",
             cfg.get_string("apiserver.baseURL")
                 .expect("base url to be set"),
-            &foundation,
-            &project
+            foundation,
+            project
         ),
     );
 

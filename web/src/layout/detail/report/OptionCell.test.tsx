@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
@@ -6,7 +6,7 @@ import { ReportOption } from '../../../types';
 import OptionCell from './OptionCell';
 vi.mock('react-markdown', () => ({
   __esModule: true,
-  default: () => <div>markdown</div>,
+  default: ({ children }: { children: string }) => <div>{children}</div>,
 }));
 vi.mock('rehype-external-links', () => ({
   __esModule: true,
@@ -21,6 +21,8 @@ const defaultProps = {
 };
 
 const user = userEvent.setup({ delay: null });
+const details =
+  '### Determines if the project uses a dependency update tool\n\n**OpenSSF Scorecard score**: 0\n**Reason**: no update tool detected\n\n**Details**:\n\nWarn: dependabot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\nWarn: renovatebot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\n\n*Please see the [check docs](https://github.com/ossf/scorecard/blob/33f80c93dc79f860d874857c511c4d26d399609d/docs/checks.md#dependency-update-tool) for more details*';
 
 describe('OptionCell', () => {
   afterEach(() => {
@@ -133,8 +135,7 @@ describe('OptionCell', () => {
                 exempt: false,
                 failed: false,
                 passed: false,
-                details:
-                  '### Determines if the project uses a dependency update tool\n\n**OpenSSF Scorecard score**: 0\n**Reason**: no update tool detected\n\n**Details**:\n\nWarn: dependabot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\nWarn: renovatebot config file not detected in source location.\n\t\t\tWe recommend setting this configuration in code so it can be easily verified by others.\n\n*Please see the [check docs](https://github.com/ossf/scorecard/blob/33f80c93dc79f860d874857c511c4d26d399609d/docs/checks.md#dependency-update-tool) for more details*',
+                details,
               }}
             />
           </tbody>
@@ -155,9 +156,38 @@ describe('OptionCell', () => {
       });
 
       expect(dropdown).toHaveClass('show');
-      expect(screen.getByText('markdown')).toBeInTheDocument();
+      expect(screen.getByText(/Determines if the project uses a dependency update tool/)).toBeInTheDocument();
 
       vi.useRealTimers();
+    });
+
+    it('opens and closes check details in a full screen modal from the mobile details button', async () => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              label={ReportOption.DependencyUpdateTool}
+              check={{
+                exempt: false,
+                failed: false,
+                passed: false,
+                details,
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      await userEvent.click(screen.getByRole('button', { name: 'Show check details for Dependency update tool' }));
+
+      expect(screen.getAllByText(/Determines if the project uses a dependency update tool/).length).toBeGreaterThan(1);
+      expect(screen.getAllByText(/no update tool detected/).length).toBeGreaterThan(1);
+
+      await userEvent.keyboard('{Escape}');
+
+      await waitFor(() => {
+        expect(screen.getAllByText(/Determines if the project uses a dependency update tool/)).toHaveLength(1);
+      });
     });
 
     describe('passed', () => {

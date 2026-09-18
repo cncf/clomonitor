@@ -70,6 +70,13 @@ const OptionCell = (props: Props) => {
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const List = (data: any) => (
+    <ul className={`ps-3 mb-0 text-start ${styles.detailsList}`}>
+      {data.children.filter((child: unknown) => typeof child !== 'string')}
+    </ul>
+  );
+
   const getCheckValue = (): string | JSX.Element => {
     let values;
     switch (props.label) {
@@ -110,6 +117,7 @@ const OptionCell = (props: Props) => {
           h6: Heading,
           a: Link,
           blockquote: Blockquote,
+          ul: List,
         }}
         skipHtml
       />

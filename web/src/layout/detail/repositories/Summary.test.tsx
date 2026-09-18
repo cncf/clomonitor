@@ -60,7 +60,8 @@ describe('Summary', () => {
       expect(screen.getByText('Best Practices')).toBeInTheDocument();
       expect(screen.getByText('Security')).toBeInTheDocument();
       expect(screen.getByText('Legal')).toBeInTheDocument();
-      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+      expect(screen.getByText('Agent Readiness')).toHaveClass('d-xxxl-inline-block');
+      expect(screen.getByText('Agents')).toHaveClass('d-xl-inline-block', 'd-xxxl-none');
 
       expect(screen.getByText('spec')).toBeInTheDocument();
       expect(screen.getByText('sdk-go')).toBeInTheDocument();

@@ -283,6 +283,7 @@ export interface RecommendedTemplate {
 export interface SectionInfo {
   type: ScoreType;
   name: string;
+  shortName?: string;
   icon: ReactElement;
   advisory?: boolean;
   referenceUrl?: string;

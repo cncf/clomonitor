@@ -177,6 +177,7 @@ const RepositoriesList = (props: Props) => {
                         data={data}
                         icon={section.icon}
                         score={!isUndefined(repo.score) ? repo.score[section.type] : undefined}
+                        advisory={section.advisory}
                         referenceUrl={section.referenceUrl}
                         recommendedTemplates={section.recommendedTemplates?.(checkSets)}
                         getAnchorLink={getAnchorLink}

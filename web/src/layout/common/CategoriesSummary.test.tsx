@@ -68,6 +68,25 @@ describe('CategoriesSummary', () => {
       expect(screen.getAllByTestId('line')).toHaveLength(5);
     });
 
+    it('uses the short Agent Readiness name only in compact mode', () => {
+      const { rerender } = render(
+        <Router>
+          <CategoriesSummary {...defaultProps} />
+        </Router>
+      );
+
+      expect(screen.getByText('Agents')).toBeInTheDocument();
+
+      rerender(
+        <Router>
+          <CategoriesSummary {...defaultProps} bigSize />
+        </Router>
+      );
+
+      expect(screen.queryByText('Agents')).toBeNull();
+      expect(screen.getByText('Agent Readiness')).toBeInTheDocument();
+    });
+
     it('renders correct classes when bigSize is true', () => {
       const { container } = render(
         <Router>

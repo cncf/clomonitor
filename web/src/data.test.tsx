@@ -36,6 +36,15 @@ describe('data', () => {
     ]);
   });
 
+  it('lists Agent Readiness right after Documentation with a short name', () => {
+    const sectionTypes = SECTIONS.map((section) => section.type);
+    const agentReadiness = SECTIONS.find((section) => section.type === ScoreType.AgentReadiness);
+
+    expect(sectionTypes.indexOf(ScoreType.AgentReadiness)).toBe(sectionTypes.indexOf(ScoreType.Documentation) + 1);
+    expect(agentReadiness?.shortName).toBe('Agents');
+    expect(SECTIONS.filter((section) => section.shortName)).toHaveLength(1);
+  });
+
   it('lists Agent Readiness checks alphabetically by display name', () => {
     expect(CHECKS_PER_CATEGORY[ScoreType.AgentReadiness]).toEqual([
       ReportOption.Authentication,

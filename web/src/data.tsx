@@ -3,8 +3,8 @@ import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { Foundation } from 'clo-ui/components/Foundation';
 import { Maturity } from 'clo-ui/components/Maturity';
 import { SampleQuery } from 'clo-ui/components/SampleQueries';
-import { BiLock, BiMedal, BiShieldQuarter, BiSitemap, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
-import { BsCalendar3, BsFileEarmarkBreak, BsUiChecks } from 'react-icons/bs';
+import { BiDirections, BiLock, BiMedal, BiShieldQuarter, BiTable, BiTrophy, BiWorld } from 'react-icons/bi';
+import { BsCalendar3, BsUiChecks } from 'react-icons/bs';
 import { CgFileDocument, CgReadme } from 'react-icons/cg';
 import {
   FaBalanceScale,
@@ -13,7 +13,6 @@ import {
   FaExclamationTriangle,
   FaFileContract,
   FaFileSignature,
-  FaMarkdown,
   FaRobot,
   FaSignature,
   FaSlack,
@@ -26,19 +25,12 @@ import { FiHexagon } from 'react-icons/fi';
 import { GiFountainPen, GiStamper, GiTiedScroll } from 'react-icons/gi';
 import { GoCommentDiscussion, GoFileBinary, GoLaw } from 'react-icons/go';
 import { GrDocumentLocked, GrDocumentText } from 'react-icons/gr';
-import { HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
+import { HiOutlineLockOpen, HiOutlinePencilAlt, HiTerminal } from 'react-icons/hi';
 import { ImOffice } from 'react-icons/im';
 import { IoIosPeople, IoMdRibbon } from 'react-icons/io';
 import { MdOutlineInventory, MdPreview } from 'react-icons/md';
-import {
-  RiLinksLine,
-  RiLockUnlockLine,
-  RiPulseLine,
-  RiRoadMapLine,
-  RiRobot2Line,
-  RiShieldStarLine,
-} from 'react-icons/ri';
-import { TbMapSearch } from 'react-icons/tb';
+import { RiNodeTree, RiPulseLine, RiRoadMapLine, RiRobot2Line, RiShieldStarLine } from 'react-icons/ri';
+import { TbBinoculars, TbMarkdown, TbPageBreak } from 'react-icons/tb';
 
 import QualityDot from './layout/common/QualityDot';
 import {
@@ -287,6 +279,14 @@ export const SECTIONS: SectionInfo[] = [
         : undefined,
   },
   {
+    type: ScoreType.AgentReadiness,
+    name: CATEGORY_NAMES[ScoreType.AgentReadiness],
+    shortName: 'Agents',
+    icon: CATEGORY_ICONS[ScoreType.AgentReadiness],
+    advisory: true,
+    referenceUrl: '/docs/topics/checks/#agent-readiness',
+  },
+  {
     type: ScoreType.License,
     name: CATEGORY_NAMES[ScoreType.License],
     icon: CATEGORY_ICONS[ScoreType.License],
@@ -316,13 +316,6 @@ export const SECTIONS: SectionInfo[] = [
     name: CATEGORY_NAMES[ScoreType.Legal],
     icon: CATEGORY_ICONS[ScoreType.Legal],
     referenceUrl: '/docs/topics/checks/#legal',
-  },
-  {
-    type: ScoreType.AgentReadiness,
-    name: CATEGORY_NAMES[ScoreType.AgentReadiness],
-    icon: CATEGORY_ICONS[ScoreType.AgentReadiness],
-    advisory: true,
-    referenceUrl: '/docs/topics/checks/#agent-readiness',
   },
 ];
 
@@ -354,7 +347,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     reference: '/docs/topics/checks/#approved-license',
   },
   [ReportOption.Authentication]: {
-    icon: <RiLockUnlockLine />,
+    icon: <HiOutlineLockOpen />,
     name: 'Authentication and access',
     shortName: 'Authentication',
     legend: <span>Whether documentation is accessible without unnecessary authentication barriers</span>,
@@ -421,14 +414,14 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     reference: '/docs/topics/checks/#community-meeting',
   },
   [ReportOption.ContentDiscoverability]: {
-    icon: <TbMapSearch />,
+    icon: <TbBinoculars />,
     name: 'Content discoverability',
     shortName: 'Discoverability',
     legend: <span>Whether agents can discover the most important documentation content from the project website</span>,
     reference: '/docs/topics/checks/#content-discoverability',
   },
   [ReportOption.ContentStructure]: {
-    icon: <BiSitemap />,
+    icon: <RiNodeTree />,
     name: 'Content structure',
     legend: <span>Whether documentation content is organized with a clear structure for agents and users</span>,
     reference: '/docs/topics/checks/#content-structure',
@@ -512,7 +505,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     reference: '/docs/topics/checks/#maintainers',
   },
   [ReportOption.MarkdownAvailability]: {
-    icon: <FaMarkdown />,
+    icon: <TbMarkdown />,
     name: 'Markdown availability',
     shortName: 'Markdown',
     legend: <span>Whether documentation content is available in Markdown or agent-friendly text formats</span>,
@@ -547,7 +540,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     reference: '/docs/topics/checks/#openssf-scorecard-badge',
   },
   [ReportOption.PageSize]: {
-    icon: <BsFileEarmarkBreak />,
+    icon: <TbPageBreak />,
     name: 'Page size and truncation risk',
     shortName: 'Page size',
     legend: <span>Whether documentation pages are sized to reduce truncation risk for agents</span>,
@@ -660,7 +653,7 @@ export const REPORT_OPTIONS: ReportOptionInfo = {
     reference: '/docs/topics/checks/#trademark-disclaimer',
   },
   [ReportOption.UrlStability]: {
-    icon: <RiLinksLine />,
+    icon: <BiDirections />,
     name: 'URL stability and redirects',
     shortName: 'URL stability',
     legend: <span>Whether documentation URLs are stable and avoid redirect chains that complicate agent access</span>,

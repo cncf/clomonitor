@@ -51,6 +51,7 @@ const CategoriesSummary = (props: Props) => {
             <CategoryProgressbar
               key={`category_${section.type}`}
               name={section.name}
+              shortName={props.bigSize ? undefined : section.shortName}
               value={props.score[section.type]}
               icon={section.icon}
               bigSize={props.bigSize}

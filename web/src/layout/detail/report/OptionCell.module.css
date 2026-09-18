@@ -101,6 +101,14 @@
   margin-bottom: 0px;
 }
 
+.detailsList {
+  white-space: normal;
+}
+
+.detailsList li + li {
+  margin-top: 0.15rem;
+}
+
 .codeContent {
   white-space: pre;
 }

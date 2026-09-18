@@ -1,9 +1,11 @@
+import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { getCategoryColor } from 'clo-ui/utils/getCategoryColor';
 import { roundScoreValue } from 'clo-ui/utils/roundScoreValue';
 import { isNil, isUndefined } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
+import { IoInformationCircleOutline } from 'react-icons/io5';
 
 import { RecommendedTemplate, ReportCheck, ReportOption, ScoreType } from '../../../types';
 import sortChecks from '../../../utils/sortChecks';
@@ -23,6 +25,7 @@ interface Props {
   icon: JSX.Element;
   data: OptData;
   score?: number | null;
+  advisory?: boolean;
   referenceUrl?: string;
   recommendedTemplates?: RecommendedTemplate[];
   getAnchorLink: (anchorName: string, className?: string) => JSX.Element;
@@ -43,6 +46,29 @@ const Row = (props: Props) => {
 
   if (options.length === 0 || isNil(props.score)) return null;
 
+  const advisoryIcon = props.advisory ? (
+    <ElementWithTooltip
+      element={
+        <span
+          data-testid="advisory-badge"
+          className={`d-inline-flex align-items-center text-muted ms-2 ${styles.advisoryIcon}`}
+          role="img"
+          aria-label="Advisory section: it does not affect the global score"
+        >
+          <IoInformationCircleOutline aria-hidden="true" />
+        </span>
+      }
+      tooltipWidth={260}
+      tooltipClassName={styles.tooltipMessage}
+      tooltipArrowClassName={styles.tooltipArrow}
+      tooltipMessage={
+        <div className="text-start p-2">This section has its own score but does not affect the global score.</div>
+      }
+      visibleTooltip
+      active
+    />
+  ) : undefined;
+
   return (
     <div className={`p-3 p-md-4 border border-1 mb-2 ${styles.reportContent}`}>
       <div className="mx-0 mx-md-1">
@@ -52,6 +78,7 @@ const Row = (props: Props) => {
             title={props.label}
             icon={props.icon}
             className={styles.titleWrapper}
+            extra={advisoryIcon}
             anchor={props.getAnchorLink(`${props.repoName}_${props.name}`, styles.headingLink)}
           />
         </div>

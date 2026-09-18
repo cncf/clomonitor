@@ -9,6 +9,7 @@ interface Props {
   icon?: JSX.Element;
   value?: number | null;
   name: string;
+  shortName?: string;
   bigSize?: boolean;
   linkTo?: string;
   scrollIntoView?: (id?: string) => void;
@@ -18,6 +19,16 @@ const CategoryProgressbar = (props: Props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const color = getCategoryColor(props.value ?? undefined);
+
+  // The short name is used where two cards share a row between lg and xxl.
+  const title = props.shortName ? (
+    <>
+      <span className="text-truncate d-none d-lg-block d-xxl-none">{props.shortName}</span>
+      <span className="text-truncate d-lg-none d-xxl-block">{props.name}</span>
+    </>
+  ) : (
+    <span className="text-truncate">{props.name}</span>
+  );
 
   return (
     <div className={`${styles.wrapper} ${props.bigSize ? 'col-12 col-lg-9 col-xxxl-8' : 'col-12'}`}>
@@ -43,10 +54,10 @@ const CategoryProgressbar = (props: Props) => {
               }}
               aria-label={`Go from summary to section: ${props.linkTo}`}
             >
-              <span className="text-truncate">{props.name}</span>
+              {title}
             </button>
           ) : (
-            <span className="text-truncate">{props.name}</span>
+            title
           )}
         </div>
         <div className={`text-center fw-bold font-monospace ${styles.value} ${props.bigSize ? styles.bigSize : ''}`}>

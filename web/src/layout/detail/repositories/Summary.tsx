@@ -53,7 +53,14 @@ const Summary = (props: Props) => {
                 className="d-none d-md-table-cell text-center text-nowrap"
               >
                 <small className={`position-relative ${styles.icon}`}>{section.icon}</small>
-                <span className="d-none d-xl-inline-block ms-1 ms-xl-2">{section.name}</span>
+                {section.shortName ? (
+                  <>
+                    <span className="d-none d-xl-inline-block d-xxxl-none ms-1 ms-xl-2">{section.shortName}</span>
+                    <span className="d-none d-xxxl-inline-block ms-1 ms-xl-2">{section.name}</span>
+                  </>
+                ) : (
+                  <span className="d-none d-xl-inline-block ms-1 ms-xl-2">{section.name}</span>
+                )}
               </th>
             ))}
           </tr>
@@ -73,7 +80,7 @@ const Summary = (props: Props) => {
                     >
                       {repo.name}
                     </button>
-                    <CheckSetBadge checkSets={checkSets} className="d-none d-xl-inline-flex" />
+                    <CheckSetBadge checkSets={checkSets} className="d-none d-xxxl-inline-flex" />
                   </div>
                 </td>
 

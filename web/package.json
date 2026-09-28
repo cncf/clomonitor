@@ -53,7 +53,7 @@
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
     "vite": "^8.0.8",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.11"
   },
   "scripts": {
     "copy:static": "shx rm -rf src/static && shx mkdir src/static && shx cp -r public/static/* src",

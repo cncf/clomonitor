@@ -3011,10 +3011,6 @@
       url: https://github.com/projectcapsule/website
       check_sets:
         - docs
-    - name: capsule-community
-      url: https://github.com/projectcapsule/capsule-community
-      check_sets:
-        - community
 - name: zot
   display_name: Zot
   description: Zot is an OCI-native container registry for distributing container images and OCI artifacts

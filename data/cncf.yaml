@@ -4929,7 +4929,8 @@
   display_name: Cedar Policy
   description: Cedar is a language for defining permissions as policies, and a specification for evaluating those policies. Use Cedar to define who is authorized to do what within your application
   category: provisioning
-  logo_url: https://raw.githubusercontent.com/cedar-policy/cedar/main/logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/cedar/icon/color/cedar-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/cedar/icon/white/cedar-icon-white.svg
   devstats_url: https://cedarpolicy.devstats.cncf.io/
   accepted_at: "2025-10-08"
   maturity: sandbox
@@ -5037,7 +5038,8 @@
   description: Dedicated game server hosting and scaling for multiplayer games on Kubernetes
   category: orchestration
   home_url: https://agones.dev
-  logo_url: https://github.com/agones-dev/agones/blob/main/docs/agones.png?raw=true
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/agones/icon/color/agones-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/agones/icon/white/agones-icon-white.svg
   devstats_url: https://agones.devstats.cncf.io/
   accepted_at: "2025-12-21"
   maturity: sandbox
@@ -5112,6 +5114,8 @@
   description: Open-source platform for running, managing, and scaling data workloads on Kubernetes
   category: app definition
   home_url: https://openeverest.io
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/openeverest/icon/dark/openeverest-icon-dark.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/openeverest/icon/light/openeverest-icon-light.svg
   devstats_url: https://openeverest.devstats.cncf.io/
   accepted_at: "2026-03-15"
   maturity: sandbox
@@ -5267,3 +5271,76 @@
       url: https://github.com/CurvineIO/curvine-doc
       check_sets:
         - docs
+- name: sdc
+  display_name: SDC
+  description: Schema Driven Configuration exposes any schema based configuration as Kubernetes resources
+  category: provisioning
+  home_url: https://docs.sdcio.dev/
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/schema-driven-configuration/icon/color/schema-driven-configuration-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/schema-driven-configuration/icon/white/schema-driven-configuration-icon-white.svg
+  devstats_url: https://sdc.devstats.cncf.io/
+  accepted_at: "2026-03-12"
+  maturity: sandbox
+  repositories:
+    - name: config-server
+      url: https://github.com/sdcio/config-server
+      check_sets:
+        - community
+        - code
+    - name: data-server
+      url: https://github.com/sdcio/data-server
+      check_sets:
+        - code-lite
+    - name: schema-server
+      url: https://github.com/sdcio/schema-server
+      check_sets:
+        - code-lite
+    - name: docs
+      url: https://github.com/sdcio/docs
+      check_sets:
+        - docs
+- name: openshell
+  display_name: OpenShell
+  description: Secure, policy-enforced sandboxed runtimes for autonomous AI agents
+  category: orchestration
+  home_url: https://docs.nvidia.com/openshell/latest/
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/openshell.svg
+  devstats_url: https://openshell.devstats.cncf.io/
+  accepted_at: "2026-09-26"
+  maturity: sandbox
+  repositories:
+    - name: openshell
+      url: https://github.com/NVIDIA/OpenShell
+      check_sets:
+        - community
+        - code
+- name: k2s
+  display_name: K2s
+  description: Lightweight Kubernetes distribution for running mixed Windows and Linux workloads
+  category: platform
+  home_url: https://siemens-healthineers.github.io/K2s/
+  logo_url: https://raw.githubusercontent.com/Siemens-Healthineers/K2s/main/docs/assets/logo.png
+  devstats_url: https://k2s.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: k2s
+      url: https://github.com/Siemens-Healthineers/K2s
+      check_sets:
+        - community
+        - code
+- name: kuberay
+  display_name: KubeRay
+  description: A toolkit and Kubernetes operator to deploy, manage and autoscale Ray applications on Kubernetes
+  category: orchestration
+  home_url: https://github.com/ray-project/kuberay
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/ray_logo.svg
+  devstats_url: https://kuberay.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: kuberay
+      url: https://github.com/ray-project/kuberay
+      check_sets:
+        - community
+        - code

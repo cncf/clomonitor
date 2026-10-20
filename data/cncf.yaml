@@ -5340,7 +5340,37 @@
   maturity: sandbox
   repositories:
     - name: kuberay
-      url: https://github.com/ray-project/kuberay
+      url: https://github.com/kuberay-project/kuberay
+      check_sets:
+        - community
+        - code
+- name: airunway
+  display_name: AI Runway
+  description: Kubernetes-native platform for deploying and managing AI inference across multiple providers
+  category: inference
+  home_url: https://ai-runway.github.io/airunway/
+  logo_url: https://raw.githubusercontent.com/ai-runway/airunway/main/docs/logo.png
+  devstats_url: https://airunway.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: airunway
+      url: https://github.com/ai-runway/airunway
+      check_sets:
+        - community
+        - code
+- name: praxis
+  display_name: Praxis
+  description: The cloud and AI-native proxy server and framework
+  category: orchestration
+  home_url: https://praxis.fast
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/praxis/icon/color/praxis-icon-color.svg
+  devstats_url: https://praxis.devstats.cncf.io/
+  accepted_at: "2026-09-29"
+  maturity: sandbox
+  repositories:
+    - name: praxis
+      url: https://github.com/praxis-proxy/praxis
       check_sets:
         - community
         - code

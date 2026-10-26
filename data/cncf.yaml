@@ -3153,7 +3153,7 @@
         - clomonitor
 - name: kepler
   display_name: Kepler
-  description: Kepler (Kubernetes-based Efficient Power Level Exporter) uses eBPF to probe energy related system stats and exports as Prometheus metrics
+  description: Kepler (Kubernetes-based Efficient Power Level Exporter) is a Prometheus exporter that measures energy consumption at the Kubernetes, Pod and Node level. It reads hardware sensors, attributes power to containers, and gives per-workload visibility into where energy goes. Let's make every watt matter.
   category: observability
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kepler/icon/color/kepler-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kepler/icon/white/kepler-icon-white.svg
@@ -3166,28 +3166,8 @@
       check_sets:
         - community
         - code
-    - name: kepler-model-server
-      url: https://github.com/sustainable-computing-io/kepler-model-server
-      check_sets:
-        - code-lite
     - name: kepler-operator
       url: https://github.com/sustainable-computing-io/kepler-operator
-      check_sets:
-        - code-lite
-    - name: kepler-helm-chart
-      url: https://github.com/sustainable-computing-io/kepler-helm-chart
-      check_sets:
-        - code-lite
-    - name: kepler-model-db
-      url: https://github.com/sustainable-computing-io/kepler-model-db
-      check_sets:
-        - code-lite
-    - name: kepler-action
-      url: https://github.com/sustainable-computing-io/kepler-action
-      check_sets:
-        - code-lite
-    - name: kepler-estimator
-      url: https://github.com/sustainable-computing-io/kepler-estimator
       check_sets:
         - code-lite
     - name: kepler-doc

@@ -83,6 +83,14 @@ const OptionCell = (props: Props) => {
       case ReportOption.SPDX:
         return <>{isUndefined(props.check.value) ? 'Not detected' : (props.check.value as string)}</>;
 
+      case ReportOption.LicenseScanning:
+        return (
+          <>
+            {opt.name}
+            {!isUndefined(props.check.value) && <span className="ms-2">({props.check.value as string})</span>}
+          </>
+        );
+
       case ReportOption.Analytics:
         values = isUndefined(props.check.value) ? [] : (props.check.value as string[]);
         return (

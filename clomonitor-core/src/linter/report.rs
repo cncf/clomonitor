@@ -88,7 +88,7 @@ section_impl!(
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct License {
     pub license_approved: Option<CheckOutput>,
-    pub license_scanning: Option<CheckOutput>,
+    pub license_scanning: Option<CheckOutput<String>>,
     pub license_spdx_id: Option<CheckOutput<String>>,
 }
 

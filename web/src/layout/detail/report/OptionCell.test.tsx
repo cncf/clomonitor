@@ -98,6 +98,26 @@ describe('OptionCell', () => {
       expect(screen.getByText('Analytics')).toBeInTheDocument();
     });
 
+    it('renders special License scanning option', () => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              label={ReportOption.LicenseScanning}
+              check={{
+                passed: true,
+                url: 'https://app.fossa.com/projects/project',
+                value: 'FOSSA',
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      expect(screen.getByText('(FOSSA)')).toBeInTheDocument();
+      expect(screen.getByText('License scanning')).toBeInTheDocument();
+    });
+
     it('renders option with url', () => {
       render(
         <table>

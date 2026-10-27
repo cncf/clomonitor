@@ -2,6 +2,7 @@ use std::sync::LazyLock;
 
 use anyhow::Result;
 use regex::Regex;
+use reqwest::Url;
 
 use crate::linter::{
     CheckSet,
@@ -30,7 +31,7 @@ pub(crate) static SNYK_URL: LazyLock<Regex> = LazyLock::new(|| {
 });
 
 /// Check main function.
-pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
+pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput<String>> {
     // Scanning url in metadata file
     if let Some(url) = input
         .cm_md
@@ -38,15 +39,40 @@ pub(crate) fn check(input: &CheckInput) -> Result<CheckOutput> {
         .and_then(|md| md.license_scanning.as_ref())
         .and_then(|ls| ls.url.as_ref())
     {
-        return Ok(CheckOutput::passed().url(Some(url.clone())));
+        return Ok(passed(url.clone()));
     }
 
     // Reference in README file
     if let Some(url) = content::find(&readme_globs(&input.li.root), &[&FOSSA_URL, &SNYK_URL])? {
-        return Ok(CheckOutput::passed().url(Some(url)));
+        return Ok(passed(url));
     }
 
     Ok(CheckOutput::not_passed())
+}
+
+/// Build a passed check output for the license scanning url provided.
+fn passed(url: String) -> CheckOutput<String> {
+    let tool = tool(&url).to_string();
+    CheckOutput::passed().url(Some(url)).value(Some(tool))
+}
+
+/// Identify the license scanning tool from the url provided.
+fn tool(url: &str) -> &'static str {
+    let host = Url::parse(url)
+        .ok()
+        .and_then(|url| url.host_str().map(str::to_lowercase));
+    let is_domain = |domain: &str| {
+        host.as_deref()
+            .is_some_and(|host| host == domain || host.ends_with(&format!(".{domain}")))
+    };
+
+    if is_domain("fossa.com") || is_domain("fossa.io") {
+        "FOSSA"
+    } else if is_domain("snyk.io") {
+        "Snyk"
+    } else {
+        "Other"
+    }
 }
 
 #[cfg(test)]
@@ -115,8 +141,58 @@ mod tests {
                 security_insights: Ok(None),
             })
             .unwrap(),
-            CheckOutput::passed().url(Some("license_scanning_url".to_string())),
+            CheckOutput::passed()
+                .url(Some("license_scanning_url".to_string()))
+                .value(Some("Other".to_string())),
         );
+    }
+
+    #[test]
+    fn passed_license_scanning_info_found_known_tool() {
+        assert_eq!(
+            check(&CheckInput {
+                li: &LinterInput::default(),
+                cm_md: Some(Metadata {
+                    agent_readiness: None,
+                    exemptions: None,
+                    license_scanning: Some(LicenseScanning {
+                        url: Some("https://app.snyk.io/org/org/projects".to_string()),
+                    }),
+                }),
+                gh_md: MdRepository::default(),
+                afdocs: None,
+                scorecard: Err(format_err!("no scorecard available")),
+                security_insights: Ok(None),
+            })
+            .unwrap(),
+            CheckOutput::passed()
+                .url(Some("https://app.snyk.io/org/org/projects".to_string()))
+                .value(Some("Snyk".to_string())),
+        );
+    }
+
+    #[test]
+    fn tool_fossa() {
+        assert_eq!(tool("https://app.fossa.com/projects/custom%2B162"), "FOSSA");
+        assert_eq!(
+            tool("https://app.fossa.io/projects/git%2Bgithub.com"),
+            "FOSSA"
+        );
+        assert_eq!(tool("https://fossa.com/projects"), "FOSSA");
+    }
+
+    #[test]
+    fn tool_snyk() {
+        assert_eq!(tool("https://snyk.io/test/github/username/repo"), "Snyk");
+        assert_eq!(tool("https://APP.SNYK.IO/org/org/projects"), "Snyk");
+    }
+
+    #[test]
+    fn tool_other() {
+        assert_eq!(tool("https://license-scanning-results.url"), "Other");
+        assert_eq!(tool("https://notfossa.com/projects"), "Other");
+        assert_eq!(tool("https://fossa.com.example.org/projects"), "Other");
+        assert_eq!(tool("license_scanning_url"), "Other");
     }
 
     #[test]

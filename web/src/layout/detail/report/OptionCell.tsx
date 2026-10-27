@@ -2,7 +2,7 @@ import { DropdownOnHover } from 'clo-ui/components/DropdownOnHover';
 import { ElementWithTooltip } from 'clo-ui/components/ElementWithTooltip';
 import { ExternalLink } from 'clo-ui/components/ExternalLink';
 import { FullScreenModal } from 'clo-ui/components/FullScreenModal';
-import { isUndefined } from 'lodash';
+import { castArray, isUndefined } from 'lodash';
 import { useContext, useRef, useState } from 'react';
 import { BsWindowPlus } from 'react-icons/bs';
 import { FaRegCheckCircle, FaRegTimesCircle } from 'react-icons/fa';
@@ -83,16 +83,13 @@ const OptionCell = (props: Props) => {
       case ReportOption.SPDX:
         return <>{isUndefined(props.check.value) ? 'Not detected' : (props.check.value as string)}</>;
 
-      case ReportOption.LicenseScanning:
-        return (
-          <>
-            {opt.name}
-            {!isUndefined(props.check.value) && <span className="ms-2">({props.check.value as string})</span>}
-          </>
-        );
-
       case ReportOption.Analytics:
-        values = isUndefined(props.check.value) ? [] : (props.check.value as string[]);
+      case ReportOption.LicenseScanning:
+        values = isUndefined(props.check.value) ? [] : castArray(props.check.value);
+        // Unidentified license scanning tools are reported as Other, which adds no information
+        if (props.label === ReportOption.LicenseScanning) {
+          values = values.filter((value) => value !== 'Other');
+        }
         return (
           <>
             {opt.name}

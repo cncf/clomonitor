@@ -26,7 +26,7 @@ pub(crate) static FOSSA_URL: LazyLock<Regex> = LazyLock::new(|| {
 });
 
 pub(crate) static SNYK_URL: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r#"(https://snyk.io/test/github/[^/\s]+/[^/"\s]+)"#)
+    Regex::new(r#"(https://snyk.io/test/github/[^/\s]+/[^/"'\)\s]+)"#)
         .expect("exprs in SNYK_URL to be valid")
 });
 
@@ -253,6 +253,17 @@ mod tests {
         assert_eq!(
             SNYK_URL
                 .captures("[snyk]: https://snyk.io/test/github/username/repo\n[next-badge]:",)
+                .unwrap()[1]
+                .to_string(),
+            "https://snyk.io/test/github/username/repo"
+        );
+    }
+
+    #[test]
+    fn snyk_url_extract_md_link() {
+        assert_eq!(
+            SNYK_URL
+                .captures("We use [Snyk](https://snyk.io/test/github/username/repo) to test")
                 .unwrap()[1]
                 .to_string(),
             "https://snyk.io/test/github/username/repo"

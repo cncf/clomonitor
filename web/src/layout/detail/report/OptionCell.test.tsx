@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
@@ -96,6 +96,43 @@ describe('OptionCell', () => {
       expect(screen.getByText(/GA4/)).toBeInTheDocument();
       expect(screen.getByText(/Projects websites should provide some web analytics/)).toBeInTheDocument();
       expect(screen.getByText('Analytics')).toBeInTheDocument();
+    });
+
+    it('renders special License scanning option', () => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell
+              label={ReportOption.LicenseScanning}
+              check={{
+                passed: true,
+                url: 'https://app.fossa.com/projects/project',
+                value: 'FOSSA',
+              }}
+            />
+          </tbody>
+        </table>
+      );
+
+      const link = screen.getByRole('link', { name: 'Checks reference documentation' });
+      expect(link).toHaveProperty('href', 'https://app.fossa.com/projects/project');
+      expect(within(link).getByText('License scanning')).toBeInTheDocument();
+      expect(within(link).getByText('(FOSSA)')).toBeInTheDocument();
+    });
+
+    it.each([
+      ['not detected', { passed: false }],
+      ['not identified', { passed: true, url: 'https://github.com/org/repo/blob/main/LICENSES', value: 'Other' }],
+    ])('renders License scanning option without tool when %s', (_, check) => {
+      render(
+        <table>
+          <tbody>
+            <OptionCell label={ReportOption.LicenseScanning} check={check} />
+          </tbody>
+        </table>
+      );
+
+      expect(screen.getByTestId('opt-name')).toHaveTextContent(/^License scanning$/);
     });
 
     it('renders option with url', () => {

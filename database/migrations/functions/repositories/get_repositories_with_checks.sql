@@ -19,6 +19,7 @@ returns setof text as $$
             (rp.data->'documentation'->'website'->'passed')::boolean as website,
             (rp.data->'license'->'license_approved'->'passed')::boolean as license_approved,
             (rp.data->'license'->'license_scanning'->'passed')::boolean as license_scanning,
+            coalesce((rp.data->'license'->'license_scanning'->>'value')::text, 'Not detected') as license_scanning_tool,
             coalesce((rp.data->'license'->'license_spdx_id'->>'value')::text, 'Not detected') as license_spdx_id,
             (
                 select string_agg(item #>> '{}', ' ')
@@ -57,7 +58,7 @@ returns setof text as $$
         join report rp using (repository_id)
         order by p.foundation_id asc, p.name asc
     )
-    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer,Authentication,Content Discoverability,Content Structure,Markdown Availability,Observability,Page Size,URL Stability'
+    select 'Foundation,Project,Repository URL,Check Sets,Adopters,Changelog,Code of Conduct,Contributing,Governance,Maintainers,Readme,Roadmap,Summary Table,Website,License Approved,License Scanning,License Scanning Tool,License SPDX ID,Analytics,ArtifactHub Badge,CLA,Community Meeting,DCO,GitHub discussions,OpenSSF best practices badge,OpenSSF Scorecard badge,Recent Release,Slack Presence,Binary Artifacts,Code Review,Dangerous Workflow,Dependencies Policy,Dependency Update Tool,Maintained,SBOM,Security Insights,Security Policy,Signed Releases,Token Permissions,Trademark Disclaimer,Authentication,Content Discoverability,Content Structure,Markdown Availability,Observability,Page Size,URL Stability'
     union all
     select rtrim(ltrim(r.*::text, '('), ')') from repositories r;
 $$ language sql;

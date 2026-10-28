@@ -386,6 +386,8 @@ This check passes if:
 
 - A *link* pointing to the license scanning results is provided in the [.clomonitor.yml](https://github.com/cncf/clomonitor/blob/main/docs/metadata/.clomonitor.yml) metadata file.
 
+When the check passes, the license scanning tool is identified from the link's domain (`FOSSA` or `Snyk`). Links pointing to other domains are reported as `Other`, which is not displayed in the UI.
+
 ## Best practices
 
 ### Analytics

@@ -2281,8 +2281,8 @@
   description: Standards-based DSL and open-source dev tools and runtimes are at the heart of the Open Workflow Specification project
   category: app definition
   home_url: https://open-workflow-specification.org
-  logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/serverlessworkflow/icon/color/serverlessworkflow-icon-color.svg
-  devstats_url: https://openworkflow.devstats.cncf.io/
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/open-workflow-specification/icon/color/open-workflow-specification-icon-color.svg
+  devstats_url: https://serverlessworkflow.devstats.cncf.io/
   accepted_at: "2020-07-14"
   maturity: sandbox
   repositories:
@@ -3526,7 +3526,7 @@
 - name: kueue
   display_name: kueue
   description: Kubernetes-native Job Queueing.
-  category: runtime
+  category: orchestration
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/sub-projects/kueue/icon/color/kueue-icon-color.svg
   logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kubernetes/sub-projects/kueue/icon/white/kueue-icon-white.svg
   repositories:
@@ -5220,7 +5220,7 @@
 - name: kbind
   display_name: kbind
   description: An open source project that aims to provide better support for service providers and consumers that reside in distinct Kubernetes clusters
-  category: orchestration
+  category: provisioning
   home_url: https://kube-bind.io
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kbind/icon/color/kbind-icon-color.svg
   devstats_url: https://kbind.devstats.cncf.io/
@@ -5314,7 +5314,7 @@
   description: A toolkit and Kubernetes operator to deploy, manage and autoscale Ray applications on Kubernetes
   category: orchestration
   home_url: https://github.com/ray-project/kuberay
-  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/ray_logo.svg
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuberay/icon/color/kuberay-icon-color.svg
   devstats_url: https://kuberay.devstats.cncf.io/
   accepted_at: "2026-09-28"
   maturity: sandbox
@@ -5351,6 +5351,65 @@
   repositories:
     - name: praxis
       url: https://github.com/praxis-proxy/praxis
+      check_sets:
+        - community
+        - code
+- name: agent-substrate
+  display_name: Agent Substrate
+  description: A secure-by-default agent execution runtime for running millions of sandboxes
+  category: orchestration
+  home_url: https://github.com/agent-substrate/substrate
+  logo_url: https://raw.githubusercontent.com/agent-substrate/substrate/main/logo/ate-logo.svg
+  devstats_url: https://agentsubstrate.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: substrate
+      url: https://github.com/agent-substrate/substrate
+      check_sets:
+        - community
+        - code
+- name: openrl
+  display_name: OpenRL
+  description: Self-hosted Kubernetes-native post-training (RL) API for LLMs
+  category: orchestration
+  home_url: https://github.com/gke-labs/open-rl
+  logo_url: https://avatars.githubusercontent.com/u/197140281?s=60&v=4
+  devstats_url: https://openrl.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: open-rl
+      url: https://github.com/gke-labs/open-rl
+      check_sets:
+        - community
+        - code
+- name: hivecommons
+  display_name: Hive Commons
+  description: Kubernetes-native orchestration for fleets of AI coding agents that autonomously maintain software repositories
+  category: agents
+  home_url: https://hivecommons.dev
+  logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/hive-commons/icon/color/hive-commons-icon-color.svg
+  devstats_url: https://hivecommons.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: hive
+      url: https://github.com/hivecommons/hive
+      check_sets:
+        - community
+        - code
+- name: gvisor
+  display_name: gVisor
+  description: Sandboxing layer for running containers and agentic workloads efficiently and securely
+  category: runtime
+  home_url: https://gvisor.dev
+  logo_url: https://raw.githubusercontent.com/cncf/landscape/master/hosted_logos/gvisor.svg
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: gvisor
+      url: https://github.com/google/gvisor
       check_sets:
         - community
         - code

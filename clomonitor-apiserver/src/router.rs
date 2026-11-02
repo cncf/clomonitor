@@ -51,7 +51,7 @@ pub(crate) fn setup(cfg: &Arc<Config>, db: DynDB, vt: DynVT) -> Result<Router> {
 
     // Setup templates
     let mut tmpl = Tera::default();
-    tmpl.autoescape_on(vec![]);
+    tmpl.autoescape_on(Vec::<&str>::new());
     tmpl.add_template_file(index_path, Some("index.html"))?;
     let tmpl = Arc::new(tmpl);
 

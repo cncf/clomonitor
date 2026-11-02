@@ -5,7 +5,7 @@ use clomonitor_core::{
     linter::{CheckOutput, Report},
     score::Score,
 };
-use comfy_table::{Table, modifiers::UTF8_ROUND_CORNERS, presets::UTF8_FULL, *};
+use comfy_table::{Table, presets::UTF8_FULL, *};
 
 use crate::Args;
 
@@ -33,8 +33,7 @@ pub(crate) fn display(
     writeln!(w, "Repository information\n")?;
     let mut repo_info = new_table();
     repo_info
-        .load_preset(UTF8_FULL)
-        .apply_modifier(UTF8_ROUND_CORNERS)
+        .load_style(UTF8_FULL.with_rounded_corners())
         .add_row(vec![cell_entry("Local path"), cell_entry(&local_path)])
         .add_row(vec![cell_entry("Remote url"), cell_entry(&args.url)])
         .add_row(vec![
@@ -47,8 +46,7 @@ pub(crate) fn display(
     writeln!(w, "Score summary\n")?;
     let mut score_summary = new_table();
     score_summary
-        .load_preset(UTF8_FULL)
-        .apply_modifier(UTF8_ROUND_CORNERS)
+        .load_style(UTF8_FULL.with_rounded_corners())
         .set_header(vec![cell_header("Section"), cell_header("Score")])
         .add_row(vec![cell_entry("Global"), cell_score(Some(score.global))])
         .add_row(vec![
@@ -72,8 +70,7 @@ pub(crate) fn display(
     writeln!(w, "Checks summary\n")?;
     let mut checks_summary = new_table();
     checks_summary
-        .load_preset(UTF8_FULL)
-        .apply_modifier(UTF8_ROUND_CORNERS)
+        .load_style(UTF8_FULL.with_rounded_corners())
         .set_header(vec![cell_header("Check"), cell_header("Passed")])
         .add_row(vec![
             cell_entry("Documentation / Adopters"),

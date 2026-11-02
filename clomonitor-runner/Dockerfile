@@ -1,5 +1,5 @@
 # Build runner
-FROM rust:1.96.1-alpine3.24 as builder
+FROM rust:1.99.1-alpine3.24 as builder
 RUN apk --no-cache add musl-dev perl make
 WORKDIR /clomonitor
 COPY Cargo.* ./
@@ -25,14 +25,14 @@ RUN make install
 RUN make build
 
 # Install AFDocs using the locked dependency set
-FROM alpine:3.24.1 AS afdocs
+FROM alpine:3.24.4 AS afdocs
 RUN apk --no-cache add nodejs npm
 WORKDIR /opt/afdocs
 COPY clomonitor-runner/afdocs/package*.json ./
 RUN npm ci --omit=dev --ignore-scripts
 
 # Final stage
-FROM alpine:3.24.1
+FROM alpine:3.24.4
 RUN apk --no-cache add ca-certificates git nodejs \
     && addgroup -g 10001 -S clomonitor \
     && adduser -u 10001 -S clomonitor -G clomonitor

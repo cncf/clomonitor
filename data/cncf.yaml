@@ -1697,7 +1697,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/nats/icon/color/nats-icon-color.svg
   devstats_url: https://nats.devstats.cncf.io/
   accepted_at: "2018-03-15"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: nats-server
       url: https://github.com/nats-io/nats-server

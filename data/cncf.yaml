@@ -1772,7 +1772,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/open-cluster-management/icon/color/ocm-icon-color.png
   devstats_url: https://openclustermanagement.devstats.cncf.io/
   accepted_at: "2021-11-09"
-  maturity: sandbox
+  maturity: incubating
   repositories:
     - name: clusteradm
       url: https://github.com/open-cluster-management-io/clusteradm

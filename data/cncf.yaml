@@ -1496,7 +1496,7 @@
   logo_url: https://raw.githubusercontent.com/cncf/artwork/master/projects/kubevirt/icon/color/kubevirt-icon-color.svg
   devstats_url: https://kubevirt.devstats.cncf.io/
   accepted_at: "2019-09-06"
-  maturity: incubating
+  maturity: graduated
   repositories:
     - name: kubevirt
       url: https://github.com/kubevirt/kubevirt

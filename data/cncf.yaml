@@ -5315,6 +5315,7 @@
   category: orchestration
   home_url: https://github.com/ray-project/kuberay
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuberay/icon/color/kuberay-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/kuberay/icon/white/kuberay-icon-white.svg
   devstats_url: https://kuberay.devstats.cncf.io/
   accepted_at: "2026-09-28"
   maturity: sandbox
@@ -5384,14 +5385,15 @@
       check_sets:
         - community
         - code
-- name: hivecommons
+- name: hive
   display_name: Hive Commons
   description: Kubernetes-native orchestration for fleets of AI coding agents that autonomously maintain software repositories
   category: agents
   home_url: https://hivecommons.dev
   logo_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/hive-commons/icon/color/hive-commons-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/cncf/artwork/main/projects/hive-commons/icon/white/hive-commons-icon-white.svg
   devstats_url: https://hivecommons.devstats.cncf.io/
-  accepted_at: "2026-09-28"
+  accepted_at: "2026-09-29"
   maturity: sandbox
   repositories:
     - name: hive
@@ -5412,4 +5414,24 @@
       url: https://github.com/google/gvisor
       check_sets:
         - community
+        - code
+- name: vm-api
+  display_name: vm-api
+  description: Provider-neutral Kubernetes APIs and core controllers for virtual machine lifecycle management
+  category: app definition
+  home_url: https://github.com/vm-api/vm-api
+  logo_url: https://raw.githubusercontent.com/vm-api/vm-api/main/docs/assets/vm-api-logo.svg
+  logo_dark_url: https://raw.githubusercontent.com/vm-api/vm-api/main/docs/assets/vm-api-logo-white.svg
+  devstats_url: https://vmapi.devstats.cncf.io/
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: vm-api
+      url: https://github.com/vm-api/vm-api
+      check_sets:
+        - community
+        - code
+    - name: vm-operator
+      url: https://github.com/vmware-tanzu/vm-operator
+      check_sets:
         - code

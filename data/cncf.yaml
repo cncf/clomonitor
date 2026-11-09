@@ -5435,3 +5435,47 @@
       url: https://github.com/vmware-tanzu/vm-operator
       check_sets:
         - code
+- name: matrixhub
+  display_name: MatrixHub
+  description: MatrixHub is an open-source, self-hosted, Hugging Face-compatible AI model registry and distribution layer for enterprise inference
+  category: inference
+  home_url: https://matrixhub.ai
+  logo_url: https://raw.githubusercontent.com/matrixhub-ai/matrixhub/main/docs/logo/icon/color/matrixhub-icon-color.svg
+  logo_dark_url: https://raw.githubusercontent.com/matrixhub-ai/matrixhub/main/docs/logo/icon/color/matrixhub-icon-colorlight.svg
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: matrixhub
+      url: https://github.com/matrixhub-ai/matrixhub
+      check_sets:
+        - community
+        - code
+    - name: hfd
+      url: https://github.com/matrixhub-ai/hfd
+      check_sets:
+        - code-lite
+- name: caipe
+  display_name: CAIPE
+  description: CAIPE is a self-hosted, open-source AI agent platform that provides a shared control plane for building, governing, and operating agents and workflows across cloud-native engineering systems
+  category: agents
+  home_url: https://caipe.io
+  logo_url: https://avatars.githubusercontent.com/u/249087636?s=60&v=4
+  accepted_at: "2026-09-28"
+  maturity: sandbox
+  repositories:
+    - name: ai-platform-engineering
+      url: https://github.com/caipe-io/ai-platform-engineering
+      check_sets:
+        - code
+    - name: caipe-cli
+      url: https://github.com/caipe-io/caipe-cli
+      check_sets:
+        - code
+    - name: agentic-apps
+      url: https://github.com/caipe-io/agentic-apps
+      check_sets:
+        - code-lite
+    - name: governance
+      url: https://github.com/caipe-io/governance
+      check_sets:
+        - community

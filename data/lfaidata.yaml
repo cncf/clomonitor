@@ -350,19 +350,6 @@
       url: https://github.com/milvus-io/bootcamp
       check_sets:
         - code-lite
-- name: ml-exchange
-  display_name: Machine Learning eXchange
-  description: Machine Learning eXchange (MLX). Data and AI Assets Catalog and Execution Engine
-  category: model
-  logo_url: https://raw.githubusercontent.com/lfai/artwork/main/projects/mlx/icon/color/mlx-icon-color.svg
-  accepted_at: "2021-05-06"
-  maturity: sandbox
-  repositories:
-    - name: mlx
-      url: https://github.com/machine-learning-exchange/mlx
-      check_sets:
-        - community
-        - code
 - name: nnstreamer
   display_name: NNStreamer
   description: Neural Network (NN) Streamer, Stream Processing Paradigm for Neural Network Apps/Devices

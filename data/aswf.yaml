@@ -262,14 +262,6 @@
     url: https://github.com/AcademySoftwareFoundation/openexr-images
     exclude:
     - clomonitor
-  - name: openexr-examples
-    url: https://github.com/AcademySoftwareFoundation/openexr-examples
-    exclude:
-    - clomonitor
-  - name: openexr-website
-    url: https://github.com/AcademySoftwareFoundation/openexr-website
-    exclude:
-    - clomonitor
 - name: openfx
   display_name: OpenFX
   description: The mission of the OpenFX Project is to promote and develop an image

@@ -3164,7 +3164,6 @@
     - name: kepler
       url: https://github.com/sustainable-computing-io/kepler
       check_sets:
-        - community
         - code
     - name: kepler-operator
       url: https://github.com/sustainable-computing-io/kepler-operator
@@ -3174,6 +3173,10 @@
       url: https://github.com/sustainable-computing-io/kepler-doc
       check_sets:
         - docs
+    - name: community
+      url: https://github.com/sustainable-computing-io/community
+      check_sets:
+        - community
 - name: pipecd
   display_name: PipeCD
   description: GitOps style continuous delivery platform that provides consistent deployment and operations experience for any applications
